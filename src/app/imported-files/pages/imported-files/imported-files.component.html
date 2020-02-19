@@ -1,0 +1,59 @@
+<mdc-main-header logo="/assets/logo.jpg" organizationName="MDClone"></mdc-main-header>
+<div class="wrapper">
+    <div class="shadow-site"></div>
+    <main>
+        <section class="import-file">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="import-file__head-wrap">
+                            <h1>Imported files</h1><span class="import-file__detail d-md-none">Details</span>
+                        </div>
+                        <div class="import-file__text">This page allows you to import data file (in a CSV forma), in
+                            order to filter the data and generate synthetic data. The file data is not loaded to the
+                            data base.</div><span class="import-file__more d-none d-md-inline d-xl-none">Read
+                            more</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="admin-table-wrap">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="admin-table-wrap__action">
+                            <div class="admin-table-wrap__col">
+                                <mdc-button (click)="showUploadFile=!showUploadFile" text="{{'NewFile'|translate}}">
+                                    <div style="width:20px">
+                                        <mdc-icon path="ic-plus"></mdc-icon>
+                                    </div>
+                                </mdc-button>
+                            </div>
+                            <div class="admin-table-wrap__col">
+                                <div class="tabs-page">
+                                    <mdc-tabs [active]="tabActive" [tabs]="tabs" (select)="selectTab($event)">
+                                    </mdc-tabs>
+                                </div>
+                                <form class="form-search d-none d-md-block">
+                                    <mdc-auto-search pause="500" #search placeholder="{{'search'|translate}}"
+                                        (complite)="searchComplite($event)"></mdc-auto-search>
+                                </form>
+                            </div>
+                        </div>
+                        <mdc-table #table [searchOptions]="searchOptions" [paginator]="paginator" [search]="search"
+                            [dataSource]="dataSource">
+                        </mdc-table>
+                        <div class="pager-wrap">
+                            <mdc-paginator #paginator paginationTitle="{{'paginationTitle'|translate}}" [blockSize]="3"
+                                [pageSize]="10" [currentPage]="0">
+                            </mdc-paginator>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</div>
+<mdc-modal-window [hidden]="!showUploadFile">
+    <md-upload-file (onCancel)="showUploadFile=false"></md-upload-file>
+</mdc-modal-window>

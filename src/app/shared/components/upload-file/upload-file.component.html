@@ -1,0 +1,64 @@
+<div>
+    <div class="modal-window__head">New imported file</div>
+    <div class="modal-window__close ic-hover">
+        <mdc-icon path="ic-close"></mdc-icon>
+    </div>
+    <form (submit)="uploadFile($event)" [formGroup]="formGroup" class="form-site">
+        <div class="form-site__fields">
+            <div class="form-site__item">
+                <div class="form-site__label">Choose File</div>
+                <div class="file-upload">
+                    <label class="file-upload__content">
+                        <input (change)="updateFileName($event)" type="file" formControlName="file"><span
+                            class="file-upload__btn">Choose File</span><span class="file-upload__name disable">
+                            <ng-template [ngIf]="!fileName">
+                                Select a CSV or Excel file
+                            </ng-template>
+                            <ng-template [ngIf]="fileName">
+                                {{fileName}}
+                            </ng-template>
+                        </span>
+                    </label>
+                </div>
+            </div>
+            <div class="form-site__item">
+                <label class="form-site__label" for="name">Name</label>
+                <input formControlName="typeFileName" type="text" placeholder="Type file name">
+            </div>
+            <div class="form-site__item">
+                <label class="form-site__label" for="project">Environment</label>
+                <!-- <div class="select select_up" id="project">
+                    <div class="select__head">Select Environment…
+                        <div class="select__head-arr">
+                            <mdc-icon path="ic-select-arr-down"></mdc-icon>
+                        </div>
+                    </div>
+                    <div class="select__option">
+                        <div class="select__param active">Demo project</div>
+                        <div class="select__param">Mimic</div>
+                        <div class="select__param">Project 1</div>
+                        <div class="select__param">Project 2</div>
+                        <div class="select__param">Project with very long name</div>
+                    </div>
+                </div> -->
+                <mdc-select maxHeight="200px" [selectUp]="true" [selected]="selectedOption" (changed)="changed($event)" [options]="selectOptions">
+                </mdc-select>
+            </div>
+            <div class="form-site__item">
+                <label class="form-site__label">Make this a shared file</label>
+                <div class="form-site__shared"><span class="form-site__shared-notice"><span
+                            class="form-site__shared-text">When file is shared everyone can see and use
+                            it.</span></span>
+                    <div class="switch">
+                        <mdc-toggle-button [ngModelOptions]="{standalone: true}" no="No" yes="Yes"
+                            [(ngModel)]="isShared"></mdc-toggle-button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-site__btn">
+            <button (click)="cancel($event)" class="btn btn_border">Cancel</button>
+            <input [disabled]="!isValid" [ngClass]="{'btn_disable':!isValid}" class="btn" type="submit" value="Upload">
+        </div>
+    </form>
+</div>
