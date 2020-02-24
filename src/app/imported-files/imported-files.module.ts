@@ -18,7 +18,7 @@ const routes: Array<Route> = [
   imports: [
     CommonModule,
     CoreModule,
-    FormsModule, 
+    FormsModule,
     ReactiveFormsModule,
     RouterModule.forChild(routes)
   ]

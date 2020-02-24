@@ -1,0 +1,100 @@
+{
+    "status": "success",
+    "data": {
+        "id": "5",
+        "login": "mdclone.admin",
+        "firstName": "Admin gggg",
+        "lastName": "Admin",
+        "email": "mdclone.admin@localhost",
+        "activated": true,
+        "langKey": "en",
+        "activationKey": null,
+        "resetKey": null,
+        "createdBy": "system",
+        "createdDate": "2016-06-01T21:00:00.000Z",
+        "resetDate": null,
+        "lastModifiedBy": "mdclone.admin",
+        "lastModifiedDate": "2018-12-11T08:10:09.089Z",
+        "cellPhone": null,
+        "domain": null,
+        "photo": null,
+        "projects": [
+            {
+                "projectId": "6",
+                "projectName": "ETL project",
+                "defaultSiteId": "3",
+                "UserType": {
+                    "userId": "5",
+                    "projectId": "6",
+                    "userType": "ADMIN",
+                    "anonymityLevel": 1,
+                    "numericScatterLimit": 1
+                }
+            },
+            {
+                "projectId": "1",
+                "projectName": "Demo Project",
+                "defaultSiteId": "1",
+                "UserType": {
+                    "userId": "5",
+                    "projectId": "1",
+                    "userType": "ADMIN",
+                    "anonymityLevel": 1,
+                    "numericScatterLimit": 0
+                }
+            },
+            {
+                "projectId": "8",
+                "projectName": "TestProject",
+                "defaultSiteId": null,
+                "UserType": {
+                    "userId": "5",
+                    "projectId": "8",
+                    "userType": "ADMIN",
+                    "anonymityLevel": 1,
+                    "numericScatterLimit": 1
+                }
+            },
+            {
+                "projectId": "15",
+                "projectName": "BIG Project",
+                "defaultSiteId": "13",
+                "UserType": {
+                    "userId": "5",
+                    "projectId": "15",
+                    "userType": "ADMIN",
+                    "anonymityLevel": 1,
+                    "numericScatterLimit": 1
+                }
+            },
+            {
+                "projectId": "14",
+                "projectName": "Training Mimic Data",
+                "defaultSiteId": "12",
+                "UserType": {
+                    "userId": "5",
+                    "projectId": "14",
+                    "userType": "RESEARCHER",
+                    "anonymityLevel": 4,
+                    "numericScatterLimit": 0
+                }
+            }
+        ],
+        "authorities": [
+            {
+                "name": "ROLE_SUPERADMIN",
+                "UserAuthority": {
+                    "userId": "5",
+                    "authorityName": "ROLE_SUPERADMIN"
+                }
+            },
+            {
+                "name": "ROLE_ADMIN",
+                "UserAuthority": {
+                    "userId": "5",
+                    "authorityName": "ROLE_ADMIN"
+                }
+            }
+        ]
+    }
+}

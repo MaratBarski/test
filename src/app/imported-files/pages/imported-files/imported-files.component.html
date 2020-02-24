@@ -9,10 +9,6 @@
                         <div class="import-file__head-wrap">
                             <h1>Imported files</h1><span class="import-file__detail d-md-none">Details</span>
                         </div>
-                        <div class="import-file__text">This page allows you to import data file (in a CSV forma), in
-                            order to filter the data and generate synthetic data. The file data is not loaded to the
-                            data base.</div><span class="import-file__more d-none d-md-inline d-xl-none">Read
-                            more</span>
                     </div>
                 </div>
             </div>
@@ -23,10 +19,7 @@
                     <div class="col-12">
                         <div class="admin-table-wrap__action">
                             <div class="admin-table-wrap__col">
-                                <mdc-button (click)="showUploadFile=!showUploadFile" text="{{'NewFile'|translate}}">
-                                    <div style="width:20px">
-                                        <mdc-icon path="ic-plus"></mdc-icon>
-                                    </div>
+                                <mdc-button (click)="showUploadFile=!showUploadFile" text="+ {{'NewFile'|translate}}">
                                 </mdc-button>
                             </div>
                             <div class="admin-table-wrap__col">
