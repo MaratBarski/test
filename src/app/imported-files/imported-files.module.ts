@@ -5,6 +5,10 @@ import { Route, RouterModule } from '@angular/router';
 import { CoreModule } from '@mdclone/core';
 import { UploadFileComponent } from '../shared/components/upload-file/upload-file.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+import { StoreModule } from '@ngrx/store';
+import { fileSource } from './store/reducers/imported-files.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { SourceFileEffect } from './store/effects/imported-files-load.effect';
 
 const routes: Array<Route> = [
   { path: '', component: ImportedFilesComponent }
@@ -20,7 +24,9 @@ const routes: Array<Route> = [
     CoreModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    StoreModule.forFeature('fileSource', fileSource),
+    EffectsModule.forFeature([SourceFileEffect])
   ]
 })
 export class ImportedFilesModule { }

@@ -1,5 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { TableComponent, TranslateService, DateService, TabItemModel, TableModel } from '@mdclone/core';
+import { ImportedFilesService } from '../../services/imported-files.service';
+import { Store } from '@ngrx/store';
+import { load } from '../../store/actions/imported-files.actions';
+import { selectData } from '../../store/selectors/imported-files.selector';
 
 @Component({
   selector: 'md-imported-files',
@@ -11,7 +15,9 @@ export class ImportedFilesComponent implements OnInit {
   @ViewChild('table', { static: true }) table: TableComponent;
   constructor(
     private translateService: TranslateService,
-    private dateService: DateService
+    private dateService: DateService,
+    private importedFilesService: ImportedFilesService,
+    private store: Store<any>
   ) { }
 
   tabs: Array<TabItemModel>;
@@ -20,6 +26,7 @@ export class ImportedFilesComponent implements OnInit {
   data: TableModel;
   showUploadFile = false;
   dataSource: TableModel;
+  fileSource : any;
 
   searchComplite(text: string): void {
     //this.table.resetPaginator();
@@ -40,6 +47,9 @@ export class ImportedFilesComponent implements OnInit {
   ngOnInit() {
     this.initTabs();
     this.initData();
+    this.fileSource = this.store.select(selectData);
+    this.store.dispatch(load());
+    //this.importedFilesService.load();
   }
 
   initTabs(): void {
