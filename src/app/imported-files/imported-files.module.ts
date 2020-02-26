@@ -9,15 +9,18 @@ import { StoreModule } from '@ngrx/store';
 import { fileSource } from './store/reducers/imported-files.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { SourceFileEffect } from './store/effects/imported-files-load.effect';
+import { MyQueriesComponent } from './pages/my-queries/my-queries.component';
 
 const routes: Array<Route> = [
-  { path: '', component: ImportedFilesComponent }
+  { path: '', component: ImportedFilesComponent },
+  { path: 'my-queries', component: MyQueriesComponent }
 ]
 
 @NgModule({
   declarations: [
     ImportedFilesComponent,
-    UploadFileComponent
+    UploadFileComponent,
+    MyQueriesComponent
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,334 @@
+<ng-template #edit let-item>
+    <span (click)="cellClick(item,$event)" class="admin-table-action__menu ic-hover">
+        <mdc-icon path="ic-dot-menu"></mdc-icon>
+    </span>
+</ng-template>
+<mdc-popup #popupMenu [closeOnClick]="true">
+    <mdc-modal-menu [sublinks]="sublinks" [links]="links"></mdc-modal-menu>
+</mdc-popup>
+<div class="wrapper">
+    <div class="shadow-site"></div>
+    <mdc-main-header logo="/assets/logo.jpg" organizationName="MDClone">
+    </mdc-main-header>
+    <main>
+        <div class="content-page">
+            <section class="page-header">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="page-header__wrap">
+                                <div class="page-header__content">
+                                    <h1>Home</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="query-wrap">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="unwrap active">
+                                <div class="unwrap__head">
+                                    <mdc-accordion [(ngModel)]="isMainExpanded">
+                                        <div style="white-space: nowrap;">
+                                            <span class="unwrap__title">My Queries | <span
+                                                    class="unwrap__count">38</span></span>
+                                        </div>
+                                    </mdc-accordion>
+                                </div>
+                                <div class="unwrap__content" [hidden]=" !isMainExpanded">
+                                    <div class="admin-table-wrap">
+                                        <div class="admin-table-wrap__action">
+                                            <div class="admin-table-wrap__col">
+                                                <mdc-button (click)="addQuery()" text="+ New Query"></mdc-button>
+                                            </div>
+                                            <div class="admin-table-wrap__col">
+                                                <form class="form-search d-none d-md-block">
+                                                    <mdc-auto-search pause="500" #search
+                                                        placeholder="{{'search'|translate}}"
+                                                        (complite)="searchQueryComplite($event)"></mdc-auto-search>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <div class="admin-table_yellow">
+                                            <mdc-table #table [cellsTemplate]="{ User:edit}"
+                                                [searchOptions]="searchOptions" [paginator]="paginator"
+                                                [search]="search" [dataSource]="dataSource">
+                                            </mdc-table>
+                                        </div>
+                                        <div class="pager-wrap">
+                                            <mdc-paginator #paginator paginationTitle="{{'paginationTitle'|translate}}"
+                                                [blockSize]="3" [pageSize]="10" [currentPage]="0">
+                                            </mdc-paginator>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="query-wrap">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="unwrap active">
+                                <div class="unwrap__head">
+                                    <mdc-accordion [(ngModel)]="isSharedExpanded">
+                                        <div style="white-space: nowrap;">
+                                            <span class="unwrap__title">Queries shared with me | <span
+                                                    class="unwrap__count">4</span></span>
+                                        </div>
+                                    </mdc-accordion>
+                                    <form [hidden]="!isSharedExpanded" class="form-search">
+                                        <mdc-auto-search pause="500" #search1 placeholder="{{'search'|translate}}"
+                                            (complite)="searchSharedQueryComplite($event)"></mdc-auto-search>
+                                    </form>
+                                </div>
+                                <div [hidden]="!isSharedExpanded" class="unwrap__content">
+                                    <div class="admin-table-wrap">
+                                        <table class="admin-table admin-table_blue">
+                                            <thead>
+                                                <tr class="admin-table__head">
+                                                    <th class="admin-table__item"><span class="admin-table__sort"><span
+                                                                class="admin-table__sort-up"></span><span
+                                                                class="admin-table__sort-down"></span></span>Name</th>
+                                                    <th class="admin-table__item d-none d-md-table-cell"><span
+                                                            class="admin-table__sort admin-table__sort_asc"><span
+                                                                class="admin-table__sort-up"></span><span
+                                                                class="admin-table__sort-down"></span></span>Modified
+                                                    </th>
+                                                    <th class="admin-table__item d-none d-md-table-cell"><span
+                                                            class="admin-table__sort"><span
+                                                                class="admin-table__sort-up"></span><span
+                                                                class="admin-table__sort-down"></span></span>Shared by
+                                                    </th>
+                                                    <th class="admin-table__item d-none d-lg-table-cell">My Permissions
+                                                    </th>
+                                                    <th class="admin-table__item"></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="admin-table__row">
+                                                    <td class="admin-table__item">
+                                                        <div class="admin-table__name">Diabetes: patients with Kidney
+                                                            desease (3-4)
+                                                        </div>
+                                                    </td>
+                                                    <td class="admin-table__item d-none d-md-table-cell">Nov 4, 2019
+                                                    </td>
+                                                    <td class="admin-table__item d-none d-md-table-cell"><span
+                                                            class="admin-table__icon">
+                                                            <svg class="icon ic-shared ic-grey">
+                                                                <use xlink:href="/assets/sprites/sprite.svg#ic-shared">
+                                                                </use>
+                                                            </svg></span><span class="admin-table__icon-label">John
+                                                            Doe<span class="tooltip active"><span
+                                                                    class="tooltip__content">Shraed in Feb 15,
+                                                                    2019</span></span></span>
+                                                    </td>
+                                                    <td class="admin-table__item d-none d-lg-table-cell">View
+                                                    </td>
+                                                    <td class="admin-table__item admin-table__item_menu">
+                                                        <div class="admin-table__content">
+                                                            <div class="admin-table-action"><span
+                                                                    class="admin-table-action__menu ic-hover">
+                                                                    <svg class="icon ic-dot-menu">
+                                                                        <use
+                                                                            xlink:href="/assets/sprites/sprite.svg#ic-dot-menu">
+                                                                        </use>
+                                                                    </svg>
+
+                                                                </span></div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr class="admin-table__row">
+                                                    <td class="admin-table__item">
+                                                        <div class="admin-table__name">
+                                                            12345678901234567890123456789012345678901234567890546
+                                                        </div>
+                                                    </td>
+                                                    <td class="admin-table__item d-none d-md-table-cell">Oct 11, 2019
+                                                    </td>
+                                                    <td class="admin-table__item d-none d-md-table-cell"><span
+                                                            class="admin-table__icon">
+                                                            <svg class="icon ic-shared ic-grey">
+                                                                <use xlink:href="/assets/sprites/sprite.svg#ic-shared">
+                                                                </use>
+                                                            </svg></span><span class="admin-table__icon-label">Israel
+                                                            Israeli</span>
+                                                    </td>
+                                                    <td class="admin-table__item d-none d-lg-table-cell">Edit
+                                                    </td>
+                                                    <td class="admin-table__item admin-table__item_menu">
+                                                        <div class="admin-table__content">
+                                                            <div class="admin-table-action"><span
+                                                                    class="admin-table-action__menu ic-hover">
+                                                                    <svg class="icon ic-dot-menu">
+                                                                        <use
+                                                                            xlink:href="/assets/sprites/sprite.svg#ic-dot-menu">
+                                                                        </use>
+                                                                    </svg>
+
+                                                                </span></div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr class="admin-table__row">
+                                                    <td class="admin-table__item">
+                                                        <div class="admin-table__name">Diabetes: Type 1 patients with
+                                                            ESRD
+                                                        </div>
+                                                    </td>
+                                                    <td class="admin-table__item d-none d-md-table-cell">Oct 10, 2019
+                                                    </td>
+                                                    <td class="admin-table__item d-none d-md-table-cell"><span
+                                                            class="admin-table__icon">
+                                                            <svg class="icon ic-shared ic-grey">
+                                                                <use xlink:href="/assets/sprites/sprite.svg#ic-shared">
+                                                                </use>
+                                                            </svg></span><span class="admin-table__icon-label">Moshe
+                                                            Bateva</span>
+                                                    </td>
+                                                    <td class="admin-table__item d-none d-lg-table-cell">View
+                                                    </td>
+                                                    <td class="admin-table__item admin-table__item_menu">
+                                                        <div class="admin-table__content">
+                                                            <div class="admin-table-action"><span
+                                                                    class="admin-table-action__menu ic-hover">
+                                                                    <svg class="icon ic-dot-menu">
+                                                                        <use
+                                                                            xlink:href="/assets/sprites/sprite.svg#ic-dot-menu">
+                                                                        </use>
+                                                                    </svg>
+
+                                                                </span></div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr class="admin-table__row">
+                                                    <td class="admin-table__item">
+                                                        <div class="admin-table__name">
+                                                            12345678901234567890123456789012345678901234567890546
+                                                        </div>
+                                                    </td>
+                                                    <td class="admin-table__item d-none d-md-table-cell">Oct 11, 2019
+                                                    </td>
+                                                    <td class="admin-table__item d-none d-md-table-cell"><span
+                                                            class="admin-table__icon">
+                                                            <svg class="icon ic-shared ic-grey">
+                                                                <use xlink:href="/assets/sprites/sprite.svg#ic-shared">
+                                                                </use>
+                                                            </svg></span><span class="admin-table__icon-label">Israel
+                                                            Israeli</span>
+                                                    </td>
+                                                    <td class="admin-table__item d-none d-lg-table-cell">Edit
+                                                    </td>
+                                                    <td class="admin-table__item admin-table__item_menu">
+                                                        <div class="admin-table__content">
+                                                            <div class="admin-table-action"><span
+                                                                    class="admin-table-action__menu ic-hover">
+                                                                    <svg class="icon ic-dot-menu">
+                                                                        <use
+                                                                            xlink:href="/assets/sprites/sprite.svg#ic-dot-menu">
+                                                                        </use>
+                                                                    </svg>
+
+                                                                </span></div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="query-wrap">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="unwrap active">
+                                <div class="unwrap__head">
+                                    <mdc-accordion [(ngModel)]="isMyApprovalExpanded">
+                                        <div style="white-space: nowrap;">
+                                            <span class="unwrap__title">My Approval Keys | <span
+                                                    class="unwrap__count">2</span></span>
+                                        </div>
+                                    </mdc-accordion>
+                                </div>
+                                <div [hidden]="!isMyApprovalExpanded" class="unwrap__content">
+                                    <div class="admin-table-wrap">
+                                        <table class="admin-table admin-table_green">
+                                            <thead>
+                                                <tr class="admin-table__head">
+                                                    <th class="admin-table__item">Key Name</th>
+                                                    <th class="admin-table__item d-none d-md-table-cell">Research</th>
+                                                    <th class="admin-table__item d-none d-md-table-cell">Status</th>
+                                                    <th class="admin-table__item d-none d-lg-table-cell"><span
+                                                            class="admin-table__sort admin-table__sort_asc"><span
+                                                                class="admin-table__sort-up"></span><span
+                                                                class="admin-table__sort-down"></span></span>Expiration
+                                                        Date</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="admin-table__row">
+                                                    <td class="admin-table__item">
+                                                        <div class="admin-table__name">28549-1-CKD patients
+                                                        </div>
+                                                    </td>
+                                                    <td class="admin-table__item d-none d-md-table-cell">CKD research
+                                                        approval 2
+                                                    </td>
+                                                    <td class="admin-table__item d-none d-md-table-cell"><span
+                                                            class="admin-table__icon">
+                                                            <svg class="icon ic-success">
+                                                                <use xlink:href="/assets/sprites/sprite.svg#ic-success">
+                                                                </use>
+                                                            </svg></span><span
+                                                            class="admin-table__icon-label">Active</span>
+                                                    </td>
+                                                    <td class="admin-table__item d-none d-lg-table-cell">Mar 7, 2020
+                                                        08:31
+                                                    </td>
+                                                </tr>
+                                                <tr class="admin-table__row">
+                                                    <td class="admin-table__item">
+                                                        <div class="admin-table__name">
+                                                            215490-0215490-0215490-0215490-0215490-0215490-021549532
+                                                        </div>
+                                                    </td>
+                                                    <td class="admin-table__item d-none d-md-table-cell">CKD research
+                                                        approval
+                                                    </td>
+                                                    <td class="admin-table__item d-none d-md-table-cell"><span
+                                                            class="admin-table__icon">
+                                                            <svg class="icon ic-warning">
+                                                                <use xlink:href="/assets/sprites/sprite.svg#ic-warning">
+                                                                </use>
+                                                            </svg></span><span
+                                                            class="admin-table__icon-label">Expired</span>
+                                                    </td>
+                                                    <td class="admin-table__item d-none d-lg-table-cell">Oct 8, 2018
+                                                        10:31
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+</div>
