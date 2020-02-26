@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { TableModel, MenuLink, PopupComponent } from '@mdclone/core';
+import { TableModel, MenuLink, PopupComponent, TableComponent } from '@mdclone/core';
 
 @Component({
   selector: 'md-my-queries',
@@ -9,7 +9,8 @@ import { TableModel, MenuLink, PopupComponent } from '@mdclone/core';
 export class MyQueriesComponent implements OnInit {
 
   @ViewChild('popupMenu', { static: true }) popupMenu: PopupComponent;
-
+  @ViewChild('table', { static: true }) table: TableComponent;
+  
   isMainExpanded = true;
   isSharedExpanded = true;
   isMyApprovalExpanded = true;
@@ -36,18 +37,43 @@ export class MyQueriesComponent implements OnInit {
 
   editLink: MenuLink = {
     text: 'Edit',
-    icon: 'ic-delete',
-    disable: false,
-    source: undefined,
+    icon: 'ic-edit',
+    click: (source) => { console.log(JSON.stringify(source)); }
+  }
+
+  duplicateLink: MenuLink = {
+    text: 'Duplicate',
+    icon: 'ic-duplicate',
+    click: (source) => { console.log(JSON.stringify(source)); }
+  }
+
+  downloadLink: MenuLink = {
+    text: 'Download',
+    icon: 'ic-download',
+    disable: true,
+    click: (source) => { console.log(JSON.stringify(source)); }
+  }
+
+  sharelink: MenuLink = {
+    text: 'Share',
+    icon: 'ic-share',
     click: (source) => {
       console.log(JSON.stringify(source));
     }
   }
 
-  sharelink: MenuLink = {
-    text: 'Share',
-    disable: false,
-    source: 'test',
+  qualitylink: MenuLink = {
+    text: 'Quality Of Care',
+    icon: 'ic-quality',
+    disable: true,
+    click: (source) => {
+      console.log(JSON.stringify(source));
+    }
+  }
+
+  sendlink: MenuLink = {
+    text: 'Send',
+    icon: 'ic-send',
     click: (source) => {
       console.log(JSON.stringify(source));
     }
@@ -63,11 +89,18 @@ export class MyQueriesComponent implements OnInit {
         ...this.dataSource, ...{
           rows: this.dataSource.rows.filter(r => r.cells.No !== source.No)
         }
-      }
+      };
     }
   }
 
-  links: Array<MenuLink> = [this.editLink, this.sharelink];
+  links: Array<MenuLink> = [
+    this.editLink,
+    this.duplicateLink,
+    this.downloadLink,
+    this.sharelink,
+    this.qualitylink,
+    this.sendlink
+  ];
   sublinks: Array<MenuLink> = [this.deleteLink];
 
   cellClick(item: any, event: any): void {
