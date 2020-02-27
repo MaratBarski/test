@@ -9,6 +9,12 @@ import { StoreModule } from '@ngrx/store';
 import { LoginComponent } from './login/login.component';
 import { EffectsModule } from '@ngrx/effects';
 import { HttpClientModule } from '@angular/common/http'
+
+// import { DialogModule } from 'primeng/dialog';
+// import { ButtonModule } from 'primeng/button';
+// import { CalendarModule } from 'primeng/calendar';
+
+
 @NgModule({
   declarations: [
     AppComponent,
