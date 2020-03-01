@@ -1,0 +1,29 @@
+.paging, .paging-container, .paging-item, paging-container{
+    display: flex;
+    align-items: center;
+}
+.paging-title{
+    padding: 0rem 2rem 0rem 2rem;
+}
+.paging-item{
+    cursor: pointer;
+    justify-content:center;
+}
+.page-btn{
+    width: 3rem;
+    text-align: center;
+    color:#92A1F0;
+    cursor: pointer;
+}
+.separator{
+    width:1px;
+    height: 1rem;
+    background-color: #C9CBD0;
+}
+.current{
+    color:#b00;
+    cursor: default !important;
+}
+.disabled{
+    cursor: default !important;
+}

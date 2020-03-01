@@ -1,0 +1,18 @@
+{
+    "name": "@mdclone/core",
+    "version": "0.0.36",
+    "peerDependencies": {
+        "@angular/common": "^8.2.14",
+        "@angular/core": "^8.2.14"
+    },
+    "dependencies": {
+        "bootstrap": "^4.4.1",
+        "rxjs": "^6.5.4"
+    },
+    "devDependencies": {
+        "bundle-js": "^1.0.3",
+        "ng-packagr": "^5.7.1",
+        "scss-bundle": "^3.0.2",
+        "ts-node": "^8.5.4"
+    }
+}

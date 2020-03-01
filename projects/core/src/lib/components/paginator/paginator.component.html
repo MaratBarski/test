@@ -1,0 +1,62 @@
+<!-- <div style="padding: 20px;">
+    <div>currentPage: {{currentPage}}</div>
+    <div>currentBlock: {{currentBlock}}</div>
+    <div>pageSize: {{pageSize}}</div>
+    <div>pageCount: {{pageCount}}</div>
+    <div>isLastPage: {{isLastPage}}</div>
+    <div>isFirstPage: {{isFirstPage}}</div>
+    <div>isLastBlock: {{isLastBlock}}</div>
+    <div>isFirstBlock: {{isFirstBlock}}</div>
+    <div>blockCount: {{blockCount}}</div>
+    <div>blockSize: {{blockSize}}</div>
+    <div>firstBlockRow: {{firstBlockRow}}</div>
+    <div>lastBlockRow: {{lastBlockRow}}</div>
+    <div>firstBlockPage: {{firstBlockPage}}</div>
+    <div>lastBlockPage: {{lastBlockPage}}</div>    
+    <div>isFirstBlockPage: {{isFirstBlockPage}}</div>
+    <div>isLastBlockPage: {{isLastBlockPage}}</div>    
+</div> -->
+
+<div [hidden]="pageCount < 2 || currentPage < 0" class="paging-container">
+    <div class="paging-title">
+        {{paginationTitle|translate:[displayTitle,list]}}
+    </div>
+    <div class="paging">
+        <div class="page-btn" [ngClass]="{'disabled':isFirstPage}" (click)="nextPage(-1)">
+            <mdc-icon path="ic-pager-arr-left"></mdc-icon>
+        </div>
+        <div class="page-btn" [hidden]="isFirstBlock" [ngClass]="{'disabled':isFirstPage}" (click)="firstPage()">1</div>
+        <div class="page-btn" [hidden]="isFirstBlock" [ngClass]="{'disabled':isFirstBlock}" (click)="nextBlock(-1)">...
+        </div>
+        <div class="paging-container">
+            <div class="paging-item" (click)="setPage(p)"
+                *ngFor="let p of pages|pagination:{currentPage: currentBlock, pageSize: blockSize,complite: true};let i = index">
+                <div class="page-btn" [ngClass]="{'current':p===currentPage+1}">{{p}}</div>
+                <div class="separator"
+                    *ngIf="i < blockSize - 1 && i !== (pages|pagination:{currentPage: currentBlock, pageSize: blockSize,complite: true}).length-1">
+                </div>
+            </div>
+        </div>
+        <div class="page-btn" [hidden]="isLastBlock" [ngClass]="{'disabled':isLastBlock}" (click)="nextBlock(1)">...
+        </div>
+        <div class="page-btn" [hidden]="isLastBlock" [ngClass]="{'disabled':isLastPage}" (click)="lastPage()">
+            {{pageCount}}</div>
+        <div class="page-btn" [ngClass]="{'disabled':isLastPage}" (click)="nextPage(1)">
+            <mdc-icon path="ic-pager-arr-right"></mdc-icon>
+        </div>
+        <div>
+            <input value={{currentPage+1}} (keyup)="selectedPageKeyUp($event)" type="number" (blur)="goToPage()" min="1"
+                [formControl]="selectedPage" />
+        </div>
+        <div *ngIf="isShowAllEnabled" class="page-btn" (click)="showAll()">{{showAllText}}</div>
+    </div>
+</div>
+<div *ngIf="showOptions">
+    <form [formGroup]="optionsForm">
+        Page Size:
+        <input type="number" placeholder="Page Size" formControlName="pageSize">
+        Block Size:
+        <input type="number" placeholder="Block Size" formControlName="blockSize">
+        <button (click)="applyOptions()">Apply</button>
+    </form>
+</div>

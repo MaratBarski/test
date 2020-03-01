@@ -1,0 +1,55 @@
+/*-------------- import-file -----------------*/
+.import-file{
+	margin-bottom: 32px;
+	
+	&__head-wrap{
+		margin-bottom: 11px;
+	}
+
+	h1,
+	.h1{
+		margin-bottom: 0;
+	}
+
+	&__text{
+		display: inline-block;
+		vertical-align: top;
+		@include font(normal, normal, 14px, 1.57, $color-grey);
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		width: calc(100% - 100px);
+	}
+
+	&__more,
+	&__detail{
+		@include font(normal, normal, 14px, 1.57, $color-blue);
+	}
+
+	&__more:hover,
+	&__detail:hover{
+		text-decoration: underline;
+		cursor: pointer;
+	}
+}
+
+@media (max-width: 767px) {
+	.import-file{
+		margin-bottom: 8px;
+		
+		&__head-wrap{
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			margin-bottom: 15px;
+		}
+
+		&__text{
+			display: none;
+			width: 100%;
+			white-space: normal;
+			overflow: visible;
+			margin-bottom: 6px;
+		}
+	}
+}

@@ -1,0 +1,6 @@
+<div (click)="sort()" class="admin-table__head">
+    <span *ngIf="model?.isSortEnabled" class="admin-table__sort">
+        <span *ngIf="model?.isSortedColumn && model?.sortDir === 'asc'" class="admin-table__sort-up"></span>
+        <span *ngIf="model?.isSortedColumn && model?.sortDir === 'desc'" class="admin-table__sort-down"></span>
+    </span>{{model.text}}
+</div>

@@ -1,0 +1,12 @@
+@mixin font($font-style, $font-weight, $font-size, $line-height, $font-color) {
+	font-style: $font-style;
+	font-weight: $font-weight;
+	font-size: $font-size;
+	line-height: $line-height;
+	color: $font-color;
+}
+
+@mixin top-center {
+	top: 50%;
+	transform: translateY(-50%);
+}

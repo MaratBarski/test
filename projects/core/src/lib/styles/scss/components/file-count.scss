@@ -1,0 +1,21 @@
+.file-count{
+	&__val{
+		display: inline-block;
+		vertical-align: middle;
+	}
+
+	.ic-external-link{
+		width: 17px;
+		height: 17px;
+		fill: $color-blue;
+		vertical-align: middle;
+	}
+
+	&:hover{
+		text-decoration: none;
+	}
+
+	&:hover &__val{
+		text-decoration: underline;
+	}
+}

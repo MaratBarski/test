@@ -1,0 +1,623 @@
+<div class="wrapper">
+    <div class="shadow-site"></div>
+    <header class="header">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="header__content">
+                        <div class="header__info"><span class="ic-hamburger"><span></span></span>
+                            <div class="header__logo"><a href="/"><img src="/assets/img/logo-white.svg" alt="Logo"></a></div>
+                            <div class="header__company d-none d-md-block">Organization Name</div>
+                        </div>
+                        <div class="header__action">
+                            <div class="header__notice active"></div>
+                            <div class="header__notice active">
+                                <svg class="icon notice">
+                                    <use xlink:href="/assets/sprites/sprite.svg#notice-active"></use>
+                                </svg>
+                            </div>
+                            <div class="header__profile" style="background-image: url(/assets/img/avatar.jpg)"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+<section class="import-file">
+<div class="container">
+<div class="row">
+    <div class="col-12">
+        <div class="import-file__head-wrap">
+            <div class="import-file__head">Imported files</div><span class="import-file__detail d-md-none">Details</span>
+        </div>
+        <div class="import-file__text">This page allows you to import data file (in a CSV forma), in order to filter the data and generate synthetic data. The file data is not loaded to the data base.</div><span class="import-file__more d-none d-md-inline d-xl-none">Read more</span>
+    </div>
+</div>
+</div>
+</section>
+        <section class="admin-table-wrap">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="admin-table-wrap__action">
+                            <form class="form-search d-md-none">
+                                <input type="text" placeholder="Search…">
+                                <button type="submit">
+                                    <svg class="icon ic-search">
+                                        <use xlink:href="/assets/sprites/sprite.svg#ic-search"></use>
+                                    </svg>
+                                </button>
+                            </form>
+                            <div class="admin-table-wrap__col"><a class="btn" href="#">
+                                    <svg class="icon ic-plus">
+                                        <use xlink:href="/assets/sprites/sprite.svg#ic-plus"></use>
+                                    </svg>New File</a></div>
+                            <div class="admin-table-wrap__col">
+                                <div class="tabs-page"><a class="tabs-page__item active" href="#"><span>All</span></a><a class="tabs-page__item" href="#"><span class="d-none d-md-inline">Last Month</span><span class="d-md-none">M</span></a><a class="tabs-page__item" href="#"><span class="d-none d-md-inline">Last Week</span><span class="d-md-none">W</span></a>
+                                </div>
+                                <form class="form-search d-none d-md-block">
+                                    <input type="text" placeholder="Search…">
+                                    <button type="submit">
+                                        <svg class="icon ic-search">
+                                            <use xlink:href="/assets/sprites/sprite.svg#ic-search"></use>
+                                        </svg>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="admin-table">
+                            <div class="admin-table__head">
+                                <div class="admin-table__item">
+                                    <div class="admin-table__head"><span class="admin-table__sort"><span class="admin-table__sort-up"></span><span class="admin-table__sort-down"></span></span>Name</div>
+                                </div>
+                                <div class="admin-table__item d-none d-md-table-cell">
+                                    <div class="admin-table__head"><span class="admin-table__sort admin-table__sort_desk"><span class="admin-table__sort-up"></span><span class="admin-table__sort-down"></span></span>Loaded</div>
+                                </div>
+                                <div class="admin-table__item d-none d-md-table-cell">
+                                    <div class="admin-table__head"><span class="admin-table__sort"><span class="admin-table__sort-up"></span><span class="admin-table__sort-down"></span></span>Project
+                                        <div class="admin-table-filter">
+                                            <div class="admin-table-filter__icon"><span class="ic-hover">
+                                                    <svg class="icon ic-filter ic-stroke">
+                                                        <use xlink:href="/assets/sprites/sprite.svg#ic-filter"></use>
+                                                    </svg></span></div>
+                                            <div class="admin-table-filter__popup">
+                                                <form>
+                                                    <div class="admin-table-filter__top">
+                                                        <div class="input-check">
+                                                            <input id="paramAll" type="checkbox" name="paramAll">
+                                                            <label class="input-check__label" for="paramAll"><span class="input-check__mark">
+                                                                    <svg class="icon ic-check">
+                                                                        <use xlink:href="/assets/sprites/sprite.svg#ic-check"></use>
+                                                                    </svg></span><span class="input-check__text">Select All</span></label>
+                                                        </div><a class="admin-table-filter__clear" href="#">Clear</a>
+                                                    </div>
+                                                    <div class="admin-table-filter__params">
+                                                        <div class="input-check">
+                                                            <input id="param1" type="checkbox" name="param1">
+                                                            <label class="input-check__label" for="param1"><span class="input-check__mark">
+                                                                    <svg class="icon ic-check">
+                                                                        <use xlink:href="/assets/sprites/sprite.svg#ic-check"></use>
+                                                                    </svg></span><span class="input-check__text">R Test Project</span></label>
+                                                        </div>
+                                                        <div class="input-check">
+                                                            <input id="param2" type="checkbox" name="param2" checked="checked">
+                                                            <label class="input-check__label" for="param2"><span class="input-check__mark">
+                                                                    <svg class="icon ic-check">
+                                                                        <use xlink:href="/assets/sprites/sprite.svg#ic-check"></use>
+                                                                    </svg></span><span class="input-check__text">Demo Project</span></label>
+                                                        </div>
+                                                        <div class="input-check">
+                                                            <input id="param3" type="checkbox" name="param3">
+                                                            <label class="input-check__label" for="param3"><span class="input-check__mark">
+                                                                    <svg class="icon ic-check">
+                                                                        <use xlink:href="/assets/sprites/sprite.svg#ic-check"></use>
+                                                                    </svg></span><span class="input-check__text">Another Project</span></label>
+                                                        </div>
+                                                        <div class="input-check">
+                                                            <input id="param4" type="checkbox" name="param4">
+                                                            <label class="input-check__label" for="param4"><span class="input-check__mark">
+                                                                    <svg class="icon ic-check">
+                                                                        <use xlink:href="/assets/sprites/sprite.svg#ic-check"></use>
+                                                                    </svg></span><span class="input-check__text">Another Project with long name</span></label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="admin-table-filter__btn"><a class="btn btn_border btn_small" href="#">Cancel</a>
+                                                        <input class="btn btn_small" type="submit" value="Apply">
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="admin-table__item d-none d-lg-table-cell">
+                                    <div class="admin-table__head"><span class="admin-table__sort"><span class="admin-table__sort-up"></span><span class="admin-table__sort-down"></span></span>Template
+                                        <div class="admin-table-filter">
+                                            <div class="admin-table-filter__icon"><span class="ic-hover">
+                                                    <svg class="icon ic-filter ic-stroke">
+                                                        <use xlink:href="/assets/sprites/sprite.svg#ic-filter"></use>
+                                                    </svg></span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="admin-table__item d-none d-xl-table-cell">
+                                    <div class="admin-table__head">User
+                                        <div class="admin-table-filter">
+                                            <div class="admin-table-filter__icon"><span class="ic-hover">
+                                                    <svg class="icon ic-filter ic-stroke">
+                                                        <use xlink:href="/assets/sprites/sprite.svg#ic-filter"></use>
+                                                    </svg></span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="admin-table__item d-none d-md-table-cell">
+                                    <div class="admin-table__head">Shared</div>
+                                </div>
+                                <div class="admin-table__item d-none d-xxl-table-cell">
+                                    <div class="admin-table__head">Columns</div>
+                                </div>
+                                <div class="admin-table__item d-none d-xxl-table-cell">
+                                    <div class="admin-table__head"><span class="admin-table__sort"><span class="admin-table__sort-up"></span><span class="admin-table__sort-down"></span></span>Rows</div>
+                                </div>
+                                <div class="admin-table__item"></div>
+                            </div>
+                            <div class="admin-table__row">
+                                <div class="admin-table__item">
+                                    <div class="admin-table__name">d-Stroke for a very very long descriptiond-Stroke for a  very very long file name
+                                    </div>
+                                </div>
+                                <div class="admin-table__item d-none d-md-table-cell">Nov 26, 2019</div>
+                                <div class="admin-table__item d-none d-md-table-cell">R Test Project</div>
+                                <div class="admin-table__item d-none d-lg-table-cell">all_r_files</div>
+                                <div class="admin-table__item d-none d-xl-table-cell">Ruth</div>
+                                <div class="admin-table__item d-none d-md-table-cell">
+                                </div>
+                                <div class="admin-table__item d-none d-xxl-table-cell">~9,999</div>
+                                <div class="admin-table__item d-none d-xxl-table-cell">~99,999,999</div>
+                                <div class="admin-table__item admin-table__item_menu">
+                                    <div class="admin-table__notice d-none d-md-inline-block">
+                                        <div class="ic-hover">
+                                            <svg class="icon ic-business-warning">
+                                                <use xlink:href="/assets/sprites/sprite.svg#ic-business-warning"></use>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div class="admin-table-action"><span class="admin-table-action__menu ic-hover">
+                                            <svg class="icon ic-dot-menu">
+                                                <use xlink:href="/assets/sprites/sprite.svg#ic-dot-menu"></use>
+                                            </svg></span>
+                                        <div class="admin-table-popup">
+                                            <div class="admin-table-popup__top"><a class="admin-table-popup__item" href="#">
+                                                    <div class="admin-table-popup__icon">
+                                                        <svg class="icon ic-edit">
+                                                            <use xlink:href="/assets/sprites/sprite.svg#ic-edit"></use>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="admin-table-popup__text">Edit File Settings</div></a><a class="admin-table-popup__item disable" href="#">
+                                                    <div class="admin-table-popup__icon">
+                                                        <svg class="icon ic-view">
+                                                            <use xlink:href="/assets/sprites/sprite.svg#ic-view"></use>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="admin-table-popup__text">View Output Summary</div></a></div>
+                                            <div class="admin-table-popup__bottom"><a class="admin-table-popup__item" href="#">
+                                                    <div class="admin-table-popup__icon">
+                                                        <svg class="icon ic-remove">
+                                                            <use xlink:href="/assets/sprites/sprite.svg#ic-remove"></use>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="admin-table-popup__text">Delete</div></a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="admin-table__row">
+                                <div class="admin-table__item">
+                                    <div class="admin-table__name">StrokeSmall.csv
+                                    </div>
+                                </div>
+                                <div class="admin-table__item d-none d-md-table-cell">Nov 12, 2019</div>
+                                <div class="admin-table__item d-none d-md-table-cell">Demo Project</div>
+                                <div class="admin-table__item d-none d-lg-table-cell">Demo Template</div>
+                                <div class="admin-table__item d-none d-xl-table-cell">Noa</div>
+                                <div class="admin-table__item d-none d-md-table-cell">
+                                </div>
+                                <div class="admin-table__item d-none d-xxl-table-cell">~1,929</div>
+                                <div class="admin-table__item d-none d-xxl-table-cell">~19,999,999</div>
+                                <div class="admin-table__item admin-table__item_menu">
+                                    <div class="admin-table-action"><span class="admin-table-action__menu ic-hover">
+                                            <svg class="icon ic-dot-menu">
+                                                <use xlink:href="/assets/sprites/sprite.svg#ic-dot-menu"></use>
+                                            </svg></span>
+                                        <div class="admin-table-popup">
+                                            <div class="admin-table-popup__top"><a class="admin-table-popup__item" href="#">
+                                                    <div class="admin-table-popup__icon">
+                                                        <svg class="icon ic-edit">
+                                                            <use xlink:href="/assets/sprites/sprite.svg#ic-edit"></use>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="admin-table-popup__text">Edit File Settings</div></a><a class="admin-table-popup__item disable" href="#">
+                                                    <div class="admin-table-popup__icon">
+                                                        <svg class="icon ic-view">
+                                                            <use xlink:href="/assets/sprites/sprite.svg#ic-view"></use>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="admin-table-popup__text">View Output Summary</div></a></div>
+                                            <div class="admin-table-popup__bottom"><a class="admin-table-popup__item" href="#">
+                                                    <div class="admin-table-popup__icon">
+                                                        <svg class="icon ic-remove">
+                                                            <use xlink:href="/assets/sprites/sprite.svg#ic-remove"></use>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="admin-table-popup__text">Delete</div></a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="admin-table__row">
+                                <div class="admin-table__item">
+                                    <div class="admin-table__name">d-Stroke.csv
+                                    </div>
+                                </div>
+                                <div class="admin-table__item d-none d-md-table-cell">Oct 22, 2019</div>
+                                <div class="admin-table__item d-none d-md-table-cell">R Test Project</div>
+                                <div class="admin-table__item d-none d-lg-table-cell">all_r_files</div>
+                                <div class="admin-table__item d-none d-xl-table-cell">Ruth</div>
+                                <div class="admin-table__item d-none d-md-table-cell">
+                                </div>
+                                <div class="admin-table__item d-none d-xxl-table-cell">~3,341</div>
+                                <div class="admin-table__item d-none d-xxl-table-cell">~58,879,999</div>
+                                <div class="admin-table__item admin-table__item_menu">
+                                    <div class="admin-table-action"><span class="admin-table-action__menu ic-hover">
+                                            <svg class="icon ic-dot-menu">
+                                                <use xlink:href="/assets/sprites/sprite.svg#ic-dot-menu"></use>
+                                            </svg></span>
+                                        <div class="admin-table-popup">
+                                            <div class="admin-table-popup__top"><a class="admin-table-popup__item" href="#">
+                                                    <div class="admin-table-popup__icon">
+                                                        <svg class="icon ic-edit">
+                                                            <use xlink:href="/assets/sprites/sprite.svg#ic-edit"></use>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="admin-table-popup__text">Edit File Settings</div></a><a class="admin-table-popup__item disable" href="#">
+                                                    <div class="admin-table-popup__icon">
+                                                        <svg class="icon ic-view">
+                                                            <use xlink:href="/assets/sprites/sprite.svg#ic-view"></use>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="admin-table-popup__text">View Output Summary</div></a></div>
+                                            <div class="admin-table-popup__bottom"><a class="admin-table-popup__item" href="#">
+                                                    <div class="admin-table-popup__icon">
+                                                        <svg class="icon ic-remove">
+                                                            <use xlink:href="/assets/sprites/sprite.svg#ic-remove"></use>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="admin-table-popup__text">Delete</div></a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="admin-table__row">
+                                <div class="admin-table__item">
+                                    <div class="admin-table__name">20180813_134819_20180726_21210
+                                    </div>
+                                </div>
+                                <div class="admin-table__item d-none d-md-table-cell">Oct 22, 2019</div>
+                                <div class="admin-table__item d-none d-md-table-cell">Demo Project</div>
+                                <div class="admin-table__item d-none d-lg-table-cell">Demo Template</div>
+                                <div class="admin-table__item d-none d-xl-table-cell">mdclone.admin</div>
+                                <div class="admin-table__item d-none d-md-table-cell">
+                                    <svg class="icon ic-shared ic-grey">
+                                        <use xlink:href="/assets/sprites/sprite.svg#ic-shared"></use>
+                                    </svg>
+                                </div>
+                                <div class="admin-table__item d-none d-xxl-table-cell">~9,656</div>
+                                <div class="admin-table__item d-none d-xxl-table-cell">~62,991,991</div>
+                                <div class="admin-table__item admin-table__item_menu">
+                                    <div class="admin-table-action"><span class="admin-table-action__menu ic-hover">
+                                            <svg class="icon ic-dot-menu">
+                                                <use xlink:href="/assets/sprites/sprite.svg#ic-dot-menu"></use>
+                                            </svg></span>
+                                        <div class="admin-table-popup">
+                                            <div class="admin-table-popup__top"><a class="admin-table-popup__item" href="#">
+                                                    <div class="admin-table-popup__icon">
+                                                        <svg class="icon ic-edit">
+                                                            <use xlink:href="/assets/sprites/sprite.svg#ic-edit"></use>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="admin-table-popup__text">Edit File Settings</div></a><a class="admin-table-popup__item disable" href="#">
+                                                    <div class="admin-table-popup__icon">
+                                                        <svg class="icon ic-view">
+                                                            <use xlink:href="/assets/sprites/sprite.svg#ic-view"></use>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="admin-table-popup__text">View Output Summary</div></a></div>
+                                            <div class="admin-table-popup__bottom"><a class="admin-table-popup__item" href="#">
+                                                    <div class="admin-table-popup__icon">
+                                                        <svg class="icon ic-remove">
+                                                            <use xlink:href="/assets/sprites/sprite.svg#ic-remove"></use>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="admin-table-popup__text">Delete</div></a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="admin-table__row">
+                                <div class="admin-table__item">
+                                    <div class="admin-table__name">DM-Tests - 2 date formats in t
+                                    </div>
+                                </div>
+                                <div class="admin-table__item d-none d-md-table-cell">Oct 10, 2019</div>
+                                <div class="admin-table__item d-none d-md-table-cell">Demo Project</div>
+                                <div class="admin-table__item d-none d-lg-table-cell">Demo Template</div>
+                                <div class="admin-table__item d-none d-xl-table-cell">mdclone.admin</div>
+                                <div class="admin-table__item d-none d-md-table-cell">
+                                </div>
+                                <div class="admin-table__item d-none d-xxl-table-cell">~9,991</div>
+                                <div class="admin-table__item d-none d-xxl-table-cell">~29,999,999</div>
+                                <div class="admin-table__item admin-table__item_menu">
+                                    <div class="admin-table-action"><span class="admin-table-action__menu ic-hover">
+                                            <svg class="icon ic-dot-menu">
+                                                <use xlink:href="/assets/sprites/sprite.svg#ic-dot-menu"></use>
+                                            </svg></span>
+                                        <div class="admin-table-popup">
+                                            <div class="admin-table-popup__top"><a class="admin-table-popup__item" href="#">
+                                                    <div class="admin-table-popup__icon">
+                                                        <svg class="icon ic-edit">
+                                                            <use xlink:href="/assets/sprites/sprite.svg#ic-edit"></use>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="admin-table-popup__text">Edit File Settings</div></a><a class="admin-table-popup__item disable" href="#">
+                                                    <div class="admin-table-popup__icon">
+                                                        <svg class="icon ic-view">
+                                                            <use xlink:href="/assets/sprites/sprite.svg#ic-view"></use>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="admin-table-popup__text">View Output Summary</div></a></div>
+                                            <div class="admin-table-popup__bottom"><a class="admin-table-popup__item" href="#">
+                                                    <div class="admin-table-popup__icon">
+                                                        <svg class="icon ic-remove">
+                                                            <use xlink:href="/assets/sprites/sprite.svg#ic-remove"></use>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="admin-table-popup__text">Delete</div></a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="admin-table__row">
+                                <div class="admin-table__item">
+                                    <div class="admin-table__name">BMsession11M_2018-11-12_100000
+                                    </div>
+                                </div>
+                                <div class="admin-table__item d-none d-md-table-cell">Oct 7, 2019</div>
+                                <div class="admin-table__item d-none d-md-table-cell">Demo Project</div>
+                                <div class="admin-table__item d-none d-lg-table-cell">Demo Template</div>
+                                <div class="admin-table__item d-none d-xl-table-cell">mdclone.admin</div>
+                                <div class="admin-table__item d-none d-md-table-cell">
+                                    <svg class="icon ic-shared ic-grey">
+                                        <use xlink:href="/assets/sprites/sprite.svg#ic-shared"></use>
+                                    </svg>
+                                </div>
+                                <div class="admin-table__item d-none d-xxl-table-cell">~8,888 </div>
+                                <div class="admin-table__item d-none d-xxl-table-cell">~10,999,999</div>
+                                <div class="admin-table__item admin-table__item_menu">
+                                    <div class="admin-table-action"><span class="admin-table-action__menu ic-hover">
+                                            <svg class="icon ic-dot-menu">
+                                                <use xlink:href="/assets/sprites/sprite.svg#ic-dot-menu"></use>
+                                            </svg></span>
+                                        <div class="admin-table-popup">
+                                            <div class="admin-table-popup__top"><a class="admin-table-popup__item" href="#">
+                                                    <div class="admin-table-popup__icon">
+                                                        <svg class="icon ic-edit">
+                                                            <use xlink:href="/assets/sprites/sprite.svg#ic-edit"></use>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="admin-table-popup__text">Edit File Settings</div></a><a class="admin-table-popup__item disable" href="#">
+                                                    <div class="admin-table-popup__icon">
+                                                        <svg class="icon ic-view">
+                                                            <use xlink:href="/assets/sprites/sprite.svg#ic-view"></use>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="admin-table-popup__text">View Output Summary</div></a></div>
+                                            <div class="admin-table-popup__bottom"><a class="admin-table-popup__item" href="#">
+                                                    <div class="admin-table-popup__icon">
+                                                        <svg class="icon ic-remove">
+                                                            <use xlink:href="/assets/sprites/sprite.svg#ic-remove"></use>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="admin-table-popup__text">Delete</div></a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="admin-table__row">
+                                <div class="admin-table__item">
+                                    <div class="admin-table__name">01234567890123456789012345678954645645601890123456789012345678954645645601<span class="tooltip">01234567890123456789012345678954645645601890123456789012345678954645645601</span>
+                                    </div>
+                                </div>
+                                <div class="admin-table__item d-none d-md-table-cell">Feb 17, 2019</div>
+                                <div class="admin-table__item d-none d-md-table-cell">Demo Project</div>
+                                <div class="admin-table__item d-none d-lg-table-cell">Demo Template</div>
+                                <div class="admin-table__item d-none d-xl-table-cell">mdclone.admin</div>
+                                <div class="admin-table__item d-none d-md-table-cell">
+                                </div>
+                                <div class="admin-table__item d-none d-xxl-table-cell">~7,214</div>
+                                <div class="admin-table__item d-none d-xxl-table-cell">1,847,464</div>
+                                <div class="admin-table__item admin-table__item_menu">
+                                    <div class="admin-table-action"><span class="admin-table-action__menu ic-hover">
+                                            <svg class="icon ic-dot-menu">
+                                                <use xlink:href="/assets/sprites/sprite.svg#ic-dot-menu"></use>
+                                            </svg></span>
+                                        <div class="admin-table-popup">
+                                            <div class="admin-table-popup__top"><a class="admin-table-popup__item" href="#">
+                                                    <div class="admin-table-popup__icon">
+                                                        <svg class="icon ic-edit">
+                                                            <use xlink:href="/assets/sprites/sprite.svg#ic-edit"></use>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="admin-table-popup__text">Edit File Settings</div></a><a class="admin-table-popup__item disable" href="#">
+                                                    <div class="admin-table-popup__icon">
+                                                        <svg class="icon ic-view">
+                                                            <use xlink:href="/assets/sprites/sprite.svg#ic-view"></use>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="admin-table-popup__text">View Output Summary</div></a></div>
+                                            <div class="admin-table-popup__bottom"><a class="admin-table-popup__item" href="#">
+                                                    <div class="admin-table-popup__icon">
+                                                        <svg class="icon ic-remove">
+                                                            <use xlink:href="/assets/sprites/sprite.svg#ic-remove"></use>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="admin-table-popup__text">Delete</div></a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="admin-table__row">
+                                <div class="admin-table__item">
+                                    <div class="admin-table__name">BTL-short2-Real.csv
+                                    </div>
+                                </div>
+                                <div class="admin-table__item d-none d-md-table-cell">Feb 7, 2019</div>
+                                <div class="admin-table__item d-none d-md-table-cell">Demo Project</div>
+                                <div class="admin-table__item d-none d-lg-table-cell">Demo Template</div>
+                                <div class="admin-table__item d-none d-xl-table-cell">mdclone.admin</div>
+                                <div class="admin-table__item d-none d-md-table-cell">
+                                </div>
+                                <div class="admin-table__item d-none d-xxl-table-cell">316,3</div>
+                                <div class="admin-table__item d-none d-xxl-table-cell">1,847,464</div>
+                                <div class="admin-table__item admin-table__item_menu">
+                                    <div class="admin-table-action"><span class="admin-table-action__menu ic-hover">
+                                            <svg class="icon ic-dot-menu">
+                                                <use xlink:href="/assets/sprites/sprite.svg#ic-dot-menu"></use>
+                                            </svg></span>
+                                        <div class="admin-table-popup">
+                                            <div class="admin-table-popup__top"><a class="admin-table-popup__item" href="#">
+                                                    <div class="admin-table-popup__icon">
+                                                        <svg class="icon ic-edit">
+                                                            <use xlink:href="/assets/sprites/sprite.svg#ic-edit"></use>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="admin-table-popup__text">Edit File Settings</div></a><a class="admin-table-popup__item disable" href="#">
+                                                    <div class="admin-table-popup__icon">
+                                                        <svg class="icon ic-view">
+                                                            <use xlink:href="/assets/sprites/sprite.svg#ic-view"></use>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="admin-table-popup__text">View Output Summary</div></a></div>
+                                            <div class="admin-table-popup__bottom"><a class="admin-table-popup__item" href="#">
+                                                    <div class="admin-table-popup__icon">
+                                                        <svg class="icon ic-remove">
+                                                            <use xlink:href="/assets/sprites/sprite.svg#ic-remove"></use>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="admin-table-popup__text">Delete</div></a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="admin-table__row">
+                                <div class="admin-table__item">
+                                    <div class="admin-table__name">[1730][Customized][admin][if_9
+                                    </div>
+                                </div>
+                                <div class="admin-table__item d-none d-md-table-cell">Dec 13, 2018</div>
+                                <div class="admin-table__item d-none d-md-table-cell">Demo Project</div>
+                                <div class="admin-table__item d-none d-lg-table-cell">Demo Template</div>
+                                <div class="admin-table__item d-none d-xl-table-cell">admin</div>
+                                <div class="admin-table__item d-none d-md-table-cell">
+                                </div>
+                                <div class="admin-table__item d-none d-xxl-table-cell">~9,900</div>
+                                <div class="admin-table__item d-none d-xxl-table-cell">1,247,464</div>
+                                <div class="admin-table__item admin-table__item_menu">
+                                    <div class="admin-table-action"><span class="admin-table-action__menu ic-hover">
+                                            <svg class="icon ic-dot-menu">
+                                                <use xlink:href="/assets/sprites/sprite.svg#ic-dot-menu"></use>
+                                            </svg></span>
+                                        <div class="admin-table-popup">
+                                            <div class="admin-table-popup__top"><a class="admin-table-popup__item" href="#">
+                                                    <div class="admin-table-popup__icon">
+                                                        <svg class="icon ic-edit">
+                                                            <use xlink:href="/assets/sprites/sprite.svg#ic-edit"></use>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="admin-table-popup__text">Edit File Settings</div></a><a class="admin-table-popup__item disable" href="#">
+                                                    <div class="admin-table-popup__icon">
+                                                        <svg class="icon ic-view">
+                                                            <use xlink:href="/assets/sprites/sprite.svg#ic-view"></use>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="admin-table-popup__text">View Output Summary</div></a></div>
+                                            <div class="admin-table-popup__bottom"><a class="admin-table-popup__item" href="#">
+                                                    <div class="admin-table-popup__icon">
+                                                        <svg class="icon ic-remove">
+                                                            <use xlink:href="/assets/sprites/sprite.svg#ic-remove"></use>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="admin-table-popup__text">Delete</div></a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="admin-table__row">
+                                <div class="admin-table__item">
+                                    <div class="admin-table__name">BTL-short2-Real.csv
+                                    </div>
+                                </div>
+                                <div class="admin-table__item d-none d-md-table-cell">Feb 7, 2019</div>
+                                <div class="admin-table__item d-none d-md-table-cell">Demo Project</div>
+                                <div class="admin-table__item d-none d-lg-table-cell">Demo Template</div>
+                                <div class="admin-table__item d-none d-xl-table-cell">mdclone.admin</div>
+                                <div class="admin-table__item d-none d-md-table-cell">
+                                </div>
+                                <div class="admin-table__item d-none d-xxl-table-cell">~9,875</div>
+                                <div class="admin-table__item d-none d-xxl-table-cell">5,590,000</div>
+                                <div class="admin-table__item admin-table__item_menu">
+                                    <div class="admin-table-action"><span class="admin-table-action__menu ic-hover">
+                                            <svg class="icon ic-dot-menu">
+                                                <use xlink:href="/assets/sprites/sprite.svg#ic-dot-menu"></use>
+                                            </svg></span>
+                                        <div class="admin-table-popup">
+                                            <div class="admin-table-popup__top"><a class="admin-table-popup__item" href="#">
+                                                    <div class="admin-table-popup__icon">
+                                                        <svg class="icon ic-edit">
+                                                            <use xlink:href="/assets/sprites/sprite.svg#ic-edit"></use>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="admin-table-popup__text">Edit File Settings</div></a><a class="admin-table-popup__item disable" href="#">
+                                                    <div class="admin-table-popup__icon">
+                                                        <svg class="icon ic-view">
+                                                            <use xlink:href="/assets/sprites/sprite.svg#ic-view"></use>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="admin-table-popup__text">View Output Summary</div></a></div>
+                                            <div class="admin-table-popup__bottom"><a class="admin-table-popup__item" href="#">
+                                                    <div class="admin-table-popup__icon">
+                                                        <svg class="icon ic-remove">
+                                                            <use xlink:href="/assets/sprites/sprite.svg#ic-remove"></use>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="admin-table-popup__text">Delete</div></a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pager-wrap">
+                            <div class="pager-wrap__title">Showing 1-15 of 82 files</div>
+                            <div class="pager"><a class="pager__arr pager__arr_left" href="#">
+                                    <svg class="icon ic-pager-arr-left">
+                                        <use xlink:href="/assets/sprites/sprite.svg#ic-pager-arr-left"></use>
+                                    </svg></a><span class="pager__list"><span class="pager__item">1</span><span class="pager__item"><a class="ic-hover" href="#">2</a></span><span class="pager__item"><a class="ic-hover" href="#">3</a></span><span class="pager__item">...</span><span class="pager__item"><a class="ic-hover" href="#">6</a></span></span><a class="pager__arr pager__arr_right active ic-hover" href="#">
+                                    <svg class="icon ic-pager-arr-right">
+                                        <use xlink:href="/assets/sprites/sprite.svg#ic-pager-arr-right"></use>
+                                    </svg></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</div>

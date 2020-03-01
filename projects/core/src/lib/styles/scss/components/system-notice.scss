@@ -1,0 +1,30 @@
+/*-------------- system-notice -----------------*/
+.system-notice{
+	display: inline-block;
+	max-width: 600px;
+	padding: 11px 16px;
+	background: rgba(3, 207, 163, 0.1);
+	border: solid 1px $color-green;
+	border-radius: 4px;
+	@include font(normal, normal, rem(12px), 1.25, $color-dark-grey);
+
+	&__text,
+	&__icon{
+		display: inline-block;
+		vertical-align: middle;
+	}
+
+	&__icon{
+		width: 22px;
+		height: 22px;
+		margin-right: 8px;
+	}
+
+	&_red{
+		background: rgba(226, 3, 67, 0.1);
+		border: solid 1px $color-red;
+	}
+
+	.icon{fill: $color-green;}
+	&_red .icon{fill: $color-red;}
+}

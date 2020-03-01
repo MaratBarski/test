@@ -1,0 +1,6 @@
+<div *ngIf="tabs" class="tabs-page">
+    <button *ngFor="let tab of tabs;let i = index" (click)="activate(i)" [style.cursor]="active !==i ? 'pointer' : 'default'"
+        [ngClass]="{'active':active === i}" class="tabs-page__item">
+        {{tab.title}}
+    </button>
+</div>

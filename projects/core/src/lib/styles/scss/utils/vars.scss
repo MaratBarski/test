@@ -1,0 +1,42 @@
+//Path
+$path-img: "../img";
+$path-icon: "../icon";
+$path-fonts: "../fonts";
+
+//Font
+$font-site:  'Open Sans', Arial, sans-serif;
+
+// Site
+$color-purple: #7003e1;
+$color-dark-purple: #5303a8;
+$color-dark-blue: #0d1e42;
+$color-blue: #0596ff;
+$color-soft-blue: #f7f9fb;
+$color-sort-grey: #f2f3f5;
+$color-light-grey: #acb2c3;
+$color-grey: #727891;
+$color-dark-grey: #52576a;
+$color-red: #e20343;
+$color-light-red: #ff8d81;
+$color-green: #03cfa3;
+$color-yellow: #ffbd42;
+
+// Grid
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1336px,
+  xxxl: 1890px
+) !default;
+
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1310px,
+  xxxl: 1860px
+) !default;

@@ -1,0 +1,97 @@
+/*-------------- form-search -----------------*/
+.form-search{
+	width: 255px;
+	position: relative;
+
+	input[type="text"]{
+		display: inline-block;
+		height: rem(30px);
+		width: 100%;
+		padding-right: 38px;
+		@include font(normal, normal, rem(14px), rem(28px), $color-dark-blue);
+		padding: 5px 0 0 26px;
+		margin: 0;
+		border: 0;
+		outline: 0;
+		border-bottom: 1px solid $color-grey;
+		background: transparent;
+	}
+
+	input[type="text"]::placeholder{font-weight: 300; color: $color-grey; opacity: 1;}
+	input[type="text"]::-webkit-input-placeholder {font-weight: 300; color: $color-grey; opacity: 1;}
+	input[type="text"]:-moz-placeholder {font-weight: 300; color: $color-grey; opacity: 1;}
+
+	input[type="text"]:focus{
+		border-color: $color-dark-purple;
+	}
+
+	input[type="submit"],
+	button{
+		display: inline-block;
+		width: 16px;
+		height: 16px;
+		background: transparent;
+		position: absolute;
+		left: 0;
+		@include top-center;
+		font-size: 0;
+		border: 0;
+		outline: 0;
+		box-shadow: none;
+		padding: 0;
+		margin-top: 1px;
+	}
+
+	button .icon{
+		width: 16px;
+		height: 16px;
+		fill: $color-grey;
+	}
+
+	&__close{
+		display: none;
+		width: 7px;
+		height: 7px;
+		position: absolute;
+		right: 0;
+		@include top-center;
+		text-align: center;
+		vertical-align: middle;
+		margin-top: 3px;
+	}
+
+	&__close .ic-close-small{
+		width: 100%;
+		height: 100%;
+		fill: $color-dark-blue;
+		vertical-align: top;
+	}
+
+	input[type="text"]:focus + button + &__close{
+		display: inline-block;
+	}
+
+	&_white input[type="text"]::placeholder{color: $color-light-grey}
+	&_white input[type="text"]::-webkit-input-placeholder {color: $color-light-grey}
+	&_white input[type="text"]:-moz-placeholder {color: $color-light-grey}
+
+	&_white input[type="text"]{color: #fff;}
+
+	&_white input[type="text"],
+	&_white input[type="text"]:focus{
+		border-color: #fff;
+	}
+
+	&_white button .icon,
+	&_white input[type="text"]:focus+button .icon{
+		fill: #fff;
+	}
+
+	&_white &__close .ic-close-small{fill: #fff;}
+}
+
+@media (max-width: 991px) {
+	.form-search{
+		width: 175px;
+	}
+}

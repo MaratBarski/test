@@ -1,0 +1,11 @@
+<div *ngIf="!loginService.isLogedIn">
+    <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
+        <div>
+            <input type="text" formControlName="userName" required />
+            <br/><br/>
+            <input type="password" formControlName="password" required />
+            <br/><br/>
+            <mdc-button [disabled]="!loginForm.valid" [text]="'login'|translate"></mdc-button>
+        </div>
+    </form>
+</div>

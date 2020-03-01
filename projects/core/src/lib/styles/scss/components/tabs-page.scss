@@ -1,0 +1,96 @@
+/*-------------- tabs-page -----------------*/
+.tabs-page{
+	display: flex;
+
+	&__item{
+		display: inline-block;
+		height: rem(30px);
+		min-width: 110px;
+		border: 1px solid $color-dark-purple;
+		@include font(normal, normal, rem(14px), rem(28px), $color-dark-purple);
+		text-align: center;
+		padding: 0 16px;
+		position: relative;
+	}
+
+	&__item.active{
+		background: $color-dark-purple;
+		color: #fff;
+		cursor: auto;
+	}
+
+	&__item:hover{
+		color: $color-dark-purple;
+		text-decoration: none;
+		background: rgba(83, 3, 168, 0.05);
+	}
+
+	&__item.active:hover{
+		color: #fff;
+		border-color: #3f0280;
+		background: #3f0280;
+	}
+
+	&__item:first-child{
+		border-top-left-radius: 15px;
+		border-bottom-left-radius: 15px;
+	}
+	&__item:last-child{
+		border-top-right-radius: 15px;
+		border-bottom-right-radius: 15px;
+	}
+
+	&__item:not(:last-child){
+		border-right: 0;
+	}
+
+	&__item > .icon{
+		vertical-align: middle;
+	}
+
+	&__item.active > .icon{
+		fill: #fff;
+	}
+}
+
+.tabs-popup{
+	display: none;
+	background: #fff;
+	padding: 20px;
+	border-radius: 4px;
+	box-shadow: -10px 9px 21px 0 rgba(128, 152, 213, 0.08), 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+	text-align: left;
+	position: absolute;
+	top: calc(100% + 6px);
+	right: 0;
+	z-index: 10;
+
+	&.active{
+		display: inline-block;
+	}
+
+	&__head{
+		@include font(normal, normal, rem(14px), 1.71, $color-dark-blue);
+		padding-bottom: 8px;
+		border-bottom: 1px solid $color-light-grey;
+	}
+
+	&__content{
+		padding: 10px 0;
+	}
+
+	&__btn{
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+}
+
+@media (max-width: 767px) {
+	.tabs-page{
+		&__item{
+			min-width: 44px;
+			padding: 0 10px;
+		}
+	}
+}

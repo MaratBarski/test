@@ -1,0 +1,64 @@
+.split-btn{
+	display: inline-flex;
+	min-width: 114px;
+	position: relative;
+	padding-bottom: 4px;
+
+	&__title{
+		width: calc(100% - 43px);
+		height: rem(30px);
+		@include font(normal, normal, rem(14px), rem(30px), #fff);
+		padding: 0 12px 0 20px;
+		border-top-left-radius: rem(15px);
+		border-bottom-left-radius: rem(15px);
+		background: $color-dark-purple;
+		margin-right: 1px;
+		white-space: nowrap;
+		cursor: pointer;
+	}
+
+	&__arr{
+		display: inline-block;
+		width: 42px;
+		height: rem(30px);
+		border-top-right-radius: rem(15px);
+		border-bottom-right-radius: rem(15px);
+		background: $color-dark-purple;
+		padding-left: 2px;
+		cursor: pointer;
+	}
+
+	&__arr .icon{
+		fill: #fff;
+		vertical-align: middle;
+	}
+
+	&__popup{
+		display: none;
+		min-width: 100%;
+		background: #fff;
+		border: 1px solid $color-light-grey;
+		border-radius: 4px;
+		box-shadow: -10px 9px 21px 0 rgba(128, 152, 213, 0.08);
+		position: absolute;
+		top: 100%;
+		left: 0;
+		z-index: 2;
+	}
+
+	&__item{
+		padding: 0 20px;
+		white-space: nowrap;
+		@include font(normal, normal, rem(14px), rem(30px), $color-dark-blue);
+		cursor: pointer;
+	}
+
+	&__item:hover,
+	&__item.active{
+		background: $color-sort-grey;
+		text-decoration: none;
+	}
+
+	&:hover &__arr{background: #3f0280;}
+	&:hover &__popup{display: inline-block;}
+}

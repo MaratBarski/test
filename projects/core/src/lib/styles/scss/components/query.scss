@@ -1,0 +1,102 @@
+/*-------------- query -----------------*/
+.query-wrap{
+	margin-top: 12px;
+
+	.admin-table__item:first-child{
+		width: 600px;
+	}
+
+	.admin-table__item:nth-child(2){
+		width: 250px;
+	}
+
+	.admin-table__item:nth-child(3){
+		width: 250px;
+	}
+}
+
+.query-empty{
+	margin-top: 34px;
+
+	&__head{
+		@include font(normal, normal, rem(32px), 1, $color-grey);
+		margin-right: 25px;
+		margin-bottom: 22px;
+	}
+
+	&__title{
+		margin-right: 23px;
+	}
+
+	&__link{
+		font-size: rem(22px);
+		line-height: rem(22px);
+	}
+}
+
+@media (max-width: 1899px) {
+	.query-wrap{
+		.admin-table__item:first-child{
+			width: 375px;
+		}
+	}
+}
+
+@media (max-width: 1335px) {
+	.query-wrap{
+		.admin-table__item:nth-child(2){
+			width: 200px;
+		}
+	
+		.admin-table__item:nth-child(3){
+			width: 200px;
+		}
+	}
+}
+
+@media (max-width: 1199px) {
+	.query-wrap{
+		.admin-table__item:first-child{
+			width: 275px;
+		}
+	}
+}
+
+@media (max-width: 991px) {
+	.query-wrap{
+		.admin-table__item:first-child{
+			width: 175px;
+		}
+
+		.admin-table__item:nth-child(2){
+			width: 250px;
+		}
+	
+		.admin-table__item:nth-child(3){
+			width: 250px;
+		}
+	}
+}
+
+@media (max-width: 767px) {
+	.query-empty{
+		&__head{
+			font-size: rem(26px);
+		}
+
+		&__title{
+			margin-right: 15px;
+		}
+
+		&__link{
+			font-size: rem(18px);
+			line-height: rem(18px);
+		}
+	}
+
+	.query-wrap{
+		.admin-table__item:first-child{
+			width: 100%;
+		}
+	}
+}

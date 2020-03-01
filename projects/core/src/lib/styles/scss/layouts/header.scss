@@ -1,0 +1,179 @@
+.header{
+	margin-bottom: 25px;
+
+	&__content{
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		position: relative;
+		z-index: 101;
+	}
+
+	&__main{
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		width: 260px;
+		background: $color-dark-blue;
+		position: relative;
+	}
+
+	&__main::before{
+		content: '';
+		display: block;
+		width: calc(100% + 45px);
+		height: 100%;
+		background: $color-dark-blue;
+		position: absolute;
+		top: 0;
+		right: 0;
+	}
+
+	&__info,
+	&__action{
+		display: flex;
+		align-items: center;
+	}
+
+	&__main,
+	&__info{
+		padding: 11px 0;
+		height: 52px;
+	}
+
+	&__info{
+		width: calc(100% - 260px);
+		justify-content: space-between;
+		position: relative;
+	}
+
+	&__info::before{
+		content: '';
+		display: block;
+		width: calc(100% + 45px);
+		height: 100%;
+		background-image: linear-gradient(88deg, $color-dark-blue, $color-dark-purple);
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+
+	&__logo{
+		max-width: 109px;
+		line-height: 1;
+		position: relative;
+	}
+
+	&__company{
+		@include font(normal, normal, rem(16px), 1.25, #fff);
+		margin-left: 45px;
+		position: relative;
+	}
+
+	&__company .icon{
+		width: 22px;
+		height: 22px;
+		fill: #fff;
+		vertical-align: middle;
+		margin-right: 7px;
+	}
+
+	&__company-name{
+		display: inline-block;
+		vertical-align: middle;
+		margin-top: 2px;
+	}
+
+	&__notice{
+		display: inline-block;
+		width: 30px;
+		height: 30px;
+	}
+
+	&__profile{
+		display: inline-block;
+		width: 30px;
+		height: 30px;
+		border-radius: 50%;
+		background-image:  url(/assets/img/ic-user-avatar.svg);
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: contain;
+		margin-left: 33px;
+		cursor: pointer;
+		position: relative;
+	}
+
+	.hamburger{
+		position: relative;
+		margin-right: 20px;
+	}
+
+	.ic-pager-arr-left{
+		display: none;
+		fill: #fff;
+		position: absolute;
+		@include top-center;
+		left: -24px;
+		margin-top: 3px;
+	}
+
+	.hamburger.active .ic-pager-arr-left{
+		display: inline-block;
+	}
+
+	.select{
+		width: auto;
+		margin-right: 27px;
+
+		&__head{
+			height: rem(30px);
+			width: auto;
+			border: 0;
+			color: #fff;
+			padding: 0 15px 0 0;
+			line-height: rem(28px);
+		}
+
+		&__head::after{
+			content: '';
+			display: inline-block;
+			width: 100%;
+			height: 1px;
+			background: #fff;
+			position: absolute;
+			left: 0;
+			bottom: 4px;
+		}
+
+		.ic-select-arr-down{
+			fill: #fff;
+		}
+
+		&__head-arr{
+			width: 30px;
+			right: -10px;
+		}
+	}
+}
+
+@media (max-width: 991px) {
+	.header{
+		&__info{justify-content: flex-end;}
+	}
+}
+
+@media (max-width: 767px) {
+	.header{
+		&__profile{margin-left: 25px;}
+
+		&__main::before, &__info::before{width: calc(100% + 15px);}
+	}
+}
+
+@media (max-width: 420px) {
+	.header{
+		&__main{justify-content: flex-start;}
+		.hamburger{margin: 0 10px 0 30px;}
+	}
+}

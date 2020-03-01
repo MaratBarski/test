@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { SelectOption } from '@mdclone/core';
+import { SelectOption } from '../../../core-api';
 
 @Component({
   selector: 'md-upload-file',

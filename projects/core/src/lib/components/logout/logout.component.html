@@ -1,0 +1,6 @@
+ <div>
+    {{loginService.userInfo?.user|json}}
+</div> 
+<div *ngIf="loginService.isLogedIn">
+    <mdc-button text="{{'logout'|translate}}" (click)="logOut()"></mdc-button>
+</div>

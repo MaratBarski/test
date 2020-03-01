@@ -1,0 +1,34 @@
+/*-------------- progress -----------------*/
+.progress{
+	display: block;
+	width: 60px;
+	height: rem(17px);
+	border-radius: rem(8.5px);
+	border: solid 1.5px $color-light-grey;
+	@include font(normal, 600, rem(12px), rem(15px), $color-dark-blue);
+	text-align: center;
+	position: relative;
+	overflow: hidden;
+
+	&__bg{
+		display: inline-block;
+		height: 100%;
+		width: 0;
+		position: absolute;
+		top: 0;
+		left: 0;
+		background: $color-light-grey;
+		opacity: 0.5;
+	}
+
+	&__text{
+		position: relative;
+	}
+
+	&_red{border-color: $color-red;}
+	&_red &__bg{background: $color-red;}
+	&_yellow{border-color: $color-yellow;}
+	&_yellow &__bg{background: $color-yellow;}
+	&_green{border-color: $color-green;}
+	&_green &__bg{background: $color-green;}
+}

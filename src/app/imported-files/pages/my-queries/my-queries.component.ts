@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { TableModel, MenuLink, PopupComponent, TableComponent } from '@mdclone/core';
+import { TableModel, MenuLink, PopupComponent, TableComponent } from '../../../core-api';
 
 @Component({
   selector: 'md-my-queries',

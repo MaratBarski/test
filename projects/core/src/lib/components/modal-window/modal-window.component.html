@@ -1,0 +1,4 @@
+<div *ngIf="!isHidden" class="shadow-site is-visible"></div>
+<div [hidden]="isHidden" class="modal-window">
+    <ng-content></ng-content>
+</div>

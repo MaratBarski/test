@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { TableComponent, TranslateService, DateService, TabItemModel, TableModel } from '@mdclone/core';
+import { TableComponent, TranslateService, DateService, TabItemModel, TableModel } from '../../../core-api';
 import { ImportedFilesService } from '../../services/imported-files.service';
 import { Store } from '@ngrx/store';
 import { load } from '../../store/actions/imported-files.actions';

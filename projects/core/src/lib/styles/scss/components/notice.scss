@@ -1,0 +1,122 @@
+/*-------------- notice -----------------*/
+.notice{
+	position: relative;
+
+	&:hover .notice-popup,
+	&.active .notice-popup{
+		display: inline-block;
+	}
+
+	&__icon{
+		cursor: pointer;
+		padding-left: 4px;
+	}
+}
+
+.notice-popup{
+	display: none;
+	width: 468px;
+	border-top: 5px solid $color-yellow;
+	border-radius: 4px;
+	background: #fff;
+	box-shadow: 0 -9px 21px 0 rgba(128, 152, 213, 0.15), -10px 9px 21px 0 rgba(128, 152, 213, 0.15);
+	padding: 20px;
+	position: absolute;
+	top: 0;
+	right: 100%;
+	z-index: 10;
+
+	&::after{
+		content: '';
+		display: inline-block;
+		width: 0;
+		height: 0;
+		border-style: solid;
+		border-width: 5px 0 5px 4px;
+		border-color: transparent transparent transparent #ffffff;
+		position: absolute;
+		top: 12px;
+		left: 100%;
+	}
+
+	&__text{
+		@include font(normal, normal, rem(14px), 1.57, $color-grey);
+		margin-bottom: 20px;
+	}
+
+	&__more{
+		color: $color-blue;
+		margin-left: 10px;
+		cursor: pointer;
+	}
+
+	&__more:hover{
+		text-decoration: underline;
+	}
+
+	&__head{
+		@include font(normal, 600, rem(14px), 1.71, $color-dark-blue);
+		text-transform: uppercase;
+		padding-bottom: 9px;
+		border-bottom: 1px solid rgba(172,178,195,0.5);
+	}
+
+	&__footer{
+		padding-top: 13px;
+	}
+}
+
+.notice-popup-info{
+	display: flex;
+	padding: 15px 0;
+	border-bottom: 1px solid rgba(172,178,195,0.5);
+
+	&__col:not(:last-child){
+		margin-right: 36px;
+	}
+
+	&__item{
+		display: flex;
+		align-items: center;
+	}
+
+	&__item:not(:last-child){
+		margin-bottom: 9px;
+	}
+
+	&__val{
+		display: inline-flex;
+		align-items: center;
+		min-width: 24px;
+		min-height: 24px;
+		margin-right: 16px;
+	}
+
+	&__text{
+		@include font(normal, normal, rem(14px), 1.71, $color-grey);
+		max-width: calc(100% - 40px);
+	}
+
+	&__val_big{min-width: 60px;}
+	&__val_big &__text{max-width: calc(100% - 56px);}
+
+	.icon{
+		width: 24px;
+		height: 24px;
+	}
+}
+
+.notice-popup-link{
+	@include font(normal, normal, rem(14px), 1.57, $color-blue);
+
+	.icon{
+		fill: $color-blue;
+		vertical-align: middle;
+		margin-left: -3px;
+		margin-top: -2px;
+	}
+
+	&__item:not(:last-child){
+		margin-right: 13px;
+	}
+}

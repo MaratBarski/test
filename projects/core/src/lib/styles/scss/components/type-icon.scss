@@ -1,0 +1,15 @@
+/*-------------- type-icon -----------------*/
+.type-icon{
+	display: flex;
+	flex-wrap: wrap;
+
+	&__item{
+		width: 100px;
+		margin: 15px;
+		text-align: center;
+	}
+
+	&_white{
+		color: #fff;
+	}
+}

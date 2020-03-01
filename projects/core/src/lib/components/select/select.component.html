@@ -1,0 +1,14 @@
+<div #combo [ngClass]="{'select_up':selectUp}" class="select" (blur)="blur()" tabindex="10">
+    <div (click)="mouseClick($event);" class="select__head">
+        {{selected?.text}}
+        <div class="select__head-arr">
+            <mdc-icon path="ic-select-arr-down"></mdc-icon>
+        </div>
+    </div>
+    <div [@slideInOut]="isExpanded" [style.maxHeight]="maxHeight" *ngIf="options" class="select__option">
+        <div [ngClass]="{'active':option==selected}" (click)="select(option)" *ngFor="let option of options"
+            class="select__param">
+            {{option.text}}
+        </div>
+    </div>
+</div>

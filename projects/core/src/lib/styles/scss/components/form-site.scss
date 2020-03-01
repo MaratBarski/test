@@ -1,0 +1,490 @@
+/*-------------- form-site -----------------*/
+.form-site{
+	&__item{
+		margin-bottom: 20px;
+		position: relative;
+	}
+
+	&__label{
+		display: block;
+		@include font(normal, 600, 14px, 1, $color-dark-grey);
+		margin-bottom: 6px;
+	}
+
+	input[type="text"],
+	input[type="email"],
+	textarea{
+		height: rem(40px);
+		width: 100%;
+		outline: none;
+		border: 1px solid $color-light-grey;
+		border-radius: 2px;
+		@include font(normal, normal, rem(14px), rem(38px), #686b83);
+		padding: 0 15px;
+		margin: 0;
+		transition: all 0.3s ease;
+	}
+
+	input[type="text"].input-small,
+	input[type="email"].input-small{
+		height: rem(30px);
+	}
+
+	textarea{
+		height: 122px;
+		padding-top: 8px;
+		padding-bottom: 8px;
+		line-height: 1.79;
+	}
+
+	input[type="text"]::placeholder,
+	input[type="email"]::placeholder,
+	textarea::placeholder{
+		color: $color-light-grey;
+	}
+
+	input[type="text"]:focus,
+	input[type="email"]:focus,
+	textarea:focus{
+		border-color: $color-purple;
+	}
+
+	input[disabled="disabled"],
+	textarea[disabled="disabled"]{
+		background: #fff;
+		color: $color-light-grey;
+	}
+
+	.select{
+		width: 100%;
+	}
+
+	// input[type="text"]:focus,
+	// input[type="email"]:focus,
+	// textarea:focus{
+	// 	border-color: $color-black;
+	// }
+
+	&__shared{
+		display: flex;
+		justify-content: space-between;
+		// align-items: center;
+		// flex-wrap: wrap;
+		@include font(normal, normal, 14px, 1.25, $color-dark-grey);
+		margin-top: 6px;
+	}
+
+	&__shared-notice{
+		display: inline-flex;
+		padding-right: 10px;
+		width: calc(100% - 65px);
+	}
+
+	&__shared-notice .ic-shared{
+		display: inline-block;
+		vertical-align: middle;
+		width: 19px;
+		height: 17px;
+		margin-right: 8px;
+		fill: $color-grey;
+	}
+
+	&__shared .switch{
+		margin-top: -2px;
+	}
+
+	// &__shared-notice .ic-shared{
+	// 	margin-top: -4px;
+	// }
+
+	&__btn{
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-top: 40px;
+	}
+
+	&__info,
+	&__help{
+		display: inline-block;
+		vertical-align: middle;
+		width: 16px;
+		height: 16px;
+		margin-left: 5px;
+		position: relative;
+		cursor: pointer;
+		margin-top: -2px;
+	}
+
+	&__info.ic-hover,
+	&__help.ic-hover{
+		width: 16px;
+		height: 16px;
+	}
+
+	&__info .tooltip,
+	&__help .tooltip{
+		display: none;
+		position: absolute;
+		bottom: 100%;
+		left: -12px;
+	}
+
+	&__info:hover .tooltip,
+	&__help:hover .tooltip{
+		display: block;
+	}
+
+	&__optional{
+		@include font(italic, normal, 12px, 1.57, $color-grey);
+		margin-left: 6px;
+	}
+
+	&__item_error input[type="text"],
+	&__item_error input[type="email"],
+	&__item_error textarea,
+	&__item_error .file-upload,
+	&__item_error .select__head{
+		border-color: $color-red;
+	}
+
+	&__item_error .form-site-alert{color: $color-red;}
+
+	.select-date{
+		input[type="text"]{
+			width: 160px;
+			height: rem(30px);
+			line-height: rem(28px);
+			color: $color-dark-grey;
+		}
+	}
+}
+
+.form-site-alert{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	@include font(normal, normal, 12px, 1.25, $color-dark-blue);
+	margin-top: 2px;
+	position: absolute;
+	top: 100%;
+	left: 0;
+
+	&__icon{
+		width: 17px;
+		height: 17px;
+		margin-right: 5px;
+	}
+
+	&__text{
+		width: calc(100% - 22px);
+	}
+}
+
+.file-upload{
+	height: 40px;
+	border-radius: 2px;
+	border: 1px solid $color-light-grey;
+
+	input[type="file"]{display: none;}
+
+	&__content{
+		padding: 0 17px;
+		display: inline-flex;
+		align-items: center;
+		width: 100%;
+		height: 100%;
+		margin: 0;
+	}
+
+	&__btn{
+		display: inline-block;
+		height: 23px;
+		width: 112px;
+		border-radius: 11.5px;
+		border: solid 1px $color-light-grey;
+		padding: 0 15px;
+		@include font(normal, 600, 12px, 21px, $color-dark-grey);
+		text-align: center;
+		margin-right: 5px;
+		cursor: pointer;
+	}
+
+	&__btn:hover{
+		border-color: $color-dark-purple;
+	}
+
+	&__name{
+		@include font(normal, normal, 14px, 21px, $color-dark-grey);
+	}
+
+	&__name.disable{
+		color: $color-light-grey;
+	}
+}
+
+.select-date{
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 10px;
+
+	&__item:not(:last-child){
+		margin-right: 16px;
+	}
+
+	&__main{
+		display: flex;
+		align-items: center;
+		margin-bottom: 30px;
+	}
+
+	&__title{
+		@include font(normal, normal, rem(14px), 1, $color-dark-blue);
+		margin-right: 8px;
+	}
+
+	&__icon{
+		width: 30px;
+		margin-left: 4px;
+	}
+
+	.ic-calendar{
+		vertical-align: middle;
+	}
+
+	&__field{
+		position: relative;
+	}
+
+	&__label{
+		@include font(normal, normal, rem(12px), 2, $color-grey);
+		margin-top: 6px;
+		position: absolute;
+		left: 0;
+		top: 100%;
+	}
+}
+
+/*-------------- file-upload -----------------*/
+// .file-upload{
+// 	display: inline-block;
+// 	vertical-align: middle;
+
+//
+
+// 	&__content{
+// 		display: inline-block;
+// 		vertical-align: middle;
+// 		height: 43px;
+// 		border-radius: 2px;
+// 		background: $color-blue;
+// 		padding: 0 10px 0 45px;
+// 		text-align: center;
+// 		cursor: pointer;
+// 		text-decoration: none;
+// 		border: 0;
+// 		outline: 0;
+// 		cursor: pointer;
+// 		@include font(normal, bold, 14px, 43px, #222);
+// 		margin: 0;
+// 		position: relative;
+// 		white-space: nowrap;
+// 	}
+
+// 	&__content::before{
+// 		content: '';
+// 		display: block;
+// 		width: 26px;
+// 		height: 24px;
+// 		position: absolute;
+// 		@include top-center;
+// 		left: 8px;
+// 		background: url(#{$path-img}/sprite.png) no-repeat -5px -620px;
+// 	}
+
+// 	&__content:hover{
+// 		background-color: #000;
+// 		color: #fff;
+// 	}
+
+// 	&__content:hover::before{
+// 		background-position: -40px -620px;
+// 	}
+
+// 	&__name{
+// 		text-overflow: ellipsis;
+// 		text-align: left;
+// 		width: 115px;
+// 		display: inline-block;
+// 		overflow: hidden;
+// 	}
+// }
+
+.select{
+	width: 230px;
+	position: relative;
+
+	&__head{
+		height: rem(40px);
+		width: 100%;
+		border: 1px solid $color-light-grey;
+		@include font(normal, normal, rem(14px), rem(38px), $color-grey);
+		padding: 0 50px 0 15px;
+		position: relative;
+		white-space: nowrap;
+	}
+
+	&__head.active{
+		color: $color-dark-grey;
+	}
+
+	&__head-arr{
+		display: inline-block;
+		width: 50px;
+		height: 30px;
+		text-align: center;
+		position: absolute;
+		@include top-center;
+		right: 0;
+	}
+
+	&__head-arr .icon{
+		vertical-align: top;
+	}
+
+	&__option{
+		background: #fff;
+		border: solid 1px $color-light-grey;
+		max-height: 250px;
+		overflow-y: auto;
+		box-shadow: -10px 9px 21px 0 rgba(128, 152, 213, 0.08);
+		position: absolute;
+		top: 100%;
+		left: 0;
+		right: 0;
+		margin: 0 auto;
+		z-index: 10;
+		margin-top: -2px;
+	}
+
+	/*&:hover &__option{
+		display: block;
+	}*/
+
+	&__param{
+		@include font(normal, normal, rem(14px), rem(30px), $color-dark-grey);
+		padding: 0 15px;
+	}
+
+	&__param.active,
+	&__param:hover{
+		background: $color-sort-grey;
+	}
+
+	&.disable &__head{color: $color-light-grey;}
+	&.disable:hover{cursor: auto;}
+	&.disable:hover &__option{display: none;}
+
+	&_up &__option{
+		top: auto;
+		bottom: 100%;
+		margin-top: 0;
+		margin-bottom: -2px;
+		box-shadow: -10px -9px 21px 0 rgba(128, 152, 213, 0.08);
+	}
+
+	&_small &__head{
+		height: rem(28px);
+		line-height: rem(26px);
+		padding-right: 42px;
+	}
+
+	&_small{width: 195px;}
+	&_small &__param{line-height: rem(25px);}
+	&_small &__option{max-height: 270px;}
+}
+
+.switch{
+	display: inline-block;
+	vertical-align: middle;
+	width: rem(57px);
+	height: rem(24px);
+
+	input[type="checkbox"]{
+		display: none;
+	}
+
+	&__content{
+		display: inline-block;
+		width: 100%;
+		height: 100%;
+		border: solid 1px $color-light-grey;
+		border-radius: rem(12px);
+		position: relative;
+		cursor: pointer;
+		transition: all 0.3s ease;
+	}
+
+	&__marker{
+		display: inline-block;
+		width: rem(16px);
+		height: rem(16px);
+		background: $color-light-grey;
+		border-radius: 50%;
+		position: absolute;
+		@include top-center;
+		left: 4px;
+		transition: all 0.3s ease;
+	}
+
+	&__marker::before{
+		content: '';
+		display: none;
+		width: rem(24px);
+		height: rem(24px);
+		border-radius: 50%;
+		background: $color-light-grey;
+		opacity: 0.2;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+
+	&__on,
+	&__off{
+		@include font(normal, 600, rem(13px), rem(22px), $color-dark-grey);
+		position: absolute;
+		@include top-center;
+	}
+
+	&__on{left: 7px; display: none;}
+	&__off{right: 7px;}
+
+	&:hover &__content{background-color: rgba(172, 178, 195, 0.1);}
+
+	input[type="checkbox"]:checked + &__content{border-color: $color-dark-purple;}
+	input[type="checkbox"]:checked + &__content &__on{display: block;}
+	input[type="checkbox"]:checked + &__content &__off{display: none;}
+	input[type="checkbox"]:checked + &__content &__marker{background: $color-dark-purple; left: auto; right: 4px;}
+	input[type="checkbox"]:checked + &__content &__marker::before{background: $color-dark-purple;}
+
+	input[type="checkbox"]:focus + &__content &__marker::before{display: inline-block;}
+	input[disabled="disabled"]:focus + &__content &__marker::before{display: none;}
+
+	&:hover input[type="checkbox"]:checked + &__content{background-color: rgba(83, 3, 168, 0.05);}
+
+	input[disabled="disabled"] + &__content, &:hover input[disabled="disabled"] + &__content{background: transparent; opacity: 0.5;}
+	input[disabled="disabled"]:checked + &__content, &:hover input[disabled="disabled"]:checked + &__content{background: transparent; opacity: 0.5;}
+}
+
+@media (max-width: 767px) {
+	.form-site{
+		&__item{margin-bottom: 20px;}
+		&__btn{margin-top: 33px;}
+	}
+
+	.form-site-alert{
+		position: static;
+	}
+}

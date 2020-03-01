@@ -1,0 +1,59 @@
+/*-------------- switch-icon -----------------*/
+.switch-icon{
+	display: flex;
+
+	&__item{
+		display: inline-block;
+		height: rem(25px);
+		min-width: 28px;
+		border: 1px solid $color-dark-purple;
+		@include font(normal, 600, rem(14px), rem(23px), $color-dark-purple);
+		text-align: center;
+		cursor: pointer;
+	}
+
+	.icon{fill: $color-dark-blue;}
+	&__item.active .icon{fill: #fff;}
+	&__item.disable .icon{fill: $color-light-grey;}
+
+	&__item.active{
+		background: $color-dark-purple;
+		color: #fff;
+		cursor: auto;
+	}
+
+	.icon{
+		max-width: rem(23px);
+		max-height: rem(23px);
+	}
+
+	.ic-calendar{width: rem(19px);}
+
+	&__item:hover{
+		color: $color-dark-purple;
+		text-decoration: none;
+		background: rgba(83, 3, 168, 0.05);
+	}
+
+	&__item.active:hover{
+		color: #fff;
+		background: #3f0280;
+	}
+
+	&__item.disable:hover{
+		background: transparent;
+	}
+
+	&__item:first-child{
+		border-top-left-radius: rem(12.5px);
+		border-bottom-left-radius: rem(12.5px);
+	}
+	&__item:last-child{
+		border-top-right-radius: rem(12.5px);
+		border-bottom-right-radius: rem(12.5px);
+	}
+
+	&__item:not(:last-child){
+		border-right: 0;
+	}
+}

@@ -1,0 +1,8 @@
+<div (click)="link.click(link.source)"
+[style.cursor]="link.disable ? 'default' : 'pointer'"
+[ngClass]="{'disable':link.disable}" class="admin-table-popup__item">
+    <div *ngIf="link.icon" class="admin-table-popup__icon">
+        <mdc-icon [path]="link.icon"></mdc-icon>
+    </div>
+    <div class="admin-table-popup__text">{{link.text}}</div>
+</div>

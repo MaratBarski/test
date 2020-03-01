@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
-import { LoginService } from '@mdclone/core';
+import { LoginService } from './core-api';
+
 
 const routes: Routes = [
   {

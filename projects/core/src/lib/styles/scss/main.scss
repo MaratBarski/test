@@ -1,0 +1,47 @@
+// fancybox
+// @import '~@fancyapps/fancybox/dist/jquery.fancybox.css';
+
+
+@import "utils/vars";
+
+
+// bootstrap
+@import "~bootstrap-xxl/scss/functions";
+@import "~bootstrap-xxl/scss/variables";
+@import "~bootstrap-xxl/scss/mixins";
+@import "~bootstrap-xxl/scss/reboot";
+@import "~bootstrap-xxl/scss/root";
+@import "~bootstrap-xxl/scss/utilities/flex";
+@import "~bootstrap-xxl/scss/utilities/display";
+@import "~bootstrap-xxl/scss/grid";
+
+@import "~sass-rem/_rem.scss";
+
+// @import "~bootstrap-xxl/scss/modal";
+// @import "bootstrap-xxl";
+
+// Наш сайт
+// @import "utils/libs";
+@import "utils/mixins";
+@import "utils/fonts";
+
+
+@import "./layouts/main.scss";
+@import "./layouts/header.scss";
+@import "./layouts/footer.scss";
+@import "./components/admin-table.scss";
+@import "./components/checkbox.scss";
+@import "./components/form-search.scss";
+@import "./components/form-site.scss";
+@import "./components/hamburger.scss";
+@import "./components/icons.scss";
+@import "./components/import-file.scss";
+@import "./components/modal-window.scss";
+@import "./components/pager.scss";
+@import "./components/system-notice.scss";
+@import "./components/tabs-page.scss";
+@import "./components/tooltip.scss";
+@import "./components/type-icon.scss";
+@import "./components/split-btn.scss";
+@import "./components/unwrap.scss";
+@import "./components/calendar.scss";
