@@ -45,7 +45,7 @@
             <mdc-icon path="ic-pager-arr-right"></mdc-icon>
         </div>
         <div>
-            <input value={{currentPage+1}} (keyup)="selectedPageKeyUp($event)" type="number" (blur)="goToPage()" min="1"
+            <input value={{currentPage+1}} (keyup)="selectedPageKeyUp($event)" type="number" (change)="goToPage()" min="1"
                 [formControl]="selectedPage" />
         </div>
         <div *ngIf="isShowAllEnabled" class="page-btn" (click)="showAll()">{{showAllText}}</div>
