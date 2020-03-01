@@ -47,7 +47,7 @@ export class UploadFileComponent implements OnInit {
     }
   }
 
-  cancel(event: any): void {
+  cancel(): void {
     this.reset();
     event.preventDefault();
     this.onCancel.emit();
@@ -61,5 +61,4 @@ export class UploadFileComponent implements OnInit {
   updateFileName(event: any): void {
     this.fileName = this.formGroup.get('file').value;
   }
-
 }
