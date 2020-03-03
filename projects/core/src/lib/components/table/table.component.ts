@@ -1,4 +1,4 @@
-import { Component, Input, EventEmitter, Output, OnDestroy, ChangeDetectionStrategy, TemplateRef } from '@angular/core';
+import { Component, Input, EventEmitter, Output, OnDestroy, ChangeDetectionStrategy, TemplateRef, AfterViewInit } from '@angular/core';
 import { TableHeaderModel } from '../table-header/table-header.component';
 import { ComponentService } from '../../services/component.service';
 import { AutoSearchComponent } from '../auto-search/auto-search.component';
@@ -27,7 +27,7 @@ export class TableModel {
   styleUrls: ['./table.component.css'],
   changeDetection: ChangeDetectionStrategy.Default
 })
-export class TableComponent implements OnDestroy {
+export class TableComponent implements OnDestroy, AfterViewInit {
 
   constructor(
     private searchService: SearchService
@@ -36,6 +36,12 @@ export class TableComponent implements OnDestroy {
   private _subscriptions: Array<SubscriptionLike> = [];
   ngOnDestroy(): void {
     this._subscriptions.forEach(s => s.unsubscribe());
+  }
+
+  ngAfterViewInit(): void{
+    this.resetPaginator();
+    this.initPaginator();
+    this.reloadPaginator();
   }
 
   private _serachText = '';
