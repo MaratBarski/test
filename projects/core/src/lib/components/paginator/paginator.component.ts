@@ -14,6 +14,7 @@ export class PaginatorComponent {
   @Input() showOptions = false;
   @Input() isShowAllEnabled = false;
   @Input() paginationTitle = '';
+  @Input() noPagingTitle = '';
   @Input() showAllText = 'Show all';
   @Input() currentPage = 0;
 

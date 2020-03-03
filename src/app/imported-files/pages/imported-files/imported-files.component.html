@@ -38,10 +38,10 @@
                         </mdc-table>
                         <div class="pager-wrap">
                             <mdc-paginator #paginator paginationTitle="{{'paginationTitle'|translate}}"
+                                noPagingTitle="Showing {0} files"
                                 [blockSize]="3"
-                                [pageSize]="300" 
-                                [currentPage]="0"
-                                >
+                                [pageSize]="10" 
+                                [currentPage]="0">
                             </mdc-paginator>
                         </div>
                     </div>

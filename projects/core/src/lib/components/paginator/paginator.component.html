@@ -17,11 +17,16 @@
     <div>isLastBlockPage: {{isLastBlockPage}}</div>    
 </div> -->
 
-<div [hidden]="pageCount < 2 || currentPage < 0" class="paging-container">
+<div class="paging-container">
     <div class="paging-title">
-        {{paginationTitle|translate:[displayTitle,list]}}
+        <ng-template [ngIf]="pageCount > 1">
+            {{paginationTitle|translate:[displayTitle,list]}}
+        </ng-template>
+        <ng-template [ngIf]="pageCount <= 1">
+            {{noPagingTitle|translate:[list]}}
+        </ng-template>
     </div>
-    <div class="paging">
+    <div [hidden]="pageCount < 2 || currentPage < 0" class="paging">
         <div class="page-btn" [ngClass]="{'disabled':isFirstPage}" (click)="nextPage(-1)">
             <mdc-icon path="ic-pager-arr-left"></mdc-icon>
         </div>
@@ -45,8 +50,8 @@
             <mdc-icon path="ic-pager-arr-right"></mdc-icon>
         </div>
         <div>
-            <input value={{currentPage+1}} (keyup)="selectedPageKeyUp($event)" type="number" (change)="goToPage()" min="1"
-                [formControl]="selectedPage" />
+            <input value={{currentPage+1}} (keyup)="selectedPageKeyUp($event)" type="number" (change)="goToPage()"
+                min="1" [formControl]="selectedPage" />
         </div>
         <div *ngIf="isShowAllEnabled" class="page-btn" (click)="showAll()">{{showAllText}}</div>
     </div>
