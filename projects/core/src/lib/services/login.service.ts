@@ -71,15 +71,15 @@ export class LoginService extends BaseSibscriber implements CanActivate {
           } else {
             reject();
           }
-        })
+        });
       });
   }
 
   canActivate() {
-    if (!this.isLogedIn) {
+/*    if (!this.isLogedIn) {
       this.router.navigate(['/login']);
       return false;
-    }
-    return true;  
+    }*/
+    return true;
   }
 }
