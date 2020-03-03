@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -16,19 +17,19 @@ export class DataService {
     };
   }
 
-  get(url: string): any {
-    return this.http.get(url, this.createHeaders());
+  get<T>(url: string): Observable<T> {
+    return (this.http.get<T>(url, this.createHeaders()) as any) as Observable<T>;
   }
 
-  post(url: string, data: any): any {
-    return this.http.post(url, data, this.createHeaders());
+  post<T>(url: string, data: any): Observable<T> {
+    return (this.http.post<T>(url, data, this.createHeaders()) as any) as Observable<T>;
   }
 
-  put(url: string, data: any): any {
-    return this.http.put(url, data, this.createHeaders());
+  put<T>(url: string, data: any): Observable<T> {
+    return (this.http.put<T>(url, data, this.createHeaders()) as any)as Observable<T>;
   }
 
-  delete(url: string): any {
-    return this.http.delete(url, this.createHeaders());
+  delete<T>(url: string): Observable<T> {
+    return (this.http.delete<T>(url, this.createHeaders()) as any) as Observable<T>;
   }
 }

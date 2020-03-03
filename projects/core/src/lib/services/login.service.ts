@@ -48,7 +48,7 @@ export class LoginService extends BaseSibscriber implements CanActivate {
   }
 
   login(loginRequest: LoginRequest): Promise<LoginResponse> {
-    return this.dataService.post(ENV.loginUrl, loginRequest)
+    return this.dataService.post<any>(ENV.loginUrl, loginRequest)
       .toPromise().then(res => {
         return new Promise((resolve, reject) => {
           if (res.token) {
