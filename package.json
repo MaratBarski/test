@@ -6,6 +6,9 @@
     "start": "ng serve",
 	  "sMarat": "ng serve --port=5200",
     "build": "ng build",
+    "postbuild": "npm run copy",
+    "copy": "node projects/core/scripts/postbuild.js",
+    "themes": "bundle-scss -m \"./projects/core/src/lib/styles/scss/*/*.scss\" -d \"./dist/style.scss\"",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"

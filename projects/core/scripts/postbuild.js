@@ -1,11 +1,12 @@
 const path = require('path')
 const fs = require('fs-extra')
+const MAIN_DIR = 'mdclone-mainapp-ui';
 
 let source = 'projects/core/src/lib/styles'
 let destination = 'dist/core/styles'
 let dir = path.dirname(__dirname).toLowerCase();
 let dirs = dir.split(path.sep);
-while (dirs[dirs.length - 1] !== 'mdc-core') {
+while (dirs[dirs.length - 1] !== MAIN_DIR) {
     dirs.splice(dirs.length - 1, 1);
 }
 dir = dirs.join('/');
