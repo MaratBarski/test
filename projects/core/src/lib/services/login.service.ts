@@ -76,10 +76,18 @@ export class LoginService extends BaseSibscriber implements CanActivate {
   }
 
   canActivate() {
-/*    if (!this.isLogedIn) {
+    return this.setUserData().then(data => {
+      console.log(data);
+      return true;
+    }).catch(error => {
+      console.log(error);
+      return false;
+    });
+    
+    /*if (!this.isLogedIn) {
       this.router.navigate(['/login']);
       return false;
-    }*/
-    return true;
+    }
+    return true;*/
   }
 }

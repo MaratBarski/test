@@ -17,7 +17,7 @@ const routes: Routes = [
   },
   {
     path: 'imported-files',
-    loadChildren: './imported-files/imported-files.module#ImportedFilesModule',
+    loadChildren: () => import('./imported-files/imported-files.module').then(m => m.ImportedFilesModule) ,
     canActivate: [LoginService]
   },
   {
