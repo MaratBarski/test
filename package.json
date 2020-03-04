@@ -4,6 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "lib": "ng build core --watch",
 	  "sMarat": "ng serve --port=5200",
     "build": "ng build",
     "postbuild": "npm run copy",
