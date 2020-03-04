@@ -25,8 +25,8 @@ export class ImportedFilesComponent implements OnInit, OnDestroy {
   tabs: Array<TabItemModel>;
   tabActive = 0;
   serachText = '';
-  data: TableModel;
   showUploadFile = false;
+  dataOrigin: TableModel;
   dataSource: TableModel;
   subscriptions: Array<Subscription> = [];
 
@@ -37,13 +37,13 @@ export class ImportedFilesComponent implements OnInit, OnDestroy {
 
   selectTab(tab: number): void {
     this.tabActive = tab;
-    let rows = this.data.rows;
+    let rows = this.dataOrigin.rows;
     if (this.tabActive === 1) {
-      rows = this.dateService.lastMonth(rows, 'Loaded');
+      rows = this.dateService.lastMonth(rows, 'insertDate');
     } else if (this.tabActive === 2) {
-      rows = this.dateService.lastWeek(rows, 'Loaded');
+      rows = this.dateService.lastWeek(rows, 'insertDate');
     }
-    this.dataSource = { ...this.data, rows: rows };
+    this.dataSource = { ...this.dataOrigin, rows: rows };
   }
 
   ngOnDestroy(): void {
@@ -54,7 +54,7 @@ export class ImportedFilesComponent implements OnInit, OnDestroy {
     this.initTabs();
     this.subscriptions.push(
       this.store.select(selectData).subscribe((files: Array<FileSource>) => {
-        this.dataSource = this.importedFilesService.createDataSource(files);
+        this.dataOrigin = this.dataSource = this.importedFilesService.createDataSource(files);
       }));
 
     this.store.dispatch(load());
