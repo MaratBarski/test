@@ -1,16 +1,18 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { TableComponent, TranslateService, DateService, TabItemModel, TableModel } from '../../../core-api';
 import { ImportedFilesService } from '../../services/imported-files.service';
 import { Store } from '@ngrx/store';
 import { load } from '../../store/actions/imported-files.actions';
 import { selectData } from '../../store/selectors/imported-files.selector';
+import { FileSource } from '../../models/file-source';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'md-imported-files',
   templateUrl: './imported-files.component.html',
   styleUrls: ['./imported-files.component.scss']
 })
-export class ImportedFilesComponent implements OnInit {
+export class ImportedFilesComponent implements OnInit, OnDestroy {
 
   @ViewChild('table', { static: true }) table: TableComponent;
   constructor(
@@ -26,7 +28,7 @@ export class ImportedFilesComponent implements OnInit {
   data: TableModel;
   showUploadFile = false;
   dataSource: TableModel;
-  fileSource : any;
+  subscriptions: Array<Subscription> = [];
 
   searchComplite(text: string): void {
     //this.table.resetPaginator();
@@ -44,12 +46,18 @@ export class ImportedFilesComponent implements OnInit {
     this.dataSource = { ...this.data, rows: rows };
   }
 
+  ngOnDestroy(): void {
+    this.subscriptions.forEach(s => s.unsubscribe());
+  }
+
   ngOnInit() {
     this.initTabs();
-    this.initData();
-    this.fileSource = this.store.select(selectData);
+    this.subscriptions.push(
+      this.store.select(selectData).subscribe((files: Array<FileSource>) => {
+        this.dataSource = this.importedFilesService.createDataSource(files);
+      }));
+
     this.store.dispatch(load());
-    //this.importedFilesService.load();
   }
 
   initTabs(): void {
@@ -64,360 +72,6 @@ export class ImportedFilesComponent implements OnInit {
     alert(JSON.stringify(item));
   }
 
-  searchOptions = ['Name', 'User', 'Loaded', 'No'];
-  initData(): void {
-    this.data = {
-      headers: [{
-        columnId: 'No',
-        text: 'No',
-        isSortEnabled: true,
-        sortDir: 'desc',
-        isSortedColumn: true
-      },
-      {
-        columnId: 'Name',
-        text: 'Name',
-        isSortEnabled: true
-      },
-      {
-        columnId: 'Loaded',
-        text: 'Loaded',
-        isSortEnabled: true
-      },
-      {
-        columnId: 'Environment',
-        text: 'Environment',
-        isSortEnabled: true
-      },
-      {
-        columnId: 'Template',
-        text: 'Template',
-        isSortEnabled: true
-      },
-      {
-        columnId: 'User',
-        text: 'User',
-        isSortEnabled: true
-      }
-      ],
-      rows: [
-        {
-          cells:
-          {
-            Name: 'StrokeSmall.csv',
-            Loaded: 'Nov 12, 2019',
-            Environment: 'Demo Project',
-            Template: 'Demo Template',
-            User: 'Test'
-          }
-          ,
-          isActive: true
-        },
-        {
-          cells:
-          {
-            Name: 'StrokeSmall.csv',
-            Loaded: 'Nov 12, 2019',
-            Environment: 'Demo Project',
-            Template: 'Demo Template',
-            User: 'Noa'
-          }
-          ,
-          isActive: true
-        },
-        {
-          cells:
-          {
-            Name: 'test sdfag ag fg sdfg fgsdfgsd test sdfag ag fg sdfg fgsdfgsd test sdfag ag fg sdfg fgsdfgsd test sdfag ag fg sdfg fgsdfgsd test sdfag ag fg sdfg fgsdfgsd test sdfag ag fg sdfg fgsdfgsd test sdfag ag fg sdfg fgsdfgsd ',
-            Loaded: 'Jan 20, 2020',
-            Environment: 'Demo Project',
-            Template: 'Demo Template',
-            User: 'Noa'
-          }
-          ,
-          isActive: true
-        }, {
-          cells:
-          {
-            Name: 'test',
-            Loaded: 'Nov 12, 2019',
-            Environment: 'Demo Project',
-            Template: 'Demo Template',
-            User: 'Noa'
-          }
-          ,
-          isActive: true
-        }, {
-          cells:
-          {
-            Name: 'test',
-            Loaded: 'Nov 12, 2019',
-            Environment: 'Demo Project',
-            Template: 'Demo Template',
-            User: 'Noa'
-          }
-          ,
-          isActive: true
-        }, {
-          cells:
-          {
-            Name: 'test',
-            Loaded: 'Nov 12, 2019',
-            Environment: 'Demo Project',
-            Template: 'Demo Template',
-            User: 'Noa'
-          }
-          ,
-          isActive: true
-        }, {
-          cells:
-          {
-            Name: 'test',
-            Loaded: 'Nov 12, 2019',
-            Environment: 'Demo Project',
-            Template: 'Demo Template',
-            User: 'Noa'
-          }
-          ,
-          isActive: true
-        }, {
-          cells:
-          {
-            Name: 'test',
-            Loaded: 'Nov 12, 2019',
-            Environment: 'Demo Project',
-            Template: 'Demo Template',
-            User: 'Noa'
-          }
-          ,
-          isActive: true
-        }, {
-          cells:
-          {
-            Name: 'test',
-            Loaded: 'Nov 12, 2019',
-            Environment: 'Demo Project',
-            Template: 'Demo Template',
-            User: 'Noa'
-          }
-          ,
-          isActive: true
-        }, {
-          cells:
-          {
-            Name: 'test',
-            Loaded: 'Nov 12, 2019',
-            Environment: 'Demo Project',
-            Template: 'Demo Template',
-            User: 'Noa'
-          }
-          ,
-          isActive: true
-        }, {
-          cells:
-          {
-            Name: 'test',
-            Loaded: 'Nov 12, 2019',
-            Environment: 'Demo Project',
-            Template: 'Demo Template',
-            User: 'Noa'
-          }
-          ,
-          isActive: true
-        }, {
-          cells:
-          {
-            Name: 'test',
-            Loaded: 'Nov 12, 2019',
-            Environment: 'Demo Project',
-            Template: 'Demo Template',
-            User: 'Noa'
-          }
-          ,
-          isActive: true
-        }, {
-          cells:
-          {
-            Name: 'test',
-            Loaded: 'Nov 12, 2019',
-            Environment: 'Demo Project',
-            Template: 'Demo Template',
-            User: 'Noa'
-          }
-          ,
-          isActive: true
-        }, {
-          cells:
-          {
-            Name: 'test',
-            Loaded: 'Nov 12, 2019',
-            Environment: 'Demo Project',
-            Template: 'Demo Template',
-            User: 'Noa'
-          }
-          ,
-          isActive: true
-        }, {
-          cells:
-          {
-            Name: 'test',
-            Loaded: 'Nov 12, 2019',
-            Environment: 'Demo Project',
-            Template: 'Demo Template',
-            User: 'Noa'
-          }
-          ,
-          isActive: true
-        }, {
-          cells:
-          {
-            Name: 'test',
-            Loaded: 'Nov 12, 2019',
-            Environment: 'Demo Project',
-            Template: 'Demo Template',
-            User: 'Noa'
-          }
-          ,
-          isActive: true
-        }, {
-          cells:
-          {
-            Name: 'test',
-            Loaded: 'Nov 12, 2019',
-            Environment: 'Demo Project',
-            Template: 'Demo Template',
-            User: 'Noa'
-          }
-          ,
-          isActive: true
-        }, {
-          cells:
-          {
-            Name: 'test',
-            Loaded: 'Nov 12, 2019',
-            Environment: 'Demo Project',
-            Template: 'Demo Template',
-            User: 'Noa'
-          }
-          ,
-          isActive: true
-        }, {
-          cells:
-          {
-            Name: 'test',
-            Loaded: 'Nov 12, 2019',
-            Environment: 'Demo Project',
-            Template: 'Demo Template',
-            User: 'Noa'
-          }
-          ,
-          isActive: true
-        }, {
-          cells:
-          {
-            Name: 'test',
-            Loaded: 'Nov 12, 2019',
-            Environment: 'Demo Project',
-            Template: 'Demo Template',
-            User: 'Noa'
-          }
-          ,
-          isActive: true
-        }, {
-          cells:
-          {
-            Name: 'test',
-            Loaded: 'Nov 12, 2019',
-            Environment: 'Demo Project',
-            Template: 'Demo Template',
-            User: 'Noa'
-          }
-          ,
-          isActive: true
-        }, {
-          cells:
-          {
-            Name: 'test',
-            Loaded: 'Nov 12, 2019',
-            Environment: 'Demo Project',
-            Template: 'Demo Template',
-            User: 'Noa'
-          }
-          ,
-          isActive: true
-        }, {
-          cells:
-          {
-            Name: 'test',
-            Loaded: 'Nov 12, 2019',
-            Environment: 'Demo Project',
-            Template: 'Demo Template',
-            User: 'Noa'
-          }
-          ,
-          isActive: true
-        }, {
-          cells:
-          {
-            Name: 'test',
-            Loaded: 'Nov 12, 2019',
-            Environment: 'Demo Project',
-            Template: 'Demo Template',
-            User: 'Noa'
-          }
-          ,
-          isActive: true
-        }, {
-          cells:
-          {
-            Name: 'test',
-            Loaded: 'Nov 12, 2019',
-            Environment: 'Demo Project',
-            Template: 'Demo Template',
-            User: 'Noa'
-          }
-          ,
-          isActive: true
-        }, {
-          cells:
-          {
-            Name: 'test',
-            Loaded: 'Nov 12, 2019',
-            Environment: 'Demo Project',
-            Template: 'Demo Template',
-            User: 'Noa'
-          }
-          ,
-          isActive: true
-        }, {
-          cells:
-          {
-            Name: 'test',
-            Loaded: 'Nov 12, 2019',
-            Environment: 'Demo Project',
-            Template: 'Demo Template',
-            User: 'Noa'
-          }
-          ,
-          isActive: true
-        }, {
-          cells:
-          {
-            Name: 'test',
-            Loaded: new Date(),
-            Environment: '1111111111',
-            Template: 'Demo Template',
-            User: 'Noa'
-          }
-          ,
-          isActive: true
-        },
-      ]
-    }
-    this.data.rows.forEach((r, i) => {
-      r.cells['No'] = i;
-    });
-    this.dataSource = this.data;
-  }
+  searchOptions = ['fileName'];
 
 }
