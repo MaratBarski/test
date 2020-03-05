@@ -48,7 +48,7 @@ export class LoginService extends BaseSibscriber implements CanActivate {
   }
 
   login(loginRequest: LoginRequest): Promise<LoginResponse> {
-    return this.dataService.post<any>(ENV.loginUrl, loginRequest)
+    return this.dataService.post(ENV.loginUrl, loginRequest)
       .toPromise().then(res => {
         return new Promise((resolve, reject) => {
           if (res.token) {
@@ -76,13 +76,14 @@ export class LoginService extends BaseSibscriber implements CanActivate {
   }
 
   canActivate() {
-    return this.setUserData().then(data => {
-      console.log(data);
-      return true;
-    }).catch(error => {
-      console.log(error);
-      return false;
-    });
+    return true;
+    // return this.setUserData().then(data => {
+    //   console.log(data);
+    //   return true;
+    // }).catch(error => {
+    //   console.log(error);
+    //   return false;
+    // });
     
     /*if (!this.isLogedIn) {
       this.router.navigate(['/login']);
