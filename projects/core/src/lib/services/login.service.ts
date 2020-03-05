@@ -1,31 +1,31 @@
 import { Injectable } from '@angular/core';
 import { CanActivate } from '@angular/router';
-import { Router } from '@angular/router';
 import { DataService } from './data.service';
 import { LoginRequest } from '../models/LoginRequest';
 import { LoginResponse } from '../models/LoginResponse';
 import { ENV } from '../config/env';
 import { Store } from '@ngrx/store';
 import * as actions from '../store/actions/user.actions';
-import { LocalStorageService } from './local-storage.service';
-import { UserInfo } from '../models/UserInfo';
+import { UserResponse } from '../models/UserInfo';
 import { BaseSibscriber } from '../common/BaseSibscriber';
 import { userSelector } from '../store/selectors/user.selectors';
-import { login, userData } from '../store/actions/user.actions';
+import { userData } from '../store/actions/user.actions';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService extends BaseSibscriber implements CanActivate {
-  userInfo: UserInfo;
+
+  get userInfo(): UserResponse { return this._userInfo; }
+  private _userInfo: UserResponse;
+
   constructor(
     private dataService: DataService,
-    private router: Router,
     private store: Store<any>
   ) {
     super();
     super.add(this.store.select(userSelector).subscribe(user => {
-      this.userInfo = user;
+      this._userInfo = user;
     }));
   }
 
@@ -37,8 +37,7 @@ export class LoginService extends BaseSibscriber implements CanActivate {
   }
 
   static getToken(): string {
-     const user: UserInfo = LocalStorageService.getObject(LoginService.TOKEN);
-     return user && user.token ? user.token : undefined;
+    return '';
   }
 
   get isLogedIn(): boolean { return LoginService.IS_LOGEDIN(); }
@@ -47,9 +46,9 @@ export class LoginService extends BaseSibscriber implements CanActivate {
     this.store.dispatch(actions.logout());
   }
 
-  login(loginRequest: LoginRequest): Promise<LoginResponse> {
+  async login(loginRequest: LoginRequest): Promise<LoginResponse> {
     return this.dataService.post(ENV.loginUrl, loginRequest)
-      .toPromise().then(res => {
+      .toPromise().then((res: any) => {
         return new Promise((resolve, reject) => {
           if (res.token) {
             resolve(res);
@@ -60,13 +59,12 @@ export class LoginService extends BaseSibscriber implements CanActivate {
       });
   }
 
-  setUserData(): Promise<any> {
-    return this.dataService.get(`${ENV.serverUrl}${ENV.endPoints.userData}`)
-      .toPromise().then(res => {
+  async setUserData(url: string): Promise<UserResponse> {
+    return this.dataService.get(url)
+      .toPromise().then((res: UserResponse) => {
         return new Promise((resolve, reject) => {
           if (res) {
-            const userInfo: UserInfo = res as any;
-            this.store.dispatch(userData({ payload: userInfo }));
+            this.store.dispatch(userData({ payload: res }));
             resolve(res);
           } else {
             reject();
@@ -76,19 +74,10 @@ export class LoginService extends BaseSibscriber implements CanActivate {
   }
 
   canActivate() {
-    return true;
-    // return this.setUserData().then(data => {
-    //   console.log(data);
-    //   return true;
-    // }).catch(error => {
-    //   console.log(error);
+    // if (!this.isLogedIn) {
+    //   this.router.navigate(['/login']);
     //   return false;
-    // });
-    
-    /*if (!this.isLogedIn) {
-      this.router.navigate(['/login']);
-      return false;
-    }
-    return true;*/
+    // }
+    return true;
   }
 }

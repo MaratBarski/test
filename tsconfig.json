@@ -19,6 +19,15 @@
       "dom"
     ],
     "paths": {
+      "@env/*": [
+        "src/environments/*"
+      ],
+      "@app/*": [
+        "src/app/*"
+      ],
+      "appcore": [
+        "src/app/core-api.ts"
+      ],
       "core": [
         "dist/core"
       ],

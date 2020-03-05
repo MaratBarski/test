@@ -1,6 +1,6 @@
 import { Template } from './template';
 import { Project } from './project';
-import { User } from 'src/app/shared/models/user';
+import { User } from 'core/lib/models/UserInfo';
 
 export class FileSourceResponse {
      data?: Array<FileSource>;

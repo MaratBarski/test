@@ -1,6 +1,6 @@
 import { Site } from './site';
 import { Hierarchy } from './hierarchy';
-import { User } from 'src/app/shared/models/user';
+import { User } from 'core/lib/models/UserInfo';
 
 export class Project  {
      projectId: number;
@@ -9,5 +9,4 @@ export class Project  {
      site?: Site;
      hierarchy?: Array<Hierarchy>;
      users?: Array<User>;
-
 }

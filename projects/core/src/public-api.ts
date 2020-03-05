@@ -5,6 +5,9 @@ export * from './lib/config/env';
 export * from './lib/models/LoginRequest';
 export * from './lib/models/LoginResponse';
 export * from './lib/models/UserInfo';
+export * from './lib/models/Authority';
+export * from './lib/models/Project';
+export * from './lib/models/UserType';
 
 export * from './lib/core.service';
 export * from './lib/services/data.service';
@@ -28,7 +31,7 @@ export * from './lib/store/reducers/user.reducer';
 export * from './lib/pipes/pagination.pipe';
 export * from './lib/pipes/translate.pipe';
 export * from './lib/pipes/sort-table.pipe';
-export * from './lib/pipes/search.pipe'
+export * from './lib/pipes/search.pipe';
 
 export * from './lib/components/paginator/paginator.component';
 export * from './lib/components/button/button.component';

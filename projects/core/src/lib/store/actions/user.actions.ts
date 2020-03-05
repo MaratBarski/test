@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { UserInfo } from '../../models/UserInfo';
+import { UserResponse } from '../../models/UserInfo';
 
 export const LOGIN_ACTION = '[User login] Login';
 export const LOGOUT_ACTION = '[User login] LogOut';
@@ -12,5 +12,5 @@ export const login = createAction(LOGIN_ACTION,
 export const logout = createAction(LOGOUT_ACTION);
 
 export const userData = createAction(SET_DATA_ACTION,
-    props<{ payload: UserInfo }>()
+    props<{ payload: UserResponse }>()
 );

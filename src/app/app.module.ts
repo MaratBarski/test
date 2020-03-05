@@ -4,11 +4,12 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { CoreModule, TranslateService, DataService, ENV, LoginService } from './core-api';
+import { CoreModule, TranslateService, DataService, ENV, LoginService } from 'appcore';
 import { StoreModule } from '@ngrx/store';
 import { LoginComponent } from './login/login.component';
 import { EffectsModule } from '@ngrx/effects';
 import { HttpClientModule } from '@angular/common/http'
+import { Offline } from './shared/decorators/offline.decorator';
 
 // import { DialogModule } from 'primeng/dialog';
 // import { ButtonModule } from 'primeng/button';
@@ -39,6 +40,11 @@ import { HttpClientModule } from '@angular/common/http'
   bootstrap: [AppComponent]
 })
 export class AppModule {
-   constructor(loginService:LoginService) {
+
+  @Offline('assets/offline/userData.json')
+  private getUserDataUrl = `${ENV.serverUrl}${ENV.endPoints.userData}`;
+
+  constructor(private loginService: LoginService) {
+    this.loginService.setUserData(this.getUserDataUrl);
   }
 }

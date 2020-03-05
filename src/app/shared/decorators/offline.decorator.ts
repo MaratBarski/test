@@ -1,5 +1,4 @@
-import { environment } from 'src/environments/environment';
-
+import { environment } from '@env/environment'
 
 export function Offline(path: string): any {
     return (target, key: string) => {

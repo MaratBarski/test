@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
-import { TableComponent, TranslateService, DateService, TabItemModel, TableModel } from '../../../core-api';
+import { TableComponent, TranslateService, DateService, TabItemModel, TableModel } from 'appcore';
 import { ImportedFilesService } from '../../services/imported-files.service';
 import { Store } from '@ngrx/store';
 import { load } from '../../store/actions/imported-files.actions';
@@ -20,7 +20,8 @@ export class ImportedFilesComponent implements OnInit, OnDestroy {
     private dateService: DateService,
     private importedFilesService: ImportedFilesService,
     private store: Store<any>
-  ) { }
+  ) {
+   }
 
   tabs: Array<TabItemModel>;
   tabActive = 0;

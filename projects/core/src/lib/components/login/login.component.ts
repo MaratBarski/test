@@ -3,9 +3,9 @@ import { LoginService } from '../../services/login.service';
 import { LoginRequest } from '../../models/LoginRequest';
 import { LoginResponse } from '../../models/LoginResponse';
 import { FormControl, FormGroup } from '@angular/forms';
-import { UserInfo } from '../../models/UserInfo';
 import { Store } from '@ngrx/store';
 import { login } from '../../store/actions/user.actions';
+import { ENV } from '../../config/env';
 
 @Component({
   selector: 'mdc-login',
@@ -44,7 +44,7 @@ export class LoginComponent {
         if (res.token) {
           const token: string = res as any;
           this.store.dispatch(login({ payload: token }));
-          this.loginService.setUserData()
+          this.loginService.setUserData(`${ENV.serverUrl}${ENV.endPoints.userData}`)
             .then(res => {
               this.success.emit();
               

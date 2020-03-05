@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { DataService, ENV, TableModel } from '../../core-api';
+import { DataService, ENV, TableModel } from 'appcore';
 import { Observable } from 'rxjs';
 import { FileSourceResponse, FileSource } from '../models/file-source';
 import { Offline } from 'src/app/shared/decorators/offline.decorator';
