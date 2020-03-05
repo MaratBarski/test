@@ -49,7 +49,7 @@
         <div class="page-btn" [ngClass]="{'disabled':isLastPage}" (click)="nextPage(1)">
             <mdc-icon path="ic-pager-arr-right"></mdc-icon>
         </div>
-        <div>
+       <div [hidden]="!showPageSelector">
             <input value={{currentPage+1}} (keyup)="selectedPageKeyUp($event)" type="number" (change)="goToPage()"
                 min="1" [formControl]="selectedPage" />
         </div>

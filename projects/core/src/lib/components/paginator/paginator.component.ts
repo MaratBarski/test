@@ -17,6 +17,7 @@ export class PaginatorComponent {
   @Input() noPagingTitle = '';
   @Input() showAllText = 'Show all';
   @Input() currentPage = 0;
+  @Input() showPageSelector = false;
 
   @Input() set pageSize(pageSize: number) {
     this._pageSize = pageSize;
@@ -100,7 +101,7 @@ export class PaginatorComponent {
       this.pages,
       { currentPage: this.currentBlock, pageSize: this.blockSize, complite: true }
     )
-    return pages.length ? Math.max(0,pages[0] - 1) : 0;
+    return pages.length ? Math.max(0, pages[0] - 1) : 0;
   }
 
   get lastBlockPage(): number { return this.firstBlockPage + this.blockSize - 1; }
