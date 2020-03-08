@@ -9,6 +9,7 @@ export class MainHeaderComponent implements OnInit {
 
   @Input() organizationName = '';
   @Input() logo = '';
+  showMenu = false;
 
   constructor() { }
 

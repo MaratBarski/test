@@ -9,10 +9,6 @@
                                 <img src="/assets/img/logo-white.svg" alt="Logo"></a>
                         </div>
                         <div class="hamburger">
-                            <!-- <mdc-icon path="ic-pager-arr-left"></mdc-icon> -->
-                            <!-- <svg class="icon ic-pager-arr-left">
-                                <use xlink:href="/assets/sprites/sprite.svg#ic-pager-arr-left"></use>
-                            </svg> -->
                             <span class="ic-hamburger"><span></span></span>
                         </div>
                     </div>
@@ -23,7 +19,7 @@
                             </svg><span class="header__company-name">Buttercup Hospital Institute</span>
                         </div>
                         <div class="header__action">
-                            <div class="select">
+                            <div (mouseover)="showMenu=true" (mouseleave)="showMenu=false" class="select">
                                 <div class="select__head">Sheba Central
                                     <div class="select__head-arr">
                                         <svg class="icon ic-select-arr-down">
@@ -31,7 +27,7 @@
                                         </svg>
                                     </div>
                                 </div>
-                                <div class="select__option">
+                                <div [hidden]="!showMenu" class="select__option">
                                     <div class="select__param">Text 1</div>
                                     <div class="select__param">Text 2</div>
                                     <div class="select__param">Text 3</div>
@@ -39,9 +35,7 @@
                                 </div>
                             </div>
                             <div class="header__notice">
-                                <svg class="icon notice">
-                                    <use xlink:href="/assets/sprites/sprite.svg#notice"></use>
-                                </svg>
+                                <mdc-icon path="notice"></mdc-icon>
                             </div>
                             <div class="header__profile"></div>
                         </div>
