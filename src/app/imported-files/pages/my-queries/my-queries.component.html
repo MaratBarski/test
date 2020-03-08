@@ -3,6 +3,12 @@
         <mdc-icon path="ic-dot-menu"></mdc-icon>
     </span>
 </ng-template>
+<mdc-auto-complite textField="name" placeHolder="Select item..." (onSelect)="selectItem($event)" (completeMethod)="completeMethod($event)" [suggestions]="suggestions">
+    <ng-template let-item>
+        <div>{{item.name}}</div>
+    </ng-template>
+</mdc-auto-complite>
+Selected:{{selectedItem?.name}}
 <mdc-popup #popupMenu [closeOnClick]="true">
     <mdc-modal-menu [sublinks]="sublinks" [links]="links"></mdc-modal-menu>
 </mdc-popup>

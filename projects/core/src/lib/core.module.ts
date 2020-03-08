@@ -50,6 +50,7 @@ import { PopupComponent } from './components/popup/popup.component';
 import { ModalMenuComponent } from './components/modal-menu/modal-menu.component';
 import { MenuLinkComponent } from './components/menu-link/menu-link.component';
 import { AccordionComponent } from './components/accordion/accordion.component';
+import { AutoCompliteComponent } from './components/auto-complite/auto-complite.component';
 
 // import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 
@@ -90,7 +91,8 @@ import { AccordionComponent } from './components/accordion/accordion.component';
     PopupComponent,
     ModalMenuComponent,
     MenuLinkComponent,
-    AccordionComponent
+    AccordionComponent,
+    AutoCompliteComponent
   ],
   imports: [
     CommonModule,
@@ -136,7 +138,8 @@ import { AccordionComponent } from './components/accordion/accordion.component';
     PopupComponent,
     ModalMenuComponent,
     MenuLinkComponent,
-    AccordionComponent
+    AccordionComponent,
+    AutoCompliteComponent
   ],
   entryComponents: [
     TableHeaderComponent
