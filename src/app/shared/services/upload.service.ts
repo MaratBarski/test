@@ -23,7 +23,9 @@ export class UploadService {
   get uploads(): Array<UploadInfo> { return this._uploads; }
   private _intervalID: any;
   private _uploads: Array<UploadInfo> = [];
-  constructor() {
+  constructor(
+    private http: HttpClient
+  ) {
     this.startUpload();
   }
 
@@ -34,19 +36,17 @@ export class UploadService {
   private startUpload(): void {
     this._intervalID = setInterval(() => {
       if (this._uploads.length) {
-
+        this.http.post(this._uploads[0].url, this._uploads[0].form, {
+          reportProgress: true,
+          observe: 'events'
+        }).subscribe(events => {
+          if (events.type == HttpEventType.UploadProgress) {
+            console.log('Upload progress: ', Math.round(events.loaded / events.total * 100) + '%');
+          } else if (events.type === HttpEventType.Response) {
+            console.log(events);
+          }
+        })
       }
     }, 100);
   }
 }
-
-// this.http.post('url/to/your/api', formData, {
-//   reportProgress: true,
-//   observe: 'events'
-// }).subscribe(events => {
-//   if (events.type == HttpEventType.UploadProgress) {
-//     console.log('Upload progress: ', Math.round(events.loaded / events.total * 100) + '%');
-//   } else if (events.type === HttpEventType.Response) {
-//     console.log(events);
-//   }
-// })
