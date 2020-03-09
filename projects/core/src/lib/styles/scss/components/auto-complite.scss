@@ -1,0 +1,34 @@
+.auto-complite-input-container{
+    display: flex;    
+    width:100%;
+    border:1px solid #ccc;
+}
+.auto-complite-dropdown{
+    cursor: pointer;
+    height: 30px;
+    width:30px;
+    background-color: #fff;
+}
+.auto-complite-dropdown-icon{
+    margin-left: 0 auto;
+    margin-right: 0 auto;
+    margin-top: 6px;
+}
+.auto-complite-suggestions{
+    position: absolute;
+    z-index: 102;
+    background-color: #fff;
+    overflow: auto;
+}
+.current{
+    background-color: #116FBF;
+    color:white;
+}
+.auto-complite-input{
+    width:100%;
+    border:0px !important
+}
+.auto-complite-input:focus{
+    outline: none;
+}
+

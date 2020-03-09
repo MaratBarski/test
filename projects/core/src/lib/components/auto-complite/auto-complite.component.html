@@ -1,14 +1,17 @@
-<div (mouseleave)="currentIndex=-1;isOver=false" (mouseover)="isOver=true" class="auto-complite-main">
+<div [style.width]="width" (mouseleave)="currentIndex=-1;isOver=false" (mouseover)="isOver=true">
     <div class="auto-complite-input-container">
         <div>
-        <input class="auto-complite-input" placeholder="{{placeHolder}}" [(ngModel)]="inputText"
-            (keydown)="onKeyDown($event)" (blur)="inputBlur()" (keyup)="search($event)" type="text" />
+            <input class="auto-complite-input" placeholder="{{placeHolder}}" [(ngModel)]="inputText"
+                (keydown)="onKeyDown($event)" (keyup)="search($event)" type="text" />
         </div>
         <div *ngIf="dropdown" class="auto-complite-dropdown" (click)="openSelect()">
-            V
+            <div class="auto-complite-dropdown-icon">
+                <mdc-icon path="ic-select-arr-down"></mdc-icon>
+            </div>
         </div>
     </div>
-    <div #conteiner class="auto-complite-suggestions" [hidden]="isHiddeSuggestions">
+    <div #conteiner [style.maxHeight]="maxHeight" [style.width]="width" class="auto-complite-suggestions"
+        [hidden]="isHiddeSuggestions">
         <div (mousemove)="currentIndex=index" (click)="selectItem(index)"
             *ngFor="let item of suggestions;let index = index" tabindex="{{index}}"
             [ngClass]="{'current':index===currentIndex}">

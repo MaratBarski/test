@@ -7,6 +7,9 @@ import { Component, Input, TemplateRef, EventEmitter, Output, ViewContainerRef, 
 })
 export class AutoCompliteComponent {
 
+  @Input() width = '200px';
+  @Input() maxHeight = '300px';
+
   @ViewChild('conteiner', { static: true }) conteiner: ElementRef;
   inputText: string = '';
   @ContentChild(TemplateRef, { read: TemplateRef, static: true }) template: TemplateRef<any>;
@@ -19,7 +22,7 @@ export class AutoCompliteComponent {
   @Input() set minLength(minLength: number) { this._minLength = Math.max(1, minLength); }
   @Input() textField = '';
   @Output() onSelect = new EventEmitter<any>();
-  @Input()dropdown = true;
+  @Input() dropdown = true;
 
   get suggestions(): Array<any> { return this._suggestions; }
   get minLength(): number { return this._minLength; }
@@ -51,9 +54,6 @@ export class AutoCompliteComponent {
     this.selectOpen = true;
   }
 
-  inputBlur(): void {
-  }
-
   selectItem(index: number): void {
     this.currentIndex = -1;
     this.selectOpen = false;
@@ -73,6 +73,7 @@ export class AutoCompliteComponent {
   }
 
   private moveUp(): void {
+    if (this.currentIndex === 0) { return; }
     if (this.currentIndex === -1) {
       this.currentIndex = this.suggestions.length - 1;
     } else {
@@ -85,6 +86,7 @@ export class AutoCompliteComponent {
   }
 
   private moveDown(): void {
+    if (this.currentIndex === this.suggestions.length - 1) { return; }
     if (this.currentIndex === -1) {
       this.currentIndex = 0;
     } else {
