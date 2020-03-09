@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
-import { TableComponent, TranslateService, DateService, TabItemModel, TableModel } from 'appcore';
+import { TableComponent, TranslateService, DateService, TabItemModel, TableModel, MenuLink, PopupComponent } from 'appcore';
 import { ImportedFilesService } from '../../services/imported-files.service';
 import { Store } from '@ngrx/store';
 import { load } from '../../store/actions/imported-files.actions';
@@ -14,6 +14,7 @@ import { Subscription } from 'rxjs';
 })
 export class ImportedFilesComponent implements OnInit, OnDestroy {
 
+  @ViewChild('popupMenu', { static: true }) popupMenu: PopupComponent;
   @ViewChild('table', { static: true }) table: TableComponent;
   constructor(
     private translateService: TranslateService,
@@ -21,7 +22,39 @@ export class ImportedFilesComponent implements OnInit, OnDestroy {
     private importedFilesService: ImportedFilesService,
     private store: Store<any>
   ) {
-   }
+  }
+
+  deleteLink: MenuLink = {
+    text: 'Delete',
+    disable: false,
+    icon: 'ic-delete',
+    source: 'test',
+    click: (source) => {
+      this.dataSource = {
+        ...this.dataSource, ...{
+          rows: this.dataSource.rows.filter(r => r.cells.No !== source.No)
+        }
+      };
+    }
+  }
+
+  editLink: MenuLink = {
+    text: 'Edit',
+    icon: 'ic-edit',
+    click: (source) => { console.log(JSON.stringify(source)); }
+  }
+
+  viewLink: MenuLink = {
+    text: 'View output summary',
+    icon: 'ic-view',
+    click: (source) => { console.log(JSON.stringify(source)); }
+  }
+  
+  sublinks: Array<MenuLink> = [this.deleteLink];
+  links: Array<MenuLink> = [
+    this.editLink,
+    this.viewLink
+  ];
 
   tabs: Array<TabItemModel>;
   tabActive = 0;
@@ -49,6 +82,14 @@ export class ImportedFilesComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscriptions.forEach(s => s.unsubscribe());
+  }
+
+  editClick(item: any, event: any): void {
+    this.deleteLink.source = item;
+    this.editLink.source = item;
+    this.viewLink.source = item;
+    this.popupMenu.target = event.target;
+    this.popupMenu.show(true, event);
   }
 
   ngOnInit() {

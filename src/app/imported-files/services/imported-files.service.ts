@@ -51,6 +51,11 @@ export class ImportedFilesService {
         columnId: 'user',
         text: 'User',
         isSortEnabled: true
+      },
+      {
+        columnId: 'editColumn',
+        text: '',
+        isSortEnabled: false
       }
       ],
       rows: []
@@ -71,4 +76,6 @@ export class ImportedFilesService {
     });
     return data;
   }
+
+  
 }

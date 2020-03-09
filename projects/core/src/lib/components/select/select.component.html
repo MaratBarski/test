@@ -5,7 +5,7 @@
             <mdc-icon path="ic-select-arr-down"></mdc-icon>
         </div>
     </div>
-    <div [@slideInOut]="isExpanded" [style.maxHeight]="maxHeight" *ngIf="options" class="select__option">
+    <div [hidden]="!isExpanded" [style.maxHeight]="maxHeight" *ngIf="options" class="select__option">
         <div [ngClass]="{'active':option==selected}" (click)="select(option)" *ngFor="let option of options"
             class="select__param">
             {{option.text}}

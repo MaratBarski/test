@@ -25,12 +25,12 @@ export class SelectComponent {
 
   @Output() changed = new EventEmitter<SelectOption>();
 
-  isExpanded: SlideInOutState = SlideInOutState.out;
+  isExpanded = false;
   isOver = false;
 
   select(option: SelectOption): void {
     if (this.closeOnselect) {
-      this.isExpanded = SlideInOutState.out;
+      this.isExpanded = false;
     }
     this.selected = option;
     this.changed.emit(this.selected);
@@ -42,10 +42,10 @@ export class SelectComponent {
     ) {
       this.selectUp = false;
     }
-    this.isExpanded = SlideInOutState.in === this.isExpanded ? SlideInOutState.out : SlideInOutState.in;
+    this.isExpanded = !this.isExpanded;
   }
 
   blur() {
-    this.isExpanded = SlideInOutState.out;
+    this.isExpanded = false;
   }
 }

@@ -1,4 +1,11 @@
-<mdc-main-header logo="/assets/logo.jpg" organizationName="MDClone"></mdc-main-header>
+<ng-template #edit let-item>
+    <span (click)="editClick(item,$event)" class="admin-table-action__menu ic-hover">
+        <mdc-icon path="ic-dot-menu"></mdc-icon>
+    </span>
+</ng-template>
+<mdc-popup #popupMenu [closeOnClick]="true">
+    <mdc-modal-menu [sublinks]="sublinks" [links]="links"></mdc-modal-menu>
+</mdc-popup>
 <div class="wrapper">
     <div class="shadow-site"></div>
     <main>
@@ -33,7 +40,7 @@
                                 </form>
                             </div>
                         </div>
-                        <mdc-table #table [cellsTemplate]="{ insertDate:dateColumn}" [searchOptions]="searchOptions" [paginator]="paginator" [search]="search"
+                        <mdc-table #table [cellsTemplate]="{ insertDate:dateColumn,editColumn:edit}" [searchOptions]="searchOptions" [paginator]="paginator" [search]="search"
                             [dataSource]="dataSource">
                         </mdc-table>
                         <div class="pager-wrap">
