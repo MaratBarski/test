@@ -7,7 +7,7 @@
     <mdc-auto-complite textField="name" placeHolder="Select item..." (onSelect)="selectItem($event)"
         (completeMethod)="completeMethod($event)" [suggestions]="suggestions">
         <ng-template let-item>
-            <div>{{item.name}}</div>
+            <div style="border-top:1px solid #ccc">{{item.name}}</div>
         </ng-template>
     </mdc-auto-complite>
 </div>

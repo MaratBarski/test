@@ -14,7 +14,7 @@
         [hidden]="isHiddeSuggestions">
         <div (mousemove)="currentIndex=index" (click)="selectItem(index)"
             *ngFor="let item of suggestions;let index = index" tabindex="{{index}}"
-            [ngClass]="{'current':index===currentIndex}">
+            [ngClass]="{'auto-complite-current':index===currentIndex}">
             <ng-container [ngTemplateOutlet]="template" [ngTemplateOutletContext]="{$implicit: item}">
             </ng-container>
         </div>
