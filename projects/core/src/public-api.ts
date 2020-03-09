@@ -57,6 +57,7 @@ export * from './lib/components/modal-menu/modal-menu.component';
 export * from './lib/components/menu-link/menu-link.component';
 export * from './lib/components/accordion/accordion.component';
 export * from './lib/components/auto-complite/auto-complite.component';
+export * from './lib/components/switch-button/switch-button.component';
 
 export * from './lib/directives/show.directive';
 export * from './lib/directives/tooltip.directive';

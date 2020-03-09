@@ -10,6 +10,9 @@
             <div style="border-top:1px solid #ccc">{{item.name}}</div>
         </ng-template>
     </mdc-auto-complite>
+<mdc-switch-button [buttons]="switchButtons" (onClick)="switchBtnClick($event)" [activeIndex]="1"></mdc-switch-button>
+
+
 </div>
 Selected:{{selectedItem?.name}}
 <mdc-popup #popupMenu [closeOnClick]="true">

@@ -51,6 +51,7 @@ import { ModalMenuComponent } from './components/modal-menu/modal-menu.component
 import { MenuLinkComponent } from './components/menu-link/menu-link.component';
 import { AccordionComponent } from './components/accordion/accordion.component';
 import { AutoCompliteComponent } from './components/auto-complite/auto-complite.component';
+import { SwitchButtonComponent } from './components/switch-button/switch-button.component';
 
 // import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 
@@ -92,7 +93,8 @@ import { AutoCompliteComponent } from './components/auto-complite/auto-complite.
     ModalMenuComponent,
     MenuLinkComponent,
     AccordionComponent,
-    AutoCompliteComponent
+    AutoCompliteComponent,
+    SwitchButtonComponent
   ],
   imports: [
     CommonModule,
@@ -139,7 +141,8 @@ import { AutoCompliteComponent } from './components/auto-complite/auto-complite.
     ModalMenuComponent,
     MenuLinkComponent,
     AccordionComponent,
-    AutoCompliteComponent
+    AutoCompliteComponent,
+    SwitchButtonComponent
   ],
   entryComponents: [
     TableHeaderComponent

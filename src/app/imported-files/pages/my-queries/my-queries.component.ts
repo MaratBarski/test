@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { TableModel, MenuLink, PopupComponent, TableComponent } from '../../../core-api';
+import { TableModel, MenuLink, PopupComponent, TableComponent, SwitchButtonModel } from '../../../core-api';
 
 @Component({
   selector: 'md-my-queries',
@@ -21,6 +21,24 @@ export class MyQueriesComponent implements OnInit {
 
   ngOnInit() {
     this.initData();
+  }
+
+  switchButtons: Array<SwitchButtonModel> = [
+    {
+      disable: false,
+      icon: 'ic-numeric'
+    },
+    {
+      disable: false,
+      icon: 'ic-textual'
+    },
+    {
+      disable: true,
+      icon: 'ic-calendar'
+    }
+  ]
+  switchBtnClick(index: number): void {
+    console.log(index);
   }
 
   suggestions = [];

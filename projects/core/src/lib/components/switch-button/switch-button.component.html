@@ -1,0 +1,7 @@
+<div class="switch-icon">
+    <ng-container *ngFor="let button of buttons;let index = index">
+        <div (click)="btnClick(button,index)" [ngClass]="{'active':index===activeIndex,'disable':button.disable}" class="switch-icon__item">
+            <mdc-icon [path]="button.icon"></mdc-icon>
+        </div>
+    </ng-container>
+</div>
