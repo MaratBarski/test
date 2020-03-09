@@ -9,7 +9,7 @@
                 <div class="form-site__label">Choose File</div>
                 <div class="file-upload">
                     <label class="file-upload__content">
-                        <input (change)="updateFileName($event)" type="file" formControlName="file"><span
+                        <input #fileInput (change)="updateFileName($event)" type="file" formControlName="file"><span
                             class="file-upload__btn">Choose File</span><span class="file-upload__name disable">
                             <ng-template [ngIf]="!fileName">
                                 Select a CSV or Excel file

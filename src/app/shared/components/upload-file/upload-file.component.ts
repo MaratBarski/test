@@ -1,6 +1,7 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { SelectOption } from '../../../core-api';
+import { UploadService, UploadStatus } from '@app/shared/services/upload.service';
 
 @Component({
   selector: 'md-upload-file',
@@ -9,7 +10,11 @@ import { SelectOption } from '../../../core-api';
 })
 export class UploadFileComponent implements OnInit {
 
+  constructor(private uploadService: UploadService) { }
+
+  @ViewChild('fileInput', { static: true }) fileInput: ElementRef;
   @Output() onCancel = new EventEmitter<void>();
+  @Output() onUpload = new EventEmitter<void>();
   isShared = false;
   selectOptions: Array<SelectOption>;
   selectedOption: SelectOption;
@@ -41,10 +46,21 @@ export class UploadFileComponent implements OnInit {
 
   uploadFile(event: any): void {
     event.preventDefault();
-    alert(JSON.stringify(this.formGroup.value))
+    //alert(JSON.stringify(this.formGroup.value))
     if (!this.formGroup.valid) {
       return;
     }
+    const formData: FormData = new FormData();
+    formData.append('file', this.fileInput.nativeElement.files[0]);
+    this.uploadService.add({
+      title: 'File source',
+      form: formData,
+      url: 'http://',
+      status: UploadStatus.waiting,
+      progress: 0
+    });
+    this.reset();
+    this.onUpload.emit();
   }
 
   cancel(): void {

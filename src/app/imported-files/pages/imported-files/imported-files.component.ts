@@ -6,6 +6,7 @@ import { load } from '../../store/actions/imported-files.actions';
 import { selectData } from '../../store/selectors/imported-files.selector';
 import { FileSource } from '../../models/file-source';
 import { Subscription } from 'rxjs';
+import { UploadService } from '@app/shared/services/upload.service';
 
 @Component({
   selector: 'md-imported-files',
@@ -49,7 +50,7 @@ export class ImportedFilesComponent implements OnInit, OnDestroy {
     icon: 'ic-view',
     click: (source) => { console.log(JSON.stringify(source)); }
   }
-  
+
   sublinks: Array<MenuLink> = [this.deleteLink];
   links: Array<MenuLink> = [
     this.editLink,

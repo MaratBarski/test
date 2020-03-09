@@ -58,7 +58,7 @@
     </main>
 </div>
 <mdc-modal-window [hidden]="!showUploadFile">
-    <md-upload-file (onCancel)="showUploadFile=false"></md-upload-file>
+    <md-upload-file (onUpload)="showUploadFile=false" (onCancel)="showUploadFile=false"></md-upload-file>
 </mdc-modal-window>
 <ng-template #dateColumn let-item>
     {{item.insertDate|date}}
