@@ -55,7 +55,7 @@ export class UploadFileComponent implements OnInit {
     }
     const formData: FormData = new FormData();
     formData.append('file', this.fileInput.nativeElement.files[0]);
-    formData.append('typeFileName', this.formGroup.value.typeFileName);
+    formData.append('fileName', this.formGroup.value.typeFileName);
     formData.append('projectName', this.selectedOption.text);
     formData.append('isShared', this.isShared + '');
     this.uploadService.add({
