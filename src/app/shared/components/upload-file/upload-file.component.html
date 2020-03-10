@@ -27,8 +27,7 @@
             </div>
             <div class="form-site__item">
                 <label class="form-site__label" for="project">Environment</label>
-                <mdc-select maxHeight="150px" [selectUp]="true" [selected]="selectedOption" (changed)="changed($event)" [options]="selectOptions">
-                </mdc-select>
+                <md-project-combo [selectedProject]="selectedProjectID" (onChange)="changedProject($event)"></md-project-combo>
             </div>
             <div class="form-site__item">
                 <label class="form-site__label">Make this a shared file</label>

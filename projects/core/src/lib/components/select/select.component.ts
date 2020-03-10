@@ -4,6 +4,7 @@ import { ComponentService } from '../../services/component.service';
 
 export class SelectOption {
   text: string;
+  id: string;
 }
 @Component({
   selector: 'mdc-select',

@@ -11,10 +11,13 @@ import {
   MatSlideToggleModule
 } from '@angular/material';
 import { UploadFileComponent } from './components/upload-file/upload-file.component';
-
+import { ProjectComboComponent } from './components/project-combo/project-combo.component';
 
 @NgModule({
-  declarations: [UploadFileComponent],
+  declarations: [
+    UploadFileComponent, 
+    ProjectComboComponent
+  ],
   imports: [
     CommonModule,
     MatButtonModule,
@@ -25,6 +28,7 @@ import { UploadFileComponent } from './components/upload-file/upload-file.compon
     MatSliderModule,
     MatSlideToggleModule
   ],
-  entryComponents: []
+  entryComponents: [
+  ]
 })
 export class SharedModule { }

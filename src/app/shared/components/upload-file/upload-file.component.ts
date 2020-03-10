@@ -18,11 +18,10 @@ export class UploadFileComponent implements OnInit {
   @Output() onCancel = new EventEmitter<void>();
   @Output() onUpload = new EventEmitter<void>();
   isShared = false;
-  selectOptions: Array<SelectOption>;
-  selectedOption: SelectOption;
+  selectedProjectID = '';
   fileName = '';
   get isValid(): boolean {
-    return this.formGroup.valid;
+    return this.formGroup.valid && !!this.selectedProjectID;
   }
 
   formGroup: FormGroup;
@@ -36,12 +35,6 @@ export class UploadFileComponent implements OnInit {
         Validators.required
       ])
     });
-
-    this.selectOptions = [
-      { text: 'Project1' },
-      { text: 'Project2' }
-    ];
-    this.selectedOption = this.selectOptions[1];
   }
 
   @Offline(`${ENV.serverUrl}${ENV.endPoints.uploadFileSource}`)
@@ -49,15 +42,14 @@ export class UploadFileComponent implements OnInit {
 
   uploadFile(event: any): void {
     event.preventDefault();
-    //alert(JSON.stringify(this.formGroup.value));
     if (!this.formGroup.valid) {
       return;
     }
     const formData: FormData = new FormData();
     formData.append('file', this.fileInput.nativeElement.files[0]);
     formData.append('fileName', this.formGroup.value.typeFileName);
-    formData.append('projectName', this.selectedOption.text);
-    formData.append('isShared', this.isShared + '');
+    formData.append('project', this.selectedProjectID);
+    formData.append('fileType', this.isShared ? '1' : '0');
     this.uploadService.add({
       title: 'File source',
       form: formData,
@@ -69,8 +61,8 @@ export class UploadFileComponent implements OnInit {
     this.onUpload.emit();
   }
 
-  changed(option: SelectOption): void {
-    this.selectedOption = option;
+  changedProject(id: string): void {
+    this.selectedProjectID = id;
   }
 
   cancel(): void {

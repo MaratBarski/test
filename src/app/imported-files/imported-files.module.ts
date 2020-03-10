@@ -10,6 +10,7 @@ import { fileSource } from './store/reducers/imported-files.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { SourceFileEffect } from './store/effects/imported-files-load.effect';
 import { MyQueriesComponent } from './pages/my-queries/my-queries.component';
+import { ProjectComboComponent } from '@app/shared/components/project-combo/project-combo.component';
 
 const routes: Array<Route> = [
   { path: '', component: ImportedFilesComponent },
@@ -20,6 +21,7 @@ const routes: Array<Route> = [
   declarations: [
     ImportedFilesComponent,
     UploadFileComponent,
+    ProjectComboComponent,
     MyQueriesComponent
   ],
   imports: [

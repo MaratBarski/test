@@ -10,6 +10,7 @@ import { UserResponse } from '../models/UserInfo';
 import { BaseSibscriber } from '../common/BaseSibscriber';
 import { userSelector } from '../store/selectors/user.selectors';
 import { userData } from '../store/actions/user.actions';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,12 @@ export class LoginService extends BaseSibscriber implements CanActivate {
 
   get userInfo(): UserResponse { return this._userInfo; }
   private _userInfo: UserResponse;
+  private _userDataUpdated = new BehaviorSubject<UserResponse>(undefined);
 
+  get onUserInfoUpdated(): Observable<UserResponse> {
+    return this._userDataUpdated.asObservable();
+  }
+  
   constructor(
     private dataService: DataService,
     private store: Store<any>
@@ -26,6 +32,7 @@ export class LoginService extends BaseSibscriber implements CanActivate {
     super();
     super.add(this.store.select(userSelector).subscribe(user => {
       this._userInfo = user;
+      this._userDataUpdated.next(this._userInfo);
     }));
   }
 
