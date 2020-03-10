@@ -2,6 +2,8 @@ import { Component, OnInit, Output, EventEmitter, ViewChild, ElementRef } from '
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { SelectOption } from '../../../core-api';
 import { UploadService, UploadStatus } from '@app/shared/services/upload.service';
+import { ENV } from 'projects/core/src/public-api';
+import { Offline } from '@app/shared/decorators/offline.decorator';
 
 @Component({
   selector: 'md-upload-file',
@@ -35,32 +37,40 @@ export class UploadFileComponent implements OnInit {
       ])
     });
 
-    this.selectOptions = [];
-    for (let i = 0; i < 10; i++) {
-      this.selectOptions.push({
-        text: `Option number : ${i + 1}`
-      })
-    }
+    this.selectOptions = [
+      { text: 'Project1' },
+      { text: 'Project2' }
+    ];
     this.selectedOption = this.selectOptions[1];
   }
 
+  @Offline(`${ENV.serverUrl}${ENV.endPoints.uploadFileSource}`)
+  private _uploadUrl = `${ENV.serverUrl}${ENV.endPoints.uploadFileSource}`;
+
   uploadFile(event: any): void {
     event.preventDefault();
-    //alert(JSON.stringify(this.formGroup.value))
+    //alert(JSON.stringify(this.formGroup.value));
     if (!this.formGroup.valid) {
       return;
     }
     const formData: FormData = new FormData();
     formData.append('file', this.fileInput.nativeElement.files[0]);
+    formData.append('typeFileName', this.formGroup.value.typeFileName);
+    formData.append('projectName', this.selectedOption.text);
+    formData.append('isShared', this.isShared + '');
     this.uploadService.add({
       title: 'File source',
       form: formData,
-      url: 'http://',
+      url: this._uploadUrl,
       status: UploadStatus.waiting,
       progress: 0
     });
     this.reset();
     this.onUpload.emit();
+  }
+
+  changed(option: SelectOption): void {
+    this.selectedOption = option;
   }
 
   cancel(): void {

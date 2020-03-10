@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { HttpClient, HttpEventType } from '@angular/common/http';
 
 export enum UploadStatus {
@@ -19,7 +19,7 @@ export class UploadInfo {
 @Injectable({
   providedIn: 'root'
 })
-export class UploadService {
+export class UploadService implements OnDestroy {
   get uploads(): Array<UploadInfo> { return this._uploads; }
   private _intervalID: any;
   private _uploads: Array<UploadInfo> = [];
@@ -27,6 +27,10 @@ export class UploadService {
     private http: HttpClient
   ) {
     this.startUpload();
+  }
+
+  ngOnDestroy(): void {
+    clearInterval(this._intervalID);
   }
 
   add(uploadInfo: UploadInfo): void {
@@ -41,12 +45,14 @@ export class UploadService {
           observe: 'events'
         }).subscribe(events => {
           if (events.type == HttpEventType.UploadProgress) {
-            console.log('Upload progress: ', Math.round(events.loaded / events.total * 100) + '%');
+            this._uploads[0].status = Math.round(events.loaded / events.total * 100);
+            console.log('Upload progress: ', this._uploads[0].status + '%');
           } else if (events.type === HttpEventType.Response) {
+            this._uploads.splice(0, 1)
             console.log(events);
           }
         })
       }
-    }, 100);
+    }, 1000);
   }
 }

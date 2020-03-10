@@ -6,7 +6,8 @@ export const ENV = {
     isOfflineMode: false,
     endPoints: {
         userData: 'user-data',
-        fileSource: 'mdclone/api/v1/file-source'
+        fileSource: 'mdclone/api/v1/file-source',
+        uploadFileSource: 'mdclone/api/v1/upload-file'
     }
 }
 

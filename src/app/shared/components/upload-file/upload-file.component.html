@@ -27,20 +27,6 @@
             </div>
             <div class="form-site__item">
                 <label class="form-site__label" for="project">Environment</label>
-                <!-- <div class="select select_up" id="project">
-                    <div class="select__head">Select Environment…
-                        <div class="select__head-arr">
-                            <mdc-icon path="ic-select-arr-down"></mdc-icon>
-                        </div>
-                    </div>
-                    <div class="select__option">
-                        <div class="select__param active">Demo project</div>
-                        <div class="select__param">Mimic</div>
-                        <div class="select__param">Project 1</div>
-                        <div class="select__param">Project 2</div>
-                        <div class="select__param">Project with very long name</div>
-                    </div>
-                </div> -->
                 <mdc-select maxHeight="150px" [selectUp]="true" [selected]="selectedOption" (changed)="changed($event)" [options]="selectOptions">
                 </mdc-select>
             </div>
