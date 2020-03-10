@@ -1,6 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { SelectOption } from '../../../core-api';
+import { Component, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 import { UploadService, UploadStatus } from '@app/shared/services/upload.service';
 import { ENV } from 'projects/core/src/public-api';
 import { Offline } from '@app/shared/decorators/offline.decorator';
@@ -10,31 +8,19 @@ import { Offline } from '@app/shared/decorators/offline.decorator';
   templateUrl: './upload-file.component.html',
   styleUrls: ['./upload-file.component.scss']
 })
-export class UploadFileComponent implements OnInit {
+export class UploadFileComponent {
 
   constructor(private uploadService: UploadService) { }
 
   @ViewChild('fileInput', { static: true }) fileInput: ElementRef;
   @Output() onCancel = new EventEmitter<void>();
   @Output() onUpload = new EventEmitter<void>();
-  isShared = false;
-  selectedProjectID = '';
+  fileType = false;
+  project = '';
   fileName = '';
+  file = '';
   get isValid(): boolean {
-    return this.formGroup.valid && !!this.selectedProjectID;
-  }
-
-  formGroup: FormGroup;
-
-  ngOnInit() {
-    this.formGroup = new FormGroup({
-      typeFileName: new FormControl('', [
-        Validators.required
-      ]),
-      file: new FormControl('', [
-        Validators.required
-      ])
-    });
+    return !!this.fileName && !!this.project && !!this.file;
   }
 
   @Offline(`${ENV.serverUrl}${ENV.endPoints.uploadFileSource}`)
@@ -42,14 +28,14 @@ export class UploadFileComponent implements OnInit {
 
   uploadFile(event: any): void {
     event.preventDefault();
-    if (!this.formGroup.valid) {
+    if (!this.isValid) {
       return;
     }
     const formData: FormData = new FormData();
     formData.append('file', this.fileInput.nativeElement.files[0]);
-    formData.append('fileName', this.formGroup.value.typeFileName);
-    formData.append('project', this.selectedProjectID);
-    formData.append('fileType', this.isShared ? '1' : '0');
+    formData.append('fileName', this.fileName);
+    formData.append('project', this.project);
+    formData.append('fileType', this.fileType ? '1' : '0');
     this.uploadService.add({
       title: 'File source',
       form: formData,
@@ -62,7 +48,7 @@ export class UploadFileComponent implements OnInit {
   }
 
   changedProject(id: string): void {
-    this.selectedProjectID = id;
+    this.project = id;
   }
 
   cancel(): void {
@@ -72,11 +58,13 @@ export class UploadFileComponent implements OnInit {
   }
 
   reset(): void {
-    this.formGroup.reset();
     this.fileName = '';
+    this.file = '';
+    this.project = '';
+    this.fileType = false;
   }
 
   updateFileName(event: any): void {
-    this.fileName = this.formGroup.get('file').value;
+    this.file = this.fileInput.nativeElement.value;
   }
 }

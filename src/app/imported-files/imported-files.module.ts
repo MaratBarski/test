@@ -11,6 +11,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { SourceFileEffect } from './store/effects/imported-files-load.effect';
 import { MyQueriesComponent } from './pages/my-queries/my-queries.component';
 import { ProjectComboComponent } from '@app/shared/components/project-combo/project-combo.component';
+import { SharedModule } from '@app/shared/shared.module';
 
 const routes: Array<Route> = [
   { path: '', component: ImportedFilesComponent },
@@ -20,8 +21,6 @@ const routes: Array<Route> = [
 @NgModule({
   declarations: [
     ImportedFilesComponent,
-    UploadFileComponent,
-    ProjectComboComponent,
     MyQueriesComponent
   ],
   imports: [
@@ -29,6 +28,7 @@ const routes: Array<Route> = [
     CoreModule,
     FormsModule,
     ReactiveFormsModule,
+    SharedModule,
     RouterModule.forChild(routes),
     StoreModule.forFeature('fileSource', fileSource),
     EffectsModule.forFeature([SourceFileEffect])

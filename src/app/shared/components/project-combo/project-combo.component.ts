@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { SelectOption } from '@app/core-api';
-import { LoginService, BaseSibscriber } from 'projects/core/src/public-api';
+import { LoginService, BaseSibscriber, SelectComponent } from 'projects/core/src/public-api';
 
 @Component({
   selector: 'md-project-combo',
@@ -9,9 +9,18 @@ import { LoginService, BaseSibscriber } from 'projects/core/src/public-api';
 })
 export class ProjectComboComponent extends BaseSibscriber implements OnInit {
 
+  @Input() emptyProject: SelectOption = { text: 'Select project', id: '' };
   @Output() onChange = new EventEmitter<string>();
   selectOptions: Array<SelectOption>;
-  @Input() selectedProject: string;
+  @Input() set project(project: string) {
+    if (!project) {
+      this.selectedOption = { ...this.emptyProject };
+    }
+    this._project = project;
+  }
+  get project(): string { return this._project; }
+  private _project = '';
+  selectedOption: SelectOption = undefined;
 
   constructor(private loginService: LoginService) {
     super();
@@ -24,14 +33,13 @@ export class ProjectComboComponent extends BaseSibscriber implements OnInit {
         this.selectOptions = ui.data.projects.map(x => {
           return { text: x.projectName, id: x.projectId };
         });
-        this.selectedProject = this.selectOptions.length ? this.selectOptions[0].id : undefined;
+        this.selectedOption = { ...this.emptyProject };
       }));
   }
 
   changedProject(option: SelectOption): void {
-    this.selectedProject = option.id;
-    this.onChange.emit(this.selectedProject);
+    this.project = option.id;
+    this.onChange.emit(this.project);
+    this.selectOptions = this.selectOptions.filter(x => x.id !== this.emptyProject.id);
   }
-
-
 }

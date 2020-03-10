@@ -17,6 +17,7 @@ export class SelectOption {
 export class SelectComponent {
 
   @ViewChild('combo', { static: true }) combo: ElementRef;
+  
   @Input() options: Array<SelectOption>;
   @Input() selected: SelectOption;
   @Input() selectUp = true;

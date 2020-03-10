@@ -12,6 +12,8 @@ import {
 } from '@angular/material';
 import { UploadFileComponent } from './components/upload-file/upload-file.component';
 import { ProjectComboComponent } from './components/project-combo/project-combo.component';
+import { CoreModule } from '@app/core-api';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,9 @@ import { ProjectComboComponent } from './components/project-combo/project-combo.
     ProjectComboComponent
   ],
   imports: [
+    FormsModule,
+    ReactiveFormsModule,
+    CoreModule,
     CommonModule,
     MatButtonModule,
     MatFormFieldModule,
@@ -27,6 +32,10 @@ import { ProjectComboComponent } from './components/project-combo/project-combo.
     MatAutocompleteModule,
     MatSliderModule,
     MatSlideToggleModule
+  ],
+  exports:[
+    UploadFileComponent, 
+    ProjectComboComponent
   ],
   entryComponents: [
   ]
