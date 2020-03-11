@@ -5,10 +5,10 @@ import { CategorizationComponent } from './pages/categorization/categorization.c
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '@app/shared/shared.module';
 import { StoreModule } from '@ngrx/store';
-import { fileSource } from '@app/imported-files/store/reducers/imported-files.reducer';
 import { EffectsModule } from '@ngrx/effects';
-import { SourceFileEffect } from '@app/imported-files/store/effects/imported-files-load.effect';
 import { CoreModule } from '@app/core-api';
+import { categorization } from './store/reducers/categorization.reducer';
+import { CategorizationLoadEffect } from './store/effects/categorization-load.effect';
 
 const routes: Array<Route> = [
   { path: '', component: CategorizationComponent },
@@ -25,9 +25,9 @@ const routes: Array<Route> = [
     ReactiveFormsModule,
     SharedModule,
     RouterModule.forChild(routes),
-    StoreModule.forFeature('fileSource', fileSource),
-    EffectsModule.forFeature([SourceFileEffect])
-  ]
+    StoreModule.forFeature('categorization', categorization),
+    EffectsModule.forFeature([CategorizationLoadEffect])
+  ] 
 })
 export class CategorizationModule { }
 

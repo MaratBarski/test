@@ -1,1 +1,89 @@
-<p>categorization works!</p>
+<div class="wrapper">
+    <div class="shadow-site"></div>
+    <main>
+        <div class="content-page">
+            <md-page-title>Categorization list</md-page-title>
+            <md-page-body>
+                <div class="admin-table-wrap__action">
+                    <div class="admin-table-wrap__col">
+                        <mdc-button (click)="showUploadFile=!showUploadFile" text="+ New Categorization">
+                        </mdc-button>
+                    </div>
+                    <div class="admin-table-wrap__col">
+                        <form class="form-search d-none d-md-block">
+                            <mdc-auto-search pause="500" #search placeholder="{{'search'|translate}}"
+                                (complite)="searchComplite($event)"></mdc-auto-search>
+                        </form>
+                    </div>
+                </div>
+                <div class="admin-table-content">
+                    <div class="admin-table-info">
+                        <div class="admin-table-info__top">
+                            <div class="admin-table-info__head">Details</div>
+                            <div class="admin-table-info__icons"><span class="ic-hover">
+                                    <svg class="icon ic-close-history ic-stroke">
+                                        <use xlink:href="/assets/sprites/sprite.svg#ic-close-history"></use>
+                                    </svg></span></div>
+                        </div>
+                        <div class="admin-table-info__content">
+                            <div class="admin-table-info__item">
+                                <div class="admin-table-info__title">File Name:</div>
+                                <div class="admin-table-info__val"><span
+                                        class="admin-table-info__name">20190804_170415_20181111_154611_Gender_Hierarchy
+                                        (1).csv</span></div>
+                            </div>
+                            <div class="admin-table-info__item">
+                                <div class="admin-table-info__title">Last Modified:</div>
+                                <div class="admin-table-info__val">Sep 8, 2019 12:17</div>
+                            </div>
+                            <div class="admin-table-info__item">
+                                <div class="admin-table-info__title">Description:</div>
+                                <div class="admin-table-info__val">Lorem ipsum dolor sit amet, consectetur
+                                    adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor
+                                    sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar
+                                    sic tempor. Sociis natoque penatibus et magnis dis parturient montes,
+                                    nascetur ridiculus mus.</div>
+                            </div>
+                            <div class="admin-table-info__item">
+                                <div class="admin-table-info__title">State:</div>
+                                <div class="admin-table-info__val">
+                                    <div class="admin-table-info__ic">
+                                        <svg class="icon ic-robot ic-grey">
+                                            <use xlink:href="/assets/sprites/sprite.svg#ic-robot"></use>
+                                        </svg>
+                                    </div>Auto-Update Hierarchy
+                                </div>
+                            </div>
+                            <div class="admin-table-info__item">
+                                <div class="admin-table-info__title">Used in:</div>
+                                <div class="admin-table-info__val">
+                                    <div class="admin-table-info__ic">
+                                        <svg class="icon ic-plug ic-grey">
+                                            <use xlink:href="/assets/sprites/sprite.svg#ic-plug"></use>
+                                        </svg>
+                                    </div>Diagnosis, Admission Diagnosis, Procedures, Customised events
+                                </div>
+                            </div>
+                            <div class="admin-table-info__item">
+                                <div class="admin-table-info__title">Environment:</div>
+                                <div class="admin-table-info__val">JB_TEST</div>
+                            </div>
+                            <div class="admin-table-info__item">
+                                <div class="admin-table-info__title">Default Category:</div>
+                                <div class="admin-table-info__val">ATC1</div>
+                            </div>
+                        </div>
+                    </div>
+                    <mdc-table #table [searchOptions]="searchOptions" [paginator]="paginator" [search]="search"
+                        [dataSource]="dataSource">
+                    </mdc-table>
+                </div>
+                <div class="pager-wrap">
+                    <mdc-paginator #paginator paginationTitle="{{'paginationTitle'|translate}}"
+                        noPagingTitle="Showing {0} files" [blockSize]="3" [pageSize]="50" [currentPage]="0">
+                    </mdc-paginator>
+                </div>
+            </md-page-body>
+        </div>
+    </main>
+</div>

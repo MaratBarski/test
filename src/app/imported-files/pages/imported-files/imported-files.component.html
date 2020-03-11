@@ -9,52 +9,36 @@
 <div class="wrapper">
     <div class="shadow-site"></div>
     <main>
-        <section class="import-file">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="import-file__head-wrap">
-                            <h1>Imported files</h1><span class="import-file__detail d-md-none">Details</span>
-                        </div>
+        <md-page-title>Imported files</md-page-title>
+        <md-page-body>
+            <div class="admin-table-wrap__action">
+                <div class="admin-table-wrap__col">
+                    <mdc-button (click)="showUploadFile=!showUploadFile" text="+ {{'NewFile'|translate}}">
+                    </mdc-button>
+                </div>
+                <div class="admin-table-wrap__col">
+                    <div class="tabs-page">
+                        <mdc-tabs [active]="tabActive" [tabs]="tabs" (select)="selectTab($event)">
+                        </mdc-tabs>
                     </div>
+                    <form class="form-search d-none d-md-block">
+                        <mdc-auto-search pause="500" #search placeholder="{{'search'|translate}}"
+                            (complite)="searchComplite($event)"></mdc-auto-search>
+                    </form>
                 </div>
             </div>
-        </section>
-        <section class="admin-table-wrap">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="admin-table-wrap__action">
-                            <div class="admin-table-wrap__col">
-                                <mdc-button (click)="showUploadFile=!showUploadFile" text="+ {{'NewFile'|translate}}">
-                                </mdc-button>
-                            </div>
-                            <div class="admin-table-wrap__col">
-                                <div class="tabs-page">
-                                    <mdc-tabs [active]="tabActive" [tabs]="tabs" (select)="selectTab($event)">
-                                    </mdc-tabs>
-                                </div>
-                                <form class="form-search d-none d-md-block">
-                                    <mdc-auto-search pause="500" #search placeholder="{{'search'|translate}}"
-                                        (complite)="searchComplite($event)"></mdc-auto-search>
-                                </form>
-                            </div>
-                        </div>
-                        <mdc-table #table [cellsTemplate]="{ insertDate:dateColumn,editColumn:edit}" [searchOptions]="searchOptions" [paginator]="paginator" [search]="search"
-                            [dataSource]="dataSource">
-                        </mdc-table>
-                        <div class="pager-wrap">
-                            <mdc-paginator #paginator paginationTitle="{{'paginationTitle'|translate}}"
-                                noPagingTitle="Showing {0} files"
-                                [blockSize]="3"
-                                [pageSize]="50" 
-                                [currentPage]="0">
-                            </mdc-paginator>
-                        </div>
-                    </div>
-                </div>
+            <mdc-table #table [cellsTemplate]="{ insertDate:dateColumn,editColumn:edit}" [searchOptions]="searchOptions" [paginator]="paginator" [search]="search"
+                [dataSource]="dataSource">
+            </mdc-table>
+            <div class="pager-wrap">
+                <mdc-paginator #paginator paginationTitle="{{'paginationTitle'|translate}}"
+                    noPagingTitle="Showing {0} files"
+                    [blockSize]="3"
+                    [pageSize]="50" 
+                    [currentPage]="0">
+                </mdc-paginator>
             </div>
-        </section>
+        </md-page-body>
     </main>
 </div>
 <mdc-modal-window [hidden]="!showUploadFile">
