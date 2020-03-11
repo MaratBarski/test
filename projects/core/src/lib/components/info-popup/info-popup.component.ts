@@ -26,7 +26,6 @@ export class InfoPopupComponent implements OnInit {
   constructor() { }
 
   display(event: any): void {
-
     this.top = event.clientY + ComponentService.scrollTop();
     this.left = event.clientX + 20 - ComponentService.getRect(this.popup).width;
     setTimeout(() => {
@@ -35,7 +34,6 @@ export class InfoPopupComponent implements OnInit {
         this.top -= ComponentService.getRect(this.popup).height;
       }
     }, 10);
-
   }
 
   ngOnInit() {
