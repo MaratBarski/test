@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store';
 import { load } from '@app/categorization/store/actions/categorization.actions';
 import { CategorizationService } from '@app/categorization/services/categorization.service';
 import { selectCategorization } from '@app/categorization/store/selectors/categorization.selector';
+import { InfoPopupComponent } from 'core/public-api';
 
 @Component({
   selector: 'md-categorization',
@@ -13,9 +14,12 @@ import { selectCategorization } from '@app/categorization/store/selectors/catego
 export class CategorizationComponent extends BaseSibscriber implements OnInit {
 
   @ViewChild('table', { static: true }) table: TableComponent;
+  @ViewChild('rowInfo', { static: true }) rowInfo: InfoPopupComponent;
+
   showUploadFile = false;
   dataOrigin: TableModel;
   dataSource: TableModel;
+  currentRow = { state: true }
 
   constructor(
     private translateService: TranslateService,
@@ -29,6 +33,10 @@ export class CategorizationComponent extends BaseSibscriber implements OnInit {
   searchOptions = ['fileName'];
 
   searchComplite(text: string): void {
+  }
+
+  showInfo(event: any, item: any): void {
+    this.rowInfo.display(event);
   }
 
   ngOnInit() {

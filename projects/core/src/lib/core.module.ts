@@ -52,6 +52,7 @@ import { MenuLinkComponent } from './components/menu-link/menu-link.component';
 import { AccordionComponent } from './components/accordion/accordion.component';
 import { AutoCompliteComponent } from './components/auto-complite/auto-complite.component';
 import { SwitchButtonComponent } from './components/switch-button/switch-button.component';
+import { InfoPopupComponent } from './components/info-popup/info-popup.component';
 
 // import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 
@@ -94,7 +95,8 @@ import { SwitchButtonComponent } from './components/switch-button/switch-button.
     MenuLinkComponent,
     AccordionComponent,
     AutoCompliteComponent,
-    SwitchButtonComponent
+    SwitchButtonComponent,
+    InfoPopupComponent
   ],
   imports: [
     CommonModule,
@@ -142,7 +144,8 @@ import { SwitchButtonComponent } from './components/switch-button/switch-button.
     MenuLinkComponent,
     AccordionComponent,
     AutoCompliteComponent,
-    SwitchButtonComponent
+    SwitchButtonComponent,
+    InfoPopupComponent
   ],
   entryComponents: [
     TableHeaderComponent

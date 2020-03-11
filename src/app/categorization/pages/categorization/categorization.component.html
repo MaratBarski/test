@@ -1,3 +1,27 @@
+<mdc-info-popup #rowInfo>
+    <div class="info-popup__text-wrap">
+        <div class="info-popup__text">
+            <p>The categorization structure was manually changed and no longer match the previous one. </p>
+            <p>After the issue is fixed by the ETL owner, turn off the toggle below to restart the auto-update.
+            </p>
+        </div>
+    </div>
+    <div class="info-popup-switch">
+        <div class="info-popup-switch__content">
+            <div class="info-popup-switch__text-wrap">
+                <div class="info-popup-switch__title">Hold Automatic loading</div>
+            </div>
+        </div>
+        <div class="switch">
+            <mdc-toggle-button no="No" yes="Yes" [(ngModel)]="currentRow.state"></mdc-toggle-button>
+        </div>
+    </div>
+</mdc-info-popup>
+<ng-template let-item #stateColumn>
+    <span class="admin-table__icon">
+        <mdc-icon (mouseenter)="showInfo($event,item)" path="ic-warning"></mdc-icon>
+    </span>
+</ng-template>
 <div class="wrapper">
     <div class="shadow-site"></div>
     <main>
@@ -74,8 +98,8 @@
                             </div>
                         </div>
                     </div>
-                    <mdc-table #table [searchOptions]="searchOptions" [paginator]="paginator" [search]="search"
-                        [dataSource]="dataSource">
+                    <mdc-table #table [cellsTemplate]="{ insertDate:stateColumn}" [searchOptions]="searchOptions"
+                        [paginator]="paginator" [search]="search" [dataSource]="dataSource">
                     </mdc-table>
                 </div>
                 <div class="pager-wrap">

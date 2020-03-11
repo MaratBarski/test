@@ -7,7 +7,8 @@ export const ENV = {
     endPoints: {
         userData: 'user-data',
         fileSource: 'mdclone/api/v1/file-source',
-        uploadFileSource: 'mdclone/api/v1/upload/file-source'
+        uploadFileSource: 'mdclone/api/v1/upload/file-source',
+        hierarchy: 'mdclone/api/v1/hierarchy'
     }
 }
 
