@@ -17,7 +17,12 @@ const routes: Routes = [
   },
   {
     path: 'imported-files',
-    loadChildren: () => import('./imported-files/imported-files.module').then(m => m.ImportedFilesModule) ,
+    loadChildren: () => import('./imported-files/imported-files.module').then(m => m.ImportedFilesModule),
+    canActivate: [LoginService]
+  },
+  {
+    path: 'categorization',
+    loadChildren: () => import('./categorization/categorization.module').then(m => m.CategorizationModule),
     canActivate: [LoginService]
   },
   {
