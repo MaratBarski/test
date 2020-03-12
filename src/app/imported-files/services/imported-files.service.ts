@@ -68,6 +68,7 @@ export class ImportedFilesService {
           environment: fl.projectObj ? fl.projectObj.projectName : '',
           user: fl.uploadedBy
         },
+        source: fl,
         isActive: false
       })
     })

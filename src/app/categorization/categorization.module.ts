@@ -9,14 +9,19 @@ import { EffectsModule } from '@ngrx/effects';
 import { CoreModule } from '@app/core-api';
 import { categorization } from './store/reducers/categorization.reducer';
 import { CategorizationLoadEffect } from './store/effects/categorization-load.effect';
+import { MapCategoriesComponent } from './pages/map-categories/map-categories.component';
+import { CategoryInfoComponent } from './components/category-info/category-info.component';
 
 const routes: Array<Route> = [
   { path: '', component: CategorizationComponent },
+  { path: 'map-categories/:id', component: MapCategoriesComponent }
 ]
 
 @NgModule({
   declarations: [
-    CategorizationComponent
+    CategorizationComponent,
+    MapCategoriesComponent,
+    CategoryInfoComponent
   ],
   imports: [
     CommonModule,
@@ -27,7 +32,7 @@ const routes: Array<Route> = [
     RouterModule.forChild(routes),
     StoreModule.forFeature('categorization', categorization),
     EffectsModule.forFeature([CategorizationLoadEffect])
-  ] 
+  ]
 })
 export class CategorizationModule { }
 

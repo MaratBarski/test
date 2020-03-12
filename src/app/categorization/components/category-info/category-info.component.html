@@ -1,0 +1,50 @@
+<div>
+    <div class="admin-table-info__top">
+        <div class="admin-table-info__head">Details</div>
+        <div class="admin-table-info__icons">
+            <span (click)="closeInfo()" class="ic-hover">
+                <mdc-icon path="ic-close"></mdc-icon>
+            </span></div>
+    </div>
+    <div class="admin-table-info__content">
+        <div class="admin-table-info__item">
+            <div class="admin-table-info__title">File Name:</div>
+            <div class="admin-table-info__val"><span class="admin-table-info__name">{{category?.hierarchyFile}}</span>
+            </div>
+        </div>
+        <div class="admin-table-info__item">
+            <div class="admin-table-info__title">Last Modified:</div>
+            <div class="admin-table-info__val">{{category?.insertDate|date}}</div>
+        </div>
+        <div class="admin-table-info__item">
+            <div class="admin-table-info__title">Description:</div>
+            <div class="admin-table-info__val">
+                {{category?.description}}
+            </div>
+        </div>
+        <div class="admin-table-info__item">
+            <div class="admin-table-info__title">State:</div>
+            <div class="admin-table-info__val">
+                <div class="admin-table-info__ic">
+                    <mdc-icon path="ic-robot"></mdc-icon>
+                </div>Auto-Update Hierarchy
+            </div>
+        </div>
+        <div class="admin-table-info__item">
+            <div class="admin-table-info__title">Used in:</div>
+            <div class="admin-table-info__val">
+                <div class="admin-table-info__ic">
+                    <mdc-icon path="ic-plug"></mdc-icon>
+                </div>Diagnosis, Admission Diagnosis, Procedures, Customised events
+            </div>
+        </div>
+        <div class="admin-table-info__item">
+            <div class="admin-table-info__title">Environment:</div>
+            <div class="admin-table-info__val">{{category?.domain}}</div>
+        </div>
+        <div class="admin-table-info__item">
+            <div class="admin-table-info__title">Default Category:</div>
+            <div class="admin-table-info__val">ATC1</div>
+        </div>
+    </div>
+</div>

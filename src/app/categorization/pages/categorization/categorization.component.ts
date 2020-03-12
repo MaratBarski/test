@@ -18,6 +18,8 @@ export class CategorizationComponent extends BaseSibscriber implements OnInit {
   @ViewChild('rowUse', { static: true }) rowUse: InfoPopupComponent;
   @ViewChild('popupMenu', { static: true }) popupMenu: PopupComponent;
 
+  selectedCategory: any;
+  showCategoryInfo = false;
   showUploadFile = false;
   dataOrigin: TableModel;
   dataSource: TableModel;
@@ -96,10 +98,18 @@ export class CategorizationComponent extends BaseSibscriber implements OnInit {
       this.store.select(selectCategorization).subscribe((categorization: any) => {
         this.dataOrigin = this.dataSource = this.categorizationService.createDataSource(categorization.data);
       }));
-    super.add(super.onAfterDestroy.subscribe(() => {
-      
-    }));
     this.store.dispatch(load());
+  }
+
+  openCategoryInfo(category: any): void {
+    this.selectedCategory = category;
+    this.showCategoryInfo = true;
+
+    //alert(JSON.stringify(item));
+  }
+
+  closeCategoryInfo():void{
+    this.showCategoryInfo = false;
   }
 
 }

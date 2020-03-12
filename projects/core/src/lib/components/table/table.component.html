@@ -2,9 +2,9 @@
     <table mdcTable>
         <thead *ngIf="dataSource?.headers">
             <tr mdcTableHeader>
-                <th  *ngFor="let header of dataSource.headers;let index = index" [mdcTableItem]="index">
-                    <mdc-table-header *ngIf="!headersTemplate || !headersTemplate[header.columnId]" (onSort)="sort($event)"
-                        [model]="header"></mdc-table-header>
+                <th *ngFor="let header of dataSource.headers;let index = index" [mdcTableItem]="index">
+                    <mdc-table-header *ngIf="!headersTemplate || !headersTemplate[header.columnId]"
+                        (onSort)="sort($event)" [model]="header"></mdc-table-header>
                     <ng-container *ngIf="headersTemplate && headersTemplate[header.columnId]"
                         [ngTemplateOutlet]="headersTemplate[header.columnId]"
                         [ngTemplateOutletContext]="{$implicit: header}"></ng-container>
@@ -16,11 +16,12 @@
                 *ngFor="let row of rows|sortTable:sortModel|pagination:{currentPage:paginator?.currentPage,pageSize:paginator?.pageSize};let rowIndex = index"
                 [ngClass]="{'active':row.isActive}" mdcTableRow>
                 <td *ngFor="let header of dataSource.headers;let index = index" [mdcTableItem]="index">
-                    <mdc-text-block *ngIf="!cellsTemplate || !cellsTemplate[header.columnId]" [maxWidth]="header.maxWidth||500"
-                        text="{{row.cells[header.columnId]}}">
+                    <mdc-text-block *ngIf="!cellsTemplate || !cellsTemplate[header.columnId]"
+                        [maxWidth]="header.maxWidth||500" text="{{row.cells[header.columnId]}}">
                     </mdc-text-block>
                     <ng-container *ngIf="cellsTemplate && cellsTemplate[header.columnId]"
-                        [ngTemplateOutlet]="cellsTemplate[header.columnId]" [ngTemplateOutletContext]="{$implicit: row.cells}">
+                        [ngTemplateOutlet]="cellsTemplate[header.columnId]"
+                        [ngTemplateOutletContext]="{$implicit: row.cells,source:row.source}">
                     </ng-container>
                 </td>
             </tr>

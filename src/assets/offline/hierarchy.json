@@ -2,10 +2,10 @@
     "data": [
         {
             "hierarchyRootId": "238",
-            "description": "kostya is the king",
+            "description": "description",
             "domain": "temp.mdclone-dev.com",
             "hierarchyFile": "20180830_104345_p1.csv",
-            "hierarchyName": "kostya is the king",
+            "hierarchyName": "test name",
             "projectId": "1",
             "hierarchyFilePath": "E:\\files\\Hierarchies\\",
             "insertDate": "2018-08-23T09:52:48.000Z",

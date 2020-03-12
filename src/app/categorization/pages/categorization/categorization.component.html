@@ -140,6 +140,14 @@
         <mdc-icon path="ic-warning"></mdc-icon>
     </span>
 </ng-template>
-<ng-template let-item #hierarchyName>
-    <a routerLink="map-category/{{item.projectId}}">{{item.hierarchyName}}</a>
+<ng-template let-item let-src="source" #hierarchyName>
+    <span class="pointer link" (click)="openCategoryInfo(src)">{{item.hierarchyName}}</span>
 </ng-template>
+
+<mdc-modal-window [hidden]="!showUploadFile">
+    <md-upload-file (onUpload)="showUploadFile=false" (onCancel)="showUploadFile=false"></md-upload-file>
+</mdc-modal-window>
+
+<mdc-modal-window [hidden]="!showCategoryInfo">
+    <md-category-info (onClose)="closeCategoryInfo()" [category]="selectedCategory"></md-category-info>    
+</mdc-modal-window>

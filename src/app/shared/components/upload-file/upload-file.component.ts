@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
+import { Component, Output, EventEmitter, ViewChild, ElementRef, Input } from '@angular/core';
 import { UploadService, UploadStatus } from '@app/shared/services/upload.service';
 import { ENV } from 'projects/core/src/public-api';
 import { Offline } from '@app/shared/decorators/offline.decorator';
@@ -15,6 +15,8 @@ export class UploadFileComponent {
   @ViewChild('fileInput', { static: true }) fileInput: ElementRef;
   @Output() onCancel = new EventEmitter<void>();
   @Output() onUpload = new EventEmitter<void>();
+  @Input() set uploadUrl(uploadUrl: string) { this._uploadUrl = uploadUrl; }
+  get uploadUrl(): string { return this._uploadUrl; }
   fileType = false;
   project = '';
   fileName = '';
