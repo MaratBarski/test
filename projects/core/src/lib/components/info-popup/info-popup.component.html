@@ -1,4 +1,4 @@
-<div #popup tabindex="1"  [style.width]="width" [style.opacity]="opacity" [style.visibility]="visibility" [style.left.px]="left" [style.top.px]="top" (mouseleave)="show=false" class="info-popup info-popup_right"
+<div #popup tabindex="1"  [style.width]="width" [style.opacity]="opacity" [style.visibility]="visibility" [style.left.px]="left" [style.top.px]="top" (mouseover)="mouseOver($event)" (mouseleave)="mouseLeave($event)" class="info-popup info-popup_right"
     style="position: absolute;z-index: 9999;">
     <div class="form-site">
         <div class="info-popup__top">

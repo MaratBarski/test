@@ -43,6 +43,14 @@ export class CategorizationComponent extends BaseSibscriber implements OnInit {
     this.rowUse.display(event);
   }
 
+  hideInfo(event: any, item: any): void {
+    this.rowInfo.startClose();
+  }
+
+  hideUse(event: any, item: any): void { 
+    this.rowUse.startClose();
+  }
+
   deleteLink: MenuLink = {
     text: 'Delete',
     disable: false,

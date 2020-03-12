@@ -14,6 +14,7 @@ export class InfoPopupComponent implements OnInit {
   @Input() top = 0;
   @Input() left = 0;
   @ViewChild('popup', { static: true }) popup: ElementRef;
+  private _closeTimeOutID: any;
 
   get visibility(): string {
     return this.show ? 'visible' : 'hidden';
@@ -25,7 +26,32 @@ export class InfoPopupComponent implements OnInit {
 
   constructor() { }
 
+  mouseLeave(event: any): void {
+    this.show = false;
+  }
+
+  mouseOver(event:any):void{
+    this.stopClose();
+    this.show = true;
+  }
+
+  stopClose(): void {
+    if (this._closeTimeOutID) {
+      clearTimeout(this._closeTimeOutID);
+      this._closeTimeOutID = undefined;
+    }
+  }
+
+  startClose(): void {
+    this.stopClose();
+    this._closeTimeOutID = setTimeout(() => {
+      this.show = false;
+    }, 1000);
+  }
+
   display(event: any): void {
+    this.stopClose();
+    //if (this.show) { return; }
     this.top = event.clientY + ComponentService.scrollTop();
     this.left = event.clientX + 20 - ComponentService.getRect(this.popup).width;
     setTimeout(() => {
@@ -33,7 +59,7 @@ export class InfoPopupComponent implements OnInit {
       if (window.innerHeight < ComponentService.getRect(this.popup).top + ComponentService.getRect(this.popup).height) {
         this.top -= ComponentService.getRect(this.popup).height;
       }
-    }, 10);
+    }, 1);
   }
 
   ngOnInit() {

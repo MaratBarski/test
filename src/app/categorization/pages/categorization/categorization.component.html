@@ -131,12 +131,12 @@
     </span>
 </ng-template>
 <ng-template let-item #stateColumn>
-    <span class="admin-table__icon">
-        <mdc-icon (mouseenter)="showInfo($event,item)" path="ic-warning"></mdc-icon>
+    <span (mouseleave)="hideInfo($event,item)" (mouseenter)="showInfo($event,item)" class="admin-table__icon">
+        <mdc-icon path="ic-warning"></mdc-icon>
     </span>
 </ng-template>
 <ng-template let-item #inUseColumn>
-    <span class="admin-table__icon">
-        <mdc-icon (mouseenter)="showUse($event,item)" path="ic-warning"></mdc-icon>
+    <span (mouseleave)="hideUse($event,item)" (mouseenter)="showUse($event,item)" class="admin-table__icon">
+        <mdc-icon path="ic-warning"></mdc-icon>
     </span>
 </ng-template>
