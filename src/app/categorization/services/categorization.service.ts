@@ -59,7 +59,6 @@ export class CategorizationService {
         cells: {
           hierarchyName: fl.hierarchyName,
           insertDate: fl.insertDate,
-          //state: fl.projectId,
           domain: fl.domain,
           defaultLevelId: fl.defaultLevelId
         },

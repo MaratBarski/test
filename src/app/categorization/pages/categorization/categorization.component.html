@@ -107,9 +107,9 @@
                             </div>
                         </div>
                     </div>
-                    <mdc-table #table [cellsTemplate]="{ state:stateColumn,insertDate:dateColumn,editColumn:edit,inUseColumn:inUseColumn}"
-                        [searchOptions]="searchOptions" [paginator]="paginator" [search]="search"
-                        [dataSource]="dataSource">
+                    <mdc-table #table [dataSource]="dataSource"
+                        [cellsTemplate]="{ state:stateColumn,insertDate:dateColumn,editColumn:edit,inUseColumn:inUseColumn,hierarchyName:hierarchyName}"
+                        [searchOptions]="searchOptions" [paginator]="paginator" [search]="search">
                     </mdc-table>
                 </div>
                 <div class="pager-wrap">
@@ -139,4 +139,7 @@
     <span (mouseleave)="hideUse($event,item)" (mouseenter)="showUse($event,item)" class="admin-table__icon">
         <mdc-icon path="ic-warning"></mdc-icon>
     </span>
+</ng-template>
+<ng-template let-item #hierarchyName>
+    <a routerLink="map-category/{{item.projectId}}">{{item.hierarchyName}}</a>
 </ng-template>

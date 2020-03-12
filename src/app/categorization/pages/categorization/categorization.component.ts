@@ -30,24 +30,24 @@ export class CategorizationComponent extends BaseSibscriber implements OnInit {
     super();
   }
 
-  searchOptions = ['fileName'];
+  searchOptions = ['hierarchyName'];
 
   searchComplite(text: string): void {
   }
 
   showInfo(event: any, item: any): void {
-    this.rowInfo.display(event);
+    this.rowInfo.display(event, item);
   }
 
   showUse(event: any, item: any): void {
-    this.rowUse.display(event);
+    this.rowUse.display(event, item);
   }
 
   hideInfo(event: any, item: any): void {
     this.rowInfo.startClose();
   }
 
-  hideUse(event: any, item: any): void { 
+  hideUse(event: any, item: any): void {
     this.rowUse.startClose();
   }
 
