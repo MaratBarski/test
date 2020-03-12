@@ -1,3 +1,36 @@
+<mdc-info-popup #rowInfo header="STRUCTURE MISMATCH">
+    <div class="info-popup__text-wrap">
+        <div class="info-popup__text">
+            <p>The categorization structure was manually changed and no longer match the previous one. </p>
+            <p>After the issue is fixed by the ETL owner, turn off the toggle below to restart the auto-update.
+            </p>
+        </div>
+    </div>
+    <div class="info-popup-switch">
+        <div class="info-popup-switch__content">
+            <div class="info-popup-switch__text-wrap">
+                <div class="info-popup-switch__title">Hold Automatic loading</div>
+            </div>
+        </div>
+        <div class="switch">
+            <mdc-toggle-button no="No" yes="Yes" [(ngModel)]="currentRow.state"></mdc-toggle-button>
+        </div>
+    </div>
+</mdc-info-popup>
+
+<mdc-info-popup #rowUse header="USED IN">
+    <div class="info-popup__content">
+        <div class="info-popup__text-wrap">
+            <div class="info-popup__title">Events:</div>
+            <div class="info-popup__text">Diagnosis, Admission Diagnosis, Procedures, Customised events</div>
+        </div>
+    </div>
+</mdc-info-popup>
+
+<mdc-popup #popupMenu [closeOnClick]="true">
+    <mdc-modal-menu [sublinks]="sublinks" [links]="links"></mdc-modal-menu>
+</mdc-popup>
+
 <div class="wrapper">
     <div class="shadow-site"></div>
     <main>
@@ -74,8 +107,9 @@
                             </div>
                         </div>
                     </div>
-                    <mdc-table #table [searchOptions]="searchOptions" [paginator]="paginator" [search]="search"
-                        [dataSource]="dataSource">
+                    <mdc-table #table [dataSource]="dataSource"
+                        [cellsTemplate]="{ state:stateColumn,insertDate:dateColumn,editColumn:edit,inUseColumn:inUseColumn,hierarchyName:hierarchyName}"
+                        [searchOptions]="searchOptions" [paginator]="paginator" [search]="search">
                     </mdc-table>
                 </div>
                 <div class="pager-wrap">
@@ -87,3 +121,33 @@
         </div>
     </main>
 </div>
+
+<ng-template #dateColumn let-item>
+    {{item.insertDate|date}}
+</ng-template>
+<ng-template #edit let-item>
+    <span (click)="editClick(item,$event)" class="admin-table-action__menu ic-hover">
+        <mdc-icon path="ic-dot-menu"></mdc-icon>
+    </span>
+</ng-template>
+<ng-template let-item #stateColumn>
+    <span (mouseleave)="hideInfo($event,item)" (mouseenter)="showInfo($event,item)" class="admin-table__icon">
+        <mdc-icon path="ic-warning"></mdc-icon>
+    </span>
+</ng-template>
+<ng-template let-item #inUseColumn>
+    <span (mouseleave)="hideUse($event,item)" (mouseenter)="showUse($event,item)" class="admin-table__icon">
+        <mdc-icon path="ic-warning"></mdc-icon>
+    </span>
+</ng-template>
+<ng-template let-item let-src="source" #hierarchyName>
+    <span class="pointer link" (click)="openCategoryInfo(src)">{{item.hierarchyName}}</span>
+</ng-template>
+
+<mdc-modal-window [hidden]="!showUploadFile">
+    <md-upload-file (onUpload)="showUploadFile=false" (onCancel)="showUploadFile=false"></md-upload-file>
+</mdc-modal-window>
+
+<mdc-modal-window [hidden]="!showCategoryInfo">
+    <md-category-info (onClose)="closeCategoryInfo()" [category]="selectedCategory"></md-category-info>    
+</mdc-modal-window>

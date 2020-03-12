@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { DataService, ENV, TableModel } from 'appcore';
 import { Observable } from 'rxjs';
 import { Offline } from 'src/app/shared/decorators/offline.decorator';
+import { CategoryeResponse } from '../models/category-reponse';
+import { Hierarchy } from '@app/imported-files/models/hierarchy';
 
 @Injectable({
   providedIn: 'root'
@@ -10,64 +12,60 @@ export class CategorizationService {
 
   constructor(private dataService: DataService) { }
 
-  @Offline('assets/offline/fileSource.json')
-  private getUrl = `${ENV.serverUrl}${ENV.endPoints.fileSource}`;
+  @Offline('assets/offline/hierarchy.json')
+  private getUrl = `${ENV.serverUrl}${ENV.endPoints.hierarchy}`;
 
-  load(): Observable<any> {
+  load(): Observable<CategoryeResponse> {
     return this.dataService.get(this.getUrl);
   }
 
-  createDataSource(files: Array<any>): TableModel {
+  createDataSource(categories: Array<Hierarchy>): TableModel {
     const data: TableModel = {
       headers: [{
-        columnId: 'No',
-        text: 'No',
+        columnId: 'hierarchyName',
+        text: 'Name',
         isSortEnabled: true,
         sortDir: 'desc',
         isSortedColumn: true
       },
       {
-        columnId: 'fileName',
-        text: 'Name',
-        isSortEnabled: true
-      },
-      {
         columnId: 'insertDate',
-        text: 'Loaded',
+        text: 'Modified',
         isSortEnabled: true
       },
       {
-        columnId: 'environment',
-        text: 'Environment',
+        columnId: 'state',
+        text: 'State',
         isSortEnabled: true
       },
       {
-        columnId: 'environment',
-        text: 'Permission Group',
+        columnId: 'domain',
+        text: 'Environment 	',
         isSortEnabled: true
       },
       {
-        columnId: 'user',
-        text: 'User',
+        columnId: 'inUseColumn',
+        text: 'In Use',
         isSortEnabled: true
       },
       {
         columnId: 'editColumn',
         text: '',
         isSortEnabled: false
-      }
+      },
       ],
       rows: []
     }
-    files.forEach((fl, i) => {
+    categories.forEach((fl, i) => {
       data.rows.push({
         cells: {
-          fileName: fl.fileName,
+          hierarchyName: fl.hierarchyName,
           insertDate: fl.insertDate,
-          environment: fl.projectObj ? fl.projectObj.projectName : '',
-          user: fl.uploadedBy
+          domain: fl.domain,
+          defaultLevelId: fl.defaultLevelId
         },
-        isActive: false
+        isActive: false,
+        source: fl
       })
     })
     data.rows.forEach((r, i) => {
@@ -76,6 +74,6 @@ export class CategorizationService {
     return data;
   }
 
-  
+
 }
 

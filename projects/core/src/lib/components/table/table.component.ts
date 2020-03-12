@@ -13,6 +13,7 @@ export class PaginatorInfo {
 }
 export class TableRowModel {
   cells: { [key: string]: any };
+  source?: any;
   isActive?: boolean;
 }
 export class TableModel {
@@ -38,7 +39,7 @@ export class TableComponent implements OnDestroy, AfterViewInit {
     this._subscriptions.forEach(s => s.unsubscribe());
   }
 
-  ngAfterViewInit(): void{
+  ngAfterViewInit(): void {
     this.resetPaginator();
     this.initPaginator();
     this.reloadPaginator();

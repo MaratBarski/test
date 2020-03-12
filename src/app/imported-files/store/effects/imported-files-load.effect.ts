@@ -8,7 +8,7 @@ import { ImportedFilesService } from '../../services/imported-files.service';
 @Injectable()
 export class SourceFileEffect {
     @Effect()
-    loadProducts$: Observable<any> = this.actions$.pipe(
+    loadFiles$: Observable<any> = this.actions$.pipe(
         ofType(act.LOAD_FILE_SOURCE),
         switchMap(() => {
             return this.importedFilesService.load()
