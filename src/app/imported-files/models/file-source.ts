@@ -8,6 +8,12 @@ export class FileSourceResponse {
      status?: string;
 }
 
+export class FileSourceMappingResponse {
+     data?: FileSource;
+     massage?: string;
+     status?: string;
+}
+
 export class FileSource {
      fileId: number;
      fileName: string;
