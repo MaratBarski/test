@@ -7,7 +7,6 @@ import { ComponentService } from '../../services/component.service';
   styleUrls: ['./info-popup.component.css']
 })
 export class InfoPopupComponent implements OnInit {
-
   @Input() width = '250px';
   @Input() header = 'header';
   @Input() set show(show: boolean) {

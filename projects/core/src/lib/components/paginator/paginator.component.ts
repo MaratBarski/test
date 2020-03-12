@@ -1,4 +1,4 @@
-import { Component, Input, EventEmitter, Output } from '@angular/core';
+import { Component, Input, EventEmitter, Output, ChangeDetectorRef } from '@angular/core';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { PaginationService } from '../../services/pagination.service';
 
@@ -9,7 +9,13 @@ import { PaginationService } from '../../services/pagination.service';
 })
 export class PaginatorComponent {
 
-  constructor(private paginationService: PaginationService) { }
+  constructor(
+    private cdRef: ChangeDetectorRef,
+    private paginationService: PaginationService) { }
+
+  ngAfterViewChecked(): void {
+    this.cdRef.detectChanges();
+  }
 
   @Input() showOptions = false;
   @Input() isShowAllEnabled = false;

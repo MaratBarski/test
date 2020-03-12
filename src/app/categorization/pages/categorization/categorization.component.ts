@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { BaseSibscriber, TableModel, TableComponent, PopupComponent, MenuLink } from '@app/core-api';
 import { Store } from '@ngrx/store';
 import { load } from '@app/categorization/store/actions/categorization.actions';
@@ -96,6 +96,9 @@ export class CategorizationComponent extends BaseSibscriber implements OnInit {
       this.store.select(selectCategorization).subscribe((categorization: any) => {
         this.dataOrigin = this.dataSource = this.categorizationService.createDataSource(categorization.data);
       }));
+    super.add(super.onAfterDestroy.subscribe(() => {
+      
+    }));
     this.store.dispatch(load());
   }
 
