@@ -37,6 +37,19 @@ export class AutoSearchComponent {
     }, this.pause);
   }
 
+  search(): void {
+    this.stopTimeout();
+    this.complite.emit(this.text);
+  }
+
+  clearText(): void {
+    if (this.text.length) {
+      this.prevText = this.text;
+      this.text = '';
+      this.publish();
+    }
+  }
+
   private stopTimeout(): void {
     if (this.timeoutID) {
       clearTimeout(this.timeoutID);

@@ -49,7 +49,7 @@
 	}
 
 	&__close{
-		display: none;
+		display: inline-block;
 		width: 7px;
 		height: 7px;
 		position: absolute;
@@ -65,10 +65,10 @@
 		height: 100%;
 		fill: $color-dark-blue;
 		vertical-align: top;
-	}
 
-	input[type="text"]:focus + button + &__close{
-		display: inline-block;
+		svg {
+			display: block;
+		}
 	}
 
 	&_white input[type="text"]::placeholder{color: $color-light-grey}
