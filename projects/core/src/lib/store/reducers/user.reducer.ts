@@ -4,14 +4,16 @@ import { LocalStorageService } from '../../services/local-storage.service';
 import { LoginService } from '../../services/login.service';
 
 const DEFAULT_STATE = () => {
-    return new UserResponse();
+    return new UserInfo();
 }
 
-export function user(state: UserResponse = DEFAULT_STATE(), act: any): UserInfo {
+export function user(state: UserInfo = DEFAULT_STATE(), act: any): UserInfo {
     switch (act.type) {
         case (actions.SET_DATA_ACTION):
-            return LocalStorageService.getObject(LoginService.USER, act.payload);
+            return {...act.payload};
+            //return LocalStorageService.getObject(LoginService.USER, act.payload);
         default:
-            return LocalStorageService.getObject(LoginService.USER, state);
+            return {...state};
+            //return LocalStorageService.getObject(LoginService.USER, state);
     }
 }
