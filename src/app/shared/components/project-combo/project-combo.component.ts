@@ -22,6 +22,8 @@ export class ProjectComboComponent extends BaseSibscriber implements OnInit {
   private _project = '';
   selectedOption: SelectOption = undefined;
 
+  projectModel: any;
+
   constructor(private loginService: LoginService) {
     super();
   }
@@ -31,7 +33,7 @@ export class ProjectComboComponent extends BaseSibscriber implements OnInit {
       this.loginService.onUserInfoUpdated.subscribe(ui => {
         if (!ui || !ui.data || !ui.data.projects) { return; }
         this.selectOptions = ui.data.projects.map(x => {
-          return { text: x.projectName, id: x.projectId };
+          return { text: x.projectName, id: x.projectId, value: x };
         });
         this.selectedOption = { ...this.emptyProject };
       }));

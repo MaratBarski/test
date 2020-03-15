@@ -1,23 +1,33 @@
-import { Component, Input, Output, EventEmitter, HostListener, ViewChild, ElementRef } from '@angular/core';
+import { Component, Input, Output, EventEmitter, HostListener, ViewChild, ElementRef, forwardRef } from '@angular/core';
 import { animation, SlideInOutState } from '../../animations/animations';
 import { ComponentService } from '../../services/component.service';
+import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
 export class SelectOption {
   text: string;
   id: string;
+  value?: any;
 }
+
+export const SELECT_VALUE_ACCESSOR: any = {
+  provide: NG_VALUE_ACCESSOR,
+  useExisting: forwardRef(() => SelectComponent),
+  multi: true
+};
+
 @Component({
   selector: 'mdc-select',
   templateUrl: './select.component.html',
   styleUrls: ['./select.component.css'],
+  providers: [SELECT_VALUE_ACCESSOR],
   animations: [
     animation.slideUpDown
   ]
 })
-export class SelectComponent {
+export class SelectComponent implements ControlValueAccessor {
 
   @ViewChild('combo', { static: true }) combo: ElementRef;
-  
+
   @Input() options: Array<SelectOption>;
   @Input() selected: SelectOption;
   @Input() selectUp = true;
@@ -35,6 +45,7 @@ export class SelectComponent {
       this.isExpanded = false;
     }
     this.selected = option;
+    this.value = option.value;
     this.changed.emit(this.selected);
   }
 
@@ -49,5 +60,35 @@ export class SelectComponent {
 
   blur() {
     this.isExpanded = false;
+  }
+
+  onChangeCallback = (value: any) => { };
+  onTouchedCallback = () => { };
+
+  private _value: any;
+
+  get value(): any {
+    return this._value;
+  }
+
+  set value(v: any) {
+    if (v !== this._value) {
+      this._value = v;
+      this.onChangeCallback(v);
+    }
+  }
+
+  writeValue(value: any) {
+    if (value !== this._value) {
+      this._value = value;
+    }
+  }
+
+  registerOnChange(fn: any) {
+    this.onChangeCallback = fn;
+  }
+
+  registerOnTouched(fn: any) {
+    this.onTouchedCallback = fn;
   }
 }

@@ -17,7 +17,7 @@ export const SWB_VALUE_ACCESSOR: any = {
   selector: 'mdc-switch-button',
   templateUrl: './switch-button.component.html',
   styleUrls: ['./switch-button.component.css'],
-  providers: [SWB_VALUE_ACCESSOR],
+  providers: [SWB_VALUE_ACCESSOR]
 })
 export class SwitchButtonComponent implements ControlValueAccessor {
   @Input() buttons: Array<SwitchButtonModel>;
