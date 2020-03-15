@@ -148,6 +148,6 @@
     <md-upload-file (onUpload)="showUploadFile=false" (onCancel)="showUploadFile=false"></md-upload-file>
 </mdc-modal-window>
 
-<mdc-modal-window [hidden]="!showCategoryInfo">
+<mdc-modal-window [removeScroll]="false" [topBorder]="false" [shadow]="false" [hidden]="!showCategoryInfo">
     <md-category-info (onClose)="closeCategoryInfo()" [category]="selectedCategory"></md-category-info>    
 </mdc-modal-window>

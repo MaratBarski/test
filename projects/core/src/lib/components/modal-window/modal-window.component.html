@@ -1,4 +1,4 @@
-<div *ngIf="!isHidden" class="shadow-site is-visible"></div>
-<div [hidden]="isHidden" class="modal-window">
+<div *ngIf="!isHidden && shadow" class="shadow-site is-visible"></div>
+<div [hidden]="isHidden" class="modal-window" [ngClass]="{'modal-window__top-border':topBorder}">
     <ng-content></ng-content>
 </div>
