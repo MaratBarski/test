@@ -1,9 +1,9 @@
 <div class="notice-popup-info__item">
     <div class="notice-popup-info__val notice-popup-info__val_big">
-        <div class="progress progress_red">
-            <div class="progress__bg" style="width: 100%"></div>
-            <div class="progress__text">25%</div>
+        <div class="progress {{css}}">
+            <div class="progress__bg" [style.width.%]="state"></div>
+            <div class="progress__text">{{state}}%</div>
         </div>
     </div>
-    <div class="notice-popup-info__text">1%-49% Match</div>
+    <div *ngIf="showMatch" class="notice-popup-info__text">{{state}} Match</div>
 </div>
