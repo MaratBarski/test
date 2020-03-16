@@ -2,6 +2,7 @@ export interface MenuItem {
     url: string;
     text: string;
     subLinks?: Array<MenuItem>;
+    showSubMenu?: boolean;
 }
 export const SideMenu: Array<MenuItem> = [
     {
@@ -15,48 +16,39 @@ export const SideMenu: Array<MenuItem> = [
             {
                 url: '#',
                 text: 'Text1'
-            },            
+            },
         ]
     },
     {
-        url:'#',
-        text:'Project & Site Settings'
+        url: '#',
+        text: 'Project & Site Settings'
     },
     {
-        url:'#',
-        text:'Monitor & Reports'
+        url: '#',
+        text: 'Monitor & Reports'
     },
     {
-        url:'categorization',
-        text:'Manage Hierarchies'
+        url: 'categorization',
+        text: 'Manage Hierarchies'
     },
     {
-        url:'#',
-        text:'Queries & Events'
+        url: '#',
+        text: 'Queries & Events'
     },
     {
-        url:'imported-files',
-        text:'Imported Files'
+        url: 'imported-files',
+        text: 'Imported Files'
     },
     {
-        url:'#',
-        text:'Jobs Scheduling'
+        url: '#',
+        text: 'Jobs Scheduling'
     },
     {
-        url:'#',
-        text:'Patient Story Settings'
+        url: '#',
+        text: 'Patient Story Settings'
     },
     {
-        url:'#',
-        text:'External Applications'
-    },
-    {
-        url:'#',
-        text:''
-    },
-    {
-        url:'#',
-        text:''
-    },
-
+        url: '#',
+        text: 'External Applications'
+    }
 ]
