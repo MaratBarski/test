@@ -6,8 +6,8 @@ import { load, deleteFile } from '../../store/actions/imported-files.actions';
 import { selectData } from '../../store/selectors/imported-files.selector';
 import { FileSource } from '../../models/file-source';
 import { Subscription } from 'rxjs';
-import { UploadService } from '@app/shared/services/upload.service';
-import { TableHeaderModel } from 'projects/core/src/public-api';
+import { TableHeaderModel, CheckBoxListOption, Project } from 'projects/core/src/public-api';
+import { CheckBoxListComponent } from 'core/public-api';
 
 @Component({
   selector: 'md-imported-files',
@@ -19,6 +19,8 @@ export class ImportedFilesComponent implements OnInit, OnDestroy {
   @ViewChild('popupMenu', { static: true }) popupMenu: PopupComponent;
   @ViewChild('popupFilter', { static: true }) popupFilter: PopupComponent;
   @ViewChild('table', { static: true }) table: TableComponent;
+  @ViewChild('checkFilter', { static: true }) checkFilter: CheckBoxListComponent;
+
   constructor(
     private translateService: TranslateService,
     private dateService: DateService,
@@ -96,6 +98,15 @@ export class ImportedFilesComponent implements OnInit, OnDestroy {
     this.subscriptions.push(
       this.store.select(selectData).subscribe((files: Array<FileSource>) => {
         this.dataOrigin = this.dataSource = this.importedFilesService.createDataSource(files);
+        const proj = files.filter(x => x.projectObj).map(x => x.projectObj);
+        const dict = {};
+        proj.forEach((value, index) => {
+          if (dict[value.projectId]) {
+            return;
+          }
+          dict[value.projectId] = value.projectId;
+          this.projects.push({ text: value.projectName, id: value.projectName, isChecked: true });
+        })
       }));
 
     this.store.dispatch(load());
@@ -112,10 +123,36 @@ export class ImportedFilesComponent implements OnInit, OnDestroy {
   cellClick(item: any): void {
   }
 
+  projects: Array<CheckBoxListOption> = []
+  filterOptions: Array<CheckBoxListOption> = [];
+  curentFilter: string;
+
+  filterProc = {
+    environment: {
+      show: () => {
+        this.filterOptions = this.projects;
+      },
+      apply: () => {
+        this.checkFilter.options.forEach((option, index) => {
+        });
+      }
+    }
+  }
+
   showFilter(source: { header: TableHeaderModel, event: any }): void {
-    alert(source.header.columnId);
+    this.curentFilter = source.header.columnId;
+    this.filterProc[this.curentFilter].show();
     this.popupFilter.target = source.event.target;
     this.popupFilter.show(true, source.event);
+  }
+
+  cancelFilter(): void {
+    this.popupFilter.isExpanded = false;
+  }
+
+  applyFilter(): void {
+    this.filterProc[this.curentFilter].apply();
+    this.popupFilter.isExpanded = false;
   }
 
   searchOptions = ['fileName', 'environment'];

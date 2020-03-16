@@ -3,6 +3,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class CheckBoxListOption {
   isChecked: boolean;
   text: string;
+  id: any;
 }
 @Component({
   selector: 'mdc-check-box-list',
@@ -20,11 +21,23 @@ export class CheckBoxListComponent {
     if (this._isCheckedAll) {
       this.selectAll(true);
     }
-  };
+  }
+
   get isCheckedAll(): boolean { return this._isCheckedAll; }
   private _isCheckedAll = false;
 
-  @Input() options: Array<CheckBoxListOption>;
+  @Input() set options(options: Array<CheckBoxListOption>) {
+    this._sourceOptions = JSON.parse(JSON.stringify(options));
+    this._options = options;
+  }
+
+  get options(): Array<CheckBoxListOption> { return this._options; }
+  private _options: Array<CheckBoxListOption>;
+
+  get sourceOptions(): Array<CheckBoxListOption> {
+    return this._sourceOptions;
+  }
+  private _sourceOptions: Array<CheckBoxListOption>
 
   clear(): void {
     this.isCheckedAll = false;
@@ -32,10 +45,12 @@ export class CheckBoxListComponent {
   }
 
   applyClick(): void {
+    this._sourceOptions = JSON.parse(JSON.stringify(this._options));
     this.apply.emit();
   }
 
   cancelClick(): void {
+    this._options = JSON.parse(JSON.stringify(this._sourceOptions));
     this.cancel.emit();
   }
 
