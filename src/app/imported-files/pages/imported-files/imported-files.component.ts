@@ -17,6 +17,7 @@ import { TableHeaderModel } from 'projects/core/src/public-api';
 export class ImportedFilesComponent implements OnInit, OnDestroy {
 
   @ViewChild('popupMenu', { static: true }) popupMenu: PopupComponent;
+  @ViewChild('popupFilter', { static: true }) popupFilter: PopupComponent;
   @ViewChild('table', { static: true }) table: TableComponent;
   constructor(
     private translateService: TranslateService,
@@ -111,10 +112,12 @@ export class ImportedFilesComponent implements OnInit, OnDestroy {
   cellClick(item: any): void {
   }
 
-  showFilter(header: TableHeaderModel): void {
-    console.log(header.columnId);
+  showFilter(source: { header: TableHeaderModel, event: any }): void {
+    alert(source.header.columnId);
+    this.popupFilter.target = source.event.target;
+    this.popupFilter.show(true, source.event);
   }
 
-  searchOptions = ['fileName','environment'];
+  searchOptions = ['fileName', 'environment'];
 
 }

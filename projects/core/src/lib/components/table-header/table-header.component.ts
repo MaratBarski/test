@@ -19,7 +19,7 @@ export class TableHeaderComponent {
 
   @Input() model: TableHeaderModel;
   @Output() onSort = new EventEmitter<TableHeaderModel>();
-  @Output() onFilter = new EventEmitter<TableHeaderModel>();
+  @Output() onFilter = new EventEmitter<{ header: TableHeaderModel, event: any }>();
 
   sort(): void {
     if (!this.model.isSortEnabled) { return; }
@@ -34,6 +34,6 @@ export class TableHeaderComponent {
 
   openFilter(event: any): void {
     event.stopPropagation();
-    this.onFilter.emit(this.model);
+    this.onFilter.emit({ header: this.model, event: event });
   }
 }
