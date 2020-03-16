@@ -14,8 +14,8 @@ export class SourceFileDeleteEffect {
         switchMap((fs:FileSource) => {
             return this.importedFilesService.deleteFile(fs)
                 .pipe(
-                    map((data: any) => {
-                        return act.deleteFileSucc({ payload: data });
+                    map(() => {
+                        return act.deleteFileSucc({ payload: fs });
                     }),
                     catchError(error => {
                         return of(act.deleteFileFail({ payload: fs }));
