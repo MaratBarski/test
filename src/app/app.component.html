@@ -2,7 +2,7 @@
 <mdc-main-header logo="/assets/logo.jpg" organizationName="MDClone"></mdc-main-header>
 <table class="table-main">
     <tr>
-        <td class="main-table-top main-table-side-menu">
+        <td [hidden]="!componentService.showSideMenu" class="main-table-top main-table-side-menu">
             <mdc-side-bar></mdc-side-bar>
         </td>
         <td class="main-table-top main-table-content">

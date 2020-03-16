@@ -1,19 +1,20 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { ComponentService } from '../../services/component.service';
 
 @Component({
   selector: 'mdc-main-header',
   templateUrl: './main-header.component.html',
   styleUrls: ['./main-header.component.css']
 })
-export class MainHeaderComponent implements OnInit {
+export class MainHeaderComponent {
 
   @Input() organizationName = '';
   @Input() logo = '';
   showMenu = false;
 
-  constructor() { }
+  constructor(private componentService: ComponentService) { }
 
-  ngOnInit() {
+  displaySideMenu(): void {
+    this.componentService.showSideMenu = !this.componentService.showSideMenu
   }
-
 }

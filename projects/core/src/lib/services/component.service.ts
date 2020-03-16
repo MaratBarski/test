@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class ComponentService {
 
-  constructor() { }
+  showSideMenu = true;
 
   static createID(prefix: string = 'id'): string {
     return `${prefix}_${Math.random().toString().replace('.', '')}`;

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ComponentService } from './core-api';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'mdclone-mainapp-ui';
+  constructor(private componentService: ComponentService) { }
 }
