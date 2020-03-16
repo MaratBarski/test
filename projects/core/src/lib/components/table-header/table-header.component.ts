@@ -6,6 +6,7 @@ export class TableHeaderModel {
   isSortedColumn?: boolean;
   sortDir?: 'asc' | 'desc';
   maxWidth?: number;
+  filter?: boolean;
   columnId: string;
 }
 
@@ -17,7 +18,8 @@ export class TableHeaderModel {
 export class TableHeaderComponent {
 
   @Input() model: TableHeaderModel;
-  @Output() onSort = new EventEmitter<TableHeaderModel>()
+  @Output() onSort = new EventEmitter<TableHeaderModel>();
+  @Output() onFilter = new EventEmitter<TableHeaderModel>();
 
   sort(): void {
     if (!this.model.isSortEnabled) { return; }
@@ -28,5 +30,10 @@ export class TableHeaderComponent {
     }
     this.model.isSortedColumn = true;
     this.onSort.emit(this.model);
+  }
+
+  openFilter(event: any): void {
+    event.stopPropagation();
+    this.onFilter.emit(this.model);
   }
 }

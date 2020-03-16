@@ -7,6 +7,7 @@ import { selectData } from '../../store/selectors/imported-files.selector';
 import { FileSource } from '../../models/file-source';
 import { Subscription } from 'rxjs';
 import { UploadService } from '@app/shared/services/upload.service';
+import { TableHeaderModel } from 'projects/core/src/public-api';
 
 @Component({
   selector: 'md-imported-files',
@@ -36,7 +37,7 @@ export class ImportedFilesComponent implements OnInit, OnDestroy {
   }
 
   editLink: MenuLink = {
-    text: 'Edit',
+    text: 'Edit File Settings',
     icon: 'ic-edit',
     click: (source) => { console.log(JSON.stringify(source)); }
   }
@@ -108,9 +109,12 @@ export class ImportedFilesComponent implements OnInit, OnDestroy {
   }
 
   cellClick(item: any): void {
-    alert(JSON.stringify(item));
   }
 
-  searchOptions = ['fileName'];
+  showFilter(header: TableHeaderModel): void {
+    console.log(header.columnId);
+  }
+
+  searchOptions = ['fileName','environment'];
 
 }

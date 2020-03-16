@@ -49,6 +49,7 @@ export class TableComponent implements OnDestroy, AfterViewInit {
   get serachText(): string { return this._serachText; }
 
   @Output() onSort = new EventEmitter<TableHeaderModel>();
+  @Output() onFilter = new EventEmitter<TableHeaderModel>();
 
   @Input() set paginator(paginator: PaginatorComponent) {
     this._paginator = paginator;
@@ -152,6 +153,10 @@ export class TableComponent implements OnDestroy, AfterViewInit {
     if (sorted) { sorted.isSortedColumn = false; }
     this.sortModel = { ...header };
     this.onSort.emit(header);
+  }
+
+  filter(header:TableHeaderModel):void{
+    this.onFilter.emit(header);
   }
 
   rowClick(row: TableRowModel): void {

@@ -22,7 +22,7 @@
                     </form>
                 </div>
             </div>
-            <mdc-table #table [cellsTemplate]="{ insertDate:dateColumn,shared:sharedColumn,editColumn:edit}"
+            <mdc-table #table (onFilter)="showFilter($event)" [cellsTemplate]="{ insertDate:dateColumn,shared:sharedColumn,editColumn:edit}"
                 [searchOptions]="searchOptions" [paginator]="paginator" [search]="search" [dataSource]="dataSource">
             </mdc-table>
             <div class="pager-wrap">

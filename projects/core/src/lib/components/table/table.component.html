@@ -4,7 +4,7 @@
             <tr mdcTableHeader>
                 <th *ngFor="let header of dataSource.headers;let index = index" [mdcTableItem]="index">
                     <mdc-table-header *ngIf="!headersTemplate || !headersTemplate[header.columnId]"
-                        (onSort)="sort($event)" [model]="header"></mdc-table-header>
+                        (onSort)="sort($event)" (onFilter)="filter($event)" [model]="header"></mdc-table-header>
                     <ng-container *ngIf="headersTemplate && headersTemplate[header.columnId]"
                         [ngTemplateOutlet]="headersTemplate[header.columnId]"
                         [ngTemplateOutletContext]="{$implicit: header}"></ng-container>

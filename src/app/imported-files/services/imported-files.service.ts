@@ -38,17 +38,20 @@ export class ImportedFilesService {
         {
           columnId: 'environment',
           text: 'Environment',
-          isSortEnabled: true
+          isSortEnabled: true,
+          filter: true
         },
         {
-          columnId: 'environment',
+          columnId: 'permission',
           text: 'Permission Group',
-          isSortEnabled: true
+          isSortEnabled: true,
+          filter: true
         },
         {
           columnId: 'user',
           text: 'User',
-          isSortEnabled: true
+          isSortEnabled: true,
+          filter: true
         },
         {
           columnId: 'shared',
@@ -79,6 +82,7 @@ export class ImportedFilesService {
           fileName: fl.fileName,
           insertDate: fl.insertDate,
           environment: fl.projectObj ? fl.projectObj.projectName : '',
+          permission: '???',  
           user: fl.uploadedBy,
           shared: fl.fileType,
           columns: 0,
