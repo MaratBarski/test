@@ -21,7 +21,7 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 export class CheckBoxComponent implements ControlValueAccessor {
 
   @Input() text: string;
-  @Output() change = new EventEmitter<void>();
+  @Output() change = new EventEmitter<boolean>();
   @Input() id = ComponentService.createID('checkbox');
 
   private _value: boolean;
@@ -55,5 +55,6 @@ export class CheckBoxComponent implements ControlValueAccessor {
 
   changeSelect():void{
     this.value = !this.value;
+    this.change.emit(this.value);
   }
 }

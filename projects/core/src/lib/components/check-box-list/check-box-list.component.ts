@@ -59,4 +59,7 @@ export class CheckBoxListComponent {
       this.options.forEach(option => option.isChecked = isChecked)
     }
   }
+
+  onChange(isChecked: boolean): void {
+  }
 }
