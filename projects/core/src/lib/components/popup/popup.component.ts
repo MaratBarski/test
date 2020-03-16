@@ -1,4 +1,4 @@
-import { Component, HostListener, Input, ElementRef, Renderer2, ViewChild } from '@angular/core';
+import { Component, HostListener, Input, ElementRef, Renderer2, ViewChild, Output, EventEmitter } from '@angular/core';
 import { ComponentService } from '../../services/component.service';
 
 @Component({
@@ -14,6 +14,7 @@ export class PopupComponent {
 
   @ViewChild('container', { static: true }) container: ElementRef;
   @Input() position: 'left' | 'top' | 'right' | 'bottom' = 'left';
+  @Output() onClose = new EventEmitter();
 
   private _target: any;
 
@@ -39,8 +40,20 @@ export class PopupComponent {
     // }, true);
   }
 
-  @Input() isExpanded = false;
+  @Input() set isExpanded(isExpanded: boolean) {
+    if (isExpanded) {
+      this.opacity = 0;
+      setTimeout(() => {
+        this.opacity = 1;
+      }, 100);
+    }
+    this._isExpanded = isExpanded;
+  }
+  get isExpanded(): boolean { return this._isExpanded; }
+  private _isExpanded = false;
+
   isOver = false;
+  opacity = 1;
 
   private stopOver(): void {
     setTimeout(() => {
@@ -58,6 +71,7 @@ export class PopupComponent {
   @HostListener('document:click', ['$event']) onMouseClick(event: any) {
     if (this.isOver) { return; }
     this.isExpanded = false;
+    this.onClose.emit();
   }
 
   private get rect(): any { return ComponentService.getRect(this.container); }

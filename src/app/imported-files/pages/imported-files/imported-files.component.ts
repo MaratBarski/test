@@ -140,7 +140,10 @@ export class ImportedFilesComponent implements OnInit, OnDestroy {
   }
 
   showFilter(source: { header: TableHeaderModel, event: any }): void {
+    if (this.curentFilter === source.header.columnId) { return; }
+    this.popupFilter.isExpanded = false;
     this.curentFilter = source.header.columnId;
+    if (!this.filterProc[this.curentFilter]) { return; }
     this.filterProc[this.curentFilter].show();
     this.popupFilter.target = source.event.target;
     this.popupFilter.show(true, source.event);
@@ -148,9 +151,15 @@ export class ImportedFilesComponent implements OnInit, OnDestroy {
 
   cancelFilter(): void {
     this.popupFilter.isExpanded = false;
+    this.curentFilter = undefined;
   }
 
+  onCloseFilter(): void {
+    this.curentFilter = undefined;
+  }
+  
   applyFilter(): void {
+    if (!this.filterProc[this.curentFilter]) { return; }
     this.filterProc[this.curentFilter].apply();
     this.popupFilter.isExpanded = false;
   }

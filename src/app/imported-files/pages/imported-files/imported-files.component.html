@@ -1,7 +1,7 @@
 <mdc-popup #popupMenu [closeOnClick]="true">
     <mdc-modal-menu [sublinks]="sublinks" [links]="links"></mdc-modal-menu>
 </mdc-popup>
-<mdc-popup #popupFilter [closeOnClick]="false">
+<mdc-popup #popupFilter (onClose)="onCloseFilter()" [closeOnClick]="false">
     <mdc-check-box-list #checkFilter (apply)="applyFilter()" (cancel)="cancelFilter()" [options]="filterOptions"></mdc-check-box-list>
 </mdc-popup>
 <div class="wrapper">
