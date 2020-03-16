@@ -54,6 +54,7 @@ import { AutoCompliteComponent } from './components/auto-complite/auto-complite.
 import { SwitchButtonComponent } from './components/switch-button/switch-button.component';
 import { InfoPopupComponent } from './components/info-popup/info-popup.component';
 import { ProgressComponent } from './components/progress/progress.component';
+import { SideBarComponent } from './components/side-bar/side-bar.component';
 
 // import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 
@@ -98,7 +99,8 @@ import { ProgressComponent } from './components/progress/progress.component';
     AutoCompliteComponent,
     SwitchButtonComponent,
     InfoPopupComponent,
-    ProgressComponent
+    ProgressComponent,
+    SideBarComponent
   ],
   imports: [
     CommonModule,
@@ -148,7 +150,8 @@ import { ProgressComponent } from './components/progress/progress.component';
     AutoCompliteComponent,
     SwitchButtonComponent,
     InfoPopupComponent,
-    ProgressComponent
+    ProgressComponent,
+    SideBarComponent
   ],
   entryComponents: [
     TableHeaderComponent
