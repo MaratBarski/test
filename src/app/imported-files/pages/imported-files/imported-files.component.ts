@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { TableComponent, TranslateService, DateService, TabItemModel, TableModel, MenuLink, PopupComponent } from 'appcore';
 import { ImportedFilesService } from '../../services/imported-files.service';
 import { Store } from '@ngrx/store';
-import { load } from '../../store/actions/imported-files.actions';
+import { load, deleteFile } from '../../store/actions/imported-files.actions';
 import { selectData } from '../../store/selectors/imported-files.selector';
 import { FileSource } from '../../models/file-source';
 import { Subscription } from 'rxjs';
@@ -31,11 +31,12 @@ export class ImportedFilesComponent implements OnInit, OnDestroy {
     icon: 'ic-delete',
     source: 'test',
     click: (source) => {
-      this.dataSource = {
-        ...this.dataSource, ...{
-          rows: this.dataSource.rows.filter(r => r.cells.No !== source.No)
-        }
-      };
+      this.store.dispatch(deleteFile(source))
+      // this.dataSource = {
+      //   ...this.dataSource, ...{
+      //     rows: this.dataSource.rows.filter(r => r.cells.No !== source.No)
+      //   }
+      // };
     }
   }
 
@@ -85,10 +86,10 @@ export class ImportedFilesComponent implements OnInit, OnDestroy {
     this.subscriptions.forEach(s => s.unsubscribe());
   }
 
-  editClick(item: any, event: any): void {
-    this.deleteLink.source = item;
-    this.editLink.source = item;
-    this.viewLink.source = item;
+  editClick(item: any, source: any, event: any): void {
+    this.deleteLink.source = source;
+    this.editLink.source = source;
+    this.viewLink.source = source;
     this.popupMenu.target = event.target;
     this.popupMenu.show(true, event);
   }

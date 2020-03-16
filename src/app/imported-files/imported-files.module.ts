@@ -12,10 +12,11 @@ import { SourceFileEffect } from './store/effects/imported-files-load.effect';
 import { MyQueriesComponent } from './pages/my-queries/my-queries.component';
 import { SharedModule } from '@app/shared/shared.module';
 import { ImportedFilesMappingService } from './services/imported-files-mapping.service';
+import { SourceFileDeleteEffect } from './store/effects/imported-file-delete.effect';
 
 const routes: Array<Route> = [
   { path: '', component: ImportedFilesComponent },
-  { path: ':id', component: ImportedFileMappingComponent, resolve: {data: ImportedFilesMappingService} },
+  { path: ':id', component: ImportedFileMappingComponent, resolve: { data: ImportedFilesMappingService } },
   { path: 'my-queries', component: MyQueriesComponent }
 ]
 
@@ -33,7 +34,7 @@ const routes: Array<Route> = [
     SharedModule,
     RouterModule.forChild(routes),
     StoreModule.forFeature('fileSource', fileSource),
-    EffectsModule.forFeature([SourceFileEffect])
+    EffectsModule.forFeature([SourceFileEffect, SourceFileDeleteEffect])
   ]
 })
 export class ImportedFilesModule { }

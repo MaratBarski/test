@@ -18,45 +18,58 @@ export class ImportedFilesService {
     return this.dataService.get(this.getUrl);
   }
 
+  deleteFile(fl: FileSource): Observable<any> {
+    return this.dataService.delete(`${ENV.serverUrl}${ENV.endPoints.deleteFileSource}${fl.fileId}`);
+  }
+
   createDataSource(files: Array<FileSource>): TableModel {
     const data: TableModel = {
-      headers: [{
-        columnId: 'No',
-        text: 'No',
-        isSortEnabled: true,
-        sortDir: 'desc',
-        isSortedColumn: true
-      },
-      {
-        columnId: 'fileName',
-        text: 'Name',
-        isSortEnabled: true
-      },
-      {
-        columnId: 'insertDate',
-        text: 'Loaded',
-        isSortEnabled: true
-      },
-      {
-        columnId: 'environment',
-        text: 'Environment',
-        isSortEnabled: true
-      },
-      {
-        columnId: 'environment',
-        text: 'Permission Group',
-        isSortEnabled: true
-      },
-      {
-        columnId: 'user',
-        text: 'User',
-        isSortEnabled: true
-      },
-      {
-        columnId: 'editColumn',
-        text: '',
-        isSortEnabled: false
-      }
+      headers: [
+        {
+          columnId: 'fileName',
+          text: 'Name',
+          isSortEnabled: true
+        },
+        {
+          columnId: 'insertDate',
+          text: 'Loaded',
+          isSortEnabled: true
+        },
+        {
+          columnId: 'environment',
+          text: 'Environment',
+          isSortEnabled: true
+        },
+        {
+          columnId: 'environment',
+          text: 'Permission Group',
+          isSortEnabled: true
+        },
+        {
+          columnId: 'user',
+          text: 'User',
+          isSortEnabled: true
+        },
+        {
+          columnId: 'shared',
+          text: 'Shared',
+          isSortEnabled: true
+        },
+        {
+          columnId: 'columns',
+          text: 'Columns',
+          isSortEnabled: true
+        },
+        {
+          columnId: 'rows',
+          text: 'Rows',
+          isSortEnabled: true
+        },
+        {
+          columnId: 'editColumn',
+          text: '',
+          isSortEnabled: false
+        }
       ],
       rows: []
     }
@@ -66,17 +79,17 @@ export class ImportedFilesService {
           fileName: fl.fileName,
           insertDate: fl.insertDate,
           environment: fl.projectObj ? fl.projectObj.projectName : '',
-          user: fl.uploadedBy
+          user: fl.uploadedBy,
+          shared: 1,
+          columns: 0,
+          rows: 0
         },
         source: fl,
         isActive: false
       })
     })
-    data.rows.forEach((r, i) => {
-      r.cells['No'] = i;
-    });
     return data;
   }
 
-  
+
 }
