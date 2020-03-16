@@ -1,6 +1,12 @@
 <mdc-svg-loader></mdc-svg-loader>
 <mdc-main-header logo="/assets/logo.jpg" organizationName="MDClone"></mdc-main-header>
-<a routerLink="imported-files">Imported files</a>
-<a routerLink="categorization">Categorization </a>
-<!-- <mdc-side-bar></mdc-side-bar> -->
-<router-outlet></router-outlet>
+<table class="table-main">
+    <tr>
+        <td class="main-table-top main-table-side-menu">
+            <mdc-side-bar></mdc-side-bar>
+        </td>
+        <td class="main-table-top main-table-content">
+            <router-outlet></router-outlet>
+        </td>
+    </tr>
+</table>
