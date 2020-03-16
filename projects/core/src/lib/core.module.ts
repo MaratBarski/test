@@ -55,6 +55,7 @@ import { SwitchButtonComponent } from './components/switch-button/switch-button.
 import { InfoPopupComponent } from './components/info-popup/info-popup.component';
 import { ProgressComponent } from './components/progress/progress.component';
 import { SideBarComponent } from './components/side-bar/side-bar.component';
+import { RouterModule } from '@angular/router';
 
 // import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 
@@ -107,6 +108,7 @@ import { SideBarComponent } from './components/side-bar/side-bar.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    RouterModule,
     //BrowserModule,
     //BrowserAnimationsModule,
     StoreModule.forFeature('userInfo', user),

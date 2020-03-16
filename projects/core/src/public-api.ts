@@ -23,6 +23,7 @@ export * from './lib/services/pagination.service';
 export * from './lib/services/date.service';
 
 export * from './lib/common/BaseSibscriber';
+export * from './lib/common/side-menu';
 
 export * from './lib/store/selectors/user.selectors';
 export * from './lib/store/actions/user.actions';
