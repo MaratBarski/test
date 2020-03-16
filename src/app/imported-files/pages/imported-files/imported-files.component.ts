@@ -32,11 +32,6 @@ export class ImportedFilesComponent implements OnInit, OnDestroy {
     source: 'test',
     click: (source) => {
       this.store.dispatch(deleteFile(source))
-      // this.dataSource = {
-      //   ...this.dataSource, ...{
-      //     rows: this.dataSource.rows.filter(r => r.cells.No !== source.No)
-      //   }
-      // };
     }
   }
 

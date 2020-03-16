@@ -19,7 +19,7 @@ export class ImportedFilesService {
   }
 
   deleteFile(fl: FileSource): Observable<any> {
-    return this.dataService.delete(`${ENV.serverUrl}${ENV.endPoints.deleteFileSource}${fl.fileId}`);
+    return this.dataService.delete(`${ENV.serverUrl}${ENV.endPoints.deleteFileSource}/${fl.fileId}`);
   }
 
   createDataSource(files: Array<FileSource>): TableModel {
