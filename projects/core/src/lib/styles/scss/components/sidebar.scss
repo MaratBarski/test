@@ -6,7 +6,6 @@
 	width: 305px;
 	height: 100%;
 	background: $color-dark-blue;
-	padding: 75px 0 0;
 	position: fixed;
 	top: 0;
 	//left: -305px;
@@ -14,13 +13,42 @@
 	z-index: 100;
 	transition: left 0.3s ease;
 
-	&__copyright{
+
+	&__bottom{
 		padding: 20px 20px 20px 45px;
+
+		.btn{
+			padding: 0 30px;
+		}
+	}
+
+	&__btn{
+		margin-bottom: 40px;
+	}
+
+	&__btn-item{
+		margin-bottom: 20px;
+	}
+
+	&__copyright{
 		@include font(normal, normal, rem(12px), 1.43, #fff);
 	}
 
-	&.active{
-		left: 0;
+	.ic-hamburger-arrow{
+		fill: #fff;
+	}
+
+	&__top{
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		height: 52px;
+		padding: 11px 20px 11px 45px;
+		margin-bottom: 25px;
+	}
+
+	&__logo{
+		width: 109px;
 	}
 }
 
@@ -89,7 +117,12 @@
 
 	&__sub-list{
 		display: none;
-		padding-left: 30px;
+		padding-left: 40px;
+	}
+
+	&__sub-item &__text{
+		width: 100%;
+		margin-right: 0;
 	}
 
 	&__sub-item:not(:last-child){
@@ -108,6 +141,29 @@
 	&__sub-item.active > &__main::before{
 		display: inline-block;
 	}
+
+	&__item.active > &__main &__text{
+		font-weight: 600;
+	}
+}
+
+.open-sidebar{
+	.header{
+		width: calc(100% - 305px);
+
+		&__info .hamburger{display: none;}
+	}
+	.sidebar{left: 0;}
+	
+	main{
+		width: calc(100% - 305px);
+		left: 305px;
+		overflow: auto;
+
+		.content-page{
+			width: calc(100% + 305px);
+		}
+	}
 }
 
 @media (max-width: 767px) {
@@ -115,5 +171,18 @@
 
 	.sidebar-menu{
 		&__main, &__copyright{padding-left: 15px;}
+	}
+
+	.open-sidebar{
+		.header{width: calc(100% - 275px);}
+
+		main{
+			width: calc(100% - 275px);
+			left: 275px;
+	
+			.content-page{
+				width: calc(100% + 275px);
+			}
+		}
 	}
 }
