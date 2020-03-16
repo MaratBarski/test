@@ -53,7 +53,7 @@ export class ImportedFilesService {
         {
           columnId: 'shared',
           text: 'Shared',
-          isSortEnabled: true
+          isSortEnabled: false
         },
         {
           columnId: 'columns',
@@ -80,7 +80,7 @@ export class ImportedFilesService {
           insertDate: fl.insertDate,
           environment: fl.projectObj ? fl.projectObj.projectName : '',
           user: fl.uploadedBy,
-          shared: 1,
+          shared: fl.fileType,
           columns: 0,
           rows: 0
         },
