@@ -94,13 +94,25 @@
 		width: 30px;
 		height: 30px;
 		border-radius: 50%;
-		background-image:  url(/assets/img/ic-user-avatar.svg);
+		background-image:  url(/assets/images/ic-user-avatar.svg);
 		background-repeat: no-repeat;
 		background-position: center;
 		background-size: contain;
 		margin-left: 33px;
 		cursor: pointer;
 		position: relative;
+	}
+
+	&__profile-icon{
+		display: inline-block;
+		width: 30px;
+		height: 30px;
+		border-radius: 50%;
+		background-image:  url(/assets/images/ic-user-avatar.svg);
+		background-repeat: no-repeat;
+		background-position: 0 0;
+		background-size: contain;
+		cursor: pointer;
 	}
 
 	.hamburger{
@@ -153,6 +165,53 @@
 			width: 30px;
 			right: -10px;
 		}
+	}
+}
+
+.profile-popup{
+	min-width: 170px;
+	background: #fff;
+	border: 1px solid $color-light-grey;
+	border-radius: 4px;
+	box-shadow: -10px 9px 21px 0 rgba(128, 152, 213, 0.08);
+	position: absolute;
+	top: calc(100% + 14px);
+	right: 0;
+	z-index: 2;
+
+	&.active{
+		display: inline-block;
+	}
+
+	&__item{
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 2px 15px;
+		text-decoration: none;
+	}
+
+	&__item:hover{background: $color-soft-blue; text-decoration: none;}
+
+	&__item:first-child{
+		border-top-left-radius: 4px;
+		border-top-right-radius: 4px;
+	}
+
+	&__item:last-child{
+		border-bottom-left-radius: 4px;
+		border-bottom-right-radius: 4px;
+	}
+ 
+	.icon{
+		width: 18px;
+		height: 18px;
+		vertical-align: middle;
+	}
+
+	&__text{
+		width: calc(100% - 30px);
+		@include font(normal, normal, rem(14px), 1.2, $color-dark-blue);
 	}
 }
 

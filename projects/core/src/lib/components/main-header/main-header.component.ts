@@ -11,6 +11,7 @@ export class MainHeaderComponent {
   @Input() organizationName = '';
   @Input() logo = '';
   showMenu = false;
+  showProfile = false;
 
   constructor(private componentService: ComponentService) { }
 

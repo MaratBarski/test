@@ -31,10 +31,29 @@
                                     <div class="select__param">Text 4</div>
                                 </div>
                             </div>
-                            <div class="header__notice">
+                            <div style="position: relative;z-index: 10;" class="header__notice">
                                 <mdc-icon path="notice"></mdc-icon>
                             </div>
-                            <div></div>
+                            <div class="header__profile">
+                                <div (click)="showProfile=!showProfile" class="header__profile-icon"></div>
+                                <div [hidden]="!showProfile" class="profile-popup">
+                                    <div class="profile-popup__list">
+                                        <a class="profile-popup__item" href="#">
+                                            <div class="profile-popup__icon">
+                                                <mdc-icon path="ic-setting"></mdc-icon>
+                                            </div>
+                                            <div class="profile-popup__text">
+                                                Account settings</div>
+                                        </a>
+                                        <a class="profile-popup__item" href="#">
+                                            <div class="profile-popup__icon">
+                                                <mdc-icon path="ic-logout"></mdc-icon>
+                                            </div>
+                                            <div class="profile-popup__text">Logout</div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
