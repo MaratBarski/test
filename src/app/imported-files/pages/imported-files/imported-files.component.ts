@@ -91,18 +91,35 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, On
       this.store.select(selectData).subscribe((files: Array<FileSource>) => {
         this.fileSource = files;
         this.dataOrigin = this.dataSource = this.importedFilesService.createDataSource(this.fileSource);
-        const proj = files.filter(x => x.projectObj).map(x => x.projectObj);
-        const dict = {};
-        proj.forEach((value, index) => {
-          if (dict[value.projectId]) {
-            return;
-          }
-          dict[value.projectId] = value.projectId;
-          this.projects.push({ text: value.projectName, id: value.projectId, isChecked: true });
-        })
+        this.initProjects(files);
+        this.initUsers(files);
       }));
 
     this.store.dispatch(load());
+  }
+
+  initProjects(files: Array<FileSource>): void {
+    const proj = files.filter(x => x.projectObj).map(x => x.projectObj);
+    const dict = {};
+    proj.forEach((value, index) => {
+      if (dict[value.projectId]) {
+        return;
+      }
+      dict[value.projectId] = value.projectId;
+      this.projects.push({ text: value.projectName, id: value.projectId, isChecked: true });
+    })
+  }
+
+  initUsers(files: Array<FileSource>): void {
+    const proj = files.filter(x => x.uploadedBy).map(x => { return { id: x.uploadedBy, text: 'user_' + x.uploadedBy } });
+    const dict = {};
+    proj.forEach((value, index) => {
+      if (dict[value.id]) {
+        return;
+      }
+      dict[value.id] = value.id;
+      this.users.push({ ...value, isChecked: true });
+    })
   }
 
   initTabs(): void {
@@ -113,10 +130,10 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, On
     ];
   }
 
-  cellClick(item: any): void {
-  }
+  cellClick(item: any): void { }
 
-  projects: Array<CheckBoxListOption> = []
+  users: Array<CheckBoxListOption> = [];
+  projects: Array<CheckBoxListOption> = [];
   filterOptions: Array<CheckBoxListOption> = [];
   curentFilter: string;
 
@@ -132,6 +149,19 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, On
           }
         });
         return fs.filter(fs => fs.projectObj && dict[fs.projectObj.projectId])
+      }
+    },
+    user: {
+      show: () => { this.filterOptions = this.users; },
+      setOptions: () => { this.users = this.checkFilter.options; },
+      apply: (fs: Array<FileSource>): Array<FileSource> => {
+        const dict = {};
+        this.users.forEach((option, index) => {
+          if (option.isChecked) {
+            dict[option.id] = true;
+          }
+        });
+        return fs.filter(fs => dict[fs.uploadedBy])
       }
     }
   }
@@ -166,7 +196,10 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, On
   }
 
   createDataSource(): void {
-    let result = this.filterProc.environment.apply(this.fileSource);
+    const result = this.filterProc.user.apply(
+      this.filterProc.environment.apply(
+        this.fileSource
+      ));
     this.dataSource = this.importedFilesService.createDataSource(result);
     let rows = this.dataSource.rows;
     if (this.tabActive === 1) {
