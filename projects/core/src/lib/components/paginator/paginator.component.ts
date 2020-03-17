@@ -30,7 +30,7 @@ export class PaginatorComponent {
     this.optionsForm.controls.pageSize.setValue(this._pageSize);
   }
   get pageSize(): number { return this._pageSize; }
-  private _pageSize = 10;
+  private _pageSize = 50;
 
   @Input() set blockSize(blockSize: number) {
     this._blockSize = blockSize;
@@ -73,12 +73,11 @@ export class PaginatorComponent {
     this.currentPage = 0;
     this.currentBlock = 0;
     this._pages = [];
-    let count = this._list / this.pageSize;
-    if (count * this.pageSize < this._list) {
-      count++;
-    }
-    for (let i = 0; i < count; i++) {
-      this._pages.push(i + 1);
+    let temp = this._list;
+    let i = 0;
+    while (temp > 0) {
+      temp -= this.pageSize;
+      this._pages.push(++i);
     }
   }
 

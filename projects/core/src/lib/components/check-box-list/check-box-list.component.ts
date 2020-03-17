@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 
 export class CheckBoxListOption {
   isChecked: boolean;
@@ -10,7 +10,7 @@ export class CheckBoxListOption {
   templateUrl: './check-box-list.component.html',
   styleUrls: ['./check-box-list.component.css']
 })
-export class CheckBoxListComponent {
+export class CheckBoxListComponent implements OnInit {
 
   @Output() cancel = new EventEmitter();
   @Output() apply = new EventEmitter();
@@ -23,12 +23,27 @@ export class CheckBoxListComponent {
     }
   }
 
+  get checkedCount(): number {
+    if (!this.options) { return 0; }
+    return this.options.filter(x => x.isChecked).length;
+  }
+
+  get unCheckedCount(): number {
+    if (!this.options) { return 0; }
+    return this.options.filter(x => !x.isChecked).length;
+  }
+
+  ngOnInit(): void {
+    this._isCheckedAll = (this.unCheckedCount === 0);
+  }
+
   get isCheckedAll(): boolean { return this._isCheckedAll; }
   private _isCheckedAll = false;
 
   @Input() set options(options: Array<CheckBoxListOption>) {
     this._sourceOptions = JSON.parse(JSON.stringify(options));
     this._options = options;
+    this.ngOnInit();
   }
 
   get options(): Array<CheckBoxListOption> { return this._options; }
@@ -44,6 +59,11 @@ export class CheckBoxListComponent {
     this.selectAll(false);
   }
 
+  onChangeAll(isChecked: boolean): void {
+    if (!this.options) { return; }
+    this.options.forEach(x => x.isChecked = isChecked);
+  }
+
   applyClick(): void {
     this._sourceOptions = JSON.parse(JSON.stringify(this._options));
     this.apply.emit();
@@ -55,11 +75,11 @@ export class CheckBoxListComponent {
   }
 
   selectAll(isChecked: boolean): void {
-    if (this.options) {
-      this.options.forEach(option => option.isChecked = isChecked)
-    }
+    if (!this.options) { return; }
+    this.options.forEach(option => option.isChecked = isChecked)
   }
 
   onChange(isChecked: boolean): void {
+    this._isCheckedAll = (this.unCheckedCount === 0);
   }
 }

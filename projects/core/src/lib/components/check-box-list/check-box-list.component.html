@@ -1,6 +1,6 @@
 <div style="padding: 10px;">
     <div class="admin-table-filter__top">
-        <mdc-check-box [(ngModel)]="isCheckedAll" text="{{'SelectAll'|translate}}"></mdc-check-box>
+        <mdc-check-box (change)="onChangeAll($event)" [(ngModel)]="isCheckedAll" text="{{'SelectAll'|translate}}"></mdc-check-box>
         <span (click)="clear()" class="admin-table-filter__clear pointer">{{'clear'|translate}}</span>
     </div>
     <div *ngIf="options" class="admin-table-filter__params">

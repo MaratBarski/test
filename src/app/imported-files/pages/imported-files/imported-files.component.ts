@@ -65,6 +65,7 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, On
   showUploadFile = false;
   dataOrigin: TableModel;
   dataSource: TableModel;
+  fileSource: Array<FileSource>;
 
   searchComplite(text: string): void {
     //this.table.resetPaginator();
@@ -73,13 +74,7 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, On
 
   selectTab(tab: number): void {
     this.tabActive = tab;
-    let rows = this.dataOrigin.rows;
-    if (this.tabActive === 1) {
-      rows = this.dateService.lastMonth(rows, 'insertDate');
-    } else if (this.tabActive === 2) {
-      rows = this.dateService.lastWeek(rows, 'insertDate');
-    }
-    this.dataSource = { ...this.dataOrigin, rows: rows };
+    this.createDataSource();
   }
 
   editClick(item: any, source: any, event: any): void {
@@ -94,7 +89,8 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, On
     this.initTabs();
     super.add(
       this.store.select(selectData).subscribe((files: Array<FileSource>) => {
-        this.dataOrigin = this.dataSource = this.importedFilesService.createDataSource(files);
+        this.fileSource = files;
+        this.dataOrigin = this.dataSource = this.importedFilesService.createDataSource(this.fileSource);
         const proj = files.filter(x => x.projectObj).map(x => x.projectObj);
         const dict = {};
         proj.forEach((value, index) => {
@@ -102,7 +98,7 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, On
             return;
           }
           dict[value.projectId] = value.projectId;
-          this.projects.push({ text: value.projectName, id: value.projectName, isChecked: true });
+          this.projects.push({ text: value.projectName, id: value.projectId, isChecked: true });
         })
       }));
 
@@ -126,12 +122,16 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, On
 
   filterProc = {
     environment: {
-      show: () => {
-        this.filterOptions = this.projects;
-      },
-      apply: () => {
-        this.checkFilter.options.forEach((option, index) => {
+      show: () => { this.filterOptions = this.projects; },
+      setOptions: () => { this.projects = this.checkFilter.options; },
+      apply: (fs: Array<FileSource>): Array<FileSource> => {
+        const dict = {};
+        this.projects.forEach((option, index) => {
+          if (option.isChecked) {
+            dict[option.id] = true;
+          }
         });
+        return fs.filter(fs => fs.projectObj && dict[fs.projectObj.projectId])
       }
     }
   }
@@ -148,17 +148,33 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, On
 
   cancelFilter(): void {
     this.popupFilter.isExpanded = false;
+    this.filterProc[this.curentFilter].setOptions();
     this.curentFilter = undefined;
   }
 
   onCloseFilter(): void {
+    this.filterProc[this.curentFilter].setOptions();
     this.curentFilter = undefined;
   }
 
   applyFilter(): void {
     if (!this.filterProc[this.curentFilter]) { return; }
-    this.filterProc[this.curentFilter].apply();
+    this.filterProc[this.curentFilter].setOptions();
+    this.createDataSource();
     this.popupFilter.isExpanded = false;
+    this.curentFilter = undefined;
+  }
+
+  createDataSource(): void {
+    let result = this.filterProc.environment.apply(this.fileSource);
+    this.dataSource = this.importedFilesService.createDataSource(result);
+    let rows = this.dataSource.rows;
+    if (this.tabActive === 1) {
+      rows = this.dateService.lastMonth(rows, 'insertDate');
+    } else if (this.tabActive === 2) {
+      rows = this.dateService.lastWeek(rows, 'insertDate');
+    }
+    this.dataSource = { ...this.dataSource, rows: rows };
   }
 
   searchOptions = ['fileName', 'environment'];
