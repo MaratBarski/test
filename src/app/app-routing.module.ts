@@ -6,16 +6,6 @@ import { LoginService } from './core-api';
 
 const routes: Routes = [
   {
-    path: 'main',
-    loadChildren: './main/main.module#MainModule',
-    canActivate: [LoginService]
-  },
-  {
-    path: 'patient',
-    loadChildren: './patient/patient.module#PatientModule',
-    canActivate: [LoginService]
-  },
-  {
     path: 'imported-files',
     loadChildren: () => import('./imported-files/imported-files.module').then(m => m.ImportedFilesModule),
     canActivate: [LoginService]
@@ -31,7 +21,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'imported-files',
     pathMatch: 'full'
   }
 ];
