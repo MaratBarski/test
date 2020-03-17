@@ -6,7 +6,7 @@
                     <div class="header__main">
                         <div class="header__logo">
                             <a href="/">
-                                <img src="/assets/images/logo-white.svg" alt="Logo"></a>
+                                <img src="./assets/images/logo-white.svg" alt="Logo"></a>
                         </div>
                         <div (click)="displaySideMenu()" class="hamburger">
                             <span class="ic-hamburger"><span></span></span>
@@ -35,7 +35,9 @@
                                 <mdc-icon path="notice"></mdc-icon>
                             </div>
                             <div class="header__profile">
-                                <div (click)="showProfile=!showProfile" class="header__profile-icon"></div>
+                                <div (click)="showProfile=!showProfile" class="header__profile-icon">
+                                    <img src="./assets/images/ic-user-avatar.svg"/>
+                                </div>
                                 <div [hidden]="!showProfile" class="profile-popup">
                                     <div class="profile-popup__list">
                                         <a class="profile-popup__item" href="#">
