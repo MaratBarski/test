@@ -20,6 +20,7 @@ import { ModalWindowComponent } from './components/modal-window/modal-window.com
 import { PaginatorComponent } from './components/paginator/paginator.component';
 import { TokenInterceptorService } from './services/token-interceptor.service';
 import { TranslateService } from './services/translate.service';
+import { NavigationService } from './services/navigation.service';
 import { DataService } from './services/data.service';
 import { LoginService } from './services/login.service';
 import { ComponentService } from './services/component.service';
@@ -165,8 +166,9 @@ import { RouterModule } from '@angular/router';
     ComponentService,
     SocketService,
     DateService,
-    LocalStorageService
-    , {
+    NavigationService,
+    LocalStorageService,
+    {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,
       multi: true

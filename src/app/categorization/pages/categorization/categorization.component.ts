@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
-import { BaseSibscriber, TableModel, TableComponent, PopupComponent, MenuLink } from '@app/core-api';
+import { BaseSibscriber, TableModel, TableComponent, PopupComponent, MenuLink, PageInfo, NavigationService } from '@app/core-api';
 import { Store } from '@ngrx/store';
 import { load } from '@app/categorization/store/actions/categorization.actions';
 import { CategorizationService } from '@app/categorization/services/categorization.service';
@@ -27,9 +27,11 @@ export class CategorizationComponent extends BaseSibscriber implements OnInit {
 
   constructor(
     private categorizationService: CategorizationService,
-    private store: Store<any>
+    private store: Store<any>,
+    private navigationService: NavigationService
   ) {
     super();
+    this.navigationService.currentPageID = PageInfo.ManageHierarchies.id;
   }
 
   searchOptions = ['hierarchyName'];

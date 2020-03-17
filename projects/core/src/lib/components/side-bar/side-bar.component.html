@@ -1,12 +1,13 @@
 <div class="sidebar">
     <div class="sidebar__content">
+        <div style="height: 60px;"></div>
         <nav class="sidebar-menu">
             <ul class="sidebar-menu__list">
-                <li [ngClass]="{'active':isActive(item)}" class="sidebar-menu__item active" *ngFor="let item of items">
+                <li [ngClass]="{'active':item.active}" class="sidebar-menu__item" *ngFor="let item of items">
                     <div class="sidebar-menu__main pointer" (click)="navigate(item)">
                         <div class="sidebar-menu__img"></div>
                         <div class="sidebar-menu__text">{{item.text}}</div>
-                        <div *ngIf="item.subLinks?.length" class="sidebar-menu__arr">
+                        <div *ngIf="item.subLinks?.length" [ngClass]="{'rotate90':item.showSubMenu}" class="sidebar-menu__arr">
                             <mdc-icon path="ic-pager-arr-right"></mdc-icon>
                         </div>
                     </div>

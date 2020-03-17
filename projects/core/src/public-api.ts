@@ -10,6 +10,8 @@ export * from './lib/models/Project';
 export * from './lib/models/UserType';
 
 export * from './lib/core.service';
+
+export * from './lib/services/navigation.service';
 export * from './lib/services/data.service';
 export * from './lib/services/login.service';
 export * from './lib/services/translate.service';

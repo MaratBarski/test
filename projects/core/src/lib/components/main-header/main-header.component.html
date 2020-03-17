@@ -6,7 +6,7 @@
                     <div class="header__main">
                         <div class="header__logo">
                             <a href="/">
-                                <img src="/assets/img/logo-white.svg" alt="Logo"></a>
+                                <img src="/assets/images/logo-white.svg" alt="Logo"></a>
                         </div>
                         <div (click)="displaySideMenu()" class="hamburger">
                             <span class="ic-hamburger"><span></span></span>
@@ -14,17 +14,14 @@
                     </div>
                     <div class="header__info">
                         <div class="header__company d-none d-md-block">
-                            <svg class="icon ic-flower">
-                                <use xlink:href="/assets/sprites/sprite.svg#ic-flower"></use>
-                            </svg><span class="header__company-name">Buttercup Hospital Institute</span>
+                            <mdc-icon path="ic-flower"></mdc-icon>
+                            <span class="header__company-name">Buttercup Hospital Institute</span>
                         </div>
                         <div class="header__action">
                             <div (mouseover)="showMenu=true" (mouseleave)="showMenu=false" class="select">
                                 <div class="select__head">Sheba Central
                                     <div class="select__head-arr">
-                                        <svg class="icon ic-select-arr-down">
-                                            <use xlink:href="/assets/sprites/sprite.svg#ic-select-arr-down"></use>
-                                        </svg>
+                                        <mdc-icon path="ic-select-arr-down"></mdc-icon>
                                     </div>
                                 </div>
                                 <div [hidden]="!showMenu" class="select__option">
@@ -37,7 +34,7 @@
                             <div class="header__notice">
                                 <mdc-icon path="notice"></mdc-icon>
                             </div>
-                            <div class="header__profile"></div>
+                            <div></div>
                         </div>
                     </div>
                 </div>

@@ -5,8 +5,7 @@ import { Store } from '@ngrx/store';
 import { load, deleteFile } from '../../store/actions/imported-files.actions';
 import { selectData } from '../../store/selectors/imported-files.selector';
 import { FileSource } from '../../models/file-source';
-import { Subscription } from 'rxjs';
-import { TableHeaderModel, CheckBoxListOption, Project } from 'projects/core/src/public-api';
+import { TableHeaderModel, CheckBoxListOption, Project, NavigationService, PageInfo, BaseSibscriber } from 'projects/core/src/public-api';
 import { CheckBoxListComponent } from 'core/public-api';
 
 @Component({
@@ -14,7 +13,7 @@ import { CheckBoxListComponent } from 'core/public-api';
   templateUrl: './imported-files.component.html',
   styleUrls: ['./imported-files.component.scss']
 })
-export class ImportedFilesComponent implements OnInit, OnDestroy {
+export class ImportedFilesComponent extends BaseSibscriber implements OnInit, OnDestroy {
 
   @ViewChild('popupMenu', { static: true }) popupMenu: PopupComponent;
   @ViewChild('popupFilter', { static: true }) popupFilter: PopupComponent;
@@ -25,8 +24,11 @@ export class ImportedFilesComponent implements OnInit, OnDestroy {
     private translateService: TranslateService,
     private dateService: DateService,
     private importedFilesService: ImportedFilesService,
-    private store: Store<any>
+    private store: Store<any>,
+    private navigationService: NavigationService
   ) {
+    super();
+    this.navigationService.currentPageID = PageInfo.ImportedFiles.id;
   }
 
   deleteLink: MenuLink = {
@@ -63,7 +65,6 @@ export class ImportedFilesComponent implements OnInit, OnDestroy {
   showUploadFile = false;
   dataOrigin: TableModel;
   dataSource: TableModel;
-  subscriptions: Array<Subscription> = [];
 
   searchComplite(text: string): void {
     //this.table.resetPaginator();
@@ -81,10 +82,6 @@ export class ImportedFilesComponent implements OnInit, OnDestroy {
     this.dataSource = { ...this.dataOrigin, rows: rows };
   }
 
-  ngOnDestroy(): void {
-    this.subscriptions.forEach(s => s.unsubscribe());
-  }
-
   editClick(item: any, source: any, event: any): void {
     this.deleteLink.source = source;
     this.editLink.source = source;
@@ -95,7 +92,7 @@ export class ImportedFilesComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.initTabs();
-    this.subscriptions.push(
+    super.add(
       this.store.select(selectData).subscribe((files: Array<FileSource>) => {
         this.dataOrigin = this.dataSource = this.importedFilesService.createDataSource(files);
         const proj = files.filter(x => x.projectObj).map(x => x.projectObj);
@@ -157,7 +154,7 @@ export class ImportedFilesComponent implements OnInit, OnDestroy {
   onCloseFilter(): void {
     this.curentFilter = undefined;
   }
-  
+
   applyFilter(): void {
     if (!this.filterProc[this.curentFilter]) { return; }
     this.filterProc[this.curentFilter].apply();

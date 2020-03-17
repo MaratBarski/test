@@ -3,6 +3,7 @@ import { ActivatedRoute, ActivatedRouteSnapshot, Router, NavigationEnd } from '@
 import { SideMenu, MenuItem } from '../../common/side-menu';
 import { ComponentService } from '../../services/component.service';
 import { BaseSibscriber } from '../../common/BaseSibscriber';
+import { NavigationService } from '../../services/navigation.service';
 
 @Component({
   selector: 'mdc-side-bar',
@@ -11,27 +12,19 @@ import { BaseSibscriber } from '../../common/BaseSibscriber';
 })
 export class SideBarComponent extends BaseSibscriber implements OnInit {
 
-  constructor(private router: Router, private activeRouter: ActivatedRoute) {
+  constructor(private router: Router, public navigationService: NavigationService) {
     super();
   }
 
   items = SideMenu;
 
   ngOnInit() {
-    // this.activeRouter.data.subscribe(data => {
-    //   alert(JSON.stringify(data));
-    // })
     super.add(
       this.router.events.subscribe(event => {
         if (event instanceof NavigationEnd) {
-          //alert(window.location.href);
           ComponentService.scrollTo(0, 0);
         }
       }));
-  }
-
-  isActive(item: MenuItem): boolean {
-    return true;
   }
 
   navigate(item: MenuItem): void {
@@ -39,6 +32,7 @@ export class SideBarComponent extends BaseSibscriber implements OnInit {
       item.showSubMenu = item.showSubMenu ? false : true;
       return;
     }
+    if (!item.url) { return; }
     this.router.navigateByUrl(item.url);
   }
 
