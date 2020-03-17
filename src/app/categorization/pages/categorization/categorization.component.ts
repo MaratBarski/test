@@ -113,5 +113,4 @@ export class CategorizationComponent extends BaseSibscriber implements OnInit {
   closeCategoryInfo():void{
     this.showCategoryInfo = false;
   }
-
 }

@@ -21,38 +21,44 @@ export class CategorizationService {
 
   createDataSource(categories: Array<Hierarchy>): TableModel {
     const data: TableModel = {
-      headers: [{
-        columnId: 'hierarchyName',
-        text: 'Name',
-        isSortEnabled: true,
-        sortDir: 'desc',
-        isSortedColumn: true
-      },
-      {
-        columnId: 'insertDate',
-        text: 'Modified',
-        isSortEnabled: true
-      },
-      {
-        columnId: 'state',
-        text: 'State',
-        isSortEnabled: true
-      },
-      {
-        columnId: 'domain',
-        text: 'Environment 	',
-        isSortEnabled: true
-      },
-      {
-        columnId: 'inUseColumn',
-        text: 'In Use',
-        isSortEnabled: true
-      },
-      {
-        columnId: 'editColumn',
-        text: '',
-        isSortEnabled: false
-      },
+      headers: [
+        {
+          columnId: 'hierarchyName',
+          text: 'Name',
+          isSortEnabled: true,
+          sortDir: 'desc',
+          isSortedColumn: true
+        },
+        {
+          columnId: 'hierarchyFile',
+          text: 'File Name',
+          isSortEnabled: true
+        },
+        {
+          columnId: 'insertDate',
+          text: 'Modified',
+          isSortEnabled: true
+        },
+        {
+          columnId: 'state',
+          text: 'State',
+          isSortEnabled: true
+        },
+        {
+          columnId: 'domain',
+          text: 'Environment 	',
+          isSortEnabled: true
+        },
+        {
+          columnId: 'inUseColumn',
+          text: 'In Use',
+          isSortEnabled: true
+        },
+        {
+          columnId: 'editColumn',
+          text: '',
+          isSortEnabled: false
+        },
       ],
       rows: []
     }
@@ -60,6 +66,7 @@ export class CategorizationService {
       data.rows.push({
         cells: {
           hierarchyName: fl.hierarchyName,
+          hierarchyFile:fl.hierarchyFile,
           insertDate: fl.insertDate,
           domain: fl.domain,
           defaultLevelId: fl.defaultLevelId
@@ -68,9 +75,6 @@ export class CategorizationService {
         source: fl
       })
     })
-    data.rows.forEach((r, i) => {
-      r.cells['No'] = i;
-    });
     return data;
   }
 
