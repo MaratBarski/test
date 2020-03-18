@@ -1,5 +1,5 @@
 <div>
-    <div class="modal-window__head">New Categorization</div>
+    <div class="modal-window__head">New categorization</div>
     <div (click)="cancel()" class="modal-window__close ic-hover">
         <mdc-icon path="ic-close"></mdc-icon>
     </div>
@@ -15,7 +15,7 @@
                                 Select a CSV or Excel file
                             </ng-template>
                             <ng-template [ngIf]="file">
-                                {{file}}
+                                <div class="file-name">{{file}}</div>
                             </ng-template>
                         </span>
                     </label>
@@ -23,19 +23,52 @@
             </div>
             <div class="form-site__item">
                 <label class="form-site__label" for="name">Name</label>
-                <input [(ngModel)]="fileName" type="text" placeholder="Type file name">
+                <input type="text" [(ngModel)]="fileName" placeholder="Type categorization name">
+            </div>
+            <div class="form-site__item">
+                <label class="form-site__label" for="desc">Description<span
+                        class="form-site__optional">Optional</span></label>
+                <textarea [(ngModel)]="description" id="desc"
+                    placeholder="Type a description that will help you understand more about this categorization"></textarea>
             </div>
             <div class="form-site__item">
                 <label class="form-site__label" for="project">Environment</label>
-                <md-project-combo [project]="project" (onChange)="changedProject($event)"></md-project-combo>
+                <div class="select" id="project">
+                    <div class="select__head">Select Environment…
+                        <div class="select__head-arr">
+                            <svg class="icon ic-select-arr-down">
+                                <use xlink:href="/assets/sprites/sprite.svg#ic-select-arr-down"></use>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="select__option">
+                        <!-- <div class="select__param">Sheba Central</div>
+                        <div class="select__param">Sheba External</div>
+                        <div class="select__param">Demo environment</div>
+                        <div class="select__param">Mimic</div>
+                        <div class="select__param">Environment with very long name</div> -->
+                    </div>
+                </div>
             </div>
             <div class="form-site__item">
-                <label class="form-site__label">Make this a shared file</label>
-                <div class="form-site__shared"><span class="form-site__shared-notice"><span
-                            class="form-site__shared-text">When file is shared everyone can see and use
-                            it.</span></span>
-                    <div class="switch">
-                        <mdc-toggle-button no="No" yes="Yes" [(ngModel)]="fileType"></mdc-toggle-button>
+                <label class="form-site__label" for="key">
+                    Default Category<span class="form-site__icon">
+                        <svg class="icon ic-help">
+                            <use xlink:href="/assets/sprites/sprite.svg#ic-help"></use>
+                        </svg></span></label>
+                <div class="select select_up" id="key">
+                    <div class="select__head">Select default category...
+                        <div class="select__head-arr">
+                            <svg class="icon ic-select-arr-down">
+                                <use xlink:href="/assets/sprites/sprite.svg#ic-select-arr-down"></use>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="select__option">
+                        <!-- <div class="select__param">Hierarchy 2</div>
+                        <div class="select__param">ATC1</div>
+                        <div class="select__param">Hierarchy 1</div>
+                        <div class="select__param">Hierarchy with a very long name</div> -->
                     </div>
                 </div>
             </div>
