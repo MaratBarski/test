@@ -19,13 +19,7 @@ import { CheckBoxListComponent } from './components/check-box-list/check-box-lis
 import { ModalWindowComponent } from './components/modal-window/modal-window.component';
 import { PaginatorComponent } from './components/paginator/paginator.component';
 import { TokenInterceptorService } from './services/token-interceptor.service';
-import { TranslateService } from './services/translate.service';
-import { NavigationService } from './services/navigation.service';
-import { DataService } from './services/data.service';
-import { LoginService } from './services/login.service';
-import { ComponentService } from './services/component.service';
 import { LocalStorageService } from './services/local-storage.service';
-import { SocketService } from './services/socket.service';
 import { PaginationPipe } from './pipes/pagination.pipe';
 import { TranslatePipe } from './pipes/translate.pipe';
 import { TooltipDirective } from './directives/tooltip.directive';
@@ -39,11 +33,7 @@ import { MainHeaderComponent } from './components/main-header/main-header.compon
 import { SearchPipe } from './pipes/search.pipe';
 import { VisibilityDirective } from './directives/visibility.directive';
 import { TextBlockComponent } from './components/text-block/text-block.component';
-import { DateService } from './services/date.service';
 import { CommonModule } from '@angular/common';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { user } from './store/reducers/user.reducer';
@@ -160,13 +150,6 @@ import { RouterModule } from '@angular/router';
     TableHeaderComponent
   ],
   providers: [
-    TranslateService,
-    DataService,
-    LoginService,
-    ComponentService,
-    SocketService,
-    DateService,
-    NavigationService,
     LocalStorageService,
     {
       provide: HTTP_INTERCEPTORS,

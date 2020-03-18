@@ -11,7 +11,6 @@ const TRANSLATIONS = {
 export class TranslateService {
 
   private lang = 'enUS';
-  constructor() { }
 
   private formatString(str: string, args: any[]): string {
     let formatted = str;

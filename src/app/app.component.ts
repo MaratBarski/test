@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ComponentService } from './core-api';
+import { ComponentService, TranslateService } from './core-api';
 import { trigger, state, transition, animate, style } from '@angular/animations';
 
 @Component({
@@ -26,4 +26,11 @@ import { trigger, state, transition, animate, style } from '@angular/animations'
 export class AppComponent {
   title = 'mdclone-mainapp-ui';
   constructor(public componentService: ComponentService) { }
+
+  animationStarted(event: any): void {
+  }
+
+  animationDone(event: any): void {
+    this.componentService.toggleMenu();
+  }
 }
