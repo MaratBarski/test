@@ -9,8 +9,8 @@ import { trigger, state, transition, animate, style } from '@angular/animations'
     trigger('openCloseContent', [
       state('open', style({ width: 'auto' })),
       state('closed', style({ width: '100%' })),
-      transition('open => closed', [animate('.2s')]),
-      transition('closed => open', [animate('.2s')])
+      transition('open => closed', [animate('.4s')]),
+      transition('closed => open', [animate('.1s')])
     ]),
     trigger('openClose', [
       state('open', style({
