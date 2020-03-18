@@ -11,6 +11,7 @@ import { categorization } from './store/reducers/categorization.reducer';
 import { CategorizationLoadEffect } from './store/effects/categorization-load.effect';
 import { MapCategoriesComponent } from './pages/map-categories/map-categories.component';
 import { CategoryInfoComponent } from './components/category-info/category-info.component';
+import { UploadFileComponent } from './components/upload-file/upload-file.component';
 
 const routes: Array<Route> = [
   { path: '', component: CategorizationComponent },
@@ -21,7 +22,8 @@ const routes: Array<Route> = [
   declarations: [
     CategorizationComponent,
     MapCategoriesComponent,
-    CategoryInfoComponent
+    CategoryInfoComponent,
+    UploadFileComponent
   ],
   imports: [
     CommonModule,

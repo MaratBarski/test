@@ -1,0 +1,49 @@
+<div>
+    <div class="modal-window__head">New Categorization</div>
+    <div (click)="cancel()" class="modal-window__close ic-hover">
+        <mdc-icon path="ic-close"></mdc-icon>
+    </div>
+    <div class="form-site">
+        <div class="form-site__fields">
+            <div class="form-site__item">
+                <div class="form-site__label">Choose File</div>
+                <div class="file-upload">
+                    <label class="file-upload__content">
+                        <input #fileInput (change)="updateFileName($event)" type="file" accept=".csv">
+                        <span class="file-upload__btn">Choose File</span><span class="file-upload__name disable">
+                            <ng-template [ngIf]="!file">
+                                Select a CSV or Excel file
+                            </ng-template>
+                            <ng-template [ngIf]="file">
+                                {{file}}
+                            </ng-template>
+                        </span>
+                    </label>
+                </div>
+            </div>
+            <div class="form-site__item">
+                <label class="form-site__label" for="name">Name</label>
+                <input [(ngModel)]="fileName" type="text" placeholder="Type file name">
+            </div>
+            <div class="form-site__item">
+                <label class="form-site__label" for="project">Environment</label>
+                <md-project-combo [project]="project" (onChange)="changedProject($event)"></md-project-combo>
+            </div>
+            <div class="form-site__item">
+                <label class="form-site__label">Make this a shared file</label>
+                <div class="form-site__shared"><span class="form-site__shared-notice"><span
+                            class="form-site__shared-text">When file is shared everyone can see and use
+                            it.</span></span>
+                    <div class="switch">
+                        <mdc-toggle-button no="No" yes="Yes" [(ngModel)]="fileType"></mdc-toggle-button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-site__btn">
+            <button (click)="cancel()" class="btn btn_border">Cancel</button>
+            <button (click)="uploadFile($event)" [disabled]="!isValid" [ngClass]="{'btn_disable':!isValid}"
+                class="btn">Upload</button>
+        </div>
+    </div>
+</div>

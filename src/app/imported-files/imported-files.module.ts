@@ -13,6 +13,7 @@ import { MyQueriesComponent } from './pages/my-queries/my-queries.component';
 import { SharedModule } from '@app/shared/shared.module';
 import { ImportedFilesMappingService } from './services/imported-files-mapping.service';
 import { SourceFileDeleteEffect } from './store/effects/imported-file-delete.effect';
+import { UploadFileComponent } from './components/upload-file/upload-file.component';
 
 const routes: Array<Route> = [
   { path: '', component: ImportedFilesComponent },
@@ -24,7 +25,8 @@ const routes: Array<Route> = [
   declarations: [
     ImportedFilesComponent,
     ImportedFileMappingComponent,
-    MyQueriesComponent
+    MyQueriesComponent,
+    UploadFileComponent
   ],
   imports: [
     CommonModule,
