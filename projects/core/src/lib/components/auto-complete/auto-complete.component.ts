@@ -7,10 +7,9 @@ import { Component, Input, TemplateRef, EventEmitter, Output, ViewContainerRef, 
 })
 export class AutoCompleteComponent {
 
-  @Input() width = '200px';
   @Input() maxHeight = '300px';
 
-  @ViewChild('conteiner', { static: true }) conteiner: ElementRef;
+  @ViewChild('container', { static: true }) container: ElementRef;
   inputText: string = '';
   @ContentChild(TemplateRef, { read: TemplateRef, static: true }) template: TemplateRef<any>;
   @Output() completeMethod = new EventEmitter<string>();
@@ -100,10 +99,10 @@ export class AutoCompleteComponent {
 
   private moveToView(): void {
     if (this.currentIndex < 2) {
-      this.conteiner.nativeElement.scrollTop = 0;
+      this.container.nativeElement.scrollTop = 0;
       return;
     }
-    const element = this.conteiner.nativeElement.childNodes[this.currentIndex];
+    const element = this.container.nativeElement.childNodes[this.currentIndex];
     if (element.scrollIntoView) {
       element.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'start' });
     }
