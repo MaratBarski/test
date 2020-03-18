@@ -170,25 +170,33 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, On
     if (this.curentFilter === source.header.columnId) { return; }
     this.popupFilter.isExpanded = false;
     this.curentFilter = source.header.columnId;
-    if (!this.filterProc[this.curentFilter]) { return; }
+    if (!this.isFilter) { return; }
     this.filterProc[this.curentFilter].show();
     this.popupFilter.target = source.event.target;
     this.popupFilter.show(true, source.event);
   }
 
+  get isFilter(): boolean {
+    if (!this.curentFilter) { return false; }
+    if (!this.filterProc[this.curentFilter]) { return false; }
+    return true;
+  }
+
   cancelFilter(): void {
     this.popupFilter.isExpanded = false;
+    if (!this.isFilter) { return; }
     this.filterProc[this.curentFilter].setOptions();
     this.curentFilter = undefined;
   }
 
   onCloseFilter(): void {
+    if (!this.isFilter) { return; }
     this.filterProc[this.curentFilter].setOptions();
     this.curentFilter = undefined;
   }
 
   applyFilter(): void {
-    if (!this.filterProc[this.curentFilter]) { return; }
+    if (!this.isFilter) { return; }
     this.filterProc[this.curentFilter].setOptions();
     this.createDataSource();
     this.popupFilter.isExpanded = false;
