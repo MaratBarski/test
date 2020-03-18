@@ -1,11 +1,11 @@
 import { Component, Input, TemplateRef, EventEmitter, Output, ViewContainerRef, ContentChild, ViewChild, ElementRef, HostListener } from '@angular/core';
 
 @Component({
-  selector: 'mdc-auto-complite',
-  templateUrl: './auto-complite.component.html',
-  styleUrls: ['./auto-complite.component.css']
+  selector: 'mdc-auto-complete',
+  templateUrl: './auto-complete.component.html',
+  styleUrls: ['./auto-complete.component.css']
 })
-export class AutoCompliteComponent {
+export class AutoCompleteComponent {
 
   @Input() width = '200px';
   @Input() maxHeight = '300px';

@@ -66,7 +66,7 @@ export class TableComponent implements OnDestroy, AfterViewInit {
   @Input() set search(search: AutoSearchComponent) {
     this._search = search;
     this._subscriptions.push(
-      this._search.complite.subscribe((text: string) => {
+      this._search.complete.subscribe((text: string) => {
         this.resetPaginator();
         this._rows = this.searchService.filterRows(
           this.dataSource.rows, { text: text, columns: this.searchOptions }

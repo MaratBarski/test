@@ -4,12 +4,12 @@
     </span>
 </ng-template>
 <div style="padding: 50px;">
-    <mdc-auto-complite textField="name" placeHolder="Select item..." (onSelect)="selectItem($event)"
+    <mdc-auto-complete textField="name" placeHolder="Select item..." (onSelect)="selectItem($event)"
         (completeMethod)="completeMethod($event)" [suggestions]="suggestions">
         <ng-template let-item>
             <div style="border-top:1px solid #ccc">{{item.name}}</div>
         </ng-template>
-    </mdc-auto-complite>
+    </mdc-auto-complete>
 <mdc-switch-button [buttons]="switchButtons" (onClick)="switchBtnClick($event)" [activeIndex]="1"></mdc-switch-button>
 
 
@@ -61,7 +61,7 @@ Selected:{{selectedItem?.name}}
                                                 <form class="form-search d-none d-md-block">
                                                     <mdc-auto-search pause="500" #search
                                                         placeholder="{{'search'|translate}}"
-                                                        (complite)="searchQueryComplite($event)"></mdc-auto-search>
+                                                        (complete)="searchQueryComplete($event)"></mdc-auto-search>
                                                 </form>
                                             </div>
                                         </div>

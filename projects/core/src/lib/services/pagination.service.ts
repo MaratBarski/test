@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 export class PagingInfo {
   currentPage: number;
   pageSize: number;
-  complite?: boolean
+  complete?: boolean
 }
 
 @Injectable({
@@ -23,7 +23,7 @@ export class PaginationService {
       return value;
     }
     let res = [...value.slice(pageInfo.currentPage * pageInfo.pageSize, pageInfo.currentPage * pageInfo.pageSize + pageInfo.pageSize)];
-    if (!pageInfo.complite) { return res; }
+    if (!pageInfo.complete) { return res; }
     if (pageInfo.currentPage === 0) { return res; }
     if (res.length === pageInfo.pageSize) { return res; }
     const index = Math.max(0, pageInfo.currentPage * pageInfo.pageSize - pageInfo.pageSize + res.length);

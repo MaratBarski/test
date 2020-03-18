@@ -16,10 +16,10 @@
         </div>
         <div class="paging-container">
             <div class="paging-item" (click)="setPage(p)"
-                *ngFor="let p of pages|pagination:{currentPage: currentBlock, pageSize: blockSize,complite: true};let i = index">
+                *ngFor="let p of pages|pagination:{currentPage: currentBlock, pageSize: blockSize,complete: true};let i = index">
                 <div class="page-btn" [ngClass]="{'current':p===currentPage+1}">{{p}}</div>
                 <div class="separator"
-                    *ngIf="i < blockSize - 1 && i !== (pages|pagination:{currentPage: currentBlock, pageSize: blockSize,complite: true}).length-1">
+                    *ngIf="i < blockSize - 1 && i !== (pages|pagination:{currentPage: currentBlock, pageSize: blockSize,complete: true}).length-1">
                 </div>
             </div>
         </div>

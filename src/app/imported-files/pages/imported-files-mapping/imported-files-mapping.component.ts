@@ -69,7 +69,7 @@ export class ImportedFileMappingComponent implements OnInit, OnDestroy {
   dataSource: TableModel;
   subscriptions: Array<Subscription> = [];
 
-  searchComplite(text: string): void {
+  searchComplete(text: string): void {
     //this.table.resetPaginator();
     //this.serachText = text;
   }

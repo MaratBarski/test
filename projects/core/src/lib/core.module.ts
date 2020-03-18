@@ -51,7 +51,7 @@ import { PopupComponent } from './components/popup/popup.component';
 import { ModalMenuComponent } from './components/modal-menu/modal-menu.component';
 import { MenuLinkComponent } from './components/menu-link/menu-link.component';
 import { AccordionComponent } from './components/accordion/accordion.component';
-import { AutoCompliteComponent } from './components/auto-complite/auto-complite.component';
+import { AutoCompleteComponent } from './components/auto-complete/auto-complete.component';
 import { SwitchButtonComponent } from './components/switch-button/switch-button.component';
 import { InfoPopupComponent } from './components/info-popup/info-popup.component';
 import { ProgressComponent } from './components/progress/progress.component';
@@ -98,7 +98,7 @@ import { RouterModule } from '@angular/router';
     ModalMenuComponent,
     MenuLinkComponent,
     AccordionComponent,
-    AutoCompliteComponent,
+    AutoCompleteComponent,
     SwitchButtonComponent,
     InfoPopupComponent,
     ProgressComponent,
@@ -150,7 +150,7 @@ import { RouterModule } from '@angular/router';
     ModalMenuComponent,
     MenuLinkComponent,
     AccordionComponent,
-    AutoCompliteComponent,
+    AutoCompleteComponent,
     SwitchButtonComponent,
     InfoPopupComponent,
     ProgressComponent,

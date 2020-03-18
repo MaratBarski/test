@@ -36,7 +36,7 @@ export class CategorizationComponent extends BaseSibscriber implements OnInit {
 
   searchOptions = ['hierarchyName'];
 
-  searchComplite(text: string): void {
+  searchComplete(text: string): void {
   }
 
   showInfo(event: any, item: any): void {

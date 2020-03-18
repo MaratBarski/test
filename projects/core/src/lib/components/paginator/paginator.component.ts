@@ -104,7 +104,7 @@ export class PaginatorComponent {
     if (this.currentBlock < this.blockCount - 1) { return this.currentBlock * this.blockSize;; }
     const pages = this.paginationService.paginate(
       this.pages,
-      { currentPage: this.currentBlock, pageSize: this.blockSize, complite: true }
+      { currentPage: this.currentBlock, pageSize: this.blockSize, complete: true }
     )
     return pages.length ? Math.max(0, pages[0] - 1) : 0;
   }

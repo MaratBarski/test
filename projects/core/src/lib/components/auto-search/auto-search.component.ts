@@ -7,7 +7,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class AutoSearchComponent {
 
-  @Output() complite = new EventEmitter<string>();
+  @Output() complete = new EventEmitter<string>();
   @Input() minLength = 3;
   @Input() placeholder = '';
   @Input() pause = 2000;
@@ -26,20 +26,20 @@ export class AutoSearchComponent {
   keydown(event: any): void {
     this.stopTimeout();
     if (event.keyCode !== 13) { return; }
-    this.complite.emit(this.text); 
+    this.complete.emit(this.text); 
   }
 
   publish(): void {
     this.stopTimeout();
     this.timeoutID = setTimeout(() => {
       this.stopTimeout();
-      this.complite.emit(this.text);
+      this.complete.emit(this.text);
     }, this.pause);
   }
 
   search(): void {
     this.stopTimeout();
-    this.complite.emit(this.text);
+    this.complete.emit(this.text);
   }
 
   clearText(): void {

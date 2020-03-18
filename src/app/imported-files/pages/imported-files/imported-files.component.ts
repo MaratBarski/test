@@ -67,7 +67,7 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, On
   dataSource: TableModel;
   fileSource: Array<FileSource>;
 
-  searchComplite(text: string): void {
+  searchComplete(text: string): void {
     //this.table.resetPaginator();
     //this.serachText = text;
   }

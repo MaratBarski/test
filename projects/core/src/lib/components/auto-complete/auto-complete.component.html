@@ -1,20 +1,20 @@
 <div [style.width]="width" (mouseleave)="currentIndex=-1;isOver=false" (mouseover)="isOver=true">
-    <div class="auto-complite-input-container">
+    <div class="auto-complete-input-container">
         <div>
-            <input class="auto-complite-input" placeholder="{{placeHolder}}" [(ngModel)]="inputText"
+            <input class="auto-complete-input" placeholder="{{placeHolder}}" [(ngModel)]="inputText"
                 (keydown)="onKeyDown($event)" (keyup)="search($event)" type="text" />
         </div>
-        <div *ngIf="dropdown" class="auto-complite-dropdown" (click)="openSelect()">
-            <div class="auto-complite-dropdown-icon">
+        <div *ngIf="dropdown" class="auto-complete-dropdown" (click)="openSelect()">
+            <div class="auto-complete-dropdown-icon">
                 <mdc-icon path="ic-select-arr-down"></mdc-icon>
             </div>
         </div>
     </div>
-    <div #conteiner [style.maxHeight]="maxHeight" [style.width]="width" class="auto-complite-suggestions"
+    <div #conteiner [style.maxHeight]="maxHeight" [style.width]="width" class="auto-complete-suggestions"
         [hidden]="isHiddeSuggestions">
         <div (mousemove)="currentIndex=index" (click)="selectItem(index)"
             *ngFor="let item of suggestions;let index = index" tabindex="{{index}}"
-            [ngClass]="{'auto-complite-current':index===currentIndex}">
+            [ngClass]="{'auto-complete-current':index===currentIndex}">
             <ng-container [ngTemplateOutlet]="template" [ngTemplateOutletContext]="{$implicit: item}">
             </ng-container>
         </div>

@@ -73,11 +73,11 @@ export class MyQueriesComponent implements OnInit {
     this.selectedItem = item;
   }
 
-  searchQueryComplite(text: string): void {
+  searchQueryComplete(text: string): void {
     console.log(text);
   }
 
-  searchSharedQueryComplite(text: string): void {
+  searchSharedQueryComplete(text: string): void {
     console.log(text);
   }
 
