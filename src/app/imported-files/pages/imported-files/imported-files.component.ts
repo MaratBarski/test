@@ -99,9 +99,10 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, On
   }
 
   initProjects(files: Array<FileSource>): void {
-    const proj = files.filter(x => x.projectObj).map(x => x.projectObj);
+    const projects = files.filter(x => x.projectObj).map(x => x.projectObj);
     const dict = {};
-    proj.forEach((value, index) => {
+    this.projects = [];
+    projects.forEach((value, index) => {
       if (dict[value.projectId]) {
         return;
       }
@@ -111,9 +112,10 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, On
   }
 
   initUsers(files: Array<FileSource>): void {
-    const proj = files.filter(x => x.uploadedBy).map(x => { return { id: x.uploadedBy, text: 'user_' + x.uploadedBy } });
+    const users = files.filter(x => x.uploadedBy).map(x => { return { id: x.uploadedBy, text: 'user_' + x.uploadedBy } });
     const dict = {};
-    proj.forEach((value, index) => {
+    this.users = [];
+    users.forEach((value, index) => {
       if (dict[value.id]) {
         return;
       }

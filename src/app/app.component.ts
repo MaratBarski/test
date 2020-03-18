@@ -6,12 +6,6 @@ import { trigger, state, transition, animate, style } from '@angular/animations'
   selector: 'app-root',
   templateUrl: './app.component.html',
   animations: [
-    trigger('openCloseContent', [
-      state('open', style({ width: 'auto' })),
-      state('closed', style({ width: '100%' })),
-      transition('open => closed', [animate('.4s')]),
-      transition('closed => open', [animate('.1s')])
-    ]),
     trigger('openClose', [
       state('open', style({
         width: '305px',
