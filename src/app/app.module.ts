@@ -4,7 +4,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { CoreModule, TranslateService, DataService, ENV, LoginService } from 'appcore';
+import { CoreModule, ENV, LoginService } from 'appcore';
 import { StoreModule } from '@ngrx/store';
 import { LoginComponent } from './login/login.component';
 import { EffectsModule } from '@ngrx/effects';
@@ -33,8 +33,6 @@ import { Offline } from './shared/decorators/offline.decorator';
     }),
   ],
   providers: [
-    TranslateService,
-    DataService,
     HttpClientModule
   ],
   bootstrap: [AppComponent]
