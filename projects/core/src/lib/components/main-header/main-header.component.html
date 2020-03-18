@@ -4,7 +4,7 @@
             <div class="col-12">
                 <div class="header__content">
                     <div class="header__main">
-                        <div class="header__logo">
+                        <div [hidden]="!componentService.showSideMenu" class="header__logo">
                             <a href="/">
                                 <img src="./assets/images/logo-white.svg" alt="Logo"></a>
                         </div>

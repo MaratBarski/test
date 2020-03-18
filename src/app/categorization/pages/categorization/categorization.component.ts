@@ -61,11 +61,6 @@ export class CategorizationComponent extends BaseSibscriber implements OnInit {
     icon: 'ic-delete',
     source: 'test',
     click: (source) => {
-      this.dataSource = {
-        ...this.dataSource, ...{
-          rows: this.dataSource.rows.filter(r => r.cells.No !== source.No)
-        }
-      };
     }
   }
 
