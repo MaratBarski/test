@@ -5,9 +5,16 @@
 .main-table-top{
     vertical-align: top;
 }
+.main-nemu-container{
+    overflow: hidden;
+    position: fixed;
+}
 .main-table-side-menu{
-    width:305px
+    width:305px;
 }
 .main-table-content{
     padding-top: 80px;
+    position: relative;
+    z-index: 102;
+    background-color: #fff;
 }

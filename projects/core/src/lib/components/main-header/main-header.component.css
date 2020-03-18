@@ -1,0 +1,6 @@
+.mdc-main-header{
+    position:fixed;
+    top:0px;
+    z-index: 9999;
+    background-color: #0D1E42;
+}

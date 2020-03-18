@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ActivatedRouteSnapshot, Router, NavigationEnd } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 import { SideMenu, MenuItem } from '../../common/side-menu';
 import { ComponentService } from '../../services/component.service';
 import { BaseSibscriber } from '../../common/BaseSibscriber';
 import { NavigationService } from '../../services/navigation.service';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 @Component({
   selector: 'mdc-side-bar',
@@ -12,7 +13,9 @@ import { NavigationService } from '../../services/navigation.service';
 })
 export class SideBarComponent extends BaseSibscriber implements OnInit {
 
-  constructor(private router: Router, public navigationService: NavigationService) {
+  constructor(
+    private router: Router,
+    public navigationService: NavigationService) {
     super();
   }
 

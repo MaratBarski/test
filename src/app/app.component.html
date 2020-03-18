@@ -2,10 +2,12 @@
 <mdc-main-header logo="/assets/logo.jpg" organizationName="MDClone"></mdc-main-header>
 <table class="table-main">
     <tr>
-        <td [hidden]="!componentService.showSideMenu" class="main-table-top main-table-side-menu">
-            <mdc-side-bar></mdc-side-bar>
+        <td class="main-table-top main-table-side-menu">
+            <div [@openClose]="componentService.showSideMenu ? 'open' : 'closed'" class="main-nemu-container">
+                <mdc-side-bar></mdc-side-bar>
+            </div>
         </td>
-        <td class="main-table-top main-table-content">
+        <td [@openCloseContent]="componentService.showSideMenu ? 'open' : 'closed'" class="main-table-top main-table-content">
             <router-outlet></router-outlet>
         </td>
     </tr>
