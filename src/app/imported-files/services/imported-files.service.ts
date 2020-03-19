@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { DataService, ENV, TableModel } from 'appcore';
+import { DataService, TableModel } from 'appcore';
 import { Observable } from 'rxjs';
 import { FileSourceResponse, FileSource } from '../models/file-source';
 import { Offline } from 'src/app/shared/decorators/offline.decorator';
+import { environment } from '@env/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -12,14 +13,14 @@ export class ImportedFilesService {
   constructor(private dataService: DataService) { }
 
   @Offline('assets/offline/fileSource.json')
-  private getUrl = `${ENV.serverUrl}${ENV.endPoints.fileSource}`;
+  private getUrl = `${environment.serverUrl}${environment.endPoints.fileSource}`;
 
   load(): Observable<FileSourceResponse> {
     return this.dataService.get(this.getUrl);
   }
 
   deleteFile(fl: FileSource): Observable<any> {
-    return this.dataService.delete(`${ENV.serverUrl}${ENV.endPoints.deleteFileSource}/${fl.fileId}`);
+    return this.dataService.delete(`${environment.serverUrl}${environment.endPoints.deleteFileSource}/${fl.fileId}`);
   }
 
   createDataSource(files: Array<FileSource>): TableModel {

@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { DataService, ENV, TableModel } from 'appcore';
+import { DataService, TableModel } from 'appcore';
 import { Observable } from 'rxjs';
 import { Offline } from 'src/app/shared/decorators/offline.decorator';
 import { CategoryeResponse } from '../models/category-reponse';
 import { Hierarchy } from '@app/imported-files/models/hierarchy';
+import { environment } from '@env/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class CategorizationService {
   constructor(private dataService: DataService) { }
 
   @Offline('assets/offline/hierarchy.json')
-  private getUrl = `${ENV.serverUrl}${ENV.endPoints.hierarchy}`;
+  private getUrl = `${environment.serverUrl}${environment.endPoints.hierarchy}`;
 
   load(): Observable<CategoryeResponse> {
     return this.dataService.get(this.getUrl);

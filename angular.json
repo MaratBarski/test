@@ -37,6 +37,46 @@
             "scripts": []
           },
           "configurations": {
+            "marat": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.marat.ts"
+                }
+              ]
+            },
+            "kostyan": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.kostyan.ts"
+                }
+              ]
+            },
+            "asaf": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.asaf.ts"
+                }
+              ]
+            },
+            "omry": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.omry.ts"
+                }
+              ]
+            },
+            "moshe": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.moshe.ts"
+                }
+              ]
+            },
             "production": {
               "fileReplacements": [
                 {
@@ -76,6 +116,21 @@
           "configurations": {
             "production": {
               "browserTarget": "mdclone-mainapp-ui:build:production"
+            },
+            "marat": {
+              "browserTarget": "mdclone-mainapp-ui:build:marat"
+            },
+            "kostyan": {
+              "browserTarget": "mdclone-mainapp-ui:build:kostyan"
+            },
+            "asaf": {
+              "browserTarget": "mdclone-mainapp-ui:build:asaf"
+            },
+            "omry": {
+              "browserTarget": "mdclone-mainapp-ui:build:omry"
+            },
+            "moshe": {
+              "browserTarget": "mdclone-mainapp-ui:build:moshe"
             }
           }
         },

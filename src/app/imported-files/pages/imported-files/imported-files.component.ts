@@ -37,7 +37,7 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, On
     icon: 'ic-delete',
     source: 'test',
     click: (source) => {
-      this.store.dispatch(deleteFile(source))
+      this.store.dispatch(deleteFile(source));
     }
   }
 
