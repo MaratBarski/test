@@ -4,5 +4,5 @@
 <input type="text" placeholder="{{placeholder}}" [(ngModel)]="text" type="text" (keyup)="keyup($event)"
     (keydown)="keydown($event)">
 <a class="form-search__close" (click)="clearText()">
-    <mdc-icon path="ic-close" class="icon ic-close-small"></mdc-icon>
+    <mdc-icon [mdcShow]="text" path="ic-close" class="icon ic-close-small"></mdc-icon>
 </a>
