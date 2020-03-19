@@ -4,8 +4,8 @@ import * as io from 'socket.io-client';
 import { ENV } from '../config/env';
 import { LoginService } from './login.service';
 import { Store } from '@ngrx/store';
-import { tokenSelector } from '../../public-api';
 import { Subscription } from 'rxjs';
+import { tokenSelector } from '../store/selectors/user.selectors';
 
 
 @Injectable({

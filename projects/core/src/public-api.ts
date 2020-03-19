@@ -18,7 +18,7 @@ export * from './lib/services/translate.service';
 export * from './lib/services/token-interceptor.service';
 export * from './lib/services/component.service';
 export * from './lib/services/login.service';
-export * from './lib/services/socket.service'
+//export * from './lib/services/socket.service';
 export * from './lib/services/sort.service';
 export * from './lib/services/search.service';
 export * from './lib/services/pagination.service';
