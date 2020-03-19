@@ -1,12 +1,17 @@
-<div class="unwrap__head-content">
-    <span (click)="changeState()" class="unwrap__arr ic-hover" [@rotatedState]="rotateState">
-        <span class="icon ic-select-arr-down">
-            <mdc-icon path="ic-select-arr-down"></mdc-icon>
+<div class="unwrap__head">
+    <div class="unwrap__head-content">
+        <span (click)="changeState()" class="unwrap__arr ic-hover" [@rotatedState]="rotateState">
+            <span class="icon ic-select-arr-down">
+                <mdc-icon path="ic-select-arr-down"></mdc-icon>
+            </span>
         </span>
-    </span>
-    <span class="unwrap__title">
-        <ng-content select=".header"></ng-content>
-    </span>
+        <span class="unwrap__title">
+            <ng-content select=".header"></ng-content>
+        </span>
+    </div>
+    <div>
+        <ng-content select=".header-right"></ng-content>
+    </div>
 </div>
 <div [@slideInOut]="value?'in':'out'">
     <ng-content select=".body"></ng-content>
