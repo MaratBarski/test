@@ -13,7 +13,7 @@ export class PopupComponent {
   ) { }
 
   @ViewChild('container', { static: true }) container: ElementRef;
-  @Input() position: 'left' | 'top' | 'right' | 'bottom' = 'left';
+  @Input() position: 'left' | 'top' | 'right' | 'bottom' | 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right' = 'left';
   @Output() onClose = new EventEmitter();
 
   private _target: any;
@@ -85,18 +85,30 @@ export class PopupComponent {
   }
 
   private initPosition = {
-    right: (event: any) => {
+    'right': (event: any) => {
       this.setOffset(event.clientX + this.dx, event.clientY - this.rect.height / 2);
     },
-    left: (event: any) => {
+    'left': (event: any) => {
       this.setOffset(event.clientX - this.rect.width - this.dx, event.clientY - this.rect.height / 2);
     },
-    top: (event: any) => {
+    'top': (event: any) => {
       this.setOffset(event.clientX - this.dx, event.clientY - this.rect.height - this.dy);
     },
-    bottom: (event: any) => {
+    'bottom': (event: any) => {
       this.setOffset(event.clientX - this.dx, event.clientY + this.dy);
-    }
+    },
+    'top-left': (event: any) => {
+      this.setOffset(event.clientX - this.rect.width - this.dx, event.clientY - this.rect.height - this.dy);
+    },
+    'top-right': (event: any) => {
+      this.setOffset(event.clientX + this.dx, event.clientY - this.rect.height - this.dy);
+    },
+    'bottom-left': (event: any) => {
+      this.setOffset(event.clientX - this.rect.width - this.dx, event.clientY + this.dy);
+    },
+    'bottom-right': (event: any) => {
+      this.setOffset(event.clientX + this.dx, event.clientY + this.dy);
+    },
   }
 
   private setOffset(x: number, y: number): void {
