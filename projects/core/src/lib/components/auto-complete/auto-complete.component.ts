@@ -48,6 +48,13 @@ export class AutoCompleteComponent {
     }
   }
 
+  clearText(): void {
+    this.inputText = '';
+    this.selectOpen = false;
+    this.currentIndex = -1;
+    this.isSelected = false;
+  }
+
   openSelect(): void {
     this.completeMethod.emit('');
     this.selectOpen = true;
