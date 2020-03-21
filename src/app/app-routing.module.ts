@@ -3,7 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { LoginService } from './core-api';
 
-
 const routes: Routes = [
   {
     path: 'imported-files',
@@ -18,6 +17,10 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'test',
+    loadChildren: () => import('./test/test.module').then(m => m.TestModule)
   },
   {
     path: '',
