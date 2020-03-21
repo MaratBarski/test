@@ -1,0 +1,15 @@
+<mdc-svg-loader #svgLoder></mdc-svg-loader>
+<div class="selector">If you can't see icon change background color:
+    <select [(ngModel)]="backgroundColor">
+        <option value="#fff">White</option>
+        <option value="#000">Black</option>
+    </select>
+</div>
+<div class="icons">
+    <div class="icon" *ngFor="let ic of svgLoder.icons;">
+        <div class="img" [style.backgroundColor]="backgroundColor">
+            <mdc-icon [path]="ic.path"></mdc-icon>
+        </div>
+        <div class="txt">{{ic.path}}</div>
+    </div>
+</div>

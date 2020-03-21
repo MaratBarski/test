@@ -1,0 +1,25 @@
+.icons{
+    display: flex;
+    flex-wrap: wrap;
+}
+.icon{
+    padding: 4px;
+    display: table;
+    margin: 6px;
+    border:1px solid #ccc;
+}
+.img{
+    padding: 2px;
+    display: table;
+    margin: 0 auto;
+}
+.txt{
+    font-size: 14px;
+    padding: 6px;
+    white-space: nowrap;
+}
+.selector{
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-bottom: 20px;
+}
