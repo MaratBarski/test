@@ -1,11 +1,4 @@
-<mdc-popup #popupMenu [closeOnClick]="true">
-    <mdc-modal-menu [sublinks]="sublinks" [links]="links"></mdc-modal-menu>
-</mdc-popup>
-<mdc-popup #popupFilter (onClose)="onCloseFilter()" [closeOnClick]="false">
-    <mdc-check-box-list #checkFilter (apply)="applyFilter()" (cancel)="cancelFilter()" [options]="filterOptions"></mdc-check-box-list>
-</mdc-popup>
 <div class="wrapper">
-    <div class="shadow-site"></div>
     <main>
         <md-page-title>Imported files</md-page-title>
         <md-page-body>
@@ -36,6 +29,13 @@
         </md-page-body>
     </main>
 </div>
+
+<mdc-popup #popupMenu position="bottom-left" [closeOnClick]="true">
+    <mdc-modal-menu [sublinks]="sublinks" [links]="links"></mdc-modal-menu>
+</mdc-popup>
+<mdc-popup #popupFilter (onClose)="onCloseFilter()" [closeOnClick]="false">
+    <mdc-check-box-list #checkFilter (apply)="applyFilter()" (cancel)="cancelFilter()" [options]="filterOptions"></mdc-check-box-list>
+</mdc-popup>
 <mdc-modal-window [hidden]="!showUploadFile">
     <md-upload-file (onUpload)="showUploadFile=false" (onCancel)="showUploadFile=false"></md-upload-file>
 </mdc-modal-window>

@@ -1,10 +1,10 @@
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
-import { BaseSibscriber, TableModel, TableComponent, PopupComponent, MenuLink, PageInfo, NavigationService } from '@app/core-api';
+import { BaseSibscriber, TableModel, TableComponent, PopupComponent, MenuLink, PageInfo, NavigationService, ModalWindowComponent, InfoPopupComponent, ComponentService } from '@app/core-api';
 import { Store } from '@ngrx/store';
 import { load } from '@app/categorization/store/actions/categorization.actions';
 import { CategorizationService } from '@app/categorization/services/categorization.service';
 import { selectCategorization } from '@app/categorization/store/selectors/categorization.selector';
-import { InfoPopupComponent } from 'core/public-api';
+import { CategoryInfoComponent } from '@app/categorization/components/category-info/category-info.component';
 
 @Component({
   selector: 'md-categorization',
@@ -17,6 +17,8 @@ export class CategorizationComponent extends BaseSibscriber implements OnInit {
   @ViewChild('rowInfo', { static: true }) rowInfo: InfoPopupComponent;
   @ViewChild('rowUse', { static: true }) rowUse: InfoPopupComponent;
   @ViewChild('popupMenu', { static: true }) popupMenu: PopupComponent;
+  @ViewChild('categorizationInfo', { static: true }) categorizationInfo: CategoryInfoComponent;
+  @ViewChild('categorizationInfoModal', { static: true }) categorizationInfoModal: ModalWindowComponent;
 
   selectedCategory: any;
   showCategoryInfo = false;
@@ -98,14 +100,17 @@ export class CategorizationComponent extends BaseSibscriber implements OnInit {
     this.store.dispatch(load());
   }
 
-  openCategoryInfo(category: any): void {
+  openCategoryInfo(category: any, event: any): void {
+    this.categorizationInfoModal.top = `${event.clientY + ComponentService.scrollTop()}px`;
+    this.categorizationInfo.isOver = true;
     this.selectedCategory = category;
     this.showCategoryInfo = true;
-
-    //alert(JSON.stringify(item));
+    setTimeout(() => {
+      this.categorizationInfo.isOver = false;
+    }, 100);
   }
 
-  closeCategoryInfo():void{
+  closeCategoryInfo(): void {
     this.showCategoryInfo = false;
   }
 }

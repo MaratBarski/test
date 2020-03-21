@@ -1,4 +1,6 @@
 <div *ngIf="!isHidden && shadow" class="shadow-site is-visible"></div>
-<div [hidden]="isHidden" class="modal-window" [ngClass]="{'modal-window__top-border':topBorder}">
+<div [style.margin]="margin" [style.top]="top" [style.left]="left" [style.right]="right" [style.position]="position"
+    [style.width]="width" [hidden]="isHidden" class="modal-window" 
+    [ngClass]="{'modal-window__top-border':topBorder,'modal-window__transform':center}">
     <ng-content></ng-content>
 </div>

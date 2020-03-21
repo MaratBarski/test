@@ -1,4 +1,4 @@
-import { Component, Input, EventEmitter, Output } from '@angular/core';
+import { Component, Input, EventEmitter, Output, HostListener } from '@angular/core';
 import { Hierarchy } from '@app/imported-files/models/hierarchy';
 
 @Component({
@@ -8,10 +8,17 @@ import { Hierarchy } from '@app/imported-files/models/hierarchy';
 })
 export class CategoryInfoComponent {
 
+  isOver = false;
+
   @Input() category: Hierarchy;
   @Output() onClose = new EventEmitter();
 
   closeInfo(): void {
     this.onClose.emit();
+  }
+
+  @HostListener('document:click', ['$event']) onMouseClick(event: any) {
+    if (this.isOver) { return; }
+    this.closeInfo();
   }
 }
