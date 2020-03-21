@@ -12,7 +12,13 @@ export class ComponentService {
   private _onToggleMenu = new BehaviorSubject<boolean>(true);
 
   toggleMenu(): void {
-    this._onToggleMenu.next(this.showSideMenu); 
+    this._onToggleMenu.next(this.showSideMenu);
+  }
+
+  getFileName(path: string): string {
+    if (!path) { return ''; }
+    const arr = path.replace(/\\/g, '/').split('/');
+    return arr[arr.length - 1];
   }
 
   static createID(prefix: string = 'id'): string {

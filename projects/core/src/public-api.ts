@@ -35,6 +35,7 @@ export * from './lib/pipes/pagination.pipe';
 export * from './lib/pipes/translate.pipe';
 export * from './lib/pipes/sort-table.pipe';
 export * from './lib/pipes/search.pipe';
+export * from './lib/pipes/file-name.pipe';
 
 export * from './lib/components/paginator/paginator.component';
 export * from './lib/components/button/button.component';
