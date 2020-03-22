@@ -11,6 +11,7 @@ export type TooltipPosition = 'left' | 'right' | 'top' | 'bottom';
 export class TooltipDirective implements OnInit {
 
   @Input('mdcTooltip') text: string;
+  @Input('stickyToElement') stickyToElement = false;
   @Input() position: TooltipPosition = 'left';
   @Input('isShowTooltip') set show(show: boolean) {
     this._show = show;
@@ -42,32 +43,34 @@ export class TooltipDirective implements OnInit {
   }
 
   private initPosition = {
-
     right: (event: any) => {
-      this.setOffset(event.clientX + this.dx, event.clientY - this.tooltipRect.height / 2);
+      if (this.stickyToElement) {
+        this.setOffset(this.rect.left + this.rect.width, this.rect.top + (this.rect.height - this.tooltipRect.height) / 2);
+      } else {
+        this.setOffset(event.clientX + this.dx, event.clientY - this.tooltipRect.height / 2);
+      }
     },
     left: (event: any) => {
-      this.setOffset(event.clientX - this.tooltipRect.width - this.dx, event.clientY - this.tooltipRect.height / 2);
+      if (this.stickyToElement) {
+        this.setOffset(this.rect.left - this.tooltipRect.width, this.rect.top + (this.rect.height - this.tooltipRect.height) / 2);
+      } else {
+        this.setOffset(event.clientX - this.tooltipRect.width - this.dx, event.clientY - this.tooltipRect.height / 2);
+      }
     },
     top: (event: any) => {
-      this.setOffset(event.clientX - this.dx, event.clientY - this.tooltipRect.height - this.dy);
+      if (this.stickyToElement) {
+        this.setOffset(this.rect.left + this.rect.width / 2, this.rect.top - this.tooltipRect.height);
+      } else {
+        this.setOffset(event.clientX - this.dx, event.clientY - this.tooltipRect.height - this.dy);
+      }
     },
     bottom: (event: any) => {
-      this.setOffset(event.clientX - this.dx, event.clientY + this.dy);
+      if (this.stickyToElement) {
+        this.setOffset(this.rect.left + this.rect.width / 2, this.rect.top + this.rect.height);
+      } else {
+        this.setOffset(event.clientX - this.dx, event.clientY + this.dy);
+      }
     }
-
-    // right: (event: any) => {
-    //   this.setOffset(this.rect.left + this.rect.width, this.rect.top + (this.rect.height - this.tooltipRect.height) / 2);
-    // },
-    // left: (event: any) => {
-    //   this.setOffset(this.rect.left - this.tooltipRect.width, this.rect.top + (this.rect.height - this.tooltipRect.height) / 2);
-    // },
-    // top: (event: any) => {
-    //   this.setOffset(this.rect.left + this.rect.width / 2, this.rect.top - this.tooltipRect.height);
-    // },
-    // bottom: (event: any) => {
-    //   this.setOffset(this.rect.left + this.rect.width / 2, this.rect.top + this.rect.height);
-    // }
   }
 
   private createTooltip(): void {
@@ -97,7 +100,7 @@ export class TooltipDirective implements OnInit {
     this.prevPosition = this.position;
     this.renderer.removeClass(this.tooltipElement, `${CLASS_NAME}_${this.position}`);
     this.position = position;
-    this.setTooltipPosition(event);  
+    this.setTooltipPosition(event);
   }
 
   private checkTooltipPosition(event: any): void {
@@ -116,7 +119,7 @@ export class TooltipDirective implements OnInit {
         if (this.tooltipRect.top + this.tooltipRect.height > window.innerHeight - 10) {
           this.changePosition('top', event);
         }
-        break;        
+        break;
       default:
         break
     }

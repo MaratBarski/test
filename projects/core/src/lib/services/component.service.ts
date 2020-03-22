@@ -40,6 +40,6 @@ export class ComponentService {
   static getRect(element: any): any {
     return element.nativeElement ?
       element.nativeElement.getBoundingClientRect() :
-      element.getBoundingClientRect()
+      element.getBoundingClientRect();
   }
 }
