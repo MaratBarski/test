@@ -1,0 +1,33 @@
+<div class="wrapper">
+    <main>
+        <md-page-title>OUTPUT HISTORY REPORT</md-page-title>
+        <md-page-body>
+            <div class="admin-table-wrap__action">
+                <div class="admin-table-wrap__col">
+                    <a class="link-load" href="#"><span class="ic-hover">
+                    <mdc-icon path="ic-download"></mdc-icon>
+                    </span><span class="link-load__text">Download Report</span></a>
+                </div>
+                <div class="admin-table-wrap__col">
+                    <div class="tabs-page">
+                        <mdc-tabs [active]="tabActive" [tabs]="tabs" (select)="selectTab($event)">
+                        </mdc-tabs>
+                    </div>
+                    <form class="form-search d-none d-md-block">
+                        <mdc-auto-search pause="500" #search placeholder="{{'search'|translate}}"
+                            (complete)="searchComplete($event)"></mdc-auto-search>
+                    </form>
+                </div>
+            </div>
+            <mdc-table #table (onFilter)="showFilter($event)"
+                [cellsTemplate]="{ insertDate:dateColumn,shared:sharedColumn,editColumn:edit}"
+                [searchOptions]="searchOptions" [paginator]="paginator" [search]="search" [dataSource]="dataSource">
+            </mdc-table>
+            <div class="pager-wrap">
+                <mdc-paginator #paginator paginationTitle="{{'paginationTitle'|translate}}"
+                    noPagingTitle="Showing {0} files" [blockSize]="3" [pageSize]="50" [currentPage]="0">
+                </mdc-paginator>
+            </div>
+        </md-page-body>
+    </main>
+</div>

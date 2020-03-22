@@ -1,5 +1,5 @@
 export const environment = {
-  name:'dev',
+  name: 'dev',
   production: false,
   serverUrl: 'http://10.0.2.18:4000/',
   //loginUrl: 'http://localhost:3000/login/',
@@ -11,6 +11,7 @@ export const environment = {
     fileSource: 'mdclone/api/v1/file-source',
     uploadFileSource: 'mdclone/api/v1/upload/file-source',
     deleteFileSource: 'mdclone/api/v1/file-source',
-    hierarchy: 'mdclone/api/v1/hierarchy'
+    hierarchy: 'mdclone/api/v1/hierarchy',
+    historyReport: 'mdclone/api/v1/historyReport'
   }
 };

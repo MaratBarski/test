@@ -15,6 +15,11 @@ const routes: Routes = [
     canActivate: [LoginService]
   },
   {
+    path: 'history-report',
+    loadChildren: () => import('./history-report/history-report.module').then(m => m.HistoryReportModule),
+    canActivate: [LoginService]
+  },
+  {
     path: 'login',
     component: LoginComponent
   },

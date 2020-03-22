@@ -57,7 +57,7 @@ export const SideMenu: Array<MenuItem> = [
     },
     {
         id: PageInfo.MonitorReports.id,
-        url: '',
+        url: 'history-report',
         text: 'Monitor & Reports'
     },
     {
