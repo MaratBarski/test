@@ -25,19 +25,7 @@ export class PopupComponent {
   @Input() zIndex = 9999;
 
   @Input() set target(target: any) {
-    if (!target) { return; }
     this._target = target;
-    // this._target.addEventListener('mouseleave', (event: any) => {
-    //   this.isOver = true;
-    // }, true);
-    // this._target.addEventListener('click', (event: any) => {
-    //   this.isExpanded = !this.isExpanded;
-    //   if (this.isExpanded) {
-    //     this.isOver = true;
-    //     this.stopOver();
-    //   }
-    //   this.setPosition(event);
-    // }, true);
   }
 
   @Input() set isExpanded(isExpanded: boolean) {
@@ -104,7 +92,11 @@ export class PopupComponent {
       this.setOffset(event.clientX + this.dx, event.clientY - this.rect.height - this.dy);
     },
     'bottom-left': (event: any) => {
-      this.setOffset(event.clientX - this.rect.width - this.dx, event.clientY + this.dy);
+      if (this._target) {
+        this.setOffset(this.targetRect.right - this.rect.width, this.targetRect.bottom + this.dy);
+      } else {
+        this.setOffset(event.clientX - this.rect.width - this.dx, event.clientY + this.dy);
+      }
     },
     'bottom-right': (event: any) => {
       this.setOffset(event.clientX + this.dx, event.clientY + this.dy);

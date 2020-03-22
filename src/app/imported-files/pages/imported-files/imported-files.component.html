@@ -18,7 +18,8 @@
                     </form>
                 </div>
             </div>
-            <mdc-table #table (onFilter)="showFilter($event)" [cellsTemplate]="{ insertDate:dateColumn,shared:sharedColumn,editColumn:edit}"
+            <mdc-table #table (onFilter)="showFilter($event)"
+                [cellsTemplate]="{ insertDate:dateColumn,shared:sharedColumn,editColumn:edit}"
                 [searchOptions]="searchOptions" [paginator]="paginator" [search]="search" [dataSource]="dataSource">
             </mdc-table>
             <div class="pager-wrap">
@@ -33,8 +34,9 @@
 <mdc-popup #popupMenu position="bottom-left" [closeOnClick]="true">
     <mdc-modal-menu [sublinks]="sublinks" [links]="links"></mdc-modal-menu>
 </mdc-popup>
-<mdc-popup #popupFilter (onClose)="onCloseFilter()" [closeOnClick]="false">
-    <mdc-check-box-list #checkFilter (apply)="applyFilter()" (cancel)="cancelFilter()" [options]="filterOptions"></mdc-check-box-list>
+<mdc-popup #popupFilter position="bottom-left" (onClose)="onCloseFilter()" [closeOnClick]="false">
+    <mdc-check-box-list #checkFilter (apply)="applyFilter()" (cancel)="cancelFilter()" [options]="filterOptions">
+    </mdc-check-box-list>
 </mdc-popup>
 <mdc-modal-window [hidden]="!showUploadFile">
     <md-upload-file (onUpload)="showUploadFile=false" (onCancel)="showUploadFile=false"></md-upload-file>
@@ -43,7 +45,11 @@
     {{item.insertDate|date}}
 </ng-template>
 <ng-template #sharedColumn let-item>
-    <div *ngIf="item.shared"><mdc-icon path="ic-shared"></mdc-icon></div>
+    <div class="shared-icon" *ngIf="item.shared">
+        <div class="shared-icon-inner">
+            <mdc-icon path="ic-shared"></mdc-icon>
+        </div>
+    </div>
 </ng-template>
 <ng-template #edit let-item let-src="source">
     <span (click)="editClick(item,src,$event)" class="admin-table-action__menu ic-hover">

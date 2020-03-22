@@ -169,6 +169,7 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, On
   }
 
   showFilter(source: { header: TableHeaderModel, event: any }): void {
+    this.popupMenu.isExpanded = false;
     if (this.curentFilter === source.header.columnId) { return; }
     this.popupFilter.isExpanded = false;
     this.curentFilter = source.header.columnId;
