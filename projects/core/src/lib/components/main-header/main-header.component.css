@@ -4,3 +4,10 @@
     z-index: 3;
     background-color: #0D1E42;
 }
+
+.header__company-name{
+    margin-left: 10px;
+}
+.rotate180{
+    margin-top:-10px;
+}

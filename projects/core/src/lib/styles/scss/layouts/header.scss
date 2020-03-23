@@ -1,3 +1,6 @@
+.mdc-main-header{
+    background-image: linear-gradient(88deg, $color-dark-blue, $color-dark-purple);
+}
 .header{
 
 	&__content{
@@ -12,9 +15,8 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		width: 260px;
-		background: $color-dark-blue;
 		position: relative;
+		width: 500px;
 	}
 
 	&__main::before{
@@ -22,7 +24,6 @@
 		display: block;
 		width: calc(100% + 45px);
 		height: 100%;
-		background: $color-dark-blue;
 		position: absolute;
 		top: 0;
 		right: 0;
@@ -41,8 +42,7 @@
 	}
 
 	&__info{
-		width: calc(100% - 260px);
-		justify-content: space-between;
+		justify-items: end;
 		position: relative;
 	}
 
@@ -51,7 +51,7 @@
 		display: block;
 		width: calc(100% + 45px);
 		height: 100%;
-		background-image: linear-gradient(88deg, $color-dark-blue, $color-dark-purple);
+		//background-image: linear-gradient(88deg, $color-dark-blue, $color-dark-purple);
 		position: absolute;
 		top: 0;
 		left: 0;
@@ -61,6 +61,15 @@
 		max-width: 109px;
 		line-height: 1;
 		position: relative;
+		margin-top: -10px;
+	}
+
+	&__company-left{
+		@include font(normal, normal, rem(16px), 1.25, #fff);
+		position: relative;
+		white-space: nowrap;
+		display: flex;
+		flex-wrap: nowrap;
 	}
 
 	&__company{

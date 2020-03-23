@@ -8,7 +8,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
   animations: [
     trigger('openClose', [
       state('open', style({ marginLeft: '0px' })),
-      state('closed', style({ marginLeft: '-250px' })),
+      state('closed', style({ marginLeft: '-190px' })),
       transition('open => closed', [animate('.3s')]),
       transition('closed => open', [animate('.3s')])
     ]),

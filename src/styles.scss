@@ -5,3 +5,17 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .pointer{cursor: pointer;}
 .link:hover{text-decoration: underline;}
 .nowrap{white-space: nowrap;}
+.rotate90{
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+.rotate180{
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
