@@ -22,6 +22,7 @@ export class ImportedFilesService {
   deleteFile(fl: FileSource): Observable<any> {
     return this.dataService.delete(`${environment.serverUrl}${environment.endPoints.deleteFileSource}/${fl.fileId}`);
   }
+  
 
   createDataSource(files: Array<FileSource>): TableModel {
     const data: TableModel = {
@@ -83,7 +84,7 @@ export class ImportedFilesService {
           fileName: fl.fileName,
           insertDate: fl.insertDate,
           environment: fl.projectObj ? fl.projectObj.projectName : '',
-          permission: '???',  
+          permission: fl.template ? fl.template.templateName : '',
           user: fl.uploadedBy,
           shared: fl.fileType,
           columns: 0,

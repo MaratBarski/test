@@ -93,6 +93,7 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, On
         this.dataOrigin = this.dataSource = this.importedFilesService.createDataSource(this.fileSource);
         this.initProjects(files);
         this.initUsers(files);
+        this.initPermissions(files);
       }));
 
     this.store.dispatch(load());
@@ -124,6 +125,19 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, On
     })
   }
 
+  initPermissions(files: Array<FileSource>): void {
+    const permissions = files.filter(x => x.template).map(x => { return { id: x.template.templateId, text: x.template.templateName } });
+    const dict = {};
+    this.permissions = [];
+    permissions.forEach((value, index) => {
+      if (dict[value.id]) {
+        return;
+      }
+      dict[value.id] = value.id;
+      this.permissions.push({ ...value, isChecked: true });
+    })
+  }
+
   initTabs(): void {
     this.tabs = [
       { title: this.translateService.translate('All') },
@@ -136,6 +150,7 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, On
 
   users: Array<CheckBoxListOption> = [];
   projects: Array<CheckBoxListOption> = [];
+  permissions: Array<CheckBoxListOption> = [];
   filterOptions: Array<CheckBoxListOption> = [];
   curentFilter: string;
 
@@ -164,6 +179,19 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, On
           }
         });
         return fs.filter(fs => dict[fs.uploadedBy])
+      }
+    },
+    permission: {
+      show: () => { this.filterOptions = this.permissions; },
+      setOptions: () => { this.permissions = this.checkFilter.options; },
+      apply: (fs: Array<FileSource>): Array<FileSource> => {
+        const dict = {};
+        this.permissions.forEach((option, index) => {
+          if (option.isChecked) {
+            dict[option.id] = true;
+          }
+        });
+        return fs.filter(fs => dict[fs.templateId])
       }
     }
   }
@@ -207,10 +235,11 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, On
   }
 
   createDataSource(): void {
-    const result = this.filterProc.user.apply(
-      this.filterProc.environment.apply(
-        this.fileSource
-      ));
+    const result = this.filterProc.permission.apply(
+      this.filterProc.user.apply(
+        this.filterProc.environment.apply(
+          this.fileSource
+        )));
     this.dataSource = this.importedFilesService.createDataSource(result);
     let rows = this.dataSource.rows;
     if (this.tabActive === 1) {
