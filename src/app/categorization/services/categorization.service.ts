@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { DataService, TableModel } from 'appcore';
+import { DataService, TableModel } from '@app/core-api';
 import { Observable } from 'rxjs';
 import { Offline } from 'src/app/shared/decorators/offline.decorator';
 import { CategoryeResponse } from '../models/category-reponse';

@@ -7,15 +7,15 @@
                     <mdc-button (click)="openFileUpload()" text="+ {{'NewFile'|translate}}">
                     </mdc-button>
                 </div>
-                <div class="admin-table-wrap__col">
+                <div mdAnimationSticky class="admin-table-wrap__col">
                     <div class="tabs-page">
                         <mdc-tabs [active]="tabActive" [tabs]="tabs" (select)="selectTab($event)">
                         </mdc-tabs>
                     </div>
-                    <form class="form-search d-none d-md-block">
+                    <div class="form-search d-none d-md-block">
                         <mdc-auto-search pause="500" #search placeholder="{{'search'|translate}}"
                             (complete)="searchComplete($event)"></mdc-auto-search>
-                    </form>
+                    </div>
                 </div>
             </div>
             <mdc-table #table (onFilter)="showFilter($event)"

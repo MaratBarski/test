@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Observable, BehaviorSubject, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +11,11 @@ export class ComponentService {
   }
   private _onToggleMenu = new BehaviorSubject<boolean>(true);
 
+  get onStartToggleMenu(): Observable<boolean> {
+    return this._onStartToggleMenu.asObservable();
+  }
+  private _onStartToggleMenu = new Subject<boolean>();
+
   toggleMenu(): void {
     this._onToggleMenu.next(this.showSideMenu);
   }
@@ -19,6 +24,10 @@ export class ComponentService {
     if (!path) { return ''; }
     const arr = path.replace(/\\/g, '/').split('/');
     return arr[arr.length - 1];
+  }
+
+  starttoggle(): void {
+    this._onStartToggleMenu.next(this.showSideMenu);
   }
 
   static createID(prefix: string = 'id'): string {

@@ -4,7 +4,6 @@ import { SideMenu, MenuItem } from '../../common/side-menu';
 import { ComponentService } from '../../services/component.service';
 import { BaseSibscriber } from '../../common/BaseSibscriber';
 import { NavigationService } from '../../services/navigation.service';
-import { trigger, state, style, transition, animate } from '@angular/animations';
 
 @Component({
   selector: 'mdc-side-bar',

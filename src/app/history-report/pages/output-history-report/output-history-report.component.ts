@@ -3,8 +3,7 @@ import { TableComponent, TranslateService, DateService, TabItemModel, TableModel
 import { HistoryReportService } from '../../services/history-repost.service';
 import { Store } from '@ngrx/store';
 import { load } from '../../store/actions/history-report.actions';
-import { TableHeaderModel, CheckBoxListOption, NavigationService, PageInfo, BaseSibscriber } from 'projects/core/src/public-api';
-import { CheckBoxListComponent } from 'core/public-api';
+import { TableHeaderModel, CheckBoxListOption, NavigationService, PageInfo, BaseSibscriber, CheckBoxListComponent } from '@app/core-api';
 import { selectFHistoryReport } from '@app/history-report/store/selectors/history-report.selector';
 
 @Component({

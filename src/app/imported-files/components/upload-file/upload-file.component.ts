@@ -1,7 +1,7 @@
 import { Component, Output, EventEmitter, ViewChild, ElementRef, Input } from '@angular/core';
 import { UploadService, UploadStatus } from '@app/shared/services/upload.service';
 import { Offline } from '@app/shared/decorators/offline.decorator';
-import { SelectOption, SelectComponent } from 'appcore';
+import { SelectOption, SelectComponent } from '@app/core-api';
 import { environment } from '@env/environment';
 
 @Component({
@@ -51,6 +51,7 @@ export class UploadFileComponent {
     formData.append('project', this.project);
     formData.append('fileType', this.fileType ? '1' : '0');
     formData.append('template', this.template);
+    alert(this.template)
     this.uploadService.add({
       title: 'File source',
       form: formData,

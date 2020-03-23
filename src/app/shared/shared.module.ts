@@ -15,10 +15,14 @@ import { CoreModule } from '@app/core-api';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { PageTitleComponent } from './components/page-title/page-title.component';
 import { PageBodyComponent } from './components/page-body/page-body.component';
+import { AnimationStickyDirective } from './directives/animation-sticky.directive';
 
 @NgModule({
   declarations: [
-    ProjectComboComponent, PageTitleComponent, PageBodyComponent
+    ProjectComboComponent, 
+    PageTitleComponent, 
+    PageBodyComponent, 
+    AnimationStickyDirective
   ],
   imports: [
     FormsModule,
@@ -36,7 +40,8 @@ import { PageBodyComponent } from './components/page-body/page-body.component';
   exports: [
     ProjectComboComponent,
     PageTitleComponent,
-    PageBodyComponent
+    PageBodyComponent,
+    AnimationStickyDirective
   ],
   entryComponents: [
   ]

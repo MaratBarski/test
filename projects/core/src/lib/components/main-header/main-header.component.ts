@@ -25,6 +25,7 @@ export class MainHeaderComponent {
   constructor(public componentService: ComponentService) { }
 
   displaySideMenu(): void {
+    this.componentService.starttoggle();
     this.componentService.showSideMenu = !this.componentService.showSideMenu
   }
 }
