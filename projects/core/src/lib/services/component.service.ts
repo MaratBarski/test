@@ -17,6 +17,9 @@ export class ComponentService {
   private _onStartToggleMenu = new Subject<boolean>();
 
   toggleMenu(): void {
+    setTimeout(() => {
+      document.body.style.overflow = 'visible';
+    }, 500);
     this._onToggleMenu.next(this.showSideMenu);
   }
 
@@ -27,6 +30,7 @@ export class ComponentService {
   }
 
   starttoggle(): void {
+    document.body.style.overflow = 'hidden';
     this._onStartToggleMenu.next(this.showSideMenu);
   }
 
