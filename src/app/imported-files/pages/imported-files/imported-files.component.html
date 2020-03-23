@@ -4,7 +4,7 @@
         <md-page-body>
             <div class="admin-table-wrap__action">
                 <div class="admin-table-wrap__col">
-                    <mdc-button (click)="showUploadFile=!showUploadFile" text="+ {{'NewFile'|translate}}">
+                    <mdc-button (click)="openFileUpload()" text="+ {{'NewFile'|translate}}">
                     </mdc-button>
                 </div>
                 <div class="admin-table-wrap__col">
@@ -39,7 +39,7 @@
     </mdc-check-box-list>
 </mdc-popup>
 <mdc-modal-window [hidden]="!showUploadFile">
-    <md-upload-file (onUpload)="showUploadFile=false" (onCancel)="showUploadFile=false"></md-upload-file>
+    <md-upload-file #fileUploader [templates]="templates" (onUpload)="showUploadFile=false" (onCancel)="showUploadFile=false"></md-upload-file>
 </mdc-modal-window>
 <ng-template #dateColumn let-item>
     {{item.insertDate|date}}

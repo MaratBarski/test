@@ -1,12 +1,11 @@
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
-import { TableComponent, TranslateService, DateService, TabItemModel, TableModel, MenuLink, PopupComponent } from 'appcore';
 import { ImportedFilesService } from '../../services/imported-files.service';
 import { Store } from '@ngrx/store';
 import { load, deleteFile } from '../../store/actions/imported-files.actions';
 import { selectData } from '../../store/selectors/imported-files.selector';
 import { FileSource } from '../../models/file-source';
-import { TableHeaderModel, CheckBoxListOption, Project, NavigationService, PageInfo, BaseSibscriber } from 'projects/core/src/public-api';
-import { CheckBoxListComponent } from 'core/public-api';
+import { TableComponent, TranslateService, DateService, TabItemModel, TableModel, MenuLink, PopupComponent, TableHeaderModel, CheckBoxListOption, Project, NavigationService, PageInfo, BaseSibscriber, CheckBoxListComponent, SelectOption } from 'appcore';
+import { UploadFileComponent } from '@app/imported-files/components/upload-file/upload-file.component';
 
 @Component({
   selector: 'md-imported-files',
@@ -19,12 +18,20 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, On
   @ViewChild('popupFilter', { static: true }) popupFilter: PopupComponent;
   @ViewChild('table', { static: true }) table: TableComponent;
   @ViewChild('checkFilter', { static: true }) checkFilter: CheckBoxListComponent;
+  @ViewChild('fileUploader', { static: true }) fileUploader: UploadFileComponent;
 
   users: Array<CheckBoxListOption> = [];
   projects: Array<CheckBoxListOption> = [];
   permissions: Array<CheckBoxListOption> = [];
   filterOptions: Array<CheckBoxListOption> = [];
   curentFilter: string;
+
+  searchOptions = ['fileName', 'environment'];
+
+  get templates(): Array<SelectOption> {
+    if (!this.permissions) { return []; }
+    return this.permissions.map(x => { return { text: x.text, id: x.id, value: x.id } });
+  }
 
   tabs: Array<TabItemModel>;
   tabActive = 0;
@@ -33,7 +40,7 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, On
   dataOrigin: TableModel;
   dataSource: TableModel;
   fileSource: Array<FileSource>;
-  
+
   constructor(
     private translateService: TranslateService,
     private dateService: DateService,
@@ -228,6 +235,9 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, On
     this.dataSource = { ...this.dataSource, rows: rows };
   }
 
-  searchOptions = ['fileName', 'environment'];
+  openFileUpload(): void {
+    this.showUploadFile = true;
+    this.fileUploader.resetTemplate();
+  }
 
 }

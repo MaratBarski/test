@@ -50,11 +50,6 @@ export class SelectComponent implements ControlValueAccessor {
   }
 
   mouseClick(event: any): void {
-    if (this.combo.nativeElement.offsetTop - ComponentService.scrollTop()
-      < window.innerHeight / 2
-    ) {
-      this.selectUp = false;
-    }
     this.isExpanded = !this.isExpanded;
   }
 
