@@ -8,4 +8,5 @@ import { Component, Input } from '@angular/core';
 export class IconComponent {
   @Input() path: string;
   @Input() css = 'icon';
+  @Input() color: string;
 }

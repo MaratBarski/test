@@ -29,3 +29,14 @@
 .disabled{
     cursor: default !important;
 }
+.page-next{
+    width:30px;
+    height: 30px;
+    
+}
+.right{
+    float: right;
+}
+.left{
+    float: left;
+}
