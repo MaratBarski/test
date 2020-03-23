@@ -12,8 +12,9 @@
 .page-btn{
     width: 3rem;
     text-align: center;
-    color:#92A1F0;
+    color:#0596FF;
     cursor: pointer;
+    font-weight: 600;
 }
 .separator{
     width:1px;
@@ -21,8 +22,9 @@
     background-color: #C9CBD0;
 }
 .current{
-    color:#b00;
+    color: #ACB2C3;
     cursor: default !important;
+    font-weight: 700;
 }
 .disabled{
     cursor: default !important;
