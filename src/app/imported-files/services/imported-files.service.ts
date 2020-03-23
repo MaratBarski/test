@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { DataService, TableModel } from 'appcore';
+import { DataService, TableModel, CheckBoxListOption } from 'appcore';
 import { Observable } from 'rxjs';
 import { FileSourceResponse, FileSource } from '../models/file-source';
 import { Offline } from 'src/app/shared/decorators/offline.decorator';
@@ -22,7 +22,19 @@ export class ImportedFilesService {
   deleteFile(fl: FileSource): Observable<any> {
     return this.dataService.delete(`${environment.serverUrl}${environment.endPoints.deleteFileSource}/${fl.fileId}`);
   }
-  
+
+  getFilter(filterArray: Array<CheckBoxListOption>): Array<CheckBoxListOption> {
+    const dict = {};
+    const res = [];
+    filterArray.forEach((value, index) => {
+      if (dict[value.id]) {
+        return;
+      }
+      dict[value.id] = value.id;
+      res.push({ ...value, isChecked: true });
+    })
+    return res;
+  }
 
   createDataSource(files: Array<FileSource>): TableModel {
     const data: TableModel = {

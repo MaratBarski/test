@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 
 export class CheckBoxListOption {
-  isChecked: boolean;
+  isChecked?: boolean;
   text: string;
   id: any;
 }

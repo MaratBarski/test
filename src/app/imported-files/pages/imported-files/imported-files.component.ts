@@ -20,6 +20,20 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, On
   @ViewChild('table', { static: true }) table: TableComponent;
   @ViewChild('checkFilter', { static: true }) checkFilter: CheckBoxListComponent;
 
+  users: Array<CheckBoxListOption> = [];
+  projects: Array<CheckBoxListOption> = [];
+  permissions: Array<CheckBoxListOption> = [];
+  filterOptions: Array<CheckBoxListOption> = [];
+  curentFilter: string;
+
+  tabs: Array<TabItemModel>;
+  tabActive = 0;
+  serachText = '';
+  showUploadFile = false;
+  dataOrigin: TableModel;
+  dataSource: TableModel;
+  fileSource: Array<FileSource>;
+  
   constructor(
     private translateService: TranslateService,
     private dateService: DateService,
@@ -59,14 +73,6 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, On
     this.viewLink
   ];
 
-  tabs: Array<TabItemModel>;
-  tabActive = 0;
-  serachText = '';
-  showUploadFile = false;
-  dataOrigin: TableModel;
-  dataSource: TableModel;
-  fileSource: Array<FileSource>;
-
   searchComplete(text: string): void {
     //this.table.resetPaginator();
     //this.serachText = text;
@@ -95,47 +101,25 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, On
         this.initUsers(files);
         this.initPermissions(files);
       }));
-
     this.store.dispatch(load());
   }
 
   initProjects(files: Array<FileSource>): void {
-    const projects = files.filter(x => x.projectObj).map(x => x.projectObj);
-    const dict = {};
-    this.projects = [];
-    projects.forEach((value, index) => {
-      if (dict[value.projectId]) {
-        return;
-      }
-      dict[value.projectId] = value.projectId;
-      this.projects.push({ text: value.projectName, id: value.projectId, isChecked: true });
-    })
+    this.projects = this.importedFilesService.getFilter(
+      files.filter(x => x.projectObj).map(x => { return { id: x.projectObj.projectId, text: x.projectObj.projectName } })
+    );
   }
 
   initUsers(files: Array<FileSource>): void {
-    const users = files.filter(x => x.uploadedBy).map(x => { return { id: x.uploadedBy, text: 'user_' + x.uploadedBy } });
-    const dict = {};
-    this.users = [];
-    users.forEach((value, index) => {
-      if (dict[value.id]) {
-        return;
-      }
-      dict[value.id] = value.id;
-      this.users.push({ ...value, isChecked: true });
-    })
+    this.users = this.importedFilesService.getFilter(
+      files.filter(x => x.uploadedBy).map(x => { return { id: x.uploadedBy, text: 'user_' + x.uploadedBy } })
+    );
   }
 
   initPermissions(files: Array<FileSource>): void {
-    const permissions = files.filter(x => x.template).map(x => { return { id: x.template.templateId, text: x.template.templateName } });
-    const dict = {};
-    this.permissions = [];
-    permissions.forEach((value, index) => {
-      if (dict[value.id]) {
-        return;
-      }
-      dict[value.id] = value.id;
-      this.permissions.push({ ...value, isChecked: true });
-    })
+    this.permissions = this.importedFilesService.getFilter(
+      files.filter(x => x.template).map(x => { return { id: x.template.templateId, text: x.template.templateName } })
+    );
   }
 
   initTabs(): void {
@@ -147,12 +131,6 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, On
   }
 
   cellClick(item: any): void { }
-
-  users: Array<CheckBoxListOption> = [];
-  projects: Array<CheckBoxListOption> = [];
-  permissions: Array<CheckBoxListOption> = [];
-  filterOptions: Array<CheckBoxListOption> = [];
-  curentFilter: string;
 
   filterProc = {
     environment: {
