@@ -51,7 +51,6 @@ export class UploadFileComponent {
     formData.append('project', this.project);
     formData.append('fileType', this.fileType ? '1' : '0');
     formData.append('template', this.template);
-    alert(this.template)
     this.uploadService.add({
       title: 'File source',
       form: formData,
