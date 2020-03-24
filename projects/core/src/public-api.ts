@@ -65,6 +65,7 @@ export * from './lib/components/switch-button/switch-button.component';
 export * from './lib/components/info-popup/info-popup.component';
 export * from './lib/components/progress/progress.component';
 export * from './lib/components/side-bar/side-bar.component';
+export * from './lib/components/date-range-selector/date-range-selector.component';
 
 export * from './lib/directives/show.directive';
 export * from './lib/directives/tooltip.directive';

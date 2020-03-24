@@ -5,6 +5,7 @@ export interface MenuItem {
     subLinks?: Array<MenuItem>;
     showSubMenu?: boolean;
     active?: boolean;
+    order?: number;
 }
 
 export const PageInfo = {

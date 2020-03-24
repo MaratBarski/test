@@ -10,6 +10,7 @@
 		@include font(normal, normal, rem(14px), rem(28px), $color-dark-purple);
 		text-align: center;
 		padding: 0 16px;
+		white-space: nowrap;
 		position: relative;
 	}
 
@@ -51,23 +52,21 @@
 	&__item.active > .icon{
 		fill: #fff;
 	}
+
+	&__item:hover .tabs-popup-wrap,
+	&__item:hover .tabs-popup-more-wrap{
+		display: inline-block;
+		color: $color-dark-purple;
+	}
 }
 
-.tabs-popup{
-	display: none;
-	background: #fff;
-	padding: 20px;
-	border-radius: 4px;
-	box-shadow: -10px 9px 21px 0 rgba(128, 152, 213, 0.08), 0 2px 4px 0 rgba(0, 0, 0, 0.2);
-	text-align: left;
-	position: absolute;
-	top: calc(100% + 6px);
-	right: 0;
-	z-index: 10;
 
-	&.active{
-		display: inline-block;
-	}
+.tabs-popup{
+	background: #fff;
+	text-align: left;
+	padding: 20px;
+	box-shadow: -10px 9px 21px 0 rgba(128, 152, 213, 0.08);
+	overflow: hidden;
 
 	&__head{
 		@include font(normal, normal, rem(14px), 1.71, $color-dark-blue);
@@ -83,6 +82,43 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
+	}
+}
+
+.tabs-popup-more-wrap{
+	width: 100%;
+	display: none;
+	padding-top: 6px;
+	position: absolute;
+	top: 100%;
+	right: 0;
+	z-index: 11;
+
+	&.active{
+		display: inline-block;
+	}
+}
+
+.tabs-popup-more{
+	display: inline-block;
+	width: 100%;
+	background: #fff;
+	text-align: left;
+	border: 1px solid $color-light-grey;
+	border-radius: 4px;
+	box-shadow: -10px 9px 21px 0 rgba(128, 152, 213, 0.08);
+	overflow: hidden;
+
+	&__item{
+		padding: 0 20px;
+		@include font(normal, normal, rem(14px), rem(30px), $color-dark-blue);
+		cursor: pointer;
+	}
+
+	&__item:hover,
+	&__item.active{
+		background: $color-sort-grey;
+		text-decoration: none;
 	}
 }
 

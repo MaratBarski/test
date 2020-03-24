@@ -16,6 +16,7 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, On
 
   @ViewChild('popupMenu', { static: true }) popupMenu: PopupComponent;
   @ViewChild('popupFilter', { static: true }) popupFilter: PopupComponent;
+  @ViewChild('dateRangeSelector', { static: true }) dateRangeSelector: PopupComponent;
   @ViewChild('table', { static: true }) table: TableComponent;
   @ViewChild('checkFilter', { static: true }) checkFilter: CheckBoxListComponent;
   @ViewChild('fileUploader', { static: true }) fileUploader: UploadFileComponent;
@@ -134,6 +135,14 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, On
       { title: this.translateService.translate('All') },
       { title: this.translateService.translate('LastMonth') },
       { title: this.translateService.translate('LastWeek') }
+      // ,{
+      //   title: this.translateService.translate('Specific'), isDropDown: true,
+      //   mouseOver: (index: number, tab: TabItemModel, event: any, target: any) => {
+      //     if (this.dateRangeSelector.isExpanded) { return; }
+      //     this.dateRangeSelector.target = target;
+      //     this.dateRangeSelector.show(true, event);
+      //   }
+      // }
     ];
   }
 

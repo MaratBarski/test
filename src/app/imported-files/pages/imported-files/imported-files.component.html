@@ -9,7 +9,7 @@
                 </div>
                 <div mdAnimationSticky class="admin-table-wrap__col">
                     <div class="tabs-page">
-                        <mdc-tabs [active]="tabActive" [tabs]="tabs" (select)="selectTab($event)">
+                        <mdc-tabs tabid="importetFilesTab" [active]="tabActive" [tabs]="tabs" (select)="selectTab($event)">
                         </mdc-tabs>
                     </div>
                     <div class="form-search d-none d-md-block">
@@ -38,6 +38,11 @@
     <mdc-check-box-list #checkFilter (apply)="applyFilter()" (cancel)="cancelFilter()" [options]="filterOptions">
     </mdc-check-box-list>
 </mdc-popup>
+
+<mdc-popup #dateRangeSelector position="bottom-left" [closeOnClick]="false">
+    <mdc-date-range-selector></mdc-date-range-selector>
+</mdc-popup>
+
 <mdc-modal-window [hidden]="!showUploadFile">
     <md-upload-file #fileUploader [templates]="templates" (onUpload)="showUploadFile=false" (onCancel)="showUploadFile=false"></md-upload-file>
 </mdc-modal-window>

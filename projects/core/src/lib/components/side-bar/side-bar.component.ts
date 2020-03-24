@@ -19,7 +19,7 @@ export class SideBarComponent extends BaseSibscriber implements OnInit {
   }
 
   items = SideMenu;
-
+  
   ngOnInit() {
     super.add(
       this.router.events.subscribe(event => {

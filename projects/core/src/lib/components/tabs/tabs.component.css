@@ -1,0 +1,14 @@
+.tab-btn{
+    
+    display: flex;
+    justify-items: center space-between;
+    justify-self: center;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+.btn-arrow{
+    align-content: center;
+    width:20px;
+    height: 20px;
+}

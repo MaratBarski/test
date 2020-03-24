@@ -48,6 +48,7 @@ import { ProgressComponent } from './components/progress/progress.component';
 import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { RouterModule } from '@angular/router';
 import { FileNamePipe } from './pipes/file-name.pipe';
+import { DateRangeSelectorComponent } from './components/date-range-selector/date-range-selector.component';
 
 // import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 
@@ -94,7 +95,8 @@ import { FileNamePipe } from './pipes/file-name.pipe';
     InfoPopupComponent,
     ProgressComponent,
     SideBarComponent,
-    FileNamePipe
+    FileNamePipe,
+    DateRangeSelectorComponent
   ],
   imports: [
     CommonModule,
@@ -147,7 +149,8 @@ import { FileNamePipe } from './pipes/file-name.pipe';
     InfoPopupComponent,
     ProgressComponent,
     SideBarComponent,
-    FileNamePipe
+    FileNamePipe,
+    DateRangeSelectorComponent
   ],
   entryComponents: [
     TableHeaderComponent
