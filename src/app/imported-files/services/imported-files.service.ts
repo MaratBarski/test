@@ -99,8 +99,8 @@ export class ImportedFilesService {
           permission: fl.template ? fl.template.templateName : '',
           user: fl.uploadedBy,
           shared: fl.fileType,
-          columns: 0,
-          rows: 0
+          columns: fl.columnsNum,
+          rows: fl.rowsNum
         },
         source: fl,
         isActive: false

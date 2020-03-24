@@ -29,4 +29,6 @@ export class FileSource {
      projectObj?: Project;
      template?: Template;
      user?: User;
+     rowsNum?: number;
+     columnsNum?: number;
 }
