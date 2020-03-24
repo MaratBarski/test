@@ -40,7 +40,7 @@
 </mdc-popup>
 
 <mdc-popup #dateRangeSelector position="bottom-left" [closeOnClick]="false">
-    <mdc-date-range-selector></mdc-date-range-selector>
+    <mdc-date-range-selector [from]="customFrom" [to]="customTo" (onApply)="applyCustomDate($event)" (onCancel)="cancelCustomDate()"></mdc-date-range-selector>
 </mdc-popup>
 
 <mdc-modal-window [hidden]="!showUploadFile">

@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import { load, deleteFile } from '../../store/actions/imported-files.actions';
 import { selectData } from '../../store/selectors/imported-files.selector';
 import { FileSource } from '../../models/file-source';
-import { TableComponent, TranslateService, DateService, TabItemModel, TableModel, MenuLink, PopupComponent, TableHeaderModel, CheckBoxListOption, Project, NavigationService, PageInfo, BaseSibscriber, CheckBoxListComponent, SelectOption } from '@app/core-api';
+import { TableComponent, TranslateService, DateService, TabItemModel, TableModel, MenuLink, PopupComponent, TableHeaderModel, CheckBoxListOption, Project, NavigationService, PageInfo, BaseSibscriber, CheckBoxListComponent, SelectOption, FromTo } from '@app/core-api';
 import { UploadFileComponent } from '@app/imported-files/components/upload-file/upload-file.component';
 
 @Component({
@@ -135,7 +135,7 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, On
       { title: this.translateService.translate('All') },
       { title: this.translateService.translate('LastMonth') },
       { title: this.translateService.translate('LastWeek') }
-      // ,{
+      // , {
       //   title: this.translateService.translate('Specific'), isDropDown: true,
       //   mouseOver: (index: number, tab: TabItemModel, event: any, target: any) => {
       //     if (this.dateRangeSelector.isExpanded) { return; }
@@ -240,6 +240,8 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, On
       rows = this.dateService.lastMonth(rows, 'insertDate');
     } else if (this.tabActive === 2) {
       rows = this.dateService.lastWeek(rows, 'insertDate');
+    } else if (this.tabActive === 3) {
+      rows = this.dateService.getRange(rows, 'insertDate', { from: this.customFrom, to: this.customTo });
     }
     this.dataSource = { ...this.dataSource, rows: rows };
   }
@@ -249,4 +251,18 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, On
     this.fileUploader.resetTemplate();
   }
 
+  customTo = new Date();
+  customFrom = new Date();
+
+  cancelCustomDate(): void {
+    this.dateRangeSelector.isExpanded = false;
+  }
+
+  applyCustomDate(range: FromTo): void {
+    this.tabActive = this.tabs.length - 1;
+    this.dateRangeSelector.isExpanded = false;
+    this.customFrom = range.from;
+    this.customTo = range.to;
+    this.createDataSource();
+  }
 }
