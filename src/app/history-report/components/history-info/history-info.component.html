@@ -1,0 +1,65 @@
+<div (mouseover)="isOver=true" (mouseleave)="isOver=false">
+    <div class="admin-table-info__top">
+        <div class="admin-table-info__head">Details</div>
+        <div class="admin-table-info__icons"><span class="ic-hover">
+                <mdc-icon path="ic-download"></mdc-icon>
+            </span><span class="ic-hover">
+                <mdc-icon (click)="closeInfo()" path="ic-close-history"></mdc-icon>
+            </span></div>
+    </div>
+    <div class="admin-table-info__content">
+        <div class="admin-table-info__main">
+            <div class="admin-table-info__col">
+                <div class="admin-table-info__item">
+                    <div class="admin-table-info__title">User:</div>
+                    <div class="admin-table-info__val">Lina Perez</div>
+                </div>
+                <div class="admin-table-info__item">
+                    <div class="admin-table-info__title">Source:</div>
+                    <div class="admin-table-info__val">Query</div>
+                </div>
+                <div class="admin-table-info__item">
+                    <div class="admin-table-info__title">Query/File Name:</div>
+                    <div class="admin-table-info__val">Diabetes for kids with type 1 and meds</div>
+                </div>
+            </div>
+            <div class="admin-table-info__col">
+                <div class="admin-table-info__item">
+                    <div class="admin-table-info__title">Username:</div>
+                    <div class="admin-table-info__val">{{category?.userId}}</div>
+                </div>
+                <div class="admin-table-info__item">
+                    <div class="admin-table-info__title">Query ID:</div>
+                    <div class="admin-table-info__val"><a class="file-count" href="#"><span
+                                class="file-count__val">7680</span>
+                            <mdc-icon path="ic-external-link"></mdc-icon>
+                        </a></div>
+                </div>
+                <div class="admin-table-info__item">
+                    <div class="admin-table-info__title">Data:</div>
+                    <div class="admin-table-info__val">Original data</div>
+                </div>
+            </div>
+        </div>
+        <div class="admin-table-info__item">
+            <div class="admin-table-info__title">Research:</div>
+            <div class="admin-table-info__val">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod
+            </div>
+        </div>
+        <div class="admin-table-info__item">
+            <div class="admin-table-info__title">Research Description:</div>
+            <div class="admin-table-info__val">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod
+                bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales
+                pulvinar sic tempor. Sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+            </div>
+        </div>
+        <div class="admin-table-info__item">
+            <div class="admin-table-info__title">Approval Key:</div>
+            <div class="admin-table-info__val">12345678901234567890</div>
+        </div>
+        <div class="admin-table-info__item">
+            <div class="admin-table-info__title">Environment:</div>
+            <div class="admin-table-info__val">R Test Project</div>
+        </div>
+    </div>
+</div>

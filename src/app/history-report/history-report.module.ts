@@ -9,6 +9,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { HistoryReportLoadEffect } from './store/effects/history-report-load.effect';
 import { historyReport } from './store/reducers/history-report.reducer';
+import { HistoryInfoComponent } from './components/history-info/history-info.component';
 
 const routes: Array<Route> = [
   { path: '', component: OutputHistoryReportComponent }
@@ -16,7 +17,7 @@ const routes: Array<Route> = [
 
 
 @NgModule({
-  declarations: [OutputHistoryReportComponent],
+  declarations: [OutputHistoryReportComponent, HistoryInfoComponent],
   imports: [
     CommonModule,
     CoreModule,

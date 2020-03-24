@@ -1,10 +1,10 @@
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
-import { TableComponent, TranslateService, DateService, TabItemModel, TableModel, MenuLink, PopupComponent } from 'appcore';
 import { HistoryReportService } from '../../services/history-repost.service';
 import { Store } from '@ngrx/store';
 import { load } from '../../store/actions/history-report.actions';
-import { TableHeaderModel, CheckBoxListOption, NavigationService, PageInfo, BaseSibscriber, CheckBoxListComponent } from '@app/core-api';
-import { selectFHistoryReport } from '@app/history-report/store/selectors/history-report.selector';
+import { TableComponent, TranslateService, DateService, TabItemModel, TableModel, MenuLink, PopupComponent, FromTo, CheckBoxListOption, NavigationService, PageInfo, BaseSibscriber, CheckBoxListComponent, ComponentService, ModalWindowComponent } from '@app/core-api';
+import { selectFHistoryReport, selectFHistoryReportData } from '@app/history-report/store/selectors/history-report.selector';
+import { HistoryInfoComponent } from '@app/history-report/components/history-info/history-info.component';
 
 @Component({
   selector: 'md-output-history-report',
@@ -17,8 +17,14 @@ export class OutputHistoryReportComponent extends BaseSibscriber implements OnIn
 
   @ViewChild('popupMenu', { static: true }) popupMenu: PopupComponent;
   @ViewChild('popupFilter', { static: true }) popupFilter: PopupComponent;
+  @ViewChild('dateRangeSelector', { static: true }) dateRangeSelector: PopupComponent;
   @ViewChild('table', { static: true }) table: TableComponent;
   @ViewChild('checkFilter', { static: true }) checkFilter: CheckBoxListComponent;
+  @ViewChild('historyInfoModal', { static: true }) historyInfoModal: ModalWindowComponent;
+  @ViewChild('historyionInfo', { static: true }) historyionInfo: HistoryInfoComponent;
+
+  customTo = new Date();
+  customFrom = new Date();
 
   constructor(
     private translateService: TranslateService,
@@ -58,13 +64,28 @@ export class OutputHistoryReportComponent extends BaseSibscriber implements OnIn
     this.viewLink
   ];
 
-  tabs: Array<TabItemModel>;
+  tabs: Array<TabItemModel> = [
+    { title: this.translateService.translate('All') },
+    { title: 'Last 30 Days' },
+    { title: 'Last 7 Days' }
+    , {
+      title: this.translateService.translate('Specific'), isDropDown: true,
+      mouseOver: (index: number, tab: TabItemModel, event: any, target: any) => {
+        if (this.dateRangeSelector.isExpanded) { return; }
+        this.dateRangeSelector.target = target;
+        this.dateRangeSelector.show(true, event);
+      }
+    }
+  ];
+
+  showHistoryInfo = false;
   tabActive = 0;
   serachText = '';
   showUploadFile = false;
   dataOrigin: TableModel;
   dataSource: TableModel;
   reports: Array<any>;
+  selectedCategory: any;
 
   searchComplete(text: string): void {
     //this.table.resetPaginator();
@@ -85,23 +106,15 @@ export class OutputHistoryReportComponent extends BaseSibscriber implements OnIn
   }
 
   ngOnInit() {
-    this.initTabs();
     super.add(
-      this.store.select(selectFHistoryReport).subscribe((reports: Array<any>) => {
+      this.store.select(selectFHistoryReportData).subscribe((reports: Array<any>) => {
+        this.reports = reports;
+        this.dataOrigin = this.dataSource = this.historyReportService.createDataSource(this.reports);
       }));
 
     this.store.dispatch(load());
   }
 
-
-  initTabs(): void {
-    this.tabs = [
-      { title: this.translateService.translate('All') },
-      { title: 'Last 30 Days' },
-      { title: 'Last 7 Days' },
-      { title: 'Specific' },
-    ];
-  }
 
   cellClick(item: any): void { }
 
@@ -116,5 +129,31 @@ export class OutputHistoryReportComponent extends BaseSibscriber implements OnIn
 
   searchOptions = [];
 
+  cancelCustomDate(): void {
+    this.dateRangeSelector.isExpanded = false;
+  }
+
+  applyCustomDate(range: FromTo): void {
+    this.tabActive = this.tabs.length - 1;
+    this.dateRangeSelector.isExpanded = false;
+    this.customFrom = range.from;
+    this.customTo = range.to;
+    this.createDataSource();
+  }
+  
+  openHistoryInfo(category: any, event: any): void {
+    this.historyInfoModal.top = `${event.clientY + ComponentService.scrollTop()}px`;
+    this.historyionInfo.isOver = true;
+    
+    this.selectedCategory = category;
+    this.showHistoryInfo = true;
+    setTimeout(() => {
+      this.historyionInfo.isOver = false;
+    }, 100);
+  }
+
+  closeHistoryInfo():void{
+    this.showHistoryInfo = false;
+  }
 }
 
