@@ -4,8 +4,9 @@ import { ComponentService } from '../../services/component.service';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
 export class SelectOption {
-  text: string;
   id: string;
+  text: string;
+  icon?: string;
   value?: any;
 }
 
@@ -30,7 +31,7 @@ export class SelectComponent implements ControlValueAccessor {
 
   @Input() options: Array<SelectOption>;
   @Input() selected: SelectOption;
-  @Input() selectUp = true;
+  @Input() selectUp = false;
   @Input() maxHeight = '';
   @Input() closeOnselect = true;
   @Input() expandHandler: 'click' | 'hover' = 'click';

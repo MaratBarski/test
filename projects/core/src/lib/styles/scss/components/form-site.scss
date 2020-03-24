@@ -351,6 +351,27 @@
 		vertical-align: top;
 	}
 
+	&__icon-wrap {
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+		-webkit-box-align: center;
+		-ms-flex-align: center;
+		align-items: center;
+
+		.icon {
+			max-width: 30px;
+			margin-right: 6px;
+			overflow: hidden;
+			white-space: nowrap;
+		}
+	}
+
+	&__icon-wrap &__head-text {
+		display: inline-block;
+		max-width: calc(100% - 36px);
+	}
+
 	&__option{
 		background: #fff;
 		border: solid 1px $color-light-grey;

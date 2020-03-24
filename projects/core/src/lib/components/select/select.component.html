@@ -1,6 +1,9 @@
 <div #combo [ngClass]="{'select_up':selectUp}" class="select" (blur)="blur()" tabindex="10">
     <div (click)="mouseClick($event);" class="select__head">
-        {{selected?.text}}
+        <div class="select__icon-wrap">
+            <mdc-icon *ngIf="selected?.icon" [path]="selected?.icon" class="icon"></mdc-icon>
+            <span class="select__head-text">{{selected?.text}}</span>
+        </div>
         <div class="select__head-arr">
             <mdc-icon path="ic-select-arr-down"></mdc-icon>
         </div>
@@ -8,7 +11,10 @@
     <div [hidden]="!isExpanded" [style.maxHeight]="maxHeight" *ngIf="options" class="select__option">
         <div [ngClass]="{'active':option==selected}" (click)="select(option)" *ngFor="let option of options"
             class="select__param">
-            {{option.text}}
+            <div class="select__icon-wrap">
+                <mdc-icon *ngIf="option.icon" [path]="option.icon" class="icon"></mdc-icon>
+                {{option.text}}
+            </div>
         </div>
     </div>
 </div>
