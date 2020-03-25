@@ -1,6 +1,6 @@
 /*-------------- switch-icon -----------------*/
 .switch-icon{
-	display: flex;
+	display: inline-flex;
 
 	&__item{
 		display: inline-block;
@@ -55,5 +55,6 @@
 
 	&__item:not(:last-child){
 		border-right: 0;
+		border: 1px solid $color-dark-purple;
 	}
 }
