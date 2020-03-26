@@ -20,6 +20,10 @@ export class CategorizationService {
     return this.dataService.get(this.getUrl);
   }
 
+  updateHierarchyChange(hierarchy: any, state: boolean): void {
+    // call dataService to update hierarchy state
+  }
+
   createDataSource(categories: Array<Hierarchy>): TableModel {
     const data: TableModel = {
       headers: [
@@ -67,7 +71,7 @@ export class CategorizationService {
       data.rows.push({
         cells: {
           hierarchyName: fl.hierarchyName,
-          hierarchyFile:fl.hierarchyFile,
+          hierarchyFile: fl.hierarchyFile,
           insertDate: fl.insertDate,
           domain: fl.domain,
           defaultLevelId: fl.defaultLevelId

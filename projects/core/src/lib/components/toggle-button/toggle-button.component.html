@@ -1,5 +1,5 @@
 <div class="switch">
-    <input type="checkbox" [(ngModel)]="value" id="{{id}}">
+    <input type="checkbox" (change)="chengeChecked()" [(ngModel)]="value" id="{{id}}">
     <label class="switch__content" for="{{id}}">
         <div class="switch__marker"></div>
         <div class="switch__on">{{yes}}</div>

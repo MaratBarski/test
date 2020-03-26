@@ -99,6 +99,7 @@ export class TableComponent implements OnDestroy, AfterViewInit {
   sortModel: TableHeaderModel;
 
   @Input() set dataSource(data: TableModel) {
+    if (!data) { return; }
     this.resetPaginator();
     const sorted = data.headers.filter(h => h.isSortedColumn);
     for (let i = 1; i < sorted.length; i++) {
@@ -138,7 +139,7 @@ export class TableComponent implements OnDestroy, AfterViewInit {
   }
 
   private reloadPaginator(): void {
-    if (!this.isPaginator) { return; }
+    if (!this.isPaginator || !this._rows) { return; }
     this.paginator.reload(this._rows.length);
   }
 

@@ -22,6 +22,7 @@ export class InfoPopupComponent implements OnInit {
   get show(): boolean { return this._show; }
   private _show = false;
   private _closeTimeOutID: any;
+  private _close = false;
 
   get visibility(): string {
     return this.show ? 'visible' : 'hidden';
@@ -31,13 +32,21 @@ export class InfoPopupComponent implements OnInit {
     return this.show ? 1 : 0;
   }
 
-  constructor() { }
+  hide(): void {
+    this._show = false;
+    this._close = true;
+  }
 
   mouseLeave(event: any): void {
     this.show = false;
   }
 
   mouseOver(event: any): void {
+    if (this._close) {
+      this.show = false;
+      this._close = false;
+      return;
+    }
     this.stopClose();
     this.show = true;
   }

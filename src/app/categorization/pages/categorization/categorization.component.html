@@ -46,7 +46,7 @@
             </div>
         </div>
         <div class="switch">
-            <mdc-toggle-button no="No" yes="Yes" [(ngModel)]="currentRow.state"></mdc-toggle-button>
+            <mdc-toggle-button no="No" (onChange)="rowStateChange($event)" yes="Yes" [(ngModel)]="currentRow.state"></mdc-toggle-button>
         </div>
     </div>
 </mdc-info-popup>
@@ -72,9 +72,12 @@
         <mdc-icon path="ic-dot-menu"></mdc-icon>
     </span>
 </ng-template>
-<ng-template let-item  let-src="source" #stateColumn>
-    <span *ngIf="src.projectId=='2'" (mouseleave)="hideInfo($event,item)" (mouseenter)="showInfo($event,item)" class="admin-table__icon">
+<ng-template let-item let-src="source" #stateColumn>
+    <span *ngIf="src.hierarchyChange" (mouseleave)="hideInfo($event,item)" (mouseenter)="showInfo($event,item,src)" class="admin-table__icon">
         <mdc-icon path="ic-warning"></mdc-icon>
+    </span>
+    <span *ngIf="!src.hierarchyChange && src.hierarchyLoadingType !== 'manual'">
+        <mdc-icon path="ic-robot"></mdc-icon>
     </span>
 </ng-template>
 <ng-template let-item #inUseColumn>
@@ -90,6 +93,8 @@
     <md-upload-file (onUpload)="showUploadFile=false" (onCancel)="showUploadFile=false"></md-upload-file>
 </mdc-modal-window>
 
-<mdc-modal-window #categorizationInfoModal margin="0" [center]="false" left="700px" width="800px" position="absolute" [removeScroll]="false" [topBorder]="false" [shadow]="false" [hidden]="!showCategoryInfo">
-    <md-category-info #categorizationInfo (onClose)="closeCategoryInfo()" [category]="selectedCategory"></md-category-info>    
+<mdc-modal-window #categorizationInfoModal margin="0" [center]="false" left="700px" width="800px" position="absolute"
+    [removeScroll]="false" [topBorder]="false" [shadow]="false" [hidden]="!showCategoryInfo">
+    <md-category-info #categorizationInfo (onClose)="closeCategoryInfo()" [category]="selectedCategory">
+    </md-category-info>
 </mdc-modal-window>

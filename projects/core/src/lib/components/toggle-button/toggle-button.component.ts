@@ -22,7 +22,7 @@ export class ToggleButtonComponent implements ControlValueAccessor {
   @Input() yes = "Yes";
   @Input() no = "No";
   @Input() id = ComponentService.createID('toggle');
-  @Output() change = new EventEmitter<void>();
+  @Output() onChange = new EventEmitter<boolean>();
 
   private _value: boolean;
 
@@ -52,5 +52,9 @@ export class ToggleButtonComponent implements ControlValueAccessor {
 
   registerOnTouched(fn: any) {
     this.onTouchedCallback = fn;
+  }
+
+  chengeChecked(): void {
+    this.onChange.emit(this._value);
   }
 }

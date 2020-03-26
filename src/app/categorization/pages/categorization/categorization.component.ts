@@ -25,7 +25,7 @@ export class CategorizationComponent extends BaseSibscriber implements OnInit {
   showUploadFile = false;
   dataOrigin: TableModel;
   dataSource: TableModel;
-  currentRow = { state: true }
+  currentRow = { state: true, source: undefined }
 
   constructor(
     private categorizationService: CategorizationService,
@@ -41,8 +41,17 @@ export class CategorizationComponent extends BaseSibscriber implements OnInit {
   searchComplete(text: string): void {
   }
 
-  showInfo(event: any, item: any): void {
+  showInfo(event: any, item: any, source: any): void {
+    this.currentRow.source = source;
+    this.currentRow.state = true;
     this.rowInfo.display(event, item);
+  }
+
+  rowStateChange(state: boolean): void {
+    if (!this.currentRow.source) { return; }
+    this.currentRow.source.hierarchyChange = state;
+    this.rowInfo.hide();
+    this.categorizationService.updateHierarchyChange(this.currentRow.source,state);
   }
 
   showUse(event: any, item: any): void {
