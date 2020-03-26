@@ -76,7 +76,7 @@
     <span *ngIf="src.hierarchyChange" (mouseleave)="hideInfo($event,item)" (mouseenter)="showInfo($event,item,src)" class="admin-table__icon">
         <mdc-icon path="ic-warning"></mdc-icon>
     </span>
-    <span *ngIf="!src.hierarchyChange && src.hierarchyLoadingType !== 'manual'">
+    <span *ngIf="!src.hierarchyChange && (src.hierarchyLoadingType && src.hierarchyLoadingType !== 'manual')">
         <mdc-icon path="ic-robot"></mdc-icon>
     </span>
 </ng-template>
