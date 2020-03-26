@@ -72,8 +72,8 @@
         <mdc-icon path="ic-dot-menu"></mdc-icon>
     </span>
 </ng-template>
-<ng-template let-item #stateColumn>
-    <span (mouseleave)="hideInfo($event,item)" (mouseenter)="showInfo($event,item)" class="admin-table__icon">
+<ng-template let-item  let-src="source" #stateColumn>
+    <span *ngIf="src.projectId=='2'" (mouseleave)="hideInfo($event,item)" (mouseenter)="showInfo($event,item)" class="admin-table__icon">
         <mdc-icon path="ic-warning"></mdc-icon>
     </span>
 </ng-template>

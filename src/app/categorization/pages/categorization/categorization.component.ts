@@ -94,10 +94,15 @@ export class CategorizationComponent extends BaseSibscriber implements OnInit {
 
   ngOnInit() {
     super.add(
-      this.store.select(selectCategorization).subscribe((categorization: any) => {
-        this.dataOrigin = this.dataSource = this.categorizationService.createDataSource(categorization.data);
+      this.categorizationService.load().subscribe((res: any) => {
+        this.dataOrigin = this.dataSource = this.categorizationService.createDataSource(res.data);
       }));
-    this.store.dispatch(load());
+
+    // super.add(
+    //   this.store.select(selectCategorization).subscribe((categorization: any) => {
+    //     this.dataOrigin = this.dataSource = this.categorizationService.createDataSource(categorization.data);
+    //   }));
+    // this.store.dispatch(load());
   }
 
   openCategoryInfo(category: any, event: any): void {

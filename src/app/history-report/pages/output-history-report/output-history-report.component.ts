@@ -107,12 +107,17 @@ export class OutputHistoryReportComponent extends BaseSibscriber implements OnIn
 
   ngOnInit() {
     super.add(
-      this.store.select(selectFHistoryReportData).subscribe((reports: Array<any>) => {
-        this.reports = reports;
+      this.historyReportService.load().subscribe((res: any) => {
+        this.reports = res.data;
         this.dataOrigin = this.dataSource = this.historyReportService.createDataSource(this.reports);
       }));
 
-    this.store.dispatch(load());
+    // super.add(
+    //   this.store.select(selectFHistoryReportData).subscribe((reports: Array<any>) => {
+    //     this.reports = reports;
+    //     this.dataOrigin = this.dataSource = this.historyReportService.createDataSource(this.reports);
+    //   }));
+    // this.store.dispatch(load());
   }
 
 
@@ -140,11 +145,11 @@ export class OutputHistoryReportComponent extends BaseSibscriber implements OnIn
     this.customTo = range.to;
     this.createDataSource();
   }
-  
+
   openHistoryInfo(category: any, event: any): void {
     this.historyInfoModal.top = `${event.clientY + ComponentService.scrollTop()}px`;
     this.historyionInfo.isOver = true;
-    
+
     this.selectedCategory = category;
     this.showHistoryInfo = true;
     setTimeout(() => {
@@ -152,8 +157,12 @@ export class OutputHistoryReportComponent extends BaseSibscriber implements OnIn
     }, 100);
   }
 
-  closeHistoryInfo():void{
+  closeHistoryInfo(): void {
     this.showHistoryInfo = false;
+  }
+  
+  showFilter(event: any): void {
+
   }
 }
 

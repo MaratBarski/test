@@ -3,7 +3,7 @@ import { ImportedFilesService } from '../../services/imported-files.service';
 import { Store } from '@ngrx/store';
 import { load, deleteFile } from '../../store/actions/imported-files.actions';
 import { selectData } from '../../store/selectors/imported-files.selector';
-import { FileSource } from '../../models/file-source';
+import { FileSource, FileSourceResponse } from '../../models/file-source';
 import { TableComponent, TranslateService, DateService, TabItemModel, TableModel, MenuLink, PopupComponent, TableHeaderModel, CheckBoxListOption, Project, NavigationService, PageInfo, BaseSibscriber, CheckBoxListComponent, SelectOption, FromTo } from '@app/core-api';
 import { UploadFileComponent } from '@app/imported-files/components/upload-file/upload-file.component';
 
@@ -102,14 +102,22 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, On
   ngOnInit() {
     this.initTabs();
     super.add(
-      this.store.select(selectData).subscribe((files: Array<FileSource>) => {
-        this.fileSource = files;
+      this.importedFilesService.load().subscribe((res: FileSourceResponse) => {
+        this.fileSource = res.data;
         this.dataOrigin = this.dataSource = this.importedFilesService.createDataSource(this.fileSource);
-        this.initProjects(files);
-        this.initUsers(files);
-        this.initPermissions(files);
+        this.initProjects(res.data);
+        this.initUsers(res.data);
+        this.initPermissions(res.data);
       }));
-    this.store.dispatch(load());
+    // super.add(
+    //   this.store.select(selectData).subscribe((files: Array<FileSource>) => {
+    //     this.fileSource = files;
+    //     this.dataOrigin = this.dataSource = this.importedFilesService.createDataSource(this.fileSource);
+    //     this.initProjects(files);
+    //     this.initUsers(files);
+    //     this.initPermissions(files);
+    //   }));
+    // this.store.dispatch(load());
   }
 
   initProjects(files: Array<FileSource>): void {
