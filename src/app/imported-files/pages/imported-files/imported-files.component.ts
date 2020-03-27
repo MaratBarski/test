@@ -1,11 +1,12 @@
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { ImportedFilesService } from '../../services/imported-files.service';
-import { Store } from '@ngrx/store';
-import { load, deleteFile } from '../../store/actions/imported-files.actions';
-import { selectData } from '../../store/selectors/imported-files.selector';
 import { FileSource, FileSourceResponse } from '../../models/file-source';
 import { TableComponent, TranslateService, DateService, TabItemModel, TableModel, MenuLink, PopupComponent, TableHeaderModel, CheckBoxListOption, Project, NavigationService, PageInfo, BaseSibscriber, CheckBoxListComponent, SelectOption, FromTo } from '@app/core-api';
 import { UploadFileComponent } from '@app/imported-files/components/upload-file/upload-file.component';
+
+// import { Store } from '@ngrx/store';
+// import { load, deleteFile } from '../../store/actions/imported-files.actions';
+// import { selectData } from '../../store/selectors/imported-files.selector';
 
 @Component({
   selector: 'md-imported-files',
@@ -46,7 +47,7 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, On
     private translateService: TranslateService,
     private dateService: DateService,
     private importedFilesService: ImportedFilesService,
-    private store: Store<any>,
+    //private store: Store<any>,
     private navigationService: NavigationService
   ) {
     super();
@@ -59,7 +60,16 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, On
     icon: 'ic-delete',
     source: 'test',
     click: (source) => {
-      this.store.dispatch(deleteFile(source));
+      this.fileSource = this.fileSource.filter(x => x != source);
+      this.initData();
+      this.importedFilesService.deleteFile(source)
+        .toPromise()
+        .then(res => {
+          console.log('File deleted');
+        }).catch(e => {
+          console.error('Error delete file');
+        })
+      //this.store.dispatch(deleteFile(source));
     }
   }
 
@@ -99,15 +109,19 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, On
     this.popupMenu.show(true, event);
   }
 
+  private initData(): void {
+    this.dataOrigin = this.dataSource = this.importedFilesService.createDataSource(this.fileSource);
+    this.initProjects();
+    this.initUsers();
+    this.initPermissions();
+  }
+
   ngOnInit() {
     this.initTabs();
     super.add(
       this.importedFilesService.load().subscribe((res: FileSourceResponse) => {
         this.fileSource = res.data;
-        this.dataOrigin = this.dataSource = this.importedFilesService.createDataSource(this.fileSource);
-        this.initProjects(res.data);
-        this.initUsers(res.data);
-        this.initPermissions(res.data);
+        this.initData();
       }));
     // super.add(
     //   this.store.select(selectData).subscribe((files: Array<FileSource>) => {
@@ -120,21 +134,21 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, On
     // this.store.dispatch(load());
   }
 
-  initProjects(files: Array<FileSource>): void {
+  initProjects(): void {
     this.projects = this.importedFilesService.getFilter(
-      files.filter(x => x.projectObj).map(x => { return { id: x.projectObj.projectId, text: x.projectObj.projectName } })
+      this.fileSource.filter(x => x.projectObj).map(x => { return { id: x.projectObj.projectId, text: x.projectObj.projectName } })
     );
   }
 
-  initUsers(files: Array<FileSource>): void {
+  initUsers(): void {
     this.users = this.importedFilesService.getFilter(
-      files.filter(x => x.uploadedBy).map(x => { return { id: x.uploadedBy, text: 'user_' + x.uploadedBy } })
+      this.fileSource.filter(x => x.uploadedBy).map(x => { return { id: x.uploadedBy, text: 'user_' + x.uploadedBy } })
     );
   }
 
-  initPermissions(files: Array<FileSource>): void {
+  initPermissions(): void {
     this.permissions = this.importedFilesService.getFilter(
-      files.filter(x => x.template).map(x => { return { id: x.template.templateId, text: x.template.templateName } })
+      this.fileSource.filter(x => x.template).map(x => { return { id: x.template.templateId, text: x.template.templateName } })
     );
   }
 
