@@ -43,5 +43,19 @@ export const animation = {
       }))
     ]
     )])
+  ]),
+  openClose: trigger('openClose', [
+    state('open', style({
+      width: '305px',
+      left: '0px',
+      backgroundColor: '#0D1E42'
+    })),
+    state('closed', style({
+      width: '0px',
+      left: '-306px',
+      backgroundColor: '#fff'
+    })),
+    transition('open => closed', [animate('.3s')]),
+    transition('closed => open', [animate('.3s')])
   ])
 };
