@@ -214,13 +214,13 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, On
 
   showFilter(source: { header: TableHeaderModel, event: any }): void {
     this.popupMenu.isExpanded = false;
-    if (this.curentFilter === source.header.columnId) { return; }
-    this.popupFilter.isExpanded = false;
-    this.curentFilter = source.header.columnId;
-    if (!this.isFilter) { return; }
-    this.filterProc[this.curentFilter].show();
-    this.popupFilter.target = source.event.target;
-    this.popupFilter.show(true, source.event);
+    // if (this.curentFilter === source.header.columnId) { return; }
+    // this.popupFilter.isExpanded = false;
+    // this.curentFilter = source.header.columnId;
+    // if (!this.isFilter) { return; }
+    // this.filterProc[this.curentFilter].show();
+    // this.popupFilter.target = source.event.target;
+    // this.popupFilter.show(true, source.event);
   }
 
   get isFilter(): boolean {
@@ -251,12 +251,12 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, On
   }
 
   createDataSource(): void {
-    const result = this.filterProc.permission.apply(
-      this.filterProc.user.apply(
-        this.filterProc.environment.apply(
-          this.fileSource
-        )));
-    this.dataSource = this.importedFilesService.createDataSource(result);
+    // const result = this.filterProc.permission.apply(
+    //   this.filterProc.user.apply(
+    //     this.filterProc.environment.apply(
+    //       this.fileSource
+    //     )));
+    this.dataSource = this.importedFilesService.createDataSource(this.fileSource);
     let rows = this.dataSource.rows;
     if (this.tabActive === 1) {
       rows = this.dateService.lastMonth(rows, 'insertDate');

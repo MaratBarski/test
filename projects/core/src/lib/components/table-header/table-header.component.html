@@ -1,14 +1,21 @@
-<div [ngClass]="{'pointer':model?.isSortEnabled}" (click)="sort()" class="admin-table__head">
-    <span *ngIf="model?.isSortEnabled" class="admin-table__sort">
+<div [ngClass]="{'pointer':model?.isSortEnabled}" class="admin-table__head">
+    <span (click)="sort()" *ngIf="model?.isSortEnabled" class="admin-table__sort">
         <span *ngIf="(model?.isSortedColumn && model?.sortDir === 'asc') || !model?.isSortedColumn"
             class="admin-table__sort-up"></span>
         <span *ngIf="(model?.isSortedColumn && model?.sortDir === 'desc') || !model?.isSortedColumn"
             class="admin-table__sort-down"></span>
     </span>
-    {{model.text}}
-    <div *ngIf="model?.filter" (click)="openFilter($event)" class="admin-table-filter">
-        <div class="admin-table-filter__icon">
+    <span (click)="sort()">{{model.text}}</span>
+    <div *ngIf="model?.filter" class="admin-table-filter">
+        <div (click)="openFilter($event)" class="admin-table-filter__icon">
             <mdc-icon css="icon ic-filter ic-stroke" path="ic-filter"></mdc-icon>
+        </div>
+        <div style="margin-left: -220px;position:absolute;margin-top:20px">
+            <mdc-popup #popupFilter *ngIf="filterOptions" [fixed]="true" (onClose)="onCloseFilter()"
+                [closeOnClick]="false">
+                <mdc-check-box-list [options]="filterOptions" (cancel)="cancelFilter()" (apply)="applyFilter()">
+                </mdc-check-box-list>
+            </mdc-popup>
         </div>
     </div>
 </div>

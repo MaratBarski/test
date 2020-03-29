@@ -42,7 +42,8 @@ export class ImportedFilesService {
         {
           columnId: 'fileName',
           text: 'Name',
-          isSortEnabled: true
+          isSortEnabled: true,
+          filter: true
         },
         {
           columnId: 'insertDate',
