@@ -61,8 +61,8 @@ export class PopupComponent {
 
   @HostListener('document:click', ['$event']) onMouseClick(event: any) {
     if (this.isOver) { return; }
-    this.isExpanded = false;
     this.onClose.emit();
+    this.isExpanded = false;
   }
 
   private get rect(): any { return ComponentService.getRect(this.container); }

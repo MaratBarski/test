@@ -36,6 +36,9 @@ export class TableHeaderComponent {
   @Output() onApplyFilter = new EventEmitter<TableHeaderComponent>();
 
   onCloseFilter(): void {
+    if (this.popupFilter.isExpanded) {
+      this.cancelFilter();
+    }
   }
 
   applyFilter(): void {
@@ -61,9 +64,9 @@ export class TableHeaderComponent {
   }
 
   openFilter(event: any): void {
+    if (this.popupFilter.isExpanded) { return; }
     this.popupFilter.isExpanded = false;
     this.popupFilter.show(true, undefined);
-    //event.stopPropagation();
     this.onFilter.emit({ header: this.model, event: event });
   }
 }

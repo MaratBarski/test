@@ -22,6 +22,7 @@ export class TableModel {
   headers: Array<TableHeaderModel>;
   rows: Array<TableRowModel>;
   activeRow?: TableRowModel;
+  resetFilter?: boolean;
 };
 
 @Component({
@@ -126,10 +127,16 @@ export class TableComponent implements OnDestroy, AfterViewInit {
 
   @Input() set dataSource(data: TableModel) {
     if (!data) { return; }
-    if (!this._dataSourceOrigin) {
+    const isResetFilter = !!data.resetFilter;
+    data.resetFilter = false;
+    if (!this._dataSourceOrigin || isResetFilter) {
       this._dataSourceOrigin = { ...data };
     }
-    data = this.filterData(data);
+    if (!isResetFilter) {
+      data = this.filterData(data);
+    } else {
+      this.filters = undefined;
+    }
     this.resetPaginator();
     const sorted = data.headers.filter(h => h.isSortedColumn);
     for (let i = 1; i < sorted.length; i++) {
@@ -196,9 +203,11 @@ export class TableComponent implements OnDestroy, AfterViewInit {
     if (!this.filters) { return { ...data }; }
     let rows = data.rows;
     Object.keys(this.filters).forEach(k => {
+      const filtered = this.filters[k].filter((cb: CheckBoxListOption) => cb.isChecked);
+      if (!filtered.length) { rows = []; return; }
+      if (filtered.length === this.filters[k].length) { return; }
       const dict = {};
-      this.filters[k].filter((cb: CheckBoxListOption) => cb.isChecked)
-        .forEach((x: CheckBoxListOption) => { dict[x.text] = true });
+      filtered.forEach((x: CheckBoxListOption) => { dict[x.text] = true });
       rows = rows.filter(row => {
         return dict[row.cells[k]];
       });
