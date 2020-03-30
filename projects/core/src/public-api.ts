@@ -18,11 +18,13 @@ export * from './lib/services/translate.service';
 export * from './lib/services/token-interceptor.service';
 export * from './lib/services/component.service';
 export * from './lib/services/login.service';
-//export * from './lib/services/socket.service';
 export * from './lib/services/sort.service';
 export * from './lib/services/search.service';
 export * from './lib/services/pagination.service';
 export * from './lib/services/date.service';
+export * from './lib/services/csv-manager.service';
+
+//export * from './lib/services/socket.service';
 
 export * from './lib/common/BaseSibscriber';
 export * from './lib/common/side-menu';
@@ -66,6 +68,7 @@ export * from './lib/components/info-popup/info-popup.component';
 export * from './lib/components/progress/progress.component';
 export * from './lib/components/side-bar/side-bar.component';
 export * from './lib/components/date-range-selector/date-range-selector.component';
+export * from './lib/components/download/download.component';
 
 export * from './lib/directives/show.directive';
 export * from './lib/directives/tooltip.directive';

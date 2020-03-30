@@ -42,18 +42,21 @@ export class ImportedFilesService {
         {
           columnId: 'fileName',
           text: 'Name',
-          isSortEnabled: true
+          isSortEnabled: true,
+          exportCsv: true
         },
         {
           columnId: 'insertDate',
           text: 'Loaded',
-          isSortEnabled: true
+          isSortEnabled: true,
+          exportCsv: true
         },
         {
           columnId: 'environment',
           text: 'Environment',
           isSortEnabled: true,
-          filter: true
+          filter: true,
+          exportCsv: true
         },
         {
           columnId: 'permission',
