@@ -5,17 +5,15 @@
                 <div class="usage-dashboard-top__content">
                     <mdc-download></mdc-download>
                     <div class="usage-dashboard-top__tab">
-                        <div class="tabs-page"><a class="tabs-page__item d-none d-md-inline-block"
-                                href="#"><span>General Usage</span></a><a
-                                class="tabs-page__item d-none d-md-inline-block" href="#"><span>Monthly
-                                    Activity</span></a><a class="tabs-page__item active d-none d-lg-inline-block"
-                                href="#"><span>Activity per User</span></a><a
-                                class="tabs-page__item d-none d-lg-inline-block" href="#"><span>Top 10
-                                    Users</span></a><a class="tabs-page__item" href="#"><span>More:
+                        <mdc-tabs tabid="importetFilesTab" [active]="tabActive" [tabs]="tabs"
+                            (select)="selectTab($event)">
+                        </mdc-tabs>
+                        <div class="tabs-page">
+                            <div class="tabs-page__item" style="display: flex;"><span>More:
                                     Retention</span>
-                                <svg class="icon ic-select-arr-down">
-                                    <use xlink:href="/assets/sprites/sprite.svg#ic-select-arr-down"></use>
-                                </svg>
+                                <div>
+                                    <mdc-icon path="ic-select-arr-down"></mdc-icon>
+                                </div>
                                 <div class="tabs-popup-more-wrap">
                                     <div class="tabs-popup-more">
                                         <div class="tabs-popup-more__list">
@@ -30,7 +28,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </a>
+                            </div>
                         </div>
                     </div>
                 </div>

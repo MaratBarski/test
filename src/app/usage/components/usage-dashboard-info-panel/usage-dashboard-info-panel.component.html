@@ -22,14 +22,7 @@
                         </div>
                         <div class="info-panel__switch">
                             <div class="info-panel__switch-label">Include Admin Users</div>
-                            <div class="switch">
-                                <input type="checkbox" id="switch1">
-                                <label class="switch__content" for="switch1">
-                                    <div class="switch__marker"></div>
-                                    <div class="switch__on">Yes</div>
-                                    <div class="switch__off">No</div>
-                                </label>
-                            </div>
+                            <mdc-toggle-button [(ngModel)]="includeAdmin"></mdc-toggle-button>
                         </div>
                     </div>
                 </div>

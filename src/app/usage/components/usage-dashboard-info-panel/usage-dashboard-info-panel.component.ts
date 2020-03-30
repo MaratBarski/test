@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'md-usage-dashboard-info-panel',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./usage-dashboard-info-panel.component.scss']
 })
 export class UsageDashboardInfoPanelComponent implements OnInit {
+
+  @Input() includeAdmin = false;
 
   constructor() { }
 
