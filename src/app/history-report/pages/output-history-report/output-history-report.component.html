@@ -19,7 +19,8 @@
                     </form>
                 </div>
             </div>
-            <mdc-table #table (onFilter)="showFilter($event)"
+            <mdc-table #table 
+                [headersTemplate]="{ data:dataHeader}"
                 [cellsTemplate]="{ insertDate:dateColumn, status:statusTemplate, name:nameTemplate}"
                 [searchOptions]="searchOptions" [paginator]="paginator" [search]="search" [dataSource]="dataSource">
             </mdc-table>
@@ -36,10 +37,6 @@
     <mdc-date-range-selector [from]="customFrom" [to]="customTo" (onApply)="applyCustomDate($event)"
         (onCancel)="cancelCustomDate()"></mdc-date-range-selector>
 </mdc-popup>
-<mdc-popup #popupFilter position="bottom-left" (onClose)="onCloseFilter()" [closeOnClick]="false">
-    <mdc-check-box-list #checkFilter (apply)="applyFilter()" (cancel)="cancelFilter()" [options]="filterOptions">
-    </mdc-check-box-list>
-</mdc-popup>
 <mdc-modal-window #historyInfoModal margin="0" [center]="false" left="700px" width="800px" position="absolute"
     [removeScroll]="false" [topBorder]="false" [shadow]="false" [hidden]="!showHistoryInfo">
     <md-history-info #historyionInfo (onClose)="closeHistoryInfo()" [category]="selectedCategory"></md-history-info>
@@ -47,13 +44,17 @@
 <ng-template #dateColumn let-item let-src="source">
     <span class="pointer link" (click)="openHistoryInfo(src,$event)">{{item.insertDate|date}}</span>
 </ng-template>
+<ng-template #dataHeader>
+    <span class="font-weight-600">Data </span>
+    <mdc-icon path="ic-help" color="blue"></mdc-icon>
+</ng-template>
 <ng-template let-item #statusTemplate let-src="source">
-    <span *ngIf="src.transStatus">
+    <div *ngIf="src.transStatus" class="height-20-px width-20-px" >
         <mdc-icon path="ic-success" color="green"></mdc-icon>
-    </span>
-    <span *ngIf="!src.transStatus">
+    </div>
+    <div *ngIf="!src.transStatus" class="height-20-px width-20-px">
         <mdc-icon path="ic-failure" color="red"></mdc-icon>
-    </span>
+    </div>
 </ng-template>
 <ng-template let-item #nameTemplate let-src="source">
     <div *ngIf="src.sessionId" class="display-flex">

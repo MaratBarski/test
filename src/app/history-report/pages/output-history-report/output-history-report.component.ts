@@ -16,10 +16,10 @@ import { HistoryInfoComponent } from '@app/history-report/components/history-inf
 export class OutputHistoryReportComponent extends BaseSibscriber implements OnInit, OnDestroy {
 
   @ViewChild('popupMenu', { static: true }) popupMenu: PopupComponent;
-  @ViewChild('popupFilter', { static: true }) popupFilter: PopupComponent;
+  
   @ViewChild('dateRangeSelector', { static: true }) dateRangeSelector: PopupComponent;
   @ViewChild('table', { static: true }) table: TableComponent;
-  @ViewChild('checkFilter', { static: true }) checkFilter: CheckBoxListComponent;
+ 
   @ViewChild('historyInfoModal', { static: true }) historyInfoModal: ModalWindowComponent;
   @ViewChild('historyionInfo', { static: true }) historyionInfo: HistoryInfoComponent;
 
@@ -123,16 +123,10 @@ export class OutputHistoryReportComponent extends BaseSibscriber implements OnIn
 
   cellClick(item: any): void { }
 
-  users: Array<CheckBoxListOption> = [];
-  projects: Array<CheckBoxListOption> = [];
-  filterOptions: Array<CheckBoxListOption> = [];
-  curentFilter: string;
-
-
   createDataSource(): void {
   }
 
-  searchOptions = [];
+  searchOptions = ['source', 'fullName', 'environment', 'source'];
 
   cancelCustomDate(): void {
     this.dateRangeSelector.isExpanded = false;
@@ -161,8 +155,5 @@ export class OutputHistoryReportComponent extends BaseSibscriber implements OnIn
     this.showHistoryInfo = false;
   }
   
-  showFilter(event: any): void {
-
-  }
 }
 
