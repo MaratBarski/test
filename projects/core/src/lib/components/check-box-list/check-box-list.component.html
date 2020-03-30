@@ -1,7 +1,12 @@
 <div style="padding: 10px;">
     <div class="admin-table-filter__top">
-        <mdc-check-box (change)="onChangeAll($event)" [(ngModel)]="isCheckedAll" text="{{'SelectAll'|translate}}"></mdc-check-box>
-        <span (click)="clear()" class="admin-table-filter__clear pointer">{{'clear'|translate}}</span>
+        <div>
+            <mdc-check-box (change)="onChangeAll($event)" [(ngModel)]="isCheckedAll" text="{{'SelectAll'|translate}}">
+            </mdc-check-box>
+        </div>
+        <div>
+            <span (click)="clear()" class="admin-table-filter__clear pointer">{{'clear'|translate}}</span>
+        </div>
     </div>
     <div *ngIf="options" class="admin-table-filter__params">
         <mdc-check-box (change)="onChange($event)" [id]="'chbl_'+index" *ngFor="let option of options;let index = index"
@@ -10,6 +15,7 @@
     <div class="admin-table-filter__btn">
         <mdc-button (click)="cancelClick()" className="btn_border btn_small" [text]="'cancel'|translate"></mdc-button>
         &nbsp;
-        <mdc-button [disabled]="!allowEmptySelect && !checkedCount" (click)="applyClick()" className="btn_ btn_small" [text]="'apply'|translate"></mdc-button>
+        <mdc-button [disabled]="!allowEmptySelect && !checkedCount" (click)="applyClick()" className="btn_ btn_small"
+            [text]="'apply'|translate"></mdc-button>
     </div>
 </div>
