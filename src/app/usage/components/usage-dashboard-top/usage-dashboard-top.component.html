@@ -5,16 +5,13 @@
                 <div class="usage-dashboard-top__content">
                     <mdc-download></mdc-download>
                     <div class="usage-dashboard-top__tab">
-                        <mdc-tabs tabid="importetFilesTab" [active]="tabActive" [tabs]="tabs"
-                            (select)="selectTab($event)">
-                        </mdc-tabs>
-                        <div class="tabs-page">
-                            <div class="tabs-page__item" style="display: flex;"><span>More:
-                                    Retention</span>
-                                <div>
-                                    <mdc-icon path="ic-select-arr-down"></mdc-icon>
-                                </div>
-                                <div class="tabs-popup-more-wrap">
+                        <div (mouseleave)="showMoreTab=false">
+                            <mdc-tabs tabid="importetFilesTab" [active]="tabActive" [tabs]="tabs"
+                                (select)="selectTab($event)">
+                            </mdc-tabs>
+                            <div class="popup-content">
+                                <div [hidden]="!showMoreTab" (mouseover)="showMoreTab=true"
+                                    (mouseleave)="showMoreTab=false" class="tabs-popup-more-wrap">
                                     <div class="tabs-popup-more">
                                         <div class="tabs-popup-more__list">
                                             <div class="tabs-popup-more__item">Created</div>

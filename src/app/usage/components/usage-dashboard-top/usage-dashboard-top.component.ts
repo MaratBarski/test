@@ -8,20 +8,21 @@ import { TabItemModel } from '@app/core-api';
 })
 export class UsageDashboardTopComponent implements OnInit {
 
+  showMoreTab = false;
   tabs: Array<TabItemModel> = [
     { title: 'General Usage' },
     { title: 'Monthly Activity' },
     { title: 'Activity per User' },
-    { title: 'Top 10 Users' },
-    { title: 'More: Retention' }
-    // , {
-    //   title: this.translateService.translate('Specific'), isDropDown: true,
-    //   mouseOver: (index: number, tab: TabItemModel, event: any, target: any) => {
-    //     if (this.dateRangeSelector.isExpanded) { return; }
-    //     this.dateRangeSelector.target = target;
-    //     this.dateRangeSelector.show(true, event);
-    //   }
-    // }
+    {
+      title: 'Top 10 Users',
+      mouseOver: (index: number, tab: TabItemModel, event: any) => { this.showMoreTab = false; }
+    },
+    {
+      title: 'More: Retention', isDropDown: true,
+      mouseOver: (index: number, tab: TabItemModel, event: any, target: any) => {
+        this.showMoreTab = true;
+      }
+    }
   ];
   @Input() tabActive = 0;
 
