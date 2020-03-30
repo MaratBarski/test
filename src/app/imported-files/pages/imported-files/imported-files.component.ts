@@ -22,7 +22,7 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, On
   @ViewChild('fileUploader', { static: true }) fileUploader: UploadFileComponent;
 
   permissions: Array<CheckBoxListOption> = [];
-  searchOptions = ['fileName', 'environment'];
+  searchOptions = ['fileName', 'environment', 'permission'];
 
   get templates(): Array<SelectOption> {
     if (!this.permissions) { return []; }

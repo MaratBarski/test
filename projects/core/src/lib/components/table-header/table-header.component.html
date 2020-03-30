@@ -13,7 +13,7 @@
         <div style="margin-left: -220px;position:absolute;margin-top:20px">
             <mdc-popup #popupFilter *ngIf="filterOptions" [fixed]="true" (onClose)="onCloseFilter()"
                 [closeOnClick]="false">
-                <mdc-check-box-list [options]="filterOptions" (cancel)="cancelFilter()" (apply)="applyFilter()">
+                <mdc-check-box-list [allowEmptySelect]="false" [options]="filterOptions" (cancel)="cancelFilter()" (apply)="applyFilter()">
                 </mdc-check-box-list>
             </mdc-popup>
         </div>
