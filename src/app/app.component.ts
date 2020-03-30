@@ -1,32 +1,19 @@
 import { Component, ViewChild, ElementRef, AfterViewInit, HostListener } from '@angular/core';
-import { ComponentService, TranslateService, BaseSibscriber } from './core-api';
+import { ComponentService, TranslateService, BaseSibscriber, animation } from './core-api';
 import { trigger, state, transition, animate, style } from '@angular/animations';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   animations: [
-    trigger('openClose', [
-      state('open', style({
-        width: '305px',
-        left: '0px',
-        backgroundColor: '#0D1E42'
-      })),
-      state('closed', style({
-        width: '0px',
-        left: '-306px',
-        backgroundColor: '#fff'
-      })),
-      transition('open => closed', [animate('.3s')]),
-      transition('closed => open', [animate('.3s')])
-    ])
+    animation.openClose
   ],
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent extends BaseSibscriber implements AfterViewInit {
 
   @ViewChild('appMenu', { static: true }) appMenu: ElementRef;
-  @ViewChild('firstTd', { static: true }) firstTd: ElementRef;  
+  @ViewChild('firstTd', { static: true }) firstTd: ElementRef;
   title = 'mdclone-mainapp-ui';
   constructor(public componentService: ComponentService) {
     super();

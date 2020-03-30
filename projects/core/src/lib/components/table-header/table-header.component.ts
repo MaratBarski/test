@@ -1,4 +1,6 @@
-import { Component, Input, EventEmitter, Output } from '@angular/core';
+import { Component, Input, EventEmitter, Output, ViewChild } from '@angular/core';
+import { CheckBoxListOption } from '../check-box-list/check-box-list.component';
+import { PopupComponent } from '../popup/popup.component';
 
 export class TableHeaderModel {
   text: string;
@@ -16,10 +18,39 @@ export class TableHeaderModel {
   styleUrls: ['./table-header.component.css']
 })
 export class TableHeaderComponent {
-
+  @ViewChild('popupFilter', { static: false }) popupFilter: PopupComponent;
   @Input() model: TableHeaderModel;
+  @Input() set filterOptions(filterOptions: Array<CheckBoxListOption>) {
+    if (!filterOptions) { return; }
+    this._filterOptions = filterOptions;
+    this._originOptions = JSON.parse(JSON.stringify(filterOptions));
+  }
+  get filterOptions(): Array<CheckBoxListOption> {
+    return this._filterOptions;
+  }
+  private _filterOptions: Array<CheckBoxListOption>;
+  private _originOptions: Array<CheckBoxListOption>;
+
   @Output() onSort = new EventEmitter<TableHeaderModel>();
   @Output() onFilter = new EventEmitter<{ header: TableHeaderModel, event: any }>();
+  @Output() onApplyFilter = new EventEmitter<TableHeaderComponent>();
+
+  onCloseFilter(): void {
+    if (this.popupFilter.isExpanded) {
+      this.cancelFilter();
+    }
+  }
+
+  applyFilter(): void {
+    this._originOptions = JSON.parse(JSON.stringify(this._filterOptions));
+    this.popupFilter.isExpanded = false;
+    this.onApplyFilter.emit(this);
+  }
+
+  cancelFilter(): void {
+    this._filterOptions = JSON.parse(JSON.stringify(this._originOptions));
+    this.popupFilter.isExpanded = false;
+  }
 
   sort(): void {
     if (!this.model.isSortEnabled) { return; }
@@ -33,7 +64,9 @@ export class TableHeaderComponent {
   }
 
   openFilter(event: any): void {
-    event.stopPropagation();
+    if (this.popupFilter.isExpanded) { return; }
+    this.popupFilter.isExpanded = false;
+    this.popupFilter.show(true, undefined);
     this.onFilter.emit({ header: this.model, event: event });
   }
 }

@@ -1,10 +1,12 @@
-import { Component, Input, EventEmitter, Output, OnDestroy, ChangeDetectionStrategy, TemplateRef, AfterViewInit } from '@angular/core';
-import { TableHeaderModel } from '../table-header/table-header.component';
+import { Component, Input, EventEmitter, Output, OnDestroy, ChangeDetectionStrategy, TemplateRef, AfterViewInit, ViewChild } from '@angular/core';
+import { TableHeaderModel, TableHeaderComponent } from '../table-header/table-header.component';
 import { ComponentService } from '../../services/component.service';
 import { AutoSearchComponent } from '../auto-search/auto-search.component';
 import { SearchService } from '../../services/search.service';
 import { SubscriptionLike } from 'rxjs';
 import { PaginatorComponent } from '../paginator/paginator.component';
+import { CheckBoxListOption } from '../check-box-list/check-box-list.component';
+import { PopupComponent } from '../popup/popup.component';
 
 export class PaginatorInfo {
   currentPage: number;
@@ -20,6 +22,7 @@ export class TableModel {
   headers: Array<TableHeaderModel>;
   rows: Array<TableRowModel>;
   activeRow?: TableRowModel;
+  resetFilter?: boolean;
 };
 
 @Component({
@@ -34,9 +37,33 @@ export class TableComponent implements OnDestroy, AfterViewInit {
     private searchService: SearchService
   ) { }
 
+  filters: any;
+
   private _subscriptions: Array<SubscriptionLike> = [];
   ngOnDestroy(): void {
     this._subscriptions.forEach(s => s.unsubscribe());
+  }
+
+  private initFilters(): void {
+    if (this.filters) { return; }
+    if (!this._dataSource || !this._dataSource.headers) { return; }
+    this.filters = {};
+    this.dataSource.headers.filter(h => h.filter).forEach(header => {
+      this.filters[header.columnId] = [];
+      const dict = {}
+      this.dataSource.rows.forEach(data => {
+        const value = data.cells[header.columnId];
+        if (!value) { return; }
+        if (dict[value.toString()]) { return; }
+        dict[value.toString()] = true;
+        const filterOption: CheckBoxListOption = {
+          id: value.toString(),
+          isChecked: true,
+          text: value.toString()
+        }
+        this.filters[header.columnId].push(filterOption);
+      })
+    });
   }
 
   ngAfterViewInit(): void {
@@ -100,6 +127,16 @@ export class TableComponent implements OnDestroy, AfterViewInit {
 
   @Input() set dataSource(data: TableModel) {
     if (!data) { return; }
+    const isResetFilter = !!data.resetFilter;
+    data.resetFilter = false;
+    if (!this._dataSourceOrigin || isResetFilter) {
+      this._dataSourceOrigin = { ...data };
+    }
+    if (!isResetFilter) {
+      data = this.filterData(data);
+    } else {
+      this.filters = undefined;
+    }
     this.resetPaginator();
     const sorted = data.headers.filter(h => h.isSortedColumn);
     for (let i = 1; i < sorted.length; i++) {
@@ -112,6 +149,7 @@ export class TableComponent implements OnDestroy, AfterViewInit {
       this.sortModel = { ...sorted[0] };
     }
     this._dataSource = data;
+    this.initFilters();
     data.rows.filter(row => row.isActive).forEach((row, index) => { row.isActive = !index; });
     this._rows = this.searchService.filterRows(
       data.rows, { text: this.serachText, columns: this.searchOptions }
@@ -124,6 +162,7 @@ export class TableComponent implements OnDestroy, AfterViewInit {
     return this._dataSource;
   }
   private _dataSource: TableModel;
+  private _dataSourceOrigin: TableModel;
 
   get rows(): Array<TableRowModel> { return this._rows; }
   private _rows: Array<TableRowModel>;
@@ -158,6 +197,27 @@ export class TableComponent implements OnDestroy, AfterViewInit {
 
   filter(event: { header: TableHeaderModel, event: any }): void {
     this.onFilter.emit(event);
+  }
+
+  private filterData(data: TableModel): TableModel {
+    if (!this.filters) { return { ...data }; }
+    let rows = data.rows;
+    Object.keys(this.filters).forEach(k => {
+      const filtered = this.filters[k].filter((cb: CheckBoxListOption) => cb.isChecked);
+      if (!filtered.length) { rows = []; return; }
+      if (filtered.length === this.filters[k].length) { return; }
+      const dict = {};
+      filtered.forEach((x: CheckBoxListOption) => { dict[x.text] = true });
+      rows = rows.filter(row => {
+        return dict[row.cells[k]];
+      });
+    });
+    return { ...data, rows: rows };
+  }
+
+  onApplyFilter(header: TableHeaderComponent): void {
+    this.filters[header.model.columnId] = header.filterOptions;
+    this.dataSource = this._dataSourceOrigin;
   }
 
   rowClick(row: TableRowModel): void {

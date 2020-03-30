@@ -1,11 +1,12 @@
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { ImportedFilesService } from '../../services/imported-files.service';
-import { Store } from '@ngrx/store';
-import { load, deleteFile } from '../../store/actions/imported-files.actions';
-import { selectData } from '../../store/selectors/imported-files.selector';
 import { FileSource, FileSourceResponse } from '../../models/file-source';
 import { TableComponent, TranslateService, DateService, TabItemModel, TableModel, MenuLink, PopupComponent, TableHeaderModel, CheckBoxListOption, Project, NavigationService, PageInfo, BaseSibscriber, CheckBoxListComponent, SelectOption, FromTo } from '@app/core-api';
 import { UploadFileComponent } from '@app/imported-files/components/upload-file/upload-file.component';
+
+// import { Store } from '@ngrx/store';
+// import { load, deleteFile } from '../../store/actions/imported-files.actions';
+// import { selectData } from '../../store/selectors/imported-files.selector';
 
 @Component({
   selector: 'md-imported-files',
@@ -15,19 +16,13 @@ import { UploadFileComponent } from '@app/imported-files/components/upload-file/
 export class ImportedFilesComponent extends BaseSibscriber implements OnInit, OnDestroy {
 
   @ViewChild('popupMenu', { static: true }) popupMenu: PopupComponent;
-  @ViewChild('popupFilter', { static: true }) popupFilter: PopupComponent;
   @ViewChild('dateRangeSelector', { static: true }) dateRangeSelector: PopupComponent;
   @ViewChild('table', { static: true }) table: TableComponent;
   @ViewChild('checkFilter', { static: true }) checkFilter: CheckBoxListComponent;
   @ViewChild('fileUploader', { static: true }) fileUploader: UploadFileComponent;
 
-  users: Array<CheckBoxListOption> = [];
-  projects: Array<CheckBoxListOption> = [];
   permissions: Array<CheckBoxListOption> = [];
-  filterOptions: Array<CheckBoxListOption> = [];
-  curentFilter: string;
-
-  searchOptions = ['fileName', 'environment'];
+  searchOptions = ['fileName', 'environment', 'permission'];
 
   get templates(): Array<SelectOption> {
     if (!this.permissions) { return []; }
@@ -41,12 +36,13 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, On
   dataOrigin: TableModel;
   dataSource: TableModel;
   fileSource: Array<FileSource>;
+  resetFilter = true;
 
   constructor(
     private translateService: TranslateService,
     private dateService: DateService,
     private importedFilesService: ImportedFilesService,
-    private store: Store<any>,
+    //private store: Store<any>,
     private navigationService: NavigationService
   ) {
     super();
@@ -59,7 +55,16 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, On
     icon: 'ic-delete',
     source: 'test',
     click: (source) => {
-      this.store.dispatch(deleteFile(source));
+      this.fileSource = this.fileSource.filter(x => x != source);
+      this.initData();
+      this.importedFilesService.deleteFile(source)
+        .toPromise()
+        .then(res => {
+          console.log('File deleted');
+        }).catch(e => {
+          console.error('Error delete file');
+        })
+      //this.store.dispatch(deleteFile(source));
     }
   }
 
@@ -88,6 +93,7 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, On
 
   selectTab(tab: number): void {
     this.tabActive = tab;
+    this.resetFilter = true;
     this.createDataSource();
   }
 
@@ -99,15 +105,17 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, On
     this.popupMenu.show(true, event);
   }
 
+  private initData(): void {
+    this.dataOrigin = this.dataSource = this.importedFilesService.createDataSource(this.fileSource);
+    this.initPermissions();
+  }
+
   ngOnInit() {
     this.initTabs();
     super.add(
       this.importedFilesService.load().subscribe((res: FileSourceResponse) => {
         this.fileSource = res.data;
-        this.dataOrigin = this.dataSource = this.importedFilesService.createDataSource(this.fileSource);
-        this.initProjects(res.data);
-        this.initUsers(res.data);
-        this.initPermissions(res.data);
+        this.initData();
       }));
     // super.add(
     //   this.store.select(selectData).subscribe((files: Array<FileSource>) => {
@@ -120,21 +128,9 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, On
     // this.store.dispatch(load());
   }
 
-  initProjects(files: Array<FileSource>): void {
-    this.projects = this.importedFilesService.getFilter(
-      files.filter(x => x.projectObj).map(x => { return { id: x.projectObj.projectId, text: x.projectObj.projectName } })
-    );
-  }
-
-  initUsers(files: Array<FileSource>): void {
-    this.users = this.importedFilesService.getFilter(
-      files.filter(x => x.uploadedBy).map(x => { return { id: x.uploadedBy, text: 'user_' + x.uploadedBy } })
-    );
-  }
-
-  initPermissions(files: Array<FileSource>): void {
+  initPermissions(): void {
     this.permissions = this.importedFilesService.getFilter(
-      files.filter(x => x.template).map(x => { return { id: x.template.templateId, text: x.template.templateName } })
+      this.fileSource.filter(x => x.template).map(x => { return { id: x.template.templateId, text: x.template.templateName } })
     );
   }
 
@@ -156,93 +152,8 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, On
 
   cellClick(item: any): void { }
 
-  filterProc = {
-    environment: {
-      show: () => { this.filterOptions = this.projects; },
-      setOptions: () => { this.projects = this.checkFilter.options; },
-      apply: (fs: Array<FileSource>): Array<FileSource> => {
-        const dict = {};
-        this.projects.forEach((option, index) => {
-          if (option.isChecked) {
-            dict[option.id] = true;
-          }
-        });
-        return fs.filter(fs => fs.projectObj && dict[fs.projectObj.projectId])
-      }
-    },
-    user: {
-      show: () => { this.filterOptions = this.users; },
-      setOptions: () => { this.users = this.checkFilter.options; },
-      apply: (fs: Array<FileSource>): Array<FileSource> => {
-        const dict = {};
-        this.users.forEach((option, index) => {
-          if (option.isChecked) {
-            dict[option.id] = true;
-          }
-        });
-        return fs.filter(fs => dict[fs.uploadedBy])
-      }
-    },
-    permission: {
-      show: () => { this.filterOptions = this.permissions; },
-      setOptions: () => { this.permissions = this.checkFilter.options; },
-      apply: (fs: Array<FileSource>): Array<FileSource> => {
-        const dict = {};
-        this.permissions.forEach((option, index) => {
-          if (option.isChecked) {
-            dict[option.id] = true;
-          }
-        });
-        return fs.filter(fs => dict[fs.templateId])
-      }
-    }
-  }
-
-  showFilter(source: { header: TableHeaderModel, event: any }): void {
-    this.popupMenu.isExpanded = false;
-    if (this.curentFilter === source.header.columnId) { return; }
-    this.popupFilter.isExpanded = false;
-    this.curentFilter = source.header.columnId;
-    if (!this.isFilter) { return; }
-    this.filterProc[this.curentFilter].show();
-    this.popupFilter.target = source.event.target;
-    this.popupFilter.show(true, source.event);
-  }
-
-  get isFilter(): boolean {
-    if (!this.curentFilter) { return false; }
-    if (!this.filterProc[this.curentFilter]) { return false; }
-    return true;
-  }
-
-  cancelFilter(): void {
-    this.popupFilter.isExpanded = false;
-    if (!this.isFilter) { return; }
-    this.filterProc[this.curentFilter].setOptions();
-    this.curentFilter = undefined;
-  }
-
-  onCloseFilter(): void {
-    if (!this.isFilter) { return; }
-    this.filterProc[this.curentFilter].setOptions();
-    this.curentFilter = undefined;
-  }
-
-  applyFilter(): void {
-    if (!this.isFilter) { return; }
-    this.filterProc[this.curentFilter].setOptions();
-    this.createDataSource();
-    this.popupFilter.isExpanded = false;
-    this.curentFilter = undefined;
-  }
-
   createDataSource(): void {
-    const result = this.filterProc.permission.apply(
-      this.filterProc.user.apply(
-        this.filterProc.environment.apply(
-          this.fileSource
-        )));
-    this.dataSource = this.importedFilesService.createDataSource(result);
+    this.dataSource = this.importedFilesService.createDataSource(this.fileSource);
     let rows = this.dataSource.rows;
     if (this.tabActive === 1) {
       rows = this.dateService.lastMonth(rows, 'insertDate');
@@ -251,7 +162,8 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, On
     } else if (this.tabActive === 3) {
       rows = this.dateService.getRange(rows, 'insertDate', { from: this.customFrom, to: this.customTo });
     }
-    this.dataSource = { ...this.dataSource, rows: rows };
+    this.dataSource = { ...this.dataSource, rows: rows, resetFilter: this.resetFilter };
+    this.resetFilter = false;
   }
 
   openFileUpload(): void {

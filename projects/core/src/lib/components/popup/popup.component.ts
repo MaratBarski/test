@@ -15,6 +15,7 @@ export class PopupComponent {
   @ViewChild('container', { static: true }) container: ElementRef;
   @Input() position: 'left' | 'top' | 'right' | 'bottom' | 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right' = 'left';
   @Output() onClose = new EventEmitter();
+  @Input() fixed = false;
 
   private _target: any;
 
@@ -52,20 +53,23 @@ export class PopupComponent {
   show(isShow: boolean, event: any): void {
     this.isOver = true;
     this.isExpanded = isShow;
-    this.setPosition(event);
+    if (event) {
+      this.setPosition(event);
+    }
     this.stopOver();
   }
 
   @HostListener('document:click', ['$event']) onMouseClick(event: any) {
     if (this.isOver) { return; }
-    this.isExpanded = false;
     this.onClose.emit();
+    this.isExpanded = false;
   }
 
   private get rect(): any { return ComponentService.getRect(this.container); }
   private get targetRect(): any { return ComponentService.getRect(this._target); }
 
   private setPosition(event: any): void {
+    if (this.fixed) { return; }
     if (!this.isExpanded) { return; }
     setTimeout(() => {
       this.initPosition[this.position](event);

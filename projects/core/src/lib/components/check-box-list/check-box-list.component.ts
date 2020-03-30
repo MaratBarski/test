@@ -12,6 +12,7 @@ export class CheckBoxListOption {
 })
 export class CheckBoxListComponent implements OnInit {
 
+  @Input() allowEmptySelect = true;
   @Output() cancel = new EventEmitter();
   @Output() apply = new EventEmitter();
 
