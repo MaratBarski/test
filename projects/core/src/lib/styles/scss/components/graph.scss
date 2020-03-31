@@ -1,0 +1,76 @@
+.graph-wrap{
+	margin-top: 28px;
+
+	// &_center &__content{
+	// 	text-align: center;
+	// }
+}
+
+.graph{
+	display: inline-block;
+	width: 100%;
+	padding: 0;
+	// max-width: 730px;
+	min-height: 423px;
+	background: #fff;
+	border: solid 1px rgba(172, 178, 195, 0.5);
+	box-shadow: -11px 9px 21px 0 rgba(173, 182, 217, 0.17);
+	text-align: left;
+	margin-bottom: 20px;
+
+	&__top{
+		width: 100%;
+		background: $color-sort-grey;
+		padding: 10px 20px;
+		border: 0;
+		border-bottom: 1px solid rgba(172, 178, 195, 0.5);
+		text-align: center;
+	}
+
+	&__head{
+		display: inline-block;
+		@include font(normal, 600, rem(16px), 1.4, $color-dark-grey);
+		text-transform: uppercase;
+		text-align: center;
+		position: relative;
+	}
+
+	&__content{
+		padding: 20px;
+	}
+
+	.tooltip{
+		display: none;
+		width: 250px;
+		line-height: 1.45;
+		text-transform: none;
+		text-align: left;
+		position: absolute;
+		left: calc(100% + 4px);
+		top: -6px;
+	}
+
+	&__head:hover .tooltip,
+	.tooltip.active{
+		display: inline-block;
+	}
+}
+
+@media (max-width: 767px) {
+	.graph{
+		&__head .tooltip{
+			top: 100%;
+			left: 50%;
+			transform: translateX(-50%);
+		}
+
+		&__head .tooltip::after{
+			border-width: 0 6px 5px 6px;
+			border-color: transparent transparent $color-dark-blue transparent;
+			top: auto;
+			bottom: 100%;
+			left: 50%;
+			transform: translateX(-50%);
+		}
+	}
+}

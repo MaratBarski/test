@@ -20,6 +20,11 @@ const routes: Routes = [
     canActivate: [LoginService]
   },
   {
+    path: 'usage-dashboard',
+    loadChildren: () => import('./usage/usage.module').then(m => m.UsageModule),
+    canActivate: [LoginService]
+  },
+  {
     path: 'login',
     component: LoginComponent
   },

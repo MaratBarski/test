@@ -1,11 +1,23 @@
 import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject, Subject } from 'rxjs';
 
+const SUB_MENU_SHOW = 'showSideMenu';
 @Injectable({
   providedIn: 'root'
 })
 export class ComponentService {
-  showSideMenu = true;
+
+  set showSideMenu(showSideMenu: boolean) {
+    localStorage.setItem(SUB_MENU_SHOW, showSideMenu.toString().toLowerCase());
+  }
+
+  get showSideMenu(): boolean {
+    if (localStorage.getItem(SUB_MENU_SHOW) !== 'true' && localStorage.getItem(SUB_MENU_SHOW) !== 'false') {
+      this.showSideMenu = true;
+    }
+    return localStorage.getItem(SUB_MENU_SHOW) === 'true';
+  }
+
   get onToggleMenu(): Observable<boolean> {
     return this._onToggleMenu.asObservable();
   }

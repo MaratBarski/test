@@ -1,0 +1,12 @@
+/*-------------- tag -----------------*/
+.tag{
+	display: inline-block;
+	height: rem(18px);
+	border-radius: rem(9px);
+	padding: 0 12px;
+	@include font(normal, 600, rem(12px), rem(17px), #fff);
+	background: $color-yellow;
+	white-space: nowrap;
+
+	&_green{background: $color-green;}
+}

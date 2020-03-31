@@ -1,0 +1,18 @@
+<section class="graph-wrap">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="graph">
+                    <div class="graph__top">
+                        <div class="graph__head">
+                            <span position='right' [mdcTooltip]='pageTooltip'>{{pageTitle}}</span>
+                        </div>
+                    </div>
+                    <div #chartCmp class="graph-contant">
+                        <mdc-chart-bar [dataSet]="dataSet"></mdc-chart-bar>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

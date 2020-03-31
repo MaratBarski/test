@@ -13,6 +13,14 @@
 	box-shadow: 0 2px 4px 0 #dbe4f9;
 	@include font(normal, normal, rem(14px), 1.57, #686b83);
 
+	&__content{
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		width: 100%;
+	}
+
 	&__title{
 		font-weight: 600;
 		margin-right: 3px;
@@ -40,17 +48,44 @@
 		right: 0;
 	}
 
+	&__val{
+		display: inline-flex;
+		align-items: center;
+	}
+
 	.icon{
 		vertical-align: middle;
 		margin-left: 3px;
 	}
 
+	&__val .icon{
+		margin-left: 8px;
+	}
+
 	.ic-shared{
 		width: 18px;
 		height: 17px;
+		margin-left: 3px;
+	}
+
+	.ic-help{
+		width: 15px;
+		height: 15px;
+	}
+
+	.ic-plug{
+		width: 25px;
+		height: 15px;
+	}
+
+	.ic-robot{
+		width: 26px;
+		height: 25px;
 	}
 
 	.select{
+		display: inline-block;
+		vertical-align: middle;
 		margin-left: 3px;
 		
 		&__head-arr .icon{
@@ -80,6 +115,41 @@
 		left: calc(100% - 30px);
 		z-index: 2;
 	}
+
+	&__choose,
+	&__switch{
+		display: flex;
+		align-items: center;
+	}
+
+	&__switch{
+		margin: 3px 0;
+	}
+
+	&__switch-label{
+		@include font(normal, normal, rem(14px), 1.57, #5d6177);
+		margin-right: 7px;
+	}
+}
+
+.info-panel-choose{
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+
+	&__item{
+		display: inline-flex;
+		flex-wrap: wrap;
+		align-items: center;
+		margin-right: 42px;
+	}
+
+	&__title{
+		@include font(normal, 600, rem(14px), 1.57, $color-dark-grey);
+		margin-right: 12px;
+	}
+
+	.select{margin-left: 0;}
 }
 
 @media (min-width: 768px) {
@@ -96,6 +166,16 @@
 		.select{
 			margin-top: 3px;
 			margin-bottom: 3px;
+		}
+	}
+
+	.info-panel-choose{
+		width: 100%;
+
+		&__item{margin-right: 0;}
+
+		&__title{
+			min-width: 92px;
 		}
 	}
 }

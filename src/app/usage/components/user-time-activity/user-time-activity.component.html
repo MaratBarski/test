@@ -1,0 +1,18 @@
+<section class="category-list">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="category-list__content">
+                    <div class="category-list__label">List of users without activity in the last:</div>
+                    <div *ngIf="buttons" class="category-list__list">
+                        <ng-container *ngFor="let button of buttons;let index = index;">
+                            <div class="category-list__item" [ngClass]="{'active':current===index}" (click)="selectButton(index)">
+                                <span class="category-list__link pointer">{{button.title}}</span>
+                            </div>
+                        </ng-container>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

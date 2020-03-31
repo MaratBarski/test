@@ -1,0 +1,30 @@
+<section class="usage-dashboard-top">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="usage-dashboard-top__content">
+                    <mdc-download></mdc-download>
+                    <div class="usage-dashboard-top__tab">
+                        <div (mouseleave)="showMoreTab=false">
+                            <mdc-tabs tabid="importetFilesTab" [active]="tabActive" [tabs]="tabs"
+                                (select)="selectTab($event)">
+                            </mdc-tabs>
+                            <div class="popup-content">
+                                <div [hidden]="!showMoreTab" (mouseover)="showMoreTab=true"
+                                    (mouseleave)="showMoreTab=false" class="tabs-popup-more-wrap">
+                                    <div class="tabs-popup-more">
+                                        <div class="tabs-popup-more__list">
+                                            <div [ngClass]="{'active':subItemActive === i}" (click)="selectSubItem(i)" class="tabs-popup-more__item" *ngFor="let item of subItems;let i = index">
+                                                {{item.title}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
