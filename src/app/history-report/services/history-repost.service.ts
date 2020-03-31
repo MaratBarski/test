@@ -119,6 +119,7 @@ export class HistoryReportService {
       // console.log(userQeSession); 
       data.rows.push({
         cells: {
+          name: i,
           insertDate: fl.insertDate,
           fullName: fl.userId,
           approvalKey: !!fl.userActivateSession ? fl.userActivateSession.approval_number : "",

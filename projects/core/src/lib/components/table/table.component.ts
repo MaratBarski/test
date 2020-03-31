@@ -97,7 +97,7 @@ export class TableComponent implements OnDestroy, AfterViewInit {
   @Input() set downloader(dowmload: DownloadComponent) {
     this._subscriptions.push(
       dowmload.onDownload.subscribe(() => {
-        this.csvManagerService.downloadCsv('files.csv', { ...this.dataSource, rows: this._rows });
+        this.csvManagerService.downloadCsv(dowmload.fileName, { ...this.dataSource, rows: this._rows });
       }));
   }
 

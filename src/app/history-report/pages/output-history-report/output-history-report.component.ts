@@ -25,6 +25,7 @@ export class OutputHistoryReportComponent extends BaseSibscriber implements OnIn
 
   customTo = new Date();
   customFrom = new Date();
+  downloadFileName = 'history.csv';
 
   constructor(
     private translateService: TranslateService,
