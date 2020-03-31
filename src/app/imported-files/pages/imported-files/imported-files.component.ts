@@ -60,6 +60,7 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, On
       this.importedFilesService.deleteFile(source)
         .toPromise()
         .then(res => {
+          window.open(window.URL.createObjectURL(res));
           console.log('File deleted');
         }).catch(e => {
           console.error('Error delete file');

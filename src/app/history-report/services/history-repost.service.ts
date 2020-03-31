@@ -4,21 +4,49 @@ import { Observable } from 'rxjs';
 import { Offline } from 'src/app/shared/decorators/offline.decorator';
 import { environment } from '@env/environment';
 import { SessionHistoryResponse, SessionHistory } from '@app/models/session-history';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HistoryReportService {
 
-  constructor(private dataService: DataService) { }
+  // private createHeaders = (): any => {
+  //   return {
+  //     headers: new HttpHeaders({
+  //       'responseType': 'blob',
+  //     })
+  //   };
+  // }
+
+  constructor(private dataService: DataService,private http: HttpClient) { }
 
   @Offline('assets/offline/history.json')
-  private getUrl = `${environment.serverUrl}${environment.endPoints.historyReport}/02-09-2018/02-10-2018`;
+  private getUrl = `${environment.serverUrl}${environment.endPoints.historyReport}/01-01-2020`;
 
   load(): Observable<SessionHistoryResponse> {
     return this.dataService.get(this.getUrl);
   }
   
+  downloadFile(fl: SessionHistory): Observable<any>  {
+    return this.http.get(`${environment.serverUrl}${environment.endPoints.downloadHistoryReport}/${fl.sessionHistoryId}`, { responseType: 'blob' });
+    // return this.http.get(`${environment.serverUrl}${environment.endPoints.downloadHistoryReport}/${fl.sessionHistoryId}`, { responseType: 'blob'})
+    
+
+    
+    // return this.dataService.get(`${environment.serverUrl}${environment.endPoints.downloadHistoryReport}/${fl.sessionHistoryId}`).toPromise()
+    // .then(res => {
+    //   const blob = new File();
+    //   const fileName = 'CSV_CONTENT.ZIP';
+    //   return window.URL.createObjectURL(blob)
+    // }).catch(e => {
+    //   console.error('Error delete file');
+    // });
+    
+    // const blob = new Blob([data], { type: 'application/zip' });
+    // const fileName = 'CSV_CONTENT.ZIP';
+    // return this.http.get(`${environment.serverUrl}${environment.endPoints.downloadHistoryReport}/${fl.sessionHistoryId}`, this.createHeaders() );
+  }
 
   createDataSource(history: Array<SessionHistory>): TableModel {
     const data: TableModel = {
@@ -97,6 +125,8 @@ export class HistoryReportService {
           environment: fl.projectName,
           source: !!fl.sessionId ? "Query" : "Imported file",
           status: !!fl.transStatus,
+          download: fl.sessionHistoryId,
+
           //$res[$i]['session_name'] = $session['session_id'] != null ? h($session['session_name']) : h($session['file_name_alias']);
         },
         source: fl,

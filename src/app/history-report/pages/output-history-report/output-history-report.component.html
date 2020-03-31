@@ -21,7 +21,7 @@
             </div>
             <mdc-table #table 
                 [headersTemplate]="{ data:dataHeader}"
-                [cellsTemplate]="{ insertDate:dateColumn, status:statusTemplate, name:nameTemplate}"
+                [cellsTemplate]="{ insertDate:dateColumn, status:statusTemplate, name:nameTemplate, download:downloadTemplate}"
                 [searchOptions]="searchOptions" [paginator]="paginator" [search]="search" [dataSource]="dataSource">
             </mdc-table>
             <div class="pager-wrap">
@@ -56,6 +56,13 @@
         <mdc-icon path="ic-failure" color="red"></mdc-icon>
     </div>
 </ng-template>
+<ng-template let-item #downloadTemplate let-src="source">
+    <span (click)="downloadClick(item,src,$event)" class="admin-table-action__menu ic-hover">
+        <mdc-icon path="ic-download"></mdc-icon>
+    </span>
+    <div>{{src.sessionHistoryId}}</div>
+</ng-template>
+
 <ng-template let-item #nameTemplate let-src="source">
     <div *ngIf="src.sessionId" class="display-flex">
         <div class="margin-top-5-px">{{src.sessionName}} | </div>

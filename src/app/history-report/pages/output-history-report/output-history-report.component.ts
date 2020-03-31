@@ -1,10 +1,10 @@
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { HistoryReportService } from '../../services/history-repost.service';
-import { Store } from '@ngrx/store';
-import { load } from '../../store/actions/history-report.actions';
 import { TableComponent, TranslateService, DateService, TabItemModel, TableModel, MenuLink, PopupComponent, FromTo, CheckBoxListOption, NavigationService, PageInfo, BaseSibscriber, CheckBoxListComponent, ComponentService, ModalWindowComponent } from '@app/core-api';
-import { selectFHistoryReport, selectFHistoryReportData } from '@app/history-report/store/selectors/history-report.selector';
 import { HistoryInfoComponent } from '@app/history-report/components/history-info/history-info.component';
+import { SessionHistory } from '@app/models/session-history';
+import { DownloadService } from '@app/shared/services/download.service';
+
 
 @Component({
   selector: 'md-output-history-report',
@@ -28,41 +28,13 @@ export class OutputHistoryReportComponent extends BaseSibscriber implements OnIn
 
   constructor(
     private translateService: TranslateService,
-    private dateService: DateService,
     private historyReportService: HistoryReportService,
-    private store: Store<any>,
-    private navigationService: NavigationService
+    private navigationService: NavigationService,
+    private downlodService: DownloadService
   ) {
     super();
     this.navigationService.currentPageID = PageInfo.MonitorReports.id;
   }
-
-  deleteLink: MenuLink = {
-    text: 'Delete',
-    disable: false,
-    icon: 'ic-delete',
-    source: 'test',
-    click: (source) => {
-    }
-  }
-
-  editLink: MenuLink = {
-    text: 'Edit File Settings',
-    icon: 'ic-edit',
-    click: (source) => { console.log(JSON.stringify(source)); }
-  }
-
-  viewLink: MenuLink = {
-    text: 'View output summary',
-    icon: 'ic-view',
-    click: (source) => { console.log(JSON.stringify(source)); }
-  }
-
-  sublinks: Array<MenuLink> = [this.deleteLink];
-  links: Array<MenuLink> = [
-    this.editLink,
-    this.viewLink
-  ];
 
   tabs: Array<TabItemModel> = [
     { title: this.translateService.translate('All') },
@@ -87,39 +59,27 @@ export class OutputHistoryReportComponent extends BaseSibscriber implements OnIn
   reports: Array<any>;
   selectedCategory: any;
 
-  searchComplete(text: string): void {
-    //this.table.resetPaginator();
-    //this.serachText = text;
-  }
+  searchComplete(text: string): void {}
 
   selectTab(tab: number): void {
     this.tabActive = tab;
     this.createDataSource();
   }
 
-  editClick(item: any, source: any, event: any): void {
-    this.deleteLink.source = source;
-    this.editLink.source = source;
-    this.viewLink.source = source;
-    this.popupMenu.target = event.target;
-    this.popupMenu.show(true, event);
-  }
-
+ 
   ngOnInit() {
     super.add(
       this.historyReportService.load().subscribe((res: any) => {
         this.reports = res.data;
         this.dataOrigin = this.dataSource = this.historyReportService.createDataSource(this.reports);
       }));
-
-    // super.add(
-    //   this.store.select(selectFHistoryReportData).subscribe((reports: Array<any>) => {
-    //     this.reports = reports;
-    //     this.dataOrigin = this.dataSource = this.historyReportService.createDataSource(this.reports);
-    //   }));
-    // this.store.dispatch(load());
   }
 
+  downloadClick(item: SessionHistory, source: SessionHistory, event: any): void {
+    console.log(source);
+    console.log(item);
+    this.downlodService.download('http://10.0.2.18:4000/moshe/api/v1/session-history/download/2768')
+  }
 
   cellClick(item: any): void { }
 
