@@ -14,14 +14,9 @@
                                     (mouseleave)="showMoreTab=false" class="tabs-popup-more-wrap">
                                     <div class="tabs-popup-more">
                                         <div class="tabs-popup-more__list">
-                                            <div class="tabs-popup-more__item">Created</div>
-                                            <div class="tabs-popup-more__item">Table</div>
-                                            <div class="tabs-popup-more__item d-md-none">General Usage</div>
-                                            <div class="tabs-popup-more__item d-md-none">Monthly Activity
+                                            <div [ngClass]="{'active':subItemActive === i}" (click)="selectSubItem(i)" class="tabs-popup-more__item" *ngFor="let item of subItems;let i = index">
+                                                {{item.title}}
                                             </div>
-                                            <div class="tabs-popup-more__item d-lg-none">Activity per User
-                                            </div>
-                                            <div class="tabs-popup-more__item d-lg-none">Top 10 Users</div>
                                         </div>
                                     </div>
                                 </div>

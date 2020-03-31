@@ -10,6 +10,8 @@ export class UsageDashboardComponent extends BaseSibscriber implements OnInit {
 
   activityButtons: Array<TabItemModel> = [{ title: 'Month' }, { title: '3 Months' }, { title: '6 Months' }];
   currentActivity = 0;
+  currentTab = 0;
+  currentSubTab = -1;
 
   constructor(
     private translateService: TranslateService,
@@ -18,6 +20,11 @@ export class UsageDashboardComponent extends BaseSibscriber implements OnInit {
   ) {
     super();
     this.navigationService.currentPageID = PageInfo.JobsScheduling.id;
+  }
+
+  selectTab(event: { tab: number, subTab: number }): void {
+    this.currentTab = event.tab;
+    this.currentSubTab = event.subTab;
   }
 
   changeCurrentAcitity(i: number): void {
