@@ -19,7 +19,7 @@ export class HistoryReportService {
   //   };
   // }
 
-  constructor(private dataService: DataService,private http: HttpClient) { }
+  constructor(private dataService: DataService, private http: HttpClient) { }
 
   @Offline('assets/offline/history.json')
   private getUrl = `${environment.serverUrl}${environment.endPoints.historyReport}/01-01-2020`;
@@ -27,13 +27,13 @@ export class HistoryReportService {
   load(): Observable<SessionHistoryResponse> {
     return this.dataService.get(this.getUrl);
   }
-  
-  downloadFile(fl: SessionHistory): Observable<any>  {
+
+  downloadFile(fl: SessionHistory): Observable<any> {
     return this.http.get(`${environment.serverUrl}${environment.endPoints.downloadHistoryReport}/${fl.sessionHistoryId}`, { responseType: 'blob' });
     // return this.http.get(`${environment.serverUrl}${environment.endPoints.downloadHistoryReport}/${fl.sessionHistoryId}`, { responseType: 'blob'})
-    
 
-    
+
+
     // return this.dataService.get(`${environment.serverUrl}${environment.endPoints.downloadHistoryReport}/${fl.sessionHistoryId}`).toPromise()
     // .then(res => {
     //   const blob = new File();
@@ -42,7 +42,7 @@ export class HistoryReportService {
     // }).catch(e => {
     //   console.error('Error delete file');
     // });
-    
+
     // const blob = new Blob([data], { type: 'application/zip' });
     // const fileName = 'CSV_CONTENT.ZIP';
     // return this.http.get(`${environment.serverUrl}${environment.endPoints.downloadHistoryReport}/${fl.sessionHistoryId}`, this.createHeaders() );
@@ -56,13 +56,15 @@ export class HistoryReportService {
           text: 'Date',
           isSortEnabled: true,
           sortDir: 'desc',
-          isSortedColumn: true
+          isSortedColumn: true,
+          csvTitle: 'Date'
         },
         {
           columnId: 'fullName',
           text: 'User',
           isSortEnabled: true,
-          filter: true
+          filter: true,
+          csvTitle: 'User'
         },
         {
           columnId: 'name',
@@ -78,7 +80,7 @@ export class HistoryReportService {
           columnId: 'research',
           text: 'Research',
           isSortEnabled: true
-        }, 
+        },
         {
           columnId: 'data',
           text: 'Data',

@@ -4,9 +4,7 @@
         <md-page-body>
             <div class="admin-table-wrap__action">
                 <div class="admin-table-wrap__col">
-                    <a class="link-load" href="#"><span class="ic-hover">
-                            <mdc-icon path="ic-download"></mdc-icon>
-                        </span><span class="link-load__text">Download Report</span></a>
+                    <mdc-download #downloader text="Download Report"></mdc-download>
                 </div>
                 <div class="admin-table-wrap__col">
                     <div class="tabs-page">
@@ -22,7 +20,7 @@
             <mdc-table #table 
                 [headersTemplate]="{ data:dataHeader}"
                 [cellsTemplate]="{ insertDate:dateColumn, status:statusTemplate, name:nameTemplate, download:downloadTemplate}"
-                [searchOptions]="searchOptions" [paginator]="paginator" [search]="search" [dataSource]="dataSource">
+                [searchOptions]="searchOptions" [paginator]="paginator" [search]="search" [dataSource]="dataSource" [downloader]="downloader">
             </mdc-table>
             <div class="pager-wrap">
                 <mdc-paginator #paginator paginationTitle="{{'paginationTitle'|translate}}"
