@@ -1,0 +1,50 @@
+<svg #svg width="100%" height="100%" [style.backgroundColor]="backgroundColor">
+    <g *ngFor="let rect of dataSet;let index = index">
+        <g *ngFor="let part of rect.bars;let bi = index">
+            <rect class="rect" [attr.x]="index * (barWidth + barSpace) + barSpace/2" [attr.width]="barWidth"
+                [attr.y]="chartHeight + paddingTop - (part.prev + part.value) * yKf" [attr.height]="part.value * yKf"
+                [attr.fill]="part.backgroundColor" style="stroke-width:0.5;stroke:#ccc;">
+            </rect>
+        </g>
+        <text [style.fontSize]="fontSize" [attr.fill]="totalFontColor"
+            [attr.x]="index * (barWidth + barSpace) + barSpace/2 + fontSize/3"
+            [attr.y]="chartHeight + paddingTop - rect.total * yKf - 4">
+            {{rect.total}}
+        </text>
+    </g>
+    <g *ngFor="let rect of dataSet;let index = index">
+        <g *ngFor="let part of rect.bars;let bi = index">
+            <text [style.fontSize]="fontSize" [attr.fill]="part.textColor"
+                [attr.x]="index * (barWidth + barSpace) + barSpace/2 + fontSize/3"
+                [attr.y]="chartHeight + paddingTop - (part.prev + part.value/2) * yKf + fontSize/2">
+                {{part.value}}
+            </text>
+        </g>
+    </g>
+    <line [attr.x1]="0" [attr.x2]="width+dw/2" [attr.y1]="chartHeight+paddingTop" [attr.y2]="chartHeight+paddingTop"
+        style="stroke:#ccc;stroke-width:0.5" />
+    <g *ngFor="let rect of dataSet;let index = index">
+        <text [attr.x]="index * (barWidth + barSpace) + barSpace/2" [attr.y]="height - textPadding" fill="black"
+            [style.fontSize]="fontSize"
+            [attr.transform]="'rotate(-45,' +  (index * (barWidth + barSpace) + barSpace/2) + ',' + (height - textPadding) +')'">
+            {{rect.xlabel}}
+        </text>
+    </g>
+</svg>
+
+<!-- <div style="display: grid;grid-template-columns: auto auto;width:400px">
+    <div>width</div>
+    <div>{{width}}</div>
+
+    <div>heigth</div>
+    <div>{{height}}</div>
+
+    <div>yKf</div>
+    <div>{{yKf}}</div>
+
+    <div>barWidth</div>
+    <div>{{barWidth}}</div>
+
+    <div>barSpace</div>
+    <div>{{barSpace}}</div>
+</div> -->

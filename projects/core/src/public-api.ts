@@ -28,6 +28,9 @@ export * from './lib/services/csv-manager.service';
 
 export * from './lib/common/BaseSibscriber';
 export * from './lib/common/side-menu';
+export * from './lib/common/chart/BaseChart';
+export * from './lib/common/chart/BaseChartBar';
+export * from './lib/common/chart/chart-bar';
 
 export * from './lib/store/selectors/user.selectors';
 export * from './lib/store/actions/user.actions';
@@ -69,6 +72,7 @@ export * from './lib/components/progress/progress.component';
 export * from './lib/components/side-bar/side-bar.component';
 export * from './lib/components/date-range-selector/date-range-selector.component';
 export * from './lib/components/download/download.component';
+export * from './lib/components/chart-bar/chart-bar.component';
 
 export * from './lib/directives/show.directive';
 export * from './lib/directives/tooltip.directive';

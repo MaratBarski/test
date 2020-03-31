@@ -50,6 +50,7 @@ import { RouterModule } from '@angular/router';
 import { FileNamePipe } from './pipes/file-name.pipe';
 import { DateRangeSelectorComponent } from './components/date-range-selector/date-range-selector.component';
 import { DownloadComponent } from './components/download/download.component';
+import { ChartBarComponent } from './components/chart-bar/chart-bar.component';
 
 // import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 
@@ -98,7 +99,8 @@ import { DownloadComponent } from './components/download/download.component';
     SideBarComponent,
     FileNamePipe,
     DateRangeSelectorComponent,
-    DownloadComponent
+    DownloadComponent,
+    ChartBarComponent
   ],
   imports: [
     CommonModule,
@@ -153,7 +155,8 @@ import { DownloadComponent } from './components/download/download.component';
     SideBarComponent,
     FileNamePipe,
     DateRangeSelectorComponent,
-    DownloadComponent
+    DownloadComponent,
+    ChartBarComponent
   ],
   entryComponents: [
     TableHeaderComponent

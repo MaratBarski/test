@@ -8,7 +8,9 @@
                             <span position='right' [mdcTooltip]='pageTooltip'>{{pageTitle}}</span>
                         </div>
                     </div>
-                    <div class="graph__content"></div>
+                    <div #chartCmp class="graph-contant">
+                        <mdc-chart-bar [dataSet]="dataSet"></mdc-chart-bar>
+                    </div>
                 </div>
             </div>
         </div>
