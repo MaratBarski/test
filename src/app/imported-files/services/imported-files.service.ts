@@ -43,20 +43,19 @@ export class ImportedFilesService {
           columnId: 'fileName',
           text: 'Name',
           isSortEnabled: true,
-          exportCsv: true
+          csvTitle: 'File Name'
         },
         {
           columnId: 'insertDate',
           text: 'Loaded',
-          isSortEnabled: true,
-          exportCsv: true
+          isSortEnabled: true
         },
         {
           columnId: 'environment',
           text: 'Environment',
           isSortEnabled: true,
           filter: true,
-          exportCsv: true
+          csvTitle: 'Environment'
         },
         {
           columnId: 'permission',
@@ -104,6 +103,9 @@ export class ImportedFilesService {
           shared: fl.fileType,
           columns: fl.columnsNum,
           rows: fl.rowsNum
+        },
+        csv: {
+          fileName: fl.fileName
         },
         source: fl,
         isActive: false

@@ -10,7 +10,8 @@ export class TableHeaderModel {
   maxWidth?: number;
   filter?: boolean;
   columnId: string;
-  exportCsv?: boolean;
+  csvTitle?: string;
+  hidden?: boolean;
 }
 
 @Component({

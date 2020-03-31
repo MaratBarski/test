@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild, ViewContainerRef, ComponentFactoryResolver, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ViewContainerRef, ComponentFactoryResolver, ElementRef, Inject } from '@angular/core';
 import { ChartBarComponent, Bar } from '@app/core-api';
 
 @Component({
@@ -14,11 +14,6 @@ export class UsageReportComponent implements OnInit {
   @Input() pageTitle = 'Monthly General Usage';
   @Input() pageTooltip = 'Each bar represents the monthly number of users who created at least one new query or downloaded a file.';
   current = 0;
-  components = [
-    { type: ChartBarComponent, name: 'personaldata' }
-  ];
-
-  constructor(private componentFactoryResolver: ComponentFactoryResolver) { }
 
   ngOnInit() {
     this.dataSet = [
@@ -169,20 +164,6 @@ export class UsageReportComponent implements OnInit {
         ]
       }
     ];
-    //this.loadComponent();
-  }
-
-  loadComponent(): void {
-    const adItem = this.components[this.current].type;
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(adItem);
-    this.chartCmp.clear();
-    const componentRef = this.chartCmp.createComponent(componentFactory);
-    componentRef.instance.dataSet = this.dataSet;
-    // this.clientEdit = {
-    //   client: <IClientEdit>componentRef.instance,
-    //   name: this.components[this.current].name
-    // };
-    // this.clientEdit.client.client = this.client;
   }
 
 

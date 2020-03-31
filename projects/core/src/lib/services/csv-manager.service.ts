@@ -13,14 +13,14 @@ export class CsvManagerService {
   createLinkFromTable(table: TableModel): string {
     const csvData: CsvData = { headers: [], data: [] };
     const columns = [];
-    table.headers.filter(x => x.exportCsv).forEach(h => {
+    table.headers.filter(x => x.csvTitle).forEach(h => {
       columns.push(h.columnId);
-      csvData.headers.push(h.text);
+      csvData.headers.push(h.csvTitle);
     });
     table.rows.forEach(row => {
       const ar = [];
       columns.forEach(col => {
-        ar.push(row.cells[col] ? row.cells[col].toString() : '');
+        ar.push((row.csv && row.csv[col]) ? row.csv[col] : (row.cells && row.cells[col]) ? row.cells[col].toString() : '');
       });
       csvData.data.push(ar);
     })

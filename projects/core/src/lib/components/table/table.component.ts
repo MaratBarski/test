@@ -6,8 +6,6 @@ import { SearchService } from '../../services/search.service';
 import { SubscriptionLike } from 'rxjs';
 import { PaginatorComponent } from '../paginator/paginator.component';
 import { CheckBoxListOption } from '../check-box-list/check-box-list.component';
-import { PopupComponent } from '../popup/popup.component';
-import { BaseSibscriber } from '../../common/BaseSibscriber';
 import { CsvManagerService } from '../../services/csv-manager.service';
 import { DownloadComponent } from '../download/download.component';
 
@@ -18,6 +16,7 @@ export class PaginatorInfo {
 }
 export class TableRowModel {
   cells: { [key: string]: any };
+  csv?: { [key: string]: any };
   source?: any;
   isActive?: boolean;
 }
@@ -34,13 +33,12 @@ export class TableModel {
   styleUrls: ['./table.component.css'],
   changeDetection: ChangeDetectionStrategy.Default
 })
-export class TableComponent extends BaseSibscriber implements OnDestroy, AfterViewInit {
+export class TableComponent implements OnDestroy, AfterViewInit {
 
   constructor(
     private csvManagerService: CsvManagerService,
     private searchService: SearchService
   ) {
-    super();
   }
 
   filters: any;
@@ -97,9 +95,9 @@ export class TableComponent extends BaseSibscriber implements OnDestroy, AfterVi
   private _paginator: PaginatorComponent;
 
   @Input() set downloader(dowmload: DownloadComponent) {
-    super.add(
+    this._subscriptions.push(
       dowmload.onDownload.subscribe(() => {
-        this.csvManagerService.downloadCsv('files.csv', this.dataSource);
+        this.csvManagerService.downloadCsv('files.csv', { ...this.dataSource, rows: this._rows });
       }));
   }
 
