@@ -81,7 +81,7 @@ export const SideMenu: Array<MenuItem> = [
     },
     {
         id: PageInfo.JobsScheduling.id,
-        url: 'usage-dashboard',
+        //url: 'usage-dashboard',
         text: 'Jobs Scheduling'
     },
     {
