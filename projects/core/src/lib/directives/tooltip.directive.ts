@@ -22,7 +22,6 @@ export class TooltipDirective implements OnInit {
   private dy = 14;
   private prevPosition: TooltipPosition = undefined;
 
-
   constructor(
     private element: ElementRef,
     private renderer: Renderer2
