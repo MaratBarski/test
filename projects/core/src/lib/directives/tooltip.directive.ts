@@ -51,7 +51,7 @@ export class TooltipDirective implements OnInit {
     },
     left: (event: any) => {
       if (this.stickyToElement) {
-        this.setOffset(this.rect.left - this.tooltipRect.width, this.rect.top + (this.rect.height - this.tooltipRect.height) / 2);
+        this.setOffset(this.rect.left - this.tooltipRect.width - this.dx / 2, this.rect.top + (this.rect.height - this.tooltipRect.height) / 2);
       } else {
         this.setOffset(event.clientX - this.tooltipRect.width - this.dx, event.clientY - this.tooltipRect.height / 2);
       }

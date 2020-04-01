@@ -47,10 +47,10 @@
     <mdc-icon path="ic-help" color="blue"></mdc-icon>
 </ng-template>
 <ng-template let-item #statusTemplate let-src="source">
-    <div *ngIf="src.transStatus" class="height-20-px width-20-px">
+    <div *ngIf="src.transStatus" [stickyToElement]="true" [position]="'right'" [mdcTooltip]="'Success'" class="height-20-px width-20-px">
         <mdc-icon path="ic-success" color="green"></mdc-icon>
     </div>
-    <div *ngIf="!src.transStatus" class="height-20-px width-20-px">
+    <div *ngIf="!src.transStatus" [stickyToElement]="true" [position]="'left'" [mdcTooltip]="'Failure'"  class="height-20-px width-20-px">
         <mdc-icon path="ic-failure" color="red"></mdc-icon>
     </div>
 </ng-template>
