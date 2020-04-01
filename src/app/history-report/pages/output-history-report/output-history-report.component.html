@@ -17,7 +17,7 @@
                     </form>
                 </div>
             </div>
-            <mdc-table #table [headersTemplate]="{ data:dataHeader}"
+            <mdc-table [emptyState]="emptyState" #table [headersTemplate]="{ data:dataHeader}"
                 [cellsTemplate]="{ insertDate:dateColumn, status:statusTemplate, name:nameTemplate, download:downloadTemplate}"
                 [searchOptions]="searchOptions" [paginator]="paginator" [search]="search" [dataSource]="dataSource"
                 [downloader]="downloader">

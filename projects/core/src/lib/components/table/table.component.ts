@@ -8,7 +8,7 @@ import { PaginatorComponent } from '../paginator/paginator.component';
 import { CheckBoxListOption } from '../check-box-list/check-box-list.component';
 import { CsvManagerService } from '../../services/csv-manager.service';
 import { DownloadComponent } from '../download/download.component';
-import { EmptyState } from '../empty-state/empty-state.component';
+import { EmptyState, DefaultEmptyState } from '../empty-state/empty-state.component';
 
 export class PaginatorInfo {
   currentPage: number;
@@ -83,7 +83,16 @@ export class TableComponent implements OnDestroy, AfterViewInit {
   @Output() onSort = new EventEmitter<TableHeaderModel>();
   @Output() onFilter = new EventEmitter<{ header: TableHeaderModel, event: any }>();
 
-  @Input() emptyState: EmptyState;
+  @Input() set emptyState(emptyState: EmptyState) {
+    this._emptyState = emptyState;
+    this._currentEmptyState = emptyState;
+  }
+  get emptyState(): EmptyState {
+    return this._currentEmptyState;
+  }
+  private _emptyState: EmptyState;
+  private _currentEmptyState: EmptyState;
+
   @Input() set paginator(paginator: PaginatorComponent) {
     this._paginator = paginator;
     this.initPaginator();
@@ -107,6 +116,11 @@ export class TableComponent implements OnDestroy, AfterViewInit {
     this._search = search;
     this._subscriptions.push(
       this._search.complete.subscribe((text: string) => {
+        if (!text || text.trim() === '') {
+          this._currentEmptyState = this._emptyState;
+        } else {
+          this._currentEmptyState = DefaultEmptyState();
+        }
         this.resetPaginator();
         this._rows = this.searchService.filterRows(
           this.dataSource.rows, { text: text, columns: this.searchOptions }
@@ -117,6 +131,13 @@ export class TableComponent implements OnDestroy, AfterViewInit {
   }
   get search(): AutoSearchComponent { return this._search; }
   private _search: AutoSearchComponent;
+
+  resetSearch(): void {
+    this._serachText = '';
+    if (this._search) {
+      this._search.text = '';
+    }
+  }
 
   @Input() headersTemplate: Array<{ [key: string]: TemplateRef<any> }>;
   @Input() cellsTemplate: Array<{ [key: string]: TemplateRef<any> }>;
@@ -140,6 +161,8 @@ export class TableComponent implements OnDestroy, AfterViewInit {
 
   @Input() set dataSource(data: TableModel) {
     if (!data) { return; }
+    this._currentEmptyState = this._emptyState;
+    this.resetSearch();
     const isResetFilter = !!data.resetFilter;
     data.resetFilter = false;
     if (!this._dataSourceOrigin || isResetFilter) {
@@ -229,6 +252,8 @@ export class TableComponent implements OnDestroy, AfterViewInit {
   }
 
   onApplyFilter(header: TableHeaderComponent): void {
+    this._currentEmptyState = this._emptyState;
+    this.resetSearch();
     this.filters[header.model.columnId] = header.filterOptions;
     this.dataSource = this._dataSourceOrigin;
   }

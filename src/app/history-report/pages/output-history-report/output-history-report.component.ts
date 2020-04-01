@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { HistoryReportService } from '../../services/history-repost.service';
-import { TableComponent, TranslateService, DateService, TabItemModel, TableModel, MenuLink, PopupComponent, FromTo, CheckBoxListOption, NavigationService, PageInfo, BaseSibscriber, CheckBoxListComponent, ComponentService, ModalWindowComponent } from '@app/core-api';
+import { TableComponent, TranslateService, DateService, TabItemModel, TableModel, MenuLink, PopupComponent, FromTo, CheckBoxListOption, NavigationService, PageInfo, BaseSibscriber, CheckBoxListComponent, ComponentService, ModalWindowComponent, EmptyState } from '@app/core-api';
 import { HistoryInfoComponent } from '@app/history-report/components/history-info/history-info.component';
 import { SessionHistory } from '@app/models/session-history';
 import { environment } from '@env/environment';
@@ -26,6 +26,12 @@ export class OutputHistoryReportComponent extends BaseSibscriber implements OnIn
   customTo = new Date();
   customFrom = new Date();
   downloadFileName = 'history.csv';
+
+  emptyState: EmptyState = {
+    title: 'No history.',
+    subTitle: 'history.',
+    image: 'filesEmpty.png'
+  }
 
   get downloadUrl():string{ return environment.serverUrl + environment.endPoints.downloadHistoryReport + '/' };
 
