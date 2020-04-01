@@ -27,4 +27,4 @@
         </tr>
     </tbody>
 </table>
-<mdc-empty-state *ngIf="rows && !(rows.length)"></mdc-empty-state>
+<mdc-empty-state [emptyState]="emptyState" *ngIf="rows && !(rows.length)"></mdc-empty-state>

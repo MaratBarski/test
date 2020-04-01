@@ -75,6 +75,7 @@ export * from './lib/components/date-range-selector/date-range-selector.componen
 export * from './lib/components/download/download.component';
 export * from './lib/components/chart-bar/chart-bar.component';
 export * from './lib/components/empty-state/empty-state.component';
+export * from './lib/components/image/image.component';
 
 export * from './lib/directives/show.directive';
 export * from './lib/directives/tooltip.directive';

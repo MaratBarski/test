@@ -22,7 +22,7 @@
                     </div>
                 </div>
             </div>
-            <mdc-table [downloader]="downloader" #table
+            <mdc-table [emptyState]="emptyState" [downloader]="downloader" #table
                 [cellsTemplate]="{ insertDate:dateColumn,shared:sharedColumn,editColumn:edit}"
                 [searchOptions]="searchOptions" [paginator]="paginator" [search]="search" [dataSource]="dataSource">
             </mdc-table>

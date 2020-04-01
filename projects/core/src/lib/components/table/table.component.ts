@@ -8,6 +8,7 @@ import { PaginatorComponent } from '../paginator/paginator.component';
 import { CheckBoxListOption } from '../check-box-list/check-box-list.component';
 import { CsvManagerService } from '../../services/csv-manager.service';
 import { DownloadComponent } from '../download/download.component';
+import { EmptyState } from '../empty-state/empty-state.component';
 
 export class PaginatorInfo {
   currentPage: number;
@@ -82,6 +83,7 @@ export class TableComponent implements OnDestroy, AfterViewInit {
   @Output() onSort = new EventEmitter<TableHeaderModel>();
   @Output() onFilter = new EventEmitter<{ header: TableHeaderModel, event: any }>();
 
+  @Input() emptyState: EmptyState;
   @Input() set paginator(paginator: PaginatorComponent) {
     this._paginator = paginator;
     this.initPaginator();

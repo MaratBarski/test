@@ -1,0 +1,13 @@
+<div *ngIf="emptyState" class="emty-container">
+    <div class="center">
+        <div *ngIf="emptyState.title" class="title">
+            {{emptyState.title}}
+        </div>
+        <div *ngIf="emptyState.subTitle" class="sub-title">
+            {{emptyState.subTitle}}
+        </div>
+        <div *ngIf="emptyState.image" class="image center">
+            <mdc-image [src]="emptyState.image"></mdc-image>
+        </div>
+    </div>
+</div>

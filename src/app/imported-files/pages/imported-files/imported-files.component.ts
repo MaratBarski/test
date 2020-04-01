@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { ImportedFilesService } from '../../services/imported-files.service';
 import { FileSource, FileSourceResponse } from '../../models/file-source';
-import { TableComponent, TranslateService, DateService, TabItemModel, TableModel, MenuLink, PopupComponent, TableHeaderModel, CheckBoxListOption, Project, NavigationService, PageInfo, BaseSibscriber, CheckBoxListComponent, SelectOption, FromTo } from '@app/core-api';
+import { TableComponent, TranslateService, DateService, TabItemModel, TableModel, MenuLink, PopupComponent, TableHeaderModel, CheckBoxListOption, Project, NavigationService, PageInfo, BaseSibscriber, CheckBoxListComponent, SelectOption, FromTo, EmptyState } from '@app/core-api';
 import { UploadFileComponent } from '@app/imported-files/components/upload-file/upload-file.component';
 
 // import { Store } from '@ngrx/store';
@@ -23,6 +23,12 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, On
 
   permissions: Array<CheckBoxListOption> = [];
   searchOptions = ['fileName', 'environment', 'permission'];
+
+  emptyState: EmptyState = {
+    title: 'You can synthesize or manipulate your own data. Start by clicking the button above.',
+    subTitle: 'Your files will be listed here.',
+    image: 'filesEmpty.png'
+  }
 
   get templates(): Array<SelectOption> {
     if (!this.permissions) { return []; }
