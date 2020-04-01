@@ -44,7 +44,7 @@ export class ImportedFilesService {
           text: 'Name',
           isSortEnabled: true,
           csvTitle: 'File Name',
-          showDetails: true
+          showDetails: false
         },
         {
           columnId: 'insertDate',
