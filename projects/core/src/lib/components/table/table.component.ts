@@ -288,11 +288,15 @@ export class TableComponent implements OnDestroy, AfterViewInit {
     this.currentRowInfo = undefined;
   }
 
-  showItemInfo(row: TableRowModel, header: TableHeaderModel, event: any): void {
+  showItemInfo(row: TableRowModel | any, header: TableHeaderModel, rowIndex: number, event: any): void {
     if (!header.showDetails) { return; }
     event.stopPropagation();
+    const elm = document.getElementById('row_' + rowIndex);
+    if (event.clientY + elm.offsetHeight > window.innerHeight) {
+      row.marginInfo = window.innerHeight - event.clientY - elm.offsetHeight;
+    }
     this.currentRowInfo = row;
-    (row as any).infoLoaded = true;
+    row.infoLoaded = true;
     this.rowClick(row);
   }
 

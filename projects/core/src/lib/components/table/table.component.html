@@ -17,7 +17,8 @@
             <tr (click)="infoRowClick($event)" class="row-info-container"
                 *ngIf="(rowInfoTemplate && (true||row.infoLoaded))" [hidden]="false && currentRowInfo!==row">
                 <td class="row-info-sub-container" [attr.colspan]="(dataSource.headers|visibleHeaders).length">
-                    <div class="row-info" [@showInfoAnimation]="currentRowInfo===row ? 'open' : 'closed'">
+                    <div id="{{'row_' + rowIndex}}" [style.marginTop.px]="row.marginInfo || 0" class="row-info"
+                        [@showInfoAnimation]="currentRowInfo===row ? 'open' : 'closed'">
                         <ng-container *ngIf="rowInfoTemplate" [ngTemplateOutlet]="rowInfoTemplate"
                             [ngTemplateOutletContext]="{$implicit: row}">
                         </ng-container>
@@ -26,7 +27,7 @@
             </tr>
             <tr (click)="rowClick(row)" [ngClass]="{'active':row.isActive,'row-even':rowIndex%2===0}" mdcTableRow>
                 <ng-container *ngFor="let header of dataSource.headers|visibleHeaders;let index = index">
-                    <td [mdcTableItem]="index" (click)="showItemInfo(row,header,$event)">
+                    <td [mdcTableItem]="index" (click)="showItemInfo(row,header,rowIndex,$event)">
                         <mdc-text-block [isLink]="header.showDetails"
                             *ngIf="!cellsTemplate || !cellsTemplate[header.columnId]" [maxWidth]="header.maxWidth||500"
                             text="{{row.cells[header.columnId]}}">
