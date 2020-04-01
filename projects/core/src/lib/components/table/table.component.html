@@ -1,30 +1,30 @@
-<ng-container *ngIf="rows?.length">
-    <table mdcTable>
-        <thead *ngIf="dataSource?.headers">
-            <tr mdcTableHeader>
-                <th *ngFor="let header of dataSource.headers|visibleHeaders;let index = index" [mdcTableItem]="index">
-                    <mdc-table-header *ngIf="!headersTemplate || !headersTemplate[header.columnId]"
-                        (onSort)="sort($event)" (onApplyFilter)="onApplyFilter($event)" (onFilter)="filter($event)" [model]="header" [filterOptions]="filters[header.columnId]"></mdc-table-header>
-                    <ng-container *ngIf="headersTemplate && headersTemplate[header.columnId]"
-                        [ngTemplateOutlet]="headersTemplate[header.columnId]"
-                        [ngTemplateOutletContext]="{$implicit: header}"></ng-container>
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr (click)="rowClick(row)"
-                *ngFor="let row of rows|sortTable:sortModel|pagination:{currentPage:paginator?.currentPage,pageSize:paginator?.pageSize};let rowIndex = index"
-                [ngClass]="{'active':row.isActive}" mdcTableRow>
-                <td *ngFor="let header of dataSource.headers|visibleHeaders;let index = index" [mdcTableItem]="index">
-                    <mdc-text-block *ngIf="!cellsTemplate || !cellsTemplate[header.columnId]"
-                        [maxWidth]="header.maxWidth||500" text="{{row.cells[header.columnId]}}">
-                    </mdc-text-block>
-                    <ng-container *ngIf="cellsTemplate && cellsTemplate[header.columnId]"
-                        [ngTemplateOutlet]="cellsTemplate[header.columnId]"
-                        [ngTemplateOutletContext]="{$implicit: row.cells,source:row.source}">
-                    </ng-container>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</ng-container>
+<table mdcTable>
+    <thead *ngIf="dataSource?.headers">
+        <tr mdcTableHeader>
+            <th *ngFor="let header of dataSource.headers|visibleHeaders;let index = index" [mdcTableItem]="index">
+                <mdc-table-header *ngIf="!headersTemplate || !headersTemplate[header.columnId]" (onSort)="sort($event)"
+                    (onApplyFilter)="onApplyFilter($event)" (onFilter)="filter($event)" [model]="header"
+                    [filterOptions]="filters[header.columnId]"></mdc-table-header>
+                <ng-container *ngIf="headersTemplate && headersTemplate[header.columnId]"
+                    [ngTemplateOutlet]="headersTemplate[header.columnId]"
+                    [ngTemplateOutletContext]="{$implicit: header}"></ng-container>
+            </th>
+        </tr>
+    </thead>
+    <tbody *ngIf="rows?.length">
+        <tr (click)="rowClick(row)"
+            *ngFor="let row of rows|sortTable:sortModel|pagination:{currentPage:paginator?.currentPage,pageSize:paginator?.pageSize};let rowIndex = index"
+            [ngClass]="{'active':row.isActive}" mdcTableRow>
+            <td *ngFor="let header of dataSource.headers|visibleHeaders;let index = index" [mdcTableItem]="index">
+                <mdc-text-block *ngIf="!cellsTemplate || !cellsTemplate[header.columnId]"
+                    [maxWidth]="header.maxWidth||500" text="{{row.cells[header.columnId]}}">
+                </mdc-text-block>
+                <ng-container *ngIf="cellsTemplate && cellsTemplate[header.columnId]"
+                    [ngTemplateOutlet]="cellsTemplate[header.columnId]"
+                    [ngTemplateOutletContext]="{$implicit: row.cells,source:row.source}">
+                </ng-container>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<mdc-empty-state *ngIf="rows && !(rows.length)"></mdc-empty-state>

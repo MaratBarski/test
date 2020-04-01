@@ -52,6 +52,7 @@ import { DateRangeSelectorComponent } from './components/date-range-selector/dat
 import { DownloadComponent } from './components/download/download.component';
 import { ChartBarComponent } from './components/chart-bar/chart-bar.component';
 import { VisibleHeadersPipe } from './pipes/visible-headers.pipe';
+import { EmptyStateComponent } from './components/empty-state/empty-state.component';
 
 // import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 
@@ -102,7 +103,8 @@ import { VisibleHeadersPipe } from './pipes/visible-headers.pipe';
     DateRangeSelectorComponent,
     DownloadComponent,
     ChartBarComponent,
-    VisibleHeadersPipe
+    VisibleHeadersPipe,
+    EmptyStateComponent
   ],
   imports: [
     CommonModule,
@@ -158,7 +160,8 @@ import { VisibleHeadersPipe } from './pipes/visible-headers.pipe';
     FileNamePipe,
     DateRangeSelectorComponent,
     DownloadComponent,
-    ChartBarComponent
+    ChartBarComponent,
+    EmptyStateComponent
   ],
   entryComponents: [
     TableHeaderComponent

@@ -1,5 +1,5 @@
 <div class="paging-container">
-    <div class="paging-title">
+    <div class="paging-title" *ngIf="pageCount">
         <ng-template [ngIf]="pageCount > 1">
             {{paginationTitle|translate:[displayTitle,list]}}
         </ng-template>
