@@ -12,6 +12,7 @@ export class TableHeaderModel {
   columnId: string;
   csvTitle?: string;
   hidden?: boolean;
+  showDetails?: boolean;
 }
 
 @Component({

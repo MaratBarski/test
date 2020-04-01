@@ -1,4 +1,4 @@
-import { Component, Input, EventEmitter, Output, OnDestroy, ChangeDetectionStrategy, TemplateRef, AfterViewInit, ViewChild } from '@angular/core';
+import { Component, Input, EventEmitter, Output, OnDestroy, ChangeDetectionStrategy, TemplateRef, AfterViewInit, ViewChild, HostListener } from '@angular/core';
 import { TableHeaderModel, TableHeaderComponent } from '../table-header/table-header.component';
 import { ComponentService } from '../../services/component.service';
 import { AutoSearchComponent } from '../auto-search/auto-search.component';
@@ -9,6 +9,7 @@ import { CheckBoxListOption } from '../check-box-list/check-box-list.component';
 import { CsvManagerService } from '../../services/csv-manager.service';
 import { DownloadComponent } from '../download/download.component';
 import { EmptyState, DefaultEmptyState } from '../empty-state/empty-state.component';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 export class PaginatorInfo {
   currentPage: number;
@@ -31,6 +32,19 @@ export class TableModel {
 @Component({
   selector: 'mdc-table',
   templateUrl: './table.component.html',
+  animations: [
+    trigger('showInfoAnimation', [
+      state('open', style({
+        overflow: 'visible'
+      })),
+      state('closed', style({
+        width: '0px',
+        overflow: 'hidden'
+      })),
+      transition('open => closed', [animate('0.2s')]),
+      transition('closed => open', [animate('0.3s')])
+    ])
+  ],
   styleUrls: ['./table.component.css'],
   changeDetection: ChangeDetectionStrategy.Default
 })
@@ -139,6 +153,7 @@ export class TableComponent implements OnDestroy, AfterViewInit {
     }
   }
 
+  @Input() rowInfoTemplate: TemplateRef<any>;
   @Input() headersTemplate: Array<{ [key: string]: TemplateRef<any> }>;
   @Input() cellsTemplate: Array<{ [key: string]: TemplateRef<any> }>;
   @Input() isMultiSelect = false;
@@ -266,5 +281,26 @@ export class TableComponent implements OnDestroy, AfterViewInit {
     this.dataSource.rows.filter(r => r.isActive).forEach(r => r.isActive = false);
     row.isActive = true;
     this.dataSource.activeRow = row;
+  }
+
+  currentRowInfo: TableRowModel;
+  closeRowInfo(): void {
+    this.currentRowInfo = undefined;
+  }
+
+  showItemInfo(row: TableRowModel, header: TableHeaderModel, event: any): void {
+    if (!header.showDetails) { return; }
+    event.stopPropagation();
+    this.currentRowInfo = row;
+    (row as any).infoLoaded = true;
+    this.rowClick(row);
+  }
+
+  infoRowClick(event: any): void {
+    event.stopPropagation();
+  }
+
+  @HostListener('document:click', ['$event']) onMouseClick(event: any) {
+    this.closeRowInfo();
   }
 }

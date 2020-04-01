@@ -35,6 +35,7 @@ export class TextBlockComponent extends BaseSibscriber {
   get text(): string { return this._text; }
   private _text = '';
 
+  @Input() isLink = false;
   isEllipsis = false;
 
   @ViewChild('container', { static: true }) container: ElementRef;

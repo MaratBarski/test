@@ -22,7 +22,7 @@
                     </div>
                 </div>
             </div>
-            <mdc-table [emptyState]="emptyState" [downloader]="downloader" #table
+            <mdc-table [rowInfoTemplate]="rowInfoTemplate" [emptyState]="emptyState" [downloader]="downloader" #table
                 [cellsTemplate]="{ insertDate:dateColumn,shared:sharedColumn,editColumn:edit}"
                 [searchOptions]="searchOptions" [paginator]="paginator" [search]="search" [dataSource]="dataSource">
             </mdc-table>
@@ -34,6 +34,15 @@
         </md-page-body>
     </main>
 </div>
+
+<ng-template #rowInfoTemplate let-item>
+    <div  style="height: 500px;width:900px;border:1px solid red">
+        {{item.source|json}}
+    </div>
+    <!-- <div class="modal-window" style="max-width: 800px;">
+        <md-history-info #historyionInfo (onClose)="closeHistoryInfo()" [category]="item.source"></md-history-info>
+    </div> -->
+</ng-template>
 
 <mdc-popup #popupMenu position="bottom-left" [closeOnClick]="true">
     <mdc-modal-menu [sublinks]="sublinks" [links]="links"></mdc-modal-menu>
