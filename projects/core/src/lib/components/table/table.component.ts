@@ -1,4 +1,4 @@
-import { Component, Input, EventEmitter, Output, OnDestroy, ChangeDetectionStrategy, TemplateRef, AfterViewInit, ViewChild, HostListener } from '@angular/core';
+import { Component, Input, EventEmitter, Output, OnDestroy, ChangeDetectionStrategy, TemplateRef, AfterViewInit, ViewChild, HostListener, Renderer2 } from '@angular/core';
 import { TableHeaderModel, TableHeaderComponent } from '../table-header/table-header.component';
 import { ComponentService } from '../../services/component.service';
 import { AutoSearchComponent } from '../auto-search/auto-search.component';
@@ -52,7 +52,8 @@ export class TableComponent implements OnDestroy, AfterViewInit {
 
   constructor(
     private csvManagerService: CsvManagerService,
-    private searchService: SearchService
+    private searchService: SearchService,
+    private renderer2: Renderer2
   ) {
   }
 
@@ -157,6 +158,7 @@ export class TableComponent implements OnDestroy, AfterViewInit {
   @Input() headersTemplate: Array<{ [key: string]: TemplateRef<any> }>;
   @Input() cellsTemplate: Array<{ [key: string]: TemplateRef<any> }>;
   @Input() isMultiSelect = false;
+  @Input() tableID = 'mainTable';
 
   @Input() set searchOptions(searchOptions: Array<string>) {
     this._searchOptions = searchOptions;
@@ -291,9 +293,13 @@ export class TableComponent implements OnDestroy, AfterViewInit {
   showItemInfo(row: TableRowModel | any, header: TableHeaderModel, rowIndex: number, event: any): void {
     if (!header.showDetails) { return; }
     event.stopPropagation();
-    const elm = document.getElementById('row_' + rowIndex);
+    const elm = document.getElementById(this.tableID + 'row_' + rowIndex);
     if (event.clientY + elm.offsetHeight > window.innerHeight) {
-      row.marginInfo = window.innerHeight - event.clientY - elm.offsetHeight;
+      this.renderer2.setStyle(elm, 'marginTop', `${window.innerHeight - event.clientY - elm.offsetHeight}px`);
+      //row.marginInfo = window.innerHeight - event.clientY - elm.offsetHeight;
+    } else {
+      this.renderer2.setStyle(elm, 'marginTop', '0px');
+      //row.marginInfo = 0;
     }
     this.currentRowInfo = row;
     row.infoLoaded = true;

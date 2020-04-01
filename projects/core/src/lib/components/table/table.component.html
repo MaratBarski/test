@@ -17,7 +17,7 @@
             <tr (click)="infoRowClick($event)" class="row-info-container"
                 *ngIf="(rowInfoTemplate && (true||row.infoLoaded))" [hidden]="false && currentRowInfo!==row">
                 <td class="row-info-sub-container" [attr.colspan]="(dataSource.headers|visibleHeaders).length">
-                    <div id="{{'row_' + rowIndex}}" [style.marginTop.px]="row.marginInfo || 0" class="row-info"
+                    <div id="{{tableID + 'row_' + rowIndex}}" class="row-info"
                         [@showInfoAnimation]="currentRowInfo===row ? 'open' : 'closed'">
                         <ng-container *ngIf="rowInfoTemplate" [ngTemplateOutlet]="rowInfoTemplate"
                             [ngTemplateOutletContext]="{$implicit: row}">
