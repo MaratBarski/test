@@ -28,26 +28,6 @@ export class HistoryReportService {
     return this.dataService.get(this.getUrl);
   }
 
-  downloadFile(fl: SessionHistory): Observable<any> {
-    return this.http.get(`${environment.serverUrl}${environment.endPoints.downloadHistoryReport}/${fl.sessionHistoryId}`, { responseType: 'blob' });
-    // return this.http.get(`${environment.serverUrl}${environment.endPoints.downloadHistoryReport}/${fl.sessionHistoryId}`, { responseType: 'blob'})
-
-
-
-    // return this.dataService.get(`${environment.serverUrl}${environment.endPoints.downloadHistoryReport}/${fl.sessionHistoryId}`).toPromise()
-    // .then(res => {
-    //   const blob = new File();
-    //   const fileName = 'CSV_CONTENT.ZIP';
-    //   return window.URL.createObjectURL(blob)
-    // }).catch(e => {
-    //   console.error('Error delete file');
-    // });
-
-    // const blob = new Blob([data], { type: 'application/zip' });
-    // const fileName = 'CSV_CONTENT.ZIP';
-    // return this.http.get(`${environment.serverUrl}${environment.endPoints.downloadHistoryReport}/${fl.sessionHistoryId}`, this.createHeaders() );
-  }
-
   createDataSource(history: Array<SessionHistory>): TableModel {
     const data: TableModel = {
       headers: [
@@ -57,51 +37,59 @@ export class HistoryReportService {
           isSortEnabled: true,
           sortDir: 'desc',
           isSortedColumn: true,
-          csvTitle: 'Date'
+          csvTitle: 'Date',
+          // hidden: true
         },
         {
           columnId: 'fullName',
           text: 'User',
           isSortEnabled: true,
           filter: true,
-          csvTitle: 'User'
+          csvTitle: 'User name'
         },
         {
           columnId: 'name',
           text: 'Query/File Name',
-          isSortEnabled: true
+          isSortEnabled: true,
+          csvTitle: 'Query/File name /ID'
         },
         {
           columnId: 'approvalKey',
           text: 'Approval Key',
-          isSortEnabled: true
+          isSortEnabled: true,
+          csvTitle: 'Approval Key'
         },
         {
           columnId: 'research',
           text: 'Research',
-          isSortEnabled: true
+          isSortEnabled: true,
+          csvTitle: 'Research name'
         },
         {
           columnId: 'data',
           text: 'Data',
-          isSortEnabled: true
+          isSortEnabled: true,
+          csvTitle: 'Data'
         },
         {
           columnId: 'environment',
           text: 'Environment',
           isSortEnabled: true,
-          filter: true
+          filter: true,
+          csvTitle: 'Environment'
         },
         {
           columnId: 'source',
           text: 'Source',
           isSortEnabled: true,
-          filter: true
+          filter: true,
+          csvTitle: 'Source'
         },
         {
           columnId: 'status',
           text: 'Status',
-          isSortEnabled: true
+          isSortEnabled: true,
+          csvTitle: 'Status'
         },
         {
           columnId: 'download',
@@ -112,11 +100,8 @@ export class HistoryReportService {
       ],
       rows: []
     }
+
     history.forEach((fl, i) => {
-      // let userQeSession = (fl.userQeSession);
-      //debugger;
-      //console.log(fl.userActivateSession != null ? fl.userActivateSession.approval_number : ""); 
-      // console.log(userQeSession); 
       data.rows.push({
         cells: {
           name: i,
@@ -127,11 +112,12 @@ export class HistoryReportService {
           data: "Missing",
           environment: fl.projectName,
           source: !!fl.sessionId ? "Query" : "Imported file",
-          status: !!fl.transStatus,
+          status: !!fl.transStatus ? "True" : "False",
           download: fl.sessionHistoryId,
-
-          //$res[$i]['session_name'] = $session['session_id'] != null ? h($session['session_name']) : h($session['file_name_alias']);
         },
+        // csv: {
+        //   status: !!fl.transStatus ? "True" : "False",
+        // },
         source: fl,
         isActive: false
       })

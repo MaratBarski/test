@@ -17,10 +17,10 @@
                     </form>
                 </div>
             </div>
-            <mdc-table #table 
-                [headersTemplate]="{ data:dataHeader}"
+            <mdc-table #table [headersTemplate]="{ data:dataHeader}"
                 [cellsTemplate]="{ insertDate:dateColumn, status:statusTemplate, name:nameTemplate, download:downloadTemplate}"
-                [searchOptions]="searchOptions" [paginator]="paginator" [search]="search" [dataSource]="dataSource" [downloader]="downloader">
+                [searchOptions]="searchOptions" [paginator]="paginator" [search]="search" [dataSource]="dataSource"
+                [downloader]="downloader">
             </mdc-table>
             <div class="pager-wrap">
                 <mdc-paginator #paginator paginationTitle="{{'paginationTitle'|translate}}"
@@ -47,7 +47,7 @@
     <mdc-icon path="ic-help" color="blue"></mdc-icon>
 </ng-template>
 <ng-template let-item #statusTemplate let-src="source">
-    <div *ngIf="src.transStatus" class="height-20-px width-20-px" >
+    <div *ngIf="src.transStatus" class="height-20-px width-20-px">
         <mdc-icon path="ic-success" color="green"></mdc-icon>
     </div>
     <div *ngIf="!src.transStatus" class="height-20-px width-20-px">
@@ -55,9 +55,11 @@
     </div>
 </ng-template>
 <ng-template let-item #downloadTemplate let-src="source">
-    <span (click)="downloadClick(item,src,$event)" class="admin-table-action__menu ic-hover">
+    <!-- <span (click)="downloadClick(item,src,$event)" class="admin-table-action__menu ic-hover"> -->
+    <a href="{{downloadUrl}}/{{src.sessionHistoryId}}">
         <mdc-icon path="ic-download"></mdc-icon>
-    </span>
+    </a>
+    <!-- </span> -->
     <div>{{src.sessionHistoryId}}</div>
 </ng-template>
 

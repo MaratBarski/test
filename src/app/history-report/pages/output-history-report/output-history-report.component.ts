@@ -3,7 +3,7 @@ import { HistoryReportService } from '../../services/history-repost.service';
 import { TableComponent, TranslateService, DateService, TabItemModel, TableModel, MenuLink, PopupComponent, FromTo, CheckBoxListOption, NavigationService, PageInfo, BaseSibscriber, CheckBoxListComponent, ComponentService, ModalWindowComponent } from '@app/core-api';
 import { HistoryInfoComponent } from '@app/history-report/components/history-info/history-info.component';
 import { SessionHistory } from '@app/models/session-history';
-import { DownloadService } from '@app/shared/services/download.service';
+import { environment } from '@env/environment';
 
 
 @Component({
@@ -26,6 +26,8 @@ export class OutputHistoryReportComponent extends BaseSibscriber implements OnIn
   customTo = new Date();
   customFrom = new Date();
   downloadFileName = 'history.csv';
+
+  get downloadUrl():string{ return environment.serverUrl + environment.endPoints.downloadHistoryReport + '/' };
 
   constructor(
     private translateService: TranslateService,
