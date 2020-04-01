@@ -33,7 +33,6 @@ export class OutputHistoryReportComponent extends BaseSibscriber implements OnIn
     private translateService: TranslateService,
     private historyReportService: HistoryReportService,
     private navigationService: NavigationService,
-    private downlodService: DownloadService
   ) {
     super();
     this.navigationService.currentPageID = PageInfo.MonitorReports.id;
@@ -81,7 +80,6 @@ export class OutputHistoryReportComponent extends BaseSibscriber implements OnIn
   downloadClick(item: SessionHistory, source: SessionHistory, event: any): void {
     console.log(source);
     console.log(item);
-    this.downlodService.download('http://10.0.2.18:4000/moshe/api/v1/session-history/download/2768')
   }
 
   cellClick(item: any): void { }
