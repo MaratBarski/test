@@ -59,6 +59,6 @@
 		text-decoration: none;
 	}
 
-	&:hover &__arr{background: #3f0280;}
+	&__arr:hover, &__title:hover {background: #3f0280;}
 	&:hover &__popup{display: inline-block;}
 }
