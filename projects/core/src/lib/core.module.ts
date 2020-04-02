@@ -54,6 +54,7 @@ import { ChartBarComponent } from './components/chart-bar/chart-bar.component';
 import { VisibleHeadersPipe } from './pipes/visible-headers.pipe';
 import { EmptyStateComponent } from './components/empty-state/empty-state.component';
 import { ImageComponent } from './components/image/image.component';
+import { RowInfoComponent } from './components/row-info/row-info.component';
 
 // import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 
@@ -106,7 +107,8 @@ import { ImageComponent } from './components/image/image.component';
     ChartBarComponent,
     VisibleHeadersPipe,
     EmptyStateComponent,
-    ImageComponent
+    ImageComponent,
+    RowInfoComponent
   ],
   imports: [
     CommonModule,
@@ -164,7 +166,8 @@ import { ImageComponent } from './components/image/image.component';
     DownloadComponent,
     ChartBarComponent,
     EmptyStateComponent,
-    ImageComponent
+    ImageComponent,
+    RowInfoComponent
   ],
   entryComponents: [
     TableHeaderComponent

@@ -1,4 +1,4 @@
-import { Component, Input, EventEmitter, Output, OnDestroy, ChangeDetectionStrategy, TemplateRef, AfterViewInit, ViewChild, HostListener, Renderer2 } from '@angular/core';
+import { Component, Input, EventEmitter, Output, OnDestroy, ChangeDetectionStrategy, TemplateRef, AfterViewInit, ViewChild, HostListener, Renderer2, ElementRef } from '@angular/core';
 import { TableHeaderModel, TableHeaderComponent } from '../table-header/table-header.component';
 import { ComponentService } from '../../services/component.service';
 import { AutoSearchComponent } from '../auto-search/auto-search.component';
@@ -9,7 +9,8 @@ import { CheckBoxListOption } from '../check-box-list/check-box-list.component';
 import { CsvManagerService } from '../../services/csv-manager.service';
 import { DownloadComponent } from '../download/download.component';
 import { EmptyState, DefaultEmptyState } from '../empty-state/empty-state.component';
-import { trigger, state, style, transition, animate } from '@angular/animations';
+import { RowInfoComponent } from '../row-info/row-info.component';
+import { AnimationService } from '../../services/animation.service';
 
 export class PaginatorInfo {
   currentPage: number;
@@ -32,19 +33,6 @@ export class TableModel {
 @Component({
   selector: 'mdc-table',
   templateUrl: './table.component.html',
-  animations: [
-    trigger('showInfoAnimation', [
-      state('open', style({
-        overflow: 'visible'
-      })),
-      state('closed', style({
-        width: '0px',
-        overflow: 'hidden'
-      })),
-      transition('open => closed', [animate('0.2s')]),
-      transition('closed => open', [animate('0.3s')])
-    ])
-  ],
   styleUrls: ['./table.component.css'],
   changeDetection: ChangeDetectionStrategy.Default
 })
@@ -53,7 +41,8 @@ export class TableComponent implements OnDestroy, AfterViewInit {
   constructor(
     private csvManagerService: CsvManagerService,
     private searchService: SearchService,
-    private renderer2: Renderer2
+    private renderer2: Renderer2,
+    private animationService: AnimationService
   ) {
   }
 
@@ -154,6 +143,7 @@ export class TableComponent implements OnDestroy, AfterViewInit {
     }
   }
 
+  @ViewChild('tableObject', { static: false }) tableObject: ElementRef;
   @Input() rowInfoTemplate: TemplateRef<any>;
   @Input() headersTemplate: Array<{ [key: string]: TemplateRef<any> }>;
   @Input() cellsTemplate: Array<{ [key: string]: TemplateRef<any> }>;
@@ -286,26 +276,65 @@ export class TableComponent implements OnDestroy, AfterViewInit {
   }
 
   currentRowInfo: TableRowModel;
+  animationRowInfo: TableRowModel;
+  currentRowIndex = -1;
+  animationElm: any;
+  rowInfoComponent: RowInfoComponent;
+  clientY = 0;
+
   closeRowInfo(): void {
+    this.animationService.stopAnimation();
     this.currentRowInfo = undefined;
+    this.animationRowInfo = undefined;
+  }
+
+  private animate(elm: any, width: number, callBack: any, currentWidth = 0): void {
+    this.animationService.animate(elm, width, callBack, 100, currentWidth);
+  }
+
+  private animateBack(elm: any, width: number, speed: number, callBack: any): void {
+    this.animationService.animateBack(elm, width, speed, callBack);
+  }
+
+  rowDetailsInit(rowDetails: RowInfoComponent): void {
+    setTimeout(() => {
+      const elm = document.getElementById(rowDetails.componentID);
+      this.animationElm = elm;
+      this.rowInfoComponent = rowDetails;
+      this.renderer2.setStyle(elm, 'visibility', `hidden`);
+
+      if (this.clientY + rowDetails.height > window.innerHeight) {
+        this.renderer2.setStyle(elm, 'marginTop', `${window.innerHeight - this.clientY - rowDetails.height}px`);
+      } else {
+        this.renderer2.setStyle(elm, 'marginTop', '0px');
+      }
+
+      setTimeout(() => {
+        this.animate(elm, rowDetails.width, undefined);
+        setTimeout(() => {
+          this.renderer2.setStyle(elm, 'visibility', 'visible');
+        }, 10);
+      }, 10);
+    }, 0);
   }
 
   showItemInfo(row: TableRowModel | any, header: TableHeaderModel, rowIndex: number, event: any): void {
     if (!header.showDetails) { return; }
+    if (this.currentRowInfo === row) { return; }
     event.stopPropagation();
-    setTimeout(() => { this.currentRowInfo = row; }, row.infoLoaded ? 10 : 0);
-    row.infoLoaded = true;
-    const elm = document.getElementById(this.tableID + 'row_' + rowIndex);
-    //setTimeout(() => {
-    // if (event.clientY + elm.offsetHeight > window.innerHeight) {
-    //   this.renderer2.setStyle(elm, 'marginTop', `${window.innerHeight - event.clientY - elm.offsetHeight}px`);
-    //   //row.marginInfo = window.innerHeight - event.clientY - elm.offsetHeight;
-    // } else {
-    //   this.renderer2.setStyle(elm, 'marginTop', '0px');
-    //   //row.marginInfo = 0;
-    // }
-    //}, 1000);
+    this.animationService.stopAnimation();
+    if (this.currentRowInfo) {
+      this.animateBack(this.animationElm, this.rowInfoComponent.width, 100, () => {
+        this.clientY = event.clientY;
+        this.rowClick(row);
+
+        this.currentRowInfo = row;
+      });
+      return;
+    }
+    this.clientY = event.clientY;
     this.rowClick(row);
+    this.currentRowInfo = row;
   }
 
   infoRowClick(event: any): void {

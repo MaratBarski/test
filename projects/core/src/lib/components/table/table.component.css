@@ -14,7 +14,9 @@
     background-color: #fff;
     position: absolute; 
     margin-left: auto;
+    max-width: 1000px;
     overflow: hidden;
+    visibility: hidden;
 }
 .row-link:hover{
     text-decoration: underline;

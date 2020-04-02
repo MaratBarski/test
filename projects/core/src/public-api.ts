@@ -23,6 +23,7 @@ export * from './lib/services/search.service';
 export * from './lib/services/pagination.service';
 export * from './lib/services/date.service';
 export * from './lib/services/csv-manager.service';
+export * from './lib/services/animation.service';
 
 //export * from './lib/services/socket.service';
 
@@ -76,6 +77,7 @@ export * from './lib/components/download/download.component';
 export * from './lib/components/chart-bar/chart-bar.component';
 export * from './lib/components/empty-state/empty-state.component';
 export * from './lib/components/image/image.component';
+export * from './lib/components/row-info/row-info.component';
 
 export * from './lib/directives/show.directive';
 export * from './lib/directives/tooltip.directive';
