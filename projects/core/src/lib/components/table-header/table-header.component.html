@@ -10,8 +10,8 @@
         <div (click)="openFilter($event)" class="admin-table-filter__icon">
             <mdc-icon css="icon ic-filter ic-stroke" path="ic-filter"></mdc-icon>
         </div>
-        <div style="margin-left: -220px;position:absolute;margin-top:20px">
-            <mdc-popup #popupFilter *ngIf="filterOptions" [fixed]="true" (onClose)="onCloseFilter()"
+        <div class="filter-popup">
+            <mdc-popup #popupFilter *ngIf="filterOptions" zIndex="2" [fixed]="true" (onClose)="onCloseFilter()"
                 [closeOnClick]="false">
                 <mdc-check-box-list [allowEmptySelect]="false" [options]="filterOptions" (cancel)="cancelFilter()" (apply)="applyFilter()">
                 </mdc-check-box-list>

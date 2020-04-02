@@ -38,6 +38,7 @@ export class HistoryReportService {
           sortDir: 'desc',
           isSortedColumn: true,
           csvTitle: 'Date',
+          showDetails: true
           // hidden: true
         },
         {

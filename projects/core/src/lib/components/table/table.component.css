@@ -10,7 +10,7 @@
 }
 .row-info{
     direction: ltr;
-    z-index: 999999;
+    z-index: 2;
     background-color: #fff;
     position: absolute; 
     margin-left: auto;

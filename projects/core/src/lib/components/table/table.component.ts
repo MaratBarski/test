@@ -294,13 +294,15 @@ export class TableComponent implements OnDestroy, AfterViewInit {
     if (!header.showDetails) { return; }
     event.stopPropagation();
     const elm = document.getElementById(this.tableID + 'row_' + rowIndex);
-    if (event.clientY + elm.offsetHeight > window.innerHeight) {
-      this.renderer2.setStyle(elm, 'marginTop', `${window.innerHeight - event.clientY - elm.offsetHeight}px`);
-      //row.marginInfo = window.innerHeight - event.clientY - elm.offsetHeight;
-    } else {
-      this.renderer2.setStyle(elm, 'marginTop', '0px');
-      //row.marginInfo = 0;
-    }
+    //setTimeout(() => {
+      // if (event.clientY + elm.offsetHeight > window.innerHeight) {
+      //   this.renderer2.setStyle(elm, 'marginTop', `${window.innerHeight - event.clientY - elm.offsetHeight}px`);
+      //   //row.marginInfo = window.innerHeight - event.clientY - elm.offsetHeight;
+      // } else {
+      //   this.renderer2.setStyle(elm, 'marginTop', '0px');
+      //   //row.marginInfo = 0;
+      // }
+    //}, 1000);
     this.currentRowInfo = row;
     row.infoLoaded = true;
     this.rowClick(row);

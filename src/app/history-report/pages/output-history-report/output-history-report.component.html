@@ -17,7 +17,8 @@
                     </form>
                 </div>
             </div>
-            <mdc-table [emptyState]="emptyState" #table [headersTemplate]="{ data:dataHeader}"
+            <mdc-table [rowInfoTemplate]="rowInfoTemplate" [emptyState]="emptyState" #table
+                [headersTemplate]="{ data:dataHeader}"
                 [cellsTemplate]="{ insertDate:dateColumn, status:statusTemplate, name:nameTemplate, download:downloadTemplate}"
                 [searchOptions]="searchOptions" [paginator]="paginator" [search]="search" [dataSource]="dataSource"
                 [downloader]="downloader">
@@ -35,22 +36,25 @@
     <mdc-date-range-selector [from]="customFrom" [to]="customTo" (onApply)="applyCustomDate($event)"
         (onCancel)="cancelCustomDate()"></mdc-date-range-selector>
 </mdc-popup>
-<mdc-modal-window #historyInfoModal margin="0" [center]="false" left="700px" width="800px" position="absolute"
-    [removeScroll]="false" [topBorder]="false" [shadow]="false" [hidden]="!showHistoryInfo">
-    <md-history-info #historyionInfo (onClose)="closeHistoryInfo()" [category]="selectedCategory"></md-history-info>
-</mdc-modal-window>
+<ng-template #rowInfoTemplate let-item>
+    <div class="modal-window category-info-row">
+         <md-history-info [category]="item.source"></md-history-info> 
+    </div>
+</ng-template>
 <ng-template #dateColumn let-item let-src="source">
-    <span class="pointer link" (click)="openHistoryInfo(src,$event)">{{item.insertDate|date}}</span>
+    <span class="pointer link">{{item.insertDate|date}}</span>
 </ng-template>
 <ng-template #dataHeader>
     <span class="font-weight-600">Data </span>
     <mdc-icon path="ic-help" color="blue"></mdc-icon>
 </ng-template>
 <ng-template let-item #statusTemplate let-src="source">
-    <div *ngIf="src.transStatus" [stickyToElement]="true" [position]="'right'" [mdcTooltip]="'Success'" class="height-20-px width-20-px">
+    <div *ngIf="src.transStatus" [stickyToElement]="true" [position]="'right'" [mdcTooltip]="'Success'"
+        class="height-20-px width-20-px">
         <mdc-icon path="ic-success" color="green"></mdc-icon>
     </div>
-    <div *ngIf="!src.transStatus" [stickyToElement]="true" [position]="'left'" [mdcTooltip]="'Failure'"  class="height-20-px width-20-px">
+    <div *ngIf="!src.transStatus" [stickyToElement]="true" [position]="'left'" [mdcTooltip]="'Failure'"
+        class="height-20-px width-20-px">
         <mdc-icon path="ic-failure" color="red"></mdc-icon>
     </div>
 </ng-template>

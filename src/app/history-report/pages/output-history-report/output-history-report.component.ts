@@ -19,9 +19,6 @@ export class OutputHistoryReportComponent extends BaseSibscriber implements OnIn
   
   @ViewChild('dateRangeSelector', { static: true }) dateRangeSelector: PopupComponent;
   @ViewChild('table', { static: true }) table: TableComponent;
- 
-  @ViewChild('historyInfoModal', { static: true }) historyInfoModal: ModalWindowComponent;
-  @ViewChild('historyionInfo', { static: true }) historyionInfo: HistoryInfoComponent;
 
   customTo = new Date();
   customFrom = new Date();
@@ -107,20 +104,6 @@ export class OutputHistoryReportComponent extends BaseSibscriber implements OnIn
     this.createDataSource();
   }
 
-  openHistoryInfo(category: any, event: any): void {
-    this.historyInfoModal.top = `${event.clientY + ComponentService.scrollTop()}px`;
-    this.historyionInfo.isOver = true;
-
-    this.selectedCategory = category;
-    this.showHistoryInfo = true;
-    setTimeout(() => {
-      this.historyionInfo.isOver = false;
-    }, 100);
-  }
-
-  closeHistoryInfo(): void {
-    this.showHistoryInfo = false;
-  }
   
 }
 
