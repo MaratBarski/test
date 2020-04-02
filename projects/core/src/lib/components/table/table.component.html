@@ -15,7 +15,7 @@
         <ng-container
             *ngFor="let row of rows|sortTable:sortModel|pagination:{currentPage:paginator?.currentPage,pageSize:paginator?.pageSize};let rowIndex = index">
             <tr (click)="infoRowClick($event)" class="row-info-container"
-                *ngIf="(rowInfoTemplate && (true||row.infoLoaded))" [hidden]="false && currentRowInfo!==row">
+                *ngIf="(rowInfoTemplate && row.infoLoaded)" [hidden]="false && currentRowInfo!==row">
                 <td class="row-info-sub-container" [attr.colspan]="(dataSource.headers|visibleHeaders).length">
                     <div id="{{tableID + 'row_' + rowIndex}}" class="row-info"
                         [@showInfoAnimation]="currentRowInfo===row ? 'open' : 'closed'">
