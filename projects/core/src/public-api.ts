@@ -78,6 +78,7 @@ export * from './lib/components/chart-bar/chart-bar.component';
 export * from './lib/components/empty-state/empty-state.component';
 export * from './lib/components/image/image.component';
 export * from './lib/components/row-info/row-info.component';
+export * from './lib/components/date-filter/date-filter.component';
 
 export * from './lib/directives/show.directive';
 export * from './lib/directives/tooltip.directive';

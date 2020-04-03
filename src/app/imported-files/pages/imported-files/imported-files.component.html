@@ -12,13 +12,11 @@
                 </div>
                 <div mdAnimationSticky class="admin-table-wrap__col">
                     <div class="tabs-page">
-                        <mdc-tabs tabid="importetFilesTab" [active]="tabActive" [tabs]="tabs"
-                            (select)="selectTab($event)">
-                        </mdc-tabs>
+                        <mdc-date-filter (onFilter)="dateFilterData($event)" [dataSource]="fileSource"
+                            [items]="dateRanges"></mdc-date-filter>
                     </div>
                     <div class="form-search d-none d-md-block">
-                        <mdc-auto-search pause="500" #search placeholder="{{'search'|translate}}"
-                            (complete)="searchComplete($event)"></mdc-auto-search>
+                        <mdc-auto-search pause="500" #search placeholder="{{'search'|translate}}"></mdc-auto-search>
                     </div>
                 </div>
             </div>
@@ -36,12 +34,9 @@
 </div>
 
 <ng-template #rowInfoTemplate let-item>
-    <div  style="width:900px;border:1px solid red">
+    <div style="width:900px;border:1px solid red">
         {{item.source|json}}
     </div>
-    <!-- <div class="modal-window" style="max-width: 800px;">
-        <md-history-info #historyionInfo (onClose)="closeHistoryInfo()" [category]="item.source"></md-history-info>
-    </div> -->
 </ng-template>
 
 <mdc-popup #popupMenu position="bottom-left" [closeOnClick]="true">

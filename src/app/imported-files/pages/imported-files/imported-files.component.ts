@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { ImportedFilesService } from '../../services/imported-files.service';
 import { FileSource, FileSourceResponse } from '../../models/file-source';
-import { TableComponent, TranslateService, DateService, TabItemModel, TableModel, MenuLink, PopupComponent, TableHeaderModel, CheckBoxListOption, Project, NavigationService, PageInfo, BaseSibscriber, CheckBoxListComponent, SelectOption, FromTo, EmptyState } from '@app/core-api';
+import { TableComponent, TranslateService, DateService, TabItemModel, TableModel, MenuLink, PopupComponent, TableHeaderModel, CheckBoxListOption, Project, NavigationService, PageInfo, BaseSibscriber, CheckBoxListComponent, SelectOption, FromTo, EmptyState, DatePeriod } from '@app/core-api';
 import { UploadFileComponent } from '@app/imported-files/components/upload-file/upload-file.component';
+import { DateRangeButton } from '@app/core-api';
 
 // import { Store } from '@ngrx/store';
 // import { load, deleteFile } from '../../store/actions/imported-files.actions';
@@ -35,8 +36,13 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, On
     return this.permissions.map(x => { return { text: x.text, id: x.id, value: x.id } });
   }
 
-  tabs: Array<TabItemModel>;
-  tabActive = 0;
+  dateRanges: Array<DateRangeButton> = [
+    { text: this.translateService.translate('All'), range: { all: true } },
+    { text: this.translateService.translate('LastMonth'), range: { value: 1, period: DatePeriod.Month } },
+    { text: this.translateService.translate('LastWeek'), range: { value: 1, period: DatePeriod.Week } }
+    //,{ text: 'Specific', custom: true }
+  ];
+
   serachText = '';
   showUploadFile = false;
   dataOrigin: TableModel;
@@ -46,7 +52,6 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, On
 
   constructor(
     private translateService: TranslateService,
-    private dateService: DateService,
     private importedFilesService: ImportedFilesService,
     //private store: Store<any>,
     private navigationService: NavigationService
@@ -92,17 +97,6 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, On
     this.viewLink
   ];
 
-  searchComplete(text: string): void {
-    //this.table.resetPaginator();
-    //this.serachText = text;
-  }
-
-  selectTab(tab: number): void {
-    this.tabActive = tab;
-    this.resetFilter = true;
-    this.createDataSource();
-  }
-
   editClick(item: any, source: any, event: any): void {
     this.deleteLink.source = source;
     this.editLink.source = source;
@@ -117,7 +111,6 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, On
   }
 
   ngOnInit() {
-    this.initTabs();
     super.add(
       this.importedFilesService.load().subscribe((res: FileSourceResponse) => {
         this.fileSource = res.data;
@@ -140,55 +133,12 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, On
     );
   }
 
-  initTabs(): void {
-    this.tabs = [
-      { title: this.translateService.translate('All') },
-      { title: this.translateService.translate('LastMonth') },
-      { title: this.translateService.translate('LastWeek') }
-      // , {
-      //   title: this.translateService.translate('Specific'), isDropDown: true,
-      //   mouseOver: (index: number, tab: TabItemModel, event: any, target: any) => {
-      //     if (this.dateRangeSelector.isExpanded) { return; }
-      //     this.dateRangeSelector.target = target;
-      //     this.dateRangeSelector.show(true, event);
-      //   }
-      // }
-    ];
-  }
-
-  cellClick(item: any): void { }
-
-  createDataSource(): void {
-    this.dataSource = this.importedFilesService.createDataSource(this.fileSource);
-    let rows = this.dataSource.rows;
-    if (this.tabActive === 1) {
-      rows = this.dateService.lastMonth(rows, 'insertDate');
-    } else if (this.tabActive === 2) {
-      rows = this.dateService.lastWeek(rows, 'insertDate');
-    } else if (this.tabActive === 3) {
-      rows = this.dateService.getRange(rows, 'insertDate', { from: this.customFrom, to: this.customTo });
-    }
-    this.dataSource = { ...this.dataSource, rows: rows, resetFilter: this.resetFilter };
-    this.resetFilter = false;
+  dateFilterData(data: Array<any>): void {
+    this.dataSource = { ...this.importedFilesService.createDataSource(data), resetFilter: true };
   }
 
   openFileUpload(): void {
     this.showUploadFile = true;
     this.fileUploader.resetTemplate();
-  }
-
-  customTo = new Date();
-  customFrom = new Date();
-
-  cancelCustomDate(): void {
-    this.dateRangeSelector.isExpanded = false;
-  }
-
-  applyCustomDate(range: FromTo): void {
-    this.tabActive = this.tabs.length - 1;
-    this.dateRangeSelector.isExpanded = false;
-    this.customFrom = range.from;
-    this.customTo = range.to;
-    this.createDataSource();
   }
 }

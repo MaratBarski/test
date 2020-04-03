@@ -55,6 +55,7 @@ import { VisibleHeadersPipe } from './pipes/visible-headers.pipe';
 import { EmptyStateComponent } from './components/empty-state/empty-state.component';
 import { ImageComponent } from './components/image/image.component';
 import { RowInfoComponent } from './components/row-info/row-info.component';
+import { DateFilterComponent } from './components/date-filter/date-filter.component';
 
 // import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 
@@ -108,7 +109,8 @@ import { RowInfoComponent } from './components/row-info/row-info.component';
     VisibleHeadersPipe,
     EmptyStateComponent,
     ImageComponent,
-    RowInfoComponent
+    RowInfoComponent,
+    DateFilterComponent
   ],
   imports: [
     CommonModule,
@@ -167,7 +169,8 @@ import { RowInfoComponent } from './components/row-info/row-info.component';
     ChartBarComponent,
     EmptyStateComponent,
     ImageComponent,
-    RowInfoComponent
+    RowInfoComponent,
+    DateFilterComponent
   ],
   entryComponents: [
     TableHeaderComponent
