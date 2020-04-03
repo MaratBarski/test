@@ -289,11 +289,12 @@ export class TableComponent implements OnDestroy, AfterViewInit {
   }
 
   private animate(elm: any, width: number, callBack: any, currentWidth = 0): void {
-    this.animationService.animate(elm, width, callBack, 100, currentWidth);
+    this.animationService.emitStart();
+    this.animationService.animateForward(elm, width, 'width', callBack, 100, currentWidth);
   }
 
   private animateBack(elm: any, width: number, speed: number, callBack: any): void {
-    this.animationService.animateBack(elm, width, speed, callBack);
+    this.animationService.animateBack(elm, width, 'width', speed, callBack);
   }
 
   rowDetailsInit(rowDetails: RowInfoComponent): void {
@@ -339,6 +340,10 @@ export class TableComponent implements OnDestroy, AfterViewInit {
 
   infoRowClick(event: any): void {
     event.stopPropagation();
+  }
+
+  onShowFilter(): void {
+    this.closeRowInfo();
   }
 
   @HostListener('document:click', ['$event']) onMouseClick(event: any) {

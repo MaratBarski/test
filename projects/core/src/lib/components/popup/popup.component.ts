@@ -1,16 +1,27 @@
 import { Component, HostListener, Input, ElementRef, Renderer2, ViewChild, Output, EventEmitter } from '@angular/core';
 import { ComponentService } from '../../services/component.service';
+import { AnimationService } from '../../services/animation.service';
+import { BaseSibscriber } from '../../common/BaseSibscriber';
 
 @Component({
   selector: 'mdc-popup',
   templateUrl: './popup.component.html',
   styleUrls: ['./popup.component.css']
 })
-export class PopupComponent {
+export class PopupComponent extends BaseSibscriber {
 
   constructor(
-    private renderer: Renderer2
-  ) { }
+    private renderer: Renderer2,
+    private animationService: AnimationService
+  ) {
+    super();
+    super.add(
+      this.animationService.onShowElement.subscribe((element: any) => {
+        if (this !== element) {
+          this.isExpanded = false;
+        }
+      }));
+  }
 
   @ViewChild('container', { static: true }) container: ElementRef;
   @Input() position: 'left' | 'top' | 'right' | 'bottom' | 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right' = 'left';
@@ -31,6 +42,7 @@ export class PopupComponent {
 
   @Input() set isExpanded(isExpanded: boolean) {
     if (isExpanded) {
+      this.animationService.showElement(this);
       this.opacity = 0;
       setTimeout(() => {
         this.opacity = 1;

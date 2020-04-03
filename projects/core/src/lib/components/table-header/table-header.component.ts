@@ -1,6 +1,7 @@
-import { Component, Input, EventEmitter, Output, ViewChild } from '@angular/core';
+import { Component, Input, EventEmitter, Output, ViewChild, ElementRef, HostListener, Renderer2 } from '@angular/core';
 import { CheckBoxListOption } from '../check-box-list/check-box-list.component';
-import { PopupComponent } from '../popup/popup.component';
+import { AnimationService } from '../../services/animation.service';
+import { BaseSibscriber } from '../../common/BaseSibscriber';
 
 export class TableHeaderModel {
   text: string;
@@ -20,8 +21,28 @@ export class TableHeaderModel {
   templateUrl: './table-header.component.html',
   styleUrls: ['./table-header.component.css']
 })
-export class TableHeaderComponent {
-  @ViewChild('popupFilter', { static: false }) popupFilter: PopupComponent;
+export class TableHeaderComponent extends BaseSibscriber {
+  @Output() onShowFilter = new EventEmitter();
+  constructor(private animationService: AnimationService, private renderer2: Renderer2) {
+    super();
+    super.add(
+      this.animationService.onStart.subscribe(() => {
+        this.onCloseFilter();
+      }));
+    super.add(
+      this.animationService.onShowElement.subscribe((header: TableHeaderComponent) => {
+        if (this !== header) {
+          this.cancelFilter();
+        }
+      }));
+  }
+
+  @Input() isShowFilter = false;
+  get filterVisibility(): string {
+    return this.isShowFilter ? 'visible' : 'hidden';
+  }
+
+  @ViewChild('filterPopup', { static: false }) filterPopup: ElementRef;
   @Input() model: TableHeaderModel;
   @Input() set filterOptions(filterOptions: Array<CheckBoxListOption>) {
     if (!filterOptions) { return; }
@@ -39,20 +60,22 @@ export class TableHeaderComponent {
   @Output() onApplyFilter = new EventEmitter<TableHeaderComponent>();
 
   onCloseFilter(): void {
-    if (this.popupFilter.isExpanded) {
+    if (this.isShowFilter) {
       this.cancelFilter();
     }
   }
 
   applyFilter(): void {
     this._originOptions = JSON.parse(JSON.stringify(this._filterOptions));
-    this.popupFilter.isExpanded = false;
+    this.isShowFilter = false;
     this.onApplyFilter.emit(this);
   }
 
   cancelFilter(): void {
-    this._filterOptions = JSON.parse(JSON.stringify(this._originOptions));
-    this.popupFilter.isExpanded = false;
+    if (this._originOptions) {
+      this._filterOptions = JSON.parse(JSON.stringify(this._originOptions));
+    }
+    this.isShowFilter = false;
   }
 
   sort(): void {
@@ -67,9 +90,24 @@ export class TableHeaderComponent {
   }
 
   openFilter(event: any): void {
-    if (this.popupFilter.isExpanded) { return; }
-    this.popupFilter.isExpanded = false;
-    this.popupFilter.show(true, undefined);
+    if (this.isShowFilter) { return; }
+    event.stopPropagation();
+    this.onShowFilter.emit();
+    this.animationService.showElement(this);
+    const h = this.filterPopup.nativeElement.offsetHeight
+    this.renderer2.setStyle(this.filterPopup.nativeElement, 'height', '0px')
+    this.animationService.animateForward(
+      this.filterPopup.nativeElement, h, 'height', undefined, h / 10
+    )
+    this.isShowFilter = true;
     this.onFilter.emit({ header: this.model, event: event });
+  }
+
+  @HostListener('document:click', ['$event']) onMouseClick(event: any) {
+    this.cancelFilter();
+  }
+
+  stopEvent(event: any): void {
+    event.stopPropagation();
   }
 }

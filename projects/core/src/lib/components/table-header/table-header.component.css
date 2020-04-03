@@ -1,5 +1,14 @@
+.admin-table__head{
+    display: flex;
+    align-items: center;
+}
 .filter-popup{
-    margin-left: -220px;
-    position:absolute;
-    margin-top:20px
+    position:absolute; 
+    margin-top:20px;
+    z-index: 2;
+    overflow: hidden;
+}
+.admin-table-filter{
+    display: flex;
+    flex-direction:row-reverse;
 }
