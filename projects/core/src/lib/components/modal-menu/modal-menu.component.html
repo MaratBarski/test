@@ -1,6 +1,8 @@
-<div *ngIf="links" class="admin-table-popup__top">
-    <mdc-menu-link  *ngFor="let item of links" [link]="item"></mdc-menu-link>
-</div>
-<div *ngIf="sublinks" class="admin-table-popup__bottom">
-    <mdc-menu-link  *ngFor="let item of sublinks" [link]="item"></mdc-menu-link>
+<div class="menu-links">
+    <div *ngIf="links" class="admin-table-popup__top">
+        <mdc-menu-link (click)="exec(item,$event)" *ngFor="let item of links" [link]="item"></mdc-menu-link>
+    </div>
+    <div *ngIf="sublinks" class="admin-table-popup__bottom">
+        <mdc-menu-link (click)="exec(item,$event)" *ngFor="let item of sublinks" [link]="item"></mdc-menu-link>
+    </div>
 </div>

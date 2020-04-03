@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { ImportedFilesService } from '../../services/imported-files.service';
 import { FileSource, FileSourceResponse } from '../../models/file-source';
-import { TableComponent, TranslateService, DateService, TabItemModel, TableModel, MenuLink, PopupComponent, TableHeaderModel, CheckBoxListOption, Project, NavigationService, PageInfo, BaseSibscriber, CheckBoxListComponent, SelectOption, FromTo, EmptyState, DatePeriod } from '@app/core-api';
+import { TableComponent, TranslateService, TableModel, PopupComponent, CheckBoxListOption, NavigationService, PageInfo, BaseSibscriber, CheckBoxListComponent, SelectOption, EmptyState, DatePeriod, TableActionCommand } from '@app/core-api';
 import { UploadFileComponent } from '@app/imported-files/components/upload-file/upload-file.component';
 import { DateRangeButton } from '@app/core-api';
 
@@ -16,7 +16,6 @@ import { DateRangeButton } from '@app/core-api';
 })
 export class ImportedFilesComponent extends BaseSibscriber implements OnInit, OnDestroy {
 
-  @ViewChild('popupMenu', { static: true }) popupMenu: PopupComponent;
   @ViewChild('dateRangeSelector', { static: true }) dateRangeSelector: PopupComponent;
   @ViewChild('table', { static: true }) table: TableComponent;
   @ViewChild('checkFilter', { static: true }) checkFilter: CheckBoxListComponent;
@@ -60,49 +59,27 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, On
     this.navigationService.currentPageID = PageInfo.ImportedFiles.id;
   }
 
-  deleteLink: MenuLink = {
-    text: 'Delete',
-    disable: false,
-    icon: 'ic-delete',
-    source: 'test',
-    click: (source) => {
-      this.fileSource = this.fileSource.filter(x => x != source);
-      this.initData();
-      this.importedFilesService.deleteFile(source)
-        .toPromise()
-        .then(res => {
-          console.log('File deleted');
-        }).catch(e => {
-          console.error('Error delete file');
-        })
-      //this.store.dispatch(deleteFile(source));
+  onAction(action: TableActionCommand): void {
+    switch (action.command) {
+      case ('edit'):
+        console.log('edit command');
+        break;
+      case ('view'):
+        console.log('view command');
+        break;
+      case ('delete'):
+        this.fileSource = this.fileSource.filter(x => x != action.item.source);
+        this.initData();
+        this.importedFilesService.deleteFile(action.item.source)
+          .toPromise()
+          .then(res => {
+            console.log('File deleted');
+          }).catch(e => {
+            console.error('Error delete file');
+          })
+        break;
+      default: break;
     }
-  }
-
-  editLink: MenuLink = {
-    text: 'Edit File Settings',
-    icon: 'ic-edit',
-    click: (source) => { console.log(JSON.stringify(source)); }
-  }
-
-  viewLink: MenuLink = {
-    text: 'View output summary',
-    icon: 'ic-view',
-    click: (source) => { console.log(JSON.stringify(source)); }
-  }
-
-  sublinks: Array<MenuLink> = [this.deleteLink];
-  links: Array<MenuLink> = [
-    this.editLink,
-    this.viewLink
-  ];
-
-  editClick(item: any, source: any, event: any): void {
-    this.deleteLink.source = source;
-    this.editLink.source = source;
-    this.viewLink.source = source;
-    this.popupMenu.target = event.target;
-    this.popupMenu.show(true, event);
   }
 
   private initData(): void {

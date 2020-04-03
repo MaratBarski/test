@@ -11,7 +11,12 @@ import { DownloadComponent } from '../download/download.component';
 import { EmptyState, DefaultEmptyState } from '../empty-state/empty-state.component';
 import { RowInfoComponent } from '../row-info/row-info.component';
 import { AnimationService } from '../../services/animation.service';
+import { MenuLink } from '../modal-menu/modal-menu.component';
 
+export interface TableActionCommand {
+  command: string;
+  item: TableRowModel;
+}
 export class PaginatorInfo {
   currentPage: number;
   blockSize: number;
@@ -28,6 +33,7 @@ export class TableModel {
   rows: Array<TableRowModel>;
   activeRow?: TableRowModel;
   resetFilter?: boolean;
+  actions?: { links?: Array<MenuLink>, subLinks?: Array<MenuLink> }
 };
 
 @Component({
@@ -44,6 +50,12 @@ export class TableComponent implements OnDestroy, AfterViewInit {
     private renderer2: Renderer2,
     private animationService: AnimationService
   ) {
+    this._subscriptions.push(
+      this.animationService.onShowElement.subscribe(elm => {
+        if (elm !== this.actionsObject) {
+          this.commandRow = undefined;
+        }
+      }));
   }
 
   filters: any;
@@ -86,6 +98,7 @@ export class TableComponent implements OnDestroy, AfterViewInit {
 
   @Output() onSort = new EventEmitter<TableHeaderModel>();
   @Output() onFilter = new EventEmitter<{ header: TableHeaderModel, event: any }>();
+  @Output() onAction = new EventEmitter<TableActionCommand>();
 
   @Input() set emptyState(emptyState: EmptyState) {
     this._emptyState = emptyState;
@@ -143,6 +156,7 @@ export class TableComponent implements OnDestroy, AfterViewInit {
     }
   }
 
+  @ViewChild('actionsObject', { static: false }) actionsObject: ElementRef;
   @ViewChild('tableObject', { static: false }) tableObject: ElementRef;
   @Input() rowInfoTemplate: TemplateRef<any>;
   @Input() headersTemplate: Array<{ [key: string]: TemplateRef<any> }>;
@@ -346,7 +360,36 @@ export class TableComponent implements OnDestroy, AfterViewInit {
     this.closeRowInfo();
   }
 
+  commandRow: TableRowModel;
+
+  openLinkMenu(row: TableRowModel, event: any, rowIndex: number): void {
+    // const td = this.tableObject.nativeElement.rows[rowIndex].cells[this.tableObject.nativeElement.rows[rowIndex].cells.length - 1];
+    event.stopPropagation();
+    row.isActive = false;
+    setTimeout(() => {
+      this.animationService.showElement(this.actionsObject.nativeElement);
+      this.commandRow = row;
+      let left = event.target.offsetLeft + event.target.offsetWidth - this.actionsObject.nativeElement.offsetWidth;
+      let top = event.target.offsetTop + event.target.offsetHeight;
+      if (top + this.actionsObject.nativeElement.offsetHeight > window.innerHeight + ComponentService.scrollTop() - 50) {
+        top = top - this.actionsObject.nativeElement.offsetHeight;
+      }
+      this.renderer2.setStyle(this.actionsObject.nativeElement, 'left', `${left}px`);
+      this.renderer2.setStyle(this.actionsObject.nativeElement, 'top', `${top}px`);
+      setTimeout(() => {
+        this.rowClick(row);
+      }, 1);
+    }, 1);
+
+  }
+
+  onActionCommand(cmd: string): void {
+    this.onAction.emit({ command: cmd, item: this.commandRow });
+    this.commandRow = undefined;
+  }
+
   @HostListener('document:click', ['$event']) onMouseClick(event: any) {
     this.closeRowInfo();
+    this.commandRow = undefined;
   }
 }

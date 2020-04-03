@@ -3,12 +3,13 @@
         <tr mdcTableHeader>
             <th *ngFor="let header of dataSource.headers|visibleHeaders;let index = index" [mdcTableItem]="index">
                 <mdc-table-header *ngIf="!headersTemplate || !headersTemplate[header.columnId]" (onSort)="sort($event)"
-                    (onApplyFilter)="onApplyFilter($event)" (onShowFilter)="onShowFilter()" (onFilter)="filter($event)" [model]="header"
-                    [filterOptions]="filters[header.columnId]"></mdc-table-header>
+                    (onApplyFilter)="onApplyFilter($event)" (onShowFilter)="onShowFilter()" (onFilter)="filter($event)"
+                    [model]="header" [filterOptions]="filters[header.columnId]"></mdc-table-header>
                 <ng-container *ngIf="headersTemplate && headersTemplate[header.columnId]"
                     [ngTemplateOutlet]="headersTemplate[header.columnId]"
                     [ngTemplateOutletContext]="{$implicit: header}"></ng-container>
             </th>
+            <th *ngIf="dataSource.actions"></th>
         </tr>
     </thead>
     <tbody *ngIf="rows?.length">
@@ -39,8 +40,17 @@
                         </ng-container>
                     </td>
                 </ng-container>
+                <td *ngIf="dataSource.actions">
+                    <span (click)="openLinkMenu(row,$event,rowIndex)" class="admin-table-action__menu ic-hover">
+                        <mdc-icon path="ic-dot-menu"></mdc-icon>
+                    </span>
+                </td>
             </tr>
         </ng-container>
     </tbody>
 </table>
+<div class="actions-menu" #actionsObject *ngIf="dataSource?.actions"  [mdcVisibility]="commandRow">
+    <mdc-modal-menu (onCommand)="onActionCommand($event)" [sublinks]="dataSource.actions.subLinks" [links]="dataSource.actions.links">
+    </mdc-modal-menu>
+</div>
 <mdc-empty-state [emptyState]="emptyState" *ngIf="rows && !(rows.length)"></mdc-empty-state>

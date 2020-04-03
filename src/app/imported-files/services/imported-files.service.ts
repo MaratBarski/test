@@ -38,6 +38,28 @@ export class ImportedFilesService {
 
   createDataSource(files: Array<FileSource>): TableModel {
     const data: TableModel = {
+      actions: {
+        links: [
+          {
+            text: 'Edit File Settings',
+            icon: 'ic-edit',
+            command: 'edit'
+          },
+          {
+            text: 'View output summary',
+            icon: 'ic-view',
+            command: 'view'
+          }
+        ],
+        subLinks: [
+          {
+            text: 'Delete',
+            disable: false,
+            icon: 'ic-delete',
+            command: 'delete'
+          }
+        ]
+      },
       headers: [
         {
           columnId: 'fileName',
@@ -84,12 +106,12 @@ export class ImportedFilesService {
           columnId: 'rows',
           text: 'Rows',
           isSortEnabled: true
-        },
-        {
-          columnId: 'editColumn',
-          text: '',
-          isSortEnabled: false
         }
+        //, {
+        //   columnId: 'editColumn',
+        //   text: '',
+        //   isSortEnabled: false
+        // }
       ],
       rows: []
     }

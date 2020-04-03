@@ -1,4 +1,4 @@
-<div (click)="link.click(link.source)"
+<div (click)="exec()"
 [style.cursor]="link.disable ? 'default' : 'pointer'"
 [ngClass]="{'disable':link.disable}" class="admin-table-popup__item">
     <div *ngIf="link.icon" class="admin-table-popup__icon">
