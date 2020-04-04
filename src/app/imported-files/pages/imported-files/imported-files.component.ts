@@ -1,13 +1,9 @@
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { ImportedFilesService } from '../../services/imported-files.service';
 import { FileSource, FileSourceResponse } from '../../models/file-source';
-import { TableComponent, TranslateService, TableModel, PopupComponent, CheckBoxListOption, NavigationService, PageInfo, BaseSibscriber, CheckBoxListComponent, SelectOption, EmptyState, DatePeriod, TableActionCommand } from '@app/core-api';
+import { TableComponent, TranslateService, DateFilterComponent, TableModel, PopupComponent, CheckBoxListOption, NavigationService, PageInfo, BaseSibscriber, CheckBoxListComponent, SelectOption, EmptyState, DatePeriod, TableActionCommand } from '@app/core-api';
 import { UploadFileComponent } from '@app/imported-files/components/upload-file/upload-file.component';
 import { DateRangeButton } from '@app/core-api';
-
-// import { Store } from '@ngrx/store';
-// import { load, deleteFile } from '../../store/actions/imported-files.actions';
-// import { selectData } from '../../store/selectors/imported-files.selector';
 
 @Component({
   selector: 'md-imported-files',
@@ -16,6 +12,7 @@ import { DateRangeButton } from '@app/core-api';
 })
 export class ImportedFilesComponent extends BaseSibscriber implements OnInit, OnDestroy {
 
+  @ViewChild('dateFilter', { static: true }) dateFilter: DateFilterComponent;
   @ViewChild('dateRangeSelector', { static: true }) dateRangeSelector: PopupComponent;
   @ViewChild('table', { static: true }) table: TableComponent;
   @ViewChild('checkFilter', { static: true }) checkFilter: CheckBoxListComponent;
@@ -39,20 +36,16 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, On
     { text: this.translateService.translate('All'), range: { all: true } },
     { text: this.translateService.translate('LastMonth'), range: { value: 1, period: DatePeriod.Month } },
     { text: this.translateService.translate('LastWeek'), range: { value: 1, period: DatePeriod.Week } }
-    //,{ text: 'Specific', custom: true }
   ];
 
-  serachText = '';
   showUploadFile = false;
   dataOrigin: TableModel;
   dataSource: TableModel;
   fileSource: Array<FileSource>;
-  resetFilter = true;
 
   constructor(
     private translateService: TranslateService,
     private importedFilesService: ImportedFilesService,
-    //private store: Store<any>,
     private navigationService: NavigationService
   ) {
     super();
@@ -60,27 +53,28 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, On
   }
 
   onAction(action: TableActionCommand): void {
-    switch (action.command) {
-      case ('edit'):
-        console.log('edit command');
-        break;
-      case ('view'):
-        console.log('view command');
-        break;
-      case ('delete'):
-        this.fileSource = this.fileSource.filter(x => x != action.item.source);
-        this.initData();
-        this.importedFilesService.deleteFile(action.item.source)
-          .toPromise()
-          .then(res => {
-            console.log('File deleted');
-          }).catch(e => {
-            console.error('Error delete file');
-          })
-        break;
-      default: break;
-    }
+    this.execCommand[action.command](action);
   }
+
+  execCommand = {
+    edit: (action: TableActionCommand) => {
+      console.log('edit command');
+    },
+    view: (action: TableActionCommand) => {
+      console.log('view command');
+    },
+    delete: (action: TableActionCommand) => {
+      this.fileSource = this.fileSource.filter(x => x != action.item.source);
+      this.table.stayOnCurrentPage = true;
+      this.importedFilesService.deleteFile(action.item.source)
+        .toPromise()
+        .then(res => {
+          console.log('File deleted');
+        }).catch(e => {
+          console.error('Error delete file');
+        })
+    }
+  };
 
   private initData(): void {
     this.dataOrigin = this.dataSource = this.importedFilesService.createDataSource(this.fileSource);
@@ -93,15 +87,6 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, On
         this.fileSource = res.data;
         this.initData();
       }));
-    // super.add(
-    //   this.store.select(selectData).subscribe((files: Array<FileSource>) => {
-    //     this.fileSource = files;
-    //     this.dataOrigin = this.dataSource = this.importedFilesService.createDataSource(this.fileSource);
-    //     this.initProjects(files);
-    //     this.initUsers(files);
-    //     this.initPermissions(files);
-    //   }));
-    // this.store.dispatch(load());
   }
 
   initPermissions(): void {

@@ -8,12 +8,11 @@
                 </div>
                 <div class="admin-table-wrap__col">
                     <div class="tabs-page">
-                        <mdc-tabs tabid="historysTab" [active]="tabActive" [tabs]="tabs" (select)="selectTab($event)">
-                        </mdc-tabs>
+                        <mdc-date-filter #dateFilter (onFilter)="dateFilterData($event)" [dataSource]="reports"
+                            [items]="dateRanges"></mdc-date-filter>
                     </div>
                     <form class="form-search d-none d-md-block">
-                        <mdc-auto-search pause="500" #search placeholder="{{'search'|translate}}"
-                            (complete)="searchComplete($event)"></mdc-auto-search>
+                        <mdc-auto-search pause="500" #search placeholder="{{'search'|translate}}"></mdc-auto-search>
                     </form>
                 </div>
             </div>
@@ -32,13 +31,10 @@
     </main>
 </div>
 
-<mdc-popup #dateRangeSelector position="bottom-left" [closeOnClick]="false">
-    <mdc-date-range-selector [from]="customFrom" [to]="customTo" (onApply)="applyCustomDate($event)"
-        (onCancel)="cancelCustomDate()"></mdc-date-range-selector>
-</mdc-popup>
+
 <ng-template #rowInfoTemplate let-item>
     <div class="category-info-row">
-         <md-history-info [category]="item.source"></md-history-info> 
+        <md-history-info [category]="item.source"></md-history-info>
     </div>
 </ng-template>
 <ng-template #dateColumn let-item let-src="source">

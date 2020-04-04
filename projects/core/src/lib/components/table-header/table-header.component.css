@@ -7,8 +7,12 @@
     margin-top:20px;
     z-index: 2;
     overflow: hidden;
+    width: auto;
 }
 .admin-table-filter{
     display: flex;
     flex-direction:row-reverse;
+}
+.modal-window{
+    padding: 4px !important;
 }

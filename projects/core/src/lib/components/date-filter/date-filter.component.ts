@@ -25,7 +25,12 @@ export class DateFilterComponent {
   @Input() tabid = 'dateRangeFilter';
   @Input() tabActive = 0;
   @Input() dateField = 'insertDate';
-  @Input() dataSource: Array<any>;
+  @Input() set dataSource(dataSource: Array<any>) {
+    this._dataSource = dataSource;
+    this.filterData();
+  }
+  get dataSource(): Array<any> { return this._dataSource; }
+  private _dataSource: Array<any>;
   @Input() set items(items: Array<DateRangeButton>) {
     this._items = items;
     this.tabs = this._items.map((item, i) => {
@@ -56,7 +61,10 @@ export class DateFilterComponent {
     this.filterData();
   }
 
-  private filterData(): void {
+  filterData(): void {
+    if (!this.items || this.items.length <= this.tabActive) { return; }
+    if (!this.dataSource) { return; }
+    if (!this.dateField) { return; }
     const res = this.dateService.getData(this.dataSource, this.items[this.tabActive].range, this.dateField);
     this.onFilter.emit(res);
   }

@@ -7,7 +7,7 @@
     <tr>
         <td #firstTd (@openClose.start)="animationStarted($event)" (@openClose.done)="animationDone($event)"
             [@openClose]="componentService.showSideMenu ? 'open' : 'closed'"
-            class="main-table-top main-table-side-menu">
+            class="main-table-top">
         </td>
         <td class="main-table-top main-table-content">
             <div style="overflow-y: hidden;" [style.overflowX]="overflowX" [style.width]="appWidth">

@@ -18791,6 +18791,141 @@
                 "templateGroup": null,
                 "projectId": "1"
             }
+        },
+        {
+            "fileId": 353,
+            "fileName": "111111111111",
+            "filePath": "E:\\\\files\\Data\\",
+            "fileStatus": null,
+            "fileNameAlias": "moshe 4.1 test 1",
+            "tag": "",
+            "insertDate": "2020-03-12T12:32:22.000Z",
+            "templateId": 1,
+            "tableName": "tmp_data.mdc_file_353",
+            "project": "1",
+            "uploadedBy": "1004",
+            "fileType": 1,
+            "uploaded_by": "1004",
+            "projectObj": {
+                "projectId": "1",
+                "projectName": "Demo Project",
+                "defaultSiteId": "1"
+            },
+            "template": {
+                "templateId": "1",
+                "templateName": "Demo Template",
+                "templateType": "PERMISSION",
+                "templateGroup": null,
+                "projectId": "1"
+            }
+        },
+        {
+            "fileId": 353,
+            "fileName": "22222222222222",
+            "filePath": "E:\\\\files\\Data\\",
+            "fileStatus": null,
+            "fileNameAlias": "moshe 4.1 test 1",
+            "tag": "",
+            "insertDate": "2020-03-12T12:32:22.000Z",
+            "templateId": 1,
+            "tableName": "tmp_data.mdc_file_353",
+            "project": "1",
+            "uploadedBy": "1004",
+            "fileType": 1,
+            "uploaded_by": "1004",
+            "projectObj": {
+                "projectId": "1",
+                "projectName": "Demo Project",
+                "defaultSiteId": "1"
+            },
+            "template": {
+                "templateId": "1",
+                "templateName": "Demo Template",
+                "templateType": "PERMISSION",
+                "templateGroup": null,
+                "projectId": "1"
+            }
+        },
+        {
+            "fileId": 353,
+            "fileName": "if_omry.atia_353_20180812_15313.csv",
+            "filePath": "E:\\\\files\\Data\\",
+            "fileStatus": null,
+            "fileNameAlias": "moshe 4.1 test 1",
+            "tag": "",
+            "insertDate": "2020-03-12T12:32:22.000Z",
+            "templateId": 1,
+            "tableName": "tmp_data.mdc_file_353",
+            "project": "1",
+            "uploadedBy": "1004",
+            "fileType": 1,
+            "uploaded_by": "1004",
+            "projectObj": {
+                "projectId": "1",
+                "projectName": "Demo Project",
+                "defaultSiteId": "1"
+            },
+            "template": {
+                "templateId": "1",
+                "templateName": "Demo Template",
+                "templateType": "PERMISSION",
+                "templateGroup": null,
+                "projectId": "1"
+            }
+        },
+        {
+            "fileId": 353,
+            "fileName": "if_omry.atia_353_20180812_15313.csv",
+            "filePath": "E:\\\\files\\Data\\",
+            "fileStatus": null,
+            "fileNameAlias": "moshe 4.1 test 1",
+            "tag": "",
+            "insertDate": "2020-03-12T12:32:22.000Z",
+            "templateId": 1,
+            "tableName": "tmp_data.mdc_file_353",
+            "project": "1",
+            "uploadedBy": "1004",
+            "fileType": 1,
+            "uploaded_by": "1004",
+            "projectObj": {
+                "projectId": "1",
+                "projectName": "Demo Project",
+                "defaultSiteId": "1"
+            },
+            "template": {
+                "templateId": "1",
+                "templateName": "Demo Template",
+                "templateType": "PERMISSION",
+                "templateGroup": null,
+                "projectId": "1"
+            }
+        },
+        {
+            "fileId": 353,
+            "fileName": "if_omry.atia_353_20180812_15313.csv",
+            "filePath": "E:\\\\files\\Data\\",
+            "fileStatus": null,
+            "fileNameAlias": "moshe 4.1 test 1",
+            "tag": "",
+            "insertDate": "2020-03-12T12:32:22.000Z",
+            "templateId": 1,
+            "tableName": "tmp_data.mdc_file_353",
+            "project": "1",
+            "uploadedBy": "1004",
+            "fileType": 1,
+            "uploaded_by": "1004",
+            "projectObj": {
+                "projectId": "1",
+                "projectName": "Demo Project",
+                "defaultSiteId": "1"
+            },
+            "template": {
+                "templateId": "1",
+                "templateName": "Demo Template",
+                "templateType": "PERMISSION",
+                "templateGroup": null,
+                "projectId": "1"
+            }
         }
     ],
     "massage": "Get all File Source's Objects",

@@ -1,4 +1,4 @@
-import { Component, Input, EventEmitter, Output, OnDestroy, ChangeDetectionStrategy, TemplateRef, AfterViewInit, ViewChild, HostListener, Renderer2, ElementRef } from '@angular/core';
+import { Component, Input, EventEmitter, Output, OnDestroy, ChangeDetectionStrategy, TemplateRef, AfterViewInit, ViewChild, HostListener, Renderer2, ElementRef, ChangeDetectorRef } from '@angular/core';
 import { TableHeaderModel, TableHeaderComponent } from '../table-header/table-header.component';
 import { ComponentService } from '../../services/component.service';
 import { AutoSearchComponent } from '../auto-search/auto-search.component';
@@ -48,7 +48,8 @@ export class TableComponent implements OnDestroy, AfterViewInit {
     private csvManagerService: CsvManagerService,
     private searchService: SearchService,
     private renderer2: Renderer2,
-    private animationService: AnimationService
+    private animationService: AnimationService,
+    private cdRef: ChangeDetectorRef
   ) {
     this._subscriptions.push(
       this.animationService.onShowElement.subscribe(elm => {
@@ -56,6 +57,10 @@ export class TableComponent implements OnDestroy, AfterViewInit {
           this.commandRow = undefined;
         }
       }));
+  }
+
+  ngAfterViewChecked(): void {
+    this.cdRef.detectChanges();
   }
 
   filters: any;
@@ -163,6 +168,7 @@ export class TableComponent implements OnDestroy, AfterViewInit {
   @Input() cellsTemplate: Array<{ [key: string]: TemplateRef<any> }>;
   @Input() isMultiSelect = false;
   @Input() tableID = 'mainTable';
+  @Input() stayOnCurrentPage = false;
 
   @Input() set searchOptions(searchOptions: Array<string>) {
     this._searchOptions = searchOptions;
@@ -194,6 +200,7 @@ export class TableComponent implements OnDestroy, AfterViewInit {
     } else {
       this.filters = undefined;
     }
+    const cp = this.isPaginator ? this.paginator.currentPage : 0;
     this.resetPaginator();
     const sorted = data.headers.filter(h => h.isSortedColumn);
     for (let i = 1; i < sorted.length; i++) {
@@ -213,6 +220,10 @@ export class TableComponent implements OnDestroy, AfterViewInit {
     );
     this.initPaginator();
     this.reloadPaginator();
+    if (this.isPaginator && this.stayOnCurrentPage) {
+      this.paginator.setCurrentPage(cp + 1);
+    }
+    this.stayOnCurrentPage = false;
   }
 
   get dataSource(): TableModel {
