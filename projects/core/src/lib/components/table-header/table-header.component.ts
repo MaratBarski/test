@@ -3,6 +3,13 @@ import { CheckBoxListOption } from '../check-box-list/check-box-list.component';
 import { AnimationService } from '../../services/animation.service';
 import { BaseSibscriber } from '../../common/BaseSibscriber';
 
+export enum ColumnType {
+  Text = 1,
+  Number = 2,
+  Date = 3,
+  Bool = 4
+}
+
 export class TableHeaderModel {
   text: string;
   isSortEnabled?: boolean;
@@ -14,6 +21,7 @@ export class TableHeaderModel {
   csvTitle?: string;
   hidden?: boolean;
   showDetails?: boolean;
+  columnType?: ColumnType
 }
 
 @Component({

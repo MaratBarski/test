@@ -9,9 +9,11 @@ import { UserTimeActivityComponent } from './components/user-time-activity/user-
 import { UsageDashboardTopComponent } from './components/usage-dashboard-top/usage-dashboard-top.component';
 import { UsageDashboardInfoPanelComponent } from './components/usage-dashboard-info-panel/usage-dashboard-info-panel.component';
 import { UsageReportComponent } from './components/usage-report/usage-report.component';
+import { UsageTableComponent } from './components/usage-table/usage-table.component';
 
 const routes: Array<Route> = [
   { path: '', component: UsageDashboardComponent }
+  //,{ path: ':state', component: UsageDashboardComponent }
 ]
 
 @NgModule({
@@ -20,7 +22,8 @@ const routes: Array<Route> = [
     UserTimeActivityComponent,
     UsageDashboardTopComponent,
     UsageDashboardInfoPanelComponent,
-    UsageReportComponent
+    UsageReportComponent,
+    UsageTableComponent
   ],
   imports: [
     CommonModule,

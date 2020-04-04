@@ -5,6 +5,7 @@ export class TabItemModel {
   isDropDown?: boolean;
   mouseOver?: any;
   mouseLeave?: any;
+  source?: any;
 }
 
 @Component({

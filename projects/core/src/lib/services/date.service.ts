@@ -101,4 +101,19 @@ export class DateService {
     return [];
   }
 
+  getDaysDiff(from: string | Date, to: string | Date): number {
+    const date1 = new Date(from);
+    const date2 = new Date(to);
+    const days1 = Math.floor(date1.getTime() / (3600 * 24 * 1000));
+    const days2 = Math.floor(date2.getTime() / (3600 * 24 * 1000));
+    return days2 - days1;
+  }
+
+  private formatNumber(i: number): string { return i > 9 ? `${i}` : `0${i}`; }
+
+  formatDate(date: string | Date): string {
+    const res = new Date(date);
+    return `${this.formatNumber(res.getDate())}-${this.formatNumber(res.getMonth() + 1)}-${res.getFullYear()}`;
+  }
+
 }

@@ -22,10 +22,10 @@ export class UsageReportComponent implements OnInit {
         bars: [
           {
             label: 'java',
-            backgroundColor: '#5B9BD5',
+            backgroundColor: '#5303a8',
             borderColor: 'green',
             textColor: 'white',
-            value: 20
+            value: 200
           },
           {
             label: 'java',
