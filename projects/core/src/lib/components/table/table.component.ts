@@ -11,7 +11,7 @@ import { DownloadComponent } from '../download/download.component';
 import { EmptyState, DefaultEmptyState } from '../empty-state/empty-state.component';
 import { RowInfoComponent } from '../row-info/row-info.component';
 import { AnimationService } from '../../services/animation.service';
-import { MenuLink } from '../modal-menu/modal-menu.component';
+import { MenuLink, ModalMenuComponent } from '../modal-menu/modal-menu.component';
 
 export interface TableActionCommand {
   command: string;
@@ -53,10 +53,11 @@ export class TableComponent implements OnDestroy, AfterViewInit {
   ) {
     this._subscriptions.push(
       this.animationService.onShowElement.subscribe(elm => {
-        if (elm !== this.actionsObject) {
+        if (elm !== this.commandRow) {
           this.commandRow = undefined;
-        }
-      }));
+        };
+      })
+    )
   }
 
   ngAfterViewChecked(): void {
@@ -161,7 +162,6 @@ export class TableComponent implements OnDestroy, AfterViewInit {
     }
   }
 
-  @ViewChild('actionsObject', { static: false }) actionsObject: ElementRef;
   @ViewChild('tableObject', { static: false }) tableObject: ElementRef;
   @Input() rowInfoTemplate: TemplateRef<any>;
   @Input() headersTemplate: Array<{ [key: string]: TemplateRef<any> }>;
@@ -371,27 +371,19 @@ export class TableComponent implements OnDestroy, AfterViewInit {
     this.closeRowInfo();
   }
 
+  get specColums(): number {
+    return this.dataSource && this.dataSource.actions ? 1 : 0;
+  }
+
   commandRow: TableRowModel;
 
   openLinkMenu(row: TableRowModel, event: any, rowIndex: number): void {
     // const td = this.tableObject.nativeElement.rows[rowIndex].cells[this.tableObject.nativeElement.rows[rowIndex].cells.length - 1];
+    this.clientY = event.clientY;
     event.stopPropagation();
-    row.isActive = false;
-    setTimeout(() => {
-      this.animationService.showElement(this.actionsObject.nativeElement);
-      this.commandRow = row;
-      let left = event.target.offsetLeft + event.target.offsetWidth - this.actionsObject.nativeElement.offsetWidth;
-      let top = event.target.offsetTop + event.target.offsetHeight;
-      if (top + this.actionsObject.nativeElement.offsetHeight > window.innerHeight + ComponentService.scrollTop() - 50) {
-        top = top - this.actionsObject.nativeElement.offsetHeight;
-      }
-      this.renderer2.setStyle(this.actionsObject.nativeElement, 'left', `${left}px`);
-      this.renderer2.setStyle(this.actionsObject.nativeElement, 'top', `${top}px`);
-      setTimeout(() => {
-        this.rowClick(row);
-      }, 1);
-    }, 1);
-
+    this.rowClick(row);
+    this.commandRow = row;
+    this.animationService.showElement(this.commandRow);
   }
 
   onActionCommand(cmd: string): void {
@@ -402,5 +394,14 @@ export class TableComponent implements OnDestroy, AfterViewInit {
   @HostListener('document:click', ['$event']) onMouseClick(event: any) {
     this.closeRowInfo();
     this.commandRow = undefined;
+  }
+
+  initActionsLinks(menu: ModalMenuComponent): void {
+    const elm = document.getElementById(menu.componentID);
+    if (this.clientY + elm.offsetHeight > window.innerHeight) {
+      this.renderer2.setStyle(elm, 'marginTop', `${window.innerHeight - this.clientY - elm.offsetHeight - 50}px`);
+    } else {
+      this.renderer2.setStyle(elm, 'marginTop', '0px');
+    }
   }
 }

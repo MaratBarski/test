@@ -9,7 +9,7 @@
                     [ngTemplateOutlet]="headersTemplate[header.columnId]"
                     [ngTemplateOutletContext]="{$implicit: header}"></ng-container>
             </th>
-            <th *ngIf="dataSource.actions"></th>
+            <th *ngIf="dataSource?.actions?.links?.length || dataSource?.actions?.subLinks?.length"></th>
         </tr>
     </thead>
     <tbody *ngIf="rows?.length">
@@ -17,7 +17,7 @@
             *ngFor="let row of rows|sortTable:sortModel|pagination:{currentPage:paginator?.currentPage,pageSize:paginator?.pageSize};let rowIndex = index">
             <tr (click)="infoRowClick($event)" class="row-info-container"
                 *ngIf="(rowInfoTemplate && currentRowInfo===row)">
-                <td class="row-info-sub-container" [attr.colspan]="(dataSource.headers|visibleHeaders).length">
+                <td class="row-info-sub-container" [attr.colspan]="(dataSource.headers|visibleHeaders).length + specColums">
                     <div id="{{tableID + 'row_' + rowIndex}}" class="row-info">
                         <mdc-row-info (onInit)="rowDetailsInit($event)" [componentID]="tableID + 'row_' + rowIndex">
                             <ng-container [ngTemplateOutlet]="rowInfoTemplate"
@@ -40,19 +40,26 @@
                         </ng-container>
                     </td>
                 </ng-container>
-                <td *ngIf="dataSource.actions">
-                    <span (click)="openLinkMenu(row,$event,rowIndex)" class="admin-table-action__menu ic-hover">
+                <td *ngIf="dataSource?.actions?.links?.length || dataSource?.actions?.subLinks?.length">
+                    <span (click)="openLinkMenu(row,$event,rowIndex)" class="admin-table-action__menu ic-hover"
+                        *ngIf="((dataSource.actions.subLinks|actionLink:row).length||(dataSource.actions.links|actionLink:row).length)">
                         <mdc-icon path="ic-dot-menu"></mdc-icon>
                     </span>
+                </td>
+            </tr>
+            <tr *ngIf="(commandRow===row && (dataSource?.actions?.links?.length || dataSource?.actions?.subLinks?.length) && ((dataSource.actions.subLinks|actionLink:commandRow).length||(dataSource.actions.links|actionLink:commandRow).length))"
+                class="row-info-container">
+                <td class="row-info-sub-container"
+                    [attr.colspan]="(dataSource.headers|visibleHeaders).length + specColums">
+                    <div id="{{tableID + 'row_cmd_' + rowIndex}}" class="actions-menu">
+                        <mdc-modal-menu (onInit)="initActionsLinks($event)" [componentID]="tableID + 'row_cmd_' + rowIndex" (onCommand)="onActionCommand($event)"
+                            [sublinks]="dataSource.actions.subLinks|actionLink:commandRow"
+                            [links]="dataSource.actions.links|actionLink:commandRow">
+                        </mdc-modal-menu>
+                    </div>
                 </td>
             </tr>
         </ng-container>
     </tbody>
 </table>
-<div class="actions-menu" #actionsObject *ngIf="dataSource?.actions"  [mdcVisibility]="commandRow">
-    <mdc-modal-menu (onCommand)="onActionCommand($event)" 
-    [sublinks]="dataSource.actions.subLinks" 
-    [links]="dataSource.actions.links">
-    </mdc-modal-menu>
-</div>
 <mdc-empty-state [emptyState]="emptyState" *ngIf="rows && !(rows.length)"></mdc-empty-state>
