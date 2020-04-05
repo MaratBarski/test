@@ -1,9 +1,9 @@
 <section class="usage-dashboard-top">
-    <div class="container-fluid">
+    <div>
         <div class="row">
             <div class="col-12">
                 <div class="usage-dashboard-top__content">
-                    <mdc-download></mdc-download>
+                    <mdc-download #downloader [fileName]="downloadFileName"></mdc-download>
                     <div class="usage-dashboard-top__tab">
                         <div (mouseleave)="showMoreTab=false">
                             <mdc-tabs tabid="importetFilesTab" [active]="tabActive" [tabs]="tabs"

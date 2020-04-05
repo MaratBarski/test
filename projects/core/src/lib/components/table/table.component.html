@@ -50,7 +50,9 @@
     </tbody>
 </table>
 <div class="actions-menu" #actionsObject *ngIf="dataSource?.actions"  [mdcVisibility]="commandRow">
-    <mdc-modal-menu (onCommand)="onActionCommand($event)" [sublinks]="dataSource.actions.subLinks" [links]="dataSource.actions.links">
+    <mdc-modal-menu (onCommand)="onActionCommand($event)" 
+    [sublinks]="dataSource.actions.subLinks" 
+    [links]="dataSource.actions.links">
     </mdc-modal-menu>
 </div>
 <mdc-empty-state [emptyState]="emptyState" *ngIf="rows && !(rows.length)"></mdc-empty-state>

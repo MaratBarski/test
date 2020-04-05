@@ -43,7 +43,8 @@ export class ImportedFilesService {
           {
             text: 'Edit File Settings',
             icon: 'ic-edit',
-            command: 'edit'
+            command: 'edit',
+            disable: true
           },
           {
             text: 'View output summary',

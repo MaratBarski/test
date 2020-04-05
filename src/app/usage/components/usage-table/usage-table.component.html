@@ -1,7 +1,12 @@
-<mdc-table #table [paginator]="paginator" [dataSource]="dataSource" [cellsTemplate]="{ lastlogin:lastlogin}">
+<div class="form-search d-none d-md-block">
+    <mdc-auto-search pause="500" #search placeholder="{{'search'|translate}}"></mdc-auto-search>
+</div>
+<mdc-table #table [downloader]="downloader" [search]="search" [searchOptions]="searchOptions" [paginator]="paginator" [dataSource]="dataSource"
+    [cellsTemplate]="{ lastlogin:lastlogin}">
 </mdc-table>
 <div class="pager-wrap">
-    <mdc-paginator #paginator [blockSize]="3" [pageSize]="50" [currentPage]="0">
+    <mdc-paginator #paginator noPagingTitle="Showing {0} users" paginationTitle="Showing {0} of {1} users"
+        [blockSize]="3" [pageSize]="50" [currentPage]="0">
     </mdc-paginator>
 </div>
 

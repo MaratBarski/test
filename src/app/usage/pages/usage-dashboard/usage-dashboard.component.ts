@@ -1,27 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import { DateService, TranslateService, NavigationService, PageInfo, BaseSibscriber, TabItemModel } from '@app/core-api';
-import { UsageService, UsageReportParams } from '@app/usage/services/usage.service';
+import { Component } from '@angular/core';
+import { NavigationService, PageInfo, BaseSibscriber, TabItemModel } from '@app/core-api';
+import { UsageService, UsageReportParams, UsageReportState, GetDefaultState } from '@app/usage/services/usage.service';
 import { ActivatedRoute, Router } from '@angular/router';
-
-interface UsageReportState {
-  tab: number;
-  subTab: number;
-  activity: number;
-}
-const GetDefaultState = (): UsageReportState => {
-  return {
-    tab: 0,
-    subTab: -1,
-    activity: 0
-  }
-}
 
 @Component({
   selector: 'md-usage-dashboard',
   templateUrl: './usage-dashboard.component.html',
   styleUrls: ['./usage-dashboard.component.scss']
 })
-export class UsageDashboardComponent extends BaseSibscriber implements OnInit {
+export class UsageDashboardComponent extends BaseSibscriber {
 
   activityButtons: Array<TabItemModel> = [
     { title: 'Month', source: 1 },
@@ -33,16 +20,9 @@ export class UsageDashboardComponent extends BaseSibscriber implements OnInit {
   currentSubTab = -1;
   usageReportParams: UsageReportParams;
   data: any;
-  _state: UsageReportState;
+  private _state: UsageReportState;
 
   get state(): UsageReportState {
-    try {
-      if (!this._state) {
-        this._state = this.activatedRoute.snapshot.paramMap.get('state') ? JSON.parse(decodeURIComponent(this.activatedRoute.snapshot.paramMap.get('state'))) : GetDefaultState()
-      }
-    } catch (e) {
-      window.location.href = '/usage-dashboard';
-    }
     return this._state;
   }
 
@@ -54,6 +34,18 @@ export class UsageDashboardComponent extends BaseSibscriber implements OnInit {
   ) {
     super();
     this.navigationService.currentPageID = PageInfo.JobsScheduling.id;
+    super.add(
+      this.activatedRoute.paramMap.subscribe(params => {
+        try {
+          this._state = params.get('state') ? JSON.parse(decodeURIComponent(params.get('state'))) : GetDefaultState();
+          this.usageService.setState(this._state);
+        }
+        catch (e) {
+          window.location.href = '/usage-dashboard';
+        }
+        this.init();
+      })
+    )
   }
 
   selectTab(event: { tab: number, subTab: number }): void {
@@ -81,7 +73,7 @@ export class UsageDashboardComponent extends BaseSibscriber implements OnInit {
     this.currentSubTab = this.state.subTab;
   }
 
-  ngOnInit(): void {
+  init(): void {
     this.initPage();
     this.setPeriod();
     this.createReport();

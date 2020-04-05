@@ -1,10 +1,22 @@
 import { Injectable, LOCALE_ID, Inject } from '@angular/core';
 import { environment } from '@env/environment';
 import { Offline } from '@app/shared/decorators/offline.decorator';
-import { DataService, DateService } from 'projects/core/src/public-api';
-import { TableModel, ColumnType } from '@app/core-api';
+import { TableModel, ColumnType, DataService, DateService } from '@app/core-api';
 import { formatDate } from '@angular/common';
+import { Subject, Observable, BehaviorSubject } from 'rxjs';
 
+export const GetDefaultState = (): UsageReportState => {
+  return {
+    tab: 0,
+    subTab: -1,
+    activity: 0
+  }
+}
+export interface UsageReportState {
+  tab: number;
+  subTab: number;
+  activity: number;
+}
 export interface UsageReportParams {
   fromDate?: Date | string;
   toDate?: Date | string;
@@ -14,11 +26,21 @@ export interface UsageReportParams {
 })
 export class UsageService {
 
+  get onStateChanged(): Observable<UsageReportState> {
+    return this._onStateChanged.asObservable();
+  }
+
+  private _onStateChanged = new BehaviorSubject<UsageReportState>(GetDefaultState());
+
   constructor(
     private dataService: DataService,
     private dateService: DateService,
     @Inject(LOCALE_ID) private locale: string
   ) {
+  }
+
+  setState(state: UsageReportState): void {
+    this._onStateChanged.next(state);
   }
 
   @Offline('assets/offline/usageReport.json?')

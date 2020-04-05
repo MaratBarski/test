@@ -7,6 +7,7 @@ export class MenuLink {
   click?: any;
   source?: any;
   command?: string;
+  hidden?: boolean;
 }
 
 @Component({

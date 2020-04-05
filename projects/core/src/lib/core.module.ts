@@ -56,6 +56,7 @@ import { EmptyStateComponent } from './components/empty-state/empty-state.compon
 import { ImageComponent } from './components/image/image.component';
 import { RowInfoComponent } from './components/row-info/row-info.component';
 import { DateFilterComponent } from './components/date-filter/date-filter.component';
+import { ActionLinkPipe } from './pipes/action-link.pipe';
 
 // import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 
@@ -110,7 +111,8 @@ import { DateFilterComponent } from './components/date-filter/date-filter.compon
     EmptyStateComponent,
     ImageComponent,
     RowInfoComponent,
-    DateFilterComponent
+    DateFilterComponent,
+    ActionLinkPipe
   ],
   imports: [
     CommonModule,
@@ -170,7 +172,8 @@ import { DateFilterComponent } from './components/date-filter/date-filter.compon
     EmptyStateComponent,
     ImageComponent,
     RowInfoComponent,
-    DateFilterComponent
+    DateFilterComponent,
+    ActionLinkPipe
   ],
   entryComponents: [
     TableHeaderComponent
