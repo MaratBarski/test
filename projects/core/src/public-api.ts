@@ -86,5 +86,6 @@ export * from './lib/directives/tooltip.directive';
 export * from './lib/directives/table.directive';
 export * from './lib/directives/visibility.directive';
 export * from './lib/animations/animations';
+export * from './lib/directives/svg.directive';
 
 export * from './lib/components/main-test/main-test.component';

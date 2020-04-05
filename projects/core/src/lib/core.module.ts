@@ -57,6 +57,7 @@ import { ImageComponent } from './components/image/image.component';
 import { RowInfoComponent } from './components/row-info/row-info.component';
 import { DateFilterComponent } from './components/date-filter/date-filter.component';
 import { ActionLinkPipe } from './pipes/action-link.pipe';
+import { SvgDirective } from './directives/svg.directive';
 
 // import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 
@@ -112,7 +113,8 @@ import { ActionLinkPipe } from './pipes/action-link.pipe';
     ImageComponent,
     RowInfoComponent,
     DateFilterComponent,
-    ActionLinkPipe
+    ActionLinkPipe,
+    SvgDirective
   ],
   imports: [
     CommonModule,
@@ -173,7 +175,8 @@ import { ActionLinkPipe } from './pipes/action-link.pipe';
     ImageComponent,
     RowInfoComponent,
     DateFilterComponent,
-    ActionLinkPipe
+    ActionLinkPipe,
+    SvgDirective
   ],
   entryComponents: [
     TableHeaderComponent

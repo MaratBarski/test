@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { SvgLoaderComponent } from '@app/core-api';
 
 
@@ -7,13 +7,8 @@ import { SvgLoaderComponent } from '@app/core-api';
   templateUrl: './icons.component.html',
   styleUrls: ['./icons.component.scss']
 })
-export class IconsComponent implements OnInit {
-
-  backgroundColor = '#fff';
+export class IconsComponent {
+  color = '#000';
   @ViewChild('svgLoder', { static: true }) svgLoder: SvgLoaderComponent;
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  size = 20;
 }
