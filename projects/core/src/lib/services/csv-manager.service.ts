@@ -52,7 +52,12 @@ export class CsvManagerService {
     return new Promise((resolve, reject) => {
       reader.onload = function () {
         try {
-          const headers = reader.result.toString().split('\n')[0].split(',').map(x => x.replace(/"/g, ''))
+          const headers = reader.result.toString()
+            .split('\n')[0]
+            .split(',')
+            .map(x => {
+              return x.trim().replace(/"/g, '')
+            }).filter(x => x !== '');
           resolve(headers);
         } catch (e) {
           reject(e);
@@ -63,6 +68,16 @@ export class CsvManagerService {
       } catch (e) {
         reject(e);
       }
+    });
+  }
+
+  validate(file: any): Promise<boolean> {
+    return new Promise<boolean>((resolve, reject) => {
+      this.readHeaders(file).then(headers => {
+        resolve(headers && headers.length > 0);
+      }).catch(e => {
+        resolve(false);
+      });
     });
   }
 }

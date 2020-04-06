@@ -8,7 +8,7 @@
                             <div class="info-panel-choose__item">
                                 <div class="info-panel-choose__title">Environment:</div>
                                 <div class="info-panel-choose__val">
-                                    select
+                                    <md-project-combo [applyWidth]="true" [selectUp]="false" [project]="project" (onChange)="changedProject($event)"></md-project-combo>
                                 </div>
                             </div>
                             <div class="info-panel-choose__item">

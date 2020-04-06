@@ -9,6 +9,8 @@ import { LoginService, BaseSibscriber, SelectComponent } from 'projects/core/src
 })
 export class ProjectComboComponent extends BaseSibscriber implements OnInit {
 
+  @Input() applyWidth = false;
+  @Input() selectUp = true;
   @Input() emptyProject: SelectOption = { text: 'Select project', id: '' };
   @Output() onChange = new EventEmitter<string>();
   selectOptions: Array<SelectOption>;

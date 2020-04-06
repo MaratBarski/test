@@ -1,7 +1,7 @@
 import { Component, Output, EventEmitter, ViewChild, ElementRef, Input } from '@angular/core';
 import { UploadService, UploadStatus } from '@app/shared/services/upload.service';
 import { Offline } from '@app/shared/decorators/offline.decorator';
-import { SelectOption, SelectComponent } from '@app/core-api';
+import { SelectOption, SelectComponent, CsvManagerService } from '@app/core-api';
 import { environment } from '@env/environment';
 
 @Component({
@@ -11,7 +11,7 @@ import { environment } from '@env/environment';
 })
 export class UploadFileComponent {
 
-  constructor(private uploadService: UploadService) { }
+  constructor(private csvManagerService: CsvManagerService, private uploadService: UploadService) { }
 
   @ViewChild('fileInput', { static: true }) fileInput: ElementRef;
   @ViewChild('templateSelector', { static: true }) templateSelector: SelectComponent;
@@ -23,6 +23,7 @@ export class UploadFileComponent {
   get uploadUrl(): string { return this._uploadUrl; }
   defaultTemplate: SelectOption = { text: 'Select Permission Group...', id: '', value: '' };
 
+  isFileError = false;
   fileType = false;
   project = '';
   fileName = '';
@@ -61,7 +62,7 @@ export class UploadFileComponent {
     this.reset();
     this.onUpload.emit();
   }
-  
+
   changedProject(id: string): void {
     this.project = id;
   }
@@ -83,9 +84,29 @@ export class UploadFileComponent {
     this.template = '';
     this.fileType = false;
     this.fileInput.nativeElement.value = '';
+    this.isFileError = false;
+  }
+
+  private fileError(): void {
+    this.file = '';
+    this.fileInput.nativeElement.value = '';
+    this.isFileError = true;
   }
 
   updateFileName(event: any): void {
-    this.file = this.fileInput.nativeElement.value;
+    if (!this.fileInput.nativeElement.files.length) {
+      return;
+    }
+    this.isFileError = false;
+    this.csvManagerService.validate(this.fileInput.nativeElement.files[0]).then(res => {
+      if (res) {
+        this.file = this.fileInput.nativeElement.value;
+        return;
+      }
+      this.fileError();
+    }).catch(e => {
+      this.fileError();
+    });
+
   }
 }
