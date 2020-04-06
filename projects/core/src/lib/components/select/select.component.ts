@@ -4,7 +4,7 @@ import { ComponentService } from '../../services/component.service';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
 export class SelectOption {
-  id: string;
+  id: string | number;
   text: string;
   icon?: string;
   value?: any;
