@@ -345,10 +345,11 @@ export class TableComponent implements OnDestroy, AfterViewInit {
   }
 
   showItemInfo(row: TableRowModel | any, header: TableHeaderModel, rowIndex: number, event: any): void {
-    ComponentService.documentClick();
+    //ComponentService.documentClick();
     if (!header.showDetails) { return; }
     if (this.currentRowInfo === row) { return; }
     event.stopPropagation();
+    this.animationService.showElement(header);
     this.animationService.stopAnimation();
     if (this.currentRowInfo) {
       this.animateBack(this.animationElm, this.rowInfoComponent.width, 100, () => {
@@ -405,5 +406,15 @@ export class TableComponent implements OnDestroy, AfterViewInit {
     } else {
       this.renderer2.setStyle(elm, 'marginTop', '0px');
     }
+  }
+
+  currentOver: TableRowModel = undefined;
+
+  rowMouseOver(event: any, row: TableRowModel, index: number): void {
+    this.currentOver = row;
+  }
+
+  rowMouseLeave(event: any, row: TableRowModel, index: number): void {
+
   }
 }

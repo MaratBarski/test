@@ -39,3 +39,24 @@
     z-index: 2;
     margin-left: auto;
 }
+.more-link{
+    display:flex;
+    font-style: normal;
+    font-weight: 600;
+    font-size: .875rem;
+    line-height: 1;
+    color: #0596ff;
+    position: absolute;
+    margin-left: 120px;
+    z-index: 2;
+    background-color: #E1E3E7;
+    width:100px;
+    height:26px;
+}
+.more-link:hover{
+    text-decoration: underline;
+}
+.row-details-container{
+    display: flex; 
+    justify-items: center;
+}
