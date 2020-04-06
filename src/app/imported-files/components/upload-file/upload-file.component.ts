@@ -1,7 +1,7 @@
 import { Component, Output, EventEmitter, ViewChild, ElementRef, Input } from '@angular/core';
 import { UploadService, UploadStatus } from '@app/shared/services/upload.service';
 import { Offline } from '@app/shared/decorators/offline.decorator';
-import { SelectOption, SelectComponent, CsvManagerService } from '@app/core-api';
+import { SelectOption, SelectComponent, CsvManagerService, FileInput, FileUploaderComponent } from '@app/core-api';
 import { environment } from '@env/environment';
 
 @Component({
@@ -15,6 +15,7 @@ export class UploadFileComponent {
 
   @ViewChild('fileInput', { static: true }) fileInput: ElementRef;
   @ViewChild('templateSelector', { static: true }) templateSelector: SelectComponent;
+  @ViewChild('fileUploader', { static: true }) fileUploader: FileUploaderComponent;
 
   @Output() onCancel = new EventEmitter<void>();
   @Output() onUpload = new EventEmitter<void>();
@@ -85,6 +86,7 @@ export class UploadFileComponent {
     this.fileType = false;
     this.fileInput.nativeElement.value = '';
     this.isFileError = false;
+    this.fileUploader.reset();
   }
 
   private fileError(): void {
@@ -107,6 +109,11 @@ export class UploadFileComponent {
     }).catch(e => {
       this.fileError();
     });
+  }
 
+  csvHeaders: Array<string>;
+  onFileSelect(fileinfo: FileInput): void {
+    this.csvHeaders = fileinfo.headers;
+    //alert(fileinfo.file.files.length)
   }
 }

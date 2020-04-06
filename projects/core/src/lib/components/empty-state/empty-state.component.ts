@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy } from '@angular/core';
+import { ComponentService } from '../../services/component.service';
 
 export interface EmptyState {
   title?: string;
@@ -19,6 +20,14 @@ export const DefaultEmptyState = (): EmptyState => {
   templateUrl: './empty-state.component.html',
   styleUrls: ['./empty-state.component.css']
 })
-export class EmptyStateComponent {
+export class EmptyStateComponent implements OnInit, OnDestroy {
   @Input() emptyState: EmptyState;
+
+  ngOnInit(): void {
+    ComponentService.hideScroll(true);
+  }
+
+  ngOnDestroy(): void {
+    ComponentService.hideScroll(false);
+  }
 }

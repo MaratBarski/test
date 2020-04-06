@@ -81,6 +81,7 @@ export * from './lib/components/image/image.component';
 export * from './lib/components/row-info/row-info.component';
 export * from './lib/components/date-filter/date-filter.component';
 export * from './lib/components/progress-match/progress-match.component';
+export * from './lib/components/file-uploader/file-uploader.component';
 
 export * from './lib/directives/show.directive';
 export * from './lib/directives/tooltip.directive';

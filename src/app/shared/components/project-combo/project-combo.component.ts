@@ -1,6 +1,5 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
-import { SelectOption } from '@app/core-api';
-import { LoginService, BaseSibscriber, SelectComponent } from 'projects/core/src/public-api';
+import { SelectOption, LoginService, BaseSibscriber, SelectComponent } from '@app/core-api';
 
 @Component({
   selector: 'md-project-combo',

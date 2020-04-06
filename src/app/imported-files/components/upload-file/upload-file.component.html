@@ -5,6 +5,10 @@
     </div>
     <div class="form-site">
         <div class="form-site__fields">
+
+            <mdc-file-uploader #fileUploader (onSelect)="onFileSelect($event)" [accept]="'.csv'"></mdc-file-uploader>
+            <md-csv-combo [headers]="csvHeaders"></md-csv-combo>
+
             <div class="form-site__item">
                 <div class="form-site__label">Choose File</div>
                 <div class="file-upload">
@@ -26,6 +30,7 @@
                     </div><span class="form-site-alert__text">File format needs to be CSV (comma separate values)</span>
                 </div>
             </div>
+
             <div class="form-site__item">
                 <label class="form-site__label" for="name">Name</label>
                 <input [(ngModel)]="fileName" type="text" placeholder="Type file name">
