@@ -1,4 +1,4 @@
-import { Directive, Input, ElementRef, HostListener, Renderer2, OnInit } from '@angular/core';
+import { Directive, Input, ElementRef, HostListener, Renderer2, OnInit, OnDestroy } from '@angular/core';
 import { ComponentService } from '../services/component.service';
 
 const CLASS_NAME = 'tooltipnew';
@@ -8,7 +8,7 @@ export type TooltipPosition = 'left' | 'right' | 'top' | 'bottom';
 @Directive({
   selector: '[mdcTooltip]'
 })
-export class TooltipDirective implements OnInit {
+export class TooltipDirective implements OnInit, OnDestroy {
 
   @Input('mdcTooltip') text: string;
   @Input('stickyToElement') stickyToElement = false;
@@ -30,6 +30,12 @@ export class TooltipDirective implements OnInit {
 
   ngOnInit(): void {
     this.createTooltip();
+  }
+
+  ngOnDestroy(): void {
+    if (this.tooltipElement) {
+      this.renderer.removeChild(this.tooltipElement.parentNode, this.tooltipElement);
+    }
   }
 
   private tooltipElement: any;
