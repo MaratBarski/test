@@ -56,11 +56,13 @@
 </ng-template>
 <ng-template let-item #downloadTemplate let-src="source">
     <!-- <span (click)="downloadClick(item,src,$event)" class="admin-table-action__menu ic-hover"> -->
-    <a href="{{downloadUrl}}/{{src.sessionHistoryId}}">
-        <mdc-icon path="ic-download"></mdc-icon>
-    </a>
+    <div class="height-20-px width-20-px">
+        <a href="{{downloadUrl}}/{{src.sessionHistoryId}}">
+            <mdc-icon path="ic-download"></mdc-icon>
+        </a>
+    </div>
     <!-- </span> -->
-    <div>{{src.sessionHistoryId}}</div>
+    <!-- <div>{{src.sessionHistoryId}}</div> -->
 </ng-template>
 
 <ng-template let-item #nameTemplate let-src="source">

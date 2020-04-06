@@ -107,7 +107,7 @@ export class HistoryReportService {
         cells: {
           name: i,
           insertDate: fl.insertDate,
-          fullName: fl.userId,
+          fullName: fl.user.firstName + " " + fl.user.lastName,
           approvalKey: !!fl.userActivateSession ? fl.userActivateSession.approval_number : "",
           research: "Missing",
           data: "Missing",
