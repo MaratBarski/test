@@ -34,7 +34,7 @@
 	}
 
 	&__popup{
-		display: none;
+		display: inline-block;
 		min-width: 100%;
 		background: #fff;
 		border: 1px solid $color-light-grey;
@@ -60,5 +60,4 @@
 	}
 
 	&__arr:hover, &__title:hover {background: #3f0280;}
-	&:hover &__popup{display: inline-block;}
 }
