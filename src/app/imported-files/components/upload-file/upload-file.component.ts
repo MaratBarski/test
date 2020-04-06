@@ -15,8 +15,7 @@ export class UploadFileComponent {
 
   @ViewChild('fileInput', { static: true }) fileInput: ElementRef;
   @ViewChild('templateSelector', { static: true }) templateSelector: SelectComponent;
-  @ViewChild('fileUploader', { static: true }) fileUploader: FileUploaderComponent;
-
+  
   @Output() onCancel = new EventEmitter<void>();
   @Output() onUpload = new EventEmitter<void>();
   @Input() set uploadUrl(uploadUrl: string) { this._uploadUrl = uploadUrl; }
@@ -86,7 +85,7 @@ export class UploadFileComponent {
     this.fileType = false;
     this.fileInput.nativeElement.value = '';
     this.isFileError = false;
-    this.fileUploader.reset();
+    //this.fileUploader.reset();
   }
 
   private fileError(): void {
@@ -111,9 +110,9 @@ export class UploadFileComponent {
     });
   }
 
-  csvHeaders: Array<string>;
-  onFileSelect(fileinfo: FileInput): void {
-    this.csvHeaders = fileinfo.headers;
-    //alert(fileinfo.file.files.length)
-  }
+  // csvHeaders: Array<string>;
+  // @ViewChild('fileUploader', { static: true }) fileUploader: FileUploaderComponent;
+  // onFileSelect(fileinfo: FileInput): void {
+  //   this.csvHeaders = fileinfo.headers;
+  // }
 }
