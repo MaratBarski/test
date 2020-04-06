@@ -345,6 +345,7 @@ export class TableComponent implements OnDestroy, AfterViewInit {
   }
 
   showItemInfo(row: TableRowModel | any, header: TableHeaderModel, rowIndex: number, event: any): void {
+    ComponentService.documentClick();
     if (!header.showDetails) { return; }
     if (this.currentRowInfo === row) { return; }
     event.stopPropagation();
@@ -379,6 +380,7 @@ export class TableComponent implements OnDestroy, AfterViewInit {
 
   openLinkMenu(row: TableRowModel, event: any, rowIndex: number): void {
     // const td = this.tableObject.nativeElement.rows[rowIndex].cells[this.tableObject.nativeElement.rows[rowIndex].cells.length - 1];
+    ComponentService.documentClick();
     this.clientY = event.clientY;
     event.stopPropagation();
     this.rowClick(row);

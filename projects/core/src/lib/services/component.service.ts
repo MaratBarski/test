@@ -67,4 +67,8 @@ export class ComponentService {
       element.nativeElement.getBoundingClientRect() :
       element.getBoundingClientRect();
   }
+
+  static documentClick(): void {
+    document.dispatchEvent(new Event('click'));
+  }
 }
