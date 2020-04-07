@@ -7,9 +7,14 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class UsageDashboardInfoPanelComponent implements OnInit {
 
+  @Input() project = '';
   @Input() includeAdmin = false;
 
   constructor() { }
+
+  changedProject(id: string): void {
+    this.project = id;
+  }
 
   ngOnInit() {
   }

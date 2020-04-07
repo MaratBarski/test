@@ -5,6 +5,10 @@
     </div>
     <div class="form-site">
         <div class="form-site__fields">
+
+            <!-- <mdc-file-uploader #fileUploader (onSelect)="onFileSelect($event)" [accept]="'.csv'"></mdc-file-uploader>
+            <md-csv-combo [headers]="csvHeaders"></md-csv-combo> -->
+
             <div class="form-site__item">
                 <div class="form-site__label">Choose File</div>
                 <div class="file-upload">
@@ -20,7 +24,13 @@
                         </span>
                     </label>
                 </div>
+                <div *ngIf="isFileError" class="form-site-alert">
+                    <div class="form-site-alert__icon">
+                        <svg class="icon ic-failure" mdcSvg="ic-failure"></svg>
+                    </div><span class="form-site-alert__text">File format needs to be CSV (comma separate values)</span>
+                </div>
             </div>
+
             <div class="form-site__item">
                 <label class="form-site__label" for="name">Name</label>
                 <input [(ngModel)]="fileName" type="text" placeholder="Type file name">
@@ -35,7 +45,8 @@
                             class="form-site__shared-text">When file is shared everyone can see and use
                             it.</span></span>
                     <div class="switch">
-                        <mdc-toggle-button (change)="resetTemplate()" no="No" yes="Yes" [(ngModel)]="fileType"></mdc-toggle-button>
+                        <mdc-toggle-button (change)="resetTemplate()" no="No" yes="Yes" [(ngModel)]="fileType">
+                        </mdc-toggle-button>
                     </div>
                 </div>
             </div>
@@ -45,8 +56,9 @@
                             <use xlink:href="/assets/sprites/sprite.svg#ic-help"></use>
                         </svg><span class="tooltip"><span class="tooltip__content">Tooltip</span></span></span>
                     <span class="form-site__optional">Optional</span></label>
-                    <mdc-select #templateSelector [(ngModel)]="template" maxHeight="150px" [selectUp]="true" [selected]="defaultTemplate" (changed)="changedTemplate($event)" [options]="templates">
-                    </mdc-select>
+                <mdc-select #templateSelector [(ngModel)]="template" maxHeight="150px" [selectUp]="true"
+                    [selected]="defaultTemplate" (changed)="changedTemplate($event)" [options]="templates">
+                </mdc-select>
             </div>
 
         </div>

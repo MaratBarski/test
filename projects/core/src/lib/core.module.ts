@@ -60,6 +60,7 @@ import { ActionLinkPipe } from './pipes/action-link.pipe';
 import { SvgDirective } from './directives/svg.directive';
 import {ProgressMatchComponent} from './components/progress-match/progress-match.component';
 import {TopPanelComponent} from './components/top-panel.component/top-panel.component';
+import { FileUploaderComponent } from './components/file-uploader/file-uploader.component';
 
 // import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 
@@ -118,7 +119,8 @@ import {TopPanelComponent} from './components/top-panel.component/top-panel.comp
     ActionLinkPipe,
     SvgDirective,
     ProgressMatchComponent,
-    TopPanelComponent
+    TopPanelComponent,
+	FileUploaderComponent
   ],
   imports: [
     CommonModule,
@@ -182,7 +184,8 @@ import {TopPanelComponent} from './components/top-panel.component/top-panel.comp
     ActionLinkPipe,
     SvgDirective,
     ProgressMatchComponent,
-    TopPanelComponent
+    TopPanelComponent,
+	FileUploaderComponent
   ],
   entryComponents: [
     TableHeaderComponent
