@@ -1,246 +1,194 @@
-.mdc-main-header{
-    background-image: linear-gradient(88deg, $color-dark-blue, $color-dark-purple);
-}
 .header{
+  width: 100%;
+  margin-bottom: 25px;
+  margin-left: auto;
+  background-image: linear-gradient(88deg, $color-dark-blue, $color-dark-purple);
+  transition: all 0.3s ease;
 
-	&__content{
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		position: relative;
-		z-index: 3;
-	}
+  &__content{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 52px;
+    padding: 11px 0;
+    position: relative;
+    z-index: 101;
+  }
 
-	&__main{
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		position: relative;
-		width: 500px;
-	}
+  &__info,
+  &__action{
+    display: flex;
+    align-items: center;
+  }
 
-	&__main::before{
-		content: '';
-		display: block;
-		width: calc(100% + 45px);
-		height: 100%;
-		position: absolute;
-		top: 0;
-		right: 0;
-	}
+  &__logo{
+    max-width: 109px;
+    line-height: 1;
+    position: relative;
+  }
 
-	&__info,
-	&__action{
-		display: flex;
-		align-items: center;
-	}
+  &__company{
+    @include font(normal, normal, rem(16px), 1.25, #fff);
+    position: relative;
+  }
 
-	&__main,
-	&__info{
-		padding: 11px 0;
-		height: 52px;
-	}
+  &__company .icon{
+    width: 22px;
+    height: 22px;
+    fill: #fff;
+    vertical-align: middle;
+    margin-right: 7px;
+  }
 
-	&__info{
-		justify-items: end;
-		position: relative;
-	}
+  &__company-name{
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: 2px;
+  }
 
-	&__info::before{
-		content: '';
-		display: block;
-		width: calc(100% + 45px);
-		height: 100%;
-		//background-image: linear-gradient(88deg, $color-dark-blue, $color-dark-purple);
-		position: absolute;
-		top: 0;
-		left: 0;
-	}
+  &__notice{
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+  }
 
-	&__logo{
-		max-width: 109px;
-		line-height: 1;
-		position: relative;
-		margin-top: -10px;
-	}
+  &__profile{
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    margin-left: 33px;
+  }
 
-	&__company-left{
-		@include font(normal, normal, rem(16px), 1.25, #fff);
-		position: relative;
-		white-space: nowrap;
-		display: flex;
-		flex-wrap: nowrap;
-	}
+  &__profile-icon{
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-image:  url(/assets/img/ic-user-avatar.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    cursor: pointer;
+  }
 
-	&__company{
-		@include font(normal, normal, rem(16px), 1.25, #fff);
-		margin-left: 45px;
-		position: relative;
-	}
+  .hamburger{
+    position: relative;
+    margin-right: 30px;
 
-	&__company .icon{
-		width: 22px;
-		height: 22px;
-		fill: #fff;
-		vertical-align: middle;
-		margin-right: 7px;
-	}
+    .icon{fill: #fff;}
+  }
 
-	&__company-name{
-		display: inline-block;
-		vertical-align: middle;
-		margin-top: 2px;
-	}
+  .ic-pager-arr-left{
+    display: none;
+    fill: #fff;
+    position: absolute;
+    @include top-center;
+    left: -24px;
+    margin-top: 3px;
+  }
 
-	&__notice{
-		display: inline-block;
-		width: 30px;
-		height: 30px;
-	}
+  .hamburger.active .ic-pager-arr-left{
+    display: inline-block;
+  }
 
-	&__profile{
-		display: inline-block;
-		width: 30px;
-		height: 30px;
-		border-radius: 50%;
-		background-image:  url(/assets/images/ic-user-avatar.svg);
-		background-repeat: no-repeat;
-		background-position: center;
-		background-size: contain;
-		margin-left: 33px;
-		cursor: pointer;
-		position: relative;
-	}
+  .select{
+    width: auto;
+    margin-right: 27px;
 
-	&__profile-icon{
-		display: inline-block;
-		width: 30px;
-		height: 30px;
-		border-radius: 50%;
-		background-image:  url(/assets/images/ic-user-avatar.svg);
-		background-repeat: no-repeat;
-		background-position: 0 0;
-		background-size: contain;
-		cursor: pointer;
-	}
+    &__head{
+      height: rem(30px);
+      width: auto;
+      border: 0;
+      color: #fff;
+      padding: 0 15px 0 0;
+      line-height: rem(28px);
+    }
 
-	.hamburger{
-		position: relative;
-		margin-right: 20px;
-	}
+    &__head::after{
+      content: '';
+      display: inline-block;
+      width: 100%;
+      height: 1px;
+      background: #fff;
+      position: absolute;
+      left: 0;
+      bottom: 4px;
+    }
 
-	.ic-pager-arr-left{
-		display: none;
-		fill: #fff;
-		position: absolute;
-		@include top-center;
-		left: -24px;
-		margin-top: 3px;
-	}
+    .ic-select-arr-down{
+      fill: #fff;
+    }
 
-	.hamburger.active .ic-pager-arr-left{
-		display: inline-block;
-	}
-
-	.select{
-		width: auto;
-		margin-right: 27px;
-
-		&__head{
-			height: rem(30px);
-			width: auto;
-			border: 0;
-			color: #fff;
-			padding: 0 15px 0 0;
-			line-height: rem(28px);
-		}
-
-		&__head::after{
-			content: '';
-			display: inline-block;
-			width: 100%;
-			height: 1px;
-			background: #fff;
-			position: absolute;
-			left: 0;
-			bottom: 4px;
-		}
-
-		.ic-select-arr-down{
-			fill: #fff;
-		}
-
-		&__head-arr{
-			width: 30px;
-			right: -10px;
-		}
-	}
+    &__head-arr{
+      width: 30px;
+      right: -10px;
+    }
+  }
 }
 
 .profile-popup{
-	min-width: 170px;
-	background: #fff;
-	border: 1px solid $color-light-grey;
-	border-radius: 4px;
-	box-shadow: -10px 9px 21px 0 rgba(128, 152, 213, 0.08);
-	position: absolute;
-	top: calc(100% + 14px);
-	right: 0;
-	z-index: 2;
+  display: none;
+  min-width: 170px;
+  background: #fff;
+  border: 1px solid $color-light-grey;
+  border-radius: 4px;
+  box-shadow: -10px 9px 21px 0 rgba(128, 152, 213, 0.08);
+  position: absolute;
+  top: calc(100% + 14px);
+  right: 0;
+  z-index: 2;
 
-	&.active{
-		display: inline-block;
-	}
+  &.active{
+    display: inline-block;
+  }
 
-	&__item{
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		padding: 2px 15px;
-		text-decoration: none;
-	}
+  &__item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2px 15px;
+    text-decoration: none;
+  }
 
-	&__item:hover{background: $color-soft-blue; text-decoration: none;}
+  &__item:hover{background: $color-soft-blue; text-decoration: none;}
 
-	&__item:first-child{
-		border-top-left-radius: 4px;
-		border-top-right-radius: 4px;
-	}
+  &__item:first-child{
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+  }
 
-	&__item:last-child{
-		border-bottom-left-radius: 4px;
-		border-bottom-right-radius: 4px;
-	}
- 
-	.icon{
-		width: 18px;
-		height: 18px;
-		vertical-align: middle;
-	}
+  &__item:last-child{
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+  }
 
-	&__text{
-		width: calc(100% - 30px);
-		@include font(normal, normal, rem(14px), 1.2, $color-dark-blue);
-	}
+  .icon{
+    width: 18px;
+    height: 18px;
+    vertical-align: middle;
+  }
+
+  &__text{
+    width: calc(100% - 30px);
+    @include font(normal, normal, rem(14px), 1.2, $color-dark-blue);
+  }
 }
 
 @media (max-width: 991px) {
-	.header{
-		&__info{justify-content: flex-end;}
-	}
+  .header{
+    &__info{justify-content: flex-end;}
+  }
 }
 
 @media (max-width: 767px) {
-	.header{
-		&__profile{margin-left: 25px;}
-
-		&__main::before, &__info::before{width: calc(100% + 15px);}
-	}
+  .header{
+    &__profile{margin-left: 25px;}
+  }
 }
 
 @media (max-width: 420px) {
-	.header{
-		&__main{justify-content: flex-start;}
-		.hamburger{margin: 0 10px 0 30px;}
-	}
+  .header{
+    .hamburger{margin: 0 10px 0 30px;}
+  }
 }

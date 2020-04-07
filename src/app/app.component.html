@@ -1,5 +1,5 @@
 <mdc-svg-loader ></mdc-svg-loader>
-<mdc-main-header logo="/assets/logo.jpg" organizationName="MDClone"></mdc-main-header>
+<!--<mdc-main-header logo="/assets/logo.jpg" organizationName="MDClone"></mdc-main-header>
 <div #appMenu [@openClose]="componentService.showSideMenu ? 'open' : 'closed'" class="main-nemu-container">
     <mdc-side-bar></mdc-side-bar>
 </div>
@@ -15,4 +15,14 @@
             </div>
         </td>
     </tr>
-</table>
+</table>-->
+
+
+<div class="wrapper" [ngClass]="{'open-sidebar': sideBarOpened}">
+  <mdc-top-panel></mdc-top-panel>
+  <main class="main">
+    <div class="content-page">
+      <router-outlet></router-outlet>
+    </div>
+  </main>
+</div>

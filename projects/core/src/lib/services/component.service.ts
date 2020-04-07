@@ -6,7 +6,7 @@ const SUB_MENU_SHOW = 'showSideMenu';
   providedIn: 'root'
 })
 export class ComponentService {
-
+  public onSideBarToggle: Subject<boolean> = new Subject<boolean>();
   set showSideMenu(showSideMenu: boolean) {
     localStorage.setItem(SUB_MENU_SHOW, showSideMenu.toString().toLowerCase());
   }
