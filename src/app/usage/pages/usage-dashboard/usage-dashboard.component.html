@@ -5,7 +5,7 @@
         <md-page-body>
             <md-usage-dashboard-top #usageTop [tabActive]="currentTab" [subItemActive]="currentSubTab"
                 (onSelect)="selectTab($event)"></md-usage-dashboard-top>
-            <md-usage-dashboard-info-panel></md-usage-dashboard-info-panel>
+            <md-usage-dashboard-info-panel (onChange)="onChangeInfoPanel($event)"></md-usage-dashboard-info-panel>
             <md-user-time-activity *ngIf="state.subTab===1" (onSelect)="changeCurrentAcitity($event)"
                 [current]="currentActivity" [buttons]="activityButtons"></md-user-time-activity>
             <md-usage-report *ngIf="state.subTab <= 0"></md-usage-report>

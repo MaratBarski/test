@@ -6,13 +6,18 @@
     position:absolute; 
     margin-top:20px;
     z-index: 2;
-    overflow: hidden;
-    width: auto;
+    display: block;
+    border-radius: 4px;
 }
-.admin-table-filter{
+.filter-main{
     display: flex;
     flex-direction:row-reverse;
+    float: right;
 }
 .modal-window{
     padding: 4px !important;
+}
+.admin-table-filter{
+    margin-top: 4px;
+    margin-left: 6px;
 }

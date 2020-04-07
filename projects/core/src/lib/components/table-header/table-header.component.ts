@@ -21,7 +21,8 @@ export class TableHeaderModel {
   csvTitle?: string;
   hidden?: boolean;
   showDetails?: boolean;
-  columnType?: ColumnType
+  columnType?: ColumnType;
+  css?: string;
 }
 
 @Component({
@@ -104,9 +105,9 @@ export class TableHeaderComponent extends BaseSibscriber {
     this.animationService.showElement(this);
     const h = this.filterPopup.nativeElement.offsetHeight
     this.renderer2.setStyle(this.filterPopup.nativeElement, 'height', '0px')
-    this.animationService.animateForward(
-      this.filterPopup.nativeElement, h, 'height', undefined, h / 10
-    )
+    // this.animationService.animateForward(
+    //   this.filterPopup.nativeElement, h, 'height', undefined, h / 10
+    // )
     this.isShowFilter = true;
     this.onFilter.emit({ header: this.model, event: event });
   }

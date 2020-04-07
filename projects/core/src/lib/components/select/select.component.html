@@ -1,4 +1,4 @@
-<div #combo [ngClass]="{'select_up':selectUp}" class="select" (blur)="blur()" tabindex="10">
+<div #combo [ngClass]="{'select_up':selectUp,'select_small':isSmall}" class="select" (blur)="blur()" tabindex="10">
     <div (click)="mouseClick($event);" class="select__head">
         <div #comboTextContainer class="select__icon-wrap">
             <mdc-icon *ngIf="selected?.icon" [path]="selected?.icon" class="icon"></mdc-icon>

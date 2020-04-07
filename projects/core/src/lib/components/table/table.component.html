@@ -1,7 +1,8 @@
 <table #tableObject mdcTable>
     <thead *ngIf="dataSource?.headers">
         <tr mdcTableHeader>
-            <th *ngFor="let header of dataSource.headers|visibleHeaders;let index = index" [mdcTableItem]="index">
+            <th class="admin-table__item {{header.css}}"
+                *ngFor="let header of dataSource.headers|visibleHeaders;let index = index" [mdcTableItem]="index">
                 <mdc-table-header *ngIf="!headersTemplate || !headersTemplate[header.columnId]" (onSort)="sort($event)"
                     (onApplyFilter)="onApplyFilter($event)" (onShowFilter)="onShowFilter()" (onFilter)="filter($event)"
                     [model]="header" [filterOptions]="filters[header.columnId]"></mdc-table-header>
@@ -9,7 +10,8 @@
                     [ngTemplateOutlet]="headersTemplate[header.columnId]"
                     [ngTemplateOutletContext]="{$implicit: header}"></ng-container>
             </th>
-            <th *ngIf="dataSource?.actions?.links?.length || dataSource?.actions?.subLinks?.length"></th>
+            <th class="admin-table__item admin-table__item_menu"
+                *ngIf="dataSource?.actions?.links?.length || dataSource?.actions?.subLinks?.length"></th>
         </tr>
     </thead>
     <tbody *ngIf="rows?.length">
@@ -32,16 +34,17 @@
                 (mouseleave)="rowMouseLeave($event,row,rowIndex)"
                 [ngClass]="{'active':row.isActive,'row-even':rowIndex%2===0}" mdcTableRow>
                 <ng-container *ngFor="let header of dataSource.headers|visibleHeaders;let index = index">
-                    <td [mdcTableItem]="index" (click)="showItemInfo(row,header,rowIndex,$event)">
+                    <td class="admin-table__item {{header.css}}" [mdcTableItem]="index"
+                        (click)="showItemInfo(row,header,rowIndex,$event)">
                         <!-- <div [ngClass]="{'row-details-container':header.showDetails}"> -->
-                            <mdc-text-block *ngIf="!cellsTemplate || !cellsTemplate[header.columnId]"
-                                [maxWidth]="header.maxWidth||500" text="{{row.cells[header.columnId]}}">
-                            </mdc-text-block>
-                            <ng-container *ngIf="cellsTemplate && cellsTemplate[header.columnId]"
-                                [ngTemplateOutlet]="cellsTemplate[header.columnId]"
-                                [ngTemplateOutletContext]="{$implicit: row.cells,source:row.source}">
-                            </ng-container>
-                            <!-- <div *ngIf="header.showDetails" [hidden]="currentOver!==row" class="more-link pointer">
+                        <mdc-text-block *ngIf="!cellsTemplate || !cellsTemplate[header.columnId]"
+                            [maxWidth]="header.maxWidth||500" text="{{row.cells[header.columnId]}}">
+                        </mdc-text-block>
+                        <ng-container *ngIf="cellsTemplate && cellsTemplate[header.columnId]"
+                            [ngTemplateOutlet]="cellsTemplate[header.columnId]"
+                            [ngTemplateOutletContext]="{$implicit: row.cells,source:row.source}">
+                        </ng-container>
+                        <!-- <div *ngIf="header.showDetails" [hidden]="currentOver!==row" class="more-link pointer">
                                 <div (click)="showItemInfo(row,header,rowIndex,$event)">
                                     Details
                                     <svg color="#0596FF" width="14" height="14" mdcSvg="ic-next-to-page">
@@ -51,7 +54,8 @@
                         </div> -->
                     </td>
                 </ng-container>
-                <td *ngIf="dataSource?.actions?.links?.length || dataSource?.actions?.subLinks?.length">
+                <td class="admin-table__item admin-table__item_menu"
+                    *ngIf="dataSource?.actions?.links?.length || dataSource?.actions?.subLinks?.length">
                     <span (click)="openLinkMenu(row,$event,rowIndex)" class="admin-table-action__menu ic-hover"
                         *ngIf="((dataSource.actions.subLinks|actionLink:row).length||(dataSource.actions.links|actionLink:row).length)">
                         <mdc-icon path="ic-dot-menu"></mdc-icon>

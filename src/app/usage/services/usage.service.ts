@@ -3,19 +3,25 @@ import { environment } from '@env/environment';
 import { Offline } from '@app/shared/decorators/offline.decorator';
 import { TableModel, ColumnType, DataService, DateService } from '@app/core-api';
 import { formatDate } from '@angular/common';
-import { Subject, Observable, BehaviorSubject } from 'rxjs';
+import { Observable, BehaviorSubject, of } from 'rxjs';
 
 export const GetDefaultState = (): UsageReportState => {
   return {
     tab: 0,
     subTab: -1,
-    activity: 0
+    activity: 0,
+    yearId: 0,
+    includeAdmin: false,
+    environment: ''
   }
 }
 export interface UsageReportState {
   tab: number;
   subTab: number;
   activity: number;
+  yearId: number;
+  includeAdmin: boolean;
+  environment: string;
 }
 export interface UsageReportParams {
   fromDate?: Date | string;
@@ -37,6 +43,12 @@ export class UsageService {
     private dateService: DateService,
     @Inject(LOCALE_ID) private locale: string
   ) {
+  }
+
+  getEnvironments(): Observable<Array<string>> {
+    return of(
+      ['adasdas', 'dsfsdfds',]
+    );
   }
 
   setState(state: UsageReportState): void {

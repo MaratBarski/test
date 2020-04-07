@@ -29,11 +29,11 @@ export class TableItemDirective implements AfterViewInit {
   @Input('mdcTableItem') index = 0;
   constructor(private ref: ViewContainerRef, private renderer: Renderer2) { }
   ngAfterViewInit(): void {
-    this.renderer.addClass(this.ref.element.nativeElement, 'admin-table__item');
-    if (this.index > 0) {
-      this.renderer.addClass(this.ref.element.nativeElement, 'd-none');
-      this.renderer.addClass(this.ref.element.nativeElement, 'd-md-table-cell');
-    }
+    // this.renderer.addClass(this.ref.element.nativeElement, 'admin-table__item');
+    // if (this.index > 0) {
+    //   this.renderer.addClass(this.ref.element.nativeElement, 'd-none');
+    //   this.renderer.addClass(this.ref.element.nativeElement, 'd-md-table-cell');
+    // }
   }
 }
 

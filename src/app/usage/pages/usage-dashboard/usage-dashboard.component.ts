@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavigationService, PageInfo, BaseSibscriber, TabItemModel } from '@app/core-api';
 import { UsageService, UsageReportParams, UsageReportState, GetDefaultState } from '@app/usage/services/usage.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { InfoPanel } from '@app/usage/components/usage-dashboard-info-panel/usage-dashboard-info-panel.component';
 
 @Component({
   selector: 'md-usage-dashboard',
@@ -59,6 +60,13 @@ export class UsageDashboardComponent extends BaseSibscriber {
   changeCurrentAcitity(i: number): void {
     this.currentActivity = i;
     this.state.activity = i;
+    this.reload();
+  }
+
+  onChangeInfoPanel(infoPanel: InfoPanel): void {
+    this.state.yearId = infoPanel.currentYear;
+    this.state.includeAdmin = infoPanel.includeAdmin;
+    this.state.environment = infoPanel.environment;
     this.reload();
   }
 

@@ -71,46 +71,54 @@ export class ImportedFilesService {
           text: 'Name',
           isSortEnabled: true,
           csvTitle: 'File Name',
-          showDetails: false
+          showDetails: false,
+          css: 'w-xxl-8 w-md-6'
         },
         {
           columnId: 'insertDate',
           text: 'Loaded',
-          isSortEnabled: true
+          isSortEnabled: true,
+          css: 'd-none d-md-table-cell'
         },
         {
           columnId: 'environment',
           text: 'Environment',
           isSortEnabled: true,
           filter: true,
-          csvTitle: 'Environment'
+          csvTitle: 'Environment',
+          css: 'd-none d-md-table-cell w-md-3'
         },
         {
           columnId: 'permission',
           text: 'Permission Group',
           isSortEnabled: true,
-          filter: true
+          filter: true,
+          css: 'd-none d-lg-table-cell w-md-3'
         },
         {
           columnId: 'user',
           text: 'User',
           isSortEnabled: true,
-          filter: true
+          filter: true,
+          css: 'd-none d-xxl-table-cell'
         },
         {
           columnId: 'shared',
           text: 'Shared',
-          isSortEnabled: false
+          isSortEnabled: false,
+          css: 'd-none d-md-table-cell admin-table__item_center'
         },
         {
           columnId: 'columns',
           text: 'Columns',
-          isSortEnabled: true
+          isSortEnabled: true,
+          css: 'd-none d-xxl-table-cell admin-table__item_right'
         },
         {
           columnId: 'rows',
           text: 'Rows',
-          isSortEnabled: true
+          isSortEnabled: true,
+          css: 'd-none d-xxl-table-cell admin-table__item_right'
         }
       ],
       rows: []
