@@ -3,7 +3,7 @@ import { TableModel } from '../components/table/table.component';
 
 export interface CsvData {
   headers: Array<string>;
-  data: Array<Array<any>>;
+  data?: Array<Array<any>>;
 }
 @Injectable({
   providedIn: 'root'
@@ -45,6 +45,40 @@ export class CsvManagerService {
     setTimeout(() => {
       document.body.removeChild(link);
     }, 100);
+  }
+
+  readHeaders(file: any): Promise<Array<string>> {
+    const reader = new FileReader();
+    return new Promise((resolve, reject) => {
+      reader.onload = function () {
+        try {
+          const headers = reader.result.toString()
+            .split('\n')[0]
+            .split(',')
+            .map(x => {
+              return x.trim().replace(/"/g, '')
+            }).filter(x => x !== '');
+          resolve(headers);
+        } catch (e) {
+          reject(e);
+        }
+      };
+      try {
+        reader.readAsText(file);
+      } catch (e) {
+        reject(e);
+      }
+    });
+  }
+
+  validate(file: any): Promise<boolean> {
+    return new Promise<boolean>((resolve, reject) => {
+      this.readHeaders(file).then(headers => {
+        resolve(headers && headers.length > 0);
+      }).catch(e => {
+        resolve(false);
+      });
+    });
   }
 }
 

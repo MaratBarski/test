@@ -30,7 +30,7 @@ export class ComponentService {
 
   toggleMenu(): void {
     setTimeout(() => {
-      document.body.style.overflow = 'visible';
+      ComponentService.hideScroll(false);
     }, 500);
     this._onToggleMenu.next(this.showSideMenu);
   }
@@ -66,5 +66,13 @@ export class ComponentService {
     return element.nativeElement ?
       element.nativeElement.getBoundingClientRect() :
       element.getBoundingClientRect();
+  }
+
+  static documentClick(): void {
+    document.dispatchEvent(new Event('click'));
+  }
+
+  static hideScroll(hide: boolean): void {
+    document.body.style.overflow = hide ? 'hidden' : 'visible'
   }
 }

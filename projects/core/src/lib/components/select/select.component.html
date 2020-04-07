@@ -1,6 +1,6 @@
 <div #combo [ngClass]="{'select_up':selectUp}" class="select" (blur)="blur()" tabindex="10">
     <div (click)="mouseClick($event);" class="select__head">
-        <div class="select__icon-wrap">
+        <div #comboTextContainer class="select__icon-wrap">
             <mdc-icon *ngIf="selected?.icon" [path]="selected?.icon" class="icon"></mdc-icon>
             <span class="select__head-text">{{selected?.text}}</span>
         </div>
@@ -8,13 +8,15 @@
             <mdc-icon path="ic-select-arr-down"></mdc-icon>
         </div>
     </div>
-    <div [hidden]="!isExpanded" [style.maxHeight]="maxHeight" *ngIf="options" class="select__option">
-        <div [ngClass]="{'active':option==selected}" (click)="select(option)" *ngFor="let option of options"
-            class="select__param">
-            <div class="select__icon-wrap">
-                <mdc-icon *ngIf="option.icon" [path]="option.icon" class="icon"></mdc-icon>
-                {{option.text}}
+    <div #optionsContainer [mdcVisibility]="isExpanded" [style.maxHeight]="maxHeight" class="select__option">
+        <ng-template [ngIf]="options">
+            <div [ngClass]="{'active':option==selected}" (click)="select(option)" *ngFor="let option of options"
+                class="select__param">
+                <div class="select__icon-wrap">
+                    <mdc-icon *ngIf="option.icon" [path]="option.icon" class="icon"></mdc-icon>
+                    {{option.text}}
+                </div>
             </div>
-        </div>
+        </ng-template>
     </div>
 </div>

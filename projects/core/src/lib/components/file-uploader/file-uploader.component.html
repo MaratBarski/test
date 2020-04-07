@@ -1,0 +1,23 @@
+<div class="form-site__item">
+    <div class="form-site__label">{{topTitle}}</div>
+    <div class="file-upload">
+        <label class="file-upload__content">
+            <input #fileInput (change)="updateFileName($event)" type="file" accept="{{accept}}">
+            <span class="file-upload__btn">{{buttonText}}</span><span class="file-upload__name disable">
+                <ng-template [ngIf]="!selectedFileName">
+                    {{selectFileText}}
+                </ng-template>
+                <ng-template [ngIf]="selectedFileName">
+                    <div class="file-name">{{selectedFileName|fileName}}</div>
+                </ng-template>
+            </span>
+        </label>
+    </div>
+    <div *ngIf="isFileError" class="form-site-alert">
+        <div class="form-site-alert__icon">
+            <svg class="icon ic-failure" mdcSvg="ic-failure"></svg>
+        </div><span class="form-site-alert__text">
+            {{errorText}}
+        </span>
+    </div>
+</div>

@@ -43,8 +43,12 @@ export class ImportedFilesService {
           {
             text: 'Edit File Settings',
             icon: 'ic-edit',
-            command: 'edit',
-            disable: true
+            command: 'edit'
+            // ,hidden: (source) => {
+            //   if (!source.projectObj) { return false; }
+            //   return source.projectObj.projectName === 'ETL project';
+            // },
+            // disable: false
           },
           {
             text: 'View output summary',
@@ -108,11 +112,6 @@ export class ImportedFilesService {
           text: 'Rows',
           isSortEnabled: true
         }
-        //, {
-        //   columnId: 'editColumn',
-        //   text: '',
-        //   isSortEnabled: false
-        // }
       ],
       rows: []
     }

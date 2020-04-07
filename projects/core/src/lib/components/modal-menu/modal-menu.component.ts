@@ -1,13 +1,13 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, AfterViewInit } from '@angular/core';
 
 export class MenuLink {
   text: string;
   icon?: string;
-  disable?: boolean;
+  command?: string;
   click?: any;
   source?: any;
-  command?: string;
-  hidden?: boolean;
+  hidden?: boolean | any;
+  disable?: boolean | any;
 }
 
 @Component({
@@ -15,15 +15,21 @@ export class MenuLink {
   templateUrl: './modal-menu.component.html',
   styleUrls: ['./modal-menu.component.css']
 })
-export class ModalMenuComponent {
+export class ModalMenuComponent implements AfterViewInit {
 
   @Output() onCommand = new EventEmitter<string>();
+  @Output() onInit = new EventEmitter<ModalMenuComponent>();
   @Input() links: Array<MenuLink>;
   @Input() sublinks: Array<MenuLink>;
+  @Input() componentID: string;
 
   exec(link: MenuLink, event: any): void {
     if (!link.command) { return; }
     if (link.disable) { return; }
     this.onCommand.emit(link.command);
+  }
+
+  ngAfterViewInit(): void {
+    this.onInit.emit(this);
   }
 }

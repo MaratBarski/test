@@ -32,3 +32,7 @@ export class FileSource {
      rowsNum?: number;
      columnsNum?: number;
 }
+
+export class FileClm {
+
+}

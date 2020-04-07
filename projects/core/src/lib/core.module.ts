@@ -57,6 +57,9 @@ import { ImageComponent } from './components/image/image.component';
 import { RowInfoComponent } from './components/row-info/row-info.component';
 import { DateFilterComponent } from './components/date-filter/date-filter.component';
 import { ActionLinkPipe } from './pipes/action-link.pipe';
+import { SvgDirective } from './directives/svg.directive';
+import {ProgressMatchComponent} from './components/progress-match/progress-match.component';
+import { FileUploaderComponent } from './components/file-uploader/file-uploader.component';
 
 // import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 
@@ -112,7 +115,10 @@ import { ActionLinkPipe } from './pipes/action-link.pipe';
     ImageComponent,
     RowInfoComponent,
     DateFilterComponent,
-    ActionLinkPipe
+    ActionLinkPipe,
+    SvgDirective,
+    ProgressMatchComponent,
+    FileUploaderComponent
   ],
   imports: [
     CommonModule,
@@ -173,7 +179,10 @@ import { ActionLinkPipe } from './pipes/action-link.pipe';
     ImageComponent,
     RowInfoComponent,
     DateFilterComponent,
-    ActionLinkPipe
+    ActionLinkPipe,
+    SvgDirective,
+    ProgressMatchComponent,
+    FileUploaderComponent
   ],
   entryComponents: [
     TableHeaderComponent

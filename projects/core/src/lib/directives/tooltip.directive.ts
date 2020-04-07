@@ -1,4 +1,4 @@
-import { Directive, Input, ElementRef, HostListener, Renderer2, OnInit } from '@angular/core';
+import { Directive, Input, ElementRef, HostListener, Renderer2, OnInit, OnDestroy } from '@angular/core';
 import { ComponentService } from '../services/component.service';
 
 const CLASS_NAME = 'tooltipnew';
@@ -8,7 +8,7 @@ export type TooltipPosition = 'left' | 'right' | 'top' | 'bottom';
 @Directive({
   selector: '[mdcTooltip]'
 })
-export class TooltipDirective implements OnInit {
+export class TooltipDirective implements OnInit, OnDestroy {
 
   @Input('mdcTooltip') text: string;
   @Input('stickyToElement') stickyToElement = false;
@@ -32,6 +32,12 @@ export class TooltipDirective implements OnInit {
     this.createTooltip();
   }
 
+  ngOnDestroy(): void {
+    if (this.tooltipElement) {
+      this.renderer.removeChild(this.tooltipElement.parentNode, this.tooltipElement);
+    }
+  }
+
   private tooltipElement: any;
   private get rect(): any { return ComponentService.getRect(this.element); }
   private get tooltipRect(): any { return ComponentService.getRect(this.tooltipElement); }
@@ -44,28 +50,28 @@ export class TooltipDirective implements OnInit {
   private initPosition = {
     right: (event: any) => {
       if (this.stickyToElement) {
-        this.setOffset(this.rect.left + this.rect.width, this.rect.top + (this.rect.height - this.tooltipRect.height) / 2);
+        this.setOffset(this.rect.left + this.rect.width, this.rect.top + (this.rect.height - this.tooltipRect.height) / 2 - 4);
       } else {
         this.setOffset(event.clientX + this.dx, event.clientY - this.tooltipRect.height / 2);
       }
     },
     left: (event: any) => {
       if (this.stickyToElement) {
-        this.setOffset(this.rect.left - this.tooltipRect.width - this.dx / 2, this.rect.top + (this.rect.height - this.tooltipRect.height) / 2);
+        this.setOffset(this.rect.left - this.tooltipRect.width - 9, this.rect.top + (this.rect.height - this.tooltipRect.height) / 2 - 4);
       } else {
         this.setOffset(event.clientX - this.tooltipRect.width - this.dx, event.clientY - this.tooltipRect.height / 2);
       }
     },
     top: (event: any) => {
       if (this.stickyToElement) {
-        this.setOffset(this.rect.left + this.rect.width / 2, this.rect.top - this.tooltipRect.height);
+        this.setOffset(this.rect.left + this.rect.width / 2 - 20, this.rect.top - this.tooltipRect.height - 9);
       } else {
         this.setOffset(event.clientX - this.dx, event.clientY - this.tooltipRect.height - this.dy);
       }
     },
     bottom: (event: any) => {
       if (this.stickyToElement) {
-        this.setOffset(this.rect.left + this.rect.width / 2, this.rect.top + this.rect.height);
+        this.setOffset(this.rect.left + this.rect.width / 2 - 20, this.rect.top + this.rect.height + 1);
       } else {
         this.setOffset(event.clientX - this.dx, event.clientY + this.dy);
       }

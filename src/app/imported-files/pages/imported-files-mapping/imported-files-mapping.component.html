@@ -1,832 +1,870 @@
 <div class="wrapper">
-    <main>
-        <div class="content-page">
-            <div class="file-mapping">
-                <section class="page-header">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="page-header__wrap">
-                                    <div class="page-header__content">
-                                        <div class="page-header__back"><span class="ic-hover">
-                                                <svg class="icon ic-back-to-page">
-                                                    <use xlink:href="/assets/sprites/sprite.svg#ic-back-to-page"></use>
-                                                </svg></span><span class="tooltip tooltip_top"><span class="tooltip__content">Back to Imported Files</span></span></div>
-                                        <h1>File Mapping</h1>
-                                        <div class="page-header__text" contenteditable="true">CKD Patients with cost, diabetes and medications</div>
-                                    </div>
-                                    <div class="notice">
-                                        <div class="notice__icon">
-                                            <svg class="icon ic-bulb">
-                                                <use xlink:href="/assets/sprites/sprite.svg#ic-bulb"></use>
-                                            </svg>
-                                        </div>
-                                        <div class="notice-popup">
-                                            <div class="notice-popup__text">Define which fields to import, their data type, and relevant available hierarchies.<span class="notice-popup__more">Show more</span></div>
-                                            <div class="notice-popup__content">
-                                                <div class="notice-popup__head">Legend</div>
-                                                <div class="notice-popup-info">
-                                                    <div class="notice-popup-info__col">
-                                                        <div class="notice-popup-info__item">
-                                                            <div class="notice-popup-info__val notice-popup-info__val_big">
-                                                                <div class="progress">
-                                                                    <div class="progress__bg"></div>
-                                                                    <div class="progress__text">0%</div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="notice-popup-info__text">0% Match</div>
-                                                        </div>
-                                                        <div class="notice-popup-info__item">
-                                                            <div class="notice-popup-info__val notice-popup-info__val_big">
-                                                                <div class="progress progress_red">
-                                                                    <div class="progress__bg" style="width: 25%"></div>
-                                                                    <div class="progress__text">25%</div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="notice-popup-info__text">1%-49% Match</div>
-                                                        </div>
-                                                        <div class="notice-popup-info__item">
-                                                            <div class="notice-popup-info__val notice-popup-info__val_big">
-                                                                <div class="progress progress_yellow">
-                                                                    <div class="progress__bg" style="width: 50%"></div>
-                                                                    <div class="progress__text">50%</div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="notice-popup-info__text">50-74% Match</div>
-                                                        </div>
-                                                        <div class="notice-popup-info__item">
-                                                            <div class="notice-popup-info__val notice-popup-info__val_big">
-                                                                <div class="progress progress_green">
-                                                                    <div class="progress__bg" style="width: 75%"></div>
-                                                                    <div class="progress__text">75%</div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="notice-popup-info__text">75-100% Match</div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="notice-popup-info__col">
-                                                        <div class="notice-popup-info__item">
-                                                            <div class="notice-popup-info__val">
-                                                                <svg class="icon ic-numeric">
-                                                                    <use xlink:href="/assets/sprites/sprite.svg#ic-numeric"></use>
-                                                                </svg>
-                                                            </div>
-                                                            <div class="notice-popup-info__text">Numeric</div>
-                                                        </div>
-                                                        <div class="notice-popup-info__item">
-                                                            <div class="notice-popup-info__val">
-                                                                <svg class="icon ic-textual">
-                                                                    <use xlink:href="/assets/sprites/sprite.svg#ic-textual"></use>
-                                                                </svg>
-                                                            </div>
-                                                            <div class="notice-popup-info__text">String</div>
-                                                        </div>
-                                                        <div class="notice-popup-info__item">
-                                                            <div class="notice-popup-info__val">
-                                                                <svg class="icon ic-calendar">
-                                                                    <use xlink:href="/assets/sprites/sprite.svg#ic-calendar"></use>
-                                                                </svg>
-                                                            </div>
-                                                            <div class="notice-popup-info__text">Date</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="notice-popup__footer">
-                                                <div class="notice-popup-link"><a class="notice-popup-link__item" href="#"><span class="notice-popup-link__text">View tutorials</span>
-                                                        <svg class="icon ic-view-tutorials">
-                                                            <use xlink:href="/assets/sprites/sprite.svg#ic-view-tutorials"></use>
-                                                        </svg></a><a class="notice-popup-link__item" href="#"><span class="notice-popup-link__text">Additional help</span>
-                                                        <svg class="icon ic-add-help">
-                                                            <use xlink:href="/assets/sprites/sprite.svg#ic-add-help"></use>
-                                                        </svg></a><a class="notice-popup-link__item" href="#"><span class="notice-popup-link__text">Live help</span>
-                                                        <svg class="icon ic-live-help">
-                                                            <use xlink:href="/assets/sprites/sprite.svg#ic-live-help"></use>
-                                                        </svg></a></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+  <main>
+    <div class="content-page">
+      <div class="file-mapping">
+        <section class="page-header">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-12">
+                <div class="page-header__wrap">
+                  <div class="page-header__content">
+                    <div class="page-header__back">
+                      <span class="ic-hover" [routerLink]="'/imported-files'">
+                             <mdc-icon [css]="'icon ic-back-to-page'" [path]="'ic-back-to-page'"></mdc-icon>
+                      </span>
+                      <span class="tooltip tooltip_top">
+                        <span class="tooltip__content">Back to Imported Files</span>
+                      </span>
                     </div>
-                </section>
-                <section class="info-panel-wrap">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="info-panel">
-                                    <div class="info-panel__item">
-                                        <div class="info-panel__title">Environment:</div>
-                                        <div class="info-panel__val">Sheba Central</div>
-                                    </div>
-                                    <div class="info-panel__item">
-                                        <div class="info-panel__val">
-                                            <div class="info-panel__shared">Shared
-                                                <svg class="icon ic-shared">
-                                                    <use xlink:href="/assets/sprites/sprite.svg#ic-shared"></use>
-                                                </svg>
-                                                <div class="info-popup">
-                                                    <form class="form-site">
-                                                        <div class="info-popup__top">
-                                                            <div class="info-popup__head-wrap"><span class="info-popup__head">File Sharing</span></div>
-                                                            <div class="info-popup__close">
-                                                                <svg class="icon ic-close-circle">
-                                                                    <use xlink:href="/assets/sprites/sprite.svg#ic-close-circle"></use>
-                                                                </svg>
-                                                            </div>
-                                                        </div>
-                                                        <div class="info-popup__content">
-                                                            <div class="info-popup-switch">
-                                                                <div class="info-popup-switch__content">
-                                                                    <div class="info-popup-switch__text-wrap">
-                                                                        <div class="info-popup-switch__title">File is not shared.</div>
-                                                                        <div class="info-popup-switch__text">When a file is shared everyone can see and use it.</div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="switch">
-                                                                    <input type="checkbox" id="switch10">
-                                                                    <label class="switch__content" for="switch10">
-                                                                        <div class="switch__marker"></div>
-                                                                        <div class="switch__on">Yes</div>
-                                                                        <div class="switch__off">No</div>
-                                                                    </label>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="info-popup__btn"><a class="btn btn_border btn_small" href="#">Cancel</a>
-                                                            <input class="btn btn_small" type="submit" value="Apply">
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="info-panel__item">
-                                        <div class="info-panel__title">Template:</div>
-                                        <div class="info-panel__val">
-                                            <div class="select select_small">
-                                                <div class="select__head">Please Select...
-                                                    <div class="select__head-arr">
-                                                        <svg class="icon ic-select-arr-down">
-                                                            <use xlink:href="/assets/sprites/sprite.svg#ic-select-arr-down"></use>
-                                                        </svg>
-                                                    </div>
-                                                </div>
-                                                <div class="select__option">
-                                                    <div class="select__param">Template 1</div>
-                                                    <div class="select__param">Template 2</div>
-                                                    <div class="select__param">Template 3</div>
-                                                    <div class="select__param">Template 4</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="info-panel__item">
-                                        <div class="info-panel__title">Modified:</div>
-                                        <div class="info-panel__val">Jul 9, 2019</div>
-                                    </div>
-                                    <div class="info-panel__item info-panel__item_no-indent">
-                                        <div class="info-panel__title">Columns:</div>
-                                        <div class="info-panel__val">34</div>
-                                    </div>
-                                    <div class="info-panel__item">
-                                        <div class="info-panel__title">Rows:</div>
-                                        <div class="info-panel__val">12,456</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <h1>File Mapping</h1>
+                    <div class="page-header__text" contenteditable="true">
+                      CKD Patients with cost, diabetes and medications
                     </div>
-                </section>
-                <section class="admin-table-wrap">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="admin-table-wrap__action">
-                                    <div class="admin-table-wrap__col"></div>
-                                    <div class="admin-table-wrap__col">
-                                        <form class="form-search d-none d-md-block">
-                                            <input type="text" placeholder="Search…">
-                                            <button type="submit">
-                                                <svg class="icon ic-search">
-                                                    <use xlink:href="/assets/sprites/sprite.svg#ic-search"></use>
-                                                </svg>
-                                            </button><span class="form-search__close">
+                  </div>
+                  <div class="notice">
+                    <div class="notice__icon">
+                      <mdc-icon [path]="'ic-bulb'" [css]="'icon ic-bulb'"></mdc-icon>
+                    </div>
+                    <div class="notice-popup">
+                      <div class="notice-popup__text">Define which fields to import, their data type, and relevant
+                        available hierarchies.<span class="notice-popup__more">Show more</span></div>
+                      <div class="notice-popup__content">
+                        <div class="notice-popup__head">Legend</div>
+                        <div class="notice-popup-info">
+                          <div class="notice-popup-info__col">
+                            <div class="notice-popup-info__item">
+                              <div class="notice-popup-info__val notice-popup-info__val_big">
+                                <div class="progress">
+                                  <div class="progress__bg"></div>
+                                  <div class="progress__text">0%</div>
+                                </div>
+                              </div>
+                              <div class="notice-popup-info__text">0% Match</div>
+                            </div>
+                            <div class="notice-popup-info__item">
+                              <div class="notice-popup-info__val notice-popup-info__val_big">
+                                <div class="progress progress_red">
+                                  <div class="progress__bg" style="width: 25%"></div>
+                                  <div class="progress__text">25%</div>
+                                </div>
+                              </div>
+                              <div class="notice-popup-info__text">1%-49% Match</div>
+                            </div>
+                            <div class="notice-popup-info__item">
+                              <div class="notice-popup-info__val notice-popup-info__val_big">
+                                <div class="progress progress_yellow">
+                                  <div class="progress__bg" style="width: 50%"></div>
+                                  <div class="progress__text">50%</div>
+                                </div>
+                              </div>
+                              <div class="notice-popup-info__text">50-74% Match</div>
+                            </div>
+                            <div class="notice-popup-info__item">
+                              <div class="notice-popup-info__val notice-popup-info__val_big">
+                                <div class="progress progress_green">
+                                  <div class="progress__bg" style="width: 75%"></div>
+                                  <div class="progress__text">75%</div>
+                                </div>
+                              </div>
+                              <div class="notice-popup-info__text">75-100% Match</div>
+                            </div>
+                          </div>
+                          <div class="notice-popup-info__col">
+                            <div class="notice-popup-info__item">
+                              <div class="notice-popup-info__val">
+                                <svg class="icon ic-numeric">
+                                  <use xlink:href="/assets/sprites/sprite.svg#ic-numeric"></use>
+                                </svg>
+                              </div>
+                              <div class="notice-popup-info__text">Numeric</div>
+                            </div>
+                            <div class="notice-popup-info__item">
+                              <div class="notice-popup-info__val">
+                                <svg class="icon ic-textual">
+                                  <use xlink:href="/assets/sprites/sprite.svg#ic-textual"></use>
+                                </svg>
+                              </div>
+                              <div class="notice-popup-info__text">String</div>
+                            </div>
+                            <div class="notice-popup-info__item">
+                              <div class="notice-popup-info__val">
+                                <svg class="icon ic-calendar">
+                                  <use xlink:href="/assets/sprites/sprite.svg#ic-calendar"></use>
+                                </svg>
+                              </div>
+                              <div class="notice-popup-info__text">Date</div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="notice-popup__footer">
+                        <div class="notice-popup-link"><a class="notice-popup-link__item" href="#"><span
+                          class="notice-popup-link__text">View tutorials</span>
+                          <svg class="icon ic-view-tutorials">
+                            <use xlink:href="/assets/sprites/sprite.svg#ic-view-tutorials"></use>
+                          </svg>
+                        </a><a class="notice-popup-link__item" href="#"><span class="notice-popup-link__text">Additional help</span>
+                          <svg class="icon ic-add-help">
+                            <use xlink:href="/assets/sprites/sprite.svg#ic-add-help"></use>
+                          </svg>
+                        </a><a class="notice-popup-link__item" href="#"><span
+                          class="notice-popup-link__text">Live help</span>
+                          <svg class="icon ic-live-help">
+                            <use xlink:href="/assets/sprites/sprite.svg#ic-live-help"></use>
+                          </svg>
+                        </a></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="info-panel-wrap">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-12">
+                <div class="info-panel">
+                  <div class="info-panel__item">
+                    <div class="info-panel__title">Environment:</div>
+                    <div class="info-panel__val">Sheba Central</div>
+                  </div>
+                  <div class="info-panel__item">
+                    <div class="info-panel__val">
+                      <div class="info-panel__shared">Shared
+                        <mdc-icon [path]="'ic-shared'" [css]="'icon ic-shared'"></mdc-icon>
+
+                        <div class="info-popup">
+                          <form class="form-site">
+                            <div class="info-popup__top">
+                              <div class="info-popup__head-wrap"><span class="info-popup__head">File Sharing</span>
+                              </div>
+                              <div class="info-popup__close">
+                                <mdc-icon [path]="'ic-close-circle'" [css]="'icon ic-close-circle'"></mdc-icon>
+                              </div>
+                            </div>
+                            <div class="info-popup__content">
+                              <div class="info-popup-switch">
+                                <div class="info-popup-switch__content">
+                                  <div class="info-popup-switch__text-wrap">
+                                    <div class="info-popup-switch__title">File is not shared.</div>
+                                    <div class="info-popup-switch__text">When a file is shared everyone can see and use
+                                      it.
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="switch">
+                                  <input type="checkbox" id="switch10">
+                                  <label class="switch__content" for="switch10">
+                                    <div class="switch__marker"></div>
+                                    <div class="switch__on">Yes</div>
+                                    <div class="switch__off">No</div>
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="info-popup__btn"><a class="btn btn_border btn_small" href="#">Cancel</a>
+                              <input class="btn btn_small" type="submit" value="Apply">
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="info-panel__item">
+                    <div class="info-panel__title">Template:</div>
+                    <div class="info-panel__val">
+                      <div class="select select_small">
+                        <div class="select__head">Please Select...
+                          <div class="select__head-arr">
+                            <svg class="icon ic-select-arr-down">
+                              <use xlink:href="/assets/sprites/sprite.svg#ic-select-arr-down"></use>
+                            </svg>
+                          </div>
+                        </div>
+                        <div class="select__option">
+                          <div class="select__param">Template 1</div>
+                          <div class="select__param">Template 2</div>
+                          <div class="select__param">Template 3</div>
+                          <div class="select__param">Template 4</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="info-panel__item">
+                    <div class="info-panel__title">Modified:</div>
+                    <div class="info-panel__val">Jul 9, 2019</div>
+                  </div>
+                  <div class="info-panel__item info-panel__item_no-indent">
+                    <div class="info-panel__title">Columns:</div>
+                    <div class="info-panel__val">34</div>
+                  </div>
+                  <div class="info-panel__item">
+                    <div class="info-panel__title">Rows:</div>
+                    <div class="info-panel__val">12,456</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="admin-table-wrap">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-12">
+                <div class="admin-table-wrap__action">
+                  <div class="admin-table-wrap__col"></div>
+                  <div class="admin-table-wrap__col">
+                    <form class="form-search d-none d-md-block">
+                      <input type="text" placeholder="Search…">
+                      <button type="submit">
+                        <svg class="icon ic-search">
+                          <use xlink:href="/assets/sprites/sprite.svg#ic-search"></use>
+                        </svg>
+                      </button>
+                      <span class="form-search__close">
                                                 <svg class="icon ic-close-small">
                                                     <use xlink:href="/assets/sprites/sprite.svg#ic-close-small"></use>
                                                 </svg></span>
-                                        </form>
-                                    </div>
-                                </div>
-                                <table class="admin-table admin-table_white">
-                                    <thead>
-                                        <tr class="admin-table__head">
-                                            <th class="admin-table__item d-none d-md-table-cell admin-table__item_check">
-                                                <div class="input-check">
-                                                    <input id="paramall" type="checkbox" name="paramall">
-                                                    <label class="input-check__label" for="paramall"><span class="input-check__mark">
+                    </form>
+                  </div>
+                </div>
+                <table class="admin-table admin-table_white">
+                  <thead>
+                  <tr class="admin-table__head">
+                    <th class="admin-table__item d-none d-md-table-cell admin-table__item_check">
+                      <div class="input-check">
+                        <input id="paramall" type="checkbox" name="paramall">
+                        <label class="input-check__label" for="paramall"><span class="input-check__mark">
                                                             <svg class="icon ic-check">
-                                                                <use xlink:href="/assets/sprites/sprite.svg#ic-check"></use>
+                                                                <use
+                                                                  xlink:href="/assets/sprites/sprite.svg#ic-check"></use>
                                                             </svg></span></label>
-                                                </div>
-                                            </th>
-                                            <th class="admin-table__item admin-table__item_name-edit"><span class="admin-table__sort"><span class="admin-table__sort-up"></span><span class="admin-table__sort-down"></span></span>Column Name</th>
-                                            <th class="admin-table__item admin-table__item_center d-none d-md-table-cell"><span class="admin-table__sort"><span class="admin-table__sort-up"></span><span class="admin-table__sort-down"></span></span>Data Type
-                                                <div class="admin-table-filter">
-                                                    <div class="admin-table-filter__icon"><span class="ic-hover">
+                      </div>
+                    </th>
+                    <th class="admin-table__item admin-table__item_name-edit"><span class="admin-table__sort"><span
+                      class="admin-table__sort-up"></span><span class="admin-table__sort-down"></span></span>Column Name
+                    </th>
+                    <th class="admin-table__item admin-table__item_center d-none d-md-table-cell"><span
+                      class="admin-table__sort"><span class="admin-table__sort-up"></span><span
+                      class="admin-table__sort-down"></span></span>Data Type
+                      <div class="admin-table-filter">
+                        <div class="admin-table-filter__icon"><span class="ic-hover">
                                                             <svg class="icon ic-filter ic-stroke">
-                                                                <use xlink:href="/assets/sprites/sprite.svg#ic-filter"></use>
+                                                                <use
+                                                                  xlink:href="/assets/sprites/sprite.svg#ic-filter"></use>
                                                             </svg></span></div>
-                                                    <div class="admin-table-filter__popup">
-                                                        <form>
-                                                            <div class="admin-table-filter__top">
-                                                                <div class="input-check">
-                                                                    <input id="paramAll" type="checkbox" name="paramAll">
-                                                                    <label class="input-check__label" for="paramAll"><span class="input-check__mark">
+                        <div class="admin-table-filter__popup">
+                          <form>
+                            <div class="admin-table-filter__top">
+                              <div class="input-check">
+                                <input id="paramAll" type="checkbox" name="paramAll">
+                                <label class="input-check__label" for="paramAll"><span class="input-check__mark">
                                                                             <svg class="icon ic-check">
-                                                                                <use xlink:href="/assets/sprites/sprite.svg#ic-check"></use>
-                                                                            </svg></span><span class="input-check__text">Select All</span></label>
-                                                                </div><a class="admin-table-filter__clear" href="#">Clear</a>
-                                                            </div>
-                                                            <div class="admin-table-filter__params">
-                                                                <div class="input-check">
-                                                                    <input id="param1" type="checkbox" name="param1">
-                                                                    <label class="input-check__label" for="param1"><span class="input-check__mark">
-                                                                            <svg class="icon ic-check">
-                                                                                <use xlink:href="/assets/sprites/sprite.svg#ic-check"></use>
-                                                                            </svg></span><span class="input-check__text"># - Numeric</span></label>
-                                                                </div>
-                                                                <div class="input-check">
-                                                                    <input id="param2" type="checkbox" name="param2" checked="checked">
-                                                                    <label class="input-check__label" for="param2"><span class="input-check__mark">
-                                                                            <svg class="icon ic-check">
-                                                                                <use xlink:href="/assets/sprites/sprite.svg#ic-check"></use>
-                                                                            </svg></span><span class="input-check__text">A - String</span></label>
-                                                                </div>
-                                                                <div class="input-check">
-                                                                    <input id="param3" type="checkbox" name="param3">
-                                                                    <label class="input-check__label" for="param3"><span class="input-check__mark">
-                                                                            <svg class="icon ic-check">
-                                                                                <use xlink:href="/assets/sprites/sprite.svg#ic-check"></use>
-                                                                            </svg></span><span class="input-check__text">D - Date</span></label>
-                                                                </div>
-                                                            </div>
-                                                            <div class="admin-table-filter__btn"><a class="btn btn_border btn_small" href="#">Cancel</a>
-                                                                <input class="btn btn_small" type="submit" value="Apply">
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </th>
-                                            <th class="admin-table__item d-none d-md-table-cell admin-table__item_select">Associated Hierarchy<span class="admin-table__option">Optional</span></th>
-                                            <th class="admin-table__item admin-table__item_center d-none d-md-table-cell">% Match</th>
-                                            <th class="admin-table__item d-none d-lg-table-cell admin-table__item_data-sample">Data Sample</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr class="admin-table__row">
-                                            <td class="admin-table__item d-none d-md-table-cell">
-                                                <div class="input-check">
-                                                    <input type="checkbox" name="param01" id="param01">
-                                                    <label class="input-check__label" for="param01"><span class="input-check__mark">
-                                                            <svg class="icon ic-check">
-                                                                <use xlink:href="/assets/sprites/sprite.svg#ic-check"></use>
-                                                            </svg></span></label>
-                                                </div>
-                                            </td>
-                                            <td class="admin-table__item">
-                                                <div class="admin-table__name-edit">
-                                                    <input type="text" value="Gender">
-                                                </div>
-                                            </td>
-                                            <td class="admin-table__item admin-table__item_center d-none d-md-table-cell">
-                                                <div class="switch-icon">
-                                                    <div class="switch-icon__item">
-                                                        <svg class="icon ic-numeric">
-                                                            <use xlink:href="/assets/sprites/sprite.svg#ic-numeric"></use>
-                                                        </svg>
-                                                    </div>
-                                                    <div class="switch-icon__item active">
-                                                        <svg class="icon ic-textual">
-                                                            <use xlink:href="/assets/sprites/sprite.svg#ic-textual"></use>
-                                                        </svg>
-                                                    </div>
-                                                    <div class="switch-icon__item disable">
-                                                        <svg class="icon ic-calendar">
-                                                            <use xlink:href="/assets/sprites/sprite.svg#ic-calendar"></use>
-                                                        </svg>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="admin-table__item d-none d-md-table-cell">
-                                                <div class="select select_small">
-                                                    <div class="select__head">Select Hierarchy...
-                                                        <div class="select__head-arr">
-                                                            <svg class="icon ic-select-arr-down">
-                                                                <use xlink:href="/assets/sprites/sprite.svg#ic-select-arr-down"></use>
-                                                            </svg>
-                                                        </div>
-                                                    </div>
-                                                    <div class="select__option">
-                                                        <div class="select__param">Departments</div>
-                                                        <div class="select__param">Diagnosis</div>
-                                                        <div class="select__param">Drugs</div>
-                                                        <div class="select__param">Fractures</div>
-                                                        <div class="select__param">Hospitals</div>
-                                                        <div class="select__param">Medications</div>
-                                                        <div class="select__param">MRI and CT Codes</div>
-                                                        <div class="select__param">Ranks for Nurses</div>
-                                                        <div class="select__param">Units</div>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="admin-table__item admin-table__item_center d-none d-md-table-cell">
-                                                <div class="progress progress_green">
-                                                    <div class="progress__bg" style="width: 75%"></div>
-                                                    <div class="progress__text">75%</div>
-                                                </div>
-                                            </td>
-                                            <td class="admin-table__item d-none d-lg-table-cell">
-                                                <div class="admin-table__data-sample">F
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr class="admin-table__row">
-                                            <td class="admin-table__item d-none d-md-table-cell">
-                                                <div class="input-check">
-                                                    <input type="checkbox" name="param11" id="param11">
-                                                    <label class="input-check__label" for="param11"><span class="input-check__mark">
-                                                            <svg class="icon ic-check">
-                                                                <use xlink:href="/assets/sprites/sprite.svg#ic-check"></use>
-                                                            </svg></span></label>
-                                                </div>
-                                            </td>
-                                            <td class="admin-table__item">
-                                                <div class="admin-table__name-edit">
-                                                    <input type="text" value="Reference Event-Age at transfer">
-                                                </div>
-                                            </td>
-                                            <td class="admin-table__item admin-table__item_center d-none d-md-table-cell">
-                                                <div class="switch-icon">
-                                                    <div class="switch-icon__item">
-                                                        <svg class="icon ic-numeric">
-                                                            <use xlink:href="/assets/sprites/sprite.svg#ic-numeric"></use>
-                                                        </svg>
-                                                    </div>
-                                                    <div class="switch-icon__item active">
-                                                        <svg class="icon ic-textual">
-                                                            <use xlink:href="/assets/sprites/sprite.svg#ic-textual"></use>
-                                                        </svg>
-                                                    </div>
-                                                    <div class="switch-icon__item disable">
-                                                        <svg class="icon ic-calendar">
-                                                            <use xlink:href="/assets/sprites/sprite.svg#ic-calendar"></use>
-                                                        </svg>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="admin-table__item d-none d-md-table-cell">
-                                                <div class="select select_small">
-                                                    <div class="select__head">Select Hierarchy...
-                                                        <div class="select__head-arr">
-                                                            <svg class="icon ic-select-arr-down">
-                                                                <use xlink:href="/assets/sprites/sprite.svg#ic-select-arr-down"></use>
-                                                            </svg>
-                                                        </div>
-                                                    </div>
-                                                    <div class="select__option">
-                                                        <div class="select__param">Departments</div>
-                                                        <div class="select__param">Diagnosis</div>
-                                                        <div class="select__param">Drugs</div>
-                                                        <div class="select__param">Fractures</div>
-                                                        <div class="select__param">Hospitals</div>
-                                                        <div class="select__param">Medications</div>
-                                                        <div class="select__param">MRI and CT Codes</div>
-                                                        <div class="select__param">Ranks for Nurses</div>
-                                                        <div class="select__param">Units</div>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="admin-table__item admin-table__item_center d-none d-md-table-cell">
-                                                <div class="progress">
-                                                    <div class="progress__bg" style="width: 0%"></div>
-                                                    <div class="progress__text">0%</div>
-                                                </div>
-                                            </td>
-                                            <td class="admin-table__item d-none d-lg-table-cell">
-                                                <div class="admin-table__data-sample">60.24383562
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr class="admin-table__row">
-                                            <td class="admin-table__item d-none d-md-table-cell">
-                                                <div class="input-check">
-                                                    <input type="checkbox" name="param21" id="param21">
-                                                    <label class="input-check__label" for="param21"><span class="input-check__mark">
-                                                            <svg class="icon ic-check">
-                                                                <use xlink:href="/assets/sprites/sprite.svg#ic-check"></use>
-                                                            </svg></span></label>
-                                                </div>
-                                            </td>
-                                            <td class="admin-table__item">
-                                                <div class="admin-table__name-edit">
-                                                    <input type="text" value="Reference Event-Out date (current care unit)">
-                                                </div>
-                                            </td>
-                                            <td class="admin-table__item admin-table__item_center d-none d-md-table-cell">
-                                                <div class="switch-icon">
-                                                    <div class="switch-icon__item">
-                                                        <svg class="icon ic-numeric">
-                                                            <use xlink:href="/assets/sprites/sprite.svg#ic-numeric"></use>
-                                                        </svg>
-                                                    </div>
-                                                    <div class="switch-icon__item active">
-                                                        <svg class="icon ic-textual">
-                                                            <use xlink:href="/assets/sprites/sprite.svg#ic-textual"></use>
-                                                        </svg>
-                                                    </div>
-                                                    <div class="switch-icon__item disable">
-                                                        <svg class="icon ic-calendar">
-                                                            <use xlink:href="/assets/sprites/sprite.svg#ic-calendar"></use>
-                                                        </svg>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="admin-table__item d-none d-md-table-cell">
-                                                <div class="select select_small">
-                                                    <div class="select__head">Select Hierarchy...
-                                                        <div class="select__head-arr">
-                                                            <svg class="icon ic-select-arr-down">
-                                                                <use xlink:href="/assets/sprites/sprite.svg#ic-select-arr-down"></use>
-                                                            </svg>
-                                                        </div>
-                                                    </div>
-                                                    <div class="select__option">
-                                                        <div class="select__param">Departments</div>
-                                                        <div class="select__param">Diagnosis</div>
-                                                        <div class="select__param">Drugs</div>
-                                                        <div class="select__param">Fractures</div>
-                                                        <div class="select__param">Hospitals</div>
-                                                        <div class="select__param">Medications</div>
-                                                        <div class="select__param">MRI and CT Codes</div>
-                                                        <div class="select__param">Ranks for Nurses</div>
-                                                        <div class="select__param">Units</div>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="admin-table__item admin-table__item_center d-none d-md-table-cell">
-                                                <div class="progress progress_red">
-                                                    <div class="progress__bg" style="width: 25%"></div>
-                                                    <div class="progress__text">25%</div>
-                                                </div>
-                                            </td>
-                                            <td class="admin-table__item d-none d-lg-table-cell">
-                                                <div class="admin-table__data-sample">60
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr class="admin-table__row">
-                                            <td class="admin-table__item d-none d-md-table-cell">
-                                                <div class="input-check">
-                                                    <input type="checkbox" name="param31" id="param31">
-                                                    <label class="input-check__label" for="param31"><span class="input-check__mark">
-                                                            <svg class="icon ic-check">
-                                                                <use xlink:href="/assets/sprites/sprite.svg#ic-check"></use>
-                                                            </svg></span></label>
-                                                </div>
-                                            </td>
-                                            <td class="admin-table__item">
-                                                <div class="admin-table__name-edit">
-                                                    <input type="text" value="Reference Event-Length of stay">
-                                                </div>
-                                            </td>
-                                            <td class="admin-table__item admin-table__item_center d-none d-md-table-cell">
-                                                <div class="switch-icon">
-                                                    <div class="switch-icon__item active">
-                                                        <svg class="icon ic-numeric">
-                                                            <use xlink:href="/assets/sprites/sprite.svg#ic-numeric"></use>
-                                                        </svg>
-                                                    </div>
-                                                    <div class="switch-icon__item">
-                                                        <svg class="icon ic-textual">
-                                                            <use xlink:href="/assets/sprites/sprite.svg#ic-textual"></use>
-                                                        </svg>
-                                                    </div>
-                                                    <div class="switch-icon__item disable">
-                                                        <svg class="icon ic-calendar">
-                                                            <use xlink:href="/assets/sprites/sprite.svg#ic-calendar"></use>
-                                                        </svg>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="admin-table__item d-none d-md-table-cell">
-                                            </td>
-                                            <td class="admin-table__item admin-table__item_center d-none d-md-table-cell">
-                                            </td>
-                                            <td class="admin-table__item d-none d-lg-table-cell">
-                                                <div class="admin-table__data-sample">18
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr class="admin-table__row">
-                                            <td class="admin-table__item d-none d-md-table-cell">
-                                                <div class="input-check">
-                                                    <input type="checkbox" name="param41" id="param41">
-                                                    <label class="input-check__label" for="param41"><span class="input-check__mark">
-                                                            <svg class="icon ic-check">
-                                                                <use xlink:href="/assets/sprites/sprite.svg#ic-check"></use>
-                                                            </svg></span></label>
-                                                </div>
-                                            </td>
-                                            <td class="admin-table__item">
-                                                <div class="admin-table__name-edit">
-                                                    <input type="text" value="Hospitalization cost">
-                                                </div>
-                                            </td>
-                                            <td class="admin-table__item admin-table__item_center d-none d-md-table-cell">
-                                                <div class="switch-icon">
-                                                    <div class="switch-icon__item">
-                                                        <svg class="icon ic-numeric">
-                                                            <use xlink:href="/assets/sprites/sprite.svg#ic-numeric"></use>
-                                                        </svg>
-                                                    </div>
-                                                    <div class="switch-icon__item active">
-                                                        <svg class="icon ic-textual">
-                                                            <use xlink:href="/assets/sprites/sprite.svg#ic-textual"></use>
-                                                        </svg>
-                                                    </div>
-                                                    <div class="switch-icon__item disable">
-                                                        <svg class="icon ic-calendar">
-                                                            <use xlink:href="/assets/sprites/sprite.svg#ic-calendar"></use>
-                                                        </svg>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="admin-table__item d-none d-md-table-cell">
-                                                <div class="select select_small">
-                                                    <div class="select__head">Select Hierarchy...
-                                                        <div class="select__head-arr">
-                                                            <svg class="icon ic-select-arr-down">
-                                                                <use xlink:href="/assets/sprites/sprite.svg#ic-select-arr-down"></use>
-                                                            </svg>
-                                                        </div>
-                                                    </div>
-                                                    <div class="select__option">
-                                                        <div class="select__param">Departments</div>
-                                                        <div class="select__param">Diagnosis</div>
-                                                        <div class="select__param">Drugs</div>
-                                                        <div class="select__param">Fractures</div>
-                                                        <div class="select__param">Hospitals</div>
-                                                        <div class="select__param">Medications</div>
-                                                        <div class="select__param">MRI and CT Codes</div>
-                                                        <div class="select__param">Ranks for Nurses</div>
-                                                        <div class="select__param">Units</div>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="admin-table__item admin-table__item_center d-none d-md-table-cell">
-                                                <div class="progress progress_yellow">
-                                                    <div class="progress__bg" style="width: 50%"></div>
-                                                    <div class="progress__text">50%</div>
-                                                </div>
-                                            </td>
-                                            <td class="admin-table__item d-none d-lg-table-cell">
-                                                <div class="admin-table__data-sample">1800
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr class="admin-table__row">
-                                            <td class="admin-table__item d-none d-md-table-cell">
-                                                <div class="input-check">
-                                                    <input type="checkbox" name="param51" id="param51">
-                                                    <label class="input-check__label" for="param51"><span class="input-check__mark">
-                                                            <svg class="icon ic-check">
-                                                                <use xlink:href="/assets/sprites/sprite.svg#ic-check"></use>
-                                                            </svg></span></label>
-                                                </div>
-                                            </td>
-                                            <td class="admin-table__item">
-                                                <div class="admin-table__name-edit">
-                                                    <input type="text" value="Admission diag-Diagnosis">
-                                                </div>
-                                            </td>
-                                            <td class="admin-table__item admin-table__item_center d-none d-md-table-cell">
-                                                <div class="switch-icon">
-                                                    <div class="switch-icon__item active">
-                                                        <svg class="icon ic-numeric">
-                                                            <use xlink:href="/assets/sprites/sprite.svg#ic-numeric"></use>
-                                                        </svg>
-                                                    </div>
-                                                    <div class="switch-icon__item">
-                                                        <svg class="icon ic-textual">
-                                                            <use xlink:href="/assets/sprites/sprite.svg#ic-textual"></use>
-                                                        </svg>
-                                                    </div>
-                                                    <div class="switch-icon__item disable">
-                                                        <svg class="icon ic-calendar">
-                                                            <use xlink:href="/assets/sprites/sprite.svg#ic-calendar"></use>
-                                                        </svg>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="admin-table__item d-none d-md-table-cell">
-                                            </td>
-                                            <td class="admin-table__item admin-table__item_center d-none d-md-table-cell">
-                                            </td>
-                                            <td class="admin-table__item d-none d-lg-table-cell">
-                                                <div class="admin-table__data-sample">Mitral and aortic vaves insuff Mitral and aortic vaves insuff Mitral and aortic vaves<span class="tooltip"><span class="tooltip__content">Mitral and aortic vaves insuff Mitral and aortic vaves insuff Mitral and aortic vaves</span></span>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr class="admin-table__row">
-                                            <td class="admin-table__item d-none d-md-table-cell">
-                                                <div class="input-check">
-                                                    <input type="checkbox" name="param61" id="param61">
-                                                    <label class="input-check__label" for="param61"><span class="input-check__mark">
-                                                            <svg class="icon ic-check">
-                                                                <use xlink:href="/assets/sprites/sprite.svg#ic-check"></use>
-                                                            </svg></span></label>
-                                                </div>
-                                            </td>
-                                            <td class="admin-table__item">
-                                                <div class="admin-table__name-edit">
-                                                    <input type="text" value="First creatinine-Age at lab test">
-                                                </div>
-                                            </td>
-                                            <td class="admin-table__item admin-table__item_center d-none d-md-table-cell">
-                                                <div class="switch-icon">
-                                                    <div class="switch-icon__item disable">
-                                                        <svg class="icon ic-numeric">
-                                                            <use xlink:href="/assets/sprites/sprite.svg#ic-numeric"></use>
-                                                        </svg>
-                                                    </div>
-                                                    <div class="switch-icon__item active">
-                                                        <svg class="icon ic-textual">
-                                                            <use xlink:href="/assets/sprites/sprite.svg#ic-textual"></use>
-                                                        </svg>
-                                                    </div>
-                                                    <div class="switch-icon__item">
-                                                        <svg class="icon ic-calendar">
-                                                            <use xlink:href="/assets/sprites/sprite.svg#ic-calendar"></use>
-                                                        </svg>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="admin-table__item d-none d-md-table-cell">
-                                            </td>
-                                            <td class="admin-table__item admin-table__item_center d-none d-md-table-cell">
-                                            </td>
-                                            <td class="admin-table__item d-none d-lg-table-cell">
-                                                <div class="admin-table__data-sample">60.24383562
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr class="admin-table__row">
-                                            <td class="admin-table__item d-none d-md-table-cell">
-                                                <div class="input-check">
-                                                    <input type="checkbox" name="param71" id="param71">
-                                                    <label class="input-check__label" for="param71"><span class="input-check__mark">
-                                                            <svg class="icon ic-check">
-                                                                <use xlink:href="/assets/sprites/sprite.svg#ic-check"></use>
-                                                            </svg></span></label>
-                                                </div>
-                                            </td>
-                                            <td class="admin-table__item">
-                                                <div class="admin-table__name-edit">
-                                                    <input type="text" value="First creatinine-Lab result numeric">
-                                                </div>
-                                            </td>
-                                            <td class="admin-table__item admin-table__item_center d-none d-md-table-cell">
-                                                <div class="switch-icon">
-                                                    <div class="switch-icon__item active">
-                                                        <svg class="icon ic-numeric">
-                                                            <use xlink:href="/assets/sprites/sprite.svg#ic-numeric"></use>
-                                                        </svg>
-                                                    </div>
-                                                    <div class="switch-icon__item">
-                                                        <svg class="icon ic-textual">
-                                                            <use xlink:href="/assets/sprites/sprite.svg#ic-textual"></use>
-                                                        </svg>
-                                                    </div>
-                                                    <div class="switch-icon__item disable">
-                                                        <svg class="icon ic-calendar">
-                                                            <use xlink:href="/assets/sprites/sprite.svg#ic-calendar"></use>
-                                                        </svg>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="admin-table__item d-none d-md-table-cell">
-                                            </td>
-                                            <td class="admin-table__item admin-table__item_center d-none d-md-table-cell">
-                                            </td>
-                                            <td class="admin-table__item d-none d-lg-table-cell">
-                                                <div class="admin-table__data-sample">5.2
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr class="admin-table__row">
-                                            <td class="admin-table__item d-none d-md-table-cell">
-                                                <div class="input-check">
-                                                    <input type="checkbox" name="param81" id="param81">
-                                                    <label class="input-check__label" for="param81"><span class="input-check__mark">
-                                                            <svg class="icon ic-check">
-                                                                <use xlink:href="/assets/sprites/sprite.svg#ic-check"></use>
-                                                            </svg></span></label>
-                                                </div>
-                                            </td>
-                                            <td class="admin-table__item">
-                                                <div class="admin-table__name-edit">
-                                                    <input type="text" value="First creatinine-Result date">
-                                                </div>
-                                            </td>
-                                            <td class="admin-table__item admin-table__item_center d-none d-md-table-cell">
-                                                <div class="switch-icon">
-                                                    <div class="switch-icon__item disable">
-                                                        <svg class="icon ic-numeric">
-                                                            <use xlink:href="/assets/sprites/sprite.svg#ic-numeric"></use>
-                                                        </svg>
-                                                    </div>
-                                                    <div class="switch-icon__item">
-                                                        <svg class="icon ic-textual">
-                                                            <use xlink:href="/assets/sprites/sprite.svg#ic-textual"></use>
-                                                        </svg>
-                                                    </div>
-                                                    <div class="switch-icon__item active">
-                                                        <svg class="icon ic-calendar">
-                                                            <use xlink:href="/assets/sprites/sprite.svg#ic-calendar"></use>
-                                                        </svg>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="admin-table__item d-none d-md-table-cell">
-                                            </td>
-                                            <td class="admin-table__item admin-table__item_center d-none d-md-table-cell">
-                                            </td>
-                                            <td class="admin-table__item d-none d-lg-table-cell">
-                                                <div class="admin-table__data-sample">0.020127315
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr class="admin-table__row">
-                                            <td class="admin-table__item d-none d-md-table-cell">
-                                                <div class="input-check">
-                                                    <input type="checkbox" name="param91" id="param91">
-                                                    <label class="input-check__label" for="param91"><span class="input-check__mark">
-                                                            <svg class="icon ic-check">
-                                                                <use xlink:href="/assets/sprites/sprite.svg#ic-check"></use>
-                                                            </svg></span></label>
-                                                </div>
-                                            </td>
-                                            <td class="admin-table__item">
-                                                <div class="admin-table__name-edit">
-                                                    <input type="text" value="Last creatinine at discharge-Lab result numeric">
-                                                </div>
-                                            </td>
-                                            <td class="admin-table__item admin-table__item_center d-none d-md-table-cell">
-                                                <div class="switch-icon">
-                                                    <div class="switch-icon__item active">
-                                                        <svg class="icon ic-numeric">
-                                                            <use xlink:href="/assets/sprites/sprite.svg#ic-numeric"></use>
-                                                        </svg>
-                                                    </div>
-                                                    <div class="switch-icon__item disable">
-                                                        <svg class="icon ic-textual">
-                                                            <use xlink:href="/assets/sprites/sprite.svg#ic-textual"></use>
-                                                        </svg>
-                                                    </div>
-                                                    <div class="switch-icon__item disable">
-                                                        <svg class="icon ic-calendar">
-                                                            <use xlink:href="/assets/sprites/sprite.svg#ic-calendar"></use>
-                                                        </svg>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="admin-table__item d-none d-md-table-cell">
-                                            </td>
-                                            <td class="admin-table__item admin-table__item_center d-none d-md-table-cell">
-                                            </td>
-                                            <td class="admin-table__item d-none d-lg-table-cell">
-                                                <div class="admin-table__data-sample">6.7
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                                                                <use
+                                                                                  xlink:href="/assets/sprites/sprite.svg#ic-check"></use>
+                                                                            </svg></span><span
+                                  class="input-check__text">Select All</span></label>
+                              </div>
+                              <a class="admin-table-filter__clear" href="#">Clear</a>
                             </div>
+                            <div class="admin-table-filter__params">
+                              <div class="input-check">
+                                <input id="param1" type="checkbox" name="param1">
+                                <label class="input-check__label" for="param1"><span class="input-check__mark">
+                                                                            <svg class="icon ic-check">
+                                                                                <use
+                                                                                  xlink:href="/assets/sprites/sprite.svg#ic-check"></use>
+                                                                            </svg></span><span
+                                  class="input-check__text"># - Numeric</span></label>
+                              </div>
+                              <div class="input-check">
+                                <input id="param2" type="checkbox" name="param2" checked="checked">
+                                <label class="input-check__label" for="param2"><span class="input-check__mark">
+                                                                            <svg class="icon ic-check">
+                                                                                <use
+                                                                                  xlink:href="/assets/sprites/sprite.svg#ic-check"></use>
+                                                                            </svg></span><span
+                                  class="input-check__text">A - String</span></label>
+                              </div>
+                              <div class="input-check">
+                                <input id="param3" type="checkbox" name="param3">
+                                <label class="input-check__label" for="param3"><span class="input-check__mark">
+                                                                            <svg class="icon ic-check">
+                                                                                <use
+                                                                                  xlink:href="/assets/sprites/sprite.svg#ic-check"></use>
+                                                                            </svg></span><span
+                                  class="input-check__text">D - Date</span></label>
+                              </div>
+                            </div>
+                            <div class="admin-table-filter__btn"><a class="btn btn_border btn_small" href="#">Cancel</a>
+                              <input class="btn btn_small" type="submit" value="Apply">
+                            </div>
+                          </form>
                         </div>
-                    </div>
-                </section>
+                      </div>
+                    </th>
+                    <th class="admin-table__item d-none d-md-table-cell admin-table__item_select">Associated
+                      Hierarchy<span class="admin-table__option">Optional</span></th>
+                    <th class="admin-table__item admin-table__item_center d-none d-md-table-cell">% Match</th>
+                    <th class="admin-table__item d-none d-lg-table-cell admin-table__item_data-sample">Data Sample</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr class="admin-table__row">
+                    <td class="admin-table__item d-none d-md-table-cell">
+                      <div class="input-check">
+                        <input type="checkbox" name="param01" id="param01">
+                        <label class="input-check__label" for="param01"><span class="input-check__mark">
+                                                            <svg class="icon ic-check">
+                                                                <use
+                                                                  xlink:href="/assets/sprites/sprite.svg#ic-check"></use>
+                                                            </svg></span></label>
+                      </div>
+                    </td>
+                    <td class="admin-table__item">
+                      <div class="admin-table__name-edit">
+                        <input type="text" value="Gender">
+                      </div>
+                    </td>
+                    <td class="admin-table__item admin-table__item_center d-none d-md-table-cell">
+                      <div class="switch-icon">
+                        <div class="switch-icon__item">
+                          <svg class="icon ic-numeric">
+                            <use xlink:href="/assets/sprites/sprite.svg#ic-numeric"></use>
+                          </svg>
+                        </div>
+                        <div class="switch-icon__item active">
+                          <svg class="icon ic-textual">
+                            <use xlink:href="/assets/sprites/sprite.svg#ic-textual"></use>
+                          </svg>
+                        </div>
+                        <div class="switch-icon__item disable">
+                          <svg class="icon ic-calendar">
+                            <use xlink:href="/assets/sprites/sprite.svg#ic-calendar"></use>
+                          </svg>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="admin-table__item d-none d-md-table-cell">
+                      <div class="select select_small">
+                        <div class="select__head">Select Hierarchy...
+                          <div class="select__head-arr">
+                            <svg class="icon ic-select-arr-down">
+                              <use xlink:href="/assets/sprites/sprite.svg#ic-select-arr-down"></use>
+                            </svg>
+                          </div>
+                        </div>
+                        <div class="select__option">
+                          <div class="select__param">Departments</div>
+                          <div class="select__param">Diagnosis</div>
+                          <div class="select__param">Drugs</div>
+                          <div class="select__param">Fractures</div>
+                          <div class="select__param">Hospitals</div>
+                          <div class="select__param">Medications</div>
+                          <div class="select__param">MRI and CT Codes</div>
+                          <div class="select__param">Ranks for Nurses</div>
+                          <div class="select__param">Units</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="admin-table__item admin-table__item_center d-none d-md-table-cell">
+                      <div class="progress progress_green">
+                        <div class="progress__bg" style="width: 75%"></div>
+                        <div class="progress__text">75%</div>
+                      </div>
+                    </td>
+                    <td class="admin-table__item d-none d-lg-table-cell">
+                      <div class="admin-table__data-sample">F
+                      </div>
+                    </td>
+                  </tr>
+                  <tr class="admin-table__row">
+                    <td class="admin-table__item d-none d-md-table-cell">
+                      <div class="input-check">
+                        <input type="checkbox" name="param11" id="param11">
+                        <label class="input-check__label" for="param11"><span class="input-check__mark">
+                                                            <svg class="icon ic-check">
+                                                                <use
+                                                                  xlink:href="/assets/sprites/sprite.svg#ic-check"></use>
+                                                            </svg></span></label>
+                      </div>
+                    </td>
+                    <td class="admin-table__item">
+                      <div class="admin-table__name-edit">
+                        <input type="text" value="Reference Event-Age at transfer">
+                      </div>
+                    </td>
+                    <td class="admin-table__item admin-table__item_center d-none d-md-table-cell">
+                      <div class="switch-icon">
+                        <div class="switch-icon__item">
+                          <svg class="icon ic-numeric">
+                            <use xlink:href="/assets/sprites/sprite.svg#ic-numeric"></use>
+                          </svg>
+                        </div>
+                        <div class="switch-icon__item active">
+                          <svg class="icon ic-textual">
+                            <use xlink:href="/assets/sprites/sprite.svg#ic-textual"></use>
+                          </svg>
+                        </div>
+                        <div class="switch-icon__item disable">
+                          <svg class="icon ic-calendar">
+                            <use xlink:href="/assets/sprites/sprite.svg#ic-calendar"></use>
+                          </svg>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="admin-table__item d-none d-md-table-cell">
+                      <div class="select select_small">
+                        <div class="select__head">Select Hierarchy...
+                          <div class="select__head-arr">
+                            <svg class="icon ic-select-arr-down">
+                              <use xlink:href="/assets/sprites/sprite.svg#ic-select-arr-down"></use>
+                            </svg>
+                          </div>
+                        </div>
+                        <div class="select__option">
+                          <div class="select__param">Departments</div>
+                          <div class="select__param">Diagnosis</div>
+                          <div class="select__param">Drugs</div>
+                          <div class="select__param">Fractures</div>
+                          <div class="select__param">Hospitals</div>
+                          <div class="select__param">Medications</div>
+                          <div class="select__param">MRI and CT Codes</div>
+                          <div class="select__param">Ranks for Nurses</div>
+                          <div class="select__param">Units</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="admin-table__item admin-table__item_center d-none d-md-table-cell">
+                      <div class="progress">
+                        <div class="progress__bg" style="width: 0%"></div>
+                        <div class="progress__text">0%</div>
+                      </div>
+                    </td>
+                    <td class="admin-table__item d-none d-lg-table-cell">
+                      <div class="admin-table__data-sample">60.24383562
+                      </div>
+                    </td>
+                  </tr>
+                  <tr class="admin-table__row">
+                    <td class="admin-table__item d-none d-md-table-cell">
+                      <div class="input-check">
+                        <input type="checkbox" name="param21" id="param21">
+                        <label class="input-check__label" for="param21"><span class="input-check__mark">
+                                                            <svg class="icon ic-check">
+                                                                <use
+                                                                  xlink:href="/assets/sprites/sprite.svg#ic-check"></use>
+                                                            </svg></span></label>
+                      </div>
+                    </td>
+                    <td class="admin-table__item">
+                      <div class="admin-table__name-edit">
+                        <input type="text" value="Reference Event-Out date (current care unit)">
+                      </div>
+                    </td>
+                    <td class="admin-table__item admin-table__item_center d-none d-md-table-cell">
+                      <div class="switch-icon">
+                        <div class="switch-icon__item">
+                          <svg class="icon ic-numeric">
+                            <use xlink:href="/assets/sprites/sprite.svg#ic-numeric"></use>
+                          </svg>
+                        </div>
+                        <div class="switch-icon__item active">
+                          <svg class="icon ic-textual">
+                            <use xlink:href="/assets/sprites/sprite.svg#ic-textual"></use>
+                          </svg>
+                        </div>
+                        <div class="switch-icon__item disable">
+                          <svg class="icon ic-calendar">
+                            <use xlink:href="/assets/sprites/sprite.svg#ic-calendar"></use>
+                          </svg>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="admin-table__item d-none d-md-table-cell">
+                      <div class="select select_small">
+                        <div class="select__head">Select Hierarchy...
+                          <div class="select__head-arr">
+                            <svg class="icon ic-select-arr-down">
+                              <use xlink:href="/assets/sprites/sprite.svg#ic-select-arr-down"></use>
+                            </svg>
+                          </div>
+                        </div>
+                        <div class="select__option">
+                          <div class="select__param">Departments</div>
+                          <div class="select__param">Diagnosis</div>
+                          <div class="select__param">Drugs</div>
+                          <div class="select__param">Fractures</div>
+                          <div class="select__param">Hospitals</div>
+                          <div class="select__param">Medications</div>
+                          <div class="select__param">MRI and CT Codes</div>
+                          <div class="select__param">Ranks for Nurses</div>
+                          <div class="select__param">Units</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="admin-table__item admin-table__item_center d-none d-md-table-cell">
+                      <div class="progress progress_red">
+                        <div class="progress__bg" style="width: 25%"></div>
+                        <div class="progress__text">25%</div>
+                      </div>
+                    </td>
+                    <td class="admin-table__item d-none d-lg-table-cell">
+                      <div class="admin-table__data-sample">60
+                      </div>
+                    </td>
+                  </tr>
+                  <tr class="admin-table__row">
+                    <td class="admin-table__item d-none d-md-table-cell">
+                      <div class="input-check">
+                        <input type="checkbox" name="param31" id="param31">
+                        <label class="input-check__label" for="param31"><span class="input-check__mark">
+                                                            <svg class="icon ic-check">
+                                                                <use
+                                                                  xlink:href="/assets/sprites/sprite.svg#ic-check"></use>
+                                                            </svg></span></label>
+                      </div>
+                    </td>
+                    <td class="admin-table__item">
+                      <div class="admin-table__name-edit">
+                        <input type="text" value="Reference Event-Length of stay">
+                      </div>
+                    </td>
+                    <td class="admin-table__item admin-table__item_center d-none d-md-table-cell">
+                      <div class="switch-icon">
+                        <div class="switch-icon__item active">
+                          <svg class="icon ic-numeric">
+                            <use xlink:href="/assets/sprites/sprite.svg#ic-numeric"></use>
+                          </svg>
+                        </div>
+                        <div class="switch-icon__item">
+                          <svg class="icon ic-textual">
+                            <use xlink:href="/assets/sprites/sprite.svg#ic-textual"></use>
+                          </svg>
+                        </div>
+                        <div class="switch-icon__item disable">
+                          <svg class="icon ic-calendar">
+                            <use xlink:href="/assets/sprites/sprite.svg#ic-calendar"></use>
+                          </svg>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="admin-table__item d-none d-md-table-cell">
+                    </td>
+                    <td class="admin-table__item admin-table__item_center d-none d-md-table-cell">
+                    </td>
+                    <td class="admin-table__item d-none d-lg-table-cell">
+                      <div class="admin-table__data-sample">18
+                      </div>
+                    </td>
+                  </tr>
+                  <tr class="admin-table__row">
+                    <td class="admin-table__item d-none d-md-table-cell">
+                      <div class="input-check">
+                        <input type="checkbox" name="param41" id="param41">
+                        <label class="input-check__label" for="param41"><span class="input-check__mark">
+                                                            <svg class="icon ic-check">
+                                                                <use
+                                                                  xlink:href="/assets/sprites/sprite.svg#ic-check"></use>
+                                                            </svg></span></label>
+                      </div>
+                    </td>
+                    <td class="admin-table__item">
+                      <div class="admin-table__name-edit">
+                        <input type="text" value="Hospitalization cost">
+                      </div>
+                    </td>
+                    <td class="admin-table__item admin-table__item_center d-none d-md-table-cell">
+                      <div class="switch-icon">
+                        <div class="switch-icon__item">
+                          <svg class="icon ic-numeric">
+                            <use xlink:href="/assets/sprites/sprite.svg#ic-numeric"></use>
+                          </svg>
+                        </div>
+                        <div class="switch-icon__item active">
+                          <svg class="icon ic-textual">
+                            <use xlink:href="/assets/sprites/sprite.svg#ic-textual"></use>
+                          </svg>
+                        </div>
+                        <div class="switch-icon__item disable">
+                          <svg class="icon ic-calendar">
+                            <use xlink:href="/assets/sprites/sprite.svg#ic-calendar"></use>
+                          </svg>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="admin-table__item d-none d-md-table-cell">
+                      <div class="select select_small">
+                        <div class="select__head">Select Hierarchy...
+                          <div class="select__head-arr">
+                            <svg class="icon ic-select-arr-down">
+                              <use xlink:href="/assets/sprites/sprite.svg#ic-select-arr-down"></use>
+                            </svg>
+                          </div>
+                        </div>
+                        <div class="select__option">
+                          <div class="select__param">Departments</div>
+                          <div class="select__param">Diagnosis</div>
+                          <div class="select__param">Drugs</div>
+                          <div class="select__param">Fractures</div>
+                          <div class="select__param">Hospitals</div>
+                          <div class="select__param">Medications</div>
+                          <div class="select__param">MRI and CT Codes</div>
+                          <div class="select__param">Ranks for Nurses</div>
+                          <div class="select__param">Units</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="admin-table__item admin-table__item_center d-none d-md-table-cell">
+                      <div class="progress progress_yellow">
+                        <div class="progress__bg" style="width: 50%"></div>
+                        <div class="progress__text">50%</div>
+                      </div>
+                    </td>
+                    <td class="admin-table__item d-none d-lg-table-cell">
+                      <div class="admin-table__data-sample">1800
+                      </div>
+                    </td>
+                  </tr>
+                  <tr class="admin-table__row">
+                    <td class="admin-table__item d-none d-md-table-cell">
+                      <div class="input-check">
+                        <input type="checkbox" name="param51" id="param51">
+                        <label class="input-check__label" for="param51"><span class="input-check__mark">
+                                                            <svg class="icon ic-check">
+                                                                <use
+                                                                  xlink:href="/assets/sprites/sprite.svg#ic-check"></use>
+                                                            </svg></span></label>
+                      </div>
+                    </td>
+                    <td class="admin-table__item">
+                      <div class="admin-table__name-edit">
+                        <input type="text" value="Admission diag-Diagnosis">
+                      </div>
+                    </td>
+                    <td class="admin-table__item admin-table__item_center d-none d-md-table-cell">
+                      <div class="switch-icon">
+                        <div class="switch-icon__item active">
+                          <svg class="icon ic-numeric">
+                            <use xlink:href="/assets/sprites/sprite.svg#ic-numeric"></use>
+                          </svg>
+                        </div>
+                        <div class="switch-icon__item">
+                          <svg class="icon ic-textual">
+                            <use xlink:href="/assets/sprites/sprite.svg#ic-textual"></use>
+                          </svg>
+                        </div>
+                        <div class="switch-icon__item disable">
+                          <svg class="icon ic-calendar">
+                            <use xlink:href="/assets/sprites/sprite.svg#ic-calendar"></use>
+                          </svg>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="admin-table__item d-none d-md-table-cell">
+                    </td>
+                    <td class="admin-table__item admin-table__item_center d-none d-md-table-cell">
+                    </td>
+                    <td class="admin-table__item d-none d-lg-table-cell">
+                      <div class="admin-table__data-sample">Mitral and aortic vaves insuff Mitral and aortic vaves
+                        insuff Mitral and aortic vaves<span class="tooltip"><span class="tooltip__content">Mitral and aortic vaves insuff Mitral and aortic vaves insuff Mitral and aortic vaves</span></span>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr class="admin-table__row">
+                    <td class="admin-table__item d-none d-md-table-cell">
+                      <div class="input-check">
+                        <input type="checkbox" name="param61" id="param61">
+                        <label class="input-check__label" for="param61"><span class="input-check__mark">
+                                                            <svg class="icon ic-check">
+                                                                <use
+                                                                  xlink:href="/assets/sprites/sprite.svg#ic-check"></use>
+                                                            </svg></span></label>
+                      </div>
+                    </td>
+                    <td class="admin-table__item">
+                      <div class="admin-table__name-edit">
+                        <input type="text" value="First creatinine-Age at lab test">
+                      </div>
+                    </td>
+                    <td class="admin-table__item admin-table__item_center d-none d-md-table-cell">
+                      <div class="switch-icon">
+                        <div class="switch-icon__item disable">
+                          <svg class="icon ic-numeric">
+                            <use xlink:href="/assets/sprites/sprite.svg#ic-numeric"></use>
+                          </svg>
+                        </div>
+                        <div class="switch-icon__item active">
+                          <svg class="icon ic-textual">
+                            <use xlink:href="/assets/sprites/sprite.svg#ic-textual"></use>
+                          </svg>
+                        </div>
+                        <div class="switch-icon__item">
+                          <svg class="icon ic-calendar">
+                            <use xlink:href="/assets/sprites/sprite.svg#ic-calendar"></use>
+                          </svg>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="admin-table__item d-none d-md-table-cell">
+                    </td>
+                    <td class="admin-table__item admin-table__item_center d-none d-md-table-cell">
+                    </td>
+                    <td class="admin-table__item d-none d-lg-table-cell">
+                      <div class="admin-table__data-sample">60.24383562
+                      </div>
+                    </td>
+                  </tr>
+                  <tr class="admin-table__row">
+                    <td class="admin-table__item d-none d-md-table-cell">
+                      <div class="input-check">
+                        <input type="checkbox" name="param71" id="param71">
+                        <label class="input-check__label" for="param71"><span class="input-check__mark">
+                                                            <svg class="icon ic-check">
+                                                                <use
+                                                                  xlink:href="/assets/sprites/sprite.svg#ic-check"></use>
+                                                            </svg></span></label>
+                      </div>
+                    </td>
+                    <td class="admin-table__item">
+                      <div class="admin-table__name-edit">
+                        <input type="text" value="First creatinine-Lab result numeric">
+                      </div>
+                    </td>
+                    <td class="admin-table__item admin-table__item_center d-none d-md-table-cell">
+                      <div class="switch-icon">
+                        <div class="switch-icon__item active">
+                          <svg class="icon ic-numeric">
+                            <use xlink:href="/assets/sprites/sprite.svg#ic-numeric"></use>
+                          </svg>
+                        </div>
+                        <div class="switch-icon__item">
+                          <svg class="icon ic-textual">
+                            <use xlink:href="/assets/sprites/sprite.svg#ic-textual"></use>
+                          </svg>
+                        </div>
+                        <div class="switch-icon__item disable">
+                          <svg class="icon ic-calendar">
+                            <use xlink:href="/assets/sprites/sprite.svg#ic-calendar"></use>
+                          </svg>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="admin-table__item d-none d-md-table-cell">
+                    </td>
+                    <td class="admin-table__item admin-table__item_center d-none d-md-table-cell">
+                    </td>
+                    <td class="admin-table__item d-none d-lg-table-cell">
+                      <div class="admin-table__data-sample">5.2
+                      </div>
+                    </td>
+                  </tr>
+                  <tr class="admin-table__row">
+                    <td class="admin-table__item d-none d-md-table-cell">
+                      <div class="input-check">
+                        <input type="checkbox" name="param81" id="param81">
+                        <label class="input-check__label" for="param81"><span class="input-check__mark">
+                                                            <svg class="icon ic-check">
+                                                                <use
+                                                                  xlink:href="/assets/sprites/sprite.svg#ic-check"></use>
+                                                            </svg></span></label>
+                      </div>
+                    </td>
+                    <td class="admin-table__item">
+                      <div class="admin-table__name-edit">
+                        <input type="text" value="First creatinine-Result date">
+                      </div>
+                    </td>
+                    <td class="admin-table__item admin-table__item_center d-none d-md-table-cell">
+                      <div class="switch-icon">
+                        <div class="switch-icon__item disable">
+                          <svg class="icon ic-numeric">
+                            <use xlink:href="/assets/sprites/sprite.svg#ic-numeric"></use>
+                          </svg>
+                        </div>
+                        <div class="switch-icon__item">
+                          <svg class="icon ic-textual">
+                            <use xlink:href="/assets/sprites/sprite.svg#ic-textual"></use>
+                          </svg>
+                        </div>
+                        <div class="switch-icon__item active">
+                          <svg class="icon ic-calendar">
+                            <use xlink:href="/assets/sprites/sprite.svg#ic-calendar"></use>
+                          </svg>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="admin-table__item d-none d-md-table-cell">
+                    </td>
+                    <td class="admin-table__item admin-table__item_center d-none d-md-table-cell">
+                    </td>
+                    <td class="admin-table__item d-none d-lg-table-cell">
+                      <div class="admin-table__data-sample">0.020127315
+                      </div>
+                    </td>
+                  </tr>
+                  <tr class="admin-table__row">
+                    <td class="admin-table__item d-none d-md-table-cell">
+                      <div class="input-check">
+                        <input type="checkbox" name="param91" id="param91">
+                        <label class="input-check__label" for="param91"><span class="input-check__mark">
+                                                            <svg class="icon ic-check">
+                                                                <use
+                                                                  xlink:href="/assets/sprites/sprite.svg#ic-check"></use>
+                                                            </svg></span></label>
+                      </div>
+                    </td>
+                    <td class="admin-table__item">
+                      <div class="admin-table__name-edit">
+                        <input type="text" value="Last creatinine at discharge-Lab result numeric">
+                      </div>
+                    </td>
+                    <td class="admin-table__item admin-table__item_center d-none d-md-table-cell">
+                      <div class="switch-icon">
+                        <div class="switch-icon__item active">
+                          <svg class="icon ic-numeric">
+                            <use xlink:href="/assets/sprites/sprite.svg#ic-numeric"></use>
+                          </svg>
+                        </div>
+                        <div class="switch-icon__item disable">
+                          <svg class="icon ic-textual">
+                            <use xlink:href="/assets/sprites/sprite.svg#ic-textual"></use>
+                          </svg>
+                        </div>
+                        <div class="switch-icon__item disable">
+                          <svg class="icon ic-calendar">
+                            <use xlink:href="/assets/sprites/sprite.svg#ic-calendar"></use>
+                          </svg>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="admin-table__item d-none d-md-table-cell">
+                    </td>
+                    <td class="admin-table__item admin-table__item_center d-none d-md-table-cell">
+                    </td>
+                    <td class="admin-table__item d-none d-lg-table-cell">
+                      <div class="admin-table__data-sample">6.7
+                      </div>
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
-        </div>
-    </main>
-<footer class="footer">
-<div class="container-fluid">
-<div class="row">
-    <div class="col-12">
-        <div class="footer__btn"><a class="btn btn_border" href="#">Cancel</a><a class="btn" href="#">Save</a></div>
+          </div>
+        </section>
+      </div>
     </div>
-</div>
-</div>
-</footer>
+  </main>
+  <footer class="footer">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="footer__btn"><a class="btn btn_border" href="#">Cancel</a><a class="btn" href="#">Save</a></div>
+        </div>
+      </div>
+    </div>
+  </footer>
 </div>

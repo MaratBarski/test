@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { ComponentService } from '../../services/component.service';
 
 @Component({
   selector: 'mdc-modal-window',
@@ -22,11 +23,7 @@ export class ModalWindowComponent {
   set isHidden(hidden: boolean) {
     this._isHidden = hidden;
     if (this.removeScroll) {
-      if (!this._isHidden) {
-        document.body.style.overflow = 'hidden';
-      } else {
-        document.body.style.overflow = 'visible';
-      }
+      ComponentService.hideScroll(!this._isHidden);
     }
   }
   get isHidden(): boolean { return this._isHidden; }

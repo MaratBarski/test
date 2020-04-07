@@ -4,6 +4,7 @@ import { FileSource, FileSourceResponse } from '../../models/file-source';
 import { TableComponent, TranslateService, DateFilterComponent, TableModel, PopupComponent, CheckBoxListOption, NavigationService, PageInfo, BaseSibscriber, CheckBoxListComponent, SelectOption, EmptyState, DatePeriod, TableActionCommand } from '@app/core-api';
 import { UploadFileComponent } from '@app/imported-files/components/upload-file/upload-file.component';
 import { DateRangeButton } from '@app/core-api';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'md-imported-files',
@@ -46,7 +47,8 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, On
   constructor(
     private translateService: TranslateService,
     private importedFilesService: ImportedFilesService,
-    private navigationService: NavigationService
+    private navigationService: NavigationService,
+    private router: Router
   ) {
     super();
     this.navigationService.currentPageID = PageInfo.ImportedFiles.id;
@@ -58,6 +60,7 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, On
 
   execCommand = {
     edit: (action: TableActionCommand) => {
+      this.router.navigateByUrl(`/imported-files/${action.item.source.fileId}`);
       console.log('edit command');
     },
     view: (action: TableActionCommand) => {
