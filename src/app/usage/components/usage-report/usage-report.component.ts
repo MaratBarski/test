@@ -15,8 +15,7 @@ export class UsageReportComponent extends UsageBase {
   title = 'Angular Charts';
 
   view: undefined;// any[] = [600, 400];
-
-  // options for the chart
+  
   showXAxis = true;
   showYAxis = true;
   gradient = false;

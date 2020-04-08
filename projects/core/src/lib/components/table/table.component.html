@@ -1,7 +1,7 @@
 <table #tableObject mdcTable>
     <thead *ngIf="dataSource?.headers">
         <tr mdcTableHeader>
-            <th class="admin-table__item {{header.css}}"
+            <th class="admin-table__head admin-table__item {{header.css}}"
                 *ngFor="let header of dataSource.headers|visibleHeaders;let index = index" [mdcTableItem]="index">
                 <mdc-table-header *ngIf="!headersTemplate || !headersTemplate[header.columnId]" (onSort)="sort($event)"
                     (onApplyFilter)="onApplyFilter($event)" (onShowFilter)="onShowFilter()" (onFilter)="filter($event)"
