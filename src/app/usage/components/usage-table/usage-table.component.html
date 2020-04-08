@@ -1,7 +1,7 @@
 <div class="form-search d-none d-md-block">
     <mdc-auto-search pause="500" #search placeholder="{{'search'|translate}}"></mdc-auto-search>
 </div>
-<mdc-table #table [downloader]="downloader" [search]="search" [searchOptions]="searchOptions" [paginator]="paginator" [dataSource]="dataSource"
+<mdc-table #table [search]="search" [searchOptions]="searchOptions" [paginator]="paginator" [dataSource]="dataSource"
     [cellsTemplate]="{ lastlogin:lastlogin}">
 </mdc-table>
 <div class="pager-wrap">

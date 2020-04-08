@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { UsageService, UsageReportParams } from '@app/usage/services/usage.service';
 import { BaseSibscriber, DownloadComponent, TableModel } from '@app/core-api';
+import { InfoPanel } from '../usage-dashboard-info-panel/usage-dashboard-info-panel.component';
 
 @Component({
   selector: 'md-usage-table',
@@ -10,10 +11,17 @@ import { BaseSibscriber, DownloadComponent, TableModel } from '@app/core-api';
 export class UsageTableComponent extends BaseSibscriber implements OnInit {
 
   @Input() downloader: DownloadComponent;
-  @Input() usageReportParams: UsageReportParams;
+  @Input() usageReportParams: UsageReportParams = {};
+  @Input() set infoPanel(infoPanel: InfoPanel) {
+    this._infoPanel = infoPanel;
+    this.createReport();
+  }
+  get infoPanel(): InfoPanel { return this._infoPanel; }
+  private _infoPanel: InfoPanel;
   report: any;
   dataSource: TableModel;
   searchOptions = ['login', 'daysSinceLastLogin', 'environment'];
+
   constructor(
     public usageService: UsageService
   ) {

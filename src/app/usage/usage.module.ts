@@ -10,9 +10,26 @@ import { UsageDashboardTopComponent } from './components/usage-dashboard-top/usa
 import { UsageDashboardInfoPanelComponent } from './components/usage-dashboard-info-panel/usage-dashboard-info-panel.component';
 import { UsageReportComponent } from './components/usage-report/usage-report.component';
 import { UsageTableComponent } from './components/usage-table/usage-table.component';
+import { UsageMainComponent } from './pages/usage-main/usage-main.component';
+import { UsageMonthlyComponent } from './components/usage-monthly/usage-monthly.component';
+import { UsageUserActivityComponent } from './components/usage-user-activity/usage-user-activity.component';
+import { UsageTopComponent } from './components/usage-top/usage-top.component';
+import { UsageCreatedComponent } from './components/usage-created/usage-created.component';
+import { ChartPipePipe } from './pipes/chart-pipe.pipe';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 const routes: Array<Route> = [
-  { path: '', component: UsageDashboardComponent }
+  //{ path: '', component: UsageDashboardComponent },
+  { path: 'main', component: UsageMainComponent },
+  { path: 'general-usage', component: UsageMainComponent },
+  { path: 'monthly-activity', component: UsageMainComponent },
+  { path: 'activity-per-user', component: UsageMainComponent },
+  { path: 'top-10-users', component: UsageMainComponent },
+  { path: 'retention', component: UsageMainComponent },
+  { path: 'created', component: UsageMainComponent },
+  { path: 'table', component: UsageMainComponent },
+  { path: '', redirectTo: 'general-usage', pathMatch: 'full' }
+
   //,{ path: ':state', component: UsageDashboardComponent }
 ]
 
@@ -23,7 +40,13 @@ const routes: Array<Route> = [
     UsageDashboardTopComponent,
     UsageDashboardInfoPanelComponent,
     UsageReportComponent,
-    UsageTableComponent
+    UsageTableComponent,
+    UsageMainComponent,
+    UsageMonthlyComponent,
+    UsageUserActivityComponent,
+    UsageTopComponent,
+    UsageCreatedComponent,
+    ChartPipePipe
   ],
   imports: [
     CommonModule,
@@ -31,7 +54,8 @@ const routes: Array<Route> = [
     FormsModule,
     ReactiveFormsModule,
     SharedModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    NgxChartsModule
   ],
   entryComponents: [
     ChartBarComponent

@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { SelectOption, DateService, BaseSibscriber } from '@app/core-api';
 import { UsageService, UsageReportState } from '@app/usage/services/usage.service';
+import { ActivatedRoute } from '@angular/router';
 
 export interface InfoPanel {
   currentYear: number;
@@ -15,9 +16,11 @@ export interface InfoPanel {
 export class UsageDashboardInfoPanelComponent extends BaseSibscriber implements OnInit {
 
   @Input() includeAdmin = false;
-  @Output() onChange = new EventEmitter<InfoPanel>()
+  @Output() onChange = new EventEmitter<InfoPanel>();
+  @Input() showYears = true;
 
   currentYear = 0;
+  
   yearsOptions: Array<SelectOption> = [
     { id: 0, text: 'YTD (Year To Date)', value: this.dateService.getYear(0) },
     { id: 1, text: `${this.dateService.getYear(-1)}`, value: this.dateService.getYear(-1) },
@@ -26,14 +29,12 @@ export class UsageDashboardInfoPanelComponent extends BaseSibscriber implements 
   ];
 
   currentEnvitonment = '';
-  environmens: Array<SelectOption> = [
-    { id: '', text: 'YTD (Year To Date)', value: this.dateService.getYear(0) },
-    { id: '1', text: `${this.dateService.getYear(-1)}`, value: this.dateService.getYear(-1) },
-    { id: '2', text: `${this.dateService.getYear(-2)}`, value: this.dateService.getYear(-2) },
-    { id: '3', text: `${this.dateService.getYear(-3)}`, value: this.dateService.getYear(-3) }
-  ];
+  selectedEnvironment: SelectOption;
+  environmens: Array<SelectOption>;
 
-  constructor(private dateService: DateService, private usageService: UsageService) {
+  constructor(
+    private dateService: DateService,
+    private usageService: UsageService) {
     super();
     super.add(
       this.usageService.onStateChanged.subscribe((state: UsageReportState) => {
@@ -65,9 +66,22 @@ export class UsageDashboardInfoPanelComponent extends BaseSibscriber implements 
     this.emit();
   }
 
+  private loadEnvironments(): void {
+    super.add(
+      this.usageService.getEnvironments().subscribe(res => {
+        this.environmens = [{ id: '', text: 'All Environment', value: '' }].concat(
+          res.map((en, index) => {
+            return { id: en, text: en, value: en };
+          }));
+        this.selectedEnvironment = this.environmens.find(x => x.value === this.currentEnvitonment);
+        if (!this.selectedEnvironment) {
+          this.selectedEnvironment = this.environmens.length ? this.environmens[0] : undefined;
+        }
+      }));
+  }
 
   ngOnInit() {
-
+    this.loadEnvironments();
   }
 
 }

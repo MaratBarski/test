@@ -1,26 +1,55 @@
 <section class="usage-dashboard-top">
-    <div>
+    <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <div class="usage-dashboard-top__content">
-                    <mdc-download #downloader [fileName]="downloadFileName"></mdc-download>
+                <div class="usage-dashboard-top__content"><a class="link-load" href="#"><span class="ic-hover">
+                            <svg class="icon ic-download" mdcSvg="ic-download">
+                            </svg></span>
+                        <span class="link-load__text">Download</span>
+                    </a>
                     <div class="usage-dashboard-top__tab">
-                        <div (mouseleave)="showMoreTab=false">
-                            <mdc-tabs tabid="importetFilesTab" [active]="tabActive" [tabs]="tabs"
-                                (select)="selectTab($event)">
-                            </mdc-tabs>
-                            <div class="popup-content">
-                                <div [hidden]="!showMoreTab" (mouseover)="showMoreTab=true"
-                                    (mouseleave)="showMoreTab=false" class="tabs-popup-more-wrap">
+                        <div class="tabs-page">
+                            <ng-container *ngFor="let link of links;let index=index">
+                                <a *ngIf="index<4" routerLinkActive="active" class="tabs-page__item {{link.css}}"
+                                    [routerLink]="['../' + link.url]">
+                                    {{link.text}}
+                                </a>
+                            </ng-container>
+                            <!-- <a class="tabs-page__item active d-none d-md-inline-block"
+                                [routerLink]="['../general-usage']">
+                                <span>General Usage</span></a>
+                            <a class="tabs-page__item d-none d-md-inline-block" href="#">
+                                <span>Monthly Activity</span></a>
+                            <a class="tabs-page__item d-none d-lg-inline-block" href="#">
+                                <span>Activity per User</span></a>
+                            <a class="tabs-page__item d-none d-lg-inline-block" href="#">
+                                <span>Top 10 Users</span></a> -->
+                            <a class="tabs-page__item" [routerLink]="['../retention']">
+                                <span>More:
+                                    Retention</span>
+                                <svg class="icon ic-select-arr-down" mdcSvg="ic-select-arr-down"></svg>
+                                <div class="tabs-popup-more-wrap">
                                     <div class="tabs-popup-more">
                                         <div class="tabs-popup-more__list">
-                                            <div [ngClass]="{'active':subItemActive === i}" (click)="selectSubItem(i)" class="tabs-popup-more__item" *ngFor="let item of subItems;let i = index">
-                                                {{item.title}}
-                                            </div>
+                                            <ng-container *ngFor="let link of links;let index=index">
+                                                <div *ngIf="!link.hidden" class="tabs-popup-more__item">
+                                                    <a [ngClass]="{'active':!true}"
+                                                        class="tabs-popup-more__item {{link.alt}}"
+                                                        [routerLink]="['../' + link.url]">
+                                                        {{link.text}}
+                                                    </a>
+                                                </div>
+                                            </ng-container>
+                                            <!-- <div class="tabs-popup-more__item">Created</div>
+                                            <div class="tabs-popup-more__item">Table</div>
+                                            <div class="tabs-popup-more__item d-md-none">General Usage</div>
+                                            <div class="tabs-popup-more__item d-md-none">Monthly Activity</div>
+                                            <div class="tabs-popup-more__item d-lg-none">Activity per User</div>
+                                            <div class="tabs-popup-more__item d-lg-none">Top 10 Users</div> -->
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </a>
                         </div>
                     </div>
                 </div>

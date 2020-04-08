@@ -3,7 +3,8 @@ import { environment } from '@env/environment';
 import { Offline } from '@app/shared/decorators/offline.decorator';
 import { TableModel, ColumnType, DataService, DateService } from '@app/core-api';
 import { formatDate } from '@angular/common';
-import { Observable, BehaviorSubject, of } from 'rxjs';
+import { Observable, BehaviorSubject, of, timer } from 'rxjs';
+import { switchMap, catchError, tap } from 'rxjs/operators';
 
 export const GetDefaultState = (): UsageReportState => {
   return {
@@ -27,6 +28,46 @@ export interface UsageReportParams {
   fromDate?: Date | string;
   toDate?: Date | string;
 }
+
+export const UsageLinks = [
+  {
+    url: 'general-usage',
+    text: 'General Usage',
+    css: 'd-none d-md-inline-block',
+    alt: 'd-md-none'
+  },
+  {
+    url: 'monthly-activity',
+    text: 'Monthly Activity',
+    css: 'd-none d-md-inline-block',
+    alt: 'd-md-none'
+  },
+  {
+    url: 'activity-per-user',
+    text: 'Activity per User',
+    css: 'd-none d-lg-inline-block',
+    alt: 'd-lg-none'
+  },
+  {
+    url: 'top-10-users',
+    text: 'Top 10 Users',
+    css: 'd-none d-lg-inline-block', 
+    alt: 'd-lg-none'
+  },
+  {
+    url: 'retention',
+    text: 'Retention',
+    hidden: true
+  },
+  {
+    url: 'created',
+    text: 'Created'
+  },
+  {
+    url: 'table',
+    text: 'Table'
+  }
+];
 @Injectable({
   providedIn: 'root'
 })
@@ -46,9 +87,19 @@ export class UsageService {
   }
 
   getEnvironments(): Observable<Array<string>> {
-    return of(
-      ['adasdas', 'dsfsdfds',]
-    );
+    return this.dataService.get('opa')
+      .pipe(
+        catchError((e) => {
+          return of(['dfasdfadfas']);
+        }),
+        tap(() => {
+        }),
+        switchMap(() => {
+          return of(
+            ['1', '2', '3']
+          );
+        })
+      )
   }
 
   setState(state: UsageReportState): void {
