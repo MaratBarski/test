@@ -1,35 +1,31 @@
-<div class="wrapper">
-    <main>
-        <div class="content-page">
-            <md-page-title>Categorization list</md-page-title>
-            <md-page-body>
-                <div class="admin-table-wrap__action">
-                    <div class="admin-table-wrap__col">
-                        <mdc-button (click)="showUploadFile=!showUploadFile" text="+ New Categorization">
-                        </mdc-button>
-                    </div>
-                    <div class="admin-table-wrap__col">
-                        <form class="form-search d-none d-md-block">
-                            <mdc-auto-search pause="500" #search placeholder="{{'search'|translate}}"
-                                (complete)="searchComplete($event)"></mdc-auto-search>
-                        </form>
-                    </div>
-                </div>
-                <div class="admin-table-content">
-                    <mdc-table #table [dataSource]="dataSource"
-                        [cellsTemplate]="{ state:stateColumn,insertDate:dateColumn,editColumn:edit,inUseColumn:inUseColumn,hierarchyName:hierarchyName}"
-                        [searchOptions]="searchOptions" [paginator]="paginator" [search]="search">
-                    </mdc-table>
-                </div>
-                <div class="pager-wrap">
-                    <mdc-paginator #paginator paginationTitle="{{'paginationTitle'|translate}}"
-                        noPagingTitle="Showing {0} files" [blockSize]="3" [pageSize]="50" [currentPage]="0">
-                    </mdc-paginator>
-                </div>
-            </md-page-body>
+<md-page-title>Categorization list</md-page-title>
+<md-page-body>
+    <div class="admin-table-wrap__action">
+        <div class="admin-table-wrap__col">
+            <mdc-button (click)="showUploadFile=!showUploadFile" text="+ New Categorization">
+            </mdc-button>
         </div>
-    </main>
-</div>
+        <div class="admin-table-wrap__col">
+            <form class="form-search d-none d-md-block">
+                <mdc-auto-search pause="500" #search placeholder="{{'search'|translate}}"
+                    (complete)="searchComplete($event)"></mdc-auto-search>
+            </form>
+        </div>
+    </div>
+    <div class="admin-table-content">
+        <mdc-table #table [dataSource]="dataSource"
+            [cellsTemplate]="{ state:stateColumn,insertDate:dateColumn,editColumn:edit,inUseColumn:inUseColumn,hierarchyName:hierarchyName}"
+            [searchOptions]="searchOptions" [paginator]="paginator" [search]="search">
+        </mdc-table>
+    </div>
+    <div class="pager-wrap">
+        <mdc-paginator #paginator paginationTitle="{{'paginationTitle'|translate}}" noPagingTitle="Showing {0} files"
+            [blockSize]="3" [pageSize]="50" [currentPage]="0">
+        </mdc-paginator>
+    </div>
+</md-page-body>
+
+
 
 <mdc-info-popup #rowInfo header="STRUCTURE MISMATCH">
     <div class="info-popup__text-wrap">
@@ -46,7 +42,8 @@
             </div>
         </div>
         <div class="switch">
-            <mdc-toggle-button no="No" (onChange)="rowStateChange($event)" yes="Yes" [(ngModel)]="currentRow.state"></mdc-toggle-button>
+            <mdc-toggle-button no="No" (onChange)="rowStateChange($event)" yes="Yes" [(ngModel)]="currentRow.state">
+            </mdc-toggle-button>
         </div>
     </div>
 </mdc-info-popup>
@@ -73,7 +70,8 @@
     </span>
 </ng-template>
 <ng-template let-item let-src="source" #stateColumn>
-    <span *ngIf="src.hierarchyChange" (mouseleave)="hideInfo($event,item)" (mouseenter)="showInfo($event,item,src)" class="admin-table__icon">
+    <span *ngIf="src.hierarchyChange" (mouseleave)="hideInfo($event,item)" (mouseenter)="showInfo($event,item,src)"
+        class="admin-table__icon">
         <mdc-icon path="ic-warning"></mdc-icon>
     </span>
     <span *ngIf="!src.hierarchyChange && (src.hierarchyLoadingType && src.hierarchyLoadingType !== 'manual')">

@@ -1,42 +1,15 @@
-<section class="graph-wrap">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="graph">
-                    <div class="graph__top">
-                        <div class="graph__head">New Queries per user
-                        </div>
-                    </div>
-                    <div class="graph__content">
-                        <div class="chart-wraper">
-                            <ngx-charts-bar-vertical [view]="view" [scheme]="colorScheme"
-                                [results]="responseData|async|chartPipe" [gradient]="gradient" [xAxis]="showXAxis"
-                                [yAxis]="showYAxis" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="true"
-                                [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" [legend]="false"
-                                [showDataLabel]="true">
-                            </ngx-charts-bar-vertical>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="graph">
-                    <div class="graph__top">
-                        <div class="graph__head">Downloads per user
-                        </div>
-                    </div>
-                    <div class="graph__content">
-                        <div class="chart-wraper">
-                            <ngx-charts-bar-vertical [view]="view" [scheme]="colorScheme"
-                                [results]="responseData|async|chartPipe" [gradient]="gradient" [xAxis]="showXAxis"
-                                [yAxis]="showYAxis" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="true"
-                                [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" [legend]="false"
-                                [showDataLabel]="true">
-                            </ngx-charts-bar-vertical>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+<md-chart-wraper firstTitle="New Queries per user" secondTitle="Downloads per user" [firstChart]="firstChart"
+    [secondChart]="secondChart">
+</md-chart-wraper>
+
+<ng-template #firstChart>
+    <ngx-charts-line-chart [results]="(responseData|async|userActivityChart).query" [animations]="true" [xAxis]="true"
+        [yAxis]="true" [showGridLines]="true" [showXAxisLabel]="true">
+    </ngx-charts-line-chart>
+</ng-template>
+
+<ng-template #secondChart>
+    <ngx-charts-line-chart [results]="(responseData|async|userActivityChart).download" [xAxis]="true" [yAxis]="true"
+        [showGridLines]="true" [showXAxisLabel]="true">
+    </ngx-charts-line-chart>
+</ng-template>

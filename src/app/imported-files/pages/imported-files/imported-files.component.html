@@ -1,38 +1,34 @@
-<div class="wrapper">
-    <main>
-        <md-page-title>Imported files</md-page-title>
-        <md-page-body>
-            <div class="admin-table-wrap__action">
-                <div class="admin-table-wrap__col">
-                    <mdc-button (click)="openFileUpload()" text="+ {{'NewFile'|translate}}">
-                    </mdc-button>
-                    <div style="display: none;">
-                        <mdc-download #downloader></mdc-download>
-                    </div>
-                </div>
-                <div mdAnimationSticky class="admin-table-wrap__col">
-                    <div class="tabs-page">
-                        <mdc-date-filter #dateFilter (onFilter)="dateFilterData($event)" [dataSource]="fileSource"
-                            [items]="dateRanges"></mdc-date-filter>
-                    </div>
-                    <div class="form-search d-none d-md-block">
-                        <mdc-auto-search pause="500" #search placeholder="{{'search'|translate}}"></mdc-auto-search>
-                    </div>
-                </div>
+<md-page-title>Imported files</md-page-title>
+<md-page-body>
+    <div class="admin-table-wrap__action">
+        <div class="admin-table-wrap__col">
+            <mdc-button (click)="openFileUpload()" text="+ {{'NewFile'|translate}}">
+            </mdc-button>
+            <div style="display: none;">
+                <mdc-download #downloader></mdc-download>
             </div>
-            <mdc-table #table (onAction)="onAction($event)" [rowInfoTemplate]="rowInfoTemplate"
-                [emptyState]="emptyState" [downloader]="downloader"
-                [cellsTemplate]="{ insertDate:dateColumn,shared:sharedColumn}" [searchOptions]="searchOptions"
-                [paginator]="paginator" [search]="search" [dataSource]="dataSource">
-            </mdc-table>
-            <div class="pager-wrap">
-                <mdc-paginator #paginator paginationTitle="{{'paginationTitle'|translate}}"
-                    noPagingTitle="Showing {0} files" [blockSize]="3" [pageSize]="50" [currentPage]="0">
-                </mdc-paginator>
+        </div>
+        <div mdAnimationSticky class="admin-table-wrap__col">
+            <div class="tabs-page">
+                <mdc-date-filter #dateFilter (onFilter)="dateFilterData($event)" [dataSource]="fileSource"
+                    [items]="dateRanges"></mdc-date-filter>
             </div>
-        </md-page-body>
-    </main>
-</div>
+            <div class="form-search d-none d-md-block">
+                <mdc-auto-search pause="500" #search placeholder="{{'search'|translate}}"></mdc-auto-search>
+            </div>
+        </div>
+    </div>
+    <mdc-table #table (onAction)="onAction($event)" [rowInfoTemplate]="rowInfoTemplate" [emptyState]="emptyState"
+        [downloader]="downloader" [cellsTemplate]="{ insertDate:dateColumn,shared:sharedColumn}"
+        [searchOptions]="searchOptions" [paginator]="paginator" [search]="search" [dataSource]="dataSource">
+    </mdc-table>
+    <div class="pager-wrap">
+        <mdc-paginator #paginator paginationTitle="{{'paginationTitle'|translate}}" noPagingTitle="Showing {0} files"
+            [blockSize]="3" [pageSize]="50" [currentPage]="0">
+        </mdc-paginator>
+    </div>
+</md-page-body>
+
 
 <ng-template #rowInfoTemplate let-item>
     <div style="width:900px;border:1px solid red">

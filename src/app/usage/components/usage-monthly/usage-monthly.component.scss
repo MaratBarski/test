@@ -1,0 +1,20 @@
+.original, .synthetic{
+    width:14px;
+    height:14px;
+    margin-right: 10px;
+}
+.original{
+    background-color: #FFC852;
+}
+.synthetic{
+    background-color: #6725B7;
+}
+.legend{
+    display: flex;
+    clear: both;
+}
+.legend-cnt{
+    display: flex;
+    align-items: center;
+    margin: 4px 10px 4px 10px;
+}

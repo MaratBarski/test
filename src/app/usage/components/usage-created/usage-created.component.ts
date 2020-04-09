@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { UsageService } from '@app/usage/services/usage.service';
 import { UsageBase } from '../UsageBase';
 import { ChartService } from '@app/usage/services/chart.service';
+import { ComponentService } from '@app/core-api';
 
 @Component({
   selector: 'md-usage-created',
@@ -10,7 +11,11 @@ import { ChartService } from '@app/usage/services/chart.service';
 })
 export class UsageCreatedComponent extends UsageBase  {
 
-  constructor(protected usageService: UsageService, protected chartService: ChartService) {
+  constructor(
+    protected componentService: ComponentService,
+    protected usageService: UsageService, 
+    protected chartService: ChartService
+    ) {
     super();
   }
 

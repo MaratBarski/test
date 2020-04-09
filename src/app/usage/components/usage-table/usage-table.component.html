@@ -1,14 +1,29 @@
-<div class="form-search d-none d-md-block">
-    <mdc-auto-search pause="500" #search placeholder="{{'search'|translate}}"></mdc-auto-search>
-</div>
-<mdc-table #table [search]="search" [searchOptions]="searchOptions" [paginator]="paginator" [dataSource]="dataSource"
-    [cellsTemplate]="{ lastlogin:lastlogin}">
-</mdc-table>
-<div class="pager-wrap">
-    <mdc-paginator #paginator noPagingTitle="Showing {0} users" paginationTitle="Showing {0} of {1} users"
-        [blockSize]="3" [pageSize]="50" [currentPage]="0">
-    </mdc-paginator>
-</div>
+<section class="admin-table-wrap">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="admin-table-wrap__action">
+                    <div class="admin-table-wrap__col">
+                        <div class="admin-table-wrap__title">Summary activity table</div>
+                    </div>
+                    <div class="admin-table-wrap__col">
+                        <div class="form-search d-none d-md-block">
+                            <mdc-auto-search pause="500" #search placeholder="{{'search'|translate}}"></mdc-auto-search>
+                        </div>
+                    </div>
+                </div>
+                <mdc-table #table [search]="search" [searchOptions]="searchOptions" [paginator]="paginator"
+                    [dataSource]="dataSource" [cellsTemplate]="{ lastlogin:lastlogin}">
+                </mdc-table>
+                <div class="pager-wrap">
+                    <mdc-paginator #paginator noPagingTitle="Showing {0} users"
+                        paginationTitle="Showing {0} of {1} users" [blockSize]="3" [pageSize]="50" [currentPage]="0">
+                    </mdc-paginator>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 <ng-template #lastlogin let-item>
     {{item.lastlogin|date}}

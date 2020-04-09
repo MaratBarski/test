@@ -58,12 +58,10 @@ import { RowInfoComponent } from './components/row-info/row-info.component';
 import { DateFilterComponent } from './components/date-filter/date-filter.component';
 import { ActionLinkPipe } from './pipes/action-link.pipe';
 import { SvgDirective } from './directives/svg.directive';
-import {ProgressMatchComponent} from './components/progress-match/progress-match.component';
-import {TopPanelComponent} from './components/top-panel.component/top-panel.component';
+import { ProgressMatchComponent } from './components/progress-match/progress-match.component';
 import { FileUploaderComponent } from './components/file-uploader/file-uploader.component';
 
 // import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
-
 
 @NgModule({
   declarations: [
@@ -119,8 +117,7 @@ import { FileUploaderComponent } from './components/file-uploader/file-uploader.
     ActionLinkPipe,
     SvgDirective,
     ProgressMatchComponent,
-    TopPanelComponent,
-	FileUploaderComponent
+    FileUploaderComponent
   ],
   imports: [
     CommonModule,
@@ -184,8 +181,7 @@ import { FileUploaderComponent } from './components/file-uploader/file-uploader.
     ActionLinkPipe,
     SvgDirective,
     ProgressMatchComponent,
-    TopPanelComponent,
-	FileUploaderComponent
+    FileUploaderComponent
   ],
   entryComponents: [
     TableHeaderComponent

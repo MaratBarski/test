@@ -1,28 +1,29 @@
-<section class="graph-wrap">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="graph">
-                    <div class="graph__top">
-                        <div class="graph__head">Activity: new queries count
-                        </div>
-                    </div>
-                    <div class="graph__content">
-                      
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="graph">
-                    <div class="graph__top">
-                        <div class="graph__head">Activity: file downloads count
-                        </div>
-                    </div>
-                    <div class="graph__content">
-                  
-                    </div>
-                </div>
-            </div>
+<md-chart-wraper *ngIf="responseData" firstTitle="Activity: new queries count"
+    secondTitle="Activity: file downloads count" [firstChart]="firstChart" [secondChart]="secondChart">
+</md-chart-wraper>
+
+<ng-template #firstChart>
+    <ngx-charts-bar-vertical [view]="view" [scheme]="colorScheme" [results]="(responseData|async|monthlyChart).query"
+        [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis" [showXAxisLabel]="showXAxisLabel"
+        [showYAxisLabel]="true" [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" [legend]="false"
+        [showDataLabel]="true">
+    </ngx-charts-bar-vertical>
+</ng-template>
+
+<ng-template #secondChart>
+    <ngx-charts-bar-vertical-stacked [view]="view" [scheme]="colorSchemeDownload"
+        [results]="(responseData|async|monthlyChart).download" [gradient]="gradient" [xAxis]="showXAxis"
+        [yAxis]="showYAxis" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="true" [xAxisLabel]="xAxisLabel"
+        [yAxisLabel]="yAxisLabel" [legend]="false" [showDataLabel]="true">
+    </ngx-charts-bar-vertical-stacked>
+    <div class="legend">
+        <div class="legend-cnt">
+            <div class="original"></div>
+            <div>Original Files</div>
+        </div>
+        <div class="legend-cnt">
+            <div class="synthetic"></div>
+            <div>Synthetic Files</div>
         </div>
     </div>
-</section>
+</ng-template>

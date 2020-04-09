@@ -1,0 +1,32 @@
+<section class="graph-wrap">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="graph">
+                    <div class="graph__top">
+                        <div class="graph__head">{{firstTitle}}
+                        </div>
+                    </div>
+                    <div class="graph__content">
+                        <div class="chart-wraper">
+                            <ng-container *ngTemplateOutlet="firstChart"></ng-container>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="graph">
+                    <div class="graph__top">
+                        <div class="graph__head">{{secondTitle}}
+                        </div>
+                    </div>
+                    <div class="graph__content">
+                        <div class="chart-wraper">
+                            <ng-container *ngTemplateOutlet="secondChart"></ng-container>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

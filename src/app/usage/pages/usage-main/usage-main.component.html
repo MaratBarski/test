@@ -1,34 +1,30 @@
-<main class="main main_no-indent">
-    <div class="content-page">
-        <div class="usage-dashboard">
-            <section class="page-header">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="page-header__wrap">
-                                <div class="page-header__content">
-                                    <h1>Usage Dashboard</h1>
-                                </div>
-                                <div class="notice">
-                                    <div class="notice__icon">
-                                        <svg class="icon ic-bulb">
-                                            <use xlink:href="/assets/sprites/sprite.svg#ic-bulb"></use>
-                                        </svg>
-                                    </div>
-                                </div>
+<div class="usage-dashboard">
+    <section class="page-header">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="page-header__wrap">
+                        <div class="page-header__content">
+                            <h1>Usage Dashboard</h1>
+                        </div>
+                        <div class="notice">
+                            <div class="notice__icon">
+                                <svg mdcSvg="ic-bulb" class="icon ic-bulb"></svg>
                             </div>
                         </div>
                     </div>
                 </div>
-            </section>
-            <md-usage-dashboard-top></md-usage-dashboard-top>
-            <md-usage-dashboard-info-panel [showYears]="currentPage!=='top-10-users'" (onChange)="onChangeInfoPanel($event)"></md-usage-dashboard-info-panel>
-            <md-usage-report [infoPanel]="infoPanel" *ngIf="currentPage==='general-usage'"></md-usage-report>
-            <md-usage-monthly [infoPanel]="infoPanel" *ngIf="currentPage==='monthly-activity'"></md-usage-monthly>
-            <md-usage-user-activity [infoPanel]="infoPanel" *ngIf="currentPage==='activity-per-user'"></md-usage-user-activity>
-            <md-usage-top [infoPanel]="infoPanel" *ngIf="currentPage==='top-10-users'"></md-usage-top>
-            <md-usage-created [infoPanel]="infoPanel" *ngIf="currentPage==='created'"></md-usage-created>
-            <md-usage-table [infoPanel]="infoPanel" *ngIf="currentPage==='retention'"></md-usage-table>
+            </div>
         </div>
-    </div>
-</main>
+    </section>
+    <md-usage-dashboard-top></md-usage-dashboard-top>
+    <md-usage-dashboard-info-panel [showYears]="currentPage!=='top-10-users'" (onChange)="onChangeInfoPanel($event)">
+    </md-usage-dashboard-info-panel>
+    <md-usage-report [infoPanel]="infoPanel" *ngIf="currentPage==='general-usage'"></md-usage-report>
+    <md-usage-monthly [infoPanel]="infoPanel" *ngIf="currentPage==='monthly-activity'"></md-usage-monthly>
+    <md-usage-user-activity [infoPanel]="infoPanel" *ngIf="currentPage==='activity-per-user'">
+    </md-usage-user-activity>
+    <md-usage-top [infoPanel]="infoPanel" *ngIf="currentPage==='top-10-users'"></md-usage-top>
+    <md-usage-created [infoPanel]="infoPanel" *ngIf="currentPage==='created'"></md-usage-created>
+    <md-usage-table [infoPanel]="infoPanel" *ngIf="currentPage==='retention'"></md-usage-table>
+</div>

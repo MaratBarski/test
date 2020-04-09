@@ -14,11 +14,28 @@ export class ChartService {
     private dataService: DataService
   ) { }
 
-  @Offline('assets/offline/usageReport.json?')
-  private getGeneralUsageUrl = `${environment.serverUrl}${environment.endPoints.usageReport}`;
   //http://10.0.2.18:4000/mdclone/api/v1/reporting/usage/25-06-2000/25-09-2021
-
+  @Offline('assets/offline/usageGeneral.json?')
+  private getGeneralUsageUrl = `${environment.serverUrl}${environment.endPoints.usageReport}`;
   getGeneralUsage(info: InfoPanel): Observable<Array<any>> {
     return this.dataService.get(this.getGeneralUsageUrl);
+  }
+
+  @Offline('assets/offline/usageMonthly.json?')
+  private getMonthlyUsageUrl = `${environment.serverUrl}${environment.endPoints.usageReport}`;
+  getMonthlyUsage(info: InfoPanel): Observable<Array<any>> {
+    return this.dataService.get(this.getMonthlyUsageUrl);
+  }
+
+  @Offline('assets/offline/usageUserActivity.json?')
+  private getUserActivityUsageUrl = `${environment.serverUrl}${environment.endPoints.usageReport}`;
+  getActivityUserUsage(info: InfoPanel): Observable<Array<any>> {
+    return this.dataService.get(this.getUserActivityUsageUrl);
+  }
+
+  @Offline('assets/offline/usageTop10.json?')
+  private getTop10UsageUrl = `${environment.serverUrl}${environment.endPoints.usageReport}`;
+  getTop10Usage(info: InfoPanel): Observable<Array<any>> {
+    return this.dataService.get(this.getTop10UsageUrl);
   }
 }

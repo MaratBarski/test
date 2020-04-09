@@ -1,8 +1,7 @@
-import { Component, OnInit, Input, ViewChild, ViewContainerRef, ComponentFactoryResolver, ElementRef, Inject } from '@angular/core';
-import { ChartBarComponent, Bar, BaseSibscriber } from '@app/core-api';
-import { UsageService, UsageReportParams } from '@app/usage/services/usage.service';
+import { Component } from '@angular/core';
+import { ComponentService } from '@app/core-api';
+import { UsageService, } from '@app/usage/services/usage.service';
 import { ChartService } from '@app/usage/services/chart.service';
-import { InfoPanel } from '../usage-dashboard-info-panel/usage-dashboard-info-panel.component';
 import { UsageBase } from '../UsageBase';
 
 @Component({
@@ -12,18 +11,15 @@ import { UsageBase } from '../UsageBase';
 })
 export class UsageReportComponent extends UsageBase {
 
-  title = 'Angular Charts';
-
   view: undefined;// any[] = [600, 400];
-  
   showXAxis = true;
-  showYAxis = true;
+  showYAxis = false;
   gradient = false;
-  showLegend = true;
-  showXAxisLabel = true;
-  xAxisLabel = 'Country';
-  showYAxisLabel = true;
+  showLegend = false;
+  showXAxisLabel = false;
+  xAxisLabel = '';
   yAxisLabel = 'Sales';
+  showYAxisLabel = true;
   timeline = true;
 
   colorScheme = {
@@ -31,14 +27,17 @@ export class UsageReportComponent extends UsageBase {
   };
 
 
-  constructor(protected usageService: UsageService, protected chartService: ChartService) {
+  constructor(
+    protected componentService: ComponentService,
+    protected usageService: UsageService,
+    protected chartService: ChartService
+  ) {
     super();
   }
 
   createReport(): void {
     super.responseData = this.chartService.getGeneralUsage(super.infoPanel);
   }
-
-
-
 }
+
+//https://swimlane.gitbook.io/ngx-charts/v/docs-test/examples/bar-charts/horizontal-bar-chart

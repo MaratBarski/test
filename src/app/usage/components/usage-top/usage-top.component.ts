@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { UsageService } from '@app/usage/services/usage.service';
 import { UsageBase } from '../UsageBase';
 import { ChartService } from '@app/usage/services/chart.service';
-import { TabItemModel } from '@app/core-api';
+import { TabItemModel, ComponentService } from '@app/core-api';
 
 @Component({
   selector: 'md-usage-top',
@@ -11,12 +11,35 @@ import { TabItemModel } from '@app/core-api';
 })
 export class UsageTopComponent extends UsageBase {
 
-  constructor(protected usageService: UsageService, protected chartService: ChartService) {
+  view = undefined;//  [600, 400];
+  showXAxis = true;
+  showYAxis = false;
+  gradient = false;
+  showLegend = false;
+  showXAxisLabel = false;
+  showYAxisLabel = true;
+  xAxisLabel = '';
+  yAxisLabel = '';
+  timeline = false;
+
+  colorScheme = {
+    domain: ['#5B9BD5']
+  };
+
+  colorSchemeDownload = {
+    domain: ['#6725B7', '#FFC852']
+  };
+
+  constructor(
+    protected componentService: ComponentService,
+    protected usageService: UsageService,
+    protected chartService: ChartService
+  ) {
     super();
   }
 
   createReport(): void {
-    super.responseData = this.chartService.getGeneralUsage(super.infoPanel);
+    super.responseData = this.chartService.getTop10Usage(super.infoPanel);
   }
 
   activityButtons: Array<TabItemModel> = [

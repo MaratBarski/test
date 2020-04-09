@@ -35,3 +35,107 @@ export class ChartPipePipe implements PipeTransform {
 }
 
 
+@Pipe({
+  name: 'generalChart'
+})
+export class GeneralChartPipe implements PipeTransform {
+  transform(arr: Array<any>, ...args: any[]): any {
+    if (!arr) { return []; }
+    return arr.map(x => {
+      return {
+        name: x.date,
+        value: x.count
+      };
+    })
+  }
+}
+
+@Pipe({
+  name: 'monthlyChart'
+})
+export class MonthlyChartPipe implements PipeTransform {
+  transform(data: any, ...args: any[]): any {
+    const res = {
+      query: [],
+      download: []
+    }
+    if (!data) { return res; }
+    if (data.newQuery) {
+      res.query = data.newQuery.map(x => {
+        return {
+          name: x.date,
+          value: x.count
+        }
+      })
+    }
+    if (data.downloads) {
+      res.download = data.downloads.map(x => {
+        return {
+          name: x.date,
+          series: [
+            { name: 'syntetic', value: x.syntetic },
+            { name: 'origin', value: x.origin }
+          ]
+        };
+      });
+    }
+    return res;
+  }
+}
+
+@Pipe({
+  name: 'userActivityChart'
+})
+export class UserActivityChartPipe implements PipeTransform {
+  transform(data: any, ...args: any[]): any {
+    const res = {
+      query: [],
+      download: []
+    }
+    if (!data) { return res; }
+    if (data.query) {
+      res.query = data.query;
+    }
+    if (data.download) {
+      res.download = data.download;
+    }
+    return res;
+  }
+}
+
+@Pipe({
+  name: 'userTop10Chart'
+})
+export class Top10ChartPipe implements PipeTransform {
+  transform(data: any, ...args: any[]): any {
+    const res = {
+      query: [],
+      download: []
+    }
+    if (!data) { return res; }
+    if (data.newQuery) {
+      res.query = data.newQuery.map(x => {
+        return {
+          name: x.date,
+          value: x.count
+        }
+      })
+    }
+    if (data.downloads) {
+      res.download = data.downloads.map(x => {
+        return {
+          name: x.date,
+          series: [
+            { name: 'syntetic', value: x.syntetic },
+            { name: 'origin', value: x.origin }
+          ]
+        };
+      });
+    }
+    return res;
+  }
+}
+
+
+
+
