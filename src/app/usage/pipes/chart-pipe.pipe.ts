@@ -136,6 +136,22 @@ export class Top10ChartPipe implements PipeTransform {
   }
 }
 
+@Pipe({
+  name: 'createdChart'
+})
+export class CreatedChartPipe implements PipeTransform {
+  transform(arr: Array<any>, ...args: any[]): any {
+    if (!arr) { return []; }
+    return arr.map(x => {
+      return {
+        name: x.date,
+        value: x.count
+      };
+    })
+  }
+}
+
+
 
 
 

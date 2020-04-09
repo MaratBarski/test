@@ -11,6 +11,21 @@ import { ComponentService } from '@app/core-api';
 })
 export class UsageCreatedComponent extends UsageBase  {
 
+  view: undefined;// any[] = [600, 400];
+  showXAxis = true;
+  showYAxis = false;
+  gradient = false;
+  showLegend = false;
+  showXAxisLabel = false;
+  xAxisLabel = '';
+  yAxisLabel = 'Sales';
+  showYAxisLabel = true;
+  timeline = true;
+
+  colorScheme = {
+    domain: ['#5B9BD5']
+  };
+
   constructor(
     protected componentService: ComponentService,
     protected usageService: UsageService, 
@@ -20,6 +35,6 @@ export class UsageCreatedComponent extends UsageBase  {
   }
 
   createReport(): void {
-    super.responseData = this.chartService.getGeneralUsage(super.infoPanel);
+    super.responseData = this.chartService.getCreatedUsagee(super.infoPanel);
   }
 }

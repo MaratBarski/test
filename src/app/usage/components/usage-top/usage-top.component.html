@@ -6,7 +6,7 @@
 </md-chart-wraper>
 
 <ng-template #firstChart>
-    <ngx-charts-bar-horizontal [view]="view" [scheme]="colorScheme" [results]="(responseData|async|userTop10Chart).query"
+    <ngx-charts-bar-horizontal [view]="view" [scheme]="colorScheme" [results]="(dataSource|userTop10Chart).query"
         [xAxis]="false" [yAxis]="true" [showXAxisLabel]="true"
         [showYAxisLabel]="true"  [legend]="false"
         [showDataLabel]="true">
@@ -15,7 +15,7 @@
 
 <ng-template #secondChart>
     <ngx-charts-bar-horizontal-stacked [view]="view" [scheme]="colorSchemeDownload"
-        [results]="(responseData|async|monthlyChart).download" [gradient]="gradient" [xAxis]="false"
+        [results]="(dataSource|monthlyChart).download" [gradient]="gradient" [xAxis]="false"
         [yAxis]="true" [showXAxisLabel]="false" [showYAxisLabel]="true" [xAxisLabel]="xAxisLabel"
         [yAxisLabel]="yAxisLabel" [legend]="false" [showDataLabel]="true">
     </ngx-charts-bar-horizontal-stacked>

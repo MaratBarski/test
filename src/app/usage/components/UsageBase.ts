@@ -11,7 +11,19 @@ const GetDefaultInfoPanel = (): InfoPanel => {
 }
 export abstract class UsageBase extends BaseSibscriber implements OnInit, OnDestroy {
 
-    responseData: any;
+    set responseData(responseData: any) {
+        this._responseData = responseData;
+        super.add(
+            this._responseData.subscribe(res => {
+                this.dataSource = res;
+            })
+        );
+    }
+    get responseData(): any {
+        return this._responseData;
+    }
+    private _responseData: any;
+    dataSource: any;
     @Input() set infoPanel(infoPanel: InfoPanel) {
         this._infoPanel = infoPanel ? infoPanel : GetDefaultInfoPanel()
         this.createReport();

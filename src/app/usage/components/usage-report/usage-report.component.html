@@ -13,7 +13,7 @@
                     <div class="graph__content">
                         <div class="chart-wraper">
                             <ngx-charts-bar-vertical [view]="view" [scheme]="colorScheme" [barPadding]="10"
-                                [results]="responseData|async|generalChart" [gradient]="gradient" [xAxis]="showXAxis"
+                                [results]="dataSource|generalChart" [gradient]="gradient" [xAxis]="showXAxis"
                                 [yAxis]="showYAxis" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="true"
                                 [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" [legend]="false"
                                 [showDataLabel]="true">

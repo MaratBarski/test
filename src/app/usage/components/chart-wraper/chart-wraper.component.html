@@ -8,8 +8,9 @@
                         </div>
                     </div>
                     <div class="graph__content">
-                        <div class="chart-wraper">
-                            <ng-container *ngTemplateOutlet="firstChart"></ng-container>
+                        <div *ngIf="chartService.isLoading">Loading...</div>
+                        <div class="chart-wraper" [mdcVisibility]="chartService.isLoaded">
+                            <ng-container  *ngTemplateOutlet="firstChart"></ng-container>
                         </div>
                     </div>
                 </div>
@@ -21,7 +22,8 @@
                         </div>
                     </div>
                     <div class="graph__content">
-                        <div class="chart-wraper">
+                        <div *ngIf="chartService.isLoading">Loading...</div>
+                        <div class="chart-wraper" [mdcVisibility]="chartService.isLoaded">
                             <ng-container *ngTemplateOutlet="secondChart"></ng-container>
                         </div>
                     </div>

@@ -3,13 +3,13 @@
 </md-chart-wraper>
 
 <ng-template #firstChart>
-    <ngx-charts-line-chart [results]="(responseData|async|userActivityChart).query" [animations]="true" [xAxis]="true"
+    <ngx-charts-line-chart [results]="(dataSource|userActivityChart).query" [animations]="true" [xAxis]="true"
         [yAxis]="true" [showGridLines]="true" [showXAxisLabel]="true">
     </ngx-charts-line-chart>
 </ng-template>
 
 <ng-template #secondChart>
-    <ngx-charts-line-chart [results]="(responseData|async|userActivityChart).download" [xAxis]="true" [yAxis]="true"
+    <ngx-charts-line-chart [results]="(dataSource|userActivityChart).download" [xAxis]="true" [yAxis]="true"
         [showGridLines]="true" [showXAxisLabel]="true">
     </ngx-charts-line-chart>
 </ng-template>

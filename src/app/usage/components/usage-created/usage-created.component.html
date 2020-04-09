@@ -8,7 +8,14 @@
                         </div>
                     </div>
                     <div class="graph__content">
-                       
+                        <div class="chart-wraper">
+                            <ngx-charts-bar-vertical [view]="view" [scheme]="colorScheme" [barPadding]="10"
+                                [results]="dataSource|createdChart" [gradient]="gradient" [xAxis]="showXAxis"
+                                [yAxis]="showYAxis" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="true"
+                                [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" [legend]="false"
+                                [showDataLabel]="true">
+                            </ngx-charts-bar-vertical>
+                        </div>
                     </div>
                 </div>
             </div>

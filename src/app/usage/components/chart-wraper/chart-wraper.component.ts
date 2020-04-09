@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { ChartService } from '@app/usage/services/chart.service';
 
 @Component({
   selector: 'md-chart-wraper',
@@ -11,6 +12,8 @@ export class ChartWraperComponent {
   @Input() secondTitle: string;
   @Input() firstChart: any;
   @Input() secondChart: any;
+
+  constructor(public chartService: ChartService) { }
 
 
 }
