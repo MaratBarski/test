@@ -36,6 +36,11 @@ const routes: Routes = [
     path: '',
     redirectTo: 'imported-files',
     pathMatch: 'full'
+  },
+  {
+    path: '**',
+    redirectTo: 'imported-files',
+    pathMatch: 'full'
   }
 ];
 

@@ -30,7 +30,8 @@ const routes: Array<Route> = [
   { path: 'retention', component: UsageMainComponent },
   { path: 'created', component: UsageMainComponent },
   { path: 'table', component: UsageMainComponent },
-  { path: '', redirectTo: 'general-usage', pathMatch: 'full' }
+  { path: '', redirectTo: 'general-usage', pathMatch: 'full' },
+  { path: '**', redirectTo: 'general-usage', pathMatch: 'full' }
 
   //,{ path: ':state', component: UsageDashboardComponent }
 ]
