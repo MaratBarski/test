@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BaseSibscriber, PageInfo, NavigationService } from '@app/core-api';
 import { UsageReportParams } from '@app/usage/models/usage-request';
+import { UsageRequestService } from '@app/usage/services/usage-request.service';
 
 @Component({
   selector: 'md-usage-main',
@@ -14,6 +15,7 @@ export class UsageMainComponent extends BaseSibscriber implements OnInit {
   infoPanel: UsageReportParams;
 
   constructor(
+    public usageRequestService: UsageRequestService,
     private activeRouter: ActivatedRoute,
     private navigationService: NavigationService
   ) {

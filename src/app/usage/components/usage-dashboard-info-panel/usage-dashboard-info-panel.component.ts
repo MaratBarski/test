@@ -62,17 +62,14 @@ export class UsageDashboardInfoPanelComponent extends BaseSibscriber implements 
   }
 
   private loadEnvironments(): void {
-    super.add(
-      this.usageService.getEnvironments().subscribe(res => {
-        this.environmens = [{ id: '', text: 'All Environment', value: '' }].concat(
-          res.map((en, index) => {
-            return { id: en, text: en, value: en };
-          }));
-        this.selectedEnvironment = this.environmens.find(x => x.value === this.currentEnvitonment);
-        if (!this.selectedEnvironment) {
-          this.selectedEnvironment = this.environmens.length ? this.environmens[0] : undefined;
-        }
+    this.environmens = [{ id: '', text: 'All Environment', value: '' }].concat(
+      this.usageRequestService.environments.map((en, index) => {
+        return { id: en.id, text: en.name, value: en.id };
       }));
+    this.selectedEnvironment = this.environmens.find(x => x.value === this.currentEnvitonment);
+    if (!this.selectedEnvironment) {
+      this.selectedEnvironment = this.environmens.length ? this.environmens[0] : undefined;
+    }
   }
 
   ngOnInit() {
