@@ -1,6 +1,6 @@
-<nav class="sidebar-menu">
+<nav *ngIf="items" class="sidebar-menu">
     <ul class="sidebar-menu__list">
-        <li [ngClass]="{'active':item.active}" class="sidebar-menu__item" *ngFor="let item of items">
+        <li [ngClass]="{'active':item.active}" class="sidebar-menu__item" *ngFor="let item of items|async">
             <div class="sidebar-menu__main pointer" (click)="navigate(item)">
                 <div class="sidebar-menu__img"></div>
                 <div class="sidebar-menu__text">{{item.text}}</div>

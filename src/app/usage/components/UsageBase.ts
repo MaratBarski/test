@@ -1,21 +1,17 @@
-import { Input, OnInit, OnDestroy } from '@angular/core';
-import { InfoPanel } from './usage-dashboard-info-panel/usage-dashboard-info-panel.component';
+import { OnInit, OnDestroy } from '@angular/core';
 import { ComponentService, BaseSibscriber } from '@app/core-api';
+import { UsageRequestService } from '../services/usage-request.service';
 
-const GetDefaultInfoPanel = (): InfoPanel => {
-    return {
-        currentYear: 0,
-        includeAdmin: false,
-        environment: ''
-    }
-}
 export abstract class UsageBase extends BaseSibscriber implements OnInit, OnDestroy {
-
+    dataSourceReady: any = () => { };
     set responseData(responseData: any) {
         this._responseData = responseData;
         super.add(
             this._responseData.subscribe(res => {
                 this.dataSource = res;
+                if (this.dataSourceReady) {
+                    this.dataSourceReady();
+                }
             })
         );
     }
@@ -24,18 +20,19 @@ export abstract class UsageBase extends BaseSibscriber implements OnInit, OnDest
     }
     private _responseData: any;
     dataSource: any;
-    @Input() set infoPanel(infoPanel: InfoPanel) {
-        this._infoPanel = infoPanel ? infoPanel : GetDefaultInfoPanel()
-        this.createReport();
-    }
-    get infoPanel(): InfoPanel { return this._infoPanel; }
-    private _infoPanel: InfoPanel = GetDefaultInfoPanel();
     abstract createReport(): void;
     protected abstract get componentService(): ComponentService;
+    public abstract get usageRequestService(): UsageRequestService;
 
     ngOnInit(): void {
+        this.createReport();
         super.add(this.componentService.onSideBarToggle.subscribe((flag: boolean) => {
             this.createReport();
         }));
+        super.add(
+            this.usageRequestService.onChange.subscribe(() => {
+                this.createReport();
+            })
+        );
     }
 }

@@ -1,13 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { SelectOption, DateService, BaseSibscriber } from '@app/core-api';
-import { UsageService, UsageReportState } from '@app/usage/services/usage.service';
-import { ActivatedRoute } from '@angular/router';
+import { UsageService } from '@app/usage/services/usage.service';
+import { UsageRequestService } from '@app/usage/services/usage-request.service';
 
-export interface InfoPanel {
-  currentYear: number;
-  includeAdmin: boolean;
-  environment: string;
-}
 @Component({
   selector: 'md-usage-dashboard-info-panel',
   templateUrl: './usage-dashboard-info-panel.component.html',
@@ -16,11 +11,12 @@ export interface InfoPanel {
 export class UsageDashboardInfoPanelComponent extends BaseSibscriber implements OnInit {
 
   @Input() includeAdmin = false;
-  @Output() onChange = new EventEmitter<InfoPanel>();
+  @Output() onChange = new EventEmitter();
   @Input() showYears = true;
+  @Input() showUsers = true;
 
   currentYear = 0;
-  
+
   yearsOptions: Array<SelectOption> = [
     { id: 0, text: 'YTD (Year To Date)', value: this.dateService.getYear(0) },
     { id: 1, text: `${this.dateService.getYear(-1)}`, value: this.dateService.getYear(-1) },
@@ -34,36 +30,35 @@ export class UsageDashboardInfoPanelComponent extends BaseSibscriber implements 
 
   constructor(
     private dateService: DateService,
-    private usageService: UsageService) {
+    private usageService: UsageService,
+    public usageRequestService: UsageRequestService
+  ) {
     super();
-    super.add(
-      this.usageService.onStateChanged.subscribe((state: UsageReportState) => {
-        this.currentYear = state.yearId || 0;
-        this.includeAdmin = state.includeAdmin || false;
-        this.currentEnvitonment = state.environment;
-      }));
   }
 
   private emit(): void {
-    this.onChange.emit({
-      currentYear: this.currentYear,
-      includeAdmin: this.includeAdmin,
-      environment: this.currentEnvitonment
-    })
+    this.onChange.emit();
   }
 
   changeYear(option: SelectOption): void {
     this.currentYear = (option.id as number);
     this.emit();
+    this.usageRequestService.usageRequest.fromDate =
+      this.dateService.formatDate(this.dateService.fromYear(this.currentYear));
+    this.usageRequestService.emit();
   }
 
   changeEnvironment(option: SelectOption): void {
     this.currentEnvitonment = (option.id as string);
+    this.usageRequestService.usageRequest.environmet = this.currentEnvitonment;
     this.emit();
+    this.usageRequestService.emit();
   }
 
   changeIncludeAdmin(includeAdmin: boolean): void {
+    this.usageRequestService.usageRequest.includeAdmin = includeAdmin;
     this.emit();
+    this.usageRequestService.emit();
   }
 
   private loadEnvironments(): void {
@@ -81,6 +76,7 @@ export class UsageDashboardInfoPanelComponent extends BaseSibscriber implements 
   }
 
   ngOnInit() {
+    this.usageRequestService.reset();
     this.loadEnvironments();
   }
 

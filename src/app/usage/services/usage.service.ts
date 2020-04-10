@@ -3,85 +3,21 @@ import { environment } from '@env/environment';
 import { Offline } from '@app/shared/decorators/offline.decorator';
 import { TableModel, ColumnType, DataService, DateService } from '@app/core-api';
 import { formatDate } from '@angular/common';
-import { Observable, BehaviorSubject, of, timer } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { switchMap, catchError, tap } from 'rxjs/operators';
+import { UsageReportParams } from '../models/usage-request';
+import { UsageRequestService } from './usage-request.service';
 
-export const GetDefaultState = (): UsageReportState => {
-  return {
-    tab: 0,
-    subTab: -1,
-    activity: 0,
-    yearId: 0,
-    includeAdmin: false,
-    environment: ''
-  }
-}
-export interface UsageReportState {
-  tab: number;
-  subTab: number;
-  activity: number;
-  yearId: number;
-  includeAdmin: boolean;
-  environment: string;
-}
-export interface UsageReportParams {
-  fromDate?: Date | string;
-  toDate?: Date | string;
-}
 
-export const UsageLinks = [
-  {
-    url: 'general-usage',
-    text: 'General Usage',
-    css: 'd-none d-md-inline-block',
-    alt: 'd-md-none'
-  },
-  {
-    url: 'monthly-activity',
-    text: 'Monthly Activity',
-    css: 'd-none d-md-inline-block',
-    alt: 'd-md-none'
-  },
-  {
-    url: 'activity-per-user',
-    text: 'Activity per User',
-    css: 'd-none d-lg-inline-block',
-    alt: 'd-lg-none'
-  },
-  {
-    url: 'top-10-users',
-    text: 'Top 10 Users',
-    css: 'd-none d-lg-inline-block', 
-    alt: 'd-lg-none'
-  },
-  {
-    url: 'retention',
-    text: 'Retention',
-    hidden: true
-  },
-  {
-    url: 'created',
-    text: 'Created'
-  },
-  {
-    url: 'table',
-    text: 'Table'
-  }
-];
 @Injectable({
   providedIn: 'root'
 })
 export class UsageService {
 
-  get onStateChanged(): Observable<UsageReportState> {
-    return this._onStateChanged.asObservable();
-  }
-
-  private _onStateChanged = new BehaviorSubject<UsageReportState>(GetDefaultState());
-
   constructor(
     private dataService: DataService,
     private dateService: DateService,
+    private usageRequestService: UsageRequestService,
     @Inject(LOCALE_ID) private locale: string
   ) {
   }
@@ -102,20 +38,16 @@ export class UsageService {
       )
   }
 
-  setState(state: UsageReportState): void {
-    this._onStateChanged.next(state);
-  }
-
   @Offline('assets/offline/usageReport.json?')
   private getUrl = `${environment.serverUrl}${environment.endPoints.usageReport}`;
   //http://10.0.2.18:4000/mdclone/api/v1/reporting/usage/25-06-2000/25-09-2021
 
-  getUsageReport(params: UsageReportParams): any {
-    params.fromDate = new Date(params.fromDate || new Date());
-    params.toDate = new Date(params.toDate || new Date());
-    const url = `${this.getUrl}/${this.dateService.formatDate(params.fromDate)}/${this.dateService.formatDate(params.toDate)}`;
-    //alert(url);
-    return this.dataService.get(url);
+  getUsageReport(params: UsageReportParams = undefined): any {
+    // params.fromDate = new Date(params.fromDate || new Date());
+    // params.toDate = new Date(params.toDate || new Date());
+    // const url = `${this.getUrl}/${this.dateService.formatDate(params.fromDate)}/${this.dateService.formatDate(params.toDate)}`;
+    // return this.dataService.get(url);
+    return this.dataService.get(this.getUrl);
   }
 
   createDataSource(files: Array<any>): TableModel {

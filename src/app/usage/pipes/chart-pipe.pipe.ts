@@ -1,8 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-@Pipe({
-  name: 'chartPipe'
-})
+@Pipe({ name: 'chartPipe' })
 export class ChartPipePipe implements PipeTransform {
   transform(value: any, ...args: any[]): any {
     return [
@@ -35,9 +33,7 @@ export class ChartPipePipe implements PipeTransform {
 }
 
 
-@Pipe({
-  name: 'generalChart'
-})
+@Pipe({ name: 'generalChart' })
 export class GeneralChartPipe implements PipeTransform {
   transform(arr: Array<any>, ...args: any[]): any {
     if (!arr) { return []; }
@@ -50,9 +46,7 @@ export class GeneralChartPipe implements PipeTransform {
   }
 }
 
-@Pipe({
-  name: 'monthlyChart'
-})
+@Pipe({ name: 'monthlyChart' })
 export class MonthlyChartPipe implements PipeTransform {
   transform(data: any, ...args: any[]): any {
     const res = {
@@ -83,9 +77,7 @@ export class MonthlyChartPipe implements PipeTransform {
   }
 }
 
-@Pipe({
-  name: 'userActivityChart'
-})
+@Pipe({ name: 'userActivityChart' })
 export class UserActivityChartPipe implements PipeTransform {
   transform(data: any, ...args: any[]): any {
     const res = {
@@ -103,9 +95,7 @@ export class UserActivityChartPipe implements PipeTransform {
   }
 }
 
-@Pipe({
-  name: 'userTop10Chart'
-})
+@Pipe({ name: 'userTop10Chart' })
 export class Top10ChartPipe implements PipeTransform {
   transform(data: any, ...args: any[]): any {
     const res = {
@@ -136,9 +126,7 @@ export class Top10ChartPipe implements PipeTransform {
   }
 }
 
-@Pipe({
-  name: 'createdChart'
-})
+@Pipe({ name: 'createdChart' })
 export class CreatedChartPipe implements PipeTransform {
   transform(arr: Array<any>, ...args: any[]): any {
     if (!arr) { return []; }

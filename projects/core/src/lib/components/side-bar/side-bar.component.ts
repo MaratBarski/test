@@ -4,6 +4,7 @@ import { SideMenu, MenuItem } from '../../common/side-menu';
 import { ComponentService } from '../../services/component.service';
 import { BaseSibscriber } from '../../common/BaseSibscriber';
 import { NavigationService } from '../../services/navigation.service';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'mdc-side-bar',
@@ -13,12 +14,14 @@ import { NavigationService } from '../../services/navigation.service';
 export class SideBarComponent extends BaseSibscriber implements OnInit {
 
   constructor(
+    private dataService: DataService,
     private router: Router,
     public navigationService: NavigationService) {
     super();
   }
 
-  items = SideMenu;
+  //items = SideMenu;
+  items = undefined;
   
   ngOnInit() {
     super.add(
@@ -27,6 +30,7 @@ export class SideBarComponent extends BaseSibscriber implements OnInit {
           ComponentService.scrollTo(0, 0);
         }
       }));
+    this.items = this.dataService.get('/assets/sideMenu.json');
   }
 
   navigate(item: MenuItem): void {

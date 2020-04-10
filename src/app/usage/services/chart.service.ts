@@ -3,8 +3,8 @@ import { DataService } from '@app/core-api';
 import { Observable, of } from 'rxjs';
 import { Offline } from '@app/shared/decorators/offline.decorator';
 import { environment } from '@env/environment';
-import { InfoPanel } from '../components/usage-dashboard-info-panel/usage-dashboard-info-panel.component';
 import { finalize, catchError } from 'rxjs/operators';
+import { UsageRequestService } from './usage-request.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,8 @@ import { finalize, catchError } from 'rxjs/operators';
 export class ChartService {
 
   constructor(
-    private dataService: DataService
+    private dataService: DataService,
+    private usageRequestService: UsageRequestService,
   ) { }
 
   get isLoaded(): boolean {
@@ -27,9 +28,7 @@ export class ChartService {
     this._isLoding = true;
     return this.dataService.get(url).pipe(
       finalize(() => {
-        setTimeout(() => {
-          this._isLoding = false;
-        }, 0);
+        this._isLoding = false;
       }),
       catchError(e => {
         this._isLoding = false;
@@ -41,31 +40,31 @@ export class ChartService {
   //http://10.0.2.18:4000/mdclone/api/v1/reporting/usage/25-06-2000/25-09-2021
   @Offline('assets/offline/usageGeneral.json?')
   private getGeneralUsageUrl = `${environment.serverUrl}${environment.endPoints.usageReport}`;
-  getGeneralUsage(info: InfoPanel): Observable<any> {
+  getGeneralUsage(info: any = undefined): Observable<any> {
     return this.getChart(this.getGeneralUsageUrl);
   }
 
   @Offline('assets/offline/usageMonthly.json?')
   private getMonthlyUsageUrl = `${environment.serverUrl}${environment.endPoints.usageReport}`;
-  getMonthlyUsage(info: InfoPanel): Observable<any> {
+  getMonthlyUsage(info: any = undefined): Observable<any> {
     return this.getChart(this.getMonthlyUsageUrl);
   }
 
   @Offline('assets/offline/usageUserActivity.json?')
   private getUserActivityUsageUrl = `${environment.serverUrl}${environment.endPoints.usageReport}`;
-  getActivityUserUsage(info: InfoPanel): Observable<any> {
+  getActivityUserUsage(info: any = undefined): Observable<any> {
     return this.getChart(this.getUserActivityUsageUrl);
   }
 
   @Offline('assets/offline/usageTop10.json?')
   private getTop10UsageUrl = `${environment.serverUrl}${environment.endPoints.usageReport}`;
-  getTop10Usage(info: InfoPanel): Observable<any> {
+  getTop10Usage(info: any = undefined): Observable<any> {
     return this.getChart(this.getTop10UsageUrl);
   }
 
   @Offline('assets/offline/usageCreated.json?')
   private getCreatedUsageeUrl = `${environment.serverUrl}${environment.endPoints.usageReport}`;
-  getCreatedUsagee(info: InfoPanel): Observable<any> {
+  getCreatedUsagee(info: any = undefined): Observable<any> {
     return this.getChart(this.getCreatedUsageeUrl);
   }
 }

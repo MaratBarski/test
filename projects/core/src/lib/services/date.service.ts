@@ -120,4 +120,12 @@ export class DateService {
     const date = new Date();
     return date.getFullYear() + year;
   }
+
+  fromYear(year: number): Date {
+    let date = new Date();
+    date.setMonth(0);
+    date.setDate(1);
+    date.setFullYear(date.getFullYear() - year);
+    return date;
+  }
 }

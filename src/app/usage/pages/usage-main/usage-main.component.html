@@ -17,14 +17,16 @@
             </div>
         </div>
     </section>
-    <md-usage-dashboard-top></md-usage-dashboard-top>
-    <md-usage-dashboard-info-panel [showYears]="currentPage!=='top-10-users'" (onChange)="onChangeInfoPanel($event)">
+    <md-usage-dashboard-top [selectedUrl]="currentPage"></md-usage-dashboard-top>
+    <md-usage-dashboard-info-panel [showUsers]="currentPage==='activity-per-user'||currentPage==='table'"
+        [showYears]="currentPage!=='top-10-users'&&currentPage!=='retention'" (onChange)="onChangeInfoPanel($event)">
     </md-usage-dashboard-info-panel>
-    <md-usage-report [infoPanel]="infoPanel" *ngIf="currentPage==='general-usage'"></md-usage-report>
-    <md-usage-monthly [infoPanel]="infoPanel" *ngIf="currentPage==='monthly-activity'"></md-usage-monthly>
-    <md-usage-user-activity [infoPanel]="infoPanel" *ngIf="currentPage==='activity-per-user'">
+    <md-usage-report *ngIf="currentPage==='general-usage'"></md-usage-report>
+    <md-usage-monthly *ngIf="currentPage==='monthly-activity'"></md-usage-monthly>
+    <md-usage-user-activity *ngIf="currentPage==='activity-per-user'">
     </md-usage-user-activity>
-    <md-usage-top [infoPanel]="infoPanel" *ngIf="currentPage==='top-10-users'"></md-usage-top>
-    <md-usage-created [infoPanel]="infoPanel" *ngIf="currentPage==='created'"></md-usage-created>
-    <md-usage-table [infoPanel]="infoPanel" *ngIf="currentPage==='retention'"></md-usage-table>
+    <md-usage-top *ngIf="currentPage==='top-10-users'"></md-usage-top>
+    <md-usage-created *ngIf="currentPage==='created'"></md-usage-created>
+    <md-usage-retention *ngIf="currentPage==='retention'"></md-usage-retention>
+    <md-usage-table *ngIf="currentPage==='table'"></md-usage-table>
 </div>

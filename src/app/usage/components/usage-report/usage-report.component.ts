@@ -3,6 +3,7 @@ import { ComponentService } from '@app/core-api';
 import { UsageService, } from '@app/usage/services/usage.service';
 import { ChartService } from '@app/usage/services/chart.service';
 import { UsageBase } from '../UsageBase';
+import { UsageRequestService } from '@app/usage/services/usage-request.service';
 
 @Component({
   selector: 'md-usage-report',
@@ -30,13 +31,14 @@ export class UsageReportComponent extends UsageBase {
   constructor(
     protected componentService: ComponentService,
     protected usageService: UsageService,
-    protected chartService: ChartService
+    protected chartService: ChartService,
+    public usageRequestService: UsageRequestService
   ) {
     super();
   }
 
   createReport(): void {
-    super.responseData = this.chartService.getGeneralUsage(super.infoPanel);
+    super.responseData = this.chartService.getGeneralUsage();
   }
 }
 

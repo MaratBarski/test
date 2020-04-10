@@ -18,6 +18,7 @@ import { UsageCreatedComponent } from './components/usage-created/usage-created.
 import { ChartPipePipe, GeneralChartPipe, MonthlyChartPipe, UserActivityChartPipe, Top10ChartPipe, CreatedChartPipe } from './pipes/chart-pipe.pipe';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { ChartWraperComponent } from './components/chart-wraper/chart-wraper.component';
+import { UsageRetentionComponent } from './components/usage-retention/usage-retention.component';
 
 const routes: Array<Route> = [
   { path: 'test', component: UsageDashboardComponent },
@@ -53,7 +54,8 @@ const routes: Array<Route> = [
     UserActivityChartPipe,
     Top10ChartPipe,
     CreatedChartPipe,
-    ChartWraperComponent
+    ChartWraperComponent,
+    UsageRetentionComponent
   ],
   imports: [
     CommonModule,
