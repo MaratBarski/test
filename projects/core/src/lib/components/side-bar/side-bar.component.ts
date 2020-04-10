@@ -20,9 +20,8 @@ export class SideBarComponent extends BaseSibscriber implements OnInit {
     super();
   }
 
-  //items = SideMenu;
-  items = undefined;
-  
+  items = SideMenu;
+
   ngOnInit() {
     super.add(
       this.router.events.subscribe(event => {
@@ -30,7 +29,14 @@ export class SideBarComponent extends BaseSibscriber implements OnInit {
           ComponentService.scrollTo(0, 0);
         }
       }));
-    this.items = this.dataService.get('/assets/sideMenu.json');
+    // super.add(
+    //   this.dataService.get('/assets/sideMenu.json').subscribe(res => {
+    //     this.items = res;
+    //     SideMenu.splice(0,0);
+    //     SideMenu.push(...res);
+    //   })
+    // );
+    //this.items = this.dataService.get('/assets/sideMenu.json');
   }
 
   navigate(item: MenuItem): void {

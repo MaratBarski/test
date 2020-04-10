@@ -14,16 +14,16 @@ enum Icon {
 })
 export class MainHeaderComponent {
 
-  sideBarOpened: boolean = false;
+  get sideBarOpened(): boolean {
+    return this.componentService.showSideMenu;
+  }
   icon = Icon;
 
   constructor(private componentService: ComponentService) {
-
   }
 
   toggleSideBar(): void {
-    this.sideBarOpened = this.sideBarOpened ? false : true;
-
-    this.componentService.onSideBarToggle.next(this.sideBarOpened);
+    this.componentService.showSideMenu = !this.componentService.showSideMenu;
+    this.componentService.onSideBarToggle.next(this.componentService.showSideMenu);
   }
 }
