@@ -415,6 +415,6 @@ export class TableComponent implements OnDestroy, AfterViewInit {
   }
 
   rowMouseLeave(event: any, row: TableRowModel, index: number): void {
-
+    this.currentOver = undefined;
   }
 }
