@@ -2,11 +2,16 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <div class="usage-dashboard-top__content"><a class="link-load" href="#"><span class="ic-hover">
-                            <svg class="icon ic-download" mdcSvg="ic-download">
-                            </svg></span>
+                <div class="usage-dashboard-top__content">
+                    <!-- <a class="link-load" href="#">
+                        <span class="ic-hover">
+                            <svg class="icon ic-download" mdcSvg="ic-download"></svg>
+                        </span>
                         <span class="link-load__text">Download</span>
-                    </a>
+                    </a> -->
+                    <div class="link-load">
+                        <md-download-selector (onSelect)="download($event)"></md-download-selector>
+                    </div>
                     <div class="usage-dashboard-top__tab">
                         <div class="tabs-page">
                             <ng-container *ngFor="let link of links;let index=index">
@@ -22,7 +27,8 @@
                                     <div class="tabs-popup-more">
                                         <div class="tabs-popup-more__list">
                                             <ng-container *ngFor="let link of links;let index=index">
-                                                <div (click)="navigate(link.url)" *ngIf="link.hidden && link.url!==selectedUrl"
+                                                <div (click)="navigate(link.url)"
+                                                    *ngIf="link.hidden && link.url!==selectedUrl"
                                                     class="tabs-popup-more__item">
                                                     <a [ngClass]="{'active':!true}"
                                                         class="tabs-popup-more__item {{link.alt}}"

@@ -4,6 +4,7 @@ import { UsageBase } from '../UsageBase';
 import { ChartService } from '@app/usage/services/chart.service';
 import { ComponentService } from '@app/core-api';
 import { UsageRequestService } from '@app/usage/services/usage-request.service';
+import { UsageDownloadService } from '@app/usage/services/usage-download.service';
 
 @Component({
   selector: 'md-usage-created',
@@ -28,12 +29,24 @@ export class UsageCreatedComponent extends UsageBase  {
   };
 
   constructor(
+    private usageDownloadService: UsageDownloadService,
     protected componentService: ComponentService,
     protected usageService: UsageService, 
     protected chartService: ChartService,
     public usageRequestService: UsageRequestService
     ) {
     super();
+
+    this.usageDownloadService.toCSV = this.toCSV;
+    this.usageDownloadService.toPDF = this.toPDF;
+  }
+
+  private toCSV(): void {
+    alert('created csv');
+  }
+
+  private toPDF(): void {
+    alert('created toPDF');
   }
 
   createReport(): void {

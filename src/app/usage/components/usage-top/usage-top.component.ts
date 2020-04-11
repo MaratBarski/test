@@ -4,6 +4,7 @@ import { UsageBase } from '../UsageBase';
 import { ChartService } from '@app/usage/services/chart.service';
 import { TabItemModel, ComponentService, DateService, DatePeriod } from '@app/core-api';
 import { UsageRequestService } from '@app/usage/services/usage-request.service';
+import { UsageDownloadService } from '@app/usage/services/usage-download.service';
 
 @Component({
   selector: 'md-usage-top',
@@ -32,6 +33,7 @@ export class UsageTopComponent extends UsageBase {
   };
 
   constructor(
+    private usageDownloadService: UsageDownloadService,
     private dateService: DateService,
     protected componentService: ComponentService,
     protected usageService: UsageService,
@@ -41,6 +43,17 @@ export class UsageTopComponent extends UsageBase {
     super();
     this.usageRequestService.usageRequest.fromDate =
       this.dateService.formatDate(this.dateService.fromDate[DatePeriod.Month](1));
+
+    this.usageDownloadService.toCSV = this.toCSV;
+    this.usageDownloadService.toPDF = this.toPDF;
+  }
+
+  private toCSV(): void {
+    alert('UsageTopComponent csv');
+  }
+
+  private toPDF(): void {
+    alert('UsageTopComponent toPDF');
   }
 
   createReport(): void {

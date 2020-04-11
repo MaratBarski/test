@@ -4,6 +4,7 @@ import { DownloadComponent, TableModel, ComponentService, DateService, DatePerio
 import { UsageRequestService } from '@app/usage/services/usage-request.service';
 import { UsageBase } from '../UsageBase';
 import { ChartService } from '@app/usage/services/chart.service';
+import { UsageDownloadService } from '@app/usage/services/usage-download.service';
 
 @Component({
   selector: 'md-usage-retention',
@@ -17,6 +18,7 @@ export class UsageRetentionComponent extends UsageBase {
   lastDays = 60;
 
   constructor(
+    private usageDownloadService: UsageDownloadService,
     private dateService: DateService,
     protected componentService: ComponentService,
     protected usageService: UsageService,
@@ -28,6 +30,17 @@ export class UsageRetentionComponent extends UsageBase {
     super.dataSourceReady = () => {
       this.data = this.usageService.createDataSource(this.dataSource.data);
     }
+
+    this.usageDownloadService.toCSV = this.toCSV;
+    this.usageDownloadService.toPDF = this.toPDF;
+  }
+
+  private toCSV(): void {
+    alert('restriction csv');
+  }
+
+  private toPDF(): void {
+    alert('restriction toPDF');
   }
 
   private initDate(): void {
