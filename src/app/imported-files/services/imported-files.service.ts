@@ -98,10 +98,9 @@ export class ImportedFilesService {
         {
           columnId: 'user',
           text: 'User',
-          isSortEnabled: true,
+          isSortEnabled: false,
           filter: true,
-          css: 'd-none d-xxl-table-cell pad-left',
-          style: { 'padding-left': '20px' }
+          css: 'd-none d-xxl-table-cell'
         },
         {
           columnId: 'shared',
