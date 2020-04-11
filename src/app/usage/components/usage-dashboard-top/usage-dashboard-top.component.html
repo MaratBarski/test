@@ -22,7 +22,7 @@
                                     <div class="tabs-popup-more">
                                         <div class="tabs-popup-more__list">
                                             <ng-container *ngFor="let link of links;let index=index">
-                                                <div *ngIf="link.hidden && link.url!==selectedUrl"
+                                                <div (click)="navigate(link.url)" *ngIf="link.hidden && link.url!==selectedUrl"
                                                     class="tabs-popup-more__item">
                                                     <a [ngClass]="{'active':!true}"
                                                         class="tabs-popup-more__item {{link.alt}}"

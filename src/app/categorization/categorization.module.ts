@@ -15,7 +15,7 @@ import { UploadFileComponent } from './components/upload-file/upload-file.compon
 
 const routes: Array<Route> = [
   { path: '', component: CategorizationComponent },
-  { path: 'map-categories/:id', component: MapCategoriesComponent }
+  { path: 'map-categories', component: MapCategoriesComponent }
 ]
 
 @NgModule({

@@ -23,6 +23,8 @@ export class TableHeaderModel {
   showDetails?: boolean;
   columnType?: ColumnType;
   css?: string;
+  style?: { [key: string]: any };
+  columnStyle?: { [key: string]: any };
 }
 
 @Component({
