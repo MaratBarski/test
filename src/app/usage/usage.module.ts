@@ -25,6 +25,7 @@ import { MonthlyChartPipe } from './pipes/monthly-activity.pipe';
 import { UserActivityChartPipe } from './pipes/activity-per-user.pipe';
 import { Top10ChartPipe } from './pipes/top-10-users.pipe';
 import { CreatedChartPipe } from './pipes/created.pipe';
+import { ChartPdfComponent } from './components/chart-pdf/chart-pdf.component';
 
 const routes: Array<Route> = [
   { path: 'test', component: UsageDashboardComponent },
@@ -63,7 +64,8 @@ const routes: Array<Route> = [
     ChartWraperComponent,
     UsageRetentionComponent,
     UsageHeaderComponent,
-    UserFilterComponent
+    UserFilterComponent,
+    ChartPdfComponent
   ],
   imports: [
     CommonModule,

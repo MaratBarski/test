@@ -73,6 +73,10 @@ export class UsageRequestService extends BaseSibscriber {
       }));
   }
 
+  getEnironment(): any {
+    return { id: '0', name: 'All Environments', ...this._environments.find(x => x.id === this.usageRequest.environmet) };
+  }
+
   private loadData(): void {
     this.loadUsers();
     this.loadEnvironments();

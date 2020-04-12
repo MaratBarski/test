@@ -3,9 +3,6 @@ import { UsageLinks } from '@app/usage/models/usage-links';
 import { Router } from '@angular/router';
 import { DownloadOption } from '@app/shared/components/download-selector/download-selector.component';
 import { UsageDownloadService } from '@app/usage/services/usage-download.service';
-import * as pdfMake from 'pdfmake/build/pdfmake';
-import * as pdfFonts from 'pdfmake/build/vfs_fonts';
-pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 @Component({
   selector: 'md-usage-dashboard-top',
@@ -39,18 +36,12 @@ export class UsageDashboardTopComponent {
     if (option === DownloadOption.none) { return; }
 
     if (option === DownloadOption.csv) {
-      this.downloadCsv(this.usageDownloadService.toCSV());
+      this.usageDownloadService.toCSV();
       return;
     }
 
-    this.downloadPdf(this.usageDownloadService.toPDF());
+    this.usageDownloadService.toPDF();
   }
 
-  private downloadCsv(data: any): void {
 
-  }
-
-  private downloadPdf(data: any): void {
-    pdfMake.createPdf(data).download();
-  }
 }

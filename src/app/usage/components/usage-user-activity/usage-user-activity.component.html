@@ -2,6 +2,9 @@
     [secondChart]="secondChart">
 </md-chart-wraper>
 
+<md-chart-pdf #chartPdf1 [chart]="firstChart" [width]="pdfChartWidth" [height]="pdfChartHeight"></md-chart-pdf>
+<md-chart-pdf #chartPdf2 [chart]="secondChart" [width]="pdfChartWidth" [height]="pdfChartHeight"></md-chart-pdf>
+
 <ng-template #firstChart>
     <ngx-charts-line-chart [results]="(dataSource|userActivityChart).query" [animations]="true" [xAxis]="true"
         [yAxis]="true" [showGridLines]="true" [showXAxisLabel]="true">

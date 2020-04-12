@@ -157,7 +157,8 @@
   main{
     width: calc(100% - 305px);
     left: 305px;
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
 
     .content-page{
       width: calc(100% + 305px);

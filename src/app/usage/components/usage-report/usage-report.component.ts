@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { ComponentService } from '@app/core-api';
 import { UsageService, } from '@app/usage/services/usage.service';
 import { ChartService } from '@app/usage/services/chart.service';
 import { UsageBase } from '../UsageBase';
 import { UsageRequestService } from '@app/usage/services/usage-request.service';
-import { UsageDownloadService } from '@app/usage/services/usage-download.service';
+import { UsageDownloadService, DownloadData } from '@app/usage/services/usage-download.service';
+import { ChartPdfComponent } from '../chart-pdf/chart-pdf.component';
 
 @Component({
   selector: 'md-usage-report',
@@ -28,6 +29,9 @@ export class UsageReportComponent extends UsageBase {
     domain: ['#002060']
   };
 
+  pdfChartWidth = '500px';
+  pdfChartHeight = '300px'
+  @ViewChild('chartPdf', { static: true }) chartPdf: ChartPdfComponent;
 
   constructor(
     private usageDownloadService: UsageDownloadService,
@@ -37,71 +41,38 @@ export class UsageReportComponent extends UsageBase {
     public usageRequestService: UsageRequestService
   ) {
     super();
-    this.usageDownloadService.toCSV = this.toCSV;
-    this.usageDownloadService.toPDF = this.toPDF;
+    this.usageDownloadService.toCSV = () => this.toCSV();
+    this.usageDownloadService.toPDF = () => this.toPDF();
   }
 
-  private toCSV(): any {
-    return 'csv';
+  downloadData: DownloadData = {
+    pageName: 'General Usage',
+    fileName: 'General-Usage'
   }
 
-  private toPDF(): any {
-    return {
-      content: [
-        {
-          text: 'test',
-          bold: true,
-          fontSize: 20,
-          alignment: 'center',
-          margin: [0, 0, 0, 20]
-        },
-        {
-          columns: [
-            [{
-              text: 'fffffffff',
-              style: 'name'
-            },
-            {
-              text: 'eeeeeee'
-            },
-            {
-              text: 'Email : ' + 'emeail',
-            },
-            {
-              text: 'Contant No :',
-            },
-            {
-              text: 'GitHub: ',
-              link: 'link',
-              color: 'blue',
-            }
-            ],
-            // [
-            //   {
-            //     image: '/assets/',
-            //     width: 75,
-            //     alignment: 'right'
-            //   }
-            // ]
-          ]
-        },
-        {
-          table: {
-            // headers are automatically repeated if the table spans over multiple pages
-            // you can declare how many rows should be treated as headers
-            headerRows: 1,
-            widths: ['*', 'auto', 100, '*'],
-            body: [
-              ['First', 'Second', 'Third', 'The last one'],
-              ['Value 1', 'Value 2', 'Value 3', 'Value 4'],
-              [{ text: 'Bold value', bold: true, color: 'red' }, 'Val 2', 'Val 3', 'Val 4']
-            ]
-          }
+  private toPDF(): void {
+    this.downloadData.charts = [];
+    const body = [];
+    this.dataSource.forEach((item: any) => {
+      body.push([item.date, item.count])
+    });
+    this.downloadData.charts.push(
+      {
+        headers: ['Date', 'Count'],
+        body: body,
+        svg: {
+          image: this.chartPdf.getSvg(),
+          title: 'MONTHLY GENERAL USAGE'
         }
-      ]
-    };
+      }
+    );
+
+    this.usageDownloadService.downloadPDF(this.downloadData);
   }
 
+  private toCSV(): void {
+  }
+  
   createReport(): void {
     super.responseData = this.chartService.getGeneralUsage();
   }

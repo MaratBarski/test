@@ -2,6 +2,9 @@
     secondTitle="Activity: file downloads count" [firstChart]="firstChart" [secondChart]="secondChart">
 </md-chart-wraper>
 
+<md-chart-pdf #chartPdfQueries [chart]="firstChart" [width]="pdfChartWidth" [height]="pdfChartHeight"></md-chart-pdf>
+<md-chart-pdf #chartPdfDownloads [chart]="secondChart" [width]="pdfChartWidth" [height]="pdfChartHeight"></md-chart-pdf>
+
 <ng-template #firstChart>
     <ngx-charts-bar-vertical [view]="view" [scheme]="colorScheme" [results]="(dataSource|monthlyChart).query"
         [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis" [showXAxisLabel]="showXAxisLabel"
