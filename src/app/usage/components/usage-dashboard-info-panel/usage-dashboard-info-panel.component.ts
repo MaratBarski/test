@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { SelectOption, DateService, BaseSibscriber } from '@app/core-api';
-import { UsageService } from '@app/usage/services/usage.service';
 import { UsageRequestService } from '@app/usage/services/usage-request.service';
 
 @Component({
@@ -11,7 +10,7 @@ import { UsageRequestService } from '@app/usage/services/usage-request.service';
 export class UsageDashboardInfoPanelComponent extends BaseSibscriber implements OnInit {
 
   @Input() includeAdmin = false;
-  @Output() onChange = new EventEmitter();
+  @Output() onChange = new EventEmitter<any>();
   @Input() showYears = true;
   @Input() showUsers = true;
 
@@ -30,21 +29,20 @@ export class UsageDashboardInfoPanelComponent extends BaseSibscriber implements 
 
   constructor(
     private dateService: DateService,
-    private usageService: UsageService,
     public usageRequestService: UsageRequestService
   ) {
     super();
   }
 
   private emit(): void {
-    this.onChange.emit();
+    this.onChange.emit(undefined);
   }
 
   changeYear(option: SelectOption): void {
     this.currentYear = (option.id as number);
-    this.emit();
     this.usageRequestService.usageRequest.fromDate =
       this.dateService.formatDate(this.dateService.fromYear(this.currentYear));
+    this.emit();
     this.usageRequestService.emit();
   }
 
@@ -72,9 +70,14 @@ export class UsageDashboardInfoPanelComponent extends BaseSibscriber implements 
     }
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.usageRequestService.reset();
     this.loadEnvironments();
   }
 
+  applyUsers(users: Array<any>): void {
+    this.usageRequestService.usageRequest.users = users;
+    this.emit();
+    this.usageRequestService.emit();
+  }
 }

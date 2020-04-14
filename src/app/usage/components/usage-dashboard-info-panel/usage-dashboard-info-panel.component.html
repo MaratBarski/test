@@ -19,13 +19,12 @@
                                         [applyWidth]="false" [isSmall]="true" [options]="yearsOptions"></mdc-select>
                                 </div>
                             </div>
-                            <div [hidden]="!showUsers" class="info-panel-choose__item">
+                            <div *ngIf="showUsers" class="info-panel-choose__item">
                                 <div class="info-panel-choose__title">Users:</div>
                                 <div class="info-panel-choose__val">
-                                    <md-user-filter></md-user-filter>
+                                    <md-user-filter (onApply)="applyUsers($event)"></md-user-filter>
                                 </div>
                             </div>
-                            <!-- {{usageRequestService.usageRequest|json}} -->
                         </div>
                         <div class="info-panel__switch">
                             <div class="info-panel__switch-label">Include Admin Users</div>

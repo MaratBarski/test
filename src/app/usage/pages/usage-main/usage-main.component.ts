@@ -30,7 +30,7 @@ export class UsageMainComponent extends BaseSibscriber implements OnInit {
   ngOnInit() {
   }
 
-  onChangeInfoPanel(): void {
+  onChangeInfoPanel(event: any): void {
   }
 
 }
