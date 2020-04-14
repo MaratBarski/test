@@ -1,4 +1,6 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, HostListener } from '@angular/core';
+import { ComponentService } from '@app/core-api';
+
 
 export enum DownloadOption {
   none = 'none',
@@ -13,14 +15,29 @@ export enum DownloadOption {
 })
 export class DownloadSelectorComponent {
 
+  isExpanded = false;
   downloadOption: DownloadOption = DownloadOption.none;
   @Output() onSelect = new EventEmitter<DownloadOption>();
 
-  download(): void {
+  download(ext: DownloadOption): void {
+    this.downloadOption = ext;
     if (this.downloadOption === DownloadOption.none) { return; }
     this.onSelect.emit(this.downloadOption);
     setTimeout(() => {
       this.downloadOption = DownloadOption.none;
     }, 100);
+  }
+  expand(event: any): void {
+    if (this.isExpanded) {
+      this.isExpanded = false;
+      return;
+    }
+    ComponentService.documentClick();
+    event.stopPropagation();
+    this.isExpanded = true;
+  }
+
+  @HostListener('document:click', ['$event']) onMouseClick(event: any) {
+    this.isExpanded = false;
   }
 }

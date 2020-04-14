@@ -1,5 +1,11 @@
-<select (change)="download()" [(ngModel)]="downloadOption">
-    <option value="none">Download</option>
-    <option value="csv">Download as CSV file</option>
-    <option value="pdf">Download as PDF file</option>
-</select>
+<div class="split-btn">
+    <div (click)="expand($event)" class="split-btn__title">Download as:</div>
+    <div (click)="expand($event)" class="split-btn__arr">
+        <svg class="icon ic-select-arr-down" mdcSvg="ic-select-arr-down">
+        </svg>
+    </div>
+    <div [hidden]="!isExpanded" class="split-btn__popup">
+        <div (click)="download('csv')" class="split-btn__item">CSV file</div>
+        <div (click)="download('pdf')" class="split-btn__item">PDF file</div>
+    </div>
+</div>
