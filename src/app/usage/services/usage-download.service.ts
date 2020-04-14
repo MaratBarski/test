@@ -11,6 +11,7 @@ export interface DownloadData {
   fileName: string;
   charts?: Array<any>;
   data?: any;
+  printUsers?: boolean;
 }
 @Injectable({
   providedIn: 'root'
@@ -55,6 +56,8 @@ export class UsageDownloadService {
       footer: this.createFooter(downloadData)
     };
 
+    this.addUsers(documentDefinition, downloadData);
+
     if (downloadData.charts) {
       downloadData.charts.forEach((chart: any, index: number) => {
         documentDefinition.content.push({
@@ -75,6 +78,8 @@ export class UsageDownloadService {
         }
       });
     }
+
+    //document.write(JSON.stringify(documentDefinition))
 
     pdfMake.createPdf(documentDefinition).open();
     //pdfMake.createPdf(documentDefinition).download(`${downloadData.fileName}.pdf`);
@@ -115,6 +120,26 @@ export class UsageDownloadService {
       alignment: 'center',
       margin: [0, 10, 0, 10]
     };
+  }
+
+  private addUsers(documentDefinition: any, downloadData: DownloadData): void {
+    if (!downloadData.printUsers) { return; }
+    if (!this.usageRequestService.usageRequest.users || !this.usageRequestService.usageRequest.users.length) { return; }
+    documentDefinition.content.push({
+      text: 'Users',
+      bold: true,
+      fontSize: 12,
+      alignment: 'center',
+      margin: [20, 20, 20, 20]
+    });
+    const table: any = { headerRows: 1, width: ['auto'], body: [] }
+    table.body.push([{ text: 'Login', bold: true, color: 'black' }]);
+    this.usageRequestService.usageRequest.users.forEach((user: any) => {
+      table.body.push([{ text: user, bold: true, color: 'black' }]);
+    })
+    documentDefinition.content.push({
+      table: table
+    });
   }
 
   downloadCSV(data: any): void {

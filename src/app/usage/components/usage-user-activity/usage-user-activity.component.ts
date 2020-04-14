@@ -18,7 +18,7 @@ export class UsageUserActivityComponent extends UsageBase {
   pdfChartHeight = '300px'
   @ViewChild('chartPdf1', { static: true }) chartPdf1: ChartPdfComponent;
   @ViewChild('chartPdf2', { static: true }) chartPdf2: ChartPdfComponent;
-  
+
   constructor(
     private usageDownloadService: UsageDownloadService,
     protected componentService: ComponentService,
@@ -34,7 +34,8 @@ export class UsageUserActivityComponent extends UsageBase {
 
   downloadData: DownloadData = {
     pageName: 'Activity per user',
-    fileName: 'Activity-per-User'
+    fileName: 'Activity-per-User',
+    printUsers: true
   }
 
   private toPDF(): void {

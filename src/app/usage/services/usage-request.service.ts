@@ -60,7 +60,7 @@ export class UsageRequestService extends BaseSibscriber {
   loadUsers(): void {
     super.add(
       this.dataService.get(this.getUsersUrl).subscribe((users: Array<any>) => {
-        this._users = users
+        this._users = users.filter(x => x.id);
       }));
   }
 

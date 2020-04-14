@@ -4,7 +4,7 @@
             <svg class="icon ic-select-arr-down" mdcSvg="ic-select-arr-down"></svg>
         </div>
     </div>
-    <div class="select-filter" [hidden]="!isExpanded" >
+    <div (click)="filterContainerClick($event)" class="select-filter" [hidden]="!isExpanded" >
         <div class="select-filter__content">
             <div class="select-filter__top">
                 <mdc-check-box (change)="changeTop($event)" [(ngModel)]="topChecked" text="Top 5 users" [id]="'usr' + index"></mdc-check-box>

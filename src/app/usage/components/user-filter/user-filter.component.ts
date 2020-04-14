@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, OnDestroy, OnInit } from '@angular/core';
+import { Component, Output, EventEmitter, OnDestroy, OnInit, HostListener } from '@angular/core';
 import { UsageRequestService } from '@app/usage/services/usage-request.service';
 import { ComponentService } from '@app/core-api';
 
@@ -25,7 +25,7 @@ export class UserFilterComponent implements OnDestroy, OnInit {
     this.changeTop(true);
   }
 
-  ngOnInit(): void{
+  ngOnInit(): void {
     this.usageRequestService.usageRequest.users = this.users.filter(x => x.isChecked).map(x => x.id);
   }
 
@@ -80,6 +80,7 @@ export class UserFilterComponent implements OnDestroy, OnInit {
   }
 
   isExpanded = false;
+  
   expand(event: any): void {
     if (this.isExpanded) {
       this.isExpanded = false;
@@ -88,5 +89,13 @@ export class UserFilterComponent implements OnDestroy, OnInit {
     ComponentService.documentClick();
     event.stopPropagation();
     this.isExpanded = true;
+  }
+
+  filterContainerClick(event: any): void {
+    event.stopPropagation();
+  }
+
+  @HostListener('document:click', ['$event']) onMouseClick(event: any) {
+    this.isExpanded = false;
   }
 }
