@@ -55,6 +55,7 @@ export class AccordionComponent implements ControlValueAccessor {
   writeValue(value: any) {
     if (value !== this._value) {
       this._value = value;
+      this.rotateState = !this.value ? RotateAnimationState.rotate : RotateAnimationState.initState;
     }
   }
 
