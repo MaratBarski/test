@@ -459,11 +459,20 @@
 		.icon{
 			max-width: 30px;
 			margin-right: 6px;
+			flex-shrink: 0;
 		}
 	}
 
-	&__icon-wrap &__head-text{
+	&__icon-wrap &__head-text {
 		display: inline-block;
+		max-width: 100%;
+	}
+
+	&__icon-wrap &__param-text {
+		max-width: 100%;
+	}
+
+	&__icon-wrap .icon + &__head-text, &__icon-wrap .icon + &__param-text {
 		max-width: calc(100% - 36px);
 	}
 
