@@ -4,7 +4,7 @@ import { DownloadComponent, TableModel, ComponentService, DateService, DatePerio
 import { UsageRequestService } from '@app/usage/services/usage-request.service';
 import { UsageBase } from '../UsageBase';
 import { ChartService } from '@app/usage/services/chart.service';
-import { UsageDownloadService } from '@app/usage/services/usage-download.service';
+import { UsageDownloadService, DownloadData } from '@app/usage/services/usage-download.service';
 
 @Component({
   selector: 'md-usage-retention',
@@ -31,16 +31,31 @@ export class UsageRetentionComponent extends UsageBase {
       this.data = this.usageService.createDataSource(this.dataSource.data);
     }
 
-    this.usageDownloadService.toCSV = this.toCSV;
-    this.usageDownloadService.toPDF = this.toPDF;
+    this.usageDownloadService.toCSV = () => this.toCSV();
+    this.usageDownloadService.toPDF = () => this.toPDF();
+  }
+
+  downloadData: DownloadData = {
+    pageName: 'Retention',
+    fileName: 'Retention'
+  }
+
+  private toPDF(): void {
+    this.downloadData.charts = [];
+    const body = [];
+    this.dataSource.data.forEach((item: any) => {
+      body.push([item.login, this.dateService.getDaysDiff(item.lastlogin, new Date()), item.lastlogin, 'environment']);
+    });
+    this.downloadData.charts.push({
+      headers: ['User Name', 'Days Since Last Login', 'Last Login', 'Environment'],
+      body: body
+    });
+
+    this.usageDownloadService.downloadPDF(this.downloadData);
   }
 
   private toCSV(): void {
     alert('restriction csv');
-  }
-
-  private toPDF(): void {
-    alert('restriction toPDF');
   }
 
   private initDate(): void {

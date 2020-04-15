@@ -1,10 +1,10 @@
 import { Component, Input } from '@angular/core';
 import { UsageService } from '@app/usage/services/usage.service';
-import { DownloadComponent, TableModel, ComponentService, DateService, DatePeriod } from '@app/core-api';
+import { DownloadComponent, TableModel, ComponentService, DateService } from '@app/core-api';
 import { UsageRequestService } from '@app/usage/services/usage-request.service';
 import { UsageBase } from '../UsageBase';
 import { ChartService } from '@app/usage/services/chart.service';
-import { UsageDownloadService } from '@app/usage/services/usage-download.service';
+import { UsageDownloadService, DownloadData } from '@app/usage/services/usage-download.service';
 
 @Component({
   selector: 'md-usage-table',
@@ -19,6 +19,7 @@ export class UsageTableComponent extends UsageBase {
 
   constructor(
     private usageDownloadService: UsageDownloadService,
+    private dateService: DateService,
     protected componentService: ComponentService,
     protected usageService: UsageService,
     protected chartService: ChartService,
@@ -29,16 +30,32 @@ export class UsageTableComponent extends UsageBase {
       this.data = this.usageService.createDataSource(this.dataSource.data);
     }
 
-    this.usageDownloadService.toCSV = this.toCSV;
-    this.usageDownloadService.toPDF = this.toPDF;
+    this.usageDownloadService.toCSV = () => this.toCSV();
+    this.usageDownloadService.toPDF = () => this.toPDF();
   }
 
-  private toCSV(): void {
-    alert('TableModel csv');
+  downloadData: DownloadData = {
+    pageName: 'Table',
+    fileName: 'Table'
   }
 
   private toPDF(): void {
-    alert('TableModel toPDF');
+    this.downloadData.charts = [];
+    const body = [];
+    this.dataSource.data.forEach((item: any) => {
+      body.push([item.login, this.dateService.getDaysDiff(item.lastlogin, new Date()), item.lastlogin, 'environment']);
+    });
+    this.downloadData.charts.push({
+      headers: ['User Name', 'Days Since Last Login', 'Last Login', 'Environment'],
+      body: body
+    });
+
+    this.usageDownloadService.downloadPDF(this.downloadData);
+  }
+
+
+  private toCSV(): void {
+    alert('TableModel csv');
   }
 
   createReport(): void {

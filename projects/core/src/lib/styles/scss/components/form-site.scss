@@ -385,7 +385,6 @@
 	}
 
 	&__option{
-		display: none;
 		background: #fff;
 		border: solid 1px $color-light-grey;
 		max-height: 250px;
@@ -402,7 +401,7 @@
 
 	&:hover &__option,
 	&__option.active{
-		display: block;
+
 	}
 
 	&__param{

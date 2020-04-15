@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { UsageService } from '@app/usage/services/usage.service';
 import { UsageBase } from '../UsageBase';
 import { ChartService } from '@app/usage/services/chart.service';
 import { ComponentService } from '@app/core-api';
 import { UsageRequestService } from '@app/usage/services/usage-request.service';
-import { UsageDownloadService } from '@app/usage/services/usage-download.service';
+import { UsageDownloadService, DownloadData } from '@app/usage/services/usage-download.service';
+import { ChartPdfComponent } from '../chart-pdf/chart-pdf.component';
 
 @Component({
   selector: 'md-usage-created',
@@ -28,6 +29,10 @@ export class UsageCreatedComponent extends UsageBase  {
     domain: ['#5B9BD5']
   };
 
+  pdfChartWidth = '500px';
+  pdfChartHeight = '300px'
+  @ViewChild('chartPdf', { static: true }) chartPdf: ChartPdfComponent;
+
   constructor(
     private usageDownloadService: UsageDownloadService,
     protected componentService: ComponentService,
@@ -37,16 +42,37 @@ export class UsageCreatedComponent extends UsageBase  {
     ) {
     super();
 
-    this.usageDownloadService.toCSV = this.toCSV;
-    this.usageDownloadService.toPDF = this.toPDF;
+    this.usageDownloadService.toCSV = () => this.toCSV();
+    this.usageDownloadService.toPDF = () => this.toPDF();
   }
 
-  private toCSV(): void {
-    alert('created csv');
+  downloadData: DownloadData = {
+    pageName: 'Created',
+    fileName: 'Created'
   }
 
   private toPDF(): void {
-    alert('created toPDF');
+    this.downloadData.charts = [];
+    const body = [];
+    this.dataSource.forEach((item: any) => {
+      body.push([item.date, item.count])
+    });
+    this.downloadData.charts.push(
+      {
+        headers: ['Date', 'Count'],
+        body: body,
+        svg: {
+          image: this.chartPdf.getSvg(),
+          title: 'NEWLY CREATED USER ACCOUNTS'
+        }
+      }
+    );
+
+    this.usageDownloadService.downloadPDF(this.downloadData);
+  }
+  
+  private toCSV(): void {
+    alert('created csv');
   }
 
   createReport(): void {

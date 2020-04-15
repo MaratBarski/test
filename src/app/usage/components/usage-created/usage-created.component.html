@@ -1,3 +1,14 @@
+<md-chart-pdf #chartPdf [chart]="chart" [width]="pdfChartWidth" [height]="pdfChartHeight"></md-chart-pdf>
+
+<ng-template #chart>
+    <ngx-charts-bar-vertical [view]="view" [scheme]="colorScheme" [barPadding]="10"
+    [results]="dataSource|createdChart" [gradient]="gradient" [xAxis]="showXAxis"
+    [yAxis]="showYAxis" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="true"
+    [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" [legend]="false"
+    [showDataLabel]="true">
+</ngx-charts-bar-vertical>
+</ng-template>
+
 <section class="graph-wrap">
     <div class="container-fluid">
         <div class="row">
@@ -9,12 +20,7 @@
                     </div>
                     <div class="graph__content">
                         <div class="chart-wraper">
-                            <ngx-charts-bar-vertical [view]="view" [scheme]="colorScheme" [barPadding]="10"
-                                [results]="dataSource|createdChart" [gradient]="gradient" [xAxis]="showXAxis"
-                                [yAxis]="showYAxis" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="true"
-                                [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" [legend]="false"
-                                [showDataLabel]="true">
-                            </ngx-charts-bar-vertical>
+                            <ng-container [ngTemplateOutlet]="chart"></ng-container>
                         </div>
                     </div>
                 </div>

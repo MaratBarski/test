@@ -60,16 +60,22 @@ export class UsageDownloadService {
 
     if (downloadData.charts) {
       downloadData.charts.forEach((chart: any, index: number) => {
-        documentDefinition.content.push({
-          text: chart.svg.title,
-          bold: true,
-          fontSize: 12,
-          alignment: 'center',
-          margin: [20, 20, 20, 20]
-        });
-        documentDefinition.content.push({
-          svg: chart.svg.image
-        });
+        if (chart.svg) {
+          if (chart.svg.title) {
+            documentDefinition.content.push({
+              text: chart.svg.title,
+              bold: true,
+              fontSize: 12,
+              alignment: 'center',
+              margin: [20, 20, 20, 20]
+            });
+          }
+          if (chart.svg.image) {
+            documentDefinition.content.push({
+              svg: chart.svg.image
+            });
+          }
+        }
         const chartTable = this.createTable(chart);
         if (chartTable) {
           documentDefinition.content.push({
