@@ -1,4 +1,4 @@
-import { Component, Input, EventEmitter, Output, OnDestroy, ChangeDetectionStrategy, TemplateRef, AfterViewInit, ViewChild, HostListener, Renderer2, ElementRef, ChangeDetectorRef } from '@angular/core';
+import { Component, Input, EventEmitter, Output, OnDestroy, ChangeDetectionStrategy, TemplateRef, AfterViewInit, ViewChild, HostListener, Renderer2, ElementRef, ChangeDetectorRef, AfterViewChecked } from '@angular/core';
 import { TableHeaderModel, TableHeaderComponent } from '../table-header/table-header.component';
 import { ComponentService } from '../../services/component.service';
 import { AutoSearchComponent } from '../auto-search/auto-search.component';
@@ -42,7 +42,7 @@ export class TableModel {
   styleUrls: ['./table.component.css'],
   changeDetection: ChangeDetectionStrategy.Default
 })
-export class TableComponent implements OnDestroy, AfterViewInit {
+export class TableComponent implements OnDestroy, AfterViewInit, AfterViewChecked {
 
   constructor(
     private csvManagerService: CsvManagerService,
@@ -60,9 +60,10 @@ export class TableComponent implements OnDestroy, AfterViewInit {
     )
   }
 
-  ngAfterViewChecked(): void {
-    this.cdRef.detectChanges();
+  get isVisible(): boolean {
+    return this._isVisible;
   }
+  private _isVisible = false;
 
   filters: any;
 
@@ -97,6 +98,13 @@ export class TableComponent implements OnDestroy, AfterViewInit {
     this.resetPaginator();
     this.initPaginator();
     this.reloadPaginator();
+    setTimeout(() => {
+      this._isVisible = true;
+    }, 100);
+  }
+
+  ngAfterViewChecked(): void {
+    this.cdRef.detectChanges();
   }
 
   private _serachText = '';
