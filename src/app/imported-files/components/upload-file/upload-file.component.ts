@@ -15,7 +15,7 @@ export class UploadFileComponent {
 
   @ViewChild('fileInput', { static: true }) fileInput: ElementRef;
   @ViewChild('templateSelector', { static: true }) templateSelector: SelectComponent;
-  
+
   @Output() onCancel = new EventEmitter<void>();
   @Output() onUpload = new EventEmitter<void>();
   @Input() set uploadUrl(uploadUrl: string) { this._uploadUrl = uploadUrl; }
@@ -99,15 +99,24 @@ export class UploadFileComponent {
       return;
     }
     this.isFileError = false;
-    this.csvManagerService.validate(this.fileInput.nativeElement.files[0]).then(res => {
-      if (res) {
-        this.file = this.fileInput.nativeElement.value;
-        return;
-      }
+    if (!this.csvManagerService.validateFileExtention(this.fileInput.nativeElement, ['csv', 'xls', 'xlsx', 'xlsm'])) {
       this.fileError();
-    }).catch(e => {
+      return;
+    }
+    if (!this.csvManagerService.validateFileSize(this.fileInput.nativeElement.files[0], 0, -1)) {
       this.fileError();
-    });
+      return;
+    }
+    this.file = this.fileInput.nativeElement.value;
+    // this.csvManagerService.validate(this.fileInput.nativeElement.files[0]).then(res => {
+    //   if (res) {
+    //     this.file = this.fileInput.nativeElement.value;
+    //     return;
+    //   }
+    //   this.fileError();
+    // }).catch(e => {
+    //   this.fileError();
+    // });
   }
 
   // csvHeaders: Array<string>;

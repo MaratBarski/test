@@ -315,7 +315,7 @@ export class TableComponent implements OnDestroy, AfterViewInit {
 
   private animate(elm: any, width: number, callBack: any, currentWidth = 0): void {
     this.animationService.emitStart();
-    this.animationService.animateForward(elm, width, 'width', callBack, 100, currentWidth);
+    this.animationService.animateForward(elm, width, 'width', callBack, width / 6, currentWidth);
   }
 
   private animateBack(elm: any, width: number, speed: number, callBack: any): void {
@@ -352,7 +352,7 @@ export class TableComponent implements OnDestroy, AfterViewInit {
     this.animationService.showElement(header);
     this.animationService.stopAnimation();
     if (this.currentRowInfo) {
-      this.animateBack(this.animationElm, this.rowInfoComponent.width, 100, () => {
+      this.animateBack(this.animationElm, this.rowInfoComponent.width, this.rowInfoComponent.width / 6, () => {
         this.clientY = event.clientY;
         this.rowClick(row);
 
