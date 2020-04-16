@@ -16,7 +16,11 @@ export class AutoSearchComponent {
   timeoutID: any;
 
   keyup(event: any): void {
-    if (!this.text) { this.publish(); return; }
+    if (!this.text) {
+      this.prevText = this.text;
+      this.publish();
+      return;
+    }
     if (this.text.length < this.minLength) { return; }
     if (this.prevText === this.text) { return; }
     this.prevText = this.text;
