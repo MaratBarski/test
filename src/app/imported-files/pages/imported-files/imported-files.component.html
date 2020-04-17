@@ -18,7 +18,7 @@
                     [items]="dateRanges"></mdc-date-filter>
             </div>
             <div class="form-search d-none d-md-block">
-                <mdc-auto-search pause="500" #search placeholder="{{'search'|translate}}"></mdc-auto-search>
+                <mdc-auto-search [pause]="500" #search placeholder="{{'search'|translate}}"></mdc-auto-search>
             </div>
         </div>
     </div>
@@ -40,10 +40,6 @@
     </div>
 </ng-template>
 
-<mdc-popup #dateRangeSelector position="bottom-left" [closeOnClick]="false">
-    <mdc-date-range-selector [from]="customFrom" [to]="customTo" (onApply)="applyCustomDate($event)"
-        (onCancel)="cancelCustomDate()"></mdc-date-range-selector>
-</mdc-popup>
 <mdc-modal-window [hidden]="!showUploadFile">
     <md-upload-file #fileUploader [templates]="templates" (onUpload)="showUploadFile=false"
         (onCancel)="showUploadFile=false"></md-upload-file>

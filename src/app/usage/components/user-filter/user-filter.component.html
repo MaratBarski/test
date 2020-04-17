@@ -7,7 +7,7 @@
     <div (click)="filterContainerClick($event)" class="select-filter" [hidden]="!isExpanded" >
         <div class="select-filter__content">
             <div class="select-filter__top">
-                <mdc-check-box (change)="changeTop($event)" [(ngModel)]="topChecked" text="Top 5 users" [id]="'usr' + index"></mdc-check-box>
+                <mdc-check-box (change)="changeTop($event)" [(ngModel)]="topChecked" text="Top 5 users" [id]="'usrUsage'"></mdc-check-box>
                 <span (click)="clear()" class="select-filter__clear">Clear</span>
             </div>
             <div class="form-search">

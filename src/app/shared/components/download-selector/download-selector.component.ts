@@ -19,6 +19,10 @@ export class DownloadSelectorComponent {
   downloadOption: DownloadOption = DownloadOption.none;
   @Output() onSelect = new EventEmitter<DownloadOption>();
 
+  readonly csv = DownloadOption.csv;
+  readonly pdf = DownloadOption.pdf;
+  readonly none = DownloadOption.none;
+
   download(ext: DownloadOption): void {
     this.downloadOption = ext;
     if (this.downloadOption === DownloadOption.none) { return; }

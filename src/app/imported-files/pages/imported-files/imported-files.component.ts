@@ -14,7 +14,6 @@ import {Router} from '@angular/router';
 export class ImportedFilesComponent extends BaseSibscriber implements OnInit, OnDestroy {
 
   @ViewChild('dateFilter', { static: true }) dateFilter: DateFilterComponent;
-  @ViewChild('dateRangeSelector', { static: true }) dateRangeSelector: PopupComponent;
   @ViewChild('table', { static: true }) table: TableComponent;
   @ViewChild('checkFilter', { static: true }) checkFilter: CheckBoxListComponent;
   @ViewChild('fileUploader', { static: true }) fileUploader: UploadFileComponent;

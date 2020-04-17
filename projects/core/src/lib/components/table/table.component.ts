@@ -60,11 +60,6 @@ export class TableComponent implements OnDestroy, AfterViewInit, AfterViewChecke
     )
   }
 
-  get isVisible(): boolean {
-    return this._isVisible;
-  }
-  private _isVisible = false;
-
   filters: any;
 
   private _subscriptions: Array<SubscriptionLike> = [];
@@ -98,13 +93,10 @@ export class TableComponent implements OnDestroy, AfterViewInit, AfterViewChecke
     this.resetPaginator();
     this.initPaginator();
     this.reloadPaginator();
-    setTimeout(() => {
-      this._isVisible = true;
-    }, 100);
   }
 
   ngAfterViewChecked(): void {
-    this.cdRef.detectChanges();
+    //this.cdRef.detectChanges();
   }
 
   private _serachText = '';
@@ -156,6 +148,8 @@ export class TableComponent implements OnDestroy, AfterViewInit, AfterViewChecke
         this._rows = this.searchService.filterRows(
           this.dataSource.rows, { text: text, columns: this.searchOptions }
         );
+        //this.cdRef.markForCheck();
+        //this.cdRef.detach();
         this._serachText = text;
         this.reloadPaginator();
       }));
@@ -261,13 +255,14 @@ export class TableComponent implements OnDestroy, AfterViewInit, AfterViewChecke
   resetPaginator(): void {
     if (!this.isPaginator) { return; }
     this.paginator.currentPage = 0;
+    this.paginator.currentBlock = 0;
   }
 
   sort(header: TableHeaderModel): void {
-    this.resetPaginator();
     const sorted = this.dataSource.headers.find(h => h.isSortedColumn && h !== header);
     if (sorted) { sorted.isSortedColumn = false; }
     this.sortModel = { ...header };
+    this.resetPaginator();
     this.onSort.emit(header);
   }
 

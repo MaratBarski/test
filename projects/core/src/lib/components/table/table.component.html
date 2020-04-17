@@ -1,5 +1,4 @@
-<div *ngIf="!isVisible">Loading...</div>
-<table #tableObject mdcTable [mdcVisibility]="isVisible">
+<table #tableObject mdcTable>
     <thead *ngIf="dataSource?.headers">
         <tr mdcTableHeader>
             <th [ngStyle]="header.style" class="admin-table__head admin-table__item {{header.css}}"

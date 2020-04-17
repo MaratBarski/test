@@ -1,41 +1,41 @@
 <header class="header">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-12">
-          <div class="header__content">
-            <div class="header__info">
-              <div class="hamburger">
-                <mdc-icon [path]="icon.hamburgerOpen" [css]="'icon ' + icon.hamburgerOpen"
-                          (click)="toggleSideBar()"></mdc-icon>
-              </div>
-              <div class="header__company d-none d-lg-block">
-                <mdc-icon [path]="'ic-flower'" [css]="'icon ic-flower'"></mdc-icon>
-                <span class="header__company-name">Buttercup Hospital Institute</span>
-              </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <div class="header__content">
+          <div class="header__info">
+            <div class="hamburger">
+              <mdc-icon [path]="icon.hamburgerOpen" [css]="'icon ' + icon.hamburgerOpen" (click)="toggleSideBar()">
+              </mdc-icon>
             </div>
-            <div class="header__action">
-              <div class="select d-none d-lg-block">
-                <div class="select__head">Sheba Central
-                  <div class="select__head-arr">
-                    <mdc-icon [css]="'icon ' + icon.arrowDown" [path]="icon.arrowDown"></mdc-icon>
-                  </div>
+            <div class="header__company d-none d-lg-block">
+              <mdc-icon [path]="'ic-flower'" [css]="'icon ic-flower'"></mdc-icon>
+              <span class="header__company-name">Buttercup Hospital Institute</span>
+            </div>
+          </div>
+          <div class="header__action">
+            <div class="select d-none d-lg-block">
+              <div class="select__head">Sheba Central
+                <div class="select__head-arr">
+                  <mdc-icon [css]="'icon ' + icon.arrowDown" [path]="icon.arrowDown"></mdc-icon>
                 </div>
-                <div class="select__option">
+              </div>
+              <!-- <div class="select__option">
                   <div class="select__param">Text 1</div>
                   <div class="select__param">Text 2</div>
                   <div class="select__param">Text 3</div>
                   <div class="select__param">Text 4</div>
-                </div>
-              </div>
-              <div class="header__notice active">
-                <svg class="icon notice">
-                  <use xlink:href="/assets/sprites/sprite.svg#notice-active"></use>
-                </svg>
-              </div>
-              <div class="header__profile">
-                <div class="header__profile-icon"></div>
-                <div class="profile-popup active">
-                  <div class="profile-popup__list"><a class="profile-popup__item" href="#">
+                </div> -->
+            </div>
+            <div class="header__notice active">
+              <svg class="icon notice">
+                <use xlink:href="/assets/sprites/sprite.svg#notice-active"></use>
+              </svg>
+            </div>
+            <div class="header__profile">
+              <div class="header__profile-icon"></div>
+              <div class="profile-popup active">
+                <!-- <div class="profile-popup__list"><a class="profile-popup__item" href="#">
                     <div class="profile-popup__icon">
                       <svg class="icon ic-setting">
                         <use xlink:href="/assets/sprites/sprite.svg#ic-setting"></use>
@@ -49,29 +49,29 @@
                       </svg>
                     </div>
                     <div class="profile-popup__text">Logout</div>
-                  </a></div>
-                </div>
+                  </a>
+                </div> -->
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="sidebar">
-      <div class="sidebar__content">
-        <div class="sidebar__top">
-          <div class="sidebar__logo"><a href="/"><img src="/assets/img/logo-white.svg" alt="Logo"></a></div>
-          <mdc-icon [path]="icon.hamburgerClose" [css]="icon.hamburgerClose" (click)="toggleSideBar()"></mdc-icon>
-        </div>
-        <mdc-side-bar></mdc-side-bar>
+  </div>
+  <div class="sidebar">
+    <div class="sidebar__content">
+      <div class="sidebar__top">
+        <div class="sidebar__logo"><a href="/"><img src="/assets/img/logo-white.svg" alt="Logo"></a></div>
+        <mdc-icon [path]="icon.hamburgerClose" [css]="icon.hamburgerClose" (click)="toggleSideBar()"></mdc-icon>
       </div>
-      <div class="sidebar__bottom">
-        <div class="sidebar__btn">
-          <div class="sidebar__btn-item"><a class="btn btn_border btn_grey" href="#">+ New Event</a></div>
-          <div class="sidebar__btn-item"><a class="btn btn_border btn_grey" href="#">+ New Query</a></div>
-        </div>
-        <div class="sidebar__copyright">Version 6 - June 2020</div>
-      </div>
+      <mdc-side-bar></mdc-side-bar>
     </div>
-  </header>
-  
+    <div class="sidebar__bottom">
+      <div class="sidebar__btn">
+        <div class="sidebar__btn-item"><a class="btn btn_border btn_grey" href="#">+ New Event</a></div>
+        <div class="sidebar__btn-item"><a class="btn btn_border btn_grey" href="#">+ New Query</a></div>
+      </div>
+      <div class="sidebar__copyright">Version 6 - June 2020</div>
+    </div>
+  </div>
+</header>
