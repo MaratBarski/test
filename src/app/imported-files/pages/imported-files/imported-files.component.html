@@ -40,15 +40,17 @@
     </div>
 </ng-template>
 
-<mdc-modal-window [hidden]="!showUploadFile">
-    <md-upload-file #fileUploader [templates]="templates" (onUpload)="showUploadFile=false"
-        (onCancel)="showUploadFile=false"></md-upload-file>
-</mdc-modal-window>
 <ng-template #dateColumn let-item>
     {{item.insertDate|date}}
 </ng-template>
+
 <ng-template #sharedColumn let-item>
     <span *ngIf="item.shared" class="admin-table__icon">
         <svg class="icon ic-shared ic-grey" mdcSvg="ic-shared"></svg>
     </span>
 </ng-template>
+
+<mdc-modal-window *ngIf="showUploadFile">
+    <md-upload-file #fileUploader [templates]="templates" (onUpload)="showUploadFile=false"
+        (onCancel)="showUploadFile=false"></md-upload-file>
+</mdc-modal-window>

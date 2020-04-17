@@ -1,4 +1,4 @@
-import { Component, Input, EventEmitter, Output, OnDestroy, ChangeDetectionStrategy, TemplateRef, AfterViewInit, ViewChild, HostListener, Renderer2, ElementRef, ChangeDetectorRef, AfterViewChecked } from '@angular/core';
+import { Component, Input, EventEmitter, Output, OnDestroy, ChangeDetectionStrategy, TemplateRef, AfterViewInit, ViewChild, HostListener, Renderer2, ElementRef, ChangeDetectorRef, AfterViewChecked, ViewContainerRef, ComponentFactoryResolver, Injector } from '@angular/core';
 import { TableHeaderModel, TableHeaderComponent } from '../table-header/table-header.component';
 import { ComponentService } from '../../services/component.service';
 import { AutoSearchComponent } from '../auto-search/auto-search.component';
@@ -50,6 +50,8 @@ export class TableComponent implements OnDestroy, AfterViewInit, AfterViewChecke
     private renderer2: Renderer2,
     private animationService: AnimationService,
     private cdRef: ChangeDetectorRef
+    // private componentFactoryResolver: ComponentFactoryResolver,
+    // private injector: Injector
   ) {
     this._subscriptions.push(
       this.animationService.onShowElement.subscribe(elm => {
@@ -96,7 +98,7 @@ export class TableComponent implements OnDestroy, AfterViewInit, AfterViewChecke
   }
 
   ngAfterViewChecked(): void {
-    //this.cdRef.detectChanges();
+    this.cdRef.detectChanges();
   }
 
   private _serachText = '';
@@ -164,6 +166,7 @@ export class TableComponent implements OnDestroy, AfterViewInit, AfterViewChecke
     }
   }
 
+  //@ViewChild('infoRowLoader', { read: ViewContainerRef, static: true }) infoRowLoader: ViewContainerRef;
   @ViewChild('tableObject', { static: false }) tableObject: ElementRef;
   @Input() rowInfoTemplate: TemplateRef<any>;
   @Input() headersTemplate: Array<{ [key: string]: TemplateRef<any> }>;
@@ -304,68 +307,63 @@ export class TableComponent implements OnDestroy, AfterViewInit, AfterViewChecke
   }
 
   currentRowInfo: TableRowModel;
-  animationRowInfo: TableRowModel;
-  currentRowIndex = -1;
-  animationElm: any;
-  rowInfoComponent: RowInfoComponent;
   clientY = 0;
 
+  currentLastCell: any = undefined;
+
   closeRowInfo(): void {
-    this.animationService.stopAnimation();
     this.currentRowInfo = undefined;
-    this.animationRowInfo = undefined;
-  }
-
-  private animate(elm: any, width: number, callBack: any, currentWidth = 0): void {
-    this.animationService.emitStart();
-    this.animationService.animateForward(elm, width, 'width', callBack, width / 6, currentWidth);
-  }
-
-  private animateBack(elm: any, width: number, speed: number, callBack: any): void {
-    this.animationService.animateBack(elm, width, 'width', speed, callBack);
+    //this.unsubscribeRowInfo();
+    //this.infoRowLoader.clear();
   }
 
   rowDetailsInit(rowDetails: RowInfoComponent): void {
-    setTimeout(() => {
-      const elm = document.getElementById(rowDetails.componentID);
-      this.animationElm = elm;
-      this.rowInfoComponent = rowDetails;
-      this.renderer2.setStyle(elm, 'visibility', `hidden`);
+    if (this.clientY + rowDetails.height > window.innerHeight) {
+      rowDetails.setMargin(window.innerHeight - this.clientY - rowDetails.height);
+    } else {
+      rowDetails.setMargin(0);
+    }
 
-      if (this.clientY + rowDetails.height > window.innerHeight) {
-        this.renderer2.setStyle(elm, 'marginTop', `${window.innerHeight - this.clientY - rowDetails.height}px`);
-      } else {
-        this.renderer2.setStyle(elm, 'marginTop', '0px');
-      }
-
-      setTimeout(() => {
-        this.animate(elm, rowDetails.width, undefined);
-        setTimeout(() => {
-          this.renderer2.setStyle(elm, 'visibility', 'visible');
-        }, 10);
-      }, 10);
-    }, 0);
+    // rowDetails.setPosition(this.currentLastCell.offsetTop, this.tableObject.nativeElement.offsetLeft + this.tableObject.nativeElement.offsetWidth);
   }
 
-  showItemInfo(row: TableRowModel | any, header: TableHeaderModel, rowIndex: number, event: any): void {
-    //ComponentService.documentClick();
-    if (!header.showDetails) { return; }
-    if (this.currentRowInfo === row) { return; }
-    event.stopPropagation();
-    this.animationService.showElement(header);
-    this.animationService.stopAnimation();
-    if (this.currentRowInfo) {
-      this.animateBack(this.animationElm, this.rowInfoComponent.width, this.rowInfoComponent.width / 6, () => {
-        this.clientY = event.clientY;
-        this.rowClick(row);
+  // _currentSubscription: any;
 
-        this.currentRowInfo = row;
-      });
-      return;
-    }
-    this.clientY = event.clientY;
+  // private unsubscribeRowInfo(): void {
+  //   if (this._currentSubscription) {
+  //     this._currentSubscription.unsubscribe();
+  //     this._currentSubscription = undefined;
+  //   }
+  // }
+
+  showItemInfo(row: TableRowModel | any, header: TableHeaderModel, rowIndex: number, event: any): void {
+    ComponentService.documentClick();
     this.rowClick(row);
+    event.stopPropagation();
+    this.clientY = event.clientY;
+
+    // this.currentLastCell = this.tableObject.nativeElement.rows[rowIndex].cells[this.tableObject.nativeElement.rows[rowIndex].cells.length - 1];
+    // this.unsubscribeRowInfo();
+
     this.currentRowInfo = row;
+    // this.currentRowInfo = undefined;
+    // setTimeout(() => {
+    //   this.currentRowInfo = row;
+    // }, 10);
+
+    // const componentFactory = this.componentFactoryResolver.resolveComponentFactory(RowInfoComponent);
+    // const componentRef = componentFactory.create(this.injector);
+    // this.infoRowLoader.clear();
+
+    // const cmp = <RowInfoComponent>componentRef.instance;
+    // cmp.rowInfoTemplate = this.rowInfoTemplate;
+    // cmp.currentRowInfo = row;
+
+    // this._currentSubscription = cmp.onInit.subscribe((rowDetails: RowInfoComponent) => {
+    //   rowDetails.setPosition(this.currentLastCell.offsetTop, this.tableObject.nativeElement.offsetLeft + this.tableObject.nativeElement.offsetWidth);
+    // });
+
+    // this.infoRowLoader.insert(componentRef.hostView);
   }
 
   infoRowClick(event: any): void {

@@ -16,13 +16,8 @@ export class AutoSearchComponent {
   timeoutID: any;
 
   keyup(event: any): void {
-    if (!this.text) {
-      this.prevText = this.text;
-      this.publish();
-      return;
-    }
-    if (this.text.length < this.minLength) { return; }
     if (this.prevText === this.text) { return; }
+    if (this.text.length < this.minLength && this.text != '') { return; }
     this.prevText = this.text;
     this.publish();
   }
@@ -30,7 +25,7 @@ export class AutoSearchComponent {
   keydown(event: any): void {
     this.stopTimeout();
     if (event.keyCode !== 13) { return; }
-    this.complete.emit(this.text); 
+    this.complete.emit(this.text);
   }
 
   publish(): void {

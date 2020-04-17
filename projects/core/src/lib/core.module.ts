@@ -184,7 +184,8 @@ import { FileUploaderComponent } from './components/file-uploader/file-uploader.
     FileUploaderComponent
   ],
   entryComponents: [
-    TableHeaderComponent
+    TableHeaderComponent,
+    RowInfoComponent
   ],
   providers: [
     LocalStorageService,

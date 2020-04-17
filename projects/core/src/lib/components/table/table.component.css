@@ -16,7 +16,7 @@
     margin-left: auto;
     max-width: 1000px;
     overflow: hidden;
-    visibility: hidden;
+    /* visibility: hidden; */
 }
 .row-link:hover{
     text-decoration: underline;

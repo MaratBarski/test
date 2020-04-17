@@ -7,11 +7,13 @@ import { Component, Input, EventEmitter, Output, ViewChild, ElementRef, AfterCon
   styleUrls: ['./row-info.component.css']
 })
 export class RowInfoComponent implements AfterContentInit {
-  
+
   @Input() componentID: string;
   @Output() onInit = new EventEmitter<RowInfoComponent>();
-  @Output() onAfterInit = new EventEmitter<RowInfoComponent>();
   @ViewChild('container', { static: true }) container: ElementRef;
+
+  rowInfoTemplate: any;
+  currentRowInfo: any;
 
   width = 0;
   height = 0;
@@ -19,14 +21,31 @@ export class RowInfoComponent implements AfterContentInit {
   constructor(private renderer2: Renderer2) { }
 
   ngAfterContentInit(): void {
-    setTimeout(() => {
-      this.width = this.container.nativeElement.offsetWidth;
-      this.height = this.container.nativeElement.offsetHeight;
-      this.renderer2.setStyle(this.container.nativeElement, 'width', `${this.width}px`);
-      this.renderer2.setStyle(this.container.nativeElement, 'height', `${this.height}px`);
-      this.renderer2.setStyle(this.container.nativeElement, 'overflow', 'hidden');
-      this.onInit.emit(this);
-    }, 10);
+    this.initComponent();
   }
 
+  private initComponent(): void {
+    // setTimeout(() => {
+    this.width = this.container.nativeElement.offsetWidth;
+    this.height = this.container.nativeElement.offsetHeight;
+    this.renderer2.setStyle(this.container.nativeElement, 'width', `${this.width}px`);
+    this.renderer2.setStyle(this.container.nativeElement, 'height', `${this.height}px`);
+    this.renderer2.setStyle(this.container.nativeElement, 'overflow', 'hidden');
+    this.onInit.emit(this);
+    // }, 10);
+  }
+
+  setPosition(top: number, right: number): void {
+    this.renderer2.setStyle(this.container.nativeElement, 'visibility', 'visible');
+    this.renderer2.setStyle(this.container.nativeElement, 'top', `${top}px`);
+    this.renderer2.setStyle(this.container.nativeElement, 'left', `${right - this.container.nativeElement.offsetWidth}px`);
+  }
+
+  setMargin(margin: number): void {
+    this.renderer2.setStyle(this.container.nativeElement, 'margin-top', `${margin}px`);
+  }
+
+  onClick(event: any): void {
+    event.stopPropagation();
+  }
 }
