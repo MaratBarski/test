@@ -1,5 +1,5 @@
 import { Component, Input, EventEmitter, Output, HostListener } from '@angular/core';
-import { Hierarchy } from '@app/imported-files/models/hierarchy';
+import { Hierarchy } from '@app/models/hierarchy';
 
 @Component({
   selector: 'md-category-info',

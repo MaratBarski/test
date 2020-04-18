@@ -12,6 +12,9 @@ export const environment = {
     uploadFileSource: 'mdclone/api/v1/upload/file-source',
     deleteFileSource: 'mdclone/api/v1/file-source',
     hierarchy: 'mdclone/api/v1/hierarchy',
+    deleteHierarchy: 'mdclone/api/v1/hierarchy',
+    downloadHierarchy: 'mdclone/api/v1/hierarchy/download',
+    uploadHierarchy: 'mdclone/api/v1/upload/hierarchy',
     historyReport: 'mdclone/api/v1/session-history'
   }
 };

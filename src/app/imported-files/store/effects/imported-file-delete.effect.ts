@@ -4,7 +4,7 @@ import { map, catchError, switchMap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 import * as act from '../actions/imported-files.actions'
 import { ImportedFilesService } from '../../services/imported-files.service';
-import { FileSource } from '@app/imported-files/models/file-source';
+import { FileSource } from '@app/models/file-source';
 
 @Injectable()
 export class SourceFileDeleteEffect {

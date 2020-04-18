@@ -1,5 +1,5 @@
 import * as actions from '../actions/imported-files.actions'
-import { FileSourceResponse } from '../../models/file-source';
+import { FileSourceResponse } from '../../../models/file-source';
 
 const GetDefaultState = (): FileSourceResponse => {
     return {

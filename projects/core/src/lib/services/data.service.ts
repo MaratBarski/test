@@ -12,12 +12,12 @@ export class DataService {
     return {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Accept': 'application/json'
+        Accept: 'application/json'
       })
     };
   }
 
-  get(url: string): any{
+  get(url: string): any {
     return this.http.get(url, this.createHeaders());
   }
 

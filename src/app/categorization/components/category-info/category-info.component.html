@@ -25,9 +25,12 @@
         <div class="admin-table-info__item">
             <div class="admin-table-info__title">State:</div>
             <div class="admin-table-info__val">
-                <div class="admin-table-info__ic">
-                    <mdc-icon path="ic-robot"></mdc-icon>
-                </div>Auto-Update Hierarchy
+                <div *ngIf="category?.hierarchyChange" class="admin-table-info__ic">
+                    <mdc-icon path="ic-warning"></mdc-icon>
+                </div>
+              <div *ngIf="!category?.hierarchyChange && (category?.hierarchyLoadingType && category?.hierarchyLoadingType !== 'manual')" class="admin-table-info__ic">
+                    <mdc-icon path="ic-robot"></mdc-icon> Auto-Update Hierarchy
+                </div>
             </div>
         </div>
         <div class="admin-table-info__item">

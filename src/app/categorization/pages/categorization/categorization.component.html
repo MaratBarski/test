@@ -67,8 +67,8 @@
 <ng-template #dateColumn let-item>
     {{item.insertDate|date}}
 </ng-template>
-<ng-template #edit let-item>
-    <span (click)="editClick(item,$event)" class="admin-table-action__menu ic-hover">
+<ng-template #edit let-item let-src="source">
+    <span (click)="editClick(item,src,$event)" class="admin-table-action__menu ic-hover">
         <mdc-icon path="ic-dot-menu"></mdc-icon>
     </span>
 </ng-template>

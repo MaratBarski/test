@@ -1,6 +1,6 @@
 import { Component, Output, EventEmitter, ViewChild, ElementRef, Input } from '@angular/core';
 import { UploadService, UploadStatus } from '@app/shared/services/upload.service';
-import { ENV } from 'projects/core/src/public-api';
+import { environment } from '@env/environment';
 import { Offline } from '@app/shared/decorators/offline.decorator';
 
 @Component({
@@ -18,14 +18,16 @@ export class UploadFileComponent {
   @Input() set uploadUrl(uploadUrl: string) { this._uploadUrl = uploadUrl; }
   get uploadUrl(): string { return this._uploadUrl; }
   description = '';
-  fileName = '';
+  hierarchyName = '';
+  project = '';
   file = '';
+  fileName = '';
   get isValid(): boolean {
-    return !!this.fileName && !!this.file;
+    return !!this.file;
   }
 
-  @Offline(`${ENV.serverUrl}${ENV.endPoints.uploadFileSource}`)
-  private _uploadUrl = `${ENV.serverUrl}${ENV.endPoints.uploadFileSource}`;
+  @Offline(`${environment.serverUrl}${environment.endPoints.uploadHierarchy}`)
+  private _uploadUrl = `${environment.serverUrl}${environment.endPoints.uploadHierarchy}`;
 
   uploadFile(event: any): void {
     event.preventDefault();
@@ -34,8 +36,9 @@ export class UploadFileComponent {
     }
     const formData: FormData = new FormData();
     formData.append('file', this.fileInput.nativeElement.files[0]);
-    formData.append('fileName', this.fileName);
+    formData.append('hierarchyName', this.fileName);
     formData.append('description', this.description);
+    formData.append('projectId', this.project);
     this.uploadService.add({
       title: 'Categorization',
       form: formData,
@@ -54,10 +57,15 @@ export class UploadFileComponent {
     this.onCancel.emit();
   }
 
+  changedProject(id: string): void {
+    this.project = id;
+  }
+
   reset(): void {
-    this.fileName = '';
-    this.file = '';
     this.description = '';
+    this.fileName = '';
+    this.project = '';
+    this.file = '';
   }
 
   updateFileName(event: any): void {

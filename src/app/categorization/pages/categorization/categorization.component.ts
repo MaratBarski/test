@@ -5,6 +5,8 @@ import { load } from '@app/categorization/store/actions/categorization.actions';
 import { CategorizationService } from '@app/categorization/services/categorization.service';
 import { selectCategorization } from '@app/categorization/store/selectors/categorization.selector';
 import { CategoryInfoComponent } from '@app/categorization/components/category-info/category-info.component';
+import {FileSource} from '@app/models/file-source';
+import {Hierarchy} from '@app/models/hierarchy';
 
 @Component({
   selector: 'md-categorization',
@@ -25,7 +27,8 @@ export class CategorizationComponent extends BaseSibscriber implements OnInit {
   showUploadFile = false;
   dataOrigin: TableModel;
   dataSource: TableModel;
-  currentRow = { state: true, source: undefined }
+  currentRow = { state: true, source: undefined };
+  category: Array<Hierarchy>;
 
   constructor(
     private categorizationService: CategorizationService,
@@ -51,7 +54,7 @@ export class CategorizationComponent extends BaseSibscriber implements OnInit {
     if (!this.currentRow.source) { return; }
     this.currentRow.source.hierarchyChange = state;
     this.rowInfo.hide();
-    this.categorizationService.updateHierarchyChange(this.currentRow.source,state);
+    this.categorizationService.updateHierarchyChange(this.currentRow.source, state);
   }
 
   showUse(event: any, item: any): void {
@@ -72,31 +75,62 @@ export class CategorizationComponent extends BaseSibscriber implements OnInit {
     icon: 'ic-delete',
     source: 'test',
     click: (source) => {
+      // this.category = this.category.filter(x => x !== source);
+      this.categorizationService.deleteHierarchy(source)
+        .toPromise()
+        .then(res => {
+          console.log('Hierarchy Deleted');
+        }).catch(e => {
+        console.error('Error delete Hierarchy');
+      });
+      // this.store.deleteHierarchy(deleteFile(source));
     }
-  }
+  };
 
   editLink: MenuLink = {
-    text: 'Edit',
+    text: 'R',
     icon: 'ic-edit',
     click: (source) => { console.log(JSON.stringify(source)); }
-  }
+  };
 
   viewLink: MenuLink = {
     text: 'View output summary',
     icon: 'ic-view',
     click: (source) => { console.log(JSON.stringify(source)); }
-  }
+  };
+
+  downloadLink: MenuLink = {
+    text: 'Download',
+    icon: 'ic-download',
+    click: (source) => {
+      // this.category = this.category.filter(x => x !== source);
+      this.categorizationService.downloadHierarchy(source)
+        .toPromise()
+        .then(res => {
+          console.log(res);
+          //const blob = new Blob([res], { type: 'text/csv'});
+          //const url = window.URL.createObjectURL(blob);
+          //window.open(url);
+        }).catch(e => {
+          console.log(e);
+          console.error('Cant Download hierarchy');
+      });
+      // this.store.deleteHierarchy(deleteFile(source));
+    }
+  };
 
   sublinks: Array<MenuLink> = [this.deleteLink];
   links: Array<MenuLink> = [
     this.editLink,
-    this.viewLink
+    this.viewLink,
+    this.downloadLink
   ];
 
-  editClick(item: any, event: any): void {
-    this.deleteLink.source = item;
-    this.editLink.source = item;
-    this.viewLink.source = item;
+  editClick(item: any, source: any, event: any): void {
+    this.deleteLink.source = source;
+    this.editLink.source = source;
+    this.viewLink.source = source;
+    this.downloadLink.source = source;
     this.popupMenu.target = event.target;
     this.popupMenu.show(true, event);
   }
@@ -106,12 +140,6 @@ export class CategorizationComponent extends BaseSibscriber implements OnInit {
       this.categorizationService.load().subscribe((res: any) => {
         this.dataOrigin = this.dataSource = this.categorizationService.createDataSource(res.data);
       }));
-
-    // super.add(
-    //   this.store.select(selectCategorization).subscribe((categorization: any) => {
-    //     this.dataOrigin = this.dataSource = this.categorizationService.createDataSource(categorization.data);
-    //   }));
-    // this.store.dispatch(load());
   }
 
   openCategoryInfo(category: any, event: any): void {

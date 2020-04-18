@@ -4,7 +4,7 @@ import { ImportedFilesService } from '../../services/imported-files.service';
 import { Store } from '@ngrx/store';
 import { load } from '../../store/actions/imported-files.actions';
 import { selectData } from '../../store/selectors/imported-files.selector';
-import { FileSource } from '../../models/file-source';
+import { FileSource } from '../../../models/file-source';
 import { Subscription } from 'rxjs';
 import { UploadService } from '@app/shared/services/upload.service';
 import { ActivatedRoute } from '@angular/router';

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { DataService, TableModel, CheckBoxListOption } from 'appcore';
 import { Observable } from 'rxjs';
-import { FileSourceResponse, FileSource } from '../models/file-source';
+import { FileSourceResponse, FileSource } from '../../models/file-source';
 import { Offline } from 'src/app/shared/decorators/offline.decorator';
 import { environment } from '@env/environment';
 

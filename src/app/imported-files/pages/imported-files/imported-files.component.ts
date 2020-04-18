@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { ImportedFilesService } from '../../services/imported-files.service';
-import { FileSource, FileSourceResponse } from '../../models/file-source';
+import { FileSource, FileSourceResponse } from '../../../models/file-source';
 import { TableComponent, TranslateService, DateService, TabItemModel, TableModel, MenuLink, PopupComponent, TableHeaderModel, CheckBoxListOption, Project, NavigationService, PageInfo, BaseSibscriber, CheckBoxListComponent, SelectOption, FromTo } from '@app/core-api';
 import { UploadFileComponent } from '@app/imported-files/components/upload-file/upload-file.component';
 
@@ -14,6 +14,28 @@ import { UploadFileComponent } from '@app/imported-files/components/upload-file/
   styleUrls: ['./imported-files.component.scss']
 })
 export class ImportedFilesComponent extends BaseSibscriber implements OnInit, OnDestroy {
+
+  get templates(): Array<SelectOption> {
+    if (!this.permissions) { return []; }
+    return this.permissions.map(x => ({ text: x.text, id: x.id, value: x.id }));
+  }
+
+  constructor(
+    private translateService: TranslateService,
+    private dateService: DateService,
+    private importedFilesService: ImportedFilesService,
+    // private store: Store<any>,
+    private navigationService: NavigationService
+  ) {
+    super();
+    this.navigationService.currentPageID = PageInfo.ImportedFiles.id;
+  }
+
+  get isFilter(): boolean {
+    if (!this.curentFilter) { return false; }
+    if (!this.filterProc[this.curentFilter]) { return false; }
+    return true;
+  }
 
   @ViewChild('popupMenu', { static: true }) popupMenu: PopupComponent;
   @ViewChild('popupFilter', { static: true }) popupFilter: PopupComponent;
@@ -30,11 +52,6 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, On
 
   searchOptions = ['fileName', 'environment'];
 
-  get templates(): Array<SelectOption> {
-    if (!this.permissions) { return []; }
-    return this.permissions.map(x => { return { text: x.text, id: x.id, value: x.id } });
-  }
-
   tabs: Array<TabItemModel>;
   tabActive = 0;
   serachText = '';
@@ -43,24 +60,13 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, On
   dataSource: TableModel;
   fileSource: Array<FileSource>;
 
-  constructor(
-    private translateService: TranslateService,
-    private dateService: DateService,
-    private importedFilesService: ImportedFilesService,
-    //private store: Store<any>,
-    private navigationService: NavigationService
-  ) {
-    super();
-    this.navigationService.currentPageID = PageInfo.ImportedFiles.id;
-  }
-
   deleteLink: MenuLink = {
     text: 'Delete',
     disable: false,
     icon: 'ic-delete',
     source: 'test',
     click: (source) => {
-      this.fileSource = this.fileSource.filter(x => x != source);
+      this.fileSource = this.fileSource.filter(x => x !== source);
       this.initData();
       this.importedFilesService.deleteFile(source)
         .toPromise()
@@ -68,22 +74,22 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, On
           console.log('File deleted');
         }).catch(e => {
           console.error('Error delete file');
-        })
-      //this.store.dispatch(deleteFile(source));
+        });
+      // this.store.dispatch(deleteFile(source));
     }
-  }
+  };
 
   editLink: MenuLink = {
     text: 'Edit File Settings',
     icon: 'ic-edit',
     click: (source) => { console.log(JSON.stringify(source)); }
-  }
+  };
 
   viewLink: MenuLink = {
     text: 'View output summary',
     icon: 'ic-view',
     click: (source) => { console.log(JSON.stringify(source)); }
-  }
+  };
 
   sublinks: Array<MenuLink> = [this.deleteLink];
   links: Array<MenuLink> = [
@@ -91,9 +97,54 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, On
     this.viewLink
   ];
 
+  filterProc = {
+    environment: {
+      show: () => { this.filterOptions = this.projects; },
+      setOptions: () => { this.projects = this.checkFilter.options; },
+      apply: (fs: Array<FileSource>): Array<FileSource> => {
+        const dict = {};
+        this.projects.forEach((option, index) => {
+          if (option.isChecked) {
+            dict[option.id] = true;
+          }
+        });
+        return fs.filter(fs => fs.projectObj && dict[fs.projectObj.projectId]);
+      }
+    },
+    user: {
+      show: () => { this.filterOptions = this.users; },
+      setOptions: () => { this.users = this.checkFilter.options; },
+      apply: (fs: Array<FileSource>): Array<FileSource> => {
+        const dict = {};
+        this.users.forEach((option, index) => {
+          if (option.isChecked) {
+            dict[option.id] = true;
+          }
+        });
+        return fs.filter(fs => dict[fs.uploadedBy]);
+      }
+    },
+    permission: {
+      show: () => { this.filterOptions = this.permissions; },
+      setOptions: () => { this.permissions = this.checkFilter.options; },
+      apply: (fs: Array<FileSource>): Array<FileSource> => {
+        const dict = {};
+        this.permissions.forEach((option, index) => {
+          if (option.isChecked) {
+            dict[option.id] = true;
+          }
+        });
+        return fs.filter(fs => dict[fs.templateId]);
+      }
+    }
+  };
+
+  customTo = new Date();
+  customFrom = new Date();
+
   searchComplete(text: string): void {
-    //this.table.resetPaginator();
-    //this.serachText = text;
+    // this.table.resetPaginator();
+    // this.serachText = text;
   }
 
   selectTab(tab: number): void {
@@ -136,19 +187,19 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, On
 
   initProjects(): void {
     this.projects = this.importedFilesService.getFilter(
-      this.fileSource.filter(x => x.projectObj).map(x => { return { id: x.projectObj.projectId, text: x.projectObj.projectName } })
+      this.fileSource.filter(x => x.projectObj).map(x => ({ id: x.projectObj.projectId, text: x.projectObj.projectName }))
     );
   }
 
   initUsers(): void {
     this.users = this.importedFilesService.getFilter(
-      this.fileSource.filter(x => x.uploadedBy).map(x => { return { id: x.uploadedBy, text: 'user_' + x.uploadedBy } })
+      this.fileSource.filter(x => x.uploadedBy).map(x => ({ id: x.uploadedBy, text: 'user_' + x.uploadedBy }))
     );
   }
 
   initPermissions(): void {
     this.permissions = this.importedFilesService.getFilter(
-      this.fileSource.filter(x => x.template).map(x => { return { id: x.template.templateId, text: x.template.templateName } })
+      this.fileSource.filter(x => x.template).map(x => ({ id: x.template.templateId, text: x.template.templateName }))
     );
   }
 
@@ -170,48 +221,6 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, On
 
   cellClick(item: any): void { }
 
-  filterProc = {
-    environment: {
-      show: () => { this.filterOptions = this.projects; },
-      setOptions: () => { this.projects = this.checkFilter.options; },
-      apply: (fs: Array<FileSource>): Array<FileSource> => {
-        const dict = {};
-        this.projects.forEach((option, index) => {
-          if (option.isChecked) {
-            dict[option.id] = true;
-          }
-        });
-        return fs.filter(fs => fs.projectObj && dict[fs.projectObj.projectId])
-      }
-    },
-    user: {
-      show: () => { this.filterOptions = this.users; },
-      setOptions: () => { this.users = this.checkFilter.options; },
-      apply: (fs: Array<FileSource>): Array<FileSource> => {
-        const dict = {};
-        this.users.forEach((option, index) => {
-          if (option.isChecked) {
-            dict[option.id] = true;
-          }
-        });
-        return fs.filter(fs => dict[fs.uploadedBy])
-      }
-    },
-    permission: {
-      show: () => { this.filterOptions = this.permissions; },
-      setOptions: () => { this.permissions = this.checkFilter.options; },
-      apply: (fs: Array<FileSource>): Array<FileSource> => {
-        const dict = {};
-        this.permissions.forEach((option, index) => {
-          if (option.isChecked) {
-            dict[option.id] = true;
-          }
-        });
-        return fs.filter(fs => dict[fs.templateId])
-      }
-    }
-  }
-
   showFilter(source: { header: TableHeaderModel, event: any }): void {
     this.popupMenu.isExpanded = false;
     if (this.curentFilter === source.header.columnId) { return; }
@@ -221,12 +230,6 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, On
     this.filterProc[this.curentFilter].show();
     this.popupFilter.target = source.event.target;
     this.popupFilter.show(true, source.event);
-  }
-
-  get isFilter(): boolean {
-    if (!this.curentFilter) { return false; }
-    if (!this.filterProc[this.curentFilter]) { return false; }
-    return true;
   }
 
   cancelFilter(): void {
@@ -265,16 +268,13 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, On
     } else if (this.tabActive === 3) {
       rows = this.dateService.getRange(rows, 'insertDate', { from: this.customFrom, to: this.customTo });
     }
-    this.dataSource = { ...this.dataSource, rows: rows };
+    this.dataSource = { ...this.dataSource, rows };
   }
 
   openFileUpload(): void {
     this.showUploadFile = true;
     this.fileUploader.resetTemplate();
   }
-
-  customTo = new Date();
-  customFrom = new Date();
 
   cancelCustomDate(): void {
     this.dateRangeSelector.isExpanded = false;

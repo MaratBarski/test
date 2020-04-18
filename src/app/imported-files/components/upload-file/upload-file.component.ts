@@ -61,7 +61,7 @@ export class UploadFileComponent {
     this.reset();
     this.onUpload.emit();
   }
-  
+
   changedProject(id: string): void {
     this.project = id;
   }
