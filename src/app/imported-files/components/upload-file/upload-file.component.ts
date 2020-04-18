@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, ViewChild, ElementRef, Input } from '@angular/core';
+import { Component, Output, EventEmitter, ViewChild, ElementRef, Input, OnInit } from '@angular/core';
 import { UploadService, UploadStatus } from '@app/shared/services/upload.service';
 import { Offline } from '@app/shared/decorators/offline.decorator';
 import { SelectOption, SelectComponent, CsvManagerService, FileInput, FileUploaderComponent } from '@app/core-api';
@@ -9,7 +9,7 @@ import { environment } from '@env/environment';
   templateUrl: './upload-file.component.html',
   styleUrls: ['./upload-file.component.scss']
 })
-export class UploadFileComponent {
+export class UploadFileComponent implements OnInit {
 
   constructor(private csvManagerService: CsvManagerService, private uploadService: UploadService) { }
 
@@ -18,6 +18,7 @@ export class UploadFileComponent {
 
   @Output() onCancel = new EventEmitter<void>();
   @Output() onUpload = new EventEmitter<void>();
+  @Output() onLoad = new EventEmitter<UploadFileComponent>();
   @Input() set uploadUrl(uploadUrl: string) { this._uploadUrl = uploadUrl; }
   @Input() templates: Array<SelectOption>;
   get uploadUrl(): string { return this._uploadUrl; }
@@ -39,6 +40,10 @@ export class UploadFileComponent {
   resetTemplate(): void {
     this.templateSelector.selected = this.defaultTemplate;
     this.template = '';
+  }
+
+  ngOnInit(): void {
+    this.onLoad.emit(this);
   }
 
   uploadFile(event: any): void {
