@@ -21,13 +21,13 @@
             </div>
             <div class="select-filter__params">
                 <ng-container *ngFor="let user of users|usageUser:{text:searchWord};let index=$index">
-                    <mdc-check-box [(ngModel)]="user.isChecked" [id]="'usr' + index" [text]="user.login">
+                    <mdc-check-box (change)="changeSelect($event)" [(ngModel)]="user.isChecked" [id]="'usr' + index" [text]="user.login">
                     </mdc-check-box>
                 </ng-container>
             </div>
             <div class="select-filter__btn">
                 <button (click)="cancel()" class="btn btn_border btn_small">Cancel</button>
-                <button (click)="apply()" class="btn btn_small">Apply</button>
+                <button [disabled]="selectedCount < minSelected || selectedCount > maxSelected" (click)="apply()" class="btn btn_small">Apply</button>
             </div>
         </div>
     </div>

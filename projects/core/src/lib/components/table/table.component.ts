@@ -1,4 +1,4 @@
-import { Component, Input, EventEmitter, Output, OnDestroy, ChangeDetectionStrategy, TemplateRef, AfterViewInit, ViewChild, HostListener, Renderer2, ElementRef, ChangeDetectorRef, AfterViewChecked, ViewContainerRef, ComponentFactoryResolver, Injector } from '@angular/core';
+import { Component, Input, EventEmitter, Output, OnDestroy, ChangeDetectionStrategy, TemplateRef, AfterViewInit, ViewChild, HostListener, Renderer2, ElementRef, ChangeDetectorRef, AfterViewChecked } from '@angular/core';
 import { TableHeaderModel, TableHeaderComponent } from '../table-header/table-header.component';
 import { ComponentService } from '../../services/component.service';
 import { AutoSearchComponent } from '../auto-search/auto-search.component';
@@ -50,8 +50,6 @@ export class TableComponent implements OnDestroy, AfterViewInit, AfterViewChecke
     private renderer2: Renderer2,
     private animationService: AnimationService,
     private cdRef: ChangeDetectorRef
-    // private componentFactoryResolver: ComponentFactoryResolver,
-    // private injector: Injector
   ) {
     this._subscriptions.push(
       this.animationService.onShowElement.subscribe(elm => {
@@ -166,7 +164,6 @@ export class TableComponent implements OnDestroy, AfterViewInit, AfterViewChecke
     }
   }
 
-  //@ViewChild('infoRowLoader', { read: ViewContainerRef, static: true }) infoRowLoader: ViewContainerRef;
   @ViewChild('tableObject', { static: false }) tableObject: ElementRef;
   @Input() rowInfoTemplate: TemplateRef<any>;
   @Input() headersTemplate: Array<{ [key: string]: TemplateRef<any> }>;
@@ -309,12 +306,8 @@ export class TableComponent implements OnDestroy, AfterViewInit, AfterViewChecke
   currentRowInfo: TableRowModel;
   clientY = 0;
 
-  currentLastCell: any = undefined;
-
   closeRowInfo(): void {
     this.currentRowInfo = undefined;
-    //this.unsubscribeRowInfo();
-    //this.infoRowLoader.clear();
   }
 
   rowDetailsInit(rowDetails: RowInfoComponent): void {
@@ -323,47 +316,15 @@ export class TableComponent implements OnDestroy, AfterViewInit, AfterViewChecke
     } else {
       rowDetails.setMargin(0);
     }
-
-    // rowDetails.setPosition(this.currentLastCell.offsetTop, this.tableObject.nativeElement.offsetLeft + this.tableObject.nativeElement.offsetWidth);
   }
 
-  // _currentSubscription: any;
-
-  // private unsubscribeRowInfo(): void {
-  //   if (this._currentSubscription) {
-  //     this._currentSubscription.unsubscribe();
-  //     this._currentSubscription = undefined;
-  //   }
-  // }
 
   showItemInfo(row: TableRowModel | any, header: TableHeaderModel, rowIndex: number, event: any): void {
     ComponentService.documentClick();
     this.rowClick(row);
     event.stopPropagation();
     this.clientY = event.clientY;
-
-    // this.currentLastCell = this.tableObject.nativeElement.rows[rowIndex].cells[this.tableObject.nativeElement.rows[rowIndex].cells.length - 1];
-    // this.unsubscribeRowInfo();
-
     this.currentRowInfo = row;
-    // this.currentRowInfo = undefined;
-    // setTimeout(() => {
-    //   this.currentRowInfo = row;
-    // }, 10);
-
-    // const componentFactory = this.componentFactoryResolver.resolveComponentFactory(RowInfoComponent);
-    // const componentRef = componentFactory.create(this.injector);
-    // this.infoRowLoader.clear();
-
-    // const cmp = <RowInfoComponent>componentRef.instance;
-    // cmp.rowInfoTemplate = this.rowInfoTemplate;
-    // cmp.currentRowInfo = row;
-
-    // this._currentSubscription = cmp.onInit.subscribe((rowDetails: RowInfoComponent) => {
-    //   rowDetails.setPosition(this.currentLastCell.offsetTop, this.tableObject.nativeElement.offsetLeft + this.tableObject.nativeElement.offsetWidth);
-    // });
-
-    // this.infoRowLoader.insert(componentRef.hostView);
   }
 
   infoRowClick(event: any): void {
@@ -381,7 +342,6 @@ export class TableComponent implements OnDestroy, AfterViewInit, AfterViewChecke
   commandRow: TableRowModel;
 
   openLinkMenu(row: TableRowModel, event: any, rowIndex: number): void {
-    // const td = this.tableObject.nativeElement.rows[rowIndex].cells[this.tableObject.nativeElement.rows[rowIndex].cells.length - 1];
     ComponentService.documentClick();
     this.clientY = event.clientY;
     event.stopPropagation();

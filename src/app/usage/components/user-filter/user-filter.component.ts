@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, OnDestroy, OnInit, HostListener } from '@angular/core';
+import { Component, Output, EventEmitter, OnDestroy, OnInit, HostListener, Input } from '@angular/core';
 import { UsageRequestService } from '@app/usage/services/usage-request.service';
 import { ComponentService } from '@app/core-api';
 
@@ -17,6 +17,13 @@ export class UserFilterComponent implements OnDestroy, OnInit {
   users: Array<any>;
 
   @Output() onApply = new EventEmitter<Array<any>>();
+  @Input() minSelected = 1;
+  @Input() maxSelected = 7;
+
+  get selectedCount(): number {
+    if (!this.users) { return 0; }
+    return this.users.filter(x => x.isChecked).length;
+  }
 
   constructor(
     public usageRequestService: UsageRequestService
@@ -38,6 +45,10 @@ export class UserFilterComponent implements OnDestroy, OnInit {
       if (index >= 5) { return; }
       user.isChecked = flag
     });
+  }
+
+  changeSelect(isChecked: boolean): void {
+
   }
 
   clear(): void {
@@ -80,7 +91,7 @@ export class UserFilterComponent implements OnDestroy, OnInit {
   }
 
   isExpanded = false;
-  
+
   expand(event: any): void {
     if (this.isExpanded) {
       this.isExpanded = false;

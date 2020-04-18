@@ -1,18 +1,18 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'mdc-auto-search',
   templateUrl: './auto-search.component.html',
   styleUrls: ['./auto-search.component.css']
 })
-export class AutoSearchComponent {
+export class AutoSearchComponent implements OnDestroy {
 
   @Output() complete = new EventEmitter<string>();
   @Input() minLength = 3;
   @Input() placeholder = '';
-  @Input() pause = 2000;
-  prevText: string;
-  text: string;
+  @Input() pause = 500;
+  prevText = '';
+  text = '';
   timeoutID: any;
 
   keyup(event: any): void {
@@ -49,6 +49,10 @@ export class AutoSearchComponent {
     }
   }
 
+  ngOnDestroy(): void {
+    this.stopTimeout();
+  }
+  
   private stopTimeout(): void {
     if (this.timeoutID) {
       clearTimeout(this.timeoutID);

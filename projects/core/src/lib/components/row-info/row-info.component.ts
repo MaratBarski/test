@@ -12,9 +12,6 @@ export class RowInfoComponent implements AfterContentInit {
   @Output() onInit = new EventEmitter<RowInfoComponent>();
   @ViewChild('container', { static: true }) container: ElementRef;
 
-  rowInfoTemplate: any;
-  currentRowInfo: any;
-
   width = 0;
   height = 0;
 
@@ -33,12 +30,6 @@ export class RowInfoComponent implements AfterContentInit {
     this.renderer2.setStyle(this.container.nativeElement, 'overflow', 'hidden');
     this.onInit.emit(this);
     // }, 10);
-  }
-
-  setPosition(top: number, right: number): void {
-    this.renderer2.setStyle(this.container.nativeElement, 'visibility', 'visible');
-    this.renderer2.setStyle(this.container.nativeElement, 'top', `${top}px`);
-    this.renderer2.setStyle(this.container.nativeElement, 'left', `${right - this.container.nativeElement.offsetWidth}px`);
   }
 
   setMargin(margin: number): void {
