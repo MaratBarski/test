@@ -68,8 +68,11 @@ export class ComponentService {
       element.getBoundingClientRect();
   }
 
-  static documentClick(): void {
+  static documentClick(event: any = undefined): void {
     document.dispatchEvent(new Event('click'));
+    if (event && event.stopPropagation) {
+      event.stopPropagation();
+    }
   }
 
   static hideScroll(hide: boolean): void {

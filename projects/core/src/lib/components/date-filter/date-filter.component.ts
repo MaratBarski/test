@@ -1,7 +1,8 @@
-import { Component, Input, ChangeDetectionStrategy, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy, Output, EventEmitter, ViewChild, ElementRef, HostListener } from '@angular/core';
 import { TabItemModel } from '../tabs/tabs.component';
 import { DateService, DateRange } from '../../services/date.service';
 import { FromTo } from '../date-range-selector/date-range-selector.component';
+import { ComponentService } from '@app/core-api';
 
 export interface DateRangeButton {
   range?: DateRange;
@@ -38,7 +39,8 @@ export class DateFilterComponent {
         this.customIndex = i;
         return {
           title: item.text, isDropDown: true,
-          mouseOver: (index: number, tab: TabItemModel, event: any, target: any) => {
+          click: (index: number, tab: TabItemModel, event: any, target: any) => {
+            ComponentService.documentClick(event);
             this.showCustom = true;
           }
         }
@@ -84,8 +86,15 @@ export class DateFilterComponent {
     this.items[this.tabActive].range = {
       fromDate: this.customFrom,
       toDate: this.customTo
-    }
+    };
     this.filterData();
   }
 
+  dateRangeClick(event: any): void {
+    event.stopPropagation();
+  }
+
+  @HostListener('document:click', ['$event']) onMouseClick(event: any) {
+    this.cancelCustomDate();
+  }
 }
