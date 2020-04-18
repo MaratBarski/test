@@ -41,19 +41,13 @@
                         <svg class="icon ic-help">
                             <use xlink:href="/assets/sprites/sprite.svg#ic-help"></use>
                         </svg></span></label>
-                <div class="select select_up" id="key">
+                <md-csv-combo *ngIf="categoryHeaders" [selectUp]="true" [headers]="categoryHeaders"></md-csv-combo>
+                <div *ngIf="!categoryHeaders?.length" class="select select_up">
                     <div class="select__head">Select default category...
                         <div class="select__head-arr">
-                            <svg class="icon ic-select-arr-down">
-                                <use xlink:href="/assets/sprites/sprite.svg#ic-select-arr-down"></use>
+                            <svg class="icon ic-select-arr-down" mdcSvg="ic-select-arr-down">
                             </svg>
                         </div>
-                    </div>
-                    <div class="select__option">
-                        <!-- <div class="select__param">Hierarchy 2</div>
-                        <div class="select__param">ATC1</div>
-                        <div class="select__param">Hierarchy 1</div>
-                        <div class="select__param">Hierarchy with a very long name</div> -->
                     </div>
                 </div>
             </div>

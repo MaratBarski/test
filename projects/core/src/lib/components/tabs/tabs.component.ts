@@ -5,6 +5,8 @@ export class TabItemModel {
   isDropDown?: boolean;
   mouseOver?: any;
   mouseLeave?: any;
+  click?: any;
+  source?: any;
 }
 
 @Component({
@@ -27,6 +29,11 @@ export class TabsComponent {
   mouseleave(index: number, tab: TabItemModel, event: any): void {
     if (!tab.mouseLeave) { return; }
     tab.mouseLeave(index, tab, event);
+  }
+
+  mouseclick(index: number, tab: TabItemModel, event: any): void {
+    if (!tab.click) { return; }
+    tab.click(index, tab, event);
   }
 
   activate(index: number, tab: TabItemModel): void {

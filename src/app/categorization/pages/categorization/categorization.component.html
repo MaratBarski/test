@@ -1,100 +1,109 @@
-<div class="wrapper">
-    <main>
-        <div class="content-page">
-            <md-page-title>Categorization list</md-page-title>
-            <md-page-body>
-                <div class="admin-table-wrap__action">
-                    <div class="admin-table-wrap__col">
-                        <mdc-button (click)="showUploadFile=!showUploadFile" text="+ New Categorization">
-                        </mdc-button>
-                    </div>
-                    <div class="admin-table-wrap__col">
-                        <form class="form-search d-none d-md-block">
-                            <mdc-auto-search pause="500" #search placeholder="{{'search'|translate}}"
-                                (complete)="searchComplete($event)"></mdc-auto-search>
-                        </form>
-                    </div>
-                </div>
-                <div class="admin-table-content">
-                    <mdc-table #table [dataSource]="dataSource"
-                        [cellsTemplate]="{ state:stateColumn,insertDate:dateColumn,editColumn:edit,inUseColumn:inUseColumn,hierarchyName:hierarchyName}"
-                        [searchOptions]="searchOptions" [paginator]="paginator" [search]="search">
-                    </mdc-table>
-                </div>
-                <div class="pager-wrap">
-                    <mdc-paginator #paginator paginationTitle="{{'paginationTitle'|translate}}"
-                        noPagingTitle="Showing {0} files" [blockSize]="3" [pageSize]="50" [currentPage]="0">
-                    </mdc-paginator>
-                </div>
-            </md-page-body>
+<md-page-title>
+    <div class="page-header__content">
+        <h1>Categorization list</h1>
+    </div>
+</md-page-title>
+<md-page-body>
+    <div class="admin-table-wrap__action">
+        <div class="admin-table-wrap__col">
+            <mdc-button (click)="showUploadFile=!showUploadFile" text="+ New Categorization">
+            </mdc-button>
         </div>
-    </main>
-</div>
-
-<mdc-info-popup #rowInfo header="STRUCTURE MISMATCH">
-    <div class="info-popup__text-wrap">
-        <div class="info-popup__text">
-            <p>The categorization structure was manually changed and no longer match the previous one. </p>
-            <p>After the issue is fixed by the ETL owner, turn off the toggle below to restart the auto-update.
-            </p>
+        <div class="admin-table-wrap__col">
+            <form class="form-search d-none d-md-block">
+                <mdc-auto-search pause="500" #search placeholder="{{'search'|translate}}"></mdc-auto-search>
+            </form>
         </div>
     </div>
-    <div class="info-popup-switch">
-        <div class="info-popup-switch__content">
-            <div class="info-popup-switch__text-wrap">
-                <div class="info-popup-switch__title">Hold Automatic loading</div>
-            </div>
-        </div>
-        <div class="switch">
-            <mdc-toggle-button no="No" (onChange)="rowStateChange($event)" yes="Yes" [(ngModel)]="currentRow.state"></mdc-toggle-button>
-        </div>
+    <div class="admin-table-content">
+        <mdc-table #table [dataSource]="dataSource" [rowInfoTemplate]="rowInfoTemplate"
+            [cellsTemplate]="{ state:stateColumn,insertDate:dateColumn,inUseColumn:inUseColumn}"
+            [searchOptions]="searchOptions" [paginator]="paginator" [search]="search" (onAction)="onAction($event)">
+        </mdc-table>
     </div>
-</mdc-info-popup>
-
-<mdc-info-popup #rowUse header="USED IN">
-    <div class="info-popup__content">
-        <div class="info-popup__text-wrap">
-            <div class="info-popup__title">Events:</div>
-            <div class="info-popup__text">Diagnosis, Admission Diagnosis, Procedures, Customised events</div>
-        </div>
+    <div class="pager-wrap">
+        <mdc-paginator #paginator paginationTitle="{{'paginationTitle'|translate}}" noPagingTitle="Showing {0} files"
+            [blockSize]="3" [pageSize]="50" [currentPage]="0">
+        </mdc-paginator>
     </div>
-</mdc-info-popup>
-
-<mdc-popup #popupMenu position="bottom-left" [closeOnClick]="true">
-    <mdc-modal-menu [sublinks]="sublinks" [links]="links"></mdc-modal-menu>
-</mdc-popup>
+</md-page-body>
 
 <ng-template #dateColumn let-item>
     {{item.insertDate|date}}
 </ng-template>
-<ng-template #edit let-item let-src="source">
-    <span (click)="editClick(item,src,$event)" class="admin-table-action__menu ic-hover">
-        <mdc-icon path="ic-dot-menu"></mdc-icon>
-    </span>
-</ng-template>
+
 <ng-template let-item let-src="source" #stateColumn>
-    <span *ngIf="src.hierarchyChange" (mouseleave)="hideInfo($event,item)" (mouseenter)="showInfo($event,item,src)" class="admin-table__icon">
+    <span *ngIf="src.hierarchyChange" class="admin-table__icon" (mouseleave)="item.showWarning=false"
+        (mouseenter)="showInfo($event,item,src)">
         <mdc-icon path="ic-warning"></mdc-icon>
+        <div [hidden]="!item.showWarning" class="info-popup info-popup_right warning-info">
+            <div class="form-site">
+                <div class="info-popup__top">
+                    <div class="info-popup__head-wrap"><span class="info-popup__head">Structure Mismatch</span></div>
+                    <div (click)="item.showWarning=false" class="info-popup__close">
+                        <svg class="icon ic-close-circle" mdcSvg="ic-close-circle"></svg>
+                    </div>
+                </div>
+                <div class="info-popup__content">
+                    <div class="info-popup__text-wrap">
+                        <div class="info-popup__text">
+                            <p>The categorization structure was manually changed and no longer match the previous one.
+                            </p>
+                            <p>After the issue is fixed by the ETL owner, turn off the toggle below to restart the
+                                auto-update.</p>
+                        </div>
+                    </div>
+                    <div class="info-popup-switch">
+                        <div class="info-popup-switch__content">
+                            <div class="info-popup-switch__text-wrap">
+                                <div class="info-popup-switch__title">Hold Automatic loading</div>
+                            </div>
+                        </div>
+                        <div class="switch">
+                            <mdc-toggle-button no="No" (onChange)="rowStateChange($event)" yes="Yes"
+                                [(ngModel)]="currentRow.state">
+                            </mdc-toggle-button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </span>
     <span *ngIf="!src.hierarchyChange && (src.hierarchyLoadingType && src.hierarchyLoadingType !== 'manual')">
         <mdc-icon path="ic-robot"></mdc-icon>
     </span>
 </ng-template>
+
 <ng-template let-item #inUseColumn>
-    <span (mouseleave)="hideUse($event,item)" (mouseenter)="showUse($event,item)" class="admin-table__icon">
+    <span class="admin-table__icon" (mouseleave)="item.showUsed=false" (mouseenter)="item.showUsed=true">
         <mdc-icon path="ic-plug"></mdc-icon>
+        <!-- <svg class="icon ic-plug ic-grey">
+            <use xlink:href="/assets/sprites/sprite.svg#ic-plug"></use>
+        </svg> -->
+        <div [hidden]="!item.showUsed" class="info-popup info-popup_right used-info">
+            <div class="info-popup__top">
+                <div class="info-popup__head-wrap"><span class="info-popup__head">Used in</span></div>
+                <div class="info-popup__close">
+                    <svg class="icon ic-close-circle" mdcSvg="ic-close-circle"></svg>
+                </div>
+            </div>
+            <div class="info-popup__content">
+                <div class="info-popup__text-wrap">
+                    <div class="info-popup__title">Events:</div>
+                    <div class="info-popup__text">Diagnosis, Admission Diagnosis, Procedures, Customised events</div>
+                </div>
+            </div>
+        </div>
     </span>
 </ng-template>
-<ng-template let-item let-src="source" #hierarchyName>
-    <span class="pointer link" (click)="openCategoryInfo(src,$event)">{{item.hierarchyName}}</span>
-</ng-template>
 
-<mdc-modal-window [hidden]="!showUploadFile">
+<mdc-modal-window *ngIf="showUploadFile">
     <md-upload-file (onUpload)="showUploadFile=false" (onCancel)="showUploadFile=false"></md-upload-file>
 </mdc-modal-window>
 
-<mdc-modal-window #categorizationInfoModal margin="0" [center]="false" left="700px" width="800px" position="absolute"
-    [removeScroll]="false" [topBorder]="false" [shadow]="false" [hidden]="!showCategoryInfo">
-    <md-category-info #categorizationInfo (onClose)="closeCategoryInfo()" [category]="selectedCategory">
-    </md-category-info>
-</mdc-modal-window>
+<ng-template #rowInfoTemplate let-item>
+    <div class="category-info-row">
+        <md-category-info #categorizationInfo [category]="item.source">
+        </md-category-info>
+    </div>
+</ng-template>

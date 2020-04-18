@@ -1,0 +1,32 @@
+<md-chart-wraper *ngIf="responseData" firstTitle="Activity: new queries count"
+    secondTitle="Activity: file downloads count" [firstChart]="firstChart" [secondChart]="secondChart">
+</md-chart-wraper>
+
+<md-chart-pdf #chartPdfQueries [chart]="firstChart" [width]="pdfChartWidth" [height]="pdfChartHeight"></md-chart-pdf>
+<md-chart-pdf #chartPdfDownloads [chart]="secondChart" [width]="pdfChartWidth" [height]="pdfChartHeight"></md-chart-pdf>
+
+<ng-template #firstChart>
+    <ngx-charts-bar-vertical [view]="view" [scheme]="colorScheme" [results]="(dataSource|monthlyChart).query"
+        [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis" [showXAxisLabel]="showXAxisLabel"
+        [showYAxisLabel]="true" [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" [legend]="false"
+        [showDataLabel]="true">
+    </ngx-charts-bar-vertical>
+</ng-template>
+
+<ng-template #secondChart>
+    <ngx-charts-bar-vertical-stacked [view]="view" [scheme]="colorSchemeDownload"
+        [results]="(dataSource|monthlyChart).download" [gradient]="gradient" [xAxis]="showXAxis"
+        [yAxis]="showYAxis" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="true" [xAxisLabel]="xAxisLabel"
+        [yAxisLabel]="yAxisLabel" [legend]="false" [showDataLabel]="true">
+    </ngx-charts-bar-vertical-stacked>
+    <div class="legend">
+        <div class="legend-cnt">
+            <div class="original"></div>
+            <div>Original Files</div>
+        </div>
+        <div class="legend-cnt">
+            <div class="synthetic"></div>
+            <div>Synthetic Files</div>
+        </div>
+    </div>
+</ng-template>

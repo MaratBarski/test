@@ -1,0 +1,23 @@
+.emty-container{
+    padding: 20px;
+}
+.center{
+    margin: auto;
+    display: table;
+}
+.title{
+    font-family: OpenSans;
+    font-size: 28px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 0.79;
+    letter-spacing: normal;
+    color: #52576A;
+    
+}
+.sub-title{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color:#B5B9C6;
+}

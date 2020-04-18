@@ -1,7 +1,7 @@
-import { Component, Output, EventEmitter, ViewChild, ElementRef, Input } from '@angular/core';
+import { Component, Output, EventEmitter, ViewChild, ElementRef, Input, OnInit } from '@angular/core';
 import { UploadService, UploadStatus } from '@app/shared/services/upload.service';
 import { Offline } from '@app/shared/decorators/offline.decorator';
-import { SelectOption, SelectComponent } from '@app/core-api';
+import { SelectOption, SelectComponent, CsvManagerService, FileInput, FileUploaderComponent } from '@app/core-api';
 import { environment } from '@env/environment';
 
 @Component({
@@ -9,20 +9,22 @@ import { environment } from '@env/environment';
   templateUrl: './upload-file.component.html',
   styleUrls: ['./upload-file.component.scss']
 })
-export class UploadFileComponent {
+export class UploadFileComponent implements OnInit {
 
-  constructor(private uploadService: UploadService) { }
+  constructor(private csvManagerService: CsvManagerService, private uploadService: UploadService) { }
 
   @ViewChild('fileInput', { static: true }) fileInput: ElementRef;
   @ViewChild('templateSelector', { static: true }) templateSelector: SelectComponent;
 
   @Output() onCancel = new EventEmitter<void>();
   @Output() onUpload = new EventEmitter<void>();
+  @Output() onLoad = new EventEmitter<UploadFileComponent>();
   @Input() set uploadUrl(uploadUrl: string) { this._uploadUrl = uploadUrl; }
   @Input() templates: Array<SelectOption>;
   get uploadUrl(): string { return this._uploadUrl; }
   defaultTemplate: SelectOption = { text: 'Select Permission Group...', id: '', value: '' };
 
+  isFileError = false;
   fileType = false;
   project = '';
   fileName = '';
@@ -38,6 +40,10 @@ export class UploadFileComponent {
   resetTemplate(): void {
     this.templateSelector.selected = this.defaultTemplate;
     this.template = '';
+  }
+
+  ngOnInit(): void {
+    this.onLoad.emit(this);
   }
 
   uploadFile(event: any): void {
@@ -83,9 +89,44 @@ export class UploadFileComponent {
     this.template = '';
     this.fileType = false;
     this.fileInput.nativeElement.value = '';
+    this.isFileError = false;
+    //this.fileUploader.reset();
+  }
+
+  private fileError(): void {
+    this.file = '';
+    this.fileInput.nativeElement.value = '';
+    this.isFileError = true;
   }
 
   updateFileName(event: any): void {
+    if (!this.fileInput.nativeElement.files.length) {
+      return;
+    }
+    this.isFileError = false;
+    if (!this.csvManagerService.validateFileExtention(this.fileInput.nativeElement, ['csv', 'xls', 'xlsx', 'xlsm'])) {
+      this.fileError();
+      return;
+    }
+    if (!this.csvManagerService.validateFileSize(this.fileInput.nativeElement.files[0], 0, -1)) {
+      this.fileError();
+      return;
+    }
     this.file = this.fileInput.nativeElement.value;
+    // this.csvManagerService.validate(this.fileInput.nativeElement.files[0]).then(res => {
+    //   if (res) {
+    //     this.file = this.fileInput.nativeElement.value;
+    //     return;
+    //   }
+    //   this.fileError();
+    // }).catch(e => {
+    //   this.fileError();
+    // });
   }
+
+  // csvHeaders: Array<string>;
+  // @ViewChild('fileUploader', { static: true }) fileUploader: FileUploaderComponent;
+  // onFileSelect(fileinfo: FileInput): void {
+  //   this.csvHeaders = fileinfo.headers;
+  // }
 }

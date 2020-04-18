@@ -1,43 +1,82 @@
-<div class="wrapper">
-    <main>
-        <md-page-title>OUTPUT HISTORY REPORT</md-page-title>
-        <md-page-body>
-            <div class="admin-table-wrap__action">
-                <div class="admin-table-wrap__col">
-                    <a class="link-load" href="#"><span class="ic-hover">
-                    <mdc-icon path="ic-download"></mdc-icon>
-                    </span><span class="link-load__text">Download Report</span></a>
-                </div>
-                <div class="admin-table-wrap__col">
-                    <div class="tabs-page">
-                        <mdc-tabs tabid="historysTab" [active]="tabActive" [tabs]="tabs" (select)="selectTab($event)">
-                        </mdc-tabs>
-                    </div>
-                    <form class="form-search d-none d-md-block">
-                        <mdc-auto-search pause="500" #search placeholder="{{'search'|translate}}"
-                            (complete)="searchComplete($event)"></mdc-auto-search>
-                    </form>
-                </div>
+<md-page-title>
+    <div class="page-header__content">
+        <h1>OUTPUT HISTORY REPORT</h1>
+    </div>
+</md-page-title>
+<md-page-body>
+    <div class="admin-table-wrap__action">
+        <div class="admin-table-wrap__col">
+            <mdc-download #downloader [fileName]="downloadFileName" text="Download Report"></mdc-download>
+        </div>
+        <div class="admin-table-wrap__col">
+            <div class="tabs-page">
+                <mdc-date-filter #dateFilter (onFilter)="dateFilterData($event)" [dataSource]="reports"
+                    [items]="dateRanges"></mdc-date-filter>
             </div>
-            <mdc-table #table (onFilter)="showFilter($event)"
-                [cellsTemplate]="{ insertDate:dateColumn}"
-                [searchOptions]="searchOptions" [paginator]="paginator" [search]="search" [dataSource]="dataSource">
-            </mdc-table>
-            <div class="pager-wrap">
-                <mdc-paginator #paginator paginationTitle="{{'paginationTitle'|translate}}"
-                    noPagingTitle="Showing {0} files" [blockSize]="3" [pageSize]="50" [currentPage]="0">
-                </mdc-paginator>
-            </div>
-        </md-page-body>
-    </main>
-</div>
+            <form class="form-search d-none d-md-block">
+                <mdc-auto-search pause="500" #search placeholder="{{'search'|translate}}"></mdc-auto-search>
+            </form>
+        </div>
+    </div>
+    <mdc-table [rowInfoTemplate]="rowInfoTemplate" [emptyState]="emptyState" #table
+        [headersTemplate]="{ data:dataHeader}"
+        [cellsTemplate]="{ insertDate:dateColumn, status:statusTemplate, name:nameTemplate, download:downloadTemplate}"
+        [searchOptions]="searchOptions" [paginator]="paginator" [search]="search" [dataSource]="dataSource"
+        [downloader]="downloader">
+    </mdc-table>
+    <div class="pager-wrap">
+        <mdc-paginator #paginator paginationTitle="{{'paginationTitle'|translate}}" noPagingTitle="Showing {0} files"
+            [blockSize]="3" [pageSize]="50" [currentPage]="0">
+        </mdc-paginator>
+    </div>
+</md-page-body>
 
-<mdc-popup #dateRangeSelector position="bottom-left" [closeOnClick]="false">
-    <mdc-date-range-selector [from]="customFrom" [to]="customTo" (onApply)="applyCustomDate($event)" (onCancel)="cancelCustomDate()"></mdc-date-range-selector>
-</mdc-popup>
-<mdc-modal-window #historyInfoModal margin="0" [center]="false" left="700px" width="800px" position="absolute" [removeScroll]="false" [topBorder]="false" [shadow]="false" [hidden]="!showHistoryInfo">
-    <md-history-info #historyionInfo (onClose)="closeHistoryInfo()" [category]="selectedCategory"></md-history-info>    
-</mdc-modal-window>
+<ng-template #rowInfoTemplate let-item>
+    <div class="category-info-row">
+        <md-history-info [category]="item.source"></md-history-info>
+    </div>
+</ng-template>
 <ng-template #dateColumn let-item let-src="source">
-    <span class="pointer link" (click)="openHistoryInfo(src,$event)">{{item.insertDate|date}}</span>
+    <span class="pointer link">{{item.insertDate|date}}</span>
+</ng-template>
+<ng-template #dataHeader>
+    <span class="font-weight-600">Data </span>
+    <mdc-icon path="ic-help" color="blue"></mdc-icon>
+</ng-template>
+<ng-template let-item #statusTemplate let-src="source">
+    <div *ngIf="src.transStatus" [stickyToElement]="true" [position]="'right'" [mdcTooltip]="'Success'"
+        class="height-20-px width-20-px">
+        <mdc-icon path="ic-success" color="green"></mdc-icon>
+    </div>
+    <div *ngIf="!src.transStatus" [stickyToElement]="true" [position]="'left'" [mdcTooltip]="'Failure'"
+        class="height-20-px width-20-px">
+        <mdc-icon path="ic-failure" color="red"></mdc-icon>
+    </div>
+</ng-template>
+<ng-template let-item #downloadTemplate let-src="source">
+    <!-- <span (click)="downloadClick(item,src,$event)" class="admin-table-action__menu ic-hover"> -->
+    <a href="{{downloadUrl}}/{{src.sessionHistoryId}}">
+        <mdc-icon path="ic-download"></mdc-icon>
+    </a>
+    <!-- </span> -->
+    <div>{{src.sessionHistoryId}}</div>
+</ng-template>
+
+<ng-template let-item #nameTemplate let-src="source">
+    <div *ngIf="src.sessionId" class="display-flex">
+        <div class="margin-top-5-px">{{src.sessionName}} | </div>
+        <div class="margin-top-5-px">
+            <a target="_blank" href="/datalake/#/projects/{{src.projectId}}/sessions/{{src.sessionId}}">
+                <span>{{src.sessionId}}</span>
+            </a>
+        </div>
+        <div>
+            <a target="_blank" href="/datalake/#/projects/{{src.projectId}}/sessions/{{src.sessionId}}">
+                <mdc-icon path="ic-add-help" color="#0596ff"></mdc-icon>
+            </a>
+        </div>
+    </div>
+    <span *ngIf="!src.sessionId">
+        {{src.fileNameAlias}}
+    </span>
 </ng-template>

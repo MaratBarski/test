@@ -1,0 +1,6 @@
+<div #container (click)="onClick($event)" class="row-info"
+[@rowInfoAnimation]="{value: show, params: {width: width}}">
+    <div class="row-info-window">
+        <ng-content></ng-content>
+    </div>
+</div>

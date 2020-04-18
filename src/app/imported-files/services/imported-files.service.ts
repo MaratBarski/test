@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { DataService, TableModel, CheckBoxListOption } from 'appcore';
+import { DataService, TableModel, CheckBoxListOption } from '@appcore';
 import { Observable } from 'rxjs';
 import { FileSourceResponse, FileSource } from '../../models/file-source';
 import { Offline } from 'src/app/shared/decorators/offline.decorator';
@@ -38,54 +38,87 @@ export class ImportedFilesService {
 
   createDataSource(files: Array<FileSource>): TableModel {
     const data: TableModel = {
+      actions: {
+        links: [
+          {
+            text: 'Edit File Settings',
+            icon: 'ic-edit',
+            command: 'edit'
+            // ,hidden: (source) => {
+            //   if (!source.projectObj) { return false; }
+            //   return source.projectObj.projectName === 'ETL project';
+            // },
+            // disable: false
+          },
+          {
+            text: 'View output summary',
+            icon: 'ic-view',
+            command: 'view'
+          }
+        ],
+        subLinks: [
+          {
+            text: 'Delete',
+            disable: false,
+            icon: 'ic-delete',
+            command: 'delete'
+          }
+        ]
+      },
       headers: [
         {
           columnId: 'fileName',
           text: 'Name',
-          isSortEnabled: true
+          isSortEnabled: true,
+          csvTitle: 'File Name',
+          showDetails: false,
+          css: 'w-xxl-8 w-md-6'
         },
         {
           columnId: 'insertDate',
           text: 'Loaded',
-          isSortEnabled: true
+          isSortEnabled: true,
+          css: 'd-none d-md-table-cell'
         },
         {
           columnId: 'environment',
           text: 'Environment',
           isSortEnabled: true,
-          filter: true
+          filter: true,
+          csvTitle: 'Environment',
+          css: 'd-none d-md-table-cell w-md-3'
         },
         {
           columnId: 'permission',
           text: 'Permission Group',
           isSortEnabled: true,
-          filter: true
+          filter: true,
+          css: 'd-none d-lg-table-cell w-md-3'
         },
         {
           columnId: 'user',
           text: 'User',
-          isSortEnabled: true,
-          filter: true
+          isSortEnabled: false,
+          filter: true,
+          css: 'd-none d-xxl-table-cell'
         },
         {
           columnId: 'shared',
           text: 'Shared',
-          isSortEnabled: false
+          isSortEnabled: false,
+          css: 'd-none d-md-table-cell admin-table__item_center'
         },
         {
           columnId: 'columns',
           text: 'Columns',
-          isSortEnabled: true
+          isSortEnabled: true,
+          css: 'd-none d-xxl-table-cell admin-table__item_right'
         },
         {
           columnId: 'rows',
           text: 'Rows',
-          isSortEnabled: true
-        },
-        {
-          columnId: 'editColumn',
-          text: '',
-          isSortEnabled: false
+          isSortEnabled: true,
+          css: 'd-none d-xxl-table-cell admin-table__item_right'
         }
       ],
       rows: []
@@ -101,6 +134,9 @@ export class ImportedFilesService {
           shared: fl.fileType,
           columns: fl.columnsNum,
           rows: fl.rowsNum
+        },
+        csv: {
+          fileName: fl.fileName
         },
         source: fl,
         isActive: false

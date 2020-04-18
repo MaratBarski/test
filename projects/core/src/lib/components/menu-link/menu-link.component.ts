@@ -8,4 +8,9 @@ import { MenuLink } from '../modal-menu/modal-menu.component';
 })
 export class MenuLinkComponent {
   @Input() link: MenuLink;
+  exec(): void {
+    if (this.link && this.link.click) {
+      this.link.click(this.link.source);
+    }
+  }
 }

@@ -49,9 +49,19 @@ import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { RouterModule } from '@angular/router';
 import { FileNamePipe } from './pipes/file-name.pipe';
 import { DateRangeSelectorComponent } from './components/date-range-selector/date-range-selector.component';
+import { DownloadComponent } from './components/download/download.component';
+import { ChartBarComponent } from './components/chart-bar/chart-bar.component';
+import { VisibleHeadersPipe } from './pipes/visible-headers.pipe';
+import { EmptyStateComponent } from './components/empty-state/empty-state.component';
+import { ImageComponent } from './components/image/image.component';
+import { RowInfoComponent } from './components/row-info/row-info.component';
+import { DateFilterComponent } from './components/date-filter/date-filter.component';
+import { ActionLinkPipe } from './pipes/action-link.pipe';
+import { SvgDirective } from './directives/svg.directive';
+import { ProgressMatchComponent } from './components/progress-match/progress-match.component';
+import { FileUploaderComponent } from './components/file-uploader/file-uploader.component';
 
 // import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
-
 
 @NgModule({
   declarations: [
@@ -96,7 +106,18 @@ import { DateRangeSelectorComponent } from './components/date-range-selector/dat
     ProgressComponent,
     SideBarComponent,
     FileNamePipe,
-    DateRangeSelectorComponent
+    DateRangeSelectorComponent,
+    DownloadComponent,
+    ChartBarComponent,
+    VisibleHeadersPipe,
+    EmptyStateComponent,
+    ImageComponent,
+    RowInfoComponent,
+    DateFilterComponent,
+    ActionLinkPipe,
+    SvgDirective,
+    ProgressMatchComponent,
+    FileUploaderComponent
   ],
   imports: [
     CommonModule,
@@ -150,10 +171,21 @@ import { DateRangeSelectorComponent } from './components/date-range-selector/dat
     ProgressComponent,
     SideBarComponent,
     FileNamePipe,
-    DateRangeSelectorComponent
+    DateRangeSelectorComponent,
+    DownloadComponent,
+    ChartBarComponent,
+    EmptyStateComponent,
+    ImageComponent,
+    RowInfoComponent,
+    DateFilterComponent,
+    ActionLinkPipe,
+    SvgDirective,
+    ProgressMatchComponent,
+    FileUploaderComponent
   ],
   entryComponents: [
-    TableHeaderComponent
+    TableHeaderComponent,
+    RowInfoComponent
   ],
   providers: [
     LocalStorageService,

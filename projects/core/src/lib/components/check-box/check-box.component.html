@@ -1,12 +1,10 @@
 <div class="input-check">
     <input type="checkbox" [(ngModel)]="value">
     <div (click)="changeSelect()" class="input-check__label">
-        <div class="input-check__mark">
-            <div style="margin-top: -8px;">
-                <mdc-icon [hidden]="!value" path="ic-check"></mdc-icon>
-                <mdc-icon [hidden]="value" path="ic-uncheck"></mdc-icon>
-            </div>
-        </div>
+        <span class="input-check__mark">
+            <svg [hidden]="!value" class="icon ic-check" mdcSvg="ic-check"></svg>
+            <svg [hidden]="value" class="icon ic-check" mdcSvg="ic-uncheck"></svg>
+        </span>
         <span class="input-check__text">{{text}}</span>
     </div>
 </div>

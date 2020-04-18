@@ -1,5 +1,7 @@
-// import { Template } from './template';
-// import { Project } from './project';
+import { Template } from './template';
+import { Project } from './project';
+import { SessionHistoryFiles } from './session-history-files';
+import { UserSession } from './user-session';
 import { User } from 'core/lib/models/UserInfo';
 
 export class SessionHistoryResponse {
@@ -23,7 +25,7 @@ export class SessionHistory {
      insertDate: string;
      projectId: number;
      userQeSession: string;
-     userActivateSession: string;
+     userActivateSession: any;
      transStatus: boolean;
      transMsg: string;
      sessionName: string;
@@ -31,12 +33,12 @@ export class SessionHistory {
      projectName: string;
      templateId: number;
      templateName: string;
-     // sessionHistoryFiles: SessionHistoryFiles[];
-     // template: Template;
-     // userSession: UserSession;
-     // project: Project;
+     sessionHistoryFiles: SessionHistoryFiles[];
+     template: Template;
+     userSession: UserSession;
+     project: Project;
      user: User;
- }
+}
 
 
 // export class SessionHistory {

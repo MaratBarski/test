@@ -1,0 +1,23 @@
+.admin-table__head{
+    display: flex;
+    align-items: center;
+}
+.filter-popup{
+    position:absolute; 
+    margin-top:20px;
+    z-index: 2;
+    display: block;
+    border-radius: 4px;
+}
+.filter-main{
+    display: flex;
+    flex-direction:row-reverse;
+    float: right;
+}
+.modal-window{
+    padding: 4px !important;
+}
+.admin-table-filter{
+    margin-top: 4px;
+    margin-left: 2px;
+}

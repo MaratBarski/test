@@ -1,63 +1,56 @@
-<div class="wrapper">
-    <main>
-        <md-page-title>Imported files</md-page-title>
-        <md-page-body>
-            <div class="admin-table-wrap__action">
-                <div class="admin-table-wrap__col">
-                    <mdc-button (click)="openFileUpload()" text="+ {{'NewFile'|translate}}">
-                    </mdc-button>
-                </div>
-                <div mdAnimationSticky class="admin-table-wrap__col">
-                    <div class="tabs-page">
-                        <mdc-tabs tabid="importetFilesTab" [active]="tabActive" [tabs]="tabs" (select)="selectTab($event)">
-                        </mdc-tabs>
-                    </div>
-                    <div class="form-search d-none d-md-block">
-                        <mdc-auto-search pause="500" #search placeholder="{{'search'|translate}}"
-                            (complete)="searchComplete($event)"></mdc-auto-search>
-                    </div>
-                </div>
+<md-page-title>
+    <div class="page-header__content">
+        <h1>Imported files</h1>
+    </div>
+</md-page-title>
+<md-page-body>
+    <div class="admin-table-wrap__action">
+        <div class="admin-table-wrap__col">
+            <mdc-button (click)="openFileUpload()" text="+ {{'NewFile'|translate}}">
+            </mdc-button>
+            <div style="display: none;">
+                <mdc-download #downloader></mdc-download>
             </div>
-            <mdc-table #table (onFilter)="showFilter($event)"
-                [cellsTemplate]="{ insertDate:dateColumn,shared:sharedColumn,editColumn:edit}"
-                [searchOptions]="searchOptions" [paginator]="paginator" [search]="search" [dataSource]="dataSource">
-            </mdc-table>
-            <div class="pager-wrap">
-                <mdc-paginator #paginator paginationTitle="{{'paginationTitle'|translate}}"
-                    noPagingTitle="Showing {0} files" [blockSize]="3" [pageSize]="50" [currentPage]="0">
-                </mdc-paginator>
+        </div>
+        <div mdAnimationSticky class="admin-table-wrap__col">
+            <div class="tabs-page">
+                <mdc-date-filter #dateFilter (onFilter)="dateFilterData($event)" [dataSource]="fileSource"
+                    [items]="dateRanges"></mdc-date-filter>
             </div>
-        </md-page-body>
-    </main>
-</div>
+            <div class="form-search d-none d-md-block">
+                <mdc-auto-search [pause]="500" #search placeholder="{{'search'|translate}}"></mdc-auto-search>
+            </div>
+        </div>
+    </div>
+    <mdc-table #table (onAction)="onAction($event)" [rowInfoTemplate]="rowInfoTemplate" [emptyState]="emptyState"
+        [downloader]="downloader" [cellsTemplate]="{ insertDate:dateColumn,shared:sharedColumn}"
+        [searchOptions]="searchOptions" [paginator]="paginator" [search]="search" [dataSource]="dataSource">
+    </mdc-table>
+    <div class="pager-wrap">
+        <mdc-paginator #paginator paginationTitle="{{'paginationTitle'|translate}}" noPagingTitle="Showing {0} files"
+            [blockSize]="3" [pageSize]="50" [currentPage]="0">
+        </mdc-paginator>
+    </div>
+</md-page-body>
 
-<mdc-popup #popupMenu position="bottom-left" [closeOnClick]="true">
-    <mdc-modal-menu [sublinks]="sublinks" [links]="links"></mdc-modal-menu>
-</mdc-popup>
-<mdc-popup #popupFilter position="bottom-left" (onClose)="onCloseFilter()" [closeOnClick]="false">
-    <mdc-check-box-list #checkFilter (apply)="applyFilter()" (cancel)="cancelFilter()" [options]="filterOptions">
-    </mdc-check-box-list>
-</mdc-popup>
+<ng-template #rowInfoTemplate let-item>
+    <div style="width:900px;border:1px solid red">
+        {{item.source|json}}
+    </div>
+</ng-template>
 
-<mdc-popup #dateRangeSelector position="bottom-left" [closeOnClick]="false">
-    <mdc-date-range-selector [from]="customFrom" [to]="customTo" (onApply)="applyCustomDate($event)" (onCancel)="cancelCustomDate()"></mdc-date-range-selector>
-</mdc-popup>
-
-<mdc-modal-window [hidden]="!showUploadFile">
-    <md-upload-file #fileUploader [templates]="templates" (onUpload)="showUploadFile=false" (onCancel)="showUploadFile=false"></md-upload-file>
-</mdc-modal-window>
 <ng-template #dateColumn let-item>
     {{item.insertDate|date}}
 </ng-template>
+
 <ng-template #sharedColumn let-item>
-    <div class="shared-icon" *ngIf="item.shared">
-        <div class="shared-icon-inner">
-            <mdc-icon path="ic-shared"></mdc-icon>
-        </div>
-    </div>
-</ng-template>
-<ng-template #edit let-item let-src="source">
-    <span (click)="editClick(item,src,$event)" class="admin-table-action__menu ic-hover">
-        <mdc-icon path="ic-dot-menu"></mdc-icon>
+    <span *ngIf="item.shared" class="admin-table__icon">
+        <svg class="icon ic-shared ic-grey" mdcSvg="ic-shared"></svg>
     </span>
 </ng-template>
+
+<mdc-modal-window *ngIf="showUploadFile">
+    <md-upload-file (onLoad)="onLoadFileUpload($event)" (onUpload)="showUploadFile=false"
+        (onCancel)="showUploadFile=false">
+    </md-upload-file>
+</mdc-modal-window>

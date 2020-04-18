@@ -1,10 +1,10 @@
 import {Injectable} from '@angular/core';
-import {DataService, TableModel} from 'appcore';
-import {Observable} from 'rxjs';
-import {FileSourceResponse, FileSource, FileSourceMappingResponse} from '../../models/file-source';
+import {DataService, TableModel} from '@appcore';
+import {forkJoin, Observable} from 'rxjs';
+import {FileSourceResponse, FileSource, FileSourceMappingResponse} from '../models/file-source';
 import {Offline} from 'src/app/shared/decorators/offline.decorator';
 import {Resolve, ActivatedRouteSnapshot, RouterStateSnapshot} from '@angular/router';
-import { environment } from '@env/environment';
+import {environment} from '@env/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -15,11 +15,14 @@ export class ImportedFilesMappingService implements Resolve<FileSourceMappingRes
 
   }
 
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<FileSourceMappingResponse> | Promise<FileSourceMappingResponse> | FileSourceMappingResponse {
-    debugger;
-    let id = route.paramMap.get('id');
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> {
+    const id = route.paramMap.get('id');
+    const tasks = [];
     this.getUrl = `${environment.serverUrl}${environment.endPoints.fileSource}/${id}`;
-    return this.load();
+    tasks.push(this.dataService.get(this.getUrl));
+    this.getUrl = `${environment.serverUrl}${environment.endPoints.fileSource}/file-clm/${id}`;
+    tasks.push(this.dataService.get(this.getUrl));
+    return forkJoin(tasks);
   }
 
   @Offline('assets/offline/fileSource.json')

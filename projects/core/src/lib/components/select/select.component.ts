@@ -1,10 +1,9 @@
-import { Component, Input, Output, EventEmitter, HostListener, ViewChild, ElementRef, forwardRef } from '@angular/core';
-import { animation, SlideInOutState } from '../../animations/animations';
-import { ComponentService } from '../../services/component.service';
+import { Component, Input, Output, EventEmitter, HostListener, ViewChild, ElementRef, forwardRef, AfterContentInit, AfterViewInit, Renderer2 } from '@angular/core';
+import { animation } from '../../animations/animations';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
 export class SelectOption {
-  id: string;
+  id: string | number;
   text: string;
   icon?: string;
   value?: any;
@@ -25,17 +24,22 @@ export const SELECT_VALUE_ACCESSOR: any = {
     animation.slideUpDown
   ]
 })
-export class SelectComponent implements ControlValueAccessor {
+export class SelectComponent implements ControlValueAccessor, AfterViewInit {
+
+  constructor(private renderer2: Renderer2) { }
 
   @ViewChild('combo', { static: true }) combo: ElementRef;
+  @ViewChild('optionsContainer', { static: true }) optionsContainer: ElementRef;
+  @ViewChild('comboTextContainer', { static: true }) comboTextContainer: ElementRef;
 
+  @Input() isSmall = false;
   @Input() options: Array<SelectOption>;
   @Input() selected: SelectOption;
   @Input() selectUp = false;
   @Input() maxHeight = '';
   @Input() closeOnselect = true;
   @Input() expandHandler: 'click' | 'hover' = 'click';
-
+  @Input() applyWidth = true;
   @Output() changed = new EventEmitter<SelectOption>();
 
   isExpanded = false;
@@ -86,5 +90,16 @@ export class SelectComponent implements ControlValueAccessor {
 
   registerOnTouched(fn: any) {
     this.onTouchedCallback = fn;
+  }
+
+  ngAfterViewInit(): void {
+    this.setWidth();
+  }
+
+  private setWidth(): void {
+    if (!this.applyWidth) { return; }
+    let width = this.optionsContainer ? this.optionsContainer.nativeElement.offsetWidth : 0;
+    if (width <= 0) { return; }
+    this.renderer2.setStyle(this.comboTextContainer.nativeElement, 'width', `${this.optionsContainer.nativeElement.offsetWidth}px`);
   }
 }

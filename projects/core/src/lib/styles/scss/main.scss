@@ -27,7 +27,7 @@
 
 
 @import "./layouts/main.scss";
-@import "./layouts/header.scss";
+@import "./layouts/header";
 @import "./layouts/footer.scss";
 @import "./components/admin-table.scss";
 @import "./components/checkbox.scss";
@@ -39,6 +39,7 @@
 @import "./components/modal-window.scss";
 @import "./components/page-header.scss";
 @import "./components/pager.scss";
+@import "./components/query.scss";
 @import "./components/system-notice.scss";
 @import "./components/notice.scss";
 @import "./components/switch-icon.scss";
@@ -52,4 +53,8 @@
 @import "./components/info-popup.scss";
 @import "./components/auto-complete.scss";
 @import "./components/progress.scss";
-@import "./components/sidebar.scss";
+@import "./components/sidebar";
+@import "./components/edit-categories.scss";
+@import "./components/category-list.scss";
+@import "./components/tag.scss";
+@import "./components/graph.scss";

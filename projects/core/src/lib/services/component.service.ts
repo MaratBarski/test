@@ -1,11 +1,23 @@
 import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject, Subject } from 'rxjs';
 
+const SUB_MENU_SHOW = 'showSideMenu';
 @Injectable({
   providedIn: 'root'
 })
 export class ComponentService {
-  showSideMenu = true;
+  public onSideBarToggle: Subject<boolean> = new Subject<boolean>();
+  set showSideMenu(showSideMenu: boolean) {
+    localStorage.setItem(SUB_MENU_SHOW, showSideMenu.toString().toLowerCase());
+  }
+
+  get showSideMenu(): boolean {
+    if (localStorage.getItem(SUB_MENU_SHOW) !== 'true' && localStorage.getItem(SUB_MENU_SHOW) !== 'false') {
+      this.showSideMenu = true;
+    }
+    return localStorage.getItem(SUB_MENU_SHOW) === 'true';
+  }
+
   get onToggleMenu(): Observable<boolean> {
     return this._onToggleMenu.asObservable();
   }
@@ -18,7 +30,7 @@ export class ComponentService {
 
   toggleMenu(): void {
     setTimeout(() => {
-      document.body.style.overflow = 'visible';
+      ComponentService.hideScroll(false);
     }, 500);
     this._onToggleMenu.next(this.showSideMenu);
   }
@@ -54,5 +66,16 @@ export class ComponentService {
     return element.nativeElement ?
       element.nativeElement.getBoundingClientRect() :
       element.getBoundingClientRect();
+  }
+
+  static documentClick(event: any = undefined): void {
+    document.dispatchEvent(new Event('click'));
+    if (event && event.stopPropagation) {
+      event.stopPropagation();
+    }
+  }
+
+  static hideScroll(hide: boolean): void {
+    document.body.style.overflow = hide ? 'hidden' : 'visible'
   }
 }

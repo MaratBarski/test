@@ -16,13 +16,17 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { PageTitleComponent } from './components/page-title/page-title.component';
 import { PageBodyComponent } from './components/page-body/page-body.component';
 import { AnimationStickyDirective } from './directives/animation-sticky.directive';
+import { CsvComboComponent } from './components/csv-combo/csv-combo.component';
+import { DownloadSelectorComponent } from './components/download-selector/download-selector.component';
 
 @NgModule({
   declarations: [
     ProjectComboComponent, 
     PageTitleComponent, 
     PageBodyComponent, 
-    AnimationStickyDirective
+    AnimationStickyDirective, 
+    CsvComboComponent, 
+    DownloadSelectorComponent
   ],
   imports: [
     FormsModule,
@@ -41,7 +45,9 @@ import { AnimationStickyDirective } from './directives/animation-sticky.directiv
     ProjectComboComponent,
     PageTitleComponent,
     PageBodyComponent,
-    AnimationStickyDirective
+    AnimationStickyDirective,
+    CsvComboComponent,
+    DownloadSelectorComponent
   ],
   entryComponents: [
   ]

@@ -1,0 +1,58 @@
+[
+    {
+        "id": "ManageUsers",
+        "url": "",
+        "text": "Manage Users",
+        "order": 10,
+        "subLinks": [
+            {
+                "url": "",
+                "text": "Url1"
+            },
+            {
+                "url": "",
+                "text": "Url2"
+            }
+        ]
+    },
+    {
+        "id": "ProjectSiteSettings",
+        "url": "",
+        "text": "Project & Site Settings"
+    },
+    {
+        "id": "MonitorReports",
+        "url": "history-report",
+        "text": "Monitor & Reports"
+    },
+    {
+        "id": "ManageHierarchies",
+        "url": "categorization",
+        "text": "Manage Hierarchies"
+    },
+    {
+        "id": "QueriesEvents",
+        "url": "",
+        "text": "Queries & Events"
+    },
+    {
+        "id": "ImportedFiles",
+        "url": "imported-files",
+        "text": "Imported Files"
+    },
+    {
+        "id": "JobsScheduling",
+        "url": "usage-dashboard",
+        "text": "Jobs Scheduling"
+    },
+    {
+        "id": "PatientStorySettings",
+        "url": "",
+        "text": "Patient Story Settings"
+    },
+    {
+        "id": "ExternalApplications",
+        "url": "",
+        "text": "External Applications"
+    }
+]

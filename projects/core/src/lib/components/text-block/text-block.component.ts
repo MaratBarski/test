@@ -35,25 +35,17 @@ export class TextBlockComponent extends BaseSibscriber {
   get text(): string { return this._text; }
   private _text = '';
 
+  @Input() isLink = false;
   isEllipsis = false;
 
   @ViewChild('container', { static: true }) container: ElementRef;
 
   constructor(public componentService: ComponentService) {
     super();
-    // super.add(this.componentService.onToggleMenu.subscribe(isShow => {
-    //   if (!this.container) { return; }
-    //   if (isShow) {
-    //     this._maxWidth = this._originalMaxWidth;
-    //     this.setView();
-    //   } else {
-    //     setTimeout(() => {
-    //       const w = ComponentService.getRect(this.container.nativeElement.parentNode).width;
-    //       this._maxWidth = w;
-    //       this.setView();
-    //     }, 100);
-    //   }
-    // }));
+    super.add(
+      this.componentService.onSideBarToggle.subscribe(isShow => {
+        this.setView();
+      }));
   }
 
   private setView(): void {

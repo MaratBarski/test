@@ -1,0 +1,36 @@
+.usage-dashboard-top{
+	margin-bottom: 20px;
+
+	&__content{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: 0 120px;
+		position: relative;
+	}
+
+	.link-load{
+		position: absolute;
+		left: 0;
+		@include top-center;
+	}
+
+	.tabs-page__item{
+		min-width: 158px;
+	}
+}
+
+@media (max-width: 1199px) {
+	.usage-dashboard-top{
+		&__content{
+			width: 100%;
+			justify-content: space-between;
+			padding: 0;
+		}
+
+		.link-load{
+			position: static;
+			transform: none;
+		}
+	}
+}

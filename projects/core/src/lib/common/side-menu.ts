@@ -30,6 +30,9 @@ export const PageInfo = {
     ImportedFiles: {
         id: 'ImportedFiles'
     },
+    JobsScheduling: {
+        id: 'JobsScheduling'
+    },
     PatientStorySettings: {
         id: 'PatientStorySettings'
     }
@@ -43,7 +46,7 @@ export const SideMenu: Array<MenuItem> = [
         subLinks: [
             {
                 url: '',
-                text: 'Text1'
+                text: 'Text'
             },
             {
                 url: '',
@@ -77,7 +80,8 @@ export const SideMenu: Array<MenuItem> = [
         text: 'Imported Files'
     },
     {
-        url: '',
+        id: PageInfo.JobsScheduling.id,
+        url: 'usage-dashboard',
         text: 'Jobs Scheduling'
     },
     {

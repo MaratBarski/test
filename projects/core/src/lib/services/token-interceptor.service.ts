@@ -13,15 +13,17 @@ export class TokenInterceptorService implements HttpInterceptor {
 
   intercept(request: HttpRequest<any>, next: HttpHandler): any {
     if (LoginService.IS_LOGEDIN()) {
+
       request = request.clone({
         setHeaders: {
+          ...request.headers,
           Authorization: LoginService.getToken()
         }
       });
     }
     return (next.handle(request) as any).pipe(
       catchError((error: HttpErrorResponse) => {
-        if (error.status === 401) { 
+        if (error.status === 401) {
           this.loginService.logOut();
           return of('Unauthorized');
         }

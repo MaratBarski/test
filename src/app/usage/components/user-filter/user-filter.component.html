@@ -1,0 +1,34 @@
+<div class="select select_small">
+    <div (click)="expand($event)" class="select__head">Please Select...
+        <div class="select__head-arr">
+            <svg class="icon ic-select-arr-down" mdcSvg="ic-select-arr-down"></svg>
+        </div>
+    </div>
+    <div (click)="filterContainerClick($event)" class="select-filter" [hidden]="!isExpanded" >
+        <div class="select-filter__content">
+            <div class="select-filter__top">
+                <mdc-check-box (change)="changeTop($event)" [(ngModel)]="topChecked" text="Top 5 users" [id]="'usrUsage'"></mdc-check-box>
+                <span (click)="clear()" class="select-filter__clear">Clear</span>
+            </div>
+            <div class="form-search">
+                <input [(ngModel)]="searchText" (keyup)="searchKey($event)" type="text" placeholder="Search a user">
+                <button type="submit">
+                    <svg (click)="searchKey(undefined)" class="icon ic-search" mdcSvg="ic-search"></svg>
+                </button>
+                <span (click)="clearSearch()" class="form-search__close" style="margin-top: -6px;">
+                    <svg class="icon ic-close-small" mdcSvg="ic-close-small"></svg>
+                </span>
+            </div>
+            <div class="select-filter__params">
+                <ng-container *ngFor="let user of users|usageUser:{text:searchWord};let index=$index">
+                    <mdc-check-box (change)="changeSelect($event)" [(ngModel)]="user.isChecked" [id]="'usr' + index" [text]="user.login">
+                    </mdc-check-box>
+                </ng-container>
+            </div>
+            <div class="select-filter__btn">
+                <button (click)="cancel()" class="btn btn_border btn_small">Cancel</button>
+                <button [disabled]="selectedCount < minSelected || selectedCount > maxSelected" (click)="apply()" class="btn btn_small">Apply</button>
+            </div>
+        </div>
+    </div>
+</div>

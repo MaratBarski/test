@@ -1,20 +1,32 @@
 import { Component, HostListener, Input, ElementRef, Renderer2, ViewChild, Output, EventEmitter } from '@angular/core';
 import { ComponentService } from '../../services/component.service';
+import { AnimationService } from '../../services/animation.service';
+import { BaseSibscriber } from '../../common/BaseSibscriber';
 
 @Component({
   selector: 'mdc-popup',
   templateUrl: './popup.component.html',
   styleUrls: ['./popup.component.css']
 })
-export class PopupComponent {
+export class PopupComponent extends BaseSibscriber {
 
   constructor(
-    private renderer: Renderer2
-  ) { }
+    private renderer: Renderer2,
+    private animationService: AnimationService
+  ) {
+    super();
+    super.add(
+      this.animationService.onShowElement.subscribe((element: any) => {
+        if (this !== element) {
+          this.isExpanded = false;
+        }
+      }));
+  }
 
   @ViewChild('container', { static: true }) container: ElementRef;
   @Input() position: 'left' | 'top' | 'right' | 'bottom' | 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right' = 'left';
   @Output() onClose = new EventEmitter();
+  @Input() fixed = false;
 
   private _target: any;
 
@@ -30,6 +42,7 @@ export class PopupComponent {
 
   @Input() set isExpanded(isExpanded: boolean) {
     if (isExpanded) {
+      this.animationService.showElement(this);
       this.opacity = 0;
       setTimeout(() => {
         this.opacity = 1;
@@ -52,20 +65,23 @@ export class PopupComponent {
   show(isShow: boolean, event: any): void {
     this.isOver = true;
     this.isExpanded = isShow;
-    this.setPosition(event);
+    if (event) {
+      this.setPosition(event);
+    }
     this.stopOver();
   }
 
   @HostListener('document:click', ['$event']) onMouseClick(event: any) {
     if (this.isOver) { return; }
-    this.isExpanded = false;
     this.onClose.emit();
+    this.isExpanded = false;
   }
 
   private get rect(): any { return ComponentService.getRect(this.container); }
   private get targetRect(): any { return ComponentService.getRect(this._target); }
 
   private setPosition(event: any): void {
+    if (this.fixed) { return; }
     if (!this.isExpanded) { return; }
     setTimeout(() => {
       this.initPosition[this.position](event);

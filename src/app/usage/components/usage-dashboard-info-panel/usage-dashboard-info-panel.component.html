@@ -1,0 +1,39 @@
+<section class="info-panel-wrap">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="info-panel">
+                    <div class="info-panel__content">
+                        <div class="info-panel-choose">
+                            <div [mdcVisibility]="environmens?.length" class="info-panel-choose__item">
+                                <div class="info-panel-choose__title">Environment:</div>
+                                <div class="info-panel-choose__val">
+                                    <mdc-select [selected]="selectedEnvironment" (changed)="changeEnvironment($event)"
+                                        [applyWidth]="false" [isSmall]="true" [options]="environmens"></mdc-select>
+                                </div>
+                            </div>
+                            <div [hidden]="!showYears" class="info-panel-choose__item">
+                                <div class="info-panel-choose__title">Years:</div>
+                                <div class="info-panel-choose__val">
+                                    <mdc-select [selected]="yearsOptions[currentYear]" (changed)="changeYear($event)"
+                                        [applyWidth]="false" [isSmall]="true" [options]="yearsOptions"></mdc-select>
+                                </div>
+                            </div>
+                            <div *ngIf="showUsers" class="info-panel-choose__item">
+                                <div class="info-panel-choose__title">Users:</div>
+                                <div class="info-panel-choose__val">
+                                    <md-user-filter (onApply)="applyUsers($event)"></md-user-filter>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="info-panel__switch">
+                            <div class="info-panel__switch-label">Include Admin Users</div>
+                            <mdc-toggle-button (onChange)="changeIncludeAdmin($event)" [(ngModel)]="includeAdmin">
+                            </mdc-toggle-button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

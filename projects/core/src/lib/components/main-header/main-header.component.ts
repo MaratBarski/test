@@ -1,31 +1,29 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { ComponentService } from '../../services/component.service';
-import { trigger, state, style, transition, animate } from '@angular/animations';
+
+enum Icon {
+  hamburgerOpen = 'ic-hamburger',
+  hamburgerClose = 'ic-hamburger-arrow',
+  arrowDown = 'ic-select-arr-down',
+}
 
 @Component({
   selector: 'mdc-main-header',
   templateUrl: './main-header.component.html',
-  animations: [
-    trigger('openClose', [
-      state('open', style({ marginLeft: '0px' })),
-      state('closed', style({ marginLeft: '-190px' })),
-      transition('open => closed', [animate('.3s')]),
-      transition('closed => open', [animate('.3s')])
-    ]),
-  ],
   styleUrls: ['./main-header.component.css']
 })
 export class MainHeaderComponent {
 
-  @Input() organizationName = '';
-  @Input() logo = '';
-  showMenu = false;
-  showProfile = false;
+  get sideBarOpened(): boolean {
+    return this.componentService.showSideMenu;
+  }
+  icon = Icon;
 
-  constructor(public componentService: ComponentService) { }
+  constructor(private componentService: ComponentService) {
+  }
 
-  displaySideMenu(): void {
-    this.componentService.starttoggle();
-    this.componentService.showSideMenu = !this.componentService.showSideMenu
+  toggleSideBar(): void {
+    this.componentService.showSideMenu = !this.componentService.showSideMenu;
+    this.componentService.onSideBarToggle.next(this.componentService.showSideMenu);
   }
 }

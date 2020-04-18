@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ImportedFilesComponent } from './pages/imported-files/imported-files.component';
 import { ImportedFileMappingComponent } from './pages/imported-files-mapping/imported-files-mapping.component';
 import { Route, RouterModule } from '@angular/router';
-import { CoreModule } from 'appcore';
+import { CoreModule } from '@appcore';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { StoreModule } from '@ngrx/store';
 import { fileSource } from './store/reducers/imported-files.reducer';

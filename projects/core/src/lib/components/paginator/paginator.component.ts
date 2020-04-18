@@ -125,6 +125,11 @@ export class PaginatorComponent {
     this.nextPageClick.emit(this.currentPage);
   }
 
+  setCurrentPage(p: number): void {
+    this.selectedPage.setValue(p);
+    this.goToPage();
+  }
+
   nextPage(index: number): void {
     if (this.isFirstPage && index < 0) { return; }
     if (this.isLastPage && index > 0) { return; }

@@ -1,9 +1,9 @@
-<div class="split-btn">
-    <div class="split-btn__title">{{text}}</div>
-    <div class="split-btn__arr">
+<div class="split-btn" (blur)="onBlur()" tabindex="10">
+    <div (click)="clickMain()" class="split-btn__title">{{text}}</div>
+    <div (click)="clickArrow()" class="split-btn__arr">
         <mdc-icon path="ic-select-arr-down"></mdc-icon>
     </div>
-    <div *ngIf="actions" class="split-btn__popup">
+    <div *ngIf="actions" class="split-btn__popup" [hidden]="!isOpen">
         <div (click)="clickAction(action)" class="split-btn__item" *ngFor="let action of actions">{{action.text}}</div>
     </div>
 </div>

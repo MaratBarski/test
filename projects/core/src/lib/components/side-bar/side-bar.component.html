@@ -1,32 +1,20 @@
-<div class="sidebar">
-    <div class="sidebar__content">
-        <div class="top"></div>
-        <nav class="sidebar-menu">
-            <ul class="sidebar-menu__list">
-                <li [ngClass]="{'active':item.active}" class="sidebar-menu__item" *ngFor="let item of items">
-                    <div class="sidebar-menu__main pointer" (click)="navigate(item)">
-                        <div class="sidebar-menu__img"></div>
-                        <div class="sidebar-menu__text">{{item.text}}</div>
-                        <div *ngIf="item.subLinks?.length" [ngClass]="{'rotate90':item.showSubMenu}" class="sidebar-menu__arr">
-                            <mdc-icon path="ic-pager-arr-right"></mdc-icon>
-                        </div>
-                    </div>
-                    <ul *ngIf="item.subLinks?.length" [hidden]="!item.showSubMenu" class="sidebar-menu__sub-list">
-                        <li *ngFor="let subItem of item.subLinks" class="sidebar-menu__sub-item">
-                            <a class="sidebar-menu__main" [routerLink]="subItem.url">
-                                <div class="sidebar-menu__text">{{subItem.text}}</div>
-                            </a>
-                        </li>
-                    </ul>
+<nav *ngIf="items" class="sidebar-menu">
+    <ul class="sidebar-menu__list">
+        <li [ngClass]="{'active':item.active}" class="sidebar-menu__item" *ngFor="let item of items">
+            <div class="sidebar-menu__main pointer" (click)="navigate(item)">
+                <div class="sidebar-menu__img"></div>
+                <div class="sidebar-menu__text">{{item.text}}</div>
+                <div *ngIf="item.subLinks?.length" [ngClass]="{'rotate90':item.showSubMenu}" class="sidebar-menu__arr">
+                    <mdc-icon path="ic-pager-arr-right"></mdc-icon>
+                </div>
+            </div>
+            <ul *ngIf="item.subLinks?.length" [hidden]="!item.showSubMenu" class="sidebar-menu__sub-list">
+                <li *ngFor="let subItem of item.subLinks" class="sidebar-menu__sub-item">
+                    <a class="sidebar-menu__main" [routerLink]="subItem.url">
+                        <div class="sidebar-menu__text">{{subItem.text}}</div>
+                    </a>
                 </li>
             </ul>
-        </nav>
-    </div>
-    <div class="sidebar__bottom">
-        <div class="sidebar__btn">
-            <div class="sidebar__btn-item"><a class="btn btn_border btn_grey side-btn" href="#">+ New Event</a></div>
-            <div class="sidebar__btn-item"><a class="btn btn_border btn_grey side-btn" href="#">+ New Query</a></div>
-        </div>
-        <div class="sidebar__copyright">Version 6 - June 2020</div>
-    </div>
-</div>
+        </li>
+    </ul>
+</nav>

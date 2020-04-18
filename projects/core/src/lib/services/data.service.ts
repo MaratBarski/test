@@ -1,12 +1,13 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   private createHeaders = (): any => {
     return {
@@ -15,7 +16,7 @@ export class DataService {
         Accept: 'application/json'
       })
     };
-  }
+  };
 
   get(url: string): any {
     return this.http.get(url, this.createHeaders());
