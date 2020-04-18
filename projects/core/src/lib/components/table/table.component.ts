@@ -123,6 +123,7 @@ export class TableComponent implements OnDestroy, AfterViewInit, AfterViewChecke
       this._paginator.nextPageClick.subscribe((page: number) => {
         ComponentService.resetScroll();
         this.paginator.currentPage = page;
+        this.isFirstInfoOpen = true;
       }));
   }
   get paginator(): PaginatorComponent { return this._paginator; }
@@ -189,6 +190,7 @@ export class TableComponent implements OnDestroy, AfterViewInit, AfterViewChecke
   sortModel: TableHeaderModel;
 
   @Input() set dataSource(data: TableModel) {
+    this.isFirstInfoOpen = true;
     if (!data) { return; }
     this._currentEmptyState = this._emptyState;
     this.resetSearch();
@@ -253,6 +255,7 @@ export class TableComponent implements OnDestroy, AfterViewInit, AfterViewChecke
   }
 
   resetPaginator(): void {
+    this.isFirstInfoOpen = true;
     if (!this.isPaginator) { return; }
     this.paginator.currentPage = 0;
     this.paginator.currentBlock = 0;
@@ -271,6 +274,7 @@ export class TableComponent implements OnDestroy, AfterViewInit, AfterViewChecke
   }
 
   private filterData(data: TableModel): TableModel {
+    this.isFirstInfoOpen = true;
     if (!this.filters) { return { ...data }; }
     let rows = data.rows;
     Object.keys(this.filters).forEach(k => {
@@ -310,14 +314,16 @@ export class TableComponent implements OnDestroy, AfterViewInit, AfterViewChecke
     this.currentRowInfo = undefined;
   }
 
+  isFirstInfoOpen = true;
+
   rowDetailsInit(rowDetails: RowInfoComponent): void {
     if (this.clientY + rowDetails.height > window.innerHeight) {
-      rowDetails.setMargin(window.innerHeight - this.clientY - rowDetails.height);
+      rowDetails.setMargin(window.innerHeight - this.clientY - rowDetails.height, this.isFirstInfoOpen);
     } else {
-      rowDetails.setMargin(0);
+      rowDetails.setMargin(0, this.isFirstInfoOpen);
     }
+    this.isFirstInfoOpen = false;
   }
-
 
   showItemInfo(row: TableRowModel | any, header: TableHeaderModel, rowIndex: number, event: any): void {
     ComponentService.documentClick();
