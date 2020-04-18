@@ -2,7 +2,6 @@ import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { ImportedFilesService } from '../../services/imported-files.service';
 import { FileSource, FileSourceResponse } from '../../models/file-source';
 import { TableComponent, TranslateService, DateFilterComponent, TableModel, PopupComponent, CheckBoxListOption, NavigationService, PageInfo, BaseSibscriber, CheckBoxListComponent, SelectOption, EmptyState, DatePeriod, TableActionCommand } from '@app/core-api';
-import { UploadFileComponent } from '@app/imported-files/components/upload-file/upload-file.component';
 import { DateRangeButton } from '@app/core-api';
 import {Router} from '@angular/router';
 
@@ -16,8 +15,7 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, On
   @ViewChild('dateFilter', { static: true }) dateFilter: DateFilterComponent;
   @ViewChild('table', { static: true }) table: TableComponent;
   @ViewChild('checkFilter', { static: true }) checkFilter: CheckBoxListComponent;
-  @ViewChild('fileUploader', { static: true }) fileUploader: UploadFileComponent;
-
+  
   permissions: Array<CheckBoxListOption> = [];
   searchOptions = ['fileName', 'environment', 'permission'];
 
@@ -103,6 +101,5 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, On
 
   openFileUpload(): void {
     this.showUploadFile = true;
-    this.fileUploader.resetTemplate();
   }
 }

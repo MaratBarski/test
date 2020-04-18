@@ -1,5 +1,5 @@
 import {Component, ViewChild, ElementRef, AfterViewInit, HostListener} from '@angular/core';
-import {ComponentService, TranslateService, BaseSibscriber, animation, NavigationService} from './core-api';
+import {ComponentService, TranslateService, BaseSibscriber, animation, NavigationService} from '@appcore';
 
 @Component({
   selector: 'app-root',

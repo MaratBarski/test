@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
-import { TableComponent, TranslateService, DateService, TabItemModel, TableModel, MenuLink, PopupComponent } from 'appcore';
+import { TableComponent, TranslateService, DateService, TabItemModel, TableModel, MenuLink, PopupComponent } from '@appcore';
 import { ImportedFilesService } from '../../services/imported-files.service';
 import { Store } from '@ngrx/store';
 import { load } from '../../store/actions/imported-files.actions';

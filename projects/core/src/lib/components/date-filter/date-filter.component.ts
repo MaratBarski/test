@@ -2,7 +2,7 @@ import { Component, Input, ChangeDetectionStrategy, Output, EventEmitter, ViewCh
 import { TabItemModel } from '../tabs/tabs.component';
 import { DateService, DateRange } from '../../services/date.service';
 import { FromTo } from '../date-range-selector/date-range-selector.component';
-import { ComponentService } from '@app/core-api';
+import { ComponentService } from '../../services/component.service';
 
 export interface DateRangeButton {
   range?: DateRange;
