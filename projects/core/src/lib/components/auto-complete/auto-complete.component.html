@@ -4,7 +4,7 @@
             (keydown)="onKeyDown($event)" (keyup)="search($event)" type="text" />
         <div *ngIf="dropdown" class="auto-complete-dropdown" (click)="openSelect()">
             <div class="auto-complete-dropdown-icon">
-                <mdc-icon path="ic-select-arr-down"></mdc-icon>
+                <svg class="icon" mdcSvg="ic-select-arr-down"></svg>
             </div>
         </div>
     </div>

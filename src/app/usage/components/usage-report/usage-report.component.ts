@@ -1,171 +1,81 @@
-import { Component, OnInit, Input, ViewChild, ViewContainerRef, ComponentFactoryResolver, ElementRef, Inject } from '@angular/core';
-import { ChartBarComponent, Bar } from '@app/core-api';
+import { Component, ViewChild } from '@angular/core';
+import { ComponentService } from '@app/core-api';
+import { UsageService, } from '@app/usage/services/usage.service';
+import { ChartService } from '@app/usage/services/chart.service';
+import { UsageBase } from '../UsageBase';
+import { UsageRequestService } from '@app/usage/services/usage-request.service';
+import { UsageDownloadService, DownloadData } from '@app/usage/services/usage-download.service';
+import { ChartPdfComponent } from '../chart-pdf/chart-pdf.component';
 
 @Component({
   selector: 'md-usage-report',
   templateUrl: './usage-report.component.html',
   styleUrls: ['./usage-report.component.scss']
 })
-export class UsageReportComponent implements OnInit {
+export class UsageReportComponent extends UsageBase {
 
-  dataSet: Array<Bar>;
+  view: undefined;// any[] = [600, 400];
+  showXAxis = true;
+  showYAxis = false;
+  gradient = false;
+  showLegend = false;
+  showXAxisLabel = false;
+  xAxisLabel = '';
+  yAxisLabel = 'Sales';
+  showYAxisLabel = true;
+  timeline = true;
 
-  @ViewChild('chartCmp', { read: ViewContainerRef, static: true }) chartCmp: ViewContainerRef;
-  @Input() pageTitle = 'Monthly General Usage';
-  @Input() pageTooltip = 'Each bar represents the monthly number of users who created at least one new query or downloaded a file.';
-  current = 0;
+  colorScheme = {
+    domain: ['#002060']
+  };
 
-  ngOnInit() {
-    this.dataSet = [
-      {
-        xlabel: 'NOV-19',
-        bars: [
-          {
-            label: 'java',
-            backgroundColor: '#5303a8',
-            borderColor: 'green',
-            textColor: 'white',
-            value: 200
-          },
-          {
-            label: 'java',
-            backgroundColor: '#002060',
-            textColor: 'white',
-            borderColor: 'green',
-            value: 50
-          },
-          {
-            label: 'java',
-            backgroundColor: '#5B9BD5',
-            textColor: 'white',
-            borderColor: 'green',
-            value: 50
-          },
-          {
-            label: 'java',
-            backgroundColor: 'green',
-            borderColor: 'green',
-            value: 50
-          }
-        ]
-      },
-      {
-        xlabel: 'DEC-19',
-        bars: [
-          {
-            label: 'java',
-            backgroundColor: 'blue',
-            borderColor: 'green',
-            value: 50
-          },
-          {
-            label: 'java',
-            backgroundColor: 'red',
-            borderColor: 'green',
-            value: 50
-          }
-        ]
-      },
-      {
-        xlabel: 'JAN-20',
-        bars: [
-          {
-            label: 'test',
-            backgroundColor: '#5B9BD5',
-            borderColor: 'green',
-            value: 43
-          },
-          {
-            label: 'test',
-            backgroundColor: 'brown',
-            borderColor: 'green',
-            value: 57
-          }
-        ]
-      },
-      {
-        xlabel: 'FEB-20',
-        bars: [
-          {
-            label: 'c++',
-            backgroundColor: 'blue',
-            borderColor: 'green',
-            value: 30
-          },
-          {
-            label: 'node',
-            backgroundColor: '#b00',
-            borderColor: 'green',
-            value: 21
-          }
-        ]
-      },
-      {
-        xlabel: 'MAR-20',
-        bars: [
-          {
-            label: 'javascript',
-            backgroundColor: 'blue',
-            borderColor: 'green',
-            value: 40
-          },
-          {
-            label: 'node',
-            backgroundColor: '#b00',
-            borderColor: 'green',
-            value: 20
-          }
-        ]
-      },
-      {
-        xlabel: 'APR-20',
-        bars: [
-          {
-            label: 'javascript',
-            backgroundColor: 'blue',
-            borderColor: 'green',
-            value: 40
-          },
-          {
-            label: 'node',
-            backgroundColor: '#b00',
-            borderColor: 'green',
-            value: 20
-          }
-        ]
-      },
-      {
-        xlabel: 'MAY-20',
-        bars: [
-          {
-            label: 'javascript',
-            backgroundColor: 'blue',
-            borderColor: 'green',
-            value: 40
-          },
-          {
-            label: 'node',
-            backgroundColor: '#b00',
-            borderColor: 'green',
-            value: 20
-          },
-          {
-            label: 'node',
-            backgroundColor: 'yellow',
-            borderColor: 'yellow',
-            value: 20
-          },
-          {
-            label: 'node',
-            backgroundColor: 'orange',
-            borderColor: 'yellow',
-            value: 49
-          },
-        ]
-      }
-    ];
+  pdfChartWidth = '500px';
+  pdfChartHeight = '300px'
+  @ViewChild('chartPdf', { static: true }) chartPdf: ChartPdfComponent;
+
+  constructor(
+    private usageDownloadService: UsageDownloadService,
+    protected componentService: ComponentService,
+    protected usageService: UsageService,
+    protected chartService: ChartService,
+    public usageRequestService: UsageRequestService
+  ) {
+    super();
+    this.usageDownloadService.toCSV = () => this.toCSV();
+    this.usageDownloadService.toPDF = () => this.toPDF();
   }
 
+  downloadData: DownloadData = {
+    pageName: 'General Usage',
+    fileName: 'General-Usage'
+  }
 
+  private toPDF(): void {
+    this.downloadData.charts = [];
+    const body = [];
+    this.dataSource.forEach((item: any) => {
+      body.push([item.date, item.count])
+    });
+    this.downloadData.charts.push(
+      {
+        headers: ['Date', 'Count'],
+        body: body,
+        svg: {
+          image: this.chartPdf.getSvg(),
+          title: 'MONTHLY GENERAL USAGE'
+        }
+      }
+    );
 
+    this.usageDownloadService.downloadPDF(this.downloadData);
+  }
+
+  private toCSV(): void {
+  }
+  
+  createReport(): void {
+    super.responseData = this.chartService.getGeneralUsage();
+  }
 }
+
+//https://swimlane.gitbook.io/ngx-charts/v/docs-test/examples/bar-charts/horizontal-bar-chart

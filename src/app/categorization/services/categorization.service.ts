@@ -26,44 +26,73 @@ export class CategorizationService {
 
   createDataSource(categories: Array<Hierarchy>): TableModel {
     const data: TableModel = {
+      actions: {
+        links: [
+          {
+            text: 'Edit File Settings',
+            icon: 'ic-edit',
+            command: 'edit'
+            , hidden: (source) => {
+              if (source.hierarchyLoadingType !== '') { return false; }
+              return true;
+            },
+            // disable: false
+          },
+          {
+            text: 'View output summary',
+            icon: 'ic-view',
+            command: 'view'
+          }
+        ],
+        subLinks: [
+          {
+            text: 'Delete',
+            disable: false,
+            icon: 'ic-delete',
+            command: 'delete'
+          }
+        ]
+      },
       headers: [
         {
           columnId: 'hierarchyName',
           text: 'Name',
           isSortEnabled: true,
           sortDir: 'desc',
-          isSortedColumn: true
+          isSortedColumn: true,
+          showDetails: true,
+          css: 'w-xxl-8 w-md-6'
         },
         {
           columnId: 'hierarchyFile',
           text: 'File Name',
-          isSortEnabled: true
+          isSortEnabled: true,
+          css: 'w-xxl-8 w-md-6'
         },
         {
           columnId: 'insertDate',
           text: 'Modified',
-          isSortEnabled: true
+          isSortEnabled: true,
+          css: 'd-none d-md-table-cell w-md-3'
         },
         {
           columnId: 'state',
           text: 'State',
-          isSortEnabled: true
+          isSortEnabled: true,
+          css: 'd-none d-md-table-cell admin-table__item_center'
         },
         {
           columnId: 'domain',
           text: 'Environment 	',
-          isSortEnabled: true
+          isSortEnabled: true,
+          css: 'd-none d-xxl-table-cell admin-table__item_left'
         },
         {
           columnId: 'inUseColumn',
           text: 'In Use',
-          isSortEnabled: true
-        },
-        {
-          columnId: 'editColumn',
-          text: '',
-          isSortEnabled: false
-        },
+          isSortEnabled: true,
+          css: 'd-none d-md-table-cell admin-table__item_center'
+        }
       ],
       rows: []
     }

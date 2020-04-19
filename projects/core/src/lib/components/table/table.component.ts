@@ -1,4 +1,4 @@
-import { Component, Input, EventEmitter, Output, OnDestroy, ChangeDetectionStrategy, TemplateRef, AfterViewInit, ViewChild, HostListener, Renderer2, ElementRef, ChangeDetectorRef } from '@angular/core';
+import { Component, Input, EventEmitter, Output, OnDestroy, ChangeDetectionStrategy, TemplateRef, AfterViewInit, ViewChild, HostListener, Renderer2, ElementRef, ChangeDetectorRef, AfterViewChecked } from '@angular/core';
 import { TableHeaderModel, TableHeaderComponent } from '../table-header/table-header.component';
 import { ComponentService } from '../../services/component.service';
 import { AutoSearchComponent } from '../auto-search/auto-search.component';
@@ -42,7 +42,7 @@ export class TableModel {
   styleUrls: ['./table.component.css'],
   changeDetection: ChangeDetectionStrategy.Default
 })
-export class TableComponent implements OnDestroy, AfterViewInit {
+export class TableComponent implements OnDestroy, AfterViewInit, AfterViewChecked {
 
   constructor(
     private csvManagerService: CsvManagerService,
@@ -58,10 +58,6 @@ export class TableComponent implements OnDestroy, AfterViewInit {
         };
       })
     )
-  }
-
-  ngAfterViewChecked(): void {
-    this.cdRef.detectChanges();
   }
 
   filters: any;
@@ -99,6 +95,10 @@ export class TableComponent implements OnDestroy, AfterViewInit {
     this.reloadPaginator();
   }
 
+  ngAfterViewChecked(): void {
+    this.cdRef.detectChanges();
+  }
+
   private _serachText = '';
   get serachText(): string { return this._serachText; }
 
@@ -123,6 +123,7 @@ export class TableComponent implements OnDestroy, AfterViewInit {
       this._paginator.nextPageClick.subscribe((page: number) => {
         ComponentService.resetScroll();
         this.paginator.currentPage = page;
+        this.isFirstInfoOpen = true;
       }));
   }
   get paginator(): PaginatorComponent { return this._paginator; }
@@ -148,6 +149,8 @@ export class TableComponent implements OnDestroy, AfterViewInit {
         this._rows = this.searchService.filterRows(
           this.dataSource.rows, { text: text, columns: this.searchOptions }
         );
+        //this.cdRef.markForCheck();
+        //this.cdRef.detach();
         this._serachText = text;
         this.reloadPaginator();
       }));
@@ -187,6 +190,7 @@ export class TableComponent implements OnDestroy, AfterViewInit {
   sortModel: TableHeaderModel;
 
   @Input() set dataSource(data: TableModel) {
+    this.isFirstInfoOpen = true;
     if (!data) { return; }
     this._currentEmptyState = this._emptyState;
     this.resetSearch();
@@ -251,15 +255,17 @@ export class TableComponent implements OnDestroy, AfterViewInit {
   }
 
   resetPaginator(): void {
+    this.isFirstInfoOpen = true;
     if (!this.isPaginator) { return; }
     this.paginator.currentPage = 0;
+    this.paginator.currentBlock = 0;
   }
 
   sort(header: TableHeaderModel): void {
-    this.resetPaginator();
     const sorted = this.dataSource.headers.find(h => h.isSortedColumn && h !== header);
     if (sorted) { sorted.isSortedColumn = false; }
     this.sortModel = { ...header };
+    this.resetPaginator();
     this.onSort.emit(header);
   }
 
@@ -268,6 +274,7 @@ export class TableComponent implements OnDestroy, AfterViewInit {
   }
 
   private filterData(data: TableModel): TableModel {
+    this.isFirstInfoOpen = true;
     if (!this.filters) { return { ...data }; }
     let rows = data.rows;
     Object.keys(this.filters).forEach(k => {
@@ -301,67 +308,28 @@ export class TableComponent implements OnDestroy, AfterViewInit {
   }
 
   currentRowInfo: TableRowModel;
-  animationRowInfo: TableRowModel;
-  currentRowIndex = -1;
-  animationElm: any;
-  rowInfoComponent: RowInfoComponent;
   clientY = 0;
 
   closeRowInfo(): void {
-    this.animationService.stopAnimation();
     this.currentRowInfo = undefined;
-    this.animationRowInfo = undefined;
   }
 
-  private animate(elm: any, width: number, callBack: any, currentWidth = 0): void {
-    this.animationService.emitStart();
-    this.animationService.animateForward(elm, width, 'width', callBack, 100, currentWidth);
-  }
-
-  private animateBack(elm: any, width: number, speed: number, callBack: any): void {
-    this.animationService.animateBack(elm, width, 'width', speed, callBack);
-  }
+  isFirstInfoOpen = true;
 
   rowDetailsInit(rowDetails: RowInfoComponent): void {
-    setTimeout(() => {
-      const elm = document.getElementById(rowDetails.componentID);
-      this.animationElm = elm;
-      this.rowInfoComponent = rowDetails;
-      this.renderer2.setStyle(elm, 'visibility', `hidden`);
-
-      if (this.clientY + rowDetails.height > window.innerHeight) {
-        this.renderer2.setStyle(elm, 'marginTop', `${window.innerHeight - this.clientY - rowDetails.height}px`);
-      } else {
-        this.renderer2.setStyle(elm, 'marginTop', '0px');
-      }
-
-      setTimeout(() => {
-        this.animate(elm, rowDetails.width, undefined);
-        setTimeout(() => {
-          this.renderer2.setStyle(elm, 'visibility', 'visible');
-        }, 10);
-      }, 10);
-    }, 0);
+    if (this.clientY + rowDetails.height > window.innerHeight) {
+      rowDetails.setMargin(window.innerHeight - this.clientY - rowDetails.height, this.isFirstInfoOpen);
+    } else {
+      rowDetails.setMargin(0, this.isFirstInfoOpen);
+    }
+    this.isFirstInfoOpen = false;
   }
 
   showItemInfo(row: TableRowModel | any, header: TableHeaderModel, rowIndex: number, event: any): void {
-    //ComponentService.documentClick();
-    if (!header.showDetails) { return; }
-    if (this.currentRowInfo === row) { return; }
-    event.stopPropagation();
-    this.animationService.showElement(header);
-    this.animationService.stopAnimation();
-    if (this.currentRowInfo) {
-      this.animateBack(this.animationElm, this.rowInfoComponent.width, 100, () => {
-        this.clientY = event.clientY;
-        this.rowClick(row);
-
-        this.currentRowInfo = row;
-      });
-      return;
-    }
-    this.clientY = event.clientY;
+    ComponentService.documentClick();
     this.rowClick(row);
+    event.stopPropagation();
+    this.clientY = event.clientY;
     this.currentRowInfo = row;
   }
 
@@ -380,7 +348,6 @@ export class TableComponent implements OnDestroy, AfterViewInit {
   commandRow: TableRowModel;
 
   openLinkMenu(row: TableRowModel, event: any, rowIndex: number): void {
-    // const td = this.tableObject.nativeElement.rows[rowIndex].cells[this.tableObject.nativeElement.rows[rowIndex].cells.length - 1];
     ComponentService.documentClick();
     this.clientY = event.clientY;
     event.stopPropagation();
@@ -415,6 +382,6 @@ export class TableComponent implements OnDestroy, AfterViewInit {
   }
 
   rowMouseLeave(event: any, row: TableRowModel, index: number): void {
-
+    this.currentOver = undefined;
   }
 }

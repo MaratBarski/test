@@ -1,7 +1,8 @@
 <table #tableObject mdcTable>
     <thead *ngIf="dataSource?.headers">
         <tr mdcTableHeader>
-            <th *ngFor="let header of dataSource.headers|visibleHeaders;let index = index" [mdcTableItem]="index">
+            <th [ngStyle]="header.style" class="admin-table__head admin-table__item {{header.css}}"
+                *ngFor="let header of dataSource.headers|visibleHeaders;let index = index" [mdcTableItem]="index">
                 <mdc-table-header *ngIf="!headersTemplate || !headersTemplate[header.columnId]" (onSort)="sort($event)"
                     (onApplyFilter)="onApplyFilter($event)" (onShowFilter)="onShowFilter()" (onFilter)="filter($event)"
                     [model]="header" [filterOptions]="filters[header.columnId]"></mdc-table-header>
@@ -9,7 +10,8 @@
                     [ngTemplateOutlet]="headersTemplate[header.columnId]"
                     [ngTemplateOutletContext]="{$implicit: header}"></ng-container>
             </th>
-            <th *ngIf="dataSource?.actions?.links?.length || dataSource?.actions?.subLinks?.length"></th>
+            <th class="admin-table__item admin-table__item_menu"
+                *ngIf="dataSource?.actions?.links?.length || dataSource?.actions?.subLinks?.length"></th>
         </tr>
     </thead>
     <tbody *ngIf="rows?.length">
@@ -19,21 +21,20 @@
                 *ngIf="(rowInfoTemplate && currentRowInfo===row)">
                 <td class="row-info-sub-container"
                     [attr.colspan]="(dataSource.headers|visibleHeaders).length + specColums">
-                    <div id="{{tableID + 'row_' + rowIndex}}" class="row-info">
-                        <mdc-row-info (onInit)="rowDetailsInit($event)" [componentID]="tableID + 'row_' + rowIndex">
+                        <mdc-row-info (onInit)="rowDetailsInit($event)">
                             <ng-container [ngTemplateOutlet]="rowInfoTemplate"
                                 [ngTemplateOutletContext]="{$implicit: row}">
                             </ng-container>
                         </mdc-row-info>
-                    </div>
                 </td>
             </tr>
             <tr (click)="rowClick(row)" (mouseover)="rowMouseOver($event,row,rowIndex)"
                 (mouseleave)="rowMouseLeave($event,row,rowIndex)"
                 [ngClass]="{'active':row.isActive,'row-even':rowIndex%2===0}" mdcTableRow>
                 <ng-container *ngFor="let header of dataSource.headers|visibleHeaders;let index = index">
-                    <td [mdcTableItem]="index" (click)="showItemInfo(row,header,rowIndex,$event)">
-                        <!-- <div [ngClass]="{'row-details-container':header.showDetails}"> -->
+                    <td [ngStyle]="header.columnStyle||header.style" class="admin-table__item {{header.css}}"
+                        [mdcTableItem]="index">
+                        <div [ngClass]="{'row-details-container':header.showDetails}">
                             <mdc-text-block *ngIf="!cellsTemplate || !cellsTemplate[header.columnId]"
                                 [maxWidth]="header.maxWidth||500" text="{{row.cells[header.columnId]}}">
                             </mdc-text-block>
@@ -41,17 +42,17 @@
                                 [ngTemplateOutlet]="cellsTemplate[header.columnId]"
                                 [ngTemplateOutletContext]="{$implicit: row.cells,source:row.source}">
                             </ng-container>
-                            <!-- <div *ngIf="header.showDetails" [hidden]="currentOver!==row" class="more-link pointer">
-                                <div (click)="showItemInfo(row,header,rowIndex,$event)">
+                            <div *ngIf="header.showDetails" [hidden]="currentOver!==row" class="more-link pointer">
+                                <div (click)="showItemInfo(row,header,rowIndex+1,$event)">
                                     Details
-                                    <svg color="#0596FF" width="14" height="14" mdcSvg="ic-next-to-page">
-                                    </svg>
+                                    <svg color="#0596FF" width="14" height="14" mdcSvg="ic-next-to-page"></svg>
                                 </div>
                             </div>
-                        </div> -->
+                        </div>
                     </td>
                 </ng-container>
-                <td *ngIf="dataSource?.actions?.links?.length || dataSource?.actions?.subLinks?.length">
+                <td class="admin-table__item admin-table__item_menu"
+                    *ngIf="dataSource?.actions?.links?.length || dataSource?.actions?.subLinks?.length">
                     <span (click)="openLinkMenu(row,$event,rowIndex)" class="admin-table-action__menu ic-hover"
                         *ngIf="((dataSource.actions.subLinks|actionLink:row).length||(dataSource.actions.links|actionLink:row).length)">
                         <mdc-icon path="ic-dot-menu"></mdc-icon>

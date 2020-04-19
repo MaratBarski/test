@@ -22,11 +22,14 @@
       "@env/*": [
         "src/environments/*"
       ],
+      "@app/core-api": [
+        "./projects/core/src/public-api"
+      ],
       "@app/*": [
         "src/app/*"
       ],
-      "appcore": [
-        "src/app/core-api.ts"
+      "@appcore": [
+        "./projects/core/src/public-api"
       ],
       "core": [
         "dist/core"

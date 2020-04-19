@@ -6,7 +6,7 @@ const SUB_MENU_SHOW = 'showSideMenu';
   providedIn: 'root'
 })
 export class ComponentService {
-
+  public onSideBarToggle: Subject<boolean> = new Subject<boolean>();
   set showSideMenu(showSideMenu: boolean) {
     localStorage.setItem(SUB_MENU_SHOW, showSideMenu.toString().toLowerCase());
   }
@@ -68,8 +68,11 @@ export class ComponentService {
       element.getBoundingClientRect();
   }
 
-  static documentClick(): void {
+  static documentClick(event: any = undefined): void {
     document.dispatchEvent(new Event('click'));
+    if (event && event.stopPropagation) {
+      event.stopPropagation();
+    }
   }
 
   static hideScroll(hide: boolean): void {

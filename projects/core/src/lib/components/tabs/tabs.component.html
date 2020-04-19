@@ -1,6 +1,6 @@
 <div *ngIf="tabs" class="tabs-page">
     <div id="{{tabid + i}}" *ngFor="let tab of tabs;let i = index" (click)="activate(i,tab)" (mouseover)="mouseover(i,tab,$event)"
-        (mouseleave)="mouseleave(i,tab,$event)" [style.cursor]="active !==i ? 'pointer' : 'default'"
+        (mouseleave)="mouseleave(i,tab,$event)" (click)="mouseclick(i,tab,$event)"  [style.cursor]="active !==i ? 'pointer' : 'default'"
         [ngClass]="{'active':active === i}" class="tabs-page__item">
         <div class="tab-btn">
             <div>

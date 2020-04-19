@@ -1,20 +1,17 @@
-<div class="wrapper">
-    <main>
-        <md-page-title>OUTPUT HISTORY REPORT</md-page-title>
-        <md-page-body>
-            <div class="admin-table-wrap__action">
-                <div class="admin-table-wrap__col">
-                    <mdc-download #downloader [fileName]="downloadFileName" text="Download Report"></mdc-download>
-                </div>
-                <div class="admin-table-wrap__col">
-                    <div class="tabs-page">
-                        <mdc-date-filter #dateFilter (onFilter)="dateFilterData($event)" [dataSource]="reports"
-                            [items]="dateRanges"></mdc-date-filter>
-                    </div>
-                    <form class="form-search d-none d-md-block">
-                        <mdc-auto-search pause="500" #search placeholder="{{'search'|translate}}"></mdc-auto-search>
-                    </form>
-                </div>
+<md-page-title>
+    <div class="page-header__content">
+        <h1>OUTPUT HISTORY REPORT</h1>
+    </div>
+</md-page-title>
+<md-page-body>
+    <div class="admin-table-wrap__action">
+        <div class="admin-table-wrap__col">
+            <mdc-download #downloader [fileName]="downloadFileName" text="Download Report"></mdc-download>
+        </div>
+        <div class="admin-table-wrap__col">
+            <div class="tabs-page">
+                <mdc-date-filter #dateFilter (onFilter)="dateFilterData($event)" [dataSource]="reports"
+                    [items]="dateRanges"></mdc-date-filter>
             </div>
             <mdc-table [rowInfoTemplate]="rowInfoTemplate" [emptyState]="emptyState" #table
                 [cellsTemplate]="{ insertDate:dateColumn, status:statusTemplate, name:nameTemplate, download:downloadTemplate}"
@@ -29,7 +26,6 @@
         </md-page-body>
     </main>
 </div>
-
 
 <ng-template #rowInfoTemplate let-item>
     <div class="category-info-row">

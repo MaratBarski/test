@@ -1,0 +1,30 @@
+<md-chart-pdf #chartPdf [chart]="chart" [width]="pdfChartWidth" [height]="pdfChartHeight"></md-chart-pdf>
+
+<ng-template #chart>
+    <ngx-charts-bar-vertical [view]="view" [scheme]="colorScheme" [barPadding]="10"
+    [results]="dataSource|createdChart" [gradient]="gradient" [xAxis]="showXAxis"
+    [yAxis]="showYAxis" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="true"
+    [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" [legend]="false"
+    [showDataLabel]="true">
+</ngx-charts-bar-vertical>
+</ng-template>
+
+<section class="graph-wrap">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="graph">
+                    <div class="graph__top">
+                        <div class="graph__head">Newly created user accounts
+                        </div>
+                    </div>
+                    <div class="graph__content">
+                        <div class="chart-wraper">
+                            <ng-container [ngTemplateOutlet]="chart"></ng-container>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

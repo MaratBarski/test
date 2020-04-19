@@ -80,5 +80,18 @@ export class CsvManagerService {
       });
     });
   }
+
+  validateFileExtention(inputFile: any, extentions: Array<string>): boolean {
+    if (!inputFile || !inputFile.value) { return true; }
+    if (!extentions) { return false; }
+    const arr = inputFile.value.split('.');
+    const ext = arr[arr.length - 1].toLowerCase().trim();
+    return !!extentions.find(x => x.trim().toLowerCase() === ext);
+  }
+
+  validateFileSize(file: any, minSize: number, maxSize: number): boolean {
+    if (!file) { return false; }
+    return ((minSize < 0 || file.size > minSize) && (maxSize < 0 || file.size < maxSize));
+  }
 }
 

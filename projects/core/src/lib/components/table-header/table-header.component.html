@@ -1,23 +1,19 @@
-<div [ngClass]="{'pointer':model?.isSortEnabled}" class="admin-table__head">
-    <div>
-        <span (click)="sort()" *ngIf="model?.isSortEnabled" class="admin-table__sort">
-            <span *ngIf="(model?.isSortedColumn && model?.sortDir === 'asc') || !model?.isSortedColumn"
-                class="admin-table__sort-up"></span>
-            <span *ngIf="(model?.isSortedColumn && model?.sortDir === 'desc') || !model?.isSortedColumn"
-                class="admin-table__sort-down"></span>
+<span (click)="sort()" *ngIf="model?.isSortEnabled" class="admin-table__sort">
+    <span *ngIf="(model?.isSortedColumn && model?.sortDir === 'asc') || !model?.isSortedColumn"
+        class="admin-table__sort-up"></span>
+    <span *ngIf="(model?.isSortedColumn && model?.sortDir === 'desc') || !model?.isSortedColumn"
+        class="admin-table__sort-down"></span>
+</span>
+{{model.text}}
+<div *ngIf="model?.filter" class="admin-table-filter">
+    <div class="admin-table-filter__icon" (click)="openFilter($event)">
+        <span class="ic-hover">
+            <svg class="icon ic-filter ic-stroke" mdcSvg="ic-filter"></svg>
         </span>
     </div>
-    <div>
-        <span (click)="sort()">{{model.text}}</span>
-    </div>
-    <div *ngIf="model?.filter" class="admin-table-filter">
-        <div (click)="openFilter($event)" class="admin-table-filter__icon">
-            <mdc-icon css="icon ic-filter ic-stroke" path="ic-filter"></mdc-icon>
-        </div>
-        <div #filterPopup *ngIf="filterOptions" (click)="stopEvent($event)" [style.visibility]="filterVisibility" class="filter-popup modal-window">
-            <mdc-check-box-list [allowEmptySelect]="false" [options]="filterOptions" (cancel)="cancelFilter()"
-                (apply)="applyFilter()">
-            </mdc-check-box-list>
-        </div>
+    <div #filterPopup *ngIf="filterOptions" (click)="stopEvent($event)" [style.visibility]="filterVisibility">
+        <mdc-check-box-list [allowEmptySelect]="false" [options]="filterOptions" (cancel)="cancelFilter()"
+            (apply)="applyFilter()">
+        </mdc-check-box-list>
     </div>
 </div>

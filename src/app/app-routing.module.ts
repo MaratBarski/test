@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
-import { LoginService } from './core-api';
+import { LoginService } from '@appcore';
 
 const routes: Routes = [
   {
@@ -34,6 +34,11 @@ const routes: Routes = [
   },
   {
     path: '',
+    redirectTo: 'imported-files',
+    pathMatch: 'full'
+  },
+  {
+    path: '**',
     redirectTo: 'imported-files',
     pathMatch: 'full'
   }

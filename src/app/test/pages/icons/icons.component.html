@@ -1,4 +1,5 @@
 <mdc-svg-loader #svgLoder></mdc-svg-loader>
+<mdc-auto-search (complete)="completeSearch($event)" [pause]="500" #search placeholder="{{'search'|translate}}"></mdc-auto-search>
 <div class="selector">If you can't see icon change background color:
     <select [(ngModel)]="color">
         <option value="#000">Black</option>

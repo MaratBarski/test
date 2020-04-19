@@ -17,6 +17,7 @@ import { PageTitleComponent } from './components/page-title/page-title.component
 import { PageBodyComponent } from './components/page-body/page-body.component';
 import { AnimationStickyDirective } from './directives/animation-sticky.directive';
 import { CsvComboComponent } from './components/csv-combo/csv-combo.component';
+import { DownloadSelectorComponent } from './components/download-selector/download-selector.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { CsvComboComponent } from './components/csv-combo/csv-combo.component';
     PageTitleComponent, 
     PageBodyComponent, 
     AnimationStickyDirective, 
-    CsvComboComponent
+    CsvComboComponent, 
+    DownloadSelectorComponent
   ],
   imports: [
     FormsModule,
@@ -44,7 +46,8 @@ import { CsvComboComponent } from './components/csv-combo/csv-combo.component';
     PageTitleComponent,
     PageBodyComponent,
     AnimationStickyDirective,
-    CsvComboComponent
+    CsvComboComponent,
+    DownloadSelectorComponent
   ],
   entryComponents: [
   ]

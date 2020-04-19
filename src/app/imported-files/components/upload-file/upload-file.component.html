@@ -5,10 +5,6 @@
     </div>
     <div class="form-site">
         <div class="form-site__fields">
-
-            <!-- <mdc-file-uploader #fileUploader (onSelect)="onFileSelect($event)" [accept]="'.csv'"></mdc-file-uploader>
-            <md-csv-combo [headers]="csvHeaders"></md-csv-combo> -->
-
             <div class="form-site__item">
                 <div class="form-site__label">Choose File</div>
                 <div class="file-upload">
@@ -52,15 +48,13 @@
             </div>
             <div [hidden]="!fileType" class="form-site__item">
                 <label class="form-site__label" for="template">Permission Group<span class="form-site__info">
-                        <svg class="icon ic-help">
-                            <use xlink:href="/assets/sprites/sprite.svg#ic-help"></use>
+                        <svg class="icon ic-help" mdcSvg="ic-help">
                         </svg><span class="tooltip"><span class="tooltip__content">Tooltip</span></span></span>
                     <span class="form-site__optional">Optional</span></label>
                 <mdc-select #templateSelector [(ngModel)]="template" maxHeight="150px" [selectUp]="true"
                     [selected]="defaultTemplate" (changed)="changedTemplate($event)" [options]="templates">
                 </mdc-select>
             </div>
-
         </div>
         <div class="form-site__btn">
             <button (click)="cancel()" class="btn btn_border">Cancel</button>

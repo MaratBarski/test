@@ -32,6 +32,7 @@ export class SelectComponent implements ControlValueAccessor, AfterViewInit {
   @ViewChild('optionsContainer', { static: true }) optionsContainer: ElementRef;
   @ViewChild('comboTextContainer', { static: true }) comboTextContainer: ElementRef;
 
+  @Input() isSmall = false;
   @Input() options: Array<SelectOption>;
   @Input() selected: SelectOption;
   @Input() selectUp = false;

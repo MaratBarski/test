@@ -1,77 +1,47 @@
-import { Component, Input, EventEmitter, Output, OnInit, ViewChild } from '@angular/core';
-import { TabItemModel, BaseSibscriber, DownloadComponent } from '@app/core-api';
-import { UsageService, UsageReportState } from '@app/usage/services/usage.service';
+import { Component, Input } from '@angular/core';
+import { UsageLinks } from '@app/usage/models/usage-links';
+import { Router } from '@angular/router';
+import { DownloadOption } from '@app/shared/components/download-selector/download-selector.component';
+import { UsageDownloadService } from '@app/usage/services/usage-download.service';
 
 @Component({
   selector: 'md-usage-dashboard-top',
   templateUrl: './usage-dashboard-top.component.html',
   styleUrls: ['./usage-dashboard-top.component.scss']
 })
-export class UsageDashboardTopComponent extends BaseSibscriber implements OnInit {
+export class UsageDashboardTopComponent {
 
-  @ViewChild('downloader', { static: true }) downloader: DownloadComponent;
-  @Input() downloadFileName = 'download.csv';
-  
-  constructor(private usageService: UsageService) {
-    super();
-    super.add(
-      this.usageService.onStateChanged.subscribe((state: UsageReportState) => {
-        this.tabActive = state.tab;
-        this.subItemActive = state.subTab;
-        if (this.subItemActive !== -1) {
-          this.subTab.title = `More ${this.subItems[this.subItemActive].title}`;
-        } else {
-          this.subTab.title = 'More';
-        }
-      }));
+  constructor(
+    private usageDownloadService: UsageDownloadService,
+    private router: Router
+  ) { }
+
+  links = UsageLinks;
+  @Input() set selectedUrl(selectedUrl: string) {
+    const link = this.links.find(l => l.url === selectedUrl && l.hidden);
+    this._selectedUrl = selectedUrl;
+    this.selectedText = link ? link.text : undefined;
+  }
+  get selectedUrl(): string {
+    return this._selectedUrl;
+  }
+  private _selectedUrl: string;
+  selectedText: string;
+
+  navigate(url: string): void {
+    this.router.navigateByUrl(`/usage-dashboard/${url}`);
   }
 
-  showMoreTab = false;
-  subTab = {
-    title: 'More:', isDropDown: true,
-    mouseOver: (index: number, tab: TabItemModel, event: any, target: any) => {
-      this.showMoreTab = true;
+  download(option: DownloadOption): void {
+    if (option === DownloadOption.none) { return; }
+
+    if (option === DownloadOption.csv) {
+      this.usageDownloadService.toCSV();
+      return;
     }
-  };
-  tabs: Array<TabItemModel> = [
-    { title: 'General Usage' },
-    { title: 'Monthly Activity' },
-    { title: 'Activity per User' },
-    {
-      title: 'Top 10 Users',
-      mouseOver: (index: number, tab: TabItemModel, event: any) => { this.showMoreTab = false; }
-    },
-    this.subTab
-  ];
 
-  @Input() tabActive = 0;
-  @Input() subItemActive = -1;
-  @Output() onSelect = new EventEmitter<{ tab: number, subTab: number }>();
-
-  subItems: Array<TabItemModel> = [
-    { title: 'Retention' },
-    { title: 'Created' },
-    { title: 'Table' }
-  ];
-
-  selectSubItem(i: number): void {
-    this.subItemActive = i;
-    this.tabActive = this.tabs.length - 1;
-    this.showMoreTab = false;
-    this.emit();
+    this.usageDownloadService.toPDF();
   }
 
-  selectTab(tab: number): void {
-    this.tabActive = tab;
-    this.subItemActive = -1;
-    this.emit();
-  }
-
-  private emit(): void {
-    this.onSelect.emit({ tab: this.tabActive, subTab: this.subItemActive });
-  }
-
-  ngOnInit(): void {
-  }
 
 }

@@ -27,7 +27,7 @@
 
 
 @import "./layouts/main.scss";
-@import "./layouts/header.scss";
+@import "./layouts/header";
 @import "./layouts/footer.scss";
 @import "./components/admin-table.scss";
 @import "./components/checkbox.scss";
@@ -53,7 +53,7 @@
 @import "./components/info-popup.scss";
 @import "./components/auto-complete.scss";
 @import "./components/progress.scss";
-@import "./components/sidebar.scss";
+@import "./components/sidebar";
 @import "./components/edit-categories.scss";
 @import "./components/category-list.scss";
 @import "./components/tag.scss";

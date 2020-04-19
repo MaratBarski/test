@@ -10,7 +10,7 @@ export class CsvComboComponent {
 
   @Input() applyWidth = false;
   @Input() selectUp = false;
-  @Input() emptyData: SelectOption = { text: 'Select header', id: '' };
+  @Input() emptyData: SelectOption = { text: 'Select default category...', id: '' };
 
   @Input() set header(header: string) {
     if (!header) {

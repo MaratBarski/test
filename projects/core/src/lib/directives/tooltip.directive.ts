@@ -10,7 +10,17 @@ export type TooltipPosition = 'left' | 'right' | 'top' | 'bottom';
 })
 export class TooltipDirective implements OnInit, OnDestroy {
 
-  @Input('mdcTooltip') text: string;
+  private _text: string;
+  @Input('mdcTooltip') set text(text: string) {
+    this._text = text;
+    if (this.tooltipElement) {
+      this.tooltipElement.textContent = text;
+    }
+  }
+  get text(): string {
+    return this._text;
+  }
+
   @Input('stickyToElement') stickyToElement = false;
   @Input() position: TooltipPosition = 'left';
   @Input('isShowTooltip') set show(show: boolean) {

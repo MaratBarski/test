@@ -3,56 +3,51 @@ import { environment } from '@env/environment';
 import { Offline } from '@app/shared/decorators/offline.decorator';
 import { TableModel, ColumnType, DataService, DateService } from '@app/core-api';
 import { formatDate } from '@angular/common';
-import { Subject, Observable, BehaviorSubject } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { switchMap, catchError, tap } from 'rxjs/operators';
+import { UsageReportParams } from '../models/usage-request';
+import { UsageRequestService } from './usage-request.service';
 
-export const GetDefaultState = (): UsageReportState => {
-  return {
-    tab: 0,
-    subTab: -1,
-    activity: 0
-  }
-}
-export interface UsageReportState {
-  tab: number;
-  subTab: number;
-  activity: number;
-}
-export interface UsageReportParams {
-  fromDate?: Date | string;
-  toDate?: Date | string;
-}
+
 @Injectable({
   providedIn: 'root'
 })
 export class UsageService {
 
-  get onStateChanged(): Observable<UsageReportState> {
-    return this._onStateChanged.asObservable();
-  }
-
-  private _onStateChanged = new BehaviorSubject<UsageReportState>(GetDefaultState());
-
   constructor(
     private dataService: DataService,
     private dateService: DateService,
+    private usageRequestService: UsageRequestService,
     @Inject(LOCALE_ID) private locale: string
   ) {
   }
 
-  setState(state: UsageReportState): void {
-    this._onStateChanged.next(state);
+  getEnvironments(): Observable<Array<string>> {
+    return this.dataService.get('opa')
+      .pipe(
+        catchError((e) => {
+          return of(['dfasdfadfas']);
+        }),
+        tap(() => {
+        }),
+        switchMap(() => {
+          return of(
+            ['1', '2', '3']
+          );
+        })
+      )
   }
 
   @Offline('assets/offline/usageReport.json?')
   private getUrl = `${environment.serverUrl}${environment.endPoints.usageReport}`;
   //http://10.0.2.18:4000/mdclone/api/v1/reporting/usage/25-06-2000/25-09-2021
 
-  getUsageReport(params: UsageReportParams): any {
-    params.fromDate = new Date(params.fromDate || new Date());
-    params.toDate = new Date(params.toDate || new Date());
-    const url = `${this.getUrl}/${this.dateService.formatDate(params.fromDate)}/${this.dateService.formatDate(params.toDate)}`;
-    //alert(url);
-    return this.dataService.get(url);
+  getUsageReport(params: UsageReportParams = undefined): any {
+    // params.fromDate = new Date(params.fromDate || new Date());
+    // params.toDate = new Date(params.toDate || new Date());
+    // const url = `${this.getUrl}/${this.dateService.formatDate(params.fromDate)}/${this.dateService.formatDate(params.toDate)}`;
+    // return this.dataService.get(url);
+    return this.dataService.get(this.getUrl);
   }
 
   createDataSource(files: Array<any>): TableModel {

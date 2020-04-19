@@ -11,4 +11,8 @@ export class IconsComponent {
   color = '#000';
   @ViewChild('svgLoder', { static: true }) svgLoder: SvgLoaderComponent;
   size = 20;
+
+  completeSearch(txt:string):void{
+    alert(txt)
+  }
 }

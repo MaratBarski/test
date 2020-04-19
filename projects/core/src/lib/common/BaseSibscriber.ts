@@ -1,9 +1,9 @@
 import { OnDestroy } from '@angular/core';
-import { Subject, Observable } from 'rxjs';
+import { Subject, Observable, Subscription } from 'rxjs';
 
 
-export class BaseSibscriber implements OnDestroy {
-    private subscribers: Array<any> = [];
+export abstract class BaseSibscriber implements OnDestroy {
+    private subscribers: Array<Subscription> = [];
 
     get onAfterDestroy(): Observable<any> {
         return this._onAfterDestroy.asObservable();

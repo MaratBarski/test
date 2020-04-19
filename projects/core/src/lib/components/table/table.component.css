@@ -8,16 +8,7 @@
     position: relative;
     direction: rtl;
 }
-.row-info{
-    direction: ltr;
-    z-index: 2;
-    background-color: #fff;
-    position: absolute; 
-    margin-left: auto;
-    max-width: 1000px;
-    overflow: hidden;
-    visibility: hidden;
-}
+
 .row-link:hover{
     text-decoration: underline;
 }
@@ -50,7 +41,7 @@
     margin-left: 120px;
     z-index: 2;
     background-color: #E1E3E7;
-    width:100px;
+    width:80px;
     height:26px;
 }
 .more-link:hover{
