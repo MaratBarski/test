@@ -8,12 +8,13 @@ export const environment = {
   isOfflineMode: false,
   endPoints: {
     userData: 'user-data',
-    fileSource: 'mdclone/api/v1/file-source',
-    uploadFileSource: 'mdclone/api/v1/upload/file-source',
-    deleteFileSource: 'mdclone/api/v1/file-source',
-    hierarchy: 'mdclone/api/v1/hierarchy',
-    historyReport: 'mdclone/api/v1/session-history',
+    fileSource: 'kostya/api/v1/file-source',
+    templateByProject: 'kostya/api/v1/template/get-by-project',
+    uploadFileSource: 'kostya/api/v1/upload/file-source',
+    deleteFileSource: 'kostya/api/v1/file-source',
+    hierarchy: 'kostya/api/v1/hierarchy',
+    historyReport: 'kostya/api/v1/session-history',
     downloadHistoryReport: 'moshe/api/v1/session-history/download',
-    usageReport: 'mdclone/api/v1/reporting/usage'
+    usageReport: 'kostya/api/v1/reporting/usage'
   }
 };
