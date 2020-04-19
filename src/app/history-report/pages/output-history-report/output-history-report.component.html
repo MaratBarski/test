@@ -17,7 +17,6 @@
                 </div>
             </div>
             <mdc-table [rowInfoTemplate]="rowInfoTemplate" [emptyState]="emptyState" #table
-                [headersTemplate]="{ data:dataHeader}"
                 [cellsTemplate]="{ insertDate:dateColumn, status:statusTemplate, name:nameTemplate, download:downloadTemplate}"
                 [searchOptions]="searchOptions" [paginator]="paginator" [search]="search" [dataSource]="dataSource"
                 [downloader]="downloader">
@@ -40,26 +39,23 @@
 <ng-template #dateColumn let-item let-src="source">
     <span class="pointer link">{{item.insertDate|date}}</span>
 </ng-template>
-<ng-template #dataHeader>
+<!-- <ng-template #dataHeader>
     <span class="font-weight-600">Data </span>
-    <mdc-icon path="ic-help" color="blue"></mdc-icon>
-</ng-template>
+    <svg width="15" height="15" mdcSvg="ic-help" color="blue"></svg>
+</ng-template> -->
 <ng-template let-item #statusTemplate let-src="source">
-    <div *ngIf="src.transStatus" [stickyToElement]="true" [position]="'right'" [mdcTooltip]="'Success'"
-        class="height-20-px width-20-px">
-        <mdc-icon path="ic-success" color="green"></mdc-icon>
+    <div *ngIf="src.transStatus" [stickyToElement]="true" [position]="'right'" [mdcTooltip]="'Success'">
+        <svg width="20" height="20" mdcSvg="ic-success" color="green"></svg>
     </div>
-    <div *ngIf="!src.transStatus" [stickyToElement]="true" [position]="'left'" [mdcTooltip]="'Failure'"
-        class="height-20-px width-20-px">
-        <mdc-icon path="ic-failure" color="red"></mdc-icon>
+    <div *ngIf="!src.transStatus" [stickyToElement]="true" [position]="'left'" [mdcTooltip]="'Failure'">
+        <svg width="20" height="20" mdcSvg="ic-failure" color="red"></svg> 
     </div>
 </ng-template>
 <ng-template let-item #downloadTemplate let-src="source">
     <!-- <span (click)="downloadClick(item,src,$event)" class="admin-table-action__menu ic-hover"> -->
-    <div class="height-20-px width-20-px">
+    <div>
         <a href="{{downloadUrl}}/{{src.sessionHistoryId}}">
-            <!-- <svg width="30" height="30" mdcSvg="ic-download"></svg>   -->
-            <mdc-icon path="ic-download"></mdc-icon>
+            <svg width="30" height="30" mdcSvg="ic-download" color="gray"></svg> 
         </a>
     </div>
     <!-- </span> -->
@@ -76,7 +72,7 @@
         </div>
         <div>
             <a target="_blank" href="/datalake/#/projects/{{src.projectId}}/sessions/{{src.sessionId}}">
-                <mdc-icon path="ic-add-help" color="#0596ff"></mdc-icon>
+                <svg width="30" height="30" mdcSvg="ic-add-help" color="#0596ff"></svg> 
             </a>
         </div>
     </div>

@@ -69,7 +69,7 @@ export class HistoryReportService {
         {
           columnId: 'data',
           text: 'Data',
-          isSortEnabled: true,
+          isSortEnabled: false,
           csvTitle: 'Data'
         },
         {
