@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ImportedFilesService } from '../../services/imported-files.service';
 import { FileSource, FileSourceResponse } from '../../models/file-source';
 import { TableComponent, TranslateService, DateFilterComponent, TableModel, PopupComponent, CheckBoxListOption, NavigationService, PageInfo, BaseSibscriber, CheckBoxListComponent, SelectOption, EmptyState, DatePeriod, TableActionCommand } from '@app/core-api';
@@ -11,7 +11,7 @@ import { UploadFileComponent } from '@app/imported-files/components/upload-file/
   templateUrl: './imported-files.component.html',
   styleUrls: ['./imported-files.component.scss']
 })
-export class ImportedFilesComponent extends BaseSibscriber implements OnInit, OnDestroy {
+export class ImportedFilesComponent extends BaseSibscriber implements OnInit {
 
   @ViewChild('dateFilter', { static: true }) dateFilter: DateFilterComponent;
   @ViewChild('table', { static: true }) table: TableComponent;
