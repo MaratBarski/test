@@ -19,6 +19,9 @@
                 "projectName": "ETL project",
                 "defaultSiteId": "3"
             },
+            "user": {
+                "login": "mdclone.admin"
+            },
             "template": {
                 "templateId": "18",
                 "templateName": "Template1P",
@@ -45,6 +48,9 @@
                 "projectId": "1",
                 "projectName": "Demo Project",
                 "defaultSiteId": "1"
+            },
+            "user": {
+                "login": "test.admin"
             },
             "template": {
                 "templateId": "1",

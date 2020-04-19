@@ -18,7 +18,7 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit {
   @ViewChild('checkFilter', { static: true }) checkFilter: CheckBoxListComponent;
 
   permissions: Array<CheckBoxListOption> = [];
-  searchOptions = ['fileName', 'environment', 'permission'];
+  searchOptions = ['fileName', 'environment', 'permission', 'user'];
 
   emptyState: EmptyState = {
     title: 'You can synthesize or manipulate your own data. Start by clicking the button above.',
