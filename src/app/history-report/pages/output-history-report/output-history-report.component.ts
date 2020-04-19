@@ -14,8 +14,8 @@ export class OutputHistoryReportComponent extends BaseSibscriber implements OnIn
   get downloadUrl(): string { return environment.serverUrl + environment.endPoints.downloadHistoryReport + '/' };
   @ViewChild('table', { static: true }) table: TableComponent;
   emptyState: EmptyState = {
-    title: 'No history.',
-    subTitle: 'history.',
+    title: 'No history here',
+    subTitle: '',
     image: 'filesEmpty.png'
   }
   downloadFileName = 'history.csv';

@@ -22,7 +22,7 @@ export class HistoryReportService {
   constructor(private dataService: DataService, private http: HttpClient) { }
 
   @Offline('assets/offline/history.json')
-  private getUrl = `${environment.serverUrl}${environment.endPoints.historyReport}/01-01-2020`;
+  private getUrl = `${environment.serverUrl}${environment.endPoints.historyReport}`;
 
   load(): Observable<SessionHistoryResponse> {
     return this.dataService.get(this.getUrl);

@@ -13,19 +13,23 @@
                 <mdc-date-filter #dateFilter (onFilter)="dateFilterData($event)" [dataSource]="reports"
                     [items]="dateRanges"></mdc-date-filter>
             </div>
-            <mdc-table [rowInfoTemplate]="rowInfoTemplate" [emptyState]="emptyState" #table
-                [cellsTemplate]="{ insertDate:dateColumn, status:statusTemplate, name:nameTemplate, download:downloadTemplate}"
-                [searchOptions]="searchOptions" [paginator]="paginator" [search]="search" [dataSource]="dataSource"
-                [downloader]="downloader">
-            </mdc-table>
-            <div class="pager-wrap">
-                <mdc-paginator #paginator paginationTitle="{{'paginationTitle'|translate}}"
-                    noPagingTitle="Showing {0} files" [blockSize]="3" [pageSize]="50" [currentPage]="0">
-                </mdc-paginator>
-            </div>
-        </md-page-body>
-    </main>
-</div>
+            <form class="form-search d-none d-md-block">
+                <mdc-auto-search pause="500" #search placeholder="{{'search'|translate}}"></mdc-auto-search>
+            </form>
+        </div>
+    </div>
+    <mdc-table [rowInfoTemplate]="rowInfoTemplate" [emptyState]="emptyState" #table
+        [headersTemplate]="{ data:dataHeader}"
+        [cellsTemplate]="{ insertDate:dateColumn, status:statusTemplate, name:nameTemplate, download:downloadTemplate}"
+        [searchOptions]="searchOptions" [paginator]="paginator" [search]="search" [dataSource]="dataSource"
+        [downloader]="downloader">
+    </mdc-table>
+    <div class="pager-wrap">
+        <mdc-paginator #paginator paginationTitle="{{'paginationTitle'|translate}}" noPagingTitle="Showing {0} files"
+            [blockSize]="3" [pageSize]="50" [currentPage]="0">
+        </mdc-paginator>
+    </div>
+</md-page-body>
 
 <ng-template #rowInfoTemplate let-item>
     <div class="category-info-row">
@@ -35,27 +39,26 @@
 <ng-template #dateColumn let-item let-src="source">
     <span class="pointer link">{{item.insertDate|date}}</span>
 </ng-template>
-<!-- <ng-template #dataHeader>
+<ng-template #dataHeader>
     <span class="font-weight-600">Data </span>
     <svg width="15" height="15" mdcSvg="ic-help" color="blue"></svg>
-</ng-template> -->
+</ng-template>
 <ng-template let-item #statusTemplate let-src="source">
-    <div *ngIf="src.transStatus" [stickyToElement]="true" [position]="'right'" [mdcTooltip]="'Success'">
+    <div *ngIf="src.transStatus" [stickyToElement]="true" [position]="'right'" [mdcTooltip]="'File generated successfully'"
+        class="height-20-px width-20-px">
         <svg width="20" height="20" mdcSvg="ic-success" color="green"></svg>
     </div>
-    <div *ngIf="!src.transStatus" [stickyToElement]="true" [position]="'left'" [mdcTooltip]="'Failure'">
+    <div *ngIf="!src.transStatus" [stickyToElement]="true" [position]="'left'" [mdcTooltip]="'Failure'"
+        class="height-20-px width-20-px">
         <svg width="20" height="20" mdcSvg="ic-failure" color="red"></svg> 
     </div>
 </ng-template>
 <ng-template let-item #downloadTemplate let-src="source">
     <!-- <span (click)="downloadClick(item,src,$event)" class="admin-table-action__menu ic-hover"> -->
-    <div>
-        <a href="{{downloadUrl}}/{{src.sessionHistoryId}}">
-            <svg width="30" height="30" mdcSvg="ic-download" color="gray"></svg> 
-        </a>
-    </div>
+    <a href="{{downloadUrl}}{{src.sessionHistoryId}}">
+        <svg width="30" height="30" mdcSvg="ic-download" color="gray"></svg> 
+    </a>
     <!-- </span> -->
-    <!-- <div>{{src.sessionHistoryId}}</div> -->
 </ng-template>
 
 <ng-template let-item #nameTemplate let-src="source">
