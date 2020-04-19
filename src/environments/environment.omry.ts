@@ -15,6 +15,8 @@ export const environment = {
     deleteHierarchy: 'omry/api/v1/hierarchy',
     downloadHierarchy: 'omry/api/v1/hierarchy/download',
     uploadHierarchy: 'omry/api/v1/upload/hierarchy',
-    historyReport: 'omry/api/v1/session-history'
+    historyReport: 'omry/api/v1/session-history',
+    downloadHistoryReport: 'omry/api/v1/session-history/download',
+    usageReport: 'omry/api/v1/reporting/usage'
   }
 };

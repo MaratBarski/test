@@ -12,8 +12,8 @@ export const DefaultEmptyState = (): EmptyState => {
     title: 'Not a part of a component yet.',
     subTitle: 'Try using the filters or search different keywords',
     image: 'nodata.png'
-  }
-}
+  };
+};
 
 @Component({
   selector: 'mdc-empty-state',

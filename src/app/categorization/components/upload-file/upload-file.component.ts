@@ -27,8 +27,8 @@ export class UploadFileComponent {
     return !!this.file;
   }
 
-  @Offline(`${environment.serverUrl}${environment.endPoints.uploadHierarchy}`)
-  private _uploadUrl = `${environment.serverUrl}${environment.endPoints.uploadHierarchy}`;
+  @Offline(`${ENV.serverUrl}${ENV.endPoints.uploadFileSource}`)
+  private _uploadUrl = `${ENV.serverUrl}${ENV.endPoints.uploadHierarchy}`;
 
   uploadFile(event: any): void {
     event.preventDefault();

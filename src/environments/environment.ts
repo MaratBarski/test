@@ -15,6 +15,7 @@ export const environment = {
     deleteHierarchy: 'mdclone/api/v1/hierarchy',
     downloadHierarchy: 'mdclone/api/v1/hierarchy/download',
     uploadHierarchy: 'mdclone/api/v1/upload/hierarchy',
-    historyReport: 'mdclone/api/v1/session-history'
+    historyReport: 'mdclone/api/v1/session-history',
+    usageReport: 'mdclone/api/v1/reporting/usage'
   }
 };

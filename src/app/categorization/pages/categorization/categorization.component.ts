@@ -59,7 +59,7 @@ export class CategorizationComponent extends BaseSibscriber implements OnInit {
     delete: (action: TableActionCommand) => {
       alert('delete');
       // this.category = this.category.filter(x => x !== source);
-      this.categorizationService.deleteHierarchy(source)
+      this.categorizationService.deleteHierarchy(action.item.source)
         .toPromise()
         .then(res => {
           console.log('Hierarchy Deleted');

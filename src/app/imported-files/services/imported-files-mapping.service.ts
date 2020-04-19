@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {DataService, TableModel} from '@appcore';
 import {forkJoin, Observable} from 'rxjs';
-import {FileSourceResponse, FileSource, FileSourceMappingResponse} from '../models/file-source';
+import {FileSourceResponse, FileSource, FileSourceMappingResponse} from '../../models/file-source';
 import {Offline} from 'src/app/shared/decorators/offline.decorator';
 import {Resolve, ActivatedRouteSnapshot, RouterStateSnapshot} from '@angular/router';
 import {environment} from '@env/environment';
@@ -86,7 +86,7 @@ export class ImportedFilesMappingService implements Resolve<FileSourceMappingRes
       });
     });
     data.rows.forEach((r, i) => {
-      r.cells['No'] = i;
+      r.cells.No = i;
     });
     return data;
   }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { DataService, TableModel, CheckBoxListOption } from '@appcore';
+import { DataService, TableModel, CheckBoxListOption } from '@app/core-api';
 import { Observable } from 'rxjs';
-import { FileSourceResponse, FileSource } from '../../models/file-source';
+import { FileSourceResponse, FileSource } from '@app/models/file-source';
 import { Offline } from 'src/app/shared/decorators/offline.decorator';
 import { environment } from '@env/environment';
 
@@ -140,8 +140,8 @@ export class ImportedFilesService {
         },
         source: fl,
         isActive: false
-      })
-    })
+      });
+    });
     return data;
   }
 
