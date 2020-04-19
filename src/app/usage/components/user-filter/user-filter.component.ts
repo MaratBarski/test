@@ -1,17 +1,18 @@
-import { Component, Output, EventEmitter, OnDestroy, OnInit, HostListener, Input } from '@angular/core';
+import { Component, Output, EventEmitter, OnDestroy, OnInit, HostListener, Input, ChangeDetectionStrategy } from '@angular/core';
 import { UsageRequestService } from '@app/usage/services/usage-request.service';
 import { ComponentService } from '@app/core-api';
 
 @Component({
   selector: 'md-user-filter',
   templateUrl: './user-filter.component.html',
-  styleUrls: ['./user-filter.component.scss']
+  styleUrls: ['./user-filter.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UserFilterComponent implements OnDestroy, OnInit {
 
   topChecked = true;
   searchText = '';
-
+  isExpanded = false;
   topCheckApply = true;
   searchWord = '';
   users: Array<any>;
@@ -20,16 +21,23 @@ export class UserFilterComponent implements OnDestroy, OnInit {
   @Input() minSelected = 1;
   @Input() maxSelected = 7;
 
-  get selectedCount(): number {
-    if (!this.users) { return 0; }
-    return this.users.filter(x => x.isChecked).length;
-  }
+  selectedCount = 0;
+
+  // get selectedCount(): number {
+  //   if (!this.users) { return 0; }
+  //   return this.users.filter(x => x.isChecked).length;
+  // }
 
   constructor(
     public usageRequestService: UsageRequestService
   ) {
     this.users = JSON.parse(JSON.stringify(usageRequestService.users));
     this.changeTop(true);
+    this.updateSelectedCount();
+  }
+
+  private updateSelectedCount(): void {
+    this.selectedCount = this.users.filter(x => x.isChecked).length
   }
 
   ngOnInit(): void {
@@ -45,10 +53,11 @@ export class UserFilterComponent implements OnDestroy, OnInit {
       if (index >= 5) { return; }
       user.isChecked = flag
     });
+    this.updateSelectedCount();
   }
 
   changeSelect(isChecked: boolean): void {
-
+    this.updateSelectedCount();
   }
 
   clear(): void {
@@ -56,6 +65,7 @@ export class UserFilterComponent implements OnDestroy, OnInit {
     this.users.forEach((user: any, index: number) => {
       user.isChecked = false;
     });
+    this.updateSelectedCount();
   }
 
   clearSearch(): void {
@@ -89,8 +99,6 @@ export class UserFilterComponent implements OnDestroy, OnInit {
     //   this.searchWord = this.searchText;
     // }
   }
-
-  isExpanded = false;
 
   expand(event: any): void {
     if (this.isExpanded) {

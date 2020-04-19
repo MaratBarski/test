@@ -1,13 +1,14 @@
-import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
-import { TableComponent, TranslateService, DateService, TabItemModel, TableModel, MenuLink, PopupComponent } from '@appcore';
-import { ImportedFilesService } from '../../services/imported-files.service';
-import { Store } from '@ngrx/store';
-import { load } from '../../store/actions/imported-files.actions';
-import { selectData } from '../../store/selectors/imported-files.selector';
-import { FileSource } from '../../../models/file-source';
-import { Subscription } from 'rxjs';
-import { UploadService } from '@app/shared/services/upload.service';
-import { ActivatedRoute } from '@angular/router';
+import {Component, OnInit, ViewChild, OnDestroy} from '@angular/core';
+import {TableComponent, TranslateService, DateService, TabItemModel, TableModel, MenuLink, PopupComponent, SelectOption} from '@appcore';
+import {ImportedFilesService} from '../../services/imported-files.service';
+import {Store} from '@ngrx/store';
+import {load} from '../../store/actions/imported-files.actions';
+import {selectData} from '../../store/selectors/imported-files.selector';
+import {FileClm, FileSource} from '../../models/file-source';
+import {Subscription} from 'rxjs';
+import {UploadService} from '@app/shared/services/upload.service';
+import {ActivatedRoute} from '@angular/router';
+import {Template} from '@app/models/template';
 
 @Component({
   selector: 'md-imported-files-mapping',
@@ -16,8 +17,11 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ImportedFileMappingComponent implements OnInit, OnDestroy {
   fileSource: FileSource;
-  @ViewChild('popupMenu', { static: true }) popupMenu: PopupComponent;
-  @ViewChild('table', { static: true }) table: TableComponent;
+  templates: Template[] = [];
+  templateSelectOptions: SelectOption[] = [];
+  @ViewChild('popupMenu', {static: true}) popupMenu: PopupComponent;
+  @ViewChild('table', {static: true}) table: TableComponent;
+
   constructor(
     private translateService: TranslateService,
     private dateService: DateService,
@@ -25,8 +29,18 @@ export class ImportedFileMappingComponent implements OnInit, OnDestroy {
     private store: Store<any>,
     private route: ActivatedRoute
   ) {
-    debugger;
-    this.fileSource = this.route.snapshot.data.data;
+    this.fileSource = this.route.snapshot.data.data[0];
+    this.templates = this.route.snapshot.data.data[1];
+    this.templates.forEach(item => {
+      const tmp: SelectOption = new SelectOption();
+      tmp.id = item.templateId;
+      tmp.text = item.templateName;
+      this.templateSelectOptions.push(tmp);
+    });
+
+
+    console.log(this.fileSource);
+    console.log(this.templates);
   }
 
   deleteLink: MenuLink = {
@@ -41,19 +55,23 @@ export class ImportedFileMappingComponent implements OnInit, OnDestroy {
         }
       };
     }
-  }
+  };
 
   editLink: MenuLink = {
     text: 'Edit',
     icon: 'ic-edit',
-    click: (source) => { console.log(JSON.stringify(source)); }
-  }
+    click: (source) => {
+      console.log(JSON.stringify(source));
+    }
+  };
 
   viewLink: MenuLink = {
     text: 'View output summary',
     icon: 'ic-view',
-    click: (source) => { console.log(JSON.stringify(source)); }
-  }
+    click: (source) => {
+      console.log(JSON.stringify(source));
+    }
+  };
 
   sublinks: Array<MenuLink> = [this.deleteLink];
   links: Array<MenuLink> = [
@@ -82,7 +100,7 @@ export class ImportedFileMappingComponent implements OnInit, OnDestroy {
     } else if (this.tabActive === 2) {
       rows = this.dateService.lastWeek(rows, 'insertDate');
     }
-    this.dataSource = { ...this.dataOrigin, rows: rows };
+    this.dataSource = {...this.dataOrigin, rows: rows};
   }
 
   ngOnDestroy(): void {
@@ -110,9 +128,9 @@ export class ImportedFileMappingComponent implements OnInit, OnDestroy {
 
   initTabs(): void {
     this.tabs = [
-      { title: this.translateService.translate('All') },
-      { title: this.translateService.translate('LastMonth') },
-      { title: this.translateService.translate('LastWeek') }
+      {title: this.translateService.translate('All')},
+      {title: this.translateService.translate('LastMonth')},
+      {title: this.translateService.translate('LastWeek')}
     ];
   }
 

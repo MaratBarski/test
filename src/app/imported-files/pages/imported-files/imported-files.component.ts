@@ -1,6 +1,6 @@
-import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
-import { ImportedFilesService } from '@app/imported-files/services/imported-files.service';
-import { FileSource, FileSourceResponse } from '@app/models/file-source';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ImportedFilesService } from '../../services/imported-files.service';
+import { FileSource, FileSourceResponse } from '../../models/file-source';
 import { TableComponent, TranslateService, DateFilterComponent, TableModel, PopupComponent, CheckBoxListOption, NavigationService, PageInfo, BaseSibscriber, CheckBoxListComponent, SelectOption, EmptyState, DatePeriod, TableActionCommand } from '@app/core-api';
 import { DateRangeButton } from '@app/core-api';
 import { Router } from '@angular/router';
@@ -11,35 +11,25 @@ import { UploadFileComponent } from '@app/imported-files/components/upload-file/
   templateUrl: './imported-files.component.html',
   styleUrls: ['./imported-files.component.scss']
 })
-export class ImportedFilesComponent extends BaseSibscriber implements OnInit, OnDestroy {
-
-  get templates(): Array<SelectOption> {
-    if (!this.permissions) { return []; }
-    return this.permissions.map(x => ({ text: x.text, id: x.id, value: x.id }));
-  }
-
-  constructor(
-    private translateService: TranslateService,
-    private importedFilesService: ImportedFilesService,
-    private navigationService: NavigationService,
-    private router: Router
-  ) {
-    super();
-    this.navigationService.currentPageID = PageInfo.ImportedFiles.id;
-  }
+export class ImportedFilesComponent extends BaseSibscriber implements OnInit {
 
   @ViewChild('dateFilter', { static: true }) dateFilter: DateFilterComponent;
   @ViewChild('table', { static: true }) table: TableComponent;
   @ViewChild('checkFilter', { static: true }) checkFilter: CheckBoxListComponent;
 
   permissions: Array<CheckBoxListOption> = [];
-  searchOptions = ['fileName', 'environment', 'permission'];
+  searchOptions = ['fileName', 'environment', 'permission', 'user'];
 
   emptyState: EmptyState = {
     title: 'You can synthesize or manipulate your own data. Start by clicking the button above.',
     subTitle: 'Your files will be listed here.',
     image: 'filesEmpty.png'
-  };
+  }
+
+  get templates(): Array<SelectOption> {
+    if (!this.permissions) { return []; }
+    return this.permissions.map(x => { return { text: x.text, id: x.id, value: x.id } });
+  }
 
   dateRanges: Array<DateRangeButton> = [
     { text: this.translateService.translate('All'), range: { all: true } },
@@ -52,6 +42,20 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, On
   dataSource: TableModel;
   fileSource: Array<FileSource>;
 
+  constructor(
+    private translateService: TranslateService,
+    private importedFilesService: ImportedFilesService,
+    private navigationService: NavigationService,
+    private router: Router
+  ) {
+    super();
+    this.navigationService.currentPageID = PageInfo.ImportedFiles.id;
+  }
+
+  onAction(action: TableActionCommand): void {
+    this.execCommand[action.command](action);
+  }
+
   execCommand = {
     edit: (action: TableActionCommand) => {
       this.router.navigateByUrl(`/imported-files/${action.item.source.fileId}`);
@@ -61,7 +65,7 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, On
       console.log('view command');
     },
     delete: (action: TableActionCommand) => {
-      this.fileSource = this.fileSource.filter(x => x !== action.item.source);
+      this.fileSource = this.fileSource.filter(x => x != action.item.source);
       this.table.stayOnCurrentPage = true;
       this.importedFilesService.deleteFile(action.item.source)
         .toPromise()
@@ -69,13 +73,9 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, On
           console.log('File deleted');
         }).catch(e => {
           console.error('Error delete file');
-        });
+        })
     }
   };
-
-  onAction(action: TableActionCommand): void {
-    this.execCommand[action.command](action);
-  }
 
   private initData(): void {
     this.dataOrigin = this.dataSource = this.importedFilesService.createDataSource(this.fileSource);
@@ -92,7 +92,7 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, On
 
   initPermissions(): void {
     this.permissions = this.importedFilesService.getFilter(
-      this.fileSource.filter(x => x.template).map(x => ({ id: x.template.templateId, text: x.template.templateName }))
+      this.fileSource.filter(x => x.template).map(x => { return { id: x.template.templateId, text: x.template.templateName } })
     );
   }
 

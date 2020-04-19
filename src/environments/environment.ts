@@ -9,6 +9,7 @@ export const environment = {
   endPoints: {
     userData: 'user-data',
     fileSource: 'mdclone/api/v1/file-source',
+    templateByProject: 'mdclone/api/v1/template/get-by-project',
     uploadFileSource: 'mdclone/api/v1/upload/file-source',
     deleteFileSource: 'mdclone/api/v1/file-source',
     hierarchy: 'mdclone/api/v1/hierarchy',

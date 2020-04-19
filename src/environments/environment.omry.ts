@@ -10,6 +10,7 @@ export const environment = {
     userData: 'user-data',
     fileSource: 'omry/api/v1/file-source',
     uploadFileSource: 'omry/api/v1/upload/file-source',
+    templateByProject: 'omry/api/v1/template/get-by-project',
     deleteFileSource: 'omry/api/v1/file-source',
     hierarchy: 'omry/api/v1/hierarchy',
     deleteHierarchy: 'omry/api/v1/hierarchy',
