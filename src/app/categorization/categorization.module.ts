@@ -12,10 +12,12 @@ import { CategorizationLoadEffect } from './store/effects/categorization-load.ef
 import { MapCategoriesComponent } from './pages/map-categories/map-categories.component';
 import { CategoryInfoComponent } from './components/category-info/category-info.component';
 import { UploadFileComponent } from './components/upload-file/upload-file.component';
+import { EditCategoriesComponent } from './pages/edit-categories/edit-categories.component';
 
 const routes: Array<Route> = [
   { path: '', component: CategorizationComponent },
-  { path: 'map-categories', component: MapCategoriesComponent }
+  { path: 'map-categories', component: MapCategoriesComponent },
+  { path: 'edit-categories', component: EditCategoriesComponent }
 ]
 
 @NgModule({
@@ -23,7 +25,8 @@ const routes: Array<Route> = [
     CategorizationComponent,
     MapCategoriesComponent,
     CategoryInfoComponent,
-    UploadFileComponent
+    UploadFileComponent,
+    EditCategoriesComponent
   ],
   imports: [
     CommonModule,

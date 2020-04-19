@@ -22,7 +22,7 @@ export class HistoryReportService {
   constructor(private dataService: DataService, private http: HttpClient) { }
 
   @Offline('assets/offline/history.json')
-  private getUrl = `${environment.serverUrl}${environment.endPoints.historyReport}/01-01-2020`;
+  private getUrl = `${environment.serverUrl}${environment.endPoints.historyReport}`;
 
   load(): Observable<SessionHistoryResponse> {
     return this.dataService.get(this.getUrl);
@@ -69,7 +69,7 @@ export class HistoryReportService {
         {
           columnId: 'data',
           text: 'Data',
-          isSortEnabled: true,
+          isSortEnabled: false,
           csvTitle: 'Data'
         },
         {
@@ -107,7 +107,7 @@ export class HistoryReportService {
         cells: {
           name: i,
           insertDate: fl.insertDate,
-          fullName: fl.userId,
+          fullName: fl.user.firstName + " " + fl.user.lastName,
           approvalKey: !!fl.userActivateSession ? fl.userActivateSession.approval_number : "",
           research: "Missing",
           data: "Missing",
