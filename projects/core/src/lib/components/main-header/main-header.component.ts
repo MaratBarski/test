@@ -5,6 +5,8 @@ enum Icon {
   hamburgerOpen = 'ic-hamburger',
   hamburgerClose = 'ic-hamburger-arrow',
   arrowDown = 'ic-select-arr-down',
+  notice = 'notice',
+  categorization = 'ic-categorization'
 }
 
 @Component({
