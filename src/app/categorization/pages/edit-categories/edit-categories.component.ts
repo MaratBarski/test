@@ -51,6 +51,7 @@ export class EditCategoriesComponent extends BaseSibscriber implements OnInit {
     if (!this.selectedCategory) { return; }
     if (!this.selectedCategory.data) { return; }
     if (!this.selectedCategory.data.hierarchyLevels) { return; }
+    //alert(this.selectedCategory.data.description);
     //alert(this.selectedCategory.data.defaultLevelId);
     //alert(this.selectedCategory.data.hierarchyName);
     //alert(this.selectedCategory.data.hierarchyLevels[0].newHierarchyLevelName);

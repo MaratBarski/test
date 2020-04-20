@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, HostListener } from '@angular/core';
+import { ComponentService } from '@appcore';
 
 @Component({
   selector: 'md-map-category-header',
@@ -13,10 +14,12 @@ export class MapCategoryHeaderComponent {
     this._data = data;
     if (!this._data || !this._data.data) { return; }
     this.hierarchyName = this._data.data.hierarchyName;
+    this.resetDescription();
   }
   get data(): any { return this._data; }
   private _data: any;
-  
+
+  description = '';
   hierarchyName = '';
 
   updateName(event: any): void {
@@ -28,5 +31,34 @@ export class MapCategoryHeaderComponent {
     return !!(this.hierarchyName && this.hierarchyName.trim());
   }
 
+  isShowDescription = false;
+  showDescription(event: any): void {
+    ComponentService.documentClick(event);
+    this.isShowDescription = !this.isShowDescription;
+  }
+
+  @HostListener('document:click', ['$event']) onMouseClick(event: any) {
+    this.isShowDescription = false;
+  }
+
+  cancelDescription(): void {
+    this.isShowDescription = false;
+    this.resetDescription();
+  }
+
+  apllyDescription(): void {
+    this.isShowDescription = false;
+    this.updateDescription();
+  }
+
+  private resetDescription(): void {
+    if (!this._data || !this._data.data || !this._data.data.description) { return; }
+    this.description = this._data.data.description;
+  }
+
+  private updateDescription(): void {
+    if (!this._data || !this._data.data) { return; }
+    this._data.data.description = this.description;
+  }
 }
 
