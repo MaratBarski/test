@@ -21,6 +21,8 @@ export class UploadFileComponent {
   description = '';
   fileName = '';
   file = '';
+  project = '';
+  
   get isValid(): boolean {
     return !!this.fileName && !!this.file;
   }
@@ -76,5 +78,9 @@ export class UploadFileComponent {
   updateFileName(event: any): void {
     this.file = this.fileInput.nativeElement.value;
     this.readFile(this.fileInput.nativeElement.files[0]);
+  }
+
+  changedProject(id: string): void {
+    this.project = id;
   }
 }

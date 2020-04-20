@@ -101,7 +101,7 @@
 
 <ng-template #rowInfoTemplate let-item>
     <div class="category-info-row">
-        <md-category-info #categorizationInfo [category]="item.source">
+        <md-category-info #categorizationInfo (onClose)="closeCategoryInfo()" [category]="item.source">
         </md-category-info>
     </div>
 </ng-template>

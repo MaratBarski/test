@@ -33,22 +33,7 @@
             </div>
             <div class="form-site__item">
                 <label class="form-site__label" for="project">Environment</label>
-                <div class="select" id="project">
-                    <div class="select__head">Select Environment…
-                        <div class="select__head-arr">
-                            <svg class="icon ic-select-arr-down">
-                                <use xlink:href="/assets/sprites/sprite.svg#ic-select-arr-down"></use>
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="select__option">
-                        <!-- <div class="select__param">Sheba Central</div>
-                        <div class="select__param">Sheba External</div>
-                        <div class="select__param">Demo environment</div>
-                        <div class="select__param">Mimic</div>
-                        <div class="select__param">Environment with very long name</div> -->
-                    </div>
-                </div>
+                <md-project-combo [project]="project" (onChange)="changedProject($event)"></md-project-combo>
             </div>
             <div class="form-site__item">
                 <label class="form-site__label" for="key">

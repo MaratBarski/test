@@ -33,7 +33,7 @@
 
 <ng-template #rowInfoTemplate let-item>
     <div class="category-info-row">
-        <md-history-info [category]="item.source"></md-history-info>
+        <md-history-info (onClose)="closeCategoryInfo()" [category]="item.source"></md-history-info>
     </div>
 </ng-template>
 <ng-template #dateColumn let-item let-src="source">

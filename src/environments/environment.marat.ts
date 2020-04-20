@@ -15,6 +15,7 @@ export const environment = {
         historyReport: 'mdclone/api/v1/session-history',
         downloadHistoryReport: 'moshe/api/v1/session-history/download',
         usageReport: 'mdclone/api/v1/reporting/usage',
-        templateByProject: 'mdclone/api/v1/template/get-by-project'
+        templateByProject: 'mdclone/api/v1/template/get-by-project',
+        updateHierarchy: 'mdclone/api/v1/updateHierarchy'
     }
 };

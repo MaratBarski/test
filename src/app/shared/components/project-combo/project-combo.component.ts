@@ -10,7 +10,7 @@ export class ProjectComboComponent extends BaseSibscriber implements OnInit {
 
   @Input() applyWidth = false;
   @Input() selectUp = true;
-  @Input() emptyProject: SelectOption = { text: 'Select project', id: '' };
+  @Input() emptyProject: SelectOption = { text: 'Select environment...', id: '' };
   @Output() onChange = new EventEmitter<string>();
   selectOptions: Array<SelectOption>;
   @Input() set project(project: string) {

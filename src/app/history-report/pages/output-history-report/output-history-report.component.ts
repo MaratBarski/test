@@ -55,5 +55,9 @@ export class OutputHistoryReportComponent extends BaseSibscriber implements OnIn
   dateFilterData(data: Array<any>): void {
     this.dataSource = { ...this.historyReportService.createDataSource(data), resetFilter: true };
   }
+
+  closeCategoryInfo(): void {
+    this.table.closeRowInfo();
+  }
 }
 

@@ -19,6 +19,7 @@ export class EditCategoriesComponent extends BaseSibscriber implements OnInit {
       && this.categoryTable && this.categoryTable.isValid;
   }
   selectedCategory: any;
+  isLoading = false;
 
   @ViewChild('categoryHeader', { static: true }) categoryHeader: MapCategoryHeaderComponent;
   @ViewChild('categoryInfo', { static: true }) categoryInfo: MapCategoryInfoComponent;
@@ -51,14 +52,20 @@ export class EditCategoriesComponent extends BaseSibscriber implements OnInit {
     if (!this.selectedCategory) { return; }
     if (!this.selectedCategory.data) { return; }
     if (!this.selectedCategory.data.hierarchyLevels) { return; }
+    const category = JSON.parse(JSON.stringify(this.selectedCategory));
     //alert(this.selectedCategory.data.description);
     //alert(this.selectedCategory.data.defaultLevelId);
     //alert(this.selectedCategory.data.hierarchyName);
     //alert(this.selectedCategory.data.hierarchyLevels[0].newHierarchyLevelName);
-    this.selectedCategory.data.hierarchyLevels.forEach((item: any) => {
+    category.data.hierarchyLevels.forEach((item: any) => {
       item.hierarchyLevelName = item.newHierarchyLevelName
       delete item.newHierarchyLevelName;
     });
+    this.isLoading = true;
+    super.add(
+      this.editCategoryService.save(category).subscribe((res: any) => {
+        this.isLoading = false;
+      }));
   }
 
   cancel(): void {

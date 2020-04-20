@@ -11,8 +11,10 @@ export class PageFotterComponent {
   @Output() onCancel = new EventEmitter<void>();
 
   @Input() isValid = false;
+  @Input() isLoading = false;
 
   save(): void {
+    if (this.isLoading || !this.isValid) { return; }
     this.onSave.emit();
   }
 

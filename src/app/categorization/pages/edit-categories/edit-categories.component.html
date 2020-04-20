@@ -3,4 +3,4 @@
     <md-map-category-info #categoryInfo [data]="selectedCategory"></md-map-category-info>
     <md-edit-category-table #categoryTable [data]="selectedCategory"></md-edit-category-table>
 </div>
-<md-page-fotter [isValid]="isValid" (onCancel)="cancel()" (onSave)="save()"></md-page-fotter>
+<md-page-fotter [isLoading]="isLoading" [isValid]="isValid" (onCancel)="cancel()" (onSave)="save()"></md-page-fotter>
