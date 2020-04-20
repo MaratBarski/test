@@ -13,6 +13,9 @@ import { MapCategoriesComponent } from './pages/map-categories/map-categories.co
 import { CategoryInfoComponent } from './components/category-info/category-info.component';
 import { UploadFileComponent } from './components/upload-file/upload-file.component';
 import { EditCategoriesComponent } from './pages/edit-categories/edit-categories.component';
+import { MapCatgotyHeaderComponent } from './components/map-catgoty-header/map-catgoty-header.component';
+import { MapCategoryInfoComponent } from './components/map-category-info/map-category-info.component';
+import { MapCategoryTableComponent } from './components/map-category-table/map-category-table.component';
 
 const routes: Array<Route> = [
   { path: '', component: CategorizationComponent },
@@ -26,7 +29,10 @@ const routes: Array<Route> = [
     MapCategoriesComponent,
     CategoryInfoComponent,
     UploadFileComponent,
-    EditCategoriesComponent
+    EditCategoriesComponent,
+    MapCatgotyHeaderComponent,
+    MapCategoryInfoComponent,
+    MapCategoryTableComponent
   ],
   imports: [
     CommonModule,
