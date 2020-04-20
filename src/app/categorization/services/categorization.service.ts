@@ -29,19 +29,35 @@ export class CategorizationService {
       actions: {
         links: [
           {
-            text: 'Edit File Settings',
-            icon: 'ic-edit',
+            text: 'Review & Edit',
+            icon: 'ic-review-and-edit',
             command: 'edit'
             , hidden: (source) => {
-              if (source.hierarchyLoadingType !== '') { return false; }
+              if (source.hierarchyLoadingType === 'manual') { return false; }
+              //if (!source.hierarchyChange) { return true; }              
               return true;
             },
-            // disable: false
+            disable: false
           },
           {
-            text: 'View output summary',
-            icon: 'ic-view',
-            command: 'view'
+            text: 'Review & Map',
+            icon: 'ic-review-and-edit',
+            command: 'map'
+            , hidden: (source) => {
+              if (source.hierarchyLoadingType === 'etl') { return false; }
+              //if (source.hierarchyChange) { return true; }      
+              return true;
+            }
+          },
+          {
+            text: 'Replace Categorization File',
+            icon: 'ic-replace',
+            command: 'replace'
+          },
+          {
+            text: 'Download',
+            icon: 'ic-download',
+            command: 'download'
           }
         ],
         subLinks: [

@@ -4,7 +4,7 @@
         "description": "hierarchy description",
         "domain": "temp.mdclone-dev.com",
         "hierarchyFile": "20180916_155113_number_of_kids_hierarchy.csv",
-        "hierarchyName": "hierarchy Name",
+        "hierarchyName": "hierarchy Name test",
         "projectId": "1",
         "hierarchyFilePath": "E:\\files\\Hierarchies\\",
         "insertDate": "2018-09-16T12:51:22.000Z",
@@ -13,15 +13,15 @@
         "hierarchyLevels": [
             {
                 "hierarchyLevelId": "1426",
-                "hierarchyLevelName": "has_kids_yes_no",
-                "sortValue": -1,
+                "hierarchyLevelName": "aaaaaaaaaaaaaaaa",
+                "sortValue": -99991,
                 "dataSample": "no%sep%yes",
                 "hierarchyRootId": "226"
             },
             {
                 "hierarchyLevelId": "1443",
                 "hierarchyLevelName": "Entity_Description",
-                "sortValue": -1,
+                "sortValue": -1000000,
                 "dataSample": "City and Borough%sep%Borough%sep%County%sep%Parish",
                 "hierarchyRootId": "226"
             },

@@ -12,13 +12,23 @@
                         <div class="info-panel__val">
                             <mdc-select [selected]="selectedCategory" (changed)="changeCategory($event)"
                                 [applyWidth]="false" [isSmall]="true" [options]="categories"></mdc-select>
-                            <svg class="icon ic-help" mdcSvg="ic-help">
-                            </svg>
+                            <svg class="icon ic-help" mdcSvg="ic-help"></svg>
                         </div>
                     </div>
                     <div class="info-panel__item">
                         <div class="info-panel__title">Modified:</div>
                         <div class="info-panel__val">{{data?.data?.insertDate|date}}</div>
+                    </div>
+                    <div class="info-panel__item">
+                        <div class="info-panel__val">In Use
+                            <svg class="icon ic-plug ic-grey" mdcSvg="ic-plug"></svg>
+                        </div>
+                    </div>
+                    <div class="info-panel__item">
+                        <div class="info-panel__title">State:</div>
+                        <div class="info-panel__val">Auto-Update
+                            <svg class="icon ic-robot ic-grey" mdcSvg="ic-robot"></svg>
+                        </div>
                     </div>
                 </div>
             </div>

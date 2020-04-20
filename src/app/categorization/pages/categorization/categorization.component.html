@@ -72,14 +72,12 @@
     <span *ngIf="!src.hierarchyChange && (src.hierarchyLoadingType && src.hierarchyLoadingType !== 'manual')">
         <mdc-icon path="ic-robot"></mdc-icon>
     </span>
+    <!-- {{src.hierarchyLoadingType}} -->
 </ng-template>
 
 <ng-template let-item #inUseColumn>
     <span class="admin-table__icon" (mouseleave)="item.showUsed=false" (mouseenter)="item.showUsed=true">
-        <mdc-icon path="ic-plug"></mdc-icon>
-        <!-- <svg class="icon ic-plug ic-grey">
-            <use xlink:href="/assets/sprites/sprite.svg#ic-plug"></use>
-        </svg> -->
+        <svg class="icon ic-plug ic-grey" mdcSvg="ic-plug"></svg>
         <div [hidden]="!item.showUsed" class="info-popup info-popup_right used-info">
             <div class="info-popup__top">
                 <div class="info-popup__head-wrap"><span class="info-popup__head">Used in</span></div>

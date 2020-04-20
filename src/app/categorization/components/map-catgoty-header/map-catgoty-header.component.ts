@@ -7,11 +7,12 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class MapCatgotyHeaderComponent implements OnInit {
 
+  @Input() pageTitle = 'Map categories';
   @Input() data: any;
   hierarchyName = '';
-  
+
   constructor() { }
-  
+
   ngOnInit() {
   }
 

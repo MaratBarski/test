@@ -38,7 +38,7 @@ export class CategorizationComponent extends BaseSibscriber implements OnInit {
 
   rowStateChange(state: boolean): void {
     if (!this.currentRow.source) { return; }
-    this.currentRow.source.hierarchyLoadingType = 'opa'
+    this.currentRow.source.hierarchyLoadingType = 'etl';
     this.currentRow.source.hierarchyChange = state;
     this.categorizationService.updateHierarchyChange(this.currentRow.source, state);
   }
@@ -49,9 +49,15 @@ export class CategorizationComponent extends BaseSibscriber implements OnInit {
 
   execCommand = {
     edit: (action: TableActionCommand) => {
-      this.router.navigate(['/categorization/map-categories', { id: action.item.source.hierarchyRootId }]);
+      this.router.navigate(['/categorization/edit-categories', { id: action.item.source.hierarchyRootId }]);
     },
-    view: (action: TableActionCommand) => {
+    map: (action: TableActionCommand) => {
+      alert('map');
+    },
+    replace: (action: TableActionCommand) => {
+      alert('replace');
+    },
+    download: (action: TableActionCommand) => {
       alert('view');
     },
     delete: (action: TableActionCommand) => {

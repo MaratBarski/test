@@ -16,6 +16,7 @@ import { EditCategoriesComponent } from './pages/edit-categories/edit-categories
 import { MapCatgotyHeaderComponent } from './components/map-catgoty-header/map-catgoty-header.component';
 import { MapCategoryInfoComponent } from './components/map-category-info/map-category-info.component';
 import { MapCategoryTableComponent } from './components/map-category-table/map-category-table.component';
+import { EditCategoryTableComponent } from './components/edit-category-table/edit-category-table.component';
 
 const routes: Array<Route> = [
   { path: '', component: CategorizationComponent },
@@ -32,7 +33,8 @@ const routes: Array<Route> = [
     EditCategoriesComponent,
     MapCatgotyHeaderComponent,
     MapCategoryInfoComponent,
-    MapCategoryTableComponent
+    MapCategoryTableComponent,
+    EditCategoryTableComponent
   ],
   imports: [
     CommonModule,
