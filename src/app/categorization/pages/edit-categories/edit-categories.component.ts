@@ -3,7 +3,7 @@ import { EditCategoryService } from '@app/categorization/services/edit-category.
 import { BaseSibscriber, NavigationService, PageInfo } from '@appcore';
 import { MapCategoryInfoComponent } from '@app/categorization/components/map-category-info/map-category-info.component';
 import { EditCategoryTableComponent } from '@app/categorization/components/edit-category-table/edit-category-table.component';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { MapCategoryHeaderComponent } from '@app/categorization/components/map-category-header/map-category-header.component';
 
 @Component({
@@ -27,7 +27,8 @@ export class EditCategoriesComponent extends BaseSibscriber implements OnInit {
   constructor(
     private editCategoryService: EditCategoryService,
     private navigationService: NavigationService,
-    private router: Router
+    private router: Router,
+    private activatedRoute: ActivatedRoute
   ) {
     super();
     this.navigationService.currentPageID = undefined;//PageInfo.ManageHierarchies.id;
@@ -35,10 +36,14 @@ export class EditCategoriesComponent extends BaseSibscriber implements OnInit {
 
   ngOnInit(): void {
     super.add(
-      this.editCategoryService.load().subscribe((res: any) => {
-        this.selectedCategory = res;
-        if (!res || !res.data || !res.data.hierarchyLevels) { return; }
-        this.selectedCategory.data.hierarchyLevels = this.editCategoryService.sortHierarchyLevels(this.selectedCategory.data.hierarchyLevels);
+      this.activatedRoute.paramMap.subscribe(u => {
+        const id = u.get('id');
+        super.add(
+          this.editCategoryService.load(id).subscribe((res: any) => {
+            this.selectedCategory = res;
+            if (!res || !res.data || !res.data.hierarchyLevels) { return; }
+            this.selectedCategory.data.hierarchyLevels = this.editCategoryService.sortHierarchyLevels(this.selectedCategory.data.hierarchyLevels);
+          }));
       }));
   }
 
