@@ -18,10 +18,30 @@ export class EditCategoryTableComponent implements OnInit {
     return this._data;
   }
   private _data: any;
-  
+
   constructor() { }
 
   ngOnInit() {
   }
 
+  validateItem(item: any): void {
+    this._isValid = (this._data.data.hierarchyLevels.filter((x: any) => {
+      return !!!x.newHierarchyLevelName || !!!x.newHierarchyLevelName.trim();
+    }).length === 0);
+
+    // if (!this._isValid) { return; }
+    // const dict = {};
+    // this._data.data.hierarchyLevels.forEach((x: any) => {
+    //   if (dict[x.newHierarchyLevelName.trim().toLowerCase()]) {
+    //     this._isValid = false;
+    //     return;
+    //   }
+    //   dict[x.newHierarchyLevelName.trim().toLowerCase()] = true;
+    // });
+  }
+
+  get isValid(): boolean {
+    return this._isValid;
+  }
+  private _isValid = true;
 }

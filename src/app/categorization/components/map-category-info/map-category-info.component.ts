@@ -31,5 +31,10 @@ export class MapCategoryInfoComponent {
 
   changeCategory(event: any): void {
     this.selectedCategory = event;
+    this.data.data.defaultLevelId = event.id;
+  }
+
+  get isValid(): boolean {
+    return true;
   }
 }
