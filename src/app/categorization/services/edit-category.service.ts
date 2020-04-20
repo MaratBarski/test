@@ -14,8 +14,8 @@ export class EditCategoryService {
   @Offline('assets/offline/selectedHierarchy.json?')
   private getUrl = `${environment.serverUrl}${environment.endPoints.hierarchy}`;
 
-  load(): Observable<any> {
-    return this.dataService.get(this.getUrl);
+  load(id: string): Observable<any> {
+    return this.dataService.get(`${this.getUrl}/${id}`);
   }
 
   sortHierarchyLevels(categories: Array<any>): Array<any> {

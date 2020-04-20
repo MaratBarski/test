@@ -19,13 +19,12 @@
                         <tr class="admin-table__row" *ngFor="let item of data.data.hierarchyLevels;let index=index">
                             <td class="admin-table__item">
                                 <div class="admin-table__name-edit">
-                                    <input type="text" [(ngModel)]="item.newHierarchyLevelName">
+                                    <input (change)="validateItem(item)" type="text" [(ngModel)]="item.newHierarchyLevelName">
                                 </div>
                             </td>
                             <td class="admin-table__item d-none d-md-table-cell">
                                 <div class="admin-table__data-sample">
-                                    <mdc-text-block [text]="item.dataSample" [maxWidth]="800" position="right">
-                                    </mdc-text-block>
+                                    {{item.dataSample}}
                                 </div>
                             </td>
                         </tr>

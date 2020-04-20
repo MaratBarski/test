@@ -1,6 +1,6 @@
 <div class="edit-categories">
-    <md-map-catgoty-header [data]="selectedCategory" pageTitle="Edit categories"></md-map-catgoty-header>
-    <md-map-category-info [data]="selectedCategory"></md-map-category-info>
-    <md-edit-category-table [data]="selectedCategory"></md-edit-category-table>
+    <md-map-category-header #categoryHeader (onChange)="onNameChange($event)" [data]="selectedCategory" pageTitle="Edit categories"></md-map-category-header>
+    <md-map-category-info #categoryInfo [data]="selectedCategory"></md-map-category-info>
+    <md-edit-category-table #categoryTable [data]="selectedCategory"></md-edit-category-table>
 </div>
-<md-page-fotter (onCancel)="cancel()" (onSave)="save()"></md-page-fotter>
+<md-page-fotter [isValid]="isValid" (onCancel)="cancel()" (onSave)="save()"></md-page-fotter>

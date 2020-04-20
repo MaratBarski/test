@@ -4,8 +4,8 @@
             <div class="row">
                 <div class="col-12">
                     <div class="footer__btn">
-                        <span (click)="cancel()" class="btn btn_border">Cancel</span>
-                        <span (click)="save()" class="btn">Save</span>
+                        <button (click)="cancel()" class="btn btn_border">Cancel</button>
+                        <button [disabled]="!isValid" (click)="save()" class="btn">Save</button>
                     </div>
                 </div>
             </div>

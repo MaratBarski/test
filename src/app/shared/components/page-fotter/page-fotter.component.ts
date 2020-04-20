@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, Input } from '@angular/core';
 
 @Component({
   selector: 'md-page-fotter',
@@ -6,9 +6,11 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./page-fotter.component.scss']
 })
 export class PageFotterComponent {
-  
+
   @Output() onSave = new EventEmitter<void>();
   @Output() onCancel = new EventEmitter<void>();
+
+  @Input() isValid = false;
 
   save(): void {
     this.onSave.emit();

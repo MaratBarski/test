@@ -12,9 +12,9 @@
                             </a>
                         </div>
                         <h1>{{pageTitle}}</h1>
-                        <div (input)="hierarchyName=$event.target.innerText" class="page-header__text"
+                        <div (input)="updateName($event)" class="page-header__text"
                             contenteditable="true">
-                            {{data?.data?.hierarchyName}}
+                            {{hierarchyName}}
                         </div>
                         <a href="#">Description</a>
                     </div>
