@@ -1,5 +1,4 @@
-<mdc-select [(ngModel)]="dataModel" [applyWidth]="applyWidth" [hidden]="!selectOptions?.length" 
-maxHeight="150px" [selectUp]="selectUp" [selected]="selectedOption" 
-(changed)="changedOption($event)" [options]="selectOptions">
+<mdc-select [(ngModel)]="dataModel" [applyWidth]="applyWidth" [hidden]="!selectOptions?.length" maxHeight="150px"
+    [selectUp]="selectUp" [selected]="selectedOption" (changed)="changedOption($event)" [options]="selectOptions">
 </mdc-select>
 <div [hidden]="selectOptions?.length"></div>
