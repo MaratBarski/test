@@ -36,12 +36,13 @@
                 <md-project-combo [project]="project" (onChange)="changedProject($event)"></md-project-combo>
             </div>
             <div class="form-site__item">
-                <label class="form-site__label" for="key">
-                    Default Category<span class="form-site__icon">
-                        <svg class="icon ic-help">
-                            <use xlink:href="/assets/sprites/sprite.svg#ic-help"></use>
-                        </svg></span></label>
-                <md-csv-combo *ngIf="categoryHeaders" [selectUp]="true" [headers]="categoryHeaders"></md-csv-combo>
+                <label class="form-site__label">
+                    Default Category
+                    <span class="form-site__icon">
+                        <svg class="icon ic-help" mdcSvg="ic-help"></svg>
+                    </span>
+                </label>
+                <md-csv-combo (onChange)="changeDefaultCategory($event)" *ngIf="categoryHeaders" [selectUp]="true" [headers]="categoryHeaders"></md-csv-combo>
                 <div *ngIf="!categoryHeaders?.length" class="select select_up">
                     <div class="select__head">Select default category...
                         <div class="select__head-arr">

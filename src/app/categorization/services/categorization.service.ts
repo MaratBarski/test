@@ -32,10 +32,9 @@ export class CategorizationService {
             text: 'Review & Edit',
             icon: 'ic-review-and-edit',
             command: 'edit'
-            , hidden: (source) => {
-              if (source.hierarchyLoadingType === 'manual') { return false; }
-              //if (!source.hierarchyChange) { return true; }              
-              return true;
+            , hidden: (source: any) => {
+              if (!source.status) { return true; }
+              return source.status !== 'mapped';
             },
             disable: false
           },
@@ -43,10 +42,9 @@ export class CategorizationService {
             text: 'Review & Map',
             icon: 'ic-review-and-edit',
             command: 'map'
-            , hidden: (source) => {
-              if (source.hierarchyLoadingType === 'etl') { return false; }
-              //if (source.hierarchyChange) { return true; }      
-              return true;
+            , hidden: (source: any) => {
+              if (!source.status) { return true; }
+              return source.status !== 'unmapped';
             }
           },
           {
@@ -94,7 +92,7 @@ export class CategorizationService {
         {
           columnId: 'state',
           text: 'State',
-          isSortEnabled: true,
+          isSortEnabled: false,
           css: 'd-none d-md-table-cell admin-table__item_center'
         },
         {
@@ -106,7 +104,7 @@ export class CategorizationService {
         {
           columnId: 'inUseColumn',
           text: 'In Use',
-          isSortEnabled: true,
+          isSortEnabled: false,
           css: 'd-none d-md-table-cell admin-table__item_center'
         }
       ],
@@ -127,7 +125,5 @@ export class CategorizationService {
     })
     return data;
   }
-
-
 }
 

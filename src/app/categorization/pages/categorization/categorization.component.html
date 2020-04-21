@@ -33,7 +33,7 @@
 </ng-template>
 
 <ng-template let-item let-src="source" #stateColumn>
-    <span *ngIf="src.hierarchyChange" class="admin-table__icon" (mouseleave)="item.showWarning=false"
+    <span *ngIf="src.hierarchyChange && src.hierarchyLoadingType==='etl'" class="admin-table__icon" (mouseleave)="item.showWarning=false"
         (mouseenter)="showInfo($event,item,src)">
         <mdc-icon path="ic-warning"></mdc-icon>
         <div [hidden]="!item.showWarning" class="info-popup info-popup_right warning-info">
@@ -69,10 +69,11 @@
             </div>
         </div>
     </span>
-    <span *ngIf="!src.hierarchyChange && (src.hierarchyLoadingType && src.hierarchyLoadingType !== 'manual')">
+    <span *ngIf="!src.hierarchyChange && src.hierarchyLoadingType==='etl'">
         <mdc-icon path="ic-robot"></mdc-icon>
     </span>
-    <!-- {{src.hierarchyLoadingType}} -->
+    <!-- {{src.hierarchyLoadingType}}
+    {{src.hierarchyChange}} -->
 </ng-template>
 
 <ng-template let-item #inUseColumn>

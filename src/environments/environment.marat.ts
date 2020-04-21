@@ -10,6 +10,7 @@ export const environment = {
         userData: 'user-data',
         fileSource: 'mdclone/api/v1/file-source',
         uploadFileSource: 'mdclone/api/v1/upload/file-source',
+        uploadHierarchy: 'mdclone/api/v1/upload/hierarchy',
         deleteFileSource: 'mdclone/api/v1/file-source',
         hierarchy: 'mdclone/api/v1/hierarchy',
         historyReport: 'mdclone/api/v1/session-history',

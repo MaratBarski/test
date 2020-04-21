@@ -41,6 +41,7 @@ export class UploadService implements OnDestroy {
   private upload(): void {
     if (!this._uploads.length) { return; }
     if (this._uploading) { return; }
+    
     this._uploading = true;
     this._uploads[0].status = UploadStatus.progress;
     this.http.post(this._uploads[0].url, this._uploads[0].form, {
@@ -63,7 +64,6 @@ export class UploadService implements OnDestroy {
           this._uploading = false;
         }
       )
-
   }
 
   private startUpload(): void {

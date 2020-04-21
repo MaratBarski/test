@@ -10,6 +10,7 @@
         "insertDate": "2018-09-16T12:51:22.000Z",
         "defaultLevelId": "1441",
         "project_id": "1",
+        "hierarchyLoadingType": "etl",
         "hierarchyLevels": [
             {
                 "hierarchyLevelId": "1426",

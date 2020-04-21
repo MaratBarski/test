@@ -1,8 +1,7 @@
 import { Component, Output, EventEmitter, ViewChild, ElementRef, Input } from '@angular/core';
 import { UploadService, UploadStatus } from '@app/shared/services/upload.service';
-import { ENV, CsvManagerService } from '@app/core-api';
-import { Offline } from '@app/shared/decorators/offline.decorator';
-import { SelectOption } from 'projects/core/src/public-api';
+import { CsvManagerService } from '@app/core-api';
+import { environment } from '@env/environment';
 
 @Component({
   selector: 'md-upload-file',
@@ -22,13 +21,14 @@ export class UploadFileComponent {
   fileName = '';
   file = '';
   project = '';
-  
+  defaultCategory = '0';
+  categoryHeaders: Array<string>;
+
   get isValid(): boolean {
     return !!this.fileName && !!this.file;
   }
 
-  @Offline(`${ENV.serverUrl}${ENV.endPoints.uploadFileSource}`)
-  private _uploadUrl = `${ENV.serverUrl}${ENV.endPoints.uploadFileSource}`;
+  private _uploadUrl = `${environment.serverUrl}${environment.endPoints.uploadHierarchy}`;
 
   uploadFile(event: any): void {
     event.preventDefault();
@@ -39,6 +39,8 @@ export class UploadFileComponent {
     formData.append('file', this.fileInput.nativeElement.files[0]);
     formData.append('fileName', this.fileName);
     formData.append('description', this.description);
+    formData.append('environment', this.project);
+    formData.append('defaultCategory', this.defaultCategory);
     this.uploadService.add({
       title: 'Categorization',
       form: formData,
@@ -50,7 +52,6 @@ export class UploadFileComponent {
     this.onUpload.emit();
   }
 
-
   cancel(): void {
     this.reset();
     event.preventDefault();
@@ -61,9 +62,9 @@ export class UploadFileComponent {
     this.fileName = '';
     this.file = '';
     this.description = '';
+    this.defaultCategory = '0';
   }
 
-  categoryHeaders: Array<string>;
   readFile(file: any): void {
     this.csvManagerService.readHeaders(file).then((arr: Array<string>) => {
       this.categoryHeaders = arr.map((str, i) => {
@@ -78,9 +79,14 @@ export class UploadFileComponent {
   updateFileName(event: any): void {
     this.file = this.fileInput.nativeElement.value;
     this.readFile(this.fileInput.nativeElement.files[0]);
+    this.defaultCategory = '0';
   }
 
   changedProject(id: string): void {
     this.project = id;
+  }
+
+  changeDefaultCategory(id: string): void {
+    this.defaultCategory = id;
   }
 }

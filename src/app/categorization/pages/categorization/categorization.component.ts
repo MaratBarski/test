@@ -28,7 +28,7 @@ export class CategorizationComponent extends BaseSibscriber implements OnInit {
     this.navigationService.currentPageID = PageInfo.ManageHierarchies.id;
   }
 
-  searchOptions = ['hierarchyName'];
+  searchOptions = ['hierarchyName', 'hierarchyFile', 'insertDate', 'domain'];
 
   showInfo(event: any, item: any, source: any): void {
     this.currentRow.state = true;
