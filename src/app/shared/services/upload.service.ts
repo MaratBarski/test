@@ -51,7 +51,7 @@ export class UploadService implements OnDestroy {
       .subscribe(events => {
         if (events.type == HttpEventType.UploadProgress) {
           this._uploads[0].progress = Math.round(events.loaded / events.total * 100);
-          console.log('Upload progress: ', this._uploads[0].status + '%');
+          console.log('Upload progress: ', this._uploads[0].progress + '%');
         } else if (events.type === HttpEventType.Response) {
           this._uploads.splice(0, 1);
           console.log(events);

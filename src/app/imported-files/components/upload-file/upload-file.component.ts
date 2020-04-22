@@ -34,7 +34,7 @@ export class UploadFileComponent implements OnInit {
     return !!this.fileName && !!this.project && !!this.file;
   }
 
-  @Offline(`${environment.serverUrl}${environment.endPoints.uploadFileSource}`)
+  @Offline('http://localhost:57858/api/Config/')
   private _uploadUrl = `${environment.serverUrl}${environment.endPoints.uploadFileSource}`;
 
   resetTemplate(): void {
