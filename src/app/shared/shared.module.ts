@@ -19,6 +19,7 @@ import { AnimationStickyDirective } from './directives/animation-sticky.directiv
 import { CsvComboComponent } from './components/csv-combo/csv-combo.component';
 import { DownloadSelectorComponent } from './components/download-selector/download-selector.component';
 import { PageFotterComponent } from './components/page-fotter/page-fotter.component';
+import { ReplacePipe } from './pipes/replace.pipe';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { PageFotterComponent } from './components/page-fotter/page-fotter.compon
     AnimationStickyDirective, 
     CsvComboComponent, 
     DownloadSelectorComponent, 
-    PageFotterComponent
+    PageFotterComponent, 
+    ReplacePipe
   ],
   imports: [
     FormsModule,
@@ -50,7 +52,8 @@ import { PageFotterComponent } from './components/page-fotter/page-fotter.compon
     AnimationStickyDirective,
     CsvComboComponent,
     DownloadSelectorComponent,
-    PageFotterComponent
+    PageFotterComponent,
+    ReplacePipe
   ],
   entryComponents: [
   ]

@@ -99,6 +99,7 @@ export class CategorizationService {
           columnId: 'domain',
           text: 'Environment 	',
           isSortEnabled: true,
+          filter: true,
           css: 'd-none d-xxl-table-cell admin-table__item_left'
         },
         {
