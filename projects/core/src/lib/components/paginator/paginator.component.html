@@ -35,7 +35,8 @@
             </div>
         </div>
         <div [hidden]="!showPageSelector">
-            <input value={{currentPage+1}} (keyup)="selectedPageKeyUp($event)" type="number" (change)="goToPage()"
+            Go to page:
+            <input class="page-input" value={{currentPage+1}} (keyup)="selectedPageKeyUp($event)" type="number" (change)="goToPage()"
                 min="1" [formControl]="selectedPage" />
         </div>
         <div *ngIf="isShowAllEnabled" class="page-btn" (click)="showAll()">{{showAllText}}</div>
