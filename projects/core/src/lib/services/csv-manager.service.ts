@@ -155,7 +155,7 @@ export class CsvManagerService {
     const reader = new FileReader();
     const blob = file.slice(offset, length + offset);
     return new Promise<string>((resolve, reject) => {
-      reader.onload = (evt) => {
+      reader.onload = (evt: any) => {
         if (!!evt.target.error) {
           reject(evt.target.error);
         } else {
@@ -163,7 +163,7 @@ export class CsvManagerService {
         }
       };
       reader.readAsText(blob);
-    })
+    });
   }
 }
 
