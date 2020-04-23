@@ -1,6 +1,7 @@
 import { Component, Input, EventEmitter, Output, ViewChild, ElementRef, AfterContentInit, Renderer2, OnDestroy } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
-import { Observable, timer } from 'rxjs';
+import { timer } from 'rxjs';
+import { ComponentService } from '@appcore';
 
 
 @Component({
@@ -59,6 +60,10 @@ export class RowInfoComponent implements AfterContentInit, OnDestroy {
         ts.unsubscribe();
       });
     }
+  }
+
+  setTop(top: number, isFirstTime = true): void {
+    this.setMargin(top - ComponentService.getRect(this.container.nativeElement).top, isFirstTime);
   }
 
   onClick(event: any): void {
