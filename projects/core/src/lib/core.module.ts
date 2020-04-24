@@ -23,6 +23,7 @@ import { LocalStorageService } from './services/local-storage.service';
 import { PaginationPipe } from './pipes/pagination.pipe';
 import { TranslatePipe } from './pipes/translate.pipe';
 import { TooltipDirective } from './directives/tooltip.directive';
+import { ElementTooltipDirective } from './directives/elementtooltip.directive';
 import { TableComponent } from './components/table/table.component';
 import { TableHeaderComponent } from './components/table-header/table-header.component';
 import { ShowDirective } from './directives/show.directive';
@@ -77,6 +78,7 @@ import { FileUploaderComponent } from './components/file-uploader/file-uploader.
     ToggleButtonComponent,
     SelectComponent,
     TooltipDirective,
+    ElementTooltipDirective,
     LoginComponent,
     LogoutComponent,
     ModalWindowComponent,
@@ -146,6 +148,7 @@ import { FileUploaderComponent } from './components/file-uploader/file-uploader.
     LoginComponent,
     LogoutComponent,
     TooltipDirective,
+    ElementTooltipDirective,
     ModalWindowComponent,
     CheckBoxListComponent,
     PaginationPipe,

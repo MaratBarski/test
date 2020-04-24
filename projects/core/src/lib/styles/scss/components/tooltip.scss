@@ -47,8 +47,64 @@
 	}
 }
 
+/*-------------- tooltip -----------------*/
+.tooltip{
+  display: inline-table;
+  max-width: 350px;
+  background: $color-dark-blue;
+  margin: 4px;
+  position: relative;
+  @include font(normal, normal, rem(12px), 1.57, #fff);
+
+  &__content{
+    display: inline-block;
+    padding: 4px 8px;
+  }
+
+  &::after{
+    content: '';
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 5px 6px 0 6px;
+    border-color: $color-dark-blue transparent transparent transparent;
+    position: absolute;
+    top: 100%;
+    left: 10px;
+  }
+
+  &_left::after{
+    border-width: 6px 5px 6px 0;
+    border-color: transparent $color-dark-blue transparent transparent;
+    top: 8px;
+    left: auto;
+    right: 100%;
+  }
+
+  &_right::after{
+    border-width: 6px 0 6px 5px;
+    border-color: transparent transparent transparent $color-dark-blue;
+    top: 8px;
+    left: 100%;
+  }
+
+  &_top::after{
+    border-width: 0 6px 5px 6px;
+    border-color: transparent transparent $color-dark-blue transparent;
+    top: auto;
+    bottom: 100%;
+  }
+
+  &_red{background: $color-red;}
+  &_red::after{border-color: $color-red transparent transparent transparent;}
+  &_red.tooltip_left::after{border-color: transparent $color-red transparent transparent;}
+  &_red.tooltip_right::after{border-color: transparent transparent transparent $color-red;}
+  &_red.tooltip_top::after{border-color: transparent transparent $color-red transparent;}
+}
+
 @media (max-width: 767px) {
-	.tooltip{
-		width: 250px;
-	}
+  .tooltip{
+    width: 250px;
+  }
 }

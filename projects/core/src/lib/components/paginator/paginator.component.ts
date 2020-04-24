@@ -23,7 +23,7 @@ export class PaginatorComponent {
   @Input() noPagingTitle = '';
   @Input() showAllText = 'Show all';
   @Input() currentPage = 0;
-  @Input() showPageSelector = false;
+  @Input() showPageSelector = true;
 
   @Input() set pageSize(pageSize: number) {
     this._pageSize = pageSize;

@@ -48,27 +48,68 @@ export class CsvManagerService {
   }
 
   readHeaders(file: any): Promise<Array<string>> {
-    const reader = new FileReader();
     return new Promise((resolve, reject) => {
-      reader.onload = function () {
-        try {
-          const headers = reader.result.toString()
-            .split('\n')[0]
-            .split(',')
-            .map(x => {
+      this.readFile(0, 1024, '', file,
+        (str: string) => {
+          const arr = str.split('\n');
+          if (arr.length > 1) {
+            const headers = arr[0].split(',').map(x => {
               return x.trim().replace(/"/g, '')
             }).filter(x => x !== '');
-          resolve(headers);
-        } catch (e) {
+            resolve(headers);
+          }
+          return arr.length < 2;
+        },
+        (str: string) => {
+          reject(str);
+          //resolve([]);
+        },
+        (e: any) => {
           reject(e);
         }
-      };
-      try {
-        reader.readAsText(file);
-      } catch (e) {
-        reject(e);
-      }
+      );
     });
+
+    // return new Promise((resolve, reject) => {
+    //   let chunkSize = 4 * 1024;
+    //   this.readBlock(0, chunkSize, file).then((res) => {
+    //     try {
+    //       const headers = res
+    //         .split('\n')[0]
+    //         .split(',')
+    //         .map(x => {
+    //           return x.trim().replace(/"/g, '')
+    //         }).filter(x => x !== '');
+    //       resolve(headers);
+    //     } catch (error) {
+    //       reject(error);
+    //     }
+    //   }).catch(e => {
+    //     reject(e);
+    //   });
+    // });
+
+    // const reader = new FileReader();
+    // return new Promise((resolve, reject) => {
+    //   reader.onload = function () {
+    //     try {
+    //       const headers = reader.result.toString()
+    //         .split('\n')[0]
+    //         .split(',')
+    //         .map(x => {
+    //           return x.trim().replace(/"/g, '')
+    //         }).filter(x => x !== '');
+    //       resolve(headers);
+    //     } catch (e) {
+    //       reject(e);
+    //     }
+    //   };
+    //   try {
+    //     reader.readAsText(file);
+    //   } catch (e) {
+    //     reject(e);
+    //   }
+    // });
   }
 
   validate(file: any): Promise<boolean> {
@@ -92,6 +133,37 @@ export class CsvManagerService {
   validateFileSize(file: any, minSize: number, maxSize: number): boolean {
     if (!file) { return false; }
     return ((minSize < 0 || file.size > minSize) && (maxSize < 0 || file.size < maxSize));
+  }
+
+  readFile(offset: number, chunkSize: number, buffer: string, file: any, callBack: any, endReadCallback: any, errorCallback: any): void {
+    if (offset >= file.size) {
+      endReadCallback(buffer);
+      return;
+    }
+    this.readBlock(offset, chunkSize + offset, file).then((res: string) => {
+      buffer += res;
+      if (callBack(buffer)) {
+        this.readFile(offset + chunkSize, chunkSize, buffer, file, callBack, endReadCallback, errorCallback);
+      }
+    }).catch((error: any) => {
+      errorCallback(error);
+    })
+
+  }
+
+  readBlock(offset: number, length: number, file: any): Promise<string> {
+    const reader = new FileReader();
+    const blob = file.slice(offset, length + offset);
+    return new Promise<string>((resolve, reject) => {
+      reader.onload = (evt: any) => {
+        if (!!evt.target.error) {
+          reject(evt.target.error);
+        } else {
+          resolve(reader.result.toString());
+        }
+      };
+      reader.readAsText(blob);
+    });
   }
 }
 

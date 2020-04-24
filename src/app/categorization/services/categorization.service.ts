@@ -3,9 +3,8 @@ import { DataService, TableModel } from '@app/core-api';
 import { Observable } from 'rxjs';
 import { Offline } from 'src/app/shared/decorators/offline.decorator';
 import { CategoryeResponse } from '../models/category-reponse';
-import { Hierarchy } from '@app/models/hierarchy';
+import { Hierarchy } from '@app/imported-files/models/hierarchy';
 import { environment } from '@env/environment';
-import {FileSource} from '@app/models/file-source';
 
 @Injectable({
   providedIn: 'root'
@@ -30,19 +29,33 @@ export class CategorizationService {
       actions: {
         links: [
           {
-            text: 'Edit File Settings',
-            icon: 'ic-edit',
+            text: 'Review & Edit',
+            icon: 'ic-review-and-edit',
             command: 'edit'
-            , hidden: (source) => {
-              if (source.hierarchyLoadingType !== '') { return false; }
-              return true;
+            , hidden: (source: any) => {
+              if (!source.status) { return true; }
+              return source.status !== 'mapped';
             },
-            // disable: false
+            disable: false
           },
           {
-            text: 'View output summary',
-            icon: 'ic-view',
-            command: 'view'
+            text: 'Review & Map',
+            icon: 'ic-review-and-edit',
+            command: 'map'
+            , hidden: (source: any) => {
+              if (!source.status) { return true; }
+              return source.status !== 'unmapped';
+            }
+          },
+          {
+            text: 'Replace Categorization File',
+            icon: 'ic-replace',
+            command: 'replace'
+          },
+          {
+            text: 'Download',
+            icon: 'ic-download',
+            command: 'download'
           }
         ],
         subLinks: [
@@ -79,46 +92,39 @@ export class CategorizationService {
         {
           columnId: 'state',
           text: 'State',
-          isSortEnabled: true,
+          isSortEnabled: false,
           css: 'd-none d-md-table-cell admin-table__item_center'
         },
         {
-          columnId: 'project',
+          columnId: 'domain',
           text: 'Environment 	',
           isSortEnabled: true,
+          filter: true,
           css: 'd-none d-xxl-table-cell admin-table__item_left'
         },
         {
           columnId: 'inUseColumn',
           text: 'In Use',
-          isSortEnabled: true,
+          isSortEnabled: false,
           css: 'd-none d-md-table-cell admin-table__item_center'
         }
       ],
       rows: []
-    };
+    }
     categories.forEach((fl, i) => {
       data.rows.push({
         cells: {
           hierarchyName: fl.hierarchyName,
           hierarchyFile: fl.hierarchyFile,
           insertDate: fl.insertDate,
-          project: fl.project ? fl.project.projectName : '',
+          domain: fl.domain,
           defaultLevelId: fl.defaultLevelId
         },
         isActive: false,
         source: fl
-      });
-    });
+      })
+    })
     return data;
-  }
-
-  deleteHierarchy(category: Hierarchy): Observable<any> {
-    return this.dataService.delete(`${environment.serverUrl}${environment.endPoints.deleteHierarchy}/${category.hierarchyRootId}`);
-  }
-
-  downloadHierarchy(category: Hierarchy): any {
-    return this.dataService.get(`${environment.serverUrl}${environment.endPoints.downloadHierarchy}/${category.hierarchyRootId}`);
   }
 }
 

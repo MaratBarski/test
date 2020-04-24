@@ -26,14 +26,14 @@
     </mdc-table>
     <div class="pager-wrap">
         <mdc-paginator #paginator paginationTitle="{{'paginationTitle'|translate}}" noPagingTitle="Showing {0} files"
-            [blockSize]="3" [pageSize]="50" [currentPage]="0">
+            [blockSize]="3" [pageSize]="12" [currentPage]="0">
         </mdc-paginator>
     </div>
 </md-page-body>
 
 <ng-template #rowInfoTemplate let-item>
     <div class="category-info-row">
-        <md-history-info [category]="item.source"></md-history-info>
+        <md-history-info (onClose)="closeCategoryInfo()" [category]="item.source"></md-history-info>
     </div>
 </ng-template>
 <ng-template #dateColumn let-item let-src="source">

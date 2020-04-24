@@ -1,0 +1,37 @@
+<section class="admin-table-wrap">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <table class="admin-table admin-table_white">
+                    <thead>
+                        <tr class="admin-table__head">
+                            <th class="admin-table__item">
+                                <!-- <span class="admin-table__sort">
+                                    <span class="admin-table__sort-up"></span>
+                                    <span class="admin-table__sort-down"></span>
+                                </span> -->
+                                Category Name
+                            </th>
+                            <th class="admin-table__item d-none d-md-table-cell">Data Sample</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngIf="data?.data?.hierarchyLevels">
+                        <tr class="admin-table__row" *ngFor="let item of data.data.hierarchyLevels;let index=index">
+                            <td class="admin-table__item">
+                                <div class="admin-table__name-edit">
+                                    <input (change)="validateItem(item)" type="text"
+                                        [(ngModel)]="item.newHierarchyLevelName">
+                                </div>
+                            </td>
+                            <td class="admin-table__item d-none d-md-table-cell">
+                                <div class="admin-table__data-sample">
+                                    {{item.dataSample|replace:'%sep%':','}}
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>

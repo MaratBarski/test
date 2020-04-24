@@ -5,7 +5,7 @@
             "description": "kostya is the king",
             "domain": "temp.mdclone-dev.com",
             "hierarchyFile": "20180830_104345_p1.csv",
-            "hierarchyName": "kostya is the king",
+            "hierarchyName": "test unmapped",
             "projectId": "1",
             "hierarchyFilePath": "E:\\files\\Hierarchies\\",
             "insertDate": "2018-08-23T09:52:48.000Z",
@@ -13,6 +13,7 @@
             "hierarchyChange": true,
             "hierarchyLoadingType": "manual",
             "project_id": "1",
+            "status": "unmapped",
             "hierarchyLevels": [
                 {
                     "hierarchyLevelId": "1533",
@@ -63,7 +64,7 @@
             "description": "omry test impala down 1",
             "domain": "temp.mdclone-dev.com",
             "hierarchyFile": "20180812_123951_20180726_193134_Observation_concepts.csv",
-            "hierarchyName": "omry test impala down 1",
+            "hierarchyName": "test mapped",
             "projectId": "1",
             "hierarchyFilePath": "E:\\files\\Hierarchies\\",
             "insertDate": "2018-08-12T09:39:52.000Z",
@@ -71,6 +72,7 @@
             "hierarchyChange": true,
             "hierarchyLoadingType": "manual",
             "project_id": "1",
+            "status": "mapped",
             "hierarchyLevels": [
                 {
                     "hierarchyLevelId": "526",

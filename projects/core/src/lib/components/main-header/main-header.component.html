@@ -8,29 +8,257 @@
               <mdc-icon [path]="icon.hamburgerOpen" [css]="'icon ' + icon.hamburgerOpen" (click)="toggleSideBar()">
               </mdc-icon>
             </div>
-            <div class="header__company d-none d-lg-block">
+            <div class="header__company d-none d-md-block">
               <mdc-icon [path]="'ic-flower'" [css]="'icon ic-flower'"></mdc-icon>
               <span class="header__company-name">Buttercup Hospital Institute</span>
             </div>
           </div>
           <div class="header__action">
-            <div class="select d-none d-lg-block">
+            <div class="select">
               <div class="select__head">Sheba Central
                 <div class="select__head-arr">
                   <mdc-icon [css]="'icon ' + icon.arrowDown" [path]="icon.arrowDown"></mdc-icon>
                 </div>
               </div>
-              <!-- <div class="select__option">
-                  <div class="select__param">Text 1</div>
-                  <div class="select__param">Text 2</div>
-                  <div class="select__param">Text 3</div>
-                  <div class="select__param">Text 4</div>
-                </div> -->
             </div>
-            <div class="header__notice active">
-              <svg class="icon notice">
-                <use xlink:href="/assets/sprites/sprite.svg#notice-active"></use>
-              </svg>
+            <div class="header-notice">
+              <mdc-icon [path]="icon.notice" [css]="icon.notice">
+              </mdc-icon>
+
+              <div class="header-notice__popup"> <!-- active -->
+                <div class="header-notice__top">
+                  <div class="header-notice__head">Notifications</div><a class="header-notice__link" href="#">Dismiss All</a>
+                </div>
+                <div class="header-notice__content">
+                  <div class="header-notice-item">
+                    <div class="header-notice-item__top">
+                      <div class="header-notice-head">
+                        <div class="header-notice-head__icon">
+                          <mdc-icon [path]="icon.categorization" [css]="icon.categorization"></mdc-icon>
+                        </div>
+                        <div class="header-notice-head__text">Categorization</div>
+                      </div>
+                      <div class="header-notice-status">
+                        <div class="header-notice-status__content">
+                          <svg class="icon ic-running">
+                            <use xlink:href="/assets/sprites/sprite.svg#ic-running"></use>
+                          </svg><span class="header-notice-item__status-text">Uploading</span>
+                        </div>
+                        <div class="header-notice-status__close">
+                          <svg class="icon ic-close-circle">
+                            <use xlink:href="/assets/sprites/sprite.svg#ic-close-circle"></use>
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="header-notice-item__text">The new categorization - “Categorization very long name” is uploading.</div>
+                    <div class="header-notice-item__bottom">
+                      <div class="header-notice-item__link">Hide progress</div>
+                      <div class="header-notice-item__date">Mar 19, 2020 08:00</div>
+                    </div>
+                    <div class="header-notice-item__progress open">
+                      <div class="load-doc load-doc_green">
+                        <div class="load-doc__content">
+                          <div class="load-doc__file">
+                            <div class="load-doc__icon">
+                              <svg class="icon ic-csv">
+                                <use xlink:href="/assets/sprites/sprite.svg#ic-csv"></use>
+                              </svg>
+                            </div>
+                            <div class="load-doc__text">20191225_134440_Medication Hierarchy 2.csv</div>
+                          </div>
+                          <div class="load-doc__link"><a href="#">Abort</a></div>
+                        </div>
+                        <div class="load-doc__progress">
+                          <div class="load-doc__progress-line" style="width:25%;"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="header-notice-item">
+                    <div class="header-notice-item__top">
+                      <div class="header-notice-head">
+                        <div class="header-notice-head__icon">
+                          <svg class="icon ic-patient-story undefined">
+                            <use xlink:href="/assets/sprites/sprite.svg#ic-patient-story"></use>
+                          </svg>
+                        </div>
+                        <div class="header-notice-head__text">Patient Story</div>
+                      </div>
+                      <div class="header-notice-status">
+                        <div class="header-notice-status__content">
+                          <svg class="icon ic-running">
+                            <use xlink:href="/assets/sprites/sprite.svg#ic-running"></use>
+                          </svg><span class="header-notice-item__status-text">Generating</span>
+                        </div>
+                        <div class="header-notice-status__close">
+                          <svg class="icon ic-close-circle">
+                            <use xlink:href="/assets/sprites/sprite.svg#ic-close-circle"></use>
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="header-notice-item__text">The population event ‘list of patients with pre-diabetes conditions’ is uploading.</div>
+                    <div class="header-notice-item__bottom">
+                      <div class="header-notice-item__link">Show progress</div>
+                      <div class="header-notice-item__date">Mar 19, 2020 08:45</div>
+                    </div>
+                    <div class="header-notice-item__progress">
+                      <div class="load-doc load-doc_green">
+                        <div class="load-doc__content">
+                          <div class="load-doc__file">
+                            <div class="load-doc__icon">
+                              <svg class="icon ic-csv">
+                                <use xlink:href="/assets/sprites/sprite.svg#ic-csv"></use>
+                              </svg>
+                            </div>
+                            <div class="load-doc__text">20191225_134440_Medication Hierarchy 2.csv</div>
+                          </div>
+                          <div class="load-doc__link"><a href="#">Abort</a></div>
+                        </div>
+                        <div class="load-doc__progress">
+                          <div class="load-doc__progress-line" style="width:25%;"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="header-notice-item">
+                    <div class="header-notice-item__top">
+                      <div class="header-notice-head">
+                        <div class="header-notice-head__icon">
+                          <svg class="icon ic-imported-file undefined">
+                            <use xlink:href="/assets/sprites/sprite.svg#ic-imported-file"></use>
+                          </svg>
+                        </div>
+                        <div class="header-notice-head__text">Imported File</div>
+                      </div>
+                      <div class="header-notice-status">
+                        <div class="header-notice-status__content">
+                          <div class="header-notice-status__circle header-notice-status__circle_red"></div><span class="header-notice-item__status-text">Failed</span>
+                        </div>
+                        <div class="header-notice-status__close">
+                          <svg class="icon ic-close-circle">
+                            <use xlink:href="/assets/sprites/sprite.svg#ic-close-circle"></use>
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="header-notice-item__text">The file “imported file name” upload aborted.</div>
+                    <div class="header-notice-item__bottom">
+                      <div class="header-notice-item__link"></div>
+                      <div class="header-notice-item__date">Mar 19, 2020 09:45</div>
+                    </div>
+                    <div class="header-notice-item__progress">
+                      <div class="load-doc load-doc_green">
+                        <div class="load-doc__content">
+                          <div class="load-doc__file">
+                            <div class="load-doc__icon">
+                              <svg class="icon ic-csv">
+                                <use xlink:href="/assets/sprites/sprite.svg#ic-csv"></use>
+                              </svg>
+                            </div>
+                            <div class="load-doc__text">20191225_134440_Medication Hierarchy 2.csv</div>
+                          </div>
+                          <div class="load-doc__link"><a href="#">Abort</a></div>
+                        </div>
+                        <div class="load-doc__progress">
+                          <div class="load-doc__progress-line" style="width:25%;"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="header-notice-item">
+                    <div class="header-notice-item__top">
+                      <div class="header-notice-head">
+                        <div class="header-notice-head__icon">
+                          <svg class="icon ic-quality undefined">
+                            <use xlink:href="/assets/sprites/sprite.svg#ic-quality"></use>
+                          </svg>
+                        </div>
+                        <div class="header-notice-head__text">Quality of Care</div>
+                      </div>
+                      <div class="header-notice-status">
+                        <div class="header-notice-status__content">
+                          <div class="header-notice-status__circle"></div><span class="header-notice-item__status-text">Completed</span>
+                        </div>
+                        <div class="header-notice-status__close">
+                          <svg class="icon ic-close-circle">
+                            <use xlink:href="/assets/sprites/sprite.svg#ic-close-circle"></use>
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="header-notice-item__text">The Quality of Care file generated succesfully and is ready for download</div>
+                    <div class="header-notice-item__bottom">
+                      <div class="header-notice-item__link">Download File</div>
+                      <div class="header-notice-item__date">Mar 19, 2020 10:45</div>
+                    </div>
+                    <div class="header-notice-item__progress">
+                      <div class="load-doc load-doc_green">
+                        <div class="load-doc__content">
+                          <div class="load-doc__file">
+                            <div class="load-doc__icon">
+                              <svg class="icon ic-csv">
+                                <use xlink:href="/assets/sprites/sprite.svg#ic-csv"></use>
+                              </svg>
+                            </div>
+                            <div class="load-doc__text">20191225_134440_Medication Hierarchy 2.csv</div>
+                          </div>
+                          <div class="load-doc__link"><a href="#">Abort</a></div>
+                        </div>
+                        <div class="load-doc__progress">
+                          <div class="load-doc__progress-line" style="width:25%;"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="header-notice-item">
+                    <div class="header-notice-item__top">
+                      <div class="header-notice-head">
+                        <div class="header-notice-head__icon">
+                          <svg class="icon ic-patient-story undefined">
+                            <use xlink:href="/assets/sprites/sprite.svg#ic-patient-story"></use>
+                          </svg>
+                        </div>
+                        <div class="header-notice-head__text">Patient Story</div>
+                      </div>
+                      <div class="header-notice-status">
+                        <div class="header-notice-status__content">
+                          <div class="header-notice-status__circle"></div><span class="header-notice-item__status-text">Completed</span>
+                        </div>
+                        <div class="header-notice-status__close">
+                          <svg class="icon ic-close-circle">
+                            <use xlink:href="/assets/sprites/sprite.svg#ic-close-circle"></use>
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="header-notice-item__text">The Quality of Care file generated succesfully and is ready for download</div>
+                    <div class="header-notice-item__bottom">
+                      <div class="header-notice-item__link">Show progress</div>
+                      <div class="header-notice-item__date">Mar 19, 2020 10:45</div>
+                    </div>
+                    <div class="header-notice-item__progress">
+                      <div class="load-doc load-doc_green">
+                        <div class="load-doc__content">
+                          <div class="load-doc__file">
+                            <div class="load-doc__icon">
+                              <svg class="icon ic-csv">
+                                <use xlink:href="/assets/sprites/sprite.svg#ic-csv"></use>
+                              </svg>
+                            </div>
+                            <div class="load-doc__text">20191225_134440_Medication Hierarchy 2.csv</div>
+                          </div>
+                          <div class="load-doc__link"><a href="#">Abort</a></div>
+                        </div>
+                        <div class="load-doc__progress">
+                          <div class="load-doc__progress-line" style="width:25%;"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
             <div class="header__profile">
               <div class="header__profile-icon"></div>

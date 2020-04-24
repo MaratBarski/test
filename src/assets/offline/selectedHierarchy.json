@@ -1,0 +1,173 @@
+{
+    "data": {
+        "hierarchyRootId": "226",
+        "description": "hierarchy description",
+        "domain": "temp.mdclone-dev.com",
+        "hierarchyFile": "20180916_155113_number_of_kids_hierarchy.csv",
+        "hierarchyName": "hierarchy Name test",
+        "projectId": "1",
+        "hierarchyFilePath": "E:\\files\\Hierarchies\\",
+        "insertDate": "2018-09-16T12:51:22.000Z",
+        "defaultLevelId": "1441",
+        "project_id": "1",
+        "hierarchyLoadingType": "etl",
+        "hierarchyLevels": [
+            {
+                "hierarchyLevelId": "1426",
+                "hierarchyLevelName": "aaaaaaaaaaaaaaaa",
+                "sortValue": -99991,
+                "dataSample": "no%sep%yes",
+                "hierarchyRootId": "226"
+            },
+            {
+                "hierarchyLevelId": "1443",
+                "hierarchyLevelName": "Entity_Description",
+                "sortValue": -1000000,
+                "dataSample": "City and Borough%sep%Borough%sep%County%sep%Parish",
+                "hierarchyRootId": "226"
+            },
+            {
+                "hierarchyLevelId": "1427",
+                "hierarchyLevelName": "name",
+                "sortValue": -1,
+                "dataSample": "unknown",
+                "hierarchyRootId": "226"
+            },
+            {
+                "hierarchyLevelId": "1428",
+                "hierarchyLevelName": "specialty",
+                "sortValue": -1,
+                "dataSample": "unknown",
+                "hierarchyRootId": "226"
+            },
+            {
+                "hierarchyLevelId": "1432",
+                "hierarchyLevelName": "State_FIPS_Code",
+                "sortValue": -1,
+                "dataSample": "48%sep%25%sep%38%sep%34",
+                "hierarchyRootId": "226"
+            },
+            {
+                "hierarchyLevelId": "1433",
+                "hierarchyLevelName": "ANSI_Code",
+                "sortValue": -1,
+                "dataSample": "01784940%sep%00516871%sep%01008587%sep%00063758",
+                "hierarchyRootId": "226"
+            },
+            {
+                "hierarchyLevelId": "1434",
+                "hierarchyLevelName": "GU_Name",
+                "sortValue": -1,
+                "dataSample": "Bucks%sep%Umatilla%sep%Rockcastle%sep%Miller",
+                "hierarchyRootId": "226"
+            },
+            {
+                "hierarchyLevelId": "1435",
+                "hierarchyLevelName": "Entity_Description",
+                "sortValue": -1,
+                "dataSample": "City and Borough%sep%Borough%sep%County%sep%Parish",
+                "hierarchyRootId": "226"
+            },
+            {
+                "hierarchyLevelId": "1437",
+                "hierarchyLevelName": "Type-2",
+                "sortValue": -1,
+                "dataSample": "C%sep%D%sep%B%sep%A",
+                "hierarchyRootId": "226"
+            },
+            {
+                "hierarchyLevelId": "1440",
+                "hierarchyLevelName": "Type-2",
+                "sortValue": -1,
+                "dataSample": "C%sep%D%sep%B%sep%A",
+                "hierarchyRootId": "226"
+            },
+            {
+                "hierarchyLevelId": "1442",
+                "hierarchyLevelName": "GU_Name",
+                "sortValue": -1,
+                "dataSample": "Bucks%sep%Umatilla%sep%Rockcastle%sep%Miller",
+                "hierarchyRootId": "226"
+            },
+            {
+                "hierarchyLevelId": "1424",
+                "hierarchyLevelName": "Number_Of_Kids",
+                "sortValue": 0,
+                "dataSample": "1%sep%7%sep%2%sep%none",
+                "hierarchyRootId": "226"
+            },
+            {
+                "hierarchyLevelId": "1425",
+                "hierarchyLevelName": "family_size",
+                "sortValue": -1,
+                "dataSample": "ללא%sep%4-7%sep%1-3%sep%0",
+                "hierarchyRootId": "226"
+            },
+            {
+                "hierarchyLevelId": "1441",
+                "hierarchyLevelName": "family_size",
+                "sortValue": 1,
+                "dataSample": "ללא%sep%4-7%sep%1-3%sep%0",
+                "hierarchyRootId": "226"
+            },
+            {
+                "hierarchyLevelId": "1438",
+                "hierarchyLevelName": "ANSI_Code",
+                "sortValue": -1,
+                "dataSample": "01784940%sep%00516871%sep%01008587%sep%00063758",
+                "hierarchyRootId": "226"
+            },
+            {
+                "hierarchyLevelId": "1429",
+                "hierarchyLevelName": "site",
+                "sortValue": -1,
+                "dataSample": "Community Register of Medicinal Products for Human Use (European Commission)%sep%Superficial foreign body, right knee%sep%Minor laceration of femoral artery, left leg%sep%Passenger on bus injured in collision with other nonmotor vehicle in nontraffic accident",
+                "hierarchyRootId": "226"
+            },
+            {
+                "hierarchyLevelId": "1430",
+                "hierarchyLevelName": "State_Abbreviation",
+                "sortValue": -1,
+                "dataSample": "LA%sep%OR%sep%IN%sep%UT",
+                "hierarchyRootId": "226"
+            },
+            {
+                "hierarchyLevelId": "1439",
+                "hierarchyLevelName": "Type-4(Type-4)",
+                "sortValue": -1,
+                "dataSample": "Physician Specialty",
+                "hierarchyRootId": "226"
+            },
+            {
+                "hierarchyLevelId": "1445",
+                "hierarchyLevelName": "Type-3",
+                "sortValue": -1,
+                "dataSample": "ABC%sep%DE",
+                "hierarchyRootId": "226"
+            },
+            {
+                "hierarchyLevelId": "1444",
+                "hierarchyLevelName": "has_kids_yes_no",
+                "sortValue": 2,
+                "dataSample": "no%sep%yes",
+                "hierarchyRootId": "226"
+            },
+            {
+                "hierarchyLevelId": "1431",
+                "hierarchyLevelName": "County_FIPS_Code",
+                "sortValue": -1,
+                "dataSample": "181%sep%131%sep%063%sep%423",
+                "hierarchyRootId": "226"
+            },
+            {
+                "hierarchyLevelId": "1436",
+                "hierarchyLevelName": "State_FIPS_Code",
+                "sortValue": -1,
+                "dataSample": "48%sep%25%sep%38%sep%34",
+                "hierarchyRootId": "226"
+            }
+        ]
+    },
+    "massage": "Get Hierarchy Object",
+    "status": "success"
+}

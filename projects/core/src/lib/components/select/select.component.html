@@ -2,7 +2,7 @@
     <div (click)="mouseClick($event);" class="select__head">
         <div #comboTextContainer class="select__icon-wrap">
             <svg *ngIf="selected?.icon" [mdcSvg]="selected?.icon" class="icon"></svg>
-            <mdc-text-block class="select__head-text" [text]="selected?.text"></mdc-text-block>
+            {{selected?.text}}
         </div>
         <div class="select__head-arr">
             <svg mdcSvg="ic-select-arr-down" class="icon"></svg>
@@ -14,7 +14,7 @@
                 class="select__param">
                 <div class="select__icon-wrap">
                     <svg *ngIf="option.icon" [mdcSvg]="option.icon" class="icon"></svg>
-                    <mdc-text-block class="select__param-text" [text]="option.text"></mdc-text-block>
+                    {{option.text}}
                 </div>
             </div>
         </ng-template>

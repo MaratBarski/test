@@ -1,0 +1,56 @@
+<section class="page-header">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="page-header__wrap">
+                    <div class="page-header__content">
+                        <div class="page-header__back">
+                            <a routerLink="/categorization">
+                                <span class="ic-hover">
+                                    <svg class="icon ic-back-to-page" mdcSvg="ic-back-to-page"></svg>
+                                </span>
+                            </a>
+                        </div>
+                        <h1>{{pageTitle}}</h1>
+                        <div (input)="updateName($event)" class="page-header__text" contenteditable="true">
+                            {{hierarchyName}}
+                        </div>
+                        <div class="page-header__text noborder">
+                            <span class="pointer link" (click)="showDescription($event)">Description</span>
+                            <div [hidden]="!isShowDescription" class="info-popup">
+                                <div (click)="$event.stopPropagation()" class="form-site">
+                                    <div class="info-popup__top">
+                                        <div class="info-popup__head-wrap">
+                                            <span class="info-popup__head">Categories Description</span>
+                                            <span class="info-popup__option">Optional</span>
+                                        </div>
+                                        <div class="info-popup__close">
+                                            <svg (click)="cancelDescription()" class="icon ic-close-circle"
+                                                mdcSvg="ic-close-circle"></svg>
+                                        </div>
+                                    </div>
+                                    <div class="info-popup__content">
+                                        <div class="info-popup__fields">
+                                            <textarea [(ngModel)]="description"
+                                                placeholder="Type a description that will help you understand more about this categorization"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="info-popup__btn">
+                                        <button (click)="cancelDescription()"
+                                            class="btn btn_border btn_small">Cancel</button>
+                                        <button (click)="apllyDescription()" class="btn btn_small">Apply</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="notice">
+                        <div class="notice__icon">
+                            <svg class="icon ic-bulb" mdcSvg="ic-bulb"></svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -85,6 +85,7 @@ export * from './lib/components/file-uploader/file-uploader.component';
 
 export * from './lib/directives/show.directive';
 export * from './lib/directives/tooltip.directive';
+export * from './lib/directives/elementtooltip.directive';
 export * from './lib/directives/table.directive';
 export * from './lib/directives/visibility.directive';
 export * from './lib/animations/animations';

@@ -9,7 +9,7 @@ export interface EmptyState {
 
 export const DefaultEmptyState = (): EmptyState => {
   return {
-    title: 'Not a part of a component yet.',
+    title: 'Nothing matches your search.',
     subTitle: 'Try using the filters or search different keywords',
     image: 'nodata.png'
   };

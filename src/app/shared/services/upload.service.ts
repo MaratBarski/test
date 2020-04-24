@@ -41,6 +41,7 @@ export class UploadService implements OnDestroy {
   private upload(): void {
     if (!this._uploads.length) { return; }
     if (this._uploading) { return; }
+    
     this._uploading = true;
     this._uploads[0].status = UploadStatus.progress;
     this.http.post(this._uploads[0].url, this._uploads[0].form, {
@@ -50,7 +51,7 @@ export class UploadService implements OnDestroy {
       .subscribe(events => {
         if (events.type == HttpEventType.UploadProgress) {
           this._uploads[0].progress = Math.round(events.loaded / events.total * 100);
-          console.log('Upload progress: ', this._uploads[0].status + '%');
+          console.log('Upload progress: ', this._uploads[0].progress + '%');
         } else if (events.type === HttpEventType.Response) {
           this._uploads.splice(0, 1);
           console.log(events);
@@ -63,7 +64,6 @@ export class UploadService implements OnDestroy {
           this._uploading = false;
         }
       )
-
   }
 
   private startUpload(): void {

@@ -45,12 +45,6 @@
     margin-top: 2px;
   }
 
-  &__notice{
-    display: inline-block;
-    width: 30px;
-    height: 30px;
-  }
-
   &__profile{
     display: inline-block;
     width: 30px;
@@ -171,6 +165,187 @@
   &__text{
     width: calc(100% - 30px);
     @include font(normal, normal, rem(14px), 1.2, $color-dark-blue);
+  }
+}
+
+.header-notice{
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  position: relative;
+
+  &__popup{
+    display: none;
+    width: 390px;
+    border-radius: 4px;
+    box-shadow: 0 -9px 21px 0 rgba(128, 152, 213, 0.15), -10px 9px 21px 0 rgba(128, 152, 213, 0.15);
+    background: linear-gradient(to right, $color-dark-blue 0%, $color-dark-purple 100%);
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 14px;
+    padding: 10px;
+  }
+
+  &__popup.active{display: inline-block;}
+
+  &__top{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    margin-top: 2px;
+  }
+
+  &__head{
+    @include font(normal, 600, rem(14px), 1.2, $color-sort-grey);
+    text-transform: uppercase;
+  }
+
+  &__link{
+    @include font(normal, normal, rem(13px), 1.2, #fff);
+  }
+
+  &__link:hover{color: #fff;}
+
+  &__content{
+    max-height: 492px;
+    overflow-y: auto;
+    margin-bottom: -10px;
+  }
+}
+
+.header-notice-empty{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 498px;
+  margin: 0 -10px -10px;
+  border-radius: 0 0 6px 6px;
+  background: #fff;
+  text-align: center;
+
+  &__title{
+    @include font(normal, 600, rem(16px), 1.2, $color-grey);
+  }
+
+  &__text{
+    @include font(normal, normal, rem(14px), 1.2, $color-grey);
+    margin-top: 14px;
+  }
+
+  &__img{
+    margin-top: 72px;
+  }
+}
+
+.header-notice-item{
+  background: #fff;
+  border-radius: 4px;
+  margin-bottom: 6px;
+  padding: 10px 14px;
+
+  &__top{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__text{
+    @include font(normal, normal, rem(12px), 1.42, $color-dark-grey);
+    margin-top: 2px;
+  }
+
+  &__bottom{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 8px;
+  }
+
+  &__link{
+    @include font(normal, normal, rem(12px), 1.2, $color-blue);
+    cursor: pointer;
+  }
+
+  &__link:hover{text-decoration: underline;}
+
+  &__date{
+    @include font(normal, normal, rem(12px), 1.2, $color-grey);
+  }
+
+  &__progress{
+    display: none;
+    margin-top: 9px;
+    padding-top: 4px;
+    border-top: 1px solid rgba(172, 178, 195, 0.5);
+
+    .load-doc__text,
+    .load-doc__link{
+      font-size: rem(12px);
+    }
+  }
+
+  &__progress.open{display: block;}
+
+  &__top:hover .header-notice-status__content{display: none;}
+  &__top:hover .header-notice-status__close{display: inline-block;}
+}
+
+.header-notice-head{
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+
+  &__icon{
+    width: 30px;
+    margin-right: 4px;
+    margin-left: -3px;
+  }
+
+  &__text{
+    @include font(normal, 600, rem(14px), 1.2, $color-dark-grey);
+  }
+}
+
+.header-notice-status{
+  @include font(normal, 600, rem(12px), 1.2, $color-dark-grey);
+  position: relative;
+
+  .icon{
+    max-width: 16px;
+    max-height: 16px;
+    vertical-align: middle;
+    margin-right: 5px;
+  }
+
+  &__circle{
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: $color-green;
+    margin-right: 5px;
+  }
+
+  &__circle_red{background: $color-red;}
+
+  &__close{
+    width: 18px;
+    height: 18px;
+    display: none;
+    position: absolute;
+    @include top-center;
+    right: 0;
+    text-align: right;
+    cursor: pointer;
+
+    .icon{
+      width: 18px;
+      height: 18px;
+      margin: 0;
+    }
   }
 }
 

@@ -116,6 +116,7 @@
   }
 
   &__sub-list{
+    display: none;
     padding-left: 40px;
   }
 
@@ -157,13 +158,14 @@
   main{
     width: calc(100% - 305px);
     left: 305px;
-    overflow-y: auto;
-    overflow-x: hidden;
+    overflow: auto;
 
     .content-page{
       width: calc(100% + 305px);
     }
   }
+
+  .footer{width: calc(100% - 305px);}
 }
 
 @media (max-width: 767px) {

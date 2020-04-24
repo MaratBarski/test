@@ -11,12 +11,12 @@ export const environment = {
     fileSource: 'mdclone/api/v1/file-source',
     templateByProject: 'mdclone/api/v1/template/get-by-project',
     uploadFileSource: 'mdclone/api/v1/upload/file-source',
+    uploadHierarchy: 'mdclone/api/v1/upload/hierarchy',
     deleteFileSource: 'mdclone/api/v1/file-source',
     hierarchy: 'mdclone/api/v1/hierarchy',
-    deleteHierarchy: 'mdclone/api/v1/hierarchy',
-    downloadHierarchy: 'mdclone/api/v1/hierarchy/download',
-    uploadHierarchy: 'mdclone/api/v1/upload/hierarchy',
     historyReport: 'mdclone/api/v1/session-history',
-    usageReport: 'mdclone/api/v1/reporting/usage'
+    downloadHistoryReport: 'moshe/api/v1/session-history/download',
+    usageReport: 'mdclone/api/v1/reporting/usage',
+    updateHierarchy: 'mdclone/api/v1/updateHierarchy'
   }
 };
