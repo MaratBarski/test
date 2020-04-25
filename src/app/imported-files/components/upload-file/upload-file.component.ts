@@ -1,7 +1,7 @@
 import { Component, Output, EventEmitter, ViewChild, ElementRef, Input, OnInit } from '@angular/core';
-import { UploadService, UploadStatus } from '@app/shared/services/upload.service';
+import { UploadService } from '@app/shared/services/upload.service';
 import { Offline } from '@app/shared/decorators/offline.decorator';
-import { SelectOption, SelectComponent, CsvManagerService, FileInput, FileUploaderComponent } from '@app/core-api';
+import { SelectOption, SelectComponent, CsvManagerService, NotificationStatus } from '@appcore';
 import { environment } from '@env/environment';
 
 @Component({
@@ -58,11 +58,18 @@ export class UploadFileComponent implements OnInit {
     formData.append('fileType', this.fileType ? '1' : '0');
     formData.append('template', this.template);
     this.uploadService.add({
-      title: 'File source',
+      notification: {
+        name: 'Imported File',
+        comment: 'Uploading',
+        progress: 0,
+        status: NotificationStatus.uploading,
+        showProgress: true,
+        showInContainer: true,
+        startDate: new Date(),
+        progressTitle: this.fileName
+      },
       form: formData,
-      url: this._uploadUrl,
-      status: UploadStatus.waiting,
-      progress: 0
+      url: this._uploadUrl
     });
     this.reset();
     this.onUpload.emit();

@@ -1,6 +1,6 @@
 import { Component, Output, EventEmitter, ViewChild, ElementRef, Input } from '@angular/core';
-import { UploadService, UploadStatus } from '@app/shared/services/upload.service';
-import { CsvManagerService } from '@app/core-api';
+import { UploadService } from '@app/shared/services/upload.service';
+import { CsvManagerService, NotificationStatus } from '@appcore';
 import { environment } from '@env/environment';
 
 @Component({
@@ -42,11 +42,17 @@ export class UploadFileComponent {
     formData.append('environment', this.project);
     formData.append('defaultCategory', this.defaultCategory);
     this.uploadService.add({
-      title: 'Categorization',
+      notification: {
+        name: 'Categorization',
+        comment: 'Uploading',
+        progress: 0,
+        status: NotificationStatus.uploading,
+        showProgress: false,
+        showInContainer: true,
+        startDate: new Date()
+      },
       form: formData,
       url: this._uploadUrl,
-      status: UploadStatus.waiting,
-      progress: 0
     });
     this.reset();
     this.onUpload.emit();

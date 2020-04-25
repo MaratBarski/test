@@ -1,0 +1,11 @@
+<div *ngIf="(notificationsService.notifications|showNotice).length" class="header-notice__popup active">
+    <div class="header-notice__top">
+        <div class="header-notice__head">Notifications</div>
+        <span class="header-notice__link pointer" (click)="dismissAll()">Dismiss All</span>
+    </div>
+    <div class="header-notice__content">
+        <ng-container *ngFor="let item of notificationsService.notifications|showNotice">
+            <mdc-notification-item [notice]="item"></mdc-notification-item>
+        </ng-container>
+    </div>
+</div>

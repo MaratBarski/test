@@ -61,6 +61,9 @@ import { ActionLinkPipe } from './pipes/action-link.pipe';
 import { SvgDirective } from './directives/svg.directive';
 import { ProgressMatchComponent } from './components/progress-match/progress-match.component';
 import { FileUploaderComponent } from './components/file-uploader/file-uploader.component';
+import { NotificationsComponent } from './components/notifications/notifications.component';
+import { NotificationItemComponent } from './components/notification-item/notification-item.component';
+import { ShowNoticePipe } from './pipes/show-notice.pipe';
 
 // import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 
@@ -119,7 +122,10 @@ import { FileUploaderComponent } from './components/file-uploader/file-uploader.
     ActionLinkPipe,
     SvgDirective,
     ProgressMatchComponent,
-    FileUploaderComponent
+    FileUploaderComponent,
+    NotificationsComponent,
+    NotificationItemComponent,
+    ShowNoticePipe
   ],
   imports: [
     CommonModule,
@@ -184,7 +190,9 @@ import { FileUploaderComponent } from './components/file-uploader/file-uploader.
     ActionLinkPipe,
     SvgDirective,
     ProgressMatchComponent,
-    FileUploaderComponent
+    FileUploaderComponent,
+    NotificationsComponent,
+    ShowNoticePipe
   ],
   entryComponents: [
     TableHeaderComponent,
