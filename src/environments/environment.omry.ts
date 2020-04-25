@@ -18,6 +18,7 @@ export const environment = {
     uploadHierarchy: 'omry/api/v1/upload/hierarchy',
     historyReport: 'omry/api/v1/session-history',
     downloadHistoryReport: 'omry/api/v1/session-history/download',
-    usageReport: 'omry/api/v1/reporting/usage'
+    usageReport: 'omry/api/v1/reporting/usage',
+    updateHierarchy: 'omry/api/v1/updateHierarchy'
   }
 };

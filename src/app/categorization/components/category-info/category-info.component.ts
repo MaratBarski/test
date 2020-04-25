@@ -1,5 +1,6 @@
 import { Component, Input, EventEmitter, Output, HostListener } from '@angular/core';
 import { Hierarchy } from '@app/models/hierarchy';
+import {environment} from '@env/environment';
 
 @Component({
   selector: 'md-category-info',
@@ -9,7 +10,7 @@ import { Hierarchy } from '@app/models/hierarchy';
 export class CategoryInfoComponent {
 
   isOver = false;
-
+  get downloadUrl(): string { return environment.serverUrl + environment.endPoints.downloadHierarchy + '/'};
   @Input() category: Hierarchy;
   @Output() onClose = new EventEmitter();
 

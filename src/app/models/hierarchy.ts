@@ -7,6 +7,7 @@ export class Hierarchy {
      projectObj?: Project;
      hierarchyFile: string;
      hierarchyName: string;
+     domain: string;
      projectId: number;
      hierarchyFilePath: string;
      insertDate: Date;

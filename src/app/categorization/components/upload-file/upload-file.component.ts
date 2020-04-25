@@ -37,10 +37,10 @@ export class UploadFileComponent {
     }
     const formData: FormData = new FormData();
     formData.append('file', this.fileInput.nativeElement.files[0]);
-    formData.append('fileName', this.fileName);
+    formData.append('hierarchyName', this.fileName);
     formData.append('description', this.description);
-    formData.append('environment', this.project);
-    formData.append('defaultCategory', this.defaultCategory);
+    formData.append('projectId', this.project);
+    formData.append('defaultLevelId', this.defaultCategory);
     this.uploadService.add({
       title: 'Categorization',
       form: formData,

@@ -32,7 +32,7 @@ export class EditCategoriesComponent extends BaseSibscriber implements OnInit {
     private activatedRoute: ActivatedRoute
   ) {
     super();
-    this.navigationService.currentPageID = undefined;//PageInfo.ManageHierarchies.id;
+    this.navigationService.currentPageID = undefined; // PageInfo.ManageHierarchies.id;
   }
 
   ngOnInit(): void {
@@ -53,17 +53,14 @@ export class EditCategoriesComponent extends BaseSibscriber implements OnInit {
     if (!this.selectedCategory.data) { return; }
     if (!this.selectedCategory.data.hierarchyLevels) { return; }
     const category = JSON.parse(JSON.stringify(this.selectedCategory));
-    //alert(this.selectedCategory.data.description);
-    //alert(this.selectedCategory.data.defaultLevelId);
-    //alert(this.selectedCategory.data.hierarchyName);
-    //alert(this.selectedCategory.data.hierarchyLevels[0].newHierarchyLevelName);
     category.data.hierarchyLevels.forEach((item: any) => {
-      item.hierarchyLevelName = item.newHierarchyLevelName
+      item.hierarchyLevelName = item.newHierarchyLevelName;
       delete item.newHierarchyLevelName;
     });
+    console.log(category);
     this.isLoading = true;
     super.add(
-      this.editCategoryService.save(category).subscribe((res: any) => {
+      this.editCategoryService.save(category.data).subscribe((res: any) => {
         this.isLoading = false;
       }));
   }

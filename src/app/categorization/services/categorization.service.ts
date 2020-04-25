@@ -3,7 +3,7 @@ import { DataService, TableModel } from '@app/core-api';
 import { Observable } from 'rxjs';
 import { Offline } from 'src/app/shared/decorators/offline.decorator';
 import { CategoryeResponse } from '../models/category-reponse';
-import { Hierarchy } from '@app/imported-files/models/hierarchy';
+import { Hierarchy } from '@app/models/hierarchy';
 import { environment } from '@env/environment';
 
 @Injectable({
@@ -22,6 +22,9 @@ export class CategorizationService {
 
   updateHierarchyChange(hierarchy: any, state: boolean): void {
     // call dataService to update hierarchy state
+  }
+  deleteHierarchy(fl: Hierarchy): Observable<any> {
+    return this.dataService.delete(`${environment.serverUrl}${environment.endPoints.deleteHierarchy}/${fl.hierarchyRootId}`);
   }
 
   createDataSource(categories: Array<Hierarchy>): TableModel {
@@ -117,13 +120,13 @@ export class CategorizationService {
           hierarchyName: fl.hierarchyName,
           hierarchyFile: fl.hierarchyFile,
           insertDate: fl.insertDate,
-          domain: fl.domain,
+          domain: fl.project.projectName,
           defaultLevelId: fl.defaultLevelId
         },
         isActive: false,
         source: fl
-      })
-    })
+      });
+    });
     return data;
   }
 }

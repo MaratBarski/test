@@ -3,7 +3,9 @@
         <div class="admin-table-info__head">Details</div>
         <div class="admin-table-info__icons">
             <span class="ic-hover">
+              <a href="{{downloadUrl}}{{category.hierarchyRootId}}">
                 <svg mdcSvg="ic-download"></svg>
+              </a>
             </span>
             <span (click)="closeInfo()" class="ic-hover">
                 <svg width="12" height="12" mdcSvg="ic-close"></svg>
@@ -47,7 +49,7 @@
         </div>
         <div class="admin-table-info__item">
             <div class="admin-table-info__title">Environment:</div>
-            <div class="admin-table-info__val">{{category?.domain}}</div>
+            <div class="admin-table-info__val">{{category?.project.projectName}}</div>
         </div>
         <div class="admin-table-info__item">
             <div class="admin-table-info__title">Default Category:</div>
