@@ -44,12 +44,12 @@ export class NotificationsService {
   }
 
   constructor() {
-    window.addEventListener("beforeunload", (event) => {
-      if (!this.uploadingCount) { return; }
-      event.preventDefault();
-      event.returnValue = 'Your notifications will be lost!';
-      return event;
-    });
+    // window.addEventListener("beforeunload", (event) => {
+    //   if (!this.uploadingCount) { return; }
+    //   event.preventDefault();
+    //   event.returnValue = 'Your notifications will be lost!';
+    //   return event;
+    // });
   }
 
   dismissAll(): void {
