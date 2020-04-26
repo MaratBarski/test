@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import {SwitchButtonModel} from '@appcore';
+import {Component, Input, OnInit} from '@angular/core';
+import {Icon, SwitchButtonModel} from '@appcore';
 
-export enum FieldType{
-
+export enum FieldDataType {
+  STRING,
+  NUMERIC,
+  DATE,
 }
 
 @Component({
@@ -11,23 +13,24 @@ export enum FieldType{
   styleUrls: ['./clm-type-switcher.component.scss']
 })
 export class ClmTypeSwitcherComponent implements OnInit {
+  @Input() type: FieldDataType;
   FieldTypeModel: SwitchButtonModel[]
   constructor() {
     this.FieldTypeModel = [
       {
         disable: false,
         value: false,
-        icon: ''
+        icon: Icon.textual
       },
       {
         disable: false,
         value: false,
-        icon: ''
+        icon: Icon.numeric
       },
       {
         disable: false,
         value: false,
-        icon: ''
+        icon: Icon.date
       }
     ];
   }
