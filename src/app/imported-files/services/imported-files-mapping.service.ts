@@ -6,6 +6,9 @@ import {Offline} from 'src/app/shared/decorators/offline.decorator';
 import {Resolve, ActivatedRouteSnapshot, RouterStateSnapshot} from '@angular/router';
 import {environment} from '@env/environment';
 import {map, switchMap} from 'rxjs/operators';
+import {Template} from '@app/models/template';
+import {temporaryAllocator} from '@angular/compiler/src/render3/view/util';
+import {Hierarchy} from '@app/models/hierarchy';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +22,7 @@ export class ImportedFilesMappingService implements Resolve<FileSourceMappingRes
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> {
     const id = route.paramMap.get('id');
     let fileSource: FileSource;
+    let templates: Template[];
 
     this.getUrl = `${environment.serverUrl}${environment.endPoints.fileSource}/${id}`;
 
@@ -29,7 +33,13 @@ export class ImportedFilesMappingService implements Resolve<FileSourceMappingRes
       this.getUrl = `${environment.serverUrl}${environment.endPoints.templateByProject}/${data.project}`;
       return this.dataService.get(this.getUrl);
     }), map((data: any) => {
-      return [fileSource, data.data];
+      templates = data.data as Template[];
+      return templates;
+    }), switchMap((data: Template[]) => {
+      this.getUrl = `${environment.serverUrl}${environment.endPoints.hierarchy}/project/${fileSource.project}`;
+      return this.dataService.get(this.getUrl);
+    }), map((data: any) => {
+      return [fileSource, templates, data.data];
     }));
   }
 
