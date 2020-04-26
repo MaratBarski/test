@@ -17,6 +17,15 @@ export class UploadFileComponent {
   @Output() onCancel = new EventEmitter<void>();
   @Output() onUpload = new EventEmitter<void>();
   @Input() set uploadUrl(uploadUrl: string) { this._uploadUrl = uploadUrl; }
+  @Input() set source(source: any) {
+    this._source = source;
+  }
+  get source(): any { return this._source; }
+  private _source: any;
+
+  get isEditMode(): boolean {
+    return !!this.source;
+  }
   get uploadUrl(): string { return this._uploadUrl; }
   description = '';
   fileName = '';
@@ -41,7 +50,11 @@ export class UploadFileComponent {
     formData.append('file', this.fileInput.nativeElement.files[0]);
     formData.append('fileName', this.fileName);
     formData.append('description', this.description);
-    formData.append('environment', this.project);
+    if (!this.isEditMode) {
+      formData.append('environment', this.project);
+    } else {
+      formData.append('id', this.source.hierarchyRootId);
+    }
     formData.append('defaultCategory', this.defaultCategory);
     this.uploadService.add({
       notification: {

@@ -3,6 +3,7 @@ import { BaseSibscriber, TableModel, TableComponent, PageInfo, NavigationService
 import { CategorizationService } from '@app/categorization/services/categorization.service';
 import { CategoryInfoComponent } from '@app/categorization/components/category-info/category-info.component';
 import { Router } from '@angular/router';
+import { environment } from '@env/environment';
 
 @Component({
   selector: 'md-categorization',
@@ -17,7 +18,9 @@ export class CategorizationComponent extends BaseSibscriber implements OnInit {
   showUploadFile = false;
   dataOrigin: TableModel;
   dataSource: TableModel;
-  currentRow = { state: true, source: undefined }
+  categorySource: Array<any>;
+  currentRow = { state: true, source: undefined };
+  currentSource: any = undefined;
 
   constructor(
     private categorizationService: CategorizationService,
@@ -52,23 +55,39 @@ export class CategorizationComponent extends BaseSibscriber implements OnInit {
       this.router.navigate(['/categorization/edit-categories', { id: action.item.source.hierarchyRootId }]);
     },
     map: (action: TableActionCommand) => {
-      alert('map');
+      this.router.navigate(['/categorization/map-categories', { id: action.item.source.hierarchyRootId }]);
     },
     replace: (action: TableActionCommand) => {
-      alert('replace');
+      this.currentSource = action.item.source;
+      this.showUploadFile = true;
     },
     download: (action: TableActionCommand) => {
-      alert('view');
+      //alert(`${environment.serverUrl}${environment.endPoints.downloadCategory}/${action.item.source.hierarchyRootId}`)
+      window.open(`${environment.serverUrl}${environment.endPoints.downloadCategory}/${action.item.source.hierarchyRootId}`)
     },
     delete: (action: TableActionCommand) => {
-      alert('delete');
+      this.categorySource = this.categorySource.filter(x => x != action.item.source);
+      this.initData();
+      this.table.stayOnCurrentPage = true;
+      this.categorizationService.deleteCategory(action.item.source)
+        .toPromise()
+        .then(res => {
+          console.log('Category deleted');
+        }).catch(e => {
+          console.error('Error delete category');
+        })
     }
   };
+
+  private initData(): void {
+    this.dataOrigin = this.dataSource = this.categorizationService.createDataSource(this.categorySource);
+  }
 
   ngOnInit() {
     super.add(
       this.categorizationService.load().subscribe((res: any) => {
-        this.dataOrigin = this.dataSource = this.categorizationService.createDataSource(res.data);
+        this.categorySource = res.data;
+        this.initData();
       }));
   }
 
@@ -76,4 +95,8 @@ export class CategorizationComponent extends BaseSibscriber implements OnInit {
     this.table.closeRowInfo();
   }
 
+  openUploadNew(): void {
+    this.currentSource = undefined;
+    this.showUploadFile = true;
+  }
 }

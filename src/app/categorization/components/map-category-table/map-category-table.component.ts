@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, HostListener, Renderer2 } from '@angular/core';
+import { Component, Input, HostListener, Renderer2 } from '@angular/core';
 import { ComponentService } from '@appcore';
 
 @Component({
@@ -6,7 +6,7 @@ import { ComponentService } from '@appcore';
   templateUrl: './map-category-table.component.html',
   styleUrls: ['./map-category-table.component.scss']
 })
-export class MapCategoryTableComponent implements OnInit {
+export class MapCategoryTableComponent {
 
   @Input() set data(data: any) {
     this._data = data;
@@ -26,7 +26,11 @@ export class MapCategoryTableComponent implements OnInit {
     private renderer2: Renderer2
   ) { }
 
-  selectItem(eventy: any, item: any, index: number): void {
+  selectItem(event: any, item: any, index: number): void {
+    if (this.selectedItem === item) {
+      ComponentService.documentClick(event);
+      return;
+    }
     ComponentService.documentClick(event);
     this.selectedItem = item;
     const div = document.getElementById(`select_${index}`);
@@ -42,10 +46,12 @@ export class MapCategoryTableComponent implements OnInit {
   }
 
   changeOldCategory(item: any): void {
-    this.selectedItem.hierarchyLevelName = item.hierarchyLevelName;
-  }
-
-  ngOnInit() {
+    const str = item.hierarchyLevelName;
+    const nameItem = this.data.data.hierarchyLevels.find((x: any) => x.hierarchyLevelName === item.hierarchyLevelName);
+    if (nameItem) {
+      nameItem.hierarchyLevelName = this.selectedItem.hierarchyLevelName;
+    }
+    this.selectedItem.hierarchyLevelName = str;
   }
 
 }

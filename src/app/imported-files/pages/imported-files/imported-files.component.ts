@@ -67,6 +67,7 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit {
     },
     delete: (action: TableActionCommand) => {
       this.fileSource = this.fileSource.filter(x => x != action.item.source);
+      this.initData();
       this.table.stayOnCurrentPage = true;
       this.importedFilesService.deleteFile(action.item.source)
         .toPromise()

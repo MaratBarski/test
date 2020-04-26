@@ -24,6 +24,10 @@ export class CategorizationService {
     // call dataService to update hierarchy state
   }
 
+  deleteCategory(hierarchy: any): Observable<any> {
+    return this.dataService.delete(`${environment.serverUrl}${environment.endPoints.deleteCategory}/${hierarchy.hierarchyRootId}`);
+  }
+
   createDataSource(categories: Array<Hierarchy>): TableModel {
     const data: TableModel = {
       actions: {

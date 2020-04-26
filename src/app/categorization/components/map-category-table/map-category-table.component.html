@@ -5,12 +5,19 @@
                 <table class="admin-table admin-table_white">
                     <thead>
                         <tr class="admin-table__head">
-                            <th class="admin-table__item"><span class="admin-table__sort"><span
-                                        class="admin-table__sort-up"></span><span
-                                        class="admin-table__sort-down"></span></span>New Category Name</th>
-                            <th class="admin-table__item d-none d-md-table-cell">Matched Category in Old
-                                Categorazation</th>
-                            <th class="admin-table__item d-none d-lg-table-cell">Data Sample</th>
+                            <th class="admin-table__item">
+                                <!-- <span class="admin-table__sort">
+                                    <span class="admin-table__sort-up"></span>
+                                    <span class="admin-table__sort-down"></span>
+                                </span> -->
+                                New Category Name
+                            </th>
+                            <th class="admin-table__item d-none d-md-table-cell">
+                                Matched Category in Old Categorazation
+                            </th>
+                            <th class="admin-table__item d-none d-lg-table-cell">
+                                Data Sample
+                            </th>
                         </tr>
                     </thead>
                     <tbody *ngIf="data?.data?.hierarchyLevels">
@@ -26,23 +33,23 @@
                                         <div (click)="selectItem($event,item,index)" class="select__head">
                                             {{item.hierarchyLevelName}}
                                             <div class="select__head-arr">
-                                                <svg class="icon ic-select-arr-down" mdcSvg="ic-select-arr-down">
-                                                </svg>
+                                                <svg class="icon ic-select-arr-down" mdcSvg="ic-select-arr-down"></svg>
                                             </div>
                                         </div>
                                         <div id="select_{{index}}" [mdcVisibility]="selectedItem===item"
                                             class="select__option">
-                                            <div *ngFor="let item of data.data.hierarchyLevels"
-                                                (click)="changeOldCategory(item)" class="select__param">
-                                                {{item.hierarchyLevelName}}
-                                            </div>
+                                            <ng-container *ngFor="let i of data.data.hierarchyLevels">
+                                                <div *ngIf="i.hierarchyLevelName!==item.hierarchyLevelName" (click)="changeOldCategory(i)" class="select__param">
+                                                    {{i.hierarchyLevelName}}
+                                                </div>
+                                            </ng-container>
                                         </div>
                                     </div>
                                 </div>
                             </td>
                             <td class="admin-table__item d-none d-lg-table-cell">
                                 <div class="admin-table__data-sample">
-                                    <mdc-text-block [text]="item.dataSample" [maxWidth]="300" position="right"></mdc-text-block>
+                                    {{item.dataSample|replace:'%sep%':','}}
                                 </div>
                             </td>
                         </tr>

@@ -6,7 +6,7 @@
 <md-page-body>
     <div class="admin-table-wrap__action">
         <div class="admin-table-wrap__col">
-            <mdc-button (click)="showUploadFile=!showUploadFile" text="+ New Categorization">
+            <mdc-button (click)="openUploadNew()" text="+ New Categorization">
             </mdc-button>
         </div>
         <div class="admin-table-wrap__col">
@@ -97,7 +97,7 @@
 </ng-template>
 
 <mdc-modal-window *ngIf="showUploadFile">
-    <md-upload-file (onUpload)="showUploadFile=false" (onCancel)="showUploadFile=false"></md-upload-file>
+    <md-upload-file [source]="currentSource" (onUpload)="showUploadFile=false" (onCancel)="showUploadFile=false"></md-upload-file>
 </mdc-modal-window>
 
 <ng-template #rowInfoTemplate let-item>
