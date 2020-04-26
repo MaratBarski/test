@@ -1,0 +1,57 @@
+<div class="add-info-table">
+    <span class="add-info-table__text">
+        <span class="pointer" (click)="openMessageBox($event)">Add user notification</span>
+        <span class="add-info-table__notice-icon">
+            <svg *ngIf="message" class="icon ic-user-notice-full" mdcSvg="ic-user-notice-full"></svg>
+            <svg *ngIf="!message" class="icon ic-user-notice-empty" mdcSvg="ic-user-notice-empty"></svg>
+            <div [hidden]="!showMessageBox" class="info-popup info-popup_bottom active">
+                <div class="form-site">
+                    <div class="info-popup__top">
+                        <div class="info-popup__head-wrap">
+                            <span class="info-popup__head">
+                                Categorization change notification message
+                                <svg class="icon ic-help" mdcSvg="ic-help"></svg>
+                            </span>
+                        </div>
+                        <div (click)="closeMessageBox($event)" class="info-popup__close">
+                            <svg class="icon ic-close-circle" mdcSvg="ic-close-circle"></svg>
+                        </div>
+                    </div>
+                    <div class="info-popup__content">
+                        <div class="info-popup__fields">
+                            <textarea [(ngModel)]="message"></textarea>
+                        </div>
+                    </div>
+                    <div class="info-popup__btn">
+                        <span (click)="clearMessage()" class="info-popup__btn-link pointer">Cancel</span>
+                        <span>
+                            <button (click)="clearMessage()" class="btn btn_border btn_small">Delete</button>
+                            <button (click)="updateMessage()" class="btn btn_small">Apply</button></span>
+                    </div>
+                </div>
+            </div>
+        </span></span><span class="add-info-table__opt">Optional</span>
+    <span class="add-info-table__error" *ngIf="showAnyMore">
+        <svg class="icon ic-failure" mdcSvg="ic-failure">
+        </svg>The following old categories will not be available for the user anymore: <span
+            class="add-info-table__error-accent">Type of route, Anatomical main group (ATC1)</span><span
+            class="add-info-table__more"><a href="#">3 More</a>
+            <div class="info-popup info-popup_right info-popup_bottom" style="width: 276px;">
+                <form class="form-site">
+                    <div class="info-popup__top">
+                        <div class="info-popup__head-wrap"><span class="info-popup__head">Missing old categories</span>
+                        </div>
+                        <div class="info-popup__close">
+                            <svg class="icon ic-close-circle" mdcSvg="ic-close-circle"></svg>
+                        </div>
+                    </div>
+                    <div class="info-popup__content">
+                        - Type of route<br>
+                        - Pharmacological subgroup ATC3<br>
+                        - Manufacturer
+                    </div>
+                </form>
+            </div>
+        </span>
+    </span>
+</div>
