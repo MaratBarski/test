@@ -19,6 +19,8 @@ export class UploadFileComponent implements OnInit {
   @Output() onCancel = new EventEmitter<void>();
   @Output() onUpload = new EventEmitter<void>();
   @Output() onLoad = new EventEmitter<UploadFileComponent>();
+  
+  @Input() targetComponent: any;
   @Input() set uploadUrl(uploadUrl: string) { this._uploadUrl = uploadUrl; }
   @Input() templates: Array<SelectOption>;
   get uploadUrl(): string { return this._uploadUrl; }
@@ -69,7 +71,8 @@ export class UploadFileComponent implements OnInit {
         progressTitle: this.fileName
       },
       form: formData,
-      url: this._uploadUrl
+      url: this._uploadUrl,
+      targetComponent: this.targetComponent
     });
     this.reset();
     this.onUpload.emit();

@@ -6,6 +6,7 @@ export class UploadInfo {
   url: string;
   form: FormData;
   notification: INotification;
+  targetComponent?: any;
 }
 
 @Injectable({
@@ -13,25 +14,16 @@ export class UploadInfo {
 })
 export class UploadService implements OnDestroy {
   get uploads(): Array<UploadInfo> { return this._uploads; }
-  private _intervalID: any;
   private _uploads: Array<UploadInfo> = [];
-  private _uploading = false;
-  private _onDismissAllSubscribtion: any;
   private _onAbortSubscribtion: any;
   constructor(
     private http: HttpClient,
     private notificationsService: NotificationsService
   ) {
-    this.startUpload();
-    this._onDismissAllSubscribtion = this.notificationsService.onDismissAll.subscribe(() => {
-      while (this._uploads.length) {
-        this.removeFirst(NotificationStatus.dismissed);
-      }
-    });
     this._onAbortSubscribtion = this.notificationsService.onAbort.subscribe((notice: INotification) => {
       this._uploads.forEach((item, index) => {
         if (item.notification === notice) {
-          this.remove(index, NotificationStatus.aborted)
+          this.uploadEnd(item, NotificationStatus.aborted);
           return;
         }
       });
@@ -39,8 +31,6 @@ export class UploadService implements OnDestroy {
   }
 
   ngOnDestroy(): void {
-    clearInterval(this._intervalID);
-    this._onDismissAllSubscribtion.unsubscribe();
     this._onAbortSubscribtion.unsubscribe();
   }
 
@@ -48,49 +38,58 @@ export class UploadService implements OnDestroy {
     this._uploads.push(uploadInfo);
     this.notificationsService.notifications.push(uploadInfo.notification);
     this.notificationsService.update();
+    this.uploadProc(uploadInfo);
   }
 
-  private upload(): void {
-    if (!this._uploads.length) { return; }
-    if (this._uploading) { return; }
-
-    this._uploading = true;
-    this._uploads[0].notification.status = NotificationStatus.uploading;
-    this.http.post(this._uploads[0].url, this._uploads[0].form, {
+  private uploadProc(uploadInfo: UploadInfo): void {
+    if (!this.isUploadEnable(uploadInfo)) { return; }
+    uploadInfo.notification.status = NotificationStatus.uploading;
+    const uploadSubscription = this.http.post(uploadInfo.url, uploadInfo.form, {
       reportProgress: true,
       observe: 'events'
     })
       .subscribe(events => {
-        if (!this._uploads.length) { this._uploading = false; return; }
         if (events.type == HttpEventType.UploadProgress) {
-          this._uploads[0].notification.progress = Math.round(events.loaded / events.total * 100);
+          uploadInfo.notification.progress = Math.round(events.loaded / events.total * 100);
+          if (!this.isUploadEnable(uploadInfo)) {
+            if (!uploadSubscription.closed) {
+              uploadSubscription.unsubscribe();
+            }
+          }
         } else if (events.type === HttpEventType.Response) {
-          this.removeFirst(NotificationStatus.completed);
-          this._uploading = false;
+          this.uploadEnd(uploadInfo, NotificationStatus.completed);
+          if (!uploadSubscription.closed) {
+            uploadSubscription.unsubscribe();
+          }
         }
       }
         , error => {
-          this.removeFirst(NotificationStatus.failed);
+          this.uploadEnd(uploadInfo, NotificationStatus.failed);
           console.log(error);
-          this._uploading = false;
+          if (!uploadSubscription.closed) {
+            uploadSubscription.unsubscribe();
+          }
         }
       )
   }
 
-  private removeFirst(status: NotificationStatus): void {
-    this.remove(0, status);
+  private isUploadEnable(uploadInfo: UploadInfo): boolean {
+    if (!uploadInfo.notification) { return false; }
+    if (!uploadInfo.url) { return false; }
+    if (!uploadInfo.form) { return false; }
+    if (uploadInfo.notification.status === NotificationStatus.failed) { return false; }
+    if (uploadInfo.notification.status === NotificationStatus.aborted) { return false; }
+    if (uploadInfo.notification.status === NotificationStatus.completed) { return false; }
+    return true;
   }
 
-  private remove(index: number, status: NotificationStatus): void {
-    if (this._uploads.length <= index) { return; }
-    this._uploads[index].notification.status = status;
-    this._uploads.splice(index, 1);
-    //this.notificationsService.notifications.splice(0, 1);
-  }
-
-  private startUpload(): void {
-    this._intervalID = setInterval(() => {
-      this.upload();
-    }, 1000);
+  private uploadEnd(uploadInfo: UploadInfo, status: NotificationStatus): void {
+    uploadInfo.notification.status = status;
+    if (status === NotificationStatus.completed
+      && uploadInfo.targetComponent
+      && uploadInfo.targetComponent.onComplete) {
+      uploadInfo.targetComponent.onComplete();
+      uploadInfo.form = undefined;
+    }
   }
 }

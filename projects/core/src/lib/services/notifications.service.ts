@@ -5,8 +5,9 @@ export enum NotificationStatus {
   uploading = 'Uploading',
   failed = 'Failed',
   completed = 'Completed',
-  dismissed = 'Dismissed',
-  aborted = 'Aborted'
+  aborted = 'Aborted',
+  waiting = 'Waiting',
+  dismissed = 'Dismissed'
 }
 export interface INotification {
   name: string;
@@ -38,7 +39,18 @@ export class NotificationsService {
   }
   private _onAbort = new Subject<INotification>();
 
-  constructor() { }
+  get uploadingCount(): number {
+    return this.notifications.filter(x => x.status === NotificationStatus.uploading).length;
+  }
+
+  constructor() {
+    window.addEventListener("beforeunload", (event) => {
+      if (!this.uploadingCount) { return; }
+      event.preventDefault();
+      event.returnValue = 'Your notifications will be lost!';
+      return event;
+    });
+  }
 
   dismissAll(): void {
     //this._onDismissAll.next();

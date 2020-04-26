@@ -50,7 +50,7 @@
 </ng-template>
 
 <mdc-modal-window *ngIf="showUploadFile">
-    <md-upload-file (onLoad)="onLoadFileUpload($event)" (onUpload)="showUploadFile=false"
-        (onCancel)="showUploadFile=false">
+    <md-upload-file [targetComponent]="me" (onLoad)="onLoadFileUpload($event)"
+        (onUpload)="showUploadFile=false" (onCancel)="showUploadFile=false">
     </md-upload-file>
 </mdc-modal-window>

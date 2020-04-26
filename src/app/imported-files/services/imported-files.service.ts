@@ -78,6 +78,8 @@ export class ImportedFilesService {
           columnId: 'insertDate',
           text: 'Loaded',
           isSortEnabled: true,
+          sortDir: 'desc',
+          isSortedColumn: true,
           css: 'd-none d-md-table-cell'
         },
         {

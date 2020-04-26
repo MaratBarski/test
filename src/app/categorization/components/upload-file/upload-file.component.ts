@@ -2,6 +2,7 @@ import { Component, Output, EventEmitter, ViewChild, ElementRef, Input } from '@
 import { UploadService } from '@app/shared/services/upload.service';
 import { CsvManagerService, NotificationStatus } from '@appcore';
 import { environment } from '@env/environment';
+import { Offline } from '@app/shared/decorators/offline.decorator';
 
 @Component({
   selector: 'md-upload-file',
@@ -28,6 +29,7 @@ export class UploadFileComponent {
     return !!this.fileName && !!this.file;
   }
 
+  @Offline('http://localhost:57858/api/Config/')
   private _uploadUrl = `${environment.serverUrl}${environment.endPoints.uploadHierarchy}`;
 
   uploadFile(event: any): void {
@@ -47,9 +49,10 @@ export class UploadFileComponent {
         comment: 'Uploading',
         progress: 0,
         status: NotificationStatus.uploading,
-        showProgress: false,
+        showProgress: true,
         showInContainer: true,
-        startDate: new Date()
+        startDate: new Date(),
+        progressTitle: this.fileName
       },
       form: formData,
       url: this._uploadUrl,

@@ -41,6 +41,7 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit {
   dataOrigin: TableModel;
   dataSource: TableModel;
   fileSource: Array<FileSource>;
+  onComplete: any;
 
   constructor(
     private translateService: TranslateService,
@@ -88,6 +89,14 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit {
         this.fileSource = res.data;
         this.initData();
       }));
+    this.onComplete = (): void => {
+      super.add(
+        this.importedFilesService.load().subscribe((res: FileSourceResponse) => {
+          this.fileSource = res.data;
+          this.initData();
+          this.table.stayOnCurrentPage = true;
+        }));
+    }
   }
 
   initPermissions(): void {
@@ -106,5 +115,12 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit {
 
   onLoadFileUpload(upload: UploadFileComponent): void {
     upload.templates = this.templates;
+  }
+
+  get me(): ImportedFilesComponent { return this; }
+
+  ngOnDestroy(): void {
+    this.onComplete = () => { };
+    super.ngOnDestroy();
   }
 }
