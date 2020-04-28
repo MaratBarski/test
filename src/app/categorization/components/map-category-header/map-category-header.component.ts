@@ -60,5 +60,11 @@ export class MapCategoryHeaderComponent {
     if (!this._data || !this._data.data) { return; }
     this._data.data.description = this.description;
   }
+
+  keyDown(event: any): void {
+    if (event.keyCode === 13) {
+      event.preventDefault();
+    }
+  }
 }
 
