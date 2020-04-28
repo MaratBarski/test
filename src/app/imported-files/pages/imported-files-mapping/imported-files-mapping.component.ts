@@ -7,6 +7,7 @@ import {ActivatedRoute} from '@angular/router';
 import {Template} from '@app/models/template';
 import {Hierarchy} from '@app/models/hierarchy';
 import {FormArray, FormBuilder, FormGroup} from '@angular/forms';
+import {timer} from 'rxjs';
 
 @Component({
   selector: 'md-imported-files-mapping',
@@ -20,8 +21,8 @@ export class ImportedFileMappingComponent implements OnInit, OnDestroy {
   hierarchies: Hierarchy[] = [];
   templateSelectOptions: SelectOption[] = [];
   hierarchySelectOptions: SelectOption[] = [];
+  opened = false;
 
-  // vlaue = "CKD Patients with cost, diabetes and medications";
   @ViewChild('popupMenu', {static: true}) popupMenu: PopupComponent;
   @ViewChild('table', {static: true}) table: TableComponent;
 
@@ -52,6 +53,10 @@ export class ImportedFileMappingComponent implements OnInit, OnDestroy {
     });
 
     this.fileSourceForm = this.createFileSourceForm();
+  }
+
+  private toggleShare() {
+    this.opened = !this.opened;
   }
 
   private createFileSourceForm(): FormGroup {
@@ -100,10 +105,19 @@ export class ImportedFileMappingComponent implements OnInit, OnDestroy {
 
   }
 
+  public percent = 0;
+
   ngOnInit() {
+    // emit 0 after 1 second then complete, since no second argument is supplied
+    const source = timer(1000, 2000);
+    // output: 0
+    const subscribe = source.subscribe(val => {
+      console.log(val);
+      this.percent = Math.floor(Math.random() * 100);
+    });
   }
 
-  saveFileSource(){
+  saveFileSource() {
     console.log(this.fileSourceForm.getRawValue());
     console.log(this.fileSourceForm);
   }
