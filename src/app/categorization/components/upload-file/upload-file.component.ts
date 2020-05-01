@@ -35,6 +35,7 @@ export class UploadFileComponent {
   project = '';
   defaultCategory = '0';
   categoryHeaders: Array<string>;
+  isFileError = false;
 
   get isValid(): boolean {
     return !!this.fileName && !!this.file;
@@ -109,14 +110,17 @@ export class UploadFileComponent {
 
   readFile(file: any): void {
     this.csvManagerService.readHeaders(file).then((arr: Array<string>) => {
+      this.isFileError = false;
       this.categoryHeaders = arr.map((str, i) => {
         return str;
         //return { text: str, value: i, id: i }
       });
     }).catch(error => {
-      alert(error);
+      this.categoryHeaders = [];
+      this.file = '';
+      this.isFileError = true;
     });
-    
+
   }
 
   updateFileName(event: any): void {
