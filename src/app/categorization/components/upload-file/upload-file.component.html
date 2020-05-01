@@ -64,8 +64,10 @@
         </div>
         <div class="form-site__btn">
             <button (click)="cancel()" class="btn btn_border">Cancel</button>
-            <button (click)="uploadFile($event)" [disabled]="!isValid" [ngClass]="{'btn_disable':!isValid}"
-                class="btn">Upload</button>
+            <button *ngIf="!source" (click)="uploadFile($event)" [disabled]="!isValid"
+                [ngClass]="{'btn_disable':!isValid}" class="btn">Upload</button>
+            <button *ngIf="source" (click)="changeFile($event)" [disabled]="!isValid"
+                [ngClass]="{'btn_disable':!isValid}" class="btn">Apply</button>
         </div>
     </div>
 </div>

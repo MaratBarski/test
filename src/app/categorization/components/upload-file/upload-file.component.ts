@@ -16,6 +16,8 @@ export class UploadFileComponent {
   @ViewChild('fileInput', { static: true }) fileInput: ElementRef;
   @Output() onCancel = new EventEmitter<void>();
   @Output() onUpload = new EventEmitter<void>();
+  @Output() onChange = new EventEmitter<any>();
+
   @Input() set uploadUrl(uploadUrl: string) { this._uploadUrl = uploadUrl; }
   @Input() set source(source: any) {
     this._source = source;
@@ -46,16 +48,7 @@ export class UploadFileComponent {
     if (!this.isValid) {
       return;
     }
-    const formData: FormData = new FormData();
-    formData.append('file', this.fileInput.nativeElement.files[0]);
-    formData.append('fileName', this.fileName);
-    formData.append('description', this.description);
-    if (!this.isEditMode) {
-      formData.append('environment', this.project);
-    } else {
-      formData.append('id', this.source.hierarchyRootId);
-    }
-    formData.append('defaultCategory', this.defaultCategory);
+    const formData: FormData = this.createFormData();
     this.uploadService.add({
       notification: {
         name: 'Categorization',
@@ -72,6 +65,33 @@ export class UploadFileComponent {
     });
     this.reset();
     this.onUpload.emit();
+  }
+
+  changeFile(event: any): void {
+    event.preventDefault();
+    if (!this.isValid) {
+      return;
+    }
+    const formData: FormData = this.createFormData();
+    this.reset();
+    this.onChange.emit({
+      formData: formData,
+      categoryHeaders: this.categoryHeaders
+    });
+  }
+
+  createFormData(): FormData {
+    const formData: FormData = new FormData();
+    formData.append('file', this.fileInput.nativeElement.files[0]);
+    formData.append('fileName', this.fileName);
+    formData.append('description', this.description);
+    if (!this.isEditMode) {
+      formData.append('environment', this.project);
+    } else {
+      formData.append('id', this.source.hierarchyRootId);
+    }
+    formData.append('defaultCategory', this.defaultCategory);
+    return formData;
   }
 
   cancel(): void {
@@ -96,6 +116,7 @@ export class UploadFileComponent {
     }).catch(error => {
       alert(error);
     });
+    
   }
 
   updateFileName(event: any): void {

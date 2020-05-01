@@ -20,26 +20,26 @@
                             </th>
                         </tr>
                     </thead>
-                    <tbody *ngIf="data?.data?.hierarchyLevels">
-                        <tr class="admin-table__row" *ngFor="let item of data.data.hierarchyLevels;let index=index">
+                    <tbody *ngIf="categoryMap">
+                        <tr class="admin-table__row" *ngFor="let item of categoryMap;let index=index">
                             <td class="admin-table__item">
                                 <div class="admin-table__name-edit">
-                                    <input type="text" [(ngModel)]="item.newHierarchyLevelName">
+                                    <input type="text" [(ngModel)]="item.newCategory.newHierarchyLevelName">
                                 </div>
                             </td>
                             <td class="admin-table__item d-none d-md-table-cell">
                                 <div class="select-wrap">
                                     <div class="select select_small select_full">
                                         <div (click)="selectItem($event,item,index)" class="select__head">
-                                            {{item.hierarchyLevelName}}
+                                            {{item.oldCategory.hierarchyLevelName}}
                                             <div class="select__head-arr">
                                                 <svg class="icon ic-select-arr-down" mdcSvg="ic-select-arr-down"></svg>
                                             </div>
                                         </div>
                                         <div id="select_{{index}}" [mdcVisibility]="selectedItem===item"
                                             class="select__option">
-                                            <ng-container *ngFor="let i of data.data.hierarchyLevels">
-                                                <div *ngIf="i.hierarchyLevelName!==item.hierarchyLevelName" (click)="changeOldCategory(i)" class="select__param">
+                                            <ng-container *ngFor="let i of oldCategories">
+                                                <div *ngIf="!i.inUse || (i === newCategoryDefault && newCategoryDefault !== item.oldCategory)" (click)="changeOldCategory(i,item)" class="select__param">
                                                     {{i.hierarchyLevelName}}
                                                 </div>
                                             </ng-container>
@@ -49,7 +49,7 @@
                             </td>
                             <td class="admin-table__item d-none d-lg-table-cell">
                                 <div class="admin-table__data-sample">
-                                    {{item.dataSample|replace:'%sep%':','}}
+                                    {{item.newCategory.dataSample|replace:'%sep%':','}}
                                 </div>
                             </td>
                         </tr>

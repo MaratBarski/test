@@ -9,6 +9,9 @@ import { ComponentService } from '@appcore';
 export class MapCategoryHeaderComponent {
 
   @Output() onChange = new EventEmitter<string>();
+  @Output() onHeadersChanged = new EventEmitter<any>();
+
+  @Input() isMap = false;
   @Input() pageTitle = 'Map categories';
   @Input() set data(data: any) {
     this._data = data;
@@ -65,6 +68,19 @@ export class MapCategoryHeaderComponent {
     if (event.keyCode === 13) {
       event.preventDefault();
     }
+  }
+
+  showUploadFile = false;
+  showFileUpload(): void {
+    this.showUploadFile = true;
+  }
+  cancelUploadFile(): void {
+    this.showUploadFile = false;
+  }
+
+  onChangeUploadFile(event: any): void {
+    this.showUploadFile = false;
+    this.onHeadersChanged.emit(event);
   }
 }
 
