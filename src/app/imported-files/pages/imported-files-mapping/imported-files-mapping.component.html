@@ -156,7 +156,7 @@
                   </td>
                   <td class="admin-table__item d-none d-md-table-cell">
                     <div class="select select_small">
-                      <mdc-select formControlName="hierarchyRootId" [options]="hierarchySelectOptions" [isSmall]="true" [applyWidth]="false"></mdc-select>
+                      <mdc-select formControlName="hierarchyRootId" (changed)="getRelationalIntegrity($event, i)" [options]="hierarchySelectOptions" [isSmall]="true" [applyWidth]="false"></mdc-select>
                     </div>
                   </td>
                   <td class="admin-table__item admin-table__item_center d-none d-md-table-cell">

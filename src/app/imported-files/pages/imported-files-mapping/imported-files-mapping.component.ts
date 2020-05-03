@@ -8,6 +8,7 @@ import {Template} from '@app/models/template';
 import {Hierarchy} from '@app/models/hierarchy';
 import {FormArray, FormBuilder, FormGroup} from '@angular/forms';
 import {timer} from 'rxjs';
+import { ImportedFilesMappingService } from '@app/imported-files/services/imported-files-mapping.service';
 
 @Component({
   selector: 'md-imported-files-mapping',
@@ -29,8 +30,7 @@ export class ImportedFileMappingComponent implements OnInit, OnDestroy {
   constructor(
     private translateService: TranslateService,
     private dateService: DateService,
-    private importedFilesService: ImportedFilesService,
-    private store: Store<any>,
+    private importedFilesMappingService: ImportedFilesMappingService,
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
   ) {
@@ -115,6 +115,21 @@ export class ImportedFileMappingComponent implements OnInit, OnDestroy {
       console.log(val);
       this.percent = Math.floor(Math.random() * 100);
     });
+  }
+
+  getRelationalIntegrity(hieId, columnIndex){
+    const hierarchyId = hieId;
+    const colIndex = columnIndex + 1;
+    const fileName = this.fileSource.fileNameAlias;
+    const filePath = this.fileSource.filePath;
+    const numOfCols = this.fileSource.fileClms.length;
+    this.importedFilesMappingService.checkRelationalIntegrity({hierarchyId, colIndex, fileName, filePath, numOfCols}).subscribe(data => {
+      console.log(data);
+    });
+    /*hie_id: 139
+    col_id: 1
+    file_name: 20200503_162159_[2773][Customized][mdclone.admin][if_1624][20200315_204546].csv
+    num_col: 19*/
   }
 
   saveFileSource() {
