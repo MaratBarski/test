@@ -19,6 +19,7 @@ export const environment = {
     historyReport: 'mdclone/api/v1/session-history',
     downloadHistoryReport: 'moshe/api/v1/session-history/download',
     usageReport: 'mdclone/api/v1/reporting/usage',
-    updateHierarchy: 'mdclone/api/v1/updateHierarchy'
+    updateHierarchy: 'mdclone/api/v1/updateHierarchy',
+    config: 'config'
   }
 };
