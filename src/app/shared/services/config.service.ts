@@ -12,7 +12,9 @@ export class ConfigService extends BaseSibscriber {
   isLoaded = false;
 
   @Offline('assets/offline/config.json')
-  private getUrl = `${environment.serverUrl}${environment.endPoints.config}`;
+  private getUrl = 'assets/offline/config.json';
+  //private getUrl = `${environment.serverUrl}${environment.endPoints.config}`;
+
 
   constructor(private dataService: DataService) {
     super();
