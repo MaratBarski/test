@@ -64,6 +64,7 @@ import { FileUploaderComponent } from './components/file-uploader/file-uploader.
 import { NotificationsComponent } from './components/notifications/notifications.component';
 import { NotificationItemComponent } from './components/notification-item/notification-item.component';
 import { ShowNoticePipe } from './pipes/show-notice.pipe';
+import { ColorTextDirective } from './directives/color-text.directive';
 
 // import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 
@@ -125,7 +126,8 @@ import { ShowNoticePipe } from './pipes/show-notice.pipe';
     FileUploaderComponent,
     NotificationsComponent,
     NotificationItemComponent,
-    ShowNoticePipe
+    ShowNoticePipe,
+    ColorTextDirective
   ],
   imports: [
     CommonModule,
@@ -192,7 +194,8 @@ import { ShowNoticePipe } from './pipes/show-notice.pipe';
     ProgressMatchComponent,
     FileUploaderComponent,
     NotificationsComponent,
-    ShowNoticePipe
+    ShowNoticePipe,
+    ColorTextDirective
   ],
   entryComponents: [
     TableHeaderComponent,

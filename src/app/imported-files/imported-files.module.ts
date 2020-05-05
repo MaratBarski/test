@@ -19,7 +19,7 @@ import { ClmTypeSwitcherComponent } from './pages/imported-files-mapping/compone
 
 const routes: Array<Route> = [
   { path: '', component: ImportedFilesComponent },
-  { path: ':id', component: ImportedFileMappingComponent, resolve: { data: ImportedFilesMappingService } },
+ // { path: ':id', component: ImportedFileMappingComponent, resolve: { data: ImportedFilesMappingService } },
   { path: 'my-queries', component: MyQueriesComponent }
 ]
 

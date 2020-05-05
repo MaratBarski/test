@@ -17,7 +17,7 @@ export class UsageDashboardInfoPanelComponent extends BaseSibscriber implements 
   currentYear = 0;
 
   yearsOptions: Array<SelectOption> = [
-    { id: 0, text: 'YTD (Year To Date)', value: this.dateService.getYear(0) },
+    { id: 0, text: 'Last 13 Months', value: this.dateService.getYear(0) },
     { id: 1, text: `${this.dateService.getYear(-1)}`, value: this.dateService.getYear(-1) },
     { id: 2, text: `${this.dateService.getYear(-2)}`, value: this.dateService.getYear(-2) },
     { id: 3, text: `${this.dateService.getYear(-3)}`, value: this.dateService.getYear(-3) }

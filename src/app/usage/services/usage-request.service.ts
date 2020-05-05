@@ -34,6 +34,14 @@ export class UsageRequestService extends BaseSibscriber {
     super();
     this.loadData();
     this.reset();
+
+    // const d = this.dateService.getFromYear2Now(20);
+    // const str = `${this.dateService.formatDate(d.fromDate)} to ${this.dateService.formatDate(d.toDate)}`
+    // alert(str);
+
+    const d = this.dateService.getFromMonth2Current(13);
+    const str = `${this.dateService.formatDate(d.fromDate)} to ${this.dateService.formatDate(d.toDate)}`
+    alert(str);
   }
   get onChange(): Observable<void> {
     return this._onChange.asObservable();
