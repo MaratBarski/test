@@ -35,13 +35,13 @@ export class UsageRequestService extends BaseSibscriber {
     this.loadData();
     this.reset();
 
-    // const d = this.dateService.getFromYear2Now(20);
+    // const d = this.dateService.getFromYear(0);
     // const str = `${this.dateService.formatDate(d.fromDate)} to ${this.dateService.formatDate(d.toDate)}`
     // alert(str);
 
-    const d = this.dateService.getFromMonth2Current(13);
-    const str = `${this.dateService.formatDate(d.fromDate)} to ${this.dateService.formatDate(d.toDate)}`
-    alert(str);
+    // const d = this.dateService.getFromMonth2Current(13);
+    // const str = `${this.dateService.formatDate(d.fromDate)} to ${this.dateService.formatDate(d.toDate)}`
+    // alert(str);
   }
   get onChange(): Observable<void> {
     return this._onChange.asObservable();
@@ -53,12 +53,12 @@ export class UsageRequestService extends BaseSibscriber {
   }
 
   reset(): void {
+    const dateRange = this.dateService.getFromMonth2Current(13);
     this._usageRequest = {
       environmet: '',
       includeAdmin: false,
-      fromDate: this.dateService.formatDate(this.dateService.fromYear(0)),
-      //fromDate: this.dateService.formatDate(this.dateService.fromDate[DatePeriod.Month](12)),
-      toDate: this.dateService.formatDate(this.dateService.fromDate[DatePeriod.Month](0)),
+      fromDate: this.dateService.formatDate(dateRange.fromDate),
+      toDate: this.dateService.formatDate(dateRange.toDate),
       users: []
     }
   }

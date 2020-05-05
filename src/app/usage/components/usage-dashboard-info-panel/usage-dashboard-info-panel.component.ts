@@ -14,13 +14,14 @@ export class UsageDashboardInfoPanelComponent extends BaseSibscriber implements 
   @Input() showYears = true;
   @Input() showUsers = true;
 
-  currentYear = 0;
+  currentDateRange = this.dateService.getFromMonth2Current(13);
+  currentDateIndex = 0;
 
   yearsOptions: Array<SelectOption> = [
-    { id: 0, text: 'Last 13 Months', value: this.dateService.getYear(0) },
-    { id: 1, text: `${this.dateService.getYear(-1)}`, value: this.dateService.getYear(-1) },
-    { id: 2, text: `${this.dateService.getYear(-2)}`, value: this.dateService.getYear(-2) },
-    { id: 3, text: `${this.dateService.getYear(-3)}`, value: this.dateService.getYear(-3) }
+    { id: 0, text: 'Last 13 Months', value: this.dateService.getFromMonth2Current(13) },
+    { id: 1, text: `${this.dateService.getYear(-1)}`, value: this.dateService.getFromYear(0) },
+    { id: 2, text: `${this.dateService.getYear(-2)}`, value: this.dateService.getFromYear(1) },
+    { id: 3, text: `${this.dateService.getYear(-3)}`, value: this.dateService.getFromYear(2) }
   ];
 
   currentEnvitonment = '';
@@ -39,9 +40,10 @@ export class UsageDashboardInfoPanelComponent extends BaseSibscriber implements 
   }
 
   changeYear(option: SelectOption): void {
-    this.currentYear = (option.id as number);
-    this.usageRequestService.usageRequest.fromDate =
-      this.dateService.formatDate(this.dateService.fromYear(this.currentYear));
+    this.currentDateIndex = option.id as number;
+    this.currentDateRange = option.value;
+    this.usageRequestService.usageRequest.fromDate = this.dateService.formatDate(this.currentDateRange.fromDate);
+    this.usageRequestService.usageRequest.toDate = this.dateService.formatDate(this.currentDateRange.toDate);
     this.emit();
     this.usageRequestService.emit();
   }

@@ -41,6 +41,7 @@ export class ChartService {
   @Offline('assets/offline/usageGeneral.json?')
   private getGeneralUsageUrl = `${environment.serverUrl}${environment.endPoints.usageReport}`;
   getGeneralUsage(info: any = undefined): Observable<any> {
+    //alert(this.usageRequestService.usageRequest.toDate)
     return this.getChart(this.getGeneralUsageUrl);
   }
 
