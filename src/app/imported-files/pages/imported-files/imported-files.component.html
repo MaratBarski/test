@@ -35,7 +35,7 @@
 </md-page-body>
 
 <ng-template #dateColumn let-item>
-    <div [stickyToElement]="true" position="right" [mdcTooltip]="item.insertDate|date:'medium'">{{item.insertDate|date}}
+    <div [stickyToElement]="true" position="right" [mdcTooltip]="(item.insertDate|date) + ' ' + (item.insertDate|date:'HH:mm')">{{item.insertDate|date}}
     </div>
 </ng-template>
 
