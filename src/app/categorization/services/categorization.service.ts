@@ -36,21 +36,16 @@ export class CategorizationService {
             text: 'Review & Edit',
             icon: 'ic-review-and-edit',
             command: 'edit'
-            , hidden: (source: any) => {
-              if (!source.status) { return true; }
-              return source.status !== 'mapped';
-            },
-            disable: false
           },
-          {
-            text: 'Review & Map',
-            icon: 'ic-review-and-edit',
-            command: 'map'
-            , hidden: (source: any) => {
-              if (!source.status) { return true; }
-              return source.status !== 'unmapped';
-            }
-          },
+          // {
+          //   text: 'Review & Map',
+          //   icon: 'ic-review-and-edit',
+          //   command: 'map'
+          //   , hidden: (source: any) => {
+          //     if (!source.status) { return true; }
+          //     return source.status !== 'unmapped';
+          //   }
+          // },
           {
             text: 'Replace Categorization File',
             icon: 'ic-replace',

@@ -5,6 +5,16 @@ export interface CsvData {
   headers: Array<string>;
   data?: Array<Array<any>>;
 }
+export enum ValidationFileMessage {
+  Success = 'success',
+  UniquenessOfHeadersError = 'uniquenessOfHeadersError',
+  HeaderEmptyError = 'headerEmptyError',
+  NullOnHeadersError = 'nullOnHeadersError',
+  CsvExtensionError = 'csvExtensionError',
+  FileSizeError = 'fileSizeError',
+  NoHebrewHeaders = "noHebrewHeaders",
+  OtherError = 'otherError'
+}
 @Injectable({
   providedIn: 'root'
 })
@@ -55,7 +65,7 @@ export class CsvManagerService {
           if (arr.length > 1) {
             const headers = arr[0].split(',').map(x => {
               return x.trim().replace(/"/g, '')
-            }).filter(x => x !== '');
+            });
             resolve(headers);
           }
           return arr.length < 2;
@@ -69,55 +79,47 @@ export class CsvManagerService {
         }
       );
     });
-
-    // return new Promise((resolve, reject) => {
-    //   let chunkSize = 4 * 1024;
-    //   this.readBlock(0, chunkSize, file).then((res) => {
-    //     try {
-    //       const headers = res
-    //         .split('\n')[0]
-    //         .split(',')
-    //         .map(x => {
-    //           return x.trim().replace(/"/g, '')
-    //         }).filter(x => x !== '');
-    //       resolve(headers);
-    //     } catch (error) {
-    //       reject(error);
-    //     }
-    //   }).catch(e => {
-    //     reject(e);
-    //   });
-    // });
-
-    // const reader = new FileReader();
-    // return new Promise((resolve, reject) => {
-    //   reader.onload = function () {
-    //     try {
-    //       const headers = reader.result.toString()
-    //         .split('\n')[0]
-    //         .split(',')
-    //         .map(x => {
-    //           return x.trim().replace(/"/g, '')
-    //         }).filter(x => x !== '');
-    //       resolve(headers);
-    //     } catch (e) {
-    //       reject(e);
-    //     }
-    //   };
-    //   try {
-    //     reader.readAsText(file);
-    //   } catch (e) {
-    //     reject(e);
-    //   }
-    // });
   }
 
-  validate(file: any): Promise<boolean> {
-    return new Promise<boolean>((resolve, reject) => {
+  validate(file: any): Promise<ValidationFileMessage> {
+    return new Promise<ValidationFileMessage>((resolve, reject) => {
       this.readHeaders(file).then(headers => {
-        resolve(headers && headers.length > 0);
+        if (!headers || !headers.length) {
+          resolve(ValidationFileMessage.HeaderEmptyError);
+          return;
+        }
+        const dict = {};
+        let isError = false;
+        headers.forEach(x => {
+          if (!x.trim()) {
+            isError = true;
+            resolve(ValidationFileMessage.HeaderEmptyError);
+            return;
+          }
+          if (x.trim().toLowerCase() === 'null') {
+            isError = true;
+            resolve(ValidationFileMessage.NullOnHeadersError);
+            return;
+          }
+          if (!this.validateSymbol(x)) {
+            isError = true;
+            resolve(ValidationFileMessage.NoHebrewHeaders);
+            return;
+          }
+          if (dict[x]) {
+            isError = true;
+            resolve(ValidationFileMessage.UniquenessOfHeadersError);
+            return;
+          }
+          dict[x] = true;
+        });
+
+        if (!isError) {
+          resolve(ValidationFileMessage.Success);
+        }
+
       }).catch(e => {
-        resolve(false);
+        resolve(ValidationFileMessage.OtherError);
       });
     });
   }
@@ -164,6 +166,20 @@ export class CsvManagerService {
       };
       reader.readAsText(blob);
     });
+  }
+
+  validateSymbol(str: string): boolean {
+    for (let i = 0; i < str.length; i++) {
+      const ch = str.charAt(i);
+      if (ch >= 'a' && ch <= 'z') { continue }
+      if (ch >= 'A' && ch <= 'Z') { continue }
+      if (ch >= '0' && ch <= '9') { continue }
+      if (ch === '_') { continue; }
+      if (ch === '-') { continue; }
+      if (ch === ' ') { continue; }
+      return false;
+    }
+    return true;
   }
 }
 

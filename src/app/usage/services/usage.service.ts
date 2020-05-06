@@ -22,22 +22,6 @@ export class UsageService {
   ) {
   }
 
-  getEnvironments(): Observable<Array<string>> {
-    return this.dataService.get('opa')
-      .pipe(
-        catchError((e) => {
-          return of(['dfasdfadfas']);
-        }),
-        tap(() => {
-        }),
-        switchMap(() => {
-          return of(
-            ['1', '2', '3']
-          );
-        })
-      )
-  }
-
   @Offline('assets/offline/usageReport.json?')
   private getUrl = `${environment.serverUrl}${environment.endPoints.usageReport}`;
   //http://10.0.2.18:4000/mdclone/api/v1/reporting/usage/25-06-2000/25-09-2021

@@ -121,6 +121,63 @@ export class DateService {
     return date.getFullYear() + year;
   }
 
+  getLastMonths(options: { months: number, isFromFirst: boolean, date: Date }): { fromDate: Date, toDate: Date } {
+    const toDate = new Date(options.date);
+    this.resetTime(toDate);
+    if (options.isFromFirst) {
+      toDate.setDate(1);
+    }
+    const fromDate = new Date(toDate);
+    fromDate.setMonth(fromDate.getMonth() - options.months);
+    fromDate.setDate(1);
+    return { fromDate: fromDate, toDate: toDate };
+  }
+
+  getFromMonth2Current(months: number): { fromDate: Date, toDate: Date } {
+    return this.getLastMonths({
+      months: months, isFromFirst: true, date: new Date()
+    });
+  }
+
+  getLastYears(options: { toYearDiff: number, years: number, isFromFirst: boolean, date: Date }): { fromDate: Date, toDate: Date } {
+    const toDate = new Date(options.date);
+    this.resetTime(toDate);
+    if (options.isFromFirst) {
+      toDate.setDate(1);
+      toDate.setMonth(0);
+    }
+    toDate.setFullYear(toDate.getFullYear() - options.toYearDiff);
+    const fromDate = new Date(toDate);
+    fromDate.setDate(1);
+    fromDate.setMonth(0);
+    fromDate.setFullYear(fromDate.getFullYear() - options.years);
+    return { fromDate: fromDate, toDate: toDate };
+  }
+
+  getFromYear2Now(years: number): { fromDate: Date, toDate: Date } {
+    return this.getLastYears({
+      toYearDiff: 0, years: years, isFromFirst: false, date: new Date()
+    });
+  }
+
+  getFromYear2Current(years: number): { fromDate: Date, toDate: Date } {
+    return this.getLastYears({
+      toYearDiff: 0, years: years, isFromFirst: true, date: new Date()
+    });
+  }
+
+  getFromYear(years: number): { fromDate: Date, toDate: Date } {
+    return this.getLastYears({
+      toYearDiff: years, years: 1, isFromFirst: true, date: new Date()
+    });
+  }
+
+  resetTime(date: Date): void {
+    date.setHours(0);
+    date.setMinutes(0);
+    date.setSeconds(0);
+  }
+
   fromYear(year: number): Date {
     let date = new Date();
     date.setMonth(0);

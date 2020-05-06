@@ -27,7 +27,7 @@ export class UsageTableComponent extends UsageBase {
   ) {
     super();
     super.dataSourceReady = () => {
-      this.data = this.usageService.createDataSource(this.dataSource.data);
+      this.data = this.usageService.createDataSource(this.dataSource);//this.dataSource.dfata
     }
 
     this.usageDownloadService.toCSV = () => this.toCSV();

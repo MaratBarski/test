@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { DateService, DatePeriod, BaseSibscriber, DataService } from '@app/core-api';
+import { DateService, DatePeriod, BaseSibscriber, DataService, LoginService } from '@appcore';
 import { UsageReportParams } from '../models/usage-request';
 import { Subject, Observable } from 'rxjs';
 import { Offline } from '@app/shared/decorators/offline.decorator';
@@ -29,11 +29,20 @@ export class UsageRequestService extends BaseSibscriber {
 
   constructor(
     private dateService: DateService,
-    private dataService: DataService
+    private dataService: DataService,
+    private loginService: LoginService
   ) {
     super();
     this.loadData();
     this.reset();
+
+    // const d = this.dateService.getFromYear(0);
+    // const str = `${this.dateService.formatDate(d.fromDate)} to ${this.dateService.formatDate(d.toDate)}`
+    // alert(str);
+
+    // const d = this.dateService.getFromMonth2Current(13);
+    // const str = `${this.dateService.formatDate(d.fromDate)} to ${this.dateService.formatDate(d.toDate)}`
+    // alert(str);
   }
   get onChange(): Observable<void> {
     return this._onChange.asObservable();
@@ -45,12 +54,12 @@ export class UsageRequestService extends BaseSibscriber {
   }
 
   reset(): void {
+    const dateRange = this.dateService.getFromMonth2Current(13);
     this._usageRequest = {
       environmet: '',
       includeAdmin: false,
-      fromDate: this.dateService.formatDate(this.dateService.fromYear(0)),
-      //fromDate: this.dateService.formatDate(this.dateService.fromDate[DatePeriod.Month](12)),
-      toDate: this.dateService.formatDate(this.dateService.fromDate[DatePeriod.Month](0)),
+      fromDate: this.dateService.formatDate(dateRange.fromDate),
+      toDate: this.dateService.formatDate(dateRange.toDate),
       users: []
     }
   }
@@ -64,12 +73,13 @@ export class UsageRequestService extends BaseSibscriber {
       }));
   }
 
-  @Offline('assets/offline/environments.json?')
-  private getEnvironmentsUrl = `${environment.serverUrl}${environment.endPoints.usageReport}`;
   loadEnvironments(): void {
     super.add(
-      this.dataService.get(this.getEnvironmentsUrl).subscribe((environments: Array<any>) => {
-        this._environments = environments
+      this.loginService.onUserInfoUpdated.subscribe(ui => {        
+        if (!ui || !ui.data || !ui.data.projects) { return; }
+        this._environments = ui.data.projects.map(x => {
+          return { text: x.projectName, id: x.projectId, value: x };
+        });
       }));
   }
 
