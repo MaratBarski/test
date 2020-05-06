@@ -62,10 +62,7 @@ export class UsageDashboardInfoPanelComponent extends BaseSibscriber implements 
   }
 
   private loadEnvironments(): void {
-    this.environmens = [{ id: '', text: 'All Environment', value: '' }].concat(
-      this.usageRequestService.environments.map((en, index) => {
-        return { id: en.id, text: en.name, value: en.id };
-      }));
+    this.environmens = [{ id: '0', text: 'All Environment', value: '0' }].concat(this.usageRequestService.environments);
     this.selectedEnvironment = this.environmens.find(x => x.value === this.currentEnvitonment);
     if (!this.selectedEnvironment) {
       this.selectedEnvironment = this.environmens.length ? this.environmens[0] : undefined;
