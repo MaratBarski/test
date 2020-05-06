@@ -53,12 +53,23 @@ export class ImportedFilesMappingService implements Resolve<FileSourceMappingRes
   checkRelationalIntegrity(opt: any): Observable<any> {
     const payload = {
       hierarchyId: opt.hierarchyId,
-      colIndex: opt.colId,
+      colIndex: opt.colIndex,
       fileName: opt.fileName,
       filePath: opt.filePath,
-      numOfCols: opt.numOfCols
+      numOfCols: opt.numOfCols,
+      fileId: opt.fileId,
     }
     this.getUrl = `${environment.serverUrl}${environment.endPoints.getRelationalIntegrity}`;
     return this.dataService.post(this.getUrl, payload);
+  }
+
+  getSampleData(opt: any): Observable<any> {
+    this.getUrl = `${environment.serverUrl}${environment.endPoints.getSampleData}`;
+    return this.dataService.post(this.getUrl, opt);
+  }
+
+  saveMappedData(opt: any): Observable<any> {
+    this.getUrl = `${environment.serverUrl}${environment.endPoints.fileSource}`;
+    return this.dataService.put(this.getUrl, opt);
   }
 }

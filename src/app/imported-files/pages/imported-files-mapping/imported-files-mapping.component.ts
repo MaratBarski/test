@@ -7,8 +7,10 @@ import {ActivatedRoute} from '@angular/router';
 import {Template} from '@app/models/template';
 import {Hierarchy} from '@app/models/hierarchy';
 import {FormArray, FormBuilder, FormGroup} from '@angular/forms';
-import {timer} from 'rxjs';
-import { ImportedFilesMappingService } from '@app/imported-files/services/imported-files-mapping.service';
+import {timer, Observable} from 'rxjs';
+import {ImportedFilesMappingService} from '@app/imported-files/services/imported-files-mapping.service';
+import {map} from 'rxjs/operators';
+import {ColumnType} from 'core';
 
 @Component({
   selector: 'md-imported-files-mapping',
@@ -98,6 +100,7 @@ export class ImportedFileMappingComponent implements OnInit, OnDestroy {
       physicalColName: [item.physicalColName],
       defaultLevelId: [item.defaultLevelId],
       defaultValue: [item.defaultValue],
+      percent: [-1],
     });
   }
 
@@ -105,34 +108,76 @@ export class ImportedFileMappingComponent implements OnInit, OnDestroy {
 
   }
 
-  public percent = 0;
-
   ngOnInit() {
     // emit 0 after 1 second then complete, since no second argument is supplied
-    const source = timer(1000, 2000);
+    /*const source = timer(1000, 2000);
     // output: 0
     const subscribe = source.subscribe(val => {
       console.log(val);
       this.percent = Math.floor(Math.random() * 100);
-    });
+    });*/
   }
 
-  getRelationalIntegrity(hieId, columnIndex){
-    const hierarchyId = hieId;
+  getRelationalIntegrity(hieId, columnIndex) {
+    const hierarchyId = hieId.id;
     const colIndex = columnIndex + 1;
     const fileName = this.fileSource.fileNameAlias;
     const filePath = this.fileSource.filePath;
     const numOfCols = this.fileSource.fileClms.length;
-    this.importedFilesMappingService.checkRelationalIntegrity({hierarchyId, colIndex, fileName, filePath, numOfCols}).subscribe(data => {
-      console.log(data);
+    return this.importedFilesMappingService.checkRelationalIntegrity({
+      hierarchyId,
+      colIndex,
+      fileName,
+      filePath,
+      numOfCols,
+      fileId: this.fileSource.fileId
+    }).pipe(map(data => {
+      if (data.success === 'success') {
+        return data.percent;
+      } else {
+        return 0;
+      }
+    })).subscribe(data => {
+      (this.fileSourceForm.get('fileClms') as FormArray).controls[columnIndex].get('percent').setValue(data);
     });
-    /*hie_id: 139
-    col_id: 1
-    file_name: 20200503_162159_[2773][Customized][mdclone.admin][if_1624][20200315_204546].csv
-    num_col: 19*/
+  }
+
+  getSampleData(columnIndex) {
+    debugger;
+    const colIndex = 'col_' + (columnIndex + 1);
+    const fileName = this.fileSource.fileNameAlias;
+    const filePath = this.fileSource.filePath;
+    const fileId = this.fileSource.fileId;
+    let coltype: string;
+    if (this.fileSource.fileClms[columnIndex].propertyType === 0) {
+      coltype = 'string';
+    } else if (this.fileSource.fileClms[columnIndex].propertyType === 1) {
+      coltype = 'number';
+    } else if (this.fileSource.fileClms[columnIndex].propertyType === 2) {
+      coltype = 'date';
+    }
+
+    return this.importedFilesMappingService.getSampleData({
+      fileId,
+      colIndex,
+      fileName,
+      filePath,
+      coltype
+    }).pipe(map(data => {
+      if (data.success === 'success') {
+        return data.percent;
+      } else {
+        return 0;
+      }
+    })).subscribe(data => {
+      (this.fileSourceForm.get('fileClms') as FormArray).controls[columnIndex].get('percent').setValue(data);
+    });
   }
 
   saveFileSource() {
+    this.importedFilesMappingService.saveMappedData(this.fileSourceForm.getRawValue()).subscribe(responce => {
+      console.log(responce);
+    });
     console.log(this.fileSourceForm.getRawValue());
     console.log(this.fileSourceForm);
   }

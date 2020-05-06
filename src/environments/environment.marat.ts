@@ -10,6 +10,7 @@ export const environment = {
         userData: 'user-data',
         fileSource: 'mdclone/api/v1/file-source',
         uploadFileSource: 'mdclone/api/v1/upload/file-source',
+        getSampleData: 'kostya/api/v1/file-source/get-sample-data',
         uploadHierarchy: 'mdclone/api/v1/upload/hierarchy',
         deleteFileSource: 'mdclone/api/v1/file-source',
         deleteCategory: 'mdclone/api/v1/hierarchy',

@@ -9,7 +9,8 @@ export const environment = {
   endPoints: {
     userData: 'user-data',
     fileSource: 'mdclone/api/v1/file-source',
-    getRelationalIntegrity: 'kostya/api/v1/get-relational-integrity',
+    getRelationalIntegrity: 'kostya/api/v1/file-source/get-relational-integrity',
+    getSampleData: 'kostya/api/v1/file-source/get-sample-data',
     templateByProject: 'mdclone/api/v1/template/get-by-project',
     uploadFileSource: 'mdclone/api/v1/upload/file-source',
     uploadHierarchy: 'mdclone/api/v1/upload/hierarchy',
