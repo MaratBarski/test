@@ -5,6 +5,7 @@ import { TableComponent, TranslateService, DateFilterComponent, TableModel, Popu
 import { DateRangeButton } from '@app/core-api';
 import { Router } from '@angular/router';
 import { UploadFileComponent } from '@app/imported-files/components/upload-file/upload-file.component';
+import { delay } from 'rxjs/operators';
 
 @Component({
   selector: 'md-imported-files',
@@ -25,6 +26,9 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit {
     subTitle: 'Your files will be listed here.',
     image: 'filesEmpty.png'
   }
+
+  isDataExists = true;
+  isLoaded = false;
 
   get templates(): Array<SelectOption> {
     if (!this.permissions) { return []; }
@@ -80,20 +84,23 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit {
   };
 
   private initData(): void {
+    this.isDataExists = !!(this.fileSource && this.fileSource.length);
     this.dataOrigin = this.dataSource = this.importedFilesService.createDataSource(this.fileSource);
     this.initPermissions();
+    this.isLoaded = true;
   }
 
   ngOnInit() {
+    this.isLoaded = false;
     super.add(
       this.importedFilesService.load().subscribe((res: FileSourceResponse) => {
-        this.fileSource = res.data;
+        this.fileSource = res.data || [];
         this.initData();
       }));
     this.onComplete = (): void => {
       super.add(
         this.importedFilesService.load().subscribe((res: FileSourceResponse) => {
-          this.fileSource = res.data;
+          this.fileSource = res.data || [];
           this.initData();
           this.table.stayOnCurrentPage = true;
         }));

@@ -1,4 +1,7 @@
 <section class="page-header">
+    <mdc-modal-window *ngIf="showUploadFile">
+        <md-upload-file [source]="data?.data" (onChange)="onChangeUploadFile($event)" (onCancel)="cancelUploadFile()"></md-upload-file>
+    </mdc-modal-window>
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
@@ -12,9 +15,10 @@
                             </a>
                         </div>
                         <h1>{{pageTitle}}</h1>
-                        <div (input)="updateName($event)" class="page-header__text" contenteditable="true">
+                        <div (keydown)="keyDown($event)" (input)="updateName($event)" class="page-header__text" contenteditable="true">
                             {{hierarchyName}}
                         </div>
+                        <div *ngIf="isMap" (click)="showFileUpload()">Upload</div>
                         <div class="page-header__text noborder">
                             <span class="pointer link" (click)="showDescription($event)">Description</span>
                             <div [hidden]="!isShowDescription" class="info-popup">
@@ -44,11 +48,11 @@
                             </div>
                         </div>
                     </div>
-                    <div class="notice">
+                    <!-- <div class="notice">
                         <div class="notice__icon">
                             <svg class="icon ic-bulb" mdcSvg="ic-bulb"></svg>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>

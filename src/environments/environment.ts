@@ -9,6 +9,8 @@ export const environment = {
   endPoints: {
     userData: 'user-data',
     fileSource: 'mdclone/api/v1/file-source',
+    getRelationalIntegrity: 'kostya/api/v1/file-source/get-relational-integrity',
+    getSampleData: 'kostya/api/v1/file-source/get-sample-data',
     templateByProject: 'mdclone/api/v1/template/get-by-project',
     uploadFileSource: 'mdclone/api/v1/upload/file-source',
     uploadHierarchy: 'mdclone/api/v1/upload/hierarchy',
@@ -19,6 +21,7 @@ export const environment = {
     historyReport: 'mdclone/api/v1/session-history',
     downloadHistoryReport: 'moshe/api/v1/session-history/download',
     usageReport: 'mdclone/api/v1/reporting/usage',
-    updateHierarchy: 'mdclone/api/v1/updateHierarchy'
+    updateHierarchy: 'mdclone/api/v1/updateHierarchy',
+    config: 'config'
   }
 };

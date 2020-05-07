@@ -8,11 +8,24 @@ import { ComponentService } from '@appcore';
 })
 export class MapCategoryTableComponent {
 
+  @Input() set oldCategories(oldCategories: any) {
+    this._oldCategories = [this.newCategoryDefault].concat(oldCategories);
+    this.initMap();
+  }
+  get oldCategories(): any {
+    return this._oldCategories;
+  }
+  private _oldCategories: any;
+
+  newCategoryDefault = { hierarchyLevelName: '---new---', sortValue: -1, inUse: true };
+
   @Input() set data(data: any) {
     this._data = data;
     if (!this._data || !this._data.data || !this._data.data.hierarchyLevels) { return; }
+    this.categoryMap = [];
     this._data.data.hierarchyLevels.forEach((item: any) => {
       item.newHierarchyLevelName = item.hierarchyLevelName;
+      this.categoryMap.push({ newCategory: item, oldCategory: this.newCategoryDefault });
     });
   }
   get data(): any {
@@ -45,13 +58,29 @@ export class MapCategoryTableComponent {
     this.selectedItem = undefined;
   }
 
-  changeOldCategory(item: any): void {
-    const str = item.hierarchyLevelName;
-    const nameItem = this.data.data.hierarchyLevels.find((x: any) => x.hierarchyLevelName === item.hierarchyLevelName);
-    if (nameItem) {
-      nameItem.hierarchyLevelName = this.selectedItem.hierarchyLevelName;
+  changeOldCategory(oldCategoryItem: any, newCategoryItem: any): void {
+    if (this.newCategoryDefault !== newCategoryItem.oldCategory) {
+      newCategoryItem.oldCategory.inUse = false;
     }
-    this.selectedItem.hierarchyLevelName = str;
+    newCategoryItem.oldCategory = oldCategoryItem;
+    newCategoryItem.oldCategory.inUse = true;
   }
 
+  categoryMap = [];
+  initMap(): void {
+    if (!this._data || !this._data.data || !this._data.data.hierarchyLevels) { return; }
+    this.categoryMap.forEach((level: any, index: number) => {
+      const oldCategory = this.findOldcategory(level.newCategory);
+      if (oldCategory) {
+        level.oldCategory = oldCategory;
+        level.oldCategory.inUse = true;
+      } else {
+        level.oldCategory = this.newCategoryDefault;
+      }
+    });
+  }
+
+  findOldcategory(level: any): any {
+    return this.oldCategories.find((x: any) => x.hierarchyLevelName === level.hierarchyLevelName);
+  }
 }

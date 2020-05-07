@@ -23,7 +23,7 @@
                 <div *ngIf="isFileError" class="form-site-alert">
                     <div class="form-site-alert__icon">
                         <svg class="icon ic-failure" mdcSvg="ic-failure"></svg>
-                    </div><span class="form-site-alert__text">File format needs to be CSV (comma separate values)</span>
+                    </div><span class="form-site-alert__text">{{fileErrorMessage}}</span>
                 </div>
             </div>
 

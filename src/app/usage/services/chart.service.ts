@@ -24,6 +24,10 @@ export class ChartService {
   }
   private _isLoding = false;
 
+  get dateRangeString(): string {
+    return `${this.usageRequestService.usageRequest.fromDate}/${this.usageRequestService.usageRequest.toDate}`;
+  }
+
   getChart(url: string): Observable<any> {
     this._isLoding = true;
     return this.dataService.get(url).pipe(
@@ -41,24 +45,28 @@ export class ChartService {
   @Offline('assets/offline/usageGeneral.json?')
   private getGeneralUsageUrl = `${environment.serverUrl}${environment.endPoints.usageReport}`;
   getGeneralUsage(info: any = undefined): Observable<any> {
+    //alert(this.dateRangeString);
     return this.getChart(this.getGeneralUsageUrl);
   }
 
   @Offline('assets/offline/usageMonthly.json?')
   private getMonthlyUsageUrl = `${environment.serverUrl}${environment.endPoints.usageReport}`;
   getMonthlyUsage(info: any = undefined): Observable<any> {
+    //alert(this.dateRangeString);
     return this.getChart(this.getMonthlyUsageUrl);
   }
 
   @Offline('assets/offline/usageUserActivity.json?')
   private getUserActivityUsageUrl = `${environment.serverUrl}${environment.endPoints.usageReport}`;
   getActivityUserUsage(info: any = undefined): Observable<any> {
+    //alert(this.dateRangeString);
     return this.getChart(this.getUserActivityUsageUrl);
   }
 
   @Offline('assets/offline/usageTop10.json?')
   private getTop10UsageUrl = `${environment.serverUrl}${environment.endPoints.usageReport}`;
   getTop10Usage(info: any = undefined): Observable<any> {
+    //alert(this.dateRangeString);
     return this.getChart(this.getTop10UsageUrl);
   }
 

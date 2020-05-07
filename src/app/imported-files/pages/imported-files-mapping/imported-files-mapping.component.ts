@@ -7,6 +7,10 @@ import {ActivatedRoute} from '@angular/router';
 import {Template} from '@app/models/template';
 import {Hierarchy} from '@app/models/hierarchy';
 import {FormArray, FormBuilder, FormGroup} from '@angular/forms';
+import {timer, Observable} from 'rxjs';
+import {ImportedFilesMappingService} from '@app/imported-files/services/imported-files-mapping.service';
+import {map} from 'rxjs/operators';
+import {ColumnType} from 'core';
 
 @Component({
   selector: 'md-imported-files-mapping',
@@ -20,16 +24,15 @@ export class ImportedFileMappingComponent implements OnInit, OnDestroy {
   hierarchies: Hierarchy[] = [];
   templateSelectOptions: SelectOption[] = [];
   hierarchySelectOptions: SelectOption[] = [];
+  opened = false;
 
-  // vlaue = "CKD Patients with cost, diabetes and medications";
   @ViewChild('popupMenu', {static: true}) popupMenu: PopupComponent;
   @ViewChild('table', {static: true}) table: TableComponent;
 
   constructor(
     private translateService: TranslateService,
     private dateService: DateService,
-    private importedFilesService: ImportedFilesService,
-    private store: Store<any>,
+    private importedFilesMappingService: ImportedFilesMappingService,
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
   ) {
@@ -52,6 +55,10 @@ export class ImportedFileMappingComponent implements OnInit, OnDestroy {
     });
 
     this.fileSourceForm = this.createFileSourceForm();
+  }
+
+  private toggleShare() {
+    this.opened = !this.opened;
   }
 
   private createFileSourceForm(): FormGroup {
@@ -93,6 +100,7 @@ export class ImportedFileMappingComponent implements OnInit, OnDestroy {
       physicalColName: [item.physicalColName],
       defaultLevelId: [item.defaultLevelId],
       defaultValue: [item.defaultValue],
+      percent: [-1],
     });
   }
 
@@ -101,9 +109,75 @@ export class ImportedFileMappingComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    // emit 0 after 1 second then complete, since no second argument is supplied
+    /*const source = timer(1000, 2000);
+    // output: 0
+    const subscribe = source.subscribe(val => {
+      console.log(val);
+      this.percent = Math.floor(Math.random() * 100);
+    });*/
   }
 
-  saveFileSource(){
+  getRelationalIntegrity(hieId, columnIndex) {
+    const hierarchyId = hieId.id;
+    const colIndex = columnIndex + 1;
+    const fileName = this.fileSource.fileNameAlias;
+    const filePath = this.fileSource.filePath;
+    const numOfCols = this.fileSource.fileClms.length;
+    return this.importedFilesMappingService.checkRelationalIntegrity({
+      hierarchyId,
+      colIndex,
+      fileName,
+      filePath,
+      numOfCols,
+      fileId: this.fileSource.fileId
+    }).pipe(map(data => {
+      if (data.success === 'success') {
+        return data.percent;
+      } else {
+        return 0;
+      }
+    })).subscribe(data => {
+      (this.fileSourceForm.get('fileClms') as FormArray).controls[columnIndex].get('percent').setValue(data);
+    });
+  }
+
+  getSampleData(columnIndex) {
+    debugger;
+    const colIndex = 'col_' + (columnIndex + 1);
+    const fileName = this.fileSource.fileNameAlias;
+    const filePath = this.fileSource.filePath;
+    const fileId = this.fileSource.fileId;
+    let coltype: string;
+    if (this.fileSource.fileClms[columnIndex].propertyType === 0) {
+      coltype = 'string';
+    } else if (this.fileSource.fileClms[columnIndex].propertyType === 1) {
+      coltype = 'number';
+    } else if (this.fileSource.fileClms[columnIndex].propertyType === 2) {
+      coltype = 'date';
+    }
+
+    return this.importedFilesMappingService.getSampleData({
+      fileId,
+      colIndex,
+      fileName,
+      filePath,
+      coltype
+    }).pipe(map(data => {
+      if (data.success === 'success') {
+        return data.percent;
+      } else {
+        return 0;
+      }
+    })).subscribe(data => {
+      (this.fileSourceForm.get('fileClms') as FormArray).controls[columnIndex].get('percent').setValue(data);
+    });
+  }
+
+  saveFileSource() {
+    this.importedFilesMappingService.saveMappedData(this.fileSourceForm.getRawValue()).subscribe(responce => {
+      console.log(responce);
+    });
     console.log(this.fileSourceForm.getRawValue());
     console.log(this.fileSourceForm);
   }
