@@ -56,9 +56,10 @@ export class UsageDashboardInfoPanelComponent extends BaseSibscriber implements 
   }
 
   changeIncludeAdmin(includeAdmin: boolean): void {
-    this.usageRequestService.usageRequest.includeAdmin = includeAdmin;
-    this.emit();
-    this.usageRequestService.emit();
+    // this.usageRequestService.usageRequest.includeAdmin = includeAdmin;
+    // this.emit();
+    // this.usageRequestService.emit();
+    this.usageRequestService.includeAdmin(includeAdmin);
   }
 
   private loadEnvironments(): void {

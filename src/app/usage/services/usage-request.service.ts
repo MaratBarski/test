@@ -49,8 +49,18 @@ export class UsageRequestService extends BaseSibscriber {
   }
   private _onChange = new Subject<void>();
 
+  get onIncludeAdmin(): Observable<void> {
+    return this._onIncludeAdmin.asObservable();
+  }
+  private _onIncludeAdmin = new Subject<void>();
+
   emit(): void {
     this._onChange.next();
+  }
+
+  includeAdmin(includeAdmin: boolean): void {
+    this.usageRequest.includeAdmin = includeAdmin;
+    this._onIncludeAdmin.next();
   }
 
   reset(): void {
@@ -75,7 +85,7 @@ export class UsageRequestService extends BaseSibscriber {
 
   loadEnvironments(): void {
     super.add(
-      this.loginService.onUserInfoUpdated.subscribe(ui => {        
+      this.loginService.onUserInfoUpdated.subscribe(ui => {
         if (!ui || !ui.data || !ui.data.projects) { return; }
         this._environments = ui.data.projects.map(x => {
           return { text: x.projectName, id: x.projectId, value: x };
