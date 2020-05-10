@@ -5,6 +5,7 @@ import { Offline } from 'src/app/shared/decorators/offline.decorator';
 import { environment } from '@env/environment';
 import { SessionHistoryResponse, SessionHistory } from '@app/models/session-history';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
+import { HistoryReportUtils } from '../models/history-report-utils';
 
 @Injectable({
   providedIn: 'root'
@@ -115,6 +116,7 @@ export class HistoryReportService {
           source: !!fl.sessionId ? "Query" : "Imported file",
           status: !!fl.transStatus ? "True" : "False",
           download: fl.sessionHistoryId,
+          failureToolTip : this.getTransToolTip(fl.transMsg)
         },
         // csv: {
         //   status: !!fl.transStatus ? "True" : "False",
@@ -124,6 +126,17 @@ export class HistoryReportService {
       })
     })
     return data;
+  }
+  getTransToolTip(transMsg: string): string {
+    switch(transMsg){
+      case "Synthetic":
+        return HistoryReportUtils.FailureSynthetic;
+      case "Compare":
+        return  HistoryReportUtils.FailureComparison;
+      default:
+        return HistoryReportUtils.FailureDerivative
+    }
+
   }
 
 

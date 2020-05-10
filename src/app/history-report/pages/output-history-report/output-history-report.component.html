@@ -48,14 +48,14 @@
         class="height-20-px width-20-px">
         <svg width="20" height="20" mdcSvg="ic-success" color="green"></svg>
     </div>
-    <div *ngIf="!src.transStatus" [stickyToElement]="true" [position]="'left'" [mdcTooltip]="'Failure'"
+    <div *ngIf="!src.transStatus" [stickyToElement]="true" [position]="'left'" [mdcTooltip]="item.failureToolTip"
         class="height-20-px width-20-px">
         <svg width="20" height="20" mdcSvg="ic-failure" color="red"></svg> 
     </div>
 </ng-template>
 <ng-template let-item #downloadTemplate let-src="source">
     <!-- <span (click)="downloadClick(item,src,$event)" class="admin-table-action__menu ic-hover"> -->
-    <a href="{{downloadUrl}}{{src.sessionHistoryId}}">
+    <a href="{{downloadUrl}}{{src.sessionHistoryId}}" [stickyToElement]="true" [position]="'left'" [mdcTooltip]="'Download output file'">
         <svg width="30" height="30" mdcSvg="ic-download" color="gray"></svg> 
     </a>
     <!-- </span> -->
@@ -69,7 +69,7 @@
                 <span>{{src.sessionId}}</span>
             </a>
         </div>
-        <div>
+        <div [stickyToElement]="true" [position]="'right'" [mdcTooltip]="'Link will navigate you to query'">
             <a target="_blank" href="/datalake/#/projects/{{src.projectId}}/sessions/{{src.sessionId}}">
                 <svg width="30" height="30" mdcSvg="ic-add-help" color="#0596ff"></svg> 
             </a>

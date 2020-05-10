@@ -9,6 +9,7 @@ export class HistoryInfoComponent  {
 
   isOver = false;
 
+  //todo session history modal 
   @Input() category: any;
   @Output() onClose = new EventEmitter();
 
