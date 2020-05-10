@@ -28,6 +28,14 @@ export class ChartService {
     return `${this.usageRequestService.usageRequest.fromDate}/${this.usageRequestService.usageRequest.toDate}`;
   }
 
+  get includeAdminString(): string {
+    return `${this.usageRequestService.usageRequest.includeAdmin}`;
+  }
+
+  get requestString(): string {
+    return `${this.dateRangeString}/${this.includeAdminString}`;
+  }
+
   getChart(url: string): Observable<any> {
     this._isLoding = true;
     return this.dataService.get(url).pipe(
@@ -45,7 +53,7 @@ export class ChartService {
   @Offline('assets/offline/usageGeneral.json?')
   private getGeneralUsageUrl = `${environment.serverUrl}${environment.endPoints.usageReport}`;
   getGeneralUsage(info: any = undefined): Observable<any> {
-    //alert(this.dateRangeString);
+    //alert(this.requestString);
     return this.getChart(this.getGeneralUsageUrl);
   }
 
