@@ -103,6 +103,10 @@ export class UsageRequestService extends BaseSibscriber {
   }
 
   initUsers(response: any): void {
+    if (!response.data) {
+      this._users = [];
+      return;
+    }
     const data = this.createData(response.data);
     const users = {};
     Object.keys(data).forEach(k => {
@@ -128,6 +132,10 @@ export class UsageRequestService extends BaseSibscriber {
   }
 
   initSummaryUsers(response: any): void {
+    if (!response.data) {
+      this._users = [];
+      return;
+    }
     const data = this.createData(response.data);
     this._users = data.map(x => {
       return {
