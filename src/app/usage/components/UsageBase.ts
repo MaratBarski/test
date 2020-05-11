@@ -26,7 +26,10 @@ export abstract class UsageBase extends BaseSibscriber implements OnInit, OnDest
     public abstract get usageRequestService(): UsageRequestService;
 
     reinitData(): void {
-        if (Array.isArray(this.dataSource)) {
+        if (typeof (this.dataSource) === 'string') {
+            this.dataSource = this.usageRequestService.createData(this.dataSource);
+        }
+        else if (Array.isArray(this.dataSource)) {
             this.dataSource = [...this.dataSource];
         } else {
             this.dataSource = { ...this.dataSource };
@@ -36,7 +39,8 @@ export abstract class UsageBase extends BaseSibscriber implements OnInit, OnDest
     ngOnInit(): void {
         this.createReport();
         super.add(this.componentService.onSideBarToggle.subscribe((flag: boolean) => {
-            this.createReport();
+            //this.createReport();
+            this.reinitData();
         }));
         super.add(
             this.usageRequestService.onChange.subscribe(() => {
