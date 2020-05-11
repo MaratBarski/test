@@ -176,4 +176,19 @@ export class UsageRequestService extends BaseSibscriber {
     }
     return data;
   }
+
+  distinctDate(arr: any, dateField: string, countField: string): Array<any> {
+    const dict = {};
+    arr.forEach(x => {
+      if (!dict[x[dateField]]) {
+        dict[x[dateField]] = { name: x[dateField], value: 0 }
+      }
+      dict[x[dateField]].value += x[countField];
+    });
+    const res = [];
+    Object.keys(dict).forEach(k => {
+      res.push(dict[k]);
+    });
+    return res;
+  }
 }

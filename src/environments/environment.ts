@@ -26,7 +26,7 @@ export const environment = {
     usageActiveUsage: 'mdclone/api/v1/reporting/usage-active-users',
     usageMonthlyUsage: 'mdclone/api/v1/reporting/usage-monthly-usage',
     usagePerUser: 'mdclone/api/v1/reporting/usage-per-user',
-    usatop10Users: 'mdclone/api/v1/reporting/usage-top-10-users',
+    usageTop10Users: 'mdclone/api/v1/reporting/usage-top-10-users',
     usageCreatedUsers: 'mdclone/api/v1/reporting/usage-created-users',
     usageSummaryTable: 'mdclone/api/v1/reporting/usage-summary-table',
     usageRetantionTable: 'mdclone/api/v1/reporting/usage-retantion-table'

@@ -1,46 +1,146 @@
 {
     "data": [
         {
-            "date": "Oct 18",
-            "count": 159
+            "date": "APR-19",
+            "count": 1
         },
         {
-            "date": "Nov 18",
-            "count": 159
+            "date": "AUG-18",
+            "count": 2
         },
         {
-            "date": "Dec 19",
-            "count": 300
+            "date": "AUG-19",
+            "count": 1
         },
         {
-            "date": "Jan 19",
-            "count": 350
+            "date": "DEC-18",
+            "count": 3
         },
         {
-            "date": "Mar 19",
-            "count": 400
+            "date": "DEC-19",
+            "count": 3
         },
         {
-            "date": "Apr 19",
-            "count": 159
+            "date": "FEB-19",
+            "count": 1
         },
         {
-            "date": "May 19",
-            "count": 50
+            "date": "JAN-19",
+            "count": 2
         },
         {
-            "date": "Jun 19",
-            "count": 80
+            "date": "JUL-19",
+            "count": 2
         },
         {
-            "date": "Jul 19",
-            "count": 80
+            "date": "JUN-19",
+            "count": 1
         },
         {
-            "date": "Aug 19",
-            "count": 254
+            "date": "MAR-19",
+            "count": 2
+        },
+        {
+            "date": "MAY-19",
+            "count": 2
+        },
+        {
+            "date": "NOV-18",
+            "count": 2
+        },
+        {
+            "date": "NOV-19",
+            "count": 3
+        },
+        {
+            "date": "OCT-18",
+            "count": 1
+        },
+        {
+            "date": "OCT-19",
+            "count": 1
+        },
+        {
+            "date": "SEP-18",
+            "count": 2
+        },
+        {
+            "date": "APR-19",
+            "count": 1
+        },
+        {
+            "date": "AUG-18",
+            "count": 4
+        },
+        {
+            "date": "AUG-19",
+            "count": 1
+        },
+        {
+            "date": "DEC-18",
+            "count": 3
+        },
+        {
+            "date": "DEC-19",
+            "count": 1
+        },
+        {
+            "date": "FEB-19",
+            "count": 1
+        },
+        {
+            "date": "JAN-19",
+            "count": 2
+        },
+        {
+            "date": "JUL-18",
+            "count": 3
+        },
+        {
+            "date": "JUL-19",
+            "count": 1
+        },
+        {
+            "date": "JUN-18",
+            "count": 3
+        },
+        {
+            "date": "JUN-19",
+            "count": 1
+        },
+        {
+            "date": "MAR-19",
+            "count": 1
+        },
+        {
+            "date": "MAY-19",
+            "count": 3
+        },
+        {
+            "date": "NOV-18",
+            "count": 1
+        },
+        {
+            "date": "NOV-19",
+            "count": 1
+        },
+        {
+            "date": "OCT-18",
+            "count": 5
+        },
+        {
+            "date": "OCT-19",
+            "count": 1
+        },
+        {
+            "date": "SEP-18",
+            "count": 2
+        },
+        {
+            "date": "SEP-19",
+            "count": 1
         }
     ],
-    "massage": "Message text",
+    "massage": "Get all Usage Report's Objects",
     "status": "success"
 }

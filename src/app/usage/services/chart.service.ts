@@ -84,7 +84,7 @@ export class ChartService {
   }
 
   @Offline('assets/offline/usageTop10.json?')
-  private getTop10UsageUrl = `${environment.serverUrl}${environment.endPoints.usatop10Users}`;
+  private getTop10UsageUrl = `${environment.serverUrl}${environment.endPoints.usageTop10Users}`;
   getTop10Usage(info: any = undefined): Observable<any> {
     //alert(`${this.getTop10UsageUrl}/${this.requestString}`);
     return this.getChart(`${this.getTop10UsageUrl}/${this.requestString}`);

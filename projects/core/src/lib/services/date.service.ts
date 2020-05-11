@@ -17,6 +17,20 @@ export interface DateRange {
   toDate?: Date;
   all?: boolean;
 }
+export const Month = {
+  JAN: 1,
+  FEB: 2,
+  MAR: 3,
+  APR: 4,
+  MAY: 5,
+  JUN: 6,
+  JUL: 7,
+  AUG: 8,
+  SEP: 9,
+  OCT: 10,
+  NOV: 11,
+  DEC: 12
+}
 
 @Injectable({
   providedIn: 'root'
@@ -189,5 +203,19 @@ export class DateService {
     date.setDate(1);
     date.setFullYear(date.getFullYear() - year);
     return date;
+  }
+
+  sortByMonthYear(arr: Array<any>, dateField: string): Array<any> {
+    return arr.sort((a, b) => {
+      const dp1 = a[dateField].split('-');
+      const dp2 = b[dateField].split('-');
+      const y1 = parseInt(dp1[1]);
+      const y2 = parseInt(dp2[1]);
+      if (y1 < y2) { return -1; }
+      if (y1 > y2) { return 1; }
+      if (Month[dp1[0]] < Month[dp2[0]]) { return -1; }
+      if (Month[dp1[0]] > Month[dp2[0]]) { return 1; }
+      return 0;
+    })
   }
 }
