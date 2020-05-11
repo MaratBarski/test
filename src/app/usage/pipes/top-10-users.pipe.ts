@@ -10,6 +10,8 @@ export class Top10ChartPipe implements PipeTransform {
             download: []
         }
         if (!data) { return res; }
+        data = this.usageRequestService.createData(data);
+        if (!data) { return res; }
         if (data.newQuery) {
             res.query = data.newQuery.map(x => {
                 return {

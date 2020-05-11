@@ -53,12 +53,11 @@ export class UsageTableComponent extends UsageBase {
     this.usageDownloadService.downloadPDF(this.downloadData);
   }
 
-
   private toCSV(): void {
     alert('TableModel csv');
   }
 
   createReport(): void {
-    super.responseData = this.usageService.getUsageReport();
+    super.responseData = this.chartService.getSummaryTable();
   }
 }

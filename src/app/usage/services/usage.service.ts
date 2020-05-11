@@ -22,20 +22,9 @@ export class UsageService {
   ) {
   }
 
-  @Offline('assets/offline/usageReport.json?')
-  private getUrl = `${environment.serverUrl}${environment.endPoints.usageReport}`;
-  //http://10.0.2.18:4000/mdclone/api/v1/reporting/usage/25-06-2000/25-09-2021
-
-  getUsageReport(params: UsageReportParams = undefined): any {
-    // params.fromDate = new Date(params.fromDate || new Date());
-    // params.toDate = new Date(params.toDate || new Date());
-    // const url = `${this.getUrl}/${this.dateService.formatDate(params.fromDate)}/${this.dateService.formatDate(params.toDate)}`;
-    // return this.dataService.get(url);
-    return this.dataService.get(this.getUrl);
-  }
-
   createDataSource(files: Array<any>): TableModel {
     const now = new Date();
+    files = this.usageRequestService.createData(files);
     const data: TableModel = {
       headers: [
         {
@@ -66,20 +55,22 @@ export class UsageService {
       ],
       rows: []
     }
-    files.forEach((fl, i) => {
-      data.rows.push({
-        cells: {
-          login: fl.login,
-          daysSinceLastLogin: this.dateService.getDaysDiff(fl.lastlogin, now),
-          lastlogin: fl.lastlogin, //formatDate(fl.lastlogin, 'dd/MM/yyyy', this.locale),
-          environment: 'environment'
-        },
-        csv: {
-        },
-        source: fl,
-        isActive: false
+    if (files) {
+      files.forEach((fl, i) => {
+        data.rows.push({
+          cells: {
+            login: fl.login,
+            daysSinceLastLogin: this.dateService.getDaysDiff(fl.lastlogin, now),
+            lastlogin: fl.lastlogin, //formatDate(fl.lastlogin, 'dd/MM/yyyy', this.locale),
+            environment: 'environment'
+          },
+          csv: {
+          },
+          source: fl,
+          isActive: false
+        })
       })
-    })
+    }
     return data;
   }
 

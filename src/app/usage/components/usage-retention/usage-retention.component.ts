@@ -71,6 +71,6 @@ export class UsageRetentionComponent extends UsageBase {
   }
 
   createReport(): void {
-    super.responseData = this.usageService.getUsageReport();
+    super.responseData = this.chartService.getUsageRetention();
   }
 }

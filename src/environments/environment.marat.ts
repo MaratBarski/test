@@ -5,7 +5,7 @@ export const environment = {
     //loginUrl: 'http://localhost:3000/login/',
     loginUrl: 'http://10.0.2.18:3000/login',
     socketUrl: 'http://localhost:4444',
-    isOfflineMode: true,
+    isOfflineMode: !true,
     endPoints: {
         userData: 'user-data',
         fileSource: 'mdclone/api/v1/file-source',
@@ -23,11 +23,12 @@ export const environment = {
         templateByProject: 'mdclone/api/v1/template/get-by-project',
         updateHierarchy: 'mdclone/api/v1/updateHierarchy',
         config: 'config',
-        usageActiveUsage: 'mdclone/api/v1/reporting/usage-active-usage',
+        usageActiveUsage: 'mdclone/api/v1/reporting/usage-active-users',
         usageMonthlyUsage: 'mdclone/api/v1/reporting/usage-monthly-usage',
         usagePerUser: 'mdclone/api/v1/reporting/usage-per-user',
         usatop10Users: 'mdclone/api/v1/reporting/usage-top-10-users',
         usageCreatedUsers: 'mdclone/api/v1/reporting/usage-created-users',
-        usageSummaryTable: 'mdclone/api/v1/reporting/usage-summary-table'
+        usageSummaryTable: 'mdclone/api/v1/reporting/usage-summary-table',
+        usageRetantionTable: 'mdclone/api/v1/reporting/usage-retantion-table'
     }
 };

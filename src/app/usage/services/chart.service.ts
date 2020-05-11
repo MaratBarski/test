@@ -13,7 +13,7 @@ export class ChartService {
 
   constructor(
     private dataService: DataService,
-    private usageRequestService: UsageRequestService,
+    private usageRequestService: UsageRequestService
   ) { }
 
   get isLoaded(): boolean {
@@ -58,26 +58,24 @@ export class ChartService {
     );
   }
 
-  //http://10.0.2.18:4000/mdclone/api/v1/reporting/usage/25-06-2000/25-09-2021
   @Offline('assets/offline/usageGeneral.json?')
-  private getGeneralUsageUrl = `${environment.serverUrl}${environment.endPoints.usageReport}`;
+  private getGeneralUsageUrl = `${environment.serverUrl}${environment.endPoints.usageActiveUsage}`;
   getGeneralUsage(info: any = undefined): Observable<any> {
-    //alert(this.requestString);
-    alert(`${this.getGeneralUsageUrl}/${this.requestString}`)
+    //alert(`${this.getGeneralUsageUrl}/${this.requestString}`)
     return this.getChart(`${this.getGeneralUsageUrl}/${this.requestString}`);
   }
 
   @Offline('assets/offline/usageMonthly.json?')
-  private getMonthlyUsageUrl = `${environment.serverUrl}${environment.endPoints.usageReport}`;
+  private getMonthlyUsageUrl = `${environment.serverUrl}${environment.endPoints.usageMonthlyUsage}`;
   getMonthlyUsage(info: any = undefined): Observable<any> {
-    //alert(this.dateRangeString);
-    return this.getChart(this.getMonthlyUsageUrl);
+    //alert(`${this.getMonthlyUsageUrl}/${this.requestString}`);
+    return this.getChart(`${this.getMonthlyUsageUrl}/${this.requestString}`);
   }
 
   @Offline('assets/offline/usageUserActivity.json?')
   private getUserActivityUsageUrl = `${environment.serverUrl}${environment.endPoints.usagePerUser}`;
   getActivityUserUsage(info: any = undefined): Observable<any> {
-    alert((`${this.getUserActivityUsageUrl}/${this.requestString}`));
+    //alert((`${this.getUserActivityUsageUrl}/${this.requestString}`));
     return this.getChart(`${this.getUserActivityUsageUrl}/${this.requestString}`).pipe(
       tap(res => {
         this.usageRequestService.initUsers(res);
@@ -86,15 +84,30 @@ export class ChartService {
   }
 
   @Offline('assets/offline/usageTop10.json?')
-  private getTop10UsageUrl = `${environment.serverUrl}${environment.endPoints.usageReport}`;
+  private getTop10UsageUrl = `${environment.serverUrl}${environment.endPoints.usatop10Users}`;
   getTop10Usage(info: any = undefined): Observable<any> {
-    //alert(this.dateRangeString);
-    return this.getChart(this.getTop10UsageUrl);
+    //alert(`${this.getTop10UsageUrl}/${this.requestString}`);
+    return this.getChart(`${this.getTop10UsageUrl}/${this.requestString}`);
   }
 
   @Offline('assets/offline/usageCreated.json?')
-  private getCreatedUsageeUrl = `${environment.serverUrl}${environment.endPoints.usageReport}`;
+  private getCreatedUsageeUrl = `${environment.serverUrl}${environment.endPoints.usageCreatedUsers}`;
   getCreatedUsagee(info: any = undefined): Observable<any> {
-    return this.getChart(this.getCreatedUsageeUrl);
+    //alert(`${this.getCreatedUsageeUrl}/${this.requestString}`);
+    return this.getChart(`${this.getCreatedUsageeUrl}/${this.requestString}`);
+  }
+
+  @Offline('assets/offline/usageCreated.json?')
+  private getUsageRetentionUrl = `${environment.serverUrl}${environment.endPoints.usageRetantionTable}`;
+  getUsageRetention(info: any = undefined): Observable<any> {
+    //alert(`${this.getUsageRetentionUrl}/${this.requestString}`);
+    return this.getChart(`${this.getUsageRetentionUrl}/${this.requestString}`);
+  }
+
+  @Offline('assets/offline/usageCreated.json?')
+  private getSummaryTableUrl = `${environment.serverUrl}${environment.endPoints.usageSummaryTable}`;
+  getSummaryTable(info: any = undefined): Observable<any> {
+    //alert(`${this.getSummaryTableUrl}/${this.requestString}`);
+    return this.getChart(`${this.getSummaryTableUrl}/${this.requestString}`);
   }
 }

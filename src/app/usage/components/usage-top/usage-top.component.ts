@@ -48,8 +48,8 @@ export class UsageTopComponent extends UsageBase {
   ) {
     super();
     const range = this.dateService.getFromMonth2Current(1);
-    this.usageRequestService.usageRequest.fromDate = this.dateService.formatDate(range.fromDate);
-    this.usageRequestService.usageRequest.toDate = this.dateService.formatDate(range.toDate);
+    this.usageRequestService.usageRequest.fromDate = this.dateService.formatDateUS(range.fromDate);
+    this.usageRequestService.usageRequest.toDate = this.dateService.formatDateUS(range.toDate);
 
     this.usageDownloadService.toCSV = () => this.toCSV();
     this.usageDownloadService.toPDF = () => this.toPDF();
