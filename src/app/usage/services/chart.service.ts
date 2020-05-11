@@ -75,7 +75,7 @@ export class ChartService {
   }
 
   @Offline('assets/offline/usageUserActivity.json?')
-  private getUserActivityUsageUrl = `${environment.serverUrl}${environment.endPoints.usatop10Users}`;
+  private getUserActivityUsageUrl = `${environment.serverUrl}${environment.endPoints.usagePerUser}`;
   getActivityUserUsage(info: any = undefined): Observable<any> {
     alert((`${this.getUserActivityUsageUrl}/${this.requestString}`));
     return this.getChart(`${this.getUserActivityUsageUrl}/${this.requestString}`).pipe(
