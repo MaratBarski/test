@@ -110,8 +110,8 @@ export class UsageTopComponent extends UsageBase {
   changeCurrentAcitity(i: number): void {
     this.currentActivity = i;
     const range = this.dateService.getFromMonth2Current(this.activityButtons[i].source);
-    this.usageRequestService.usageRequest.fromDate = this.dateService.formatDate(range.fromDate);
-    this.usageRequestService.usageRequest.toDate = this.dateService.formatDate(range.toDate);
+    this.usageRequestService.usageRequest.fromDate = this.dateService.formatDateUS(range.fromDate);
+    this.usageRequestService.usageRequest.toDate = this.dateService.formatDateUS(range.toDate);
     this.createReport();
   }
 }

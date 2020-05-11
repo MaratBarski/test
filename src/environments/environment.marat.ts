@@ -22,6 +22,12 @@ export const environment = {
         usageReport: 'mdclone/api/v1/reporting/usage',
         templateByProject: 'mdclone/api/v1/template/get-by-project',
         updateHierarchy: 'mdclone/api/v1/updateHierarchy',
-        config: 'config'
+        config: 'config',
+        usageActiveUsage: 'mdclone/api/v1/reporting/usage-active-usage',
+        usageMonthlyUsage: 'mdclone/api/v1/reporting/usage-monthly-usage',
+        usagePerUser: 'mdclone/api/v1/reporting/usage-per-user',
+        usatop10Users: 'mdclone/api/v1/reporting/usage-top-10-users',
+        usageCreatedUsers: 'mdclone/api/v1/reporting/usage-created-users',
+        usageSummaryTable: 'mdclone/api/v1/reporting/usage-summary-table'
     }
 };

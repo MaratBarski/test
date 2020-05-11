@@ -21,7 +21,8 @@
                         </div>
                     </div>
                     <div class="graph__content">
-                        <div class="chart-wraper">
+                        <div [hidden]="!chartService.isLoading">Loading...</div>
+                        <div [hidden]="chartService.isLoading" class="chart-wraper">
                             <ng-container [ngTemplateOutlet]="chart"></ng-container>
                         </div>
                     </div>

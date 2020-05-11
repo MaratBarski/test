@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { DateService, DatePeriod, BaseSibscriber, DataService, LoginService } from '@appcore';
 import { UsageReportParams } from '../models/usage-request';
-import { Subject, Observable } from 'rxjs';
+import { Subject, Observable, BehaviorSubject } from 'rxjs';
 import { Offline } from '@app/shared/decorators/offline.decorator';
 import { environment } from '@env/environment';
 
@@ -24,7 +24,12 @@ export class UsageRequestService extends BaseSibscriber {
   private _users: Array<any>;
 
   get isLoading(): boolean {
-    return !!this._users && !!this._environments;
+    return !!this._environments;
+  }
+
+  isUserInList(userId: number): boolean {
+     //return true;
+   return this.usageRequest.users.find(x => x === userId);
   }
 
   constructor(
@@ -54,6 +59,20 @@ export class UsageRequestService extends BaseSibscriber {
   }
   private _onIncludeAdmin = new Subject<void>();
 
+  get onSelectUserChange(): Observable<void> {
+    return this._onSelectUserChange.asObservable();
+  }
+  private _onSelectUserChange = new Subject<void>();
+
+  userSelectChanged(): void {
+    this._onSelectUserChange.next();
+  }
+
+  get onUsersLoaded(): Observable<void> {
+    return this._onUsersLoaded;
+  }
+  private _onUsersLoaded = new Subject<void>();
+
   emit(): void {
     this._onChange.next();
   }
@@ -66,10 +85,10 @@ export class UsageRequestService extends BaseSibscriber {
   reset(): void {
     const dateRange = this.dateService.getFromMonth2Current(13);
     this._usageRequest = {
-      environmet: '',
+      environment: '',
       includeAdmin: false,
-      fromDate: this.dateService.formatDate(dateRange.fromDate),
-      toDate: this.dateService.formatDate(dateRange.toDate),
+      fromDate: this.dateService.formatDateUS(dateRange.fromDate),
+      toDate: this.dateService.formatDateUS(dateRange.toDate),
       users: []
     }
   }
@@ -83,6 +102,31 @@ export class UsageRequestService extends BaseSibscriber {
       }));
   }
 
+  initUsers(response: any): void {
+    const data = this.createData(response.data);
+    const users = {};
+    Object.keys(data).forEach(k => {
+      data[k].forEach(item => {
+        if (!users[item.userId]) {
+          users[item.userId] = {
+            login: item.userName,
+            id: item.userId,
+            total: 0
+          }
+        }
+        users[item.userId].total += item.count;
+      });
+    });
+    this._users = [];
+    Object.keys(users).forEach(k => {
+      this._users.push({ ...users[k], isChecked: false });
+    });
+    this._users = this._users.sort((a, b) => {
+      return a.total > b.total ? -1 : 1;
+    })
+    this._onUsersLoaded.next();
+  }
+
   loadEnvironments(): void {
     super.add(
       this.loginService.onUserInfoUpdated.subscribe(ui => {
@@ -94,11 +138,18 @@ export class UsageRequestService extends BaseSibscriber {
   }
 
   getEnironment(): any {
-    return { id: '0', name: 'All Environments', ...this._environments.find(x => x.id === this.usageRequest.environmet) };
+    return { id: '0', name: 'All Environments', ...this._environments.find(x => x.id === this.usageRequest.environment) };
   }
 
   private loadData(): void {
-    this.loadUsers();
+    //this.loadUsers();
     this.loadEnvironments();
+  }
+
+  createData(data: any): any {
+    if (typeof (data) === 'string') {
+      return JSON.parse(data);
+    }
+    return data;
   }
 }

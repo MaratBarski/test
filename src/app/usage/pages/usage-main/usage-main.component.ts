@@ -33,4 +33,6 @@ export class UsageMainComponent extends BaseSibscriber implements OnInit {
   onChangeInfoPanel(event: any): void {
   }
 
+  initUsers(): void {
+  }
 }

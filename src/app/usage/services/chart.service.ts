@@ -3,7 +3,7 @@ import { DataService } from '@app/core-api';
 import { Observable, of } from 'rxjs';
 import { Offline } from '@app/shared/decorators/offline.decorator';
 import { environment } from '@env/environment';
-import { finalize, catchError } from 'rxjs/operators';
+import { finalize, catchError, delay, tap, map } from 'rxjs/operators';
 import { UsageRequestService } from './usage-request.service';
 
 @Injectable({
@@ -32,13 +32,22 @@ export class ChartService {
     return `${this.usageRequestService.usageRequest.includeAdmin}`;
   }
 
+  get environmentString(): string {
+    if (!this.usageRequestService.usageRequest.environment ||
+      this.usageRequestService.usageRequest.environment === '' ||
+      this.usageRequestService.usageRequest.environment === '0'
+    ) { return ''; }
+    return `/${this.usageRequestService.usageRequest.environment}`;
+  }
+
   get requestString(): string {
-    return `${this.dateRangeString}/${this.includeAdminString}`;
+    return `${this.dateRangeString}${this.environmentString}/?withAdminUsers=${this.includeAdminString}`;
   }
 
   getChart(url: string): Observable<any> {
     this._isLoding = true;
     return this.dataService.get(url).pipe(
+      delay(200),
       finalize(() => {
         this._isLoding = false;
       }),
@@ -54,7 +63,8 @@ export class ChartService {
   private getGeneralUsageUrl = `${environment.serverUrl}${environment.endPoints.usageReport}`;
   getGeneralUsage(info: any = undefined): Observable<any> {
     //alert(this.requestString);
-    return this.getChart(this.getGeneralUsageUrl);
+    alert(`${this.getGeneralUsageUrl}/${this.requestString}`)
+    return this.getChart(`${this.getGeneralUsageUrl}/${this.requestString}`);
   }
 
   @Offline('assets/offline/usageMonthly.json?')
@@ -67,8 +77,12 @@ export class ChartService {
   @Offline('assets/offline/usageUserActivity.json?')
   private getUserActivityUsageUrl = `${environment.serverUrl}${environment.endPoints.usageReport}`;
   getActivityUserUsage(info: any = undefined): Observable<any> {
-    //alert(this.dateRangeString);
-    return this.getChart(this.getUserActivityUsageUrl);
+    alert((`${this.getUserActivityUsageUrl}/${this.requestString}`));
+    return this.getChart(`${this.getUserActivityUsageUrl}/${this.requestString}`).pipe(
+      tap(res => {
+        this.usageRequestService.initUsers(res);
+      })
+    );
   }
 
   @Offline('assets/offline/usageTop10.json?')

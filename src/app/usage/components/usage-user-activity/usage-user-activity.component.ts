@@ -28,8 +28,16 @@ export class UsageUserActivityComponent extends UsageBase {
   ) {
     super();
 
+    super.add(
+      this.usageRequestService.onSelectUserChange.subscribe(() => {
+        this.data = { ...this.data };
+      }));
+
     this.usageDownloadService.toCSV = () => this.toCSV();
     this.usageDownloadService.toPDF = () => this.toPDF();
+  }
+
+  dataSourceReady = () => {
   }
 
   downloadData: DownloadData = {
@@ -74,8 +82,13 @@ export class UsageUserActivityComponent extends UsageBase {
     alert('UsageUserActivityComponentcsv');
   }
 
+  data: any;
   createReport(): void {
     super.responseData = this.chartService.getActivityUserUsage();
+    super.add(
+      super.responseData.subscribe(res => {
+        this.data = this.usageRequestService.createData(res.data);
+      }));
   }
 
 }

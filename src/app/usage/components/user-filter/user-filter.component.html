@@ -22,7 +22,7 @@
             </div>
             <div class="select-filter__params">
                 <ng-container *ngFor="let user of users|usageUser:{text:searchWord};let index=$index">
-                    <mdc-check-box (change)="changeSelect($event)" [(ngModel)]="user.isChecked" [id]="'usr' + index" [text]="user.login">
+                    <mdc-check-box (change)="changeSelect($event)" [(ngModel)]="user.isChecked" [id]="'usr' + index" text="{{user.login}}({{user.total}})">
                     </mdc-check-box>
                 </ng-container>
             </div>

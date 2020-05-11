@@ -60,7 +60,7 @@ export class UsageRetentionComponent extends UsageBase {
 
   private initDate(): void {
     this.usageRequestService.usageRequest.fromDate =
-      this.dateService.formatDate(this.dateService.fromDate[DatePeriod.Day](this.lastDays));
+      this.dateService.formatDateUS(this.dateService.fromDate[DatePeriod.Day](this.lastDays));
   }
 
 

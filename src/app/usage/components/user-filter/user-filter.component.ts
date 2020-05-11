@@ -1,14 +1,14 @@
-import { Component, Output, EventEmitter, OnDestroy, OnInit, HostListener, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Output, EventEmitter, OnDestroy, HostListener, Input, ChangeDetectionStrategy } from '@angular/core';
 import { UsageRequestService } from '@app/usage/services/usage-request.service';
-import { ComponentService } from '@app/core-api';
+import { ComponentService, BaseSibscriber } from '@appcore';
 
 @Component({
   selector: 'md-user-filter',
   templateUrl: './user-filter.component.html',
   styleUrls: ['./user-filter.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.Default
 })
-export class UserFilterComponent implements OnDestroy, OnInit {
+export class UserFilterComponent extends BaseSibscriber implements OnDestroy {
 
   topChecked = true;
   searchText = '';
@@ -18,6 +18,7 @@ export class UserFilterComponent implements OnDestroy, OnInit {
   users: Array<any>;
 
   @Output() onApply = new EventEmitter<Array<any>>();
+  @Output() onInitUsers = new EventEmitter<void>();
   @Input() minSelected = 1;
   @Input() maxSelected = 7;
 
@@ -31,17 +32,19 @@ export class UserFilterComponent implements OnDestroy, OnInit {
   constructor(
     public usageRequestService: UsageRequestService
   ) {
-    this.users = JSON.parse(JSON.stringify(usageRequestService.users));
-    this.changeTop(true);
-    this.updateSelectedCount();
+    super();
+    super.add(
+      this.usageRequestService.onUsersLoaded.subscribe(() => {
+        this.users = JSON.parse(JSON.stringify(usageRequestService.users));
+        this.changeTop(true);
+        this.updateSelectedCount();
+        this.usageRequestService.usageRequest.users = this.users.filter(x => x.isChecked).map(x => x.id);
+        this.onInitUsers.emit();
+      }));
   }
 
   private updateSelectedCount(): void {
     this.selectedCount = this.users.filter(x => x.isChecked).length
-  }
-
-  ngOnInit(): void {
-    this.usageRequestService.usageRequest.users = this.users.filter(x => x.isChecked).map(x => x.id);
   }
 
   ngOnDestroy(): void {

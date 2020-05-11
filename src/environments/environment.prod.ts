@@ -20,6 +20,12 @@ export const environment = {
     downloadHistoryReport: 'moshe/api/v1/session-history/download',
     usageReport: 'mdclone/api/v1/reporting/usage',
     updateHierarchy: 'mdclone/api/v1/updateHierarchy',
-    config: 'config'
+    config: 'config',
+    usageActiveUsage: 'mdclone/api/v1/reporting/usage-active-usage',
+    usageMonthlyUsage: 'mdclone/api/v1/reporting/usage-monthly-usage',
+    usagePerUser: 'mdclone/api/v1/reporting/usage-per-user',
+    usatop10Users: 'mdclone/api/v1/reporting/usage-top-10-users',
+    usageCreatedUsers: 'mdclone/api/v1/reporting/usage-created-users',
+    usageSummaryTable: 'mdclone/api/v1/reporting/usage-summary-table'
   }
 };

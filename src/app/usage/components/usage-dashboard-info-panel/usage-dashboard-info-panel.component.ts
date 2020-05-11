@@ -11,6 +11,7 @@ export class UsageDashboardInfoPanelComponent extends BaseSibscriber implements 
 
   @Input() includeAdmin = false;
   @Output() onChange = new EventEmitter<any>();
+  @Output() onInitUsers = new EventEmitter();
   @Input() showYears = true;
   @Input() showUsers = true;
 
@@ -42,15 +43,15 @@ export class UsageDashboardInfoPanelComponent extends BaseSibscriber implements 
   changeYear(option: SelectOption): void {
     this.currentDateIndex = option.id as number;
     this.currentDateRange = option.value;
-    this.usageRequestService.usageRequest.fromDate = this.dateService.formatDate(this.currentDateRange.fromDate);
-    this.usageRequestService.usageRequest.toDate = this.dateService.formatDate(this.currentDateRange.toDate);
+    this.usageRequestService.usageRequest.fromDate = this.dateService.formatDateUS(this.currentDateRange.fromDate);
+    this.usageRequestService.usageRequest.toDate = this.dateService.formatDateUS(this.currentDateRange.toDate);
     this.emit();
     this.usageRequestService.emit();
   }
 
   changeEnvironment(option: SelectOption): void {
     this.currentEnvitonment = (option.id as string);
-    this.usageRequestService.usageRequest.environmet = this.currentEnvitonment;
+    this.usageRequestService.usageRequest.environment = this.currentEnvitonment;
     this.emit();
     this.usageRequestService.emit();
   }
@@ -77,7 +78,12 @@ export class UsageDashboardInfoPanelComponent extends BaseSibscriber implements 
 
   applyUsers(users: Array<any>): void {
     this.usageRequestService.usageRequest.users = users;
-    this.emit();
-    this.usageRequestService.emit();
+    this.usageRequestService.userSelectChanged();
+    //this.emit();
+    //this.usageRequestService.emit();
+  }
+
+  initUsers(): void {
+    this.onInitUsers.emit();
   }
 }
