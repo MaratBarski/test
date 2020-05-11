@@ -25,6 +25,9 @@ export class SortService {
   sort(a: any, b: any, sortModel: TableHeaderModel): number {
     if (!typeof (a) && !typeof (b)) { return 0; }
     if (!a && !b) { return 0; }
+    if (typeof (a) === 'number' && typeof (b) === 'number') {
+      return this.compare(a, b, sortModel.sortDir);
+    }
     if ((!typeof (a) || !a) && b) { return 1; }
     if ((!typeof (b) || !b) && a) { return -1; }
     if (a === b) { return 0; }

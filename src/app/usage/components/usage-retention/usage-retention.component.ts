@@ -28,7 +28,7 @@ export class UsageRetentionComponent extends UsageBase {
     super();
     this.initDate();
     super.dataSourceReady = () => {
-      this.data = this.usageService.createDataSource(this.dataSource);
+      this.data = this.usageService.createRetentionDataSource(this.dataSource);
     }
 
     this.usageDownloadService.toCSV = () => this.toCSV();

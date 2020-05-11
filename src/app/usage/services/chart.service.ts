@@ -104,10 +104,14 @@ export class ChartService {
     return this.getChart(`${this.getUsageRetentionUrl}/${this.requestString}`);
   }
 
-  @Offline('assets/offline/usageCreated.json?')
+  @Offline('assets/offline/usageSummaryTable.json?')
   private getSummaryTableUrl = `${environment.serverUrl}${environment.endPoints.usageSummaryTable}`;
   getSummaryTable(info: any = undefined): Observable<any> {
     //alert(`${this.getSummaryTableUrl}/${this.requestString}`);
-    return this.getChart(`${this.getSummaryTableUrl}/${this.requestString}`);
+    return this.getChart(`${this.getSummaryTableUrl}/${this.requestString}`).pipe(
+      tap(res => {
+        this.usageRequestService.initSummaryUsers(res);
+      })
+    );
   }
 }

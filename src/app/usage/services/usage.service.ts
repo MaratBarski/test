@@ -1,11 +1,5 @@
 import { Injectable, LOCALE_ID, Inject } from '@angular/core';
-import { environment } from '@env/environment';
-import { Offline } from '@app/shared/decorators/offline.decorator';
 import { TableModel, ColumnType, DataService, DateService } from '@app/core-api';
-import { formatDate } from '@angular/common';
-import { Observable, of } from 'rxjs';
-import { switchMap, catchError, tap } from 'rxjs/operators';
-import { UsageReportParams } from '../models/usage-request';
 import { UsageRequestService } from './usage-request.service';
 
 
@@ -22,7 +16,81 @@ export class UsageService {
   ) {
   }
 
-  createDataSource(files: Array<any>): TableModel {
+  createSummaryDataSource(files: Array<any>): TableModel {
+    const now = new Date();
+    files = this.usageRequestService.createData(files);
+    const data: TableModel = {
+      headers: [
+        {
+          columnId: 'login',
+          text: 'User Name',
+          isSortEnabled: true,
+          csvTitle: 'User Name'
+        },
+        {
+          columnId: 'lastlogin',
+          text: 'Last Login',
+          isSortEnabled: true,
+          csvTitle: 'Last Login',
+          columnType: ColumnType.Date
+        },
+        {
+          columnId: 'permission',
+          text: 'Permission',
+          isSortEnabled: true,
+          csvTitle: 'Permission'
+        },
+        {
+          columnId: 'loginDays',
+          text: 'Login Days',
+          isSortEnabled: true,
+          csvTitle: 'Login Days'
+        },
+        {
+          columnId: 'origin',
+          text: 'Original',
+          isSortEnabled: true,
+          csvTitle: 'Original',
+          columnType: ColumnType.Number
+        },
+        {
+          columnId: 'syntetic',
+          text: 'Synthetic',
+          isSortEnabled: true,
+          csvTitle: 'Synthetic',
+          columnType: ColumnType.Number
+        }
+      ],
+      rows: []
+    }
+
+    if (!files) { return data }
+
+    files.forEach((fl, i) => {
+      if (!this.usageRequestService.isUserInList(fl.userId)) {
+        return;
+      }
+      data.rows.push({
+        cells: {
+          login: fl.userName,
+          daysSinceLastLogin: this.dateService.getDaysDiff(fl.lastLogin, now),
+          lastlogin: fl.lastLogin,
+          permission: fl.permission,
+          loginDays: fl.loginDays,
+          origin: fl.origin,
+          syntetic: fl.syntetic
+        },
+        csv: {
+        },
+        source: fl,
+        isActive: false
+      })
+    })
+
+    return data;
+  }
+
+  createRetentionDataSource(files: Array<any>): TableModel {
     const now = new Date();
     files = this.usageRequestService.createData(files);
     const data: TableModel = {
@@ -59,7 +127,7 @@ export class UsageService {
       files.forEach((fl, i) => {
         data.rows.push({
           cells: {
-            login: fl.login,
+            login: fl.userName,
             daysSinceLastLogin: this.dateService.getDaysDiff(fl.lastlogin, now),
             lastlogin: fl.lastlogin, //formatDate(fl.lastlogin, 'dd/MM/yyyy', this.locale),
             environment: 'environment'
@@ -73,5 +141,4 @@ export class UsageService {
     }
     return data;
   }
-
 }

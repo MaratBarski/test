@@ -28,8 +28,8 @@ export class UsageRequestService extends BaseSibscriber {
   }
 
   isUserInList(userId: number): boolean {
-     //return true;
-   return this.usageRequest.users.find(x => x === userId);
+    //return true;
+    return this.usageRequest.users.find(x => x === userId);
   }
 
   constructor(
@@ -120,6 +120,22 @@ export class UsageRequestService extends BaseSibscriber {
     this._users = [];
     Object.keys(users).forEach(k => {
       this._users.push({ ...users[k], isChecked: false });
+    });
+    this._users = this._users.sort((a, b) => {
+      return a.total > b.total ? -1 : 1;
+    });
+    this._onUsersLoaded.next();
+  }
+
+  initSummaryUsers(response: any): void {
+    const data = this.createData(response.data);
+    this._users = data.map(x => {
+      return {
+        isChecked: false,
+        id: x.userId,
+        login: x.userName,
+        total: x.origin + x.syntetic
+      }
     });
     this._users = this._users.sort((a, b) => {
       return a.total > b.total ? -1 : 1;

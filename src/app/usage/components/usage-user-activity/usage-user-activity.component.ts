@@ -90,5 +90,5 @@ export class UsageUserActivityComponent extends UsageBase {
         this.data = this.usageRequestService.createData(res.data);
       }));
   }
-
+  
 }
