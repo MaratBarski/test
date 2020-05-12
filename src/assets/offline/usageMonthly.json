@@ -2,99 +2,203 @@
     "data": {
         "newQuery": [
             {
-                "date": "Oct 18",
-                "count": 159
+                "date": "AUG-18",
+                "count": 6
             },
             {
-                "date": "Nov 18",
-                "count": 159
+                "date": "FEB-20",
+                "count": 15
             },
             {
-                "date": "Dec 19",
-                "count": 300
+                "date": "AUG-17",
+                "count": 3
             },
             {
-                "date": "Jan 19",
-                "count": 350
+                "date": "DEC-18",
+                "count": 21
             },
             {
-                "date": "Mar 19",
-                "count": 400
+                "date": "DEC-19",
+                "count": 22
             },
             {
-                "date": "Apr 19",
-                "count": 159
+                "date": "NOV-19",
+                "count": 3
             },
             {
-                "date": "May 19",
-                "count": 50
+                "date": "JUN-19",
+                "count": 2
             },
             {
-                "date": "Jun 19",
-                "count": 80
+                "date": "SEP-19",
+                "count": 1
             },
             {
-                "date": "Jul 19",
-                "count": 80
+                "date": "OCT-18",
+                "count": 15
             },
             {
-                "date": "Aug 19",
-                "count": 254
+                "date": "JAN-19",
+                "count": 19
+            },
+            {
+                "date": "MAY-19",
+                "count": 4
+            },
+            {
+                "date": "SEP-18",
+                "count": 12
+            },
+            {
+                "date": "JUL-19",
+                "count": 6
+            },
+            {
+                "date": "NOV-18",
+                "count": 17
+            },
+            {
+                "date": "JAN-20",
+                "count": 12
+            },
+            {
+                "date": "JUL-18",
+                "count": 1
+            },
+            {
+                "date": "FEB-19",
+                "count": 9
+            },
+            {
+                "date": "MAR-19",
+                "count": 8
+            },
+            {
+                "date": "APR-19",
+                "count": 5
+            },
+            {
+                "date": "APR-20",
+                "count": 5
+            },
+            {
+                "date": "OCT-16",
+                "count": 21
             }
         ],
         "downloads": [
             {
-                "date": "Oct 18",
-                "origin": 120,
-                "syntetic": 54
+                "date": "AUG-18",
+                "syntetic": 45,
+                "origin": 193
             },
             {
-                "date": "Nov 18",
-                "origin": 40,
-                "syntetic": 58
+                "date": "FEB-20",
+                "syntetic": 0,
+                "origin": 38
             },
             {
-                "date": "Dec 19",
-                "origin": 140,
-                "syntetic": 58
+                "date": "AUG-19",
+                "syntetic": 6,
+                "origin": 7
             },
             {
-                "date": "Jan 19",
-                "origin": 47,
-                "syntetic": 21
+                "date": "DEC-18",
+                "syntetic": 23,
+                "origin": 69
             },
             {
-                "date": "Mar 19",
-                "origin": 98,
-                "syntetic": 58
+                "date": "JUN-19",
+                "syntetic": 0,
+                "origin": 12
             },
             {
-                "date": "Apr 19",
-                "origin": 159,
-                "syntetic": 58
+                "date": "SEP-19",
+                "syntetic": 3,
+                "origin": 6
             },
             {
-                "date": "May 19",
-                "origin": 100,
-                "syntetic": 58
+                "date": "NOV-19",
+                "syntetic": 0,
+                "origin": 30
             },
             {
-                "date": "Jun 19",
-                "origin": 56,
-                "syntetic": 58
+                "date": "DEC-19",
+                "syntetic": 0,
+                "origin": 11
             },
             {
-                "date": "Jul 19",
-                "origin": 159,
-                "syntetic": 58
+                "date": "OCT-18",
+                "syntetic": 247,
+                "origin": 139
             },
             {
-                "date": "Aug 19",
-                "origin": 56,
-                "syntetic": 154
+                "date": "JAN-19",
+                "syntetic": 7,
+                "origin": 78
+            },
+            {
+                "date": "MAY-19",
+                "syntetic": 14,
+                "origin": 15
+            },
+            {
+                "date": "SEP-18",
+                "syntetic": 26,
+                "origin": 87
+            },
+            {
+                "date": "NOV-18",
+                "syntetic": 10,
+                "origin": 95
+            },
+            {
+                "date": "JUL-19",
+                "syntetic": 152,
+                "origin": 21
+            },
+            {
+                "date": "JAN-20",
+                "syntetic": 0,
+                "origin": 6
+            },
+            {
+                "date": "JUN-18",
+                "syntetic": 8,
+                "origin": 15
+            },
+            {
+                "date": "JUL-18",
+                "syntetic": 6,
+                "origin": 46
+            },
+            {
+                "date": "FEB-19",
+                "syntetic": 14,
+                "origin": 56
+            },
+            {
+                "date": "MAR-19",
+                "syntetic": 22,
+                "origin": 125
+            },
+            {
+                "date": "APR-19",
+                "syntetic": 0,
+                "origin": 50
+            },
+            {
+                "date": "OCT-15",
+                "syntetic": 45,
+                "origin": 18
+            },
+            {
+                "date": "OCT-15",
+                "syntetic": 10,
+                "origin": 18
             }
         ]
     },
-    "massage": "Message text",
+    "massage": "Get all Usage Report's Objects",
     "status": "success"
 }

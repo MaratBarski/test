@@ -1,9 +1,13 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { UsageRequestService } from '../services/usage-request.service';
+import { DateService } from '@appcore';
 
 @Pipe({ name: 'userActivityChart' })
 export class UserActivityChartPipe implements PipeTransform {
-    constructor(private usageRequestService: UsageRequestService) { }
+    constructor(
+        private dateService: DateService,
+        private usageRequestService: UsageRequestService
+    ) { }
 
     private getDictionary(data: Array<any>): any {
         const res = {};
@@ -19,31 +23,21 @@ export class UserActivityChartPipe implements PipeTransform {
         return res;
     }
 
-    private getDate(str: string): Date {
-        const arr = str.split('-');
-        const date = new Date();
-        date.setFullYear(2000 + parseInt(arr[1]));
-        date.setDate(1);
-        return date;
-    }
-
     private createSeries(obj: any): Array<any> {
         let res = [];
         Object.keys(obj).forEach((k) => {
             let ser = { name: obj[k][0].userName, series: [] };
-            obj[k].forEach((item) => {
+            obj[k].forEach((item: any) => {
                 ser.series.push({
                     value: item.count,
                     name: item.date
                 });
             });
-            // ser.series = ser.series.sort((a, b) => {
-            //     const d1 = this.getDate(a.name);
-            //     const d2 = this.getDate(a.name);
-            //     return d1 < d2 ? -1 : 1;
-            // });
+            ser.series = this.dateService.sortByMonthYear(ser.series, 'name');
+            //alert(JSON.stringify(ser.series))
             res.push(ser)
         });
+
         return res;
     }
 

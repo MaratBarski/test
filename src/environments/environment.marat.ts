@@ -29,6 +29,6 @@ export const environment = {
         usageTop10Users: 'mdclone/api/v1/reporting/usage-top-10-users',
         usageCreatedUsers: 'mdclone/api/v1/reporting/usage-created-users',
         usageSummaryTable: 'mdclone/api/v1/reporting/usage-summary-table',
-        usageRetantionTable: 'mdclone/api/v1/reporting/usage-retantion-table'
+        usageRetantionTable: 'mdclone/api/v1/reporting/usage-retention-list'
     }
 };

@@ -1,5 +1,191 @@
 {
-    "data": "{\"newQuery\" : [{\"date\":\"AUG-18\",\"userName\":\"Elena Khitrova\",\"userId\":1019,\"count\":2}, \n {\"date\":\"NOV-19\",\"userName\":\"Lior Halachmi\",\"userId\":1078,\"count\":1}, \n {\"date\":\"DEC-19\",\"userName\":\"Lior Halachmi\",\"userId\":1078,\"count\":2}, \n {\"date\":\"AUG-19\",\"userName\":\"Admin gggg Admin\",\"userId\":5,\"count\":2}, \n {\"date\":\"NOV-19\",\"userName\":\"Researcher One\",\"userId\":1000,\"count\":1}, \n {\"date\":\"DEC-19\",\"userName\":\"Researcher One\",\"userId\":1000,\"count\":1}, \n {\"date\":\"AUG-18\",\"userName\":\"Admin gggg Admin\",\"userId\":5,\"count\":3}, \n {\"date\":\"JUL-19\",\"userName\":\"Admin gggg Admin\",\"userId\":5,\"count\":3}, \n {\"date\":\"MAY-19\",\"userName\":\"Noa Zam\",\"userId\":4066,\"count\":1}, \n {\"date\":\"NOV-18\",\"userName\":\"Admin gggg Admin\",\"userId\":5,\"count\":8}, \n {\"date\":\"SEP-18\",\"userName\":\"Admin gggg Admin\",\"userId\":5,\"count\":10}, \n {\"date\":\"JAN-19\",\"userName\":\"jjj kkkk\",\"userId\":1993,\"count\":1}, \n {\"date\":\"NOV-18\",\"userName\":\"Researcher One\",\"userId\":1000,\"count\":1}, \n {\"date\":\"DEC-18\",\"userName\":\"Researcher One\",\"userId\":1000,\"count\":1}, \n {\"date\":\"SEP-18\",\"userName\":\"Researcher One\",\"userId\":1000,\"count\":1}, \n {\"date\":\"JUN-19\",\"userName\":\"Admin gggg Admin\",\"userId\":5,\"count\":2}, \n {\"date\":\"DEC-18\",\"userName\":\"Elena Khitrova\",\"userId\":1019,\"count\":2}, \n {\"date\":\"NOV-19\",\"userName\":\"Admin gggg Admin\",\"userId\":5,\"count\":1}, \n {\"date\":\"DEC-19\",\"userName\":\"Admin gggg Admin\",\"userId\":5,\"count\":4}, \n {\"date\":\"MAY-19\",\"userName\":\"Admin gggg Admin\",\"userId\":5,\"count\":3}, \n {\"date\":\"MAR-19\",\"userName\":\"Elena Khitrova\",\"userId\":1019,\"count\":1}, \n {\"date\":\"OCT-18\",\"userName\":\"Admin gggg Admin\",\"userId\":5,\"count\":13}, \n {\"date\":\"JAN-19\",\"userName\":\"Admin gggg Admin\",\"userId\":5,\"count\":7}, \n {\"date\":\"FEB-19\",\"userName\":\"Admin gggg Admin\",\"userId\":5,\"count\":4}, \n {\"date\":\"DEC-18\",\"userName\":\"Admin gggg Admin\",\"userId\":5,\"count\":1}, \n {\"date\":\"OCT-19\",\"userName\":\"Admin gggg Admin\",\"userId\":5,\"count\":1}, \n {\"date\":\"MAR-19\",\"userName\":\"Admin gggg Admin\",\"userId\":5,\"count\":3}, \n {\"date\":\"APR-19\",\"userName\":\"Admin gggg Admin\",\"userId\":5,\"count\":3}, \n {\"date\":\"JUL-19\",\"userName\":\"Researcher One\",\"userId\":1000,\"count\":1}],\"downloads\" : [{\"date\":\"AUG-18\",\"userName\":\"Elena Khitrova\",\"userId\":1019,\"count\":2}, \n {\"date\":\"OCT-18\",\"userName\":\"omry atia\",\"userId\":1004,\"count\":2}, \n {\"date\":\"JUL-18\",\"userName\":\"Admin gggg Admin\",\"userId\":5,\"count\":16}, \n {\"date\":\"AUG-19\",\"userName\":\"Admin gggg Admin\",\"userId\":5,\"count\":11}, \n {\"date\":\"JUN-18\",\"userName\":\"Admin gggg Admin\",\"userId\":5,\"count\":18}, \n {\"date\":\"AUG-18\",\"userName\":\"Admin gggg Admin\",\"userId\":5,\"count\":322}, \n {\"date\":\"JUL-19\",\"userName\":\"Admin gggg Admin\",\"userId\":5,\"count\":241}, \n {\"date\":\"MAY-19\",\"userName\":\"Noa Zam\",\"userId\":4066,\"count\":2}, \n {\"date\":\"NOV-18\",\"userName\":\"Admin gggg Admin\",\"userId\":5,\"count\":153}, \n {\"date\":\"SEP-18\",\"userName\":\"Admin gggg Admin\",\"userId\":5,\"count\":166}, \n {\"date\":\"DEC-18\",\"userName\":\"Researcher One\",\"userId\":1000,\"count\":6}, \n {\"date\":\"DEC-18\",\"userName\":\"omry atia\",\"userId\":1004,\"count\":2}, \n {\"date\":\"JUL-18\",\"userName\":\"Lior Halachmi\",\"userId\":1078,\"count\":4}, \n {\"date\":\"JUN-19\",\"userName\":\"Admin gggg Admin\",\"userId\":5,\"count\":10}, \n {\"date\":\"SEP-19\",\"userName\":\"Admin gggg Admin\",\"userId\":5,\"count\":3}, \n {\"date\":\"JUL-18\",\"userName\":\"Researcher One\",\"userId\":1000,\"count\":64}, \n {\"date\":\"NOV-19\",\"userName\":\"Admin gggg Admin\",\"userId\":5,\"count\":33}, \n {\"date\":\"DEC-19\",\"userName\":\"Admin gggg Admin\",\"userId\":5,\"count\":19}, \n {\"date\":\"JUN-18\",\"userName\":\"Researcher One\",\"userId\":1000,\"count\":20}, \n {\"date\":\"JUN-18\",\"userName\":\"omry atia\",\"userId\":1004,\"count\":4}, \n {\"date\":\"MAY-19\",\"userName\":\"Admin gggg Admin\",\"userId\":5,\"count\":32}, \n {\"date\":\"OCT-18\",\"userName\":\"Admin gggg Admin\",\"userId\":5,\"count\":223}, \n {\"date\":\"JAN-19\",\"userName\":\"Admin gggg Admin\",\"userId\":5,\"count\":52}, \n {\"date\":\"FEB-19\",\"userName\":\"Admin gggg Admin\",\"userId\":5,\"count\":55}, \n {\"date\":\"DEC-18\",\"userName\":\"Admin gggg Admin\",\"userId\":5,\"count\":68}, \n {\"date\":\"OCT-19\",\"userName\":\"Admin gggg Admin\",\"userId\":5,\"count\":17}, \n {\"date\":\"AUG-18\",\"userName\":\"Researcher One\",\"userId\":1000,\"count\":12}, \n {\"date\":\"AUG-18\",\"userName\":\"omry atia\",\"userId\":1004,\"count\":22}, \n {\"date\":\"MAR-19\",\"userName\":\"Admin gggg Admin\",\"userId\":5,\"count\":212}, \n {\"date\":\"APR-19\",\"userName\":\"Admin gggg Admin\",\"userId\":5,\"count\":75}, \n {\"date\":\"OCT-18\",\"userName\":\"Elena Khitrova\",\"userId\":1019,\"count\":1}, \n {\"date\":\"JAN-19\",\"userName\":\"jjj kkkk\",\"userId\":1993,\"count\":4}, \n {\"date\":\"SEP-18\",\"userName\":\"Researcher One\",\"userId\":1000,\"count\":8}, \n {\"date\":\"OCT-18\",\"userName\":\"moshe kamer\",\"userId\":1735,\"count\":8}, \n {\"date\":\"OCT-18\",\"userName\":\"Researcher One\",\"userId\":1000,\"count\":4}, \n {\"date\":\"MAY-19\",\"userName\":\"Lior Halachmi\",\"userId\":1078,\"count\":1}]}",
+    "data": {
+        "newQuery": [
+            {
+                "date": "AUG-18",
+                "userName": "Lior Halachmi",
+                "userId": 1,
+                "count": 2
+            },
+            {
+                "date": "SEP-18",
+                "userName": "Lior Halachmi",
+                "userId": 1,
+                "count": 2
+            },
+            {
+                "date": "NOV-18",
+                "userName": "Lior Halachmi",
+                "userId": 1,
+                "count": 2
+            },
+            {
+                "date": "AUG-18",
+                "userName": "1 Halachmi",
+                "userId": 2,
+                "count": 2
+            },
+            {
+                "date": "SEP-18",
+                "userName": "1 Halachmi",
+                "userId": 2,
+                "count": 6
+            },
+            {
+                "date": "NOV-18",
+                "userName": "1 Halachmi",
+                "userId": 2,
+                "count": 5
+            },
+
+            {
+                "date": "AUG-18",
+                "userName": "2 Halachmi",
+                "userId": 3,
+                "count": 4
+            },
+            {
+                "date": "SEP-18",
+                "userName": "2 Halachmi",
+                "userId": 3,
+                "count": 1
+            },
+            {
+                "date": "NOV-18",
+                "userName": "2 Halachmi",
+                "userId": 3,
+                "count": 3
+            },
+
+            {
+                "date": "AUG-18",
+                "userName": "3 Halachmi",
+                "userId":4,
+                "count": 3
+            },
+            {
+                "date": "SEP-18",
+                "userName": "3 Halachmi",
+                "userId": 4,
+                "count": 2
+            },
+            {
+                "date": "NOV-18",
+                "userName": "3 Halachmi",
+                "userId": 4,
+                "count": 9
+            },
+
+            {
+                "date": "AUG-18",
+                "userName": "4 Halachmi",
+                "userId": 5,
+                "count": 5
+            },
+            {
+                "date": "SEP-18",
+                "userName": "4 Halachmi",
+                "userId": 5,
+                "count": 2
+            },
+            {
+                "date": "NOV-18",
+                "userName": "4 Halachmi",
+                "userId": 5,
+                "count": 4
+            },
+
+            {
+                "date": "AUG-18",
+                "userName": "5 Halachmi",
+                "userId": 6,
+                "count": 2
+            },
+            {
+                "date": "SEP-18",
+                "userName": "5 Halachmi",
+                "userId": 6,
+                "count": 3
+            },
+            {
+                "date": "NOV-18",
+                "userName": "5 Halachmi",
+                "userId": 6,
+                "count": 5
+            },
+
+            {
+                "date": "AUG-18",
+                "userName": "6 Halachmi",
+                "userId":7,
+                "count": 6
+            },
+            {
+                "date": "SEP-18",
+                "userName": "6 Halachmi",
+                "userId": 7,
+                "count": 9
+            },
+            {
+                "date": "NOV-18",
+                "userName": "6 Halachmi",
+                "userId": 7,
+                "count": 8
+            },
+
+            {
+                "date": "AUG-18",
+                "userName": "7 Halachmi",
+                "userId": 8,
+                "count": 5
+            },
+            {
+                "date": "SEP-18",
+                "userName": "7 Halachmi",
+                "userId": 8,
+                "count": 7
+            },
+            {
+                "date": "NOV-18",
+                "userName": "7 Halachmi",
+                "userId": 8,
+                "count": 3
+            },
+
+            {
+                "date": "AUG-18",
+                "userName": "8 Halachmi",
+                "userId": 9,
+                "count": 4
+            },
+            {
+                "date": "SEP-18",
+                "userName": "8 Halachmi",
+                "userId": 9,
+                "count": 5
+            },
+            {
+                "date": "NOV-18",
+                "userName": "8 Halachmi",
+                "userId": 9,
+                "count": 4
+            }
+        ],
+        "downloads": [
+            {
+                "date": "AUG-18",
+                "userName": "Elena Khitrova",
+                "userId": 2,
+                "count": 2
+            },
+            {
+                "date": "OCT-18",
+                "userName": "omry atia",
+                "userId": 2,
+                "count": 2
+            }
+        ]
+    },
     "massage": "Get all Usage Report's Objects",
     "status": "success"
 }

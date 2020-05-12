@@ -205,10 +205,10 @@ export class DateService {
     return date;
   }
 
-  sortByMonthYear(arr: Array<any>, dateField: string): Array<any> {
+  sortByMonthYear(arr: Array<any>, dateField: string, separator = '-'): Array<any> {
     return arr.sort((a, b) => {
-      const dp1 = a[dateField].split('-');
-      const dp2 = b[dateField].split('-');
+      const dp1 = a[dateField].split(separator);
+      const dp2 = b[dateField].split(separator);
       const y1 = parseInt(dp1[1]);
       const y2 = parseInt(dp2[1]);
       if (y1 < y2) { return -1; }

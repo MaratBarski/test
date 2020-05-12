@@ -28,7 +28,6 @@ export class UsageRequestService extends BaseSibscriber {
   }
 
   isUserInList(userId: number): boolean {
-    //return true;
     return this.usageRequest.users.find(x => x === userId);
   }
 
@@ -40,15 +39,8 @@ export class UsageRequestService extends BaseSibscriber {
     super();
     this.loadData();
     this.reset();
-
-    // const d = this.dateService.getFromYear(0);
-    // const str = `${this.dateService.formatDate(d.fromDate)} to ${this.dateService.formatDate(d.toDate)}`
-    // alert(str);
-
-    // const d = this.dateService.getFromMonth2Current(13);
-    // const str = `${this.dateService.formatDate(d.fromDate)} to ${this.dateService.formatDate(d.toDate)}`
-    // alert(str);
   }
+
   get onChange(): Observable<void> {
     return this._onChange.asObservable();
   }
@@ -110,7 +102,7 @@ export class UsageRequestService extends BaseSibscriber {
     const data = this.createData(response.data);
     const users = {};
     Object.keys(data).forEach(k => {
-      data[k].forEach(item => {
+      data[k].forEach((item: any) => {
         if (!users[item.userId]) {
           users[item.userId] = {
             login: item.userName,
@@ -137,7 +129,7 @@ export class UsageRequestService extends BaseSibscriber {
       return;
     }
     const data = this.createData(response.data);
-    this._users = data.map(x => {
+    this._users = data.map((x: any) => {
       return {
         isChecked: false,
         id: x.userId,
@@ -166,7 +158,6 @@ export class UsageRequestService extends BaseSibscriber {
   }
 
   private loadData(): void {
-    //this.loadUsers();
     this.loadEnvironments();
   }
 
@@ -179,11 +170,32 @@ export class UsageRequestService extends BaseSibscriber {
 
   distinctDate(arr: any, dateField: string, countField: string): Array<any> {
     const dict = {};
-    arr.forEach(x => {
+    arr.forEach((x: any) => {
       if (!dict[x[dateField]]) {
         dict[x[dateField]] = { name: x[dateField], value: 0 }
       }
       dict[x[dateField]].value += x[countField];
+    });
+    const res = [];
+    Object.keys(dict).forEach(k => {
+      res.push(dict[k]);
+    });
+    return res;
+  }
+
+  distinctSeries(arr: any, key: string = 'date'): Array<any> {
+    const dict = {};
+    arr.forEach((x: any) => {
+      if (!dict[x[key]]) {
+        dict[x[key]] = {
+          name: x[key], series: [
+            { name: 'syntetic', value: 0 },
+            { name: 'origin', value: 0 }
+          ]
+        }
+      }
+      dict[x[key]].series[0].value += x.syntetic;
+      dict[x[key]].series[1].value += x.origin;
     });
     const res = [];
     Object.keys(dict).forEach(k => {
