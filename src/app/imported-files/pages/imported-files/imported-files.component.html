@@ -12,7 +12,7 @@
         </div>
         <div mdAnimationSticky [hidden]="!isDataExists" class="admin-table-wrap__col">
             <div class="tabs-page">
-                <mdc-date-filter #dateFilter (onFilter)="dateFilterData($event)" [dataSource]="fileSource"
+                <mdc-date-filter #dateFilter (onSelect)="onSelectTab($event)" (onFilter)="dateFilterData($event)" [dataSource]="fileSource"
                     [items]="dateRanges"></mdc-date-filter>
             </div>
             <div class="form-search d-none d-md-block">
