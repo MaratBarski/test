@@ -29,7 +29,7 @@ export class ChartService {
   }
 
   get includeAdminString(): string {
-    return `${this.usageRequestService.usageRequest.includeAdmin}`;
+    return `withAdminUsers=${this.usageRequestService.usageRequest.includeAdmin}`;
   }
 
   get environmentString(): string {
@@ -41,7 +41,7 @@ export class ChartService {
   }
 
   get requestString(): string {
-    return `${this.dateRangeString}${this.environmentString}/?withAdminUsers=${this.includeAdminString}`;
+    return `${this.dateRangeString}${this.environmentString}/?${this.includeAdminString}`;
   }
 
   getChart(url: string): Observable<any> {
@@ -100,8 +100,8 @@ export class ChartService {
   @Offline('assets/offline/usageRetention.json?')
   private getUsageRetentionUrl = `${environment.serverUrl}${environment.endPoints.usageRetantionTable}`;
   getUsageRetention(info: any = undefined): Observable<any> {
-    //alert(`${this.getUsageRetentionUrl}${this.environmentString}/?withAdminUsers=${this.includeAdminString}`);
-    return this.getChart(`${this.getUsageRetentionUrl}${this.environmentString}/?withAdminUsers=${this.includeAdminString}`);
+    //alert(`${this.getUsageRetentionUrl}${this.environmentString}/?${this.includeAdminString}`);
+    return this.getChart(`${this.getUsageRetentionUrl}${this.environmentString}/?${this.includeAdminString}`);
   }
 
   @Offline('assets/offline/usageSummaryTable.json?')

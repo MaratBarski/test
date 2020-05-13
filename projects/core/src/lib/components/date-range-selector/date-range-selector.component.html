@@ -9,24 +9,28 @@
                     <div class="select-date__main">
                         <div class="select-date__title">From:</div>
                         <div class="select-date__field">
-                            <input type="date" [(ngModel)]="fromStr">
+                            <p-calendar [(ngModel)]="_from" dateFormat="dd/mm/yy" [showIcon]="true"
+                                [monthNavigator]="true" [yearNavigator]="true" yearRange="2000:2030"></p-calendar>
+                            <!-- <input type="date" [(ngModel)]="fromStr"> -->
                             <div class="select-date__label">mm/dd/yyyy</div>
                         </div>
-                        <div class="select-date__icon">
+                        <!-- <div class="select-date__icon">
                             <mdc-icon path="ic-calendar"></mdc-icon>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <div class="select-date__item">
                     <div class="select-date__main">
                         <div class="select-date__title">To:</div>
                         <div class="select-date__field">
-                            <input type="date" [(ngModel)]="toStr">
+                            <p-calendar [(ngModel)]="_to" dateFormat="dd/mm/yy" [showIcon]="true"
+                                [monthNavigator]="true" [yearNavigator]="true" yearRange="2000:2030"></p-calendar>
+                            <!-- <input type="date" [(ngModel)]="toStr"> -->
                             <div class="select-date__label">mm/dd/yyyy</div>
                         </div>
-                        <div class="select-date__icon">
+                        <!-- <div class="select-date__icon">
                             <mdc-icon path="ic-calendar"></mdc-icon>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>

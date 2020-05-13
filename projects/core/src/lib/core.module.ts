@@ -65,7 +65,8 @@ import { NotificationsComponent } from './components/notifications/notifications
 import { NotificationItemComponent } from './components/notification-item/notification-item.component';
 import { ShowNoticePipe } from './pipes/show-notice.pipe';
 import { ColorTextDirective } from './directives/color-text.directive';
-
+import { DialogModule } from 'primeng/dialog';
+import { CalendarModule } from 'primeng/calendar';
 // import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 
 @NgModule({
@@ -135,6 +136,8 @@ import { ColorTextDirective } from './directives/color-text.directive';
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule,
+    DialogModule,
+    CalendarModule,
     //BrowserModule,
     //BrowserAnimationsModule,
     StoreModule.forFeature('userInfo', user),

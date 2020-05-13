@@ -27,8 +27,8 @@ export class DateRangeSelectorComponent {
   get from(): Date { return this._from }
   get to(): Date { return this._to }
 
-  private _from: Date;
-  private _to: Date;
+  _from: Date;
+  _to: Date;
 
   @Input() header = 'Select report data range';
   @Output() onCancel = new EventEmitter();

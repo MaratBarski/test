@@ -19,6 +19,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     -ms-transform: rotate(180deg);
     transform: rotate(180deg);
 }
+.ui-datepicker{
+    position: sticky !important;
+}
 // .textDataLabel{
 //     font-size: 6px !important;
 // }
