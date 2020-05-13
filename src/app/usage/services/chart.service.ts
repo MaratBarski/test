@@ -100,8 +100,8 @@ export class ChartService {
   @Offline('assets/offline/usageRetention.json?')
   private getUsageRetentionUrl = `${environment.serverUrl}${environment.endPoints.usageRetantionTable}`;
   getUsageRetention(info: any = undefined): Observable<any> {
-    //alert(`${this.getUsageRetentionUrl}/${this.environmentString}/?withAdminUsers=${this.includeAdminString}`);
-    return this.getChart(`${this.getUsageRetentionUrl}/${this.environmentString}/?withAdminUsers=${this.includeAdminString}`);
+    //alert(`${this.getUsageRetentionUrl}${this.environmentString}/?withAdminUsers=${this.includeAdminString}`);
+    return this.getChart(`${this.getUsageRetentionUrl}${this.environmentString}/?withAdminUsers=${this.includeAdminString}`);
   }
 
   @Offline('assets/offline/usageSummaryTable.json?')
