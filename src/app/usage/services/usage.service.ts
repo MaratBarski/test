@@ -1,7 +1,6 @@
-import { Injectable, LOCALE_ID, Inject } from '@angular/core';
-import { TableModel, ColumnType, DataService, DateService } from '@app/core-api';
+import { Injectable } from '@angular/core';
+import { TableModel, ColumnType, DateService } from '@appcore';
 import { UsageRequestService } from './usage-request.service';
-
 
 @Injectable({
   providedIn: 'root'
@@ -9,10 +8,8 @@ import { UsageRequestService } from './usage-request.service';
 export class UsageService {
 
   constructor(
-    private dataService: DataService,
     private dateService: DateService,
-    private usageRequestService: UsageRequestService,
-    @Inject(LOCALE_ID) private locale: string
+    private usageRequestService: UsageRequestService
   ) {
   }
 
@@ -32,6 +29,8 @@ export class UsageService {
           text: 'Last Login',
           isSortEnabled: true,
           csvTitle: 'Last Login',
+          isSortedColumn: true,
+          sortDir: 'desc',
           columnType: ColumnType.Date
         },
         {
@@ -102,17 +101,18 @@ export class UsageService {
           csvTitle: 'User Name'
         },
         {
-          columnId: 'daysSinceLastLogin',
-          text: 'Days Since Last Login',
+          columnId: 'lastlogin',
+          text: 'Last Activity',
           isSortEnabled: true,
-          csvTitle: 'Days Since Last Login'
+          csvTitle: 'Last Activity'
         },
         {
-          columnId: 'lastlogin',
-          text: 'Last Login',
+          columnId: 'daysSinceLastLogin',
+          text: 'Days Since Last Activity',
           isSortEnabled: true,
-          csvTitle: 'Last Login',
-          columnType: ColumnType.Date
+          sortDir: 'desc',
+          isSortedColumn: true,
+          csvTitle: 'Days Since Last Activity'
         },
         {
           columnId: 'environment',
@@ -128,9 +128,9 @@ export class UsageService {
         data.rows.push({
           cells: {
             login: fl.userName,
-            daysSinceLastLogin: this.dateService.getDaysDiff(fl.lastlogin, now),
-            lastlogin: fl.lastlogin, //formatDate(fl.lastlogin, 'dd/MM/yyyy', this.locale),
-            environment: 'environment'
+            lastlogin: fl.lastActivity,
+            daysSinceLastLogin: fl.days,//this.dateService.getDaysDiff(fl.lastlogin, now),
+            environment: fl.environmentName
           },
           csv: {
           },
