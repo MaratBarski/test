@@ -69,6 +69,15 @@ export class UsageRequestService extends BaseSibscriber {
   }
   private _onUsersLoaded = new Subject<void>();
 
+  get onUsersFirstTimeSelected(): Observable<void> {
+    return this._onUsersFirstTimeSelected;
+  }
+  private _onUsersFirstTimeSelected = new Subject<void>();
+
+  firstTimeSeleted(): void {
+    this._onUsersFirstTimeSelected.next();
+  }
+
   emit(): void {
     this._onChange.next();
   }

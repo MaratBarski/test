@@ -8,7 +8,7 @@
 <div class="info-popup__content">
     <div class="graph-term">
         <div *ngFor="let user of users" class="graph-term__item">
-            <div  [style.backgroundColor]="user.color" class="graph-term__icon">
+            <div  [style.backgroundColor]="user.value" class="graph-term__icon">
                 &nbsp;
             </div>
             <div class="graph-term__text">{{user.name}}</div>

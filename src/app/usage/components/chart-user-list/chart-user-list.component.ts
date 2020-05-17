@@ -6,5 +6,5 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./chart-user-list.component.scss']
 })
 export class ChartUserListComponent {
-  @Input() users: { name: string; color: string; }
+  @Input() users: { name: string; value: string; }
 }

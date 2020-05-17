@@ -42,6 +42,7 @@ export class UserFilterComponent extends BaseSibscriber implements OnDestroy {
         this.updateSelectedCount();
         this.usageRequestService.usageRequest.users = this.users.filter(x => x.isChecked).map(x => x.id);
         this.onInitUsers.emit();
+        this.usageRequestService.firstTimeSeleted();
       }));
   }
 

@@ -6,6 +6,7 @@ import { ComponentService, user } from '@app/core-api';
 import { UsageRequestService } from '@app/usage/services/usage-request.service';
 import { UsageDownloadService, DownloadData } from '@app/usage/services/usage-download.service';
 import { ChartPdfComponent } from '../chart-pdf/chart-pdf.component';
+import { CHART_COLORS } from '@app/usage/models/chart-colors';
 
 @Component({
   selector: 'md-usage-user-activity',
@@ -27,25 +28,35 @@ export class UsageUserActivityComponent extends UsageBase {
     public usageRequestService: UsageRequestService
   ) {
     super();
-
-    super.add(
-      this.usageRequestService.onSelectUserChange.subscribe(() => {
-        this.data = { ...this.data };
-      }));
+    
+    super.add(this.usageRequestService.onSelectUserChange.subscribe(() => { this.initUsers(); }));
+    super.add(this.usageRequestService.onUsersFirstTimeSelected.subscribe(() => { this.initUsers(); }));
+    super.add(this.usageRequestService.onSelectUserChange.subscribe(() => { this.data = { ...this.data }; }));
 
     this.usageDownloadService.toCSV = () => this.toCSV();
     this.usageDownloadService.toPDF = () => this.toPDF();
   }
 
-  get users(): Array<{ name: string, color: string }> {
-    return this.usageRequestService
+  private currentColor = 0;
+  private getColor(): string {
+    if (this.currentColor >= CHART_COLORS.length) {
+      this.currentColor = 0;
+    }
+    return CHART_COLORS[this.currentColor++];
+  }
+
+  private initUsers(): void {
+    this.currentColor = 0;
+    this.users = this.usageRequestService
       .users.filter((user: any) => {
         return user.isChecked;
       })
       .map((x: any) => {
-        return { name: x.login, color: 'red' }
+        return { name: x.login, value: this.getColor() }
       });
   }
+
+  users: Array<{ name: string, value: string }> = [];
 
   dataSourceReady = () => {
   }
