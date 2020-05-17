@@ -58,6 +58,11 @@ export class ChartService {
     );
   }
 
+  getCsv(): void {
+    //alert(`${environment.serverUrl}${environment.endPoints.usageCsvDownload}/${this.dateRangeString}`);
+    window.open(`${environment.serverUrl}${environment.endPoints.usageCsvDownload}/${this.dateRangeString}`);
+  }
+
   @Offline('assets/offline/usageGeneral.json?')
   private getGeneralUsageUrl = `${environment.serverUrl}${environment.endPoints.usageActiveUsage}`;
   getGeneralUsage(info: any = undefined): Observable<any> {

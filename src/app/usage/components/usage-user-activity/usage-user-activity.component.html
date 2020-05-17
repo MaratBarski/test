@@ -1,4 +1,4 @@
-<md-chart-wraper firstTitle="New Queries per user" secondTitle="Downloads per user" [firstChart]="firstChart"
+<md-chart-wraper [secondLegendTemplate]="secondLegendTemplate" [firstLegendTemplate]="firstLegendTemplate" [isLegend]="true" firstTitle="New Queries per user" secondTitle="Downloads per user" [firstChart]="firstChart"
     [secondChart]="secondChart">
 </md-chart-wraper>
 
@@ -15,4 +15,53 @@
     <ngx-charts-line-chart [results]="(data|userActivityChart).download" [xAxis]="true" [yAxis]="true"
         [showGridLines]="true" [showXAxisLabel]="true">
     </ngx-charts-line-chart>
+</ng-template>
+
+<ng-template #firstLegendTemplate>
+    <div class="info-popup__top">
+        <div class="info-popup__head-wrap"><span class="info-popup__head">Users Shown in
+                Chart</span></div>
+        <div class="info-popup__close">
+            <svg class="icon ic-close-circle" mdcSvg="ic-close-circle"></svg>
+        </div>
+    </div>
+    <div class="info-popup__content">
+        <div class="graph-term">
+            <div class="graph-term__item">
+                <div class="graph-term__icon">
+                    <svg class="icon ic-nancy" mdcSvg="ic-nancy"></svg>
+                </div>
+                <div class="graph-term__text">Nancy Beck</div>
+            </div>
+            <div class="graph-term__item">
+                <div class="graph-term__icon">
+                    <svg class="icon ic-lillie" mdcSvg="ic-lillie">
+                    </svg>
+                </div>
+                <div class="graph-term__text">Lillie Shaw</div>
+            </div>
+            <div class="graph-term__item">
+                <div class="graph-term__icon">
+                    <svg class="icon ic-christian" mdcSvg="ic-christian"></svg>
+                </div>
+                <div class="graph-term__text">Christian Sharp</div>
+            </div>
+            <div class="graph-term__item">
+                <div class="graph-term__icon">
+                    <svg class="icon ic-gabriel" mdcSvg="ic-gabriel"></svg>
+                </div>
+                <div class="graph-term__text">Gabriel Barton</div>
+            </div>
+            <div class="graph-term__item">
+                <div class="graph-term__icon">
+                    <svg class="icon ic-craig" mdcSvg="ic-craig"></svg>
+                </div>
+                <div class="graph-term__text">Craig Wolfe</div>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #secondLegendTemplate>
+111111111111111
 </ng-template>
