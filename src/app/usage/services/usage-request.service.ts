@@ -27,6 +27,10 @@ export class UsageRequestService extends BaseSibscriber {
     return !!this._environments;
   }
 
+  updateUsers(users: Array<any>): void {
+    this._users = users;
+  }
+
   isUserInList(userId: number): boolean {
     return this.usageRequest.users.find(x => x === userId);
   }
@@ -83,15 +87,6 @@ export class UsageRequestService extends BaseSibscriber {
       toDate: this.dateService.formatDateUS(dateRange.toDate),
       users: []
     }
-  }
-
-  @Offline('assets/offline/users.json?')
-  private getUsersUrl = `${environment.serverUrl}${environment.endPoints.usageReport}`;
-  loadUsers(): void {
-    super.add(
-      this.dataService.get(this.getUsersUrl).subscribe((users: Array<any>) => {
-        this._users = users.filter(x => x.id);
-      }));
   }
 
   initUsers(response: any): void {

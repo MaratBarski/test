@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { UsageService } from '@app/usage/services/usage.service';
 import { UsageBase } from '../UsageBase';
 import { ChartService } from '@app/usage/services/chart.service';
-import { ComponentService } from '@app/core-api';
+import { ComponentService, user } from '@app/core-api';
 import { UsageRequestService } from '@app/usage/services/usage-request.service';
 import { UsageDownloadService, DownloadData } from '@app/usage/services/usage-download.service';
 import { ChartPdfComponent } from '../chart-pdf/chart-pdf.component';
@@ -35,6 +35,16 @@ export class UsageUserActivityComponent extends UsageBase {
 
     this.usageDownloadService.toCSV = () => this.toCSV();
     this.usageDownloadService.toPDF = () => this.toPDF();
+  }
+
+  get users(): Array<{ name: string, color: string }> {
+    return this.usageRequestService
+      .users.filter((user: any) => {
+        return user.isChecked;
+      })
+      .map((x: any) => {
+        return { name: x.login, color: 'red' }
+      });
   }
 
   dataSourceReady = () => {
@@ -90,5 +100,5 @@ export class UsageUserActivityComponent extends UsageBase {
         this.data = this.usageRequestService.createData(res.data);
       }));
   }
-  
+
 }

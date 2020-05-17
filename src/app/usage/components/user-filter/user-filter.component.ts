@@ -16,6 +16,7 @@ export class UserFilterComponent extends BaseSibscriber implements OnDestroy {
   topCheckApply = true;
   searchWord = '';
   users: Array<any>;
+  originUsers: Array<any>;
 
   @Output() onApply = new EventEmitter<Array<any>>();
   @Output() onInitUsers = new EventEmitter<void>();
@@ -35,7 +36,8 @@ export class UserFilterComponent extends BaseSibscriber implements OnDestroy {
     super();
     super.add(
       this.usageRequestService.onUsersLoaded.subscribe(() => {
-        this.users = JSON.parse(JSON.stringify(usageRequestService.users));
+        this.originUsers = JSON.parse(JSON.stringify(this.usageRequestService.users));
+        this.users = this.usageRequestService.users;
         this.changeTop(true);
         this.updateSelectedCount();
         this.usageRequestService.usageRequest.users = this.users.filter(x => x.isChecked).map(x => x.id);
