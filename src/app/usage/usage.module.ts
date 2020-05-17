@@ -28,6 +28,7 @@ import { CreatedChartPipe } from './pipes/created.pipe';
 import { ChartPdfComponent } from './components/chart-pdf/chart-pdf.component';
 import { UsageUserPipe } from './pipes/usage-user.pipe';
 import { RetentionPipe } from './pipes/retention.pipe';
+import { ChartLegendComponent } from './components/chart-legend/chart-legend.component';
 
 const routes: Array<Route> = [
   { path: 'test', component: UsageDashboardComponent },
@@ -69,7 +70,8 @@ const routes: Array<Route> = [
     UserFilterComponent,
     ChartPdfComponent,
     UsageUserPipe,
-    RetentionPipe
+    RetentionPipe,
+    ChartLegendComponent
   ],
   imports: [
     CommonModule,
