@@ -1,5 +1,5 @@
 import { Component, Output, Input, EventEmitter, ViewChild } from '@angular/core';
-import { Calendar } from 'primeng/calendar/calendar';
+import { Calendar } from 'primeng/calendar';
 
 export interface FromTo {
   from: Date;
