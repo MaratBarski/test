@@ -26,7 +26,7 @@ export class UsageCreatedComponent extends UsageBase {
   timeline = true;
 
   colorScheme = {
-    domain: ['#5B9BD5']
+    domain: ['#03CFA3']
   };
 
   pdfChartWidth = '500px';

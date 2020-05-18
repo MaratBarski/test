@@ -26,11 +26,11 @@ export class UsageMonthlyComponent extends UsageBase {
   timeline = false;
 
   colorScheme = {
-    domain: ['#5B9BD5']
+    domain: ['#0596FF']
   };
 
   colorSchemeDownload = {
-    domain: ['#6725B7', '#FFC852']
+    domain: ['#5303A8', '#03CFA3']
   };
 
   pdfChartWidth = '500px';

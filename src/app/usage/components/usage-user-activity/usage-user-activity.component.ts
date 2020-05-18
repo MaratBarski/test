@@ -28,10 +28,14 @@ export class UsageUserActivityComponent extends UsageBase {
     public usageRequestService: UsageRequestService
   ) {
     super();
-    
+
     super.add(this.usageRequestService.onSelectUserChange.subscribe(() => { this.initUsers(); }));
     super.add(this.usageRequestService.onUsersFirstTimeSelected.subscribe(() => { this.initUsers(); }));
     super.add(this.usageRequestService.onSelectUserChange.subscribe(() => { this.data = { ...this.data }; }));
+
+    super.add(this.componentService.onSideBarToggle.subscribe((flag: boolean) => {
+      this.createReport();
+    }));
 
     this.usageDownloadService.toCSV = () => this.toCSV();
     this.usageDownloadService.toPDF = () => this.toPDF();
