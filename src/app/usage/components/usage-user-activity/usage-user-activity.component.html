@@ -7,7 +7,7 @@
 <md-chart-pdf #chartPdf2 [chart]="secondChart" [width]="pdfChartWidth" [height]="pdfChartHeight"></md-chart-pdf>
 
 <ng-template #firstChart>
-    <ngx-charts-line-chart [customColors]="users" [results]="(data|userActivityChart).query" [animations]="true"
+    <ngx-charts-line-chart [tooltipDisabled]="false" [customColors]="users" [results]="(data|userActivityChart).query" [animations]="true"
         [xAxis]="true" [yAxis]="true" [showGridLines]="true" [showXAxisLabel]="true">
     </ngx-charts-line-chart>
 </ng-template>

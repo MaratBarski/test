@@ -21,6 +21,15 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 // .ui-datepicker{
 // }
-// .textDataLabel{
-//     font-size: 6px !important;
-// }
+.textDataLabel{
+    font-size: 14px !important;
+    color: #52576A !important;
+    fill: #52576A !important;
+    font-family: OpenSans !important;
+    font-weight: 600 !important;
+    font-stretch: normal !important;
+    font-style: normal !important;
+    line-height: normal !important;
+    letter-spacing: normal !important;
+    // transform:rotate(0) !important;
+}

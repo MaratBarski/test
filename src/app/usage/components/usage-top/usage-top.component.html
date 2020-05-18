@@ -9,7 +9,7 @@
 <md-chart-pdf #chartPdfDownloads [chart]="secondChart" [width]="pdfChartWidth" [height]="pdfChartHeight"></md-chart-pdf>
 
 <ng-template #firstChart>
-    <ngx-charts-bar-horizontal [view]="view" [scheme]="colorScheme" [results]="(dataSource|userTop10Chart).query"
+    <ngx-charts-bar-horizontal [roundEdges]="false" [view]="view" [scheme]="colorScheme" [results]="(dataSource|userTop10Chart).query"
         [xAxis]="false" [yAxis]="true" [showXAxisLabel]="true"
         [showYAxisLabel]="true"  [legend]="false"
         [showDataLabel]="true">
