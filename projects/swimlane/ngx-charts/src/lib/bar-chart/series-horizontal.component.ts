@@ -51,6 +51,7 @@ import { DataItem } from '../models/chart-data.model';
         *ngFor="let b of barsForDataLabels; let i = index; trackBy: trackDataLabelBy"
         [barX]="b.x"
         [barY]="b.y"
+        [isRotate]="isRotate"
         [barWidth]="b.width"
         [barHeight]="b.height"
         [value]="b.total"
@@ -78,6 +79,7 @@ export class SeriesHorizontal implements OnChanges {
   y: any;
   barsForDataLabels: Array<{ x: number; y: number; width: number; height: number; total: number; series: string }> = [];
 
+  @Input() isRotate = false;
   @Input() dims;
   @Input() type = 'standard';
   @Input() series;

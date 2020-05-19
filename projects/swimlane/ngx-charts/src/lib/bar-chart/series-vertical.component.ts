@@ -47,6 +47,7 @@ export enum D0Types {
         *ngFor="let b of barsForDataLabels; let i = index; trackBy: trackDataLabelBy"
         [barX]="b.x"
         [barY]="b.y"
+        [isRotate]="isRotate"
         [barWidth]="b.width"
         [barHeight]="b.height"
         [value]="b.total"
@@ -69,6 +70,7 @@ export enum D0Types {
   ]
 })
 export class SeriesVerticalComponent implements OnChanges {
+  @Input() isRotate = false;
   @Input() dims;
   @Input() type = 'standard';
   @Input() series;
@@ -207,7 +209,7 @@ export class SeriesVerticalComponent implements OnChanges {
         : `
         <span class="tooltip-label">${escapeLabel(tooltipLabel)}</span>
         <span class="tooltip-val">${
-          this.dataLabelFormatting ? this.dataLabelFormatting(value) : value.toLocaleString()
+        this.dataLabelFormatting ? this.dataLabelFormatting(value) : value.toLocaleString()
         }</span>
       `;
 

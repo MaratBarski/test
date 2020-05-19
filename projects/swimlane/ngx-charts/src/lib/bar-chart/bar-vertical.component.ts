@@ -64,6 +64,7 @@ import { DataItem } from '../models/chart-data.model';
           [yScale]="yScale"
           [colors]="colors"
           [series]="results"
+          [isRotate]="isRotate"
           [dims]="dims"
           [gradient]="gradient"
           [tooltipDisabled]="tooltipDisabled"
@@ -87,6 +88,7 @@ import { DataItem } from '../models/chart-data.model';
   encapsulation: ViewEncapsulation.None
 })
 export class BarVerticalComponent extends BaseChartComponent {
+  @Input() isRotate = false;
   @Input() legend = false;
   @Input() legendTitle: string = 'Legend';
   @Input() legendPosition: string = 'right';
