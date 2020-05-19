@@ -16,35 +16,39 @@ import { DataItem } from '../models/chart-data.model';
 @Component({
   selector: 'g[ngx-charts-series-horizontal]',
   template: `
-    <svg:g
-      ngx-charts-bar
-      *ngFor="let bar of bars; trackBy: trackBy"
-      [@animationState]="'active'"
-      [width]="bar.width"
-      [height]="bar.height"
-      [x]="bar.x"
-      [y]="bar.y"
-      [fill]="bar.color"
-      [stops]="bar.gradientStops"
-      [data]="bar.data"
-      [orientation]="'horizontal'"
-      [roundEdges]="bar.roundEdges"
-      (select)="click($event)"
-      [gradient]="gradient"
-      [isActive]="isActive(bar.data)"
-      [ariaLabel]="bar.ariaLabel"
-      [animations]="animations"
-      (activate)="activate.emit($event)"
-      (deactivate)="deactivate.emit($event)"
-      ngx-tooltip
-      [tooltipDisabled]="tooltipDisabled"
-      [tooltipPlacement]="tooltipPlacement"
-      [tooltipType]="tooltipType"
-      [tooltipTitle]="tooltipTemplate ? undefined : bar.tooltipText"
-      [tooltipTemplate]="tooltipTemplate"
-      [tooltipContext]="bar.data"
-      [noBarWhenZero]="noBarWhenZero"
-    ></svg:g>
+    <ng-container *ngFor="let bar of bars; trackBy: trackBy">
+      <svg:g
+        ngx-charts-bar
+        [@animationState]="'active'"
+        [width]="bar.width"
+        [height]="bar.height"
+        [x]="bar.x"
+        [y]="bar.y"
+        [fill]="bar.color"
+        [stops]="bar.gradientStops"
+        [data]="bar.data"
+        [orientation]="'horizontal'"
+        [roundEdges]="bar.roundEdges"
+        (select)="click($event)"
+        [gradient]="gradient"
+        [isActive]="isActive(bar.data)"
+        [ariaLabel]="bar.ariaLabel"
+        [animations]="animations"
+        (activate)="activate.emit($event)"
+        (deactivate)="deactivate.emit($event)"
+        ngx-tooltip
+        [tooltipDisabled]="tooltipDisabled"
+        [tooltipPlacement]="tooltipPlacement"
+        [tooltipType]="tooltipType"
+        [tooltipTitle]="tooltipTemplate ? undefined : bar.tooltipText"
+        [tooltipTemplate]="tooltipTemplate"
+        [tooltipContext]="bar.data"
+        [noBarWhenZero]="noBarWhenZero"
+      ></svg:g>
+      <svg:text [attr.x]="bar.x+bar.width" [attr.y]="bar.y+bar.height/2" text-anchor="end" *ngIf="showValue" style="font-size:16px" fill="white">
+        {{bar.value}}
+      </svg:text>
+    </ng-container>
     <svg:g *ngIf="showDataLabel">
       <svg:g
         ngx-charts-bar-label
@@ -79,6 +83,7 @@ export class SeriesHorizontal implements OnChanges {
   y: any;
   barsForDataLabels: Array<{ x: number; y: number; width: number; height: number; total: number; series: string }> = [];
 
+  @Input() showValue = false;
   @Input() isRotate = false;
   @Input() dims;
   @Input() type = 'standard';

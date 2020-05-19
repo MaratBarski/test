@@ -67,6 +67,7 @@ import { BaseChartComponent } from '../common/base-chart.component';
           <svg:g
             ngx-charts-series-horizontal
             type="stacked"
+            [showValue]="showValue"
             [xScale]="xScale"
             [yScale]="yScale"
             [colors]="colors"
@@ -106,6 +107,7 @@ import { BaseChartComponent } from '../common/base-chart.component';
   ]
 })
 export class BarHorizontalStackedComponent extends BaseChartComponent {
+  @Input() showValue = false;
   @Input() legend = false;
   @Input() legendTitle: string = 'Legend';
   @Input() legendPosition: string = 'right';

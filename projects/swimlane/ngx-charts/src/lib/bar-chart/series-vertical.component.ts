@@ -11,36 +11,41 @@ export enum D0Types {
 @Component({
   selector: 'g[ngx-charts-series-vertical]',
   template: `
-    <svg:g
-      ngx-charts-bar
-      *ngFor="let bar of bars; trackBy: trackBy"
-      [@animationState]="'active'"
-      [@.disabled]="!animations"
-      [width]="bar.width"
-      [height]="bar.height"
-      [x]="bar.x"
-      [y]="bar.y"
-      [fill]="bar.color"
-      [stops]="bar.gradientStops"
-      [data]="bar.data"
-      [orientation]="'vertical'"
-      [roundEdges]="bar.roundEdges"
-      [gradient]="gradient"
-      [ariaLabel]="bar.ariaLabel"
-      [isActive]="isActive(bar.data)"
-      (select)="onClick($event)"
-      (activate)="activate.emit($event)"
-      (deactivate)="deactivate.emit($event)"
-      ngx-tooltip
-      [tooltipDisabled]="tooltipDisabled"
-      [tooltipPlacement]="tooltipPlacement"
-      [tooltipType]="tooltipType"
-      [tooltipTitle]="tooltipTemplate ? undefined : bar.tooltipText"
-      [tooltipTemplate]="tooltipTemplate"
-      [tooltipContext]="bar.data"
-      [noBarWhenZero]="noBarWhenZero"
-      [animations]="animations"
-    ></svg:g>
+    <ng-container *ngFor="let bar of bars; trackBy: trackBy">
+      <svg:g
+        ngx-charts-bar
+        [@animationState]="'active'"
+        [@.disabled]="!animations"
+        [width]="bar.width"
+        [height]="bar.height"
+        [x]="bar.x"
+        [y]="bar.y"
+        [fill]="bar.color"
+        [stops]="bar.gradientStops"
+        [data]="bar.data"
+        [orientation]="'vertical'"
+        [roundEdges]="bar.roundEdges"
+        [gradient]="gradient"
+        [ariaLabel]="bar.ariaLabel"
+        [isActive]="isActive(bar.data)"
+        (select)="onClick($event)"
+        (activate)="activate.emit($event)"
+        (deactivate)="deactivate.emit($event)"
+        ngx-tooltip
+        [tooltipDisabled]="tooltipDisabled"
+        [tooltipPlacement]="tooltipPlacement"
+        [tooltipType]="tooltipType"
+        [tooltipTitle]="tooltipTemplate ? undefined : bar.tooltipText"
+        [tooltipTemplate]="tooltipTemplate"
+        [tooltipContext]="bar.data"
+        [noBarWhenZero]="noBarWhenZero"
+        [animations]="animations"
+      ></svg:g>
+      <svg:text *ngIf="showValue" style="font-size:11px" text-anchor="middle" [attr.x]="bar.x+bar.width/2" [attr.y]="bar.y+bar.height/2+6" fill="white">
+        {{bar.value}}
+      </svg:text>
+    </ng-container>
+
     <svg:g *ngIf="showDataLabel">
     <ng-container *ngFor="let b of barsForDataLabels; let i = index; trackBy: trackDataLabelBy">
       <svg:g
@@ -72,6 +77,7 @@ export enum D0Types {
   ]
 })
 export class SeriesVerticalComponent implements OnChanges {
+  @Input() showValue = false;
   @Input() showZero = true;
   @Input() isRotate = false;
   @Input() dims;

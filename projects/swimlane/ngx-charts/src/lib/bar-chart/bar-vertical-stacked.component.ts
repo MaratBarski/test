@@ -66,6 +66,7 @@ import { BaseChartComponent } from '../common/base-chart.component';
           <svg:g
             ngx-charts-series-vertical
             type="stacked"
+            [showValue]="showValue"
             [xScale]="xScale"
             [yScale]="yScale"
             [activeEntries]="activeEntries"
@@ -106,6 +107,7 @@ import { BaseChartComponent } from '../common/base-chart.component';
   ]
 })
 export class BarVerticalStackedComponent extends BaseChartComponent {
+  @Input() showValue = false;
   @Input() showZero = true;
   @Input() legend = false;
   @Input() legendTitle: string = 'Legend';
