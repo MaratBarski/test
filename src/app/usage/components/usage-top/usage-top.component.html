@@ -9,7 +9,7 @@
 <md-chart-pdf #chartPdfDownloads [chart]="secondChart" [width]="pdfChartWidth" [height]="pdfChartHeight"></md-chart-pdf>
 
 <ng-template #firstChart>
-    <ngx-charts-bar-horizontal [roundEdges]="false" [view]="view" [scheme]="colorScheme" [results]="(dataSource|userTop10Chart).query"
+    <ngx-charts-bar-horizontal [animations]="false" [roundEdges]="false" [view]="view" [scheme]="colorScheme" [results]="(dataSource|userTop10Chart).query"
         [xAxis]="false" [yAxis]="true" [showXAxisLabel]="true"
         [showYAxisLabel]="true"  [legend]="false"
         [showDataLabel]="true">
@@ -17,7 +17,7 @@
 </ng-template>
 
 <ng-template #secondChart>
-    <ngx-charts-bar-horizontal-stacked [view]="view" [scheme]="colorSchemeDownload"
+    <ngx-charts-bar-horizontal-stacked [animations]="false" [view]="view" [scheme]="colorSchemeDownload"
         [results]="(dataSource|userTop10Chart).download" [gradient]="gradient" [xAxis]="false"
         [yAxis]="true" [showXAxisLabel]="false" [showYAxisLabel]="true" [xAxisLabel]="xAxisLabel"
         [yAxisLabel]="yAxisLabel" [legend]="false" [showDataLabel]="true">

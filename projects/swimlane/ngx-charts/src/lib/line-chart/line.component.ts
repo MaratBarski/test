@@ -74,7 +74,6 @@ export class LineComponent implements OnChanges {
 
   updatePathEl(): void {
     const node = select(this.element.nativeElement).select('.line');
-
     if (this.animations) {
       node.transition().duration(750).attr('d', this.path);
     } else {
