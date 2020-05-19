@@ -42,9 +42,10 @@ export enum D0Types {
       [animations]="animations"
     ></svg:g>
     <svg:g *ngIf="showDataLabel">
+    <ng-container *ngFor="let b of barsForDataLabels; let i = index; trackBy: trackDataLabelBy">
       <svg:g
+        *ngIf="b.total || showZero"
         ngx-charts-bar-label
-        *ngFor="let b of barsForDataLabels; let i = index; trackBy: trackDataLabelBy"
         [barX]="b.x"
         [barY]="b.y"
         [isRotate]="isRotate"
@@ -55,6 +56,7 @@ export enum D0Types {
         [orientation]="'vertical'"
         (dimensionsChanged)="dataLabelHeightChanged.emit({ size: $event, index: i })"
       />
+      </ng-container>
     </svg:g>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -70,6 +72,7 @@ export enum D0Types {
   ]
 })
 export class SeriesVerticalComponent implements OnChanges {
+  @Input() showZero = true;
   @Input() isRotate = false;
   @Input() dims;
   @Input() type = 'standard';

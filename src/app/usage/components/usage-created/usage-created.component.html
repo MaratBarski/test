@@ -1,7 +1,7 @@
 <md-chart-pdf #chartPdf [chart]="chart" [width]="pdfChartWidth" [height]="pdfChartHeight"></md-chart-pdf>
 
 <ng-template #chart>
-    <ngx-charts-bar-vertical [isRotate]="false" [animations]="false" [roundEdges]="false" [view]="view" [scheme]="colorScheme" [barPadding]="20"
+    <ngx-charts-bar-vertical [showZero]="false" [isRotate]="false" [animations]="false" [roundEdges]="false" [view]="view" [scheme]="colorScheme" [barPadding]="20"
     [results]="dataSource|createdChart" [gradient]="gradient" [xAxis]="showXAxis"
     [yAxis]="showYAxis" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="true"
     [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" [legend]="false"

@@ -66,6 +66,7 @@ import { DataItem } from '../models/chart-data.model';
           [series]="results"
           [isRotate]="isRotate"
           [dims]="dims"
+          [showZero]="showZero"
           [gradient]="gradient"
           [tooltipDisabled]="tooltipDisabled"
           [tooltipTemplate]="tooltipTemplate"
@@ -88,6 +89,7 @@ import { DataItem } from '../models/chart-data.model';
   encapsulation: ViewEncapsulation.None
 })
 export class BarVerticalComponent extends BaseChartComponent {
+  @Input() showZero = true;
   @Input() isRotate = false;
   @Input() legend = false;
   @Input() legendTitle: string = 'Legend';

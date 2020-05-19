@@ -72,6 +72,7 @@ import { BaseChartComponent } from '../common/base-chart.component';
             [colors]="colors"
             [series]="group.series"
             [dims]="dims"
+            [showZero]="showZero"
             [gradient]="gradient"
             [tooltipDisabled]="tooltipDisabled"
             [tooltipTemplate]="tooltipTemplate"
@@ -105,6 +106,7 @@ import { BaseChartComponent } from '../common/base-chart.component';
   ]
 })
 export class BarVerticalStackedComponent extends BaseChartComponent {
+  @Input() showZero = true;
   @Input() legend = false;
   @Input() legendTitle: string = 'Legend';
   @Input() legendPosition: string = 'right';
