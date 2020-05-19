@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { DataService } from '@app/core-api';
+import { DataService, DateService } from '@appcore';
 import { Observable, of } from 'rxjs';
 import { Offline } from '@app/shared/decorators/offline.decorator';
 import { environment } from '@env/environment';
-import { finalize, catchError, delay, tap, map } from 'rxjs/operators';
+import { finalize, catchError, delay, tap } from 'rxjs/operators';
 import { UsageRequestService } from './usage-request.service';
 
 @Injectable({
@@ -13,7 +13,8 @@ export class ChartService {
 
   constructor(
     private dataService: DataService,
-    private usageRequestService: UsageRequestService
+    private usageRequestService: UsageRequestService,
+    private dateService: DateService
   ) { }
 
   get isLoaded(): boolean {
@@ -25,7 +26,8 @@ export class ChartService {
   private _isLoding = false;
 
   get dateRangeString(): string {
-    return `${this.usageRequestService.usageRequest.fromDate}/${this.usageRequestService.usageRequest.toDate}`;
+    //return `${this.usageRequestService.usageRequest.fromDate}/${this.usageRequestService.usageRequest.toDate}`;
+    return `${this.usageRequestService.usageRequest.fromDate}/${this.dateService.addDay(this.usageRequestService.usageRequest.toDate,-1)}`;
   }
 
   get includeAdminString(): string {

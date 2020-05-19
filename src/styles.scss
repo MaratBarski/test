@@ -21,8 +21,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 // .ui-datepicker{
 // }
-.textDataLabel{
-    font-size: 14px !important;
+
+.textDataLabel, .ng-star-inserted>text{
+    font-size: 11px !important;
+}
+.textDataLabel, .ng-star-inserted>text{
     color: #52576A !important;
     fill: #52576A !important;
     font-family: OpenSans !important;
@@ -31,5 +34,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     font-style: normal !important;
     line-height: normal !important;
     letter-spacing: normal !important;
-    // transform:rotate(0) !important;
+}
+.textDataLabel{
+    //transform:rotate(0)  !important;
+    //transform:rotate(0) translateX(-10px) !important;
 }

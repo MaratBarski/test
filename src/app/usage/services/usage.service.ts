@@ -110,7 +110,7 @@ export class UsageService {
           columnId: 'daysSinceLastLogin',
           text: 'Days Since Last Activity',
           isSortEnabled: true,
-          sortDir: 'desc',
+          sortDir: 'asc',
           isSortedColumn: true,
           csvTitle: 'Days Since Last Activity'
         },

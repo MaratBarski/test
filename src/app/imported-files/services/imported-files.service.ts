@@ -132,7 +132,7 @@ export class ImportedFilesService {
           insertDate: fl.insertDate,
           environment: fl.projectObj ? fl.projectObj.projectName : '',
           permission: fl.template ? fl.template.templateName : '',
-          user: fl.user && fl.user.login ? fl.user.login : '',
+          user: fl.user && fl.user.firstName && fl.user.lastName ? `${fl.user.firstName} ${fl.user.lastName}` : fl.user && fl.user.login ? fl.user.login : '',
           shared: fl.fileType,
           columns: fl.columnsNum,
           rows: fl.rowsNum

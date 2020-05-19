@@ -241,4 +241,10 @@ export class DateService {
       return 0;
     })
   }
+
+  addDay(date: string | Date, days = -1): string {
+    const d = new Date(date);
+    d.setDate(d.getDate() + days);
+    return this.formatDateUS(d);
+  }
 }
