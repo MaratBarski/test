@@ -44,7 +44,7 @@ export class TooltipContentComponent implements AfterViewInit {
   @Input() template: any;
   @Input() context: any;
 
-  @ViewChild('caretElm') caretElm;
+  @ViewChild('caretElm', { static: true }) caretElm;
 
   @HostBinding('class')
   get cssClasses(): string {
@@ -55,7 +55,7 @@ export class TooltipContentComponent implements AfterViewInit {
     return clz;
   }
 
-  constructor(public element: ElementRef, private renderer: Renderer2) {}
+  constructor(public element: ElementRef, private renderer: Renderer2) { }
 
   ngAfterViewInit(): void {
     setTimeout(this.position.bind(this));

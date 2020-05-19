@@ -68,7 +68,7 @@ export class XAxisTicksComponent implements OnChanges, AfterViewInit {
   tickFormat: (o: any) => any;
   height: number = 0;
 
-  @ViewChild('ticksel') ticksElement: ElementRef;
+  @ViewChild('ticksel', { static: true }) ticksElement: ElementRef;
 
   ngOnChanges(changes: SimpleChanges): void {
     this.update();
@@ -108,8 +108,8 @@ export class XAxisTicksComponent implements OnChanges, AfterViewInit {
 
     this.adjustedScale = this.scale.bandwidth
       ? function (d) {
-          return this.scale(d) + this.scale.bandwidth() * 0.5;
-        }
+        return this.scale(d) + this.scale.bandwidth() * 0.5;
+      }
       : this.scale;
 
     this.textTransform = '';

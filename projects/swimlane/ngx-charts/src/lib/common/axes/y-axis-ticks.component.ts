@@ -121,7 +121,7 @@ export class YAxisTicksComponent implements OnChanges, AfterViewInit {
   referenceLineLength: number = 0;
   referenceAreaPath: string;
 
-  @ViewChild('ticksel') ticksElement: ElementRef;
+  @ViewChild('ticksel', { static: true }) ticksElement: ElementRef;
 
   ngOnChanges(changes: SimpleChanges): void {
     this.update();
@@ -163,8 +163,8 @@ export class YAxisTicksComponent implements OnChanges, AfterViewInit {
 
     this.adjustedScale = scale.bandwidth
       ? function (d) {
-          return scale(d) + scale.bandwidth() * 0.5;
-        }
+        return scale(d) + scale.bandwidth() * 0.5;
+      }
       : scale;
 
     if (this.showRefLines && this.referenceLines) {
