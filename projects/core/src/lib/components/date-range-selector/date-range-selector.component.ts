@@ -1,5 +1,6 @@
 import { Component, Output, Input, EventEmitter, ViewChild } from '@angular/core';
 import { Calendar } from 'primeng/calendar';
+import { DateService } from '../../services/date.service';
 
 export interface FromTo {
   from: Date;
@@ -22,9 +23,13 @@ export class DateRangeSelectorComponent {
   @ViewChild('fromPicker', { static: true }) fromPicker: Calendar;
   @ViewChild('toPicker', { static: true }) toPicker: Calendar;
 
+  constructor(private dateService: DateService) { }
+
   cancel(): void {
     this.onCancel.emit();
   }
+
+  locale = this.dateService.getCalendarLocale();
 
   apply(): void {
     this.onApply.emit({

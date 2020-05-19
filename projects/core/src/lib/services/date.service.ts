@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
 import { TableRowModel } from '../components/table/table.component';
 import { FromTo } from '../components/date-range-selector/date-range-selector.component';
-import { parseHostBindings } from '@angular/compiler';
+import { LOCALE_ID, Inject } from '@angular/core';
+import { CALENDAR_EN, CALENDAR_HE } from '../models/calendar-format';
+
+export const DEFAULT_CULTURE = 'en-US';
 
 export enum DatePeriod {
   Hour = 1,
@@ -36,6 +39,26 @@ export const Month = {
   providedIn: 'root'
 })
 export class DateService {
+
+  constructor(
+    @Inject(LOCALE_ID) private locale: string
+  ) {
+  }
+
+  getUsersLocale(): string {
+    return this.locale;
+    // if (typeof window === 'undefined' || typeof window.navigator === 'undefined') {
+    //   return DEFAULT_CULTURE;
+    // }
+    // const wn = window.navigator as any;
+    // let lang = wn.languages ? wn.languages[0] : DEFAULT_CULTURE;
+    // lang = lang || wn.language || wn.browserLanguage || wn.userLanguage;
+    // return lang;
+  }
+
+  getCalendarLocale(): any {
+    return this.getUsersLocale() === DEFAULT_CULTURE ? CALENDAR_EN : CALENDAR_HE
+  }
 
   fromDate = {
     [DatePeriod.Hour]: (value: number) => {

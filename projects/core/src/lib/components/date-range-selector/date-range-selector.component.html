@@ -9,10 +9,10 @@
                     <div class="select-date__main">
                         <div class="select-date__title">From:</div>
                         <div class="select-date__field">
-                            <p-calendar #fromPicker [(ngModel)]="from" hideTransitionOptions="0ms"
-                                showTransitionOptions="0ms" dateFormat="dd/mm/yy" [showIcon]="false"
+                            <p-calendar #fromPicker [locale]="locale" [(ngModel)]="from" hideTransitionOptions="0ms"
+                                showTransitionOptions="0ms" [showIcon]="false"
                                 [monthNavigator]="true" [yearNavigator]="true" yearRange="2000:2030"></p-calendar>
-                            <div class="select-date__label">mm/dd/yyyy</div>
+                            <div class="select-date__label">{{locale.dateFormat}}</div>
                         </div>
                         <div class="select-date__icon">
                             <mdc-icon (click)="fromPicker.toggle()" path="ic-calendar"></mdc-icon>
@@ -23,10 +23,10 @@
                     <div class="select-date__main">
                         <div class="select-date__title">To:</div>
                         <div class="select-date__field">
-                            <p-calendar #toPicker [(ngModel)]="to" hideTransitionOptions="0ms"
-                                showTransitionOptions="0ms" dateFormat="dd/mm/yy" [showIcon]="false"
+                            <p-calendar #toPicker [locale]="locale" [(ngModel)]="to" hideTransitionOptions="0ms"
+                                showTransitionOptions="0ms" [showIcon]="false"
                                 [monthNavigator]="true" [yearNavigator]="true" yearRange="2000:2030"></p-calendar>
-                            <div class="select-date__label">mm/dd/yyyy</div>
+                            <div class="select-date__label">{{locale.dateFormat}}</div>
                         </div>
                         <div class="select-date__icon">
                             <mdc-icon (click)="toPicker.toggle()" path="ic-calendar"></mdc-icon>
