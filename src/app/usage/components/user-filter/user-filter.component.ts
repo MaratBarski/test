@@ -21,7 +21,7 @@ export class UserFilterComponent extends BaseSibscriber implements OnDestroy {
   @Output() onApply = new EventEmitter<Array<any>>();
   @Output() onInitUsers = new EventEmitter<void>();
   @Input() minSelected = 1;
-  @Input() maxSelected = 7;
+  @Input() maxSelected = 10;
 
   selectedCount = 0;
 

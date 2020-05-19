@@ -1,5 +1,5 @@
 <div class="input-check">
-    <input type="checkbox" [(ngModel)]="value">
+    <input [disabled]="isDisabled" type="checkbox" [(ngModel)]="value">
     <div (click)="changeSelect()" class="input-check__label">
         <span class="input-check__mark">
             <svg [hidden]="!value" class="icon ic-check" mdcSvg="ic-check"></svg>
