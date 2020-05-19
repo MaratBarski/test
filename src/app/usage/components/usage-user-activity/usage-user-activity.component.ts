@@ -117,3 +117,5 @@ export class UsageUserActivityComponent extends UsageBase {
   }
 
 }
+
+//projects\swimlane\ngx-charts\src\lib\line-chart\line.component.ts

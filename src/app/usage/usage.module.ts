@@ -15,7 +15,12 @@ import { UsageMonthlyComponent } from './components/usage-monthly/usage-monthly.
 import { UsageUserActivityComponent } from './components/usage-user-activity/usage-user-activity.component';
 import { UsageTopComponent } from './components/usage-top/usage-top.component';
 import { UsageCreatedComponent } from './components/usage-created/usage-created.component';
-import { NgxChartsModule } from '@swimlane/ngx-charts';
+
+//import { NgxChartsModule } from '@swimlane/ngx-charts';
+
+import { NgxChartsModule } from '@mdc/ngx-charts/ngx-charts.module';
+//import { NgxUIModule } from '@mdc/ngx-ui';
+
 import { ChartWraperComponent } from './components/chart-wraper/chart-wraper.component';
 import { UsageRetentionComponent } from './components/usage-retention/usage-retention.component';
 import { UsageHeaderComponent } from './components/usage-header/usage-header.component';
