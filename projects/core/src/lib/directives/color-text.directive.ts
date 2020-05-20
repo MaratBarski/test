@@ -41,7 +41,17 @@ export class ColorTextDirective {
       this.element.nativeElement.innerHTML = this.text;
       return;
     }
-    const r = new RegExp(this.mdcColorText, 'gi');
-    this.element.nativeElement.innerHTML = this.text.replace(r,`<span style='color:${this.color}'>${this.mdcColorText}</span>`);
+    let index = this.text.toLowerCase().indexOf(this.mdcColorText.toLowerCase());
+    if (index === -1) {
+      this.element.nativeElement.innerHTML = this.text;
+      return;
+    }
+    this.element.nativeElement.innerHTML = this.text.replace(
+      new RegExp(this.mdcColorText, 'gi'),
+      `<span style='color:${this.color}'>${this.text.substr(index, this.mdcColorText.length)}</span>`
+    );
+
+    //const r = new RegExp(this.mdcColorText, 'gi');
+    //this.element.nativeElement.innerHTML = this.text.replace(r,`<span style='color:${this.color}'>${this.mdcColorText}</span>`);
   }
 }

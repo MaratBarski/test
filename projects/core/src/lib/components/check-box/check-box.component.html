@@ -5,6 +5,7 @@
             <svg [hidden]="!value" class="icon ic-check" mdcSvg="ic-check"></svg>
             <svg [hidden]="value" class="icon ic-check" mdcSvg="ic-uncheck"></svg>
         </span>
-        <span class="input-check__text">{{text}}</span>
+        <ng-content></ng-content>
+        <span *ngIf="text" class="input-check__text">{{text}}</span>
     </div>
 </div>
