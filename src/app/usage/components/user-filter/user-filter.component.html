@@ -1,6 +1,7 @@
 <div class="select select_small">
-    <div (click)="expand($event)" class="select__head">Please Select...
-        {{selectedCount}}
+    <div (click)="expand($event)" class="select__head">
+        <span [hidden]="selectedCount">Select Users...</span>
+        <span [hidden]="!selectedCount">{{selectedCount}} Selected</span>
         <div class="select__head-arr">
             <svg class="icon ic-select-arr-down" mdcSvg="ic-select-arr-down"></svg>
         </div>
