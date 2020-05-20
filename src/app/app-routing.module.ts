@@ -25,6 +25,11 @@ const routes: Routes = [
     canActivate: [LoginService]
   },
   {
+    path: 'users',
+    loadChildren: () => import('./users/users.module').then(m => m.UsersModule),
+    canActivate: [LoginService]
+  },
+  {
     path: 'login',
     component: LoginComponent
   },
