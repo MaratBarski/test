@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { DateService, DatePeriod, BaseSibscriber, DataService, LoginService } from '@appcore';
+import { DateService, DatePeriod, BaseSibscriber, DataService, LoginService, SortService } from '@appcore';
 import { UsageReportParams } from '../models/usage-request';
 import { Subject, Observable, BehaviorSubject } from 'rxjs';
 import { Offline } from '@app/shared/decorators/offline.decorator';
@@ -38,7 +38,8 @@ export class UsageRequestService extends BaseSibscriber {
   constructor(
     private dateService: DateService,
     private dataService: DataService,
-    private loginService: LoginService
+    private loginService: LoginService,
+    private sortService: SortService
   ) {
     super();
     this.loadData();
@@ -153,6 +154,8 @@ export class UsageRequestService extends BaseSibscriber {
         if (!ui || !ui.data || !ui.data.projects) { return; }
         this._environments = ui.data.projects.map(x => {
           return { text: x.projectName, id: x.projectId, value: x };
+        }).sort((a, b) => {
+          return this.sortService.compareString(a.text, b.text, 'asc');
         });
       }));
   }

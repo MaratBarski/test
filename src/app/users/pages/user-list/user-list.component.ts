@@ -1,9 +1,8 @@
 import { Component, OnInit, ViewChild, HostListener } from '@angular/core';
-import { LoginService, NavigationService, PageInfo, BaseSibscriber, TableActionCommand, EmptyState, SelectOption, TableModel, TableComponent, ComponentService, TableRowModel } from '@appcore';
+import { SortService, LoginService, NavigationService, PageInfo, BaseSibscriber, TableActionCommand, EmptyState, SelectOption, TableModel, TableComponent, ComponentService, TableRowModel } from '@appcore';
 import { Router } from '@angular/router';
 import { UserListService } from '@app/users/services/user-list.service';
 import { UserDetailsComponent } from '@app/users/components/user-details/user-details.component';
-
 
 @Component({
   selector: 'md-user-list',
@@ -40,7 +39,8 @@ export class UserListComponent extends BaseSibscriber implements OnInit {
     private navigationService: NavigationService,
     private router: Router,
     private loginService: LoginService,
-    private userListService: UserListService
+    private userListService: UserListService,
+    private sortService: SortService
   ) {
     super();
     this.navigationService.currentPageID = PageInfo.ManageUsers.id;
@@ -77,7 +77,9 @@ export class UserListComponent extends BaseSibscriber implements OnInit {
         if (!ui || !ui.data || !ui.data.projects) { return; }
         this.environmens = [{ id: '0', text: 'All Environment', value: '0' }].concat(ui.data.projects.map(x => {
           return { text: x.projectName, id: x.projectId, value: x };
-        }) as any);
+        }) as Array<any>).sort((a, b) => {
+          return this.sortService.compareString(a.text, b.text, 'asc');
+        });
         if (!this.selectedEnvironment) {
           this.selectedEnvironment = this.environmens.length ? this.environmens[0] : undefined;
         }
