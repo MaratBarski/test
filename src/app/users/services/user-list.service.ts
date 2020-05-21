@@ -11,8 +11,8 @@ export class UserListService {
 
   constructor(private dataService: DataService) { }
 
-  @Offline('assets/offline/fileSource.json')
-  private getUrl = `${environment.serverUrl}${environment.endPoints.fileSource}`;
+  @Offline('assets/offline/userList.json')
+  private getUrl = `${environment.serverUrl}${environment.endPoints.userList}`;
 
   load(): Observable<any> {
     return this.dataService.get(this.getUrl);
@@ -20,52 +20,51 @@ export class UserListService {
 
   createDataSource(users: Array<any>): TableModel {
     const data: TableModel = {
-      // actions: {
-      //   links: [
-      //     {
-      //       text: 'Edit File Settings',
-      //       icon: 'ic-edit',
-      //       command: 'edit'
-      //       ,hidden: (source) => {
-      //         if (!source.projectObj) { return false; }
-      //         return source.projectObj.projectName === 'ETL project';
-      //       },
-      //       disable: false
-      //     },
-      //     {
-      //       text: 'View output summary',
-      //       icon: 'ic-view',
-      //       command: 'view'
-      //     }
-      //   ],
-      //   subLinks: [
-      //     {
-      //       text: 'Delete',
-      //       disable: false,
-      //       icon: 'ic-delete',
-      //       command: 'delete'
-      //     }
-      //   ]
-      // },
+      actions: {
+        links: [
+          {
+            text: 'Edit User',
+            icon: 'ic-edit',
+            command: 'edit'
+            ,hidden: (source) => {
+              return false;
+            },
+            disable: false
+          },
+          {
+            text: 'View User',
+            icon: 'ic-view',
+            command: 'view'
+          }
+        ],
+        subLinks: [
+          {
+            text: 'Delete',
+            disable: false,
+            icon: 'ic-delete',
+            command: 'delete'
+          }
+        ]
+      },
       headers: [
         {
           columnId: 'fullName',
           text: 'Full Name',
           isSortEnabled: true,
           showDetails: true,
-          css: 'w-xxl-8 w-md-6'
+          css: 'w-md-3'
         },
         {
           columnId: 'userName',
           text: 'Username',
           isSortEnabled: true,
-          css: 'd-none d-md-table-cell'
+          css: 'd-none d-md-table-cell w-md-3'
         },
         {
           columnId: 'email',
           text: 'Email',
           isSortEnabled: true,
-          css: 'd-none d-md-table-cell w-md-3'
+          css: 'd-none d-lg-table-cell w-md-3'
         },
         {
           columnId: 'modified',
@@ -73,7 +72,7 @@ export class UserListService {
           isSortEnabled: true,
           isSortedColumn: true,
           sortDir: 'desc',
-          css: 'd-none d-lg-table-cell w-md-3'
+          css: 'd-none d-xl-table-cell'
         },
         {
           columnId: 'active',
@@ -86,7 +85,7 @@ export class UserListService {
           text: 'SpecialRoles',
           isSortEnabled: true,
           filter: true,
-          css: 'd-none d-xxl-table-cell admin-table__item_right'
+          css: 'd-none d-xl-table-cell w-md-3'
         }
       ],
       rows: []
@@ -94,12 +93,12 @@ export class UserListService {
     users.forEach((u, i) => {
       data.rows.push({
         cells: {
-          fullName: u.test,
-          userName: u.test,
-          email: u.test,
-          modified: u.test,
-          active: u.test,
-          specialRoles: u.test
+          fullName: u.fullName,
+          userName: u.userName,
+          email: u.email,
+          modified: u.modified,
+          active: u.active,
+          specialRoles: u.specialRoles
         },
         source: u,
       })

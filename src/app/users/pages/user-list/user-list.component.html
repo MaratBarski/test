@@ -25,8 +25,10 @@
     </div>
     <div [hidden]="!isDataExists || !isLoaded">
         <mdc-table #table (onAction)="onAction($event)" [emptyState]="emptyState" [rowInfoTemplate]="rowInfoTemplate"
-            [cellsTemplate]="{ insertDate:dateColumn,shared:sharedColumn}" [searchOptions]="searchOptions"
-            [paginator]="paginator" [search]="search" [dataSource]="dataSource">
+            [cellsTemplate]="{ active:activeUser,modified:modified,specialRoles:specialRoles}"
+            [headersTemplate]="{specialRoles:specialRolesHeader}" [searchOptions]="searchOptions"
+            [paginator]="paginator" [search]="search" [dataSource]="dataSource"
+            [editHeaderTemplate]="editHeaderTemplate">
         </mdc-table>
     </div>
     <mdc-empty-state *ngIf="!isDataExists && isLoaded" [emptyState]="emptyState"></mdc-empty-state>
@@ -39,7 +41,58 @@
 
 <ng-template #rowInfoTemplate let-item>
     <div class="category-info-row">
-         <md-user-details #userDetails (onClose)="closeUserDetailes()" [userInfo]="item.source">
-        </md-user-details> 
+        <md-user-details #userDetails (onClose)="closeUserDetailes()" [userInfo]="item.source">
+        </md-user-details>
+    </div>
+</ng-template>
+
+<ng-template #activeUser let-item>
+    <span *ngIf="item.active" class="admin-table__circle admin-table__circle_green"></span>
+</ng-template>
+
+<ng-template #modified let-item>
+    {{item.modified|date}}
+</ng-template>
+
+<ng-template #specialRoles let-item>
+    <ng-container *ngIf="item.specialRoles">
+        <ng-container *ngFor="let i of item.specialRoles">
+            <div *ngIf="i==='superadmin'" class="tag tag_light-red">Super Admin</div>
+            <div *ngIf="i==='admin'" class="tag tag_blue">Admin</div>
+        </ng-container>
+    </ng-container>
+</ng-template>
+
+<ng-template #specialRolesHeader>
+    <span>SpecialRoles:</span>
+</ng-template>
+
+<ng-template #editHeaderTemplate>
+    <div class="admin-table-filter admin-table-filter_last">
+        <div (click)="toogleHeaderFilter($event)" class="admin-table-filter__icon">
+            <span class="ic-hover">
+                <svg class="icon ic-filter ic-stroke" mdcSvg="ic-filter"></svg>
+            </span>
+        </div>
+        <div [hidden]="!showHeaderFilter" class="admin-table-filter__popup">
+            <div class="simple-filter">
+                <div class="simple-filter__sect">
+                    <div class="simple-filter__list">
+                        <span [ngClass]="{'active':adminStatus==='all'}" (click)="filterAdmin('all')" class="simple-filter__item">All</span>
+                    </div>
+                </div>
+                <div class="simple-filter__sect">
+                    <div class="simple-filter__list">
+                        <span [ngClass]="{'active':adminStatus==='super'}"  (click)="filterAdmin('super')" class="simple-filter__item">Super Admin</span>
+                        <span [ngClass]="{'active':adminStatus==='admin'}"  (click)="filterAdmin('admin')" class="simple-filter__item">Admin</span>
+                    </div>
+                </div>
+                <div class="simple-filter__sect">
+                    <div class="simple-filter__list">
+                        <span [ngClass]="{'active':adminStatus==='none'}"  (click)="filterAdmin('none')" class="simple-filter__item">None</span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </ng-template>

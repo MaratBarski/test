@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { LoginService, NavigationService, PageInfo, BaseSibscriber, TableActionCommand, EmptyState, SelectOption, TableModel, TableComponent } from '@appcore';
+import { Component, OnInit, ViewChild, HostListener } from '@angular/core';
+import { LoginService, NavigationService, PageInfo, BaseSibscriber, TableActionCommand, EmptyState, SelectOption, TableModel, TableComponent, ComponentService, TableRowModel } from '@appcore';
 import { Router } from '@angular/router';
 import { UserListService } from '@app/users/services/user-list.service';
 import { UserDetailsComponent } from '@app/users/components/user-details/user-details.component';
@@ -14,7 +14,7 @@ export class UserListComponent extends BaseSibscriber implements OnInit {
 
   @ViewChild('table', { static: true }) table: TableComponent;
   @ViewChild('userDetails', { static: true }) userDetails: UserDetailsComponent;
-  
+
   searchOptions = ['fullName', 'userName', 'email', 'specialRoles'];
   isLoaded = true;
   isDataExists = true;
@@ -22,6 +22,9 @@ export class UserListComponent extends BaseSibscriber implements OnInit {
   dataOrigin: TableModel;
   dataSource: TableModel;
   userList: Array<any>;
+
+  showHeaderFilter = false;
+  adminStatus = 'all';
 
   emptyState: EmptyState = {
     title: 'You can synthesize or manipulate your own data. Start by clicking the button above.',
@@ -95,4 +98,38 @@ export class UserListComponent extends BaseSibscriber implements OnInit {
     this.table.closeRowInfo();
   }
 
+  filterAdmin(status: 'all' | 'admin' | 'super' | 'none'): void {
+    this.showHeaderFilter = false;
+    if (this.adminStatus === status) { return; }
+    this.adminStatus = status;
+    this.updateData();
+  }
+
+  toogleHeaderFilter(event: any): void {
+    const flag = this.showHeaderFilter;
+    ComponentService.documentClick(event);
+    this.showHeaderFilter = !flag;
+  }
+
+  @HostListener('document:click', ['$event']) onMouseClick(event: any) {
+    this.showHeaderFilter = false;
+  }
+
+  updateData(): void {
+    this.dataSource = {
+      ...this.dataOrigin, rows: this.dataOrigin.rows.filter((row: TableRowModel) => {
+        if (this.adminStatus === 'all') { return true; }
+        if (this.adminStatus === 'admin') {
+          return row.source.specialRoles.find((x: any) => x === 'admin');
+        }
+        if (this.adminStatus === 'super') {
+          return row.source.specialRoles.find((x: any) => x === 'superadmin');
+        }
+        if (this.adminStatus === 'none') {
+          return !!!row.source.specialRoles.find((x: any) => (x === 'superadmin' || x === 'admin'));
+        }
+        return false;
+      })
+    };
+  }
 }

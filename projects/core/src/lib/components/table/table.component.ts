@@ -174,6 +174,7 @@ export class TableComponent implements OnDestroy, AfterViewInit, AfterViewChecke
   @Input() rowInfoTemplate: TemplateRef<any>;
   @Input() headersTemplate: Array<{ [key: string]: TemplateRef<any> }>;
   @Input() cellsTemplate: Array<{ [key: string]: TemplateRef<any> }>;
+  @Input() editHeaderTemplate: TemplateRef<any>;
   @Input() isMultiSelect = false;
   @Input() tableID = 'mainTable';
   @Input() stayOnCurrentPage = false;
