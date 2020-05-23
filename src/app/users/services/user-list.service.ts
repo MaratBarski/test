@@ -84,7 +84,6 @@ export class UserListService {
           columnId: 'specialRoles',
           text: 'SpecialRoles',
           isSortEnabled: true,
-          filter: true,
           css: 'd-none d-xl-table-cell w-md-3'
         }
       ],

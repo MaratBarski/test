@@ -1,13 +1,13 @@
 <div class="user-info" (mouseover)="isOver=true" (mouseleave)="isOver=false">
     <div class="admin-table-info__top">
         <div class="admin-table-info__head">User Details</div>
-        <div class="admin-table-info__icons"><span class="ic-hover">
-                <svg class="icon ic-edit">
-                    <use xlink:href="/assets/sprites/sprite.svg#ic-edit"></use>
-                </svg></span><span class="ic-hover">
-                <svg class="icon ic-close-history ic-stroke">
-                    <use xlink:href="/assets/sprites/sprite.svg#ic-close-history"></use>
-                </svg></span></div>
+        <div class="admin-table-info__icons">
+            <span (click)="edit()" class="ic-hover"><svg width="22" height="22" mdcSvg="ic-edit"></svg></span>
+            <span (click)="closeInfo()" class="ic-hover"><svg width="12" height="12" mdcSvg="ic-close"></svg></span>
+            <!-- <span (click)="edit()" class="ic-hover"><svg class="icon ic-edit" mdcSvg="ic-edit"></svg></span>
+            <span (click)="closeInfo()" class="ic-hover"><svg class="icon ic-close-history ic-stroke" mdcSvg="ic-close"></svg></span>
+            <span class="ic-hover"><svg class="icon ic-close-history ic-stroke" mdcSvg="ic-close-history"></svg></span>  -->
+        </div>
     </div>
     <div class="admin-table-info__content">
         <div class="admin-table-info__main">

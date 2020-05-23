@@ -46,6 +46,7 @@ export * from './lib/pipes/file-name.pipe';
 export * from './lib/pipes/visible-headers.pipe';
 export * from './lib/pipes/action-link.pipe';
 export * from './lib/pipes/show-notice.pipe';
+export * from './lib/pipes/check-valid-date.pipe';
 
 export * from './lib/components/paginator/paginator.component';
 export * from './lib/components/button/button.component';

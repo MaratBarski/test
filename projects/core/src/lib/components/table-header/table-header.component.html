@@ -5,6 +5,8 @@
         class="admin-table__sort-down"></span>
 </span>
 {{model.text}}
+<ng-container *ngIf="customFilter" [ngTemplateOutlet]="customFilter">
+</ng-container>
 <div *ngIf="model?.filter" class="admin-table-filter">
     <div class="admin-table-filter__icon" (click)="openFilter($event)">
         <span class="ic-hover">

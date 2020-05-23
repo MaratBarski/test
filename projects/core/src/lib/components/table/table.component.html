@@ -3,7 +3,8 @@
         <tr mdcTableHeader>
             <th [ngStyle]="header.style" class="admin-table__head admin-table__item {{header.css}}"
                 *ngFor="let header of dataSource.headers|visibleHeaders;let index = index" [mdcTableItem]="index">
-                <mdc-table-header *ngIf="!headersTemplate || !headersTemplate[header.columnId]" (onSort)="sort($event)"
+                <mdc-table-header *ngIf="!headersTemplate || !headersTemplate[header.columnId]"
+                    [customFilter]="customFilters && customFilters[header.columnId] ? customFilters[header.columnId] : undefined" (onSort)="sort($event)"
                     (onApplyFilter)="onApplyFilter($event)" (onShowFilter)="onShowFilter()" (onFilter)="filter($event)"
                     [model]="header" [filterOptions]="filters[header.columnId]"></mdc-table-header>
                 <ng-container *ngIf="headersTemplate && headersTemplate[header.columnId]"

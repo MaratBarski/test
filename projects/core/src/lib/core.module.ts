@@ -67,6 +67,7 @@ import { ShowNoticePipe } from './pipes/show-notice.pipe';
 import { ColorTextDirective } from './directives/color-text.directive';
 import { DialogModule } from 'primeng/dialog';
 import { CalendarModule } from 'primeng/calendar';
+import { CheckValidDatePipe } from './pipes/check-valid-date.pipe';
 // import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 
 @NgModule({
@@ -128,7 +129,8 @@ import { CalendarModule } from 'primeng/calendar';
     NotificationsComponent,
     NotificationItemComponent,
     ShowNoticePipe,
-    ColorTextDirective
+    ColorTextDirective,
+    CheckValidDatePipe
   ],
   imports: [
     CommonModule,
@@ -198,7 +200,8 @@ import { CalendarModule } from 'primeng/calendar';
     FileUploaderComponent,
     NotificationsComponent,
     ShowNoticePipe,
-    ColorTextDirective
+    ColorTextDirective,
+    CheckValidDatePipe
   ],
   entryComponents: [
     TableHeaderComponent,
