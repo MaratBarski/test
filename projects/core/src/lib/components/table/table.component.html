@@ -12,8 +12,7 @@
             </th>
             <th class="admin-table__item admin-table__item_menu"
                 *ngIf="dataSource?.actions?.links?.length || dataSource?.actions?.subLinks?.length">
-                <ng-container *ngIf="editHeaderTemplate" [ngTemplateOutlet]="editHeaderTemplate"
-                    [ngTemplateOutletContext]="{$implicit: header}"></ng-container>
+                <ng-container *ngIf="editHeaderTemplate" [ngTemplateOutlet]="editHeaderTemplate"></ng-container>
             </th>
         </tr>
     </thead>
