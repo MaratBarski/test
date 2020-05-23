@@ -9,24 +9,27 @@ import { ComponentService } from '@appcore';
 export class MapCategoryTableComponent {
 
   @Input() set oldCategories(oldCategories: any) {
-    this._oldCategories = [this.newCategoryDefault].concat(oldCategories);
+    this._oldCategories = [].concat(oldCategories.map(x => {
+      return { ...x, oldCategory: this.newCategoryDefault };
+    }));
     this.initMap();
   }
   get oldCategories(): any {
     return this._oldCategories;
   }
-  private _oldCategories: any;
+  private _oldCategories = [];
 
   newCategoryDefault = { hierarchyLevelName: '---new---', sortValue: -1, inUse: true };
+  categoryMap = [];
 
   @Input() set data(data: any) {
     this._data = data;
     if (!this._data || !this._data.data || !this._data.data.hierarchyLevels) { return; }
-    this.categoryMap = [];
+    this.categoryMap = [this.newCategoryDefault];
     this._data.data.hierarchyLevels.forEach((item: any) => {
-      item.newHierarchyLevelName = item.hierarchyLevelName;
-      this.categoryMap.push({ newCategory: item, oldCategory: this.newCategoryDefault });
+      this.categoryMap.push(item);
     });
+    this.initMap();
   }
   get data(): any {
     return this._data;
@@ -66,11 +69,9 @@ export class MapCategoryTableComponent {
     newCategoryItem.oldCategory.inUse = true;
   }
 
-  categoryMap = [];
   initMap(): void {
-    if (!this._data || !this._data.data || !this._data.data.hierarchyLevels) { return; }
-    this.categoryMap.forEach((level: any, index: number) => {
-      const oldCategory = this.findOldcategory(level.newCategory);
+    this.oldCategories.forEach((level: any, index: number) => {
+      const oldCategory = this.findOldcategory(level);
       if (oldCategory) {
         level.oldCategory = oldCategory;
         level.oldCategory.inUse = true;
@@ -81,6 +82,6 @@ export class MapCategoryTableComponent {
   }
 
   findOldcategory(level: any): any {
-    return this.oldCategories.find((x: any) => x.hierarchyLevelName === level.hierarchyLevelName);
+    return this.categoryMap.find((x: any) => x.hierarchyLevelName === level.hierarchyLevelName);
   }
 }

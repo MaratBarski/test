@@ -21,10 +21,10 @@
                         </tr>
                     </thead>
                     <tbody *ngIf="categoryMap">
-                        <tr class="admin-table__row" *ngFor="let item of categoryMap;let index=index">
+                        <tr class="admin-table__row" *ngFor="let item of oldCategories;let index=index">
                             <td class="admin-table__item">
                                 <div class="admin-table__name-edit">
-                                    <input type="text" [(ngModel)]="item.newCategory.newHierarchyLevelName">
+                                    <input type="text" [(ngModel)]="item.hierarchyLevelName">
                                 </div>
                             </td>
                             <td class="admin-table__item d-none d-md-table-cell">
@@ -38,7 +38,10 @@
                                         </div>
                                         <div id="select_{{index}}" [mdcVisibility]="selectedItem===item"
                                             class="select__option">
-                                            <ng-container *ngFor="let i of oldCategories">
+                                            <ng-container *ngFor="let i of categoryMap">
+                                                <!-- <div *ngIf="!i.inUse || (i === newCategoryDefault && newCategoryDefault !== item.oldCategory)" (click)="changeOldCategory(i,item)" class="select__param"> 
+                                                {{i.hierarchyLevelName}}
+                                                 </div> -->
                                                 <div *ngIf="!i.inUse || (i === newCategoryDefault && newCategoryDefault !== item.oldCategory)" (click)="changeOldCategory(i,item)" class="select__param">
                                                     {{i.hierarchyLevelName}}
                                                 </div>
@@ -47,11 +50,11 @@
                                     </div>
                                 </div>
                             </td>
-                            <td class="admin-table__item d-none d-lg-table-cell">
+                            <!-- <td class="admin-table__item d-none d-lg-table-cell">
                                 <div class="admin-table__data-sample">
                                     {{item.newCategory.dataSample|replace:'%sep%':','}}
                                 </div>
-                            </td>
+                            </td> -->
                         </tr>
                     </tbody>
                 </table>

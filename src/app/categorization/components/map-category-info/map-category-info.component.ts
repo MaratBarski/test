@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, EventEmitter, Output } from '@angular/core';
 import { SelectOption } from '@appcore';
 
 @Component({
@@ -8,6 +8,8 @@ import { SelectOption } from '@appcore';
 })
 export class MapCategoryInfoComponent {
 
+  @Output() onHeadersChanged = new EventEmitter<any>();
+  
   @Input() set data(data: any) {
     if (!data || !data.data) { return; }
     this._data = data;
@@ -36,5 +38,26 @@ export class MapCategoryInfoComponent {
 
   get isValid(): boolean {
     return true;
+  }
+
+  cancelUploadFile(): void {
+    this.showUploadFile = false;
+  }
+
+  onChangeUploadFile(event: any): void {
+    this.showUploadFile = false;
+    this.onHeadersChanged.emit(event);
+  }
+
+  showUploadFile = false;
+
+  replace(): void {
+    this.showUploadFile = true;
+  }
+
+  download(): void {
+  }
+
+  delete(): void {
   }
 }
