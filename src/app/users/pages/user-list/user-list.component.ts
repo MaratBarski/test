@@ -15,8 +15,8 @@ export class UserListComponent extends BaseSibscriber implements OnInit {
   @ViewChild('userDetails', { static: true }) userDetails: UserDetailsComponent;
 
   searchOptions = ['fullName', 'userName', 'email', 'specialRoles'];
-  isLoaded = true;
-  isDataExists = true;
+  isLoaded = false;
+  isDataExists = false;
 
   dataOrigin: TableModel;
   dataSource: TableModel;
@@ -26,9 +26,9 @@ export class UserListComponent extends BaseSibscriber implements OnInit {
   adminStatus = 'all';
 
   emptyState: EmptyState = {
-    title: 'You can synthesize or manipulate your own data. Start by clicking the button above.',
+    title: 'There are no users defined. Start by clicking one of the buttons above.',
     subTitle: 'The users will be listed here.',
-    image: 'filesEmpty.png'
+    image: 'empty.png'
   }
 
   currentEnvitonment = '';
@@ -55,7 +55,6 @@ export class UserListComponent extends BaseSibscriber implements OnInit {
 
   execCommand = {
     edit: (action: TableActionCommand) => {
-      this.router.navigateByUrl(`/imported-files/${action.item.source.fileId}`);
       console.log('edit command');
     },
     view: (action: TableActionCommand) => {
@@ -98,6 +97,10 @@ export class UserListComponent extends BaseSibscriber implements OnInit {
 
   closeUserDetailes(): void {
     this.table.closeRowInfo();
+  }
+
+  get isNoFiltered(): boolean {
+    return this.adminStatus === 'all';
   }
 
   filterAdmin(status: 'all' | 'admin' | 'super' | 'none'): void {

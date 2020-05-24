@@ -1,5 +1,7 @@
 import { Component, Input, EventEmitter, Output } from '@angular/core';
 import { SelectOption } from '@appcore';
+import { CategorizationService } from '@app/categorization/services/categorization.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'md-map-category-info',
@@ -8,8 +10,13 @@ import { SelectOption } from '@appcore';
 })
 export class MapCategoryInfoComponent {
 
+  constructor(
+    private categorizationService: CategorizationService,
+    private router: Router
+  ) { }
+
   @Output() onHeadersChanged = new EventEmitter<any>();
-  
+
   @Input() set data(data: any) {
     if (!data || !data.data) { return; }
     this._data = data;
@@ -56,8 +63,16 @@ export class MapCategoryInfoComponent {
   }
 
   download(): void {
+
   }
 
   delete(): void {
+    this.categorizationService.deleteCategory(this.data.data)
+      .toPromise()
+      .then(() => {
+        this.router.navigateByUrl('/categorization');
+      }).catch((e: any) => {
+        alert(e.message);
+      });
   }
 }

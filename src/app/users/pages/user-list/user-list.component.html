@@ -66,7 +66,7 @@
     <div class="admin-table-filter">
         <div (click)="toogleHeaderFilter($event)" class="admin-table-filter__icon">
             <span class="ic-hover">
-                <svg class="icon ic-filter ic-stroke" mdcSvg="ic-filter"></svg>
+                <svg [ngClass]="{'ic-stroke':isNoFiltered}" class="icon ic-filter" mdcSvg="ic-filter"></svg>
             </span>
         </div>
         <div [hidden]="!showHeaderFilter" class="admin-table-filter__popup">

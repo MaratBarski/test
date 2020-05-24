@@ -1,6 +1,7 @@
 <section class="info-panel-wrap">
     <mdc-modal-window *ngIf="showUploadFile">
-        <md-upload-file [source]="data?.data" (onChange)="onChangeUploadFile($event)" (onCancel)="cancelUploadFile()"></md-upload-file>
+        <md-upload-file [source]="data?.data" (onChange)="onChangeUploadFile($event)" (onCancel)="cancelUploadFile()">
+        </md-upload-file>
     </mdc-modal-window>
     <div class="container-fluid">
         <div class="row">
@@ -37,9 +38,9 @@
                             </div>
                         </div>
                         <div class="info-panel-menu">
-                            <!-- <div class="info-panel-menu__btn ic-hover">
+                            <div class="info-panel-menu__btn ic-hover">
                                 <svg class="icon ic-dot-menu" mdcSvg="ic-dot-menu"></svg>
-                            </div> -->
+                            </div>
                             <div class="info-panel-menu__popup">
                                 <div class="info-panel-menu__top">
                                     <div (click)="replace()" class="info-panel-menu__item">

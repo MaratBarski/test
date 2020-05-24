@@ -25,6 +25,7 @@ export class CategorizationService {
   }
 
   deleteCategory(hierarchy: any): Observable<any> {
+    //alert(`${environment.serverUrl}${environment.endPoints.deleteCategory}/${hierarchy.hierarchyRootId}`);
     return this.dataService.delete(`${environment.serverUrl}${environment.endPoints.deleteCategory}/${hierarchy.hierarchyRootId}`);
   }
 
