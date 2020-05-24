@@ -77,10 +77,13 @@ export class TableHeaderComponent extends BaseSibscriber {
     }
   }
 
+  isNoFiltered = true;
+
   applyFilter(): void {
     this._originOptions = JSON.parse(JSON.stringify(this._filterOptions));
     this.isShowFilter = false;
     this.onApplyFilter.emit(this);
+    this.isNoFiltered = !this._originOptions.find(x => !x.isChecked);
   }
 
   cancelFilter(): void {
