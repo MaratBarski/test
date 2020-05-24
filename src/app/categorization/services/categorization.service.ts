@@ -25,6 +25,7 @@ export class CategorizationService {
   }
 
   deleteCategory(hierarchy: any): Observable<any> {
+    //alert(`${environment.serverUrl}${environment.endPoints.deleteCategory}/${hierarchy.hierarchyRootId}`);
     return this.dataService.delete(`${environment.serverUrl}${environment.endPoints.deleteCategory}/${hierarchy.hierarchyRootId}`);
   }
 
@@ -33,23 +34,9 @@ export class CategorizationService {
       actions: {
         links: [
           {
-            text: 'Review & Edit',
-            icon: 'ic-review-and-edit',
+            text: 'Edit',
+            icon: 'ic-edit',
             command: 'edit'
-          },
-          // {
-          //   text: 'Review & Map',
-          //   icon: 'ic-review-and-edit',
-          //   command: 'map'
-          //   , hidden: (source: any) => {
-          //     if (!source.status) { return true; }
-          //     return source.status !== 'unmapped';
-          //   }
-          // },
-          {
-            text: 'Replace Categorization File',
-            icon: 'ic-replace',
-            command: 'replace'
           },
           {
             text: 'Download',

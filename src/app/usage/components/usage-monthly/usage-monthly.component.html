@@ -6,15 +6,14 @@
 <md-chart-pdf #chartPdfDownloads [chart]="secondChart" [width]="pdfChartWidth" [height]="pdfChartHeight"></md-chart-pdf>
 
 <ng-template #firstChart>
-    <ngx-charts-bar-vertical [roundEdges]="false" [view]="view" [scheme]="colorScheme" [results]="(dataSource|monthlyChart).query"
+    <ngx-charts-bar-vertical [showValue]="true" [showDataLabel]="false" [showZero]="false" [animations]="false" [roundEdges]="false" [view]="view" [scheme]="colorScheme" [results]="(dataSource|monthlyChart).query"
         [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis" [showXAxisLabel]="showXAxisLabel"
-        [showYAxisLabel]="true" [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" [legend]="false"
-        [showDataLabel]="true">
+        [showYAxisLabel]="true" [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" [legend]="false">
     </ngx-charts-bar-vertical>
 </ng-template>
 
 <ng-template #secondChart>
-    <ngx-charts-bar-vertical-stacked [view]="view" [scheme]="colorSchemeDownload"
+    <ngx-charts-bar-vertical-stacked [showValue]="true" [showZero]="false" [animations]="false" [view]="view" [scheme]="colorSchemeDownload"
         [results]="(dataSource|monthlyChart).download" [gradient]="gradient" [xAxis]="showXAxis"
         [yAxis]="showYAxis" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="true" [xAxisLabel]="xAxisLabel"
         [yAxisLabel]="yAxisLabel" [legend]="false" [showDataLabel]="true">

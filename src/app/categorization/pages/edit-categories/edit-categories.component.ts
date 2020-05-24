@@ -5,6 +5,7 @@ import { MapCategoryInfoComponent } from '@app/categorization/components/map-cat
 import { EditCategoryTableComponent } from '@app/categorization/components/edit-category-table/edit-category-table.component';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MapCategoryHeaderComponent } from '@app/categorization/components/map-category-header/map-category-header.component';
+import { MapCategoryTableComponent } from '@app/categorization/components/map-category-table/map-category-table.component';
 
 @Component({
   selector: 'md-edit-categories',
@@ -20,10 +21,12 @@ export class EditCategoriesComponent extends BaseSibscriber implements OnInit {
   }
   selectedCategory: any;
   isLoading = false;
+  mode: 'edit' | 'replace' = 'edit';
 
   @ViewChild('categoryHeader', { static: true }) categoryHeader: MapCategoryHeaderComponent;
   @ViewChild('categoryInfo', { static: true }) categoryInfo: MapCategoryInfoComponent;
   @ViewChild('categoryTable', { static: true }) categoryTable: EditCategoryTableComponent;
+  @ViewChild('mapCategoryTable', { static: false }) mapCategoryTable: MapCategoryTableComponent;
 
   constructor(
     private editCategoryService: EditCategoryService,
@@ -75,5 +78,19 @@ export class EditCategoriesComponent extends BaseSibscriber implements OnInit {
 
   onNameChange(name: string): void {
     this.selectedCategory.data.hierarchyName = name;
+  }
+
+  oldCategories = [];
+  formData: FormData;
+
+  onHeadersChanged(event: any): void {
+    this.mode = 'replace';
+    this.formData = event.formData;
+    this.oldCategories = event.categoryHeaders.map((str: any, i: number) => {
+      return {
+        hierarchyLevelName: str,
+        sortValue: i
+      };
+    });
   }
 }

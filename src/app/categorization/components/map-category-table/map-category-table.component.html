@@ -21,14 +21,14 @@
                         </tr>
                     </thead>
                     <tbody *ngIf="categoryMap">
-                        <tr class="admin-table__row" *ngFor="let item of categoryMap;let index=index">
+                        <tr class="admin-table__row" *ngFor="let item of oldCategories;let index=index">
                             <td class="admin-table__item">
                                 <div class="admin-table__name-edit">
-                                    <input type="text" [(ngModel)]="item.newCategory.newHierarchyLevelName">
+                                    <input type="text" [(ngModel)]="item.hierarchyLevelName">
                                 </div>
                             </td>
                             <td class="admin-table__item d-none d-md-table-cell">
-                                <div class="select-wrap">
+                                <div [ngClass]="{'error':item.oldCategory===newCategoryDefault}" class="select-wrap">
                                     <div class="select select_small select_full">
                                         <div (click)="selectItem($event,item,index)" class="select__head">
                                             {{item.oldCategory.hierarchyLevelName}}
@@ -38,23 +38,28 @@
                                         </div>
                                         <div id="select_{{index}}" [mdcVisibility]="selectedItem===item"
                                             class="select__option">
-                                            <ng-container *ngFor="let i of oldCategories">
+                                            <ng-container *ngFor="let i of categoryMap">
+                                                <!-- <div *ngIf="!i.inUse || (i === newCategoryDefault && newCategoryDefault !== item.oldCategory)" (click)="changeOldCategory(i,item)" class="select__param"> 
+                                                {{i.hierarchyLevelName}}
+                                                 </div> -->
                                                 <div *ngIf="!i.inUse || (i === newCategoryDefault && newCategoryDefault !== item.oldCategory)" (click)="changeOldCategory(i,item)" class="select__param">
                                                     {{i.hierarchyLevelName}}
                                                 </div>
                                             </ng-container>
                                         </div>
+                                        <span [hidden]="item.oldCategory!==newCategoryDefault" class="tooltip tooltip_left tooltip_red"><span class="tooltip__content">Missing Category</span></span>
                                     </div>
                                 </div>
                             </td>
-                            <td class="admin-table__item d-none d-lg-table-cell">
+                            <!-- <td class="admin-table__item d-none d-lg-table-cell">
                                 <div class="admin-table__data-sample">
                                     {{item.newCategory.dataSample|replace:'%sep%':','}}
                                 </div>
-                            </td>
+                            </td> -->
                         </tr>
                     </tbody>
                 </table>
+                <md-category-message [oldNewDifCount]="oldNewDifCount" (onUpdateMessage)="onUpdateMessage($event)"></md-category-message>
             </div>
         </div>
     </div>

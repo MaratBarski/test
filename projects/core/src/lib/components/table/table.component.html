@@ -3,7 +3,8 @@
         <tr mdcTableHeader>
             <th [ngStyle]="header.style" class="admin-table__head admin-table__item {{header.css}}"
                 *ngFor="let header of dataSource.headers|visibleHeaders;let index = index" [mdcTableItem]="index">
-                <mdc-table-header *ngIf="!headersTemplate || !headersTemplate[header.columnId]" (onSort)="sort($event)"
+                <mdc-table-header *ngIf="!headersTemplate || !headersTemplate[header.columnId]"
+                    [customFilter]="customFilters && customFilters[header.columnId] ? customFilters[header.columnId] : undefined" (onSort)="sort($event)"
                     (onApplyFilter)="onApplyFilter($event)" (onShowFilter)="onShowFilter()" (onFilter)="filter($event)"
                     [model]="header" [filterOptions]="filters[header.columnId]"></mdc-table-header>
                 <ng-container *ngIf="headersTemplate && headersTemplate[header.columnId]"
@@ -11,7 +12,9 @@
                     [ngTemplateOutletContext]="{$implicit: header}"></ng-container>
             </th>
             <th class="admin-table__item admin-table__item_menu"
-                *ngIf="dataSource?.actions?.links?.length || dataSource?.actions?.subLinks?.length"></th>
+                *ngIf="dataSource?.actions?.links?.length || dataSource?.actions?.subLinks?.length">
+                <ng-container *ngIf="editHeaderTemplate" [ngTemplateOutlet]="editHeaderTemplate"></ng-container>
+            </th>
         </tr>
     </thead>
     <tbody *ngIf="rows?.length">
@@ -21,16 +24,15 @@
                 *ngIf="(rowInfoTemplate && currentRowInfo===row)">
                 <td class="row-info-sub-container"
                     [attr.colspan]="(dataSource.headers|visibleHeaders).length + specColums">
-                        <mdc-row-info (onInit)="rowDetailsInit($event)">
-                            <ng-container [ngTemplateOutlet]="rowInfoTemplate"
-                                [ngTemplateOutletContext]="{$implicit: row}">
-                            </ng-container>
-                        </mdc-row-info>
+                    <mdc-row-info (onInit)="rowDetailsInit($event)">
+                        <ng-container [ngTemplateOutlet]="rowInfoTemplate" [ngTemplateOutletContext]="{$implicit: row}">
+                        </ng-container>
+                    </mdc-row-info>
                 </td>
             </tr>
             <tr (click)="rowClick(row)" (mouseover)="rowMouseOver($event,row,rowIndex)"
                 (mouseleave)="rowMouseLeave($event,row,rowIndex)"
-                [ngClass]="{'active':row.isActive,'row-even':rowIndex%2===0}" mdcTableRow>
+                [ngClass]="{'active':row.isActive,'row-even':rowIndex%2===0,'row-odd':rowIndex%2}" mdcTableRow>
                 <ng-container *ngFor="let header of dataSource.headers|visibleHeaders;let index = index">
                     <td [ngStyle]="header.columnStyle||header.style" class="admin-table__item {{header.css}}"
                         [mdcTableItem]="index">

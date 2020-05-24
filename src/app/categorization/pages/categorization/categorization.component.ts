@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { BaseSibscriber, TableModel, TableComponent, PageInfo, NavigationService, TableActionCommand } from '@app/core-api';
+import { BaseSibscriber, TableModel, TableComponent, PageInfo, NavigationService, TableActionCommand, EmptyState } from '@appcore';
 import { CategorizationService } from '@app/categorization/services/categorization.service';
 import { CategoryInfoComponent } from '@app/categorization/components/category-info/category-info.component';
 import { Router } from '@angular/router';
@@ -12,6 +12,12 @@ import { environment } from '@env/environment';
 })
 export class CategorizationComponent extends BaseSibscriber implements OnInit {
 
+  emptyState: EmptyState = {
+    title: 'Categorization makes the data accessible. Start by clicking the button above.',
+    subTitle: 'Your categorization will be listed here.',
+    image: 'categoryEmpty.png'
+  }
+  
   @ViewChild('table', { static: true }) table: TableComponent;
   @ViewChild('categorizationInfo', { static: true }) categorizationInfo: CategoryInfoComponent;
 
@@ -32,6 +38,9 @@ export class CategorizationComponent extends BaseSibscriber implements OnInit {
   }
 
   searchOptions = ['hierarchyName', 'hierarchyFile', 'insertDate', 'domain'];
+
+  isDataExists = true;
+  isLoaded = false;
 
   showInfo(event: any, item: any, source: any): void {
     this.currentRow.state = true;
@@ -57,10 +66,6 @@ export class CategorizationComponent extends BaseSibscriber implements OnInit {
     map: (action: TableActionCommand) => {
       this.router.navigate(['/categorization/map-categories', { id: action.item.source.hierarchyRootId }]);
     },
-    replace: (action: TableActionCommand) => {
-      this.currentSource = action.item.source;
-      this.showUploadFile = true;
-    },
     download: (action: TableActionCommand) => {
       //alert(`${environment.serverUrl}${environment.endPoints.downloadCategory}/${action.item.source.hierarchyRootId}`)
       window.open(`${environment.serverUrl}${environment.endPoints.downloadCategory}/${action.item.source.hierarchyRootId}`)
@@ -80,10 +85,13 @@ export class CategorizationComponent extends BaseSibscriber implements OnInit {
   };
 
   private initData(): void {
+    this.isDataExists = !!(this.categorySource && this.categorySource.length);
     this.dataOrigin = this.dataSource = this.categorizationService.createDataSource(this.categorySource);
+    this.isLoaded = true;
   }
 
   ngOnInit() {
+    this.isLoaded = false;
     super.add(
       this.categorizationService.load().subscribe((res: any) => {
         this.categorySource = res.data;

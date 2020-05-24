@@ -1,14 +1,16 @@
 <div class="select select_small">
-    <div (click)="expand($event)" class="select__head">Please Select...
-        {{selectedCount}}
+    <div (click)="expand($event)" class="select__head">
+        <span [hidden]="selectedCount">Select Users...</span>
+        <span [hidden]="!selectedCount">{{selectedCount}} Selected</span>
         <div class="select__head-arr">
             <svg class="icon ic-select-arr-down" mdcSvg="ic-select-arr-down"></svg>
         </div>
     </div>
-    <div (click)="filterContainerClick($event)" class="select-filter" [hidden]="!isExpanded" >
+    <div (click)="filterContainerClick($event)" class="select-filter" [hidden]="!isExpanded">
         <div class="select-filter__content">
             <div class="select-filter__top">
-                <mdc-check-box (change)="changeTop($event)" [(ngModel)]="topChecked" text="Top 5 users" [id]="'usrUsage'"></mdc-check-box>
+                <mdc-check-box (change)="changeTop($event)" [(ngModel)]="topChecked" text="Top 5 users"
+                    [id]="'usrUsage'"></mdc-check-box>
                 <span (click)="clear()" class="select-filter__clear">Clear</span>
             </div>
             <div class="form-search">
@@ -22,13 +24,19 @@
             </div>
             <div class="select-filter__params">
                 <ng-container *ngFor="let user of users|usageUser:{text:searchWord};let index=$index">
-                    <mdc-check-box [isDisabled]="!user.isChecked && selectedCount >= maxSelected" (change)="changeSelect($event)" [(ngModel)]="user.isChecked" [id]="'usr' + index" text="{{user.login}}({{user.total}})">
+                    <mdc-check-box [isDisabled]="!user.isChecked && selectedCount >= maxSelected"
+                        (change)="changeSelect($event)" [(ngModel)]="user.isChecked" [id]="'usr' + index">
+                        <ng-container>
+                            <span class="input-check__text" [mdcColorText]="searchWord" [text]="user.login"></span>
+                            <span class="input-check__text">({{user.total}})</span>
+                        </ng-container>
                     </mdc-check-box>
                 </ng-container>
             </div>
             <div class="select-filter__btn">
                 <button (click)="cancel()" class="btn btn_border btn_small">Cancel</button>
-                <button [disabled]="selectedCount < minSelected || selectedCount > maxSelected" (click)="apply()" class="btn btn_small">Apply</button>
+                <button [disabled]="selectedCount < minSelected || selectedCount > maxSelected" (click)="apply()"
+                    class="btn btn_small">Apply</button>
             </div>
         </div>
     </div>

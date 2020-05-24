@@ -1,0 +1,86 @@
+<div class="user-info" (mouseover)="isOver=true" (mouseleave)="isOver=false">
+    <div class="admin-table-info__top">
+        <div class="admin-table-info__head">User Details</div>
+        <div class="admin-table-info__icons">
+            <span (click)="edit()" class="ic-hover"><svg width="22" height="22" mdcSvg="ic-edit"></svg></span>
+            <span (click)="closeInfo()" class="ic-hover"><svg width="12" height="12" mdcSvg="ic-close"></svg></span>
+            <!-- <span (click)="edit()" class="ic-hover"><svg class="icon ic-edit" mdcSvg="ic-edit"></svg></span>
+            <span (click)="closeInfo()" class="ic-hover"><svg class="icon ic-close-history ic-stroke" mdcSvg="ic-close"></svg></span>
+            <span class="ic-hover"><svg class="icon ic-close-history ic-stroke" mdcSvg="ic-close-history"></svg></span>  -->
+        </div>
+    </div>
+    <div class="admin-table-info__content">
+        <div class="admin-table-info__main">
+            <div class="admin-table-info__col">
+                <div class="admin-table-info__item">
+                    <div class="admin-table-info__title">Created:</div>
+                    <div class="admin-table-info__val">Dec 05, 2018 14:32</div>
+                </div>
+                <div class="admin-table-info__item">
+                    <div class="admin-table-info__title">Active:</div>
+                    <div class="admin-table-info__val"><span class="admin-table-info__circle"></span></div>
+                </div>
+            </div>
+            <div class="admin-table-info__col">
+                <div class="admin-table-info__item">
+                    <div class="admin-table-info__title">Modified:</div>
+                    <div class="admin-table-info__val">Dec 05, 2018 14:32</div>
+                </div>
+                <div class="tag tag_light-red">Super Admin</div>
+            </div>
+        </div>
+        <div class="table-detail-wrap">
+            <div class="table-detail-wrap__title">Connected to Enviroments:</div>
+            <table class="table-detail">
+                <thead class="table-detail__head">
+                    <tr>
+                        <th class="table-detail__item">Enviorment</th>
+                        <th class="table-detail__item">Permission</th>
+                        <th class="table-detail__item w-md-1">Role</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="table-detail__item">Buttercup Hospital Central</td>
+                        <td class="table-detail__item">Original</td>
+                        <td class="table-detail__item">Researcher</td>
+                    </tr>
+                    <tr>
+                        <td class="table-detail__item">Buttercup Clincs</td>
+                        <td class="table-detail__item">Synthetic (4)</td>
+                        <td class="table-detail__item">Admin</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="table-detail-wrap">
+            <div class="table-detail-wrap__title">Research List:</div>
+            <table class="table-detail">
+                <thead class="table-detail__head">
+                    <tr>
+                        <th class="table-detail__item">Research</th>
+                        <th class="table-detail__item">Environment</th>
+                        <th class="table-detail__item w-md-1">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="table-detail__item">Dianetes in elderly people</td>
+                        <td class="table-detail__item">Buttercup Hospital Central</td>
+                        <td class="table-detail__item">Open</td>
+                    </tr>
+                    <tr>
+                        <td class="table-detail__item">Diabetes general</td>
+                        <td class="table-detail__item">Buttercup Clincs</td>
+                        <td class="table-detail__item">Open</td>
+                    </tr>
+                    <tr>
+                        <td class="table-detail__item">Medications in community</td>
+                        <td class="table-detail__item">Buttercup Clincs</td>
+                        <td class="table-detail__item">Close</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

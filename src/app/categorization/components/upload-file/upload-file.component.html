@@ -34,11 +34,11 @@
                     </div><span class="form-site-alert__text">File format needs to be CSV (comma separate values)</span>
                 </div>
             </div>
-            <div class="form-site__item">
+            <div *ngIf="!isEditMode" class="form-site__item">
                 <label class="form-site__label" for="name">Name</label>
                 <input type="text" [(ngModel)]="fileName" placeholder="Type categorization name">
             </div>
-            <div class="form-site__item">
+            <div *ngIf="!isEditMode" class="form-site__item">
                 <label class="form-site__label" for="desc">Description<span
                         class="form-site__optional">Optional</span></label>
                 <textarea [(ngModel)]="description" id="desc"

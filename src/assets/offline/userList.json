@@ -1,0 +1,334 @@
+{
+    "data": [
+        {
+            "fullName": "fullName",
+            "userName": "userName",
+            "email": "email",
+            "modified": "2020-05-09T11:09:24.000Z",
+            "active": true,
+            "specialRoles": [
+                "admin",
+                "superadmin",
+                "user"
+            ]
+        },
+        {
+            "fullName": "fullName",
+            "userName": "userName",
+            "email": "email",
+            "modified": "modified",
+            "active": false,
+            "specialRoles": [
+                "superadmin",
+                "user"
+            ]
+        },
+        {
+            "fullName": "fullName",
+            "userName": "userName",
+            "email": "email",
+            "modified": "modified",
+            "active": true,
+            "specialRoles": [
+            ]
+        },
+        {
+            "fullName": "fullName",
+            "userName": "userName",
+            "email": "email",
+            "modified": "modified",
+            "active": true,
+            "specialRoles": [
+                "superadmin"
+            ]
+        },
+        {
+            "fullName": "fullName",
+            "userName": "userName",
+            "email": "email",
+            "modified": "modified",
+            "active": true,
+            "specialRoles": [
+                "admin"
+            ]
+        },
+        {
+            "fullName": "fullName",
+            "userName": "userName",
+            "email": "email",
+            "modified": "modified",
+            "active": true,
+            "specialRoles": [
+                "admin",
+                "superadmin",
+                "user"
+            ]
+        },
+        {
+            "fullName": "fullName",
+            "userName": "userName",
+            "email": "email",
+            "modified": "modified",
+            "active": true,
+            "specialRoles": [
+                "admin",
+                "superadmin",
+                "user"
+            ]
+        },
+        {
+            "fullName": "fullName",
+            "userName": "userName",
+            "email": "email",
+            "modified": "modified",
+            "active": true,
+            "specialRoles": [
+                "admin",
+                "superadmin",
+                "user"
+            ]
+        },
+        {
+            "fullName": "fullName",
+            "userName": "userName",
+            "email": "email",
+            "modified": "modified",
+            "active": true,
+            "specialRoles": [
+                "admin",
+                "superadmin",
+                "user"
+            ]
+        },
+        {
+            "fullName": "fullName",
+            "userName": "userName",
+            "email": "email",
+            "modified": "modified",
+            "active": true,
+            "specialRoles": [
+                "admin",
+                "superadmin",
+                "user"
+            ]
+        },
+        {
+            "fullName": "fullName",
+            "userName": "userName",
+            "email": "email",
+            "modified": "modified",
+            "active": true,
+            "specialRoles": [
+                "admin",
+                "superadmin",
+                "user"
+            ]
+        },
+        {
+            "fullName": "fullName",
+            "userName": "userName",
+            "email": "email",
+            "modified": "modified",
+            "active": true,
+            "specialRoles": [
+                "admin",
+                "superadmin",
+                "user"
+            ]
+        },
+        {
+            "fullName": "fullName",
+            "userName": "userName",
+            "email": "email",
+            "modified": "modified",
+            "active": true,
+            "specialRoles": [
+                "admin",
+                "superadmin",
+                "user"
+            ]
+        },
+        {
+            "fullName": "fullName",
+            "userName": "userName",
+            "email": "email",
+            "modified": "modified",
+            "active": true,
+            "specialRoles": [
+                "admin",
+                "superadmin",
+                "user"
+            ]
+        },
+        {
+            "fullName": "fullName",
+            "userName": "userName",
+            "email": "email",
+            "modified": "modified",
+            "active": true,
+            "specialRoles": [
+                "admin",
+                "superadmin",
+                "user"
+            ]
+        },
+        {
+            "fullName": "fullName",
+            "userName": "userName",
+            "email": "email",
+            "modified": "modified",
+            "active": true,
+            "specialRoles": [
+                "admin",
+                "superadmin",
+                "user"
+            ]
+        },
+        {
+            "fullName": "fullName",
+            "userName": "userName",
+            "email": "email",
+            "modified": "modified",
+            "active": true,
+            "specialRoles": [
+                "admin",
+                "superadmin",
+                "user"
+            ]
+        },
+        {
+            "fullName": "fullName",
+            "userName": "userName",
+            "email": "email",
+            "modified": "modified",
+            "active": true,
+            "specialRoles": [
+                "admin",
+                "superadmin",
+                "user"
+            ]
+        },
+        {
+            "fullName": "fullName",
+            "userName": "userName",
+            "email": "email",
+            "modified": "modified",
+            "active": true,
+            "specialRoles": [
+                "admin",
+                "superadmin",
+                "user"
+            ]
+        },
+        {
+            "fullName": "fullName",
+            "userName": "userName",
+            "email": "email",
+            "modified": "modified",
+            "active": true,
+            "specialRoles": [
+                "admin",
+                "superadmin",
+                "user"
+            ]
+        },
+        {
+            "fullName": "fullName",
+            "userName": "userName",
+            "email": "email",
+            "modified": "modified",
+            "active": true,
+            "specialRoles": [
+                "admin",
+                "superadmin",
+                "user"
+            ]
+        },
+        {
+            "fullName": "fullName",
+            "userName": "userName",
+            "email": "email",
+            "modified": "modified",
+            "active": true,
+            "specialRoles": [
+                "admin",
+                "superadmin",
+                "user"
+            ]
+        },
+        {
+            "fullName": "fullName",
+            "userName": "userName",
+            "email": "email",
+            "modified": "modified",
+            "active": false,
+            "specialRoles": [
+                "admin",
+                "superadmin",
+                "user"
+            ]
+        },
+        {
+            "fullName": "fullName",
+            "userName": "userName",
+            "email": "email",
+            "modified": "modified",
+            "active": true,
+            "specialRoles": [
+                "admin",
+                "superadmin",
+                "user"
+            ]
+        },
+        {
+            "fullName": "fullName",
+            "userName": "userName",
+            "email": "email",
+            "modified": "modified",
+            "active": true,
+            "specialRoles": [
+                "admin",
+                "superadmin",
+                "user"
+            ]
+        },
+        {
+            "fullName": "fullName",
+            "userName": "userName",
+            "email": "email",
+            "modified": "modified",
+            "active": true,
+            "specialRoles": [
+                "admin",
+                "superadmin",
+                "user"
+            ]
+        },
+        {
+            "fullName": "fullName",
+            "userName": "userName",
+            "email": "email",
+            "modified": "modified",
+            "active": true,
+            "specialRoles": [
+                "admin",
+                "superadmin",
+                "user"
+            ]
+        },
+        {
+            "fullName": "fullName",
+            "userName": "userName",
+            "email": "email",
+            "modified": "modified",
+            "active": true,
+            "specialRoles": [
+                "admin",
+                "superadmin",
+                "user"
+            ]
+        }
+    ],
+    "massage": "Get all File Source's Objects",
+    "status": "success"
+}
