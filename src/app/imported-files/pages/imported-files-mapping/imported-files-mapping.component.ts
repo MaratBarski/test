@@ -3,7 +3,7 @@ import {DateService, PopupComponent, SelectOption, SwitchButtonModel, TableCompo
 import {ImportedFilesService} from '../../services/imported-files.service';
 import {Store} from '@ngrx/store';
 import {FileClm, FileSource} from '../../models/file-source';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Template} from '@app/models/template';
 import {Hierarchy} from '@app/models/hierarchy';
 import {FormArray, FormBuilder, FormGroup} from '@angular/forms';
@@ -25,6 +25,7 @@ export class ImportedFileMappingComponent implements OnInit, OnDestroy {
   templateSelectOptions: SelectOption[] = [];
   hierarchySelectOptions: SelectOption[] = [];
   opened = false;
+  columnType = ColumnType;
 
   @ViewChild('popupMenu', {static: true}) popupMenu: PopupComponent;
   @ViewChild('table', {static: true}) table: TableComponent;
@@ -35,6 +36,7 @@ export class ImportedFileMappingComponent implements OnInit, OnDestroy {
     private importedFilesMappingService: ImportedFilesMappingService,
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
+    private router: Router,
   ) {
     this.fileSource = this.route.snapshot.data.data[0];
     this.templates = this.route.snapshot.data.data[1];
@@ -142,43 +144,15 @@ export class ImportedFileMappingComponent implements OnInit, OnDestroy {
     });
   }
 
-  getSampleData(columnIndex) {
-    debugger;
-    const colIndex = 'col_' + (columnIndex + 1);
-    const fileName = this.fileSource.fileNameAlias;
-    const filePath = this.fileSource.filePath;
-    const fileId = this.fileSource.fileId;
-    let coltype: string;
-    if (this.fileSource.fileClms[columnIndex].propertyType === 0) {
-      coltype = 'string';
-    } else if (this.fileSource.fileClms[columnIndex].propertyType === 1) {
-      coltype = 'number';
-    } else if (this.fileSource.fileClms[columnIndex].propertyType === 2) {
-      coltype = 'date';
-    }
-
-    return this.importedFilesMappingService.getSampleData({
-      fileId,
-      colIndex,
-      fileName,
-      filePath,
-      coltype
-    }).pipe(map(data => {
-      if (data.success === 'success') {
-        return data.percent;
-      } else {
-        return 0;
-      }
-    })).subscribe(data => {
-      (this.fileSourceForm.get('fileClms') as FormArray).controls[columnIndex].get('percent').setValue(data);
-    });
+  getSampleData(str) {
+    return str.replace(/%sep%/g, ', ');
   }
 
   saveFileSource() {
     this.importedFilesMappingService.saveMappedData(this.fileSourceForm.getRawValue()).subscribe(responce => {
-      console.log(responce);
+      this.router.navigateByUrl('/imported-files');
     });
-    console.log(this.fileSourceForm.getRawValue());
-    console.log(this.fileSourceForm);
+    /*console.log(this.fileSourceForm.getRawValue());
+    console.log(this.fileSourceForm);*/
   }
 }

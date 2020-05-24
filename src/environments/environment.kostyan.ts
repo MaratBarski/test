@@ -22,5 +22,14 @@ export const environment = {
     historyReport: 'kostya/api/v1/session-history',
     downloadHistoryReport: 'moshe/api/v1/session-history/download',
     usageReport: 'kostya/api/v1/reporting/usage',
+    config: 'config',
+    usageActiveUsage: 'mdclone/api/v1/reporting/usage-active-users',
+    usageMonthlyUsage: 'mdclone/api/v1/reporting/usage-monthly-usage',
+    usagePerUser: 'mdclone/api/v1/reporting/usage-per-user',
+    usageTop10Users: 'mdclone/api/v1/reporting/usage-top-10-users',
+    usageCreatedUsers: 'mdclone/api/v1/reporting/usage-created-users',
+    usageSummaryTable: 'mdclone/api/v1/reporting/usage-summary-table',
+    usageRetantionTable: 'mdclone/api/v1/reporting/usage-retention-list',
+    usageCsvDownload: 'mdclone/api/v1/reporting/detailed-usage-report'
   }
 };
