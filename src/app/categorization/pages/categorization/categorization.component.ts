@@ -57,10 +57,6 @@ export class CategorizationComponent extends BaseSibscriber implements OnInit {
     map: (action: TableActionCommand) => {
       this.router.navigate(['/categorization/map-categories', { id: action.item.source.hierarchyRootId }]);
     },
-    replace: (action: TableActionCommand) => {
-      this.currentSource = action.item.source;
-      this.showUploadFile = true;
-    },
     download: (action: TableActionCommand) => {
       //alert(`${environment.serverUrl}${environment.endPoints.downloadCategory}/${action.item.source.hierarchyRootId}`)
       window.open(`${environment.serverUrl}${environment.endPoints.downloadCategory}/${action.item.source.hierarchyRootId}`)

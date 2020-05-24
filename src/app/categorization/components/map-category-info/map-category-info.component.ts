@@ -2,6 +2,7 @@ import { Component, Input, EventEmitter, Output } from '@angular/core';
 import { SelectOption } from '@appcore';
 import { CategorizationService } from '@app/categorization/services/categorization.service';
 import { Router } from '@angular/router';
+import { environment } from '@env/environment';
 
 @Component({
   selector: 'md-map-category-info',
@@ -37,6 +38,7 @@ export class MapCategoryInfoComponent {
 
   @Input() selectedCategory: SelectOption = { id: 0, text: 'Please select...' }
   categories: Array<SelectOption>;
+  showUploadFile = false;
 
   changeCategory(event: any): void {
     this.selectedCategory = event;
@@ -53,17 +55,22 @@ export class MapCategoryInfoComponent {
 
   onChangeUploadFile(event: any): void {
     this.showUploadFile = false;
+    this.categories = [];
+    if (event.categoryHeaders && event.categoryHeaders.length) {
+      this.categories = event.categoryHeaders.map((x: any, i: number) => { return { id: i, text: x } });
+      let defaultCategory = parseInt(event.defaultCategory);
+      if (isNaN(defaultCategory)) { defaultCategory = 0; }
+      this.selectedCategory = this.categories[defaultCategory];
+    }
     this.onHeadersChanged.emit(event);
   }
-
-  showUploadFile = false;
 
   replace(): void {
     this.showUploadFile = true;
   }
 
   download(): void {
-
+    window.open(`${environment.serverUrl}${environment.endPoints.downloadCategory}/${this.data.data.hierarchyRootId}`)
   }
 
   delete(): void {

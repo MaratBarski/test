@@ -38,7 +38,7 @@ export class UploadFileComponent {
   isFileError = false;
 
   get isValid(): boolean {
-    return !!this.fileName && !!this.file;
+    return (!!this.fileName || this.isEditMode) && !!this.file;
   }
 
   @Offline('http://localhost:57858/api/Config/')
@@ -74,11 +74,12 @@ export class UploadFileComponent {
       return;
     }
     const formData: FormData = this.createFormData();
-    this.reset();
     this.onChange.emit({
       formData: formData,
-      categoryHeaders: this.categoryHeaders
+      categoryHeaders: this.categoryHeaders,
+      defaultCategory: this.defaultCategory
     });
+    this.reset();
   }
 
   createFormData(): FormData {

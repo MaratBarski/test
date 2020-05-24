@@ -34,23 +34,9 @@ export class CategorizationService {
       actions: {
         links: [
           {
-            text: 'Review & Edit',
-            icon: 'ic-review-and-edit',
+            text: 'Edit',
+            icon: 'ic-edit',
             command: 'edit'
-          },
-          // {
-          //   text: 'Review & Map',
-          //   icon: 'ic-review-and-edit',
-          //   command: 'map'
-          //   , hidden: (source: any) => {
-          //     if (!source.status) { return true; }
-          //     return source.status !== 'unmapped';
-          //   }
-          // },
-          {
-            text: 'Replace Categorization File',
-            icon: 'ic-replace',
-            command: 'replace'
           },
           {
             text: 'Download',

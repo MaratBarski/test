@@ -19,7 +19,8 @@ export class MapCategoryTableComponent {
   }
   private _oldCategories = [];
 
-  newCategoryDefault = { hierarchyLevelName: '---new---', sortValue: -1, inUse: true };
+  oldNewDifCount = 0;
+  newCategoryDefault = { hierarchyLevelName: 'New Hierarchy name', sortValue: -1, inUse: true };
   categoryMap = [];
 
   @Input() set data(data: any) {
@@ -70,6 +71,7 @@ export class MapCategoryTableComponent {
   }
 
   initMap(): void {
+    this.oldNewDifCount = Math.max(0, this.categoryMap.length - this.oldCategories.length - 1);
     this.oldCategories.forEach((level: any, index: number) => {
       const oldCategory = this.findOldcategory(level);
       if (oldCategory) {
@@ -83,5 +85,9 @@ export class MapCategoryTableComponent {
 
   findOldcategory(level: any): any {
     return this.categoryMap.find((x: any) => x.hierarchyLevelName === level.hierarchyLevelName);
+  }
+
+  onUpdateMessage(message: string): void {
+    this._data.data.notificationMessage = message;
   }
 }

@@ -11,8 +11,8 @@ export class CategoryMessageComponent {
   showMessageBox = false;
   message = '';
 
-  @Input() showAnyMore = false;
   @Output() onUpdateMessage = new EventEmitter<string>();
+  @Input() oldNewDifCount = 0;
 
   constructor() { }
 
