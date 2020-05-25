@@ -158,7 +158,7 @@
                     <md-clm-type-switcher formControlName="propertyType"></md-clm-type-switcher>
                   </td>
                   <td class="admin-table__item d-none d-md-table-cell">
-                    <div class="select select_small" *ngIf="this.fileSourceForm.get('fileClms').controls[i].get('propertyType').value === columnType.Text">
+                    <div class="select select_small" *ngIf="this.fileSourceForm.get('fileClms').controls[i].get('propertyType').value === propertyType.String">
                       <mdc-select formControlName="hierarchyRootId" (changed)="getRelationalIntegrity($event, i)"
                                   [options]="hierarchySelectOptions" [isSmall]="true" [applyWidth]="false"></mdc-select>
                     </div>
@@ -170,7 +170,12 @@
                     </ng-container>
                   </td>
                   <td class="admin-table__item d-none d-lg-table-cell">
-                    <div class="admin-table__data-sample">{{getSampleData(fileSourceForm.get('fileClms').controls[i].get('dataSample').value)}}</div>
+                    <div class="admin-table__data-sample">{{getSampleData(fileSourceForm.get('fileClms').controls[i].get('dataSample').value)}}
+                      <!--<span class="tooltip">
+                        <span class="tooltip__content">
+                        {{getSampleData(fileSourceForm.get('fileClms').controls[i].get('dataSample').value)}}
+                      </span></span>-->
+                    </div>
                   </td>
                 </tr>
               </ng-container>

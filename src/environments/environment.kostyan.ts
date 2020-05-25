@@ -30,6 +30,7 @@ export const environment = {
     usageCreatedUsers: 'mdclone/api/v1/reporting/usage-created-users',
     usageSummaryTable: 'mdclone/api/v1/reporting/usage-summary-table',
     usageRetantionTable: 'mdclone/api/v1/reporting/usage-retention-list',
-    usageCsvDownload: 'mdclone/api/v1/reporting/detailed-usage-report'
+    usageCsvDownload: 'mdclone/api/v1/reporting/detailed-usage-report',
+    userList: 'mdclone/api/v1/users'
   }
 };

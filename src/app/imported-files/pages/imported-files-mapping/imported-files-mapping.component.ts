@@ -11,6 +11,7 @@ import {timer, Observable} from 'rxjs';
 import {ImportedFilesMappingService} from '@app/imported-files/services/imported-files-mapping.service';
 import {map} from 'rxjs/operators';
 import {ColumnType} from 'core';
+import { PropertyType } from '@app/imported-files/models/enum/PropertyType';
 
 @Component({
   selector: 'md-imported-files-mapping',
@@ -25,7 +26,7 @@ export class ImportedFileMappingComponent implements OnInit, OnDestroy {
   templateSelectOptions: SelectOption[] = [];
   hierarchySelectOptions: SelectOption[] = [];
   opened = false;
-  columnType = ColumnType;
+  propertyType = PropertyType;
 
   @ViewChild('popupMenu', {static: true}) popupMenu: PopupComponent;
   @ViewChild('table', {static: true}) table: TableComponent;
@@ -145,7 +146,8 @@ export class ImportedFileMappingComponent implements OnInit, OnDestroy {
   }
 
   getSampleData(str) {
-    return str.replace(/%sep%/g, ', ');
+    const tmp = str.split('%sep%').filter(item => item.length > 0);
+    return tmp.join(', ');
   }
 
   saveFileSource() {
