@@ -32,6 +32,21 @@
 		background: #3f0280;
 	}
 
+	&__item.disable,
+	&__item.disable:hover{
+		border-color: $color-light-grey;
+		color: $color-light-grey;
+		background: transparent;
+		cursor: auto;
+	}
+
+	&__item.active.disable,
+	&__item.active.disable:hover{
+		background: $color-light-grey;
+		color: #fff;
+		cursor: auto;
+	}
+
 	&__item:first-child{
 		border-top-left-radius: 15px;
 		border-bottom-left-radius: 15px;
