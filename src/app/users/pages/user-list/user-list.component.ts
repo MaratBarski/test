@@ -93,6 +93,7 @@ export class UserListComponent extends BaseSibscriber implements OnInit {
 
   changeEnvironment(option: SelectOption): void {
     this.currentEnvitonment = (option.id as string);
+    this.updateData();
   }
 
   closeUserDetailes(): void {
@@ -134,6 +135,9 @@ export class UserListComponent extends BaseSibscriber implements OnInit {
           return !!!row.source.specialRoles.find((x: any) => (x === 'superadmin' || x === 'admin'));
         }
         return false;
+      }).filter((row: TableRowModel) => {
+        if (this.currentEnvitonment === '0') { return true; }
+        return row.source.environments[this.currentEnvitonment];
       })
     };
   }

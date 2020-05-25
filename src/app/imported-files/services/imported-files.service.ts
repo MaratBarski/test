@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { FileSourceResponse, FileSource } from '../models/file-source';
 import { Offline } from 'src/app/shared/decorators/offline.decorator';
 import { environment } from '@env/environment';
+import { FileSourceStatus } from '../models/enum/FileSourceStatus';
 
 @Injectable({
   providedIn: 'root'
@@ -44,11 +45,9 @@ export class ImportedFilesService {
             text: 'Edit File Settings',
             icon: 'ic-edit',
             command: 'edit'
-            // ,hidden: (source) => {
-            //   if (!source.projectObj) { return false; }
-            //   return source.projectObj.projectName === 'ETL project';
-            // },
-            // disable: false
+            , disable: (source) => {
+              return source.fileStatus === FileSourceStatus.MAPPED;
+            }
           },
           {
             text: 'View output summary',

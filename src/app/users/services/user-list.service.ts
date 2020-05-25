@@ -18,6 +18,27 @@ export class UserListService {
     return this.dataService.get(this.getUrl);
   }
 
+  getUserRoles(projects: Array<any>): Array<string> {
+    const roles = projects.filter((p: any) => p.UserType).map((p: any) => p.UserType.userType ? p.UserType.userType.toLowerCase() : '');
+    const dict = {};
+    const res = [];
+    roles.forEach((x: any) => {
+      if (!dict[x]) {
+        dict[x] = true;
+        res.push(x);
+      }
+    });
+    return res;
+  }
+
+  getEnvironments(projects: Array<any>): any {
+    const res = {};
+    projects.forEach((p: any) => {
+      res['' + p.projectId] = p;
+    });
+    return res;
+  }
+
   createDataSource(users: Array<any>): TableModel {
     const data: TableModel = {
       actions: {
@@ -26,7 +47,7 @@ export class UserListService {
             text: 'Edit User',
             icon: 'ic-edit',
             command: 'edit'
-            ,hidden: (source) => {
+            , hidden: (source) => {
               return false;
             },
             disable: false
@@ -90,16 +111,18 @@ export class UserListService {
       rows: []
     }
     users.forEach((u, i) => {
+      const roles = this.getUserRoles(u.projects);
+      const environments = this.getEnvironments(u.projects)
       data.rows.push({
         cells: {
-          fullName: u.fullName,
-          userName: u.userName,
+          fullName: `${u.firstName} ${u.lastName}`,
+          userName: u.login,
           email: u.email,
-          modified: u.modified,
-          active: u.active,
-          specialRoles: u.specialRoles
+          modified: u.lastModifiedDate,
+          active: u.activated,
+          specialRoles: roles
         },
-        source: u,
+        source: { ...u, specialRoles: roles, environments: environments },
       })
     })
     return data;
