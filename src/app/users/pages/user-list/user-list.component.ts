@@ -136,7 +136,7 @@ export class UserListComponent extends BaseSibscriber implements OnInit {
         }
         return false;
       }).filter((row: TableRowModel) => {
-        if (this.currentEnvitonment === '0') { return true; }
+        if (!this.currentEnvitonment || this.currentEnvitonment === '0') { return true; }
         return row.source.environments[this.currentEnvitonment];
       })
     };

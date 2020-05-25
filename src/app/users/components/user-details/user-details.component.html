@@ -14,19 +14,22 @@
             <div class="admin-table-info__col">
                 <div class="admin-table-info__item">
                     <div class="admin-table-info__title">Created:</div>
-                    <div class="admin-table-info__val">Dec 05, 2018 14:32</div>
+                    <div class="admin-table-info__val">{{userInfo.createdDate|date}}</div>
                 </div>
                 <div class="admin-table-info__item">
                     <div class="admin-table-info__title">Active:</div>
-                    <div class="admin-table-info__val"><span class="admin-table-info__circle"></span></div>
+                    <div *ngIf="userInfo.activated" class="admin-table-info__val"><span class="admin-table-info__circle"></span></div>
                 </div>
             </div>
             <div class="admin-table-info__col">
                 <div class="admin-table-info__item">
                     <div class="admin-table-info__title">Modified:</div>
-                    <div class="admin-table-info__val">Dec 05, 2018 14:32</div>
+                    <div class="admin-table-info__val">{{userInfo.lastModifiedDate|date}}</div>
                 </div>
-                <div class="tag tag_light-red">Super Admin</div>
+                <ng-container *ngFor="let role of userInfo.specialRoles">
+                    <div *ngIf="role==='superadmin'" class="tag tag_light-red">Super Admin</div>
+                    <div *ngIf="role==='admin'" class="tag tag_blue">Admin</div>
+                </ng-container>
             </div>
         </div>
         <div class="table-detail-wrap">
@@ -40,15 +43,10 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td class="table-detail__item">Buttercup Hospital Central</td>
+                    <tr *ngFor="let env of userInfo.projects">
+                        <td class="table-detail__item">{{env.projectName}}</td>
                         <td class="table-detail__item">Original</td>
-                        <td class="table-detail__item">Researcher</td>
-                    </tr>
-                    <tr>
-                        <td class="table-detail__item">Buttercup Clincs</td>
-                        <td class="table-detail__item">Synthetic (4)</td>
-                        <td class="table-detail__item">Admin</td>
+                        <td class="table-detail__item">{{env.UserType?.userType}}</td>
                     </tr>
                 </tbody>
             </table>
@@ -64,20 +62,10 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td class="table-detail__item">Dianetes in elderly people</td>
-                        <td class="table-detail__item">Buttercup Hospital Central</td>
-                        <td class="table-detail__item">Open</td>
-                    </tr>
-                    <tr>
-                        <td class="table-detail__item">Diabetes general</td>
-                        <td class="table-detail__item">Buttercup Clincs</td>
-                        <td class="table-detail__item">Open</td>
-                    </tr>
-                    <tr>
-                        <td class="table-detail__item">Medications in community</td>
-                        <td class="table-detail__item">Buttercup Clincs</td>
-                        <td class="table-detail__item">Close</td>
+                    <tr *ngFor="let res of userInfo.researches">
+                        <td class="table-detail__item">{{res.researchName}}</td>
+                        <td class="table-detail__item">{{res.information}}</td>
+                        <td class="table-detail__item">{{res.researchStatus}}</td>
                     </tr>
                 </tbody>
             </table>
