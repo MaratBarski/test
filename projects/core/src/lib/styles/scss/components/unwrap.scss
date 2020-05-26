@@ -66,6 +66,12 @@
   }
 }
 
+.empty-block{
+	margin-top: 0;
+	&__head{margin-top: 10px;}
+	&__img{margin-top: 28px; margin-bottom: 23px;}
+}
+
 @media (max-width: 767px) {
 	.unwrap{
 		&__head{
