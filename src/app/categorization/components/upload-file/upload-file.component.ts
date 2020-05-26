@@ -70,15 +70,16 @@ export class UploadFileComponent {
 
   changeFile(event: any): void {
     event.preventDefault();
-    if (!this.isValid) {
-      return;
-    }
+    // if (!this.isValid) {
+    //   return;
+    // }
     const formData: FormData = this.createFormData();
     this.onChange.emit({
       formData: formData,
       categoryHeaders: this.categoryHeaders,
       defaultCategory: this.defaultCategory
     });
+    
     this.reset();
   }
 

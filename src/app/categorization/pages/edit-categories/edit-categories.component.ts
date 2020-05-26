@@ -15,9 +15,10 @@ import { MapCategoryTableComponent } from '@app/categorization/components/map-ca
 export class EditCategoriesComponent extends BaseSibscriber implements OnInit {
 
   get isValid(): boolean {
-    return this.categoryHeader && this.categoryHeader.isValid
-      && this.categoryInfo && this.categoryInfo.isValid
-      && this.categoryTable && this.categoryTable.isValid;
+    return true;
+    // return this.categoryHeader && this.categoryHeader.isValid
+    //   && this.categoryInfo && this.categoryInfo.isValid
+    //   && this.categoryTable && this.categoryTable.isValid;
   }
   selectedCategory: any;
   isLoading = false;
@@ -25,7 +26,7 @@ export class EditCategoriesComponent extends BaseSibscriber implements OnInit {
 
   @ViewChild('categoryHeader', { static: true }) categoryHeader: MapCategoryHeaderComponent;
   @ViewChild('categoryInfo', { static: true }) categoryInfo: MapCategoryInfoComponent;
-  @ViewChild('categoryTable', { static: true }) categoryTable: EditCategoryTableComponent;
+  @ViewChild('categoryTable', { static: false }) categoryTable: EditCategoryTableComponent;
   @ViewChild('mapCategoryTable', { static: false }) mapCategoryTable: MapCategoryTableComponent;
 
   constructor(
@@ -55,6 +56,14 @@ export class EditCategoriesComponent extends BaseSibscriber implements OnInit {
     if (!this.selectedCategory) { return; }
     if (!this.selectedCategory.data) { return; }
     if (!this.selectedCategory.data.hierarchyLevels) { return; }
+    if (this.mode === 'edit') {
+      this.updateCategory();
+      return;
+    }
+    this.replaceCategory();
+  }
+
+  private updateCategory(): void {
     const category = JSON.parse(JSON.stringify(this.selectedCategory));
     //alert(this.selectedCategory.data.notificationMessage);
     //alert(this.selectedCategory.data.description);
@@ -70,6 +79,13 @@ export class EditCategoriesComponent extends BaseSibscriber implements OnInit {
       this.editCategoryService.save(category).subscribe((res: any) => {
         this.isLoading = false;
       }));
+  }
+
+  private replaceCategory(): void {
+    //alert(this.mapCategoryTable.oldCategories);
+    //const formData = this.categoryHeader.fileData.formData;
+    //alert(this.categoryInfo.fileData.formData.get('file'));
+    //formData.append('file', this.categoryHeader.fileData);
   }
 
   cancel(): void {

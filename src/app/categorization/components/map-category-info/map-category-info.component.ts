@@ -53,6 +53,8 @@ export class MapCategoryInfoComponent {
     this.showUploadFile = false;
   }
 
+  fileData: any;
+  
   onChangeUploadFile(event: any): void {
     this.showUploadFile = false;
     this.categories = [];
@@ -62,6 +64,7 @@ export class MapCategoryInfoComponent {
       if (isNaN(defaultCategory)) { defaultCategory = 0; }
       this.selectedCategory = this.categories[defaultCategory];
     }
+    this.fileData = event;
     this.onHeadersChanged.emit(event);
   }
 
