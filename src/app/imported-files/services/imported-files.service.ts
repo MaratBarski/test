@@ -45,7 +45,8 @@ export class ImportedFilesService {
             text: 'Edit File Settings',
             icon: 'ic-edit',
             command: 'edit'
-            , disable: (source) => {
+            , checkDisabled: (source: any) => {
+              if (!source.fileStatus) { return false; }
               return source.fileStatus === FileSourceStatus.MAPPED;
             }
           },

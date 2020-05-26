@@ -47,10 +47,12 @@ export class UserListService {
             text: 'Edit User',
             icon: 'ic-edit',
             command: 'edit'
-            , hidden: (source) => {
+            , checkHidden: (source) => {
+              return false;
+            }
+            , checkDisabled: (source) => {
               return false;
             },
-            disable: false
           },
           {
             text: 'View User',

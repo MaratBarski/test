@@ -4,7 +4,7 @@
             "fileId": 337,
             "fileName": "if_mdclone.admin_337_20180809_14071.csv",
             "filePath": "E:\\\\files\\Data\\",
-            "fileStatus": null,
+            "fileStatus": "loaded_to_table",
             "fileNameAlias": "kostya test",
             "tag": "",
             "insertDate": "2020-05-09T11:09:24.000Z",
