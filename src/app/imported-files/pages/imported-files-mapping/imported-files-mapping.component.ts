@@ -11,7 +11,7 @@ import {timer, Observable} from 'rxjs';
 import {ImportedFilesMappingService} from '@app/imported-files/services/imported-files-mapping.service';
 import {map} from 'rxjs/operators';
 import {ColumnType} from 'core';
-import { PropertyType } from '@app/imported-files/models/enum/PropertyType';
+import {PropertyType} from '@app/imported-files/models/enum/PropertyType';
 
 @Component({
   selector: 'md-imported-files-mapping',
@@ -146,7 +146,7 @@ export class ImportedFileMappingComponent implements OnInit, OnDestroy {
   }
 
   getSampleData(str) {
-    const tmp = str.split('%sep%').filter(item => item.length > 0);
+    const tmp = str ? str.split('%sep%').filter(item => item.length > 0) : [];
     return tmp.join(', ');
   }
 
