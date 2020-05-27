@@ -42,6 +42,7 @@ export class UserListService {
 
   getEnvironments(projects: Array<any>): any {
     const res = {};
+    if (!projects) { return res; }
     projects.forEach((p: any) => {
       res['' + p.projectId] = p;
     });
