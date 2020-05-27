@@ -18,10 +18,19 @@ export class UserListService {
     return this.dataService.get(this.getUrl);
   }
 
-  getUserRoles(projects: Array<any>): Array<string> {
+  getUserRoles(user: any): Array<string> {
+    const projects = user.projects || [];
+    const authorities = user.authorities || [];
     const roles = projects.filter((p: any) => p.UserType).map((p: any) => p.UserType.userType ? p.UserType.userType.toLowerCase() : '');
     const dict = {};
+    if (authorities.find(x => {
+      if (!x.name) { return false; }
+      return (x.name.trim().trim().toUpperCase() === 'ROLE_SUPERADMIN');
+    })) {
+      dict['superadmin'] = true;
+    }
     const res = [];
+    if (dict['superadmin']) { res.push('superadmin'); }
     roles.forEach((x: any) => {
       if (!dict[x]) {
         dict[x] = true;
@@ -113,7 +122,7 @@ export class UserListService {
       rows: []
     }
     users.forEach((u, i) => {
-      const roles = this.getUserRoles(u.projects);
+      const roles = this.getUserRoles(u);
       const environments = this.getEnvironments(u.projects)
       data.rows.push({
         cells: {

@@ -27,7 +27,7 @@
                     "UserType": {
                         "userId": "1004",
                         "projectId": "2",
-                        "userType": "superadmin",
+                        "userType": "RESEARCHER",
                         "anonymityLevel": 4,
                         "numericScatterLimit": 0
                     }
