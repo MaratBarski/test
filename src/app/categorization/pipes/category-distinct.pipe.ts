@@ -6,7 +6,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class CategoryDistinctPipe implements PipeTransform {
 
   transform(value: Array<any>, ...args: any[]): any {
-    alert('')
+    // alert('')
     return value.filter(x => !x.inUse);
     //|| (i === newCategoryDefault && newCategoryDefault !== item.oldCategory)
   }
