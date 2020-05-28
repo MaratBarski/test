@@ -1,17 +1,13 @@
 import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {DateService, PopupComponent, SelectOption, SwitchButtonModel, TableComponent, TranslateService} from '@appcore';
-import {ImportedFilesService} from '../../services/imported-files.service';
-import {Store} from '@ngrx/store';
 import {FileClm, FileSource} from '../../models/file-source';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Template} from '@app/models/template';
 import {Hierarchy} from '@app/models/hierarchy';
 import {FormArray, FormBuilder, FormGroup} from '@angular/forms';
-import {timer, Observable} from 'rxjs';
 import {ImportedFilesMappingService} from '@app/imported-files/services/imported-files-mapping.service';
 import {map} from 'rxjs/operators';
-import {ColumnType} from 'core';
-import { PropertyType } from '@app/imported-files/models/enum/PropertyType';
+import {PropertyType} from '@app/imported-files/models/enum/PropertyType';
 
 @Component({
   selector: 'md-imported-files-mapping',
@@ -146,7 +142,7 @@ export class ImportedFileMappingComponent implements OnInit, OnDestroy {
   }
 
   getSampleData(str) {
-    const tmp = str.split('%sep%').filter(item => item.length > 0);
+    const tmp = str ? str.split('%sep%').filter(item => item.length > 0) : [];
     return tmp.join(', ');
   }
 
