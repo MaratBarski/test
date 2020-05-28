@@ -69,18 +69,5 @@ export class MapCategoryHeaderComponent {
       event.preventDefault();
     }
   }
-
-  showUploadFile = false;
-  showFileUpload(): void {
-    this.showUploadFile = true;
-  }
-  cancelUploadFile(): void {
-    this.showUploadFile = false;
-  }
-
-  onChangeUploadFile(event: any): void {
-    this.showUploadFile = false;
-    this.onHeadersChanged.emit(event);
-  }
 }
 
