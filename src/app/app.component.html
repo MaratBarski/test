@@ -1,5 +1,5 @@
 <mdc-svg-loader></mdc-svg-loader>
-<div *ngIf="configService.isLoaded" class="wrapper" [ngClass]="{'open-sidebar': componentService.showSideMenu}">
+<div *ngIf="configService.isLoaded" class="wrapper" [ngClass]="{'open-sidebar': componentService.showSideMenu, 'open-footer': this.componentService.showSideMenu && onFooterPage}">
   <mdc-main-header></mdc-main-header>
   <main class="main">
     <div class="content-page">

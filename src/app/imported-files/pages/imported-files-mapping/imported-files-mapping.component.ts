@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
-import {DateService, PopupComponent, SelectOption, SwitchButtonModel, TableComponent, TranslateService} from '@appcore';
+import {ComponentService, DateService, PopupComponent, SelectOption, SwitchButtonModel, TableComponent, TranslateService} from '@appcore';
 import {FileClm, FileSource} from '../../models/file-source';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Template} from '@app/models/template';
@@ -30,11 +30,13 @@ export class ImportedFileMappingComponent implements OnInit, OnDestroy {
   constructor(
     private translateService: TranslateService,
     private dateService: DateService,
+    public componentService: ComponentService,
     private importedFilesMappingService: ImportedFilesMappingService,
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
   ) {
+    this.componentService.onFooterPage.next(true);
     this.fileSource = this.route.snapshot.data.data[0];
     this.templates = this.route.snapshot.data.data[1];
     this.hierarchies = this.route.snapshot.data.data[2];

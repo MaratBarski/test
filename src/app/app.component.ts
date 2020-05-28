@@ -11,9 +11,13 @@ import { ConfigService } from './shared/services/config.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  onFooterPage = false;
   constructor(
     public componentService: ComponentService,
     public configService: ConfigService
   ) {
+    this.componentService.onFooterPage.subscribe(data => {
+      this.onFooterPage = data;
+    });
   }
 }
