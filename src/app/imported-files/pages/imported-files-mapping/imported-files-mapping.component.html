@@ -145,7 +145,7 @@
 
               <ng-container formArrayName="fileClms">
                 <tr class="admin-table__row" [formGroupName]="i"
-                    *ngFor="let clm of fileSourceForm.get('fileClms').controls; let i = index">
+                    *ngFor="let clm of fileSourceForm.get('fileClms')['controls']; let i = index">
                   <td class="admin-table__item d-none d-md-table-cell">
                     <mdc-check-box [text]="''" formControlName="isIncluded"></mdc-check-box>
                   </td>
@@ -158,19 +158,19 @@
                     <md-clm-type-switcher formControlName="propertyType"></md-clm-type-switcher>
                   </td>
                   <td class="admin-table__item d-none d-md-table-cell">
-                    <div class="select select_small" *ngIf="this.fileSourceForm.get('fileClms').controls[i].get('propertyType').value === propertyType.String">
+                    <div class="select select_small" *ngIf="this.fileSourceForm.get('fileClms')['controls'][i].get('propertyType').value === propertyType.String">
                       <mdc-select formControlName="hierarchyRootId" (changed)="getRelationalIntegrity($event, i)"
                                   [options]="hierarchySelectOptions" [isSmall]="true" [applyWidth]="false"></mdc-select>
                     </div>
                   </td>
                   <td class="admin-table__item admin-table__item_center d-none d-md-table-cell">
-                    <ng-container *ngIf="this.fileSourceForm.get('fileClms').controls[i].get('percent').value>-1">
+                    <ng-container *ngIf="this.fileSourceForm.get('fileClms')['controls'][i].get('percent').value>-1">
                       <mdc-progress-match
-                        [percentage]="this.fileSourceForm.get('fileClms').controls[i].get('percent').value"></mdc-progress-match>
+                        [percentage]="this.fileSourceForm.get('fileClms')['controls'][i].get('percent').value"></mdc-progress-match>
                     </ng-container>
                   </td>
                   <td class="admin-table__item d-none d-lg-table-cell">
-                    <div class="admin-table__data-sample">{{getSampleData(fileSourceForm.get('fileClms').controls[i].get('dataSample').value)}}
+                    <div class="admin-table__data-sample">{{getSampleData(fileSourceForm.get('fileClms')['controls'][i].get('dataSample').value)}}
                       <!--<span class="tooltip">
                         <span class="tooltip__content">
                         {{getSampleData(fileSourceForm.get('fileClms').controls[i].get('dataSample').value)}}

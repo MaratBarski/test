@@ -51,6 +51,11 @@ export class MyQueriesComponent implements OnInit {
     this.suggestions = this._suggestions.filter(x => x.name.toLowerCase().indexOf(text.toLowerCase()) > -1);
     this.searchText = text;
   }
+
+  selectItem($event){
+
+  }
+
   selectedItem: any;
   searchText: string;
 

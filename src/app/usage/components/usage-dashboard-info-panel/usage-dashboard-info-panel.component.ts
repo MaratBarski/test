@@ -83,7 +83,7 @@ export class UsageDashboardInfoPanelComponent extends BaseSibscriber implements 
     //this.usageRequestService.emit();
   }
 
-  initUsers(): void {
+  initUsers($event): void {
     this.onInitUsers.emit();
   }
 }

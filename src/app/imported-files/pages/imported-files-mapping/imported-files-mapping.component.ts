@@ -56,7 +56,7 @@ export class ImportedFileMappingComponent implements OnInit, OnDestroy {
     this.fileSourceForm = this.createFileSourceForm();
   }
 
-  private toggleShare() {
+  toggleShare() {
     this.opened = !this.opened;
   }
 
