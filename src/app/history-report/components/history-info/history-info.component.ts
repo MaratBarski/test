@@ -1,4 +1,5 @@
 import { Component, Input, Output, EventEmitter, HostListener } from '@angular/core';
+import { SessionHistory } from '@app/models/session-history';
 
 @Component({
   selector: 'md-history-info',
@@ -10,7 +11,7 @@ export class HistoryInfoComponent  {
   isOver = false;
 
   //todo session history modal 
-  @Input() category: any;
+  @Input() category: SessionHistory;
   @Output() onClose = new EventEmitter();
 
   closeInfo(): void {

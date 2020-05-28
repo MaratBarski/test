@@ -15,11 +15,11 @@
             <div class="admin-table-info__col">
                 <div class="admin-table-info__item">
                     <div class="admin-table-info__title">User:</div>
-                    <div class="admin-table-info__val">Lina Perez</div>
+                    <div class="admin-table-info__val">{{category?.login}}</div>
                 </div>
                 <div class="admin-table-info__item">
                     <div class="admin-table-info__title">Source:</div>
-                    <div class="admin-table-info__val">Query</div>
+                    <div class="admin-table-info__val">{{category?.source }}</div>
                 </div>
                 <div class="admin-table-info__item">
                     <div class="admin-table-info__title">Query/File Name:</div>
@@ -40,29 +40,26 @@
                 </div>
                 <div class="admin-table-info__item">
                     <div class="admin-table-info__title">Data:</div>
-                    <div class="admin-table-info__val">Original data</div>
+                    <div class="admin-table-info__val">{{category?.data}}</div>
                 </div>
             </div>
         </div>
         <div class="admin-table-info__item">
             <div class="admin-table-info__title">Research:</div>
-            <div class="admin-table-info__val">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod
-            </div>
+            <div class="admin-table-info__val">{{category?.researchName}}</div>
         </div>
         <div class="admin-table-info__item">
             <div class="admin-table-info__title">Research Description:</div>
-            <div class="admin-table-info__val">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod
-                bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales
-                pulvinar sic tempor. Sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+            <div class="admin-table-info__val">{{category?.information}}
             </div>
         </div>
         <div class="admin-table-info__item">
             <div class="admin-table-info__title">Approval Key:</div>
-            <div class="admin-table-info__val">12345678901234567890</div>
+            <div class="admin-table-info__val">{{category?.approvalKey}}</div>
         </div>
         <div class="admin-table-info__item">
             <div class="admin-table-info__title">Environment:</div>
-            <div class="admin-table-info__val">R Test Project</div>
+            <div class="admin-table-info__val">{{category?.projectName}}</div>
         </div>
     </div>
 </div>
