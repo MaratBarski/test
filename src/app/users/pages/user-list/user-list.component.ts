@@ -40,10 +40,12 @@ export class UserListComponent extends BaseSibscriber implements OnInit {
     private router: Router,
     private loginService: LoginService,
     private userListService: UserListService,
-    private sortService: SortService
+    private sortService: SortService,
+    private componentService: ComponentService
   ) {
     super();
     this.navigationService.currentPageID = PageInfo.ManageUsers.id;
+    this.componentService.onFooterPage.next(false);
   }
 
   addUserOpen(): void {
