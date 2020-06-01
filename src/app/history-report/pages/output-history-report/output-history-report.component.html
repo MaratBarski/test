@@ -6,7 +6,7 @@
 <md-page-body>
     <div class="admin-table-wrap__action">
         <div class="admin-table-wrap__col">
-            <mdc-download #downloader [fileName]="downloadFileName" text="Download Report"></mdc-download>
+            <mdc-download #downloader [fileName]="downloadFileName" (click)="changeFileName()" text="Download Report"></mdc-download>
         </div>
         <div class="admin-table-wrap__col">
             <div class="tabs-page">

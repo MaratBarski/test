@@ -59,5 +59,10 @@ export class OutputHistoryReportComponent extends BaseSibscriber implements OnIn
   closeCategoryInfo(): void {
     this.table.closeRowInfo();
   }
+
+  changeFileName(): void{
+    this.downloadFileName = "test.csv";
+  }
+
 }
 
