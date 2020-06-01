@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { HistoryReportService } from '../../services/history-repost.service';
-import { TableComponent, TableModel, NavigationService, PageInfo, BaseSibscriber, EmptyState, DateRangeButton, DatePeriod } from '@app/core-api';
+import { DownloadComponent, TableComponent, TableModel, NavigationService, PageInfo, BaseSibscriber, EmptyState, DateRangeButton, DatePeriod } from '@appcore';
 import { SessionHistory } from '@app/models/session-history';
 import { environment } from '@env/environment';
+
 
 @Component({
   selector: 'md-output-history-report',
@@ -13,11 +14,13 @@ export class OutputHistoryReportComponent extends BaseSibscriber implements OnIn
 
   get downloadUrl(): string { return environment.serverUrl + environment.endPoints.downloadHistoryReport + '/' };
   @ViewChild('table', { static: true }) table: TableComponent;
+  @ViewChild('downloader', { static: true }) downloader: DownloadComponent;
   emptyState: EmptyState = {
     title: 'Looks like everyone is resting. Wait until the users will start working.',
     subTitle: 'Users’ output activity will be listed here.',
     image: 'output-history-2-x.png'
   }
+
   downloadFileName = 'history.csv';
   searchOptions = ['source', 'fullName', 'environment', 'source'];
   dataOrigin: TableModel;
@@ -60,9 +63,9 @@ export class OutputHistoryReportComponent extends BaseSibscriber implements OnIn
     this.table.closeRowInfo();
   }
 
-  changeFileName(): void{
-    this.downloadFileName = "test.csv";
+  changeFileName():void{
+    const date = new Date();
+    this.downloader.fileName = `${date.getFullYear()}${date.getMonth()}${date.getDate()}${date.getHours()}${date.getMinutes()}${date.getSeconds()}.csv`
   }
-
 }
 
