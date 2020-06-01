@@ -23,7 +23,7 @@ export class HistoryReportService {
   constructor(private dataService: DataService, private http: HttpClient) { }
 
   @Offline('assets/offline/history.json')
-  private getUrl = `${environment.serverUrl}${environment.endPoints.historyReport}`;
+  private getUrl = `${environment.serverUrl}${environment.endPoints.historyReport}`+ '/retrieveList';
 
   load(): Observable<SessionHistoryResponse> {
     return this.dataService.get(this.getUrl);
@@ -43,11 +43,11 @@ export class HistoryReportService {
           // hidden: true
         },
         {
-          columnId: 'fullName',
+          columnId: 'login',
           text: 'User',
           isSortEnabled: true,
           filter: true,
-          csvTitle: 'User name'
+          csvTitle: 'User'
         },
         {
           columnId: 'name',
@@ -108,10 +108,10 @@ export class HistoryReportService {
         cells: {
           name: i,
           insertDate: fl.insertDate,
-          fullName: fl.user ? `${fl.user.firstName} ${fl.user.lastName}` : '',
-          approvalKey: !!fl.userActivateSession ? fl.userActivateSession.approval_number : "",
-          research: "Missing",
-          data: "Missing",
+          login: fl.login,
+          data: fl.data,
+          approvalKey: fl.approvalKey,
+          research: fl.researchName,
           environment: fl.projectName,
           source: !!fl.sessionId ? "Query" : "Imported file",
           status: !!fl.transStatus ? "True" : "False",

@@ -2,8 +2,10 @@
     <div class="admin-table-info__top">
         <div class="admin-table-info__head">Details</div>
         <div class="admin-table-info__icons">
-            <span class="ic-hover">
-                <svg mdcSvg="ic-download"></svg>
+            <span>
+                <a href="{{downloadUrl}}{{_category?.sessionHistoryId}}">
+                    <svg width="30" height="30" mdcSvg="ic-download" color="gray"></svg> 
+                </a>
             </span>
             <span (click)="closeInfo()" class="ic-hover">
                 <svg width="12" height="12" mdcSvg="ic-close"></svg>
@@ -14,55 +16,58 @@
         <div class="admin-table-info__main">
             <div class="admin-table-info__col">
                 <div class="admin-table-info__item">
-                    <div class="admin-table-info__title">User:</div>
-                    <div class="admin-table-info__val">Lina Perez</div>
+                    <div class="admin-table-info__title">Full Name:</div>
+                    <div class="admin-table-info__val">{{_category?.login}}</div>
                 </div>
                 <div class="admin-table-info__item">
                     <div class="admin-table-info__title">Source:</div>
-                    <div class="admin-table-info__val">Query</div>
+                    <div class="admin-table-info__val">{{ source }}</div>
                 </div>
                 <div class="admin-table-info__item">
                     <div class="admin-table-info__title">Query/File Name:</div>
-                    <div class="admin-table-info__val">Diabetes for kids with type 1 and meds</div>
+                    <div class="admin-table-info__val">{{ queryOrFileName }}</div>
                 </div>
             </div>
             <div class="admin-table-info__col">
                 <div class="admin-table-info__item">
                     <div class="admin-table-info__title">Username:</div>
-                    <div class="admin-table-info__val">{{category?.userId}}</div>
+                    <div class="admin-table-info__val">{{_category?.userId}}</div>
                 </div>
                 <div class="admin-table-info__item">
                     <div class="admin-table-info__title">Query ID:</div>
-                    <div class="admin-table-info__val"><a class="file-count" href="#"><span
-                                class="file-count__val">7680</span>
-                            <mdc-icon path="ic-external-link"></mdc-icon>
-                        </a></div>
+                    <div class="admin-table-info__val" *ngIf="_category?.sessionId">
+                        <div *ngIf="_category?.sessionId" class="display-flex">
+                            <a target="_blank" href="/datalake/#/projects/{{_category.projectId}}/sessions/{{_category.sessionId}}">
+                                <span>{{_category?.sessionId}}</span>
+                            </a>
+                            <a target="_blank" href="/datalake/#/projects/{{_category.projectId}}/sessions/{{_category.sessionId}}">
+                                <svg width="17" height="17" mdcSvg="ic-add-help" color="#0596ff"></svg> 
+                            </a>
+                        </div>
+                     </div>
                 </div>
                 <div class="admin-table-info__item">
                     <div class="admin-table-info__title">Data:</div>
-                    <div class="admin-table-info__val">Original data</div>
+                    <div class="admin-table-info__val">{{_category?.data}}</div>
                 </div>
             </div>
         </div>
         <div class="admin-table-info__item">
             <div class="admin-table-info__title">Research:</div>
-            <div class="admin-table-info__val">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod
-            </div>
+            <div class="admin-table-info__val">{{_category?.researchName}}</div>
         </div>
         <div class="admin-table-info__item">
             <div class="admin-table-info__title">Research Description:</div>
-            <div class="admin-table-info__val">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod
-                bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales
-                pulvinar sic tempor. Sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+            <div class="admin-table-info__val">{{_category?.information}}
             </div>
         </div>
         <div class="admin-table-info__item">
             <div class="admin-table-info__title">Approval Key:</div>
-            <div class="admin-table-info__val">12345678901234567890</div>
+            <div class="admin-table-info__val">{{_category?.approvalKey}}</div>
         </div>
         <div class="admin-table-info__item">
             <div class="admin-table-info__title">Environment:</div>
-            <div class="admin-table-info__val">R Test Project</div>
+            <div class="admin-table-info__val">{{_category?.projectName}}</div>
         </div>
     </div>
 </div>
