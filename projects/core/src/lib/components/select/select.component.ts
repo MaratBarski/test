@@ -45,6 +45,7 @@ export class SelectComponent implements ControlValueAccessor, AfterViewInit {
   @ViewChild('optionsContainer', {static: true}) optionsContainer: ElementRef;
   @ViewChild('comboTextContainer', {static: true}) comboTextContainer: ElementRef;
 
+  @Input() disabled = false;
   @Input() isSmall = false;
   @Input() options: Array<SelectOption>;
   @Input() selected: SelectOption;
@@ -69,7 +70,9 @@ export class SelectComponent implements ControlValueAccessor, AfterViewInit {
   }
 
   mouseClick(event: any): void {
-    this.isExpanded = !this.isExpanded;
+    if (!this.disabled) {
+      this.isExpanded = !this.isExpanded;
+    }
   }
 
   blur() {
