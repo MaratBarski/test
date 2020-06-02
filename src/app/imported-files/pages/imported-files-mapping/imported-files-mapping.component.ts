@@ -1,14 +1,13 @@
-import {Component, OnInit, ViewChild, OnDestroy} from '@angular/core';
-import {TableComponent, TranslateService, DateService, TabItemModel, TableModel, MenuLink, PopupComponent, SelectOption} from '@appcore';
-import {ImportedFilesService} from '../../services/imported-files.service';
-import {Store} from '@ngrx/store';
-import {load} from '../../store/actions/imported-files.actions';
-import {selectData} from '../../store/selectors/imported-files.selector';
+import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {ComponentService, DateService, PopupComponent, SelectOption, SwitchButtonModel, TableComponent, TranslateService} from '@appcore';
 import {FileClm, FileSource} from '../../models/file-source';
-import {Subscription} from 'rxjs';
-import {UploadService} from '@app/shared/services/upload.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Template} from '@app/models/template';
+import {Hierarchy} from '@app/models/hierarchy';
+import {FormArray, FormBuilder, FormGroup} from '@angular/forms';
+import {ImportedFilesMappingService} from '@app/imported-files/services/imported-files-mapping.service';
+import {map} from 'rxjs/operators';
+import {PropertyType} from '@app/imported-files/models/enum/PropertyType';
 
 @Component({
   selector: 'md-imported-files-mapping',
@@ -17,20 +16,31 @@ import {Template} from '@app/models/template';
 })
 export class ImportedFileMappingComponent implements OnInit, OnDestroy {
   fileSource: FileSource;
+  fileSourceForm: FormGroup;
   templates: Template[] = [];
+  hierarchies: Hierarchy[] = [];
   templateSelectOptions: SelectOption[] = [];
+  hierarchySelectOptions: SelectOption[] = [];
+  opened = false;
+  propertyType = PropertyType;
+
   @ViewChild('popupMenu', {static: true}) popupMenu: PopupComponent;
   @ViewChild('table', {static: true}) table: TableComponent;
 
   constructor(
     private translateService: TranslateService,
     private dateService: DateService,
-    private importedFilesService: ImportedFilesService,
-    private store: Store<any>,
-    private route: ActivatedRoute
+    public componentService: ComponentService,
+    private importedFilesMappingService: ImportedFilesMappingService,
+    private formBuilder: FormBuilder,
+    private route: ActivatedRoute,
+    private router: Router,
   ) {
+    this.componentService.onFooterPage.next(true);
     this.fileSource = this.route.snapshot.data.data[0];
     this.templates = this.route.snapshot.data.data[1];
+    this.hierarchies = this.route.snapshot.data.data[2];
+
     this.templates.forEach(item => {
       const tmp: SelectOption = new SelectOption();
       tmp.id = item.templateId;
@@ -38,106 +48,111 @@ export class ImportedFileMappingComponent implements OnInit, OnDestroy {
       this.templateSelectOptions.push(tmp);
     });
 
+    this.hierarchies.forEach(item => {
+      const tmp: SelectOption = new SelectOption();
+      tmp.id = item.hierarchyRootId;
+      tmp.text = item.hierarchyName;
+      this.hierarchySelectOptions.push(tmp);
+    });
 
-    console.log(this.fileSource);
-    console.log(this.templates);
+    this.fileSourceForm = this.createFileSourceForm();
   }
 
-  deleteLink: MenuLink = {
-    text: 'Delete',
-    disable: false,
-    icon: 'ic-delete',
-    source: 'test',
-    click: (source) => {
-      this.dataSource = {
-        ...this.dataSource, ...{
-          rows: this.dataSource.rows.filter(r => r.cells.No !== source.No)
-        }
-      };
-    }
-  };
-
-  editLink: MenuLink = {
-    text: 'Edit',
-    icon: 'ic-edit',
-    click: (source) => {
-      console.log(JSON.stringify(source));
-    }
-  };
-
-  viewLink: MenuLink = {
-    text: 'View output summary',
-    icon: 'ic-view',
-    click: (source) => {
-      console.log(JSON.stringify(source));
-    }
-  };
-
-  sublinks: Array<MenuLink> = [this.deleteLink];
-  links: Array<MenuLink> = [
-    this.editLink,
-    this.viewLink
-  ];
-
-  tabs: Array<TabItemModel>;
-  tabActive = 0;
-  serachText = '';
-  showUploadFile = false;
-  dataOrigin: TableModel;
-  dataSource: TableModel;
-  subscriptions: Array<Subscription> = [];
-
-  searchComplete(text: string): void {
-    //this.table.resetPaginator();
-    //this.serachText = text;
+  toggleShare() {
+    this.opened = !this.opened;
   }
 
-  selectTab(tab: number): void {
-    this.tabActive = tab;
-    let rows = this.dataOrigin.rows;
-    if (this.tabActive === 1) {
-      rows = this.dateService.lastMonth(rows, 'insertDate');
-    } else if (this.tabActive === 2) {
-      rows = this.dateService.lastWeek(rows, 'insertDate');
-    }
-    this.dataSource = {...this.dataOrigin, rows: rows};
+  private createFileSourceForm(): FormGroup {
+    return this.formBuilder.group({
+      fileId: [this.fileSource.fileId],
+      fileName: [this.fileSource.fileName],
+      filePath: [this.fileSource.filePath],
+      fileNameAlias: [this.fileSource.fileNameAlias],
+      tag: [this.fileSource.tag],
+      insertDate: [this.fileSource.insertDate],
+      templateId: [this.fileSource.templateId],
+      tableName: [this.fileSource.tableName],
+      project: [this.fileSource.tableName],
+      uploadedBy: [this.fileSource.uploadedBy],
+      fileType: [this.fileSource.fileType],
+      fileClms: this.buildClmFormArray(),
+      rowsNum: [this.fileSource.rowsNum],
+      columnsNum: [this.fileSource.columnsNum],
+    });
+  }
+
+  private buildClmFormArray(): FormArray {
+    const formArray: FormArray = this.formBuilder.array([]);
+    this.fileSource.fileClms.forEach(clm => {
+      formArray.push(this.buildFileClmGroup(clm));
+    });
+    return formArray;
+  }
+
+  private buildFileClmGroup(item: FileClm): FormGroup {
+    return this.formBuilder.group({
+      fileId: [item.fileId],
+      fieldName: [item.fieldName],
+      propertyType: [item.propertyType],
+      description: [item.description],
+      dataSample: [item.dataSample],
+      hierarchyRootId: [item.hierarchyRootId],
+      isIncluded: [item.isIncluded],
+      physicalColName: [item.physicalColName],
+      defaultLevelId: [item.defaultLevelId],
+      defaultValue: [item.defaultValue],
+      percent: [-1],
+    });
   }
 
   ngOnDestroy(): void {
-    this.subscriptions.forEach(s => s.unsubscribe());
-  }
 
-  editClick(item: any, event: any): void {
-    this.deleteLink.source = item;
-    this.editLink.source = item;
-    this.viewLink.source = item;
-    this.popupMenu.target = event.target;
-    this.popupMenu.show(true, event);
   }
 
   ngOnInit() {
-
-    this.initTabs();
-    this.subscriptions.push(
-      this.store.select(selectData).subscribe((files: Array<FileSource>) => {
-        this.dataOrigin = this.dataSource = this.importedFilesService.createDataSource(files);
-      }));
-
-    this.store.dispatch(load());
+    // emit 0 after 1 second then complete, since no second argument is supplied
+    /*const source = timer(1000, 2000);
+    // output: 0
+    const subscribe = source.subscribe(val => {
+      console.log(val);
+      this.percent = Math.floor(Math.random() * 100);
+    });*/
   }
 
-  initTabs(): void {
-    this.tabs = [
-      {title: this.translateService.translate('All')},
-      {title: this.translateService.translate('LastMonth')},
-      {title: this.translateService.translate('LastWeek')}
-    ];
+  getRelationalIntegrity(hieId, columnIndex) {
+    const hierarchyId = hieId.id;
+    const colIndex = columnIndex + 1;
+    const fileName = this.fileSource.fileNameAlias;
+    const filePath = this.fileSource.filePath;
+    const numOfCols = this.fileSource.fileClms.length;
+    return this.importedFilesMappingService.checkRelationalIntegrity({
+      hierarchyId,
+      colIndex,
+      fileName,
+      filePath,
+      numOfCols,
+      fileId: this.fileSource.fileId
+    }).pipe(map(data => {
+      if (data.success === 'success') {
+        return data.percent;
+      } else {
+        return 0;
+      }
+    })).subscribe(data => {
+      (this.fileSourceForm.get('fileClms') as FormArray).controls[columnIndex].get('percent').setValue(data);
+    });
   }
 
-  cellClick(item: any): void {
-    alert(JSON.stringify(item));
+  getSampleData(str) {
+    const tmp = str ? str.split('%sep%').filter(item => item.length > 0) : [];
+    return tmp.join(', ');
   }
 
-  searchOptions = ['fileName'];
-
+  saveFileSource() {
+    this.importedFilesMappingService.saveMappedData(this.fileSourceForm.getRawValue()).subscribe(responce => {
+      this.router.navigateByUrl('/imported-files');
+    });
+    /*console.log(this.fileSourceForm.getRawValue());
+    console.log(this.fileSourceForm);*/
+  }
 }

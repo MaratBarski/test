@@ -31,8 +31,10 @@
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss",
-              "./projects/core/src/lib/styles/scss/main.scss"
-              // "./node_modules/@mdclone/core/styles/scss/main.scss"
+              "./projects/core/src/lib/styles/scss/main.scss",
+              "./node_modules/primeicons/primeicons.css",
+              "./node_modules/primeng/resources/themes/nova-light/theme.css",
+              "./node_modules/primeng/resources/primeng.min.css"
             ],
             "scripts": []
           },
@@ -74,6 +76,14 @@
                 {
                   "replace": "src/environments/environment.ts",
                   "with": "src/environments/environment.moshe.ts"
+                }
+              ]
+            },
+            "margarita": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.margarita.ts"
                 }
               ]
             },
@@ -131,6 +141,9 @@
             },
             "moshe": {
               "browserTarget": "mdclone-mainapp-ui:build:moshe"
+            },
+            "margarita": {
+              "browserTarget": "mdclone-mainapp-ui:build:margarita"
             }
           }
         },

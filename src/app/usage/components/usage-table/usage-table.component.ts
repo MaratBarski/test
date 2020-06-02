@@ -15,7 +15,7 @@ export class UsageTableComponent extends UsageBase {
 
   @Input() downloader: DownloadComponent;
   data: TableModel;
-  searchOptions = ['login', 'daysSinceLastLogin', 'environment'];
+  searchOptions = ['login', 'permission'];
 
   constructor(
     private usageDownloadService: UsageDownloadService,
@@ -27,8 +27,13 @@ export class UsageTableComponent extends UsageBase {
   ) {
     super();
     super.dataSourceReady = () => {
-      this.data = this.usageService.createDataSource(this.dataSource.data);
+      this.data = this.usageService.createSummaryDataSource(this.dataSource);
     }
+
+    super.add(
+      this.usageRequestService.onSelectUserChange.subscribe(() => {
+        this.data = this.usageService.createSummaryDataSource(this.dataSource);
+      }));
 
     this.usageDownloadService.toCSV = () => this.toCSV();
     this.usageDownloadService.toPDF = () => this.toPDF();
@@ -53,12 +58,15 @@ export class UsageTableComponent extends UsageBase {
     this.usageDownloadService.downloadPDF(this.downloadData);
   }
 
-
   private toCSV(): void {
     alert('TableModel csv');
   }
 
   createReport(): void {
-    super.responseData = this.usageService.getUsageReport();
+    super.responseData = this.chartService.getSummaryTable();
+    // super.add(
+    //   super.responseData.subscribe(res => {
+    //     this.data = this.usageRequestService.createData(res.data);
+    //   }));
   }
 }

@@ -12,7 +12,7 @@ import { ChartPdfComponent } from '../chart-pdf/chart-pdf.component';
   templateUrl: './usage-created.component.html',
   styleUrls: ['./usage-created.component.scss']
 })
-export class UsageCreatedComponent extends UsageBase  {
+export class UsageCreatedComponent extends UsageBase {
 
   view: undefined;// any[] = [600, 400];
   showXAxis = true;
@@ -26,7 +26,7 @@ export class UsageCreatedComponent extends UsageBase  {
   timeline = true;
 
   colorScheme = {
-    domain: ['#5B9BD5']
+    domain: ['#03CFA3']
   };
 
   pdfChartWidth = '500px';
@@ -36,10 +36,10 @@ export class UsageCreatedComponent extends UsageBase  {
   constructor(
     private usageDownloadService: UsageDownloadService,
     protected componentService: ComponentService,
-    protected usageService: UsageService, 
+    protected usageService: UsageService,
     protected chartService: ChartService,
     public usageRequestService: UsageRequestService
-    ) {
+  ) {
     super();
 
     this.usageDownloadService.toCSV = () => this.toCSV();
@@ -70,7 +70,7 @@ export class UsageCreatedComponent extends UsageBase  {
 
     this.usageDownloadService.downloadPDF(this.downloadData);
   }
-  
+
   private toCSV(): void {
     alert('created csv');
   }

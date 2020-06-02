@@ -5,10 +5,12 @@
         class="admin-table__sort-down"></span>
 </span>
 {{model.text}}
+<ng-container *ngIf="customFilter" [ngTemplateOutlet]="customFilter">
+</ng-container>
 <div *ngIf="model?.filter" class="admin-table-filter">
     <div class="admin-table-filter__icon" (click)="openFilter($event)">
         <span class="ic-hover">
-            <svg class="icon ic-filter ic-stroke" mdcSvg="ic-filter"></svg>
+            <svg [ngClass]="{'ic-stroke':isNoFiltered}" class="icon ic-filter" mdcSvg="ic-filter"></svg>
         </span>
     </div>
     <div #filterPopup *ngIf="filterOptions" (click)="stopEvent($event)" [style.visibility]="filterVisibility">

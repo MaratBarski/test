@@ -1,7 +1,7 @@
 <md-chart-pdf #chartPdf [chart]="chart" [width]="pdfChartWidth" [height]="pdfChartHeight"></md-chart-pdf>
 
 <ng-template #chart>
-    <ngx-charts-bar-vertical [view]="view" [scheme]="colorScheme" [barPadding]="10" [results]="dataSource|generalChart"
+    <ngx-charts-bar-vertical [showZero]="false" [animations]="false" [roundEdges]="false" [rotateXAxisTicks]="false" [view]="view" [scheme]="colorScheme" [barPadding]="20" [results]="dataSource|generalChart"
         [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis" [showXAxisLabel]="showXAxisLabel"
         [showYAxisLabel]="true" [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" [legend]="false"
         [showDataLabel]="true">
@@ -14,14 +14,18 @@
             <div class="col-12">
                 <div class="graph">
                     <div class="graph__top">
-                        <div class="graph__head">Monthly General Usage<span
-                                class="tooltip tooltip_left tooltipnew tooltipnew_right" graphInfo.popup_status="">
-                                <span class="tooltip__content">Each bar represents the monthly number of users who
-                                    created at least one new query or downloaded a file.</span></span>
+                        <div class="graph__head">Active users<span class="graph__head-icon">
+                                <svg class="icon ic-help" mdcSvg="ic-help"></svg>
+                                <span class="tooltip tooltip_left" graphInfo.popup_status="">
+                                    <span class="tooltip__content">Each bar represents the monthly number of users who
+                                        created at least one new query or downloaded a file.</span>
+                                </span>
+                            </span>
                         </div>
                     </div>
                     <div class="graph__content">
-                        <div class="chart-wraper">
+                        <div [hidden]="!chartService.isLoading">Loading...</div>
+                        <div [mdcVisibility]="chartService.isLoaded" class="chart-wraper">
                             <ng-container [ngTemplateOutlet]="chart"></ng-container>
                         </div>
                     </div>

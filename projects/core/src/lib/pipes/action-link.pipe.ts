@@ -10,12 +10,11 @@ export class ActionLinkPipe implements PipeTransform {
   transform(links: Array<MenuLink>, row: TableRowModel): any {
     if (!row || !row.source) { return links; }
     return links.filter(link => {
-      if (!link.hidden) { return true; }
-      if (link.hidden === true) { return false; }
-      return !link.hidden(row.source);
+      if (link.checkHidden) { return !link.checkHidden(row.source); }
+      return !link.hidden;
     }).map(link => {
-      if (link.disable && link.disable !== false && link.disable !== true) {
-        link.disable = link.disable(row.source);
+      if (link.checkDisabled) {
+        link.disable = link.checkDisabled(row.source);
       }
       return link;
     });

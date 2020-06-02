@@ -1,6 +1,6 @@
-<div class="map-categories">
-    <md-map-category-header [data]="selectedCategory"></md-map-category-header>
+<div *ngIf="selectedCategory" class="map-categories">
+    <md-map-category-header [isMap]="true" (onHeadersChanged)="onHeadersChanged($event)" [data]="selectedCategory"></md-map-category-header>
     <md-map-category-info [data]="selectedCategory"></md-map-category-info>
-    <md-map-category-table [data]="selectedCategory"></md-map-category-table>
+    <md-map-category-table #mapCategoryTable [oldCategories]="oldCategories" [data]="selectedCategory"></md-map-category-table>
 </div>
-<md-page-fotter (onCancel)="cancel()" (onSave)="save()"></md-page-fotter>
+<md-page-fotter [isValid]="isValid" (onCancel)="cancel()" (onSave)="save()"></md-page-fotter>

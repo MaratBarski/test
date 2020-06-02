@@ -1,6 +1,11 @@
 import { Component, Input, EventEmitter, Output, HostListener } from '@angular/core';
+<<<<<<< HEAD
 import { Hierarchy } from '@app/models/hierarchy';
 import {environment} from '@env/environment';
+=======
+import { Hierarchy } from '@app/imported-files/models/hierarchy';
+import { environment } from '@env/environment';
+>>>>>>> development
 
 @Component({
   selector: 'md-category-info',
@@ -21,5 +26,9 @@ export class CategoryInfoComponent {
   @HostListener('document:click', ['$event']) onMouseClick(event: any) {
     if (this.isOver) { return; }
     this.closeInfo();
+  }
+
+  download(): void {
+    window.open(`${environment.serverUrl}${environment.endPoints.downloadCategory}/${this.category.hierarchyRootId}`)
   }
 }
