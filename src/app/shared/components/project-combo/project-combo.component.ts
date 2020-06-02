@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
-import { SelectOption, LoginService, BaseSibscriber, SortService } from '@appcore';
+import { SelectOption, LoginService, BaseSibscriber, SelectComponent } from '@app/core-api';
 
 @Component({
   selector: 'md-project-combo',
@@ -25,7 +25,7 @@ export class ProjectComboComponent extends BaseSibscriber implements OnInit {
 
   projectModel: any;
 
-  constructor(private loginService: LoginService, private sortService: SortService) {
+  constructor(private loginService: LoginService) {
     super();
   }
 
@@ -35,9 +35,7 @@ export class ProjectComboComponent extends BaseSibscriber implements OnInit {
         if (!ui || !ui.data || !ui.data.projects) { return; }
         this.selectOptions = ui.data.projects.map(x => {
           return { text: x.projectName, id: x.projectId, value: x };
-        }).sort((a, b) => {
-          return this.sortService.compareString(a.text, b.text, 'asc');
-        });;
+        });
         this.selectedOption = { ...this.emptyProject };
       }));
   }

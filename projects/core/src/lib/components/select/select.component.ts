@@ -1,18 +1,6 @@
-import {
-  Component,
-  Input,
-  Output,
-  EventEmitter,
-  HostListener,
-  ViewChild,
-  ElementRef,
-  forwardRef,
-  AfterContentInit,
-  AfterViewInit,
-  Renderer2
-} from '@angular/core';
-import {animation} from '../../animations/animations';
-import {NG_VALUE_ACCESSOR, ControlValueAccessor} from '@angular/forms';
+import { Component, Input, Output, EventEmitter, HostListener, ViewChild, ElementRef, forwardRef, AfterContentInit, AfterViewInit, Renderer2 } from '@angular/core';
+import { animation } from '../../animations/animations';
+import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
 export class SelectOption {
   id: string | number;
@@ -38,12 +26,11 @@ export const SELECT_VALUE_ACCESSOR: any = {
 })
 export class SelectComponent implements ControlValueAccessor, AfterViewInit {
 
-  constructor(private renderer2: Renderer2) {
-  }
+  constructor(private renderer2: Renderer2) { }
 
-  @ViewChild('combo', {static: true}) combo: ElementRef;
-  @ViewChild('optionsContainer', {static: true}) optionsContainer: ElementRef;
-  @ViewChild('comboTextContainer', {static: true}) comboTextContainer: ElementRef;
+  @ViewChild('combo', { static: true }) combo: ElementRef;
+  @ViewChild('optionsContainer', { static: true }) optionsContainer: ElementRef;
+  @ViewChild('comboTextContainer', { static: true }) comboTextContainer: ElementRef;
 
   @Input() isSmall = false;
   @Input() options: Array<SelectOption>;
@@ -65,7 +52,6 @@ export class SelectComponent implements ControlValueAccessor, AfterViewInit {
     this.selected = option;
     this.value = option.value;
     this.changed.emit(this.selected);
-    this.onChangeCallback(this.selected.id);
   }
 
   mouseClick(event: any): void {
@@ -76,10 +62,8 @@ export class SelectComponent implements ControlValueAccessor, AfterViewInit {
     this.isExpanded = false;
   }
 
-  onChangeCallback = (value: any) => {
-  };
-  onTouchedCallback = () => {
-  };
+  onChangeCallback = (value: any) => { };
+  onTouchedCallback = () => { };
 
   private _value: any;
 
@@ -95,10 +79,8 @@ export class SelectComponent implements ControlValueAccessor, AfterViewInit {
   }
 
   writeValue(value: any) {
-    // for id type number only
-    if (!isNaN(value)) {
-      value = Number(value);
-      this.selected = this.options.find((option: SelectOption) => Number(option.id) === value);
+    if (value !== this._value) {
+      this._value = value;
     }
   }
 
@@ -115,13 +97,9 @@ export class SelectComponent implements ControlValueAccessor, AfterViewInit {
   }
 
   private setWidth(): void {
-    if (!this.applyWidth) {
-      return;
-    }
+    if (!this.applyWidth) { return; }
     let width = this.optionsContainer ? this.optionsContainer.nativeElement.offsetWidth : 0;
-    if (width <= 0) {
-      return;
-    }
+    if (width <= 0) { return; }
     this.renderer2.setStyle(this.comboTextContainer.nativeElement, 'width', `${this.optionsContainer.nativeElement.offsetWidth}px`);
   }
 }

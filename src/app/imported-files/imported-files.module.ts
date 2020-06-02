@@ -14,8 +14,6 @@ import { SharedModule } from '@app/shared/shared.module';
 import { ImportedFilesMappingService } from './services/imported-files-mapping.service';
 import { SourceFileDeleteEffect } from './store/effects/imported-file-delete.effect';
 import { UploadFileComponent } from './components/upload-file/upload-file.component';
-import { ContenteditableValueAccessorDirective } from './pages/imported-files-mapping/directives/contenteditable.value.accessor.directive';
-import { ClmTypeSwitcherComponent } from './pages/imported-files-mapping/components/clm-type-switcher/clm-type-switcher.component';
 
 const routes: Array<Route> = [
   { path: '', component: ImportedFilesComponent },
@@ -28,9 +26,7 @@ const routes: Array<Route> = [
     ImportedFilesComponent,
     ImportedFileMappingComponent,
     MyQueriesComponent,
-    UploadFileComponent,
-    ContenteditableValueAccessorDirective,
-    ClmTypeSwitcherComponent
+    UploadFileComponent
   ],
   imports: [
     CommonModule,

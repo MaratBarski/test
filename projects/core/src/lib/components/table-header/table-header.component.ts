@@ -1,4 +1,4 @@
-import { Component, Input, EventEmitter, Output, ViewChild, ElementRef, HostListener, Renderer2, TemplateRef } from '@angular/core';
+import { Component, Input, EventEmitter, Output, ViewChild, ElementRef, HostListener, Renderer2 } from '@angular/core';
 import { CheckBoxListOption } from '../check-box-list/check-box-list.component';
 import { AnimationService } from '../../services/animation.service';
 import { BaseSibscriber } from '../../common/BaseSibscriber';
@@ -55,7 +55,6 @@ export class TableHeaderComponent extends BaseSibscriber {
 
   @ViewChild('filterPopup', { static: false }) filterPopup: ElementRef;
   @Input() model: TableHeaderModel;
-  @Input() customFilter: TemplateRef<any>;
   @Input() set filterOptions(filterOptions: Array<CheckBoxListOption>) {
     if (!filterOptions) { return; }
     this._filterOptions = filterOptions;
@@ -77,13 +76,10 @@ export class TableHeaderComponent extends BaseSibscriber {
     }
   }
 
-  isNoFiltered = true;
-
   applyFilter(): void {
     this._originOptions = JSON.parse(JSON.stringify(this._filterOptions));
     this.isShowFilter = false;
     this.onApplyFilter.emit(this);
-    this.isNoFiltered = !this._originOptions.find(x => !x.isChecked);
   }
 
   cancelFilter(): void {

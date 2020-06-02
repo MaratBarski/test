@@ -5,61 +5,49 @@
                 <table class="admin-table admin-table_white">
                     <thead>
                         <tr class="admin-table__head">
-                            <th class="admin-table__item">
-                                <!-- <span class="admin-table__sort">
-                                    <span class="admin-table__sort-up"></span>
-                                    <span class="admin-table__sort-down"></span>
-                                </span> -->
-                                New Category Name
-                            </th>
-                            <th class="admin-table__item d-none d-md-table-cell">
-                                Matched Category in Old Categorazation
-                            </th>
-                            <th class="admin-table__item d-none d-lg-table-cell">
-                                Data Sample
-                            </th>
+                            <th class="admin-table__item"><span class="admin-table__sort"><span
+                                        class="admin-table__sort-up"></span><span
+                                        class="admin-table__sort-down"></span></span>New Category Name</th>
+                            <th class="admin-table__item d-none d-md-table-cell">Matched Category in Old
+                                Categorazation</th>
+                            <th class="admin-table__item d-none d-lg-table-cell">Data Sample</th>
                         </tr>
                     </thead>
-                    <tbody *ngIf="categoryMap">
-                        <tr class="admin-table__row" *ngFor="let item of oldCategories;let index=index">
+                    <tbody *ngIf="data?.data?.hierarchyLevels">
+                        <tr class="admin-table__row" *ngFor="let item of data.data.hierarchyLevels;let index=index">
                             <td class="admin-table__item">
                                 <div class="admin-table__name-edit">
-                                    <input type="text" [(ngModel)]="item.hierarchyLevelName">
+                                    <input type="text" [(ngModel)]="item.newHierarchyLevelName">
                                 </div>
                             </td>
                             <td class="admin-table__item d-none d-md-table-cell">
-                                <div [ngClass]="{'error':item.oldCategory===newCategoryDefault}" class="select-wrap">
+                                <div class="select-wrap">
                                     <div class="select select_small select_full">
                                         <div (click)="selectItem($event,item,index)" class="select__head">
-                                            {{item.oldCategory.hierarchyLevelName}}
+                                            {{item.hierarchyLevelName}}
                                             <div class="select__head-arr">
-                                                <svg class="icon ic-select-arr-down" mdcSvg="ic-select-arr-down"></svg>
+                                                <svg class="icon ic-select-arr-down" mdcSvg="ic-select-arr-down">
+                                                </svg>
                                             </div>
                                         </div>
                                         <div id="select_{{index}}" [mdcVisibility]="selectedItem===item"
                                             class="select__option">
-                                            <ng-container *ngFor="let i of categoryMap">
-                                                <!-- <div *ngIf="!i.inUse || (i === newCategoryDefault && newCategoryDefault !== item.oldCategory)" (click)="changeOldCategory(i,item)" class="select__param"> 
-                                                {{i.hierarchyLevelName}}
-                                                 </div> -->
-                                                <div *ngIf="!i.inUse || (i === newCategoryDefault && newCategoryDefault !== item.oldCategory)" (click)="changeOldCategory(i,item)" class="select__param">
-                                                    {{i.hierarchyLevelName}}
-                                                </div>
-                                            </ng-container>
+                                            <div *ngFor="let item of data.data.hierarchyLevels"
+                                                (click)="changeOldCategory(item)" class="select__param">
+                                                {{item.hierarchyLevelName}}
+                                            </div>
                                         </div>
-                                        <span [hidden]="item.oldCategory!==newCategoryDefault" class="tooltip tooltip_left tooltip_red"><span class="tooltip__content">Missing Category</span></span>
                                     </div>
                                 </div>
                             </td>
-                            <!-- <td class="admin-table__item d-none d-lg-table-cell">
+                            <td class="admin-table__item d-none d-lg-table-cell">
                                 <div class="admin-table__data-sample">
-                                    {{item.newCategory.dataSample|replace:'%sep%':','}}
+                                    <mdc-text-block [text]="item.dataSample" [maxWidth]="300" position="right"></mdc-text-block>
                                 </div>
-                            </td> -->
+                            </td>
                         </tr>
                     </tbody>
                 </table>
-                <md-category-message [oldNewDifCount]="oldNewDifCount" (onUpdateMessage)="onUpdateMessage($event)"></md-category-message>
             </div>
         </div>
     </div>

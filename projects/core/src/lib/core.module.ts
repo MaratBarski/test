@@ -61,13 +61,7 @@ import { ActionLinkPipe } from './pipes/action-link.pipe';
 import { SvgDirective } from './directives/svg.directive';
 import { ProgressMatchComponent } from './components/progress-match/progress-match.component';
 import { FileUploaderComponent } from './components/file-uploader/file-uploader.component';
-import { NotificationsComponent } from './components/notifications/notifications.component';
-import { NotificationItemComponent } from './components/notification-item/notification-item.component';
-import { ShowNoticePipe } from './pipes/show-notice.pipe';
-import { ColorTextDirective } from './directives/color-text.directive';
-import { DialogModule } from 'primeng/dialog';
-import { CalendarModule } from 'primeng/calendar';
-import { CheckValidDatePipe } from './pipes/check-valid-date.pipe';
+
 // import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 
 @NgModule({
@@ -125,12 +119,7 @@ import { CheckValidDatePipe } from './pipes/check-valid-date.pipe';
     ActionLinkPipe,
     SvgDirective,
     ProgressMatchComponent,
-    FileUploaderComponent,
-    NotificationsComponent,
-    NotificationItemComponent,
-    ShowNoticePipe,
-    ColorTextDirective,
-    CheckValidDatePipe
+    FileUploaderComponent
   ],
   imports: [
     CommonModule,
@@ -138,8 +127,6 @@ import { CheckValidDatePipe } from './pipes/check-valid-date.pipe';
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule,
-    DialogModule,
-    CalendarModule,
     //BrowserModule,
     //BrowserAnimationsModule,
     StoreModule.forFeature('userInfo', user),
@@ -197,11 +184,7 @@ import { CheckValidDatePipe } from './pipes/check-valid-date.pipe';
     ActionLinkPipe,
     SvgDirective,
     ProgressMatchComponent,
-    FileUploaderComponent,
-    NotificationsComponent,
-    ShowNoticePipe,
-    ColorTextDirective,
-    CheckValidDatePipe
+    FileUploaderComponent
   ],
   entryComponents: [
     TableHeaderComponent,

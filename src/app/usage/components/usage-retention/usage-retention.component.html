@@ -9,12 +9,12 @@
                         </div>
                     </div>
                 </div>
-                <mdc-table #table [paginator]="paginator" [dataSource]="data|retention:{days:lastDays}"
+                <mdc-table #table [paginator]="paginator" [dataSource]="data"
                     [cellsTemplate]="{ lastlogin:lastlogin}">
                 </mdc-table>
                 <div class="pager-wrap">
                     <mdc-paginator #paginator noPagingTitle="Showing {0} users"
-                        paginationTitle="Showing {0} of {1} users" [blockSize]="3" [pageSize]="12" [currentPage]="0">
+                        paginationTitle="Showing {0} of {1} users" [blockSize]="3" [pageSize]="50" [currentPage]="0">
                     </mdc-paginator>
                 </div>
             </div>

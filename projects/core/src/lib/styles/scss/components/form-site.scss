@@ -61,8 +61,8 @@
 		border-color: $color-purple;
 	}
 
-	input[disabled],
-	textarea[disabled]{
+	input[disabled="disabled"],
+	textarea[disabled="disabled"]{
 		background: #fff;
 		color: $color-light-grey;
 	}
@@ -302,7 +302,7 @@
 // 	display: inline-block;
 // 	vertical-align: middle;
 
-//
+// 	
 
 // 	&__content{
 // 		display: inline-block;
@@ -514,33 +514,16 @@
 	&__search input[type="text"]::placeholder{font-weight: 300; color: $color-grey; opacity: 1;}
 	&__search input[type="text"]::-webkit-input-placeholder {font-weight: 300; color: $color-grey; opacity: 1;}
 	&__search input[type="text"]:-moz-placeholder {font-weight: 300; color: $color-grey; opacity: 1;}
-
+	
 	&__search input[type="text"]:focus{
 		border-color: $color-dark-purple;
 	}
 
-  //&:hover .select-filter{
-  //  display: block;
-  //}
-
-  &_no-border{
-    display: inline-block;
-    vertical-align: middle;
-    width: auto;
-  }
-
-  &_no-border &__head{
-    border: none;
-    padding: 0 25px 0 0;
-  }
-
-  &_no-border &__head-arr{width: 30px;}
-  &_no-border &__option{min-width: 150px;}
-
+	
 
 	// .form-search{
 	// 	width: 100%;
-
+		
 	// 	input[type="text"]{
 	// 		display: inline-block;
 	// 		height: rem(30px);
@@ -554,11 +537,11 @@
 	// 		border-bottom: 1px solid $color-grey;
 	// 		background: transparent;
 	// 	}
-
+		
 	// 	input[type="text"]::placeholder{font-weight: 300; color: $color-grey; opacity: 1;}
 	// 	input[type="text"]::-webkit-input-placeholder {font-weight: 300; color: $color-grey; opacity: 1;}
 	// 	input[type="text"]:-moz-placeholder {font-weight: 300; color: $color-grey; opacity: 1;}
-
+		
 	// 	input[type="text"]:focus{
 	// 		border-color: $color-dark-purple;
 	// 	}
@@ -611,35 +594,25 @@
 		font-weight: normal;
 	}
 
-  &__btn{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 0 -15px -20px;
-    padding: 24px 15px 21px;
-  }
+	&__btn{
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin: 0 -15px -20px;
+		padding: 25px 15px 20px;
+		box-shadow: -10px 9px 21px 13px rgba(128, 152, 213, 0.15)
+	}
 
-  &__btn_shadow{
-    box-shadow: -10px 9px 21px 13px rgba(128, 152, 213, 0.15)
-  }
+	&__params{
+		max-height: 212px;
+		overflow-y: auto;
+		margin-left: -8px;
+		margin-top: 12px;
+		padding-left: 8px;
+		border-top: 1px solid rgba(172, 178, 195,0.5);
+	}
 
-  &__params{
-    max-height: 180px;
-    overflow-y: auto;
-    margin-left: -8px;
-    padding-left: 8px;
-    margin-top: 11px;
-  }
-
-  .input-check__label{margin-bottom: 12px;}
-  &__top .input-check__label{margin-bottom: 0;}
-
-  &__label{
-    @include font(normal, normal, rem(14px), 1.43, $color-dark-grey);
-    margin-top: 10px;
-    border-bottom: 1px solid rgba(172, 178, 195,0.5);
-    padding-bottom: 9px;
-  }
+	.input-check__label{margin-bottom: 17px;}
 }
 
 .select-wrap.error{
@@ -676,7 +649,7 @@
 		position: relative;
 		cursor: pointer;
 		transition: all 0.3s ease;
-	}
+	} 
 
 	&__marker{
 		display: inline-block;
@@ -723,12 +696,12 @@
 	input[type="checkbox"]:checked + &__content &__marker::before{background: $color-dark-purple;}
 
 	input[type="checkbox"]:focus + &__content &__marker::before{display: inline-block;}
-	input[disabled]:focus + &__content &__marker::before{display: none;}
+	input[disabled="disabled"]:focus + &__content &__marker::before{display: none;}
 
 	&:hover input[type="checkbox"]:checked + &__content{background-color: rgba(83, 3, 168, 0.05);}
 
-	input[disabled] + &__content, &:hover input[disabled] + &__content{background: transparent; opacity: 0.5;}
-	input[disabled]:checked + &__content, &:hover input[disabled]:checked + &__content{background: transparent; opacity: 0.5;}
+	input[disabled="disabled"] + &__content, &:hover input[disabled="disabled"] + &__content{background: transparent; opacity: 0.5;}
+	input[disabled="disabled"]:checked + &__content, &:hover input[disabled="disabled"]:checked + &__content{background: transparent; opacity: 0.5;}
 }
 
 .share-form-sort{
@@ -853,7 +826,7 @@
 	input[type="text"]::placeholder{color: $color-light-grey;}
 	input[type="text"]:focus{border-color: $color-purple;}
 
-	input[disabled]{
+	input[disabled="disabled"]{
 		background: #fff;
 		color: $color-light-grey;
 	}

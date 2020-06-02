@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { TabItemModel } from 'core/public-api';
 import { UsageRequestService } from '@app/usage/services/usage-request.service';
-import { TabItemModel } from '@appcore';
 
 @Component({
   selector: 'md-user-time-activity',

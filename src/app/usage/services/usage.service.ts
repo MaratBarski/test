@@ -1,6 +1,13 @@
-import { Injectable } from '@angular/core';
-import { TableModel, ColumnType, DateService } from '@appcore';
+import { Injectable, LOCALE_ID, Inject } from '@angular/core';
+import { environment } from '@env/environment';
+import { Offline } from '@app/shared/decorators/offline.decorator';
+import { TableModel, ColumnType, DataService, DateService } from '@app/core-api';
+import { formatDate } from '@angular/common';
+import { Observable, of } from 'rxjs';
+import { switchMap, catchError, tap } from 'rxjs/operators';
+import { UsageReportParams } from '../models/usage-request';
 import { UsageRequestService } from './usage-request.service';
+
 
 @Injectable({
   providedIn: 'root'
@@ -8,14 +15,43 @@ import { UsageRequestService } from './usage-request.service';
 export class UsageService {
 
   constructor(
+    private dataService: DataService,
     private dateService: DateService,
-    private usageRequestService: UsageRequestService
+    private usageRequestService: UsageRequestService,
+    @Inject(LOCALE_ID) private locale: string
   ) {
   }
 
-  createSummaryDataSource(files: Array<any>): TableModel {
+  getEnvironments(): Observable<Array<string>> {
+    return this.dataService.get('opa')
+      .pipe(
+        catchError((e) => {
+          return of(['dfasdfadfas']);
+        }),
+        tap(() => {
+        }),
+        switchMap(() => {
+          return of(
+            ['1', '2', '3']
+          );
+        })
+      )
+  }
+
+  @Offline('assets/offline/usageReport.json?')
+  private getUrl = `${environment.serverUrl}${environment.endPoints.usageReport}`;
+  //http://10.0.2.18:4000/mdclone/api/v1/reporting/usage/25-06-2000/25-09-2021
+
+  getUsageReport(params: UsageReportParams = undefined): any {
+    // params.fromDate = new Date(params.fromDate || new Date());
+    // params.toDate = new Date(params.toDate || new Date());
+    // const url = `${this.getUrl}/${this.dateService.formatDate(params.fromDate)}/${this.dateService.formatDate(params.toDate)}`;
+    // return this.dataService.get(url);
+    return this.dataService.get(this.getUrl);
+  }
+
+  createDataSource(files: Array<any>): TableModel {
     const now = new Date();
-    files = this.usageRequestService.createData(files);
     const data: TableModel = {
       headers: [
         {
@@ -23,96 +59,19 @@ export class UsageService {
           text: 'User Name',
           isSortEnabled: true,
           csvTitle: 'User Name'
+        },
+        {
+          columnId: 'daysSinceLastLogin',
+          text: 'Days Since Last Login',
+          isSortEnabled: true,
+          csvTitle: 'Days Since Last Login'
         },
         {
           columnId: 'lastlogin',
           text: 'Last Login',
           isSortEnabled: true,
           csvTitle: 'Last Login',
-          isSortedColumn: true,
-          sortDir: 'desc',
           columnType: ColumnType.Date
-        },
-        {
-          columnId: 'permission',
-          text: 'Permission',
-          isSortEnabled: true,
-          csvTitle: 'Permission'
-        },
-        {
-          columnId: 'loginDays',
-          text: 'Login Days',
-          isSortEnabled: true,
-          csvTitle: 'Login Days'
-        },
-        {
-          columnId: 'origin',
-          text: 'Original',
-          isSortEnabled: true,
-          csvTitle: 'Original',
-          columnType: ColumnType.Number
-        },
-        {
-          columnId: 'syntetic',
-          text: 'Synthetic',
-          isSortEnabled: true,
-          csvTitle: 'Synthetic',
-          columnType: ColumnType.Number
-        }
-      ],
-      rows: []
-    }
-
-    if (!files) { return data }
-
-    files.forEach((fl, i) => {
-      if (!this.usageRequestService.isUserInList(fl.userId)) {
-        return;
-      }
-      data.rows.push({
-        cells: {
-          login: fl.userName,
-          daysSinceLastLogin: this.dateService.getDaysDiff(fl.lastLogin, now),
-          lastlogin: fl.lastLogin,
-          permission: fl.permission,
-          loginDays: fl.loginDays,
-          origin: fl.origin,
-          syntetic: fl.syntetic
-        },
-        csv: {
-        },
-        source: fl,
-        isActive: false
-      })
-    })
-
-    return data;
-  }
-
-  createRetentionDataSource(files: Array<any>): TableModel {
-    const now = new Date();
-    files = this.usageRequestService.createData(files);
-    const data: TableModel = {
-      headers: [
-        {
-          columnId: 'login',
-          text: 'User Name',
-          isSortEnabled: true,
-          csvTitle: 'User Name'
-        },
-        {
-          columnId: 'lastlogin',
-          text: 'Last Activity',
-          isSortEnabled: true,
-          csvTitle: 'Last Activity'
-        },
-        {
-          columnId: 'daysSinceLastLogin',
-          text: 'Days Since Last Activity',
-          isSortEnabled: true,
-          sortDir: 'asc',
-          isSortedColumn: true,
-          csvTitle: 'Days Since Last Activity'
         },
         {
           columnId: 'environment',
@@ -123,22 +82,21 @@ export class UsageService {
       ],
       rows: []
     }
-    if (files) {
-      files.forEach((fl, i) => {
-        data.rows.push({
-          cells: {
-            login: fl.userName,
-            lastlogin: fl.lastActivity,
-            daysSinceLastLogin: fl.days,//this.dateService.getDaysDiff(fl.lastlogin, now),
-            environment: fl.environmentName
-          },
-          csv: {
-          },
-          source: fl,
-          isActive: false
-        })
+    files.forEach((fl, i) => {
+      data.rows.push({
+        cells: {
+          login: fl.login,
+          daysSinceLastLogin: this.dateService.getDaysDiff(fl.lastlogin, now),
+          lastlogin: fl.lastlogin, //formatDate(fl.lastlogin, 'dd/MM/yyyy', this.locale),
+          environment: 'environment'
+        },
+        csv: {
+        },
+        source: fl,
+        isActive: false
       })
-    }
+    })
     return data;
   }
+
 }

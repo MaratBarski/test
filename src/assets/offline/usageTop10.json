@@ -1,67 +1,96 @@
 {
-    "data": {
-        "newQuery": [
-            {
-                "date": "JAN-20",
-                "userName": "Elena Khitrova",
-                "userId": 1019,
-                "count": 1
-            },
-            {
-                "date": "NOV-19",
-                "userName": "Researcher One",
-                "userId": 1000,
-                "count": 1
-            },
-            {
-                "date": "DEC-19",
-                "userName": "Researcher One",
-                "userId": 1000,
-                "count": 1
-            },
-            {
-                "date": "FEB-20",
-                "userName": "Dotan Perlstein",
-                "userId": 8803,
-                "count": 1
-            },
-            {
-                "date": "NOV-19",
-                "userName": "Lior Halachmi",
-                "userId": 1078,
-                "count": 1
-            },
-            {
-                "date": "DEC-19",
-                "userName": "Lior Halachmi",
-                "userId": 1078,
-                "count": 2
-            }
-        ],
-        "downloads": [
-            {
-                "date": "FEB-20",
-                "userName": "Dotan Perlstein",
-                "userId": 8803,
-                "syntetic": 4,
-                "origin": 2
-            },
-            {
-                "date": "FEB-20",
-                "userName": "Researcher One",
-                "userId": 1000,
-                "syntetic": 4,
-                "origin": 1
-            },
-            {
-                "date": "DEC-20",
-                "userName": "Dotan Perlstein",
-                "userId": 8803,
-                "syntetic": 3,
-                "origin": 2
-            }
-        ]
-    },
-    "massage": "Get all Usage Report's Objects",
-    "status": "success"
+    "newQuery": [
+        {
+            "date": "Oct 18",
+            "count": 159
+        },
+        {
+            "date": "Nov 18",
+            "count": 159
+        },
+        {
+            "date": "Dec 19",
+            "count": 300
+        },
+        {
+            "date": "Jan 19",
+            "count": 350
+        },
+        {
+            "date": "Mar 19",
+            "count": 400
+        },
+        {
+            "date": "Apr 19",
+            "count": 159
+        },
+        {
+            "date": "May 19",
+            "count": 50
+        },
+        {
+            "date": "Jun 19",
+            "count": 80
+        },
+        {
+            "date": "Jul 19",
+            "count": 80
+        },
+        {
+            "date": "Aug 19",
+            "count": 254
+        }
+    ],
+    "downloads": [
+        {
+            "date": "Oct 18",
+            "origin": 120,
+            "syntetic": 54
+        },
+        {
+            "date": "Nov 18",
+            "origin": 40,
+            "syntetic": 58
+        },
+        {
+            "date": "Dec 19",
+            "origin": 140,
+            "syntetic": 58
+        },
+        {
+            "date": "Jan 19",
+            "origin": 47,
+            "syntetic": 21
+        },
+        {
+            "date": "Mar 19",
+            "origin": 98,
+            "syntetic": 58
+        },
+        {
+            "date": "Apr 19",
+            "origin": 159,
+            "syntetic": 58
+        },
+        {
+            "date": "May 19",
+            "origin": 100,
+            "syntetic": 58
+        },
+        {
+            "date": "Jun 19",
+            "origin": 56,
+            "syntetic": 58
+        },
+        {
+            "date": "Jul 19",
+            "origin": 159,
+            "syntetic": 58
+        },
+        {
+            "date": "Aug 19",
+            "origin": 56,
+            "syntetic": 154
+        }
+    ]
 }

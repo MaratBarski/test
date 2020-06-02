@@ -26,18 +26,18 @@ export class UsageTopComponent extends UsageBase {
   timeline = false;
 
   colorScheme = {
-    domain: ['#0596FF']
+    domain: ['#5B9BD5']
   };
 
   colorSchemeDownload = {
-    domain: ['#03CFA3', '#5303A8']
+    domain: ['#6725B7', '#FFC852']
   };
 
   pdfChartWidth = '500px';
   pdfChartHeight = '300px'
   @ViewChild('chartPdfQueries', { static: true }) chartPdfQueries: ChartPdfComponent;
   @ViewChild('chartPdfDownloads', { static: true }) chartPdfDownloads: ChartPdfComponent;
-
+  
   constructor(
     private usageDownloadService: UsageDownloadService,
     private dateService: DateService,
@@ -47,12 +47,11 @@ export class UsageTopComponent extends UsageBase {
     public usageRequestService: UsageRequestService
   ) {
     super();
-    const range = this.dateService.getFromMonth2Current(1);
-    this.usageRequestService.usageRequest.fromDate = this.dateService.formatDateUS(range.fromDate);
-    this.usageRequestService.usageRequest.toDate = this.dateService.formatDateUS(range.toDate);
+    this.usageRequestService.usageRequest.fromDate =
+      this.dateService.formatDate(this.dateService.fromDate[DatePeriod.Month](1));
 
-    this.usageDownloadService.toCSV = () => this.toCSV();
-    this.usageDownloadService.toPDF = () => this.toPDF();
+      this.usageDownloadService.toCSV = () => this.toCSV();
+      this.usageDownloadService.toPDF = () => this.toPDF();
   }
 
   downloadData: DownloadData = {
@@ -109,9 +108,9 @@ export class UsageTopComponent extends UsageBase {
   currentActivity = 0;
   changeCurrentAcitity(i: number): void {
     this.currentActivity = i;
-    const range = this.dateService.getFromMonth2Current(this.activityButtons[i].source);
-    this.usageRequestService.usageRequest.fromDate = this.dateService.formatDateUS(range.fromDate);
-    this.usageRequestService.usageRequest.toDate = this.dateService.formatDateUS(range.toDate);
+    const month = this.activityButtons[i].source;
+    this.usageRequestService.usageRequest.fromDate =
+      this.dateService.formatDate(this.dateService.fromDate[DatePeriod.Month](month));
     this.createReport();
   }
 }

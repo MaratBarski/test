@@ -19,17 +19,43 @@ export class SessionHistoryMappingResponse {
 
 export class SessionHistory {
      sessionHistoryId: number;
+     userId: number;
      sessionId: number;
+     fileId: string;
      insertDate: string;
      projectId: number;
+     userQeSession: string;
+     userActivateSession: any;
      transStatus: boolean;
      transMsg: string;
      sessionName: string;
      fileNameAlias: string;
      projectName: string;
-     login: string;
-     approvalKey: number;
-     researchName: string;
-     researchInfo: string;
-     data: string;
+     templateId: number;
+     templateName: string;
+     sessionHistoryFiles: SessionHistoryFiles[];
+     template: Template;
+     userSession: UserSession;
+     project: Project;
+     user: User;
 }
+
+
+// export class SessionHistory {
+//      fileId: number;
+//      fileName: string;
+//      filePath: string;
+//      fileNameAlias: string;
+//      tag: string;
+//      insertDate: Date;
+//      templateId: number;
+//      tableName: string;
+//      project: number;
+//      uploadedBy: number;
+//      fileType: number;
+//      projectObj?: Project;
+//      template?: Template;
+//      user?: User;
+//      rowsNum?: number;
+//      columnsNum?: number;
+// }

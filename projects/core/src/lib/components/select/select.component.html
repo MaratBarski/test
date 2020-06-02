@@ -1,6 +1,6 @@
 <div #combo [ngClass]="{'select_up':selectUp,'select_small':isSmall}" class="select" (blur)="blur()" tabindex="10">
     <div (click)="mouseClick($event);" class="select__head">
-        <div #comboTextContainer class="select__icon-wrap overflow-x-hidden">
+        <div #comboTextContainer class="select__icon-wrap">
             <svg *ngIf="selected?.icon" [mdcSvg]="selected?.icon" class="icon"></svg>
             {{selected?.text}}
         </div>
@@ -8,7 +8,7 @@
             <svg mdcSvg="ic-select-arr-down" class="icon"></svg>
         </div>
     </div>
-    <div #optionsContainer [mdcVisibility]="isExpanded" [style.maxHeight]="maxHeight" class="select__option overflow-x-hidden">
+    <div #optionsContainer [mdcVisibility]="isExpanded" [style.maxHeight]="maxHeight" class="select__option">
         <ng-template [ngIf]="options">
             <div [ngClass]="{'active':option==selected}" (click)="select(option)" *ngFor="let option of options"
                 class="select__param">

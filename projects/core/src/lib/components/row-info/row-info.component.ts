@@ -1,7 +1,7 @@
 import { Component, Input, EventEmitter, Output, ViewChild, ElementRef, AfterContentInit, Renderer2, OnDestroy } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { timer } from 'rxjs';
-import { ComponentService } from '../../services/component.service';
+import { ComponentService } from '@appcore';
 
 
 @Component({

@@ -1,46 +1,42 @@
-{
-    "data": [
-        {
-            "date": "Oct 18",
-            "count": 159
-        },
-        {
-            "date": "Nov 18",
-            "count": 159
-        },
-        {
-            "date": "Dec 19",
-            "count": 300
-        },
-        {
-            "date": "Jan 19",
-            "count": 350
-        },
-        {
-            "date": "Mar 19",
-            "count": 400
-        },
-        {
-            "date": "Apr 19",
-            "count": 159
-        },
-        {
-            "date": "May 19",
-            "count": 50
-        },
-        {
-            "date": "Jun 19",
-            "count": 80
-        },
-        {
-            "date": "Jul 19",
-            "count": 80
-        },
-        {
-            "date": "Aug 19",
-            "count": 254
-        }
-    ],
-    "massage": "Message text",
-    "status": "success"
-}
+[
+    {
+        "date": "Oct 18",
+        "count": 159
+    },
+    {
+        "date": "Nov 18",
+        "count": 159
+    },
+    {
+        "date": "Dec 19",
+        "count": 300
+    },
+    {
+        "date": "Jan 19",
+        "count": 350
+    },
+    {
+        "date": "Mar 19",
+        "count": 400
+    },
+    {
+        "date": "Apr 19",
+        "count": 159
+    },
+    {
+        "date": "May 19",
+        "count": 50
+    },
+    {
+        "date": "Jun 19",
+        "count": 80
+    },
+    {
+        "date": "Jul 19",
+        "count": 80
+    },
+    {
+        "date": "Aug 19",
+        "count": 254
+    }
+]

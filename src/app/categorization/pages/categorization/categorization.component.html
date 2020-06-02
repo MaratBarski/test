@@ -4,27 +4,25 @@
     </div>
 </md-page-title>
 <md-page-body>
-    <div [hidden]="isLoaded">Loading...</div>
-    <div [hidden]="!isLoaded" class="admin-table-wrap__action">
+    <div class="admin-table-wrap__action">
         <div class="admin-table-wrap__col">
-            <mdc-button (click)="openUploadNew()" text="+ New Categorization">
+            <mdc-button (click)="showUploadFile=!showUploadFile" text="+ New Categorization">
             </mdc-button>
         </div>
-        <div [hidden]="!isDataExists" class="admin-table-wrap__col">
+        <div class="admin-table-wrap__col">
             <form class="form-search d-none d-md-block">
                 <mdc-auto-search pause="500" #search placeholder="{{'search'|translate}}"></mdc-auto-search>
             </form>
         </div>
     </div>
-    <div [hidden]="!isDataExists || !isLoaded" class="admin-table-content">
+    <div class="admin-table-content">
         <mdc-table #table [dataSource]="dataSource" [rowInfoTemplate]="rowInfoTemplate"
             [cellsTemplate]="{ state:stateColumn,insertDate:dateColumn,inUseColumn:inUseColumn}"
             [searchOptions]="searchOptions" [paginator]="paginator" [search]="search" (onAction)="onAction($event)">
         </mdc-table>
     </div>
-    <mdc-empty-state *ngIf="!isDataExists && isLoaded" [emptyState]="emptyState"></mdc-empty-state>
-    <div class="pager-wrap" [hidden]="!isLoaded">
-        <mdc-paginator #paginator paginationTitle="Showing {0} of {1} categorizations" noPagingTitle="Showing {0} categorizations"
+    <div class="pager-wrap">
+        <mdc-paginator #paginator paginationTitle="{{'paginationTitle'|translate}}" noPagingTitle="Showing {0} files"
             [blockSize]="3" [pageSize]="12" [currentPage]="0">
         </mdc-paginator>
     </div>
@@ -99,7 +97,7 @@
 </ng-template>
 
 <mdc-modal-window *ngIf="showUploadFile">
-    <md-upload-file [source]="currentSource" (onUpload)="showUploadFile=false" (onCancel)="showUploadFile=false"></md-upload-file>
+    <md-upload-file (onUpload)="showUploadFile=false" (onCancel)="showUploadFile=false"></md-upload-file>
 </mdc-modal-window>
 
 <ng-template #rowInfoTemplate let-item>

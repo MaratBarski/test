@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 import { FileSourceResponse, FileSource } from '@app/models/file-source';
 import { Offline } from 'src/app/shared/decorators/offline.decorator';
 import { environment } from '@env/environment';
-import { FileSourceStatus } from '../models/enum/FileSourceStatus';
 
 @Injectable({
   providedIn: 'root'
@@ -45,10 +44,11 @@ export class ImportedFilesService {
             text: 'Edit File Settings',
             icon: 'ic-edit',
             command: 'edit'
-            , checkDisabled: (source: any) => {
-              if (!source.fileStatus) { return false; }
-              return source.fileStatus === FileSourceStatus.MAPPED;
-            }
+            // ,hidden: (source) => {
+            //   if (!source.projectObj) { return false; }
+            //   return source.projectObj.projectName === 'ETL project';
+            // },
+            // disable: false
           },
           {
             text: 'View output summary',
@@ -78,8 +78,6 @@ export class ImportedFilesService {
           columnId: 'insertDate',
           text: 'Loaded',
           isSortEnabled: true,
-          sortDir: 'desc',
-          isSortedColumn: true,
           css: 'd-none d-md-table-cell'
         },
         {
@@ -132,7 +130,7 @@ export class ImportedFilesService {
           insertDate: fl.insertDate,
           environment: fl.projectObj ? fl.projectObj.projectName : '',
           permission: fl.template ? fl.template.templateName : '',
-          user: fl.user && fl.user.firstName && fl.user.lastName ? `${fl.user.firstName} ${fl.user.lastName}` : fl.user && fl.user.login ? fl.user.login : '',
+          user: fl.user && fl.user.login ? fl.user.login : '',
           shared: fl.fileType,
           columns: fl.columnsNum,
           rows: fl.rowsNum

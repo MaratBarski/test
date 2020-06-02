@@ -1,12 +1,19 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { HttpClient, HttpEventType } from '@angular/common/http';
-import { NotificationsService, INotification, NotificationStatus } from '@appcore';
 
+export enum UploadStatus {
+  progress = 1,
+  error = 2,
+  success = 3,
+  waiting = 4,
+  pause = 5
+}
 export class UploadInfo {
+  title?: string;
   url: string;
   form: FormData;
-  notification: INotification;
-  targetComponent?: any;
+  status?: UploadStatus;
+  progress?: number;
 }
 
 @Injectable({
@@ -14,82 +21,54 @@ export class UploadInfo {
 })
 export class UploadService implements OnDestroy {
   get uploads(): Array<UploadInfo> { return this._uploads; }
+  private _intervalID: any;
   private _uploads: Array<UploadInfo> = [];
-  private _onAbortSubscribtion: any;
+  private _uploading = false;
   constructor(
-    private http: HttpClient,
-    private notificationsService: NotificationsService
+    private http: HttpClient
   ) {
-    this._onAbortSubscribtion = this.notificationsService.onAbort.subscribe((notice: INotification) => {
-      this._uploads.forEach((item, index) => {
-        if (item.notification === notice) {
-          this.uploadEnd(item, NotificationStatus.aborted);
-          return;
-        }
-      });
-    });
+    this.startUpload();
   }
 
   ngOnDestroy(): void {
-    this._onAbortSubscribtion.unsubscribe();
+    clearInterval(this._intervalID);
   }
 
   add(uploadInfo: UploadInfo): void {
     this._uploads.push(uploadInfo);
-    this.notificationsService.notifications.push(uploadInfo.notification);
-    this.notificationsService.update();
-    this.uploadProc(uploadInfo);
   }
 
-  private uploadProc(uploadInfo: UploadInfo): void {
-    if (!this.isUploadEnable(uploadInfo)) { return; }
-    uploadInfo.notification.status = NotificationStatus.uploading;
-    const uploadSubscription = this.http.post(uploadInfo.url, uploadInfo.form, {
+  private upload(): void {
+    if (!this._uploads.length) { return; }
+    if (this._uploading) { return; }
+    
+    this._uploading = true;
+    this._uploads[0].status = UploadStatus.progress;
+    this.http.post(this._uploads[0].url, this._uploads[0].form, {
       reportProgress: true,
       observe: 'events'
     })
       .subscribe(events => {
         if (events.type == HttpEventType.UploadProgress) {
-          uploadInfo.notification.progress = Math.round(events.loaded / events.total * 100);
-          if (!this.isUploadEnable(uploadInfo)) {
-            if (!uploadSubscription.closed) {
-              uploadSubscription.unsubscribe();
-            }
-          }
+          this._uploads[0].progress = Math.round(events.loaded / events.total * 100);
+          console.log('Upload progress: ', this._uploads[0].progress + '%');
         } else if (events.type === HttpEventType.Response) {
-          this.uploadEnd(uploadInfo, NotificationStatus.completed);
-          if (!uploadSubscription.closed) {
-            uploadSubscription.unsubscribe();
-          }
+          this._uploads.splice(0, 1);
+          console.log(events);
+          this._uploading = false;
         }
       }
         , error => {
-          this.uploadEnd(uploadInfo, NotificationStatus.failed);
+          this._uploads.splice(0, 1);
           console.log(error);
-          if (!uploadSubscription.closed) {
-            uploadSubscription.unsubscribe();
-          }
+          this._uploading = false;
         }
       )
   }
 
-  private isUploadEnable(uploadInfo: UploadInfo): boolean {
-    if (!uploadInfo.notification) { return false; }
-    if (!uploadInfo.url) { return false; }
-    if (!uploadInfo.form) { return false; }
-    if (uploadInfo.notification.status === NotificationStatus.failed) { return false; }
-    if (uploadInfo.notification.status === NotificationStatus.aborted) { return false; }
-    if (uploadInfo.notification.status === NotificationStatus.completed) { return false; }
-    return true;
-  }
-
-  private uploadEnd(uploadInfo: UploadInfo, status: NotificationStatus): void {
-    uploadInfo.notification.status = status;
-    if (status === NotificationStatus.completed
-      && uploadInfo.targetComponent
-      && uploadInfo.targetComponent.onComplete) {
-      uploadInfo.targetComponent.onComplete();
-      uploadInfo.form = undefined;
-    }
+  private startUpload(): void {
+    this._intervalID = setInterval(() => {
+      this.upload();
+    }, 1000);
   }
 }

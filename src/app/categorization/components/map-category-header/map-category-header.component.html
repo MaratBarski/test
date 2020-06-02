@@ -12,7 +12,7 @@
                             </a>
                         </div>
                         <h1>{{pageTitle}}</h1>
-                        <div (keydown)="keyDown($event)" (input)="updateName($event)" class="page-header__text" contenteditable="true">
+                        <div (input)="updateName($event)" class="page-header__text" contenteditable="true">
                             {{hierarchyName}}
                         </div>
                         <div class="page-header__text noborder">
@@ -44,11 +44,11 @@
                             </div>
                         </div>
                     </div>
-                    <!-- <div class="notice">
+                    <div class="notice">
                         <div class="notice__icon">
                             <svg class="icon ic-bulb" mdcSvg="ic-bulb"></svg>
                         </div>
-                    </div> -->
+                    </div>
                 </div>
             </div>
         </div>

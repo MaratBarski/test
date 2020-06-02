@@ -1,13 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { BaseSibscriber, TableModel, TableComponent, PageInfo, NavigationService, TableActionCommand, EmptyState } from '@appcore';
+import { BaseSibscriber, TableModel, TableComponent, PageInfo, NavigationService, TableActionCommand } from '@app/core-api';
 import { CategorizationService } from '@app/categorization/services/categorization.service';
 import { CategoryInfoComponent } from '@app/categorization/components/category-info/category-info.component';
 import { Router } from '@angular/router';
-<<<<<<< HEAD
 import {Hierarchy} from '@app/models/hierarchy';
-=======
-import { environment } from '@env/environment';
->>>>>>> development
 
 @Component({
   selector: 'md-categorization',
@@ -16,26 +12,14 @@ import { environment } from '@env/environment';
 })
 export class CategorizationComponent extends BaseSibscriber implements OnInit {
 
-  emptyState: EmptyState = {
-    title: 'Categorization makes the data accessible. Start by clicking the button above.',
-    subTitle: 'Your categorization will be listed here.',
-    image: 'categoryEmpty.png'
-  }
-  
   @ViewChild('table', { static: true }) table: TableComponent;
   @ViewChild('categorizationInfo', { static: true }) categorizationInfo: CategoryInfoComponent;
 
   showUploadFile = false;
   dataOrigin: TableModel;
   dataSource: TableModel;
-<<<<<<< HEAD
   currentRow = { state: true, source: undefined };
   category: Array<Hierarchy>;
-=======
-  categorySource: Array<any>;
-  currentRow = { state: true, source: undefined };
-  currentSource: any = undefined;
->>>>>>> development
 
   constructor(
     private categorizationService: CategorizationService,
@@ -47,9 +31,6 @@ export class CategorizationComponent extends BaseSibscriber implements OnInit {
   }
 
   searchOptions = ['hierarchyName', 'hierarchyFile', 'insertDate', 'domain'];
-
-  isDataExists = true;
-  isLoaded = false;
 
   showInfo(event: any, item: any, source: any): void {
     this.currentRow.state = true;
@@ -73,14 +54,15 @@ export class CategorizationComponent extends BaseSibscriber implements OnInit {
       this.router.navigate(['/categorization/edit-categories', { id: action.item.source.hierarchyRootId }]);
     },
     map: (action: TableActionCommand) => {
-      this.router.navigate(['/categorization/map-categories', { id: action.item.source.hierarchyRootId }]);
+      alert('map');
+    },
+    replace: (action: TableActionCommand) => {
+      alert('replace');
     },
     download: (action: TableActionCommand) => {
-      //alert(`${environment.serverUrl}${environment.endPoints.downloadCategory}/${action.item.source.hierarchyRootId}`)
-      window.open(`${environment.serverUrl}${environment.endPoints.downloadCategory}/${action.item.source.hierarchyRootId}`)
+      alert('view');
     },
     delete: (action: TableActionCommand) => {
-<<<<<<< HEAD
       // this.category = this.category.filter(x => x !== source);
       this.categorizationService.deleteHierarchy(action.item.source)
         .toPromise()
@@ -90,33 +72,13 @@ export class CategorizationComponent extends BaseSibscriber implements OnInit {
         console.error('Error delete Hierarchy');
       });
       // this.store.deleteHierarchy(deleteFile(source));
-=======
-      this.categorySource = this.categorySource.filter(x => x != action.item.source);
-      this.initData();
-      this.table.stayOnCurrentPage = true;
-      this.categorizationService.deleteCategory(action.item.source)
-        .toPromise()
-        .then(res => {
-          console.log('Category deleted');
-        }).catch(e => {
-          console.error('Error delete category');
-        })
->>>>>>> development
     }
   };
 
-  private initData(): void {
-    this.isDataExists = !!(this.categorySource && this.categorySource.length);
-    this.dataOrigin = this.dataSource = this.categorizationService.createDataSource(this.categorySource);
-    this.isLoaded = true;
-  }
-
   ngOnInit() {
-    this.isLoaded = false;
     super.add(
       this.categorizationService.load().subscribe((res: any) => {
-        this.categorySource = res.data;
-        this.initData();
+        this.dataOrigin = this.dataSource = this.categorizationService.createDataSource(res.data);
       }));
   }
 
@@ -124,8 +86,4 @@ export class CategorizationComponent extends BaseSibscriber implements OnInit {
     this.table.closeRowInfo();
   }
 
-  openUploadNew(): void {
-    this.currentSource = undefined;
-    this.showUploadFile = true;
-  }
 }

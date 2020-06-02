@@ -6,10 +6,8 @@ export class MenuLink {
   command?: string;
   click?: any;
   source?: any;
-  hidden?: boolean;
-  disable?: boolean;
-  checkDisabled?: any;
-  checkHidden?: any;
+  hidden?: boolean | any;
+  disable?: boolean | any;
 }
 
 @Component({

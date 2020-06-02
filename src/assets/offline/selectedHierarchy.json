@@ -14,7 +14,7 @@
         "hierarchyLevels": [
             {
                 "hierarchyLevelId": "1426",
-                "hierarchyLevelName": "CONTEXT:ID",
+                "hierarchyLevelName": "aaaaaaaaaaaaaaaa",
                 "sortValue": -99991,
                 "dataSample": "no%sep%yes",
                 "hierarchyRootId": "226"
@@ -56,7 +56,7 @@
             },
             {
                 "hierarchyLevelId": "1434",
-                "hierarchyLevelName": "Scheduled_By",
+                "hierarchyLevelName": "GU_Name",
                 "sortValue": -1,
                 "dataSample": "Bucks%sep%Umatilla%sep%Rockcastle%sep%Miller",
                 "hierarchyRootId": "226"

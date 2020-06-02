@@ -19,13 +19,9 @@ export class DateFilterComponent {
 
   @ViewChild('dateRangeSelector', { static: true }) dateRangeSelector: ElementRef;
 
-  constructor(private dateService: DateService) {
-    this.customFrom.setMonth(this.customFrom.getMonth() - 20);
-  }
+  constructor(private dateService: DateService) { }
 
   @Output() onFilter = new EventEmitter<Array<any>>();
-  @Output() onSelect = new EventEmitter<number>();
-
   @Input() enableCustom = false;
   @Input() tabid = 'dateRangeFilter';
   @Input() tabActive = 0;
@@ -61,15 +57,10 @@ export class DateFilterComponent {
 
   tabs: Array<TabItemModel>;
 
-  navigate(index: number): void {
+  selectTab(index: number): void {
     this.cancelCustomDate();
     this.tabActive = index;
     this.filterData();
-  }
-
-  selectTab(index: number): void {
-    this.navigate(index);
-    this.onSelect.emit(index);
   }
 
   filterData(): void {

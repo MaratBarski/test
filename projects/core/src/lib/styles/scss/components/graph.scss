@@ -50,79 +50,9 @@
 		top: -6px;
 	}
 
-	&__head-icon{
-		display: inline-block;
-		vertical-align: middle;
-		cursor: pointer;
-		margin-left: 6px;
-
-		.ic-help{
-			vertical-align: top;
-			width: 18px;
-			height: 18px;
-		}
-	}
-
-	&__head-icon:hover .tooltip,
+	&__head:hover .tooltip,
 	.tooltip.active{
 		display: inline-block;
-	}
-
-	&__legend{
-		@include font(normal, normal, rem(14px), 1.4, $color-blue);
-		text-transform: none;
-		margin-left: 12px;
-		position: relative;
-		cursor: pointer;
-
-		.info-popup{
-			display: none;
-			width: 208px;
-			position: absolute;
-			top: 100%;
-			left: 50%;
-			transform: translateX(-50%);
-		}
-
-		.info-popup::after{
-			left: auto;
-			right: auto;
-			margin: 0 auto;
-			margin-left: -10px;
-		}
-
-		.info-popup__top,
-		.info-popup__content{
-			text-align: left;
-		}
-
-		.ic-nancy,
-		.ic-lillie,
-		.ic-christian,
-		.ic-gabriel,
-		.ic-craig{
-			width: 18px;
-			height: 6px;
-		}
-	}
-
-	&__legend:hover .info-popup{display: inline-block;}
-}
-
-.graph-term{
-	&__item{
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-	}
-
-	&__item:not(:last-child){margin-bottom: 9px;}
-
-	&__icon{width: 16px;}
-
-	&__text{
-		width: calc(100% - 21px);
-		@include font(normal, normal, rem(11px), 1.4, $color-dark-grey);
 	}
 }
 

@@ -7,7 +7,6 @@ export class TabItemModel {
   mouseLeave?: any;
   click?: any;
   source?: any;
-  disable?: boolean;
 }
 
 @Component({
@@ -39,7 +38,6 @@ export class TabsComponent {
 
   activate(index: number, tab: TabItemModel): void {
     if (tab.isDropDown) { return; }
-    if (tab.disable) { return; }
     if (this.active === index) { return; }
     this.active = index;
     this.select.emit(this.active);

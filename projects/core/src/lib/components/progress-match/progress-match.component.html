@@ -1,4 +1,4 @@
-<div class="progress" [ngClass]="{progress_green: percentage >= 75, progress_red: percentage > 0 && percentage <= 25, progress_yellow: percentage > 25 && percentage < 75}">
-  <div class="progress__bg" [style.width.%]="percentage"></div>
+<div class="progress progress_green">
+  <div class="progress__bg" [attr.width]="percentage+ '%'"></div>
   <div class="progress__text">{{percentage}}%</div>
 </div>

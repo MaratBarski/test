@@ -1,6 +1,4 @@
 import { Component, Input, Output, EventEmitter, HostListener } from '@angular/core';
-import { SessionHistory } from '@app/models/session-history';
-import { environment } from '@env/environment';
 
 @Component({
   selector: 'md-history-info',
@@ -10,22 +8,10 @@ import { environment } from '@env/environment';
 export class HistoryInfoComponent  {
 
   isOver = false;
-  _category: SessionHistory;
-  source="";
-  queryOrFileName="";
-  get downloadUrl(): string { return environment.serverUrl + environment.endPoints.downloadHistoryReport + '/' };
 
-  @Input() set category(value: SessionHistory){
-      this._category = value;
-      this.source = !!this._category.sessionId ? "Query" : "Imported file" ;
-      this.queryOrFileName = !!this._category.fileNameAlias ? this._category.fileNameAlias : this._category.sessionName ;
-  }
+  @Input() category: any;
   @Output() onClose = new EventEmitter();
 
-  
-  
-  
-  
   closeInfo(): void {
     this.onClose.emit();
   }

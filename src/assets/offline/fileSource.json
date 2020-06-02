@@ -4,10 +4,10 @@
             "fileId": 337,
             "fileName": "if_mdclone.admin_337_20180809_14071.csv",
             "filePath": "E:\\\\files\\Data\\",
-            "fileStatus": "loaded_to_table",
+            "fileStatus": null,
             "fileNameAlias": "kostya test",
             "tag": "",
-            "insertDate": "2020-05-09T11:09:24.000Z",
+            "insertDate": "2018-08-09T11:09:24.000Z",
             "templateId": 18,
             "tableName": "tmp_data.mdc_file_337",
             "project": "6",
@@ -37,7 +37,7 @@
             "fileStatus": null,
             "fileNameAlias": "moshe 4.1 test 1",
             "tag": "",
-            "insertDate": "2020-05-01T12:32:22.000Z",
+            "insertDate": "2020-03-12T12:32:22.000Z",
             "templateId": 1,
             "tableName": "tmp_data.mdc_file_353",
             "project": "1",
@@ -46,7 +46,7 @@
             "uploaded_by": "1004",
             "projectObj": {
                 "projectId": "1",
-                "projectName": "demo Project",
+                "projectName": "Demo Project",
                 "defaultSiteId": "1"
             },
             "user": {

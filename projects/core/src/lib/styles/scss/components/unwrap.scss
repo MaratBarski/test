@@ -1,7 +1,7 @@
 /*-------------- unwrap -----------------*/
 .unwrap{
 	margin-bottom: 14px;
-
+	
 	&__head{
 		display: flex;
 		align-items: center;
@@ -26,6 +26,10 @@
 		width: 30px;
 		height: 30px;
 		margin: -5px -2px 0 -9px;
+		/*transform: rotate(-90deg);*/
+	}
+
+	&__rotate{
 		transform: rotate(-90deg);
 	}
 
@@ -53,23 +57,6 @@
 		line-height: rem(23px);
 		padding-top: 0;
 	}
-
-  &__text{
-    @include font(normal, normal, rem(14px), 1.43, $color-dark-grey);
-    padding-left: 23px;
-    margin-bottom: 12px;
-  }
-
-  .admin-table-detail-wrap{
-    height: 340px;
-    margin-bottom: 25px;
-  }
-}
-
-.empty-block{
-	margin-top: 0;
-	&__head{margin-top: 10px;}
-	&__img{margin-top: 28px; margin-bottom: 23px;}
 }
 
 @media (max-width: 767px) {

@@ -1,191 +1,256 @@
 {
-    "data": {
-        "newQuery": [
-            {
-                "date": "AUG-18",
-                "userName": "Lior Halachmi",
-                "userId": 1,
-                "count": 2
-            },
-            {
-                "date": "SEP-18",
-                "userName": "Lior Halachmi",
-                "userId": 1,
-                "count": 2
-            },
-            {
-                "date": "NOV-18",
-                "userName": "Lior Halachmi",
-                "userId": 1,
-                "count": 2
-            },
-            {
-                "date": "AUG-18",
-                "userName": "1 Halachmi",
-                "userId": 2,
-                "count": 2
-            },
-            {
-                "date": "SEP-18",
-                "userName": "1 Halachmi",
-                "userId": 2,
-                "count": 6
-            },
-            {
-                "date": "NOV-18",
-                "userName": "1 Halachmi",
-                "userId": 2,
-                "count": 5
-            },
-
-            {
-                "date": "AUG-18",
-                "userName": "2 Halachmi",
-                "userId": 3,
-                "count": 4
-            },
-            {
-                "date": "SEP-18",
-                "userName": "2 Halachmi",
-                "userId": 3,
-                "count": 1
-            },
-            {
-                "date": "NOV-18",
-                "userName": "2 Halachmi",
-                "userId": 3,
-                "count": 3
-            },
-
-            {
-                "date": "AUG-18",
-                "userName": "3 Halachmi",
-                "userId":4,
-                "count": 3
-            },
-            {
-                "date": "SEP-18",
-                "userName": "3 Halachmi",
-                "userId": 4,
-                "count": 2
-            },
-            {
-                "date": "NOV-18",
-                "userName": "3 Halachmi",
-                "userId": 4,
-                "count": 9
-            },
-
-            {
-                "date": "AUG-18",
-                "userName": "4 Halachmi",
-                "userId": 5,
-                "count": 5
-            },
-            {
-                "date": "SEP-18",
-                "userName": "4 Halachmi",
-                "userId": 5,
-                "count": 2
-            },
-            {
-                "date": "NOV-18",
-                "userName": "4 Halachmi",
-                "userId": 5,
-                "count": 4
-            },
-
-            {
-                "date": "AUG-18",
-                "userName": "5 Halachmi",
-                "userId": 6,
-                "count": 2
-            },
-            {
-                "date": "SEP-18",
-                "userName": "5 Halachmi",
-                "userId": 6,
-                "count": 3
-            },
-            {
-                "date": "NOV-18",
-                "userName": "5 Halachmi",
-                "userId": 6,
-                "count": 5
-            },
-
-            {
-                "date": "AUG-18",
-                "userName": "6 Halachmi",
-                "userId":7,
-                "count": 6
-            },
-            {
-                "date": "SEP-18",
-                "userName": "6 Halachmi",
-                "userId": 7,
-                "count": 9
-            },
-            {
-                "date": "NOV-18",
-                "userName": "6 Halachmi",
-                "userId": 7,
-                "count": 8
-            },
-
-            {
-                "date": "AUG-18",
-                "userName": "7 Halachmi",
-                "userId": 8,
-                "count": 5
-            },
-            {
-                "date": "SEP-18",
-                "userName": "7 Halachmi",
-                "userId": 8,
-                "count": 7
-            },
-            {
-                "date": "NOV-18",
-                "userName": "7 Halachmi",
-                "userId": 8,
-                "count": 3
-            },
-
-            {
-                "date": "AUG-18",
-                "userName": "8 Halachmi",
-                "userId": 9,
-                "count": 4
-            },
-            {
-                "date": "SEP-18",
-                "userName": "8 Halachmi",
-                "userId": 9,
-                "count": 5
-            },
-            {
-                "date": "NOV-18",
-                "userName": "8 Halachmi",
-                "userId": 9,
-                "count": 4
-            }
-        ],
-        "downloads": [
-            {
-                "date": "AUG-18",
-                "userName": "Elena Khitrova",
-                "userId": 2,
-                "count": 2
-            },
-            {
-                "date": "OCT-18",
-                "userName": "omry atia",
-                "userId": 2,
-                "count": 2
-            }
-        ]
-    },
-    "massage": "Get all Usage Report's Objects",
-    "status": "success"
+    "query": [
+        {
+            "name": "Suriname",
+            "series": [
+                {
+                    "value": 3289,
+                    "name": "2016-09-20T16:22:32.751Z"
+                },
+                {
+                    "value": 3332,
+                    "name": "2016-09-16T00:36:15.461Z"
+                },
+                {
+                    "value": 5820,
+                    "name": "2016-09-14T08:01:55.347Z"
+                },
+                {
+                    "value": 2356,
+                    "name": "2016-09-22T22:05:05.725Z"
+                },
+                {
+                    "value": 5915,
+                    "name": "2016-09-23T13:27:40.276Z"
+                }
+            ]
+        },
+        {
+            "name": "Saint Martin (French Part)",
+            "series": [
+                {
+                    "value": 4175,
+                    "name": "2016-09-20T16:22:32.751Z"
+                },
+                {
+                    "value": 6355,
+                    "name": "2016-09-16T00:36:15.461Z"
+                },
+                {
+                    "value": 2756,
+                    "name": "2016-09-14T08:01:55.347Z"
+                },
+                {
+                    "value": 6208,
+                    "name": "2016-09-22T22:05:05.725Z"
+                },
+                {
+                    "value": 4199,
+                    "name": "2016-09-23T13:27:40.276Z"
+                }
+            ]
+        },
+        {
+            "name": "Mauritania",
+            "series": [
+                {
+                    "value": 2261,
+                    "name": "2016-09-20T16:22:32.751Z"
+                },
+                {
+                    "value": 2849,
+                    "name": "2016-09-16T00:36:15.461Z"
+                },
+                {
+                    "value": 3691,
+                    "name": "2016-09-14T08:01:55.347Z"
+                },
+                {
+                    "value": 2891,
+                    "name": "2016-09-22T22:05:05.725Z"
+                },
+                {
+                    "value": 5881,
+                    "name": "2016-09-23T13:27:40.276Z"
+                }
+            ]
+        },
+        {
+            "name": "Norway",
+            "series": [
+                {
+                    "value": 3888,
+                    "name": "2016-09-20T16:22:32.751Z"
+                },
+                {
+                    "value": 5107,
+                    "name": "2016-09-16T00:36:15.461Z"
+                },
+                {
+                    "value": 6574,
+                    "name": "2016-09-14T08:01:55.347Z"
+                },
+                {
+                    "value": 3110,
+                    "name": "2016-09-22T22:05:05.725Z"
+                },
+                {
+                    "value": 4263,
+                    "name": "2016-09-23T13:27:40.276Z"
+                }
+            ]
+        },
+        {
+            "name": "Norway",
+            "series": [
+                {
+                    "value": 2060,
+                    "name": "2016-09-20T16:22:32.751Z"
+                },
+                {
+                    "value": 4880,
+                    "name": "2016-09-16T00:36:15.461Z"
+                },
+                {
+                    "value": 4816,
+                    "name": "2016-09-14T08:01:55.347Z"
+                },
+                {
+                    "value": 2381,
+                    "name": "2016-09-22T22:05:05.725Z"
+                },
+                {
+                    "value": 4697,
+                    "name": "2016-09-23T13:27:40.276Z"
+                }
+            ]
+        }
+    ],
+    "download": [
+        {
+            "name": "Suriname",
+            "series": [
+                {
+                    "value": 10,
+                    "name": "2016-09-20T16:22:32.751Z"
+                },
+                {
+                    "value": 150,
+                    "name": "2016-09-16T00:36:15.461Z"
+                },
+                {
+                    "value": 5820,
+                    "name": "2016-09-14T08:01:55.347Z"
+                },
+                {
+                    "value": 2356,
+                    "name": "2016-09-22T22:05:05.725Z"
+                },
+                {
+                    "value": 5915,
+                    "name": "2016-09-23T13:27:40.276Z"
+                }
+            ]
+        },
+        {
+            "name": "Saint Martin (French Part)",
+            "series": [
+                {
+                    "value": 4175,
+                    "name": "2016-09-20T16:22:32.751Z"
+                },
+                {
+                    "value": 6355,
+                    "name": "2016-09-16T00:36:15.461Z"
+                },
+                {
+                    "value": 2756,
+                    "name": "2016-09-14T08:01:55.347Z"
+                },
+                {
+                    "value": 6208,
+                    "name": "2016-09-22T22:05:05.725Z"
+                },
+                {
+                    "value": 4199,
+                    "name": "2016-09-23T13:27:40.276Z"
+                }
+            ]
+        },
+        {
+            "name": "Mauritania",
+            "series": [
+                {
+                    "value": 2261,
+                    "name": "2016-09-20T16:22:32.751Z"
+                },
+                {
+                    "value": 2849,
+                    "name": "2016-09-16T00:36:15.461Z"
+                },
+                {
+                    "value": 3691,
+                    "name": "2016-09-14T08:01:55.347Z"
+                },
+                {
+                    "value": 2891,
+                    "name": "2016-09-22T22:05:05.725Z"
+                },
+                {
+                    "value": 5881,
+                    "name": "2016-09-23T13:27:40.276Z"
+                }
+            ]
+        },
+        {
+            "name": "Norway",
+            "series": [
+                {
+                    "value": 3888,
+                    "name": "2016-09-20T16:22:32.751Z"
+                },
+                {
+                    "value": 5107,
+                    "name": "2016-09-16T00:36:15.461Z"
+                },
+                {
+                    "value": 6574,
+                    "name": "2016-09-14T08:01:55.347Z"
+                },
+                {
+                    "value": 3110,
+                    "name": "2016-09-22T22:05:05.725Z"
+                },
+                {
+                    "value": 4263,
+                    "name": "2016-09-23T13:27:40.276Z"
+                }
+            ]
+        },
+        {
+            "name": "Norway",
+            "series": [
+                {
+                    "value": 2060,
+                    "name": "2016-09-20T16:22:32.751Z"
+                },
+                {
+                    "value": 4880,
+                    "name": "2016-09-16T00:36:15.461Z"
+                },
+                {
+                    "value": 4816,
+                    "name": "2016-09-14T08:01:55.347Z"
+                },
+                {
+                    "value": 2381,
+                    "name": "2016-09-22T22:05:05.725Z"
+                },
+                {
+                    "value": 4697,
+                    "name": "2016-09-23T13:27:40.276Z"
+                }
+            ]
+        }
+    ]
 }

@@ -19,8 +19,7 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
   providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR]
 })
 export class CheckBoxComponent implements ControlValueAccessor {
-
-  @Input() isDisabled = false;
+  
   @Input() text: string;
   @Output() change = new EventEmitter<boolean>();
   @Input() id = ComponentService.createID('checkbox');
@@ -54,8 +53,7 @@ export class CheckBoxComponent implements ControlValueAccessor {
     this.onTouchedCallback = fn;
   }
 
-  changeSelect(): void {
-    if (this.isDisabled) { return; }
+  changeSelect():void{
     this.value = !this.value;
     this.change.emit(this.value);
   }

@@ -1,7 +1,6 @@
 <div class="edit-categories">
     <md-map-category-header #categoryHeader (onChange)="onNameChange($event)" [data]="selectedCategory" pageTitle="Edit categories"></md-map-category-header>
-    <md-map-category-info #categoryInfo (onHeadersChanged)="onHeadersChanged($event)"  [data]="selectedCategory"></md-map-category-info>
-    <md-edit-category-table #categoryTable *ngIf="mode==='edit'" [data]="selectedCategory"></md-edit-category-table>
-    <md-map-category-table #mapCategoryTable *ngIf="mode==='replace'" [oldCategories]="oldCategories" [data]="selectedCategory"></md-map-category-table>
+    <md-map-category-info #categoryInfo [data]="selectedCategory"></md-map-category-info>
+    <md-edit-category-table #categoryTable [data]="selectedCategory"></md-edit-category-table>
 </div>
 <md-page-fotter [isLoading]="isLoading" [isValid]="isValid" (onCancel)="cancel()" (onSave)="save()"></md-page-fotter>

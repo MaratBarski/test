@@ -1,9 +1,8 @@
 import { Component, Output, EventEmitter, ViewChild, ElementRef, Input, OnInit } from '@angular/core';
-import { UploadService } from '@app/shared/services/upload.service';
+import { UploadService, UploadStatus } from '@app/shared/services/upload.service';
 import { Offline } from '@app/shared/decorators/offline.decorator';
-import { SelectOption, SelectComponent, CsvManagerService, NotificationStatus, ValidationFileMessage } from '@appcore';
+import { SelectOption, SelectComponent, CsvManagerService, FileInput, FileUploaderComponent } from '@app/core-api';
 import { environment } from '@env/environment';
-import { ConfigService } from '@app/shared/services/config.service';
 
 @Component({
   selector: 'md-upload-file',
@@ -12,11 +11,7 @@ import { ConfigService } from '@app/shared/services/config.service';
 })
 export class UploadFileComponent implements OnInit {
 
-  constructor(
-    private csvManagerService: CsvManagerService,
-    private uploadService: UploadService,
-    private configService: ConfigService
-  ) { }
+  constructor(private csvManagerService: CsvManagerService, private uploadService: UploadService) { }
 
   @ViewChild('fileInput', { static: true }) fileInput: ElementRef;
   @ViewChild('templateSelector', { static: true }) templateSelector: SelectComponent;
@@ -24,8 +19,6 @@ export class UploadFileComponent implements OnInit {
   @Output() onCancel = new EventEmitter<void>();
   @Output() onUpload = new EventEmitter<void>();
   @Output() onLoad = new EventEmitter<UploadFileComponent>();
-
-  @Input() targetComponent: any;
   @Input() set uploadUrl(uploadUrl: string) { this._uploadUrl = uploadUrl; }
   @Input() templates: Array<SelectOption>;
   get uploadUrl(): string { return this._uploadUrl; }
@@ -65,19 +58,11 @@ export class UploadFileComponent implements OnInit {
     formData.append('fileType', this.fileType ? '1' : '0');
     formData.append('template', this.template);
     this.uploadService.add({
-      notification: {
-        name: 'Imported File',
-        comment: 'Uploading',
-        progress: 0,
-        status: NotificationStatus.uploading,
-        showProgress: true,
-        showInContainer: true,
-        startDate: new Date(),
-        progressTitle: this.fileName
-      },
+      title: 'File source',
       form: formData,
       url: this._uploadUrl,
-      targetComponent: this.targetComponent
+      status: UploadStatus.waiting,
+      progress: 0
     });
     this.reset();
     this.onUpload.emit();
@@ -108,14 +93,11 @@ export class UploadFileComponent implements OnInit {
     //this.fileUploader.reset();
   }
 
-  private fileError(error: ValidationFileMessage): void {
+  private fileError(): void {
     this.file = '';
     this.fileInput.nativeElement.value = '';
     this.isFileError = true;
-    this.fileErrorMessage = this.configService.config.fileValidationErrors[error];
   }
-
-  fileErrorMessage = 'File format needs to be CSV (comma separate values)';
 
   updateFileName(event: any): void {
     if (!this.fileInput.nativeElement.files.length) {
@@ -123,22 +105,23 @@ export class UploadFileComponent implements OnInit {
     }
     this.isFileError = false;
     if (!this.csvManagerService.validateFileExtention(this.fileInput.nativeElement, ['csv', 'xls', 'xlsx', 'xlsm'])) {
-      this.fileError(ValidationFileMessage.CsvExtensionError);
+      this.fileError();
       return;
     }
     if (!this.csvManagerService.validateFileSize(this.fileInput.nativeElement.files[0], 0, -1)) {
-      this.fileError(ValidationFileMessage.FileSizeError);
+      this.fileError();
       return;
     }
-    this.csvManagerService.validate(this.fileInput.nativeElement.files[0]).then((res: ValidationFileMessage) => {
-      if (res === ValidationFileMessage.Success) {
-        this.file = this.fileInput.nativeElement.value;
-        return;
-      }
-      this.fileError(res);
-    }).catch(e => {
-      this.fileError(ValidationFileMessage.OtherError);
-    });
+    this.file = this.fileInput.nativeElement.value;
+    // this.csvManagerService.validate(this.fileInput.nativeElement.files[0]).then(res => {
+    //   if (res) {
+    //     this.file = this.fileInput.nativeElement.value;
+    //     return;
+    //   }
+    //   this.fileError();
+    // }).catch(e => {
+    //   this.fileError();
+    // });
   }
 
   // csvHeaders: Array<string>;

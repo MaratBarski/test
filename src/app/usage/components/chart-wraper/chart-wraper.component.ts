@@ -12,9 +12,6 @@ export class ChartWraperComponent {
   @Input() secondTitle: string;
   @Input() firstChart: any;
   @Input() secondChart: any;
-  @Input() firstLegendTemplate: any;
-  @Input() secondLegendTemplate: any;
-  @Input() isLegend = false;
 
   constructor(public chartService: ChartService) { }
 

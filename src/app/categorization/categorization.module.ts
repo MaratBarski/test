@@ -17,8 +17,6 @@ import { MapCategoryInfoComponent } from './components/map-category-info/map-cat
 import { MapCategoryTableComponent } from './components/map-category-table/map-category-table.component';
 import { EditCategoryTableComponent } from './components/edit-category-table/edit-category-table.component';
 import { MapCategoryHeaderComponent } from './components/map-category-header/map-category-header.component';
-import { CategoryMessageComponent } from './components/category-message/category-message.component';
-import { CategoryDistinctPipe } from './pipes/category-distinct.pipe';
 
 const routes: Array<Route> = [
   { path: '', component: CategorizationComponent },
@@ -36,9 +34,7 @@ const routes: Array<Route> = [
     MapCategoryInfoComponent,
     MapCategoryTableComponent,
     EditCategoryTableComponent,
-    MapCategoryHeaderComponent,
-    CategoryMessageComponent,
-	CategoryDistinctPipe
+    MapCategoryHeaderComponent
   ],
   imports: [
     CommonModule,

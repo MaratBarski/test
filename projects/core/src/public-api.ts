@@ -24,7 +24,6 @@ export * from './lib/services/pagination.service';
 export * from './lib/services/date.service';
 export * from './lib/services/csv-manager.service';
 export * from './lib/services/animation.service';
-export * from './lib/services/notifications.service';
 
 //export * from './lib/services/socket.service';
 
@@ -45,8 +44,6 @@ export * from './lib/pipes/search.pipe';
 export * from './lib/pipes/file-name.pipe';
 export * from './lib/pipes/visible-headers.pipe';
 export * from './lib/pipes/action-link.pipe';
-export * from './lib/pipes/show-notice.pipe';
-export * from './lib/pipes/check-valid-date.pipe';
 
 export * from './lib/components/paginator/paginator.component';
 export * from './lib/components/button/button.component';
@@ -85,7 +82,6 @@ export * from './lib/components/row-info/row-info.component';
 export * from './lib/components/date-filter/date-filter.component';
 export * from './lib/components/progress-match/progress-match.component';
 export * from './lib/components/file-uploader/file-uploader.component';
-export * from './lib/components/notifications/notifications.component';
 
 export * from './lib/directives/show.directive';
 export * from './lib/directives/tooltip.directive';
@@ -94,6 +90,5 @@ export * from './lib/directives/table.directive';
 export * from './lib/directives/visibility.directive';
 export * from './lib/animations/animations';
 export * from './lib/directives/svg.directive';
-export * from './lib/directives/color-text.directive';
 
 export * from './lib/components/main-test/main-test.component';

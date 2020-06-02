@@ -12,7 +12,6 @@ import { EmptyState, DefaultEmptyState } from '../empty-state/empty-state.compon
 import { RowInfoComponent } from '../row-info/row-info.component';
 import { AnimationService } from '../../services/animation.service';
 import { MenuLink, ModalMenuComponent } from '../modal-menu/modal-menu.component';
-import { SortService } from '../../services/sort.service';
 
 export interface TableActionCommand {
   command: string;
@@ -50,7 +49,6 @@ export class TableComponent implements OnDestroy, AfterViewInit, AfterViewChecke
     private searchService: SearchService,
     private renderer2: Renderer2,
     private animationService: AnimationService,
-    private sortService: SortService,
     private cdRef: ChangeDetectorRef
   ) {
     this._subscriptions.push(
@@ -87,9 +85,6 @@ export class TableComponent implements OnDestroy, AfterViewInit, AfterViewChecke
           text: value.toString()
         }
         this.filters[header.columnId].push(filterOption);
-      });
-      this.filters[header.columnId].sort((a: CheckBoxListOption, b: CheckBoxListOption) => {
-        return this.sortService.compareString(a.text, b.text, 'asc');
       })
     });
   }
@@ -173,9 +168,7 @@ export class TableComponent implements OnDestroy, AfterViewInit, AfterViewChecke
   @ViewChild('tableObject', { static: false }) tableObject: ElementRef;
   @Input() rowInfoTemplate: TemplateRef<any>;
   @Input() headersTemplate: Array<{ [key: string]: TemplateRef<any> }>;
-  @Input() customFilters: Array<{ [key: string]: TemplateRef<any> }>;  
   @Input() cellsTemplate: Array<{ [key: string]: TemplateRef<any> }>;
-  @Input() editHeaderTemplate: TemplateRef<any>;
   @Input() isMultiSelect = false;
   @Input() tableID = 'mainTable';
   @Input() stayOnCurrentPage = false;

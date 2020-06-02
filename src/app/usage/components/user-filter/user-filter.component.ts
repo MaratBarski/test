@@ -1,14 +1,14 @@
-import { Component, Output, EventEmitter, OnDestroy, HostListener, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Output, EventEmitter, OnDestroy, OnInit, HostListener, Input, ChangeDetectionStrategy } from '@angular/core';
 import { UsageRequestService } from '@app/usage/services/usage-request.service';
-import { ComponentService, BaseSibscriber } from '@appcore';
+import { ComponentService } from '@app/core-api';
 
 @Component({
   selector: 'md-user-filter',
   templateUrl: './user-filter.component.html',
   styleUrls: ['./user-filter.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Default
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class UserFilterComponent extends BaseSibscriber implements OnDestroy {
+export class UserFilterComponent implements OnDestroy, OnInit {
 
   topChecked = true;
   searchText = '';
@@ -16,12 +16,10 @@ export class UserFilterComponent extends BaseSibscriber implements OnDestroy {
   topCheckApply = true;
   searchWord = '';
   users: Array<any>;
-  originUsers: Array<any>;
 
   @Output() onApply = new EventEmitter<Array<any>>();
-  @Output() onInitUsers = new EventEmitter<void>();
   @Input() minSelected = 1;
-  @Input() maxSelected = 10;
+  @Input() maxSelected = 7;
 
   selectedCount = 0;
 
@@ -33,21 +31,17 @@ export class UserFilterComponent extends BaseSibscriber implements OnDestroy {
   constructor(
     public usageRequestService: UsageRequestService
   ) {
-    super();
-    super.add(
-      this.usageRequestService.onUsersLoaded.subscribe(() => {
-        this.originUsers = JSON.parse(JSON.stringify(this.usageRequestService.users));
-        this.users = this.usageRequestService.users;
-        this.changeTop(true);
-        this.updateSelectedCount();
-        this.usageRequestService.usageRequest.users = this.users.filter(x => x.isChecked).map(x => x.id);
-        this.onInitUsers.emit();
-        this.usageRequestService.firstTimeSeleted();
-      }));
+    this.users = JSON.parse(JSON.stringify(usageRequestService.users));
+    this.changeTop(true);
+    this.updateSelectedCount();
   }
 
   private updateSelectedCount(): void {
     this.selectedCount = this.users.filter(x => x.isChecked).length
+  }
+
+  ngOnInit(): void {
+    this.usageRequestService.usageRequest.users = this.users.filter(x => x.isChecked).map(x => x.id);
   }
 
   ngOnDestroy(): void {

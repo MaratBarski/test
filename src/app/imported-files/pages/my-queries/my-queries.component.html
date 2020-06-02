@@ -1,8 +1,88 @@
+<ng-template #edit let-item>
+    <span (click)="cellClick(item,$event)" class="admin-table-action__menu ic-hover">
+        <mdc-icon path="ic-dot-menu"></mdc-icon>
+    </span>
+</ng-template>
 <div style="padding: 50px;">
     <mdc-auto-complete textField="name" placeHolder="Select item..." (onSelect)="selectItem($event)"
         (completeMethod)="completeMethod($event)" [suggestions]="suggestions">
         <ng-template let-item>
-            <div [text]="item.name" [mdcColorText]="searchText"></div>
+            <div style="border-top:1px solid #ccc">{{item.name}}</div>
         </ng-template>
     </mdc-auto-complete>
+<mdc-switch-button [buttons]="switchButtons" (onClick)="switchBtnClick($event)" [activeIndex]="1"></mdc-switch-button>
+
+
+</div>
+Selected:{{selectedItem?.name}}
+<mdc-popup #popupMenu [closeOnClick]="true">
+    <mdc-modal-menu [sublinks]="sublinks" [links]="links"></mdc-modal-menu>
+</mdc-popup>
+<div class="wrapper">
+    <div class="shadow-site"></div>
+    <mdc-main-header logo="/assets/logo.jpg" organizationName="MDClone">
+    </mdc-main-header>
+    <main>
+        <div class="content-page">
+            <section class="page-header">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="page-header__wrap">
+                                <div class="page-header__content">
+                                    <h1>Home</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="query-wrap">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="unwrap active">
+                                <div class="unwrap__head">
+                                    <mdc-accordion [(ngModel)]="isMainExpanded">
+                                        <div class="nowrap">
+                                            <span class="unwrap__title">My Queries | <span class="unwrap__count">
+                                                    {{dataSource.rows.length}}
+                                                </span></span>
+                                        </div>
+                                    </mdc-accordion>
+                                </div>
+                                <div class="unwrap__content" [hidden]=" !isMainExpanded">
+                                    <div class="admin-table-wrap">
+                                        <div class="admin-table-wrap__action">
+                                            <div class="admin-table-wrap__col">
+                                                <mdc-button (click)="addQuery()" text="+ New Query"></mdc-button>
+                                            </div>
+                                            <div class="admin-table-wrap__col">
+                                                <form class="form-search d-none d-md-block">
+                                                    <mdc-auto-search pause="500" #search
+                                                        placeholder="{{'search'|translate}}"
+                                                        (complete)="searchQueryComplete($event)"></mdc-auto-search>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <div class="admin-table_yellow">
+                                            <mdc-table #table [cellsTemplate]="{ User:edit}"
+                                                [searchOptions]="searchOptions" [paginator]="paginator"
+                                                [search]="search" [dataSource]="dataSource">
+                                            </mdc-table>
+                                        </div>
+                                        <div class="pager-wrap">
+                                            <mdc-paginator #paginator paginationTitle="{{'paginationTitle'|translate}}"
+                                                [blockSize]="3" [pageSize]="10" [currentPage]="0">
+                                            </mdc-paginator>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
 </div>

@@ -1,6 +1,5 @@
-import { Component, ViewChild, ElementRef, AfterViewInit, HostListener } from '@angular/core';
-import { ComponentService, TranslateService, BaseSibscriber, animation, NavigationService } from '@appcore';
-import { ConfigService } from './shared/services/config.service';
+import {Component, ViewChild, ElementRef, AfterViewInit, HostListener} from '@angular/core';
+import {ComponentService, TranslateService, BaseSibscriber, animation, NavigationService} from '@appcore';
 
 @Component({
   selector: 'app-root',
@@ -11,13 +10,6 @@ import { ConfigService } from './shared/services/config.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  onFooterPage = false;
-  constructor(
-    public componentService: ComponentService,
-    public configService: ConfigService
-  ) {
-    this.componentService.onFooterPage.subscribe(data => {
-      this.onFooterPage = data;
-    });
+  constructor(public componentService: ComponentService) {
   }
 }

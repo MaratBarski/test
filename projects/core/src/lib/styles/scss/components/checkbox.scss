@@ -1,83 +1,64 @@
 .input-check{
-  &__label{
-    display: inline-flex;
-    // align-items: center;
-    cursor: pointer;
-    position: relative;
-    @include font(normal, normal, rem(14px), 1.25, $color-dark-blue);
-    margin-bottom: 14px;
-  }
+	&__label{
+		display: inline-flex;
+		// align-items: center;
+		cursor: pointer;
+		position: relative;
+		@include font(normal, normal, rem(14px), 1.25, $color-dark-blue);
+		margin-bottom: 14px;
+	}
 
-  input[type=checkbox] {
-    display: none;
-  }
+	input[type=checkbox] {
+		display: none;
+	}
 
-  &__mark{
-    display: inline-block;
-    width: 14px;
-    height: 14px;
-    border: 1px solid $color-dark-blue;
-    background: transparent;
-    position: relative;
-    margin-top: 2px;
-  }
+	&__mark{
+		display: inline-block;
+		width: 14px;
+		height: 14px;
+		border: 1px solid $color-dark-blue;
+		background: transparent;
+		position: relative;
+		margin-top: 2px;
+	}
 
-  &__mark::before{
-    content: '';
-    display: none;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background: $color-light-grey;
-    opacity: 0.25;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
+	&__mark::before{
+		content: '';
+		display: none;
+		width: 30px;
+		height: 30px;
+		border-radius: 50%;
+		background: $color-light-grey;
+		opacity: 0.25;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
 
-  &__label:hover &__mark::before{display: inline-block;}
+	&__label:hover &__mark::before{display: inline-block;}
 
-  .ic-check{
-    display: none;
-    width: 8px;
-    height: 8px;
-    fill: $color-dark-purple;
-    position: absolute;
-    @include top-center;
-    left: 0;
-    right: 0;
-    margin: 0 auto;
-  }
+	.ic-check{
+		display: none;
+		width: 8px;
+		height: 8px;
+		fill: $color-dark-purple;
+		position: absolute;
+		@include top-center;
+		left: 0;
+		right: 0;
+		margin: 0 auto;
+	}
 
-  &__text{
-    max-width: calc(100% - 22px);
-    margin-left: 8px;
-    white-space: normal;
-  }
+	&__text{
+		max-width: calc(100% - 22px);
+		margin-left: 8px;
+		white-space: nowrap;
+	}
 
-  &__accent{color: $color-green;}
+	input[type=checkbox]:checked + &__label &__mark{border-color: $color-dark-purple;}
+	input[type=checkbox]:checked + &__label &__mark .ic-check{display: inline-block;}
 
-  input[type=checkbox]:checked + &__label &__mark{border-color: $color-dark-purple;}
-  input[type=checkbox]:checked + &__label &__mark .ic-check{display: inline-block;}
-
-  input[disabled] + &__label{cursor: auto;}
-  input[disabled] + &__label &__mark{border-color: $color-light-grey; background: $color-sort-grey;}
-  &:hover input[disabled] + &__label &__mark::before{display: none;}
-
-  &_all &__mark::after{
-    content: '';
-    display: none;
-    width: 8px;
-    height: 2px;
-    border-radius: 1px;
-    background: $color-dark-purple;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-
-  &_all input[type=checkbox]:checked + &__label &__mark .icon{display: none;}
-  &_all input[type=checkbox]:checked + &__label &__mark::after{display: inline-block;}
+	input[disabled="disabled"] + &__label &__mark{border-color: $color-light-grey; background: $color-sort-grey;}
+	&:hover input[disabled="disabled"] + &__label &__mark::before{display: none;}
 }

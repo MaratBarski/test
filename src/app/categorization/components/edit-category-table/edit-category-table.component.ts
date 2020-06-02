@@ -1,11 +1,11 @@
-import { Component, Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'md-edit-category-table',
   templateUrl: './edit-category-table.component.html',
   styleUrls: ['./edit-category-table.component.scss']
 })
-export class EditCategoryTableComponent {
+export class EditCategoryTableComponent implements OnInit {
 
   @Input() set data(data: any) {
     this._data = data;
@@ -18,9 +18,10 @@ export class EditCategoryTableComponent {
     return this._data;
   }
   private _data: any;
-  
-  onUpdateMessage(message: string): void {
-    this._data.data.notificationMessage = message;
+
+  constructor() { }
+
+  ngOnInit() {
   }
 
   validateItem(item: any): void {

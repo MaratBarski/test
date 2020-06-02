@@ -21,7 +21,7 @@ export const DefaultEmptyState = (): EmptyState => {
   styleUrls: ['./empty-state.component.css']
 })
 export class EmptyStateComponent implements OnInit, OnDestroy {
-  @Input() emptyState: EmptyState = DefaultEmptyState();
+  @Input() emptyState: EmptyState;
 
   ngOnInit(): void {
     ComponentService.hideScroll(true);

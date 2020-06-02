@@ -3,5 +3,5 @@ export interface UsageReportParams {
     toDate?: Date | string;
     includeAdmin?: boolean;
     users?: Array<any>;
-    environment?: any;
+    environmet?: any;
 }
