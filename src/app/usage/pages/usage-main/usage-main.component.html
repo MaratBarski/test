@@ -2,7 +2,7 @@
     <!-- {{usageRequestService.usageRequest|json}} -->
     <md-usage-header></md-usage-header>
     <md-usage-dashboard-top [selectedUrl]="currentPage"></md-usage-dashboard-top>
-    <md-usage-dashboard-info-panel [showUsers]="currentPage==='activity-per-user'||currentPage==='table'"
+    <md-usage-dashboard-info-panel (onInitUsers)="initUsers()" [showUsers]="currentPage==='activity-per-user'||currentPage==='table'"
         [showYears]="currentPage!=='top-10-users'&&currentPage!=='retention'" (onChange)="onChangeInfoPanel($event)">
     </md-usage-dashboard-info-panel>
     <md-usage-report *ngIf="currentPage==='general-usage'"></md-usage-report>

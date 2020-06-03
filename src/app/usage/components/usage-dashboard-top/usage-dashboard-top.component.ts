@@ -3,6 +3,7 @@ import { UsageLinks } from '@app/usage/models/usage-links';
 import { Router } from '@angular/router';
 import { DownloadOption } from '@app/shared/components/download-selector/download-selector.component';
 import { UsageDownloadService } from '@app/usage/services/usage-download.service';
+import { ChartService } from '@app/usage/services/chart.service';
 
 @Component({
   selector: 'md-usage-dashboard-top',
@@ -13,6 +14,7 @@ export class UsageDashboardTopComponent {
 
   constructor(
     private usageDownloadService: UsageDownloadService,
+    private chrtService: ChartService,
     private router: Router
   ) { }
 
@@ -36,7 +38,8 @@ export class UsageDashboardTopComponent {
     if (option === DownloadOption.none) { return; }
 
     if (option === DownloadOption.csv) {
-      this.usageDownloadService.toCSV();
+      //this.usageDownloadService.toCSV();
+      this.chrtService.getCsv();
       return;
     }
 

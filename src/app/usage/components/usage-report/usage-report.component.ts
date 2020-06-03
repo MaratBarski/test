@@ -26,7 +26,7 @@ export class UsageReportComponent extends UsageBase {
   timeline = true;
 
   colorScheme = {
-    domain: ['#002060']
+    domain: ['#5303A8']
   };
 
   pdfChartWidth = '500px';
@@ -37,7 +37,7 @@ export class UsageReportComponent extends UsageBase {
     private usageDownloadService: UsageDownloadService,
     protected componentService: ComponentService,
     protected usageService: UsageService,
-    protected chartService: ChartService,
+    public chartService: ChartService,
     public usageRequestService: UsageRequestService
   ) {
     super();

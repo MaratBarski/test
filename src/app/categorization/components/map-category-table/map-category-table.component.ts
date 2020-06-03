@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, HostListener, Renderer2 } from '@angular/core';
+import { Component, Input, HostListener, Renderer2 } from '@angular/core';
 import { ComponentService } from '@appcore';
 
 @Component({
@@ -6,14 +6,31 @@ import { ComponentService } from '@appcore';
   templateUrl: './map-category-table.component.html',
   styleUrls: ['./map-category-table.component.scss']
 })
-export class MapCategoryTableComponent implements OnInit {
+export class MapCategoryTableComponent {
+
+  @Input() set oldCategories(oldCategories: any) {
+    this._oldCategories = [].concat(oldCategories.map(x => {
+      return { ...x, oldCategory: this.newCategoryDefault };
+    }));
+    this.initMap();
+  }
+  get oldCategories(): any {
+    return this._oldCategories;
+  }
+  private _oldCategories = [];
+
+  oldNewDifCount = 0;
+  newCategoryDefault = { hierarchyLevelName: 'New Hierarchy name', sortValue: -1, inUse: true };
+  categoryMap = [];
 
   @Input() set data(data: any) {
     this._data = data;
     if (!this._data || !this._data.data || !this._data.data.hierarchyLevels) { return; }
+    this.categoryMap = [this.newCategoryDefault];
     this._data.data.hierarchyLevels.forEach((item: any) => {
-      item.newHierarchyLevelName = item.hierarchyLevelName;
+      this.categoryMap.push(item);
     });
+    this.initMap();
   }
   get data(): any {
     return this._data;
@@ -26,7 +43,11 @@ export class MapCategoryTableComponent implements OnInit {
     private renderer2: Renderer2
   ) { }
 
-  selectItem(eventy: any, item: any, index: number): void {
+  selectItem(event: any, item: any, index: number): void {
+    if (this.selectedItem === item) {
+      ComponentService.documentClick(event);
+      return;
+    }
     ComponentService.documentClick(event);
     this.selectedItem = item;
     const div = document.getElementById(`select_${index}`);
@@ -41,11 +62,32 @@ export class MapCategoryTableComponent implements OnInit {
     this.selectedItem = undefined;
   }
 
-  changeOldCategory(item: any): void {
-    this.selectedItem.hierarchyLevelName = item.hierarchyLevelName;
+  changeOldCategory(oldCategoryItem: any, newCategoryItem: any): void {
+    if (this.newCategoryDefault !== newCategoryItem.oldCategory) {
+      newCategoryItem.oldCategory.inUse = false;
+    }
+    newCategoryItem.oldCategory = oldCategoryItem;
+    newCategoryItem.oldCategory.inUse = true;
   }
 
-  ngOnInit() {
+  initMap(): void {
+    this.oldNewDifCount = Math.max(0, this.categoryMap.length - this.oldCategories.length - 1);
+    this.oldCategories.forEach((level: any, index: number) => {
+      const oldCategory = this.findOldcategory(level);
+      if (oldCategory) {
+        level.oldCategory = oldCategory;
+        level.oldCategory.inUse = true;
+      } else {
+        level.oldCategory = this.newCategoryDefault;
+      }
+    });
   }
 
+  findOldcategory(level: any): any {
+    return this.categoryMap.find((x: any) => x.hierarchyLevelName === level.hierarchyLevelName);
+  }
+
+  onUpdateMessage(message: string): void {
+    this._data.data.notificationMessage = message;
+  }
 }

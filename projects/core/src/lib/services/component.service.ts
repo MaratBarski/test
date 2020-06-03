@@ -1,12 +1,15 @@
-import { Injectable } from '@angular/core';
-import { Observable, BehaviorSubject, Subject } from 'rxjs';
+import {Injectable} from '@angular/core';
+import {Observable, BehaviorSubject, Subject} from 'rxjs';
 
 const SUB_MENU_SHOW = 'showSideMenu';
+
 @Injectable({
   providedIn: 'root'
 })
 export class ComponentService {
   public onSideBarToggle: Subject<boolean> = new Subject<boolean>();
+  public onFooterPage: Subject<boolean> = new Subject<boolean>();
+
   set showSideMenu(showSideMenu: boolean) {
     localStorage.setItem(SUB_MENU_SHOW, showSideMenu.toString().toLowerCase());
   }
@@ -21,11 +24,13 @@ export class ComponentService {
   get onToggleMenu(): Observable<boolean> {
     return this._onToggleMenu.asObservable();
   }
+
   private _onToggleMenu = new BehaviorSubject<boolean>(true);
 
   get onStartToggleMenu(): Observable<boolean> {
     return this._onStartToggleMenu.asObservable();
   }
+
   private _onStartToggleMenu = new Subject<boolean>();
 
   toggleMenu(): void {
@@ -36,7 +41,9 @@ export class ComponentService {
   }
 
   getFileName(path: string): string {
-    if (!path) { return ''; }
+    if (!path) {
+      return '';
+    }
     const arr = path.replace(/\\/g, '/').split('/');
     return arr[arr.length - 1];
   }
@@ -76,6 +83,6 @@ export class ComponentService {
   }
 
   static hideScroll(hide: boolean): void {
-    document.body.style.overflow = hide ? 'hidden' : 'visible'
+    document.body.style.overflow = hide ? 'hidden' : 'visible';
   }
 }

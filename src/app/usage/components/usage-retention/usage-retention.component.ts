@@ -16,6 +16,7 @@ export class UsageRetentionComponent extends UsageBase {
   @Input() downloader: DownloadComponent;
   data: TableModel;
   lastDays = 60;
+  searchOptions = ['login', 'environment'];
 
   constructor(
     private usageDownloadService: UsageDownloadService,
@@ -26,9 +27,8 @@ export class UsageRetentionComponent extends UsageBase {
     public usageRequestService: UsageRequestService
   ) {
     super();
-    this.initDate();
     super.dataSourceReady = () => {
-      this.data = this.usageService.createDataSource(this.dataSource.data);
+      this.data = this.usageService.createRetentionDataSource(this.dataSource);
     }
 
     this.usageDownloadService.toCSV = () => this.toCSV();
@@ -58,19 +58,12 @@ export class UsageRetentionComponent extends UsageBase {
     alert('restriction csv');
   }
 
-  private initDate(): void {
-    this.usageRequestService.usageRequest.fromDate =
-      this.dateService.formatDate(this.dateService.fromDate[DatePeriod.Day](this.lastDays));
-  }
-
 
   checkValidDays(): void {
     this.lastDays = Math.max(0, this.lastDays);
-    this.initDate();
-    this.usageRequestService.emit();
   }
 
   createReport(): void {
-    super.responseData = this.usageService.getUsageReport();
+    super.responseData = this.chartService.getUsageRetention();
   }
 }

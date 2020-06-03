@@ -41,19 +41,24 @@ export const PageInfo = {
 export const SideMenu: Array<MenuItem> = [
     {
         id: PageInfo.ManageUsers.id,
-        url: '',
+        url: 'users',
         text: 'Manage Users',
-        subLinks: [
-            {
-                url: '',
-                text: 'Text'
-            },
-            {
-                url: '',
-                text: 'Text1'
-            },
-        ]
     },
+    // {
+    //     id: PageInfo.ManageUsers.id,
+    //     url: '',
+    //     text: 'Manage Users',
+    //     subLinks: [
+    //         {
+    //             url: '',
+    //             text: 'Text'
+    //         },
+    //         {
+    //             url: '',
+    //             text: 'Text1'
+    //         },
+    //     ]
+    // },
     {
         id: PageInfo.ProjectSiteSettings.id,
         url: '',
@@ -82,7 +87,7 @@ export const SideMenu: Array<MenuItem> = [
     {
         id: PageInfo.JobsScheduling.id,
         url: 'usage-dashboard',
-        text: 'Jobs Scheduling'
+        text: 'Usage Report'
     },
     {
         id: PageInfo.PatientStorySettings.id,

@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { FileSourceResponse, FileSource } from '../../../models/file-source';
+import { FileSourceResponse, FileSource } from '../../models/file-source';
 
 export const LOAD_FILE_SOURCE = '[Load file] Load';
 export const LOAD_FILE_SOURCE_SUCC = '[Load file suc] Load';

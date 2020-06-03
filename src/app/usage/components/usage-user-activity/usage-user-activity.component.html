@@ -1,4 +1,5 @@
-<md-chart-wraper firstTitle="New Queries per user" secondTitle="Downloads per user" [firstChart]="firstChart"
+<md-chart-wraper [secondLegendTemplate]="secondLegendTemplate" [firstLegendTemplate]="firstLegendTemplate"
+    [isLegend]="true" firstTitle="New Queries per user" secondTitle="Downloads per user" [firstChart]="firstChart"
     [secondChart]="secondChart">
 </md-chart-wraper>
 
@@ -6,13 +7,21 @@
 <md-chart-pdf #chartPdf2 [chart]="secondChart" [width]="pdfChartWidth" [height]="pdfChartHeight"></md-chart-pdf>
 
 <ng-template #firstChart>
-    <ngx-charts-line-chart [results]="(dataSource|userActivityChart).query" [animations]="true" [xAxis]="true"
-        [yAxis]="true" [showGridLines]="true" [showXAxisLabel]="true">
+    <ngx-charts-line-chart [animations]="false" [tooltipDisabled]="false" [customColors]="users" [results]="(data|userActivityChart).query" [animations]="true"
+        [xAxis]="true" [yAxis]="true" [showGridLines]="true" [showXAxisLabel]="true">
     </ngx-charts-line-chart>
 </ng-template>
 
 <ng-template #secondChart>
-    <ngx-charts-line-chart [results]="(dataSource|userActivityChart).download" [xAxis]="true" [yAxis]="true"
-        [showGridLines]="true" [showXAxisLabel]="true">
+    <ngx-charts-line-chart [animations]="false" [customColors]="users" [results]="(data|userActivityChart).download" [xAxis]="true"
+        [yAxis]="true" [showGridLines]="true" [showXAxisLabel]="true">
     </ngx-charts-line-chart>
+</ng-template>
+
+<ng-template #firstLegendTemplate>
+    <md-chart-user-list [users]="users"></md-chart-user-list>
+</ng-template>
+
+<ng-template #secondLegendTemplate>
+    <md-chart-user-list [users]="users"></md-chart-user-list>
 </ng-template>

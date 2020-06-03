@@ -36,6 +36,12 @@
       ],
       "core/*": [
         "dist/core/*"
+      ],
+      "@mdc/ngx-charts": [
+        "./projects/swimlane/ngx-charts/src/public_api"
+      ],
+      "@mdc/ngx-charts/*": [
+        "./projects/swimlane/ngx-charts/src/lib/*"
       ]
     }
   },

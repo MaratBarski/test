@@ -1,4 +1,4 @@
-import { Hierarchy } from '@app/models/hierarchy';
+import { Hierarchy } from '@app/imported-files/models/hierarchy';
 
 export class CategoryeResponse {
     data?: Array<Hierarchy>;

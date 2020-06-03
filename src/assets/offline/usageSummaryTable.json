@@ -1,0 +1,39 @@
+{
+    "data": [
+        {
+            "userName": "Dotan Perlstein (dotan.perl)",
+            "userId": 8803,
+            "lastLogin": "2020-02-12T10:42:30.788082+00:00",
+            "permission": "Synthetic",
+            "loginDays": 4,
+            "origin": 2,
+            "syntetic": 0
+        },  {
+            "userName": "Lior Halachmi (lior.halachmi)",
+            "userId": 1078,
+            "lastLogin": "2020-02-18T21:02:08.402288+00:00",
+            "permission": "Original",
+            "loginDays": 36,
+            "origin": 1,
+            "syntetic": 0
+        },  {
+            "userName": "Researcher One (researcher1)",
+            "userId": 1000,
+            "lastLogin": "2020-01-02T13:16:40.667364+00:00",
+            "permission": "Synthetic",
+            "loginDays": 78,
+            "origin": 1,
+            "syntetic": 1
+        },  {
+            "userName": "Ruth H (Ruth)",
+            "userId": 2783,
+            "lastLogin": "2019-09-16T14:07:09.186794+00:00",
+            "permission": "Synthetic",
+            "loginDays": 13,
+            "origin": 0,
+            "syntetic": 6
+        }
+    ],
+    "massage": "Get all Usage Report's Objects",
+    "status": "success"
+}

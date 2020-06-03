@@ -1,12 +1,15 @@
 import { Component } from '@angular/core';
 import { ComponentService } from '../../services/component.service';
 
-enum Icon {
+export enum Icon {
   hamburgerOpen = 'ic-hamburger',
   hamburgerClose = 'ic-hamburger-arrow',
   arrowDown = 'ic-select-arr-down',
   notice = 'notice',
-  categorization = 'ic-categorization'
+  categorization = 'ic-categorization',
+  numeric = 'ic-numeric',
+  textual = 'ic-textual',
+  date = 'ic-calendar'
 }
 
 @Component({

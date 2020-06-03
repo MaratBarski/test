@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { BaseSibscriber, TableModel, TableComponent, PageInfo, NavigationService, TableActionCommand } from '@app/core-api';
+import { BaseSibscriber, TableModel, TableComponent, PageInfo, NavigationService, TableActionCommand, EmptyState } from '@appcore';
 import { CategorizationService } from '@app/categorization/services/categorization.service';
 import { CategoryInfoComponent } from '@app/categorization/components/category-info/category-info.component';
 import { Router } from '@angular/router';
-import {Hierarchy} from '@app/models/hierarchy';
+import { environment } from '@env/environment';
 
 @Component({
   selector: 'md-categorization',
@@ -12,14 +12,21 @@ import {Hierarchy} from '@app/models/hierarchy';
 })
 export class CategorizationComponent extends BaseSibscriber implements OnInit {
 
+  emptyState: EmptyState = {
+    title: 'Categorization makes the data accessible. Start by clicking the button above.',
+    subTitle: 'Your categorization will be listed here.',
+    image: 'categoryEmpty.png'
+  }
+  
   @ViewChild('table', { static: true }) table: TableComponent;
   @ViewChild('categorizationInfo', { static: true }) categorizationInfo: CategoryInfoComponent;
 
   showUploadFile = false;
   dataOrigin: TableModel;
   dataSource: TableModel;
+  categorySource: Array<any>;
   currentRow = { state: true, source: undefined };
-  category: Array<Hierarchy>;
+  currentSource: any = undefined;
 
   constructor(
     private categorizationService: CategorizationService,
@@ -31,6 +38,9 @@ export class CategorizationComponent extends BaseSibscriber implements OnInit {
   }
 
   searchOptions = ['hierarchyName', 'hierarchyFile', 'insertDate', 'domain'];
+
+  isDataExists = true;
+  isLoaded = false;
 
   showInfo(event: any, item: any, source: any): void {
     this.currentRow.state = true;
@@ -54,31 +64,38 @@ export class CategorizationComponent extends BaseSibscriber implements OnInit {
       this.router.navigate(['/categorization/edit-categories', { id: action.item.source.hierarchyRootId }]);
     },
     map: (action: TableActionCommand) => {
-      alert('map');
-    },
-    replace: (action: TableActionCommand) => {
-      alert('replace');
+      this.router.navigate(['/categorization/map-categories', { id: action.item.source.hierarchyRootId }]);
     },
     download: (action: TableActionCommand) => {
-      alert('view');
+      //alert(`${environment.serverUrl}${environment.endPoints.downloadCategory}/${action.item.source.hierarchyRootId}`)
+      window.open(`${environment.serverUrl}${environment.endPoints.downloadCategory}/${action.item.source.hierarchyRootId}`)
     },
     delete: (action: TableActionCommand) => {
-      // this.category = this.category.filter(x => x !== source);
-      this.categorizationService.deleteHierarchy(action.item.source)
+      this.categorySource = this.categorySource.filter(x => x != action.item.source);
+      this.initData();
+      this.table.stayOnCurrentPage = true;
+      this.categorizationService.deleteCategory(action.item.source)
         .toPromise()
         .then(res => {
-          console.log('Hierarchy Deleted');
+          console.log('Category deleted');
         }).catch(e => {
-        console.error('Error delete Hierarchy');
-      });
-      // this.store.deleteHierarchy(deleteFile(source));
+          console.error('Error delete category');
+        })
     }
   };
 
+  private initData(): void {
+    this.isDataExists = !!(this.categorySource && this.categorySource.length);
+    this.dataOrigin = this.dataSource = this.categorizationService.createDataSource(this.categorySource);
+    this.isLoaded = true;
+  }
+
   ngOnInit() {
+    this.isLoaded = false;
     super.add(
       this.categorizationService.load().subscribe((res: any) => {
-        this.dataOrigin = this.dataSource = this.categorizationService.createDataSource(res.data);
+        this.categorySource = res.data;
+        this.initData();
       }));
   }
 
@@ -86,4 +103,8 @@ export class CategorizationComponent extends BaseSibscriber implements OnInit {
     this.table.closeRowInfo();
   }
 
+  openUploadNew(): void {
+    this.currentSource = undefined;
+    this.showUploadFile = true;
+  }
 }

@@ -4,17 +4,15 @@
     </div>
 </md-page-title>
 <md-page-body>
-    <div class="admin-table-wrap__action">
+    <div [hidden]="isLoaded">Loading...</div>
+    <div [hidden]="!isLoaded" class="admin-table-wrap__action">
         <div class="admin-table-wrap__col">
             <mdc-button (click)="openFileUpload()" text="+ {{'NewFile'|translate}}">
             </mdc-button>
-            <div style="display: none;">
-                <mdc-download #downloader></mdc-download>
-            </div>
         </div>
-        <div mdAnimationSticky class="admin-table-wrap__col">
+        <div mdAnimationSticky [hidden]="!isDataExists" class="admin-table-wrap__col">
             <div class="tabs-page">
-                <mdc-date-filter #dateFilter (onFilter)="dateFilterData($event)" [dataSource]="fileSource"
+                <mdc-date-filter #dateFilter (onSelect)="onSelectTab($event)" (onFilter)="dateFilterData($event)" [dataSource]="fileSource"
                     [items]="dateRanges"></mdc-date-filter>
             </div>
             <div class="form-search d-none d-md-block">
@@ -22,25 +20,23 @@
             </div>
         </div>
     </div>
-    <mdc-table #table (onAction)="onAction($event)" [rowInfoTemplate]="rowInfoTemplate" [emptyState]="emptyState"
-        [downloader]="downloader" [cellsTemplate]="{ insertDate:dateColumn,shared:sharedColumn}"
-        [searchOptions]="searchOptions" [paginator]="paginator" [search]="search" [dataSource]="dataSource">
-    </mdc-table>
-    <div class="pager-wrap">
+    <div [hidden]="!isDataExists || !isLoaded">
+        <mdc-table #table (onAction)="onAction($event)" [emptyState]="emptyState"
+            [cellsTemplate]="{ insertDate:dateColumn,shared:sharedColumn}" [searchOptions]="searchOptions"
+            [paginator]="paginator" [search]="search" [dataSource]="dataSource">
+        </mdc-table>
+    </div>
+    <mdc-empty-state *ngIf="!isDataExists && isLoaded" [emptyState]="emptyState"></mdc-empty-state>
+    <div class="pager-wrap" [hidden]="!isLoaded">
         <mdc-paginator #paginator paginationTitle="{{'paginationTitle'|translate}}" noPagingTitle="Showing {0} files"
             [blockSize]="3" [pageSize]="12" [currentPage]="0">
         </mdc-paginator>
     </div>
 </md-page-body>
 
-<ng-template #rowInfoTemplate let-item>
-    <div style="width:900px;border:1px solid red">
-        {{item.source|json}}
-    </div>
-</ng-template>
-
 <ng-template #dateColumn let-item>
-    {{item.insertDate|date}}
+    <div [stickyToElement]="true" position="right" [mdcTooltip]="(item.insertDate|date) + ' ' + (item.insertDate|date:'HH:mm')">{{item.insertDate|date}}
+    </div>
 </ng-template>
 
 <ng-template #sharedColumn let-item>
@@ -50,7 +46,7 @@
 </ng-template>
 
 <mdc-modal-window *ngIf="showUploadFile">
-    <md-upload-file (onLoad)="onLoadFileUpload($event)" (onUpload)="showUploadFile=false"
+    <md-upload-file [targetComponent]="me" (onLoad)="onLoadFileUpload($event)" (onUpload)="showUploadFile=false"
         (onCancel)="showUploadFile=false">
     </md-upload-file>
 </mdc-modal-window>

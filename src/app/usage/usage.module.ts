@@ -15,7 +15,12 @@ import { UsageMonthlyComponent } from './components/usage-monthly/usage-monthly.
 import { UsageUserActivityComponent } from './components/usage-user-activity/usage-user-activity.component';
 import { UsageTopComponent } from './components/usage-top/usage-top.component';
 import { UsageCreatedComponent } from './components/usage-created/usage-created.component';
-import { NgxChartsModule } from '@swimlane/ngx-charts';
+
+//import { NgxChartsModule } from '@swimlane/ngx-charts';
+
+import { NgxChartsModule } from '@mdc/ngx-charts/ngx-charts.module';
+//import { NgxUIModule } from '@mdc/ngx-ui';
+
 import { ChartWraperComponent } from './components/chart-wraper/chart-wraper.component';
 import { UsageRetentionComponent } from './components/usage-retention/usage-retention.component';
 import { UsageHeaderComponent } from './components/usage-header/usage-header.component';
@@ -27,6 +32,9 @@ import { Top10ChartPipe } from './pipes/top-10-users.pipe';
 import { CreatedChartPipe } from './pipes/created.pipe';
 import { ChartPdfComponent } from './components/chart-pdf/chart-pdf.component';
 import { UsageUserPipe } from './pipes/usage-user.pipe';
+import { RetentionPipe } from './pipes/retention.pipe';
+import { ChartLegendComponent } from './components/chart-legend/chart-legend.component';
+import { ChartUserListComponent } from './components/chart-user-list/chart-user-list.component';
 
 const routes: Array<Route> = [
   { path: 'test', component: UsageDashboardComponent },
@@ -67,7 +75,10 @@ const routes: Array<Route> = [
     UsageHeaderComponent,
     UserFilterComponent,
     ChartPdfComponent,
-    UsageUserPipe
+    UsageUserPipe,
+    RetentionPipe,
+    ChartLegendComponent,
+    ChartUserListComponent
   ],
   imports: [
     CommonModule,

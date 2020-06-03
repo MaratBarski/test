@@ -12,8 +12,8 @@ export const DefaultEmptyState = (): EmptyState => {
     title: 'Nothing matches your search.',
     subTitle: 'Try using the filters or search different keywords',
     image: 'nodata.png'
-  };
-};
+  }
+}
 
 @Component({
   selector: 'mdc-empty-state',
@@ -21,7 +21,7 @@ export const DefaultEmptyState = (): EmptyState => {
   styleUrls: ['./empty-state.component.css']
 })
 export class EmptyStateComponent implements OnInit, OnDestroy {
-  @Input() emptyState: EmptyState;
+  @Input() emptyState: EmptyState = DefaultEmptyState();
 
   ngOnInit(): void {
     ComponentService.hideScroll(true);

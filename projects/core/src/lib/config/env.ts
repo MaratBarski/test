@@ -8,7 +8,6 @@ export const ENV = {
         userData: 'user-data',
         fileSource: 'mdclone/api/v1/file-source',
         uploadFileSource: 'mdclone/api/v1/upload/file-source',
-        uploadHierarchy: 'omry/api/v1/upload/hierarchy',
         deleteFileSource: 'mdclone/api/v1/file-source',
         hierarchy: 'mdclone/api/v1/hierarchy'
     }

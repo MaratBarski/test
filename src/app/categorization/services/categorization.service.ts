@@ -3,7 +3,7 @@ import { DataService, TableModel } from '@app/core-api';
 import { Observable } from 'rxjs';
 import { Offline } from 'src/app/shared/decorators/offline.decorator';
 import { CategoryeResponse } from '../models/category-reponse';
-import { Hierarchy } from '@app/models/hierarchy';
+import { Hierarchy } from '@app/imported-files/models/hierarchy';
 import { environment } from '@env/environment';
 
 @Injectable({
@@ -23,8 +23,10 @@ export class CategorizationService {
   updateHierarchyChange(hierarchy: any, state: boolean): void {
     // call dataService to update hierarchy state
   }
-  deleteHierarchy(fl: Hierarchy): Observable<any> {
-    return this.dataService.delete(`${environment.serverUrl}${environment.endPoints.deleteHierarchy}/${fl.hierarchyRootId}`);
+
+  deleteCategory(hierarchy: any): Observable<any> {
+    //alert(`${environment.serverUrl}${environment.endPoints.deleteCategory}/${hierarchy.hierarchyRootId}`);
+    return this.dataService.delete(`${environment.serverUrl}${environment.endPoints.deleteCategory}/${hierarchy.hierarchyRootId}`);
   }
 
   createDataSource(categories: Array<Hierarchy>): TableModel {
@@ -32,28 +34,9 @@ export class CategorizationService {
       actions: {
         links: [
           {
-            text: 'Review & Edit',
-            icon: 'ic-review-and-edit',
+            text: 'Edit',
+            icon: 'ic-edit',
             command: 'edit'
-            , hidden: (source: any) => {
-              if (!source.status) { return true; }
-              return source.status !== 'mapped';
-            },
-            disable: false
-          },
-          {
-            text: 'Review & Map',
-            icon: 'ic-review-and-edit',
-            command: 'map'
-            , hidden: (source: any) => {
-              if (!source.status) { return true; }
-              return source.status !== 'unmapped';
-            }
-          },
-          {
-            text: 'Replace Categorization File',
-            icon: 'ic-replace',
-            command: 'replace'
           },
           {
             text: 'Download',
@@ -120,13 +103,13 @@ export class CategorizationService {
           hierarchyName: fl.hierarchyName,
           hierarchyFile: fl.hierarchyFile,
           insertDate: fl.insertDate,
-          domain: fl.project.projectName,
+          domain: fl.domain,
           defaultLevelId: fl.defaultLevelId
         },
         isActive: false,
         source: fl
-      });
-    });
+      })
+    })
     return data;
   }
 }

@@ -1,5 +1,5 @@
-import { Template } from '@app/models/template';
-import { Project } from '@app/models/project';
+import { Template } from './template';
+import { Project } from './project';
 import { User } from 'core/lib/models/UserInfo';
 import {Hierarchy} from '@app/models/hierarchy';
 

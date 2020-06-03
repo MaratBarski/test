@@ -26,6 +26,7 @@ import { environment } from '@env/environment';
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+
     CoreModule,
     StoreModule.forRoot({}),
     EffectsModule.forRoot([]),

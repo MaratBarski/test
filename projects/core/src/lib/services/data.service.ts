@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +12,7 @@ export class DataService {
     return {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        Accept: 'application/json'
+        'Accept': 'application/json'
       })
     };
   };

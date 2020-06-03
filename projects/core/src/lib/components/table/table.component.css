@@ -13,11 +13,18 @@
     text-decoration: underline;
 }
 .row-even{
-    background: rgba(242, 243, 245, 0.9);
+    background: rgba(242, 243, 245, 0.9) !important;
 }
 .row-even:hover{
-    background: #e1e3e7;
+    background: #e1e3e7 !important;
 }
+.row-odd{
+    background: #ffffff !important;
+}
+.row-odd:hover{
+    background: #e1e3e7 !important;
+}
+  
 .actions-menu{
     direction: ltr;
 	border-radius: 4px;

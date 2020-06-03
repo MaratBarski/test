@@ -19,7 +19,7 @@ export class EditCategoryService {
   @Offline('assets/offline/selectedHierarchy.json?')
   private getUrl = `${environment.serverUrl}${environment.endPoints.hierarchy}`;
 
-  private saveUrl = `${environment.serverUrl}${environment.endPoints.hierarchy}`;
+  private saveUrl = `${environment.serverUrl}${environment.endPoints.updateHierarchy}`;
 
   load(id: string): Observable<any> {
     return this.dataService.get(`${this.getUrl}/${id}`).pipe(
@@ -37,7 +37,7 @@ export class EditCategoryService {
   }
 
   save(category: any): Observable<any> {
-    return this.dataService.put(this.saveUrl + '/' + category.hierarchyRootId, category).pipe(
+    return this.dataService.post(this.saveUrl, category).pipe(
       catchError(er => {
         return of(er);
       })
