@@ -28,6 +28,7 @@ export class SessionHistory {
      fileNameAlias: string;
      projectName: string;
      login: string;
+     fullName: string;
      approvalKey: number;
      researchName: string;
      researchInfo: string;

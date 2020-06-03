@@ -19,7 +19,7 @@ export const environment = {
         hierarchy: 'mdclone/api/v1/hierarchy',
         replaceHierarchy: 'mdclone/api/v1/hierarchy',
         historyReport: 'mdclone/api/v1/session-history',
-        downloadHistoryReport: 'moshe/api/v1/session-history/download',
+        downloadHistoryReport: 'mdclone/api/v1/session-history/download',
         usageReport: 'mdclone/api/v1/reporting/usage',
         templateByProject: 'mdclone/api/v1/template/get-by-project',
         updateHierarchy: 'mdclone/api/v1/updateHierarchy',

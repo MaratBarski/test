@@ -40,16 +40,14 @@
     <span class="pointer link">{{item.insertDate|date}}</span>
 </ng-template>
 <ng-template #dataHeader>
-    <span class="font-weight-600">Data </span>
+    <span>Data </span>
     <svg width="15" height="15" mdcSvg="ic-help" color="blue"></svg>
 </ng-template>
 <ng-template let-item #statusTemplate let-src="source">
-    <div *ngIf="src.transStatus" [stickyToElement]="true" [position]="'right'" [mdcTooltip]="'File generated successfully'"
-        class="height-20-px width-20-px">
+    <div *ngIf="src.transStatus" [stickyToElement]="true" [position]="'right'" [mdcTooltip]="'File generated successfully'">
         <svg width="20" height="20" mdcSvg="ic-success" color="green"></svg>
     </div>
-    <div *ngIf="!src.transStatus" [stickyToElement]="true" [position]="'left'" [mdcTooltip]="item.failureToolTip"
-        class="height-20-px width-20-px">
+    <div *ngIf="!src.transStatus" [stickyToElement]="true" [position]="'left'" [mdcTooltip]="item.failureToolTip">
         <svg width="20" height="20" mdcSvg="ic-failure" color="red"></svg> 
     </div>
 </ng-template>
@@ -62,16 +60,16 @@
 </ng-template>
 
 <ng-template let-item #nameTemplate let-src="source">
-    <div *ngIf="src.sessionId" class="display-flex">
-        <div class="margin-top-5-px">{{src.sessionName}} | </div>
-        <div class="margin-top-5-px">
+    <div *ngIf="src.sessionId">
+        <div>{{src.sessionName}} | </div>
+        <div>
             <a target="_blank" href="/datalake/#/projects/{{src.projectId}}/sessions/{{src.sessionId}}">
                 <span>{{src.sessionId}}</span>
             </a>
         </div>
         <div [stickyToElement]="true" [position]="'right'" [mdcTooltip]="'Link will navigate you to query'">
             <a target="_blank" href="/datalake/#/projects/{{src.projectId}}/sessions/{{src.sessionId}}">
-                <svg width="30" height="30" mdcSvg="ic-add-help" color="#0596ff"></svg> 
+                <svg width="17" height="17" mdcSvg="ic-add-help" color="#0596ff"></svg> 
             </a>
         </div>
     </div>

@@ -3,6 +3,8 @@ import { HistoryReportService } from '../../services/history-repost.service';
 import { DownloadComponent, TableComponent, TableModel, NavigationService, PageInfo, BaseSibscriber, EmptyState, DateRangeButton, DatePeriod } from '@appcore';
 import { SessionHistory } from '@app/models/session-history';
 import { environment } from '@env/environment';
+import { formatDate } from '@angular/common';
+import { format } from 'url';
 
 
 @Component({
@@ -65,7 +67,10 @@ export class OutputHistoryReportComponent extends BaseSibscriber implements OnIn
 
   changeFileName():void{
     const date = new Date();
-    this.downloader.fileName = `${date.getFullYear()}${date.getMonth()}${date.getDate()}${date.getHours()}${date.getMinutes()}${date.getSeconds()}.csv`
+    const format = 'yyyyMMdd_hhmmss';
+    const locale = 'en-US';
+    const formattedDate = formatDate(date, format, locale);
+    this.downloader.fileName = formattedDate + "_session_history.csv";
   }
 }
 
