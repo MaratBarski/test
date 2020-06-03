@@ -45,7 +45,6 @@ export class UserListComponent extends BaseSibscriber implements OnInit {
   ) {
     super();
     this.navigationService.currentPageID = PageInfo.ManageUsers.id;
-    this.componentService.onFooterPage.next(false);
   }
 
   addUserOpen(): void {

@@ -8,7 +8,6 @@ const SUB_MENU_SHOW = 'showSideMenu';
 })
 export class ComponentService {
   public onSideBarToggle: Subject<boolean> = new Subject<boolean>();
-  public onFooterPage: Subject<boolean> = new Subject<boolean>();
 
   set showSideMenu(showSideMenu: boolean) {
     localStorage.setItem(SUB_MENU_SHOW, showSideMenu.toString().toLowerCase());
