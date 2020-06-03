@@ -36,7 +36,6 @@ export class ImportedFileMappingComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private router: Router,
   ) {
-    this.componentService.onFooterPage.next(true);
     this.fileSource = this.route.snapshot.data.data[0];
     this.templates = this.route.snapshot.data.data[1];
     this.hierarchies = this.route.snapshot.data.data[2];
