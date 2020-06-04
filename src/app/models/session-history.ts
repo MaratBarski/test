@@ -21,6 +21,7 @@ export class SessionHistory {
      sessionHistoryId: number;
      sessionId: number;
      insertDate: string;
+     information: string;
      projectId: number;
      transStatus: boolean;
      transMsg: string;
