@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ComponentService } from '../../services/component.service';
+import {environment} from '@env/environment';
 
 export enum Icon {
   hamburgerOpen = 'ic-hamburger',
@@ -18,7 +19,7 @@ export enum Icon {
   styleUrls: ['./main-header.component.css']
 })
 export class MainHeaderComponent {
-
+  serverRoute = environment.serverRoute;
   get sideBarOpened(): boolean {
     return this.componentService.showSideMenu;
   }

@@ -40,11 +40,11 @@
                       </div>
                       <div class="header-notice-status">
                         <div class="header-notice-status__content">
-                          <svg class="icon ic-running">
-                            <use xlink:href="/assets/sprites/sprite.svg#ic-running"></use>
-                          </svg><span class="header-notice-item__status-text">Uploading</span>
+                          <mdc-icon [path]="'ic-running'"></mdc-icon>
+                          <span class="header-notice-item__status-text">Uploading</span>
                         </div>
                         <div class="header-notice-status__close">
+                          <mdc-icon [path]="'ic-close-circle'"></mdc-icon>
                           <svg class="icon ic-close-circle">
                             <use xlink:href="/assets/sprites/sprite.svg#ic-close-circle"></use>
                           </svg>
@@ -61,9 +61,7 @@
                         <div class="load-doc__content">
                           <div class="load-doc__file">
                             <div class="load-doc__icon">
-                              <svg class="icon ic-csv">
-                                <use xlink:href="/assets/sprites/sprite.svg#ic-csv"></use>
-                              </svg>
+                              <mdc-icon path="ic-csv"></mdc-icon>
                             </div>
                             <div class="load-doc__text">20191225_134440_Medication Hierarchy 2.csv</div>
                           </div>
@@ -289,7 +287,7 @@
   <div class="sidebar">
     <div class="sidebar__content">
       <div class="sidebar__top">
-        <div class="sidebar__logo"><a href="/"><img src="/assets/img/logo-white.svg" alt="Logo"></a></div>
+        <div class="sidebar__logo"><a [routerLink]="'/'"><img src="/{{serverRoute}}/assets/images/logo-white.svg" alt="Logo"></a></div>
         <mdc-icon [path]="icon.hamburgerClose" [css]="icon.hamburgerClose" (click)="toggleSideBar()"></mdc-icon>
       </div>
       <mdc-side-bar></mdc-side-bar>
