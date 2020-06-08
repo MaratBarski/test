@@ -34,8 +34,8 @@
     <span class="add-info-table__error" *ngIf="oldNewDifCount">
         <svg class="icon ic-failure" mdcSvg="ic-failure">
         </svg>The following old categories will not be available for the user anymore: <span
-            class="add-info-table__error-accent">Type of route, Anatomical main group (ATC1)</span><span
-            class="add-info-table__more"><a href="#">{{oldNewDifCount}} More</a>
+            class="add-info-table__error-accent">Type of {{oldNotMapedTitle}}</span><span
+            class="add-info-table__more"><a *ngIf="notInUse?.length-2>0" href="#">{{notInUse.length-2}} More</a>
             <div class="info-popup info-popup_right info-popup_bottom" style="width: 276px;">
                 <form class="form-site">
                     <div class="info-popup__top">
@@ -45,10 +45,12 @@
                             <svg class="icon ic-close-circle" mdcSvg="ic-close-circle"></svg>
                         </div>
                     </div>
-                    <div class="info-popup__content">
-                        - Type of route<br>
-                        - Pharmacological subgroup ATC3<br>
-                        - Manufacturer
+                    <div *ngIf="notInUse?.length" class="info-popup__content">
+                        <ng-container *ngFor="let item of notInUse;let index=index">
+                            <ng-container *ngIf="index>1">
+                                {{item}}<br />
+                            </ng-container>
+                        </ng-container>
                     </div>
                 </form>
             </div>
