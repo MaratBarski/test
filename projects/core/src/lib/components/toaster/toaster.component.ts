@@ -1,11 +1,6 @@
 import {Component, Input, EventEmitter, Output, forwardRef} from '@angular/core';
 import {animation} from '../../animations/animations';
 
-// export enum RotateAnimationState {
-//   initState = 'default',
-//   rotate = 'rotated'
-// }
-
 export enum ToasterType {
   info,
   error,
