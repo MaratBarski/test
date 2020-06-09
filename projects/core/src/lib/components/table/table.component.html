@@ -4,9 +4,10 @@
             <th [ngStyle]="header.style" class="admin-table__head admin-table__item {{header.css}}"
                 *ngFor="let header of dataSource.headers|visibleHeaders;let index = index" [mdcTableItem]="index">
                 <mdc-table-header *ngIf="!headersTemplate || !headersTemplate[header.columnId]"
-                    [customFilter]="customFilters && customFilters[header.columnId] ? customFilters[header.columnId] : undefined" (onSort)="sort($event)"
-                    (onApplyFilter)="onApplyFilter($event)" (onShowFilter)="onShowFilter()" (onFilter)="filter($event)"
-                    [model]="header" [filterOptions]="filters[header.columnId]"></mdc-table-header>
+                    [customFilter]="customFilters && customFilters[header.columnId] ? customFilters[header.columnId] : undefined"
+                    (onSort)="sort($event)" (onApplyFilter)="onApplyFilter($event)" (onShowFilter)="onShowFilter()"
+                    (onFilter)="filter($event)" [model]="header" [filterOptions]="filters[header.columnId]">
+                </mdc-table-header>
                 <ng-container *ngIf="headersTemplate && headersTemplate[header.columnId]"
                     [ngTemplateOutlet]="headersTemplate[header.columnId]"
                     [ngTemplateOutletContext]="{$implicit: header}"></ng-container>
@@ -55,13 +56,34 @@
                 </ng-container>
                 <td class="admin-table__item admin-table__item_menu"
                     *ngIf="dataSource?.actions?.links?.length || dataSource?.actions?.subLinks?.length">
-                    <span (click)="openLinkMenu(row,$event,rowIndex)" class="admin-table-action__menu ic-hover"
+                    
+                    <!-- <span (click)="openLinkMenu(row,$event,rowIndex)" class="admin-table-action__menu ic-hover"
                         *ngIf="((dataSource.actions.subLinks|actionLink:row).length||(dataSource.actions.links|actionLink:row).length)">
                         <mdc-icon path="ic-dot-menu"></mdc-icon>
-                    </span>
+                    </span> -->
+
+
+                    <div class="admin-table-action">
+                        <span (click)="openLinkMenu(row,$event,rowIndex)"
+                            *ngIf="((dataSource.actions.subLinks|actionLink:row).length||(dataSource.actions.links|actionLink:row).length)"
+                            class="admin-table-action__menu ic-hover">
+                            <svg mdcSvg="ic-dot-menu" class="icon ic-dot-menu"></svg>
+                            <div *ngIf="(commandRow===row && (dataSource?.actions?.links?.length || dataSource?.actions?.subLinks?.length) && ((dataSource.actions.subLinks|actionLink:commandRow).length||(dataSource.actions.links|actionLink:commandRow).length))"
+                            class="admin-table-popup active">
+                            <div id="{{tableID + 'row_cmd_' + rowIndex}}">
+                                <mdc-modal-menu (onInit)="initActionsLinks($event)"
+                                    [componentID]="tableID + 'row_cmd_' + rowIndex" (onCommand)="onActionCommand($event)"
+                                    [sublinks]="dataSource.actions.subLinks|actionLink:commandRow"
+                                    [links]="dataSource.actions.links|actionLink:commandRow">
+                                </mdc-modal-menu>
+                            </div>
+                            </div>
+                        </span>
+                    </div>
                 </td>
+
             </tr>
-            <tr *ngIf="(commandRow===row && (dataSource?.actions?.links?.length || dataSource?.actions?.subLinks?.length) && ((dataSource.actions.subLinks|actionLink:commandRow).length||(dataSource.actions.links|actionLink:commandRow).length))"
+            <!-- <tr *ngIf="(commandRow===row && (dataSource?.actions?.links?.length || dataSource?.actions?.subLinks?.length) && ((dataSource.actions.subLinks|actionLink:commandRow).length||(dataSource.actions.links|actionLink:commandRow).length))"
                 class="row-info-container">
                 <td class="row-info-sub-container"
                     [attr.colspan]="(dataSource.headers|visibleHeaders).length + specColums">
@@ -73,7 +95,8 @@
                         </mdc-modal-menu>
                     </div>
                 </td>
-            </tr>
+            </tr> -->
+            
         </ng-container>
     </tbody>
 </table>
