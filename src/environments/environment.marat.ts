@@ -17,7 +17,7 @@ export const environment = {
         deleteCategory: 'mdclone/api/v1/hierarchy',
         downloadCategory: 'mdclone/api/v1/hierarchy/download',
         hierarchy: 'mdclone/api/v1/hierarchy',
-        replaceHierarchy:'mdclone/api/v1/hierarchy',
+        replaceHierarchy: 'mdclone/api/v1/hierarchy',
         historyReport: 'mdclone/api/v1/session-history',
         downloadHistoryReport: 'moshe/api/v1/session-history/download',
         usageReport: 'mdclone/api/v1/reporting/usage',
