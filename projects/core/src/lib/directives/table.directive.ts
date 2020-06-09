@@ -8,6 +8,7 @@ export class TableDirective implements AfterViewInit {
   constructor(private ref: ViewContainerRef, private renderer: Renderer2) { }
   ngAfterViewInit(): void {
     this.renderer.addClass(this.ref.element.nativeElement, 'admin-table');
+    this.renderer.addClass(this.ref.element.nativeElement, 'admin-table_auto');    
   }
 }
 

@@ -43,7 +43,7 @@ export class HistoryReportService {
           // hidden: true
         },
         {
-          columnId: 'login',
+          columnId: 'fullName',
           text: 'User',
           isSortEnabled: true,
           filter: true,
@@ -108,7 +108,7 @@ export class HistoryReportService {
         cells: {
           name: i,
           insertDate: fl.insertDate,
-          login: fl.login,
+          fullName: fl.fullName,
           data: fl.data,
           approvalKey: fl.approvalKey,
           research: fl.researchName,

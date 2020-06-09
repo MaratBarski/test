@@ -68,6 +68,8 @@ import { ColorTextDirective } from './directives/color-text.directive';
 import { DialogModule } from 'primeng/dialog';
 import { CalendarModule } from 'primeng/calendar';
 import { CheckValidDatePipe } from './pipes/check-valid-date.pipe';
+import { ToasterComponent } from './components/toaster/toaster.component';
+import { NotificationComponent } from './components/notification/notification.component';
 // import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 
 @NgModule({
@@ -130,7 +132,9 @@ import { CheckValidDatePipe } from './pipes/check-valid-date.pipe';
     NotificationItemComponent,
     ShowNoticePipe,
     ColorTextDirective,
-    CheckValidDatePipe
+    CheckValidDatePipe,
+    ToasterComponent,
+    NotificationComponent
   ],
   imports: [
     CommonModule,
@@ -140,8 +144,8 @@ import { CheckValidDatePipe } from './pipes/check-valid-date.pipe';
     RouterModule,
     DialogModule,
     CalendarModule,
-    //BrowserModule,
-    //BrowserAnimationsModule,
+    // BrowserModule,
+    // BrowserAnimationsModule,
     StoreModule.forFeature('userInfo', user),
     StoreDevtoolsModule.instrument()
     // SocketIoModule.forRoot({ url: 'http://localhost:3000', options: {} })
@@ -201,7 +205,9 @@ import { CheckValidDatePipe } from './pipes/check-valid-date.pipe';
     NotificationsComponent,
     ShowNoticePipe,
     ColorTextDirective,
-    CheckValidDatePipe
+    CheckValidDatePipe,
+    ToasterComponent,
+    NotificationComponent
   ],
   entryComponents: [
     TableHeaderComponent,

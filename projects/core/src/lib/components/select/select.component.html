@@ -1,4 +1,4 @@
-<div #combo [ngClass]="{'select_up':selectUp,'select_small':isSmall}" class="select" (blur)="blur()" tabindex="10">
+<div #combo [ngClass]="{'select_up':selectUp,'select_small':isSmall,'disable':disabled}" class="select" (blur)="blur()" tabindex="10">
     <div (click)="mouseClick($event);" class="select__head">
         <div #comboTextContainer class="select__icon-wrap overflow-x-hidden">
             <svg *ngIf="selected?.icon" [mdcSvg]="selected?.icon" class="icon"></svg>

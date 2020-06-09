@@ -21,6 +21,7 @@ export class SessionHistory {
      sessionHistoryId: number;
      sessionId: number;
      insertDate: string;
+     information: string;
      projectId: number;
      transStatus: boolean;
      transMsg: string;
@@ -28,6 +29,7 @@ export class SessionHistory {
      fileNameAlias: string;
      projectName: string;
      login: string;
+     fullName: string;
      approvalKey: number;
      researchName: string;
      researchInfo: string;

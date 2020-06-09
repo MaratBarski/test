@@ -18,10 +18,20 @@ export const environment = {
         deleteCategory: 'mdclone/api/v1/hierarchy',
         downloadCategory: 'mdclone/api/v1/hierarchy/download',
         hierarchy: 'mdclone/api/v1/hierarchy',
+        replaceHierarchy:'mdclone/api/v1/hierarchy',
         historyReport: 'moshe/api/v1/session-history',
         downloadHistoryReport: 'moshe/api/v1/session-history/download',
         usageReport: 'mdclone/api/v1/reporting/usage',
         updateHierarchy: 'mdclone/api/v1/updateHierarchy',
-        config: 'config'
+        config: 'config',
+        usageActiveUsage: 'mdclone/api/v1/reporting/usage-active-users',
+        usageMonthlyUsage: 'mdclone/api/v1/reporting/usage-monthly-usage',
+        usagePerUser: 'mdclone/api/v1/reporting/usage-per-user',
+        usageTop10Users: 'mdclone/api/v1/reporting/usage-top-10-users',
+        usageCreatedUsers: 'mdclone/api/v1/reporting/usage-created-users',
+        usageSummaryTable: 'mdclone/api/v1/reporting/usage-summary-table',
+        usageRetantionTable: 'mdclone/api/v1/reporting/usage-retention-list',
+        usageCsvDownload: 'mdclone/api/v1/reporting/detailed-usage-report',
+        userList: 'mdclone/api/v1/user'
     }
 };

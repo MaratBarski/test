@@ -13,6 +13,24 @@ export class CategoryMessageComponent {
 
   @Output() onUpdateMessage = new EventEmitter<string>();
   @Input() oldNewDifCount = 0;
+  oldNotMapedTitle = '';
+
+  _notInUse = [];
+  @Input() set notInUse(notInUse: Array<string>) {
+    this._notInUse = notInUse;
+    this.oldNotMapedTitle = '';
+    this._notInUse.forEach((item, i) => {
+      if (i > 1) { return; }
+      this.oldNotMapedTitle += item;
+      if (i === 0) {
+        this.oldNotMapedTitle += ',';
+      }
+    })
+  }
+
+  get notInUse(): Array<string> {
+    return this._notInUse;
+  }
 
   constructor() { }
 
