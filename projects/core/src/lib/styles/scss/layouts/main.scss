@@ -26,6 +26,10 @@ body.no-scroll {
   font-family: inherit;
 }
 
+*{
+  outline-color: $color-purple;
+}
+
 img{
   max-width: 100%;
 }

@@ -48,28 +48,37 @@
 		fill: $color-grey;
 	}
 
-	&__close{
-		display: inline-block;
-		width: 7px;
-		height: 7px;
-		position: absolute;
-		right: 0;
-		@include top-center;
-		text-align: center;
-		vertical-align: middle;
-		margin-top: 3px;
-	}
+  &__close{
+    display: none;
+    width: 7px;
+    height: 7px;
+    position: absolute;
+    right: 0;
+    @include top-center;
+    text-align: center;
+    vertical-align: middle;
+    margin-top: 3px;
 
-	&__close .ic-close-small{
-		width: 100%;
-		height: 100%;
-		fill: $color-dark-blue;
-		vertical-align: top;
+    .ic-close-small,
+    .ic-close{
+      width: 100%;
+      height: 100%;
+      vertical-align: top;
+      fill: $color-dark-blue;
+    }
 
-		svg {
-			display: block;
-		}
-	}
+    .ic-close{display: none;}
+  }
+
+  &__close.active{
+    display: inline-block;
+    .ic-close-small{display: none;}
+
+    .ic-close{
+      display: inline-block;
+      vertical-align: top;
+    }
+  }
 
 	&_white input[type="text"]::placeholder{color: $color-light-grey}
 	&_white input[type="text"]::-webkit-input-placeholder {color: $color-light-grey}
