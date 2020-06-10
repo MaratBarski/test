@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { SelectOption, DateService, BaseSibscriber } from '@app/core-api';
-import { UsageRequestService } from '@app/usage/services/usage-request.service';
+import { SelectOption, DateService, BaseSibscriber } from '@appcore';
+import { UsageRequestService, UsageQueryParams } from '@app/usage/services/usage-request.service';
+
 
 @Component({
   selector: 'md-usage-dashboard-info-panel',
@@ -29,11 +30,18 @@ export class UsageDashboardInfoPanelComponent extends BaseSibscriber implements 
   selectedEnvironment: SelectOption;
   environmens: Array<SelectOption>;
 
+  private queryParams: UsageQueryParams;
+
   constructor(
     private dateService: DateService,
     public usageRequestService: UsageRequestService
   ) {
     super();
+    super.add(
+      this.usageRequestService.onParams.subscribe(p => {
+        this.queryParams = p;
+        this.updateParams();
+      }));
   }
 
   private emit(): void {
@@ -45,6 +53,7 @@ export class UsageDashboardInfoPanelComponent extends BaseSibscriber implements 
     this.currentDateRange = option.value;
     this.usageRequestService.usageRequest.fromDate = this.dateService.formatDateUS(this.currentDateRange.fromDate);
     this.usageRequestService.usageRequest.toDate = this.dateService.formatDateUS(this.currentDateRange.toDate);
+    this.usageRequestService.currentDateIndex = this.currentDateIndex;
     this.emit();
     this.usageRequestService.emit();
   }
@@ -57,7 +66,7 @@ export class UsageDashboardInfoPanelComponent extends BaseSibscriber implements 
   }
 
   changeIncludeAdmin(includeAdmin: boolean): void {
-    // this.usageRequestService.usageRequest.includeAdmin = includeAdmin;
+    //this.usageRequestService.usageRequest.includeAdmin = includeAdmin;
     // this.emit();
     // this.usageRequestService.emit();
     this.usageRequestService.includeAdmin(includeAdmin);
@@ -69,6 +78,7 @@ export class UsageDashboardInfoPanelComponent extends BaseSibscriber implements 
     if (!this.selectedEnvironment) {
       this.selectedEnvironment = this.environmens.length ? this.environmens[0] : undefined;
     }
+    this.updateParams();
   }
 
   ngOnInit(): void {
@@ -85,5 +95,25 @@ export class UsageDashboardInfoPanelComponent extends BaseSibscriber implements 
 
   initUsers($event): void {
     this.onInitUsers.emit();
+  }
+
+  private updateParams(): void {
+    if (!this.queryParams) { return; }
+    if (this.queryParams.environment && this.environmens) {
+      const env = this.environmens.find(x => x.id == this.queryParams.environment);
+      if (env) {
+        this.changeEnvironment({ id: env.id, text: '' });
+        this.selectedEnvironment = env;
+      }
+    }
+    if (this.yearsOptions) {
+      let currentDateIndex = parseInt(this.queryParams.years);
+      let option = this.yearsOptions.find(x => x.id === currentDateIndex);
+      if (option) {
+        this.changeYear(option);
+      }
+    }
+    this.includeAdmin = this.queryParams.includeAdmin === 'true';
+    this.usageRequestService.usageRequest.includeAdmin = this.includeAdmin;
   }
 }

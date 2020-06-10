@@ -4,6 +4,17 @@ import { UsageReportParams } from '../models/usage-request';
 import { Subject, Observable, BehaviorSubject } from 'rxjs';
 import { Offline } from '@app/shared/decorators/offline.decorator';
 import { environment } from '@env/environment';
+import { ActivatedRoute } from '@angular/router';
+
+export class UsageQueryParams {
+  environment?: string;
+  years: string;
+  includeAdmin: string;
+}
+
+export function DEFUULT_PARAMS(): UsageQueryParams {
+  return { includeAdmin: 'false', years: '0' };
+}
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +24,7 @@ export class UsageRequestService extends BaseSibscriber {
     return this._usageRequest;
   }
   private _usageRequest: UsageReportParams;
+  currentDateIndex = 0;
 
   get users(): Array<any> {
     return this._users;
@@ -35,15 +47,29 @@ export class UsageRequestService extends BaseSibscriber {
     return this.usageRequest.users.find(x => x === userId);
   }
 
+  private queryParams: UsageQueryParams;
+
+  get onParams(): Observable<UsageQueryParams> {
+    return this._onParams.asObservable();
+  }
+
+  private _onParams = new BehaviorSubject<UsageQueryParams>(DEFUULT_PARAMS());
+
   constructor(
     private dateService: DateService,
     private dataService: DataService,
     private loginService: LoginService,
-    private sortService: SortService
+    private sortService: SortService,
+    private activatedRoute: ActivatedRoute
   ) {
     super();
     this.loadData();
     this.reset();
+    super.add(
+      this.activatedRoute.queryParams.subscribe(p => {
+        this.queryParams = p as any;
+        this._onParams.next(this.queryParams)
+      }));
   }
 
   get onChange(): Observable<void> {
