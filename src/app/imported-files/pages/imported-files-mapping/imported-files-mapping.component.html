@@ -136,8 +136,8 @@
                   Associated Hierarchy
                   <span class="admin-table__option">Optional</span>
                 </th>
-                <th class="admin-table__item admin-table__item_center d-none d-md-table-cell">% Match</th>
-                <th class="admin-table__item d-none d-lg-table-cell admin-table__item_data-sample">Data Sample</th>
+                <th class="admin-table__item admin-table__item_center d-none d-xl-table-cell">% Match</th>
+                <th class="admin-table__item d-none d-xl-table-cell admin-table__item_data-sample">Data Sample</th>
               </tr>
               </thead>
               <tbody>
@@ -163,13 +163,13 @@
                                   [options]="hierarchySelectOptions" [isSmall]="true" [applyWidth]="false"></mdc-select>
                     </div>
                   </td>
-                  <td class="admin-table__item admin-table__item_center d-none d-md-table-cell">
+                  <td class="admin-table__item admin-table__item_center d-none d-xl-table-cell">
                     <ng-container *ngIf="this.fileSourceForm.get('fileClms')['controls'][i].get('percent').value>-1">
                       <mdc-progress-match
                         [percentage]="this.fileSourceForm.get('fileClms')['controls'][i].get('percent').value"></mdc-progress-match>
                     </ng-container>
                   </td>
-                  <td class="admin-table__item d-none d-lg-table-cell">
+                  <td class="admin-table__item d-none d-xl-table-cell">
                     <div class="admin-table__data-sample">{{getSampleData(fileSourceForm.get('fileClms')['controls'][i].get('dataSample').value)}}
                       <!--<span class="tooltip">
                         <span class="tooltip__content">

@@ -1196,6 +1196,10 @@
       &__name-wrap .icon{margin-right: 0};
     }
   }
+
+  .file-mapping .admin-table tr th.admin-table__item_select{
+    width: 280px;
+  }
 }
 
 @media (max-width: 991px) {
@@ -1212,6 +1216,11 @@
   //    }
   //  }
   // }
+
+  .open-sidebar .file-mapping .admin-table tr th.admin-table__item_select,
+  .open-sidebar .file-mapping .admin-table tr td:nth-child(4){
+    display: none!important;
+  }
 }
 
 @media (max-width: 767px) {
