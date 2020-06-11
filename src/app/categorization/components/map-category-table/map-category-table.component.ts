@@ -22,12 +22,14 @@ export class MapCategoryTableComponent {
   oldNewDifCount = 0;
   notInUse = [];
   newCategoryDefault = { hierarchyLevelName: 'New Hierarchy name', sortValue: -1, inUse: true };
+  noMatchCategory = { hierarchyLevelName: 'No Match. Please Select...', sortValue: -2, inUse: true };
   categoryMap = [];
+  saveClicked = false;
 
   @Input() set data(data: any) {
     this._data = data;
     if (!this._data || !this._data.data || !this._data.data.hierarchyLevels) { return; }
-    this.categoryMap = [this.newCategoryDefault];
+    this.categoryMap = [this.noMatchCategory, this.newCategoryDefault];
     this._data.data.hierarchyLevels.forEach((item: any) => {
       this.categoryMap.push(item);
     });
@@ -83,7 +85,7 @@ export class MapCategoryTableComponent {
         if (level.oldCategory) {
           level.oldCategory.inUse = false;
         }
-        level.oldCategory = this.newCategoryDefault;
+        level.oldCategory = this.noMatchCategory;
       }
     });
     this.addNotInUser();
@@ -92,7 +94,7 @@ export class MapCategoryTableComponent {
   addNotInUser(): void {
     this.notInUse = [];
     this.categoryMap.forEach(x => {
-      if (!x.inUse && x !== this.newCategoryDefault) {
+      if (!x.inUse && x !== this.newCategoryDefault && x !== this.noMatchCategory) {
         this.notInUse.push(x.hierarchyLevelName)
       }
     })
@@ -104,5 +106,12 @@ export class MapCategoryTableComponent {
 
   onUpdateMessage(message: string): void {
     this._data.data.notificationMessage = message;
+  }
+
+  validate(): boolean {
+    this.saveClicked = true;
+    const noMatchArray = this.oldCategories.filter(x => x.oldCategory === this.noMatchCategory);
+    if (noMatchArray.length) { return false; }
+    return true;
   }
 }

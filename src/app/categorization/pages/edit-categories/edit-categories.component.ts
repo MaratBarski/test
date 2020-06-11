@@ -88,6 +88,7 @@ export class EditCategoriesComponent extends BaseSibscriber implements OnInit {
   private _uploadUrl = `${environment.serverUrl}${environment.endPoints.replaceHierarchy}`
 
   private replaceCategory(): void {
+    if (!this.mapCategoryTable.validate()) { return; }
     const formData = this.categoryInfo.fileData.formData as FormData;
     const categorization = {
       hierarchyRootId: this.selectedCategory.data.hierarchyRootId,
