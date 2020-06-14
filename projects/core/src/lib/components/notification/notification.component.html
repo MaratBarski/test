@@ -2,7 +2,11 @@
 <!--notice-location notice-location_bottom-left-->
 <!--notice-location notice-location_bottom-right-->
 <div class="notice-location">
-  <div class="notice-wrapper" *ngFor="let notice of list">
-    <mdc-toaster *ngIf="!preDelete[notice.id]" [@slideLeft]="list.length" (onToasterClose)="onClose($event)" [id]="notice.id" [type]="notice.type" [text]="notice.text" [title]="notice.title" [fileName]="notice.fileName" [percentage]="notice.percentage"></mdc-toaster>
-  </div>
+
+    <ng-container *ngFor="let notice of list">
+      <div class="notice-wrapper" *ngIf="!preDelete[notice.id]" [@slideLeft]="list.length">
+        <mdc-toaster (onToasterClose)="onClose($event)" [id]="notice.id" [type]="notice.type" [text]="notice.text" [title]="notice.title" [fileName]="notice.fileName" [percentage]="notice.percentage"></mdc-toaster>
+      </div>
+    </ng-container>
+
 </div>
