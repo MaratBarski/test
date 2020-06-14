@@ -26,6 +26,14 @@
         </div>
       </div>
     </section>
+
+    <button type="button" (click)="addNotice(0)">info</button>
+    <button type="button" (click)="addNotice(1)">error</button>
+    <button type="button" (click)="addNotice(2)">warning</button>
+    <button type="button" (click)="addNotice(3)">success</button>
+    <button type="button" (click)="addNotice(4)">file</button>
+    <!--                        <button></button>-->
+
     <section class="info-panel-wrap">
       <div class="container-fluid">
         <div class="row">
@@ -50,6 +58,8 @@
                                       (click)="toggleShare()"></mdc-icon>
                           </div>
                         </div>
+
+
                         <div class="info-popup__content">
                           <div class="info-popup-switch">
                             <div class="info-popup-switch__content">

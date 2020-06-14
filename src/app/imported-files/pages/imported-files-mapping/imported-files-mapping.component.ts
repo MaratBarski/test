@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
-import {ComponentService, DateService, PopupComponent, SelectOption, SwitchButtonModel, TableComponent, TranslateService} from '@appcore';
+import {ComponentService, DateService, PopupComponent, SelectOption, TableComponent, TranslateService} from '@appcore';
 import {FileClm, FileSource} from '../../models/file-source';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Template} from '@app/models/template';
@@ -8,6 +8,7 @@ import {FormArray, FormBuilder, FormGroup} from '@angular/forms';
 import {ImportedFilesMappingService} from '@app/imported-files/services/imported-files-mapping.service';
 import {map} from 'rxjs/operators';
 import {PropertyType} from '@app/imported-files/models/enum/PropertyType';
+import {NotificationsService, ToasterType} from '@appcore';
 
 @Component({
   selector: 'md-imported-files-mapping',
@@ -35,6 +36,7 @@ export class ImportedFileMappingComponent implements OnInit, OnDestroy {
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
+    private notificationsService: NotificationsService
   ) {
     this.fileSource = this.route.snapshot.data.data[0];
     this.templates = this.route.snapshot.data.data[1];
@@ -55,6 +57,17 @@ export class ImportedFileMappingComponent implements OnInit, OnDestroy {
     });
 
     this.fileSourceForm = this.createFileSourceForm();
+  }
+
+  addNotice(nType: ToasterType) {
+    const title = 'What is Lorem Ipsum?';
+    const text = 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.';
+    const fileName = 'Lorem Ipsum';
+    const percentage = 0;
+    // if(nType !== ToasterType.infoProgressBar){
+    this.notificationsService.addMessage(nType, title, text, fileName, percentage);
+    // }
+
   }
 
   toggleShare() {

@@ -2,31 +2,7 @@
 <!--notice-location notice-location_bottom-left-->
 <!--notice-location notice-location_bottom-right-->
 <div class="notice-location">
-  <div class="notice-wrapper">
-    <mdc-toaster [type]="4"
-                 [text]="'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'"
-                 [title]="'What is Lorem Ipsum?'"></mdc-toaster>
+  <div class="notice-wrapper" *ngFor="let notice of list">
+    <mdc-toaster *ngIf="!preDelete[notice.id]" [@slideLeft]="list.length" (onToasterClose)="onClose($event)" [id]="notice.id" [type]="notice.type" [text]="notice.text" [title]="notice.title" [fileName]="notice.fileName" [percentage]="notice.percentage"></mdc-toaster>
   </div>
-  <div class="notice-wrapper">
-    <mdc-toaster [type]="4"
-                 [text]="'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'"
-                 [title]="'What is Lorem Ipsum?'"></mdc-toaster>
-  </div>
-  <div class="notice-wrapper">
-    <mdc-toaster [type]="4"
-                 [text]="'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'"
-                 [title]="'What is Lorem Ipsum?'"></mdc-toaster>
-  </div>
-  <div class="notice-wrapper">
-    <mdc-toaster [type]="4"
-                 [text]="'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'"
-                 [title]="'What is Lorem Ipsum?'"></mdc-toaster>
-  </div>
-  <div class="notice-wrapper">
-    <mdc-toaster [type]="4"
-                 [text]="'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'"
-                 [title]="'What is Lorem Ipsum?'"></mdc-toaster>
-  </div>
-
-
 </div>

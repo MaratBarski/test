@@ -36,7 +36,7 @@ export class ToasterComponent {
     this.testIncreasePercentage();
   }
 
-  testIncreasePercentage(){
+  testIncreasePercentage() {
     setTimeout(() => {
       if (this.percentage <= 100) {
         this.percentage += 1;
@@ -46,12 +46,11 @@ export class ToasterComponent {
   }
 
   onCloseClicked(): void {
-    console.log('');
     this.onToasterClose.emit(this.id);
   }
 
   onAbortClicked(): void {
     console.log('abort');
-    this.onAbort.emit('');
+    this.onAbort.emit(this.id);
   }
 }
