@@ -28,7 +28,7 @@
                                 </div>
                             </td>
                             <td class="admin-table__item d-none d-md-table-cell">
-                                <div [ngClass]="{'error':item.oldCategory===newCategoryDefault}" class="select-wrap">
+                                <div [ngClass]="{'error':item.oldCategory===noMatchCategory}" class="select-wrap">
                                     <div class="select select_small select_full">
                                         <div (click)="selectItem($event,item,index)" class="select__head">
                                             {{item.oldCategory.hierarchyLevelName}}
@@ -42,12 +42,12 @@
                                                 <!-- <div *ngIf="!i.inUse || (i === newCategoryDefault && newCategoryDefault !== item.oldCategory)" (click)="changeOldCategory(i,item)" class="select__param"> 
                                                 {{i.hierarchyLevelName}}
                                                  </div> -->
-                                                <div *ngIf="!i.inUse || (i === newCategoryDefault && newCategoryDefault !== item.oldCategory)" (click)="changeOldCategory(i,item)" class="select__param">
+                                                <div *ngIf="i.sortValue!==-2 && (!i.inUse || (i === newCategoryDefault && newCategoryDefault !== item.oldCategory))" (click)="changeOldCategory(i,item)" class="select__param">
                                                     {{i.hierarchyLevelName}}
                                                 </div>
                                             </ng-container>
                                         </div>
-                                        <span [hidden]="item.oldCategory!==newCategoryDefault" class="tooltip tooltip_left tooltip_red"><span class="tooltip__content">Missing Category</span></span>
+                                        <span [hidden]="!(item.oldCategory===noMatchCategory && saveClicked)" class="tooltip tooltip_left tooltip_red"><span class="tooltip__content">Missing Category</span></span>
                                     </div>
                                 </div>
                             </td>
