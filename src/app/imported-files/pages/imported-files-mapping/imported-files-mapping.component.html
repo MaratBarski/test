@@ -32,7 +32,6 @@
     <button type="button" (click)="addNotice(2)">warning</button>
     <button type="button" (click)="addNotice(3)">success</button>
     <button type="button" (click)="addNotice(4)">file</button>
-    <!--                        <button></button>-->
 
     <section class="info-panel-wrap">
       <div class="container-fluid">
@@ -92,7 +91,7 @@
               <div class="info-panel__item">
                 <div class="info-panel__title">Template:</div>
                 <div class="info-panel__val">
-                  <mdc-select [isSmall]="true" [applyWidth]="false" [options]="templateSelectOptions"
+                  <mdc-select [isSmall]="true" [applyWidth]="false" [options]="templateSelectOptions" placeholder="Please Select..."
                               formControlName="templateId"></mdc-select>
                 </div>
               </div>
@@ -169,8 +168,7 @@
                   </td>
                   <td class="admin-table__item d-none d-md-table-cell">
                     <div class="select select_small" *ngIf="this.fileSourceForm.get('fileClms')['controls'][i].get('propertyType').value === propertyType.String">
-                      <mdc-select formControlName="hierarchyRootId" (changed)="getRelationalIntegrity($event, i)"
-                                  [options]="hierarchySelectOptions" [isSmall]="true" [applyWidth]="false"></mdc-select>
+                      <mdc-select formControlName="hierarchyRootId" [placeholder]="'Select Categorization...'" (changed)="getRelationalIntegrity($event, i)" [options]="hierarchySelectOptions" [isSmall]="true" [applyWidth]="false"></mdc-select>
                     </div>
                   </td>
                   <td class="admin-table__item admin-table__item_center d-none d-xl-table-cell">

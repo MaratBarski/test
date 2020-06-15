@@ -49,6 +49,7 @@ export class SelectComponent implements ControlValueAccessor, AfterViewInit {
   @Input() isSmall = false;
   @Input() options: Array<SelectOption>;
   @Input() selected: SelectOption;
+  @Input() placeholder = '';
   @Input() selectUp = false;
   @Input() maxHeight = '';
   @Input() closeOnselect = true;

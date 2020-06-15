@@ -265,7 +265,7 @@
   &__row.active{
     z-index: 2;
     outline: 1px solid $color-dark-purple;
-    transform: scale(1);
+    //transform: scale(1);
   }
 
   &__row.active &__item:first-child::before{
