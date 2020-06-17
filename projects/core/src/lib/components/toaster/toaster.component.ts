@@ -1,5 +1,6 @@
-import {Component, Input, EventEmitter, Output, forwardRef} from '@angular/core';
-import {animation} from '../../animations/animations';
+import { Component, Input, EventEmitter, Output } from '@angular/core';
+import { animation } from '../../animations/animations';
+import { INotification } from '../../services/notifications.service';
 
 export enum ToasterType {
   info,
@@ -18,39 +19,20 @@ export enum ToasterType {
   ],
 })
 export class ToasterComponent {
-  // it is id of notification in array;
-  @Input() id: string;
-  @Input() type: ToasterType = ToasterType.info;
-  @Input() title = '';
-  @Input() text = '';
+  @Input() notice: INotification;
 
   // emitting close event with id of toaster for searching in array of toasters;
-  @Output() onToasterClose: EventEmitter<string> = new EventEmitter<string>();
-  // for progress toaster only
-  @Input() fileName = '';
-  @Input() percentage = 0;
-  @Output() onAbort: EventEmitter<string> = new EventEmitter<string>();
+  @Output() onToasterClose: EventEmitter<INotification> = new EventEmitter<INotification>();
+
+  @Output() onAbort: EventEmitter<INotification> = new EventEmitter<INotification>();
   toasterType = ToasterType;
 
-  constructor() {
-    this.testIncreasePercentage();
-  }
-
-  testIncreasePercentage() {
-    setTimeout(() => {
-      if (this.percentage <= 100) {
-        this.percentage += 1;
-        this.testIncreasePercentage();
-      }
-    }, 100);
-  }
-
   onCloseClicked(): void {
-    this.onToasterClose.emit(this.id);
+    this.onToasterClose.emit(this.notice);
   }
 
   onAbortClicked(): void {
     console.log('abort');
-    this.onAbort.emit(this.id);
+    this.onAbort.emit(this.notice);
   }
 }

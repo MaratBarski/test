@@ -1,6 +1,6 @@
-import {Component, Input, EventEmitter, Output, forwardRef} from '@angular/core';
-import {animation} from '../../animations/animations';
-import {IToasterNotification, NotificationsService} from '../../services/notifications.service';
+import { Component, Input, EventEmitter, Output, forwardRef } from '@angular/core';
+import { animation } from '../../animations/animations';
+import { NotificationsService, INotification } from '../../services/notifications.service';
 
 // export enum RotateAnimationState {
 //   initState = 'default',
@@ -17,24 +17,17 @@ import {IToasterNotification, NotificationsService} from '../../services/notific
   ],
 })
 export class NotificationComponent {
+
   @Output() onStateChange = new EventEmitter<boolean>();
-  list: IToasterNotification[] = [];
-  preDelete = {};
 
-  constructor(private notificationsService: NotificationsService) {
-    this.notificationsService.onToasterContainerChanged.subscribe(data => {
-      this.list = data;
-    });
+  constructor(public notificationsService: NotificationsService) { }
+
+  onClose(notice: INotification): void {
+    this.notificationsService.closeMessage(notice);
   }
 
-  onClose(id: string) {
-    this.preDelete[id] = true;
-    this.close(id);
+  onAbort(notice: INotification): void {
+    this.notificationsService.abort(notice);
   }
 
-  close(id){
-    setTimeout(() => {
-      this.notificationsService.closeMessage(id);
-    }, 1000);
-  }
 }

@@ -7,7 +7,7 @@
     <div [hidden]="isLoaded">Loading...</div>
     <div [hidden]="!isLoaded" class="admin-table-wrap__action">
         <div class="admin-table-wrap__col">
-            <mdc-button (click)="openFileUpload()" text="+ {{'NewFile'|translate}}">
+            <mdc-button className="btn_icon" (click)="openFileUpload()" text="+ {{'NewFile'|translate}}">
             </mdc-button>
         </div>
         <div mdAnimationSticky [hidden]="!isDataExists" class="admin-table-wrap__col">

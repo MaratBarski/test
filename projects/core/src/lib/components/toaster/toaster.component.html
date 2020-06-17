@@ -1,26 +1,26 @@
 <div class="notice-msg" [ngClass]="{
-                                      'notice-msg_red': toasterType.error === type,
-                                      'notice-msg_yellow': toasterType.warning === type,
-                                      'notice-msg_green': toasterType.success === type,
-                                      'notice-msg_blue': toasterType.infoProgressBar === type,
-                                      'notice-msg_big': toasterType.infoProgressBar === type
+                                      'notice-msg_red': toasterType.error === notice?.type,
+                                      'notice-msg_yellow': toasterType.warning === notice?.type,
+                                      'notice-msg_green': toasterType.success === notice?.type,
+                                      'notice-msg_blue': toasterType.infoProgressBar === notice?.type,
+                                      'notice-msg_big': toasterType.infoProgressBar === notice?.type
                                    }">
   <div class="notice-msg__top">
     <div class="notice-msg__head">
       <div class="notice-msg-head">
 
-        <div class="notice-msg-head__icon" *ngIf="toasterType.infoProgressBar !== type">
-          <mdc-icon [path]="'ic-business-warning'" [css]="'ic-business-warning'" *ngIf="toasterType.info === type"></mdc-icon>
-          <mdc-icon [path]="'ic-failure'" [css]="'ic-failure'" *ngIf="toasterType.error === type"></mdc-icon>
-          <mdc-icon [path]="'ic-warning'" [css]="'ic-warning'" *ngIf="toasterType.warning === type"></mdc-icon>
-          <mdc-icon [path]="'ic-success'" [css]="'ic-success'" *ngIf="toasterType.success === type"></mdc-icon>
+        <div class="notice-msg-head__icon" *ngIf="toasterType.infoProgressBar !== notice?.type">
+          <mdc-icon [path]="'ic-business-warning'" [css]="'ic-business-warning'" *ngIf="toasterType.info === notice?.type"></mdc-icon>
+          <mdc-icon [path]="'ic-failure'" [css]="'ic-failure'" *ngIf="toasterType.error === notice?.type"></mdc-icon>
+          <mdc-icon [path]="'ic-warning'" [css]="'ic-warning'" *ngIf="toasterType.warning === notice?.type"></mdc-icon>
+          <mdc-icon [path]="'ic-success'" [css]="'ic-success'" *ngIf="toasterType.success === notice?.type"></mdc-icon>
 <!--          <mdc-icon [path]="'ic-success'"></mdc-icon>-->
 <!--          <svg class="icon ic-business-warning">-->
 <!--            <use xlink:href="/assets/sprites/sprite.svg#ic-business-warning"></use>-->
 <!--          </svg>-->
         </div>
 
-        <div class="notice-msg-head__text">{{ title }}</div>
+        <div class="notice-msg-head__text">{{ notice?.name }}</div>
       </div>
     </div>
     <div class="notice-msg__close" (click)="onCloseClicked()">
@@ -31,26 +31,26 @@
     </div>
   </div>
   <div class="notice-msg__content">
-    <div class="notice-msg__text" *ngIf="toasterType.infoProgressBar !== type">
-      {{ text }}
+    <div class="notice-msg__text" *ngIf="toasterType.infoProgressBar !== notice?.type">
+      {{ notice?.comment }}
     </div>
 
 
-    <div class="load-doc load-doc_blue" *ngIf="toasterType.infoProgressBar === type">
+    <div class="load-doc load-doc_blue" *ngIf="toasterType.infoProgressBar === notice?.type">
       <div class="load-doc__content">
         <div class="load-doc__file">
           <div class="load-doc__icon">
             <mdc-icon [css]="'ic-csv'" [path]="'ic-csv'"></mdc-icon>
           </div>
-          <div class="load-doc__text">{{fileName}}</div>
+          <div class="load-doc__text">{{notice?.progressTitle}}</div>
         </div>
         <div class="load-doc__link"><a (click)="onAbortClicked()">Abort</a></div>
       </div>
       <div class="load-doc__progress">
-        <div class="load-doc__progress-line" [style.width.%]="percentage"></div>
+        <div class="load-doc__progress-line" [style.width.%]="notice?.progress"></div>
       </div>
     </div>
-    <div class="notice-msg__text" *ngIf="toasterType.infoProgressBar === type">{{text}}
+    <div class="notice-msg__text" *ngIf="toasterType.infoProgressBar === notice?.type">{{notice?.comment}}
     </div>
 
   </div>

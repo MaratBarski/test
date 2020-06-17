@@ -1,6 +1,6 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { HttpClient, HttpEventType } from '@angular/common/http';
-import { NotificationsService, INotification, NotificationStatus } from '@appcore';
+import { NotificationsService, INotification, NotificationStatus, ToasterType } from '@appcore';
 
 export class UploadInfo {
   url: string;
@@ -35,6 +35,9 @@ export class UploadService implements OnDestroy {
   }
 
   add(uploadInfo: UploadInfo): void {
+    //TO DO remove this line
+    uploadInfo.notification.showInContainer = false;
+
     this._uploads.push(uploadInfo);
     this.notificationsService.notifications.push(uploadInfo.notification);
     this.notificationsService.update();
