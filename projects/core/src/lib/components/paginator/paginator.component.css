@@ -1,20 +1,86 @@
+.pager-wrap{display: block;}
+
+.paging-container{
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.paging-title{
+  font-style: normal;
+  font-weight: normal;
+  font-size: 0.875rem;
+  line-height: 1.57;
+  color: #727891;
+  margin-right: 30px;
+}
+
+.paging-num{
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-right: 20px;
+}
+
 .paging, .paging-container, .paging-item, paging-container{
     display: flex;
     align-items: center;
 }
-.paging-title{
-    padding: 0rem 2rem 0rem 2rem;
-}
+
 .paging-item{
     cursor: pointer;
     justify-content:center;
 }
+
+.page-next{
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+}
+
 .page-btn{
-    width: 3rem;
-    text-align: center;
-    color:#0596FF;
-    cursor: pointer;
+    display: inline-block;
+    padding: 0 15px;
+    font-style: normal;
     font-weight: 600;
+    font-size: 1rem;
+    line-height: 1.4;
+    color: #0596ff;
+    text-align: center;
+    cursor: pointer;
+}
+
+.paging-num > .page-btn:first-child,
+.paging-num > .page-btn:last-child{
+  padding: 0;
+}
+
+.paging-num > .page-btn{border-right: 1px solid #c9cbd0;}
+
+.paging-num > .page-btn:first-child,
+.paging-num > .page-btn:nth-last-child(1),
+.paging-num > .page-btn:nth-last-child(2){
+  border-right: 0;
+}
+
+.paging-item:first-child .page-btn{padding-left: 0;}
+.paging-num > .page-btn:nth-last-child(2){padding-right: 0;}
+
+.page-btn.disabled .icon{
+  fill: #acb2c3;
+  cursor: auto;
+}
+
+.page-btn .icon{
+  vertical-align: top;
 }
 .separator{
     width:1px;
@@ -23,16 +89,16 @@
 }
 .current{
     color: #ACB2C3;
-    cursor: default !important;
+    cursor: auto !important;
     font-weight: 700;
 }
-.disabled{
-    cursor: default !important;
-}
+/*.disabled{*/
+/*    cursor: default !important;*/
+/*}*/
 .page-next{
     width:30px;
     height: 30px;
-    
+
 }
 .right{
     float: right;

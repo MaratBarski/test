@@ -4,7 +4,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 12px;
+    margin-bottom: 24px;
+
+    .btn{min-width: 124px;}
   }
 
   &__title{
@@ -272,9 +274,9 @@
     content: '';
     display: inline-block;
     width: 5px;
-    height: 100%;
+    height: calc(100% + 1px);
     position: absolute;
-    top: 0;
+    top: -1px;
     left: 0;
     background: $color-dark-purple;
   }

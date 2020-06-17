@@ -55,7 +55,20 @@
 	}
 }
 
+.pager-count{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  &__label{
+    @include font(normal, normal, rem(14px), 1.25, $color-grey);
+    margin-right: 6px;
+  }
+
 @media (max-width: 767px) {
+  .pager{margin-right: 0;}}
+  .pager-count{margin-top: 10px;}
+  
 	.pager-wrap{
 		flex-direction: column;
 		justify-content: center;

@@ -8,34 +8,36 @@
         </ng-template>
     </div>
     <div [hidden]="pageCount < 2 || currentPage < 0" class="paging">
-        <div class="page-btn" [ngClass]="{'disabled':isFirstPage}" (click)="nextPage(-1)">
-            <div class="page-next right">
-                <mdc-icon color="#0596FF" path="ic-pager-arr-left"></mdc-icon>
-            </div>
+        <div class="paging-num">
+          <div class="page-btn" [ngClass]="{'disabled':isFirstPage}" (click)="nextPage(-1)">
+              <div class="page-next right">
+                  <mdc-icon color="#0596FF" path="ic-pager-arr-left"></mdc-icon>
+              </div>
+          </div>
+          <div class="page-btn" [hidden]="isFirstBlock" [ngClass]="{'disabled':isFirstPage}" (click)="firstPage()">1</div>
+          <div class="page-btn" [hidden]="isFirstBlock" [ngClass]="{'disabled':isFirstBlock}" (click)="nextBlock(-1)">...
+          </div>
+          <div class="paging-container">
+              <div class="paging-item" (click)="setPage(p)"
+                  *ngFor="let p of pages|pagination:{currentPage: currentBlock, pageSize: blockSize,complete: true};let i = index">
+                  <div class="page-btn" [ngClass]="{'current':p===currentPage+1}">{{p}}</div>
+                  <div class="separator"
+                      *ngIf="i < blockSize - 1 && i !== (pages|pagination:{currentPage: currentBlock, pageSize: blockSize,complete: true}).length-1">
+                  </div>
+              </div>
+          </div>
+          <div class="page-btn" [hidden]="isLastBlock" [ngClass]="{'disabled':isLastBlock}" (click)="nextBlock(1)">...
+          </div>
+          <div class="page-btn" [hidden]="isLastBlock" [ngClass]="{'disabled':isLastPage}" (click)="lastPage()">
+              {{pageCount}}</div>
+          <div class="page-btn" [ngClass]="{'disabled':isLastPage}" (click)="nextPage(1)">
+              <div class="page-next left">
+                  <mdc-icon color="#0596FF" path="ic-pager-arr-right"></mdc-icon>
+              </div>
+          </div>
         </div>
-        <div class="page-btn" [hidden]="isFirstBlock" [ngClass]="{'disabled':isFirstPage}" (click)="firstPage()">1</div>
-        <div class="page-btn" [hidden]="isFirstBlock" [ngClass]="{'disabled':isFirstBlock}" (click)="nextBlock(-1)">...
-        </div>
-        <div class="paging-container">
-            <div class="paging-item" (click)="setPage(p)"
-                *ngFor="let p of pages|pagination:{currentPage: currentBlock, pageSize: blockSize,complete: true};let i = index">
-                <div class="page-btn" [ngClass]="{'current':p===currentPage+1}">{{p}}</div>
-                <div class="separator"
-                    *ngIf="i < blockSize - 1 && i !== (pages|pagination:{currentPage: currentBlock, pageSize: blockSize,complete: true}).length-1">
-                </div>
-            </div>
-        </div>
-        <div class="page-btn" [hidden]="isLastBlock" [ngClass]="{'disabled':isLastBlock}" (click)="nextBlock(1)">...
-        </div>
-        <div class="page-btn" [hidden]="isLastBlock" [ngClass]="{'disabled':isLastPage}" (click)="lastPage()">
-            {{pageCount}}</div>
-        <div class="page-btn" [ngClass]="{'disabled':isLastPage}" (click)="nextPage(1)">
-            <div class="page-next left">
-                <mdc-icon color="#0596FF" path="ic-pager-arr-right"></mdc-icon>
-            </div>
-        </div>
-        <div [hidden]="!showPageSelector">
-            Go to page:
+        <div [hidden]="!showPageSelector" class="pager-count">
+            <span class="pager-count__label">Go to page:</span>
             <input class="page-input" value={{currentPage+1}} (keyup)="selectedPageKeyUp($event)" type="number" (change)="goToPage()"
                 min="1" [formControl]="selectedPage" />
         </div>
