@@ -1,14 +1,14 @@
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { ComponentService, DateService, PopupComponent, SelectOption, TableComponent, TranslateService } from '@appcore';
-import { FileClm, FileSource } from '../../models/file-source';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Template } from '@app/models/template';
-import { Hierarchy } from '@app/models/hierarchy';
-import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
-import { ImportedFilesMappingService } from '@app/imported-files/services/imported-files-mapping.service';
-import { map } from 'rxjs/operators';
-import { PropertyType } from '@app/imported-files/models/enum/PropertyType';
-import { NotificationsService, ToasterType } from '@appcore';
+import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {ComponentService, DateService, PopupComponent, SelectOption, TableComponent, TranslateService} from '@appcore';
+import {FileClm, FileSource} from '../../models/file-source';
+import {ActivatedRoute, Router} from '@angular/router';
+import {Template} from '@app/models/template';
+import {Hierarchy} from '@app/models/hierarchy';
+import {FormArray, FormBuilder, FormControl, FormGroup} from '@angular/forms';
+import {ImportedFilesMappingService} from '@app/imported-files/services/imported-files-mapping.service';
+import {map} from 'rxjs/operators';
+import {PropertyType} from '@app/imported-files/models/enum/PropertyType';
+import {NotificationsService, ToasterType} from '@appcore';
 
 @Component({
   selector: 'md-imported-files-mapping',
@@ -24,9 +24,9 @@ export class ImportedFileMappingComponent implements OnInit, OnDestroy {
   hierarchySelectOptions: SelectOption[] = [];
   opened = false;
   propertyType = PropertyType;
-
-  @ViewChild('popupMenu', { static: true }) popupMenu: PopupComponent;
-  @ViewChild('table', { static: true }) table: TableComponent;
+  selectAll: FormControl;
+  @ViewChild('popupMenu', {static: true}) popupMenu: PopupComponent;
+  @ViewChild('table', {static: true}) table: TableComponent;
 
   constructor(
     private translateService: TranslateService,
@@ -41,6 +41,21 @@ export class ImportedFileMappingComponent implements OnInit, OnDestroy {
     this.fileSource = this.route.snapshot.data.data[0];
     this.templates = this.route.snapshot.data.data[1];
     this.hierarchies = this.route.snapshot.data.data[2];
+    this.selectAll = new FormControl(true);
+
+    this.selectAll.valueChanges
+      .subscribe(select => {
+        const pointer: FormArray = this.fileSourceForm.get('fileClms') as FormArray;
+        if (select) {
+          for (let i = 0; i < pointer.controls.length; i++) {
+            pointer.controls[i].get('isIncluded').setValue(true);
+          }
+        } else {
+          for (let i = 0; i < pointer.controls.length; i++) {
+            pointer.controls[i].get('isIncluded').setValue(false);
+          }
+        }
+      });
 
     this.templates.forEach(item => {
       const tmp: SelectOption = new SelectOption();

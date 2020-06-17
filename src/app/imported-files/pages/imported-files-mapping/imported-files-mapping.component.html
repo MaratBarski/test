@@ -127,7 +127,7 @@
               <tr class="admin-table__head">
                 <th class="admin-table__item d-none d-md-table-cell admin-table__item_check">
                   <div class="input-check">
-                    <input id="paramall" type="checkbox" name="paramall">
+                    <input id="paramall" [formControl]="selectAll" type="checkbox" name="paramall">
                     <label class="input-check__label" for="paramall">
                           <span class="input-check__mark">
                             <mdc-icon [path]="'ic-check'" [css]="'ic-check'"></mdc-icon>
