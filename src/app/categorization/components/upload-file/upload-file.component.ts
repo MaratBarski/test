@@ -1,6 +1,6 @@
 import { Component, Output, EventEmitter, ViewChild, ElementRef, Input } from '@angular/core';
 import { UploadService } from '@app/shared/services/upload.service';
-import { CsvManagerService, NotificationStatus } from '@appcore';
+import { CsvManagerService, NotificationStatus, ToasterType } from '@appcore';
 import { environment } from '@env/environment';
 import { Offline } from '@app/shared/decorators/offline.decorator';
 
@@ -59,7 +59,9 @@ export class UploadFileComponent {
         showProgress: true,
         showInContainer: true,
         startDate: new Date(),
-        progressTitle: this.fileName
+        progressTitle: this.fileName,
+        type: ToasterType.infoProgressBar,
+        showInToaster: true
       },
       form: formData,
       url: this._uploadUrl,
@@ -79,7 +81,7 @@ export class UploadFileComponent {
       categoryHeaders: this.categoryHeaders,
       defaultCategory: this.defaultCategory
     });
-    
+
     this.reset();
   }
 

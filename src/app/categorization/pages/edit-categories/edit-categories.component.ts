@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { EditCategoryService } from '@app/categorization/services/edit-category.service';
-import { BaseSibscriber, NavigationService, PageInfo, NotificationStatus } from '@appcore';
+import { BaseSibscriber, NavigationService, PageInfo, NotificationStatus, ToasterType } from '@appcore';
 import { MapCategoryInfoComponent } from '@app/categorization/components/map-category-info/map-category-info.component';
 import { EditCategoryTableComponent } from '@app/categorization/components/edit-category-table/edit-category-table.component';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -137,7 +137,9 @@ export class EditCategoriesComponent extends BaseSibscriber implements OnInit {
         showProgress: true,
         showInContainer: true,
         startDate: new Date(),
-        progressTitle: this.categoryInfo.fileData.formData.get('fileName')
+        progressTitle: this.categoryInfo.fileData.formData.get('fileName'),
+        showInToaster: true,
+        type: ToasterType.infoProgressBar
       },
       form: formData,
       url: this._uploadUrl,

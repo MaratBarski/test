@@ -1,7 +1,7 @@
 import { Component, Output, EventEmitter, ViewChild, ElementRef, Input, OnInit } from '@angular/core';
 import { UploadService } from '@app/shared/services/upload.service';
 import { Offline } from '@app/shared/decorators/offline.decorator';
-import { SelectOption, SelectComponent, CsvManagerService, NotificationStatus, ValidationFileMessage } from '@appcore';
+import { SelectOption, SelectComponent, CsvManagerService, NotificationStatus, ValidationFileMessage, ToasterType } from '@appcore';
 import { environment } from '@env/environment';
 import { ConfigService } from '@app/shared/services/config.service';
 
@@ -41,7 +41,7 @@ export class UploadFileComponent implements OnInit {
     return !!this.fileName && !!this.project && !!this.file;
   }
 
-  @Offline('http://localhost:57858/api/Config/')
+  @Offline('http://localhost:44381/WeatherForecast/')
   private _uploadUrl = `${environment.serverUrl}${environment.endPoints.uploadFileSource}`;
 
   resetTemplate(): void {
@@ -73,7 +73,9 @@ export class UploadFileComponent implements OnInit {
         showProgress: true,
         showInContainer: true,
         startDate: new Date(),
-        progressTitle: this.fileName
+        progressTitle: this.fileName,
+        showInToaster: true,
+        type: ToasterType.infoProgressBar
       },
       form: formData,
       url: this._uploadUrl,

@@ -6,8 +6,11 @@ import { INotification } from '../services/notifications.service';
 })
 export class ShowNoticePipe implements PipeTransform {
 
-  transform(notifications: Array<INotification>): any {
-    return notifications.filter(x => { return x.showInContainer }).reverse();
+  transform(notifications: Array<INotification>, showType: 'container' | 'toaster'): any {
+    if (!showType || showType === 'container') {
+      return notifications.filter(x => { return x.showInContainer }).reverse();
+    }
+    return notifications.filter(x => { return x.showInToaster }).reverse();
   }
 
 }

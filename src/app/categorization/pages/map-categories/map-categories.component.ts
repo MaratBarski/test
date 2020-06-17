@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MapCategoryService } from '@app/categorization/services/map-category.service';
-import { BaseSibscriber, NavigationService, PageInfo, NotificationStatus } from '@appcore';
+import { BaseSibscriber, NavigationService, PageInfo, NotificationStatus, ToasterType } from '@appcore';
 import { MapCategoryTableComponent } from '@app/categorization/components/map-category-table/map-category-table.component';
 import { map, take } from 'rxjs/operators';
 import { Offline } from '@app/shared/decorators/offline.decorator';
@@ -29,17 +29,17 @@ export class MapCategoriesComponent extends BaseSibscriber implements OnInit {
     this.navigationService.currentPageID = undefined;//PageInfo.ManageHierarchies.id;
   }
 
-  ngOnInit(): void {    
+  ngOnInit(): void {
     super.add(
       this.mapCategoryService.load().subscribe((res: any) => {
         this.selectedCategory = res;
       }));
   }
 
-  
+
   @Offline('http://localhost:57858/api/Config/')
   private _uploadUrl = `${environment.serverUrl}${environment.endPoints.uploadHierarchy}`;
-  
+
   save(): void {
     this.formData.set('categoryMap', JSON.stringify(this.mapCategoryTable.categoryMap));
     this.uploadService.add({
@@ -51,7 +51,9 @@ export class MapCategoriesComponent extends BaseSibscriber implements OnInit {
         showProgress: true,
         showInContainer: true,
         startDate: new Date(),
-        progressTitle: this.formData.get('fileName').toString()
+        progressTitle: this.formData.get('fileName').toString(),
+        showInToaster: true,
+        type: ToasterType.infoProgressBar
       },
       form: this.formData,
       url: this._uploadUrl,

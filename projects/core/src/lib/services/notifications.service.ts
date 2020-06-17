@@ -1,7 +1,7 @@
-import {Injectable} from '@angular/core';
-import {Subject, Observable, BehaviorSubject} from 'rxjs';
-import {ToasterType} from '../components/toaster/toaster.component';
-import {UUID} from 'angular2-uuid';
+import { Injectable } from '@angular/core';
+import { Subject, Observable, BehaviorSubject } from 'rxjs';
+import { ToasterType } from '../components/toaster/toaster.component';
+import { UUID } from 'angular2-uuid';
 
 export enum NotificationStatus {
   uploading = 'Uploading',
@@ -19,79 +19,21 @@ export interface INotification {
   progress: number;
   status: NotificationStatus;
   showProgress: boolean;
-  showInContainer: boolean;
+  showInContainer?: boolean;
+  showInToaster?: boolean;
+  type: ToasterType;
+  fileName?: string;
   progressTitle?: string;
 }
-
-export interface IToasterNotification {
-  id: string;
-  type: ToasterType;
-  title: string;
-  text: string;
-  fileName?: string;
-  percentage?: number;
-}
-
 
 @Injectable({
   providedIn: 'root'
 })
 export class NotificationsService {
-  toasterNotificationList: any = [];
-  onToasterContainerChanged: BehaviorSubject<IToasterNotification[]> = new BehaviorSubject<IToasterNotification[]>([]);
 
-  addMessage(type: ToasterType, title: string, text: string, fileName: string, percentage: number): string {
-    const uuid = UUID.UUID();
-    const notice: IToasterNotification = {
-      id: uuid,
-      type,
-      title,
-      text,
-      fileName,
-      percentage,
-    };
-    // this.toasterNotificationList.push(notice);
-    this.toasterNotificationList.splice(0, 0, notice)
-    this.onToasterContainerChanged.next(this.toasterNotificationList);
-    return uuid;
-  }
-
-  updateMessage(id: string, type: ToasterType, title: string, text: string, fileName: string, percentage: number) {
-    const index = this.toasterNotificationList.findIndex(tn => tn.id === id);
-    if (index > -1) {
-      this.toasterNotificationList[index].type = type;
-      this.toasterNotificationList[index].title = title;
-      this.toasterNotificationList[text].title = text;
-      this.toasterNotificationList[index].title = title;
-      this.toasterNotificationList[fileName].title = fileName;
-      this.toasterNotificationList[percentage].title = percentage;
-      this.onToasterContainerChanged.next(this.toasterNotificationList);
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  closeMessage(id: string) {
-    const index = this.toasterNotificationList.findIndex(tn => tn.id === id);
-    if (index > -1) {
-      this.toasterNotificationList.splice(index, 1);
-      this.onToasterContainerChanged.next(this.toasterNotificationList);
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  aboardMessage(id: string) {
-    const index = this.toasterNotificationList.findIndex(tn => tn.id === id);
-    if (index > -1) {
-      this.toasterNotificationList.splice(index, 1);
-      this.onToasterContainerChanged.next(this.toasterNotificationList);
-      return true;
-    } else {
-      return false;
-    }
+  closeMessage(notice: INotification) {
+    notice.showInToaster = false;
+    this.update();
   }
 
   get notifications(): Array<INotification> {
@@ -138,6 +80,8 @@ export class NotificationsService {
   }
 
   abort(notice: INotification): void {
+    notice.type = ToasterType.error;
     this._onAbort.next(notice);
+    this.update();
   }
 }
