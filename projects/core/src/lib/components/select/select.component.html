@@ -6,7 +6,7 @@
       {{selected && selected?.id > -1 ? selected?.text : placeholder}}
     </div>
     <div class="select__head-arr">
-      <svg mdcSvg="ic-select-arr-down" class="icon"></svg>
+      <svg mdcSvg="ic-select-arr-down" class="icon" [@rotatedState]="rotatedState"></svg>
     </div>
   </div>
   <div #optionsContainer [mdcVisibility]="isExpanded" [style.maxHeight]="maxHeight"

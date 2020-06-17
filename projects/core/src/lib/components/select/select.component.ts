@@ -1,18 +1,6 @@
-import {
-  Component,
-  Input,
-  Output,
-  EventEmitter,
-  HostListener,
-  ViewChild,
-  ElementRef,
-  forwardRef,
-  AfterContentInit,
-  AfterViewInit,
-  Renderer2
-} from '@angular/core';
-import {animation} from '../../animations/animations';
-import {NG_VALUE_ACCESSOR, ControlValueAccessor} from '@angular/forms';
+import {AfterViewInit, Component, ElementRef, EventEmitter, forwardRef, Input, Output, Renderer2, ViewChild} from '@angular/core';
+import {animation, RotatedState} from '../../animations/animations';
+import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 
 export class SelectOption {
   id: string | number;
@@ -33,10 +21,12 @@ export const SELECT_VALUE_ACCESSOR: any = {
   styleUrls: ['./select.component.css'],
   providers: [SELECT_VALUE_ACCESSOR],
   animations: [
-    animation.slideUpDown
+    animation.slideUpDown,
+    animation.rotateRight90
   ]
 })
 export class SelectComponent implements ControlValueAccessor, AfterViewInit {
+  rotatedState: RotatedState = RotatedState.default;
 
   constructor(private renderer2: Renderer2) {
   }
@@ -73,11 +63,13 @@ export class SelectComponent implements ControlValueAccessor, AfterViewInit {
   mouseClick(event: any): void {
     if (!this.disabled) {
       this.isExpanded = !this.isExpanded;
+      this.rotatedState = this.isExpanded ? RotatedState.rotated : RotatedState.default;
     }
   }
 
   blur() {
     this.isExpanded = false;
+    this.rotatedState = RotatedState.default;
   }
 
   onChangeCallback = (value: any) => {
