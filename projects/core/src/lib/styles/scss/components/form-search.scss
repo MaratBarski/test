@@ -9,7 +9,7 @@
 		width: 100%;
 		padding-right: 38px;
 		@include font(normal, normal, rem(14px), rem(28px), $color-dark-blue);
-		padding: 5px 0 0 24px;
+		padding: 5px 0 0 26px;
 		margin: 0;
 		border: 0;
 		outline: 0;
@@ -40,45 +40,51 @@
 		box-shadow: none;
 		padding: 0;
 		margin-top: 1px;
+		cursor: pointer;
 	}
 
 	button .icon{
-		width: 16px;
-		height: 16px;
+		width: 100%;
+		height: 100%;
 		fill: $color-grey;
 	}
 
-  &__close{
-    display: none;
-    width: 7px;
-    height: 7px;
-    position: absolute;
-    right: 0;
-    @include top-center;
-    text-align: center;
-    vertical-align: middle;
-    margin-top: 3px;
+	&__close{
+		display: none;
+		width: 7px;
+		height: 7px;
+		position: absolute;
+		right: 0;
+		@include top-center;
+		text-align: center;
+		vertical-align: middle;
+		margin-top: 3px;
 
-    .ic-close-small,
-    .ic-close{
-      width: 100%;
-      height: 100%;
-      vertical-align: top;
-      fill: $color-dark-blue;
-    }
+		.ic-close-small,
+		.ic-close{
+			width: 100%;
+			height: 100%;
+			vertical-align: top;
+			fill: $color-dark-blue;
+		}
 
-    .ic-close{display: none;}
-  }
+		.ic-close{display: none;}
+	}
 
-  &__close.active{
-    display: inline-block;
-    .ic-close-small{display: none;}
+	&__close.active{
+		display: inline-block;
+		.ic-close-small{display: none;}
 
-    .ic-close{
-      display: inline-block;
-      vertical-align: top;
-    }
-  }
+		.ic-close{
+			display: inline-block;
+			vertical-align: top;
+		}
+	}
+
+	input[type="text"]:focus + button + &__close,
+	input[type="text"]:focus + &__close{
+		display: inline-block;
+	}
 
 	&_white input[type="text"]::placeholder{color: $color-light-grey}
 	&_white input[type="text"]::-webkit-input-placeholder {color: $color-light-grey}
@@ -97,6 +103,32 @@
 	}
 
 	&_white &__close .ic-close-small{fill: #fff;}
+
+	&_field  input[type="text"]{
+		padding: 0 25px 0 44px;
+		border: 1px solid $color-light-grey;
+		border-radius: 15px;
+		background: #fff;
+	}
+
+	&_field input[type="text"]:focus{border-color: $color-light-grey;}
+
+	&_field input[type="submit"],
+	&_field button{
+		left: 21px;
+	}
+
+	&_field &__close{
+		width: 8px;
+		height: 8px;
+		right: 15px;
+		margin-top: 0;
+	}
+
+	&_no-loop input[type="text"]{
+		padding-left: 15px;
+		padding-right: 15px;
+	}
 }
 
 @media (max-width: 991px) {
