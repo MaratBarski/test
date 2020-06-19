@@ -24,8 +24,8 @@
     </div>
     <mdc-empty-state *ngIf="!isDataExists && isLoaded" [emptyState]="emptyState"></mdc-empty-state>
     <div class="pager-wrap" [hidden]="!isLoaded">
-        <mdc-paginator #paginator paginationTitle="Showing {0} of {1} categorizations" noPagingTitle="Showing {0} categorizations"
-            [blockSize]="3" [pageSize]="12" [currentPage]="0">
+        <mdc-paginator #paginator paginationTitle="Showing {0} of {1} categorizations"
+            noPagingTitle="Showing {0} categorizations" [blockSize]="3" [pageSize]="12" [currentPage]="0">
         </mdc-paginator>
     </div>
 </md-page-body>
@@ -35,8 +35,8 @@
 </ng-template>
 
 <ng-template let-item let-src="source" #stateColumn>
-    <span *ngIf="src.hierarchyChange && src.hierarchyLoadingType==='etl'" class="admin-table__icon" (mouseleave)="item.showWarning=false"
-        (mouseenter)="showInfo($event,item,src)">
+    <span *ngIf="src.hierarchyChange && src.hierarchyLoadingType==='etl'" class="admin-table__icon"
+        (mouseleave)="item.showWarning=false" (mouseenter)="showInfo($event,item,src)">
         <mdc-icon path="ic-warning"></mdc-icon>
         <div [hidden]="!item.showWarning" class="info-popup info-popup_right warning-info">
             <div class="form-site">
@@ -78,7 +78,7 @@
     {{src.hierarchyChange}} -->
 </ng-template>
 
-<ng-template let-item #inUseColumn>
+<ng-template let-item let-src="source" #inUseColumn>
     <span class="admin-table__icon" (mouseleave)="item.showUsed=false" (mouseenter)="item.showUsed=true">
         <svg class="icon ic-plug ic-grey" mdcSvg="ic-plug"></svg>
         <div [hidden]="!item.showUsed" class="info-popup info-popup_right used-info">
@@ -91,7 +91,12 @@
             <div class="info-popup__content">
                 <div class="info-popup__text-wrap">
                     <div class="info-popup__title">Events:</div>
-                    <div class="info-popup__text">Diagnosis, Admission Diagnosis, Procedures, Customised events</div>
+                    <div class="info-popup__text">
+                        <ng-container *ngFor="let info of src.siteEventPropertyInfos;let i=index;">
+                            {{info.eventPropertyName}}
+                        <ng-container *ngIf="i<src.siteEventPropertyInfos.length-1">,</ng-container>
+                        </ng-container>
+                    </div>
                 </div>
             </div>
         </div>
@@ -99,7 +104,8 @@
 </ng-template>
 
 <mdc-modal-window *ngIf="showUploadFile">
-    <md-upload-file [source]="currentSource" (onUpload)="showUploadFile=false" (onCancel)="showUploadFile=false"></md-upload-file>
+    <md-upload-file [source]="currentSource" (onUpload)="showUploadFile=false" (onCancel)="showUploadFile=false">
+    </md-upload-file>
 </mdc-modal-window>
 
 <ng-template #rowInfoTemplate let-item>
