@@ -20,6 +20,7 @@ import { CsvComboComponent } from './components/csv-combo/csv-combo.component';
 import { DownloadSelectorComponent } from './components/download-selector/download-selector.component';
 import { PageFotterComponent } from './components/page-fotter/page-fotter.component';
 import { ReplacePipe } from './pipes/replace.pipe';
+import { FormatNumberPipe } from './pipes/format-number.pipe';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,7 @@ import { ReplacePipe } from './pipes/replace.pipe';
     CsvComboComponent, 
     DownloadSelectorComponent, 
     PageFotterComponent, 
-    ReplacePipe
+    ReplacePipe, FormatNumberPipe
   ],
   imports: [
     FormsModule,

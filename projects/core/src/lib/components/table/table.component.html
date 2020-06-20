@@ -56,12 +56,16 @@
                 </ng-container>
                 <td class="admin-table__item admin-table__item_menu"
                     *ngIf="dataSource?.actions?.links?.length || dataSource?.actions?.subLinks?.length">
-                    
+
                     <!-- <span (click)="openLinkMenu(row,$event,rowIndex)" class="admin-table-action__menu ic-hover"
                         *ngIf="((dataSource.actions.subLinks|actionLink:row).length||(dataSource.actions.links|actionLink:row).length)">
                         <mdc-icon path="ic-dot-menu"></mdc-icon>
                     </span> -->
-
+                    
+                    <ng-container *ngIf="editCellTemplate"
+                        [ngTemplateOutlet]="editCellTemplate"
+                        [ngTemplateOutletContext]="{$implicit: row.cells,source:row.source}">
+                    </ng-container>
 
                     <div class="admin-table-action">
                         <span (click)="openLinkMenu(row,$event,rowIndex)"
@@ -69,14 +73,15 @@
                             class="admin-table-action__menu ic-hover">
                             <svg mdcSvg="ic-dot-menu" class="icon ic-dot-menu"></svg>
                             <div *ngIf="(commandRow===row && (dataSource?.actions?.links?.length || dataSource?.actions?.subLinks?.length) && ((dataSource.actions.subLinks|actionLink:commandRow).length||(dataSource.actions.links|actionLink:commandRow).length))"
-                            class="admin-table-popup active">
-                            <div id="{{tableID + 'row_cmd_' + rowIndex}}">
-                                <mdc-modal-menu (onInit)="initActionsLinks($event)"
-                                    [componentID]="tableID + 'row_cmd_' + rowIndex" (onCommand)="onActionCommand($event)"
-                                    [sublinks]="dataSource.actions.subLinks|actionLink:commandRow"
-                                    [links]="dataSource.actions.links|actionLink:commandRow">
-                                </mdc-modal-menu>
-                            </div>
+                                class="admin-table-popup active">
+                                <div id="{{tableID + 'row_cmd_' + rowIndex}}">
+                                    <mdc-modal-menu (onInit)="initActionsLinks($event)"
+                                        [componentID]="tableID + 'row_cmd_' + rowIndex"
+                                        (onCommand)="onActionCommand($event)"
+                                        [sublinks]="dataSource.actions.subLinks|actionLink:commandRow"
+                                        [links]="dataSource.actions.links|actionLink:commandRow">
+                                    </mdc-modal-menu>
+                                </div>
                             </div>
                         </span>
                     </div>
@@ -96,7 +101,7 @@
                     </div>
                 </td>
             </tr> -->
-            
+
         </ng-container>
     </tbody>
 </table>

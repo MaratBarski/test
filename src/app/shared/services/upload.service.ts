@@ -7,6 +7,7 @@ export class UploadInfo {
   form: FormData;
   notification: INotification;
   targetComponent?: any;
+  method?: 'post' | 'put';
 }
 
 @Injectable({
@@ -46,8 +47,9 @@ export class UploadService implements OnDestroy {
 
   private uploadProc(uploadInfo: UploadInfo): void {
     if (!this.isUploadEnable(uploadInfo)) { return; }
+    const method: 'post' | 'put' = uploadInfo.method ? uploadInfo.method : 'post';
     uploadInfo.notification.status = NotificationStatus.uploading;
-    const uploadSubscription = this.http.post(uploadInfo.url, uploadInfo.form, {
+    const uploadSubscription = this.http[method](uploadInfo.url, uploadInfo.form, {
       reportProgress: true,
       observe: 'events'
     })

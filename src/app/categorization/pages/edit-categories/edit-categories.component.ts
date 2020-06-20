@@ -78,11 +78,13 @@ export class EditCategoriesComponent extends BaseSibscriber implements OnInit {
       delete item.newHierarchyLevelName;
     });
     this.isLoading = true;
+    //document.write(JSON.stringify(category))
     super.add(
       this.editCategoryService.save(category).subscribe((res: any) => {
         this.isLoading = false;
         this.router.navigateByUrl('/categorization')
       }));
+
   }
 
   private _uploadUrl = `${environment.serverUrl}${environment.endPoints.replaceHierarchy}`
@@ -128,6 +130,8 @@ export class EditCategoriesComponent extends BaseSibscriber implements OnInit {
 
     //document.write(JSON.stringify(categorization));
 
+    //alert(`${this._uploadUrl}/${categorization.hierarchyRootId}`)
+
     this.uploadService.add({
       notification: {
         name: 'Categorization',
@@ -142,7 +146,8 @@ export class EditCategoriesComponent extends BaseSibscriber implements OnInit {
         type: ToasterType.infoProgressBar
       },
       form: formData,
-      url: this._uploadUrl,
+      url: `${this._uploadUrl}/${categorization.hierarchyRootId}`,
+      method: 'put'
       //targetComponent: this.targetComponent
     });
     this.router.navigateByUrl('/categorization')

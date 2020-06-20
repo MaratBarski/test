@@ -21,7 +21,7 @@
         </div>
     </div>
     <div [hidden]="!isDataExists || !isLoaded">
-        <mdc-table #table (onAction)="onAction($event)" [emptyState]="emptyState"
+        <mdc-table #table (onAction)="onAction($event)" [emptyState]="emptyState" [editCellTemplate]="editCellTemplate"
             [cellsTemplate]="{ insertDate:dateColumn,shared:sharedColumn}" [searchOptions]="searchOptions"
             [paginator]="paginator" [search]="search" [dataSource]="dataSource">
         </mdc-table>
@@ -43,6 +43,17 @@
     <span *ngIf="item.shared" class="admin-table__icon">
         <svg class="icon ic-shared ic-grey" mdcSvg="ic-shared"></svg>
     </span>
+</ng-template>
+
+<ng-template #editCellTemplate let-item let-src="source">
+    <!-- <div *ngIf="src.fileStatus==='uploaded'" class="admin-table__notice d-none d-md-inline-block">
+        <svg class="icon ic-business-warning" mdcSvg="ic-business-warning">
+        </svg>
+    </div> -->
+    <div *ngIf="src.fileStatus==='loaded_to_table'" class="admin-table__notice d-none d-md-inline-block">
+        <svg class="icon ic-business-warning" mdcSvg="ic-business-warning">
+        </svg>
+    </div>
 </ng-template>
 
 <mdc-modal-window *ngIf="showUploadFile">
