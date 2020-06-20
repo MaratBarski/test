@@ -46,11 +46,7 @@
 </ng-template>
 
 <ng-template #editCellTemplate let-item let-src="source">
-    <!-- <div *ngIf="src.fileStatus==='uploaded'" class="admin-table__notice d-none d-md-inline-block">
-        <svg class="icon ic-business-warning" mdcSvg="ic-business-warning">
-        </svg>
-    </div> -->
-    <div *ngIf="src.fileStatus==='loaded_to_table'" class="admin-table__notice d-none d-md-inline-block">
+    <div *ngIf="src.fileStatus!=='loaded_to_table'" class="admin-table__notice d-none d-md-inline-block">
         <svg class="icon ic-business-warning" mdcSvg="ic-business-warning">
         </svg>
     </div>
