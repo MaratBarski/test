@@ -77,10 +77,25 @@ export class EditCategoriesComponent extends BaseSibscriber implements OnInit {
       item.hierarchyLevelName = item.newHierarchyLevelName
       delete item.newHierarchyLevelName;
     });
+
+    const objToSend = {
+      hierarchyName: category.data.hierarchyName,
+      projectId: category.data.projectId,
+      description: category.data.description,
+      defaultLevelId: category.data.defaultLevelId,
+      message: category.data.notificationMessage,
+      levels: {}
+    };
+
+    category.data.hierarchyLevels.forEach((l: any) => {
+      objToSend.levels[l.hierarchyLevelId] = l.hierarchyLevelName;
+    });
+
+    //document.write(JSON.stringify(objToSend));
+
     this.isLoading = true;
-    //document.write(JSON.stringify(category))
     super.add(
-      this.editCategoryService.save(category).subscribe((res: any) => {
+      this.editCategoryService.save(objToSend, category.data.hierarchyRootId).subscribe((res: any) => {
         this.isLoading = false;
         this.router.navigateByUrl('/categorization')
       }));
@@ -93,6 +108,7 @@ export class EditCategoriesComponent extends BaseSibscriber implements OnInit {
     if (!this.mapCategoryTable.validate()) { return; }
     const formData = this.categoryInfo.fileData.formData as FormData;
     const categorization = {
+      levels: {},
       hierarchyRootId: this.selectedCategory.data.hierarchyRootId,
       description: this.categoryHeader.description,
       domain: this.selectedCategory.data.domain,
@@ -103,7 +119,7 @@ export class EditCategoriesComponent extends BaseSibscriber implements OnInit {
       insertDate: this.selectedCategory.data.insertDate,
       defaultLevelId: this.selectedCategory.data.defaultLevelId,//this.categoryInfo.selectedCategory.id
       hierarchyLoadingType: this.selectedCategory.data.hierarchyLoadingType,
-      notificationMessage: this.selectedCategory.data.notificationMessage,
+      message: this.selectedCategory.data.notificationMessage,
       defaultCategory: {
         name: this.categoryInfo.selectedCategory.text,
         id: this.categoryInfo.selectedCategory.id
@@ -126,11 +142,23 @@ export class EditCategoriesComponent extends BaseSibscriber implements OnInit {
         };
       })
     };
-    formData.append('categorization', JSON.stringify(categorization));
+    this.updateForSave(categorization);
 
-    //document.write(JSON.stringify(categorization));
+    formData.append('hierarchyName', categorization.hierarchyName);
+    formData.append('projectId', categorization.projectId);
+    formData.append('description', categorization.description);
+    formData.append('defaultLevelId', categorization.defaultLevelId);
+    formData.append('message', categorization.message);
+    formData.append('levels', JSON.stringify(categorization.levels));
 
-    //alert(`${this._uploadUrl}/${categorization.hierarchyRootId}`)
+    // const test = {};
+    // test['hierarchyName'] = categorization.hierarchyName;
+    // test['projectId'] = categorization.projectId;
+    // test['description'] = categorization.description;
+    // test['defaultLevelId'] = categorization.defaultLevelId;
+    // test['message'] = categorization.message;
+    // test['levels'] = JSON.stringify(categorization.levels);
+    // document.write(JSON.stringify(test));
 
     this.uploadService.add({
       notification: {
@@ -151,6 +179,14 @@ export class EditCategoriesComponent extends BaseSibscriber implements OnInit {
       //targetComponent: this.targetComponent
     });
     this.router.navigateByUrl('/categorization')
+  }
+
+  private updateForSave(category: any): void {
+    category.defaultLevelId = category.defaultCategory.id;
+    category.levels = {}
+    category.hierarchyLevels.forEach((l: any) => {
+      category.levels[l.newCategory.sortValue] = l.oldCategory.hierarchyLevelId;
+    });
   }
 
   cancel(): void {
