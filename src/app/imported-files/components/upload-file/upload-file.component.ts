@@ -66,7 +66,10 @@ export class UploadFileComponent implements OnInit {
     formData.append('template', this.template);
     this.uploadService.add({
       notification: {
-        name: 'Imported File',
+        name: 'Uploading Imported File',
+        failName:'Imported File UPLOAD Failed',
+        succName:'Imported File SUCCESSFULLY UPLOADED',
+        abortName:'Imported File UPLOAD ABORTED BY USER',
         comment: 'Uploading',
         progress: 0,
         status: NotificationStatus.uploading,

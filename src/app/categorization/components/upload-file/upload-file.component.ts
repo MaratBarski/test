@@ -52,7 +52,10 @@ export class UploadFileComponent {
     const formData: FormData = this.createFormData();
     this.uploadService.add({
       notification: {
-        name: 'Categorization',
+        name: 'Uploading Categorization',
+        failName:'Categorization UPLOAD Failed',
+        succName:'Categorization SUCCESSFULLY UPLOADED',
+        abortName:'Categorization UPLOAD ABORTED BY USER',
         comment: 'Uploading',
         progress: 0,
         status: NotificationStatus.uploading,

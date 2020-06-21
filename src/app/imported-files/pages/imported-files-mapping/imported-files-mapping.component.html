@@ -27,12 +27,6 @@
       </div>
     </section>
 
-    <button type="button" (click)="addNotice(0)">info</button>
-    <button type="button" (click)="addNotice(1)">error</button>
-    <button type="button" (click)="addNotice(2)">warning</button>
-    <button type="button" (click)="addNotice(3)">success</button>
-    <button type="button" (click)="addNotice(4)">file</button>
-
     <section class="info-panel-wrap">
       <div class="container-fluid">
         <div class="row">
@@ -91,7 +85,8 @@
               <div class="info-panel__item">
                 <div class="info-panel__title">Template:</div>
                 <div class="info-panel__val">
-                  <mdc-select [isSmall]="true" [applyWidth]="false" [options]="templateSelectOptions" placeholder="Please Select..."
+                  <mdc-select [isSmall]="true" [applyWidth]="false" [options]="templateSelectOptions"
+                              placeholder="Please Select..."
                               formControlName="templateId"></mdc-select>
                 </div>
               </div>
@@ -167,8 +162,11 @@
                     <md-clm-type-switcher formControlName="propertyType"></md-clm-type-switcher>
                   </td>
                   <td class="admin-table__item d-none d-md-table-cell">
-                    <div class="select select_small" *ngIf="this.fileSourceForm.get('fileClms')['controls'][i].get('propertyType').value === propertyType.String">
-                      <mdc-select formControlName="hierarchyRootId" [placeholder]="'Select Categorization...'" (changed)="getRelationalIntegrity($event, i)" [options]="hierarchySelectOptions" [isSmall]="true" [applyWidth]="false"></mdc-select>
+                    <div class="select select_small"
+                         *ngIf="this.fileSourceForm.get('fileClms')['controls'][i].get('propertyType').value === propertyType.String">
+                      <mdc-select formControlName="hierarchyRootId" [placeholder]="'Select Categorization...'"
+                                  (changed)="getRelationalIntegrity($event, i)" [options]="hierarchySelectOptions"
+                                  [isSmall]="true" [applyWidth]="false"></mdc-select>
                     </div>
                   </td>
                   <td class="admin-table__item admin-table__item_center d-none d-xl-table-cell">
@@ -177,13 +175,18 @@
                         [percentage]="this.fileSourceForm.get('fileClms')['controls'][i].get('percent').value"></mdc-progress-match>
                     </ng-container>
                   </td>
-                  <td class="admin-table__item d-none d-xl-table-cell">
-                    <div class="admin-table__data-sample">{{getSampleData(fileSourceForm.get('fileClms')['controls'][i].get('dataSample').value)}}
-                      <!--<span class="tooltip">
-                        <span class="tooltip__content">
-                        {{getSampleData(fileSourceForm.get('fileClms').controls[i].get('dataSample').value)}}
-                      </span></span>-->
+                  <td class="admin-table__item d-none d-xl-table-cell" #div>
+                    <div class="admin-table__data-sample" *ngIf="!needTooltip(div) else needToolTip">
+                      {{fileSourceForm.get('fileClms')['controls'][i].get('dataSample').value | DataSample}}
                     </div>
+                    <ng-template #needToolTip>
+                      <div class="admin-table__data-sample"
+                           [stickyToElement]="true"
+                           position="left"
+                           [mdcTooltip]="fileSourceForm.get('fileClms')['controls'][i].get('dataSample').value | DataSample">
+                        {{ fileSourceForm.get('fileClms')['controls'][i].get('dataSample').value | DataSample}}
+                      </div>
+                    </ng-template>
                   </td>
                 </tr>
               </ng-container>
@@ -203,8 +206,8 @@
         <div class="row">
           <div class="col-12">
             <div class="footer__btn">
-              <button class="btn btn_border">Cancel</button>
-              <button type="submit" class="btn">Save</button>
+              <button class="btn btn_border" (click)="cancel()">Cancel</button>
+              <button type="submit" class="btn" [disabled]="!fileSourceForm.valid">Save</button>
             </div>
           </div>
         </div>

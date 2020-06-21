@@ -7,6 +7,7 @@ export class UploadInfo {
   form: FormData;
   notification: INotification;
   targetComponent?: any;
+  method?: 'post' | 'put';
 }
 
 @Injectable({
@@ -46,8 +47,9 @@ export class UploadService implements OnDestroy {
 
   private uploadProc(uploadInfo: UploadInfo): void {
     if (!this.isUploadEnable(uploadInfo)) { return; }
+    const method: 'post' | 'put' = uploadInfo.method ? uploadInfo.method : 'post';
     uploadInfo.notification.status = NotificationStatus.uploading;
-    const uploadSubscription = this.http.post(uploadInfo.url, uploadInfo.form, {
+    const uploadSubscription = this.http[method](uploadInfo.url, uploadInfo.form, {
       reportProgress: true,
       observe: 'events'
     })
@@ -69,6 +71,8 @@ export class UploadService implements OnDestroy {
         , error => {
           this.uploadEnd(uploadInfo, NotificationStatus.failed);
           console.log(error);
+          uploadInfo.notification.name = uploadInfo.notification.failName;
+          uploadInfo.notification.type = ToasterType.error;
           if (!uploadSubscription.closed) {
             uploadSubscription.unsubscribe();
           }
@@ -91,6 +95,8 @@ export class UploadService implements OnDestroy {
     if (status === NotificationStatus.completed
       && uploadInfo.targetComponent
       && uploadInfo.targetComponent.onComplete) {
+      uploadInfo.notification.type = ToasterType.success;
+      uploadInfo.notification.name = uploadInfo.notification.succName;
       uploadInfo.targetComponent.onComplete();
       uploadInfo.form = undefined;
     }

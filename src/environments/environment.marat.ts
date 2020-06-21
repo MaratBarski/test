@@ -23,7 +23,7 @@ export const environment = {
         downloadHistoryReport: 'moshe/api/v1/session-history/download',
         usageReport: 'mdclone/api/v1/reporting/usage',
         templateByProject: 'mdclone/api/v1/template/get-by-project',
-        updateHierarchy: 'mdclone/api/v1/updateHierarchy',
+        updateHierarchy: 'mdclone/api/v1/hierarchy',
         config: 'config',
         usageActiveUsage: 'mdclone/api/v1/reporting/usage-active-users',
         usageMonthlyUsage: 'mdclone/api/v1/reporting/usage-monthly-usage',

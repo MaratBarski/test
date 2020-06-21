@@ -5,13 +5,17 @@ import { FileSourceResponse, FileSource } from '../models/file-source';
 import { Offline } from 'src/app/shared/decorators/offline.decorator';
 import { environment } from '@env/environment';
 import { FileSourceStatus } from '../models/enum/FileSourceStatus';
+import { FormatNumberService } from '@app/shared/services/format-number.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ImportedFilesService {
 
-  constructor(private dataService: DataService) { }
+  constructor(
+    private dataService: DataService,
+    private formatNumberService: FormatNumberService
+  ) { }
 
   @Offline('assets/offline/fileSource.json')
   private getUrl = `${environment.serverUrl}${environment.endPoints.fileSource}`;
@@ -134,8 +138,8 @@ export class ImportedFilesService {
           permission: fl.template ? fl.template.templateName : '',
           user: fl.user && fl.user.firstName && fl.user.lastName ? `${fl.user.firstName} ${fl.user.lastName}` : fl.user && fl.user.login ? fl.user.login : '',
           shared: fl.fileType,
-          columns: fl.columnsNum,
-          rows: fl.rowsNum
+          columns: isNaN(fl.columnsNum) || !fl.columnsNum ? 0 : parseInt(fl.columnsNum + ''),
+          rows: isNaN(fl.rowsNum) || !fl.rowsNum ? 0 : parseInt(fl.rowsNum + '')
         },
         csv: {
           fileName: fl.fileName

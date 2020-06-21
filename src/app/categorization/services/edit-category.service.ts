@@ -36,8 +36,8 @@ export class EditCategoryService {
     );
   }
 
-  save(category: any): Observable<any> {
-    return this.dataService.post(this.saveUrl, category).pipe(
+  save(category: any, hierarchyRootId: number): Observable<any> {
+    return this.dataService.put(`${this.saveUrl}/${hierarchyRootId}`, category).pipe(
       catchError(er => {
         return of(er);
       })

@@ -173,12 +173,13 @@ export class TableComponent implements OnDestroy, AfterViewInit, AfterViewChecke
   @ViewChild('tableObject', { static: false }) tableObject: ElementRef;
   @Input() rowInfoTemplate: TemplateRef<any>;
   @Input() headersTemplate: Array<{ [key: string]: TemplateRef<any> }>;
-  @Input() customFilters: Array<{ [key: string]: TemplateRef<any> }>;  
+  @Input() customFilters: Array<{ [key: string]: TemplateRef<any> }>;
   @Input() cellsTemplate: Array<{ [key: string]: TemplateRef<any> }>;
   @Input() editHeaderTemplate: TemplateRef<any>;
   @Input() isMultiSelect = false;
   @Input() tableID = 'mainTable';
   @Input() stayOnCurrentPage = false;
+  @Input() editCellTemplate: any;
 
   @Input() set searchOptions(searchOptions: Array<string>) {
     this._searchOptions = searchOptions;
