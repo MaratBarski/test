@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject, Observable, BehaviorSubject } from 'rxjs';
 import { ToasterType } from '../components/toaster/toaster.component';
-import { UUID } from 'angular2-uuid';
 
 export enum NotificationStatus {
   uploading = 'Uploading',
@@ -14,6 +13,9 @@ export enum NotificationStatus {
 
 export interface INotification {
   name: string;
+  failName?: string;
+  succName?: string;
+  abortName?: string;
   comment: string;
   startDate: Date;
   progress: number;
@@ -81,6 +83,7 @@ export class NotificationsService {
 
   abort(notice: INotification): void {
     notice.type = ToasterType.error;
+    notice.name = notice.abortName;
     this._onAbort.next(notice);
     this.update();
   }

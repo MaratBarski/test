@@ -9,11 +9,11 @@
     <div class="notice-msg__head">
       <div class="notice-msg-head">
 
-        <div class="notice-msg-head__icon" *ngIf="toasterType.infoProgressBar !== notice?.type">
+        <div class="notice-msg-head__icon" *ngIf="toasterType.infoProgressBar !== type">
           <mdc-icon [path]="'ic-business-warning'" [css]="'ic-business-warning'" *ngIf="toasterType.info === notice?.type"></mdc-icon>
-          <mdc-icon [path]="'ic-failure'" [css]="'ic-failure'" *ngIf="toasterType.error === notice?.type"></mdc-icon>
-          <mdc-icon [path]="'ic-warning'" [css]="'ic-warning'" *ngIf="toasterType.warning === notice?.type"></mdc-icon>
-          <mdc-icon [path]="'ic-success'" [css]="'ic-success'" *ngIf="toasterType.success === notice?.type"></mdc-icon>
+          <mdc-icon [path]="'ic-failure'" [css]="'ic-failure'" *ngIf="toasterType.error === type"></mdc-icon>
+          <mdc-icon [path]="'ic-warning'" [css]="'ic-warning'" *ngIf="toasterType.warning === type"></mdc-icon>
+          <mdc-icon [path]="'ic-success'" [css]="'ic-success'" *ngIf="toasterType.success === type"></mdc-icon>
 <!--          <mdc-icon [path]="'ic-success'"></mdc-icon>-->
 <!--          <svg class="icon ic-business-warning">-->
 <!--            <use xlink:href="/assets/sprites/sprite.svg#ic-business-warning"></use>-->

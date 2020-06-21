@@ -71,6 +71,7 @@ export class UploadService implements OnDestroy {
         , error => {
           this.uploadEnd(uploadInfo, NotificationStatus.failed);
           console.log(error);
+          uploadInfo.notification.name = uploadInfo.notification.failName;
           if (!uploadSubscription.closed) {
             uploadSubscription.unsubscribe();
           }
@@ -93,6 +94,8 @@ export class UploadService implements OnDestroy {
     if (status === NotificationStatus.completed
       && uploadInfo.targetComponent
       && uploadInfo.targetComponent.onComplete) {
+      uploadInfo.notification.type = ToasterType.success;
+      uploadInfo.notification.name = uploadInfo.notification.succName;
       uploadInfo.targetComponent.onComplete();
       uploadInfo.form = undefined;
     }
