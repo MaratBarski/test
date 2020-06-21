@@ -22,7 +22,7 @@
     </div>
     <div [hidden]="!isDataExists || !isLoaded">
         <mdc-table #table (onAction)="onAction($event)" [emptyState]="emptyState" [editCellTemplate]="editCellTemplate"
-            [cellsTemplate]="{ insertDate:dateColumn,shared:sharedColumn}" [searchOptions]="searchOptions"
+            [cellsTemplate]="{ insertDate:dateColumn,shared:sharedColumn,columns:columnsTemplate,rows:rowsTemplate}" [searchOptions]="searchOptions"
             [paginator]="paginator" [search]="search" [dataSource]="dataSource">
         </mdc-table>
     </div>
@@ -50,6 +50,14 @@
         <svg class="icon ic-business-warning" mdcSvg="ic-business-warning">
         </svg>
     </div>
+</ng-template>
+
+<ng-template #columnsTemplate let-item let-src="source">
+    <div>{{src.columnsNum|formatNumber}}</div>
+</ng-template>
+
+<ng-template #rowsTemplate let-item let-src="source">
+    <div>{{src.rowsNum|formatNumber}}</div>
 </ng-template>
 
 <mdc-modal-window *ngIf="showUploadFile">

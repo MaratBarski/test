@@ -31,7 +31,8 @@ import { FormatNumberPipe } from './pipes/format-number.pipe';
     CsvComboComponent, 
     DownloadSelectorComponent, 
     PageFotterComponent, 
-    ReplacePipe, FormatNumberPipe
+    ReplacePipe, 
+    FormatNumberPipe
   ],
   imports: [
     FormsModule,
@@ -54,7 +55,8 @@ import { FormatNumberPipe } from './pipes/format-number.pipe';
     CsvComboComponent,
     DownloadSelectorComponent,
     PageFotterComponent,
-    ReplacePipe
+    ReplacePipe,
+    FormatNumberPipe
   ],
   entryComponents: [
   ]
