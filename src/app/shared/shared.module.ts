@@ -20,18 +20,20 @@ import { CsvComboComponent } from './components/csv-combo/csv-combo.component';
 import { DownloadSelectorComponent } from './components/download-selector/download-selector.component';
 import { PageFotterComponent } from './components/page-fotter/page-fotter.component';
 import { ReplacePipe } from './pipes/replace.pipe';
+import { DataSamplePipe } from './pipes/data-sample.pipe';
 import { FormatNumberPipe } from './pipes/format-number.pipe';
 
 @NgModule({
   declarations: [
-    ProjectComboComponent, 
-    PageTitleComponent, 
-    PageBodyComponent, 
-    AnimationStickyDirective, 
-    CsvComboComponent, 
-    DownloadSelectorComponent, 
-    PageFotterComponent, 
-    ReplacePipe, 
+    ProjectComboComponent,
+    PageTitleComponent,
+    PageBodyComponent,
+    AnimationStickyDirective,
+    CsvComboComponent,
+    DownloadSelectorComponent,
+    PageFotterComponent,
+    ReplacePipe,
+    DataSamplePipe,
     FormatNumberPipe
   ],
   imports: [
@@ -56,6 +58,7 @@ import { FormatNumberPipe } from './pipes/format-number.pipe';
     DownloadSelectorComponent,
     PageFotterComponent,
     ReplacePipe,
+    DataSamplePipe,
     FormatNumberPipe
   ],
   entryComponents: [

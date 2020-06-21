@@ -25,6 +25,7 @@ export class ImportedFileMappingComponent implements OnInit, OnDestroy {
   opened = false;
   propertyType = PropertyType;
   selectAll: FormControl;
+  showErrors: boolean = false;
   @ViewChild('popupMenu', {static: true}) popupMenu: PopupComponent;
   @ViewChild('table', {static: true}) table: TableComponent;
 
@@ -169,15 +170,14 @@ export class ImportedFileMappingComponent implements OnInit, OnDestroy {
     });
   }
 
-  getSampleData(str) {
-    const tmp = str ? str.split('%sep%').filter(item => item.length > 0) : [];
-    return tmp.join(', ');
-  }
-
   saveFileSource() {
-    this.importedFilesMappingService.saveMappedData(this.fileSourceForm.getRawValue()).subscribe(responce => {
-      this.router.navigateByUrl('/imported-files');
-    });
+    if (!this.fileSourceForm.valid) {
+      this.showErrors = true;
+    } else {
+      this.importedFilesMappingService.saveMappedData(this.fileSourceForm.getRawValue()).subscribe(responce => {
+        this.router.navigateByUrl('/imported-files');
+      });
+    }
   }
 
   cancel() {
