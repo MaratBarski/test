@@ -4,7 +4,7 @@ import {FileClm, FileSource} from '../../models/file-source';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Template} from '@app/models/template';
 import {Hierarchy} from '@app/models/hierarchy';
-import {FormArray, FormBuilder, FormControl, FormGroup} from '@angular/forms';
+import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {ImportedFilesMappingService} from '@app/imported-files/services/imported-files-mapping.service';
 import {map} from 'rxjs/operators';
 import {PropertyType} from '@app/imported-files/models/enum/PropertyType';
@@ -47,10 +47,12 @@ export class ImportedFileMappingComponent implements OnInit, OnDestroy {
       .subscribe(select => {
         const pointer: FormArray = this.fileSourceForm.get('fileClms') as FormArray;
         if (select) {
+          // tslint:disable-next-line:prefer-for-of
           for (let i = 0; i < pointer.controls.length; i++) {
             pointer.controls[i].get('isIncluded').setValue(true);
           }
         } else {
+          // tslint:disable-next-line:prefer-for-of
           for (let i = 0; i < pointer.controls.length; i++) {
             pointer.controls[i].get('isIncluded').setValue(false);
           }
@@ -74,9 +76,6 @@ export class ImportedFileMappingComponent implements OnInit, OnDestroy {
     this.fileSourceForm = this.createFileSourceForm();
   }
 
-  addNotice(nType: ToasterType) {
-  }
-
   toggleShare() {
     this.opened = !this.opened;
   }
@@ -89,7 +88,7 @@ export class ImportedFileMappingComponent implements OnInit, OnDestroy {
       fileNameAlias: [this.fileSource.fileNameAlias],
       tag: [this.fileSource.tag],
       insertDate: [this.fileSource.insertDate],
-      templateId: [this.fileSource.templateId],
+      templateId: [this.fileSource.templateId, Validators.required],
       tableName: [this.fileSource.tableName],
       project: [this.fileSource.tableName],
       uploadedBy: [this.fileSource.uploadedBy],
@@ -138,6 +137,14 @@ export class ImportedFileMappingComponent implements OnInit, OnDestroy {
     });*/
   }
 
+  needTooltip(div): boolean {
+    if (div.children.length > 0) {
+      return div.children[0].offsetWidth < div.children[0].scrollWidth;
+    } else {
+      return false;
+    }
+  }
+
   getRelationalIntegrity(hieId, columnIndex) {
     const hierarchyId = hieId.id;
     const colIndex = columnIndex + 1;
@@ -171,7 +178,9 @@ export class ImportedFileMappingComponent implements OnInit, OnDestroy {
     this.importedFilesMappingService.saveMappedData(this.fileSourceForm.getRawValue()).subscribe(responce => {
       this.router.navigateByUrl('/imported-files');
     });
-    /*console.log(this.fileSourceForm.getRawValue());
-    console.log(this.fileSourceForm);*/
+  }
+
+  cancel() {
+    this.router.navigateByUrl('/imported-files');
   }
 }
