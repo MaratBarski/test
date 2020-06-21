@@ -138,8 +138,8 @@ export class ImportedFilesService {
           permission: fl.template ? fl.template.templateName : '',
           user: fl.user && fl.user.firstName && fl.user.lastName ? `${fl.user.firstName} ${fl.user.lastName}` : fl.user && fl.user.login ? fl.user.login : '',
           shared: fl.fileType,
-          columns: fl.columnsNum,
-          rows: fl.rowsNum
+          columns: isNaN(fl.columnsNum) || !fl.columnsNum ? 0 : parseInt(fl.columnsNum + ''),
+          rows: isNaN(fl.rowsNum) || !fl.rowsNum ? 0 : parseInt(fl.rowsNum + '')
         },
         csv: {
           fileName: fl.fileName
