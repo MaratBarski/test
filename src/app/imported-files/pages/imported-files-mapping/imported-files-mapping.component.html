@@ -85,7 +85,7 @@
               <div class="info-panel__item">
                 <div class="info-panel__title">Template:</div>
                 <div class="info-panel__val">
-                  <mdc-select [isSmall]="true" [applyWidth]="false" [options]="templateSelectOptions"
+                  <mdc-select [ngClass]="{'error': (!fileSourceForm.valid && showErrors)}" [isSmall]="true" [applyWidth]="false" [options]="templateSelectOptions"
                               placeholder="Please Select..."
                               formControlName="templateId"></mdc-select>
                 </div>
@@ -207,7 +207,7 @@
           <div class="col-12">
             <div class="footer__btn">
               <button class="btn btn_border" (click)="cancel()">Cancel</button>
-              <button type="submit" class="btn" [disabled]="!fileSourceForm.valid">Save</button>
+              <button type="submit" class="btn">Save</button>
             </div>
           </div>
         </div>

@@ -39,3 +39,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     //transform:rotate(0)  !important;
     //transform:rotate(0) translateX(-10px) !important;
 }
+
+.error{
+  outline: solid 1px red;
+}
