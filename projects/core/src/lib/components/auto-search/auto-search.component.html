@@ -1,8 +1,10 @@
 <button type="button">
-    <mdc-icon path="ic-search" class="icon ic-search" (click)="search()"></mdc-icon>
+  <mdc-icon path="ic-search" [css]="'ic-search'" (click)="search()"></mdc-icon>
 </button>
-<input type="text" placeholder="{{placeholder}}" [(ngModel)]="text" type="text" (keyup)="keyup($event)"
-    (keydown)="keydown($event)">
-<a class="form-search__close" (click)="clearText()">
-    <mdc-icon [mdcShow]="text" path="ic-close" class="icon ic-close-small"></mdc-icon>
+<input name="search" type="text" placeholder="{{placeholder}}" [(ngModel)]="text" type="text" (keyup)="keyup($event)"
+       (keydown)="keydown($event)">
+<a class="form-search__close" [ngClass]="{'active': text.length > 0}" (click)="clearText()">
+  <mdc-icon [mdcShow]="text" path="ic-close-small" [css]="'ic-close-small'"></mdc-icon>
+  <mdc-icon [mdcShow]="text" path="ic-close" [css]="'ic-close'"></mdc-icon>
 </a>
+

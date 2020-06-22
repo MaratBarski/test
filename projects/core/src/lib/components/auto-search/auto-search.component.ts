@@ -14,7 +14,7 @@ export class AutoSearchComponent implements OnDestroy {
   prevText = '';
   text = '';
   timeoutID: any;
-
+  active = false;
   keyup(event: any): void {
     if (this.prevText === this.text) { return; }
     if (this.text.length < this.minLength && this.text != '') { return; }
@@ -52,7 +52,7 @@ export class AutoSearchComponent implements OnDestroy {
   ngOnDestroy(): void {
     this.stopTimeout();
   }
-  
+
   private stopTimeout(): void {
     if (this.timeoutID) {
       clearTimeout(this.timeoutID);
