@@ -16,6 +16,7 @@ import {NotificationsService, ToasterType} from '@appcore';
   styleUrls: ['./imported-files-mapping.component.scss']
 })
 export class ImportedFileMappingComponent implements OnInit, OnDestroy {
+  legendActive = false;
   fileSource: FileSource;
   fileSourceForm: FormGroup;
   templates: Template[] = [];
