@@ -34,12 +34,16 @@
                 </div>Auto-Update Hierarchy
             </div>
         </div>
-        <div class="admin-table-info__item">
+        <div *ngIf="category?.siteEventPropertyInfos?.length" class="admin-table-info__item">
             <div class="admin-table-info__title">Used in:</div>
             <div class="admin-table-info__val">
                 <div class="admin-table-info__ic">
                     <mdc-icon path="ic-plug"></mdc-icon>
-                </div>Diagnosis, Admission Diagnosis, Procedures, Customised events
+                </div>
+                <ng-container *ngFor="let info of category.siteEventPropertyInfos;let i=index;">
+                    {{info.eventPropertyName}}
+                    <ng-container *ngIf="i<category.siteEventPropertyInfos.length-1">,</ng-container>
+                </ng-container>
             </div>
         </div>
         <div class="admin-table-info__item">

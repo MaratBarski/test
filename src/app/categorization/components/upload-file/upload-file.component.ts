@@ -53,9 +53,9 @@ export class UploadFileComponent {
     this.uploadService.add({
       notification: {
         name: 'Uploading Categorization',
-        failName:'Categorization UPLOAD Failed',
-        succName:'Categorization SUCCESSFULLY UPLOADED',
-        abortName:'Categorization UPLOAD ABORTED BY USER',
+        failName: 'Categorization UPLOAD Failed',
+        succName: 'Categorization SUCCESSFULLY UPLOADED',
+        abortName: 'Categorization UPLOAD ABORTED BY USER',
         comment: 'Uploading',
         progress: 0,
         status: NotificationStatus.uploading,
@@ -93,12 +93,14 @@ export class UploadFileComponent {
     formData.append('file', this.fileInput.nativeElement.files[0]);
     formData.append('fileName', this.fileName);
     formData.append('description', this.description);
+    formData.append('hierarchyName', this.fileName);
     if (!this.isEditMode) {
-      formData.append('environment', this.project);
+      formData.append('projectId', this.project);
     } else {
-      formData.append('id', this.source.hierarchyRootId);
+      formData.append('hierarchyRootId', this.source.hierarchyRootId);
     }
-    formData.append('defaultCategory', this.defaultCategory);
+    formData.append('defaultLevelId', this.defaultCategory);
+    //formData.append('type', 'manual');
     return formData;
   }
 

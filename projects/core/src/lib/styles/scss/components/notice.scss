@@ -129,24 +129,24 @@
 
 .notice-location{
   position: fixed;
-  top: 10px;
-  right: 10px;
+  top: 65px;
+  right: 20px;
   z-index: 1000;
 
   &_top-left{
     right: auto;
-    left: 10px;
+    left: 20px;
   }
 
   &_bottom-left{
     right: auto;
-    left: 10px;
+    left: 20px;
     top: auto;
-    bottom: 10px;
+    bottom: 20px;
   }
 
   &_bottom-right{
     top: auto;
-    bottom: 10px;
+    bottom: 20px;
   }
 }

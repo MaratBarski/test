@@ -79,7 +79,7 @@
 </ng-template>
 
 <ng-template let-item let-src="source" #inUseColumn>
-    <span class="admin-table__icon" (mouseleave)="item.showUsed=false" (mouseenter)="item.showUsed=true">
+    <span *ngIf="src?.siteEventPropertyInfos?.length" class="admin-table__icon" (mouseleave)="item.showUsed=false" (mouseenter)="item.showUsed=true">
         <svg class="icon ic-plug ic-grey" mdcSvg="ic-plug"></svg>
         <div [hidden]="!item.showUsed" class="info-popup info-popup_right used-info">
             <div class="info-popup__top">

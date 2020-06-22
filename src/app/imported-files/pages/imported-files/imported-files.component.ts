@@ -136,10 +136,6 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, Af
     this.showUploadFile = true;
   }
 
-  onLoadFileUpload(upload: UploadFileComponent): void {
-    upload.templates = this.templates;
-  }
-
   get me(): ImportedFilesComponent { return this; }
 
   ngOnDestroy(): void {

@@ -1,22 +1,26 @@
 import { Component, Output, EventEmitter, ViewChild, ElementRef, Input, OnInit } from '@angular/core';
 import { UploadService } from '@app/shared/services/upload.service';
 import { Offline } from '@app/shared/decorators/offline.decorator';
-import { SelectOption, SelectComponent, CsvManagerService, NotificationStatus, ValidationFileMessage, ToasterType } from '@appcore';
+import { SelectOption, SelectComponent, CsvManagerService, NotificationStatus, ValidationFileMessage, ToasterType, LoginService, BaseSibscriber } from '@appcore';
 import { environment } from '@env/environment';
 import { ConfigService } from '@app/shared/services/config.service';
+
 
 @Component({
   selector: 'md-upload-file',
   templateUrl: './upload-file.component.html',
   styleUrls: ['./upload-file.component.scss']
 })
-export class UploadFileComponent implements OnInit {
+export class UploadFileComponent extends BaseSibscriber implements OnInit {
 
   constructor(
     private csvManagerService: CsvManagerService,
     private uploadService: UploadService,
-    private configService: ConfigService
-  ) { }
+    private configService: ConfigService,
+    private loginService: LoginService
+  ) {
+    super();
+  }
 
   @ViewChild('fileInput', { static: true }) fileInput: ElementRef;
   @ViewChild('templateSelector', { static: true }) templateSelector: SelectComponent;
@@ -27,7 +31,7 @@ export class UploadFileComponent implements OnInit {
 
   @Input() targetComponent: any;
   @Input() set uploadUrl(uploadUrl: string) { this._uploadUrl = uploadUrl; }
-  @Input() templates: Array<SelectOption>;
+  templates: Array<SelectOption>;
   get uploadUrl(): string { return this._uploadUrl; }
   defaultTemplate: SelectOption = { text: 'Select Permission Group...', id: '', value: '' };
 
@@ -45,12 +49,19 @@ export class UploadFileComponent implements OnInit {
   private _uploadUrl = `${environment.serverUrl}${environment.endPoints.uploadFileSource}`;
 
   resetTemplate(): void {
-    this.templateSelector.selected = this.defaultTemplate;
+    this.templateSelector.selected = undefined;
     this.template = '';
   }
 
+  projects: Array<any>;
+
   ngOnInit(): void {
     this.onLoad.emit(this);
+    super.add(
+      this.loginService.onUserInfoUpdated.subscribe(ui => {
+        if (!ui || !ui.data || !ui.data.projects) { return; }
+        this.projects = ui.data.projects;
+      }));
   }
 
   uploadFile(event: any): void {
@@ -67,9 +78,9 @@ export class UploadFileComponent implements OnInit {
     this.uploadService.add({
       notification: {
         name: 'Uploading Imported File',
-        failName:'Imported File UPLOAD Failed',
-        succName:'Imported File SUCCESSFULLY UPLOADED',
-        abortName:'Imported File UPLOAD ABORTED BY USER',
+        failName: 'Imported File UPLOAD Failed',
+        succName: 'Imported File SUCCESSFULLY UPLOADED',
+        abortName: 'Imported File UPLOAD ABORTED BY USER',
         comment: 'Uploading',
         progress: 0,
         status: NotificationStatus.uploading,
@@ -90,6 +101,23 @@ export class UploadFileComponent implements OnInit {
 
   changedProject(id: string): void {
     this.project = id;
+    this.loadTemplates();
+  }
+
+  loadTemplates(): void {
+    const proj = this.projects.find(x => x.projectId === this.project);
+    if (proj) {
+      this.templates = proj.template.map((x: any) => {
+        return {
+          id: x.templateId,
+          text: x.templateName,
+          value: x.templateId
+        }
+      });
+    } else {
+      this.templates = [];
+    }
+    this.resetTemplate();
   }
 
   changedTemplate(template: any): void {
@@ -145,6 +173,7 @@ export class UploadFileComponent implements OnInit {
       this.fileError(ValidationFileMessage.OtherError);
     });
   }
+
 
   // csvHeaders: Array<string>;
   // @ViewChild('fileUploader', { static: true }) fileUploader: FileUploaderComponent;
