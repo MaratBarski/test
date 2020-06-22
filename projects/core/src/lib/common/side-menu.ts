@@ -60,24 +60,14 @@ export const SideMenu: Array<MenuItem> = [
     //     ]
     // },
     {
-        id: PageInfo.ProjectSiteSettings.id,
-        url: '',
-        text: 'Project & Site Settings'
-    },
-    {
         id: PageInfo.MonitorReports.id,
         url: 'history-report',
-        text: 'Monitor & Reports'
+        text: 'Output History Report'
     },
     {
         id: PageInfo.ManageHierarchies.id,
         url: 'categorization',
         text: 'Manage Hierarchies'
-    },
-    {
-        id: PageInfo.QueriesEvents.id,
-        url: '',
-        text: 'Queries & Events'
     },
     {
         id: PageInfo.ImportedFiles.id,
@@ -88,15 +78,5 @@ export const SideMenu: Array<MenuItem> = [
         id: PageInfo.JobsScheduling.id,
         url: 'usage-dashboard',
         text: 'Usage Report'
-    },
-    {
-        id: PageInfo.PatientStorySettings.id,
-        url: '',
-        text: 'Patient Story Settings'
-    },
-    {
-        id: PageInfo.ExternalApplications.id,
-        url: '',
-        text: 'External Applications'
     }
 ]

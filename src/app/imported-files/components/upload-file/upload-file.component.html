@@ -54,8 +54,8 @@
                     </span>
                     <span class="form-site__optional">Optional</span>
                 </label>
-                <mdc-select #templateSelector [(ngModel)]="template" maxHeight="150px" [selectUp]="true"
-                    [selected]="defaultTemplate" (changed)="changedTemplate($event)" [options]="templates">
+                <mdc-select #templateSelector placeholder="Select Permission Group..." [(ngModel)]="template" maxHeight="150px" [selectUp]="true"
+                    (changed)="changedTemplate($event)" [options]="templates">
                 </mdc-select>
             </div>
         </div>

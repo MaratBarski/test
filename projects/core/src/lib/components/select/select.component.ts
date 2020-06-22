@@ -1,6 +1,6 @@
-import {AfterViewInit, Component, ElementRef, EventEmitter, forwardRef, Input, Output, Renderer2, ViewChild} from '@angular/core';
-import {animation, RotatedState} from '../../animations/animations';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
+import { AfterViewInit, Component, ElementRef, EventEmitter, forwardRef, Input, Output, Renderer2, ViewChild } from '@angular/core';
+import { animation, RotatedState } from '../../animations/animations';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 export class SelectOption {
   id: string | number;
@@ -31,9 +31,9 @@ export class SelectComponent implements ControlValueAccessor, AfterViewInit {
   constructor(private renderer2: Renderer2) {
   }
 
-  @ViewChild('combo', {static: true}) combo: ElementRef;
-  @ViewChild('optionsContainer', {static: true}) optionsContainer: ElementRef;
-  @ViewChild('comboTextContainer', {static: true}) comboTextContainer: ElementRef;
+  @ViewChild('combo', { static: true }) combo: ElementRef;
+  @ViewChild('optionsContainer', { static: true }) optionsContainer: ElementRef;
+  @ViewChild('comboTextContainer', { static: true }) comboTextContainer: ElementRef;
 
   @Input() disabled = false;
   @Input() isSmall = false;
@@ -61,6 +61,7 @@ export class SelectComponent implements ControlValueAccessor, AfterViewInit {
   }
 
   mouseClick(event: any): void {
+    if (!this.options || !this.options.length) { return; }
     if (!this.disabled) {
       this.isExpanded = !this.isExpanded;
       this.rotatedState = this.isExpanded ? RotatedState.rotated : RotatedState.default;
@@ -94,7 +95,9 @@ export class SelectComponent implements ControlValueAccessor, AfterViewInit {
     // for id type number only
     if (!isNaN(value)) {
       value = Number(value);
-      this.selected = this.options.find((option: SelectOption) => Number(option.id) === value);
+      if (this.options) {
+        this.selected = this.options.find((option: SelectOption) => Number(option.id) === value);
+      }
     }
   }
 

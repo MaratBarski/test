@@ -1,170 +1,88 @@
 {
     "data": {
-        "hierarchyRootId": "226",
-        "description": "hierarchy description",
-        "domain": "temp.mdclone-dev.com",
-        "hierarchyFile": "20180916_155113_number_of_kids_hierarchy.csv",
-        "hierarchyName": "hierarchy Name test",
-        "projectId": "1",
+        "hierarchyRootId": "25",
+        "description": "",
+        "domain": "10.0.2.7",
+        "hierarchyFile": "20180726_193134_Observation_concepts.csv",
+        "hierarchyName": "Observations",
+        "projectId": "6",
         "hierarchyFilePath": "E:\\files\\Hierarchies\\",
-        "insertDate": "2018-09-16T12:51:22.000Z",
-        "defaultLevelId": "1441",
-        "project_id": "1",
-        "hierarchyLoadingType": "etl",
+        "insertDate": "2018-07-26T16:31:34.000Z",
+        "defaultLevelId": "148",
+        "hierarchyChange": false,
+        "hierarchyLoadingType": "manual",
+        "status": "unmapped",
+        "project_id": "6",
         "hierarchyLevels": [
             {
-                "hierarchyLevelId": "1426",
-                "hierarchyLevelName": "CONTEXT:ID",
-                "sortValue": -99991,
-                "dataSample": "no%sep%yes",
-                "hierarchyRootId": "226"
-            },
-            {
-                "hierarchyLevelId": "1443",
-                "hierarchyLevelName": "Entity_Description",
-                "sortValue": -1000000,
-                "dataSample": "City and Borough%sep%Borough%sep%County%sep%Parish",
-                "hierarchyRootId": "226"
-            },
-            {
-                "hierarchyLevelId": "1427",
-                "hierarchyLevelName": "name",
-                "sortValue": -1,
-                "dataSample": "unknown",
-                "hierarchyRootId": "226"
-            },
-            {
-                "hierarchyLevelId": "1428",
-                "hierarchyLevelName": "specialty",
-                "sortValue": -1,
-                "dataSample": "unknown",
-                "hierarchyRootId": "226"
-            },
-            {
-                "hierarchyLevelId": "1432",
-                "hierarchyLevelName": "State_FIPS_Code",
-                "sortValue": -1,
-                "dataSample": "48%sep%25%sep%38%sep%34",
-                "hierarchyRootId": "226"
-            },
-            {
-                "hierarchyLevelId": "1433",
-                "hierarchyLevelName": "ANSI_Code",
-                "sortValue": -1,
-                "dataSample": "01784940%sep%00516871%sep%01008587%sep%00063758",
-                "hierarchyRootId": "226"
-            },
-            {
-                "hierarchyLevelId": "1434",
-                "hierarchyLevelName": "Scheduled_By",
-                "sortValue": -1,
-                "dataSample": "Bucks%sep%Umatilla%sep%Rockcastle%sep%Miller",
-                "hierarchyRootId": "226"
-            },
-            {
-                "hierarchyLevelId": "1435",
-                "hierarchyLevelName": "Entity_Description",
-                "sortValue": -1,
-                "dataSample": "City and Borough%sep%Borough%sep%County%sep%Parish",
-                "hierarchyRootId": "226"
-            },
-            {
-                "hierarchyLevelId": "1437",
-                "hierarchyLevelName": "Type-2",
-                "sortValue": -1,
-                "dataSample": "C%sep%D%sep%B%sep%A",
-                "hierarchyRootId": "226"
-            },
-            {
-                "hierarchyLevelId": "1440",
-                "hierarchyLevelName": "Type-2",
-                "sortValue": -1,
-                "dataSample": "C%sep%D%sep%B%sep%A",
-                "hierarchyRootId": "226"
-            },
-            {
-                "hierarchyLevelId": "1442",
-                "hierarchyLevelName": "GU_Name",
-                "sortValue": -1,
-                "dataSample": "Bucks%sep%Umatilla%sep%Rockcastle%sep%Miller",
-                "hierarchyRootId": "226"
-            },
-            {
-                "hierarchyLevelId": "1424",
-                "hierarchyLevelName": "Number_Of_Kids",
+                "hierarchyLevelId": "147",
+                "hierarchyLevelName": "﻿concept_id",
                 "sortValue": 0,
-                "dataSample": "1%sep%7%sep%2%sep%none",
-                "hierarchyRootId": "226"
+                "dataSample": "44798415%sep%4311218%sep%40303710%sep%4182503",
+                "hierarchyRootId": "25"
             },
             {
-                "hierarchyLevelId": "1425",
-                "hierarchyLevelName": "family_size",
-                "sortValue": -1,
-                "dataSample": "ללא%sep%4-7%sep%1-3%sep%0",
-                "hierarchyRootId": "226"
-            },
-            {
-                "hierarchyLevelId": "1441",
-                "hierarchyLevelName": "family_size",
+                "hierarchyLevelId": "148",
+                "hierarchyLevelName": "concept_name",
                 "sortValue": 1,
-                "dataSample": "ללא%sep%4-7%sep%1-3%sep%0",
-                "hierarchyRootId": "226"
+                "dataSample": "Family Asclepiadaceae - milkweed%sep%Proteiniphilum%sep%MRA Superior mesenteric vessels WO contrast%sep%Penicillium puberulum",
+                "hierarchyRootId": "25"
             },
             {
-                "hierarchyLevelId": "1438",
-                "hierarchyLevelName": "ANSI_Code",
-                "sortValue": -1,
-                "dataSample": "01784940%sep%00516871%sep%01008587%sep%00063758",
-                "hierarchyRootId": "226"
-            },
-            {
-                "hierarchyLevelId": "1429",
-                "hierarchyLevelName": "site",
-                "sortValue": -1,
-                "dataSample": "Community Register of Medicinal Products for Human Use (European Commission)%sep%Superficial foreign body, right knee%sep%Minor laceration of femoral artery, left leg%sep%Passenger on bus injured in collision with other nonmotor vehicle in nontraffic accident",
-                "hierarchyRootId": "226"
-            },
-            {
-                "hierarchyLevelId": "1430",
-                "hierarchyLevelName": "State_Abbreviation",
-                "sortValue": -1,
-                "dataSample": "LA%sep%OR%sep%IN%sep%UT",
-                "hierarchyRootId": "226"
-            },
-            {
-                "hierarchyLevelId": "1439",
-                "hierarchyLevelName": "Type-4(Type-4)",
-                "sortValue": -1,
-                "dataSample": "Physician Specialty",
-                "hierarchyRootId": "226"
-            },
-            {
-                "hierarchyLevelId": "1445",
-                "hierarchyLevelName": "Type-3",
-                "sortValue": -1,
-                "dataSample": "ABC%sep%DE",
-                "hierarchyRootId": "226"
-            },
-            {
-                "hierarchyLevelId": "1444",
-                "hierarchyLevelName": "has_kids_yes_no",
+                "hierarchyLevelId": "149",
+                "hierarchyLevelName": "domain_id",
                 "sortValue": 2,
-                "dataSample": "no%sep%yes",
-                "hierarchyRootId": "226"
+                "dataSample": "Observation",
+                "hierarchyRootId": "25"
             },
             {
-                "hierarchyLevelId": "1431",
-                "hierarchyLevelName": "County_FIPS_Code",
-                "sortValue": -1,
-                "dataSample": "181%sep%131%sep%063%sep%423",
-                "hierarchyRootId": "226"
+                "hierarchyLevelId": "150",
+                "hierarchyLevelName": "vocabulary_id",
+                "sortValue": 3,
+                "dataSample": "SNOMED%sep%LOINC%sep%CPT4%sep%SPL",
+                "hierarchyRootId": "25"
             },
             {
-                "hierarchyLevelId": "1436",
-                "hierarchyLevelName": "State_FIPS_Code",
-                "sortValue": -1,
-                "dataSample": "48%sep%25%sep%38%sep%34",
-                "hierarchyRootId": "226"
+                "hierarchyLevelId": "151",
+                "hierarchyLevelName": "concept_class_id",
+                "sortValue": 4,
+                "dataSample": "Morph Abnormality%sep%Admin Concept%sep%Substance%sep%Procedure",
+                "hierarchyRootId": "25"
+            }
+        ],
+        "project": {
+            "projectId": "6",
+            "projectName": "ETL project",
+            "defaultSiteId": "3"
+        },
+        "siteEventPropertyInfos": [
+            {
+                "eventPropertyName": "observation",
+                "eventId": "92",
+                "dataSample": "4046550, 433946, 4168318, 4102166, 4021606",
+                "eventPropertyType": "STRING",
+                "hierarchyRootId": "25",
+                "patientFk": false,
+                "eventTimeStamp": false,
+                "ageAtEvent": false,
+                "fieldDescription": "observation",
+                "fieldDes": null,
+                "priority": 0,
+                "isDependentSearch": false
+            },
+            {
+                "eventPropertyName": "observation",
+                "eventId": "93",
+                "dataSample": "433946, 4168318, 4102166, 4021606, 439007",
+                "eventPropertyType": "STRING",
+                "hierarchyRootId": "25",
+                "patientFk": false,
+                "eventTimeStamp": false,
+                "ageAtEvent": false,
+                "fieldDescription": "observation",
+                "fieldDes": null,
+                "priority": 0,
+                "isDependentSearch": false
             }
         ]
     },

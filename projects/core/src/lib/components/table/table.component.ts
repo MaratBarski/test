@@ -323,11 +323,11 @@ export class TableComponent implements OnDestroy, AfterViewInit, AfterViewChecke
   }
 
   isFirstInfoOpen = true;
-  stickyInfo2Table = false;
+  stickyInfo2Table = true;
 
   rowDetailsInit(rowDetails: RowInfoComponent): void {
     if (this.stickyInfo2Table) {
-      rowDetails.setTop(ComponentService.getRect(this.tableObject.nativeElement.rows[0]).bottom, this.isFirstInfoOpen);
+      rowDetails.setTop(ComponentService.getRect(this.tableObject.nativeElement.rows[0]).top, this.isFirstInfoOpen);
     } else if (this.clientY + rowDetails.height > window.innerHeight) {
       rowDetails.setMargin(window.innerHeight - this.clientY - rowDetails.height, this.isFirstInfoOpen);
     } else {

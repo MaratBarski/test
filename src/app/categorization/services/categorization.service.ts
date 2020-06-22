@@ -103,7 +103,7 @@ export class CategorizationService {
           hierarchyName: fl.hierarchyName,
           hierarchyFile: fl.hierarchyFile,
           insertDate: fl.insertDate,
-          domain: fl.domain,
+          domain: fl.project && fl.project.projectName ? fl.project.projectName : '',
           defaultLevelId: fl.defaultLevelId
         },
         isActive: false,
