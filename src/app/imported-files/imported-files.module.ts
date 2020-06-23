@@ -16,6 +16,7 @@ import { SourceFileDeleteEffect } from './store/effects/imported-file-delete.eff
 import { UploadFileComponent } from './components/upload-file/upload-file.component';
 import { ContenteditableValueAccessorDirective } from './pages/imported-files-mapping/directives/contenteditable.value.accessor.directive';
 import { ClmTypeSwitcherComponent } from './pages/imported-files-mapping/components/clm-type-switcher/clm-type-switcher.component';
+import { ShareFileComponent } from './components/share-file/share-file.component';
 
 const routes: Array<Route> = [
   { path: '', component: ImportedFilesComponent },
@@ -30,7 +31,8 @@ const routes: Array<Route> = [
     MyQueriesComponent,
     UploadFileComponent,
     ContenteditableValueAccessorDirective,
-    ClmTypeSwitcherComponent
+    ClmTypeSwitcherComponent,
+    ShareFileComponent
   ],
   imports: [
     CommonModule,

@@ -23,7 +23,6 @@ export class ImportedFileMappingComponent implements OnInit, OnDestroy {
   hierarchies: Hierarchy[] = [];
   templateSelectOptions: SelectOption[] = [];
   hierarchySelectOptions: SelectOption[] = [];
-  opened = false;
   propertyType = PropertyType;
   selectAll: FormControl;
   showErrors: boolean = false;
@@ -76,10 +75,6 @@ export class ImportedFileMappingComponent implements OnInit, OnDestroy {
     });
 
     this.fileSourceForm = this.createFileSourceForm();
-  }
-
-  toggleShare() {
-    this.opened = !this.opened;
   }
 
   private createFileSourceForm(): FormGroup {

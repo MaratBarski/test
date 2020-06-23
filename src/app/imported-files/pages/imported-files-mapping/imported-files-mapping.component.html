@@ -120,49 +120,8 @@
                 <div class="info-panel__val">{{ fileSource.projectObj.projectName }}</div>
               </div>
               <div class="info-panel__item">
-                <div class="info-panel__val">
-                  <div class="info-panel__shared" [ngClass]="{active: opened}">Shared
-                    <mdc-icon [path]="'ic-shared'" [css]="'icon ic-shared'" (click)="toggleShare()"></mdc-icon>
-
-                    <div class="info-popup">
-                      <form class="form-site">
-                        <div class="info-popup__top">
-                          <div class="info-popup__head-wrap"><span class="info-popup__head">File Sharing</span>
-                          </div>
-                          <div class="info-popup__close">
-                            <mdc-icon [path]="'ic-close-circle'" [css]="'icon ic-close-circle'"
-                                      (click)="toggleShare()"></mdc-icon>
-                          </div>
-                        </div>
-
-
-                        <div class="info-popup__content">
-                          <div class="info-popup-switch">
-                            <div class="info-popup-switch__content">
-                              <div class="info-popup-switch__text-wrap">
-                                <div class="info-popup-switch__title">File is not shared.</div>
-                                <div class="info-popup-switch__text">When a file is shared everyone can see and use
-                                  it.
-                                </div>
-                              </div>
-                            </div>
-                            <div class="switch" [formGroup]="fileSourceForm">
-                              <input type="checkbox" id="switch10" formControlName="fileType">
-                              <label class="switch__content" for="switch10">
-                                <div class="switch__marker"></div>
-                                <div class="switch__on">Yes</div>
-                                <div class="switch__off">No</div>
-                              </label>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="info-popup__btn">
-                          <button class="btn btn_border btn_small" (click)="toggleShare()">Cancel</button>
-                          <button class="btn btn_small" type="submit" (click)="toggleShare()">Apply</button>
-                        </div>
-                      </form>
-                    </div>
-                  </div>
+                <div class="info-panel__val" [formGroup]="fileSourceForm">
+                  <md-share-file formControlName="fileType"></md-share-file>
                 </div>
               </div>
               <div class="info-panel__item">
