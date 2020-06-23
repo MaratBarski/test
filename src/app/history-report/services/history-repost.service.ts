@@ -23,7 +23,7 @@ export class HistoryReportService {
   constructor(private dataService: DataService, private http: HttpClient) { }
 
   @Offline('assets/offline/history.json')
-  private getUrl = `${environment.serverUrl}${environment.endPoints.historyReport}`+ '/retrieveList';
+  private getUrl = `${environment.serverUrl}${environment.endPoints.historyReport}` + '/retrieveList';
 
   load(): Observable<SessionHistoryResponse> {
     return this.dataService.get(this.getUrl);
@@ -39,7 +39,8 @@ export class HistoryReportService {
           sortDir: 'desc',
           isSortedColumn: true,
           csvTitle: 'Date',
-          showDetails: true
+          showDetails: true,
+          css: 'admin-table__item d-none d-md-table-cell',
           // hidden: true
         },
         {
@@ -47,56 +48,65 @@ export class HistoryReportService {
           text: 'User',
           isSortEnabled: true,
           filter: true,
-          csvTitle: 'User'
+          csvTitle: 'User',
+          css: 'admin-table__item d-none d-md-table-cell',
         },
         {
           columnId: 'name',
           text: 'Query/File Name',
           isSortEnabled: true,
-          csvTitle: 'Query/File name /ID'
+          csvTitle: 'Query/File name /ID',
+          css: 'admin-table__item'
         },
         {
           columnId: 'approvalKey',
           text: 'Approval Key',
           isSortEnabled: true,
-          csvTitle: 'Approval Key'
+          csvTitle: 'Approval Key',
+          css: 'admin-table__item d-none d-xl-table-cell'
         },
         {
           columnId: 'research',
           text: 'Research',
           isSortEnabled: true,
-          csvTitle: 'Research name'
+          csvTitle: 'Research name',
+          css: 'admin-table__item d-none d-xxxl-table-cell'
         },
         {
           columnId: 'data',
           text: 'Data',
           isSortEnabled: false,
-          csvTitle: 'Data'
+          csvTitle: 'Data',
+          css: 'admin-table__item d-none d-xxxl-table-cell'
         },
         {
           columnId: 'environment',
           text: 'Environment',
           isSortEnabled: true,
           filter: true,
-          csvTitle: 'Environment'
+          csvTitle: 'Environment',
+          css: 'admin-table__item d-none d-xxxl-table-cell'
         },
         {
           columnId: 'source',
           text: 'Source',
           isSortEnabled: true,
           filter: true,
-          csvTitle: 'Source'
+          csvTitle: 'Source',
+          css: 'admin-table__item d-none d-xl-table-cell'
         },
         {
           columnId: 'status',
           text: 'Status',
           isSortEnabled: true,
-          csvTitle: 'Status'
+          csvTitle: 'Status',
+          css: 'admin-table__item d-none d-xl-table-cell admin-table__item_center'
         },
         {
           columnId: 'download',
           text: '',
-          isSortEnabled: false
+          isSortEnabled: false,
+          css: 'admin-table__item admin-table__load'
         },
 
       ],
@@ -116,7 +126,7 @@ export class HistoryReportService {
           source: !!fl.sessionId ? "Query" : "Imported file",
           status: !!fl.transStatus ? "True" : "False",
           download: fl.sessionHistoryId,
-          failureToolTip : this.getTransToolTip(fl.transMsg)
+          failureToolTip: this.getTransToolTip(fl.transMsg)
         },
         // csv: {
         //   status: !!fl.transStatus ? "True" : "False",
@@ -128,11 +138,11 @@ export class HistoryReportService {
     return data;
   }
   getTransToolTip(transMsg: string): string {
-    switch(transMsg){
+    switch (transMsg) {
       case "Synthetic":
         return HistoryReportUtils.FailureSynthetic;
       case "Compare":
-        return  HistoryReportUtils.FailureComparison;
+        return HistoryReportUtils.FailureComparison;
       default:
         return HistoryReportUtils.FailureDerivative
     }

@@ -4,7 +4,7 @@
             <div class="col-12">
                 <div class="usage-dashboard-top__content">
                     <div class="link-load">
-                        <md-download-selector (onSelect)="download($event)"></md-download-selector>
+                        <md-download-selector (onDownloadDefault)="downloadCsv()" (onSelect)="download($event)"></md-download-selector>
                     </div>
                     <div class="usage-dashboard-top__tab">
                         <div class="tabs-page">
@@ -16,14 +16,14 @@
                                 </a>
                             </ng-container>
                             <div [ngClass]="{'active':selectedText}" class="tabs-page__item">
-                                <span>More:{{selectedText}}</span>
+                                <span>More <ng-container *ngIf="selectedText">: </ng-container> {{selectedText}}</span>
                                 <svg class="icon ic-select-arr-down" mdcSvg="ic-select-arr-down"></svg>
                                 <div class="tabs-popup-more-wrap">
                                     <div class="tabs-popup-more">
                                         <div class="tabs-popup-more__list">
                                             <ng-container *ngFor="let link of links;let index=index">
                                                 <div (click)="navigate(link.url)"
-                                                    *ngIf="link.hidden && link.url!==selectedUrl"
+                                                    *ngIf="link.hidden && (link.url!==selectedUrl || true)"
                                                     class="tabs-popup-more__item">
                                                     <a [ngClass]="{'active':!true}"
                                                         class="tabs-popup-more__item {{link.alt}}"

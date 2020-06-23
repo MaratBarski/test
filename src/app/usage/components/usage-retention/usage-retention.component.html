@@ -4,17 +4,17 @@
             <div class="col-12">
                 <div class="admin-table-wrap__action">
                     <div class="admin-table-wrap__col">
-                        <div class="admin-table-wrap__title">List of users without activity in the last
-                            <input style="width: 50px;" (blur)="checkValidDays()" type="number" min="0" [(ngModel)]="lastDays"/>Days
+                        <div class="category-list-num__label">List of users without activity in the last
+                            <input style="width: 50px;margin-right: 6px;" (blur)="checkValidDays()" type="number" min="0" [(ngModel)]="lastDays"/>Days
                         </div>
                     </div>
                 </div>
                 <mdc-table #table [paginator]="paginator" [dataSource]="data|retention:{days:lastDays}"
-                    [cellsTemplate]="{ lastlogin:lastlogin}">
+                    [cellsTemplate]="{ lastlogin:lastlogin,login:login}">
                 </mdc-table>
                 <div class="pager-wrap">
                     <mdc-paginator #paginator noPagingTitle="Showing {0} users"
-                        paginationTitle="Showing {0} of {1} users" [blockSize]="3" [pageSize]="12" [currentPage]="0">
+                        paginationTitle="Showing {0} of {1} users" [blockSize]="3" [pageSize]="8" [currentPage]="0">
                     </mdc-paginator>
                 </div>
             </div>
@@ -24,4 +24,9 @@
 
 <ng-template #lastlogin let-item>
     {{item.lastlogin|date}}
+</ng-template>
+<ng-template #login let-item>
+    <div class="admin-table__name">
+        {{item.login}}
+    </div>
 </ng-template>

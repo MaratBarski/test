@@ -31,7 +31,7 @@
                 </div>
             </div>
         </span></span><span class="add-info-table__opt">Optional</span>
-    <span class="add-info-table__error" *ngIf="oldNewDifCount">
+    <span class="add-info-table__error" *ngIf="notInUse?.length">
         <svg class="icon ic-failure" mdcSvg="ic-failure">
         </svg>The following old categories will not be available for the user anymore: <span
             class="add-info-table__error-accent">Type of {{oldNotMapedTitle}}</span><span

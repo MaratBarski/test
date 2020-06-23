@@ -1,22 +1,24 @@
 .category-list{
-	margin-top: 30px;
-	margin-bottom: 15px;
+	margin-top: 24px;
+	margin-bottom: 20px;
 
 	&__content,
 	&__list{
 		display: flex;
 		flex-wrap: wrap;
+		align-items: center;
 	}
 
 	&__label{
 		@include font(normal, normal, rem(14px), 1.4, $color-dark-grey);
-		margin-right: 30px;
+		letter-spacing: 0.3px;
+		margin-right: 6px;
 	}
 
-	&__label,
-	&__item{
-		margin-bottom: 10px;
-	}
+	// &__label,
+	// &__item{
+	// 	margin-bottom: 10px;
+	// }
 
 	&__item,
 	&__item a{
@@ -50,4 +52,35 @@
 	&__item.active,	&__item.active a{font-weight: 600;}
 
 	& + .graph-wrap{margin-top: 15px;}
-} 
+
+	&__field{
+		@include font(normal, 600, rem(14px), 1.4, $color-dark-grey);
+		
+		.input-number{margin-right: 6px;}
+	}
+}
+
+.category-list-num{
+	margin-top: 24px;
+	margin-bottom: 20px;
+
+	&__content{
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+	}
+
+	&__label{
+		@include font(normal, 600, rem(14px), 1.4, $color-dark-grey);
+		letter-spacing: 0.3px;
+		margin-right: 6px;
+	}
+
+	& + .graph-wrap{margin-top: 15px;}
+
+	&__field{
+		@include font(normal, 600, rem(14px), 1.4, $color-dark-grey);
+		
+		.input-number{margin-right: 6px;}
+	}
+}

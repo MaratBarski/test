@@ -59,6 +59,10 @@ export class UsageDashboardTopComponent extends BaseSibscriber {
     this.router.navigateByUrl(`/usage-dashboard/${url}`);
   }
 
+  downloadCsv(): void {
+    this.chrtService.getCsv();
+  }
+
   download(option: DownloadOption): void {
     if (option === DownloadOption.none) { return; }
 

@@ -18,6 +18,7 @@ export class DownloadSelectorComponent {
   isExpanded = false;
   downloadOption: DownloadOption = DownloadOption.none;
   @Output() onSelect = new EventEmitter<DownloadOption>();
+  @Output() onDownloadDefault = new EventEmitter<void>();
 
   readonly csv = DownloadOption.csv;
   readonly pdf = DownloadOption.pdf;
@@ -43,5 +44,9 @@ export class DownloadSelectorComponent {
 
   @HostListener('document:click', ['$event']) onMouseClick(event: any) {
     this.isExpanded = false;
+  }
+  
+  downloadDefault(): void {
+    this.onDownloadDefault.emit();
   }
 }

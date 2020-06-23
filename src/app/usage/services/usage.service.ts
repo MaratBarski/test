@@ -98,13 +98,15 @@ export class UsageService {
           columnId: 'login',
           text: 'User Name',
           isSortEnabled: true,
-          csvTitle: 'User Name'
+          csvTitle: 'User Name',
+          css: 'admin-table__item'
         },
         {
           columnId: 'lastlogin',
           text: 'Last Activity',
           isSortEnabled: true,
-          csvTitle: 'Last Activity'
+          csvTitle: 'Last Activity',
+          css: 'admin-table__item d-none d-lg-table-cell'
         },
         {
           columnId: 'daysSinceLastLogin',
@@ -112,13 +114,15 @@ export class UsageService {
           isSortEnabled: true,
           sortDir: 'asc',
           isSortedColumn: true,
-          csvTitle: 'Days Since Last Activity'
+          csvTitle: 'Days Since Last Activity',
+          css: 'admin-table__item d-none d-md-table-cell admin-table__item_center'
         },
         {
           columnId: 'environment',
           text: 'Environment',
           isSortEnabled: true,
-          csvTitle: 'Environment'
+          csvTitle: 'Environment',
+          css: '"admin-table__item d-none d-md-table-cell'
         }
       ],
       rows: []

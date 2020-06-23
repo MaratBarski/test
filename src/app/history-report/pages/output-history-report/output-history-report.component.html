@@ -6,7 +6,8 @@
 <md-page-body>
     <div class="admin-table-wrap__action">
         <div class="admin-table-wrap__col">
-            <mdc-download #downloader (onBeforeDownload)="changeFileName()" [fileName]="downloadFileName" (click)="changeFileName()" text="Download Report"></mdc-download>
+            <mdc-download #downloader (onBeforeDownload)="changeFileName()" [fileName]="downloadFileName"
+                (click)="changeFileName()" text="Download Report"></mdc-download>
         </div>
         <div class="admin-table-wrap__col">
             <div class="tabs-page">
@@ -33,7 +34,7 @@
 
 <ng-template #rowInfoTemplate let-item>
     <div class="category-info-row">
-        <md-history-info (onClose)="closeCategoryInfo()" [category]="item.source" ></md-history-info>
+        <md-history-info (onClose)="closeCategoryInfo()" [category]="item.source"></md-history-info>
     </div>
 </ng-template>
 <ng-template #dateColumn let-item let-src="source">
@@ -44,36 +45,41 @@
     <svg width="15" height="15" mdcSvg="ic-help" color="blue"></svg>
 </ng-template>
 <ng-template let-item #statusTemplate let-src="source">
-    <div *ngIf="src.transStatus" [stickyToElement]="true" [position]="'right'" [mdcTooltip]="'File generated successfully'">
+    <div *ngIf="src.transStatus" [stickyToElement]="true" [position]="'right'"
+        [mdcTooltip]="'File generated successfully'">
         <svg width="20" height="20" mdcSvg="ic-success" color="green"></svg>
     </div>
     <div *ngIf="!src.transStatus" [stickyToElement]="true" [position]="'left'" [mdcTooltip]="item.failureToolTip">
-        <svg width="20" height="20" mdcSvg="ic-failure" color="red"></svg> 
+        <svg width="20" height="20" mdcSvg="ic-failure" color="red"></svg>
     </div>
 </ng-template>
 <ng-template let-item #downloadTemplate let-src="source">
     <!-- <span (click)="downloadClick(item,src,$event)" class="admin-table-action__menu ic-hover"> -->
-    <a href="{{downloadUrl}}{{src.sessionHistoryId}}" [stickyToElement]="true" [position]="'left'" [mdcTooltip]="'Download output file'">
-        <svg width="30" height="30" mdcSvg="ic-download" color="gray"></svg> 
+    <a href="{{downloadUrl}}{{src.sessionHistoryId}}" [stickyToElement]="true" [position]="'left'"
+        [mdcTooltip]="'Download output file'">
+        <svg width="30" height="30" mdcSvg="ic-download" color="gray"></svg>
     </a>
     <!-- </span> -->
 </ng-template>
 
 <ng-template let-item #nameTemplate let-src="source">
-    <div *ngIf="src.sessionId">
-        <div>{{src.sessionName}} | </div>
-        <div>
-            <a target="_blank" href="/datalake/#/projects/{{src.projectId}}/sessions/{{src.sessionId}}">
-                <span>{{src.sessionId}}</span>
-            </a>
-        </div>
-        <div [stickyToElement]="true" [position]="'right'" [mdcTooltip]="'Link will navigate you to query'">
-            <a target="_blank" href="/datalake/#/projects/{{src.projectId}}/sessions/{{src.sessionId}}">
-                <svg width="17" height="17" mdcSvg="ic-add-help" color="#0596ff"></svg> 
-            </a>
-        </div>
+    <div class="table-file-info" *ngIf="src.sessionId">
+        <span class="table-file-info__name">
+            {{src.sessionName}}
+        </span>&nbsp;|&nbsp;
+        <a class="file-count" target="_blank" href="/datalake/#/projects/{{src.projectId}}/sessions/{{src.sessionId}}">
+            <span class="file-count__val">{{src.sessionId}}</span>
+            <svg style="vertical-align: middle;" width="17" height="17" class="ic-external-link"
+                mdcSvg="ic-external-link" color="#0596ff"></svg>
+        </a>
     </div>
-    <span *ngIf="!src.sessionId">
+    <div class="table-file-info" *ngIf="!src.sessionId">
         {{src.fileNameAlias}}
-    </span>
+    </div>
+
+    <!-- <div class="table-file-info"><span class="table-file-info__name">d-Stroke for a long
+            description...</span>&nbsp;|&nbsp;<a class="file-count" href="#"><span class="file-count__val">1233</span>
+            <svg mdcSvg="ic-external-link" class="icon ic-external-link">
+            </svg></a>
+    </div>  -->
 </ng-template>
