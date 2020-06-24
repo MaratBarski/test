@@ -1,7 +1,7 @@
 import { Project } from './project';
 import { HierarchyLevel } from './hierarchy-level';
 
-export class Hierarchy{
+export class Hierarchy {
      hierarchyRootId: number;
      description: string;
      domain: string;
@@ -13,4 +13,5 @@ export class Hierarchy{
      defaultLevelId: number;
      hierarchyLevels?: Array<HierarchyLevel>
      project?: Project;
+     siteEventPropertyInfos?: any;
 }
