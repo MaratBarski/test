@@ -44,8 +44,9 @@
     font-size: .875rem;
     line-height: 1;
     color: #0596ff;
-    position: absolute;
-    margin-left: 120px;
+    position: absolute; 
+    left:100%;
+    margin-left: -80px;
     z-index: 2;
     background-color: #E1E3E7;
     width:80px;
