@@ -43,3 +43,14 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .error{
   outline: solid 1px red;
 }
+
+mdc-text-block {
+  max-width: 100%;
+}
+
+@media (max-width: 767px) {
+  .row-details-container {
+    max-width: 100%;
+    padding-right: 30px;
+  }
+}

@@ -1,11 +1,11 @@
-<div #container 
+<div #container
     [ngClass]="{'link pointer':isLink}"
-    [style.overflow]="overflow" 
-    [style.textOverflow]="textOverflow" 
+    [style.overflow]="overflow"
+    [style.textOverflow]="textOverflow"
     [style.whiteSpace]='whiteSpace'
     [position]="position" [mdcTooltip]="text"
     [stickyToElement]="true"
     [isShowTooltip]="isEllipsis"
-    [style.maxWidth.px]="maxWidth">
+    [style.maxWidth]="'100%'">
     {{text}}<span [mdcVisibility]="false">...</span>
 </div>

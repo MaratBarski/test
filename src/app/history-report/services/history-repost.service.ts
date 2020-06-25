@@ -49,21 +49,21 @@ export class HistoryReportService {
           isSortEnabled: true,
           filter: true,
           csvTitle: 'User',
-          css: 'admin-table__item d-none d-md-table-cell',
+          css: 'admin-table__item d-none d-lg-table-cell',
         },
         {
           columnId: 'name',
           text: 'Query/File Name',
           isSortEnabled: true,
           csvTitle: 'Query/File name /ID',
-          css: 'admin-table__item'
+          css: 'admin-table__item w-md-4'
         },
         {
           columnId: 'approvalKey',
           text: 'Approval Key',
           isSortEnabled: true,
           csvTitle: 'Approval Key',
-          css: 'admin-table__item d-none d-xl-table-cell'
+          css: 'admin-table__item d-none d-xxl-table-cell'
         },
         {
           columnId: 'research',
@@ -100,13 +100,13 @@ export class HistoryReportService {
           text: 'Status',
           isSortEnabled: true,
           csvTitle: 'Status',
-          css: 'admin-table__item d-none d-xl-table-cell admin-table__item_center'
+          css: 'admin-table__item d-none d-xl-table-cell admin-table__item_center w-md-1-3'
         },
         {
           columnId: 'download',
           text: '',
           isSortEnabled: false,
-          css: 'admin-table__item admin-table__load'
+          css: 'admin-table__item admin-table__load w-md-1'
         },
 
       ],

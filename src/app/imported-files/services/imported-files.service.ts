@@ -84,7 +84,7 @@ export class ImportedFilesService {
           isSortEnabled: true,
           sortDir: 'desc',
           isSortedColumn: true,
-          css: 'd-none d-md-table-cell'
+          css: 'd-none d-lg-table-cell'
         },
         {
           columnId: 'environment',
@@ -92,21 +92,21 @@ export class ImportedFilesService {
           isSortEnabled: true,
           filter: true,
           csvTitle: 'Environment',
-          css: 'd-none d-md-table-cell w-md-3'
+          css: 'd-none d-lg-table-cell w-md-3'
         },
         {
           columnId: 'permission',
           text: 'Permission Group',
           isSortEnabled: true,
           filter: true,
-          css: 'd-none d-lg-table-cell w-md-3'
+          css: 'd-none d-xl-table-cell w-md-3'
         },
         {
           columnId: 'user',
           text: 'User',
           isSortEnabled: false,
           filter: true,
-          css: 'd-none d-xxl-table-cell'
+          css: 'd-none d-xxxl-table-cell w-md-3'
         },
         {
           columnId: 'shared',
@@ -118,13 +118,13 @@ export class ImportedFilesService {
           columnId: 'columns',
           text: 'Columns',
           isSortEnabled: true,
-          css: 'd-none d-xxl-table-cell admin-table__item_right'
+          css: 'd-none d-xxxl-table-cell admin-table__item_right'
         },
         {
           columnId: 'rows',
           text: 'Rows',
           isSortEnabled: true,
-          css: 'd-none d-xxl-table-cell admin-table__item_right'
+          css: 'd-none d-xxxl-table-cell admin-table__item_right'
         }
       ],
       rows: []

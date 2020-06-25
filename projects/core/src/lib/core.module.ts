@@ -29,7 +29,13 @@ import { TableHeaderComponent } from './components/table-header/table-header.com
 import { ShowDirective } from './directives/show.directive';
 import { ComponentLoaderComponent } from './components/component-loader/component-loader.component';
 import { SortTablePipe } from './pipes/sort-table.pipe';
-import { TableDirective, TableHeaderDirective, TableItemDirective, TableRowDirective } from './directives/table.directive';
+import {
+  AdminTableDirective,
+  TableDirective,
+  TableHeaderDirective,
+  TableItemDirective,
+  TableRowDirective
+} from './directives/table.directive';
 import { MainHeaderComponent } from './components/main-header/main-header.component';
 import { SearchPipe } from './pipes/search.pipe';
 import { VisibilityDirective } from './directives/visibility.directive';
@@ -99,6 +105,7 @@ import { NotificationComponent } from './components/notification/notification.co
     ComponentLoaderComponent,
     SortTablePipe,
     TableDirective,
+    AdminTableDirective,
     TableHeaderDirective,
     TableItemDirective,
     TableRowDirective,
@@ -174,6 +181,7 @@ import { NotificationComponent } from './components/notification/notification.co
     TableHeaderComponent,
     ShowDirective,
     TableDirective,
+    AdminTableDirective,
     TableHeaderDirective,
     TableItemDirective,
     TableRowDirective,

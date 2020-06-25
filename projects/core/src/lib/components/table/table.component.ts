@@ -180,6 +180,7 @@ export class TableComponent implements OnDestroy, AfterViewInit, AfterViewChecke
   @Input() tableID = 'mainTable';
   @Input() stayOnCurrentPage = false;
   @Input() editCellTemplate: any;
+  @Input() auto = false;
 
   @Input() set searchOptions(searchOptions: Array<string>) {
     this._searchOptions = searchOptions;

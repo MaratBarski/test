@@ -4,11 +4,24 @@ import { Directive, ViewContainerRef, Renderer2, AfterViewInit, Input } from '@a
   selector: '[mdcTable]'
 })
 export class TableDirective implements AfterViewInit {
-
   constructor(private ref: ViewContainerRef, private renderer: Renderer2) { }
   ngAfterViewInit(): void {
     this.renderer.addClass(this.ref.element.nativeElement, 'admin-table');
-    this.renderer.addClass(this.ref.element.nativeElement, 'admin-table_auto');    
+    this.renderer.addClass(this.ref.element.nativeElement, 'admin-table_auto');
+  }
+}
+
+@Directive({
+  selector: '[mdcAdminTable]'
+})
+export class AdminTableDirective implements AfterViewInit {
+  @Input() auto = false;
+  constructor(private ref: ViewContainerRef, private renderer: Renderer2) { }
+  ngAfterViewInit(): void {
+    if(this.auto){
+      this.renderer.addClass(this.ref.element.nativeElement, 'admin-table_auto');
+    }
+    this.renderer.addClass(this.ref.element.nativeElement, 'admin-table');
   }
 }
 

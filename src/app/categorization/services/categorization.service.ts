@@ -67,7 +67,7 @@ export class CategorizationService {
           columnId: 'hierarchyFile',
           text: 'File Name',
           isSortEnabled: true,
-          css: 'w-xxl-8 w-md-6'
+          css: 'w-xxl-8 w-md-6 d-none d-md-table-cell'
         },
         {
           columnId: 'insertDate',
@@ -79,20 +79,20 @@ export class CategorizationService {
           columnId: 'state',
           text: 'State',
           isSortEnabled: false,
-          css: 'd-none d-md-table-cell admin-table__item_center'
+          css: 'd-none d-xl-table-cell admin-table__item_center'
         },
         {
           columnId: 'domain',
           text: 'Environment 	',
           isSortEnabled: true,
           filter: true,
-          css: 'd-none d-xxl-table-cell admin-table__item_left'
+          css: 'd-none d-xxxl-table-cell admin-table__item_left'
         },
         {
           columnId: 'inUseColumn',
           text: 'In Use',
           isSortEnabled: false,
-          css: 'd-none d-md-table-cell admin-table__item_center'
+          css: 'd-none d-xl-table-cell admin-table__item_center'
         }
       ],
       rows: []

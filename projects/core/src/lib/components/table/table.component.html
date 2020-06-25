@@ -1,4 +1,4 @@
-<table #tableObject mdcTable>
+<table #tableObject mdcAdminTable [auto]="auto">
     <thead *ngIf="dataSource?.headers">
         <tr mdcTableHeader>
             <th [ngStyle]="header.style" class="admin-table__head admin-table__item {{header.css}}"
@@ -55,7 +55,7 @@
                     </td>
                 </ng-container>
                 <td class="admin-table__item admin-table__item_menu"
-                    *ngIf="dataSource?.actions?.links?.length || dataSource?.actions?.subLinks?.length">                    
+                    *ngIf="dataSource?.actions?.links?.length || dataSource?.actions?.subLinks?.length">
                     <ng-container *ngIf="editCellTemplate"
                         [ngTemplateOutlet]="editCellTemplate"
                         [ngTemplateOutletContext]="{$implicit: row.cells,source:row.source}">
