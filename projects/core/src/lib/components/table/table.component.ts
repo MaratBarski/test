@@ -286,10 +286,16 @@ export class TableComponent implements OnDestroy, AfterViewInit, AfterViewChecke
     this.isFirstInfoOpen = true;
     if (!this.filters) { return { ...data }; }
     let rows = data.rows;
+    const filters = {};
     Object.keys(this.filters).forEach(k => {
-      const filtered = this.filters[k].filter((cb: CheckBoxListOption) => cb.isChecked);
+      if (this.filters[k].length) {
+        filters[k] = this.filters[k];
+      }
+    });
+    Object.keys(filters).forEach(k => {
+      const filtered = filters[k].filter((cb: CheckBoxListOption) => cb.isChecked);
       if (!filtered.length) { rows = []; return; }
-      if (filtered.length === this.filters[k].length) { return; }
+      if (filtered.length === filters[k].length) { return; }
       const dict = {};
       filtered.forEach((x: CheckBoxListOption) => { dict[x.text] = true });
       rows = rows.filter(row => {

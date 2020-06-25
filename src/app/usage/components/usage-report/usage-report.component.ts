@@ -16,7 +16,7 @@ export class UsageReportComponent extends UsageBase {
 
   view: undefined;// any[] = [600, 400];
   showXAxis = true;
-  showYAxis = false;
+  showYAxis = true;
   gradient = false;
   showLegend = false;
   showXAxisLabel = false;
