@@ -18,6 +18,7 @@ import { roundedRect } from '../../common/shape.helper';
   selector: 'g[ngx-charts-y-axis-ticks]',
   template: `
     <svg:g #ticksel>
+    <ng-container *ngIf="isShowYText">
       <svg:g *ngFor="let tick of ticks" class="tick" [attr.transform]="transform(tick)">
         <title>{{ tickFormat(tick) }}</title>
         <svg:text
@@ -31,6 +32,7 @@ import { roundedRect } from '../../common/shape.helper';
           {{ tickTrim(tickFormat(tick)) }}
         </svg:text>
       </svg:g>
+      </ng-container>
     </svg:g>
 
     <svg:path
@@ -96,6 +98,7 @@ export class YAxisTicksComponent implements OnChanges, AfterViewInit {
   @Input() referenceLines;
   @Input() showRefLabels: boolean = false;
   @Input() showRefLines: boolean = false;
+  @Input() isShowYText: false;
 
   @Output() dimensionsChanged = new EventEmitter();
 

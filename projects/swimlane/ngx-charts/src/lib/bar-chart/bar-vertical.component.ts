@@ -48,6 +48,7 @@ import { DataItem } from '../models/chart-data.model';
           ngx-charts-y-axis
           *ngIf="yAxis"
           [yScale]="yScale"
+          [isShowYText]="isShowYText"
           [dims]="dims"
           [showGridLines]="showGridLines"
           [showLabel]="showYAxisLabel"
@@ -124,6 +125,7 @@ export class BarVerticalComponent extends BaseChartComponent {
   @Input() showDataLabel: boolean = false;
   @Input() dataLabelFormatting: any;
   @Input() noBarWhenZero: boolean = true;
+  @Input() isShowYText = true;
 
   @Output() activate: EventEmitter<any> = new EventEmitter();
   @Output() deactivate: EventEmitter<any> = new EventEmitter();

@@ -17,6 +17,7 @@ import { YAxisTicksComponent } from './y-axis-ticks.component';
       <svg:g
         ngx-charts-y-axis-ticks
         *ngIf="yScale"
+        [isShowYText]="isShowYText"
         [trimTicks]="trimTicks"
         [maxTickLength]="maxTickLength"
         [tickFormatting]="tickFormatting"
@@ -64,6 +65,7 @@ export class YAxisComponent implements OnChanges {
   @Input() showRefLines;
   @Input() showRefLabels;
   @Input() yAxisOffset: number = 0;
+  @Input() isShowYText = true;
   @Output() dimensionsChanged = new EventEmitter();
 
   yAxisClassName: string = 'y axis';
