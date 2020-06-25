@@ -23,5 +23,6 @@
     margin-left: auto;
     max-width: 1000px;
     overflow: hidden;
+    min-height: 500px;
     /* visibility: hidden; */
 }
