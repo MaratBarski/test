@@ -18,7 +18,8 @@ export class UsageDashboardTopComponent extends BaseSibscriber {
     private usageDownloadService: UsageDownloadService,
     private chrtService: ChartService,
     private router: Router,
-    private usageRequestService: UsageRequestService
+    private usageRequestService: UsageRequestService,
+    private activeRouter: ActivatedRoute
   ) {
     super();
     super.add(
@@ -36,10 +37,15 @@ export class UsageDashboardTopComponent extends BaseSibscriber {
         this.years = this.usageRequestService.currentDateIndex;
       })
     );
+    super.add(this.activeRouter.url.subscribe(url => {
+      if (url) {
+        this.currentUrl = url.join('').toLowerCase();
+      }
+    }));
   }
 
   links = UsageLinks;
-
+  currentUrl = '';
   environment: string;
   includeAdmin = 'false';
   years = 0;

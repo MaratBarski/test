@@ -9,7 +9,7 @@
                     <div class="usage-dashboard-top__tab">
                         <div class="tabs-page">
                             <ng-container *ngFor="let link of links;let index=index">
-                                <a *ngIf="!link.hidden" routerLinkActive="active" class="tabs-page__item {{link.css}}"
+                                <a *ngIf="!link.hidden" [ngClass]="{'active':link.url===currentUrl}" class="tabs-page__item {{link.css}}"
                                     [queryParams]="{environment:environment,years:years,includeAdmin:includeAdmin}"
                                     [routerLink]="['../' + link.url]">
                                     {{link.text}}
