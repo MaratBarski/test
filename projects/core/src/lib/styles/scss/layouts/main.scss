@@ -26,6 +26,8 @@ body.no-scroll {
   font-family: inherit;
 }
 
+*:focus {outline:none;}
+
 *{
   outline-color: $color-purple;
 }

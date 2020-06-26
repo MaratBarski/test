@@ -47,14 +47,14 @@
                 </div>
             </div>
             <div [hidden]="!fileType" class="form-site__item">
-                <label class="form-site__label" for="template">Permission Group
+                <label class="form-site__label" for="template">Permission Template
                     <span class="form-site__info">
-                        <svg class="icon ic-help" mdcSvg="ic-help"></svg>
+                        <svg class="icon ic-info" mdcSvg="ic-info"></svg>
                         <span class="tooltip"><span class="tooltip__content">Tooltip</span></span>
                     </span>
                     <span class="form-site__optional">Optional</span>
                 </label>
-                <mdc-select #templateSelector placeholder="Select Permission Group..." [(ngModel)]="template" maxHeight="150px" [selectUp]="true"
+                <mdc-select #templateSelector placeholder="Select Permission Template..." [(ngModel)]="template" maxHeight="150px" [selectUp]="true"
                     (changed)="changedTemplate($event)" [options]="templates">
                 </mdc-select>
             </div>

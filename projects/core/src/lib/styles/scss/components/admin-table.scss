@@ -396,6 +396,7 @@
   }
 
   &__circle_green{background: $color-green;}
+  &__circle_grey{background: $color-light-grey;}
 
   .tooltip{
     max-width: 100%;
@@ -852,6 +853,52 @@
     height: 7px;
     background: $color-green;
     border-radius: 50%;
+  }
+
+  &__main_table{
+    margin-top: -10px;
+    margin-bottom: 10px;
+  }
+
+  &__main_table &__title{
+    width: auto;
+    padding-right: 10px;
+  }
+
+  &__main_table &__col{
+    display: table;
+    margin-right: 0;
+  }
+
+  &__main_table &__col:first-child{width: 42%;}
+  &__main_table &__col:last-child{width: 58%;}
+
+  &__main_table &__item,
+  &__main_table &__col:last-child &__item{
+    display: table-row;
+  }
+
+  &__main_table &__title,
+  &__main_table &__val,
+  &__main_table  &__col:last-child &__title,
+  &__main_table  &__col:last-child &__val{
+    display: table-cell;
+    width: auto;
+  }
+
+  &__main_table &__title,
+  &__main_table &__val{
+    padding: 10px 10px 10px 0;
+  }
+
+  &__main_table &__title{
+    padding-right: 10px;
+    white-space: nowrap;
+  }
+
+  &__main_table &__val,
+  &__main_table  &__col:last-child &__val{
+    width: 100%;
   }
 }
 

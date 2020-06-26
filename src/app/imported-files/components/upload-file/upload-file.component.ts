@@ -33,7 +33,7 @@ export class UploadFileComponent extends BaseSibscriber implements OnInit {
   @Input() set uploadUrl(uploadUrl: string) { this._uploadUrl = uploadUrl; }
   templates: Array<SelectOption>;
   get uploadUrl(): string { return this._uploadUrl; }
-  defaultTemplate: SelectOption = { text: 'Select Permission Group...', id: '', value: '' };
+  defaultTemplate: SelectOption = { text: 'Select Permission Template...', id: '', value: '' };
 
   isFileError = false;
   fileType = false;

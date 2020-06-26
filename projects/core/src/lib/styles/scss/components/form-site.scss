@@ -370,6 +370,8 @@
 		color: $color-dark-grey;
 	}
 
+  &:focus &__head{border-color: $color-dark-purple;}
+
 	&__head-arr{
 		display: inline-block;
 		width: 50px;
@@ -387,6 +389,7 @@
 	&__option{
 		background: #fff;
 		border: solid 1px $color-light-grey;
+    border-top: 0;
 		max-height: 250px;
 		overflow-y: auto;
 		box-shadow: -10px 9px 21px 0 rgba(128, 152, 213, 0.08);
@@ -396,7 +399,6 @@
 		right: 0;
 		margin: 0 auto;
 		z-index: 10;
-		margin-top: -2px;
 	}
 
 	&:hover &__option,
@@ -519,7 +521,7 @@
 		border-color: $color-dark-purple;
 	}
 
-  //&:hover .select-filter{
+  //&:hover .{
   //  display: block;
   //}
 
@@ -592,6 +594,14 @@
 
 	.form-search{
 		width: 100%;
+    height: 33px;
+
+    &__close{margin-top: 3px!important;}
+
+    &__close .icon{
+      vertical-align: top;
+      margin: 0;
+    }
 	}
 
 	.form-search::after{
@@ -631,7 +641,13 @@
     margin-top: 11px;
   }
 
-  .input-check__label{margin-bottom: 12px;}
+  .input-check__label{
+    width: 100%;
+    margin-bottom: 12px;
+  }
+
+  .input-check__text{width: 100%;}
+
   &__top .input-check__label{margin-bottom: 0;}
 
   &__label{

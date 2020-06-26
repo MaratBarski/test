@@ -56,6 +56,23 @@
     white-space: normal;
   }
 
+  &__el,
+  &__num{
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  &__el{
+    max-width: calc(100% - 30px);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__num{
+    margin-left: 2px;
+  }
+
   &__accent{color: $color-green;}
 
   input[type=checkbox]:checked + &__label &__mark{border-color: $color-dark-purple;}

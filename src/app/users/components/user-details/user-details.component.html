@@ -10,14 +10,14 @@
         </div>
     </div>
     <div class="admin-table-info__content">
-        <div class="admin-table-info__main">
+        <div class="admin-table-info__main admin-table-info__main_table">
             <div class="admin-table-info__col">
                 <div class="admin-table-info__item">
                     <div class="admin-table-info__title">Created:</div>
                     <div class="admin-table-info__val">{{userInfo.createdDate|date}}</div>
                 </div>
                 <div class="admin-table-info__item">
-                    <div class="admin-table-info__title">Active:</div>
+                    <div class="admin-table-info__title">Status:</div>
                     <div *ngIf="userInfo.activated" class="admin-table-info__val"><span class="admin-table-info__circle"></span></div>
                 </div>
             </div>
@@ -26,10 +26,15 @@
                     <div class="admin-table-info__title">Modified:</div>
                     <div class="admin-table-info__val">{{userInfo.lastModifiedDate|date}}</div>
                 </div>
-                <ng-container *ngFor="let role of userInfo.specialRoles">
-                    <div *ngIf="role==='superadmin'" class="tag tag_light-red">Super Admin</div>
-                    <div *ngIf="role==='admin'" class="tag tag_blue">Admin</div>
-                </ng-container>
+                <div class="admin-table-info__item" *ngIf="userInfo.specialRoles">
+                  <div class="admin-table-info__title">Admin Roles:</div>
+                  <div class="admin-table-info__val">
+                    <ng-container *ngFor="let role of userInfo.specialRoles">
+                      <div *ngIf="role==='superadmin'" class="tag tag_light-red">Super Admin</div>
+                      <div *ngIf="role==='admin'" class="tag tag_blue">Admin</div>
+                    </ng-container>
+                  </div>
+                </div>
             </div>
         </div>
         <div class="table-detail-wrap">
@@ -38,7 +43,7 @@
                 <thead class="table-detail__head">
                     <tr>
                         <th class="table-detail__item">Enviorment</th>
-                        <th class="table-detail__item">Permission</th>
+                        <th class="table-detail__item">Allowed Data</th>
                         <th class="table-detail__item w-md-1">Role</th>
                     </tr>
                 </thead>
@@ -52,7 +57,7 @@
             </table>
         </div>
         <div class="table-detail-wrap">
-            <div class="table-detail-wrap__title">Research List:</div>
+            <div class="table-detail-wrap__title">Permission Sets:</div>
             <table class="table-detail">
                 <thead class="table-detail__head">
                     <tr>

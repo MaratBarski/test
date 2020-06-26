@@ -27,8 +27,10 @@
                     <mdc-check-box [isDisabled]="!user.isChecked && selectedCount >= maxSelected"
                         (change)="changeSelect($event)" [(ngModel)]="user.isChecked" [id]="'usr' + index">
                         <ng-container>
-                            <span class="input-check__text" [mdcColorText]="searchWord" [text]="user.login"></span>
-                            <span class="input-check__text">({{user.total}})</span>
+                            <span class="input-check__text">
+                              <span class="input-check__el" [mdcColorText]="searchWord" [text]="user.login"></span>
+                              <span class="input-check__num">({{user.total}})</span>
+                            </span>
                         </ng-container>
                     </mdc-check-box>
                 </ng-container>

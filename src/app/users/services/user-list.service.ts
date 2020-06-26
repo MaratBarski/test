@@ -109,13 +109,13 @@ export class UserListService {
         },
         {
           columnId: 'active',
-          text: 'Active',
+          text: 'Status',
           isSortEnabled: false,
           css: 'd-none d-md-table-cell admin-table__item_center'
         },
         {
           columnId: 'specialRoles',
-          text: 'SpecialRoles',
+          text: 'Admin Roles',
           isSortEnabled: true,
           css: 'd-none d-xl-table-cell w-md-3'
         }
