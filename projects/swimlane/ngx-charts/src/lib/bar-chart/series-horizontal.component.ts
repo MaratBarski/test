@@ -45,7 +45,7 @@ import { DataItem } from '../models/chart-data.model';
         [tooltipContext]="bar.data"
         [noBarWhenZero]="noBarWhenZero"
       ></svg:g>
-      <svg:text [attr.x]="bar.x+bar.width" [attr.y]="bar.y+bar.height/2" text-anchor="end" *ngIf="showValue" style="font-size:16px" fill="white">
+      <svg:text [attr.x]="bar.x+bar.width-textPadding" [attr.y]="bar.y+bar.height/2" text-anchor="end" *ngIf="showValue" style="font-size:16px" fill="white">
         {{bar.value}}
       </svg:text>
     </ng-container>
@@ -101,6 +101,7 @@ export class SeriesHorizontal implements OnChanges {
   @Input() showDataLabel: boolean = false;
   @Input() dataLabelFormatting: any;
   @Input() noBarWhenZero: boolean = true;
+  @Input() textPadding = 4;
 
   @Output() select = new EventEmitter();
   @Output() activate = new EventEmitter();
@@ -209,7 +210,7 @@ export class SeriesHorizontal implements OnChanges {
         : `
         <span class="tooltip-label">${escapeLabel(tooltipLabel)}</span>
         <span class="tooltip-val">${
-          this.dataLabelFormatting ? this.dataLabelFormatting(value) : value.toLocaleString()
+        this.dataLabelFormatting ? this.dataLabelFormatting(value) : value.toLocaleString()
         }</span>
       `;
 
