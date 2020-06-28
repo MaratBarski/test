@@ -1,5 +1,6 @@
 import {Component, forwardRef, OnInit} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
+import {FileSourceType} from '@app/imported-files/models/enum/FileSourceType';
 
 export const SELECT_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -47,7 +48,7 @@ export class ShareFileComponent implements ControlValueAccessor, OnInit {
   }
 
   writeValue(obj: number): void {
-    this.startValue = obj === 1 ? true : false;
+    this.startValue = obj === FileSourceType.Public ? true : false;
   }
 
   cancel() {
@@ -57,7 +58,7 @@ export class ShareFileComponent implements ControlValueAccessor, OnInit {
 
   save() {
     this.startValue = this.value;
-    this.onChangeCallback(this.value ? 1 : 0);
+    this.onChangeCallback(this.value ? FileSourceType.Public : FileSourceType.Private);
     this.opened = false;
   }
 }

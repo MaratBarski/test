@@ -1,4 +1,4 @@
 export enum FileSourceType {
-  Public,
   Private,
+  Public,
 }
