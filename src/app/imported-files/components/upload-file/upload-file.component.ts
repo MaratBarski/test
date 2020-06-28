@@ -151,6 +151,7 @@ export class UploadFileComponent extends BaseSibscriber implements OnInit {
   fileErrorMessage = '';
 
   updateFileName(event: any): void {
+    this.fileErrorMessage = '';
     if (!this.fileInput.nativeElement.files.length) {
       return;
     }
