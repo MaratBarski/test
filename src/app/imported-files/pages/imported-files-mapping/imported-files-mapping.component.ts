@@ -9,7 +9,6 @@ import {ImportedFilesMappingService} from '@app/imported-files/services/imported
 import {map} from 'rxjs/operators';
 import {PropertyType} from '@app/imported-files/models/enum/PropertyType';
 import {NotificationsService, ToasterType} from '@appcore';
-import {NgxSpinnerService} from 'ngx-spinner';
 
 @Component({
   selector: 'md-imported-files-mapping',
@@ -39,7 +38,6 @@ export class ImportedFileMappingComponent implements OnInit, OnDestroy {
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private spinner: NgxSpinnerService,
     private notificationsService: NotificationsService
   ) {
     this.fileSource = this.route.snapshot.data.data[0];
@@ -173,14 +171,12 @@ export class ImportedFileMappingComponent implements OnInit, OnDestroy {
     if (!this.fileSourceForm.valid) {
       this.showErrors = true;
     } else {
-      this.spinner.show();
+      this.isSaving = true;
       this.importedFilesMappingService.saveMappedData(this.fileSourceForm.getRawValue()).subscribe(responce => {
+        this.isSaving = false;
         this.router.navigateByUrl('/imported-files');
-        this.spinner.hide();
       }, error => {
-        this.spinner.hide();
       });
-
     }
   }
 
