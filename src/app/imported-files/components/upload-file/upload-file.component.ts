@@ -148,7 +148,7 @@ export class UploadFileComponent extends BaseSibscriber implements OnInit {
     this.fileErrorMessage = this.configService.config.fileValidationErrors[error];
   }
 
-  fileErrorMessage = 'File format needs to be CSV (comma separate values)';
+  fileErrorMessage = '';
 
   updateFileName(event: any): void {
     if (!this.fileInput.nativeElement.files.length) {
@@ -159,13 +159,30 @@ export class UploadFileComponent extends BaseSibscriber implements OnInit {
       this.fileError(ValidationFileMessage.CsvExtensionError);
       return;
     }
+    if (!this.csvManagerService.validateFileName(this.fileInput.nativeElement)) {
+      this.fileError(ValidationFileMessage.NoName);
+      return;
+    }
+    if (!this.csvManagerService.validateFileEmpty(this.fileInput.nativeElement.files[0])) {
+      this.fileError(ValidationFileMessage.FileEmpty);
+      return;
+    }
     if (!this.csvManagerService.validateFileSize(this.fileInput.nativeElement.files[0], 0, -1)) {
       this.fileError(ValidationFileMessage.FileSizeError);
       return;
     }
+
     this.csvManagerService.validate(this.fileInput.nativeElement.files[0]).then((res: ValidationFileMessage) => {
       if (res === ValidationFileMessage.Success) {
-        this.file = this.fileInput.nativeElement.value;
+        this.csvManagerService.detectEncoding(this.fileInput.nativeElement.files[0]).then(encoding => {
+          if (encoding.trim().toUpperCase() !== 'UTF8' && encoding.trim().toUpperCase() !== 'ASCII') {
+            this.fileError(ValidationFileMessage.NoUtf8);
+          } else {
+            this.file = this.fileInput.nativeElement.value;
+          }
+        }).catch(e => {
+          this.fileError(ValidationFileMessage.NoUtf8);
+        });
         return;
       }
       this.fileError(res);

@@ -1,12 +1,16 @@
 {
     "data": {
         "fileValidationErrors": {
-            "uniquenessOfHeadersError": "Column names cannot be identical.",
-            "headerEmptyError": "Column name cannot be empty.",
+            "uniquenessOfHeadersError": "File column names are not unique.",
+            "headerEmptyError": "File has one or more empty column.",
             "nullOnHeadersError": "Column name cannot be null.",
-            "csvExtensionError": "File Type Constraint. The system requires a CSV file format.",
+            "csvExtensionError": "Only CSV and .XLS files are can be uploaded.",
             "fileSizeError": "File Size Constraint. File size should be greater than 0 MB.",
-            "noHebrewHeaders":"Column name contains illegal characters. The legal characters are: a-z, A-Z, 0-9, space, _, -.",
+            "fileEmpty": "File size should be greater than zero",
+            "noHebrewHeaders": "Column name contains illegal characters. The legal characters are: a-z, A-Z, 0-9, space, _, -.",
+            "noName": "File name is missing",
+            "noUtf8": "File format is not  UTF8",
+            "noRows": "File has no rows",
             "otherError": "otherError"
         }
     }
