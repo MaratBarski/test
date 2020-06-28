@@ -173,7 +173,6 @@ export class ImportedFileMappingComponent implements OnInit, OnDestroy {
     if (!this.fileSourceForm.valid) {
       this.showErrors = true;
     } else {
-      this.isSaving = true;
       this.spinner.show();
       this.importedFilesMappingService.saveMappedData(this.fileSourceForm.getRawValue()).subscribe(responce => {
         this.router.navigateByUrl('/imported-files');
