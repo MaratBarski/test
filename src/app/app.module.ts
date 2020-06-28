@@ -11,6 +11,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { HttpClientModule } from '@angular/common/http'
 import { Offline } from './shared/decorators/offline.decorator';
 import { environment } from '@env/environment';
+import {NgxSpinnerModule} from 'ngx-spinner';
 // import { DialogModule } from 'primeng/dialog';
 // import { ButtonModule } from 'primeng/button';
 // import { CalendarModule } from 'primeng/calendar';
@@ -26,6 +27,7 @@ import { environment } from '@env/environment';
     BrowserAnimationsModule,
     AppRoutingModule,
     CoreModule,
+    NgxSpinnerModule,
     StoreModule.forRoot({}),
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({

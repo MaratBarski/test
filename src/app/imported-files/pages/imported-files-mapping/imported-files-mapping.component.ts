@@ -1,14 +1,15 @@
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { ComponentService, DateService, PopupComponent, SelectOption, TableComponent, TranslateService } from '@appcore';
-import { FileClm, FileSource } from '../../models/file-source';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Template } from '@app/models/template';
-import { Hierarchy } from '@app/models/hierarchy';
-import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { ImportedFilesMappingService } from '@app/imported-files/services/imported-files-mapping.service';
-import { map } from 'rxjs/operators';
-import { PropertyType } from '@app/imported-files/models/enum/PropertyType';
-import { NotificationsService, ToasterType } from '@appcore';
+import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {ComponentService, DateService, PopupComponent, SelectOption, TableComponent, TranslateService} from '@appcore';
+import {FileClm, FileSource} from '../../models/file-source';
+import {ActivatedRoute, Router} from '@angular/router';
+import {Template} from '@app/models/template';
+import {Hierarchy} from '@app/models/hierarchy';
+import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {ImportedFilesMappingService} from '@app/imported-files/services/imported-files-mapping.service';
+import {map} from 'rxjs/operators';
+import {PropertyType} from '@app/imported-files/models/enum/PropertyType';
+import {NotificationsService, ToasterType} from '@appcore';
+import {NgxSpinnerService} from 'ngx-spinner';
 
 @Component({
   selector: 'md-imported-files-mapping',
@@ -27,8 +28,8 @@ export class ImportedFileMappingComponent implements OnInit, OnDestroy {
   selectAll: FormControl;
   showErrors: boolean = false;
   isSaving = false;
-  @ViewChild('popupMenu', { static: true }) popupMenu: PopupComponent;
-  @ViewChild('table', { static: true }) table: TableComponent;
+  @ViewChild('popupMenu', {static: true}) popupMenu: PopupComponent;
+  @ViewChild('table', {static: true}) table: TableComponent;
 
   constructor(
     private translateService: TranslateService,
@@ -38,6 +39,7 @@ export class ImportedFileMappingComponent implements OnInit, OnDestroy {
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
+    private spinner: NgxSpinnerService,
     private notificationsService: NotificationsService
   ) {
     this.fileSource = this.route.snapshot.data.data[0];
@@ -172,10 +174,14 @@ export class ImportedFileMappingComponent implements OnInit, OnDestroy {
       this.showErrors = true;
     } else {
       this.isSaving = true;
+      this.spinner.show();
       this.importedFilesMappingService.saveMappedData(this.fileSourceForm.getRawValue()).subscribe(responce => {
-        this.isSaving = false;
         this.router.navigateByUrl('/imported-files');
+        this.spinner.hide();
+      }, error => {
+        this.spinner.hide();
       });
+
     }
   }
 
