@@ -73,6 +73,7 @@ export class UploadService implements OnDestroy {
           console.log(error);
           uploadInfo.notification.name = uploadInfo.notification.failName;
           uploadInfo.notification.type = ToasterType.error;
+          uploadInfo.notification.errorMessage = error.error ? (error.error.massage || error.error.message || '') : '';
           if (!uploadSubscription.closed) {
             uploadSubscription.unsubscribe();
           }

@@ -25,6 +25,7 @@ export interface INotification {
   showInToaster?: boolean;
   type: ToasterType;
   fileName?: string;
+  errorMessage?: string;
   progressTitle?: string;
 }
 
