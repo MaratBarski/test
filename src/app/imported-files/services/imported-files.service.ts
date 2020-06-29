@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
-import { DataService, TableModel, CheckBoxListOption } from '@appcore';
+import { DataService, TableModel, CheckBoxListOption, LoginService } from '@appcore';
 import { Observable } from 'rxjs';
 import { FileSourceResponse, FileSource } from '../models/file-source';
 import { Offline } from 'src/app/shared/decorators/offline.decorator';
 import { environment } from '@env/environment';
 import { FileSourceStatus } from '../models/enum/FileSourceStatus';
-import { FormatNumberService } from '@app/shared/services/format-number.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +13,7 @@ export class ImportedFilesService {
 
   constructor(
     private dataService: DataService,
-    private formatNumberService: FormatNumberService
+    private loginService: LoginService
   ) { }
 
   @Offline('assets/offline/fileSource.json')
@@ -50,6 +49,7 @@ export class ImportedFilesService {
             icon: 'ic-edit',
             command: 'edit'
             , checkDisabled: (source: any) => {
+              if (this.loginService.userInfo.data.id !== source.uploadedBy) { return true; }
               if (!source.fileStatus) { return false; }
               return source.fileStatus === FileSourceStatus.MAPPED;
             }
@@ -66,6 +66,11 @@ export class ImportedFilesService {
             disable: false,
             icon: 'ic-delete',
             command: 'delete'
+            , checkDisabled: (source: any) => {
+              if (this.loginService.findProject(source.projectObj.projectId)) { return false; }
+              if (source.uploadedBy === this.loginService.userInfo.data.id && !source.fileType) { return false; }
+              return true;
+            }
           }
         ]
       },

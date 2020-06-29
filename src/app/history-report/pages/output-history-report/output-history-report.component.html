@@ -19,7 +19,7 @@
             </form>
         </div>
     </div>
-    <mdc-table [rowInfoTemplate]="rowInfoTemplate" [emptyState]="emptyState" #table
+    <mdc-table [auto]="true" [rowInfoTemplate]="rowInfoTemplate" [emptyState]="emptyState" #table
         [headersTemplate]="{ data:dataHeader}"
         [cellsTemplate]="{ insertDate:dateColumn, status:statusTemplate, name:nameTemplate, download:downloadTemplate}"
         [searchOptions]="searchOptions" [paginator]="paginator" [search]="search" [dataSource]="dataSource"
