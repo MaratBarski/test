@@ -16,11 +16,11 @@ export interface INotification {
   failName?: string;
   succName?: string;
   abortName?: string;
-  comment: string;
-  startDate: Date;
-  progress: number;
-  status: NotificationStatus;
-  showProgress: boolean;
+  comment?: string;
+  startDate?: Date;
+  progress?: number;
+  status?: NotificationStatus;
+  showProgress?: boolean;
   showInContainer?: boolean;
   showInToaster?: boolean;
   type: ToasterType;
@@ -86,6 +86,11 @@ export class NotificationsService {
     notice.type = ToasterType.error;
     notice.name = notice.abortName;
     this._onAbort.next(notice);
+    this.update();
+  }
+
+  addNotification(notice: INotification): void {
+    this.notifications.push(notice);
     this.update();
   }
 }

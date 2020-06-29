@@ -55,11 +55,12 @@
 </ng-template>
 <ng-template let-item #downloadTemplate let-src="source">
     <!-- <span (click)="downloadClick(item,src,$event)" class="admin-table-action__menu ic-hover"> -->
-    <ng-container *ngIf="src.active">
-        <a href="{{downloadUrl}}{{src.sessionHistoryId}}" [stickyToElement]="true" [position]="'left'"
+    <ng-container *ngIf="src.active||true">
+        <svg  (click)="downloadClick(item,src,$event)"  width="30" height="30" mdcSvg="ic-download" color="gray"></svg>
+        <!-- <a href="{{downloadUrl}}{{src.sessionHistoryId}}" [stickyToElement]="true" [position]="'left'"
             [mdcTooltip]="'Download output file'">
             <svg width="30" height="30" mdcSvg="ic-download" color="gray"></svg>
-        </a>
+        </a> -->
     </ng-container>
     <!-- </span> -->
 </ng-template>

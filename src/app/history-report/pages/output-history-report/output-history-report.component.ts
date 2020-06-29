@@ -5,6 +5,7 @@ import { SessionHistory } from '@app/models/session-history';
 import { environment } from '@env/environment';
 import { formatDate } from '@angular/common';
 import { format } from 'url';
+import { DownloadService } from '@app/shared/services/download.service';
 
 
 @Component({
@@ -39,6 +40,7 @@ export class OutputHistoryReportComponent extends BaseSibscriber implements OnIn
   constructor(
     private historyReportService: HistoryReportService,
     private navigationService: NavigationService,
+    private downloadService: DownloadService
   ) {
     super();
     this.navigationService.currentPageID = PageInfo.MonitorReports.id;
@@ -55,6 +57,7 @@ export class OutputHistoryReportComponent extends BaseSibscriber implements OnIn
   downloadClick(item: SessionHistory, source: SessionHistory, event: any): void {
     console.log(source);
     console.log(item);
+    this.downloadService.download("test");
   }
 
   dateFilterData(data: Array<any>): void {
@@ -65,7 +68,7 @@ export class OutputHistoryReportComponent extends BaseSibscriber implements OnIn
     this.table.closeRowInfo();
   }
 
-  changeFileName():void{
+  changeFileName(): void {
     const date = new Date();
     const format = 'yyyyMMdd_hhmmss';
     const locale = 'en-US';
