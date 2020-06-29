@@ -1,73 +1,96 @@
 <div class="history-info" (mouseover)="isOver=true" (mouseleave)="isOver=false">
-    <div class="admin-table-info__top">
-        <div class="admin-table-info__head">Details</div>
-        <div class="admin-table-info__icons">
-            <span>
-                <a href="{{downloadUrl}}{{_category?.sessionHistoryId}}">
-                    <svg width="30" height="30" mdcSvg="ic-download" color="gray"></svg> 
+  <div class="admin-table-info__top">
+    <div class="admin-table-info__head">Details</div>
+    <div class="admin-table-info__icons">
+			<span>
+				<a href="{{downloadUrl}}{{_category?.sessionHistoryId}}">
+					<svg width="30" height="30" mdcSvg="ic-download" color="gray"></svg>
+				</a>
+			</span>
+      <span (click)="closeInfo()" class="ic-hover">
+				<svg width="12" height="12" mdcSvg="ic-close"></svg>
+			</span>
+    </div>
+  </div>
+  <div class="admin-table-info__content">
+    <div class="admin-table-info__main">
+      <div class="admin-table-info__col">
+        <div class="admin-table-info__item">
+          <div class="admin-table-info__title">Full Name:</div>
+          <div class="admin-table-info__val">{{_category?.fullName}}</div>
+        </div>
+        <div class="admin-table-info__item">
+          <div class="admin-table-info__title">Source:</div>
+          <div class="admin-table-info__val">{{ source }}</div>
+        </div>
+      </div>
+      <div class="admin-table-info__col">
+        <div class="admin-table-info__item">
+          <div class="admin-table-info__title">Username:</div>
+          <div class="admin-table-info__val">{{_category?.login}}</div>
+        </div>
+
+        <div class="admin-table-info__item-wrap">
+          <div class="admin-table-info__item">
+            <div class="admin-table-info__title">Query ID:</div>
+            <div class="admin-table-info__val" *ngIf="_category?.sessionId">
+              <div *ngIf="_category?.sessionId" class="display-flex">
+                <a target="_blank" href="/datalake/#/projects/{{_category.projectId}}/sessions/{{_category.sessionId}}">
+                  <span>{{_category?.sessionId}}</span>
                 </a>
-            </span>
-            <span (click)="closeInfo()" class="ic-hover">
-                <svg width="12" height="12" mdcSvg="ic-close"></svg>
-            </span>
+                <a target="_blank" href="/datalake/#/projects/{{_category.projectId}}/sessions/{{_category.sessionId}}">
+                  <svg width="17" height="17" mdcSvg="ic-add-help" color="#0596ff"></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="admin-table-info__item">
+            <div class="admin-table-info__val">
+              <span class="admin-table-info__circle admin-table-info__circle_purple"></span>Synthetic data
+            </div>
+          </div>
         </div>
+        <!--                <div class="admin-table-info__item">-->
+        <!--                    <div class="admin-table-info__title">Data:</div>-->
+        <!--                    <div class="admin-table-info__val">{{_category?.data}}</div>-->
+        <!--                </div>-->
+      </div>
     </div>
-    <div class="admin-table-info__content">
-        <div class="admin-table-info__main">
-            <div class="admin-table-info__col">
-                <div class="admin-table-info__item">
-                    <div class="admin-table-info__title">Full Name:</div>
-                    <div class="admin-table-info__val">{{_category?.fullName}}</div>
-                </div>
-                <div class="admin-table-info__item">
-                    <div class="admin-table-info__title">Source:</div>
-                    <div class="admin-table-info__val">{{ source }}</div>
-                </div>
-                <div class="admin-table-info__item">
-                    <div class="admin-table-info__title">Query/File Name:</div>
-                    <div class="admin-table-info__val">{{ queryOrFileName }}</div>
-                </div>
-            </div>
-            <div class="admin-table-info__col">
-                <div class="admin-table-info__item">
-                    <div class="admin-table-info__title">Username:</div>
-                    <div class="admin-table-info__val">{{_category?.login}}</div>
-                </div>
-                <div class="admin-table-info__item">
-                    <div class="admin-table-info__title">Query ID:</div>
-                    <div class="admin-table-info__val" *ngIf="_category?.sessionId">
-                        <div *ngIf="_category?.sessionId" class="display-flex">
-                            <a target="_blank" href="/datalake/#/projects/{{_category.projectId}}/sessions/{{_category.sessionId}}">
-                                <span>{{_category?.sessionId}}</span>
-                            </a>
-                            <a target="_blank" href="/datalake/#/projects/{{_category.projectId}}/sessions/{{_category.sessionId}}">
-                                <svg width="17" height="17" mdcSvg="ic-add-help" color="#0596ff"></svg> 
-                            </a>
-                        </div>
-                     </div>
-                </div>
-                <div class="admin-table-info__item">
-                    <div class="admin-table-info__title">Data:</div>
-                    <div class="admin-table-info__val">{{_category?.data}}</div>
-                </div>
-            </div>
-        </div>
-        <div class="admin-table-info__item">
-            <div class="admin-table-info__title">Research:</div>
-            <div class="admin-table-info__val">{{_category?.researchName}}</div>
-        </div>
-        <div class="admin-table-info__item">
-            <div class="admin-table-info__title">Research Description:</div>
-            <div class="admin-table-info__val">{{_category?.information}}
-            </div>
-        </div>
-        <div class="admin-table-info__item">
-            <div class="admin-table-info__title">Approval Key:</div>
-            <div class="admin-table-info__val">{{_category?.approvalKey}}</div>
-        </div>
-        <div class="admin-table-info__item">
-            <div class="admin-table-info__title">Environment:</div>
-            <div class="admin-table-info__val">{{_category?.projectName}}</div>
-        </div>
+
+
+
+    <div class="admin-table-info__item">
+      <div class="admin-table-info__title">Query/File Name:</div>
+      <div class="admin-table-info__val">{{ queryOrFileName }}</div>
     </div>
+
+    <div class="admin-table-info__item">
+      <div class="admin-table-info__title">Status:</div>
+      <div class="admin-table-info__val"><svg width="18" height="18" mdcSvg="ic-success"></svg>File successfully created</div>
+    </div>
+
+    <div class="admin-table-info__item">
+      <div class="admin-table-info__title">Environment:</div>
+      <div class="admin-table-info__val">{{_category?.projectName}}</div>
+    </div>
+
+    <div class="admin-table-info__sect">
+      <div class="admin-table-info__head">Associated Permission Set</div>
+
+      <div class="admin-table-info__item">
+        <div class="admin-table-info__title">Set Name:</div>
+        <div class="admin-table-info__val">{{_category?.researchName}}</div>
+      </div>
+      <div class="admin-table-info__item">
+        <div class="admin-table-info__title">Research Description:</div>
+        <div class="admin-table-info__val">{{_category?.information}}
+        </div>
+      </div>
+      <div class="admin-table-info__item">
+        <div class="admin-table-info__title">Approval Key:</div>
+        <div class="admin-table-info__val">{{_category?.approvalKey}}</div>
+      </div>
+    </div>
+  </div>
 </div>

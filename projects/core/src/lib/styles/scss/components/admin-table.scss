@@ -769,20 +769,20 @@
     overflow-y: auto;
   }
 
-  &__main{
-    display: flex;
-  }
+  &__main{display: flex;}
 
   &__col:not(:last-child){
-    margin-right: 30px;
+    margin-right: 15px;
   }
 
+  // &__col{width: calc(27% - 15px);}
+
   &__col:first-child{
-    width: calc(100% - 265px);
+    width: calc(45% - 15px);
   }
 
   &__col:last-child{
-    width: 235px;
+    width: 55%;
   }
 
   &__col:last-child &__item{
@@ -794,6 +794,12 @@
   &__col:last-child &__val{
     display: inline-block;
     width: auto;
+  }
+
+  &__item-wrap{
+    display: flex;
+    justify-content: space-between;
+    padding-right: 30px;
   }
 
   &__item{
@@ -810,6 +816,13 @@
   &__val{
     width: calc(100% - 156px);
     @include font(normal, normal, rem(14px), 1.43, $color-dark-grey);
+
+    .icon{
+      vertical-align: middle;
+      margin-top: -2px;
+    }
+
+    .icon:first-child{margin-right: 8px;}
   }
 
   .file-count{
@@ -841,6 +854,11 @@
     height: 25px;
   }
 
+  .ic-success{
+    width: 18px;
+    height: 18px;
+  }
+
   .ic-plug{
     width: 25px;
     height: 15px;
@@ -853,6 +871,20 @@
     height: 7px;
     background: $color-green;
     border-radius: 50%;
+    margin-right: 8px;
+  }
+
+  &__circle_purple{background: $color-dark-purple;}
+
+  &__sect{
+    border-top: 1px solid #dbe4f9;
+    padding-top: 15px;
+    margin-top: -5px;
+  }
+
+  &__sect &__head{
+    font-size: rem(13px);
+    margin-bottom: 14px;
   }
 
   &__main_table{
