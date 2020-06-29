@@ -24,7 +24,7 @@ export class LoginService extends BaseSibscriber implements CanActivate {
   get onUserInfoUpdated(): Observable<UserResponse> {
     return this._userDataUpdated.asObservable();
   }
-  
+
   constructor(
     private dataService: DataService,
     private store: Store<any>
@@ -51,6 +51,13 @@ export class LoginService extends BaseSibscriber implements CanActivate {
 
   logOut(): void {
     this.store.dispatch(actions.logout());
+  }
+
+  findProject(id: any): any {
+    if (!this.userInfo) { return undefined; }
+    if (!this.userInfo.data) { return undefined; }
+    if (!this.userInfo.data.projects) { return undefined; }
+    return this.userInfo.data.projects.find(x => x.projectId === id);
   }
 
   async login(loginRequest: LoginRequest): Promise<LoginResponse> {

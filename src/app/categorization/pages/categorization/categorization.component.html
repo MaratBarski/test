@@ -17,7 +17,7 @@
         </div>
     </div>
     <div [hidden]="!isDataExists || !isLoaded" class="admin-table-content">
-        <mdc-table #table [dataSource]="dataSource" [rowInfoTemplate]="rowInfoTemplate"
+        <mdc-table #table [auto]="true" [dataSource]="dataSource" [rowInfoTemplate]="rowInfoTemplate"
             [cellsTemplate]="{ state:stateColumn,insertDate:dateColumn,inUseColumn:inUseColumn}"
             [searchOptions]="searchOptions" [paginator]="paginator" [search]="search" (onAction)="onAction($event)">
         </mdc-table>
@@ -79,7 +79,8 @@
 </ng-template>
 
 <ng-template let-item let-src="source" #inUseColumn>
-    <span *ngIf="src?.siteEventPropertyInfos?.length" class="admin-table__icon" (mouseleave)="item.showUsed=false" (mouseenter)="item.showUsed=true">
+    <span *ngIf="src?.siteEventPropertyInfos?.length" class="admin-table__icon" (mouseleave)="item.showUsed=false"
+        (mouseenter)="item.showUsed=true">
         <svg class="icon ic-plug ic-grey" mdcSvg="ic-plug"></svg>
         <div [hidden]="!item.showUsed" class="info-popup info-popup_right used-info">
             <div class="info-popup__top">
@@ -94,7 +95,7 @@
                     <div class="info-popup__text">
                         <ng-container *ngFor="let info of src.siteEventPropertyInfos;let i=index;">
                             {{info.eventPropertyName}}
-                        <ng-container *ngIf="i<src.siteEventPropertyInfos.length-1">,</ng-container>
+                            <ng-container *ngIf="i<src.siteEventPropertyInfos.length-1">,</ng-container>
                         </ng-container>
                     </div>
                 </div>
