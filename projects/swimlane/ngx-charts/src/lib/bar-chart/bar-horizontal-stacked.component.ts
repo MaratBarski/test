@@ -67,6 +67,7 @@ import { BaseChartComponent } from '../common/base-chart.component';
           <svg:g
             ngx-charts-series-horizontal
             type="stacked"
+            [textPadding]="textPadding"
             [showValue]="showValue"
             [xScale]="xScale"
             [yScale]="yScale"
@@ -137,6 +138,7 @@ export class BarHorizontalStackedComponent extends BaseChartComponent {
   @Input() showDataLabel: boolean = false;
   @Input() dataLabelFormatting: any;
   @Input() noBarWhenZero: boolean = true;
+  @Input() textPadding = 4;
 
   @Output() activate: EventEmitter<any> = new EventEmitter();
   @Output() deactivate: EventEmitter<any> = new EventEmitter();

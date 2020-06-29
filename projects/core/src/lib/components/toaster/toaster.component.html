@@ -10,14 +10,15 @@
       <div class="notice-msg-head">
 
         <div class="notice-msg-head__icon" *ngIf="toasterType.infoProgressBar !== notice?.type">
-          <mdc-icon [path]="'ic-business-warning'" [css]="'ic-business-warning'" *ngIf="toasterType.info === notice?.type"></mdc-icon>
+          <mdc-icon [path]="'ic-business-warning'" [css]="'ic-business-warning'"
+            *ngIf="toasterType.info === notice?.type"></mdc-icon>
           <mdc-icon [path]="'ic-failure'" [css]="'ic-failure'" *ngIf="toasterType.error === notice?.type"></mdc-icon>
           <mdc-icon [path]="'ic-warning'" [css]="'ic-warning'" *ngIf="toasterType.warning === notice?.type"></mdc-icon>
           <mdc-icon [path]="'ic-success'" [css]="'ic-success'" *ngIf="toasterType.success === notice?.type"></mdc-icon>
-<!--          <mdc-icon [path]="'ic-success'"></mdc-icon>-->
-<!--          <svg class="icon ic-business-warning">-->
-<!--            <use xlink:href="/assets/sprites/sprite.svg#ic-business-warning"></use>-->
-<!--          </svg>-->
+          <!--          <mdc-icon [path]="'ic-success'"></mdc-icon>-->
+          <!--          <svg class="icon ic-business-warning">-->
+          <!--            <use xlink:href="/assets/sprites/sprite.svg#ic-business-warning"></use>-->
+          <!--          </svg>-->
         </div>
 
         <div class="notice-msg-head__text">{{ notice?.name }}</div>
@@ -25,16 +26,18 @@
     </div>
     <div class="notice-msg__close" (click)="onCloseClicked()">
       <mdc-icon [path]="'ic-close-circle'" [css]="'ic-close-circle'"></mdc-icon>
-<!--      <svg class="icon ic-close-circle">-->
-<!--        <use xlink:href="/assets/sprites/sprite.svg#ic-close-circle"></use>-->
-<!--      </svg>-->
+      <!--      <svg class="icon ic-close-circle">-->
+      <!--        <use xlink:href="/assets/sprites/sprite.svg#ic-close-circle"></use>-->
+      <!--      </svg>-->
     </div>
   </div>
   <div class="notice-msg__content">
     <div class="notice-msg__text" *ngIf="toasterType.infoProgressBar !== notice?.type">
       {{ notice?.comment }}
     </div>
-
+    <div class="notice-msg__text" *ngIf="toasterType.error === notice?.type">
+      {{ notice?.errorMessage }}
+    </div>
 
     <div class="load-doc load-doc_blue" *ngIf="toasterType.infoProgressBar === notice?.type">
       <div class="load-doc__content">

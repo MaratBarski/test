@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { TableModel } from '../components/table/table.component';
 
+declare const require: any;
+export const Encoding = require('encoding-japanese');
+
 export interface CsvData {
   headers: Array<string>;
   data?: Array<Array<any>>;
@@ -13,7 +16,12 @@ export enum ValidationFileMessage {
   CsvExtensionError = 'csvExtensionError',
   FileSizeError = 'fileSizeError',
   NoHebrewHeaders = "noHebrewHeaders",
+  NoName = 'noName',
+  FileEmpty = 'fileEmpty',
+  NoUtf8 = 'noUtf8',
+  NoRows = 'noRows',
   OtherError = 'otherError'
+
 }
 @Injectable({
   providedIn: 'root'
@@ -119,7 +127,11 @@ export class CsvManagerService {
         }
 
       }).catch(e => {
-        resolve(ValidationFileMessage.OtherError);
+        if (e === '') {
+          resolve(ValidationFileMessage.FileEmpty);
+        } else {
+          resolve(ValidationFileMessage.NoRows);
+        }
       });
     });
   }
@@ -132,9 +144,48 @@ export class CsvManagerService {
     return !!extentions.find(x => x.trim().toLowerCase() === ext);
   }
 
+  validateFileName(inputFile: any): boolean {
+    if (!inputFile || !inputFile.value) { return true; }
+    let arr = inputFile.value.split('.');
+    if (!arr.length || !arr[0] || arr[0] === '' || arr[0].trim() === '') {
+      return false;
+    }
+    arr = arr[0].split('\\');
+    if (!arr.length || !arr[arr.length - 1] || arr[arr.length - 1] === '' || arr[arr.length - 1].trim() === '') {
+      return false;
+    }
+    return true;
+  }
+
+  validateUtf8(file: any): boolean {
+    if (!file) { return false; }
+    return true;
+  }
+
   validateFileSize(file: any, minSize: number, maxSize: number): boolean {
     if (!file) { return false; }
     return ((minSize < 0 || file.size > minSize) && (maxSize < 0 || file.size < maxSize));
+  }
+
+  validateFileEmpty(file: any): boolean {
+    if (!file) { return false; }
+    return file.size > 0;
+  }
+
+  detectEncoding(file: any): Promise<string> {
+    return new Promise<string>((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        if (!!e.target.error) {
+          reject();
+        } else {
+          const codes = new Uint8Array(e.target.result as ArrayBuffer);
+          const detectedEncoding = Encoding.detect(codes);
+          resolve(detectedEncoding);
+        }
+      };
+      reader.readAsArrayBuffer(file);
+    });
   }
 
   readFile(offset: number, chunkSize: number, buffer: string, file: any, callBack: any, endReadCallback: any, errorCallback: any): void {

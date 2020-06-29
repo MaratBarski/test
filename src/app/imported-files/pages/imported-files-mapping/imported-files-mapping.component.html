@@ -1,4 +1,5 @@
-<form [formGroup]="fileSourceForm" (ngSubmit)="saveFileSource()">
+<div class="loading" [hidden]="!isSaving">Loading...</div>
+<form [hidden]="isSaving" [formGroup]="fileSourceForm" (ngSubmit)="saveFileSource()">
   <div class="file-mapping">
     <section class="page-header">
       <div class="container-fluid">

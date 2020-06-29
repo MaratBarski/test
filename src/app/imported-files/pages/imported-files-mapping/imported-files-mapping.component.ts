@@ -26,6 +26,7 @@ export class ImportedFileMappingComponent implements OnInit, OnDestroy {
   propertyType = PropertyType;
   selectAll: FormControl;
   showErrors: boolean = false;
+  isSaving = false;
   @ViewChild('popupMenu', {static: true}) popupMenu: PopupComponent;
   @ViewChild('table', {static: true}) table: TableComponent;
 
@@ -170,8 +171,11 @@ export class ImportedFileMappingComponent implements OnInit, OnDestroy {
     if (!this.fileSourceForm.valid) {
       this.showErrors = true;
     } else {
+      this.isSaving = true;
       this.importedFilesMappingService.saveMappedData(this.fileSourceForm.getRawValue()).subscribe(responce => {
+        this.isSaving = false;
         this.router.navigateByUrl('/imported-files');
+      }, error => {
       });
     }
   }

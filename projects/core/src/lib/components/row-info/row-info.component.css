@@ -2,18 +2,8 @@
     display: block;
     overflow-y: auto;
     background: #fff;
-    /* border-top: 7px solid $color-purple; */
     border-radius: 4px;
     padding: 20px 25px 10px;
-
-    /* z-index: 2;
-    background-color: #fff;
-    position: absolute;
-    margin-left: auto;
-    width: 1000px;
-    height: 500px;
-    width:auto;
-    overflow: auto; */
 }
 .row-info{
     direction: ltr;
@@ -21,9 +11,9 @@
     background-color: #fff;
     position: absolute;
     margin-left: auto;
-    max-width: 1000px;
+    width: 820px;
+    border-left: 1px solid rgba(161, 173, 205, 0.5);
     overflow: hidden;
     min-height: 500px;
     right: 0;
-    /* visibility: hidden; */
 }
