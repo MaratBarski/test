@@ -51,6 +51,9 @@ export class OutputHistoryReportComponent extends BaseSibscriber implements OnIn
       this.historyReportService.load().subscribe((res: any) => {
         this.reports = res.data;
         this.dataOrigin = this.dataSource = this.historyReportService.createDataSource(this.reports);
+      }, (error) => {
+        this.reports = [];
+        this.dataOrigin = this.dataSource = this.historyReportService.createDataSource(this.reports);
       }));
   }
 

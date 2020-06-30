@@ -27,6 +27,7 @@ export class HistoryReportService {
 
   load(): Observable<SessionHistoryResponse> {
     return this.dataService.get(this.getUrl);
+    
   }
 
   createDataSource(history: Array<SessionHistory>): TableModel {

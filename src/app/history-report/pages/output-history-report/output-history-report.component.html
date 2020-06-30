@@ -21,7 +21,7 @@
     </div>
     <mdc-table [auto]="true" [rowInfoTemplate]="rowInfoTemplate" [emptyState]="emptyState" #table
         [headersTemplate]="{ data:dataHeader}"
-        [cellsTemplate]="{ insertDate:dateColumn, status:statusTemplate, name:nameTemplate, download:downloadTemplate}"
+        [cellsTemplate]="{ insertDate:dateColumn, status:statusTemplate, name:nameTemplate, download:downloadTemplate,data:dataTemplate}"
         [searchOptions]="searchOptions" [paginator]="paginator" [search]="search" [dataSource]="dataSource"
         [downloader]="downloader">
     </mdc-table>
@@ -37,13 +37,21 @@
         <md-history-info (onClose)="closeCategoryInfo()" [category]="item.source"></md-history-info>
     </div>
 </ng-template>
+
 <ng-template #dateColumn let-item let-src="source">
     <span class="pointer link">{{item.insertDate|date}}</span>
 </ng-template>
+
 <ng-template #dataHeader>
     <span>Data </span>
     <svg width="15" height="15" mdcSvg="ic-help" color="blue"></svg>
 </ng-template>
+
+<ng-template #dataTemplate let-src="source">
+    <span *ngIf="src?.data === 'Synthetic'" class="admin-table__circle"></span>
+    {{src.data}}
+</ng-template>
+
 <ng-template let-item #statusTemplate let-src="source">
     <div *ngIf="src.transStatus" [stickyToElement]="true" [position]="'right'"
         [mdcTooltip]="'File generated successfully'">
@@ -53,13 +61,14 @@
         <svg width="20" height="20" mdcSvg="ic-failure" color="red"></svg>
     </div>
 </ng-template>
+
 <ng-template let-item #downloadTemplate let-src="source">
     <!-- <span (click)="downloadClick(item,src,$event)" class="admin-table-action__menu ic-hover"> -->
     <ng-container *ngIf="src.downloadActive">
-         <a href="{{downloadUrl}}{{src.sessionHistoryId}}" [stickyToElement]="true" [position]="'left'"
+        <a href="{{downloadUrl}}{{src.sessionHistoryId}}" [stickyToElement]="true" [position]="'left'"
             [mdcTooltip]="'Download output file'">
             <svg width="30" height="30" mdcSvg="ic-download" color="gray"></svg>
-        </a> 
+        </a>
     </ng-container>
     <!-- </span> -->
 </ng-template>
