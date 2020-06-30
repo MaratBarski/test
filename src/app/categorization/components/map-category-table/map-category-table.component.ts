@@ -71,6 +71,7 @@ export class MapCategoryTableComponent {
     }
     newCategoryItem.oldCategory = oldCategoryItem;
     newCategoryItem.oldCategory.inUse = true;
+    this.addNotInUser();
   }
 
   initMap(): void {

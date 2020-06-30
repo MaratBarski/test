@@ -42,24 +42,28 @@
                                                 <!-- <div *ngIf="!i.inUse || (i === newCategoryDefault && newCategoryDefault !== item.oldCategory)" (click)="changeOldCategory(i,item)" class="select__param"> 
                                                 {{i.hierarchyLevelName}}
                                                  </div> -->
-                                                <div *ngIf="i.sortValue!==-2 && (!i.inUse || (i === newCategoryDefault && newCategoryDefault !== item.oldCategory))" (click)="changeOldCategory(i,item)" class="select__param">
+                                                <div *ngIf="i.sortValue!==-2 && (!i.inUse || (i === newCategoryDefault && newCategoryDefault !== item.oldCategory))"
+                                                    (click)="changeOldCategory(i,item)" class="select__param">
                                                     {{i.hierarchyLevelName}}
                                                 </div>
                                             </ng-container>
                                         </div>
-                                        <span [hidden]="!(item.oldCategory===noMatchCategory && saveClicked)" class="tooltip tooltip_left tooltip_red"><span class="tooltip__content">Missing Category</span></span>
+                                        <span [hidden]="!(item.oldCategory===noMatchCategory && saveClicked)"
+                                            class="tooltip tooltip_left tooltip_red"><span
+                                                class="tooltip__content">Missing Category</span></span>
                                     </div>
                                 </div>
                             </td>
-                            <!-- <td class="admin-table__item d-none d-lg-table-cell">
-                                <div class="admin-table__data-sample">
+                            <td class="admin-table__item d-none d-lg-table-cell">
+                                <!-- <div class="admin-table__data-sample">
                                     {{item.newCategory.dataSample|replace:'%sep%':','}}
-                                </div>
-                            </td> -->
+                                </div> -->
+                            </td>
                         </tr>
                     </tbody>
                 </table>
-                <md-category-message [notInUse]="notInUse" [oldNewDifCount]="oldNewDifCount" (onUpdateMessage)="onUpdateMessage($event)"></md-category-message>
+                <md-category-message [notInUse]="notInUse" [oldNewDifCount]="oldNewDifCount"
+                    (onUpdateMessage)="onUpdateMessage($event)"></md-category-message>
             </div>
         </div>
     </div>

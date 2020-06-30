@@ -23,9 +23,10 @@
                             </div>
                             <div class="info-panel__item">
                                 <div class="info-panel__title">Modified:</div>
-                                <div class="info-panel__val">{{data?.data?.insertDate|date}}</div>
+                                <div class="info-panel__val">
+                                    {{data?.data?.insertDate|date}}&nbsp;{{data?.data?.insertDate|date:'HH:mm'}}</div>
                             </div>
-                            <div class="info-panel__item">
+                            <div *ngIf="data?.data?.siteEventPropertyInfos?.length" class="info-panel__item">
                                 <div class="info-panel__val">In Use
                                     <svg class="icon ic-plug ic-grey" mdcSvg="ic-plug"></svg>
                                 </div>
