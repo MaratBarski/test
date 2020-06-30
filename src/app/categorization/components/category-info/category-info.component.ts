@@ -1,6 +1,7 @@
 import { Component, Input, EventEmitter, Output, HostListener } from '@angular/core';
 import { Hierarchy } from '@app/imported-files/models/hierarchy';
 import { environment } from '@env/environment';
+import { DownloadService } from '@app/shared/services/download.service';
 
 @Component({
   selector: 'md-category-info',
@@ -24,6 +25,8 @@ export class CategoryInfoComponent {
 
   @Output() onClose = new EventEmitter();
 
+  constructor(private downloadService: DownloadService) { }
+
   closeInfo(): void {
     this.onClose.emit();
   }
@@ -34,6 +37,6 @@ export class CategoryInfoComponent {
   }
 
   download(): void {
-    window.open(`${environment.serverUrl}${environment.endPoints.downloadCategory}/${this.category.hierarchyRootId}`)
+    this.downloadService.download(`${environment.serverUrl}${environment.endPoints.downloadCategory}/${this.category.hierarchyRootId}`)
   }
 }

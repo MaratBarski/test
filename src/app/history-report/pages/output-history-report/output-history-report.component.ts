@@ -15,7 +15,7 @@ import { DownloadService } from '@app/shared/services/download.service';
 })
 export class OutputHistoryReportComponent extends BaseSibscriber implements OnInit, OnDestroy {
 
-  get downloadUrl(): string { return environment.serverUrl + environment.endPoints.downloadHistoryReport + '/' };
+  get downloadUrl(): string { return `${environment.serverUrl}${environment.endPoints.downloadHistoryReport}`; }
   @ViewChild('table', { static: true }) table: TableComponent;
   @ViewChild('downloader', { static: true }) downloader: DownloadComponent;
   emptyState: EmptyState = {
@@ -59,7 +59,8 @@ export class OutputHistoryReportComponent extends BaseSibscriber implements OnIn
 
   downloadClick(item: SessionHistory, source: SessionHistory, event: any): void {
     //this.downloadService.download("http://10.0.2.18:4000/mdclone/api/v1/session-history/download/2768");
-    this.downloadService.download("http://10.0.2.18:4000/mdclone/api/v1/session-history/download/2762");    
+    //this.downloadService.download("http://10.0.2.18:4000/mdclone/api/v1/session-history/download/2762");    
+    this.downloadService.download(`${this.downloadUrl}/${source.sessionHistoryId}`);
   }
 
   dateFilterData(data: Array<any>): void {

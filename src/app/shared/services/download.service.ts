@@ -28,7 +28,6 @@ export class DownloadService {
     this.notificationsService.addNotification(notice);
     this.http.get(url, { responseType: 'blob' })
       .subscribe((res: any) => {
-        alert(JSON.stringify(res));
         notice.type = ToasterType.success;
         notice.comment = 'Download success';
         let a = document.createElement('a');
@@ -40,10 +39,9 @@ export class DownloadService {
         a.click();
         a.remove();
       }, (error: any) => {
+        //alert(JSON.stringify(error));
         notice.type = ToasterType.error;
         notice.comment = 'Download failed';
       });
-
-
   }
 }

@@ -4,6 +4,7 @@ import { CategorizationService } from '@app/categorization/services/categorizati
 import { CategoryInfoComponent } from '@app/categorization/components/category-info/category-info.component';
 import { Router } from '@angular/router';
 import { environment } from '@env/environment';
+import { DownloadService } from '@app/shared/services/download.service';
 
 @Component({
   selector: 'md-categorization',
@@ -17,7 +18,7 @@ export class CategorizationComponent extends BaseSibscriber implements OnInit {
     subTitle: 'Your categorization will be listed here.',
     image: 'categoryEmpty.png'
   }
-  
+
   @ViewChild('table', { static: true }) table: TableComponent;
   @ViewChild('categorizationInfo', { static: true }) categorizationInfo: CategoryInfoComponent;
 
@@ -31,7 +32,8 @@ export class CategorizationComponent extends BaseSibscriber implements OnInit {
   constructor(
     private categorizationService: CategorizationService,
     private navigationService: NavigationService,
-    private router: Router
+    private router: Router,
+    private downloadService: DownloadService
   ) {
     super();
     this.navigationService.currentPageID = PageInfo.ManageHierarchies.id;
@@ -67,8 +69,7 @@ export class CategorizationComponent extends BaseSibscriber implements OnInit {
       this.router.navigate(['/categorization/map-categories', { id: action.item.source.hierarchyRootId }]);
     },
     download: (action: TableActionCommand) => {
-      //alert(`${environment.serverUrl}${environment.endPoints.downloadCategory}/${action.item.source.hierarchyRootId}`)
-      window.open(`${environment.serverUrl}${environment.endPoints.downloadCategory}/${action.item.source.hierarchyRootId}`)
+      this.downloadService.download(`${environment.serverUrl}${environment.endPoints.downloadCategory}/${action.item.source.hierarchyRootId}`);
     },
     delete: (action: TableActionCommand) => {
       this.categorySource = this.categorySource.filter(x => x != action.item.source);
