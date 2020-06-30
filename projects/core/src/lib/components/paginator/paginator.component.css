@@ -71,7 +71,7 @@
   border-right: 0;
 }
 
-.paging-item:first-child .page-btn{padding-left: 0;}
+.paging-item:first-child {padding-left: 0;}
 .paging-num > .page-btn:nth-last-child(2){padding-right: 0;}
 
 .page-btn.disabled .icon{
