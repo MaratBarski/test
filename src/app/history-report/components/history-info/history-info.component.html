@@ -2,7 +2,7 @@
   <div class="admin-table-info__top">
     <div class="admin-table-info__head">Details</div>
     <div class="admin-table-info__icons">
-			<span (click)="download()">
+			<span *ngIf="category?.downloadActive" (click)="download()">
 					<svg width="30" height="30" mdcSvg="ic-download" color="gray"></svg>
 			</span>
       <span (click)="closeInfo()" class="ic-hover">
