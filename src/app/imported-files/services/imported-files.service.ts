@@ -67,8 +67,11 @@ export class ImportedFilesService {
             icon: 'ic-delete',
             command: 'delete'
             , checkDisabled: (source: any) => {
-              if (this.loginService.findProject(source.projectObj.projectId)) { return false; }
-              if (source.uploadedBy === this.loginService.userInfo.data.id && !source.fileType) { return false; }
+              if (source.fileType) { return true; }
+              if (!source.user) { return true; }
+              if (!source.user.login) { return true; }
+              if (this.loginService.isProjectOwner(source.user.login)) { return false; }
+              if (source.uploadedBy === this.loginService.userInfo.data.id) { return false; }
               return true;
             }
           }

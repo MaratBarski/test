@@ -60,6 +60,14 @@ export class LoginService extends BaseSibscriber implements CanActivate {
     return this.userInfo.data.projects.find(x => x.projectId === id);
   }
 
+  isProjectOwner(userLogin: string): boolean {
+    if (!userLogin) { return false; }
+    if (!this.userInfo) { return false; }
+    if (!this.userInfo.data) { return false; }
+    if (!this.userInfo.data.login) { return false; }
+    return (this.userInfo.data.login === userLogin);
+  }
+
   async login(loginRequest: LoginRequest): Promise<LoginResponse> {
     return this.dataService.post(ENV.loginUrl, loginRequest)
       .toPromise().then((res: any) => {
