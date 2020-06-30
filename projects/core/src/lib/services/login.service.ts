@@ -69,6 +69,10 @@ export class LoginService extends BaseSibscriber implements CanActivate {
   }
 
   isAdminOfProject(projectID: any): any {
+    if (!this.userInfo) { return undefined; }
+    if (!this.userInfo.data) { return undefined; }
+    if (!this.userInfo.data.projects) { return undefined; }
+    
     return this.userInfo.data.projects.find(x => (x.projectId === projectID)
       &&
       ((x.userType && x.userType.userType && x.userType.userType.toUpperCase() === 'ADMIN') ||
