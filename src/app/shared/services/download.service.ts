@@ -12,15 +12,9 @@ export class DownloadService {
     private http: HttpClient
   ) { }
 
-  saveAsBlob(data: Response) {
-    // var blob = new Blob([data.blob], { type: 'image/png' });
-    // var url= window.URL.createObjectURL(blob);
-    // window.open(url);
-  }
-
   download(url: string): void {
     const notice: INotification = {
-      name: 'download',
+      name: 'Download',
       type: ToasterType.info,
       comment: url,
       showInToaster: true
@@ -41,7 +35,7 @@ export class DownloadService {
       }, (error: any) => {
         //alert(JSON.stringify(error));
         notice.type = ToasterType.error;
-        notice.comment = 'Download failed';
+        notice.comment = `Download failed on ${url}`;
       });
   }
 }
