@@ -47,9 +47,11 @@ export class CategorizationService {
         subLinks: [
           {
             text: 'Delete',
-            disable: false,
             icon: 'ic-delete',
             command: 'delete'
+            , checkDisabled: (source: any) => {
+              return source.hierarchyLoadingType === 'etl';
+            }
           }
         ]
       },

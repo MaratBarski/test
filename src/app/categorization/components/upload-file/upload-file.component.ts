@@ -38,7 +38,7 @@ export class UploadFileComponent {
   isFileError = false;
 
   get isValid(): boolean {
-    return (!!this.fileName || this.isEditMode) && !!this.file;
+    return (!!this.fileName || this.isEditMode) && !!this.file && !!this.project;
   }
 
   @Offline('http://localhost:57858/api/Config/')
