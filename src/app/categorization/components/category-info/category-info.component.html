@@ -11,22 +11,22 @@
         </div>
     </div>
     <div class="admin-table-info__content">
-        <div class="admin-table-info__item">
+        <div *ngIf="category?.hierarchyFile" class="admin-table-info__item">
             <div class="admin-table-info__title">File Name:</div>
             <div class="admin-table-info__val"><span class="admin-table-info__name">{{category?.hierarchyFile}}</span>
             </div>
         </div>
-        <div class="admin-table-info__item">
+        <div *ngIf="category?.insertDate" class="admin-table-info__item">
             <div class="admin-table-info__title">Last Modified:</div>
-            <div class="admin-table-info__val">{{category?.insertDate|date}}</div>
+            <div class="admin-table-info__val">{{category?.insertDate|date}}&nbsp;{{category?.insertDate|date:'HH:mm'}}</div>
         </div>
-        <div class="admin-table-info__item">
+        <div *ngIf="category?.description" class="admin-table-info__item">
             <div class="admin-table-info__title">Description:</div>
             <div class="admin-table-info__val">
                 {{category?.description}}
             </div>
         </div>
-        <div  *ngIf="!category.hierarchyChange && category.hierarchyLoadingType==='etl'" class="admin-table-info__item">
+        <div *ngIf="!category.hierarchyChange && category.hierarchyLoadingType==='etl'" class="admin-table-info__item">
             <div class="admin-table-info__title">State:</div>
             <div class="admin-table-info__val">
                 <div class="admin-table-info__ic">
@@ -46,11 +46,11 @@
                 </ng-container>
             </div>
         </div>
-        <div class="admin-table-info__item">
+        <div *ngIf="category?.project?.projectName" class="admin-table-info__item">
             <div class="admin-table-info__title">Environment:</div>
             <div class="admin-table-info__val">{{category?.project?.projectName}}</div>
         </div>
-        <div class="admin-table-info__item">
+        <div *ngIf="defaultLevel?.hierarchyLevelName" class="admin-table-info__item">
             <div class="admin-table-info__title">Default Category:</div>
             <div class="admin-table-info__val">{{defaultLevel?.hierarchyLevelName}}</div>
         </div>

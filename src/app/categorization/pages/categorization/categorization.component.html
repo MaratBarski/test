@@ -31,7 +31,8 @@
 </md-page-body>
 
 <ng-template #dateColumn let-item>
-    {{item.insertDate|date}}
+    {{item.insertDate|date}}&nbsp;
+    {{item.insertDate|date:'HH:mm'}}
 </ng-template>
 
 <ng-template let-item let-src="source" #stateColumn>
@@ -62,7 +63,7 @@
                             </div>
                         </div>
                         <div class="switch">
-                            <mdc-toggle-button no="No" (onChange)="rowStateChange($event)" yes="Yes"
+                            <mdc-toggle-button (onChange)="rowStateChange($event)" yes="On" no="Off"
                                 [(ngModel)]="currentRow.state">
                             </mdc-toggle-button>
                         </div>
