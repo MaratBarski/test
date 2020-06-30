@@ -10,8 +10,18 @@ import { environment } from '@env/environment';
 export class CategoryInfoComponent {
 
   isOver = false;
+  defaultLevel: any;
+  private _category: Hierarchy;
+  @Input() set category(category: Hierarchy) {
+    this._category = category;
+    if (this._category.hierarchyLevels) {
+      this.defaultLevel = this._category.hierarchyLevels.find(x => x.hierarchyLevelId === this._category.defaultLevelId);
+    }
+  }
+  get category(): Hierarchy {
+    return this._category;
+  }
 
-  @Input() category: Hierarchy;
   @Output() onClose = new EventEmitter();
 
   closeInfo(): void {
