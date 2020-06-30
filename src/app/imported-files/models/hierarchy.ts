@@ -14,4 +14,6 @@ export class Hierarchy {
      hierarchyLevels?: Array<HierarchyLevel>
      project?: Project;
      siteEventPropertyInfos?: any;
+     hierarchyLoadingType?: any;
+     hierarchyChange?: any;
 }
