@@ -63,8 +63,6 @@
   padding: 0;
 }
 
-.paging-num > .page-btn{border-right: 1px solid #c9cbd0;}
-
 .paging-num > .page-btn:first-child,
 .paging-num > .page-btn:nth-last-child(1),
 .paging-num > .page-btn:nth-last-child(2){
@@ -84,7 +82,7 @@
 }
 .separator{
     width:1px;
-    height: 1rem;
+    height: 0.8rem;
     background-color: #C9CBD0;
 }
 .current{
