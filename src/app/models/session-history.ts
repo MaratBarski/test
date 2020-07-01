@@ -34,4 +34,5 @@ export class SessionHistory {
      researchName: string;
      researchInfo: string;
      data: string;
+     downloadActive?: any;
 }

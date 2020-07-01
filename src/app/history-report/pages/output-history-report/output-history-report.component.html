@@ -63,9 +63,10 @@
 </ng-template>
 
 <ng-template let-item #downloadTemplate let-src="source">
-    <ng-container *ngIf="src.downloadActive">
-        <svg (click)="downloadClick(item,src,$event)" width="30" height="30" mdcSvg="ic-download" color="gray"></svg>
-    </ng-container>
+    <svg *ngIf="src.downloadActive" (click)="downloadClick(item,src,$event)" width="30" height="30"
+        mdcSvg="ic-download" color="gray"></svg>
+    <svg *ngIf="!src.downloadActive" color="#ACB2C3" width="30" height="30"
+        mdcSvg="ic-download"></svg>
 </ng-template>
 
 <ng-template let-item #nameTemplate let-src="source">
