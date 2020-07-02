@@ -83,7 +83,7 @@ export class ImportedFilesService {
           isSortEnabled: true,
           csvTitle: 'File Name',
           showDetails: false,
-          css: 'w-xxl-8 w-md-6'
+          css: 'w-md-250'
         },
         {
           columnId: 'insertDate',
@@ -99,21 +99,21 @@ export class ImportedFilesService {
           isSortEnabled: true,
           filter: true,
           csvTitle: 'Environment',
-          css: 'd-none d-lg-table-cell w-md-3'
+          css: 'd-none d-lg-table-cell w-md-150'
         },
         {
           columnId: 'permission',
           text: 'Permission Group',
           isSortEnabled: true,
           filter: true,
-          css: 'd-none d-xl-table-cell w-md-3'
+          css: 'd-none d-xl-table-cell w-md-150'
         },
         {
           columnId: 'user',
           text: 'User',
           isSortEnabled: false,
           filter: true,
-          css: 'd-none d-xxxl-table-cell w-md-3'
+          css: 'd-none d-xxxl-table-cell'
         },
         {
           columnId: 'shared',

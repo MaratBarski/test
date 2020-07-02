@@ -63,25 +63,25 @@ export class CategorizationService {
           sortDir: 'desc',
           isSortedColumn: true,
           showDetails: true,
-          css: 'w-xxl-8 w-md-6'
+          css: 'w-xxl-300 w-md-150'
         },
         {
           columnId: 'hierarchyFile',
           text: 'File Name',
           isSortEnabled: true,
-          css: 'w-xxl-8 w-md-6 d-none d-md-table-cell'
+          css: 'w-xxl-300 w-md-150 d-none d-md-table-cell'
         },
         {
           columnId: 'insertDate',
           text: 'Modified',
           isSortEnabled: true,
-          css: 'd-none d-md-table-cell w-md-3'
+          css: 'd-none d-lg-table-cell'
         },
         {
           columnId: 'state',
           text: 'State',
           isSortEnabled: false,
-          css: 'd-none d-xl-table-cell admin-table__item_center'
+          css: 'd-none d-xl-table-cell admin-table__item_center admin-table__state'
         },
         {
           columnId: 'domain',
@@ -94,7 +94,7 @@ export class CategorizationService {
           columnId: 'inUseColumn',
           text: 'In Use',
           isSortEnabled: false,
-          css: 'd-none d-xl-table-cell admin-table__item_center'
+          css: 'd-none d-xl-table-cell admin-table__item_center admin-table__use'
         }
       ],
       rows: []

@@ -85,19 +85,19 @@ export class UserListService {
           text: 'Full Name',
           isSortEnabled: true,
           showDetails: true,
-          css: 'w-md-3'
+          css: ''
         },
         {
           columnId: 'userName',
           text: 'Username',
           isSortEnabled: true,
-          css: 'd-none d-md-table-cell w-md-3'
+          css: 'd-none d-md-table-cell'
         },
         {
           columnId: 'email',
           text: 'Email',
           isSortEnabled: true,
-          css: 'd-none d-lg-table-cell w-md-3'
+          css: 'd-none d-lg-table-cell'
         },
         {
           columnId: 'modified',
@@ -105,19 +105,19 @@ export class UserListService {
           isSortEnabled: true,
           isSortedColumn: true,
           sortDir: 'desc',
-          css: 'd-none d-xl-table-cell'
+          css: 'd-none d-xl-table-cell admin-table__date'
         },
         {
           columnId: 'active',
           text: 'Status',
           isSortEnabled: false,
-          css: 'd-none d-md-table-cell admin-table__item_center'
+          css: 'd-none d-md-table-cell admin-table__item_center admin-table__status'
         },
         {
           columnId: 'specialRoles',
           text: 'Admin Roles',
           isSortEnabled: true,
-          css: 'd-none d-xl-table-cell w-md-3'
+          css: 'd-none d-xl-table-cell'
         }
       ],
       rows: []

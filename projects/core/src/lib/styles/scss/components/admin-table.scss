@@ -23,6 +23,8 @@
   .form-search{
     margin-left: 32px;
   }
+
+  & + .empty-block{margin-top: -23px;}
 }
 
 .admin-table{
@@ -52,7 +54,7 @@
 
   th,
   td{
-    width: 2%;
+    width: 100%;
   }
 
   &__item{
@@ -69,8 +71,8 @@
     }
   }
 
-  &__item_menu{
-    width: 220px;
+  & &__item_menu{
+    width: 100px;
     padding-left: 0;
     padding-right: 7px;
     text-align: right;
@@ -95,7 +97,8 @@
   &__name-accent{color: $color-green;}
 
   &__name,
-  &__data-sample{
+  &__data-sample,
+  &__text-cut{
     // width: 510px;
     width: 100%;
     overflow: hidden;
@@ -450,7 +453,7 @@
   &__icon:hover .info-popup, &__icon .info-popup.active{display: inline-block;}
 
   &_auto{
-    table-layout: auto;
+    //table-layout: auto;
 
     td,
     th{
@@ -522,6 +525,14 @@
     width: 91px;
     text-align: center;
   }
+
+  & &__status{width: 110px;}
+  & &__state{width: 110px;}
+  & &__menu{width: 80px;}
+  & &__load{width: 65px;}
+  & &__source{width: 130px;}
+  & &__date{width: 130px;}
+  & &__use{width: 120px;}
 }
 
 // @media screen and (-webkit-min-device-pixel-ratio:0) {
@@ -549,6 +560,7 @@
   // width: 320px;
   display: flex;
   align-items: center;
+  padding-right: 20px;
 
   &__name{
     // max-width: 240px;
@@ -618,6 +630,55 @@
     margin-top: -8px;
     padding-left: 8px;
     padding-top: 8px;
+  }
+
+  &_last{margin-right: -10px;}
+
+  .simple-filter{
+    margin: -15px;
+    padding: 0;
+  }
+}
+
+.simple-filter{
+  min-width: 160px;
+  max-height: 340px;
+  overflow-y: auto;
+  padding: 5px 0;
+
+  &__sect{
+    position: relative;
+    padding: 7px 0;
+  }
+
+  &__sect:not(:last-child)::after{
+    content: '';
+    display: inline-block;
+    width: calc(100% - 32px);
+    height: 1px;
+    background: rgba(172, 178, 195, 0.5);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+  }
+
+  &__item{
+    display: block;
+    height: rem(25px);
+    @include font(normal, normal, rem(14px), rem(25px), $color-dark-blue);
+    text-decoration: none;
+    padding: 0 16px;
+  }
+
+  &__item:not(:last-child){margin-bottom: 7px;}
+
+  &__item:hover,
+  &__item.active{
+    background: $color-sort-grey;
+    color: $color-dark-blue;
+    text-decoration: none;
   }
 }
 
@@ -970,7 +1031,7 @@
 }
 
 .add-info-table{
-  margin-top: 14px;
+  margin-top: 12px;
 
   &__text{
     font-size: rem(14px);
@@ -1184,6 +1245,24 @@
   }
 }
 
+.filter-top{
+  display: flex;
+  align-items: center;
+  margin-right: -12px;
+
+  &__title{
+    @include font(normal, normal, rem(14px), 1.57, $color-dark-blue);
+    margin-right: 6px;
+  }
+
+  .select__head{background: #fff;}
+}
+
+.admin-table-text{
+  @include font(normal, normal, rem(14px), 1.57, $color-dark-grey);
+  margin: -2px 0 12px;
+}
+
 @media (max-width: 1899px) {
   .admin-table{
     // &__name{width: 340px;}
@@ -1231,6 +1310,15 @@
     tr th.admin-table__item_check{width: 50px;}
     tr th.admin-table__item_name-edit{width: 260px}
     tr th.admin-table__item_data-sample{width: 195px;}
+
+    & &__item_menu{width: 60px;}
+    & &__status{width: 80px;}
+    & &__state{width: 80px;}
+    & &__menu{width: 60px;}
+    & &__load{width: 65px;}
+    & &__source{width: 100px;}
+    & &__date{width: 100px;}
+    & &__use{width: 90px;}
   }
 
   .perm-wrap-key{
@@ -1257,10 +1345,10 @@
     tr th.admin-table__item_data-sample{width: 160px;}
   }
 
-  .table-file-info{
-    width: 300px;
-    // &__name{max-width: 220px;}
-  }
+  //.table-file-info{
+  //  width: 300px;
+  //  // &__name{max-width: 220px;}
+  //}
 
   // .map-categories{
   //  .admin-table{

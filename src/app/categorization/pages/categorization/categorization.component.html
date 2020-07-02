@@ -17,7 +17,7 @@
         </div>
     </div>
     <div [hidden]="!isDataExists || !isLoaded" class="admin-table-content">
-        <mdc-table #table [auto]="true" [dataSource]="dataSource" [rowInfoTemplate]="rowInfoTemplate"
+        <mdc-table #table [dataSource]="dataSource" [rowInfoTemplate]="rowInfoTemplate"
             [cellsTemplate]="{ state:stateColumn,insertDate:dateColumn,inUseColumn:inUseColumn}"
             [searchOptions]="searchOptions" [paginator]="paginator" [search]="search" (onAction)="onAction($event)">
         </mdc-table>
