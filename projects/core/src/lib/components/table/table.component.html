@@ -56,13 +56,12 @@
                 </ng-container>
                 <td class="admin-table__item admin-table__item_menu"
                     *ngIf="dataSource?.actions?.links?.length || dataSource?.actions?.subLinks?.length">
-                    <ng-container *ngIf="editCellTemplate"
-                        [ngTemplateOutlet]="editCellTemplate"
+                    <ng-container *ngIf="editCellTemplate" [ngTemplateOutlet]="editCellTemplate"
                         [ngTemplateOutletContext]="{$implicit: row.cells,source:row.source}">
                     </ng-container>
                     <div class="admin-table-action">
                         <span (click)="openLinkMenu(row,$event,rowIndex)"
-                            *ngIf="((dataSource.actions.subLinks|actionLink:row).length||(dataSource.actions.links|actionLink:row).length)"
+                            *ngIf="!row.actionsDisabled && (((dataSource.actions.subLinks|actionLink:row).length||(dataSource.actions.links|actionLink:row).length))"
                             class="admin-table-action__menu ic-hover">
                             <svg mdcSvg="ic-dot-menu" class="icon ic-dot-menu"></svg>
                             <div *ngIf="(commandRow===row && (dataSource?.actions?.links?.length || dataSource?.actions?.subLinks?.length) && ((dataSource.actions.subLinks|actionLink:commandRow).length||(dataSource.actions.links|actionLink:commandRow).length))"
@@ -76,6 +75,10 @@
                                     </mdc-modal-menu>
                                 </div>
                             </div>
+                        </span>
+                        <span *ngIf="row.actionsDisabled"
+                            class="admin-table-action__menu admin-table-action__menu_inactive">
+                            <svg mdcSvg="ic-dot-menu" class="icon ic-dot-menu"></svg>
                         </span>
                     </div>
                 </td>

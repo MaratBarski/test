@@ -36,8 +36,8 @@
 </ng-template>
 
 <ng-template let-item let-src="source" #stateColumn>
-    <span *ngIf="src.hierarchyChange && src.hierarchyLoadingType==='etl'" class="admin-table__icon"
-        (mouseleave)="item.showWarning=false" (mouseenter)="showInfo($event,item,src)">
+    <span *ngIf="src.hierarchyChange && src.hierarchyLoadingType==='etl' && src.status!=='unmapped'"
+        class="admin-table__icon" (mouseleave)="item.showWarning=false" (mouseenter)="showInfo($event,item,src)">
         <mdc-icon path="ic-warning"></mdc-icon>
         <div [hidden]="!item.showWarning" class="info-popup info-popup_right warning-info">
             <div class="form-site">
@@ -72,11 +72,12 @@
             </div>
         </div>
     </span>
-    <span *ngIf="!src.hierarchyChange && src.hierarchyLoadingType==='etl'">
+    <span *ngIf="!src.hierarchyChange && src.hierarchyLoadingType==='etl'  && src.status!=='unmapped'">
         <mdc-icon path="ic-robot"></mdc-icon>
     </span>
-    <!-- {{src.hierarchyLoadingType}}
-    {{src.hierarchyChange}} -->
+    <span *ngIf="src.status==='unmapped'" class="admin-table__icon">
+        <svg class="icon ic-running ic-grey" mdcSvg="ic-running"></svg>
+    </span>
 </ng-template>
 
 <ng-template let-item let-src="source" #inUseColumn>

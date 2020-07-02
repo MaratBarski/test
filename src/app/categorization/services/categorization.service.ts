@@ -106,8 +106,9 @@ export class CategorizationService {
           hierarchyFile: fl.hierarchyFile,
           insertDate: fl.insertDate,
           domain: fl.project && fl.project.projectName ? fl.project.projectName : '',
-          defaultLevelId: fl.defaultLevelId
+          defaultLevelId: fl.defaultLevelId,
         },
+        actionsDisabled: fl.status === 'unmapped',
         isActive: false,
         source: fl
       })

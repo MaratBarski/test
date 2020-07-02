@@ -16,4 +16,5 @@ export class Hierarchy {
      siteEventPropertyInfos?: any;
      hierarchyLoadingType?: any;
      hierarchyChange?: any;
+     status?: any;
 }
