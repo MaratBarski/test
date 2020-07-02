@@ -93,13 +93,15 @@ export class UploadService implements OnDestroy {
 
   private uploadEnd(uploadInfo: UploadInfo, status: NotificationStatus): void {
     uploadInfo.notification.status = status;
+    if (status === NotificationStatus.completed) {
+      uploadInfo.notification.type = ToasterType.success;
+      uploadInfo.notification.name = uploadInfo.notification.succName;
+    }
     if (status === NotificationStatus.completed
       && uploadInfo.targetComponent
       && uploadInfo.targetComponent.onComplete) {
-      uploadInfo.notification.type = ToasterType.success;
-      uploadInfo.notification.name = uploadInfo.notification.succName;
       uploadInfo.targetComponent.onComplete();
-      uploadInfo.form = undefined;
     }
+    uploadInfo.form = undefined;
   }
 }
