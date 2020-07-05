@@ -1,11 +1,10 @@
 import { Component, OnInit, ViewChild, AfterContentInit } from '@angular/core';
 import { ImportedFilesService } from '../../services/imported-files.service';
 import { FileSource, FileSourceResponse } from '../../models/file-source';
-import { TableComponent, TranslateService, DateFilterComponent, TableModel, PopupComponent, CheckBoxListOption, NavigationService, PageInfo, BaseSibscriber, CheckBoxListComponent, SelectOption, EmptyState, DatePeriod, TableActionCommand } from '@app/core-api';
-import { DateRangeButton } from '@app/core-api';
+import { TableComponent, TranslateService, DateFilterComponent, TableModel, CheckBoxListOption, NavigationService, PageInfo, BaseSibscriber, CheckBoxListComponent, SelectOption, EmptyState, DatePeriod, TableActionCommand } from '@app/core-api';
+import { DateRangeButton } from '@appcore';
 import { Router, ActivatedRoute } from '@angular/router';
-import { UploadFileComponent } from '@app/imported-files/components/upload-file/upload-file.component';
-import { delay } from 'rxjs/operators';
+import { ConfigService } from '@app/shared/services/config.service';
 
 @Component({
   selector: 'md-imported-files',
@@ -52,7 +51,8 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, Af
     private importedFilesService: ImportedFilesService,
     private navigationService: NavigationService,
     private router: Router,
-    private ativatedRoute: ActivatedRoute
+    private ativatedRoute: ActivatedRoute,
+    public configService: ConfigService
   ) {
     super();
     this.navigationService.currentPageID = PageInfo.ImportedFiles.id;

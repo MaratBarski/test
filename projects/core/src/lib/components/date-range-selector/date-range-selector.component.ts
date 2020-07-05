@@ -16,6 +16,7 @@ export class DateRangeSelectorComponent {
   @Input() from = new Date();
   @Input() to = new Date();
   @Input() header = 'Select report data range';
+  @Input() dateFormat = 'dd/mm/yy';
 
   @Output() onCancel = new EventEmitter();
   @Output() onApply = new EventEmitter<FromTo>();

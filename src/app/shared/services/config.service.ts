@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { DataService, BaseSibscriber } from '@appcore';
 import { Offline } from '../decorators/offline.decorator';
 import { environment } from '@env/environment';
+import { forkJoin } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,12 +10,18 @@ import { environment } from '@env/environment';
 export class ConfigService extends BaseSibscriber {
 
   config: any;
+  serverConfig: any;
+
   get isLoaded(): boolean { return this._isLoaded; }
   private _isLoaded = false;
 
-  @Offline('assets/offline/config.json')
-  private getUrl = 'assets/offline/config.json';
-  //private getUrl = `${environment.serverUrl}${environment.endPoints.config}`;
+  get dateFormat(): string { return this._dateFormat; }
+  private _dateFormat = 'dd/mm/yy'
+
+  private clientUrl = 'assets/offline/config.json';
+
+  @Offline('assets/offline/serverConfig.json')
+  private serverUrl = `${environment.serverUrl}${environment.endPoints.config}`;
 
 
   constructor(private dataService: DataService) {
@@ -24,11 +31,21 @@ export class ConfigService extends BaseSibscriber {
 
   loadConfig(): void {
     super.add(
-      this.dataService.get(this.getUrl).subscribe((res: any) => {
-        this.config = res.data;
-        this._isLoaded = true;
-      }, error => {
-        console.error('Error loading configuration.');
-      }));
+      forkJoin(
+        this.dataService.get(this.clientUrl),
+        this.dataService.get(this.serverUrl))
+        .subscribe(([client, server]: any) => {
+          this._isLoaded = true;
+          this.config = client.data;
+          this.serverConfig = server.data;
+          const dateParam = server.data.config.find(x => x.parameterName === 'date_format');
+          if (dateParam && dateParam.parameterValue === 'US') {
+            this._dateFormat = 'mm/dd/yy';
+          } else {
+            this._dateFormat = 'dd/mm/yy';
+          }
+        }, error => {
+          console.error('Error loading configuration.');
+        }));
   }
 }
