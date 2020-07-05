@@ -84,14 +84,19 @@ export class EditCategoriesComponent extends BaseSibscriber implements OnInit {
       description: category.data.description,
       defaultLevelId: category.data.defaultLevelId,
       message: category.data.notificationMessage,
-      hierarchyLevels: {}
+      hierarchyLevels: []
+      //hierarchyLevels: {}
     };
 
     category.data.hierarchyLevels.forEach((l: any) => {
-      objToSend.hierarchyLevels[l.hierarchyLevelId] = l.hierarchyLevelName;
+      objToSend.hierarchyLevels.push({
+        hierarchyLevelId: l.hierarchyLevelId,
+        hierarchyLevelName: l.hierarchyLevelName
+      });
+      //objToSend.hierarchyLevels[l.hierarchyLevelId] = l.hierarchyLevelName;
     });
 
-    //document.write(JSON.stringify(objToSend));
+    document.write(JSON.stringify(objToSend));
 
     this.isLoading = true;
     super.add(
