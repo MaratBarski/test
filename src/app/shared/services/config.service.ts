@@ -9,7 +9,8 @@ import { environment } from '@env/environment';
 export class ConfigService extends BaseSibscriber {
 
   config: any;
-  isLoaded = false;
+  get isLoaded(): boolean { return this._isLoaded; }
+  private _isLoaded = false;
 
   @Offline('assets/offline/config.json')
   private getUrl = 'assets/offline/config.json';
@@ -25,7 +26,9 @@ export class ConfigService extends BaseSibscriber {
     super.add(
       this.dataService.get(this.getUrl).subscribe((res: any) => {
         this.config = res.data;
-        this.isLoaded = true;
+        this._isLoaded = true;
+      }, error => {
+        console.error('Error loading configuration.');
       }));
   }
 }
