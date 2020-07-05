@@ -61,7 +61,6 @@ export class CategorizationService {
           text: 'Name',
           isSortEnabled: true,
           sortDir: 'desc',
-          isSortedColumn: true,
           showDetails: true,
           css: 'w-xxl-300 w-md-150'
         },
@@ -75,6 +74,8 @@ export class CategorizationService {
           columnId: 'insertDate',
           text: 'Modified',
           isSortEnabled: true,
+          isSortedColumn: true,
+          sortDir: 'desc',
           css: 'd-none d-lg-table-cell'
         },
         {
