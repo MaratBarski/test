@@ -98,6 +98,14 @@ export class CategorizationComponent extends BaseSibscriber implements OnInit {
         this.categorySource = res.data;
         this.initData();
       }));
+      this.onComplete = (): void => {
+        super.add(
+          this.categorizationService.load().subscribe((res: any) => {
+            this.categorySource = res.data || [];
+            this.initData();
+            this.table.stayOnCurrentPage = true;
+          }));
+      }
   }
 
   closeCategoryInfo(): void {
@@ -107,5 +115,14 @@ export class CategorizationComponent extends BaseSibscriber implements OnInit {
   openUploadNew(): void {
     this.currentSource = undefined;
     this.showUploadFile = true;
+  }
+
+  get me(): CategorizationComponent { return this; }
+
+  onComplete: any;
+
+  ngOnDestroy(): void {
+    this.onComplete = () => { };
+    super.ngOnDestroy();
   }
 }

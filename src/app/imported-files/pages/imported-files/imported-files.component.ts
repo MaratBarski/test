@@ -51,7 +51,7 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, Af
     private importedFilesService: ImportedFilesService,
     private navigationService: NavigationService,
     private router: Router,
-    private ativatedRoute: ActivatedRoute,
+    private activatedRoute: ActivatedRoute,
     public configService: ConfigService
   ) {
     super();
@@ -60,7 +60,7 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, Af
 
   ngAfterContentInit(): void {
     super.add(
-      this.ativatedRoute.paramMap.subscribe(p => {
+      this.activatedRoute.paramMap.subscribe(p => {
         let tab = parseInt(p.get('tab') || '0');
         if (isNaN(tab)) { tab = 0; }
         tab = Math.max(0, Math.min(tab, 2));

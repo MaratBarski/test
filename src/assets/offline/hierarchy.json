@@ -249,7 +249,7 @@
                     "hierarchyLevelId": "20",
                     "hierarchyLevelName": "Anatomical group (ATC1)",
                     "sortValue": -1,
-                    "dataSample": "Artificial Saliva%sep%Insulin Pump%sep%Milk Thistle%sep%Systemic hormonal preparations, excluding sex hormones and insulins ‏",
+                    "dataSample": "Artificial Saliva%sep%Insulin Pump%sep%Milk Thistle%sep%Systemic hormonal preparations, excluding sex hormones and insulins ‏",
                     "hierarchyRootId": "3"
                 },
                 {
@@ -263,7 +263,7 @@
                     "hierarchyLevelId": "1767",
                     "hierarchyLevelName": "Anatomical group (ATC1)",
                     "sortValue": -1,
-                    "dataSample": "Artificial Saliva%sep%Insulin Pump%sep%Milk Thistle%sep%Systemic hormonal preparations, excluding sex hormones and insulins ‏",
+                    "dataSample": "Artificial Saliva%sep%Insulin Pump%sep%Milk Thistle%sep%Systemic hormonal preparations, excluding sex hormones and insulins ‏",
                     "hierarchyRootId": "3"
                 },
                 {
@@ -277,7 +277,7 @@
                     "hierarchyLevelId": "1759",
                     "hierarchyLevelName": "Anatomical group (ATC1)",
                     "sortValue": -1,
-                    "dataSample": "Artificial Saliva%sep%Insulin Pump%sep%Milk Thistle%sep%Systemic hormonal preparations, excluding sex hormones and insulins ‏",
+                    "dataSample": "Artificial Saliva%sep%Insulin Pump%sep%Milk Thistle%sep%Systemic hormonal preparations, excluding sex hormones and insulins ‏",
                     "hierarchyRootId": "3"
                 },
                 {
@@ -679,7 +679,7 @@
                     "hierarchyLevelId": "1782",
                     "hierarchyLevelName": "Anatomical group (ATC1)",
                     "sortValue": 5,
-                    "dataSample": "Artificial Saliva%sep%Insulin Pump%sep%Milk Thistle%sep%Systemic hormonal preparations, excluding sex hormones and insulins ‏",
+                    "dataSample": "Artificial Saliva%sep%Insulin Pump%sep%Milk Thistle%sep%Systemic hormonal preparations, excluding sex hormones and insulins ‏",
                     "hierarchyRootId": "58"
                 },
                 {
@@ -693,7 +693,7 @@
                     "hierarchyLevelId": "1780",
                     "hierarchyLevelName": "Anatomical group (ATC1)",
                     "sortValue": -1,
-                    "dataSample": "Artificial Saliva%sep%Insulin Pump%sep%Milk Thistle%sep%Systemic hormonal preparations, excluding sex hormones and insulins ‏",
+                    "dataSample": "Artificial Saliva%sep%Insulin Pump%sep%Milk Thistle%sep%Systemic hormonal preparations, excluding sex hormones and insulins ‏",
                     "hierarchyRootId": "58"
                 }
             ],
@@ -3280,7 +3280,7 @@
                     "hierarchyLevelId": "1600",
                     "hierarchyLevelName": "Anatomical group (ATC1)",
                     "sortValue": 5,
-                    "dataSample": "Artificial Saliva%sep%Insulin Pump%sep%Milk Thistle%sep%Systemic hormonal preparations, excluding sex hormones and insulins ‏",
+                    "dataSample": "Artificial Saliva%sep%Insulin Pump%sep%Milk Thistle%sep%Systemic hormonal preparations, excluding sex hormones and insulins ‏",
                     "hierarchyRootId": "241"
                 },
                 {
@@ -4523,7 +4523,7 @@
                     "hierarchyLevelId": "1604",
                     "hierarchyLevelName": "Anatomical group (ATC1)",
                     "sortValue": -1,
-                    "dataSample": "Artificial Saliva%sep%Insulin Pump%sep%Milk Thistle%sep%Systemic hormonal preparations, excluding sex hormones and insulins ‏",
+                    "dataSample": "Artificial Saliva%sep%Insulin Pump%sep%Milk Thistle%sep%Systemic hormonal preparations, excluding sex hormones and insulins ‏",
                     "hierarchyRootId": "242"
                 },
                 {
@@ -5841,7 +5841,7 @@
                     "hierarchyLevelId": "1523",
                     "hierarchyLevelName": "Anatomical group (ATC1)",
                     "sortValue": 5,
-                    "dataSample": "Artificial Saliva%sep%Insulin Pump%sep%Milk Thistle%sep%Systemic hormonal preparations, excluding sex hormones and insulins ‏",
+                    "dataSample": "Artificial Saliva%sep%Insulin Pump%sep%Milk Thistle%sep%Systemic hormonal preparations, excluding sex hormones and insulins ‏",
                     "hierarchyRootId": "214"
                 },
                 {
@@ -6145,7 +6145,7 @@
                     "hierarchyLevelId": "1614",
                     "hierarchyLevelName": "Anatomical group (ATC1)",
                     "sortValue": -1,
-                    "dataSample": "Artificial Saliva%sep%Insulin Pump%sep%Milk Thistle%sep%Systemic hormonal preparations, excluding sex hormones and insulins ‏",
+                    "dataSample": "Artificial Saliva%sep%Insulin Pump%sep%Milk Thistle%sep%Systemic hormonal preparations, excluding sex hormones and insulins ‏",
                     "hierarchyRootId": "240"
                 },
                 {
@@ -6278,7 +6278,7 @@
                     "hierarchyLevelId": "1681",
                     "hierarchyLevelName": "Anatomical group (ATC1)",
                     "sortValue": -1,
-                    "dataSample": "Artificial Saliva%sep%Insulin Pump%sep%Milk Thistle%sep%Systemic hormonal preparations, excluding sex hormones and insulins ‏",
+                    "dataSample": "Artificial Saliva%sep%Insulin Pump%sep%Milk Thistle%sep%Systemic hormonal preparations, excluding sex hormones and insulins ‏",
                     "hierarchyRootId": "240"
                 },
                 {
@@ -8688,6 +8688,127 @@
             "siteEventPropertyInfos": []
         },
         {
+            "hierarchyRootId": "541",
+            "description": "asfasfasf",
+            "domain": null,
+            "hierarchyFile": "20200702_114907_20200405_010547_omry_12.csv",
+            "hierarchyName": "asdfasf",
+            "projectId": "18",
+            "hierarchyFilePath": "/mdclone_v6/files/Hierarchies",
+            "insertDate": "2020-07-02T08:47:40.000Z",
+            "defaultLevelId": null,
+            "hierarchyChange": false,
+            "hierarchyLoadingType": "manual",
+            "status": "unmapped",
+            "project_id": "18",
+            "hierarchyLevels": [
+                {
+                    "hierarchyLevelId": "3680",
+                    "hierarchyLevelName": "Task",
+                    "sortValue": 4,
+                    "dataSample": "R5.5",
+                    "hierarchyRootId": "541"
+                },
+                {
+                    "hierarchyLevelId": "3682",
+                    "hierarchyLevelName": "Description",
+                    "sortValue": 5,
+                    "dataSample": "",
+                    "hierarchyRootId": "541"
+                },
+                {
+                    "hierarchyLevelId": "3672",
+                    "hierarchyLevelName": "User",
+                    "sortValue": 0,
+                    "dataSample": "Omry Atia",
+                    "hierarchyRootId": "541"
+                },
+                {
+                    "hierarchyLevelId": "3674",
+                    "hierarchyLevelName": "Email",
+                    "sortValue": 1,
+                    "dataSample": "omry.atia@mdclone.com",
+                    "hierarchyRootId": "541"
+                },
+                {
+                    "hierarchyLevelId": "3676",
+                    "hierarchyLevelName": "Client",
+                    "sortValue": 2,
+                    "dataSample": "",
+                    "hierarchyRootId": "541"
+                },
+                {
+                    "hierarchyLevelId": "3678",
+                    "hierarchyLevelName": "Project",
+                    "sortValue": 3,
+                    "dataSample": "Dev",
+                    "hierarchyRootId": "541"
+                },
+                {
+                    "hierarchyLevelId": "3684",
+                    "hierarchyLevelName": "Billable",
+                    "sortValue": 6,
+                    "dataSample": "No",
+                    "hierarchyRootId": "541"
+                },
+                {
+                    "hierarchyLevelId": "3686",
+                    "hierarchyLevelName": "Start date",
+                    "sortValue": 7,
+                    "dataSample": "2019-12-17%sep%2019-12-18%sep%2019-12-05%sep%2019-12-23",
+                    "hierarchyRootId": "541"
+                },
+                {
+                    "hierarchyLevelId": "3688",
+                    "hierarchyLevelName": "Start time",
+                    "sortValue": 8,
+                    "dataSample": "09:00:00",
+                    "hierarchyRootId": "541"
+                },
+                {
+                    "hierarchyLevelId": "3690",
+                    "hierarchyLevelName": "End date",
+                    "sortValue": 9,
+                    "dataSample": "2019-12-17%sep%2019-12-18%sep%2019-12-05%sep%2019-12-23",
+                    "hierarchyRootId": "541"
+                },
+                {
+                    "hierarchyLevelId": "3692",
+                    "hierarchyLevelName": "End time",
+                    "sortValue": 10,
+                    "dataSample": "18:00:00",
+                    "hierarchyRootId": "541"
+                },
+                {
+                    "hierarchyLevelId": "3694",
+                    "hierarchyLevelName": "Duration",
+                    "sortValue": 11,
+                    "dataSample": "09:00:00",
+                    "hierarchyRootId": "541"
+                },
+                {
+                    "hierarchyLevelId": "3696",
+                    "hierarchyLevelName": "Tags",
+                    "sortValue": 12,
+                    "dataSample": "",
+                    "hierarchyRootId": "541"
+                },
+                {
+                    "hierarchyLevelId": "3698",
+                    "hierarchyLevelName": "Amount (USD)",
+                    "sortValue": 13,
+                    "dataSample": "",
+                    "hierarchyRootId": "541"
+                }
+            ],
+            "project": {
+                "projectId": "18",
+                "projectName": "ETL Project RS",
+                "defaultSiteId": "17"
+            },
+            "siteEventPropertyInfos": []
+        },
+        {
             "hierarchyRootId": "261",
             "description": "",
             "domain": "10.0.2.7",
@@ -8895,7 +9016,7 @@
                     "hierarchyLevelId": "1802",
                     "hierarchyLevelName": "Anatomical group (ATC1)",
                     "sortValue": 5,
-                    "dataSample": "Artificial Saliva%sep%Insulin Pump%sep%Milk Thistle%sep%Systemic hormonal preparations, excluding sex hormones and insulins ‏",
+                    "dataSample": "Artificial Saliva%sep%Insulin Pump%sep%Milk Thistle%sep%Systemic hormonal preparations, excluding sex hormones and insulins ‏",
                     "hierarchyRootId": "256"
                 }
             ],
@@ -9187,6 +9308,127 @@
                     "isDependentSearch": false
                 }
             ]
+        },
+        {
+            "hierarchyRootId": "540",
+            "description": "asdasd",
+            "domain": null,
+            "hierarchyFile": "20200702_114930_20200405_010547_omry_12.csv",
+            "hierarchyName": "adsasd",
+            "projectId": "6",
+            "hierarchyFilePath": "/mdclone_v6/files/Hierarchies",
+            "insertDate": "2020-07-02T08:47:40.000Z",
+            "defaultLevelId": null,
+            "hierarchyChange": false,
+            "hierarchyLoadingType": "manual",
+            "status": "unmapped",
+            "project_id": "6",
+            "hierarchyLevels": [
+                {
+                    "hierarchyLevelId": "3681",
+                    "hierarchyLevelName": "Description",
+                    "sortValue": 5,
+                    "dataSample": "",
+                    "hierarchyRootId": "540"
+                },
+                {
+                    "hierarchyLevelId": "3671",
+                    "hierarchyLevelName": "User",
+                    "sortValue": 0,
+                    "dataSample": "Omry Atia",
+                    "hierarchyRootId": "540"
+                },
+                {
+                    "hierarchyLevelId": "3673",
+                    "hierarchyLevelName": "Email",
+                    "sortValue": 1,
+                    "dataSample": "omry.atia@mdclone.com",
+                    "hierarchyRootId": "540"
+                },
+                {
+                    "hierarchyLevelId": "3675",
+                    "hierarchyLevelName": "Client",
+                    "sortValue": 2,
+                    "dataSample": "",
+                    "hierarchyRootId": "540"
+                },
+                {
+                    "hierarchyLevelId": "3677",
+                    "hierarchyLevelName": "Project",
+                    "sortValue": 3,
+                    "dataSample": "Dev",
+                    "hierarchyRootId": "540"
+                },
+                {
+                    "hierarchyLevelId": "3679",
+                    "hierarchyLevelName": "Task",
+                    "sortValue": 4,
+                    "dataSample": "R5.5",
+                    "hierarchyRootId": "540"
+                },
+                {
+                    "hierarchyLevelId": "3683",
+                    "hierarchyLevelName": "Billable",
+                    "sortValue": 6,
+                    "dataSample": "No",
+                    "hierarchyRootId": "540"
+                },
+                {
+                    "hierarchyLevelId": "3685",
+                    "hierarchyLevelName": "Start date",
+                    "sortValue": 7,
+                    "dataSample": "2019-12-17%sep%2019-12-18%sep%2019-12-05%sep%2019-12-23",
+                    "hierarchyRootId": "540"
+                },
+                {
+                    "hierarchyLevelId": "3687",
+                    "hierarchyLevelName": "Start time",
+                    "sortValue": 8,
+                    "dataSample": "09:00:00",
+                    "hierarchyRootId": "540"
+                },
+                {
+                    "hierarchyLevelId": "3689",
+                    "hierarchyLevelName": "End date",
+                    "sortValue": 9,
+                    "dataSample": "2019-12-17%sep%2019-12-18%sep%2019-12-05%sep%2019-12-23",
+                    "hierarchyRootId": "540"
+                },
+                {
+                    "hierarchyLevelId": "3691",
+                    "hierarchyLevelName": "End time",
+                    "sortValue": 10,
+                    "dataSample": "18:00:00",
+                    "hierarchyRootId": "540"
+                },
+                {
+                    "hierarchyLevelId": "3693",
+                    "hierarchyLevelName": "Duration",
+                    "sortValue": 11,
+                    "dataSample": "09:00:00",
+                    "hierarchyRootId": "540"
+                },
+                {
+                    "hierarchyLevelId": "3695",
+                    "hierarchyLevelName": "Tags",
+                    "sortValue": 12,
+                    "dataSample": "",
+                    "hierarchyRootId": "540"
+                },
+                {
+                    "hierarchyLevelId": "3697",
+                    "hierarchyLevelName": "Amount (USD)",
+                    "sortValue": 13,
+                    "dataSample": "",
+                    "hierarchyRootId": "540"
+                }
+            ],
+            "project": {
+                "projectId": "6",
+                "projectName": "ETL project",
+                "defaultSiteId": "3"
+            },
+            "siteEventPropertyInfos": []
         },
         {
             "hierarchyRootId": "266",
@@ -11568,7 +11810,7 @@
                     "hierarchyLevelId": "2172",
                     "hierarchyLevelName": "Anatomical group (ATC1)",
                     "sortValue": 5,
-                    "dataSample": "Artificial Saliva%sep%Insulin Pump%sep%Milk Thistle%sep%Systemic hormonal preparations, excluding sex hormones and insulins ‏",
+                    "dataSample": "Artificial Saliva%sep%Insulin Pump%sep%Milk Thistle%sep%Systemic hormonal preparations, excluding sex hormones and insulins ‏",
                     "hierarchyRootId": "324"
                 }
             ],
@@ -15431,7 +15673,7 @@
                     "hierarchyLevelId": "2715",
                     "hierarchyLevelName": "Procedure",
                     "sortValue": 9,
-                    "dataSample": "psychotherapy%sep%culture %sep%immunization%sep%test",
+                    "dataSample": "psychotherapy%sep%culture %sep%immunization%sep%test",
                     "hierarchyRootId": "416"
                 }
             ],
@@ -15818,7 +16060,7 @@
                     "hierarchyLevelId": "2799",
                     "hierarchyLevelName": "Procedure",
                     "sortValue": 9,
-                    "dataSample": "psychotherapy%sep%culture %sep%immunization%sep%test",
+                    "dataSample": "psychotherapy%sep%culture %sep%immunization%sep%test",
                     "hierarchyRootId": "424"
                 }
             ],
@@ -16132,7 +16374,7 @@
                     "hierarchyLevelId": "2821",
                     "hierarchyLevelName": "Procedure",
                     "sortValue": 9,
-                    "dataSample": "psychotherapy%sep%culture %sep%immunization%sep%test",
+                    "dataSample": "psychotherapy%sep%culture %sep%immunization%sep%test",
                     "hierarchyRootId": "434"
                 }
             ],
@@ -16225,7 +16467,7 @@
                     "hierarchyLevelId": "2831",
                     "hierarchyLevelName": "Procedure",
                     "sortValue": 9,
-                    "dataSample": "psychotherapy%sep%culture %sep%immunization%sep%test",
+                    "dataSample": "psychotherapy%sep%culture %sep%immunization%sep%test",
                     "hierarchyRootId": "435"
                 }
             ],
@@ -16899,7 +17141,7 @@
                     "hierarchyLevelId": "2981",
                     "hierarchyLevelName": "Procedure",
                     "sortValue": 9,
-                    "dataSample": "psychotherapy%sep%culture %sep%immunization%sep%test",
+                    "dataSample": "psychotherapy%sep%culture %sep%immunization%sep%test",
                     "hierarchyRootId": "457"
                 }
             ],
@@ -20926,6 +21168,1519 @@
                 "projectId": "6",
                 "projectName": "ETL project",
                 "defaultSiteId": "3"
+            },
+            "siteEventPropertyInfos": []
+        },
+        {
+            "hierarchyRootId": "538",
+            "description": "l;",
+            "domain": null,
+            "hierarchyFile": "20200702_104306_A_Valid_file_1.csv",
+            "hierarchyName": "lhl;",
+            "projectId": "6",
+            "hierarchyFilePath": "/mdclone_v6/files/Hierarchies",
+            "insertDate": "2020-07-02T07:40:39.000Z",
+            "defaultLevelId": null,
+            "hierarchyChange": false,
+            "hierarchyLoadingType": "manual",
+            "status": "unmapped",
+            "project_id": "6",
+            "hierarchyLevels": [
+                {
+                    "hierarchyLevelId": "3653",
+                    "hierarchyLevelName": "PatientGuid",
+                    "sortValue": 0,
+                    "dataSample": "1342198F-A0E5-470E-9BAE-48F645A81108%sep%A72FDAB6-2820-400C-9B6B-CF57BC714ED5%sep%63C90389-4DE4-4C76-8415-3534D6612610%sep%22048FAF-2F79-4F06-9B86-F8DBE228F2E4",
+                    "hierarchyRootId": "538"
+                },
+                {
+                    "hierarchyLevelId": "3654",
+                    "hierarchyLevelName": "AgeAtEvent",
+                    "sortValue": 1,
+                    "dataSample": "20.46%sep%17.03%sep%16.37%sep%15.16",
+                    "hierarchyRootId": "538"
+                },
+                {
+                    "hierarchyLevelId": "3655",
+                    "hierarchyLevelName": "DateofEvent",
+                    "sortValue": 2,
+                    "dataSample": "1970-11-06 11:49:46%sep%1976-08-16 11:49:46%sep%1972-09-15 11:49:46%sep%1981-02-26 11:49:46",
+                    "hierarchyRootId": "538"
+                },
+                {
+                    "hierarchyLevelId": "3656",
+                    "hierarchyLevelName": "Diagnosys",
+                    "sortValue": 3,
+                    "dataSample": "A00.1%sep%A08.32%sep%A25.9%sep%A30.3",
+                    "hierarchyRootId": "538"
+                }
+            ],
+            "project": {
+                "projectId": "6",
+                "projectName": "ETL project",
+                "defaultSiteId": "3"
+            },
+            "siteEventPropertyInfos": []
+        },
+        {
+            "hierarchyRootId": "539",
+            "description": "vnmb",
+            "domain": null,
+            "hierarchyFile": "20200702_114100_20200405_010547_omry_12.csv",
+            "hierarchyName": "final test",
+            "projectId": "6",
+            "hierarchyFilePath": "/mdclone_v6/files/Hierarchies",
+            "insertDate": "2020-07-02T08:38:47.000Z",
+            "defaultLevelId": null,
+            "hierarchyChange": false,
+            "hierarchyLoadingType": "manual",
+            "status": "unmapped",
+            "project_id": "6",
+            "hierarchyLevels": [
+                {
+                    "hierarchyLevelId": "3657",
+                    "hierarchyLevelName": "User",
+                    "sortValue": 0,
+                    "dataSample": "Omry Atia",
+                    "hierarchyRootId": "539"
+                },
+                {
+                    "hierarchyLevelId": "3658",
+                    "hierarchyLevelName": "Email",
+                    "sortValue": 1,
+                    "dataSample": "omry.atia@mdclone.com",
+                    "hierarchyRootId": "539"
+                },
+                {
+                    "hierarchyLevelId": "3659",
+                    "hierarchyLevelName": "Client",
+                    "sortValue": 2,
+                    "dataSample": "",
+                    "hierarchyRootId": "539"
+                },
+                {
+                    "hierarchyLevelId": "3660",
+                    "hierarchyLevelName": "Project",
+                    "sortValue": 3,
+                    "dataSample": "Dev",
+                    "hierarchyRootId": "539"
+                },
+                {
+                    "hierarchyLevelId": "3661",
+                    "hierarchyLevelName": "Task",
+                    "sortValue": 4,
+                    "dataSample": "R5.5",
+                    "hierarchyRootId": "539"
+                },
+                {
+                    "hierarchyLevelId": "3662",
+                    "hierarchyLevelName": "Description",
+                    "sortValue": 5,
+                    "dataSample": "",
+                    "hierarchyRootId": "539"
+                },
+                {
+                    "hierarchyLevelId": "3663",
+                    "hierarchyLevelName": "Billable",
+                    "sortValue": 6,
+                    "dataSample": "No",
+                    "hierarchyRootId": "539"
+                },
+                {
+                    "hierarchyLevelId": "3664",
+                    "hierarchyLevelName": "Start date",
+                    "sortValue": 7,
+                    "dataSample": "2019-12-17%sep%2019-12-18%sep%2019-12-05%sep%2019-12-23",
+                    "hierarchyRootId": "539"
+                },
+                {
+                    "hierarchyLevelId": "3665",
+                    "hierarchyLevelName": "Start time",
+                    "sortValue": 8,
+                    "dataSample": "09:00:00",
+                    "hierarchyRootId": "539"
+                },
+                {
+                    "hierarchyLevelId": "3666",
+                    "hierarchyLevelName": "End date",
+                    "sortValue": 9,
+                    "dataSample": "2019-12-17%sep%2019-12-18%sep%2019-12-05%sep%2019-12-23",
+                    "hierarchyRootId": "539"
+                },
+                {
+                    "hierarchyLevelId": "3667",
+                    "hierarchyLevelName": "End time",
+                    "sortValue": 10,
+                    "dataSample": "18:00:00",
+                    "hierarchyRootId": "539"
+                },
+                {
+                    "hierarchyLevelId": "3668",
+                    "hierarchyLevelName": "Duration",
+                    "sortValue": 11,
+                    "dataSample": "09:00:00",
+                    "hierarchyRootId": "539"
+                },
+                {
+                    "hierarchyLevelId": "3669",
+                    "hierarchyLevelName": "Tags",
+                    "sortValue": 12,
+                    "dataSample": "",
+                    "hierarchyRootId": "539"
+                },
+                {
+                    "hierarchyLevelId": "3670",
+                    "hierarchyLevelName": "Amount (USD)",
+                    "sortValue": 13,
+                    "dataSample": "",
+                    "hierarchyRootId": "539"
+                }
+            ],
+            "project": {
+                "projectId": "6",
+                "projectName": "ETL project",
+                "defaultSiteId": "3"
+            },
+            "siteEventPropertyInfos": []
+        },
+        {
+            "hierarchyRootId": "542",
+            "description": "edfsafdsf",
+            "domain": null,
+            "hierarchyFile": "20200702_115051_20200621_154621_20200405_010547_omry_12.csv",
+            "hierarchyName": "qweq4e3r",
+            "projectId": "6",
+            "hierarchyFilePath": "/mdclone_v6/files/Hierarchies",
+            "insertDate": "2020-07-02T08:48:31.000Z",
+            "defaultLevelId": null,
+            "hierarchyChange": false,
+            "hierarchyLoadingType": "manual",
+            "status": "unmapped",
+            "project_id": "6",
+            "hierarchyLevels": [
+                {
+                    "hierarchyLevelId": "3699",
+                    "hierarchyLevelName": "User",
+                    "sortValue": 0,
+                    "dataSample": "Omry Atia",
+                    "hierarchyRootId": "542"
+                },
+                {
+                    "hierarchyLevelId": "3700",
+                    "hierarchyLevelName": "Email",
+                    "sortValue": 1,
+                    "dataSample": "omry.atia@mdclone.com",
+                    "hierarchyRootId": "542"
+                },
+                {
+                    "hierarchyLevelId": "3701",
+                    "hierarchyLevelName": "Client",
+                    "sortValue": 2,
+                    "dataSample": "",
+                    "hierarchyRootId": "542"
+                },
+                {
+                    "hierarchyLevelId": "3702",
+                    "hierarchyLevelName": "Project",
+                    "sortValue": 3,
+                    "dataSample": "Dev",
+                    "hierarchyRootId": "542"
+                },
+                {
+                    "hierarchyLevelId": "3703",
+                    "hierarchyLevelName": "Task",
+                    "sortValue": 4,
+                    "dataSample": "R5.5",
+                    "hierarchyRootId": "542"
+                },
+                {
+                    "hierarchyLevelId": "3704",
+                    "hierarchyLevelName": "Description",
+                    "sortValue": 5,
+                    "dataSample": "",
+                    "hierarchyRootId": "542"
+                },
+                {
+                    "hierarchyLevelId": "3705",
+                    "hierarchyLevelName": "Billable",
+                    "sortValue": 6,
+                    "dataSample": "No",
+                    "hierarchyRootId": "542"
+                },
+                {
+                    "hierarchyLevelId": "3706",
+                    "hierarchyLevelName": "Start date",
+                    "sortValue": 7,
+                    "dataSample": "2019-12-17%sep%2019-12-18%sep%2019-12-05%sep%2019-12-23",
+                    "hierarchyRootId": "542"
+                },
+                {
+                    "hierarchyLevelId": "3707",
+                    "hierarchyLevelName": "Start time",
+                    "sortValue": 8,
+                    "dataSample": "09:00:00",
+                    "hierarchyRootId": "542"
+                },
+                {
+                    "hierarchyLevelId": "3708",
+                    "hierarchyLevelName": "End date",
+                    "sortValue": 9,
+                    "dataSample": "2019-12-17%sep%2019-12-18%sep%2019-12-05%sep%2019-12-23",
+                    "hierarchyRootId": "542"
+                },
+                {
+                    "hierarchyLevelId": "3709",
+                    "hierarchyLevelName": "End time",
+                    "sortValue": 10,
+                    "dataSample": "18:00:00",
+                    "hierarchyRootId": "542"
+                },
+                {
+                    "hierarchyLevelId": "3710",
+                    "hierarchyLevelName": "Duration",
+                    "sortValue": 11,
+                    "dataSample": "09:00:00",
+                    "hierarchyRootId": "542"
+                },
+                {
+                    "hierarchyLevelId": "3711",
+                    "hierarchyLevelName": "Tags",
+                    "sortValue": 12,
+                    "dataSample": "",
+                    "hierarchyRootId": "542"
+                },
+                {
+                    "hierarchyLevelId": "3712",
+                    "hierarchyLevelName": "Amount (USD)",
+                    "sortValue": 13,
+                    "dataSample": "",
+                    "hierarchyRootId": "542"
+                }
+            ],
+            "project": {
+                "projectId": "6",
+                "projectName": "ETL project",
+                "defaultSiteId": "3"
+            },
+            "siteEventPropertyInfos": []
+        },
+        {
+            "hierarchyRootId": "543",
+            "description": "hngfhgfhg",
+            "domain": null,
+            "hierarchyFile": "20200702_122136_20200405_010547_omry_12.csv",
+            "hierarchyName": "nvgbngf",
+            "projectId": "1",
+            "hierarchyFilePath": "/mdclone_v6/files/Hierarchies",
+            "insertDate": "2020-07-02T09:19:11.000Z",
+            "defaultLevelId": null,
+            "hierarchyChange": false,
+            "hierarchyLoadingType": "manual",
+            "status": "unmapped",
+            "project_id": "1",
+            "hierarchyLevels": [
+                {
+                    "hierarchyLevelId": "3713",
+                    "hierarchyLevelName": "User",
+                    "sortValue": 0,
+                    "dataSample": "Omry Atia",
+                    "hierarchyRootId": "543"
+                },
+                {
+                    "hierarchyLevelId": "3714",
+                    "hierarchyLevelName": "Email",
+                    "sortValue": 1,
+                    "dataSample": "omry.atia@mdclone.com",
+                    "hierarchyRootId": "543"
+                },
+                {
+                    "hierarchyLevelId": "3715",
+                    "hierarchyLevelName": "Client",
+                    "sortValue": 2,
+                    "dataSample": "",
+                    "hierarchyRootId": "543"
+                },
+                {
+                    "hierarchyLevelId": "3716",
+                    "hierarchyLevelName": "Project",
+                    "sortValue": 3,
+                    "dataSample": "Dev",
+                    "hierarchyRootId": "543"
+                },
+                {
+                    "hierarchyLevelId": "3717",
+                    "hierarchyLevelName": "Task",
+                    "sortValue": 4,
+                    "dataSample": "R5.5",
+                    "hierarchyRootId": "543"
+                },
+                {
+                    "hierarchyLevelId": "3718",
+                    "hierarchyLevelName": "Description",
+                    "sortValue": 5,
+                    "dataSample": "",
+                    "hierarchyRootId": "543"
+                },
+                {
+                    "hierarchyLevelId": "3719",
+                    "hierarchyLevelName": "Billable",
+                    "sortValue": 6,
+                    "dataSample": "No",
+                    "hierarchyRootId": "543"
+                },
+                {
+                    "hierarchyLevelId": "3720",
+                    "hierarchyLevelName": "Start date",
+                    "sortValue": 7,
+                    "dataSample": "2019-12-17%sep%2019-12-18%sep%2019-12-05%sep%2019-12-23",
+                    "hierarchyRootId": "543"
+                },
+                {
+                    "hierarchyLevelId": "3721",
+                    "hierarchyLevelName": "Start time",
+                    "sortValue": 8,
+                    "dataSample": "09:00:00",
+                    "hierarchyRootId": "543"
+                },
+                {
+                    "hierarchyLevelId": "3722",
+                    "hierarchyLevelName": "End date",
+                    "sortValue": 9,
+                    "dataSample": "2019-12-17%sep%2019-12-18%sep%2019-12-05%sep%2019-12-23",
+                    "hierarchyRootId": "543"
+                },
+                {
+                    "hierarchyLevelId": "3723",
+                    "hierarchyLevelName": "End time",
+                    "sortValue": 10,
+                    "dataSample": "18:00:00",
+                    "hierarchyRootId": "543"
+                },
+                {
+                    "hierarchyLevelId": "3724",
+                    "hierarchyLevelName": "Duration",
+                    "sortValue": 11,
+                    "dataSample": "09:00:00",
+                    "hierarchyRootId": "543"
+                },
+                {
+                    "hierarchyLevelId": "3725",
+                    "hierarchyLevelName": "Tags",
+                    "sortValue": 12,
+                    "dataSample": "",
+                    "hierarchyRootId": "543"
+                },
+                {
+                    "hierarchyLevelId": "3726",
+                    "hierarchyLevelName": "Amount (USD)",
+                    "sortValue": 13,
+                    "dataSample": "",
+                    "hierarchyRootId": "543"
+                }
+            ],
+            "project": {
+                "projectId": "1",
+                "projectName": "Demo Project",
+                "defaultSiteId": "1"
+            },
+            "siteEventPropertyInfos": []
+        },
+        {
+            "hierarchyRootId": "544",
+            "description": "tgf86uf68",
+            "domain": null,
+            "hierarchyFile": "20200702_122939_20200621_154621_20200405_010547_omry_12.csv",
+            "hierarchyName": "hg78t78tg87tt7",
+            "projectId": "17",
+            "hierarchyFilePath": "/mdclone_v6/files/Hierarchies",
+            "insertDate": "2020-07-02T09:27:31.000Z",
+            "defaultLevelId": null,
+            "hierarchyChange": false,
+            "hierarchyLoadingType": "manual",
+            "status": "unmapped",
+            "project_id": "17",
+            "hierarchyLevels": [
+                {
+                    "hierarchyLevelId": "3727",
+                    "hierarchyLevelName": "User",
+                    "sortValue": 0,
+                    "dataSample": "Omry Atia",
+                    "hierarchyRootId": "544"
+                },
+                {
+                    "hierarchyLevelId": "3728",
+                    "hierarchyLevelName": "Email",
+                    "sortValue": 1,
+                    "dataSample": "omry.atia@mdclone.com",
+                    "hierarchyRootId": "544"
+                },
+                {
+                    "hierarchyLevelId": "3729",
+                    "hierarchyLevelName": "Client",
+                    "sortValue": 2,
+                    "dataSample": "",
+                    "hierarchyRootId": "544"
+                },
+                {
+                    "hierarchyLevelId": "3730",
+                    "hierarchyLevelName": "Project",
+                    "sortValue": 3,
+                    "dataSample": "Dev",
+                    "hierarchyRootId": "544"
+                },
+                {
+                    "hierarchyLevelId": "3731",
+                    "hierarchyLevelName": "Task",
+                    "sortValue": 4,
+                    "dataSample": "R5.5",
+                    "hierarchyRootId": "544"
+                },
+                {
+                    "hierarchyLevelId": "3732",
+                    "hierarchyLevelName": "Description",
+                    "sortValue": 5,
+                    "dataSample": "",
+                    "hierarchyRootId": "544"
+                },
+                {
+                    "hierarchyLevelId": "3733",
+                    "hierarchyLevelName": "Billable",
+                    "sortValue": 6,
+                    "dataSample": "No",
+                    "hierarchyRootId": "544"
+                },
+                {
+                    "hierarchyLevelId": "3734",
+                    "hierarchyLevelName": "Start date",
+                    "sortValue": 7,
+                    "dataSample": "2019-12-17%sep%2019-12-18%sep%2019-12-05%sep%2019-12-23",
+                    "hierarchyRootId": "544"
+                },
+                {
+                    "hierarchyLevelId": "3735",
+                    "hierarchyLevelName": "Start time",
+                    "sortValue": 8,
+                    "dataSample": "09:00:00",
+                    "hierarchyRootId": "544"
+                },
+                {
+                    "hierarchyLevelId": "3736",
+                    "hierarchyLevelName": "End date",
+                    "sortValue": 9,
+                    "dataSample": "2019-12-17%sep%2019-12-18%sep%2019-12-05%sep%2019-12-23",
+                    "hierarchyRootId": "544"
+                },
+                {
+                    "hierarchyLevelId": "3737",
+                    "hierarchyLevelName": "End time",
+                    "sortValue": 10,
+                    "dataSample": "18:00:00",
+                    "hierarchyRootId": "544"
+                },
+                {
+                    "hierarchyLevelId": "3738",
+                    "hierarchyLevelName": "Duration",
+                    "sortValue": 11,
+                    "dataSample": "09:00:00",
+                    "hierarchyRootId": "544"
+                },
+                {
+                    "hierarchyLevelId": "3739",
+                    "hierarchyLevelName": "Tags",
+                    "sortValue": 12,
+                    "dataSample": "",
+                    "hierarchyRootId": "544"
+                },
+                {
+                    "hierarchyLevelId": "3740",
+                    "hierarchyLevelName": "Amount (USD)",
+                    "sortValue": 13,
+                    "dataSample": "",
+                    "hierarchyRootId": "544"
+                }
+            ],
+            "project": {
+                "projectId": "17",
+                "projectName": "Mmm Project",
+                "defaultSiteId": "15"
+            },
+            "siteEventPropertyInfos": []
+        },
+        {
+            "hierarchyRootId": "545",
+            "description": "sfgsdfg",
+            "domain": null,
+            "hierarchyFile": "20200702_135951_A_Valid_file_1.csv",
+            "hierarchyName": "gsfg",
+            "projectId": "6",
+            "hierarchyFilePath": "/mdclone_v6/files/Hierarchies",
+            "insertDate": "2020-07-02T10:57:23.000Z",
+            "defaultLevelId": null,
+            "hierarchyChange": false,
+            "hierarchyLoadingType": "manual",
+            "status": "unmapped",
+            "project_id": "6",
+            "hierarchyLevels": [
+                {
+                    "hierarchyLevelId": "3741",
+                    "hierarchyLevelName": "PatientGuid",
+                    "sortValue": 0,
+                    "dataSample": "1342198F-A0E5-470E-9BAE-48F645A81108%sep%A72FDAB6-2820-400C-9B6B-CF57BC714ED5%sep%63C90389-4DE4-4C76-8415-3534D6612610%sep%22048FAF-2F79-4F06-9B86-F8DBE228F2E4",
+                    "hierarchyRootId": "545"
+                },
+                {
+                    "hierarchyLevelId": "3742",
+                    "hierarchyLevelName": "AgeAtEvent",
+                    "sortValue": 1,
+                    "dataSample": "20.46%sep%17.03%sep%16.37%sep%15.16",
+                    "hierarchyRootId": "545"
+                },
+                {
+                    "hierarchyLevelId": "3743",
+                    "hierarchyLevelName": "DateofEvent",
+                    "sortValue": 2,
+                    "dataSample": "1970-11-06 11:49:46%sep%1976-08-16 11:49:46%sep%1972-09-15 11:49:46%sep%1981-02-26 11:49:46",
+                    "hierarchyRootId": "545"
+                },
+                {
+                    "hierarchyLevelId": "3744",
+                    "hierarchyLevelName": "Diagnosys",
+                    "sortValue": 3,
+                    "dataSample": "A00.1%sep%A08.32%sep%A25.9%sep%A30.3",
+                    "hierarchyRootId": "545"
+                }
+            ],
+            "project": {
+                "projectId": "6",
+                "projectName": "ETL project",
+                "defaultSiteId": "3"
+            },
+            "siteEventPropertyInfos": []
+        },
+        {
+            "hierarchyRootId": "546",
+            "description": "",
+            "domain": null,
+            "hierarchyFile": "20200702_140206_A_Valid_file_1.csv",
+            "hierarchyName": "11111111111",
+            "projectId": "1",
+            "hierarchyFilePath": "/mdclone_v6/files/Hierarchies",
+            "insertDate": "2020-07-02T10:59:38.000Z",
+            "defaultLevelId": null,
+            "hierarchyChange": false,
+            "hierarchyLoadingType": "manual",
+            "status": "unmapped",
+            "project_id": "1",
+            "hierarchyLevels": [
+                {
+                    "hierarchyLevelId": "3745",
+                    "hierarchyLevelName": "PatientGuid",
+                    "sortValue": 0,
+                    "dataSample": "1342198F-A0E5-470E-9BAE-48F645A81108%sep%A72FDAB6-2820-400C-9B6B-CF57BC714ED5%sep%63C90389-4DE4-4C76-8415-3534D6612610%sep%22048FAF-2F79-4F06-9B86-F8DBE228F2E4",
+                    "hierarchyRootId": "546"
+                },
+                {
+                    "hierarchyLevelId": "3746",
+                    "hierarchyLevelName": "AgeAtEvent",
+                    "sortValue": 1,
+                    "dataSample": "20.46%sep%17.03%sep%16.37%sep%15.16",
+                    "hierarchyRootId": "546"
+                },
+                {
+                    "hierarchyLevelId": "3747",
+                    "hierarchyLevelName": "DateofEvent",
+                    "sortValue": 2,
+                    "dataSample": "1970-11-06 11:49:46%sep%1976-08-16 11:49:46%sep%1972-09-15 11:49:46%sep%1981-02-26 11:49:46",
+                    "hierarchyRootId": "546"
+                },
+                {
+                    "hierarchyLevelId": "3748",
+                    "hierarchyLevelName": "Diagnosys",
+                    "sortValue": 3,
+                    "dataSample": "A00.1%sep%A08.32%sep%A25.9%sep%A30.3",
+                    "hierarchyRootId": "546"
+                }
+            ],
+            "project": {
+                "projectId": "1",
+                "projectName": "Demo Project",
+                "defaultSiteId": "1"
+            },
+            "siteEventPropertyInfos": []
+        },
+        {
+            "hierarchyRootId": "547",
+            "description": "nnnnnnnnnnnn",
+            "domain": null,
+            "hierarchyFile": "20200702_140336_A_Valid_file_1.csv",
+            "hierarchyName": "nnnnnnnnnnnnn",
+            "projectId": "1",
+            "hierarchyFilePath": "/mdclone_v6/files/Hierarchies",
+            "insertDate": "2020-07-02T11:01:07.000Z",
+            "defaultLevelId": null,
+            "hierarchyChange": false,
+            "hierarchyLoadingType": "manual",
+            "status": "unmapped",
+            "project_id": "1",
+            "hierarchyLevels": [
+                {
+                    "hierarchyLevelId": "3749",
+                    "hierarchyLevelName": "PatientGuid",
+                    "sortValue": 0,
+                    "dataSample": "1342198F-A0E5-470E-9BAE-48F645A81108%sep%A72FDAB6-2820-400C-9B6B-CF57BC714ED5%sep%63C90389-4DE4-4C76-8415-3534D6612610%sep%22048FAF-2F79-4F06-9B86-F8DBE228F2E4",
+                    "hierarchyRootId": "547"
+                },
+                {
+                    "hierarchyLevelId": "3750",
+                    "hierarchyLevelName": "AgeAtEvent",
+                    "sortValue": 1,
+                    "dataSample": "20.46%sep%17.03%sep%16.37%sep%15.16",
+                    "hierarchyRootId": "547"
+                },
+                {
+                    "hierarchyLevelId": "3751",
+                    "hierarchyLevelName": "DateofEvent",
+                    "sortValue": 2,
+                    "dataSample": "1970-11-06 11:49:46%sep%1976-08-16 11:49:46%sep%1972-09-15 11:49:46%sep%1981-02-26 11:49:46",
+                    "hierarchyRootId": "547"
+                },
+                {
+                    "hierarchyLevelId": "3752",
+                    "hierarchyLevelName": "Diagnosys",
+                    "sortValue": 3,
+                    "dataSample": "A00.1%sep%A08.32%sep%A25.9%sep%A30.3",
+                    "hierarchyRootId": "547"
+                }
+            ],
+            "project": {
+                "projectId": "1",
+                "projectName": "Demo Project",
+                "defaultSiteId": "1"
+            },
+            "siteEventPropertyInfos": []
+        },
+        {
+            "hierarchyRootId": "548",
+            "description": "111111111111",
+            "domain": null,
+            "hierarchyFile": "20200702_140736_A_Valid_file_1.csv",
+            "hierarchyName": "111111111",
+            "projectId": "1",
+            "hierarchyFilePath": "/mdclone_v6/files/Hierarchies",
+            "insertDate": "2020-07-02T11:05:09.000Z",
+            "defaultLevelId": null,
+            "hierarchyChange": false,
+            "hierarchyLoadingType": "manual",
+            "status": "unmapped",
+            "project_id": "1",
+            "hierarchyLevels": [
+                {
+                    "hierarchyLevelId": "3753",
+                    "hierarchyLevelName": "PatientGuid",
+                    "sortValue": 0,
+                    "dataSample": "1342198F-A0E5-470E-9BAE-48F645A81108%sep%A72FDAB6-2820-400C-9B6B-CF57BC714ED5%sep%63C90389-4DE4-4C76-8415-3534D6612610%sep%22048FAF-2F79-4F06-9B86-F8DBE228F2E4",
+                    "hierarchyRootId": "548"
+                },
+                {
+                    "hierarchyLevelId": "3754",
+                    "hierarchyLevelName": "AgeAtEvent",
+                    "sortValue": 1,
+                    "dataSample": "20.46%sep%17.03%sep%16.37%sep%15.16",
+                    "hierarchyRootId": "548"
+                },
+                {
+                    "hierarchyLevelId": "3755",
+                    "hierarchyLevelName": "DateofEvent",
+                    "sortValue": 2,
+                    "dataSample": "1970-11-06 11:49:46%sep%1976-08-16 11:49:46%sep%1972-09-15 11:49:46%sep%1981-02-26 11:49:46",
+                    "hierarchyRootId": "548"
+                },
+                {
+                    "hierarchyLevelId": "3756",
+                    "hierarchyLevelName": "Diagnosys",
+                    "sortValue": 3,
+                    "dataSample": "A00.1%sep%A08.32%sep%A25.9%sep%A30.3",
+                    "hierarchyRootId": "548"
+                }
+            ],
+            "project": {
+                "projectId": "1",
+                "projectName": "Demo Project",
+                "defaultSiteId": "1"
+            },
+            "siteEventPropertyInfos": []
+        },
+        {
+            "hierarchyRootId": "549",
+            "description": "",
+            "domain": null,
+            "hierarchyFile": "20200702_140934_[Detalied_Usage_Report][mdclone.admin][20200629_214237].csv",
+            "hierarchyName": "test",
+            "projectId": "6",
+            "hierarchyFilePath": "/mdclone_v6/files/Hierarchies",
+            "insertDate": "2020-07-02T11:07:06.000Z",
+            "defaultLevelId": null,
+            "hierarchyChange": false,
+            "hierarchyLoadingType": "manual",
+            "status": "unmapped",
+            "project_id": "6",
+            "hierarchyLevels": [
+                {
+                    "hierarchyLevelId": "3757",
+                    "hierarchyLevelName": "User Info",
+                    "sortValue": 0,
+                    "dataSample": "Admin Admin (admin)%sep%Elena Khitrova (hit_user)%sep%John Doe (JohnDoe)%sep%Naava Sadi (Naava)",
+                    "hierarchyRootId": "549"
+                },
+                {
+                    "hierarchyLevelId": "3758",
+                    "hierarchyLevelName": "Project Name",
+                    "sortValue": 1,
+                    "dataSample": "BIG Project%sep%R Test Project%sep%%sep%JB_TEST",
+                    "hierarchyRootId": "549"
+                },
+                {
+                    "hierarchyLevelId": "3759",
+                    "hierarchyLevelName": "User Role",
+                    "sortValue": 2,
+                    "dataSample": "%sep%ADMIN%sep%RESEARCHER",
+                    "hierarchyRootId": "549"
+                },
+                {
+                    "hierarchyLevelId": "3760",
+                    "hierarchyLevelName": "Action Source",
+                    "sortValue": 3,
+                    "dataSample": "%sep%Session%sep%Imported Files",
+                    "hierarchyRootId": "549"
+                },
+                {
+                    "hierarchyLevelId": "3761",
+                    "hierarchyLevelName": "Action",
+                    "sortValue": 4,
+                    "dataSample": "User Creation%sep%New Session Creation%sep%Synthetic File Download%sep%Original File Download",
+                    "hierarchyRootId": "549"
+                },
+                {
+                    "hierarchyLevelId": "3762",
+                    "hierarchyLevelName": "Description",
+                    "sortValue": 5,
+                    "dataSample": "[757][Synthetic][omry.atia][if_353][20180828_175003].csv%sep%[1773][Customized][mdclone.admin][if_991][20181231_133321].csv%sep%qe_mdclone.admin_anothertest_20180826_100443.csv%sep%[1526][Customized][mdclone.admin][if_800][20181106_175942].csv",
+                    "hierarchyRootId": "549"
+                },
+                {
+                    "hierarchyLevelId": "3763",
+                    "hierarchyLevelName": "Action Date",
+                    "sortValue": 6,
+                    "dataSample": "2018-10-23 06:46:50%sep%2018-07-24 10:47:58%sep%2018-11-15 08:34:10%sep%2018-11-26 15:24:06",
+                    "hierarchyRootId": "549"
+                }
+            ],
+            "project": {
+                "projectId": "6",
+                "projectName": "ETL project",
+                "defaultSiteId": "3"
+            },
+            "siteEventPropertyInfos": []
+        },
+        {
+            "hierarchyRootId": "550",
+            "description": "000000000000000",
+            "domain": null,
+            "hierarchyFile": "20200702_141106_A_Valid_file_1.csv",
+            "hierarchyName": "00000000",
+            "projectId": "1",
+            "hierarchyFilePath": "/mdclone_v6/files/Hierarchies",
+            "insertDate": "2020-07-02T11:08:37.000Z",
+            "defaultLevelId": null,
+            "hierarchyChange": false,
+            "hierarchyLoadingType": "manual",
+            "status": "unmapped",
+            "project_id": "1",
+            "hierarchyLevels": [
+                {
+                    "hierarchyLevelId": "3764",
+                    "hierarchyLevelName": "PatientGuid",
+                    "sortValue": 0,
+                    "dataSample": "1342198F-A0E5-470E-9BAE-48F645A81108%sep%A72FDAB6-2820-400C-9B6B-CF57BC714ED5%sep%63C90389-4DE4-4C76-8415-3534D6612610%sep%22048FAF-2F79-4F06-9B86-F8DBE228F2E4",
+                    "hierarchyRootId": "550"
+                },
+                {
+                    "hierarchyLevelId": "3765",
+                    "hierarchyLevelName": "AgeAtEvent",
+                    "sortValue": 1,
+                    "dataSample": "20.46%sep%17.03%sep%16.37%sep%15.16",
+                    "hierarchyRootId": "550"
+                },
+                {
+                    "hierarchyLevelId": "3766",
+                    "hierarchyLevelName": "DateofEvent",
+                    "sortValue": 2,
+                    "dataSample": "1970-11-06 11:49:46%sep%1976-08-16 11:49:46%sep%1972-09-15 11:49:46%sep%1981-02-26 11:49:46",
+                    "hierarchyRootId": "550"
+                },
+                {
+                    "hierarchyLevelId": "3767",
+                    "hierarchyLevelName": "Diagnosys",
+                    "sortValue": 3,
+                    "dataSample": "A00.1%sep%A08.32%sep%A25.9%sep%A30.3",
+                    "hierarchyRootId": "550"
+                }
+            ],
+            "project": {
+                "projectId": "1",
+                "projectName": "Demo Project",
+                "defaultSiteId": "1"
+            },
+            "siteEventPropertyInfos": []
+        },
+        {
+            "hierarchyRootId": "551",
+            "description": "qwqwqw",
+            "domain": null,
+            "hierarchyFile": "20200702_141116_[Detalied_Usage_Report][mdclone.admin][20200629_214237].csv",
+            "hierarchyName": "qwqwqwqw",
+            "projectId": "15",
+            "hierarchyFilePath": "/mdclone_v6/files/Hierarchies",
+            "insertDate": "2020-07-02T11:08:47.000Z",
+            "defaultLevelId": null,
+            "hierarchyChange": false,
+            "hierarchyLoadingType": "manual",
+            "status": "unmapped",
+            "project_id": "15",
+            "hierarchyLevels": [
+                {
+                    "hierarchyLevelId": "3768",
+                    "hierarchyLevelName": "User Info",
+                    "sortValue": 0,
+                    "dataSample": "Admin Admin (admin)%sep%Elena Khitrova (hit_user)%sep%John Doe (JohnDoe)%sep%Naava Sadi (Naava)",
+                    "hierarchyRootId": "551"
+                },
+                {
+                    "hierarchyLevelId": "3769",
+                    "hierarchyLevelName": "Project Name",
+                    "sortValue": 1,
+                    "dataSample": "BIG Project%sep%R Test Project%sep%%sep%JB_TEST",
+                    "hierarchyRootId": "551"
+                },
+                {
+                    "hierarchyLevelId": "3770",
+                    "hierarchyLevelName": "User Role",
+                    "sortValue": 2,
+                    "dataSample": "%sep%ADMIN%sep%RESEARCHER",
+                    "hierarchyRootId": "551"
+                },
+                {
+                    "hierarchyLevelId": "3771",
+                    "hierarchyLevelName": "Action Source",
+                    "sortValue": 3,
+                    "dataSample": "%sep%Session%sep%Imported Files",
+                    "hierarchyRootId": "551"
+                },
+                {
+                    "hierarchyLevelId": "3772",
+                    "hierarchyLevelName": "Action",
+                    "sortValue": 4,
+                    "dataSample": "User Creation%sep%New Session Creation%sep%Synthetic File Download%sep%Original File Download",
+                    "hierarchyRootId": "551"
+                },
+                {
+                    "hierarchyLevelId": "3773",
+                    "hierarchyLevelName": "Description",
+                    "sortValue": 5,
+                    "dataSample": "[757][Synthetic][omry.atia][if_353][20180828_175003].csv%sep%[1773][Customized][mdclone.admin][if_991][20181231_133321].csv%sep%qe_mdclone.admin_anothertest_20180826_100443.csv%sep%[1526][Customized][mdclone.admin][if_800][20181106_175942].csv",
+                    "hierarchyRootId": "551"
+                },
+                {
+                    "hierarchyLevelId": "3774",
+                    "hierarchyLevelName": "Action Date",
+                    "sortValue": 6,
+                    "dataSample": "2018-10-23 06:46:50%sep%2018-07-24 10:47:58%sep%2018-11-15 08:34:10%sep%2018-11-26 15:24:06",
+                    "hierarchyRootId": "551"
+                }
+            ],
+            "project": {
+                "projectId": "15",
+                "projectName": "BIG Project",
+                "defaultSiteId": "13"
+            },
+            "siteEventPropertyInfos": []
+        },
+        {
+            "hierarchyRootId": "552",
+            "description": "",
+            "domain": null,
+            "hierarchyFile": "20200702_143613_hie_sariel.csv",
+            "hierarchyName": "test hie",
+            "projectId": "1",
+            "hierarchyFilePath": "/mdclone_v6/files/Hierarchies",
+            "insertDate": "2020-07-02T11:33:44.000Z",
+            "defaultLevelId": null,
+            "hierarchyChange": false,
+            "hierarchyLoadingType": "manual",
+            "status": "unmapped",
+            "project_id": "1",
+            "hierarchyLevels": [
+                {
+                    "hierarchyLevelId": "3775",
+                    "hierarchyLevelName": "pid",
+                    "sortValue": 0,
+                    "dataSample": "250",
+                    "hierarchyRootId": "552"
+                },
+                {
+                    "hierarchyLevelId": "3776",
+                    "hierarchyLevelName": " d desc",
+                    "sortValue": 1,
+                    "dataSample": " balbla",
+                    "hierarchyRootId": "552"
+                }
+            ],
+            "project": {
+                "projectId": "1",
+                "projectName": "Demo Project",
+                "defaultSiteId": "1"
+            },
+            "siteEventPropertyInfos": []
+        },
+        {
+            "hierarchyRootId": "553",
+            "description": "",
+            "domain": null,
+            "hierarchyFile": "20200702_143652_hie_sariel.csv",
+            "hierarchyName": "test hie - sariel",
+            "projectId": "1",
+            "hierarchyFilePath": "/mdclone_v6/files/Hierarchies",
+            "insertDate": "2020-07-02T11:34:23.000Z",
+            "defaultLevelId": null,
+            "hierarchyChange": false,
+            "hierarchyLoadingType": "manual",
+            "status": "unmapped",
+            "project_id": "1",
+            "hierarchyLevels": [
+                {
+                    "hierarchyLevelId": "3777",
+                    "hierarchyLevelName": "pid",
+                    "sortValue": 0,
+                    "dataSample": "250",
+                    "hierarchyRootId": "553"
+                },
+                {
+                    "hierarchyLevelId": "3778",
+                    "hierarchyLevelName": " d desc",
+                    "sortValue": 1,
+                    "dataSample": " balbla",
+                    "hierarchyRootId": "553"
+                }
+            ],
+            "project": {
+                "projectId": "1",
+                "projectName": "Demo Project",
+                "defaultSiteId": "1"
+            },
+            "siteEventPropertyInfos": []
+        },
+        {
+            "hierarchyRootId": "554",
+            "description": "1111111111111111",
+            "domain": null,
+            "hierarchyFile": "20200702_184251_A_Valid_file_1.csv",
+            "hierarchyName": "11111111111111",
+            "projectId": "1",
+            "hierarchyFilePath": "/mdclone_v6/files/Hierarchies",
+            "insertDate": "2020-07-02T15:40:22.000Z",
+            "defaultLevelId": null,
+            "hierarchyChange": false,
+            "hierarchyLoadingType": "manual",
+            "status": "unmapped",
+            "project_id": "1",
+            "hierarchyLevels": [
+                {
+                    "hierarchyLevelId": "3779",
+                    "hierarchyLevelName": "PatientGuid",
+                    "sortValue": 0,
+                    "dataSample": "1342198F-A0E5-470E-9BAE-48F645A81108%sep%A72FDAB6-2820-400C-9B6B-CF57BC714ED5%sep%63C90389-4DE4-4C76-8415-3534D6612610%sep%22048FAF-2F79-4F06-9B86-F8DBE228F2E4",
+                    "hierarchyRootId": "554"
+                },
+                {
+                    "hierarchyLevelId": "3780",
+                    "hierarchyLevelName": "AgeAtEvent",
+                    "sortValue": 1,
+                    "dataSample": "20.46%sep%17.03%sep%16.37%sep%15.16",
+                    "hierarchyRootId": "554"
+                },
+                {
+                    "hierarchyLevelId": "3781",
+                    "hierarchyLevelName": "DateofEvent",
+                    "sortValue": 2,
+                    "dataSample": "1970-11-06 11:49:46%sep%1976-08-16 11:49:46%sep%1972-09-15 11:49:46%sep%1981-02-26 11:49:46",
+                    "hierarchyRootId": "554"
+                },
+                {
+                    "hierarchyLevelId": "3782",
+                    "hierarchyLevelName": "Diagnosys",
+                    "sortValue": 3,
+                    "dataSample": "A00.1%sep%A08.32%sep%A25.9%sep%A30.3",
+                    "hierarchyRootId": "554"
+                }
+            ],
+            "project": {
+                "projectId": "1",
+                "projectName": "Demo Project",
+                "defaultSiteId": "1"
+            },
+            "siteEventPropertyInfos": []
+        },
+        {
+            "hierarchyRootId": "555",
+            "description": "",
+            "domain": null,
+            "hierarchyFile": "20200705_092931_hie_sariel.csv",
+            "hierarchyName": "sariel test hie - 1",
+            "projectId": "1",
+            "hierarchyFilePath": "/mdclone_v6/files/Hierarchies",
+            "insertDate": "2020-07-05T06:26:58.000Z",
+            "defaultLevelId": null,
+            "hierarchyChange": false,
+            "hierarchyLoadingType": "manual",
+            "status": "unmapped",
+            "project_id": "1",
+            "hierarchyLevels": [
+                {
+                    "hierarchyLevelId": "3783",
+                    "hierarchyLevelName": "pid",
+                    "sortValue": 0,
+                    "dataSample": "250",
+                    "hierarchyRootId": "555"
+                },
+                {
+                    "hierarchyLevelId": "3784",
+                    "hierarchyLevelName": " d desc",
+                    "sortValue": 1,
+                    "dataSample": " balbla",
+                    "hierarchyRootId": "555"
+                }
+            ],
+            "project": {
+                "projectId": "1",
+                "projectName": "Demo Project",
+                "defaultSiteId": "1"
+            },
+            "siteEventPropertyInfos": []
+        },
+        {
+            "hierarchyRootId": "556",
+            "description": "",
+            "domain": null,
+            "hierarchyFile": "20200705_092957_hie_sariel.csv",
+            "hierarchyName": "sariel hie 1",
+            "projectId": "1",
+            "hierarchyFilePath": "/mdclone_v6/files/Hierarchies",
+            "insertDate": "2020-07-05T06:27:24.000Z",
+            "defaultLevelId": null,
+            "hierarchyChange": false,
+            "hierarchyLoadingType": "manual",
+            "status": "unmapped",
+            "project_id": "1",
+            "hierarchyLevels": [
+                {
+                    "hierarchyLevelId": "3785",
+                    "hierarchyLevelName": "pid",
+                    "sortValue": 0,
+                    "dataSample": "250",
+                    "hierarchyRootId": "556"
+                },
+                {
+                    "hierarchyLevelId": "3786",
+                    "hierarchyLevelName": " d desc",
+                    "sortValue": 1,
+                    "dataSample": " balbla",
+                    "hierarchyRootId": "556"
+                }
+            ],
+            "project": {
+                "projectId": "1",
+                "projectName": "Demo Project",
+                "defaultSiteId": "1"
+            },
+            "siteEventPropertyInfos": []
+        },
+        {
+            "hierarchyRootId": "557",
+            "description": "",
+            "domain": null,
+            "hierarchyFile": "20200705_094619_hie_sariel.csv",
+            "hierarchyName": "sariel hie",
+            "projectId": "1",
+            "hierarchyFilePath": "/mdclone_v6/files/Hierarchies",
+            "insertDate": "2020-07-05T06:43:45.000Z",
+            "defaultLevelId": null,
+            "hierarchyChange": false,
+            "hierarchyLoadingType": "manual",
+            "status": "unmapped",
+            "project_id": "1",
+            "hierarchyLevels": [
+                {
+                    "hierarchyLevelId": "3787",
+                    "hierarchyLevelName": "pid",
+                    "sortValue": 0,
+                    "dataSample": "250",
+                    "hierarchyRootId": "557"
+                },
+                {
+                    "hierarchyLevelId": "3788",
+                    "hierarchyLevelName": " d desc",
+                    "sortValue": 1,
+                    "dataSample": " balbla",
+                    "hierarchyRootId": "557"
+                }
+            ],
+            "project": {
+                "projectId": "1",
+                "projectName": "Demo Project",
+                "defaultSiteId": "1"
+            },
+            "siteEventPropertyInfos": []
+        },
+        {
+            "hierarchyRootId": "558",
+            "description": "",
+            "domain": null,
+            "hierarchyFile": "20200705_094649_hie_sariel.csv",
+            "hierarchyName": "hie sariel",
+            "projectId": "1",
+            "hierarchyFilePath": "/mdclone_v6/files/Hierarchies",
+            "insertDate": "2020-07-05T06:44:16.000Z",
+            "defaultLevelId": null,
+            "hierarchyChange": false,
+            "hierarchyLoadingType": "manual",
+            "status": "unmapped",
+            "project_id": "1",
+            "hierarchyLevels": [
+                {
+                    "hierarchyLevelId": "3789",
+                    "hierarchyLevelName": "pid",
+                    "sortValue": 0,
+                    "dataSample": "250",
+                    "hierarchyRootId": "558"
+                },
+                {
+                    "hierarchyLevelId": "3790",
+                    "hierarchyLevelName": " d desc",
+                    "sortValue": 1,
+                    "dataSample": " balbla",
+                    "hierarchyRootId": "558"
+                }
+            ],
+            "project": {
+                "projectId": "1",
+                "projectName": "Demo Project",
+                "defaultSiteId": "1"
+            },
+            "siteEventPropertyInfos": []
+        },
+        {
+            "hierarchyRootId": "560",
+            "description": "omry test update status",
+            "domain": null,
+            "hierarchyFile": "20200705_121237_20200705_094649_hie_sariel.csv",
+            "hierarchyName": "omry test update status",
+            "projectId": "1",
+            "hierarchyFilePath": "/mdclone_v6/files/Hierarchies",
+            "insertDate": "2020-07-05T09:10:03.000Z",
+            "defaultLevelId": null,
+            "hierarchyChange": false,
+            "hierarchyLoadingType": "manual",
+            "status": "unmapped",
+            "project_id": "1",
+            "hierarchyLevels": [
+                {
+                    "hierarchyLevelId": "3793",
+                    "hierarchyLevelName": "pid",
+                    "sortValue": 0,
+                    "dataSample": "250",
+                    "hierarchyRootId": "560"
+                },
+                {
+                    "hierarchyLevelId": "3794",
+                    "hierarchyLevelName": " d desc",
+                    "sortValue": 1,
+                    "dataSample": " balbla",
+                    "hierarchyRootId": "560"
+                }
+            ],
+            "project": {
+                "projectId": "1",
+                "projectName": "Demo Project",
+                "defaultSiteId": "1"
+            },
+            "siteEventPropertyInfos": []
+        },
+        {
+            "hierarchyRootId": "561",
+            "description": "gdfgdfg",
+            "domain": null,
+            "hierarchyFile": "20200705_121941_20200629_151701_20200621_161930_20200405_010547_omry_12.csv",
+            "hierarchyName": "fsdgfsrte 4trtgdf",
+            "projectId": "1",
+            "hierarchyFilePath": "/mdclone_v6/files/Hierarchies",
+            "insertDate": "2020-07-05T09:17:08.000Z",
+            "defaultLevelId": null,
+            "hierarchyChange": false,
+            "hierarchyLoadingType": "manual",
+            "status": "unmapped",
+            "project_id": "1",
+            "hierarchyLevels": [
+                {
+                    "hierarchyLevelId": "3797",
+                    "hierarchyLevelName": "User",
+                    "sortValue": 0,
+                    "dataSample": "Omry Atia",
+                    "hierarchyRootId": "561"
+                },
+                {
+                    "hierarchyLevelId": "3798",
+                    "hierarchyLevelName": "Email",
+                    "sortValue": 1,
+                    "dataSample": "omry.atia@mdclone.com",
+                    "hierarchyRootId": "561"
+                },
+                {
+                    "hierarchyLevelId": "3799",
+                    "hierarchyLevelName": "Client",
+                    "sortValue": 2,
+                    "dataSample": "",
+                    "hierarchyRootId": "561"
+                },
+                {
+                    "hierarchyLevelId": "3800",
+                    "hierarchyLevelName": "Project",
+                    "sortValue": 3,
+                    "dataSample": "Dev",
+                    "hierarchyRootId": "561"
+                },
+                {
+                    "hierarchyLevelId": "3801",
+                    "hierarchyLevelName": "Task",
+                    "sortValue": 4,
+                    "dataSample": "R5.5",
+                    "hierarchyRootId": "561"
+                },
+                {
+                    "hierarchyLevelId": "3802",
+                    "hierarchyLevelName": "Description",
+                    "sortValue": 5,
+                    "dataSample": "",
+                    "hierarchyRootId": "561"
+                },
+                {
+                    "hierarchyLevelId": "3803",
+                    "hierarchyLevelName": "Billable",
+                    "sortValue": 6,
+                    "dataSample": "No",
+                    "hierarchyRootId": "561"
+                },
+                {
+                    "hierarchyLevelId": "3804",
+                    "hierarchyLevelName": "Start date",
+                    "sortValue": 7,
+                    "dataSample": "2019-12-17%sep%2019-12-18%sep%2019-12-05%sep%2019-12-23",
+                    "hierarchyRootId": "561"
+                },
+                {
+                    "hierarchyLevelId": "3805",
+                    "hierarchyLevelName": "Start time",
+                    "sortValue": 8,
+                    "dataSample": "09:00:00",
+                    "hierarchyRootId": "561"
+                },
+                {
+                    "hierarchyLevelId": "3806",
+                    "hierarchyLevelName": "End date",
+                    "sortValue": 9,
+                    "dataSample": "2019-12-17%sep%2019-12-18%sep%2019-12-05%sep%2019-12-23",
+                    "hierarchyRootId": "561"
+                },
+                {
+                    "hierarchyLevelId": "3807",
+                    "hierarchyLevelName": "End time",
+                    "sortValue": 10,
+                    "dataSample": "18:00:00",
+                    "hierarchyRootId": "561"
+                },
+                {
+                    "hierarchyLevelId": "3808",
+                    "hierarchyLevelName": "Duration",
+                    "sortValue": 11,
+                    "dataSample": "09:00:00",
+                    "hierarchyRootId": "561"
+                },
+                {
+                    "hierarchyLevelId": "3809",
+                    "hierarchyLevelName": "Tags",
+                    "sortValue": 12,
+                    "dataSample": "",
+                    "hierarchyRootId": "561"
+                },
+                {
+                    "hierarchyLevelId": "3810",
+                    "hierarchyLevelName": "Amount (USD)",
+                    "sortValue": 13,
+                    "dataSample": "",
+                    "hierarchyRootId": "561"
+                }
+            ],
+            "project": {
+                "projectId": "1",
+                "projectName": "Demo Project",
+                "defaultSiteId": "1"
+            },
+            "siteEventPropertyInfos": []
+        },
+        {
+            "hierarchyRootId": "563",
+            "description": "sdfdsfsd",
+            "domain": null,
+            "hierarchyFile": "20200705_162359_hie_sariel.csv",
+            "hierarchyName": "dsfsdf",
+            "projectId": "1",
+            "hierarchyFilePath": "/mdclone_v6/files/Hierarchies",
+            "insertDate": "2020-07-05T13:21:25.000Z",
+            "defaultLevelId": "1",
+            "hierarchyChange": false,
+            "hierarchyLoadingType": "manual",
+            "status": "mapped",
+            "project_id": "1",
+            "hierarchyLevels": [
+                {
+                    "hierarchyLevelId": "3814",
+                    "hierarchyLevelName": "omry 2",
+                    "sortValue": null,
+                    "dataSample": null,
+                    "hierarchyRootId": "563"
+                },
+                {
+                    "hierarchyLevelId": "3813",
+                    "hierarchyLevelName": "omry 233",
+                    "sortValue": null,
+                    "dataSample": null,
+                    "hierarchyRootId": "563"
+                }
+            ],
+            "project": {
+                "projectId": "1",
+                "projectName": "Demo Project",
+                "defaultSiteId": "1"
+            },
+            "siteEventPropertyInfos": []
+        },
+        {
+            "hierarchyRootId": "562",
+            "description": "sdfdsfsd",
+            "domain": null,
+            "hierarchyFile": "20200705_123131_20200705_094649_hie_sariel.csv",
+            "hierarchyName": "dsfsdf",
+            "projectId": "1",
+            "hierarchyFilePath": "/mdclone_v6/files/Hierarchies",
+            "insertDate": "2020-07-05T09:28:58.000Z",
+            "defaultLevelId": "1",
+            "hierarchyChange": false,
+            "hierarchyLoadingType": "manual",
+            "status": "mapped",
+            "project_id": "1",
+            "hierarchyLevels": [
+                {
+                    "hierarchyLevelId": "3811",
+                    "hierarchyLevelName": "omry 12",
+                    "sortValue": null,
+                    "dataSample": null,
+                    "hierarchyRootId": "562"
+                },
+                {
+                    "hierarchyLevelId": "3812",
+                    "hierarchyLevelName": "omry 23",
+                    "sortValue": null,
+                    "dataSample": null,
+                    "hierarchyRootId": "562"
+                }
+            ],
+            "project": {
+                "projectId": "1",
+                "projectName": "Demo Project",
+                "defaultSiteId": "1"
+            },
+            "siteEventPropertyInfos": []
+        },
+        {
+            "hierarchyRootId": "564",
+            "description": "kosta",
+            "domain": null,
+            "hierarchyFile": "20200705_163118_hie_sariel.csv",
+            "hierarchyName": "leiras -Diagnosis ",
+            "projectId": "1",
+            "hierarchyFilePath": "/mdclone_v6/files/Hierarchies",
+            "insertDate": "2020-07-05T13:28:45.000Z",
+            "defaultLevelId": "1",
+            "hierarchyChange": false,
+            "hierarchyLoadingType": "manual",
+            "status": "mapped",
+            "project_id": "1",
+            "hierarchyLevels": [
+                {
+                    "hierarchyLevelId": "3815",
+                    "hierarchyLevelName": "pid",
+                    "sortValue": null,
+                    "dataSample": null,
+                    "hierarchyRootId": "564"
+                },
+                {
+                    "hierarchyLevelId": "3816",
+                    "hierarchyLevelName": "pid",
+                    "sortValue": null,
+                    "dataSample": null,
+                    "hierarchyRootId": "564"
+                }
+            ],
+            "project": {
+                "projectId": "1",
+                "projectName": "Demo Project",
+                "defaultSiteId": "1"
+            },
+            "siteEventPropertyInfos": []
+        },
+        {
+            "hierarchyRootId": "565",
+            "description": "",
+            "domain": null,
+            "hierarchyFile": "20200706_094250_hie_sariel.csv",
+            "hierarchyName": "sariel - marat - match",
+            "projectId": "1",
+            "hierarchyFilePath": "/mdclone_v6/files/Hierarchies",
+            "insertDate": "2020-07-06T06:40:16.000Z",
+            "defaultLevelId": null,
+            "hierarchyChange": false,
+            "hierarchyLoadingType": "manual",
+            "status": "mapped",
+            "project_id": "1",
+            "hierarchyLevels": [
+                {
+                    "hierarchyLevelId": "3819",
+                    "hierarchyLevelName": "pid",
+                    "sortValue": null,
+                    "dataSample": null,
+                    "hierarchyRootId": "565"
+                },
+                {
+                    "hierarchyLevelId": "3820",
+                    "hierarchyLevelName": " d desc",
+                    "sortValue": null,
+                    "dataSample": null,
+                    "hierarchyRootId": "565"
+                }
+            ],
+            "project": {
+                "projectId": "1",
+                "projectName": "Demo Project",
+                "defaultSiteId": "1"
             },
             "siteEventPropertyInfos": []
         },

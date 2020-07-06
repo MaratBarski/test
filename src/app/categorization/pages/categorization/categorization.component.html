@@ -107,7 +107,7 @@
 </ng-template>
 
 <mdc-modal-window *ngIf="showUploadFile">
-    <md-upload-file [source]="currentSource" (onUpload)="showUploadFile=false" (onCancel)="showUploadFile=false">
+    <md-upload-file [targetComponent]="me" [source]="currentSource" (onUpload)="showUploadFile=false" (onCancel)="showUploadFile=false">
     </md-upload-file>
 </mdc-modal-window>
 

@@ -1,90 +1,40 @@
 {
     "data": {
-        "hierarchyRootId": "25",
+        "hierarchyRootId": "565",
         "description": "",
-        "domain": "10.0.2.7",
-        "hierarchyFile": "20180726_193134_Observation_concepts.csv",
-        "hierarchyName": "Observations",
-        "projectId": "6",
-        "hierarchyFilePath": "E:\\files\\Hierarchies\\",
-        "insertDate": "2018-07-26T16:31:34.000Z",
-        "defaultLevelId": "148",
+        "domain": null,
+        "hierarchyFile": "20200706_094250_hie_sariel.csv",
+        "hierarchyName": "sariel - marat - match",
+        "projectId": "1",
+        "hierarchyFilePath": "/mdclone_v6/files/Hierarchies",
+        "insertDate": "2020-07-06T06:40:16.000Z",
+        "defaultLevelId": null,
         "hierarchyChange": false,
         "hierarchyLoadingType": "manual",
-        "status": "unmapped",
-        "project_id": "6",
+        "status": "mapped",
+        "project_id": "1",
         "hierarchyLevels": [
             {
-                "hierarchyLevelId": "147",
-                "hierarchyLevelName": "﻿concept_id",
-                "sortValue": 0,
-                "dataSample": "44798415%sep%4311218%sep%40303710%sep%4182503",
-                "hierarchyRootId": "25"
+                "hierarchyLevelId": "3819",
+                "hierarchyLevelName": "pid",
+                "sortValue": null,
+                "dataSample": null,
+                "hierarchyRootId": "565"
             },
             {
-                "hierarchyLevelId": "148",
-                "hierarchyLevelName": "concept_name",
-                "sortValue": 1,
-                "dataSample": "Family Asclepiadaceae - milkweed%sep%Proteiniphilum%sep%MRA Superior mesenteric vessels WO contrast%sep%Penicillium puberulum",
-                "hierarchyRootId": "25"
-            },
-            {
-                "hierarchyLevelId": "149",
-                "hierarchyLevelName": "domain_id",
-                "sortValue": 2,
-                "dataSample": "Observation",
-                "hierarchyRootId": "25"
-            },
-            {
-                "hierarchyLevelId": "150",
-                "hierarchyLevelName": "vocabulary_id",
-                "sortValue": 3,
-                "dataSample": "SNOMED%sep%LOINC%sep%CPT4%sep%SPL",
-                "hierarchyRootId": "25"
-            },
-            {
-                "hierarchyLevelId": "151",
-                "hierarchyLevelName": "concept_class_id",
-                "sortValue": 4,
-                "dataSample": "Morph Abnormality%sep%Admin Concept%sep%Substance%sep%Procedure",
-                "hierarchyRootId": "25"
+                "hierarchyLevelId": "3820",
+                "hierarchyLevelName": " d desc",
+                "sortValue": null,
+                "dataSample": null,
+                "hierarchyRootId": "565"
             }
         ],
         "project": {
-            "projectId": "6",
-            "projectName": "ETL project",
-            "defaultSiteId": "3"
+            "projectId": "1",
+            "projectName": "Demo Project",
+            "defaultSiteId": "1"
         },
-        "siteEventPropertyInfos": [
-            {
-                "eventPropertyName": "observation",
-                "eventId": "92",
-                "dataSample": "4046550, 433946, 4168318, 4102166, 4021606",
-                "eventPropertyType": "STRING",
-                "hierarchyRootId": "25",
-                "patientFk": false,
-                "eventTimeStamp": false,
-                "ageAtEvent": false,
-                "fieldDescription": "observation",
-                "fieldDes": null,
-                "priority": 0,
-                "isDependentSearch": false
-            },
-            {
-                "eventPropertyName": "observation",
-                "eventId": "93",
-                "dataSample": "433946, 4168318, 4102166, 4021606, 439007",
-                "eventPropertyType": "STRING",
-                "hierarchyRootId": "25",
-                "patientFk": false,
-                "eventTimeStamp": false,
-                "ageAtEvent": false,
-                "fieldDescription": "observation",
-                "fieldDes": null,
-                "priority": 0,
-                "isDependentSearch": false
-            }
-        ]
+        "siteEventPropertyInfos": []
     },
     "massage": "Get Hierarchy Object",
     "status": "success"

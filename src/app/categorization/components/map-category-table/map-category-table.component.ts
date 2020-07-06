@@ -102,7 +102,7 @@ export class MapCategoryTableComponent {
   }
 
   findOldcategory(level: any): any {
-    return this.categoryMap.find((x: any) => x.hierarchyLevelName === level.hierarchyLevelName);
+    return this.categoryMap.find((x: any) => x.hierarchyLevelName.trim().toLowerCase() === level.hierarchyLevelName.trim().toLowerCase());
   }
 
   onUpdateMessage(message: string): void {
