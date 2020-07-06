@@ -96,7 +96,7 @@ export class EditCategoriesComponent extends BaseSibscriber implements OnInit {
       //objToSend.hierarchyLevels[l.hierarchyLevelId] = l.hierarchyLevelName;
     });
 
-    document.write(JSON.stringify(objToSend));
+    //document.write(JSON.stringify(objToSend));
 
     this.isLoading = true;
     super.add(
