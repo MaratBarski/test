@@ -69,6 +69,9 @@ export class UploadService implements OnDestroy {
         }
       }
         , error => {
+          if (uploadInfo.targetComponent && uploadInfo.targetComponent.onComplete) {
+            uploadInfo.targetComponent.onComplete();
+          }
           this.uploadEnd(uploadInfo, NotificationStatus.failed);
           console.log(error);
           uploadInfo.notification.name = uploadInfo.notification.failName;
