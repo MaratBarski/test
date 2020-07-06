@@ -1,0 +1,56 @@
+<div class="notice" [ngClass]="{'active':isOpen}">
+    <div (click)="toogle($event)" class="notice__icon">
+        <svg class="icon ic-bulb" mdcSvg="ic-bulb">
+        </svg>
+    </div>
+    <div class="notice-popup">
+        <div class="notice-popup__text">Add, maintain and update categorization used in events,
+            imported files and patient stories.</div>
+        <div class="notice-popup__content">
+            <div class="notice-popup__head">Legend</div>
+            <div class="notice-popup-info">
+                <div class="notice-popup-info__col">
+                    <div class="notice-popup-info__item">
+                        <div class="notice-popup-info__val">
+                            <svg class="icon ic-warning" mdcSvg="ic-warning"></svg>
+                        </div>
+                        <div class="notice-popup-info__text">Warning: Mismatch</div>
+                    </div>
+                    <div class="notice-popup-info__item">
+                        <div class="notice-popup-info__val">
+                            <svg class="icon ic-robot ic-grey" mdcSvg="ic-robot">
+                            </svg>
+                        </div>
+                        <div class="notice-popup-info__text">Automatic Loaded Categorization</div>
+                    </div>
+                </div>
+                <div class="notice-popup-info__col">
+                    <div class="notice-popup-info__item">
+                        <div class="notice-popup-info__val">
+                            <svg class="icon ic-plug ic-grey" mdcSvg="ic-plug">
+                            </svg>
+                        </div>
+                        <div class="notice-popup-info__text">In Use</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="notice-popup__footer">
+            <div class="notice-popup-link">
+                <a class="notice-popup-link__item" href="#">
+                    <span class="notice-popup-link__text">View tutorials</span>
+                    <svg class="icon ic-view-tutorials" mdcSvg="ic-view-tutorials"></svg>
+                </a>
+                <a class="notice-popup-link__item" href="#">
+                    <span class="notice-popup-link__text">Additional help</span>
+                    <svg class="icon ic-add-help" mdcSvg="ic-add-help"></svg>
+                </a>
+                <a class="notice-popup-link__item" href="#"><span class="notice-popup-link__text">Live
+                        help</span>
+                    <svg class="icon ic-live-help" mdcSvg="ic-live-help">
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
