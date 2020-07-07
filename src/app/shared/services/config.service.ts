@@ -12,6 +12,17 @@ export class ConfigService extends BaseSibscriber {
   config: any;
   serverConfig: any;
 
+  readonly configDictionary = {
+    E00014: 'noUtf8',
+    E00021: 'noHebrewHeaders',
+    E00009: 'csvExtensionError',
+    E00012: 'headerEmptyError',
+    E00022: 'nullOnHeadersError',
+    E00011: 'fileEmpty',
+    E00023: 'noName',
+    E00019: 'noRows'
+  }
+
   get isLoaded(): boolean { return this._isLoaded; }
   private _isLoaded = false;
 
@@ -44,8 +55,18 @@ export class ConfigService extends BaseSibscriber {
           } else {
             this._dateFormat = 'dd/mm/yy';
           }
+          this.updateClientMessages();
         }, error => {
           console.error('Error loading configuration.');
         }));
+  }
+
+  private updateClientMessages(): void {
+    if (!this.serverConfig.msg) { return; }
+    Object.keys(this.configDictionary).forEach(k => {
+      const message = this.serverConfig.msg.find(x => x.msgCode === k);
+      if (!message) { return; }
+      this.config[this.configDictionary[k]] = message.msgOut;
+    })
   }
 }

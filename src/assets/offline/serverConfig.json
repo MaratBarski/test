@@ -499,13 +499,6 @@
                 "prmType": 0
             },
             {
-                "configId": "90",
-                "program": "general",
-                "parameterName": "date_format",
-                "parameterValue": "US",
-                "prmType": 0
-            },
-            {
                 "configId": "87",
                 "program": "maintenance",
                 "parameterName": "daysinterval",
@@ -678,6 +671,13 @@
                 "program": "site",
                 "parameterName": "file_upload_limit",
                 "parameterValue": "100",
+                "prmType": 0
+            },
+            {
+                "configId": "90",
+                "program": "general",
+                "parameterName": "date_format",
+                "parameterValue": "EU",
                 "prmType": 0
             },
             {
@@ -910,6 +910,54 @@
                 "msgId": "70",
                 "msgCode": "S30012",
                 "msgOut": "{name} has been removed successfully",
+                "msgClient": true
+            },
+            {
+                "msgId": "62",
+                "msgCode": "E00014",
+                "msgOut": "File format is not  UTF8",
+                "msgClient": true
+            },
+            {
+                "msgId": "72",
+                "msgCode": "E00021",
+                "msgOut": "Column name contains illegal characters. The legal characters are: a-z, A-Z, 0-9, space, _, -.",
+                "msgClient": true
+            },
+            {
+                "msgId": "57",
+                "msgCode": "E00009",
+                "msgOut": "Only CSV and .XLS files are can be uploaded.",
+                "msgClient": true
+            },
+            {
+                "msgId": "60",
+                "msgCode": "E00012",
+                "msgOut": "File has one or more empty column.",
+                "msgClient": true
+            },
+            {
+                "msgId": "73",
+                "msgCode": "E00022",
+                "msgOut": "Column name cannot be null.",
+                "msgClient": true
+            },
+            {
+                "msgId": "59",
+                "msgCode": "E00011",
+                "msgOut": "File size should be greater than zero",
+                "msgClient": true
+            },
+            {
+                "msgId": "74",
+                "msgCode": "E00023",
+                "msgOut": "File name is missing",
+                "msgClient": true
+            },
+            {
+                "msgId": "67",
+                "msgCode": "E00019",
+                "msgOut": "File has no rows",
                 "msgClient": true
             }
         ]

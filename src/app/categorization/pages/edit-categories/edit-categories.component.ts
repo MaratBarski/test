@@ -111,7 +111,10 @@ export class EditCategoriesComponent extends BaseSibscriber implements OnInit {
 
   private replaceCategory(): void {
     if (!this.mapCategoryTable.validate()) { return; }
-    const formData = this.categoryInfo.fileData.formData as FormData;
+    //const formData = this.categoryInfo.fileData.formData as FormData;
+    
+    const formData = new FormData();
+    formData.append('file',(this.categoryInfo.fileData.formData as FormData).get('file'));
     const categorization = {
       levels: {},
       hierarchyRootId: this.selectedCategory.data.hierarchyRootId,
@@ -156,13 +159,14 @@ export class EditCategoriesComponent extends BaseSibscriber implements OnInit {
     formData.append('message', categorization.message);
     formData.append('hierarchyLevels', JSON.stringify(categorization.levels));
 
+
     // const test = {};
     // test['hierarchyName'] = categorization.hierarchyName;
     // test['projectId'] = categorization.projectId;
     // test['description'] = categorization.description;
     // test['defaultLevelId'] = categorization.defaultLevelId;
     // test['message'] = categorization.message;
-    // test['levels'] = JSON.stringify(categorization.levels);
+    // test['hierarchyLevels'] = JSON.stringify(categorization.levels);
     // document.write(JSON.stringify(test));
 
     this.uploadService.add({
