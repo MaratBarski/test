@@ -95,6 +95,9 @@ export class MapCategoryTableComponent {
   addNotInUser(): void {
     this.notInUse = [];
     this.categoryMap.forEach(x => {
+      if (x.sortValue < 0) {
+        return;
+      }
       if (!x.inUse && x !== this.newCategoryDefault && x !== this.noMatchCategory) {
         this.notInUse.push(x.hierarchyLevelName)
       }

@@ -6,13 +6,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '@app/shared/shared.module';
 import { CoreModule } from '@appcore';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
+import { ResearchListComponent } from './pages/research-list/research-list.component';
 
 const routes: Array<Route> = [
-  { path: '', component: UserListComponent }
+  { path: '', component: UserListComponent },
+  { path: 'research', component: ResearchListComponent }
 ]
 
 @NgModule({
-  declarations: [UserListComponent, UserDetailsComponent],
+  declarations: [UserListComponent, UserDetailsComponent, ResearchListComponent],
   imports: [
     CommonModule,
     CoreModule,
