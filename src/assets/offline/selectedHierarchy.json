@@ -1,32 +1,46 @@
 {
     "data": {
-        "hierarchyRootId": "565",
-        "description": "",
+        "hierarchyRootId": "563",
+        "description": "kosta",
         "domain": null,
-        "hierarchyFile": "20200706_094250_hie_sariel.csv",
-        "hierarchyName": "sariel - marat - match",
+        "hierarchyFile": "20200705_162359_hie_sariel.csv",
+        "hierarchyName": "Diagnosis123411211213",
         "projectId": "1",
         "hierarchyFilePath": "/mdclone_v6/files/Hierarchies",
-        "insertDate": "2020-07-06T06:40:16.000Z",
-        "defaultLevelId": null,
+        "insertDate": "2020-07-05T13:21:25.000Z",
+        "defaultLevelId": "1",
         "hierarchyChange": false,
         "hierarchyLoadingType": "manual",
         "status": "mapped",
         "project_id": "1",
         "hierarchyLevels": [
             {
-                "hierarchyLevelId": "3819",
+                "hierarchyLevelId": "2929",
                 "hierarchyLevelName": "pid",
-                "sortValue": null,
-                "dataSample": null,
-                "hierarchyRootId": "565"
+                "sortValue": 0,
+                "dataSample": "250",
+                "hierarchyRootId": "563"
             },
             {
-                "hierarchyLevelId": "3820",
+                "hierarchyLevelId": "2935",
                 "hierarchyLevelName": " d desc",
-                "sortValue": null,
+                "sortValue": 1,
+                "dataSample": " balbla",
+                "hierarchyRootId": "563"
+            },
+            {
+                "hierarchyLevelId": "3813",
+                "hierarchyLevelName": "omry 233",
+                "sortValue": -1,
                 "dataSample": null,
-                "hierarchyRootId": "565"
+                "hierarchyRootId": "563"
+            },
+            {
+                "hierarchyLevelId": "3814",
+                "hierarchyLevelName": "omry 2",
+                "sortValue": -1,
+                "dataSample": null,
+                "hierarchyRootId": "563"
             }
         ],
         "project": {

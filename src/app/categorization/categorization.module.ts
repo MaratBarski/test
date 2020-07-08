@@ -19,6 +19,7 @@ import { EditCategoryTableComponent } from './components/edit-category-table/edi
 import { MapCategoryHeaderComponent } from './components/map-category-header/map-category-header.component';
 import { CategoryMessageComponent } from './components/category-message/category-message.component';
 import { CategoryDistinctPipe } from './pipes/category-distinct.pipe';
+import { CategoryVisiblePipe } from './pipes/category-visible.pipe';
 
 const routes: Array<Route> = [
   { path: '', component: CategorizationComponent },
@@ -38,7 +39,8 @@ const routes: Array<Route> = [
     EditCategoryTableComponent,
     MapCategoryHeaderComponent,
     CategoryMessageComponent,
-	CategoryDistinctPipe
+	CategoryDistinctPipe,
+	CategoryVisiblePipe
   ],
   imports: [
     CommonModule,
