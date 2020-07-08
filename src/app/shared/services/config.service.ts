@@ -63,10 +63,10 @@ export class ConfigService extends BaseSibscriber {
 
   private updateClientMessages(): void {
     if (!this.serverConfig.msg) { return; }
-    Object.keys(this.configDictionary).forEach(k => {
-      const message = this.serverConfig.msg.find(x => x.msgCode === k);
-      if (!message) { return; }
-      this.config[this.configDictionary[k]] = message.msgOut;
-    })
+    this.serverConfig.msg.forEach((elm: any) => {
+      if (this.configDictionary[elm.msgCode]) {
+        this.config.fileValidationErrors[this.configDictionary[elm.msgCode]] = elm.msgOut;
+      }
+    });
   }
 }

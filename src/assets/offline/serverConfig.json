@@ -945,19 +945,19 @@
             {
                 "msgId": "59",
                 "msgCode": "E00011",
-                "msgOut": "File size should be greater than zero",
+                "msgOut": "File size should be greater than zero.",
                 "msgClient": true
             },
             {
                 "msgId": "74",
                 "msgCode": "E00023",
-                "msgOut": "File name is missing",
+                "msgOut": "File name is missing.",
                 "msgClient": true
             },
             {
                 "msgId": "67",
                 "msgCode": "E00019",
-                "msgOut": "File has no rows",
+                "msgOut": "File has no rows.",
                 "msgClient": true
             }
         ]
