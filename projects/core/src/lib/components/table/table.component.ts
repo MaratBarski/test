@@ -318,10 +318,14 @@ export class TableComponent implements OnDestroy, AfterViewInit, AfterViewChecke
       row.isActive = !!!row.isActive;
       return;
     }
-    this.dataSource.rows.filter(r => r.isActive).forEach(r => r.isActive = false);
+    this.resetActiveRow();
+    this.showItemInfo(row, undefined, rowIndex, event);
     row.isActive = true;
     this.dataSource.activeRow = row;
-    this.showItemInfo(row, undefined, rowIndex, event);
+  }
+
+  resetActiveRow(): void {
+    this.dataSource.rows.filter(r => r.isActive).forEach(r => r.isActive = false);
   }
 
   currentRowInfo: TableRowModel;
@@ -403,6 +407,7 @@ export class TableComponent implements OnDestroy, AfterViewInit, AfterViewChecke
   @HostListener('document:click', ['$event']) onMouseClick(event: any) {
     this.closeRowInfo();
     this.commandRow = undefined;
+    this.resetActiveRow();
   }
 
   initActionsLinks(menu: ModalMenuComponent): void {

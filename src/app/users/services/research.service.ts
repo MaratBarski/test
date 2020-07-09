@@ -69,7 +69,9 @@ export class ResearchService {
           isSortEnabled: true,
           csvTitle: 'Permission Set Name',
           showDetails: false,
-          css: 'admin-table__item admin-table__perm-40 w-xxl-20 w-xxxl-25'
+          css: 'admin-table__item admin-table__perm-40 w-xxl-20 w-xxxl-25',
+          cellCss: 'admin-table__item',
+          cellContainerCss: 'admin-table__name'
         },
         {
           columnId: 'User',
@@ -79,7 +81,9 @@ export class ResearchService {
           sortDir: 'desc',
           isSortedColumn: true,
           csvTitle: 'User',
-          css: 'admin-table__item d-none d-md-table-cell admin-table__perm-20 w-xxl-20 w-xxxl-25'
+          css: 'admin-table__item d-none d-md-table-cell admin-table__perm-20 w-xxl-20 w-xxxl-25',
+          cellCss: 'admin-table__item d-none d-md-table-cell',
+          cellContainerCss: 'admin-table__name'
         },
         {
           columnId: 'Modified',
@@ -87,7 +91,9 @@ export class ResearchService {
           isSortEnabled: true,
           filter: false,
           csvTitle: 'Modified',
-          css: 'admin-table__item d-none d-md-table-cell admin-table__modif'
+          css: 'admin-table__item d-none d-md-table-cell admin-table__modif',
+          cellCss: 'admin-table__item d-none d-md-table-cell',
+          cellContainerCss: 'admin-table__name'
         },
         {
           columnId: 'Environment',
@@ -95,7 +101,9 @@ export class ResearchService {
           isSortEnabled: true,
           filter: true,
           csvTitle: 'Environment',
-          css: 'admin-table__item d-none d-lg-table-cell admin-table__perm-20'
+          css: 'admin-table__item d-none d-lg-table-cell admin-table__perm-20',
+          cellCss: 'admin-table__item d-none d-lg-table-cell',
+          cellContainerCss: 'admin-table__text-cut'
         },
         {
           columnId: 'ApprovalKey',
