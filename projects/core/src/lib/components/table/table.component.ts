@@ -350,12 +350,16 @@ export class TableComponent implements OnDestroy, AfterViewInit, AfterViewChecke
   }
 
   showItemInfo(row: TableRowModel | any, header: TableHeaderModel, rowIndex: number, event: any): void {
+    if (this.currentRowInfo === row) {
+      event.stopPropagation();
+      return;
+    }
     ComponentService.documentClick();
     // this.rowClick(row);
     event.stopPropagation();
     this.clientY = event.clientY;
     this.hideCurrentRowDetails(() => {
-      this.currentRowInfo = row;;
+      this.currentRowInfo = row;
     });
   }
 
