@@ -16,10 +16,9 @@ import { ComponentService } from '../../services/component.service';
       }), { params: { width: 1000 } }),
       state('false', style({
         width: '0px',
-        overflow: 'hidden',
-        opacity: 0
+        overflow: 'hidden'
       })),
-      transition('true => false', animate('100ms ease-out')),
+      transition('true => false', animate('500ms ease-out')),
       transition('false => true', animate('300ms ease-in'))
     ])
   ]
@@ -61,6 +60,10 @@ export class RowInfoComponent implements AfterContentInit, OnDestroy {
         ts.unsubscribe();
       });
     }
+  }
+
+  hide(): void {
+    this.show = false;
   }
 
   setTop(top: number, isFirstTime = true): void {

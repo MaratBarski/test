@@ -26,12 +26,14 @@ export class MapCategoryInfoComponent {
     if (selected) {
       this.selectedCategory = { id: selected.hierarchyLevelId, text: selected.hierarchyLevelName };
     }
-    this.categories = this._data.data.hierarchyLevels.map((x: any) => {
-      return {
-        id: x.hierarchyLevelId,
-        text: x.hierarchyLevelName
-      }
-    });
+    this.categories = this._data.data.hierarchyLevels
+      .filter((x:any) => x.sortValue >= 0)
+      .map((x: any) => {
+        return {
+          id: x.hierarchyLevelId,
+          text: x.hierarchyLevelName
+        }
+      });
   }
   get data(): any { return this._data; }
   private _data: any;
@@ -54,7 +56,7 @@ export class MapCategoryInfoComponent {
   }
 
   fileData: any;
-  
+
   onChangeUploadFile(event: any): void {
     this.showUploadFile = false;
     this.categories = [];

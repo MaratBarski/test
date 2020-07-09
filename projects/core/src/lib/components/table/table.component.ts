@@ -326,13 +326,16 @@ export class TableComponent implements OnDestroy, AfterViewInit, AfterViewChecke
 
   currentRowInfo: TableRowModel;
   clientY = 0;
-
-  closeRowInfo(): void {
-    this.currentRowInfo = undefined;
-  }
-
+  rowDetails: RowInfoComponent = undefined;
   isFirstInfoOpen = true;
   stickyInfo2Table = true;
+
+  closeRowInfo(): void {
+    this.hideCurrentRowDetails(() => {
+      this.currentRowInfo = undefined;
+      this.rowDetails = undefined;
+    });
+  }
 
   rowDetailsInit(rowDetails: RowInfoComponent): void {
     if (this.stickyInfo2Table) {
@@ -343,14 +346,26 @@ export class TableComponent implements OnDestroy, AfterViewInit, AfterViewChecke
       rowDetails.setMargin(0, this.isFirstInfoOpen);
     }
     this.isFirstInfoOpen = false;
+    this.rowDetails = rowDetails;
   }
 
   showItemInfo(row: TableRowModel | any, header: TableHeaderModel, rowIndex: number, event: any): void {
     ComponentService.documentClick();
-   // this.rowClick(row);
+    // this.rowClick(row);
     event.stopPropagation();
     this.clientY = event.clientY;
-    this.currentRowInfo = row;
+    this.hideCurrentRowDetails(() => {
+      this.currentRowInfo = row;;
+    });
+  }
+
+  hideCurrentRowDetails(callback: any): void {
+    if (!this.currentRowInfo) { callback(); return; }
+    if (!this.rowDetails) { callback(); return; }
+    this.rowDetails.hide();
+    setTimeout(() => {
+      callback();
+    }, 500);
   }
 
   infoRowClick(event: any): void {
