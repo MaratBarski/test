@@ -371,7 +371,7 @@ export class TableComponent implements OnDestroy, AfterViewInit, AfterViewChecke
     ComponentService.documentClick();
     this.clientY = event.clientY;
     event.stopPropagation();
-    this.rowClick(row);
+    //this.rowClick(row);
     this.commandRow = row;
     this.animationService.showElement(this.commandRow);
   }

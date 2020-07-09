@@ -33,6 +33,7 @@ export class RowInfoComponent implements AfterContentInit, OnDestroy {
   width = 0;
   height = 0;
   show = false;
+  noAnimateOnFirstTime = false;
 
   constructor(private renderer2: Renderer2) { }
 
@@ -52,7 +53,7 @@ export class RowInfoComponent implements AfterContentInit, OnDestroy {
 
   setMargin(margin: number, isFirstTime = true): void {
     this.renderer2.setStyle(this.container.nativeElement, 'margin-top', `${margin}px`);
-    if (isFirstTime) {
+    if (isFirstTime && this.noAnimateOnFirstTime) {
       this.show = true;
     } else {
       const ts = timer(0, 1).subscribe(sec => {
