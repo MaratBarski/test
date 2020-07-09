@@ -10,7 +10,7 @@
             <mdc-button className="btn_icon" (click)="openFileUpload()" text="+ New Set">
             </mdc-button>&nbsp;
             <mdc-download #downloader (onBeforeDownload)="changeFileName()" [fileName]="downloadFileName"
-                (click)="changeFileName()" text="Download Permission Set"></mdc-download>
+                (click)="changeFileName()" [textAsTooltip]="true" text="Download list as CSV"></mdc-download>
         </div>
         <div mdAnimationSticky [hidden]="!isDataExists" class="admin-table-wrap__col">
             <div class="form-search d-none d-md-block">
@@ -37,7 +37,7 @@
 </ng-template>
 
 <ng-template #KeyStatus let-item let-src="source">
-    <svg *ngIf="src.researchStatus && src.researchStatus.toLowerCase().trim()==='open'" width="20" height="20"
+    <svg class="icon ic-failure ic-grey" *ngIf="src.researchStatus && src.researchStatus.toLowerCase().trim()==='open'"
         mdcSvg="ic-failure"></svg>
 </ng-template>
 

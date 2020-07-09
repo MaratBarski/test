@@ -69,7 +69,7 @@ export class ResearchService {
           isSortEnabled: true,
           csvTitle: 'Permission Set Name',
           showDetails: false,
-          //css: 'admin-table__item admin-table__perm-40 w-xxl-20 w-xxxl-25'
+          css: 'admin-table__item admin-table__perm-40 w-xxl-20 w-xxxl-25'
         },
         {
           columnId: 'User',

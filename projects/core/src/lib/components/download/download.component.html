@@ -1,5 +1,14 @@
-<span (click)="download()" class="link-load pointer">
-    <span class="ic-hover">
-        <mdc-icon path="ic-download"></mdc-icon>
-    </span><span class="link-load__text">{{text}}</span>
-</span>
+<ng-container *ngIf="!textAsTooltip">
+    <span (click)="download()" class="link-load pointer">
+        <span class="ic-hover">
+            <mdc-icon path="ic-download"></mdc-icon>
+        </span><span class="link-load__text">{{text}}</span>
+    </span>
+</ng-container>
+<ng-container *ngIf="textAsTooltip">
+    <span [mdcTooltip]="text" [stickyToElement]="true" position="right" (click)="download()" class="link-load pointer">
+        <span class="ic-hover">
+            <mdc-icon path="ic-download"></mdc-icon>
+        </span>
+    </span>
+</ng-container>

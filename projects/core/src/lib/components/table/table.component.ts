@@ -313,7 +313,7 @@ export class TableComponent implements OnDestroy, AfterViewInit, AfterViewChecke
     this.dataSource = this._dataSourceOrigin;
   }
 
-  rowClick(row: TableRowModel): void {
+  rowClick(row: TableRowModel, rowIndex: number, event: any): void {
     if (this.isMultiSelect) {
       row.isActive = !!!row.isActive;
       return;
@@ -321,6 +321,7 @@ export class TableComponent implements OnDestroy, AfterViewInit, AfterViewChecke
     this.dataSource.rows.filter(r => r.isActive).forEach(r => r.isActive = false);
     row.isActive = true;
     this.dataSource.activeRow = row;
+    this.showItemInfo(row, undefined, rowIndex, event);
   }
 
   currentRowInfo: TableRowModel;
@@ -346,7 +347,7 @@ export class TableComponent implements OnDestroy, AfterViewInit, AfterViewChecke
 
   showItemInfo(row: TableRowModel | any, header: TableHeaderModel, rowIndex: number, event: any): void {
     ComponentService.documentClick();
-    this.rowClick(row);
+   // this.rowClick(row);
     event.stopPropagation();
     this.clientY = event.clientY;
     this.currentRowInfo = row;
