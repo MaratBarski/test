@@ -85,6 +85,6 @@ export const SideMenu: Array<MenuItem> = [
     {
         id: PageInfo.Researchers.id,
         url: 'users/research',
-        text: 'Researchers'
+        text: 'Permission Sets'
     }
 ]
