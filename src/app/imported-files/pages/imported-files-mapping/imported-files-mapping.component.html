@@ -213,9 +213,9 @@
                     </div>
                   </td>
                   <td class="admin-table__item admin-table__item_center d-none d-xl-table-cell">
-                    <ng-container *ngIf="this.fileSourceForm.get('fileClms')['controls'][i].get('percent').value>-1">
+                    <ng-container *ngIf="fileSourceForm.get('fileClms')['controls'][i].get('percent').value>-1 && fileSourceForm.get('fileClms')['controls'][i].get('hierarchyRootId').value !== 0">
                       <mdc-progress-match
-                        [percentage]="this.fileSourceForm.get('fileClms')['controls'][i].get('percent').value"></mdc-progress-match>
+                        [percentage]="fileSourceForm.get('fileClms')['controls'][i].get('percent').value"></mdc-progress-match>
                     </ng-container>
                   </td>
                   <td class="admin-table__item d-none d-xl-table-cell" #div>

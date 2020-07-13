@@ -94,7 +94,7 @@ export class ImportedFileMappingComponent implements OnInit, OnDestroy {
       fileNameAlias: [this.fileSource.fileNameAlias],
       tag: [this.fileSource.tag],
       insertDate: [this.fileSource.insertDate],
-      templateId: [this.fileSource.templateId, Validators.required],
+      templateId: [this.fileSource.templateId],
       tableName: [this.fileSource.tableName],
       project: [this.fileSource.tableName],
       uploadedBy: [this.fileSource.uploadedBy],
@@ -152,6 +152,7 @@ export class ImportedFileMappingComponent implements OnInit, OnDestroy {
   }
 
   getRelationalIntegrity(hieId, columnIndex) {
+    this.fileSourceForm.get('fileClms')['controls'][columnIndex].get('percent').setValue(-1)
     const hierarchyId = hieId.id;
     const colIndex = columnIndex + 1;
     const fileName = this.fileSource.fileNameAlias;
@@ -181,7 +182,6 @@ export class ImportedFileMappingComponent implements OnInit, OnDestroy {
     } else {
       this.isSaving = true;
       const tmp = this.fileSourceForm.getRawValue();
-
       tmp.templateId = tmp.templateId === 0 ? '' : tmp.templateId;
 
       for (let i = 0; i < tmp.fileClms.length; i++) {
