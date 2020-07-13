@@ -2,7 +2,7 @@
     <div class="admin-table-info__top">
         <div class="admin-table-info__head">Details</div>
         <div class="admin-table-info__icons">
-            <span (click)="download()" class="ic-hover">
+            <span *ngIf="category?.status!=='unmapped'" (click)="download()" class="ic-hover">
                 <svg mdcSvg="ic-download"></svg>
             </span>
             <span (click)="closeInfo()" class="ic-hover">

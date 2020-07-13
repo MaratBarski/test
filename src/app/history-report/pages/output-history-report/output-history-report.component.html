@@ -11,7 +11,7 @@
         </div>
         <div class="admin-table-wrap__col">
             <div class="tabs-page">
-                <mdc-date-filter #dateFilter (onFilter)="dateFilterData($event)" [dataSource]="reports"
+                <mdc-date-filter #dateFilter [dateFormat]="configService.dateFormat" (onFilter)="dateFilterData($event)" [dataSource]="reports"
                     [items]="dateRanges"></mdc-date-filter>
             </div>
             <form class="form-search d-none d-md-block">
@@ -19,7 +19,7 @@
             </form>
         </div>
     </div>
-    <mdc-table [auto]="true" [rowInfoTemplate]="rowInfoTemplate" [emptyState]="emptyState" #table
+    <mdc-table [rowInfoTemplate]="rowInfoTemplate" [emptyState]="emptyState" #table
         [headersTemplate]="{ data:dataHeader}"
         [cellsTemplate]="{ insertDate:dateColumn, status:statusTemplate, name:nameTemplate, download:downloadTemplate,data:dataTemplate}"
         [searchOptions]="searchOptions" [paginator]="paginator" [search]="search" [dataSource]="dataSource"

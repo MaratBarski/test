@@ -16,10 +16,9 @@ import { ComponentService } from '../../services/component.service';
       }), { params: { width: 1000 } }),
       state('false', style({
         width: '0px',
-        overflow: 'hidden',
-        opacity: 0
+        overflow: 'hidden'
       })),
-      transition('true => false', animate('100ms ease-out')),
+      transition('true => false', animate('500ms ease-out')),
       transition('false => true', animate('300ms ease-in'))
     ])
   ]
@@ -33,6 +32,7 @@ export class RowInfoComponent implements AfterContentInit, OnDestroy {
   width = 0;
   height = 0;
   show = false;
+  noAnimateOnFirstTime = false;
 
   constructor(private renderer2: Renderer2) { }
 
@@ -52,7 +52,7 @@ export class RowInfoComponent implements AfterContentInit, OnDestroy {
 
   setMargin(margin: number, isFirstTime = true): void {
     this.renderer2.setStyle(this.container.nativeElement, 'margin-top', `${margin}px`);
-    if (isFirstTime) {
+    if (isFirstTime && this.noAnimateOnFirstTime) {
       this.show = true;
     } else {
       const ts = timer(0, 1).subscribe(sec => {
@@ -60,6 +60,10 @@ export class RowInfoComponent implements AfterContentInit, OnDestroy {
         ts.unsubscribe();
       });
     }
+  }
+
+  hide(): void {
+    this.show = false;
   }
 
   setTop(top: number, isFirstTime = true): void {

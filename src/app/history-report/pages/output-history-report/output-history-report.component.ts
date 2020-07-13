@@ -4,8 +4,8 @@ import { DownloadComponent, TableComponent, TableModel, NavigationService, PageI
 import { SessionHistory } from '@app/models/session-history';
 import { environment } from '@env/environment';
 import { formatDate } from '@angular/common';
-import { format } from 'url';
 import { DownloadService } from '@app/shared/services/download.service';
+import { ConfigService } from '@app/shared/services/config.service';
 
 
 @Component({
@@ -40,7 +40,8 @@ export class OutputHistoryReportComponent extends BaseSibscriber implements OnIn
   constructor(
     private historyReportService: HistoryReportService,
     private navigationService: NavigationService,
-    private downloadService: DownloadService
+    private downloadService: DownloadService,
+    public configService: ConfigService
   ) {
     super();
     this.navigationService.currentPageID = PageInfo.MonitorReports.id;

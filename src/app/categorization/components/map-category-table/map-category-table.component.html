@@ -28,8 +28,9 @@
                                 </div>
                             </td>
                             <td class="admin-table__item d-none d-md-table-cell">
-                                <div [ngClass]="{'error':item.oldCategory===noMatchCategory}" class="select-wrap">
-                                    <div class="select select_small select_full">
+                                <div class="select-wrap">
+                                    <div class="select select_small select_full"
+                                        [ngClass]="{'error':item.oldCategory===noMatchCategory}">
                                         <div (click)="selectItem($event,item,index)" class="select__head">
                                             {{item.oldCategory.hierarchyLevelName}}
                                             <div class="select__head-arr">
@@ -39,10 +40,10 @@
                                         <div id="select_{{index}}" [mdcVisibility]="selectedItem===item"
                                             class="select__option">
                                             <ng-container *ngFor="let i of categoryMap">
-                                                <!-- <div *ngIf="!i.inUse || (i === newCategoryDefault && newCategoryDefault !== item.oldCategory)" (click)="changeOldCategory(i,item)" class="select__param"> 
+                                                <!-- <div *ngIf="!i.inUse || (i === newCategoryDefault && newCategoryDefault !== item.oldCategory)" (click)="changeOldCategory(i,item)" class="select__param">
                                                 {{i.hierarchyLevelName}}
                                                  </div> -->
-                                                <div *ngIf="i.sortValue!==-2 && (!i.inUse || (i === newCategoryDefault && newCategoryDefault !== item.oldCategory))"
+                                                <div *ngIf="i.sortValue!==-2 && i.sortValue!==-1  && (!i.inUse || (i === newCategoryDefault && newCategoryDefault !== item.oldCategory))"
                                                     (click)="changeOldCategory(i,item)" class="select__param">
                                                     {{i.hierarchyLevelName}}
                                                 </div>

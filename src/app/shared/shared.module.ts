@@ -22,6 +22,7 @@ import { PageFotterComponent } from './components/page-fotter/page-fotter.compon
 import { ReplacePipe } from './pipes/replace.pipe';
 import { DataSamplePipe } from './pipes/data-sample.pipe';
 import { FormatNumberPipe } from './pipes/format-number.pipe';
+import { LegendComponent } from './components/legend/legend.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { FormatNumberPipe } from './pipes/format-number.pipe';
     PageFotterComponent,
     ReplacePipe,
     DataSamplePipe,
-    FormatNumberPipe
+    FormatNumberPipe,
+    LegendComponent
   ],
   imports: [
     FormsModule,

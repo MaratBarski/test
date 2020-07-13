@@ -31,22 +31,26 @@
                     </mdc-row-info>
                 </td>
             </tr>
-            <tr (click)="rowClick(row)" (mouseover)="rowMouseOver($event,row,rowIndex)"
+            <tr (click)="rowClick(row,rowIndex+1,$event)" (mouseover)="rowMouseOver($event,row,rowIndex)"
                 (mouseleave)="rowMouseLeave($event,row,rowIndex)"
                 [ngClass]="{'active':row.isActive,'row-even':rowIndex%2===0,'row-odd':rowIndex%2}" mdcTableRow>
                 <ng-container *ngFor="let header of dataSource.headers|visibleHeaders;let index = index">
-                    <td [ngStyle]="header.columnStyle||header.style" class="admin-table__item {{header.css}}"
-                        [mdcTableItem]="index">
-                        <div [ngClass]="{'row-details-container':header.showDetails}">
-                            <mdc-text-block *ngIf="!cellsTemplate || !cellsTemplate[header.columnId]"
-                                [maxWidth]="header.maxWidth||500" text="{{row.cells[header.columnId]}}">
+                    <td [ngStyle]="header.columnStyle||header.style"
+                        class="admin-table__item {{header.cellCss||header.css}}" [mdcTableItem]="index">
+                        <div [ngClass]="{'row-details-container':header.showDetails}"
+                            class="{{header.cellContainerCss}}">
+                            <mdc-text-block position="top" *ngIf="!cellsTemplate || !cellsTemplate[header.columnId]"
+                                [colorText]="serachText" [maxWidth]="header.maxWidth||500"
+                                text="{{row.cells[header.columnId]}}">
                             </mdc-text-block>
                             <ng-container *ngIf="cellsTemplate && cellsTemplate[header.columnId]"
                                 [ngTemplateOutlet]="cellsTemplate[header.columnId]"
                                 [ngTemplateOutletContext]="{$implicit: row.cells,source:row.source}">
                             </ng-container>
-                            <div *ngIf="header.showDetails" [hidden]="currentOver!==row" class="more-link pointer">
-                                <div (click)="showItemInfo(row,header,rowIndex+1,$event)">
+                            <div *ngIf="header.showDetails" [hidden]="currentOver!==row||row===currentRowInfo"
+                                class="more-link pointer">
+                                <!-- <div (click)="showItemInfo(row,header,rowIndex+1,$event)"> -->
+                                <div>
                                     Details
                                     <svg color="#0596FF" width="14" height="14" mdcSvg="ic-next-to-page"></svg>
                                 </div>

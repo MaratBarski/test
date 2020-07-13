@@ -27,7 +27,7 @@ export class HistoryReportService {
 
   load(): Observable<SessionHistoryResponse> {
     return this.dataService.get(this.getUrl);
-    
+
   }
 
   createDataSource(history: Array<SessionHistory>): TableModel {
@@ -57,7 +57,7 @@ export class HistoryReportService {
           text: 'Query/File Name',
           isSortEnabled: true,
           csvTitle: 'Query/File name /ID',
-          css: 'admin-table__item w-md-4'
+          css: 'admin-table__item w-md-200'
         },
         {
           columnId: 'approvalKey',
@@ -101,13 +101,13 @@ export class HistoryReportService {
           text: 'Status',
           isSortEnabled: true,
           csvTitle: 'Status',
-          css: 'admin-table__item d-none d-xl-table-cell admin-table__item_center w-md-1-3'
+          css: 'admin-table__item d-none d-xl-table-cell admin-table__item_center admin-table__status'
         },
         {
           columnId: 'download',
           text: '',
           isSortEnabled: false,
-          css: 'admin-table__item admin-table__load w-md-1'
+          css: 'admin-table__item admin-table__load'
         },
 
       ],

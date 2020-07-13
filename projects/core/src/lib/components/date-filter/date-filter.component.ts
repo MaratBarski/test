@@ -26,6 +26,7 @@ export class DateFilterComponent {
   @Output() onFilter = new EventEmitter<Array<any>>();
   @Output() onSelect = new EventEmitter<number>();
 
+  @Input() dateFormat = 'dd/mm/yy';
   @Input() enableCustom = false;
   @Input() tabid = 'dateRangeFilter';
   @Input() tabActive = 0;

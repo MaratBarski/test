@@ -16,7 +16,7 @@
                         </tr>
                     </thead>
                     <tbody *ngIf="data?.data?.hierarchyLevels">
-                        <tr class="admin-table__row" *ngFor="let item of data.data.hierarchyLevels;let index=index">
+                        <tr class="admin-table__row" *ngFor="let item of data.data.hierarchyLevels|categoryVisible;let index=index">
                             <td class="admin-table__item">
                                 <div class="admin-table__name-edit">
                                     <input (change)="validateItem(item)" type="text"

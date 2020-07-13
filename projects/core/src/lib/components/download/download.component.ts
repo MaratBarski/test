@@ -9,6 +9,7 @@ export class DownloadComponent {
 
   @Input() fileName: string = 'download';
   @Input() text = 'Download';
+  @Input() textAsTooltip = false;
   @Output() onDownload = new EventEmitter<void>();
   @Output() onBeforeDownload = new EventEmitter<void>();
 
@@ -17,7 +18,7 @@ export class DownloadComponent {
     this.onDownload.emit();
   }
 
-  beforeDownload():void{
+  beforeDownload(): void {
     this.onBeforeDownload.emit();
   }
 }

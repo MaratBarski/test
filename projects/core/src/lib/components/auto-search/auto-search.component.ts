@@ -13,8 +13,10 @@ export class AutoSearchComponent implements OnDestroy {
   @Input() pause = 500;
   prevText = '';
   text = '';
+  get textTrim(): string { return this.text.trim(); }
   timeoutID: any;
   active = false;
+
   keyup(event: any): void {
     if (this.prevText === this.text) { return; }
     if (this.text.length < this.minLength && this.text != '') { return; }
@@ -25,20 +27,20 @@ export class AutoSearchComponent implements OnDestroy {
   keydown(event: any): void {
     this.stopTimeout();
     if (event.keyCode !== 13) { return; }
-    this.complete.emit(this.text);
+    this.complete.emit(this.textTrim);
   }
 
   publish(): void {
     this.stopTimeout();
     this.timeoutID = setTimeout(() => {
       this.stopTimeout();
-      this.complete.emit(this.text);
+      this.complete.emit(this.textTrim);
     }, this.pause);
   }
 
   search(): void {
     this.stopTimeout();
-    this.complete.emit(this.text);
+    this.complete.emit(this.textTrim);
   }
 
   clearText(): void {

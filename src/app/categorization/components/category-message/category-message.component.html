@@ -34,8 +34,8 @@
     <span class="add-info-table__error" *ngIf="notInUse?.length">
         <svg class="icon ic-failure" mdcSvg="ic-failure">
         </svg>The following old categories will not be available for the user anymore: <span
-            class="add-info-table__error-accent">Type of {{oldNotMapedTitle}}</span><span
-            class="add-info-table__more"><a *ngIf="notInUse?.length-2>0" href="#">{{notInUse.length-2}} More</a>
+            class="add-info-table__error-accent">{{oldNotMapedTitle}}</span><span class="add-info-table__more"><a
+                *ngIf="notInUse?.length-2>0" href="#">{{notInUse.length-2}} More</a>
             <div class="info-popup info-popup_right info-popup_bottom" style="width: 276px;">
                 <form class="form-site">
                     <div class="info-popup__top">

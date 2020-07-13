@@ -17,7 +17,7 @@
         </div>
     </div>
     <div [hidden]="!isDataExists || !isLoaded" class="admin-table-content">
-        <mdc-table #table [auto]="true" [dataSource]="dataSource" [rowInfoTemplate]="rowInfoTemplate"
+        <mdc-table #table [dataSource]="dataSource" [rowInfoTemplate]="rowInfoTemplate"
             [cellsTemplate]="{ state:stateColumn,insertDate:dateColumn,inUseColumn:inUseColumn}"
             [searchOptions]="searchOptions" [paginator]="paginator" [search]="search" (onAction)="onAction($event)">
         </mdc-table>
@@ -107,7 +107,7 @@
 </ng-template>
 
 <mdc-modal-window *ngIf="showUploadFile">
-    <md-upload-file [source]="currentSource" (onUpload)="showUploadFile=false" (onCancel)="showUploadFile=false">
+    <md-upload-file [targetComponent]="me" [source]="currentSource" (onUpload)="showUploadFile=false" (onCancel)="showUploadFile=false">
     </md-upload-file>
 </mdc-modal-window>
 

@@ -1,0 +1,967 @@
+{
+    "data": {
+        "config": [
+            {
+                "configId": "1",
+                "program": "general",
+                "parameterName": "pg_pass",
+                "parameterValue": "a60d1324ec91bc2d69b99100047465eb",
+                "prmType": 1
+            },
+            {
+                "configId": "4",
+                "program": "general",
+                "parameterName": "HiveServer2Password",
+                "parameterValue": "85c2d8d2ca83a30306c26cbafcfbd85f",
+                "prmType": 1
+            },
+            {
+                "configId": "9",
+                "program": "general",
+                "parameterName": "odbc_name",
+                "parameterValue": "MdcloneApp",
+                "prmType": 0
+            },
+            {
+                "configId": "10",
+                "program": "general",
+                "parameterName": "pg_user",
+                "parameterValue": "postgres",
+                "prmType": 0
+            },
+            {
+                "configId": "11",
+                "program": "general",
+                "parameterName": "pg_db_name",
+                "parameterValue": "postgres",
+                "prmType": 0
+            },
+            {
+                "configId": "15",
+                "program": "utilities",
+                "parameterName": "r_compare_info",
+                "parameterValue": "Understading Synthetic Comparison.pdf",
+                "prmType": 0
+            },
+            {
+                "configId": "16",
+                "program": "utilities",
+                "parameterName": "linux_python",
+                "parameterValue": "python3",
+                "prmType": 0
+            },
+            {
+                "configId": "17",
+                "program": "notification_message",
+                "parameterName": "message_user_not_exist",
+                "parameterValue": "Unable to login. Please contact your Administrator.",
+                "prmType": 0
+            },
+            {
+                "configId": "18",
+                "program": "notification_message",
+                "parameterName": "message_user_not_mapped",
+                "parameterValue": "The system recognised there are no projects or templates assigned with your user.",
+                "prmType": 0
+            },
+            {
+                "configId": "19",
+                "program": "bpm",
+                "parameterName": "port",
+                "parameterValue": "8181",
+                "prmType": 0
+            },
+            {
+                "configId": "21",
+                "program": "mpp",
+                "parameterName": "password",
+                "parameterValue": "a60d1324ec91bc2d69b99100047465eb",
+                "prmType": 1
+            },
+            {
+                "configId": "215",
+                "program": "maintenance",
+                "parameterName": "flux_daysinterval",
+                "parameterValue": "1",
+                "prmType": 0
+            },
+            {
+                "configId": "27",
+                "program": "general",
+                "parameterName": "linux_hive_odbc",
+                "parameterValue": "Hive",
+                "prmType": 0
+            },
+            {
+                "configId": "31",
+                "program": "bpm",
+                "parameterName": "url_port",
+                "parameterValue": "http://localhost:8383",
+                "prmType": 0
+            },
+            {
+                "configId": "32",
+                "program": "document_parser",
+                "parameterName": "hbase_table",
+                "parameterValue": "mdc_hbase_solr",
+                "prmType": 0
+            },
+            {
+                "configId": "33",
+                "program": "lifeflux",
+                "parameterName": "male_gender_code",
+                "parameterValue": "M",
+                "prmType": 0
+            },
+            {
+                "configId": "34",
+                "program": "mpp",
+                "parameterName": "username",
+                "parameterValue": "postgres",
+                "prmType": 0
+            },
+            {
+                "configId": "35",
+                "program": "mpp",
+                "parameterName": "schema_name",
+                "parameterValue": "mpp",
+                "prmType": 0
+            },
+            {
+                "configId": "41",
+                "program": "site",
+                "parameterName": "anon_level",
+                "parameterValue": "2",
+                "prmType": 0
+            },
+            {
+                "configId": "43",
+                "program": "site",
+                "parameterName": "pdf_timer",
+                "parameterValue": "15",
+                "prmType": 0
+            },
+            {
+                "configId": "56",
+                "program": "general",
+                "parameterName": "hadoop_user",
+                "parameterValue": "MDCloneApplication",
+                "prmType": 0
+            },
+            {
+                "configId": "29",
+                "program": "cloudera_manager",
+                "parameterName": "user",
+                "parameterValue": "admin",
+                "prmType": 0
+            },
+            {
+                "configId": "58",
+                "program": "mpp",
+                "parameterName": "database",
+                "parameterValue": "postgres",
+                "prmType": 0
+            },
+            {
+                "configId": "59",
+                "program": "csvFileEmptySpace",
+                "parameterName": "json",
+                "parameterValue": "{\"0\":\"none\",\"1\":\"na\",\"2\":\"empty\",\"3\":\"NA\",\"4\":\"null\",\"5\":\"n/a\",\"6\":\"\\\"\\\"\"}",
+                "prmType": 0
+            },
+            {
+                "configId": "22",
+                "program": "mpp",
+                "parameterName": "host",
+                "parameterValue": "dev-cm-3",
+                "prmType": 0
+            },
+            {
+                "configId": "2",
+                "program": "general",
+                "parameterName": "app_plink_pass",
+                "parameterValue": "fd54a13b3cf37c73becee1802af86070",
+                "prmType": 1
+            },
+            {
+                "configId": "5",
+                "program": "general",
+                "parameterName": "site_url",
+                "parameterValue": "stage.mdclone-dev.com",
+                "prmType": 0
+            },
+            {
+                "configId": "72",
+                "program": "general",
+                "parameterName": "HiveServer2Port",
+                "parameterValue": "10000",
+                "prmType": 0
+            },
+            {
+                "configId": "73",
+                "program": "general",
+                "parameterName": "impala_daemons_port",
+                "parameterValue": "21000",
+                "prmType": 0
+            },
+            {
+                "configId": "75",
+                "program": "notification_message",
+                "parameterName": "time_before_pop_up",
+                "parameterValue": "2000",
+                "prmType": 0
+            },
+            {
+                "configId": "76",
+                "program": "notification_message",
+                "parameterName": "time_after_pop_up",
+                "parameterValue": "5000",
+                "prmType": 0
+            },
+            {
+                "configId": "80",
+                "program": "site",
+                "parameterName": "run_history_row_limit",
+                "parameterValue": "1000",
+                "prmType": 0
+            },
+            {
+                "configId": "81",
+                "program": "site",
+                "parameterName": "rows_limit",
+                "parameterValue": "15000",
+                "prmType": 0
+            },
+            {
+                "configId": "86",
+                "program": "user_privacy_breach",
+                "parameterName": "activity_counter",
+                "parameterValue": "1000",
+                "prmType": 0
+            },
+            {
+                "configId": "92",
+                "program": "document_parser",
+                "parameterName": "ctl_file_name",
+                "parameterValue": "ctl.csv",
+                "prmType": 0
+            },
+            {
+                "configId": "93",
+                "program": "document_parser",
+                "parameterName": "logger_type",
+                "parameterValue": "DataBaseLogger",
+                "prmType": 0
+            },
+            {
+                "configId": "94",
+                "program": "document_parser",
+                "parameterName": "SolrTableName",
+                "parameterValue": "ev_mdc_hbase_solr",
+                "prmType": 0
+            },
+            {
+                "configId": "95",
+                "program": "lifeflux",
+                "parameterName": "female_gender_code",
+                "parameterValue": "F",
+                "prmType": 0
+            },
+            {
+                "configId": "20",
+                "program": "bpm",
+                "parameterName": "username",
+                "parameterValue": "mdclone.admin",
+                "prmType": 0
+            },
+            {
+                "configId": "188",
+                "program": "loadedevent",
+                "parameterName": "port",
+                "parameterValue": "8181",
+                "prmType": 0
+            },
+            {
+                "configId": "26",
+                "program": "bpm",
+                "parameterName": "jotform_username",
+                "parameterValue": "Sariel",
+                "prmType": 0
+            },
+            {
+                "configId": "187",
+                "program": "loadedevent",
+                "parameterName": "api",
+                "parameterValue": "localhost:8181/datalake/api/combined_events/loaded_event",
+                "prmType": 0
+            },
+            {
+                "configId": "189",
+                "program": "hierarchy",
+                "parameterName": "api",
+                "parameterValue": "localhost:9999/update/hierarchy",
+                "prmType": 0
+            },
+            {
+                "configId": "197",
+                "program": "utilities",
+                "parameterName": "r_repeating_rows_timer",
+                "parameterValue": "0.5",
+                "prmType": 0
+            },
+            {
+                "configId": "190",
+                "program": "hierarchy",
+                "parameterName": "port",
+                "parameterValue": "9999",
+                "prmType": 0
+            },
+            {
+                "configId": "196",
+                "program": "general",
+                "parameterName": "cloudera_manager",
+                "parameterValue": "dev-cm-1",
+                "prmType": 0
+            },
+            {
+                "configId": "13",
+                "program": "general",
+                "parameterName": "app_host",
+                "parameterValue": "dev-app-1",
+                "prmType": 0
+            },
+            {
+                "configId": "6",
+                "program": "general",
+                "parameterName": "hbase_thrift_server",
+                "parameterValue": "dev-cm-3",
+                "prmType": 0
+            },
+            {
+                "configId": "28",
+                "program": "general",
+                "parameterName": "app_user",
+                "parameterValue": "mdclone.admin",
+                "prmType": 0
+            },
+            {
+                "configId": "8",
+                "program": "general",
+                "parameterName": "app_pass",
+                "parameterValue": "4320e77f1e83ebb123ab888b6d8f6263",
+                "prmType": 1
+            },
+            {
+                "configId": "12",
+                "program": "general",
+                "parameterName": "domain",
+                "parameterValue": "esx",
+                "prmType": 0
+            },
+            {
+                "configId": "102",
+                "program": "site",
+                "parameterName": "system_scripts",
+                "parameterValue": "C:/inetpub/wwwroot/system_scripts",
+                "prmType": 0
+            },
+            {
+                "configId": "103",
+                "program": "general",
+                "parameterName": "private_key",
+                "parameterValue": "EIMYOTKLS",
+                "prmType": 0
+            },
+            {
+                "configId": "104",
+                "program": "general",
+                "parameterName": "flux_table_name",
+                "parameterValue": "flux",
+                "prmType": 0
+            },
+            {
+                "configId": "105",
+                "program": "general",
+                "parameterName": "HiveServer2User",
+                "parameterValue": "hive",
+                "prmType": 0
+            },
+            {
+                "configId": "106",
+                "program": "general",
+                "parameterName": "impala_daemons_timeout",
+                "parameterValue": "100000",
+                "prmType": 0
+            },
+            {
+                "configId": "107",
+                "program": "general",
+                "parameterName": "HiveServer2Timeout",
+                "parameterValue": "100000",
+                "prmType": 0
+            },
+            {
+                "configId": "173",
+                "program": "cloudera_manager",
+                "parameterName": "host",
+                "parameterValue": "dev-cm-1",
+                "prmType": 0
+            },
+            {
+                "configId": "141",
+                "program": "cloudera_manager",
+                "parameterName": "pass",
+                "parameterValue": "277e65818ebb77c0e72234722654985e",
+                "prmType": 1
+            },
+            {
+                "configId": "171",
+                "program": "general",
+                "parameterName": "app_plink_user",
+                "parameterValue": "root",
+                "prmType": 0
+            },
+            {
+                "configId": "169",
+                "program": "general",
+                "parameterName": "HiveServer2Host",
+                "parameterValue": "dev-cm-1",
+                "prmType": 0
+            },
+            {
+                "configId": "168",
+                "program": "general",
+                "parameterName": "mdc_cm_3",
+                "parameterValue": "dev-cm-3",
+                "prmType": 0
+            },
+            {
+                "configId": "162",
+                "program": "general",
+                "parameterName": "hdfs_tmp_dir",
+                "parameterValue": "/user/mdclone/tmp",
+                "prmType": 0
+            },
+            {
+                "configId": "170",
+                "program": "general",
+                "parameterName": "impala_daemons",
+                "parameterValue": "dev-cw-1",
+                "prmType": 0
+            },
+            {
+                "configId": "53",
+                "program": "fluxod",
+                "parameterName": "thread_pool_limit",
+                "parameterValue": "-1",
+                "prmType": 0
+            },
+            {
+                "configId": "24",
+                "program": "term_search",
+                "parameterName": "properties_to_index",
+                "parameterValue": "[[\"chart_events\",\"valuecode\"]]",
+                "prmType": 0
+            },
+            {
+                "configId": "54",
+                "program": "site",
+                "parameterName": "extlink_text",
+                "parameterValue": null,
+                "prmType": 0
+            },
+            {
+                "configId": "55",
+                "program": "site",
+                "parameterName": "extlink_url",
+                "parameterValue": null,
+                "prmType": 0
+            },
+            {
+                "configId": "36",
+                "program": "term_search",
+                "parameterName": "projects_to_index",
+                "parameterValue": "[15,1,14]",
+                "prmType": 0
+            },
+            {
+                "configId": "23",
+                "program": "term_search",
+                "parameterName": "max_distinct_values",
+                "parameterValue": "100000",
+                "prmType": 0
+            },
+            {
+                "configId": "52",
+                "program": "fluxod",
+                "parameterName": "min_distinct_vals",
+                "parameterValue": "0",
+                "prmType": 0
+            },
+            {
+                "configId": "87",
+                "program": "maintenance",
+                "parameterName": "daysinterval",
+                "parameterValue": "30",
+                "prmType": 0
+            },
+            {
+                "configId": "214",
+                "program": "fluxod",
+                "parameterName": "execution_engine",
+                "parameterValue": "mr",
+                "prmType": 0
+            },
+            {
+                "configId": "213",
+                "program": "query_engine",
+                "parameterName": "aggregation_functions",
+                "parameterValue": "slope;quada;quadb;quadc;rsquare;integral",
+                "prmType": 0
+            },
+            {
+                "configId": "123",
+                "program": "document_parser",
+                "parameterName": "document_content_path",
+                "parameterValue": "./output",
+                "prmType": 0
+            },
+            {
+                "configId": "127",
+                "program": "site",
+                "parameterName": "cardinality",
+                "parameterValue": "[array of strings]",
+                "prmType": 0
+            },
+            {
+                "configId": "128",
+                "program": "user_privacy_breach",
+                "parameterName": "hours_to_act",
+                "parameterValue": "24",
+                "prmType": 0
+            },
+            {
+                "configId": "125",
+                "program": "cloudera_manager",
+                "parameterName": "cluster_name",
+                "parameterValue": "mdclone",
+                "prmType": 0
+            },
+            {
+                "configId": "182",
+                "program": "general",
+                "parameterName": "iis_user",
+                "parameterValue": "mdclone.admin",
+                "prmType": 0
+            },
+            {
+                "configId": "183",
+                "program": "sqoop",
+                "parameterName": "mappers",
+                "parameterValue": "4",
+                "prmType": 0
+            },
+            {
+                "configId": "186",
+                "program": "sqoop",
+                "parameterName": "host",
+                "parameterValue": "dev-cw-1",
+                "prmType": 0
+            },
+            {
+                "configId": "140",
+                "program": "general",
+                "parameterName": "security",
+                "parameterValue": "0",
+                "prmType": 0
+            },
+            {
+                "configId": "139",
+                "program": "general",
+                "parameterName": "pg_port",
+                "parameterValue": "5432",
+                "prmType": 0
+            },
+            {
+                "configId": "3",
+                "program": "general",
+                "parameterName": "domain_user_pass",
+                "parameterValue": "4320e77f1e83ebb123ab888b6d8f6263",
+                "prmType": 1
+            },
+            {
+                "configId": "159",
+                "program": "document_parser",
+                "parameterName": "tika_path",
+                "parameterValue": "./tika/tika-app-1.14.jar",
+                "prmType": 0
+            },
+            {
+                "configId": "163",
+                "program": "notification_message",
+                "parameterName": "page_to_check",
+                "parameterValue": "/admin/research,/admin/obj_browser,/admin/hierarchy,/admin/users/mapping,/file-source",
+                "prmType": 0
+            },
+            {
+                "configId": "164",
+                "program": "utilities",
+                "parameterName": "python",
+                "parameterValue": "c:/Python34/python.exe",
+                "prmType": 0
+            },
+            {
+                "configId": "166",
+                "program": "general",
+                "parameterName": "site_path",
+                "parameterValue": "C:\\\\inetpub\\\\wwwroot\\\\app.stage.mdclone",
+                "prmType": 0
+            },
+            {
+                "configId": "78",
+                "program": "site",
+                "parameterName": "bpm_default_days",
+                "parameterValue": "90",
+                "prmType": 0
+            },
+            {
+                "configId": "172",
+                "program": "general",
+                "parameterName": "ssl",
+                "parameterValue": "0",
+                "prmType": 0
+            },
+            {
+                "configId": "142",
+                "program": "bpm",
+                "parameterName": "pass",
+                "parameterValue": "4320e77f1e83ebb123ab888b6d8f6263",
+                "prmType": 1
+            },
+            {
+                "configId": "160",
+                "program": "general",
+                "parameterName": "linux_scripts_folder",
+                "parameterValue": "/mdclone_v6",
+                "prmType": 0
+            },
+            {
+                "configId": "89",
+                "program": "general",
+                "parameterName": "win_path_mdclone_shared",
+                "parameterValue": "C:\\mdclone_shared",
+                "prmType": 0
+            },
+            {
+                "configId": "88",
+                "program": "general",
+                "parameterName": "app_files_path",
+                "parameterValue": "/mdclone_v6/files",
+                "prmType": 0
+            },
+            {
+                "configId": "161",
+                "program": "general",
+                "parameterName": "linux_shared_folder",
+                "parameterValue": "/mdclone_shared_v6",
+                "prmType": 0
+            },
+            {
+                "configId": "77",
+                "program": "site",
+                "parameterName": "file_upload_limit",
+                "parameterValue": "100",
+                "prmType": 0
+            },
+            {
+                "configId": "90",
+                "program": "general",
+                "parameterName": "date_format",
+                "parameterValue": "EU",
+                "prmType": 0
+            },
+            {
+                "configId": "57",
+                "program": "bpm",
+                "parameterName": "admin_email",
+                "parameterValue": "Help@MDClone.com",
+                "prmType": 0
+            },
+            {
+                "configId": "208",
+                "program": "utilities",
+                "parameterName": "mdclone_help_doc_path",
+                "parameterValue": "C:\\inetpub\\wwwroot\\app.stage.mdclone\\files\\help\\MDClone Help.PDF",
+                "prmType": 0
+            },
+            {
+                "configId": "200",
+                "program": "ng",
+                "parameterName": "url_next_button",
+                "parameterValue": "http://localhost:8080",
+                "prmType": 0
+            },
+            {
+                "configId": "202",
+                "program": "general",
+                "parameterName": "hierarchy_browser_size_limit",
+                "parameterValue": "2500",
+                "prmType": 0
+            },
+            {
+                "configId": "201",
+                "program": "general",
+                "parameterName": "hidden_objects",
+                "parameterValue": ".navbar {display: none;} .breadcrumb {display: none;}",
+                "prmType": 0
+            },
+            {
+                "configId": "101",
+                "program": "site",
+                "parameterName": "research_start_date",
+                "parameterValue": "01/31/2013",
+                "prmType": 0
+            },
+            {
+                "configId": "100",
+                "program": "site",
+                "parameterName": "research_end_date",
+                "parameterValue": "11/30/2022",
+                "prmType": 0
+            },
+            {
+                "configId": "177",
+                "program": "term_search",
+                "parameterName": "properties_to_ignore",
+                "parameterValue": "[]",
+                "prmType": 0
+            },
+            {
+                "configId": "193",
+                "program": "site",
+                "parameterName": "bpm_enable",
+                "parameterValue": "false",
+                "prmType": 0
+            },
+            {
+                "configId": "206",
+                "program": "general",
+                "parameterName": "redis_port",
+                "parameterValue": "6379",
+                "prmType": 0
+            },
+            {
+                "configId": "99",
+                "program": "links",
+                "parameterName": "json",
+                "parameterValue": "{\"use_links\":false,\"link-0\":{\"link\":\"http://127.0.0.1:4200/queryResultsLoader\",\"name\":\"open with Discover\"},\"link-1\":{\"link\":\"http://10.0.2.7/#/home\",\"name\":\"Canvas\"},\"service\":{\"host\":\"stage.mdclone-dev.com\",\"port\":\"9999\"}}",
+                "prmType": 0
+            },
+            {
+                "configId": "207",
+                "program": "maintenance",
+                "parameterName": "log_archive_map",
+                "parameterValue": "[{\"log_source_path\":\"C:\\\\Program Files\\\\Apache Software Foundation\\\\Tomcat 8.5\\\\logs\", \"target_directory_name\":\"query_tool_tomcat\" }, { \"log_source_path\":\"C:\\\\Program Files\\\\Apache Software Foundation\\\\Tomcat\\\\8.5\\\\logs-mdclone\", \"target_directory_name\":\"query_tool_mdc\" }, { \"log_source_path\":\"C:\\\\inetpub\\\\wwwroot\\\\app.stage.mdclone\\\\logs\", \"target_directory_name\":\"php\" } ]",
+                "prmType": 0
+            },
+            {
+                "configId": "176",
+                "program": "fluxod",
+                "parameterName": "hipaa_regex_phone",
+                "parameterValue": "{\"United States\": \"(1\\\\s?)?((\\\\([0-9]{3}\\\\))|[0-9]{3})[\\\\s\\\\-]?[\\\\0-9]{3}[\\\\s\\\\-]?[0-9]{4}\", \"Israel\": \"^((\\\\+972|972)|0)( |-)?([1-468-9]( |-)?\\\\d{7}|(5|7)[0-9]( |-)?\\\\d{7})$\"}",
+                "prmType": 0
+            },
+            {
+                "configId": "205",
+                "program": "general",
+                "parameterName": "redis_host",
+                "parameterValue": "dev-cm-1",
+                "prmType": 0
+            },
+            {
+                "configId": "217",
+                "program": "general",
+                "parameterName": "da_timeout",
+                "parameterValue": "1000",
+                "prmType": 0
+            },
+            {
+                "configId": "194",
+                "program": "general",
+                "parameterName": "allow_project_admin_modify_session",
+                "parameterValue": "TRUE",
+                "prmType": 0
+            },
+            {
+                "configId": "191",
+                "program": "general",
+                "parameterName": "allow_session_share",
+                "parameterValue": "TRUE",
+                "prmType": 0
+            },
+            {
+                "configId": "42",
+                "program": "site",
+                "parameterName": "audit_default_days",
+                "parameterValue": "2",
+                "prmType": 0
+            },
+            {
+                "configId": "79",
+                "program": "site",
+                "parameterName": "act_rows_limit",
+                "parameterValue": "200",
+                "prmType": 0
+            },
+            {
+                "configId": "143",
+                "program": "site",
+                "parameterName": "mpp",
+                "parameterValue": "TRUE",
+                "prmType": 0
+            },
+            {
+                "configId": "198",
+                "program": "general",
+                "parameterName": "allow_quality_of_care_sessions",
+                "parameterValue": "TRUE",
+                "prmType": 0
+            },
+            {
+                "configId": "179",
+                "program": "general",
+                "parameterName": "impala_app_tag",
+                "parameterValue": "appv6",
+                "prmType": 0
+            },
+            {
+                "configId": "138",
+                "program": "general",
+                "parameterName": "impala_db",
+                "parameterValue": "mimic_db",
+                "prmType": 0
+            },
+            {
+                "configId": "225",
+                "program": "API",
+                "parameterName": "api_version",
+                "parameterValue": "v1",
+                "prmType": 0
+            },
+            {
+                "configId": "39",
+                "program": "solr",
+                "parameterName": "core_url",
+                "parameterValue": "http://10.0.2.3:8983/solr/term_search_v6_shard6_replica2/",
+                "prmType": 0
+            },
+            {
+                "configId": "165",
+                "program": "utilities",
+                "parameterName": "rscript",
+                "parameterValue": "C:/PROGRA~1/R/R-Mdclone/bin/x64/Rscript",
+                "prmType": 0
+            },
+            {
+                "configId": "124",
+                "program": "utilities",
+                "parameterName": "rlibrary",
+                "parameterValue": "C:/Program Files/R/R-Mdclone/library",
+                "prmType": 0
+            },
+            {
+                "configId": "108",
+                "program": "site",
+                "parameterName": "research_max_patients",
+                "parameterValue": "1000000",
+                "prmType": 0
+            },
+            {
+                "configId": "126",
+                "program": "site",
+                "parameterName": "user_session_timeout",
+                "parameterValue": "120",
+                "prmType": 0
+            },
+            {
+                "configId": "82",
+                "program": "site",
+                "parameterName": "calculate_timeout",
+                "parameterValue": "1000000",
+                "prmType": 0
+            },
+            {
+                "configId": "218",
+                "program": "general",
+                "parameterName": "input_date_format",
+                "parameterValue": "YYYY-MM-DD",
+                "prmType": 0
+            },
+            {
+                "configId": "245",
+                "program": "general",
+                "parameterName": "censored_scripts_path",
+                "parameterValue": "/scripts/censored",
+                "prmType": 0
+            }
+        ],
+        "msg": [
+            {
+                "msgId": "70",
+                "msgCode": "S30012",
+                "msgOut": "{name} has been removed successfully",
+                "msgClient": true
+            },
+            {
+                "msgId": "62",
+                "msgCode": "E00014",
+                "msgOut": "File format is not  UTF8",
+                "msgClient": true
+            },
+            {
+                "msgId": "72",
+                "msgCode": "E00021",
+                "msgOut": "Column name contains illegal characters. The legal characters are: a-z, A-Z, 0-9, space, _, -.",
+                "msgClient": true
+            },
+            {
+                "msgId": "57",
+                "msgCode": "E00009",
+                "msgOut": "Only CSV and .XLS files are can be uploaded.",
+                "msgClient": true
+            },
+            {
+                "msgId": "60",
+                "msgCode": "E00012",
+                "msgOut": "File has one or more empty column.",
+                "msgClient": true
+            },
+            {
+                "msgId": "73",
+                "msgCode": "E00022",
+                "msgOut": "Column name cannot be null.",
+                "msgClient": true
+            },
+            {
+                "msgId": "59",
+                "msgCode": "E00011",
+                "msgOut": "File size should be greater than zero.",
+                "msgClient": true
+            },
+            {
+                "msgId": "74",
+                "msgCode": "E00023",
+                "msgOut": "File name is missing.",
+                "msgClient": true
+            },
+            {
+                "msgId": "67",
+                "msgCode": "E00019",
+                "msgOut": "File has no rows.",
+                "msgClient": true
+            }
+        ]
+    },
+    "massage": "Get all Config's Objects",
+    "status": "success"
+}

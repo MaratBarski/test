@@ -10,8 +10,8 @@ export const environment = {
   endPoints: {
     userData: 'user-data',
     fileSource: 'mdclone/api/v1/file-source',
-    getRelationalIntegrity: 'mdclone/api/v1/file-source/get-relational-integrity',
-    getSampleData: 'mdclone/api/v1/file-source/get-sample-data',
+    getRelationalIntegrity: 'kostya/api/v1/file-source/get-relational-integrity',
+    getSampleData: 'kostya/api/v1/file-source/get-sample-data',
     templateByProject: 'mdclone/api/v1/template/get-by-project',
     uploadFileSource: 'mdclone/api/v1/upload/file-source',
     uploadHierarchy: 'mdclone/api/v1/upload/hierarchy',
@@ -19,12 +19,12 @@ export const environment = {
     deleteCategory: 'mdclone/api/v1/hierarchy',
     downloadCategory: 'mdclone/api/v1/hierarchy/download',
     hierarchy: 'mdclone/api/v1/hierarchy',
-    replaceHierarchy: 'mdclone/api/v1/hierarchy',
+    replaceHierarchy:'mdclone/api/v1/upload/hierarchy',
     historyReport: 'mdclone/api/v1/session-history',
-    downloadHistoryReport: 'mdclone/api/v1/session-history/download',
+    downloadHistoryReport: 'moshe/api/v1/session-history/download',
     usageReport: 'mdclone/api/v1/reporting/usage',
     updateHierarchy: 'mdclone/api/v1/hierarchy',
-    config: 'config',
+    config: 'mdclone/api/v1/config?msg=true',
     usageActiveUsage: 'mdclone/api/v1/reporting/usage-active-users',
     usageMonthlyUsage: 'mdclone/api/v1/reporting/usage-monthly-usage',
     usagePerUser: 'mdclone/api/v1/reporting/usage-per-user',
@@ -33,6 +33,7 @@ export const environment = {
     usageSummaryTable: 'mdclone/api/v1/reporting/usage-summary-table',
     usageRetantionTable: 'mdclone/api/v1/reporting/usage-retention-list',
     usageCsvDownload: 'mdclone/api/v1/reporting/detailed-usage-report',
-    userList: 'mdclone/api/v1/user'
+    userList: 'mdclone/api/v1/user',
+    research:'mdclone/api/v1/research'
   }
 };

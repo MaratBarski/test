@@ -24,7 +24,7 @@ export const environment = {
     downloadHistoryReport: 'moshe/api/v1/session-history/download',
     usageReport: 'mdclone/api/v1/reporting/usage',
     updateHierarchy: 'mdclone/api/v1/hierarchy',
-    config: 'config',
+    config: 'mdclone/api/v1/config?msg=true',
     usageActiveUsage: 'mdclone/api/v1/reporting/usage-active-users',
     usageMonthlyUsage: 'mdclone/api/v1/reporting/usage-monthly-usage',
     usagePerUser: 'mdclone/api/v1/reporting/usage-per-user',
@@ -33,6 +33,7 @@ export const environment = {
     usageSummaryTable: 'mdclone/api/v1/reporting/usage-summary-table',
     usageRetantionTable: 'mdclone/api/v1/reporting/usage-retention-list',
     usageCsvDownload: 'mdclone/api/v1/reporting/detailed-usage-report',
-    userList: 'mdclone/api/v1/user'
+    userList: 'mdclone/api/v1/user',
+    research:'mdclone/api/v1/research'
   }
 };

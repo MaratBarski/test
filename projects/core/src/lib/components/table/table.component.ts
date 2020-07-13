@@ -146,11 +146,7 @@ export class TableComponent implements OnDestroy, AfterViewInit, AfterViewChecke
     this._search = search;
     this._subscriptions.push(
       this._search.complete.subscribe((text: string) => {
-        if (!text || text.trim() === '') {
-          this._currentEmptyState = this._emptyState;
-        } else {
-          this._currentEmptyState = DefaultEmptyState();
-        }
+        this._currentEmptyState = DefaultEmptyState();
         this.resetPaginator();
         this._rows = this.searchService.filterRows(
           this.dataSource.rows, { text: text, columns: this.searchOptions }
@@ -202,7 +198,6 @@ export class TableComponent implements OnDestroy, AfterViewInit, AfterViewChecke
   @Input() set dataSource(data: TableModel) {
     this.isFirstInfoOpen = true;
     if (!data) { return; }
-    this._currentEmptyState = this._emptyState;
     this.resetSearch();
     const isResetFilter = !!data.resetFilter;
     data.resetFilter = false;
@@ -307,31 +302,39 @@ export class TableComponent implements OnDestroy, AfterViewInit, AfterViewChecke
   }
 
   onApplyFilter(header: TableHeaderComponent): void {
-    this._currentEmptyState = this._emptyState;
+    this._currentEmptyState = DefaultEmptyState();
     this.resetSearch();
     this.filters[header.model.columnId] = header.filterOptions;
     this.dataSource = this._dataSourceOrigin;
   }
 
-  rowClick(row: TableRowModel): void {
+  rowClick(row: TableRowModel, rowIndex: number, event: any): void {
     if (this.isMultiSelect) {
       row.isActive = !!!row.isActive;
       return;
     }
-    this.dataSource.rows.filter(r => r.isActive).forEach(r => r.isActive = false);
+    this.resetActiveRow();
+    this.showItemInfo(row, undefined, rowIndex, event);
     row.isActive = true;
     this.dataSource.activeRow = row;
   }
 
-  currentRowInfo: TableRowModel;
-  clientY = 0;
-
-  closeRowInfo(): void {
-    this.currentRowInfo = undefined;
+  resetActiveRow(): void {
+    this.dataSource.rows.filter(r => r.isActive).forEach(r => r.isActive = false);
   }
 
+  currentRowInfo: TableRowModel;
+  clientY = 0;
+  rowDetails: RowInfoComponent = undefined;
   isFirstInfoOpen = true;
   stickyInfo2Table = true;
+
+  closeRowInfo(): void {
+    this.hideCurrentRowDetails(() => {
+      this.currentRowInfo = undefined;
+      this.rowDetails = undefined;
+    });
+  }
 
   rowDetailsInit(rowDetails: RowInfoComponent): void {
     if (this.stickyInfo2Table) {
@@ -342,14 +345,30 @@ export class TableComponent implements OnDestroy, AfterViewInit, AfterViewChecke
       rowDetails.setMargin(0, this.isFirstInfoOpen);
     }
     this.isFirstInfoOpen = false;
+    this.rowDetails = rowDetails;
   }
 
   showItemInfo(row: TableRowModel | any, header: TableHeaderModel, rowIndex: number, event: any): void {
+    if (this.currentRowInfo === row) {
+      event.stopPropagation();
+      return;
+    }
     ComponentService.documentClick();
-    this.rowClick(row);
+    // this.rowClick(row);
     event.stopPropagation();
     this.clientY = event.clientY;
-    this.currentRowInfo = row;
+    this.hideCurrentRowDetails(() => {
+      this.currentRowInfo = row;
+    });
+  }
+
+  hideCurrentRowDetails(callback: any): void {
+    if (!this.currentRowInfo) { callback(); return; }
+    if (!this.rowDetails) { callback(); return; }
+    this.rowDetails.hide();
+    setTimeout(() => {
+      callback();
+    }, 500);
   }
 
   infoRowClick(event: any): void {
@@ -370,7 +389,7 @@ export class TableComponent implements OnDestroy, AfterViewInit, AfterViewChecke
     ComponentService.documentClick();
     this.clientY = event.clientY;
     event.stopPropagation();
-    this.rowClick(row);
+    //this.rowClick(row);
     this.commandRow = row;
     this.animationService.showElement(this.commandRow);
   }
@@ -383,6 +402,7 @@ export class TableComponent implements OnDestroy, AfterViewInit, AfterViewChecke
   @HostListener('document:click', ['$event']) onMouseClick(event: any) {
     this.closeRowInfo();
     this.commandRow = undefined;
+    this.resetActiveRow();
   }
 
   initActionsLinks(menu: ModalMenuComponent): void {

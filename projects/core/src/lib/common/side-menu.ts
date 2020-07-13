@@ -35,6 +35,9 @@ export const PageInfo = {
     },
     PatientStorySettings: {
         id: 'PatientStorySettings'
+    },
+    Researchers: {
+        id: 'Researchers'
     }
 }
 
@@ -78,5 +81,10 @@ export const SideMenu: Array<MenuItem> = [
         id: PageInfo.JobsScheduling.id,
         url: 'usage-dashboard',
         text: 'Usage Report'
+    },
+    {
+        id: PageInfo.Researchers.id,
+        url: 'users/research',
+        text: 'Permission Sets'
     }
 ]

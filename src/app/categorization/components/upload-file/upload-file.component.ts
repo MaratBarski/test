@@ -18,6 +18,7 @@ export class UploadFileComponent {
   @Output() onUpload = new EventEmitter<void>();
   @Output() onChange = new EventEmitter<any>();
 
+  @Input() targetComponent: any;
   @Input() set uploadUrl(uploadUrl: string) { this._uploadUrl = uploadUrl; }
   @Input() set source(source: any) {
     this._source = source;
@@ -68,6 +69,7 @@ export class UploadFileComponent {
       },
       form: formData,
       url: this._uploadUrl,
+      targetComponent: this.targetComponent
     });
     this.reset();
     this.onUpload.emit();

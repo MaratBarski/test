@@ -52,9 +52,6 @@
     width:80px;
     height:26px;
 }
-.more-link:hover{
-    text-decoration: underline;
-}
 .row-details-container{
     display: flex; 
     justify-items: center;

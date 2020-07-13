@@ -1,0 +1,48 @@
+<md-page-title>
+    <div class="page-header__content">
+        <h1>PERMISSION SETS</h1>
+    </div>
+</md-page-title>
+<md-page-body>
+    <div [hidden]="isLoaded">Loading...</div>
+    <div [hidden]="!isLoaded" class="admin-table-wrap__action">
+        <div class="admin-table-wrap__col">
+            <mdc-button className="btn_icon" (click)="openFileUpload()" text="+ New Set">
+            </mdc-button>&nbsp;
+            <mdc-download #downloader (onBeforeDownload)="changeFileName()" [fileName]="downloadFileName"
+                (click)="changeFileName()" [textAsTooltip]="true" text="Download list as CSV"></mdc-download>
+        </div>
+        <div mdAnimationSticky [hidden]="!isDataExists" class="admin-table-wrap__col">
+            <div class="form-search d-none d-md-block">
+                <mdc-auto-search [pause]="500" #search placeholder="{{'search'|translate}}"></mdc-auto-search>
+            </div>
+        </div>
+    </div>
+    <div [hidden]="!isDataExists || !isLoaded">
+        <mdc-table #table (onAction)="onAction($event)" [emptyState]="emptyState" [downloader]="downloader"
+            [cellsTemplate]="{ Modified:Modified,KeyStatus:KeyStatus,Active:Active}" [searchOptions]="searchOptions"
+            [paginator]="paginator" [search]="search" [dataSource]="dataSource">
+        </mdc-table>
+    </div>
+    <mdc-empty-state *ngIf="!isDataExists && isLoaded" [emptyState]="emptyState"></mdc-empty-state>
+    <div class="pager-wrap" [hidden]="!isLoaded">
+        <mdc-paginator #paginator paginationTitle="{{'paginationTitle'|translate}}" noPagingTitle="Showing {0} files"
+            [blockSize]="3" [pageSize]="12" [currentPage]="0">
+        </mdc-paginator>
+    </div>
+</md-page-body>
+
+<ng-template #Modified let-item>
+    <div>{{item.Modified|date}}&nbsp;{{item.Modified|date:'HH:mm'}}</div>
+</ng-template>
+
+<ng-template #KeyStatus let-item let-src="source">
+    <svg class="icon ic-failure ic-grey" *ngIf="src.researchStatus && src.researchStatus.toLowerCase().trim()==='open'"
+        mdcSvg="ic-failure"></svg>
+</ng-template>
+
+<ng-template #Active let-item let-src="source">
+    <div>
+        <span class="admin-table__circle admin-table__circle_green"></span>
+    </div>
+</ng-template>

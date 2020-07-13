@@ -22,7 +22,8 @@ export class UsageService {
           columnId: 'login',
           text: 'User Name',
           isSortEnabled: true,
-          csvTitle: 'User Name'
+          csvTitle: 'User Name',
+          css: 'admin-table__item'
         },
         {
           columnId: 'lastlogin',
@@ -31,7 +32,8 @@ export class UsageService {
           csvTitle: 'Last Login',
           isSortedColumn: true,
           sortDir: 'desc',
-          columnType: ColumnType.Date
+          columnType: ColumnType.Date,
+          css: 'admin-table__item d-none d-lg-table-cell'
         },
         {
           columnId: 'permission',
@@ -43,21 +45,24 @@ export class UsageService {
           columnId: 'loginDays',
           text: 'Login Days',
           isSortEnabled: true,
-          csvTitle: 'Login Days'
+          csvTitle: 'Login Days',
+          css: 'admin-table__item d-none d-md-table-cell admin-table__item_right'
         },
         {
           columnId: 'origin',
           text: 'Original',
           isSortEnabled: true,
           csvTitle: 'Original',
-          columnType: ColumnType.Number
+          columnType: ColumnType.Number,
+          css: 'admin-table__item d-none d-md-table-cell admin-table__item_right'
         },
         {
           columnId: 'syntetic',
           text: 'Synthetic',
           isSortEnabled: true,
           csvTitle: 'Synthetic',
-          columnType: ColumnType.Number
+          columnType: ColumnType.Number,
+          css: 'admin-table__item d-none d-md-table-cell admin-table__item_right'
         }
       ],
       rows: []
@@ -115,7 +120,8 @@ export class UsageService {
           sortDir: 'asc',
           isSortedColumn: true,
           csvTitle: 'Days Since Last Activity',
-          css: 'admin-table__item d-none d-md-table-cell admin-table__item_center'
+          css: 'admin-table__item d-none d-md-table-cell admin-table__item_right',
+          cellCss:'admin-table__item d-none d-md-table-cell admin-table__item_right'
         },
         {
           columnId: 'environment',

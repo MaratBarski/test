@@ -21,7 +21,7 @@ export class MapCategoryTableComponent {
 
   oldNewDifCount = 0;
   notInUse = [];
-  newCategoryDefault = { hierarchyLevelName: 'New Hierarchy name', sortValue: -1, inUse: true };
+  newCategoryDefault = { hierarchyLevelName: 'New Hierarchy name', sortValue: -3, inUse: true };
   noMatchCategory = { hierarchyLevelName: 'No Match. Please Select...', sortValue: -2, inUse: true };
   categoryMap = [];
   saveClicked = false;
@@ -95,6 +95,9 @@ export class MapCategoryTableComponent {
   addNotInUser(): void {
     this.notInUse = [];
     this.categoryMap.forEach(x => {
+      if (x.sortValue < 0) {
+        return;
+      }
       if (!x.inUse && x !== this.newCategoryDefault && x !== this.noMatchCategory) {
         this.notInUse.push(x.hierarchyLevelName)
       }
@@ -102,7 +105,7 @@ export class MapCategoryTableComponent {
   }
 
   findOldcategory(level: any): any {
-    return this.categoryMap.find((x: any) => x.hierarchyLevelName === level.hierarchyLevelName);
+    return this.categoryMap.find((x: any) => x.hierarchyLevelName.trim().toLowerCase() === level.hierarchyLevelName.trim().toLowerCase());
   }
 
   onUpdateMessage(message: string): void {
