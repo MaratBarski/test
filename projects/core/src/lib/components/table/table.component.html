@@ -38,7 +38,7 @@
                     <td [ngStyle]="header.columnStyle||header.style" class="admin-table__item {{header.cellCss||header.css}}"
                         [mdcTableItem]="index">
                         <div [ngClass]="{'row-details-container':header.showDetails}" class="{{header.cellContainerCss}}">
-                            <mdc-text-block *ngIf="!cellsTemplate || !cellsTemplate[header.columnId]"
+                            <mdc-text-block position="top" *ngIf="!cellsTemplate || !cellsTemplate[header.columnId]"
                                 [maxWidth]="header.maxWidth||500" text="{{row.cells[header.columnId]}}">
                             </mdc-text-block>
                             <ng-container *ngIf="cellsTemplate && cellsTemplate[header.columnId]"
