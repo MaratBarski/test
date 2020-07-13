@@ -29,7 +29,6 @@ export class ShareFileComponent implements ControlValueAccessor, OnInit {
 
   onValueChanged($event) {
     this.value = $event;
-    $event.stopPropagation();
   }
 
   toggleShare() {
@@ -50,6 +49,7 @@ export class ShareFileComponent implements ControlValueAccessor, OnInit {
 
   writeValue(obj: number): void {
     this.startValue = obj === FileSourceType.Public ? true : false;
+    this.value = this.startValue;
   }
 
   cancel() {

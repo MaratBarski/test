@@ -86,6 +86,7 @@ export class ImportedFileMappingComponent implements OnInit, OnDestroy {
   }
 
   private createFileSourceForm(): FormGroup {
+    console.log(this.fileSource.fileType);
     return this.formBuilder.group({
       fileId: [this.fileSource.fileId],
       fileName: [this.fileSource.fileName],

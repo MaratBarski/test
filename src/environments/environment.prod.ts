@@ -10,8 +10,8 @@ export const environment = {
   endPoints: {
     userData: 'user-data',
     fileSource: 'mdclone/api/v1/file-source',
-    getRelationalIntegrity: 'kostya/api/v1/file-source/get-relational-integrity',
-    getSampleData: 'kostya/api/v1/file-source/get-sample-data',
+    getRelationalIntegrity: 'mdclone/api/v1/file-source/get-relational-integrity',
+    getSampleData: 'mdclone/api/v1/file-source/get-sample-data',
     templateByProject: 'mdclone/api/v1/template/get-by-project',
     uploadFileSource: 'mdclone/api/v1/upload/file-source',
     uploadHierarchy: 'mdclone/api/v1/upload/hierarchy',
@@ -19,7 +19,7 @@ export const environment = {
     deleteCategory: 'mdclone/api/v1/hierarchy',
     downloadCategory: 'mdclone/api/v1/hierarchy/download',
     hierarchy: 'mdclone/api/v1/hierarchy',
-    replaceHierarchy:'mdclone/api/v1/upload/hierarchy',
+    replaceHierarchy: 'mdclone/api/v1/upload/hierarchy',
     historyReport: 'mdclone/api/v1/session-history',
     downloadHistoryReport: 'moshe/api/v1/session-history/download',
     usageReport: 'mdclone/api/v1/reporting/usage',
@@ -34,6 +34,6 @@ export const environment = {
     usageRetantionTable: 'mdclone/api/v1/reporting/usage-retention-list',
     usageCsvDownload: 'mdclone/api/v1/reporting/detailed-usage-report',
     userList: 'mdclone/api/v1/user',
-    research:'mdclone/api/v1/research'
+    research: 'mdclone/api/v1/research'
   }
 };
