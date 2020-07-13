@@ -2,14 +2,16 @@
     <div class="auto-complete-input-container">
         <input class="auto-complete-input" placeholder="{{placeHolder}}" [(ngModel)]="inputText"
             (keydown)="onKeyDown($event)" (keyup)="search($event)" type="text" />
+        <div (click)="clearText()" class="auto-complete-dropdown">
+            <svg class="ic-close" width="10" height="10" mdcSvg="ic-close"></svg>
+        </div>
         <div *ngIf="dropdown" class="auto-complete-dropdown" (click)="openSelect()">
             <div class="auto-complete-dropdown-icon">
                 <svg class="icon" mdcSvg="ic-select-arr-down"></svg>
             </div>
         </div>
     </div>
-    <div #container [style.maxHeight]="maxHeight" class="auto-complete-suggestions"
-        [hidden]="isHiddeSuggestions">
+    <div #container [style.maxHeight]="maxHeight" class="auto-complete-suggestions" [hidden]="isHiddeSuggestions">
         <div (mousemove)="currentIndex=index" (click)="selectItem(index)"
             *ngFor="let item of suggestions;let index = index" tabindex="{{index}}"
             [ngClass]="{'auto-complete-current':index===currentIndex}">
