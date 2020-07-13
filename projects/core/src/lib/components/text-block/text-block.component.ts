@@ -14,6 +14,7 @@ export class TextBlockComponent extends BaseSibscriber {
   @Input() overflow = 'hidden';
   @Input() whiteSpace = 'nowrap'
   @Input() position: TooltipPosition = 'right';
+  @Input() colorText = '';
 
   @Input() set maxWidth(maxWidth: number) {
     if (maxWidth >= 0) {

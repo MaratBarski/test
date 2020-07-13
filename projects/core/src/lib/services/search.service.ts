@@ -20,7 +20,11 @@ export class SearchService {
         if (!row.cells[searchModel.columns[i]]) {
           return false;
         }
-        if (row.cells[searchModel.columns[i]].toString().trim().toLowerCase().startsWith(searchModel.text.trim().toLowerCase())) {
+
+        if (row.cells[searchModel.columns[i]].toString().trim().toLowerCase()
+          .indexOf(searchModel.text.trim().toLowerCase()) !== -1
+          //.startsWith(searchModel.text.trim().toLowerCase())
+        ) {
           return true;
         }
       }
