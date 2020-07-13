@@ -146,11 +146,7 @@ export class TableComponent implements OnDestroy, AfterViewInit, AfterViewChecke
     this._search = search;
     this._subscriptions.push(
       this._search.complete.subscribe((text: string) => {
-        if (!text || text.trim() === '') {
-          this._currentEmptyState = this._emptyState;
-        } else {
-          this._currentEmptyState = DefaultEmptyState();
-        }
+        this._currentEmptyState = DefaultEmptyState();
         this.resetPaginator();
         this._rows = this.searchService.filterRows(
           this.dataSource.rows, { text: text, columns: this.searchOptions }
@@ -202,7 +198,6 @@ export class TableComponent implements OnDestroy, AfterViewInit, AfterViewChecke
   @Input() set dataSource(data: TableModel) {
     this.isFirstInfoOpen = true;
     if (!data) { return; }
-    this._currentEmptyState = this._emptyState;
     this.resetSearch();
     const isResetFilter = !!data.resetFilter;
     data.resetFilter = false;
@@ -307,7 +302,7 @@ export class TableComponent implements OnDestroy, AfterViewInit, AfterViewChecke
   }
 
   onApplyFilter(header: TableHeaderComponent): void {
-    this._currentEmptyState = this._emptyState;
+    this._currentEmptyState = DefaultEmptyState();
     this.resetSearch();
     this.filters[header.model.columnId] = header.filterOptions;
     this.dataSource = this._dataSourceOrigin;

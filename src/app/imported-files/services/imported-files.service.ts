@@ -58,6 +58,11 @@ export class ImportedFilesService {
             text: 'View output summary',
             icon: 'ic-view',
             command: 'view'
+            , checkDisabled: (source: any) => {
+              if (this.loginService.userInfo.data.id !== source.uploadedBy) { return true; }
+              if (!source.fileStatus) { return false; }
+              return source.fileStatus !== FileSourceStatus.MAPPED;
+            }
           }
         ],
         subLinks: [
