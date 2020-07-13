@@ -15,7 +15,32 @@
             "approvalKeyExpirationDate": null,
             "user_id": "1735",
             "researchRestrictionEvents": [],
-            "researchTemplates": []
+            "researchTemplates": [],
+            "user": {
+                "id": "1735",
+                "login": "moshee.kamer",
+                "passwordHash": "$2a$10$4VYnTZUR0gCY4VQWPUNd3u1N4QvzAiFdcc9HtOhyHsQ4.02D/RsiW",
+                "firstName": "moshe",
+                "lastName": "kamer",
+                "email": "moshe.kamer@mdclone.com",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": "31416214110487700800",
+                "createdBy": "mdclone.admin",
+                "createdDate": "2018-08-29T10:14:03.380Z",
+                "resetDate": "2018-08-29T10:14:03.337Z",
+                "lastModifiedBy": "mdclone.admin",
+                "lastModifiedDate": "2018-09-04T10:41:29.132Z",
+                "cellPhone": null,
+                "domain": "",
+                "photo": null
+            },
+            "project": {
+                "projectId": "1",
+                "projectName": "Demo Project",
+                "defaultSiteId": "1"
+            }
         },
         {
             "researchId": 23,
@@ -32,7 +57,32 @@
             "approvalKeyExpirationDate": null,
             "user_id": "2011",
             "researchRestrictionEvents": [],
-            "researchTemplates": []
+            "researchTemplates": [],
+            "user": {
+                "id": "2011",
+                "login": "john.brunck",
+                "passwordHash": "$2a$10$o0yzL2krbh3pEhYIauz39.Y6k2f.Rcl3GfsNslx0d972rprs9pe4W",
+                "firstName": "john",
+                "lastName": "brunck",
+                "email": "john.brunck@mdclone.com",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": "24902733701407547048",
+                "createdBy": "admin",
+                "createdDate": "2018-10-19T00:33:02.159Z",
+                "resetDate": "2018-10-19T00:33:02.159Z",
+                "lastModifiedBy": "admin",
+                "lastModifiedDate": "2018-10-19T00:33:02.159Z",
+                "cellPhone": null,
+                "domain": "",
+                "photo": null
+            },
+            "project": {
+                "projectId": "10",
+                "projectName": "JB_TEST",
+                "defaultSiteId": "10"
+            }
         },
         {
             "researchId": 26,
@@ -49,7 +99,32 @@
             "approvalKeyExpirationDate": null,
             "user_id": "2253",
             "researchRestrictionEvents": [],
-            "researchTemplates": []
+            "researchTemplates": [],
+            "user": {
+                "id": "2253",
+                "login": "Naava",
+                "passwordHash": "$2a$10$w/jZZdxtzOpLmzjUMbqmVeJhLyOBN6gbnRdQsrlv/OaSPm8GtZjK.",
+                "firstName": "Naava",
+                "lastName": "Sadi",
+                "email": "Naava@mdclone.com",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": "78715757253993509396",
+                "createdBy": "admin",
+                "createdDate": "2018-11-12T08:56:49.746Z",
+                "resetDate": "2018-11-12T08:56:49.698Z",
+                "lastModifiedBy": "admin",
+                "lastModifiedDate": "2018-11-12T08:56:49.746Z",
+                "cellPhone": "",
+                "domain": "",
+                "photo": null
+            },
+            "project": {
+                "projectId": "14",
+                "projectName": "Training Mimic Data",
+                "defaultSiteId": "12"
+            }
         },
         {
             "researchId": 27,
@@ -66,7 +141,32 @@
             "approvalKeyExpirationDate": null,
             "user_id": "2260",
             "researchRestrictionEvents": [],
-            "researchTemplates": []
+            "researchTemplates": [],
+            "user": {
+                "id": "2260",
+                "login": "Efrat",
+                "passwordHash": "$2a$10$XfSwDKjH4K.uFZwHWYkRhO8eBMpLU3Obc4u7zuTt2oWKAI1flOA/e",
+                "firstName": "Efrat",
+                "lastName": "Kliper",
+                "email": "E@MD.COM",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": "38132441534766326989",
+                "createdBy": "admin",
+                "createdDate": "2018-11-12T10:04:07.856Z",
+                "resetDate": "2018-11-12T10:04:07.834Z",
+                "lastModifiedBy": "mdclone.admin",
+                "lastModifiedDate": "2018-12-08T21:00:10.244Z",
+                "cellPhone": null,
+                "domain": "",
+                "photo": null
+            },
+            "project": {
+                "projectId": "14",
+                "projectName": "Training Mimic Data",
+                "defaultSiteId": "12"
+            }
         },
         {
             "researchId": 28,
@@ -83,7 +183,32 @@
             "approvalKeyExpirationDate": "2020-11-30",
             "user_id": "5",
             "researchRestrictionEvents": [],
-            "researchTemplates": []
+            "researchTemplates": [],
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin",
+                "passwordHash": "$2a$10$G3OF8pfomKGuB8dpxNlj2eL8wZwY5L.3M19fJ5DfVS1sR0ojd/Ic.",
+                "firstName": "Admin gggg",
+                "lastName": "Admin",
+                "email": "mdclone.admin@localhost",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": null,
+                "createdBy": "system",
+                "createdDate": "2016-06-01T21:00:00.000Z",
+                "resetDate": null,
+                "lastModifiedBy": "mdclone.admin",
+                "lastModifiedDate": "2018-12-11T08:10:09.089Z",
+                "cellPhone": null,
+                "domain": null,
+                "photo": null
+            },
+            "project": {
+                "projectId": "15",
+                "projectName": "BIG Project",
+                "defaultSiteId": "13"
+            }
         },
         {
             "researchId": 25,
@@ -100,7 +225,32 @@
             "approvalKeyExpirationDate": null,
             "user_id": "2254",
             "researchRestrictionEvents": [],
-            "researchTemplates": []
+            "researchTemplates": [],
+            "user": {
+                "id": "2254",
+                "login": "Hagai",
+                "passwordHash": "$2a$10$mf1nHhcaRfRwFhhiop2v9eQze9OqfrgkKqj/wdbMOZoldUtVMZvo.",
+                "firstName": "Hagai",
+                "lastName": "Benkuzari",
+                "email": "H@MD.com",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": "77741422242537324884",
+                "createdBy": "admin",
+                "createdDate": "2018-11-12T08:58:34.219Z",
+                "resetDate": "2018-11-12T08:58:34.218Z",
+                "lastModifiedBy": "admin",
+                "lastModifiedDate": "2018-11-12T08:58:34.219Z",
+                "cellPhone": null,
+                "domain": "",
+                "photo": null
+            },
+            "project": {
+                "projectId": "14",
+                "projectName": "Training Mimic Data",
+                "defaultSiteId": "12"
+            }
         },
         {
             "researchId": 14,
@@ -130,7 +280,32 @@
                     "value": "1"
                 }
             ],
-            "researchTemplates": []
+            "researchTemplates": [],
+            "user": {
+                "id": "1019",
+                "login": "hit_user",
+                "passwordHash": "$2a$10$qNy0aBRynPQ8OzT/FcSzpuheIYNzoednvUcAdT3ozeIDx5zYvFR.C",
+                "firstName": "Elena",
+                "lastName": "Khitrova",
+                "email": "hit_user@localhost",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": "23417676153591350778",
+                "createdBy": "admin",
+                "createdDate": "2018-07-03T10:51:25.240Z",
+                "resetDate": "2018-07-03T10:51:25.219Z",
+                "lastModifiedBy": "mdclone.admin",
+                "lastModifiedDate": "2019-01-15T12:25:14.850Z",
+                "cellPhone": null,
+                "domain": "",
+                "photo": null
+            },
+            "project": {
+                "projectId": "1",
+                "projectName": "Demo Project",
+                "defaultSiteId": "1"
+            }
         },
         {
             "researchId": 10,
@@ -147,7 +322,32 @@
             "approvalKeyExpirationDate": null,
             "user_id": "1005",
             "researchRestrictionEvents": [],
-            "researchTemplates": []
+            "researchTemplates": [],
+            "user": {
+                "id": "1005",
+                "login": "nadia.vigdar",
+                "passwordHash": "$2a$10$V20zRslDeplT.raxRMp08uQbB7DLBdspEvy3sSQLYJD2h92KjYhR2",
+                "firstName": "Nadia",
+                "lastName": "Vigdar",
+                "email": "nadia.vigdar@mdclone.com",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": "00211095249221243956",
+                "createdBy": "mdclone.admin",
+                "createdDate": "2018-07-02T06:35:02.857Z",
+                "resetDate": "2018-07-02T06:35:02.827Z",
+                "lastModifiedBy": "mdclone.admin",
+                "lastModifiedDate": "2019-01-15T12:25:32.318Z",
+                "cellPhone": null,
+                "domain": "",
+                "photo": null
+            },
+            "project": {
+                "projectId": "6",
+                "projectName": "ETL project",
+                "defaultSiteId": "3"
+            }
         },
         {
             "researchId": 11,
@@ -164,7 +364,32 @@
             "approvalKeyExpirationDate": null,
             "user_id": "5",
             "researchRestrictionEvents": [],
-            "researchTemplates": []
+            "researchTemplates": [],
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin",
+                "passwordHash": "$2a$10$G3OF8pfomKGuB8dpxNlj2eL8wZwY5L.3M19fJ5DfVS1sR0ojd/Ic.",
+                "firstName": "Admin gggg",
+                "lastName": "Admin",
+                "email": "mdclone.admin@localhost",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": null,
+                "createdBy": "system",
+                "createdDate": "2016-06-01T21:00:00.000Z",
+                "resetDate": null,
+                "lastModifiedBy": "mdclone.admin",
+                "lastModifiedDate": "2018-12-11T08:10:09.089Z",
+                "cellPhone": null,
+                "domain": null,
+                "photo": null
+            },
+            "project": {
+                "projectId": "6",
+                "projectName": "ETL project",
+                "defaultSiteId": "3"
+            }
         },
         {
             "researchId": 12,
@@ -181,7 +406,32 @@
             "approvalKeyExpirationDate": null,
             "user_id": "1008",
             "researchRestrictionEvents": [],
-            "researchTemplates": []
+            "researchTemplates": [],
+            "user": {
+                "id": "1008",
+                "login": "alon.pesok",
+                "passwordHash": "$2a$10$Wpt0U1xAu6AnKcwAcLQxJeV5QxT6vcUAgg0pOv4k3iwXp6bGjNOKW",
+                "firstName": "Alon",
+                "lastName": "Pesok",
+                "email": "alon.pesok@mdclone.com",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": "03554076557966015657",
+                "createdBy": "mdclone.admin",
+                "createdDate": "2018-07-02T06:46:33.368Z",
+                "resetDate": "2018-07-02T06:46:33.367Z",
+                "lastModifiedBy": "mdclone.admin",
+                "lastModifiedDate": "2018-07-02T06:46:33.368Z",
+                "cellPhone": null,
+                "domain": "",
+                "photo": null
+            },
+            "project": {
+                "projectId": "6",
+                "projectName": "ETL project",
+                "defaultSiteId": "3"
+            }
         },
         {
             "researchId": 15,
@@ -198,7 +448,32 @@
             "approvalKeyExpirationDate": "2018-08-04",
             "user_id": "1004",
             "researchRestrictionEvents": [],
-            "researchTemplates": []
+            "researchTemplates": [],
+            "user": {
+                "id": "1004",
+                "login": "omry.atia",
+                "passwordHash": "$2a$10$6xh7vGDECMEnlz89DZgYguH0ZGq29MqhZ5nBqy1aNFVmkySRXwd/C",
+                "firstName": "omry",
+                "lastName": "atia",
+                "email": "omry.atia@mdclone.com",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": "14318726331839694974",
+                "createdBy": "mdclone.admin",
+                "createdDate": "2018-06-14T08:58:33.029Z",
+                "resetDate": "2018-06-14T08:58:33.028Z",
+                "lastModifiedBy": "mdclone.admin",
+                "lastModifiedDate": "2018-06-14T08:58:33.029Z",
+                "cellPhone": "0501234567",
+                "domain": "",
+                "photo": null
+            },
+            "project": {
+                "projectId": "1",
+                "projectName": "Demo Project",
+                "defaultSiteId": "1"
+            }
         },
         {
             "researchId": 18,
@@ -276,7 +551,32 @@
                     "value": "434234"
                 }
             ],
-            "researchTemplates": []
+            "researchTemplates": [],
+            "user": {
+                "id": "1381",
+                "login": "keren",
+                "passwordHash": "$2a$10$G3OF8pfomKGuB8dpxNlj2eL8wZwY5L.3M19fJ5DfVS1sR0ojd/Ic.",
+                "firstName": "keren",
+                "lastName": "rose",
+                "email": "dsdfdf@dsfsdf",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": "23790435756420179825",
+                "createdBy": "mdclone.admin",
+                "createdDate": "2018-08-02T06:59:44.613Z",
+                "resetDate": "2018-08-02T06:59:44.586Z",
+                "lastModifiedBy": "mdclone.admin",
+                "lastModifiedDate": "2018-08-02T06:59:44.613Z",
+                "cellPhone": null,
+                "domain": "",
+                "photo": null
+            },
+            "project": {
+                "projectId": "1",
+                "projectName": "Demo Project",
+                "defaultSiteId": "1"
+            }
         },
         {
             "researchId": 32,
@@ -299,7 +599,32 @@
                     "templateId": "30",
                     "InsertDate": "2018-12-26T17:40:36.392Z"
                 }
-            ]
+            ],
+            "user": {
+                "id": "2563",
+                "login": "Eli",
+                "passwordHash": "$2a$10$IpSEJZ.B6SZul7HvW1sOVuaH.Z9B8XW3MrMdJKegoLvCWxK5SxJXm",
+                "firstName": "Eli",
+                "lastName": "Copter",
+                "email": "Eli@copter.com",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": "94400296750259025308",
+                "createdBy": "admin",
+                "createdDate": "2018-12-05T12:32:01.763Z",
+                "resetDate": "2018-12-05T12:32:01.761Z",
+                "lastModifiedBy": "admin",
+                "lastModifiedDate": "2018-12-05T12:32:01.763Z",
+                "cellPhone": null,
+                "domain": "",
+                "photo": null
+            },
+            "project": {
+                "projectId": "14",
+                "projectName": "Training Mimic Data",
+                "defaultSiteId": "12"
+            }
         },
         {
             "researchId": 29,
@@ -316,7 +641,32 @@
             "approvalKeyExpirationDate": null,
             "user_id": "2253",
             "researchRestrictionEvents": [],
-            "researchTemplates": []
+            "researchTemplates": [],
+            "user": {
+                "id": "2253",
+                "login": "Naava",
+                "passwordHash": "$2a$10$w/jZZdxtzOpLmzjUMbqmVeJhLyOBN6gbnRdQsrlv/OaSPm8GtZjK.",
+                "firstName": "Naava",
+                "lastName": "Sadi",
+                "email": "Naava@mdclone.com",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": "78715757253993509396",
+                "createdBy": "admin",
+                "createdDate": "2018-11-12T08:56:49.746Z",
+                "resetDate": "2018-11-12T08:56:49.698Z",
+                "lastModifiedBy": "admin",
+                "lastModifiedDate": "2018-11-12T08:56:49.746Z",
+                "cellPhone": "",
+                "domain": "",
+                "photo": null
+            },
+            "project": {
+                "projectId": "14",
+                "projectName": "Training Mimic Data",
+                "defaultSiteId": "12"
+            }
         },
         {
             "researchId": 34,
@@ -333,7 +683,32 @@
             "approvalKeyExpirationDate": null,
             "user_id": "2783",
             "researchRestrictionEvents": [],
-            "researchTemplates": []
+            "researchTemplates": [],
+            "user": {
+                "id": "2783",
+                "login": "Ruth",
+                "passwordHash": "$2a$10$BcUJNwLWySYJ2U4vtRZiOuLyMjNoOKWMqJYCxc6Rk.wXPFrik0c3W",
+                "firstName": "Ruth",
+                "lastName": "H",
+                "email": "R@G.com",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": "45543713230445911520",
+                "createdBy": "admin",
+                "createdDate": "2019-01-02T09:48:01.725Z",
+                "resetDate": "2019-01-02T09:48:01.700Z",
+                "lastModifiedBy": "admin",
+                "lastModifiedDate": "2019-01-02T09:48:01.725Z",
+                "cellPhone": null,
+                "domain": "",
+                "photo": null
+            },
+            "project": {
+                "projectId": "14",
+                "projectName": "Training Mimic Data",
+                "defaultSiteId": "12"
+            }
         },
         {
             "researchId": 16,
@@ -350,7 +725,32 @@
             "approvalKeyExpirationDate": "2019-04-16",
             "user_id": "1000",
             "researchRestrictionEvents": [],
-            "researchTemplates": []
+            "researchTemplates": [],
+            "user": {
+                "id": "1000",
+                "login": "researcher1",
+                "passwordHash": "$2a$10$G3OF8pfomKGuB8dpxNlj2eL8wZwY5L.3M19fJ5DfVS1sR0ojd/Ic.",
+                "firstName": "Researcher",
+                "lastName": "One",
+                "email": "res@mdc.com",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": "07144939589023538069",
+                "createdBy": "mdclone.admin",
+                "createdDate": "2018-03-06T08:05:20.921Z",
+                "resetDate": "2018-03-06T08:05:20.874Z",
+                "lastModifiedBy": "mdclone.admin",
+                "lastModifiedDate": "2019-09-18T11:36:45.204Z",
+                "cellPhone": null,
+                "domain": "",
+                "photo": null
+            },
+            "project": {
+                "projectId": "1",
+                "projectName": "Demo Project",
+                "defaultSiteId": "1"
+            }
         },
         {
             "researchId": 31,
@@ -367,7 +767,32 @@
             "approvalKeyExpirationDate": "2019-12-31",
             "user_id": "2507",
             "researchRestrictionEvents": [],
-            "researchTemplates": []
+            "researchTemplates": [],
+            "user": {
+                "id": "2507",
+                "login": "Training_User",
+                "passwordHash": "$2a$10$k5fAj.iWKFbykYYMVTu95e3o90AcrVJTHOS4hJzl4EJd8DXvYi1iO",
+                "firstName": "Training",
+                "lastName": "User",
+                "email": "train@mdc.com",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": "31906001854978761260",
+                "createdBy": "admin",
+                "createdDate": "2018-11-27T08:10:11.056Z",
+                "resetDate": "2018-11-27T08:10:11.032Z",
+                "lastModifiedBy": "admin",
+                "lastModifiedDate": "2018-12-02T10:06:40.669Z",
+                "cellPhone": null,
+                "domain": "",
+                "photo": null
+            },
+            "project": {
+                "projectId": "14",
+                "projectName": "Training Mimic Data",
+                "defaultSiteId": "12"
+            }
         },
         {
             "researchId": 36,
@@ -384,7 +809,32 @@
             "approvalKeyExpirationDate": null,
             "user_id": "2783",
             "researchRestrictionEvents": [],
-            "researchTemplates": []
+            "researchTemplates": [],
+            "user": {
+                "id": "2783",
+                "login": "Ruth",
+                "passwordHash": "$2a$10$BcUJNwLWySYJ2U4vtRZiOuLyMjNoOKWMqJYCxc6Rk.wXPFrik0c3W",
+                "firstName": "Ruth",
+                "lastName": "H",
+                "email": "R@G.com",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": "45543713230445911520",
+                "createdBy": "admin",
+                "createdDate": "2019-01-02T09:48:01.725Z",
+                "resetDate": "2019-01-02T09:48:01.700Z",
+                "lastModifiedBy": "admin",
+                "lastModifiedDate": "2019-01-02T09:48:01.725Z",
+                "cellPhone": null,
+                "domain": "",
+                "photo": null
+            },
+            "project": {
+                "projectId": "2",
+                "projectName": "R Test Project",
+                "defaultSiteId": "16"
+            }
         },
         {
             "researchId": 37,
@@ -401,7 +851,32 @@
             "approvalKeyExpirationDate": null,
             "user_id": "5",
             "researchRestrictionEvents": [],
-            "researchTemplates": []
+            "researchTemplates": [],
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin",
+                "passwordHash": "$2a$10$G3OF8pfomKGuB8dpxNlj2eL8wZwY5L.3M19fJ5DfVS1sR0ojd/Ic.",
+                "firstName": "Admin gggg",
+                "lastName": "Admin",
+                "email": "mdclone.admin@localhost",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": null,
+                "createdBy": "system",
+                "createdDate": "2016-06-01T21:00:00.000Z",
+                "resetDate": null,
+                "lastModifiedBy": "mdclone.admin",
+                "lastModifiedDate": "2018-12-11T08:10:09.089Z",
+                "cellPhone": null,
+                "domain": null,
+                "photo": null
+            },
+            "project": {
+                "projectId": "2",
+                "projectName": "R Test Project",
+                "defaultSiteId": "16"
+            }
         },
         {
             "researchId": 47,
@@ -418,7 +893,32 @@
             "approvalKeyExpirationDate": null,
             "user_id": "1078",
             "researchRestrictionEvents": [],
-            "researchTemplates": []
+            "researchTemplates": [],
+            "user": {
+                "id": "1078",
+                "login": "lior.halachmi",
+                "passwordHash": "$2a$10$1ye/OvWnwqwoZWT5SzPqJO4pC0Sq3NiXk19H5hUQ49IiW09ZnEIyW",
+                "firstName": "Lior",
+                "lastName": "Halachmi",
+                "email": "lior.halachmi@mdclone.com",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": "82750124596936792409",
+                "createdBy": "admin",
+                "createdDate": "2018-07-12T11:47:25.919Z",
+                "resetDate": "2018-07-12T11:47:25.888Z",
+                "lastModifiedBy": "lior.halachmi",
+                "lastModifiedDate": "2019-12-03T11:18:04.467Z",
+                "cellPhone": "0524547575",
+                "domain": "",
+                "photo": null
+            },
+            "project": {
+                "projectId": "15",
+                "projectName": "BIG Project",
+                "defaultSiteId": "13"
+            }
         },
         {
             "researchId": 38,
@@ -435,7 +935,32 @@
             "approvalKeyExpirationDate": null,
             "user_id": "1993",
             "researchRestrictionEvents": [],
-            "researchTemplates": []
+            "researchTemplates": [],
+            "user": {
+                "id": "1993",
+                "login": "Janeta.Kozak",
+                "passwordHash": "$2a$10$KG6GHOP9DBq8mYmeKVZ2M.kUjJwFDrRxK6d9uZEpjlSXXqTd36Uiu",
+                "firstName": "jjj",
+                "lastName": "kkkk",
+                "email": "jjj@kkk.com",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": "18145194061882415841",
+                "createdBy": "mdclone.admin",
+                "createdDate": "2018-10-17T14:15:19.702Z",
+                "resetDate": "2018-10-17T14:15:19.671Z",
+                "lastModifiedBy": "mdclone.admin",
+                "lastModifiedDate": "2018-10-17T14:15:19.702Z",
+                "cellPhone": null,
+                "domain": "",
+                "photo": null
+            },
+            "project": {
+                "projectId": "1",
+                "projectName": "Demo Project",
+                "defaultSiteId": "1"
+            }
         },
         {
             "researchId": 42,
@@ -452,7 +977,32 @@
             "approvalKeyExpirationDate": "2019-06-14",
             "user_id": "1008",
             "researchRestrictionEvents": [],
-            "researchTemplates": []
+            "researchTemplates": [],
+            "user": {
+                "id": "1008",
+                "login": "alon.pesok",
+                "passwordHash": "$2a$10$Wpt0U1xAu6AnKcwAcLQxJeV5QxT6vcUAgg0pOv4k3iwXp6bGjNOKW",
+                "firstName": "Alon",
+                "lastName": "Pesok",
+                "email": "alon.pesok@mdclone.com",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": "03554076557966015657",
+                "createdBy": "mdclone.admin",
+                "createdDate": "2018-07-02T06:46:33.368Z",
+                "resetDate": "2018-07-02T06:46:33.367Z",
+                "lastModifiedBy": "mdclone.admin",
+                "lastModifiedDate": "2018-07-02T06:46:33.368Z",
+                "cellPhone": null,
+                "domain": "",
+                "photo": null
+            },
+            "project": {
+                "projectId": "1",
+                "projectName": "Demo Project",
+                "defaultSiteId": "1"
+            }
         },
         {
             "researchId": 48,
@@ -469,7 +1019,32 @@
             "approvalKeyExpirationDate": "2019-08-17",
             "user_id": "5",
             "researchRestrictionEvents": [],
-            "researchTemplates": []
+            "researchTemplates": [],
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin",
+                "passwordHash": "$2a$10$G3OF8pfomKGuB8dpxNlj2eL8wZwY5L.3M19fJ5DfVS1sR0ojd/Ic.",
+                "firstName": "Admin gggg",
+                "lastName": "Admin",
+                "email": "mdclone.admin@localhost",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": null,
+                "createdBy": "system",
+                "createdDate": "2016-06-01T21:00:00.000Z",
+                "resetDate": null,
+                "lastModifiedBy": "mdclone.admin",
+                "lastModifiedDate": "2018-12-11T08:10:09.089Z",
+                "cellPhone": null,
+                "domain": null,
+                "photo": null
+            },
+            "project": {
+                "projectId": "15",
+                "projectName": "BIG Project",
+                "defaultSiteId": "13"
+            }
         },
         {
             "researchId": 49,
@@ -486,7 +1061,32 @@
             "approvalKeyExpirationDate": "2019-11-23",
             "user_id": "5",
             "researchRestrictionEvents": [],
-            "researchTemplates": []
+            "researchTemplates": [],
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin",
+                "passwordHash": "$2a$10$G3OF8pfomKGuB8dpxNlj2eL8wZwY5L.3M19fJ5DfVS1sR0ojd/Ic.",
+                "firstName": "Admin gggg",
+                "lastName": "Admin",
+                "email": "mdclone.admin@localhost",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": null,
+                "createdBy": "system",
+                "createdDate": "2016-06-01T21:00:00.000Z",
+                "resetDate": null,
+                "lastModifiedBy": "mdclone.admin",
+                "lastModifiedDate": "2018-12-11T08:10:09.089Z",
+                "cellPhone": null,
+                "domain": null,
+                "photo": null
+            },
+            "project": {
+                "projectId": "15",
+                "projectName": "BIG Project",
+                "defaultSiteId": "13"
+            }
         },
         {
             "researchId": 50,
@@ -503,7 +1103,32 @@
             "approvalKeyExpirationDate": "2020-03-21",
             "user_id": "5",
             "researchRestrictionEvents": [],
-            "researchTemplates": []
+            "researchTemplates": [],
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin",
+                "passwordHash": "$2a$10$G3OF8pfomKGuB8dpxNlj2eL8wZwY5L.3M19fJ5DfVS1sR0ojd/Ic.",
+                "firstName": "Admin gggg",
+                "lastName": "Admin",
+                "email": "mdclone.admin@localhost",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": null,
+                "createdBy": "system",
+                "createdDate": "2016-06-01T21:00:00.000Z",
+                "resetDate": null,
+                "lastModifiedBy": "mdclone.admin",
+                "lastModifiedDate": "2018-12-11T08:10:09.089Z",
+                "cellPhone": null,
+                "domain": null,
+                "photo": null
+            },
+            "project": {
+                "projectId": "15",
+                "projectName": "BIG Project",
+                "defaultSiteId": "13"
+            }
         },
         {
             "researchId": 51,
@@ -520,7 +1145,32 @@
             "approvalKeyExpirationDate": "2019-07-27",
             "user_id": "5",
             "researchRestrictionEvents": [],
-            "researchTemplates": []
+            "researchTemplates": [],
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin",
+                "passwordHash": "$2a$10$G3OF8pfomKGuB8dpxNlj2eL8wZwY5L.3M19fJ5DfVS1sR0ojd/Ic.",
+                "firstName": "Admin gggg",
+                "lastName": "Admin",
+                "email": "mdclone.admin@localhost",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": null,
+                "createdBy": "system",
+                "createdDate": "2016-06-01T21:00:00.000Z",
+                "resetDate": null,
+                "lastModifiedBy": "mdclone.admin",
+                "lastModifiedDate": "2018-12-11T08:10:09.089Z",
+                "cellPhone": null,
+                "domain": null,
+                "photo": null
+            },
+            "project": {
+                "projectId": "15",
+                "projectName": "BIG Project",
+                "defaultSiteId": "13"
+            }
         },
         {
             "researchId": 52,
@@ -537,7 +1187,32 @@
             "approvalKeyExpirationDate": "2019-07-20",
             "user_id": "5",
             "researchRestrictionEvents": [],
-            "researchTemplates": []
+            "researchTemplates": [],
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin",
+                "passwordHash": "$2a$10$G3OF8pfomKGuB8dpxNlj2eL8wZwY5L.3M19fJ5DfVS1sR0ojd/Ic.",
+                "firstName": "Admin gggg",
+                "lastName": "Admin",
+                "email": "mdclone.admin@localhost",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": null,
+                "createdBy": "system",
+                "createdDate": "2016-06-01T21:00:00.000Z",
+                "resetDate": null,
+                "lastModifiedBy": "mdclone.admin",
+                "lastModifiedDate": "2018-12-11T08:10:09.089Z",
+                "cellPhone": null,
+                "domain": null,
+                "photo": null
+            },
+            "project": {
+                "projectId": "15",
+                "projectName": "BIG Project",
+                "defaultSiteId": "13"
+            }
         },
         {
             "researchId": 53,
@@ -554,7 +1229,32 @@
             "approvalKeyExpirationDate": "2019-10-26",
             "user_id": "5",
             "researchRestrictionEvents": [],
-            "researchTemplates": []
+            "researchTemplates": [],
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin",
+                "passwordHash": "$2a$10$G3OF8pfomKGuB8dpxNlj2eL8wZwY5L.3M19fJ5DfVS1sR0ojd/Ic.",
+                "firstName": "Admin gggg",
+                "lastName": "Admin",
+                "email": "mdclone.admin@localhost",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": null,
+                "createdBy": "system",
+                "createdDate": "2016-06-01T21:00:00.000Z",
+                "resetDate": null,
+                "lastModifiedBy": "mdclone.admin",
+                "lastModifiedDate": "2018-12-11T08:10:09.089Z",
+                "cellPhone": null,
+                "domain": null,
+                "photo": null
+            },
+            "project": {
+                "projectId": "15",
+                "projectName": "BIG Project",
+                "defaultSiteId": "13"
+            }
         },
         {
             "researchId": 54,
@@ -571,7 +1271,32 @@
             "approvalKeyExpirationDate": "2019-10-19",
             "user_id": "5",
             "researchRestrictionEvents": [],
-            "researchTemplates": []
+            "researchTemplates": [],
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin",
+                "passwordHash": "$2a$10$G3OF8pfomKGuB8dpxNlj2eL8wZwY5L.3M19fJ5DfVS1sR0ojd/Ic.",
+                "firstName": "Admin gggg",
+                "lastName": "Admin",
+                "email": "mdclone.admin@localhost",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": null,
+                "createdBy": "system",
+                "createdDate": "2016-06-01T21:00:00.000Z",
+                "resetDate": null,
+                "lastModifiedBy": "mdclone.admin",
+                "lastModifiedDate": "2018-12-11T08:10:09.089Z",
+                "cellPhone": null,
+                "domain": null,
+                "photo": null
+            },
+            "project": {
+                "projectId": "15",
+                "projectName": "BIG Project",
+                "defaultSiteId": "13"
+            }
         },
         {
             "researchId": 55,
@@ -588,7 +1313,32 @@
             "approvalKeyExpirationDate": null,
             "user_id": "5",
             "researchRestrictionEvents": [],
-            "researchTemplates": []
+            "researchTemplates": [],
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin",
+                "passwordHash": "$2a$10$G3OF8pfomKGuB8dpxNlj2eL8wZwY5L.3M19fJ5DfVS1sR0ojd/Ic.",
+                "firstName": "Admin gggg",
+                "lastName": "Admin",
+                "email": "mdclone.admin@localhost",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": null,
+                "createdBy": "system",
+                "createdDate": "2016-06-01T21:00:00.000Z",
+                "resetDate": null,
+                "lastModifiedBy": "mdclone.admin",
+                "lastModifiedDate": "2018-12-11T08:10:09.089Z",
+                "cellPhone": null,
+                "domain": null,
+                "photo": null
+            },
+            "project": {
+                "projectId": "21",
+                "projectName": "static numeric",
+                "defaultSiteId": "20"
+            }
         },
         {
             "researchId": 45,
@@ -605,7 +1355,32 @@
             "approvalKeyExpirationDate": null,
             "user_id": "4066",
             "researchRestrictionEvents": [],
-            "researchTemplates": []
+            "researchTemplates": [],
+            "user": {
+                "id": "4066",
+                "login": "Noa",
+                "passwordHash": "$2a$10$ZA7q5uIAeeBVQ5pRodNqHuwREA0fRm1fb/dqcwfQLCOl0teowxibW",
+                "firstName": "Noa",
+                "lastName": "Zam",
+                "email": "noa.z@nnn.com",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": "08554344922464024628",
+                "createdBy": "admin",
+                "createdDate": "2019-05-14T10:04:49.558Z",
+                "resetDate": "2019-05-14T10:04:49.540Z",
+                "lastModifiedBy": "admin",
+                "lastModifiedDate": "2019-05-14T10:04:49.558Z",
+                "cellPhone": null,
+                "domain": "",
+                "photo": null
+            },
+            "project": {
+                "projectId": "1",
+                "projectName": "Demo Project",
+                "defaultSiteId": "1"
+            }
         },
         {
             "researchId": 46,
@@ -628,7 +1403,32 @@
                     "templateId": "33",
                     "InsertDate": "2019-05-21T08:10:58.224Z"
                 }
-            ]
+            ],
+            "user": {
+                "id": "4115",
+                "login": "user_test",
+                "passwordHash": "$2a$10$.yWeQshh9E3LQxlMFZcePuqwBgT19IK.QrfmVzdyMZrhNAsfBKe/i",
+                "firstName": "test",
+                "lastName": "test",
+                "email": "jas@mail.ru",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": "94621826953575921578",
+                "createdBy": "admin",
+                "createdDate": "2019-05-21T08:03:30.313Z",
+                "resetDate": "2019-05-21T08:03:30.284Z",
+                "lastModifiedBy": "admin",
+                "lastModifiedDate": "2019-05-21T08:03:30.313Z",
+                "cellPhone": null,
+                "domain": "",
+                "photo": null
+            },
+            "project": {
+                "projectId": "12",
+                "projectName": "Kat_Test",
+                "defaultSiteId": "11"
+            }
         },
         {
             "researchId": 57,
@@ -645,7 +1445,32 @@
             "approvalKeyExpirationDate": null,
             "user_id": "1008",
             "researchRestrictionEvents": [],
-            "researchTemplates": []
+            "researchTemplates": [],
+            "user": {
+                "id": "1008",
+                "login": "alon.pesok",
+                "passwordHash": "$2a$10$Wpt0U1xAu6AnKcwAcLQxJeV5QxT6vcUAgg0pOv4k3iwXp6bGjNOKW",
+                "firstName": "Alon",
+                "lastName": "Pesok",
+                "email": "alon.pesok@mdclone.com",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": "03554076557966015657",
+                "createdBy": "mdclone.admin",
+                "createdDate": "2018-07-02T06:46:33.368Z",
+                "resetDate": "2018-07-02T06:46:33.367Z",
+                "lastModifiedBy": "mdclone.admin",
+                "lastModifiedDate": "2018-07-02T06:46:33.368Z",
+                "cellPhone": null,
+                "domain": "",
+                "photo": null
+            },
+            "project": {
+                "projectId": "22",
+                "projectName": "ETL_Gen_Template",
+                "defaultSiteId": "21"
+            }
         },
         {
             "researchId": 59,
@@ -662,7 +1487,32 @@
             "approvalKeyExpirationDate": null,
             "user_id": "5",
             "researchRestrictionEvents": [],
-            "researchTemplates": []
+            "researchTemplates": [],
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin",
+                "passwordHash": "$2a$10$G3OF8pfomKGuB8dpxNlj2eL8wZwY5L.3M19fJ5DfVS1sR0ojd/Ic.",
+                "firstName": "Admin gggg",
+                "lastName": "Admin",
+                "email": "mdclone.admin@localhost",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": null,
+                "createdBy": "system",
+                "createdDate": "2016-06-01T21:00:00.000Z",
+                "resetDate": null,
+                "lastModifiedBy": "mdclone.admin",
+                "lastModifiedDate": "2018-12-11T08:10:09.089Z",
+                "cellPhone": null,
+                "domain": null,
+                "photo": null
+            },
+            "project": {
+                "projectId": "27",
+                "projectName": "Moshe Project",
+                "defaultSiteId": "26"
+            }
         },
         {
             "researchId": 17,
@@ -685,7 +1535,32 @@
                     "templateId": "1",
                     "InsertDate": "2019-12-02T09:25:34.322Z"
                 }
-            ]
+            ],
+            "user": {
+                "id": "1078",
+                "login": "lior.halachmi",
+                "passwordHash": "$2a$10$1ye/OvWnwqwoZWT5SzPqJO4pC0Sq3NiXk19H5hUQ49IiW09ZnEIyW",
+                "firstName": "Lior",
+                "lastName": "Halachmi",
+                "email": "lior.halachmi@mdclone.com",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": "82750124596936792409",
+                "createdBy": "admin",
+                "createdDate": "2018-07-12T11:47:25.919Z",
+                "resetDate": "2018-07-12T11:47:25.888Z",
+                "lastModifiedBy": "lior.halachmi",
+                "lastModifiedDate": "2019-12-03T11:18:04.467Z",
+                "cellPhone": "0524547575",
+                "domain": "",
+                "photo": null
+            },
+            "project": {
+                "projectId": "1",
+                "projectName": "Demo Project",
+                "defaultSiteId": "1"
+            }
         },
         {
             "researchId": 2,
@@ -702,7 +1577,32 @@
             "approvalKeyExpirationDate": "2020-06-30",
             "user_id": "1000",
             "researchRestrictionEvents": [],
-            "researchTemplates": []
+            "researchTemplates": [],
+            "user": {
+                "id": "1000",
+                "login": "researcher1",
+                "passwordHash": "$2a$10$G3OF8pfomKGuB8dpxNlj2eL8wZwY5L.3M19fJ5DfVS1sR0ojd/Ic.",
+                "firstName": "Researcher",
+                "lastName": "One",
+                "email": "res@mdc.com",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": "07144939589023538069",
+                "createdBy": "mdclone.admin",
+                "createdDate": "2018-03-06T08:05:20.921Z",
+                "resetDate": "2018-03-06T08:05:20.874Z",
+                "lastModifiedBy": "mdclone.admin",
+                "lastModifiedDate": "2019-09-18T11:36:45.204Z",
+                "cellPhone": null,
+                "domain": "",
+                "photo": null
+            },
+            "project": {
+                "projectId": "1",
+                "projectName": "Demo Project",
+                "defaultSiteId": "1"
+            }
         },
         {
             "researchId": 62,
@@ -719,7 +1619,32 @@
             "approvalKeyExpirationDate": null,
             "user_id": "8803",
             "researchRestrictionEvents": [],
-            "researchTemplates": []
+            "researchTemplates": [],
+            "user": {
+                "id": "8803",
+                "login": "dotan.perl",
+                "passwordHash": "$2a$10$G3OF8pfomKGuB8dpxNlj2eL8wZwY5L.3M19fJ5DfVS1sR0ojd/Ic.",
+                "firstName": "Dotan",
+                "lastName": "Perlstein",
+                "email": "Dotan.Perlstein@mdclone.com",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": "05879342473911558985",
+                "createdBy": "mdclone.admin",
+                "createdDate": "2020-01-20T09:57:04.520Z",
+                "resetDate": "2020-01-20T09:57:04.331Z",
+                "lastModifiedBy": "dotan.perl",
+                "lastModifiedDate": "2020-01-20T10:24:30.828Z",
+                "cellPhone": null,
+                "domain": "",
+                "photo": null
+            },
+            "project": {
+                "projectId": "1",
+                "projectName": "Demo Project",
+                "defaultSiteId": "1"
+            }
         },
         {
             "researchId": 33,
@@ -736,7 +1661,32 @@
             "approvalKeyExpirationDate": null,
             "user_id": "5",
             "researchRestrictionEvents": [],
-            "researchTemplates": []
+            "researchTemplates": [],
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin",
+                "passwordHash": "$2a$10$G3OF8pfomKGuB8dpxNlj2eL8wZwY5L.3M19fJ5DfVS1sR0ojd/Ic.",
+                "firstName": "Admin gggg",
+                "lastName": "Admin",
+                "email": "mdclone.admin@localhost",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": null,
+                "createdBy": "system",
+                "createdDate": "2016-06-01T21:00:00.000Z",
+                "resetDate": null,
+                "lastModifiedBy": "mdclone.admin",
+                "lastModifiedDate": "2018-12-11T08:10:09.089Z",
+                "cellPhone": null,
+                "domain": null,
+                "photo": null
+            },
+            "project": {
+                "projectId": "17",
+                "projectName": "Mmm Project",
+                "defaultSiteId": "15"
+            }
         },
         {
             "researchId": 61,
@@ -764,7 +1714,32 @@
                     "templateId": "1",
                     "InsertDate": "2019-12-19T10:28:31.920Z"
                 }
-            ]
+            ],
+            "user": {
+                "id": "1000",
+                "login": "researcher1",
+                "passwordHash": "$2a$10$G3OF8pfomKGuB8dpxNlj2eL8wZwY5L.3M19fJ5DfVS1sR0ojd/Ic.",
+                "firstName": "Researcher",
+                "lastName": "One",
+                "email": "res@mdc.com",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": "07144939589023538069",
+                "createdBy": "mdclone.admin",
+                "createdDate": "2018-03-06T08:05:20.921Z",
+                "resetDate": "2018-03-06T08:05:20.874Z",
+                "lastModifiedBy": "mdclone.admin",
+                "lastModifiedDate": "2019-09-18T11:36:45.204Z",
+                "cellPhone": null,
+                "domain": "",
+                "photo": null
+            },
+            "project": {
+                "projectId": "1",
+                "projectName": "Demo Project",
+                "defaultSiteId": "1"
+            }
         },
         {
             "researchId": 63,
@@ -788,7 +1763,32 @@
                     "value": "1000"
                 }
             ],
-            "researchTemplates": []
+            "researchTemplates": [],
+            "user": {
+                "id": "1008",
+                "login": "alon.pesok",
+                "passwordHash": "$2a$10$Wpt0U1xAu6AnKcwAcLQxJeV5QxT6vcUAgg0pOv4k3iwXp6bGjNOKW",
+                "firstName": "Alon",
+                "lastName": "Pesok",
+                "email": "alon.pesok@mdclone.com",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": "03554076557966015657",
+                "createdBy": "mdclone.admin",
+                "createdDate": "2018-07-02T06:46:33.368Z",
+                "resetDate": "2018-07-02T06:46:33.367Z",
+                "lastModifiedBy": "mdclone.admin",
+                "lastModifiedDate": "2018-07-02T06:46:33.368Z",
+                "cellPhone": null,
+                "domain": "",
+                "photo": null
+            },
+            "project": {
+                "projectId": "15",
+                "projectName": "BIG Project",
+                "defaultSiteId": "13"
+            }
         },
         {
             "researchId": 64,
@@ -805,7 +1805,32 @@
             "approvalKeyExpirationDate": null,
             "user_id": "5",
             "researchRestrictionEvents": [],
-            "researchTemplates": []
+            "researchTemplates": [],
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin",
+                "passwordHash": "$2a$10$G3OF8pfomKGuB8dpxNlj2eL8wZwY5L.3M19fJ5DfVS1sR0ojd/Ic.",
+                "firstName": "Admin gggg",
+                "lastName": "Admin",
+                "email": "mdclone.admin@localhost",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": null,
+                "createdBy": "system",
+                "createdDate": "2016-06-01T21:00:00.000Z",
+                "resetDate": null,
+                "lastModifiedBy": "mdclone.admin",
+                "lastModifiedDate": "2018-12-11T08:10:09.089Z",
+                "cellPhone": null,
+                "domain": null,
+                "photo": null
+            },
+            "project": {
+                "projectId": "1",
+                "projectName": "Demo Project",
+                "defaultSiteId": "1"
+            }
         },
         {
             "researchId": 35,
@@ -829,7 +1854,32 @@
                     "value": "1"
                 }
             ],
-            "researchTemplates": []
+            "researchTemplates": [],
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin",
+                "passwordHash": "$2a$10$G3OF8pfomKGuB8dpxNlj2eL8wZwY5L.3M19fJ5DfVS1sR0ojd/Ic.",
+                "firstName": "Admin gggg",
+                "lastName": "Admin",
+                "email": "mdclone.admin@localhost",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": null,
+                "createdBy": "system",
+                "createdDate": "2016-06-01T21:00:00.000Z",
+                "resetDate": null,
+                "lastModifiedBy": "mdclone.admin",
+                "lastModifiedDate": "2018-12-11T08:10:09.089Z",
+                "cellPhone": null,
+                "domain": null,
+                "photo": null
+            },
+            "project": {
+                "projectId": "1",
+                "projectName": "Demo Project",
+                "defaultSiteId": "1"
+            }
         },
         {
             "researchId": 67,
@@ -837,7 +1887,7 @@
             "userId": "9459",
             "projectId": "1",
             "startDate": "1840-01-01",
-            "researchStatus": "Close",
+            "researchStatus": "Open",
             "maxPatients": 1000000,
             "insertDate": "2020-06-30T12:33:00.000Z",
             "information": "2st research",
@@ -846,7 +1896,32 @@
             "approvalKeyExpirationDate": "2030-01-01",
             "user_id": "9459",
             "researchRestrictionEvents": [],
-            "researchTemplates": []
+            "researchTemplates": [],
+            "user": {
+                "id": "9459",
+                "login": "andrey",
+                "passwordHash": "$2a$10$9VlYOF.GAE8Ofr4MY8ZFYeFtsKZvGF7biQy8/RBERHBPnCbc99Nxq",
+                "firstName": "Andrey",
+                "lastName": "Romanov",
+                "email": "Andrey.Romanov@lanit-tercom.com",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": "87015692195080207360",
+                "createdBy": "mdclone.admin",
+                "createdDate": "2020-06-09T10:12:58.425Z",
+                "resetDate": "2020-06-09T10:12:58.373Z",
+                "lastModifiedBy": "mdclone.admin",
+                "lastModifiedDate": "2020-06-09T10:12:58.425Z",
+                "cellPhone": null,
+                "domain": "",
+                "photo": null
+            },
+            "project": {
+                "projectId": "1",
+                "projectName": "Demo Project",
+                "defaultSiteId": "1"
+            }
         },
         {
             "researchId": 65,
@@ -863,7 +1938,32 @@
             "approvalKeyExpirationDate": "2030-01-01",
             "user_id": "9459",
             "researchRestrictionEvents": [],
-            "researchTemplates": []
+            "researchTemplates": [],
+            "user": {
+                "id": "9459",
+                "login": "andrey",
+                "passwordHash": "$2a$10$9VlYOF.GAE8Ofr4MY8ZFYeFtsKZvGF7biQy8/RBERHBPnCbc99Nxq",
+                "firstName": "Andrey",
+                "lastName": "Romanov",
+                "email": "Andrey.Romanov@lanit-tercom.com",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": "87015692195080207360",
+                "createdBy": "mdclone.admin",
+                "createdDate": "2020-06-09T10:12:58.425Z",
+                "resetDate": "2020-06-09T10:12:58.373Z",
+                "lastModifiedBy": "mdclone.admin",
+                "lastModifiedDate": "2020-06-09T10:12:58.425Z",
+                "cellPhone": null,
+                "domain": "",
+                "photo": null
+            },
+            "project": {
+                "projectId": "1",
+                "projectName": "Demo Project",
+                "defaultSiteId": "1"
+            }
         }
     ],
     "massage": "Get all Research's Objects",

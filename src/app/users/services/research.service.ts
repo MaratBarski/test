@@ -129,9 +129,9 @@ export class ResearchService {
       data.rows.push({
         cells: {
           PermissionSetName: fl.researchName,
-          User: fl.userId,
+          User: fl.user ? fl.user.firstName + ' ' + fl.user.firstName : '',
           Modified: fl.insertDate,
-          Environment: fl.projectId,
+          Environment: fl.project ? fl.project.projectName : '',
           ApprovalKey: fl.approvalKey,
           KeyStatus: fl.researchStatus,
           Active: fl.endDate

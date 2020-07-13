@@ -120,7 +120,8 @@ export class UsageService {
           sortDir: 'asc',
           isSortedColumn: true,
           csvTitle: 'Days Since Last Activity',
-          css: 'admin-table__item d-none d-md-table-cell admin-table__item_right'
+          css: 'admin-table__item d-none d-md-table-cell admin-table__item_right',
+          cellCss:'admin-table__item d-none d-md-table-cell admin-table__item_right'
         },
         {
           columnId: 'environment',
