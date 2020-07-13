@@ -29,6 +29,7 @@ export class ShareFileComponent implements ControlValueAccessor, OnInit {
 
   onValueChanged($event) {
     this.value = $event;
+    $event.stopPropagation();
   }
 
   toggleShare() {

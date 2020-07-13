@@ -1,4 +1,5 @@
-<div class="info-panel__shared" [ngClass]="{active: opened}">{{startValue ? "Shared" : "No Shared"}}
+<div class="info-panel__shared" [ngClass]="{active: opened}">
+  <span (click)="toggleShare()">{{startValue ? "Shared" : "No Shared"}}</span>
   <mdc-icon [path]="'ic-shared'" [css]="'icon ic-shared'" (click)="toggleShare()"></mdc-icon>
 
   <div class="info-popup">

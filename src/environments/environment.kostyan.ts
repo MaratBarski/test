@@ -2,8 +2,10 @@ export const environment = {
   name: 'kostyan',
   production: false,
   serverUrl: 'http://10.0.2.18:4000/',
+  // serverUrl: 'https://10.0.2.18:3000/',
   // loginUrl: 'http://localhost:3000/login/',
-  loginUrl: 'http://10.0.2.18:4000/login',
+  loginUrl: 'https://10.0.2.18:3000/login',
+  // socketUrl: 'https://localhost:4444',
   socketUrl: 'http://localhost:4444',
   isOfflineMode: false,
   uiRoute: 'kostya-the-king',
@@ -37,42 +39,41 @@ export const environment = {
   }
 };
 
-/*
-export const environment = {
-  name: 'kostyan',
-  production: false,
-  serverUrl: 'http://10.0.2.18:4000/',
-  loginUrl: 'http://10.0.2.18:4000/login',
-  socketUrl: 'http://localhost:4444',
-  isOfflineMode: false,
-  uiRoute: 'kostya-the-king',
-  endPoints: {
-    userData: 'user-data',
-    fileSource: 'kostya/api/v1/file-source',
-    uploadFileSource: 'kostya/api/v1/upload/file-source',
-    getSampleData: 'kostya/api/v1/file-source/get-sample-data',
-    getRelationalIntegrity: 'kostya/api/v1/file-source/get-relational-integrity',
-    uploadHierarchy: 'kostya/api/v1/upload/hierarchy',
-    deleteFileSource: 'kostya/api/v1/file-source',
-    deleteCategory: 'kostya/api/v1/hierarchy',
-    downloadCategory: 'kostya/api/v1/hierarchy/download',
-    hierarchy: 'kostya/api/v1/hierarchy',
-    replaceHierarchy: 'kostya/api/v1/hierarchy',
-    historyReport: 'kostya/api/v1/session-history',
-    downloadHistoryReport: 'moshe/api/v1/session-history/download',
-    usageReport: 'kostya/api/v1/reporting/usage',
-    templateByProject: 'kostya/api/v1/template/get-by-project',
-    updateHierarchy: 'kostya/api/v1/updateHierarchy',
-    config: 'config',
-    usageActiveUsage: 'kostya/api/v1/reporting/usage-active-users',
-    usageMonthlyUsage: 'kostya/api/v1/reporting/usage-monthly-usage',
-    usagePerUser: 'kostya/api/v1/reporting/usage-per-user',
-    usageTop10Users: 'kostya/api/v1/reporting/usage-top-10-users',
-    usageCreatedUsers: 'kostya/api/v1/reporting/usage-created-users',
-    usageSummaryTable: 'kostya/api/v1/reporting/usage-summary-table',
-    usageRetantionTable: 'kostya/api/v1/reporting/usage-retention-list',
-    usageCsvDownload: 'kostya/api/v1/reporting/detailed-usage-report',
-    userList: 'kostya/api/v1/user'
-  }
-};
-*/
+
+// export const environment = {
+//   name: 'kostyan',
+//   production: false,
+//   serverUrl: 'https://10.0.2.18:4000/',
+//   loginUrl: 'https://10.0.2.18:4000/login',
+//   socketUrl: 'https://localhost:4444',
+//   isOfflineMode: false,
+//   uiRoute: 'kostya-the-king',
+//   endPoints: {
+//     userData: 'user-data',
+//     fileSource: 'kostya/api/v1/file-source',
+//     uploadFileSource: 'kostya/api/v1/upload/file-source',
+//     getSampleData: 'kostya/api/v1/file-source/get-sample-data',
+//     getRelationalIntegrity: 'kostya/api/v1/file-source/get-relational-integrity',
+//     uploadHierarchy: 'kostya/api/v1/upload/hierarchy',
+//     deleteFileSource: 'kostya/api/v1/file-source',
+//     deleteCategory: 'kostya/api/v1/hierarchy',
+//     downloadCategory: 'kostya/api/v1/hierarchy/download',
+//     hierarchy: 'kostya/api/v1/hierarchy',
+//     replaceHierarchy: 'kostya/api/v1/hierarchy',
+//     historyReport: 'kostya/api/v1/session-history',
+//     downloadHistoryReport: 'moshe/api/v1/session-history/download',
+//     usageReport: 'kostya/api/v1/reporting/usage',
+//     templateByProject: 'kostya/api/v1/template/get-by-project',
+//     updateHierarchy: 'kostya/api/v1/updateHierarchy',
+//     config: 'config',
+//     usageActiveUsage: 'kostya/api/v1/reporting/usage-active-users',
+//     usageMonthlyUsage: 'kostya/api/v1/reporting/usage-monthly-usage',
+//     usagePerUser: 'kostya/api/v1/reporting/usage-per-user',
+//     usageTop10Users: 'kostya/api/v1/reporting/usage-top-10-users',
+//     usageCreatedUsers: 'kostya/api/v1/reporting/usage-created-users',
+//     usageSummaryTable: 'kostya/api/v1/reporting/usage-summary-table',
+//     usageRetantionTable: 'kostya/api/v1/reporting/usage-retention-list',
+//     usageCsvDownload: 'kostya/api/v1/reporting/detailed-usage-report',
+//     userList: 'kostya/api/v1/user'
+//   }
+// };

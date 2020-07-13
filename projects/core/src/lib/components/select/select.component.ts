@@ -54,6 +54,7 @@ export class SelectComponent implements ControlValueAccessor, AfterViewInit {
     if (this.closeOnselect) {
       this.isExpanded = false;
     }
+    this.rotatedState = RotatedState.default;
     this.selected = option;
     this.value = option.value;
     this.changed.emit(this.selected);

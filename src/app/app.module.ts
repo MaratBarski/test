@@ -14,6 +14,7 @@ import { environment } from '@env/environment';
 // import { DialogModule } from 'primeng/dialog';
 // import { ButtonModule } from 'primeng/button';
 // import { CalendarModule } from 'primeng/calendar';
+import {TooltipModule} from 'primeng/tooltip';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { environment } from '@env/environment';
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    TooltipModule,
     CoreModule,
     StoreModule.forRoot({}),
     EffectsModule.forRoot([]),

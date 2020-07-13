@@ -60,7 +60,10 @@ export class ImportedFileMappingComponent implements OnInit, OnDestroy {
           }
         }
       });
-
+    this.templateSelectOptions.push({
+      id: 0,
+      text: 'no template defined'
+    });
     this.templates.forEach(item => {
       const tmp: SelectOption = new SelectOption();
       tmp.id = item.templateId;
@@ -68,6 +71,10 @@ export class ImportedFileMappingComponent implements OnInit, OnDestroy {
       this.templateSelectOptions.push(tmp);
     });
 
+    this.hierarchySelectOptions.push({
+      id: 0,
+      text: 'Select categorization...'
+    });
     this.hierarchies.forEach(item => {
       const tmp: SelectOption = new SelectOption();
       tmp.id = item.hierarchyRootId;
@@ -112,7 +119,7 @@ export class ImportedFileMappingComponent implements OnInit, OnDestroy {
       propertyType: [item.propertyType],
       description: [item.description],
       dataSample: [item.dataSample],
-      hierarchyRootId: [item.hierarchyRootId],
+      hierarchyRootId: item.hierarchyRootId ? [item.hierarchyRootId] : [0],
       isIncluded: [item.isIncluded],
       physicalColName: [item.physicalColName],
       defaultLevelId: [item.defaultLevelId],
@@ -172,6 +179,15 @@ export class ImportedFileMappingComponent implements OnInit, OnDestroy {
       this.showErrors = true;
     } else {
       this.isSaving = true;
+      const tmp = this.fileSourceForm.getRawValue();
+
+      tmp.templateId = tmp.templateId === 0 ? '' : tmp.templateId;
+
+      for (let i = 0; i < tmp.fileClms.length; i++) {
+        if (tmp.fileClms[i].hierarchyRootId === 0) {
+          tmp.fileClms[i].hierarchyRootId = '';
+        }
+      }
       this.importedFilesMappingService.saveMappedData(this.fileSourceForm.getRawValue()).subscribe(responce => {
         this.isSaving = false;
         this.router.navigateByUrl('/imported-files');

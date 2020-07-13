@@ -180,7 +180,7 @@
                   Data Type
                 </th>
                 <th class="admin-table__item d-none d-md-table-cell admin-table__item_select">
-                  Associated Hierarchy
+                  Categorization
                   <span class="admin-table__option">Optional</span>
                 </th>
                 <th class="admin-table__item admin-table__item_center d-none d-xl-table-cell">% Match</th>
@@ -219,7 +219,7 @@
                     </ng-container>
                   </td>
                   <td class="admin-table__item d-none d-xl-table-cell" #div>
-                    <div class="admin-table__data-sample" *ngIf="!needTooltip(div) else needToolTip">
+                    <div class="admin-table__data-sample" tooltipPosition="top" [tooltipDisabled]="!needTooltip(div)" [pTooltip]="fileSourceForm.get('fileClms')['controls'][i].get('dataSample').value | DataSample"> <!--*ngIf="!needTooltip(div) else needToolTip"-->
                       {{fileSourceForm.get('fileClms')['controls'][i].get('dataSample').value | DataSample}}
                     </div>
                     <ng-template #needToolTip>
