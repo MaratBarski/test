@@ -15,7 +15,7 @@ export class ResearchListComponent extends BaseSibscriber implements OnInit {
   @ViewChild('table', { static: true }) table: TableComponent;
   @ViewChild('checkFilter', { static: true }) checkFilter: CheckBoxListComponent;
   @ViewChild('downloader', { static: true }) downloader: DownloadComponent;
-  
+
   permissions: Array<CheckBoxListOption> = [];
   searchOptions = ['PermissionSetName', 'User', 'Modified', 'Environment', 'ApprovalKey'];
 
@@ -106,6 +106,10 @@ export class ResearchListComponent extends BaseSibscriber implements OnInit {
     const locale = 'en-US';
     const formattedDate = formatDate(date, format, locale);
     this.downloader.fileName = formattedDate + "_session_history.csv";
+  }
+
+  isActive(src: any): boolean {
+    return src.endDate && src.endDate.trim() !== '' ? new Date(src.endDate) > new Date() ? true : false : true;
   }
 }
 

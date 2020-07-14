@@ -598,6 +598,11 @@
                     "researchId": "32",
                     "templateId": "30",
                     "InsertDate": "2018-12-26T17:40:36.392Z"
+                },
+                {
+                    "researchId": "32",
+                    "templateId": "40",
+                    "InsertDate": "2018-12-26T17:40:36.392Z"
                 }
             ],
             "user": {
@@ -1759,11 +1764,30 @@
                 {
                     "researchId": "63",
                     "eventId": "202",
+                    "eventName":"aaaaaaaaaaaaaaa",
+                    "eventPropertyId": "conditioncode",
+                    "value": "1000"
+                },
+                {
+                    "researchId": "63",
+                    "eventId": "203",
+                    "eventName":"bbbbbbbbbbbbbbb",
                     "eventPropertyId": "conditioncode",
                     "value": "1000"
                 }
             ],
-            "researchTemplates": [],
+            "researchTemplates": [
+                {
+                    "researchId": "32",
+                    "templateId": "30",
+                    "InsertDate": "2018-12-26T17:40:36.392Z"
+                },
+                {
+                    "researchId": "32",
+                    "templateId": "40",
+                    "InsertDate": "2018-12-26T17:40:36.392Z"
+                }
+            ],
             "user": {
                 "id": "1008",
                 "login": "alon.pesok",

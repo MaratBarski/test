@@ -42,7 +42,7 @@
 </ng-template>
 
 <ng-template #Active let-item let-src="source">
-    <div>
+    <div *ngIf="isActive(src)">
         <span class="admin-table__circle admin-table__circle_green"></span>
     </div>
 </ng-template>
