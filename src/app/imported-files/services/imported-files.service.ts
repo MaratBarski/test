@@ -61,7 +61,7 @@ export class ImportedFilesService {
             , checkDisabled: (source: any) => {
               if (this.loginService.userInfo.data.id !== source.uploadedBy) { return true; }
               if (!source.fileStatus) { return false; }
-              return source.fileStatus === FileSourceStatus.MAPPED;
+              return source.fileStatus !== FileSourceStatus.MAPPED;
             }
           }
         ],
