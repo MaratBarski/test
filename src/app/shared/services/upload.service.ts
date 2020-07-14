@@ -8,6 +8,7 @@ export class UploadInfo {
   notification: INotification;
   targetComponent?: any;
   method?: 'post' | 'put';
+  afterUpload?: any;
 }
 
 @Injectable({
@@ -63,6 +64,8 @@ export class UploadService implements OnDestroy {
           }
         } else if (events.type === HttpEventType.Response) {
           this.uploadEnd(uploadInfo, NotificationStatus.completed);
+          uploadInfo.notification.comment = uploadInfo.notification.succComment;
+          uploadInfo.afterUpload(events.body,uploadInfo);
           if (!uploadSubscription.closed) {
             uploadSubscription.unsubscribe();
           }

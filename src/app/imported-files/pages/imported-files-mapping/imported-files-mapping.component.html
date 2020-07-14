@@ -9,7 +9,7 @@
               <div class="page-header__content">
                 <div class="page-header__back">
                   <!--mdcElementTooltip [stickyToElement]="true" [position]="'bottom'" [mdcTooltip]="'Back to Imported Files'"-->
-                  <span class="ic-hover" [routerLink]="'/imported-files'">
+                  <span class="ic-hover" (click)="cancel($event)">
                      <mdc-icon [css]="'icon ic-back-to-page'" [path]="'ic-back-to-page'"></mdc-icon>
                   </span>
                   <span class="tooltip tooltip_top">
@@ -249,7 +249,7 @@
         <div class="row">
           <div class="col-12">
             <div class="footer__btn">
-              <button class="btn btn_border" (click)="cancel()">Cancel</button>
+              <button class="btn btn_border" (click)="cancel($event)">Cancel</button>
               <button type="submit" class="btn">Save</button>
             </div>
           </div>
@@ -258,3 +258,8 @@
     </div>
   </footer>
 </form>
+
+<md-confirm-dialog *ngIf="showCancelConfirm" confirmText="Yes" cancelText="No, stay on page" name="Leaving File Mapping Page" subName="Changes you made will be lost."
+    subText="Do you wish to leave the page?" text="" (onCancel)="cancelSave()"
+    (onConfirm)="confirmSave()">
+</md-confirm-dialog>

@@ -1,21 +1,20 @@
-import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
-import {ComponentService, DateService, PopupComponent, SelectOption, TableComponent, TranslateService} from '@appcore';
-import {FileClm, FileSource} from '../../models/file-source';
-import {ActivatedRoute, Router} from '@angular/router';
-import {Template} from '@app/models/template';
-import {Hierarchy} from '@app/models/hierarchy';
-import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {ImportedFilesMappingService} from '@app/imported-files/services/imported-files-mapping.service';
-import {map} from 'rxjs/operators';
-import {PropertyType} from '@app/imported-files/models/enum/PropertyType';
-import {NotificationsService, ToasterType} from '@appcore';
+import { Component, OnInit, ViewChild, ChangeDetectorRef, AfterViewChecked } from '@angular/core';
+import { ComponentService, PopupComponent, SelectOption, TableComponent, NavigationService, BaseNavigation } from '@appcore';
+import { FileClm, FileSource } from '../../models/file-source';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Template } from '@app/models/template';
+import { Hierarchy } from '@app/models/hierarchy';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ImportedFilesMappingService } from '@app/imported-files/services/imported-files-mapping.service';
+import { map } from 'rxjs/operators';
+import { PropertyType } from '@app/imported-files/models/enum/PropertyType';
 
 @Component({
   selector: 'md-imported-files-mapping',
   templateUrl: './imported-files-mapping.component.html',
   styleUrls: ['./imported-files-mapping.component.scss']
 })
-export class ImportedFileMappingComponent implements OnInit, OnDestroy {
+export class ImportedFileMappingComponent extends BaseNavigation implements OnInit, AfterViewChecked {
   legendActive = false;
   fileSource: FileSource;
   fileSourceForm: FormGroup;
@@ -27,19 +26,20 @@ export class ImportedFileMappingComponent implements OnInit, OnDestroy {
   selectAll: FormControl;
   showErrors: boolean = false;
   isSaving = false;
-  @ViewChild('popupMenu', {static: true}) popupMenu: PopupComponent;
-  @ViewChild('table', {static: true}) table: TableComponent;
+  showCancelConfirm = false;
+  @ViewChild('popupMenu', { static: true }) popupMenu: PopupComponent;
+  @ViewChild('table', { static: true }) table: TableComponent;
 
   constructor(
-    private translateService: TranslateService,
-    private dateService: DateService,
     public componentService: ComponentService,
     private importedFilesMappingService: ImportedFilesMappingService,
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private notificationsService: NotificationsService
+    protected navigationService: NavigationService,
+    private cdRef: ChangeDetectorRef
   ) {
+    super(navigationService);
     this.fileSource = this.route.snapshot.data.data[0];
     this.templates = this.route.snapshot.data.data[1];
     this.hierarchies = this.route.snapshot.data.data[2];
@@ -83,11 +83,26 @@ export class ImportedFileMappingComponent implements OnInit, OnDestroy {
     });
 
     this.fileSourceForm = this.createFileSourceForm();
+
+    this.navigationService.beforeNavigate = ((url: string) => {
+      const data = JSON.stringify(this.fileSourceForm.getRawValue());
+      if (this.originSource !== data) {
+        this.showCancelConfirm = !!url;
+        return true;
+      }
+      if (url) {
+        this.router.navigateByUrl(url);
+      }
+    })
+  }
+
+  ngAfterViewChecked(): void {
+    this.cdRef.detectChanges();
   }
 
   private createFileSourceForm(): FormGroup {
     console.log(this.fileSource.fileType);
-    return this.formBuilder.group({
+    const res = this.formBuilder.group({
       fileId: [this.fileSource.fileId],
       fileName: [this.fileSource.fileName],
       filePath: [this.fileSource.filePath],
@@ -103,7 +118,11 @@ export class ImportedFileMappingComponent implements OnInit, OnDestroy {
       rowsNum: [this.fileSource.rowsNum],
       columnsNum: [this.fileSource.columnsNum],
     });
+    this.originSource = JSON.stringify(res.getRawValue());
+    return res;
   }
+
+  private originSource = '';
 
   private buildClmFormArray(): FormArray {
     const formArray: FormArray = this.formBuilder.array([]);
@@ -127,10 +146,6 @@ export class ImportedFileMappingComponent implements OnInit, OnDestroy {
       defaultValue: [item.defaultValue],
       percent: [-1],
     });
-  }
-
-  ngOnDestroy(): void {
-
   }
 
   ngOnInit() {
@@ -197,7 +212,20 @@ export class ImportedFileMappingComponent implements OnInit, OnDestroy {
     }
   }
 
-  cancel() {
+  cancel(event: any) {
+    if (event) {
+      event.preventDefault();
+    }
+    this.navigationService.navigate('/imported-files');
+  }
+
+  confirmSave(): void {
+    this.showCancelConfirm = false;
     this.router.navigateByUrl('/imported-files');
+    //this.saveFileSource();
+  }
+
+  cancelSave(): void {
+    this.showCancelConfirm = false;
   }
 }

@@ -16,7 +16,8 @@ export class SideBarComponent extends BaseSibscriber implements OnInit {
   constructor(
     private dataService: DataService,
     private router: Router,
-    public navigationService: NavigationService) {
+    public navigationService: NavigationService
+  ) {
     super();
   }
 
@@ -45,7 +46,12 @@ export class SideBarComponent extends BaseSibscriber implements OnInit {
       return;
     }
     if (!item.url) { return; }
-    this.router.navigateByUrl(item.url);
+    this.navigationService.navigate(item.url);
+    //this.router.navigateByUrl(item.url);
+  }
+
+  navigateTo(url: string): void {
+
   }
 
 }

@@ -10,7 +10,7 @@
             </div>
             <ul *ngIf="item.subLinks?.length" [hidden]="!item.showSubMenu" class="sidebar-menu__sub-list">
                 <li *ngFor="let subItem of item.subLinks" class="sidebar-menu__sub-item">
-                    <a class="sidebar-menu__main" [routerLink]="subItem.url">
+                    <a class="sidebar-menu__main" (click)="navigateTo(subItem.url)" [routerLink]="subItem.url">
                         <div class="sidebar-menu__text">{{subItem.text}}</div>
                     </a>
                 </li>

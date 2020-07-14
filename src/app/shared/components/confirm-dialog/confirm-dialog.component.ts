@@ -14,6 +14,8 @@ export class ConfirmDialogComponent {
   @Input() subText = 'subText';  
   @Input() name = 'name';
   @Input() subName = 'subName';
+  @Input() cancelText = 'Cancel';
+  @Input() confirmText = 'Ok';
 
   cancel(): void {
     this.onCancel.emit();

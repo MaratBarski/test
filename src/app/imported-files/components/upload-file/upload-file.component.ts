@@ -1,5 +1,5 @@
 import { Component, Output, EventEmitter, ViewChild, ElementRef, Input, OnInit } from '@angular/core';
-import { UploadService } from '@app/shared/services/upload.service';
+import { UploadService, UploadInfo } from '@app/shared/services/upload.service';
 import { Offline } from '@app/shared/decorators/offline.decorator';
 import { SelectOption, SelectComponent, CsvManagerService, NotificationStatus, ValidationFileMessage, ToasterType, LoginService, BaseSibscriber } from '@appcore';
 import { environment } from '@env/environment';
@@ -82,6 +82,7 @@ export class UploadFileComponent extends BaseSibscriber implements OnInit {
         succName: 'Imported File SUCCESSFULLY UPLOADED',
         abortName: 'Imported File UPLOAD ABORTED BY USER',
         comment: 'Uploading',
+        succComment: 'The file uploaded successfully and is ready for mapping.',
         progress: 0,
         status: NotificationStatus.uploading,
         showProgress: true,
@@ -93,7 +94,11 @@ export class UploadFileComponent extends BaseSibscriber implements OnInit {
       },
       form: formData,
       url: this._uploadUrl,
-      targetComponent: this.targetComponent
+      targetComponent: this.targetComponent,
+      afterUpload: ((response:any, notifiuploadInfo: UploadInfo) => {
+        notifiuploadInfo.notification.succLinkText = 'Map';
+        notifiuploadInfo.notification.succUrl = `imported-files/${response.data.fileSrc.fileId}`;
+      })
     });
     this.reset();
     this.onUpload.emit();

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Subject, Observable, BehaviorSubject } from 'rxjs';
 import { ToasterType } from '../components/toaster/toaster.component';
+import { NavigationService } from './navigation.service';
 
 export enum NotificationStatus {
   uploading = 'Uploading',
@@ -17,6 +18,7 @@ export interface INotification {
   succName?: string;
   abortName?: string;
   comment?: string;
+  succComment?: string;
   startDate?: Date;
   progress?: number;
   status?: NotificationStatus;
@@ -27,6 +29,8 @@ export interface INotification {
   fileName?: string;
   errorMessage?: string;
   progressTitle?: string;
+  succUrl?: string;
+  succLinkText?: string;
 }
 
 @Injectable({
@@ -61,14 +65,15 @@ export class NotificationsService {
     return this.notifications.filter(x => x.status === NotificationStatus.uploading).length;
   }
 
-  constructor() {
+  constructor(private navigationService: NavigationService) {
     window.addEventListener('beforeunload', (event) => {
-      if (!this.uploadingCount) {
-        return;
+      if (this.uploadingCount ||
+        (this.navigationService.beforeNavigate && this.navigationService.beforeNavigate())
+        ) {
+        event.preventDefault();
+        event.returnValue = 'Your notifications will be lost!';
+        return event;
       }
-      event.preventDefault();
-      event.returnValue = 'Your notifications will be lost!';
-      return event;
     });
   }
 
