@@ -23,6 +23,7 @@ import { ReplacePipe } from './pipes/replace.pipe';
 import { DataSamplePipe } from './pipes/data-sample.pipe';
 import { FormatNumberPipe } from './pipes/format-number.pipe';
 import { LegendComponent } from './components/legend/legend.component';
+import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { LegendComponent } from './components/legend/legend.component';
     ReplacePipe,
     DataSamplePipe,
     FormatNumberPipe,
-    LegendComponent
+    LegendComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     FormsModule,
@@ -61,7 +63,8 @@ import { LegendComponent } from './components/legend/legend.component';
     PageFotterComponent,
     ReplacePipe,
     DataSamplePipe,
-    FormatNumberPipe
+    FormatNumberPipe,
+    ConfirmDialogComponent
   ],
   entryComponents: [
   ]

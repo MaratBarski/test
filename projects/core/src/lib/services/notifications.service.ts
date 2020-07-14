@@ -34,6 +34,8 @@ export interface INotification {
 })
 export class NotificationsService {
 
+  warningRoutingMessage = undefined;
+
   closeMessage(notice: INotification) {
     notice.showInToaster = false;
     this.update();

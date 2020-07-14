@@ -1,8 +1,7 @@
 import { Component, OnInit, ViewChild, AfterContentInit } from '@angular/core';
 import { ImportedFilesService } from '../../services/imported-files.service';
 import { FileSource, FileSourceResponse } from '../../models/file-source';
-import { TableComponent, TranslateService, DateFilterComponent, TableModel, CheckBoxListOption, NavigationService, PageInfo, BaseSibscriber, CheckBoxListComponent, SelectOption, EmptyState, DatePeriod, TableActionCommand } from '@app/core-api';
-import { DateRangeButton } from '@appcore';
+import { DateRangeButton, TableComponent, TranslateService, DateFilterComponent, TableModel, CheckBoxListOption, NavigationService, PageInfo, BaseSibscriber, CheckBoxListComponent, SelectOption, EmptyState, DatePeriod, TableActionCommand, NotificationsService, ToasterType } from '@appcore';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ConfigService } from '@app/shared/services/config.service';
 
@@ -52,7 +51,8 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, Af
     private navigationService: NavigationService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    public configService: ConfigService
+    public configService: ConfigService,
+    private notificationsService: NotificationsService
   ) {
     super();
     this.navigationService.currentPageID = PageInfo.ImportedFiles.id;
@@ -87,13 +87,28 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, Af
     delete: (action: TableActionCommand) => {
       if (action.item.source.fileType) {
         this.showDeleteConfirm = true;
+        this.sourceForDelete = action.item.source;
+        this.deleteSubTitle = `This action will delete the file '${this.sourceForDelete.fileName}'.`
         return;
       }
       this.deleteFile(action.item.source);
     }
   };
 
+  sourceForDelete = undefined;
   showDeleteConfirm = false;
+  deleteSubTitle = '';
+
+  confirmDelete(): void {
+    this.showDeleteConfirm = false;
+    this.deleteFile(this.sourceForDelete);
+    this.sourceForDelete = undefined;
+  }
+
+  cancelDelete(): void {
+    this.showDeleteConfirm = false;
+    this.sourceForDelete = undefined;
+  }
 
   deleteFile(source: any): void {
     this.fileSource = this.fileSource.filter(x => x != source);
@@ -102,9 +117,19 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, Af
     this.importedFilesService.deleteFile(source)
       .toPromise()
       .then(res => {
-        console.log('File deleted');
+        this.notificationsService.addNotification({
+          name: 'File deleted successfully',
+          type: ToasterType.info,
+          showInToaster: true,
+          comment: 'File deleted from the system.'
+        });
       }).catch(e => {
-        console.error('Error delete file');
+        this.notificationsService.addNotification({
+          name: 'Error delete file',
+          type: ToasterType.error,
+          showInToaster: true,
+          comment: 'File delete error.'
+        });
       })
   }
 

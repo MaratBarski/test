@@ -1,0 +1,26 @@
+<div class="shadow-site is-visible"></div>
+<div class="notice-msg notice-msg_black dialog">
+    <div class="notice-msg__top">
+        <div class="notice-msg__head">
+            <div class="notice-msg-head">
+                <div class="notice-msg-head__icon">
+                    <svg class="icon ic-failure" mdcSvg="ic-failure">
+                    </svg>
+                </div>
+                <div class="notice-msg-head__text">{{name}}</div>
+            </div>
+        </div>
+        <div class="notice-msg__close">
+            <svg (click)="cancel()" class="icon ic-close-circle" mdcSvg="ic-close-circle"></svg>
+        </div>
+    </div>
+    <div class="notice-msg__content">
+        <div class="notice-msg__title">{{subName}}</div>
+        <div class="notice-msg__text">{{text}}</div>
+        <div class="notice-msg__text">{{subText}}</div>
+    </div>
+    <div class="notice-msg__btn">
+        <span (click)="cancel()" class="btn btn_border btn_small">Cancel</span>
+        <span (click)="confirm()" class="btn btn_small">OK</span>
+    </div>
+</div>

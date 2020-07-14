@@ -396,7 +396,9 @@ export class TableComponent implements OnDestroy, AfterViewInit, AfterViewChecke
 
   onActionCommand(cmd: string): void {
     this.onAction.emit({ command: cmd, item: this.commandRow });
-    this.commandRow = undefined;
+    setTimeout(() => {
+      this.commandRow = undefined;
+    }, 10);
   }
 
   @HostListener('document:click', ['$event']) onMouseClick(event: any) {

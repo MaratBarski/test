@@ -12,8 +12,9 @@
         </div>
         <div mdAnimationSticky [hidden]="!isDataExists" class="admin-table-wrap__col">
             <div class="tabs-page">
-                <mdc-date-filter #dateFilter [dateFormat]="configService.dateFormat" (onSelect)="onSelectTab($event)" (onFilter)="dateFilterData($event)" [dataSource]="fileSource"
-                    [items]="dateRanges"></mdc-date-filter>
+                <mdc-date-filter #dateFilter [dateFormat]="configService.dateFormat" (onSelect)="onSelectTab($event)"
+                    (onFilter)="dateFilterData($event)" [dataSource]="fileSource" [items]="dateRanges">
+                </mdc-date-filter>
             </div>
             <div class="form-search d-none d-md-block">
                 <mdc-auto-search [pause]="500" #search placeholder="{{'search'|translate}}"></mdc-auto-search>
@@ -22,8 +23,8 @@
     </div>
     <div [hidden]="!isDataExists || !isLoaded">
         <mdc-table #table (onAction)="onAction($event)" [emptyState]="emptyState" [editCellTemplate]="editCellTemplate"
-            [cellsTemplate]="{ insertDate:dateColumn,shared:sharedColumn,columns:columnsTemplate,rows:rowsTemplate}" [searchOptions]="searchOptions"
-            [paginator]="paginator" [search]="search" [dataSource]="dataSource">
+            [cellsTemplate]="{ insertDate:dateColumn,shared:sharedColumn,columns:columnsTemplate,rows:rowsTemplate}"
+            [searchOptions]="searchOptions" [paginator]="paginator" [search]="search" [dataSource]="dataSource">
         </mdc-table>
     </div>
     <mdc-empty-state *ngIf="!isDataExists && isLoaded" [emptyState]="emptyState"></mdc-empty-state>
@@ -35,7 +36,8 @@
 </md-page-body>
 
 <ng-template #dateColumn let-item>
-    <div [stickyToElement]="true" position="right" [mdcTooltip]="(item.insertDate|date) + ' ' + (item.insertDate|date:'HH:mm')">{{item.insertDate|date}}
+    <div [stickyToElement]="true" position="right"
+        [mdcTooltip]="(item.insertDate|date) + ' ' + (item.insertDate|date:'HH:mm')">{{item.insertDate|date}}
     </div>
 </ng-template>
 
@@ -61,7 +63,11 @@
 </ng-template>
 
 <mdc-modal-window *ngIf="showUploadFile">
-    <md-upload-file [targetComponent]="me" (onUpload)="showUploadFile=false"
-        (onCancel)="showUploadFile=false">
+    <md-upload-file [targetComponent]="me" (onUpload)="showUploadFile=false" (onCancel)="showUploadFile=false">
     </md-upload-file>
 </mdc-modal-window>
+
+<md-confirm-dialog *ngIf="showDeleteConfirm" name="Delete file" [subName]="deleteSubTitle"
+    subText="Do you wish to continue?" text="It cannot be undone." (onCancel)="cancelDelete()"
+    (onConfirm)="confirmDelete()">
+</md-confirm-dialog>
