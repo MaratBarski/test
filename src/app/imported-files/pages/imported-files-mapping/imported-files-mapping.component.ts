@@ -29,6 +29,7 @@ export class ImportedFileMappingComponent extends BaseNavigation implements OnIn
   showCancelConfirm = false;
   @ViewChild('popupMenu', { static: true }) popupMenu: PopupComponent;
   @ViewChild('table', { static: true }) table: TableComponent;
+  private redirectUrl = '';
 
   constructor(
     public componentService: ComponentService,
@@ -40,60 +41,65 @@ export class ImportedFileMappingComponent extends BaseNavigation implements OnIn
     private cdRef: ChangeDetectorRef
   ) {
     super(navigationService);
-    this.fileSource = this.route.snapshot.data.data[0];
-    this.templates = this.route.snapshot.data.data[1];
-    this.hierarchies = this.route.snapshot.data.data[2];
-    this.selectAll = new FormControl(true);
+    super.add(
+      this.route.params.subscribe(p => {
+        this.fileSource = this.route.snapshot.data.data[0];
+        this.templates = this.route.snapshot.data.data[1];
+        this.hierarchies = this.route.snapshot.data.data[2];
+        this.selectAll = new FormControl(true);
+        super.add(
+          this.selectAll.valueChanges
+            .subscribe(select => {
+              const pointer: FormArray = this.fileSourceForm.get('fileClms') as FormArray;
+              if (select) {
+                for (let i = 0; i < pointer.controls.length; i++) {
+                  pointer.controls[i].get('isIncluded').setValue(true);
+                }
+              } else {
+                for (let i = 0; i < pointer.controls.length; i++) {
+                  pointer.controls[i].get('isIncluded').setValue(false);
+                }
+              }
+            }));
 
-    this.selectAll.valueChanges
-      .subscribe(select => {
-        const pointer: FormArray = this.fileSourceForm.get('fileClms') as FormArray;
-        if (select) {
-          // tslint:disable-next-line:prefer-for-of
-          for (let i = 0; i < pointer.controls.length; i++) {
-            pointer.controls[i].get('isIncluded').setValue(true);
+        this.templateSelectOptions.push({
+          id: 0,
+          text: 'no template defined'
+        });
+        this.templates.forEach(item => {
+          const tmp: SelectOption = new SelectOption();
+          tmp.id = item.templateId;
+          tmp.text = item.templateName;
+          this.templateSelectOptions.push(tmp);
+        });
+
+        this.hierarchySelectOptions.push({
+          id: 0,
+          text: 'Select categorization...'
+        });
+        this.hierarchies.forEach(item => {
+          const tmp: SelectOption = new SelectOption();
+          tmp.id = item.hierarchyRootId;
+          tmp.text = item.hierarchyName;
+          this.hierarchySelectOptions.push(tmp);
+        });
+
+        this.fileSourceForm = this.createFileSourceForm();
+
+        this.navigationService.beforeNavigate = ((url: string) => {
+          if (url) {
+            this.redirectUrl = url;
           }
-        } else {
-          // tslint:disable-next-line:prefer-for-of
-          for (let i = 0; i < pointer.controls.length; i++) {
-            pointer.controls[i].get('isIncluded').setValue(false);
+          const data = JSON.stringify(this.fileSourceForm.getRawValue());
+          if (this.originSource !== data) {
+            this.showCancelConfirm = !!url;
+            return true;
           }
-        }
-      });
-    this.templateSelectOptions.push({
-      id: 0,
-      text: 'no template defined'
-    });
-    this.templates.forEach(item => {
-      const tmp: SelectOption = new SelectOption();
-      tmp.id = item.templateId;
-      tmp.text = item.templateName;
-      this.templateSelectOptions.push(tmp);
-    });
-
-    this.hierarchySelectOptions.push({
-      id: 0,
-      text: 'Select categorization...'
-    });
-    this.hierarchies.forEach(item => {
-      const tmp: SelectOption = new SelectOption();
-      tmp.id = item.hierarchyRootId;
-      tmp.text = item.hierarchyName;
-      this.hierarchySelectOptions.push(tmp);
-    });
-
-    this.fileSourceForm = this.createFileSourceForm();
-
-    this.navigationService.beforeNavigate = ((url: string) => {
-      const data = JSON.stringify(this.fileSourceForm.getRawValue());
-      if (this.originSource !== data) {
-        this.showCancelConfirm = !!url;
-        return true;
-      }
-      if (url) {
-        this.router.navigateByUrl(url);
-      }
-    })
+          if (url) {
+            this.router.navigateByUrl(url);
+          }
+        })
+      }));
   }
 
   ngAfterViewChecked(): void {
@@ -221,7 +227,7 @@ export class ImportedFileMappingComponent extends BaseNavigation implements OnIn
 
   confirmSave(): void {
     this.showCancelConfirm = false;
-    this.router.navigateByUrl('/imported-files');
+    this.router.navigateByUrl(this.redirectUrl || '/imported-files');
     //this.saveFileSource();
   }
 
