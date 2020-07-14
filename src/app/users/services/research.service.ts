@@ -195,13 +195,16 @@ export class ResearchService {
         source: fl,
         isActive: true,
         csv: {
-          Active: fl.endDate && fl.endDate.trim() !== '' ? new Date(fl.endDate) > new Date() ? 'yes' : 'no' : 'yes'
+          Active: this.isActive(fl, 'yes', 'no')
         }
       })
     })
     return data;
   }
 
+  isActive(src: any, trueValue: any, falseValue: any): any {
+    return src.researchStatus && src.researchStatus.trim().toLowerCase() === 'open' ? trueValue : falseValue;
+  }
 
 }
 

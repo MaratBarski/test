@@ -109,7 +109,7 @@ export class ResearchListComponent extends BaseSibscriber implements OnInit {
   }
 
   isActive(src: any): boolean {
-    return src.endDate && src.endDate.trim() !== '' ? new Date(src.endDate) > new Date() ? true : false : true;
+    return this.researchService.isActive(src, true, false);
   }
 }
 
