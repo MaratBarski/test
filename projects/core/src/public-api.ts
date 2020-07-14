@@ -33,6 +33,7 @@ export * from './lib/common/side-menu';
 export * from './lib/common/chart/BaseChart';
 export * from './lib/common/chart/BaseChartBar';
 export * from './lib/common/chart/chart-bar';
+export * from './lib/common/BaseNavigation';
 
 export * from './lib/store/selectors/user.selectors';
 export * from './lib/store/actions/user.actions';

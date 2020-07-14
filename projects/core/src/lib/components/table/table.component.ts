@@ -320,7 +320,9 @@ export class TableComponent implements OnDestroy, AfterViewInit, AfterViewChecke
   }
 
   resetActiveRow(): void {
-    this.dataSource.rows.filter(r => r.isActive).forEach(r => r.isActive = false);
+    if(this.dataSource && this.dataSource.rows){
+      this.dataSource.rows.filter(r => r.isActive).forEach(r => r.isActive = false);
+    }
   }
 
   currentRowInfo: TableRowModel;
