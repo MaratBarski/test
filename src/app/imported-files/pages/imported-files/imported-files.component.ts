@@ -85,18 +85,28 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, Af
       console.log('view command');
     },
     delete: (action: TableActionCommand) => {
-      this.fileSource = this.fileSource.filter(x => x != action.item.source);
-      this.initData();
-      this.table.stayOnCurrentPage = true;
-      this.importedFilesService.deleteFile(action.item.source)
-        .toPromise()
-        .then(res => {
-          console.log('File deleted');
-        }).catch(e => {
-          console.error('Error delete file');
-        })
+      if (action.item.source.fileType) {
+        this.showDeleteConfirm = true;
+        return;
+      }
+      this.deleteFile(action.item.source);
     }
   };
+
+  showDeleteConfirm = false;
+
+  deleteFile(source: any): void {
+    this.fileSource = this.fileSource.filter(x => x != source);
+    this.initData();
+    this.table.stayOnCurrentPage = true;
+    this.importedFilesService.deleteFile(source)
+      .toPromise()
+      .then(res => {
+        console.log('File deleted');
+      }).catch(e => {
+        console.error('Error delete file');
+      })
+  }
 
   private initData(): void {
     this.isDataExists = !!(this.fileSource && this.fileSource.length);
