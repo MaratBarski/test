@@ -1,6 +1,7 @@
 import { Component, Input, EventEmitter, Output } from '@angular/core';
 import { animation } from '../../animations/animations';
 import { INotification } from '../../services/notifications.service';
+import { NavigationService } from '../../services/navigation.service';
 
 export enum ToasterType {
   info,
@@ -19,6 +20,9 @@ export enum ToasterType {
   ],
 })
 export class ToasterComponent {
+
+  constructor(private navigationService: NavigationService) { }
+
   @Input() notice: INotification;
 
   // emitting close event with id of toaster for searching in array of toasters;
@@ -34,5 +38,10 @@ export class ToasterComponent {
   onAbortClicked(): void {
     console.log('abort');
     this.onAbort.emit(this.notice);
+  }
+
+  navigate(): void {
+    this.onCloseClicked();
+    this.navigationService.navigate(this.notice.succUrl);
   }
 }

@@ -183,13 +183,12 @@ export class ResearchService {
           maxPatients: fl.maxPatients,
           startDate: fl.startDate,
           endDate: fl.endDate,
-          PermissionTemplate: fl.researchTemplates ? fl.researchTemplates.map((t: any) =>
-            //t.templateName
-            t.templateId
-          ).join(';') : '',
-          Allowedcontent: fl.researchRestrictionEvents ? fl.researchRestrictionEvents.map((e: any) =>
-            `[${e.eventName} ${e.eventPropertyId} ${e.value}]`
-          ).join(';') : ';',
+          PermissionTemplate: fl.researchTemplates ? fl.researchTemplates.map((t: any) => {
+            return t.template ? t.template.templateName : ''
+          }).join(';') : '',
+          Allowedcontent: fl.researchRestrictionEvents ? fl.researchRestrictionEvents.map((e: any) => {
+            return e.siteEventPropertyInfo ? `[${e.siteEventPropertyInfo.eventPropertyNa} ${e.eventPropertyId} ${e.value}]` : ''
+          }).join(';') : ';',
           approvalKeyExpirationDate: fl.approvalKeyExpirationDate || ''
         },
         source: fl,
