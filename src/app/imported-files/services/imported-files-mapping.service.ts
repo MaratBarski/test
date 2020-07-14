@@ -24,22 +24,22 @@ export class ImportedFilesMappingService implements Resolve<FileSourceMappingRes
     let fileSource: FileSource;
     let templates: Template[];
 
-    //this.getUrl = `${environment.serverUrl}${environment.endPoints.fileSource}/${id}`;
-    this.getUrl = 'assets/offline/selectedFileSource.json';
+    this.getUrl = `${environment.serverUrl}${environment.endPoints.fileSource}/${id}`;
+    //this.getUrl = 'assets/offline/selectedFileSource.json';
 
     return this.dataService.get(this.getUrl).pipe(map((data: any) => {
       fileSource = data.data as FileSource;
       return fileSource;
     }), switchMap((data: FileSource) => {
-      //this.getUrl = `${environment.serverUrl}${environment.endPoints.templateByProject}/${data.project}`;
-      this.getUrl = 'assets/offline/templateByProject.json';
+      this.getUrl = `${environment.serverUrl}${environment.endPoints.templateByProject}/${data.project}`;
+      //this.getUrl = 'assets/offline/templateByProject.json';
       return this.dataService.get(this.getUrl);
     }), map((data: any) => {
       templates = data.data as Template[];
       return templates;
     }), switchMap((data: Template[]) => {
-      //this.getUrl = `${environment.serverUrl}${environment.endPoints.hierarchy}/project/${fileSource.project}`;
-      this.getUrl = 'assets/offline/hierarchyProject.json'
+      this.getUrl = `${environment.serverUrl}${environment.endPoints.hierarchy}/project/${fileSource.project}`;
+      //this.getUrl = 'assets/offline/hierarchyProject.json'
       return this.dataService.get(this.getUrl);
     }), map((data: any) => {
       return [fileSource, templates, data.data];
