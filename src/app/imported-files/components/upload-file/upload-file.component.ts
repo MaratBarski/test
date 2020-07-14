@@ -96,7 +96,7 @@ export class UploadFileComponent extends BaseSibscriber implements OnInit {
       url: this._uploadUrl,
       targetComponent: this.targetComponent,
       afterUpload: ((response:any, notifiuploadInfo: UploadInfo) => {
-        notifiuploadInfo.notification.succLinkText = 'Map';
+        notifiuploadInfo.notification.succLinkText = 'Map File';
         notifiuploadInfo.notification.succUrl = `imported-files/${response.data.fileSrc.fileId}`;
       })
     });
