@@ -17,7 +17,6 @@ import { UploadFileComponent } from './components/upload-file/upload-file.compon
 import { ContenteditableValueAccessorDirective } from './pages/imported-files-mapping/directives/contenteditable.value.accessor.directive';
 import { ClmTypeSwitcherComponent } from './pages/imported-files-mapping/components/clm-type-switcher/clm-type-switcher.component';
 import { ShareFileComponent } from './components/share-file/share-file.component';
-import {TooltipModule} from 'primeng/tooltip';
 
 const routes: Array<Route> = [
   { path: '', component: ImportedFilesComponent },
@@ -40,7 +39,6 @@ const routes: Array<Route> = [
     CoreModule,
     FormsModule,
     ReactiveFormsModule,
-    TooltipModule,
     SharedModule,
     RouterModule.forChild(routes),
     StoreModule.forFeature('fileSource', fileSource),

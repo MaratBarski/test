@@ -53,11 +53,10 @@
 </ng-template>
 
 <ng-template let-item #statusTemplate let-src="source">
-    <div *ngIf="src.transStatus" [stickyToElement]="true" [position]="'left'"
-        [mdcTooltip]="'File generated successfully'">
+    <div *ngIf="src.transStatus" [pTooltip]="'File generated successfully'" >
         <svg width="20" height="20" mdcSvg="ic-success" color="green"></svg>
     </div>
-    <div *ngIf="!src.transStatus" [stickyToElement]="true" [position]="'left'" [mdcTooltip]="item.failureToolTip">
+    <div *ngIf="!src.transStatus" [pTooltip]="item.failureToolTip">
         <svg width="20" height="20" mdcSvg="ic-failure" color="red"></svg>
     </div>
 </ng-template>

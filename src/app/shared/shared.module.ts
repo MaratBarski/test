@@ -24,6 +24,7 @@ import { DataSamplePipe } from './pipes/data-sample.pipe';
 import { FormatNumberPipe } from './pipes/format-number.pipe';
 import { LegendComponent } from './components/legend/legend.component';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
+import {TooltipModule} from 'primeng/tooltip';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dial
     MatRippleModule,
     MatAutocompleteModule,
     MatSliderModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    TooltipModule
   ],
   exports: [
     ProjectComboComponent,
@@ -64,7 +66,8 @@ import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dial
     ReplacePipe,
     DataSamplePipe,
     FormatNumberPipe,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    TooltipModule
   ],
   entryComponents: [
   ]
