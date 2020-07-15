@@ -52,7 +52,7 @@ export class TextBlockComponent extends BaseSibscriber {
   private setView(): void {
     setTimeout(() => {
       this.isEllipsis = (this.container.nativeElement.scrollWidth > this.container.nativeElement.offsetWidth);
-    }, 100);
+    }, 1);
   }
 
 }

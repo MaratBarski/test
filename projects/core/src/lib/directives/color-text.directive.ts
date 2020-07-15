@@ -38,7 +38,10 @@ export class ColorTextDirective {
   private create(): void {
     if (!this.element) { return; }
     if (!this.mdcColorText) {
-      this.element.nativeElement.innerHTML = this.text;
+      setTimeout(() => {
+        this.element.nativeElement.innerHTML = this.text;  
+      }, 1);
+      
       return;
     }
     let index = this.text.toLowerCase().indexOf(this.mdcColorText.toLowerCase());
