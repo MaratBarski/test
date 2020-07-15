@@ -60,8 +60,13 @@ export class OutputHistoryReportComponent extends BaseSibscriber implements OnIn
 
   downloadClick(item: SessionHistory, source: SessionHistory, event: any): void {
     //this.downloadService.download("http://10.0.2.18:4000/mdclone/api/v1/session-history/download/2768");
-    //this.downloadService.download("http://10.0.2.18:4000/mdclone/api/v1/session-history/download/2762");    
+    //this.downloadService.download("http://10.0.2.18:4000/mdclone/api/v1/session-history/download/2762");   
+    event.stopPropagation();
     this.downloadService.download(`${this.downloadUrl}/${source.sessionHistoryId}`);
+  }
+
+  stopEvent(event:any):void{
+    event.stopPropagation();
   }
 
   dateFilterData(data: Array<any>): void {
