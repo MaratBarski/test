@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ChangeDetectorRef, AfterViewChecked } from '@angular/core';
-import { ComponentService, PopupComponent, SelectOption, TableComponent, NavigationService, BaseNavigation } from '@appcore';
+import { ComponentService, PopupComponent, SelectOption, TableComponent, NavigationService, BaseNavigation, NotificationsService, ToasterType } from '@appcore';
 import { FileClm, FileSource } from '../../models/file-source';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Template } from '@app/models/template';
@@ -38,7 +38,8 @@ export class ImportedFileMappingComponent extends BaseNavigation implements OnIn
     private route: ActivatedRoute,
     private router: Router,
     protected navigationService: NavigationService,
-    private cdRef: ChangeDetectorRef
+    private cdRef: ChangeDetectorRef,
+    private notificationService: NotificationsService
   ) {
     super(navigationService);
     super.add(
@@ -210,11 +211,19 @@ export class ImportedFileMappingComponent extends BaseNavigation implements OnIn
           tmp.fileClms[i].hierarchyRootId = '';
         }
       }
-      this.importedFilesMappingService.saveMappedData(this.fileSourceForm.getRawValue()).subscribe(responce => {
-        this.isSaving = false;
-        this.router.navigateByUrl('/imported-files');
-      }, error => {
-      });
+      this.importedFilesMappingService.saveMappedData(this.fileSourceForm.getRawValue())
+        .subscribe(responce => {
+          this.isSaving = false;
+          this.router.navigateByUrl('/imported-files');
+        }, error => {
+          this.isSaving = false;
+          this.notificationService.addNotification({
+            type: ToasterType.error,
+            name: 'Failed to save file mapping',
+            comment: 'Try again or contact MDClone support.',
+            showInToaster: true
+          })
+        });
     }
   }
 
