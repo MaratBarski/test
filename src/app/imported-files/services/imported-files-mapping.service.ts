@@ -1,21 +1,22 @@
 import { Injectable } from '@angular/core';
-import { DataService, TableModel } from '@appcore';
-import { forkJoin, Observable, of } from 'rxjs';
-import { FileSourceResponse, FileSource, FileSourceMappingResponse } from '../models/file-source';
-import { Offline } from 'src/app/shared/decorators/offline.decorator';
+import { DataService, NotificationsService, ToasterType } from '@appcore';
+import { Observable } from 'rxjs';
+import { FileSource, FileSourceMappingResponse } from '../models/file-source';
 import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { environment } from '@env/environment';
-import { map, switchMap } from 'rxjs/operators';
+import { map, switchMap, catchError } from 'rxjs/operators';
 import { Template } from '@app/models/template';
-import { temporaryAllocator } from '@angular/compiler/src/render3/view/util';
-import { Hierarchy } from '@app/models/hierarchy';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class ImportedFilesMappingService implements Resolve<FileSourceMappingResponse> {
 
-  constructor(private dataService: DataService) {
+  constructor(
+    private dataService: DataService,
+    private notificationService: NotificationsService
+  ) {
 
   }
 
@@ -43,6 +44,14 @@ export class ImportedFilesMappingService implements Resolve<FileSourceMappingRes
       return this.dataService.get(this.getUrl);
     }), map((data: any) => {
       return [fileSource, templates, data.data];
+    }), catchError(e => {
+      this.notificationService.addNotification({
+        type: ToasterType.error,
+        name: 'Failed to open file',
+        showInToaster: true,
+        comment: 'File not found. Please retry or contact MDClone support.'
+      })
+      return [];
     }));
   }
 
