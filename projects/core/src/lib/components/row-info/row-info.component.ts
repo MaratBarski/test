@@ -70,6 +70,11 @@ export class RowInfoComponent implements AfterContentInit, OnDestroy {
     this.setMargin(top - ComponentService.getRect(this.container.nativeElement).top, isFirstTime);
   }
 
+  reInit(top: number): void {
+    this.renderer2.setStyle(this.container.nativeElement, 'margin-top', `${top - ComponentService.getRect(this.container.nativeElement).top}px`);
+    this.show = true;
+  }
+
   onClick(event: any): void {
     event.stopPropagation();
   }

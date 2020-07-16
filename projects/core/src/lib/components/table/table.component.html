@@ -36,6 +36,7 @@
                 [ngClass]="{'active':row.isActive,'row-even':rowIndex%2===0,'row-odd':rowIndex%2}" mdcTableRow>
                 <ng-container *ngFor="let header of dataSource.headers|visibleHeaders;let index = index">
                     <td [ngStyle]="header.columnStyle||header.style"
+                    (click)="cellClick(row,rowIndex+1,index,header.showDetails,$event)"
                         class="admin-table__item {{header.cellCss||header.css}}" [mdcTableItem]="index">
                         <div [ngClass]="{'row-details-container':header.showDetails}"
                             class="{{header.cellContainerCss}}">
@@ -47,7 +48,7 @@
                                 [ngTemplateOutlet]="cellsTemplate[header.columnId]"
                                 [ngTemplateOutletContext]="{$implicit: row.cells,source:row.source}">
                             </ng-container>
-                            <div *ngIf="header.showDetails" [hidden]="currentOver!==row||row===currentRowInfo"
+                            <div *ngIf="header.showDetails" [hidden]="currentOver!==row||currentRowInfo"
                                 class="more-link pointer">
                                 <!-- <div (click)="showItemInfo(row,header,rowIndex+1,$event)"> -->
                                 <div>

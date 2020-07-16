@@ -29,7 +29,7 @@
 
 .admin-table{
   // display: table;
-  table-layout: fixed; // Marat addition .admin-table_auto class to the table tag will remove this property
+  //table-layout: fixed; // Marat addition .admin-table_auto class to the table tag will remove this property
   width: 100%;
   @include font(normal, normal, rem(14px), 1.4, $color-dark-grey);
   background: #fff;
@@ -766,21 +766,6 @@
 }
 
 .admin-table-info{
-  display: none;
-  width: calc(100% + 4px);
-  max-width: 820px;
-  height: 100%;
-  background: #fff;
-  border-left: 1px solid rgba(161, 173, 205, 0.5);
-  padding: 10px 30px 15px;
-  position: absolute;
-  top: 0;
-  right: -2px;
-  z-index: 10;
-
-  &.active{
-    display: block;
-  }
 
   &__top{
     display: flex;

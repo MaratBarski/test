@@ -1,4 +1,76 @@
-<div class="history-info" (mouseover)="isOver=true" (mouseleave)="isOver=false">
+<div class="" (mouseover)="isOver=true" (mouseleave)="isOver=false">
+  <div class="admin-table-info__top">
+    <div class="admin-table-info__head">Details</div>
+    <div class="admin-table-info__icons"><span *ngIf="category?.downloadActive" (click)="download()" class="ic-hover">
+        <svg class="icon ic-download" mdcSvg="ic-download">
+        </svg></span><span (click)="closeInfo()" class="ic-hover">
+        <svg class="icon ic-close-history ic-stroke" mdcSvg="ic-close-history">
+        </svg></span></div>
+  </div>
+  <div class="admin-table-info__content">
+    <div class="admin-table-info__main">
+      <div class="admin-table-info__col">
+        <div class="admin-table-info__item">
+          <div class="admin-table-info__title">Full Name:</div>
+          <div class="admin-table-info__val">{{category?.fullName}}</div>
+        </div>
+        <div class="admin-table-info__item">
+          <div class="admin-table-info__title">Source:</div>
+          <div class="admin-table-info__val">{{source}}</div>
+        </div>
+      </div>
+      <div class="admin-table-info__col">
+        <div class="admin-table-info__item">
+          <div class="admin-table-info__title">Username:</div>
+          <div class="admin-table-info__val">{{category?.login}}</div>
+        </div>
+        <div class="admin-table-info__item-wrap">
+          <div class="admin-table-info__item">
+            <div class="admin-table-info__title">Query ID:</div>
+            <div class="admin-table-info__val"><a class="file-count" href="#"><span class="file-count__val">7680</span>
+                <svg class="icon ic-external-link" mdcSvg="ic-external-link">
+                </svg></a></div>
+          </div>
+          <div class="admin-table-info__item">
+            <div class="admin-table-info__val"><span class="admin-table-info__circle admin-table-info__circle_purple"></span>Synthetic data</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="admin-table-info__item">
+      <div class="admin-table-info__title">Query/File Name:</div>
+      <div class="admin-table-info__val">{{queryOrFileName}}</div>
+    </div>
+    <div class="admin-table-info__item">
+      <div class="admin-table-info__title">Status:</div>
+      <div class="admin-table-info__val">
+        <svg class="icon ic-success" mdcSvg="ic-success">
+        </svg>File successfully created
+      </div>
+    </div>
+    <div class="admin-table-info__item">
+      <div class="admin-table-info__title">Environment:</div>
+      <div class="admin-table-info__val">{{category?.projectName}}</div>
+    </div>
+    <div class="admin-table-info__sect">
+      <div class="admin-table-info__head">Associated Permission Set</div>
+      <div class="admin-table-info__item">
+        <div class="admin-table-info__title">Set Name:</div>
+        <div class="admin-table-info__val">{{category?.researchName}}</div>
+      </div>
+      <div class="admin-table-info__item">
+        <div class="admin-table-info__title">Set Description:</div>
+        <div class="admin-table-info__val">{{category?.information}}</div>
+      </div>
+      <div class="admin-table-info__item">
+        <div class="admin-table-info__title">Approval Key:</div>
+        <div class="admin-table-info__val">{{category?.approvalKey}}</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="admin-table-info active" (mouseover)="isOver=true" (mouseleave)="isOver=false">
   <div class="admin-table-info__top">
     <div class="admin-table-info__head">Details</div>
     <div class="admin-table-info__icons">
@@ -49,10 +121,6 @@
             </div>
           </div>
         </div>
-        <!--                <div class="admin-table-info__item">-->
-        <!--                    <div class="admin-table-info__title">Data:</div>-->
-        <!--                    <div class="admin-table-info__val">{{category?.data}}</div>-->
-        <!--                </div>-->
       </div>
     </div>
 
@@ -91,4 +159,4 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->

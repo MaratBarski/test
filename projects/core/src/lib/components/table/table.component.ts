@@ -194,6 +194,7 @@ export class TableComponent implements OnDestroy, AfterViewInit, AfterViewChecke
   private _searchOptions: Array<string>;
 
   sortModel: TableHeaderModel;
+  isAnimate = true;
 
   @Input() set dataSource(data: TableModel) {
     this.isFirstInfoOpen = true;
@@ -308,19 +309,27 @@ export class TableComponent implements OnDestroy, AfterViewInit, AfterViewChecke
     this.dataSource = this._dataSourceOrigin;
   }
 
-  rowClick(row: TableRowModel, rowIndex: number, event: any): void {
-    if (this.isMultiSelect) {
-      row.isActive = !!!row.isActive;
-      return;
-    }
+  cellClick(row: TableRowModel, rowIndex: number, index: number, showDetails: boolean, $event: any): void {
+    if (!showDetails) { return; }
+    if (index) { return; }
     this.resetActiveRow();
     this.showItemInfo(row, undefined, rowIndex, event);
     row.isActive = true;
     this.dataSource.activeRow = row;
   }
 
+  rowClick(row: TableRowModel, rowIndex: number, event: any): void {
+    if (this.isMultiSelect) {
+      row.isActive = !!!row.isActive;
+    }
+    this.resetActiveRow();
+    //this.showItemInfo(row, undefined, rowIndex, event);
+    row.isActive = true;
+    this.dataSource.activeRow = row;
+  }
+
   resetActiveRow(): void {
-    if(this.dataSource && this.dataSource.rows){
+    if (this.dataSource && this.dataSource.rows) {
       this.dataSource.rows.filter(r => r.isActive).forEach(r => r.isActive = false);
     }
   }
@@ -339,12 +348,16 @@ export class TableComponent implements OnDestroy, AfterViewInit, AfterViewChecke
   }
 
   rowDetailsInit(rowDetails: RowInfoComponent): void {
-    if (this.stickyInfo2Table) {
-      rowDetails.setTop(ComponentService.getRect(this.tableObject.nativeElement.rows[0]).top, this.isFirstInfoOpen);
-    } else if (this.clientY + rowDetails.height > window.innerHeight) {
-      rowDetails.setMargin(window.innerHeight - this.clientY - rowDetails.height, this.isFirstInfoOpen);
+    if (this.isAnimate) {
+      if (this.stickyInfo2Table) {
+        rowDetails.setTop(ComponentService.getRect(this.tableObject.nativeElement.rows[0]).top, this.isFirstInfoOpen);
+      } else if (this.clientY + rowDetails.height > window.innerHeight) {
+        rowDetails.setMargin(window.innerHeight - this.clientY - rowDetails.height, this.isFirstInfoOpen);
+      } else {
+        rowDetails.setMargin(0, this.isFirstInfoOpen);
+      }
     } else {
-      rowDetails.setMargin(0, this.isFirstInfoOpen);
+      rowDetails.reInit(ComponentService.getRect(this.tableObject.nativeElement.rows[0]).top);
     }
     this.isFirstInfoOpen = false;
     this.rowDetails = rowDetails;
@@ -354,6 +367,15 @@ export class TableComponent implements OnDestroy, AfterViewInit, AfterViewChecke
     if (this.currentRowInfo === row) {
       event.stopPropagation();
       return;
+    }
+    if (this.currentRowInfo) {
+      event.stopPropagation();
+      this.isAnimate = false;
+      this.currentRowInfo = row;
+      return;
+    }
+    if (this.rowDetails) {
+      this.isAnimate = true;
     }
     ComponentService.documentClick();
     // this.rowClick(row);
