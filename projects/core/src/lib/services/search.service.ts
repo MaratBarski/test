@@ -18,12 +18,10 @@ export class SearchService {
     return rows.filter(row => {
       for (let i = 0; i < searchModel.columns.length; i++) {
         if (!row.cells[searchModel.columns[i]]) {
-          return false;
+          continue;
         }
-
         if (row.cells[searchModel.columns[i]].toString().trim().toLowerCase()
           .indexOf(searchModel.text.trim().toLowerCase()) !== -1
-          //.startsWith(searchModel.text.trim().toLowerCase())
         ) {
           return true;
         }

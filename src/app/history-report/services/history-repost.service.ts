@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
-import { DataService, TableModel } from '@app/core-api';
+import { DataService, TableModel, DateService } from '@appcore';
 import { Observable } from 'rxjs';
 import { Offline } from 'src/app/shared/decorators/offline.decorator';
 import { environment } from '@env/environment';
 import { SessionHistoryResponse, SessionHistory } from '@app/models/session-history';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { HistoryReportUtils } from '../models/history-report-utils';
+
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,7 @@ export class HistoryReportService {
   //   };
   // }
 
-  constructor(private dataService: DataService, private http: HttpClient) { }
+  constructor(private dataService: DataService, private http: HttpClient, private dateService: DateService) { }
 
   @Offline('assets/offline/history.json')
   private getUrl = `${environment.serverUrl}${environment.endPoints.historyReport}` + '/retrieveList';
@@ -56,7 +57,7 @@ export class HistoryReportService {
           columnId: 'name',
           text: 'Query/File Name',
           isSortEnabled: true,
-          csvTitle: 'Query/File name /ID',
+          csvTitle: 'Query/File name/ID',
           css: 'admin-table__item w-md-200'
         },
         {
@@ -124,14 +125,17 @@ export class HistoryReportService {
           approvalKey: fl.approvalKey,
           research: fl.researchName,
           environment: fl.projectName,
-          source: !!fl.sessionId ? "Query" : "Imported file",
-          status: !!fl.transStatus ? "True" : "False",
+          source: !!fl.sessionId ? 'Query' : 'Imported file',
+          status: !!fl.transStatus ? 'True' : 'False',
           download: fl.sessionHistoryId,
           failureToolTip: this.getTransToolTip(fl.transMsg)
         },
-        // csv: {
-        //   status: !!fl.transStatus ? "True" : "False",
-        // },
+        csv: {
+          insertDate: this.dateService.toExcel(fl.insertDate),
+          status: !!fl.transStatus ? 'passed' : 'failed',
+          source: !!fl.sessionId ? 'Query' : 'Imported file',
+          name: fl.fileNameAlias ? fl.fileNameAlias : `${fl.sessionName}/${fl.sessionId}`
+        },
         source: fl,
         isActive: false
       })

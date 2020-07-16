@@ -15,12 +15,11 @@
                     [items]="dateRanges"></mdc-date-filter>
             </div>
             <form class="form-search d-none d-md-block">
-                <mdc-auto-search pause="500" #search placeholder="{{'search'|translate}}"></mdc-auto-search>
+                <mdc-auto-search (complete)="onSearchComplete($event)" pause="500" #search placeholder="{{'search'|translate}}"></mdc-auto-search>
             </form>
         </div>
     </div>
     <mdc-table [rowInfoTemplate]="rowInfoTemplate" [emptyState]="emptyState" #table
-        [headersTemplate]="{ data:dataHeader}"
         [cellsTemplate]="{ insertDate:dateColumn, status:statusTemplate, name:nameTemplate, download:downloadTemplate,data:dataTemplate}"
         [searchOptions]="searchOptions" [paginator]="paginator" [search]="search" [dataSource]="dataSource"
         [downloader]="downloader">
@@ -42,14 +41,9 @@
     <span class="pointer link">{{item.insertDate|date}}</span>
 </ng-template>
 
-<ng-template #dataHeader>
-    <span>Data </span>
-    <svg width="15" height="15" mdcSvg="ic-help" color="blue"></svg>
-</ng-template>
-
 <ng-template #dataTemplate let-src="source">
-    <span *ngIf="src?.data === 'Synthetic'" class="admin-table__circle"></span>
-    {{src.data}}
+    <span *ngIf="src?.data==='Synthetic'" class="admin-table__circle"></span>
+    <span [mdcColorText]="searchText" [text]="src.data">{{src.data}}</span>
 </ng-template>
 
 <ng-template let-item #statusTemplate let-src="source">
@@ -82,10 +76,4 @@
     <div class="table-file-info" *ngIf="!src.sessionId">
         {{src.fileNameAlias}}
     </div>
-
-    <!-- <div class="table-file-info"><span class="table-file-info__name">d-Stroke for a long
-            description...</span>&nbsp;|&nbsp;<a class="file-count" href="#"><span class="file-count__val">1233</span>
-            <svg mdcSvg="ic-external-link" class="icon ic-external-link">
-            </svg></a>
-    </div>  -->
 </ng-template>

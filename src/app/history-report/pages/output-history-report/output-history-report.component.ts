@@ -24,8 +24,9 @@ export class OutputHistoryReportComponent extends BaseSibscriber implements OnIn
     image: 'output-history-2-x.png'
   }
 
+  searchText = '';
   downloadFileName = 'history.csv';
-  searchOptions = ['source', 'fullName', 'environment', 'source'];
+  searchOptions = ['source', 'fullName', 'environment', 'approvalKey', 'name', 'research', 'data'];
   dataOrigin: TableModel;
   dataSource: TableModel;
   reports: Array<any>;
@@ -65,7 +66,7 @@ export class OutputHistoryReportComponent extends BaseSibscriber implements OnIn
     this.downloadService.download(`${this.downloadUrl}/${source.sessionHistoryId}`);
   }
 
-  stopEvent(event:any):void{
+  stopEvent(event: any): void {
     event.stopPropagation();
   }
 
@@ -83,6 +84,10 @@ export class OutputHistoryReportComponent extends BaseSibscriber implements OnIn
     const locale = 'en-US';
     const formattedDate = formatDate(date, format, locale);
     this.downloader.fileName = formattedDate + "_session_history.csv";
+  }
+
+  onSearchComplete(text: string): void {
+    this.searchText = text;
   }
 }
 

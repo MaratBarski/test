@@ -374,9 +374,7 @@ export class TableComponent implements OnDestroy, AfterViewInit, AfterViewChecke
       this.currentRowInfo = row;
       return;
     }
-    if (this.rowDetails) {
-      this.isAnimate = true;
-    }
+    this.isAnimate = true;
     ComponentService.documentClick();
     // this.rowClick(row);
     event.stopPropagation();

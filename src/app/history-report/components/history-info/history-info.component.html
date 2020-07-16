@@ -25,14 +25,30 @@
           <div class="admin-table-info__val">{{category?.login}}</div>
         </div>
         <div class="admin-table-info__item-wrap">
-          <div class="admin-table-info__item">
+          <div *ngIf="category?.sessionId" class="admin-table-info__item">
             <div class="admin-table-info__title">Query ID:</div>
-            <div class="admin-table-info__val"><a class="file-count" href="#"><span class="file-count__val">7680</span>
-                <svg class="icon ic-external-link" mdcSvg="ic-external-link">
-                </svg></a></div>
+            <div class="admin-table-info__val">
+              <a class="file-count" target="_blank"
+                href="/datalake/#/projects/{{category?.projectId}}/sessions/{{category?.sessionId}}">
+                <span class="file-count__val">{{category?.sessionId}}</span>
+                <svg class="icon ic-external-link" mdcSvg="ic-external-link"></svg>
+              </a>
+            </div>
+          </div>
+          <div *ngIf="!category?.sessionId" class="admin-table-info__item">
+            <div class="admin-table-info__title">File Name:</div>
+            <div class="admin-table-info__val">
+              {{category?.fileNameAlias}}
+            </div>
           </div>
           <div class="admin-table-info__item">
-            <div class="admin-table-info__val"><span class="admin-table-info__circle admin-table-info__circle_purple"></span>Synthetic data</div>
+            <div *ngIf="category?.data==='Synthetic'" class="admin-table-info__val">
+              <span class="admin-table-info__circle admin-table-info__circle_purple"></span>
+              Synthetic data
+            </div>
+            <div *ngIf="category?.data!=='Synthetic'" class="admin-table-info__val">
+              Original data
+            </div>
           </div>
         </div>
       </div>
@@ -43,9 +59,12 @@
     </div>
     <div class="admin-table-info__item">
       <div class="admin-table-info__title">Status:</div>
-      <div class="admin-table-info__val">
+      <div *ngIf="category?.transStatus" class="admin-table-info__val">
         <svg class="icon ic-success" mdcSvg="ic-success">
         </svg>File successfully created
+      </div>
+      <div *ngIf="!category?.transStatus" class="admin-table-info__val">
+        <svg width="20" height="20" mdcSvg="ic-failure" color="red"></svg>
       </div>
     </div>
     <div class="admin-table-info__item">
