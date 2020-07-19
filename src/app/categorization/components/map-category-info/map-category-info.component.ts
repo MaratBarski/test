@@ -1,5 +1,5 @@
-import { Component, Input, EventEmitter, Output } from '@angular/core';
-import { SelectOption } from '@appcore';
+import { Component, Input, EventEmitter, Output, HostListener } from '@angular/core';
+import { ComponentService, SelectOption } from '@appcore';
 import { CategorizationService } from '@app/categorization/services/categorization.service';
 import { Router } from '@angular/router';
 import { environment } from '@env/environment';
@@ -27,7 +27,7 @@ export class MapCategoryInfoComponent {
       this.selectedCategory = { id: selected.hierarchyLevelId, text: selected.hierarchyLevelName };
     }
     this.categories = this._data.data.hierarchyLevels
-      .filter((x:any) => x.sortValue >= 0)
+      .filter((x: any) => x.sortValue >= 0)
       .map((x: any) => {
         return {
           id: x.hierarchyLevelId,
@@ -45,6 +45,17 @@ export class MapCategoryInfoComponent {
   changeCategory(event: any): void {
     this.selectedCategory = event;
     this.data.data.defaultLevelId = event.id;
+  }
+
+  @HostListener('document:click', ['$event']) onMouseClick(event: any) {
+    this.isShowPopup = false;
+  }
+
+  isShowPopup = false;
+  showPopup(event: any): void {
+    const isOpen = this.isShowPopup;
+    ComponentService.documentClick(event);
+    this.isShowPopup = !isOpen;
   }
 
   get isValid(): boolean {

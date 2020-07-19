@@ -39,10 +39,10 @@
                             </div>
                         </div>
                         <div class="info-panel-menu">
-                            <div class="info-panel-menu__btn ic-hover">
+                            <div (click)="showPopup($event)" class="info-panel-menu__btn ic-hover">
                                 <svg class="icon ic-dot-menu" mdcSvg="ic-dot-menu"></svg>
                             </div>
-                            <div class="info-panel-menu__popup">
+                            <div [hidden]="!isShowPopup" class="info-panel-menu__popup">
                                 <div class="info-panel-menu__top">
                                     <div (click)="replace()" class="info-panel-menu__item">
                                         <div class="info-panel-menu__icon">

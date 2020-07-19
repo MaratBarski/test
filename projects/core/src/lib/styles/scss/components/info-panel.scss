@@ -217,9 +217,10 @@
   }
 
   &__popup.active,
-  &:hover &__popup{
+  &__popup{
     display: block;
   }
+
 
   &__item{
     display: flex;

@@ -33,6 +33,9 @@
                         "fieldDes": "Property-Availability:99% populated",
                         "priority": 0,
                         "isDependentSear": false
+                    },
+                    "siteEventInfo": {
+                        "eventTableAlias": "gdfsgdfgdfg"
                     }
                 }
             ],
@@ -96,166 +99,9 @@
                         "fieldDes": null,
                         "priority": 1,
                         "isDependentSear": false
-                    }
-                },
-                {
-                    "researchId": "18",
-                    "eventPropertyId": "eventdate",
-                    "eventId": "10",
-                    "value": "8",
-                    "siteEventPropertyInfo": {
-                        "eventPropertyNa": "eventdate",
-                        "eventId": "257",
-                        "dataSample": null,
-                        "eventPropertyTy": "DATE",
-                        "hierarchyRootId": null,
-                        "patientFk": false,
-                        "eventTimeStamp": true,
-                        "ageAtEvent": false,
-                        "fieldDescriptio": "event date",
-                        "fieldDes": null,
-                        "priority": 0,
-                        "isDependentSear": false
-                    }
-                },
-                {
-                    "researchId": "18",
-                    "eventPropertyId": "eventdate",
-                    "eventId": "10",
-                    "value": "7",
-                    "siteEventPropertyInfo": {
-                        "eventPropertyNa": "eventdate",
-                        "eventId": "257",
-                        "dataSample": null,
-                        "eventPropertyTy": "DATE",
-                        "hierarchyRootId": null,
-                        "patientFk": false,
-                        "eventTimeStamp": true,
-                        "ageAtEvent": false,
-                        "fieldDescriptio": "event date",
-                        "fieldDes": null,
-                        "priority": 0,
-                        "isDependentSear": false
-                    }
-                },
-                {
-                    "researchId": "18",
-                    "eventPropertyId": "eventdate",
-                    "eventId": "10",
-                    "value": "6",
-                    "siteEventPropertyInfo": {
-                        "eventPropertyNa": "eventdate",
-                        "eventId": "257",
-                        "dataSample": null,
-                        "eventPropertyTy": "DATE",
-                        "hierarchyRootId": null,
-                        "patientFk": false,
-                        "eventTimeStamp": true,
-                        "ageAtEvent": false,
-                        "fieldDescriptio": "event date",
-                        "fieldDes": null,
-                        "priority": 0,
-                        "isDependentSear": false
-                    }
-                },
-                {
-                    "researchId": "18",
-                    "eventPropertyId": "eventdate",
-                    "eventId": "10",
-                    "value": "5",
-                    "siteEventPropertyInfo": {
-                        "eventPropertyNa": "eventdate",
-                        "eventId": "257",
-                        "dataSample": null,
-                        "eventPropertyTy": "DATE",
-                        "hierarchyRootId": null,
-                        "patientFk": false,
-                        "eventTimeStamp": true,
-                        "ageAtEvent": false,
-                        "fieldDescriptio": "event date",
-                        "fieldDes": null,
-                        "priority": 0,
-                        "isDependentSear": false
-                    }
-                },
-                {
-                    "researchId": "18",
-                    "eventPropertyId": "eventdate",
-                    "eventId": "10",
-                    "value": "4",
-                    "siteEventPropertyInfo": {
-                        "eventPropertyNa": "eventdate",
-                        "eventId": "257",
-                        "dataSample": null,
-                        "eventPropertyTy": "DATE",
-                        "hierarchyRootId": null,
-                        "patientFk": false,
-                        "eventTimeStamp": true,
-                        "ageAtEvent": false,
-                        "fieldDescriptio": "event date",
-                        "fieldDes": null,
-                        "priority": 0,
-                        "isDependentSear": false
-                    }
-                },
-                {
-                    "researchId": "18",
-                    "eventPropertyId": "eventdate",
-                    "eventId": "10",
-                    "value": "3",
-                    "siteEventPropertyInfo": {
-                        "eventPropertyNa": "eventdate",
-                        "eventId": "257",
-                        "dataSample": null,
-                        "eventPropertyTy": "DATE",
-                        "hierarchyRootId": null,
-                        "patientFk": false,
-                        "eventTimeStamp": true,
-                        "ageAtEvent": false,
-                        "fieldDescriptio": "event date",
-                        "fieldDes": null,
-                        "priority": 0,
-                        "isDependentSear": false
-                    }
-                },
-                {
-                    "researchId": "18",
-                    "eventPropertyId": "eventdate",
-                    "eventId": "10",
-                    "value": "2",
-                    "siteEventPropertyInfo": {
-                        "eventPropertyNa": "eventdate",
-                        "eventId": "257",
-                        "dataSample": null,
-                        "eventPropertyTy": "DATE",
-                        "hierarchyRootId": null,
-                        "patientFk": false,
-                        "eventTimeStamp": true,
-                        "ageAtEvent": false,
-                        "fieldDescriptio": "event date",
-                        "fieldDes": null,
-                        "priority": 0,
-                        "isDependentSear": false
-                    }
-                },
-                {
-                    "researchId": "18",
-                    "eventPropertyId": "eventdate",
-                    "eventId": "10",
-                    "value": "1",
-                    "siteEventPropertyInfo": {
-                        "eventPropertyNa": "eventdate",
-                        "eventId": "257",
-                        "dataSample": null,
-                        "eventPropertyTy": "DATE",
-                        "hierarchyRootId": null,
-                        "patientFk": false,
-                        "eventTimeStamp": true,
-                        "ageAtEvent": false,
-                        "fieldDescriptio": "event date",
-                        "fieldDes": null,
-                        "priority": 0,
-                        "isDependentSear": false
+                    },
+                    "siteEventInfo": {
+                        "eventTableAlias": "procedures_icd"
                     }
                 },
                 {
@@ -276,6 +122,193 @@
                         "fieldDes": null,
                         "priority": 0,
                         "isDependentSear": false
+                    },
+                    "siteEventInfo": {
+                        "eventTableAlias": "procedures_icd"
+                    }
+                },
+                {
+                    "researchId": "18",
+                    "eventPropertyId": "eventdate",
+                    "eventId": "10",
+                    "value": "1",
+                    "siteEventPropertyInfo": {
+                        "eventPropertyNa": "eventdate",
+                        "eventId": "257",
+                        "dataSample": null,
+                        "eventPropertyTy": "DATE",
+                        "hierarchyRootId": null,
+                        "patientFk": false,
+                        "eventTimeStamp": true,
+                        "ageAtEvent": false,
+                        "fieldDescriptio": "event date",
+                        "fieldDes": null,
+                        "priority": 0,
+                        "isDependentSear": false
+                    },
+                    "siteEventInfo": {
+                        "eventTableAlias": "procedures_icd"
+                    }
+                },
+                {
+                    "researchId": "18",
+                    "eventPropertyId": "eventdate",
+                    "eventId": "10",
+                    "value": "2",
+                    "siteEventPropertyInfo": {
+                        "eventPropertyNa": "eventdate",
+                        "eventId": "257",
+                        "dataSample": null,
+                        "eventPropertyTy": "DATE",
+                        "hierarchyRootId": null,
+                        "patientFk": false,
+                        "eventTimeStamp": true,
+                        "ageAtEvent": false,
+                        "fieldDescriptio": "event date",
+                        "fieldDes": null,
+                        "priority": 0,
+                        "isDependentSear": false
+                    },
+                    "siteEventInfo": {
+                        "eventTableAlias": "procedures_icd"
+                    }
+                },
+                {
+                    "researchId": "18",
+                    "eventPropertyId": "eventdate",
+                    "eventId": "10",
+                    "value": "3",
+                    "siteEventPropertyInfo": {
+                        "eventPropertyNa": "eventdate",
+                        "eventId": "257",
+                        "dataSample": null,
+                        "eventPropertyTy": "DATE",
+                        "hierarchyRootId": null,
+                        "patientFk": false,
+                        "eventTimeStamp": true,
+                        "ageAtEvent": false,
+                        "fieldDescriptio": "event date",
+                        "fieldDes": null,
+                        "priority": 0,
+                        "isDependentSear": false
+                    },
+                    "siteEventInfo": {
+                        "eventTableAlias": "procedures_icd"
+                    }
+                },
+                {
+                    "researchId": "18",
+                    "eventPropertyId": "eventdate",
+                    "eventId": "10",
+                    "value": "4",
+                    "siteEventPropertyInfo": {
+                        "eventPropertyNa": "eventdate",
+                        "eventId": "257",
+                        "dataSample": null,
+                        "eventPropertyTy": "DATE",
+                        "hierarchyRootId": null,
+                        "patientFk": false,
+                        "eventTimeStamp": true,
+                        "ageAtEvent": false,
+                        "fieldDescriptio": "event date",
+                        "fieldDes": null,
+                        "priority": 0,
+                        "isDependentSear": false
+                    },
+                    "siteEventInfo": {
+                        "eventTableAlias": "procedures_icd"
+                    }
+                },
+                {
+                    "researchId": "18",
+                    "eventPropertyId": "eventdate",
+                    "eventId": "10",
+                    "value": "5",
+                    "siteEventPropertyInfo": {
+                        "eventPropertyNa": "eventdate",
+                        "eventId": "257",
+                        "dataSample": null,
+                        "eventPropertyTy": "DATE",
+                        "hierarchyRootId": null,
+                        "patientFk": false,
+                        "eventTimeStamp": true,
+                        "ageAtEvent": false,
+                        "fieldDescriptio": "event date",
+                        "fieldDes": null,
+                        "priority": 0,
+                        "isDependentSear": false
+                    },
+                    "siteEventInfo": {
+                        "eventTableAlias": "procedures_icd"
+                    }
+                },
+                {
+                    "researchId": "18",
+                    "eventPropertyId": "eventdate",
+                    "eventId": "10",
+                    "value": "6",
+                    "siteEventPropertyInfo": {
+                        "eventPropertyNa": "eventdate",
+                        "eventId": "257",
+                        "dataSample": null,
+                        "eventPropertyTy": "DATE",
+                        "hierarchyRootId": null,
+                        "patientFk": false,
+                        "eventTimeStamp": true,
+                        "ageAtEvent": false,
+                        "fieldDescriptio": "event date",
+                        "fieldDes": null,
+                        "priority": 0,
+                        "isDependentSear": false
+                    },
+                    "siteEventInfo": {
+                        "eventTableAlias": "procedures_icd"
+                    }
+                },
+                {
+                    "researchId": "18",
+                    "eventPropertyId": "eventdate",
+                    "eventId": "10",
+                    "value": "7",
+                    "siteEventPropertyInfo": {
+                        "eventPropertyNa": "eventdate",
+                        "eventId": "257",
+                        "dataSample": null,
+                        "eventPropertyTy": "DATE",
+                        "hierarchyRootId": null,
+                        "patientFk": false,
+                        "eventTimeStamp": true,
+                        "ageAtEvent": false,
+                        "fieldDescriptio": "event date",
+                        "fieldDes": null,
+                        "priority": 0,
+                        "isDependentSear": false
+                    },
+                    "siteEventInfo": {
+                        "eventTableAlias": "procedures_icd"
+                    }
+                },
+                {
+                    "researchId": "18",
+                    "eventPropertyId": "eventdate",
+                    "eventId": "10",
+                    "value": "8",
+                    "siteEventPropertyInfo": {
+                        "eventPropertyNa": "eventdate",
+                        "eventId": "257",
+                        "dataSample": null,
+                        "eventPropertyTy": "DATE",
+                        "hierarchyRootId": null,
+                        "patientFk": false,
+                        "eventTimeStamp": true,
+                        "ageAtEvent": false,
+                        "fieldDescriptio": "event date",
+                        "fieldDes": null,
+                        "priority": 0,
+                        "isDependentSear": false
+                    },
+                    "siteEventInfo": {
+                        "eventTableAlias": "procedures_icd"
                     }
                 }
             ],
@@ -339,6 +372,9 @@
                         "fieldDes": null,
                         "priority": 0,
                         "isDependentSear": false
+                    },
+                    "siteEventInfo": {
+                        "eventTableAlias": "lab_results"
                     }
                 },
                 {
@@ -359,6 +395,9 @@
                         "fieldDes": null,
                         "priority": 0,
                         "isDependentSear": false
+                    },
+                    "siteEventInfo": {
+                        "eventTableAlias": "lab_results"
                     }
                 }
             ],
@@ -422,7 +461,8 @@
                         "fieldDes": null,
                         "priority": 0,
                         "isDependentSear": false
-                    }
+                    },
+                    "siteEventInfo": null
                 }
             ],
             "researchTemplates": [],
@@ -641,11 +681,7 @@
                     "templateId": "1",
                     "InsertDate": "2019-12-02T09:25:34.322Z",
                     "template": {
-                        "templateId": "1",
-                        "templateName": "Demo Template",
-                        "templateType": "PERMISSION",
-                        "templateGroup": null,
-                        "projectId": "1"
+                        "templateName": "Demo Template"
                     }
                 }
             ],
@@ -1074,11 +1110,7 @@
                     "templateId": "33",
                     "InsertDate": "2019-05-21T08:10:58.224Z",
                     "template": {
-                        "templateId": "33",
-                        "templateName": "hit_Template",
-                        "templateType": "PERMISSION",
-                        "templateGroup": null,
-                        "projectId": "12"
+                        "templateName": "hit_Template"
                     }
                 }
             ],
@@ -1339,11 +1371,7 @@
                     "templateId": "30",
                     "InsertDate": "2018-12-26T17:40:36.392Z",
                     "template": {
-                        "templateId": "30",
-                        "templateName": "FedEx Day",
-                        "templateType": "PERMISSION",
-                        "templateGroup": null,
-                        "projectId": "14"
+                        "templateName": "FedEx Day"
                     }
                 }
             ],
@@ -2150,11 +2178,7 @@
                     "templateId": "38",
                     "InsertDate": "2019-12-19T10:28:31.923Z",
                     "template": {
-                        "templateId": "38",
-                        "templateName": "Test Template",
-                        "templateType": "PERMISSION",
-                        "templateGroup": null,
-                        "projectId": "1"
+                        "templateName": "Test Template"
                     }
                 },
                 {
@@ -2162,11 +2186,7 @@
                     "templateId": "1",
                     "InsertDate": "2019-12-19T10:28:31.920Z",
                     "template": {
-                        "templateId": "1",
-                        "templateName": "Demo Template",
-                        "templateType": "PERMISSION",
-                        "templateGroup": null,
-                        "projectId": "1"
+                        "templateName": "Demo Template"
                     }
                 }
             ],
