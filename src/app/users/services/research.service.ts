@@ -187,7 +187,7 @@ export class ResearchService {
             return t.template ? t.template.templateName : ''
           }).join(';') : '',
           Allowedcontent: fl.researchRestrictionEvents ? fl.researchRestrictionEvents.map((e: any) => {
-            return e.siteEventPropertyInfo ? `[(${e.siteEventInfo ? e.siteEventInfo.eventTableAlias : 'null'}) (${e.eventPropertyId}) (${e.value}])` : ''
+            return e.siteEventPropertyInfo ? `[(${e.siteEventInfo ? e.siteEventInfo.eventTableAlias : 'null'}) (${e.eventPropertyId}) (${e.value})]` : ''
           }).join(';') : ';',
           approvalKeyExpirationDate: fl.approvalKeyExpirationDate || ''
         },
