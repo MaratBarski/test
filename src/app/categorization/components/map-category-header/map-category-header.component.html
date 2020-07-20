@@ -12,7 +12,7 @@
                             </a>
                         </div>
                         <h1>{{pageTitle}}</h1>
-                        <div (keydown)="keyDown($event)" (input)="updateName($event)" class="page-header__text" contenteditable="true">
+                        <div (keydown)="keyDown($event)" (blur)="updateName($event)" class="page-header__text" contenteditable="true">
                             {{hierarchyName}}
                         </div>
                         <div class="page-header__text noborder">
