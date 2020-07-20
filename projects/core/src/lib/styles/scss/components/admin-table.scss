@@ -29,7 +29,7 @@
 
 .admin-table{
   // display: table;
-  //table-layout: fixed; // Marat addition .admin-table_auto class to the table tag will remove this property
+  table-layout: fixed; // Marat addition .admin-table_auto class to the table tag will remove this property
   width: 100%;
   @include font(normal, normal, rem(14px), 1.4, $color-dark-grey);
   background: #fff;
