@@ -49,9 +49,10 @@
                                                 </div>
                                             </ng-container>
                                         </div>
-                                        <span [hidden]="!(item.oldCategory===noMatchCategory && saveClicked)"
-                                            class="tooltip tooltip_left tooltip_red"><span
-                                                class="tooltip__content">Missing Category</span></span>
+                                        <div [hidden]="!(item.oldCategory===noMatchCategory && saveClicked)"
+                                            class="tooltip tooltip_left tooltip_red">
+                                            <span class="tooltip__content">Missing Category</span>
+                                        </div>
                                     </div>
                                 </div>
                             </td>

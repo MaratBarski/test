@@ -26,7 +26,10 @@ export class MapCategoryInfoComponent {
     if (selected) {
       this.selectedCategory = { id: selected.hierarchyLevelId, text: selected.hierarchyLevelName };
     }
-    this.categories = this._data.data.hierarchyLevels
+    this.categories = [].concat(this._data.data.hierarchyLevels)
+      .sort((a, b) => {
+        return a.sortValue > b.sortValue ? -1 : a.sortValue < b.sortValue ? -1 : 0;
+      })
       .filter((x: any) => x.sortValue >= 0)
       .map((x: any) => {
         return {
