@@ -86,7 +86,7 @@
                     <div class="add-perm-sect__fields">
                         <mdc-input-number [isValid]="isValidSize" (onValueChanged)="onSizeChanged($event)"
                             [(ngModel)]="permissionSetService.permissionSet.size"></mdc-input-number>
-                        <div class="add-perm-sect__text">Patients</div>
+                        <div style="margin-left: 10px;" class="add-perm-sect__text">Patients</div>
                     </div>
                 </div>
                 <div class="add-perm-sect__item">
@@ -94,14 +94,19 @@
                         <svg class="icon ic-info" mdcSvg="ic-info"></svg>
                     </div>
                     <div class="add-perm-sect__fields">
-
                         <mdc-date-picker></mdc-date-picker>
-                        <mdc-check-box (change)="changeFromUnlimited($event)" [(ngModel)]="permissionSetService.permissionSet.fromDateUnlimited" text="Unlimited"></mdc-check-box>
-
+                        <div style="margin-top: 6px;margin-left:10px;margin-right:10px">
+                            <mdc-check-box (change)="changeFromUnlimited($event)"
+                                [(ngModel)]="permissionSetService.permissionSet.fromDateUnlimited" text="Unlimited">
+                            </mdc-check-box>
+                        </div>
                         <div class="add-perm-sect__label">to:</div>
                         <mdc-date-picker></mdc-date-picker>
-                        <mdc-check-box (change)="changeToUnlimited($event)" [(ngModel)]="permissionSetService.permissionSet.toDateUnlimited" text="Unlimited"></mdc-check-box>
-
+                        <div style="margin-top: 6px;margin-left:10px;margin-right:10px">
+                            <mdc-check-box (change)="changeToUnlimited($event)"
+                                [(ngModel)]="permissionSetService.permissionSet.toDateUnlimited" text="Unlimited">
+                            </mdc-check-box>
+                        </div>
                     </div>
                 </div>
             </div>

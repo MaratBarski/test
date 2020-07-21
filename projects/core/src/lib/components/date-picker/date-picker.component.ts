@@ -14,10 +14,8 @@ export class DatePickerComponent {
   @Output() onCancel = new EventEmitter();
   @Output() onApply = new EventEmitter<Date>();
 
-
-  @Input() date = new Date();
-  @Input() header = 'Select report data range';
-
+  @Input() date: Date;
+  @Input() isShowDateFormat = false;
   @Input() dateFormat = 'dd/mm/yy';
   @ViewChild('datePicker', { static: true }) fromPdatePickericker: Calendar;
 
