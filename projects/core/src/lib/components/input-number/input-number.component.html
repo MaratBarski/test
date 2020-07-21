@@ -1,0 +1,12 @@
+<div class="input-number-wrap">
+    <div [ngClass]="{'error':!isValid}" class="input-number">
+        <input type="text" (change)="chengeNumber()" [(ngModel)]="value">
+        <div class="input-number__arr">
+            <div (click)="add(1)" class="input-number__arr-up"></div>
+            <div (click)="add(-1)" class="input-number__arr-down"></div>
+        </div>
+    </div>
+    <div *ngIf="!isValid" class="input-number-wrap__error">
+        {{errorMessage}}
+    </div>
+</div>

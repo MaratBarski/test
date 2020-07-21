@@ -1,0 +1,24 @@
+<div class="select-date__item">
+    <div class="select-date__main calendar">
+        <div class="select-date__field">
+            <p-calendar #datePicker [locale]="locale" [(ngModel)]="date" hideTransitionOptions="0ms"
+                showTransitionOptions="0ms" [showIcon]="false" [dateFormat]="dateFormat"
+                [monthNavigator]="true" [yearNavigator]="true" yearRange="2000:2030"></p-calendar>
+            <div class="select-date__label">{{dateFormat}}</div>
+        </div>
+        <div class="select-date__icon">
+            <mdc-icon (click)="datePicker.toggle()" path="ic-calendar"></mdc-icon>
+        </div>
+    </div>
+</div>
+
+<div class="input-date">
+    <input type="text" placeholder="dd/mm/yyyy">
+    <svg class="icon ic-calendar" mdcSvg="ic-calendar"></svg>
+</div>
+<div class="input-check">
+    <input id="param3" type="checkbox" name="param3" checked="checked">
+    <label class="input-check__label" for="param3"><span class="input-check__mark">
+            <svg class="icon ic-check" mdcSvg="ic-check"></svg></span>
+        <span class="input-check__text">Unlimited</span></label>
+</div>

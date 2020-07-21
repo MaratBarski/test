@@ -11,7 +11,7 @@
             </div>
         </div>
     </div>
-    <div #container [style.maxHeight]="maxHeight" class="auto-complete-suggestions" [hidden]="isHiddeSuggestions">
+    <div #container [style.maxHeight]="maxHeight" class="auto-complete-suggestions select__option" [hidden]="isHiddeSuggestions">
         <div (mousemove)="currentIndex=index" (click)="selectItem(index)"
             *ngFor="let item of suggestions;let index = index" tabindex="{{index}}"
             [ngClass]="{'auto-complete-current':index===currentIndex}">

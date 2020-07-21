@@ -89,6 +89,8 @@ export * from './lib/components/file-uploader/file-uploader.component';
 export * from './lib/components/notifications/notifications.component';
 export * from './lib/components/toaster/toaster.component';
 export * from './lib/components/notification/notification.component';
+export * from './lib/components/input-number/input-number.component';
+export * from './lib/components/date-picker/date-picker.component';
 
 export * from './lib/directives/show.directive';
 export * from './lib/directives/tooltip.directive';

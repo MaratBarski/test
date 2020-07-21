@@ -76,6 +76,8 @@ import { CalendarModule } from 'primeng/calendar';
 import { CheckValidDatePipe } from './pipes/check-valid-date.pipe';
 import { ToasterComponent } from './components/toaster/toaster.component';
 import { NotificationComponent } from './components/notification/notification.component';
+import { InputNumberComponent } from './components/input-number/input-number.component';
+import { DatePickerComponent } from './components/date-picker/date-picker.component';
 // import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 
 @NgModule({
@@ -141,7 +143,9 @@ import { NotificationComponent } from './components/notification/notification.co
     ColorTextDirective,
     CheckValidDatePipe,
     ToasterComponent,
-    NotificationComponent
+    NotificationComponent,
+    InputNumberComponent,
+    DatePickerComponent
   ],
   imports: [
     CommonModule,
@@ -215,7 +219,9 @@ import { NotificationComponent } from './components/notification/notification.co
     ColorTextDirective,
     CheckValidDatePipe,
     ToasterComponent,
-    NotificationComponent
+    NotificationComponent,
+    InputNumberComponent,
+    DatePickerComponent
   ],
   entryComponents: [
     TableHeaderComponent,

@@ -18,6 +18,7 @@ export class UserListService {
     return this.dataService.get(this.getUrl);
   }
 
+
   getUserRoles(user: any): Array<string> {
     const projects = user.projects || [];
     const authorities = user.authorities || [];

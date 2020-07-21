@@ -8,6 +8,7 @@ import { SelectOption, LoginService, BaseSibscriber, SortService } from '@appcor
 })
 export class ProjectComboComponent extends BaseSibscriber implements OnInit {
 
+  @Input() isSmall = false;
   @Input() applyWidth = false;
   @Input() selectUp = true;
   @Input() emptyProject: SelectOption = { text: 'Select environment...', id: '' };
