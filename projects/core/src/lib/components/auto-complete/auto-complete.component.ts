@@ -8,6 +8,7 @@ import { Component, Input, TemplateRef, EventEmitter, Output, ViewContainerRef, 
 export class AutoCompleteComponent {
 
   @Input() maxHeight = '300px';
+  @Input() disabled = false;
 
   @ViewChild('container', { static: true }) container: ElementRef;
   inputText: string = '';
@@ -56,6 +57,7 @@ export class AutoCompleteComponent {
   }
 
   openSelect(): void {
+    if (this.disabled) { return; }
     this.completeMethod.emit('');
     this.selectOpen = true;
   }

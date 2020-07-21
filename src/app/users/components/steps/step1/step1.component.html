@@ -4,7 +4,9 @@
             <div class="add-perm-set-main__content">
                 <div class="add-perm-set-main__item">
                     <div class="input-radio">
-                        <input (change)="changeIsNew()" [value]="true" [(ngModel)]="permissionSetService.permissionSet.isNew" id="param1" type="radio" name="addset">
+                        <input (change)="changeIsNew()" [value]="true"
+                            [(ngModel)]="permissionSetService.permissionSet.isNew" id="param1" type="radio"
+                            name="addset">
                         <label class="input-radio__label" for="param1"><span class="input-radio__mark"></span><span
                                 class="input-radio__text">New Permission
                                 Set</span></label>
@@ -12,15 +14,23 @@
                 </div>
                 <div class="add-perm-set-main__item">
                     <div class="input-radio">
-                        <input (change)="changeIsNew()" id="param2" type="radio" name="addset"  [value]="false" [(ngModel)]="permissionSetService.permissionSet.isNew">
+                        <input (change)="changeIsNew()" id="param2" type="radio" name="addset" [value]="false"
+                            [(ngModel)]="permissionSetService.permissionSet.isNew">
                         <label class="input-radio__label" for="param2"><span class="input-radio__mark"></span><span
                                 class="input-radio__text">New from exsiting
                                 set:</span></label>
                     </div>
-                    <div class="select select_small">
+                    <mdc-auto-complete placeHolder="Search or Select a Permission Set..." textField="name"
+                        (onSelect)="selectItem($event)" (completeMethod)="completeMethod($event)"
+                        [suggestions]="researchers" [disabled]="this.permissionSetService.permissionSet.isNew">
+                        <ng-template let-item>
+                            <div class="select__param" [text]="item.name" [mdcColorText]="searchText"></div>
+                        </ng-template>
+                    </mdc-auto-complete>
+                    <!-- <div class="select select_small">
                         <div class="select__head">
                             <div class="select__search">
-                                <input [disabled]="this.permissionSetService.permissionSet.isNew" type="text" placeholder="Search or Select a Permission Set..."><span
+                                <input type="text" placeholder="Search or Select a Permission Set..."><span
                                     class="select__search-close">
                                     <svg class="icon ic-close-small" mdcSvg="ic-close-small">
                                     </svg></span>
@@ -40,7 +50,7 @@
                             <div class="select__param">Johnson Jack</div>
                             <div class="select__param">White James</div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <div class="add-perm-set-main__switch">

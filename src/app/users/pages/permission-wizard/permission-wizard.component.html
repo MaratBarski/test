@@ -5,7 +5,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12">
-                        <div class="add-perm-set">
+                        <div *ngIf="permissionSetService.dataLoaded" class="add-perm-set">
                             <md-tabs (onSelect)="setTab($event)"></md-tabs>
                             <md-step1 *ngIf="selectedTab===0"></md-step1>
                             <md-step2 *ngIf="selectedTab===1"></md-step2>

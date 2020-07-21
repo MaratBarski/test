@@ -1,8 +1,8 @@
-<div (mouseleave)="currentIndex=-1;isOver=false" (mouseover)="isOver=true" class="select">
+<div (mouseleave)="currentIndex=-1;isOver=false" (mouseover)="isOver=true" class="select select_small">
     <div class="auto-complete-input-container">
-        <input class="auto-complete-input" placeholder="{{placeHolder}}" [(ngModel)]="inputText"
+        <input [disabled]="disabled" class="auto-complete-input" placeholder="{{placeHolder}}" [(ngModel)]="inputText"
             (keydown)="onKeyDown($event)" (keyup)="search($event)" type="text" />
-        <div (click)="clearText()" class="auto-complete-dropdown">
+        <div (click)="clearText()" [hidden]="!inputText" class="auto-complete-dropdown">
             <svg class="ic-close" width="10" height="10" mdcSvg="ic-close"></svg>
         </div>
         <div *ngIf="dropdown" class="auto-complete-dropdown" (click)="openSelect()">

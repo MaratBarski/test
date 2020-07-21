@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PermissionSetService } from '@app/users/services/permission-set.service';
 
 @Component({
   selector: 'md-permission-wizard',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PermissionWizardComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public permissionSetService: PermissionSetService
+  ) { }
 
   selectedTab = 0;
 
