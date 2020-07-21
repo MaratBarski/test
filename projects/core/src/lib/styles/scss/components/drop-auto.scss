@@ -1,0 +1,429 @@
+/*-------------- drop-auto -----------------*/
+.drop-auto{
+	display: inline-block;
+	position: relative;
+
+	&__head{
+		width: 255px;
+		padding-bottom: 3px;
+		position: relative;
+	}
+
+	&_small &__head{width: 200px;}
+
+	&__head-arr{
+		position: absolute;
+		top: 2px;
+		right: 0;
+	}
+
+	&__search{
+		position: relative;
+
+		input[type="text"]{
+			display: inline-block;
+			height: rem(30px);
+			width: 100%;
+			@include font(normal, normal, rem(14px), rem(28px), $color-dark-grey);
+			padding: 0 50px 0 8px;
+			margin: 0;
+			border: 0;
+			outline: 0;
+			border-bottom: 1px solid $color-light-grey;
+			background: transparent;
+		}
+
+		input[type="text"]::placeholder{color: $color-grey; opacity: 1;}
+		input[type="text"]::-webkit-input-placeholder {color: $color-grey; opacity: 1;}
+		input[type="text"]:-moz-placeholder {color: $color-grey; opacity: 1;}
+
+		input[type="text"]:focus + .drop-auto__search-close{
+			display: inline-block;
+		}
+	}
+
+	&__search-close{
+		display: none;
+		width: 7px;
+		height: 7px;
+		position: absolute;
+		right: 35px;
+		@include top-center;
+		text-align: center;
+		vertical-align: middle;
+		margin-top: 2px;
+	}
+
+	&__search-close .ic-close-small{
+		width: 100%;
+		height: 100%;
+		fill: $color-dark-blue;
+		vertical-align: top;
+	}
+
+	&__popup{
+		display: none;
+		height: 356px;
+		background: #fff;
+		border-radius: 2px;
+		border: solid 1px $color-light-grey;
+		box-shadow: -10px 9px 21px 0 rgba(128, 152, 213, 0.08);
+		position: absolute;
+		top: 100%;
+		left: 0;
+		z-index: 10;
+	}
+
+	&__option{
+		width: 350px;
+		max-height: 100%;
+		background: #fff;
+		overflow-y: auto;
+	}
+
+	&:hover &__popup,
+	&__popup.active{
+		display: inline-flex;
+	}
+
+	&:hover &__search input[type="text"]{border-color: $color-purple;}
+
+	&__param{
+		@include font(normal, normal, rem(14px), rem(30px), $color-dark-grey);
+		padding: 0 45px 0 15px;
+		position: relative;
+
+		.icon{
+			width: 18px;
+			height: 18px;
+			position: absolute;
+			@include top-center;
+			right: 20px;
+		}
+
+		.ic-default-date{
+			width: 20px;
+			height: 20px;
+		}
+
+		.tooltip{
+			display: none;
+			width: calc(100% - 66px);
+			margin-left: 0;
+			margin-right: 0;
+			line-height: 1.43;
+			position: absolute;
+			top: 100%;
+			left: 51px;
+			z-index: 2;
+		}
+	}
+
+	&__param-text{
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		overflow: hidden;
+	}
+
+	&__param.active,
+	&__param:hover{
+		background: $color-sort-grey;
+	}
+
+	&__param:hover .tooltip,
+	&__param .tooltip.active{
+		display: block;
+	}
+
+	// &__param:nth-child(-n + 3){font-weight: 600;}
+	&__accent{color: $color-green;}
+
+	&_error &__search input[type="text"]{border-color: $color-red;}
+
+	&__error{
+		@include font(normal, normal, rem(13px), 1.2, $color-red);
+		margin-top: 4px;
+
+		.ic-failure{
+			vertical-align: middle;
+			width: 16px;
+			height: 14px;
+			margin-top: -2px;
+			margin-right: 4px;
+		}
+
+		.tooltip{
+			width: 255px;
+			margin-left: 0;
+			margin-right: 0;
+		}
+	}
+
+	&__error-content{
+		position: relative;
+		margin-bottom: 6px;
+	}
+
+	&__sect{padding: 5px 0;}
+
+	&__sect-head{
+		display: flex;
+		justify-content: space-between;
+		padding: 0 10px;
+		border-bottom: 1px solid $color-light-grey;
+	}
+
+	&__list{
+		padding-top: 6px;
+		margin-bottom: -4px;
+	}
+
+	&__icon{
+		width: 24px;
+
+		.icon{
+			vertical-align: bottom;
+			width: 24px;
+			height: 24px;
+			fill: $color-dark-grey;
+		}
+	}
+
+	&__title{
+		width: calc(100% - 32px);
+		@include font(normal, 600, rem(14px), 2, $color-dark-grey);
+	}
+
+	&__sect &__param{
+		padding-left: 51px;
+	}
+
+	.drop-auto-info{
+		height: 100%;
+		border: 0;
+		border-left: 1px solid $color-light-grey;
+	}
+}
+
+.drop-auto-info{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	width: 250px;
+	min-height: 320px;
+	background: #f8f9fa;
+	border: 1px solid $color-light-grey;
+	padding: 11px 13px 8px;
+
+	&__desc{
+		margin-bottom: 10px;
+	}
+
+	&__title{
+		@include font(normal, 600, rem(13px), 1.4, $color-dark-grey);
+		margin-bottom: 3px;
+		position: relative;
+
+		.tooltip{
+			display: none;
+			width: 100%;
+			margin-left: 0;
+			margin-right: 0;
+			line-height: 1.43;
+			position: absolute;
+			top: 100%;
+			left: 0;
+			z-index: 2;
+		}
+	}
+
+	&__title-text:hover .tooltip,
+	&__title-text .tooltip.active{
+		display: block;
+	}
+
+	&__text{
+		@include font(normal, normal, rem(13px), 1.4, $color-dark-grey);
+		margin-bottom: 4px;
+	}
+
+	&__text_grey{color: $color-grey;}
+
+	&__bottom{
+		border-top: 1px solid $color-light-grey;
+		margin-top: 10px;
+		padding-top: 8px;
+
+		.ic-info{
+			vertical-align: middle;
+			width: 16px;
+			height: 16px;
+			margin-top: -3px;
+			margin-left: 3px;
+		}
+	}
+
+	&__link{
+		font-size: rem(13px);
+
+		a{
+			display: inline-flex;
+			align-items: center;
+		}
+
+		.icon{
+			vertical-align: middle;
+			width: 17px;
+			height: 17px;
+			fill: $color-blue;
+			margin-left: 5px;
+			margin-top: 2px;
+		}
+	}
+
+	&__error{
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 15px;
+
+		.ic-failure{
+			width: 23px;
+			height: 20px;
+		}
+	}
+
+	&__error-text{
+		width: calc(100% - 30px);
+		@include font(normal, normal, rem(13px), 1.4, $color-dark-grey);
+	}
+
+	.drop-auto-event{
+		margin-bottom: -5px;
+
+		&__title{
+			@include font(normal, 600, rem(13px), 1.4, $color-dark-grey);
+		}
+
+		&__content{
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+		
+		&__icon{
+			width: 25px;
+
+			.icon{
+				vertical-align: middle;
+				fill:$color-grey;
+			}
+		}
+
+		&__text{
+			width: calc(100% - 30px);
+			@include font(normal, normal, rem(13px), 1.4, $color-dark-grey);
+		}
+	}
+
+	&__notice{
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 10px;
+
+		.icon{
+			width: 20px;
+		}
+	}
+
+	&__notice-text{
+		width: calc(100% - 30px);
+		@include font(normal, normal, rem(14px), 1.4, $color-dark-grey);
+	}
+
+	&__img{
+		text-align: center;
+		margin: 20px 0 7px;
+	}
+
+	&__label{
+		@include font(normal, normal, rem(13px), 1.4, $color-grey);
+		text-align: center;
+	}
+
+	&__detail &__bottom:first-child{
+		border-top: 0;
+	}
+
+	&__prop{
+		.ic-info{
+			width: 16px;
+			height: 16px;
+		}
+
+		.ic-default-date{
+			width: 21px;
+			height: 21px;
+		}
+	}
+}
+
+.drop-auto-prop{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	&__title{
+		@include font(normal, 600, rem(13px), 1.57, $color-dark-grey);
+		margin-right: 5px;
+	}
+
+	&__val{
+		@include font(normal, normal, rem(13px), 1.57, $color-dark-grey);
+
+		.icon{
+			vertical-align: middle;
+			max-width: 25px;
+			max-height: 25px;
+			margin-top: -3px;
+		}
+
+		.icon+span{
+			vertical-align: middle;
+			margin-left: 5px;
+		}
+
+		span+.icon{
+			vertical-align: middle;
+			margin-left: 5px;
+		}
+
+		span+.ic-calendar{margin-left: 0;}
+
+		.progress{vertical-align: middle;}
+	}
+
+	&__val_grey{color: $color-grey;}
+
+	&:not(:last-child){margin-bottom: 6px;}
+	&__year{margin-left: -22px;}
+}
+
+.drop-auto-empty{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	text-align: center;
+
+	&__title{
+		@include font(normal, 600, rem(14px), 1.56, $color-grey);
+	}
+
+	&__text{
+		@include font(normal, normal, rem(14px), 1.56, $color-grey);
+		margin-top: 6px;
+	}
+}

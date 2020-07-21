@@ -7,7 +7,7 @@
     <div [hidden]="isLoaded">Loading...</div>
     <div [hidden]="!isLoaded" class="admin-table-wrap__action">
         <div class="admin-table-wrap__col">
-            <mdc-button className="btn_icon" (click)="openFileUpload()" text="+ New Set">
+            <mdc-button className="btn_icon" (click)="createNew()" text="+ New Set">
             </mdc-button>&nbsp;
             <mdc-download #downloader (onBeforeDownload)="changeFileName()" [fileName]="downloadFileName"
                 (click)="changeFileName()" [textAsTooltip]="true" text="Download list as CSV"></mdc-download>

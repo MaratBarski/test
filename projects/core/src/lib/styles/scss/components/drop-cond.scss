@@ -1,0 +1,146 @@
+/*-------------- drop-cond -----------------*/
+.drop-cond{
+	display: inline-block;
+	vertical-align: middle;
+	position: relative;
+
+	&__head{
+		width: 200px;
+		@include font(normal, normal, rem(14px), rem(28px), $color-grey);
+		padding: 0 20px 0px 6px;
+		border-bottom: 1px solid $color-light-grey;
+		position: relative;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		white-space: nowrap;
+	}
+
+	&_small &__head{width: 140px;}
+	&_big &__head{width: 250px;}
+
+	&__head.active{color: $color-dark-grey;}
+
+	&__head-arr{
+		display: inline-block;
+		width: 30px;
+		height: 30px;
+		position: absolute;
+		top: 0px;
+		right: -5px;
+	}
+
+	&__content{position: relative;}
+
+	&__popup{
+		display: none;
+		width: 100%;
+		min-width: 200px;
+		padding-top: 3px;
+		position: absolute;
+		top: 100%;
+		left: 0;
+	}
+
+	&__option{
+		width: 100%;
+		background: #fff;
+		border-radius: 2px;
+		border: solid 1px $color-light-grey;
+		box-shadow: -10px 9px 21px 0 rgba(128, 152, 213, 0.08);
+	}
+
+	&__content:hover &__popup,
+	&__popup.active{
+		display: block;
+		z-index: 2;
+	}
+
+	&__content:hover &__head{border-color: $color-purple;}
+
+	&__sect{padding: 3px 0;}
+	&__sect:not(:last-child){border-bottom: 1px solid $color-light-grey;}
+
+	&__param{
+		@include font(normal, normal, rem(14px), rem(30px), $color-dark-grey);
+		padding: 0 14px;
+		position: relative;
+		cursor: pointer;
+
+		.icon{
+			width: 16px;
+			height: 16px;
+			position: absolute;
+			@include top-center;
+			right: 15px;
+		}
+	}
+
+	&__param-icon{
+		padding-right: 20px;
+	}
+
+	// &__param-text{
+	// 	white-space: nowrap;
+	// 	text-overflow: ellipsis;
+	// 	overflow: hidden;
+	// }
+
+	&__sub{
+		display: none;
+		background: #fff;
+		border-radius: 2px;
+		border: solid 1px $color-light-grey;
+		box-shadow: -10px 9px 21px 0 rgba(128, 152, 213, 0.08);
+		position: absolute;
+		left: 100%;
+		top: 0;
+	}
+
+	&__arr{
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 30px;
+		height: 30px;
+		position: absolute;
+		top: 0;
+		right: 0;
+
+		.icon{
+			width: 22px;
+			height: 22px;
+			position: static;
+			transform: none;
+		}
+	}
+
+	// &__param.active,
+	&__param:hover{
+		background: $color-sort-grey;
+	}
+
+	&__param:hover &__sub{display: block;}
+
+	&.error &__head{border-color: $color-red;}
+
+	&__error{
+		@include font(normal, normal, rem(13px), 1.54, $color-red);
+		margin-top: 5px;
+		position: relative;
+
+		.ic-failure{
+			vertical-align: middle;
+			width: 16px;
+			height: 14px;
+			margin-right: 5px;
+		}
+
+		.tooltip{
+			position: absolute;
+			top: 100%;
+			left: 0;
+			max-width: 100%;
+			z-index: 2;
+		}
+	}
+}

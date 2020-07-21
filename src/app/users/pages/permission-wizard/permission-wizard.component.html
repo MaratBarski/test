@@ -1,0 +1,20 @@
+<div class="main-content">
+    <div class="content-page">
+        <md-header></md-header>
+        <section class="add-perm-set-wrap">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="add-perm-set">
+                            <md-tabs (onSelect)="setTab($event)"></md-tabs>
+                            <md-step1 *ngIf="selectedTab===0"></md-step1>
+                            <md-step2 *ngIf="selectedTab===1"></md-step2>
+                            <md-step3 *ngIf="selectedTab===2"></md-step3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+<md-footer></md-footer>

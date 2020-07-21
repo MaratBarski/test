@@ -1,0 +1,34 @@
+{
+    "data": {
+        "researchName": "Omry Test",
+        "userId": 5,
+        "information": "Omry Test",
+        "approvalKey": "Omry Test",
+        "approvalKeyExpirationDate": "02/25/2030",
+        "projectId": 1,
+        "researchStatus": "Open",
+        "maxPatients": "123",
+        "startDate": "05/25/2030",
+        "endDate": "05/25/2030",
+        "researchRestrictionEvents": [
+            {
+                "eventId": 121,
+                "eventPropertyId": "conditioncode",
+                "value": 1
+            },
+            {
+                "eventId": 187,
+                "eventPropertyId": "sequencenumber",
+                "value": 1
+            }
+        ],
+        "researchTemplates": [
+            {
+                "templateId": 1
+            },
+            {
+                "templateId": 2
+            }
+        ]
+    }
+}

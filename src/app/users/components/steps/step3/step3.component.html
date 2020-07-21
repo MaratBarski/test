@@ -1,0 +1,466 @@
+<div class="add-perm-set__content-wrap">
+    <div class="add-perm-set__content">
+        <div class="add-perm-set__head">Allowed Cohort</div>
+        <div class="add-perm-set__text">Define conditions to set the user's allowed cohort. Patients that meet at least one of the conditions can be included in the cohort.</div>
+        <div class="rule-build">
+            <div class="rule-build__list">
+                <div class="rule-build-item rule-build-item_light-red">
+                    <div class="rule-build-item__head">that</div>
+                    <div class="rule-build-item__content">
+                        <div class="rule-build-item__select">
+                            <div class="event-select event-select_no-indent event-select_big">
+                                <div class="event-select__head">
+                                    <div class="event-select__search">
+                                        <input type="text" placeholder="Select Event..."><span class="event-select__search-close">
+                                            <svg class="icon ic-close-small" mdcSvg="ic-close-small">
+                                            </svg></span>
+                                    </div>
+                                    <div class="event-select__head-arr">
+                                        <svg class="icon ic-select-arr-down" mdcSvg="ic-select-arr-down">
+                                        </svg>
+                                    </div><span class="tooltip tooltip_left"><span class="tooltip__content">Select which of the event’s occurrences you would like to extract.</span></span>
+                                </div>
+                                <div class="event-select__popup">
+                                    <div class="event-select__option">
+                                        <div class="event-select__sect">
+                                            <div class="event-select__param">
+                                                <div class="event-select__param-text">first</div>
+                                            </div>
+                                            <div class="event-select__param">
+                                                <div class="event-select__param-text">second</div>
+                                            </div>
+                                            <div class="event-select__param">
+                                                <div class="event-select-count">
+                                                    <div class="input-number-wrap">
+                                                        <div class="input-number">
+                                                            <input type="text" placeholder="N">
+                                                            <div class="input-number__arr">
+                                                                <div class="input-number__arr-up"></div>
+                                                                <div class="input-number__arr-down"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="event-select-count__text">th</div>
+                                                    <div class="event-select-count__icon">
+                                                        <svg class="icon ic-enter" mdcSvg="ic-enter">
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="event-select__param">
+                                                <div class="event-select__param-text">latest</div>
+                                            </div>
+                                        </div>
+                                        <div class="event-select__sect">
+                                            <div class="event-select__param">
+                                                <div class="event-select__param-text">max...</div>
+                                            </div>
+                                            <div class="event-select__param">
+                                                <div class="event-select__param-text">min...</div>
+                                            </div>
+                                            <div class="event-select__param">
+                                                <div class="event-select__param-text">median...</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="event-select-info">
+                                        <div class="event-select-info__content">
+                                            <div class="event-select-info__desc">
+                                                <div class="event-select-info__text">The event that will be selected is the <b>first</b> earliest occurrence after/between any date filter set below, and in the allowed date range.</div>
+                                                <div class="event-select-info__note"><span class="event-select-info__note-title">Note:</span> 
+                                                    If date filter is set, this event might not be the first in the patient’s timeline.
+                                                </div>
+                                            </div>
+                                            <div class="event-select-info__ex">
+                                                <div class="event-select-info__ex-title">Example</div>
+                                                <div class="event-select-info__ex-text">Select the <b>first</b> diagnosis event that diagnosis date is after 2013.</div>
+                                            </div>
+                                        </div>
+                                        <div class="event-select-range">
+                                            <div class="event-select-range__content">
+                                                <div class="event-select-range__interval" style="width: 86%">
+                                                    <div class="event-select-range__interval-text">allowed date range</div>
+                                                    <div class="event-select-range__interval-bg"></div>
+                                                </div>
+                                                <div class="event-select-range__graph">
+                                                    <div class="event-select-range__item event-select-range__item_grey" style="left:7%">
+                                                        <svg class="icon ic-pointer" mdcSvg="ic-pointer">
+                                                        </svg>
+                                                    </div>
+                                                    <div class="event-select-range__item" style="left:22%">
+                                                        <svg class="icon ic-pointer" mdcSvg="ic-pointer">
+                                                        </svg>
+                                                    </div>
+                                                    <div class="event-select-range__mark" style="left:41%">
+                                                        <div class="event-select-range__text">2013</div>
+                                                    </div>
+                                                    <div class="event-select-range__item" style="left:53%">
+                                                        <svg class="icon ic-pointer-active" mdcSvg="ic-pointer-active">
+                                                        </svg>
+                                                    </div>
+                                                    <div class="event-select-range__item" style="left:65%">
+                                                        <svg class="icon ic-pointer">
+                                                            <use xlink:href="/assets/sprites/sprite.svg#ic-pointer"></use>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="event-select-range__item" style="left:78%">
+                                                        <svg class="icon ic-pointer">
+                                                            <use xlink:href="/assets/sprites/sprite.svg#ic-pointer"></use>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="rule-build-item__select">
+                            <div class="drop-auto">
+                                <div class="drop-auto__head">
+                                    <div class="drop-auto__search">
+                                        <input type="text" placeholder="Select Property..."><span class="drop-auto__search-close">
+                                            <svg class="icon ic-close-small">
+                                                <use xlink:href="/assets/sprites/sprite.svg#ic-close-small"></use>
+                                            </svg></span>
+                                    </div>
+                                    <div class="drop-auto__head-arr">
+                                        <svg class="icon ic-select-arr-down">
+                                            <use xlink:href="/assets/sprites/sprite.svg#ic-select-arr-down"></use>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="drop-auto__popup">
+                                    <div class="drop-auto__option">
+                                        <div class="drop-auto__param">
+                                            <div class="drop-auto__param-text">diacgnosis - I - ageatevent</div>
+                                        </div>
+                                        <div class="drop-auto__param">
+                                            <div class="drop-auto__param-text">diagnosis - I - startdate</div>
+                                            <svg class="icon ic-default-date">
+                                                <use xlink:href="/assets/sprites/sprite.svg#ic-default-date"></use>
+                                            </svg>
+                                        </div>
+                                        <div class="drop-auto__param">
+                                            <div class="drop-auto__param-text">diagnosis - II - ageatevent</div>
+                                        </div>
+                                        <div class="drop-auto__param">
+                                            <div class="drop-auto__param-text">diagnosis - I - insert_date</div>
+                                        </div>
+                                        <div class="drop-auto__param">
+                                            <div class="drop-auto__param-text">diagnosis - II - insert_date</div>
+                                        </div>
+                                        <div class="drop-auto__param">
+                                            <div class="drop-auto__param-text">diagnosis - I - conditioncode</div>
+                                        </div>
+                                        <div class="drop-auto__param">
+                                            <div class="drop-auto__param-text">diagnosis - I - conditioncodedesc</div>
+                                        </div>
+                                        <div class="drop-auto__param">
+                                            <div class="drop-auto__param-text">diagnosis - I - internalpatientid</div>
+                                        </div>
+                                        <div class="drop-auto__param">
+                                            <div class="drop-auto__param-text">diagnosis - I - sequencenumber</div>
+                                        </div>
+                                        <div class="drop-auto__param">
+                                            <div class="drop-auto__param-text">diagnosis - II - conditioncode</div>
+                                        </div>
+                                        <div class="drop-auto__param">
+                                            <div class="drop-auto__param-text">diagnosis - II - conditioncodedesc</div>
+                                            <svg class="icon ic-failure">
+                                                <use xlink:href="/assets/sprites/sprite.svg#ic-failure"></use>
+                                            </svg>
+                                        </div>
+                                        <div class="drop-auto__param">
+                                            <div class="drop-auto__param-text">diagnosis - II - conditioncodedesc</div>
+                                        </div>
+                                    </div>
+                                    <div class="drop-auto-info">
+                                        <div class="drop-auto-info__desc">
+                                            <div class="drop-auto-info__title">Description:</div>
+                                            <div class="drop-auto-info__text">The service line associated with the admission if available, if the service line is not available the attending provider</div>
+                                            <div class="drop-auto-info__link"> <a href="#">More details
+                                                    <svg class="icon ic-external-link">
+                                                        <use xlink:href="/assets/sprites/sprite.svg#ic-external-link"></use>
+                                                    </svg></a></div>
+                                        </div>
+                                        <div class="drop-auto-info__detail">
+                                            <div class="drop-auto-info__prop">
+                                                <div class="drop-auto-prop">
+                                                    <div class="drop-auto-prop__title">The available data is since:</div>
+                                                    <div class="drop-auto-prop__val">1999</div>
+                                                </div>
+                                                <div class="drop-auto-prop">
+                                                    <div class="drop-auto-prop__title">Populated:</div>
+                                                    <div class="drop-auto-prop__val">
+                                                        <div class="progress progress_green">
+                                                            <div class="progress__bg" style="width: 86%"></div>
+                                                            <div class="progress__text">86%</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="drop-auto-prop">
+                                                    <div class="drop-auto-prop__title">Data Type:</div>
+                                                    <div class="drop-auto-prop__val"><span>Date</span>
+                                                        <svg class="icon ic-calendar">
+                                                            <use xlink:href="/assets/sprites/sprite.svg#ic-calendar"></use>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="drop-auto-info__bottom">
+                                                <div class="drop-auto-info__title">Data Sample:</div>
+                                                <div class="drop-auto-info__text">28 Mar, 2011</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="rule-build-item__input">
+                            <input type="text" placeholder="Type a text value">
+                        </div>
+                    </div>
+                    <div class="rule-build-item__icon">
+                        <svg class="icon ic-close-circle">
+                            <use xlink:href="/assets/sprites/sprite.svg#ic-close-circle"></use>
+                        </svg>
+                    </div>
+                </div>
+                <div class="rule-build-item rule-build-item_light-red">
+                    <div class="rule-build-item__head">or</div>
+                    <div class="rule-build-item__content">
+                        <div class="rule-build-item__select">
+                            <div class="event-select event-select_no-indent event-select_big">
+                                <div class="event-select__head">
+                                    <div class="event-select__search">
+                                        <input type="text" placeholder="Select Event..."><span class="event-select__search-close">
+                                            <svg class="icon ic-close-small">
+                                                <use xlink:href="/assets/sprites/sprite.svg#ic-close-small"></use>
+                                            </svg></span>
+                                    </div>
+                                    <div class="event-select__head-arr">
+                                        <svg class="icon ic-select-arr-down">
+                                            <use xlink:href="/assets/sprites/sprite.svg#ic-select-arr-down"></use>
+                                        </svg>
+                                    </div><span class="tooltip tooltip_left"><span class="tooltip__content">Select which of the event’s occurrences you would like to extract.</span></span>
+                                </div>
+                                <div class="event-select__popup">
+                                    <div class="event-select__option">
+                                        <div class="event-select__sect">
+                                            <div class="event-select__param">
+                                                <div class="event-select__param-text">first</div>
+                                            </div>
+                                            <div class="event-select__param">
+                                                <div class="event-select__param-text">second</div>
+                                            </div>
+                                            <div class="event-select__param">
+                                                <div class="event-select-count">
+                                                    <div class="input-number-wrap">
+                                                        <div class="input-number">
+                                                            <input type="text" placeholder="N">
+                                                            <div class="input-number__arr">
+                                                                <div class="input-number__arr-up"></div>
+                                                                <div class="input-number__arr-down"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="event-select-count__text">th</div>
+                                                    <div class="event-select-count__icon">
+                                                        <svg class="icon ic-enter">
+                                                            <use xlink:href="/assets/sprites/sprite.svg#ic-enter"></use>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="event-select__param">
+                                                <div class="event-select__param-text">latest</div>
+                                            </div>
+                                        </div>
+                                        <div class="event-select__sect">
+                                            <div class="event-select__param">
+                                                <div class="event-select__param-text">max...</div>
+                                            </div>
+                                            <div class="event-select__param">
+                                                <div class="event-select__param-text">min...</div>
+                                            </div>
+                                            <div class="event-select__param">
+                                                <div class="event-select__param-text">median...</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="event-select-info">
+                                        <div class="event-select-info__content">
+                                            <div class="event-select-info__desc">
+                                                <div class="event-select-info__text">The event that will be selected is the <b>first</b> earliest occurrence after/between any date filter set below, and in the allowed date range.</div>
+                                                <div class="event-select-info__note"><span class="event-select-info__note-title">Note:</span> 
+                                                    If date filter is set, this event might not be the first in the patient’s timeline.
+                                                </div>
+                                            </div>
+                                            <div class="event-select-info__ex">
+                                                <div class="event-select-info__ex-title">Example</div>
+                                                <div class="event-select-info__ex-text">Select the <b>first</b> diagnosis event that diagnosis date is after 2013.</div>
+                                            </div>
+                                        </div>
+                                        <div class="event-select-range">
+                                            <div class="event-select-range__content">
+                                                <div class="event-select-range__interval" style="width: 86%">
+                                                    <div class="event-select-range__interval-text">allowed date range</div>
+                                                    <div class="event-select-range__interval-bg"></div>
+                                                </div>
+                                                <div class="event-select-range__graph">
+                                                    <div class="event-select-range__item event-select-range__item_grey" style="left:7%">
+                                                        <svg class="icon ic-pointer">
+                                                            <use xlink:href="/assets/sprites/sprite.svg#ic-pointer"></use>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="event-select-range__item" style="left:22%">
+                                                        <svg class="icon ic-pointer">
+                                                            <use xlink:href="/assets/sprites/sprite.svg#ic-pointer"></use>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="event-select-range__mark" style="left:41%">
+                                                        <div class="event-select-range__text">2013</div>
+                                                    </div>
+                                                    <div class="event-select-range__item" style="left:53%">
+                                                        <svg class="icon ic-pointer-active">
+                                                            <use xlink:href="/assets/sprites/sprite.svg#ic-pointer-active"></use>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="event-select-range__item" style="left:65%">
+                                                        <svg class="icon ic-pointer">
+                                                            <use xlink:href="/assets/sprites/sprite.svg#ic-pointer"></use>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="event-select-range__item" style="left:78%">
+                                                        <svg class="icon ic-pointer">
+                                                            <use xlink:href="/assets/sprites/sprite.svg#ic-pointer"></use>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="rule-build-item__select">
+                            <div class="drop-auto">
+                                <div class="drop-auto__head">
+                                    <div class="drop-auto__search">
+                                        <input type="text" placeholder="Select Property..."><span class="drop-auto__search-close">
+                                            <svg class="icon ic-close-small">
+                                                <use xlink:href="/assets/sprites/sprite.svg#ic-close-small"></use>
+                                            </svg></span>
+                                    </div>
+                                    <div class="drop-auto__head-arr">
+                                        <svg class="icon ic-select-arr-down">
+                                            <use xlink:href="/assets/sprites/sprite.svg#ic-select-arr-down"></use>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="drop-auto__popup">
+                                    <div class="drop-auto__option">
+                                        <div class="drop-auto__param">
+                                            <div class="drop-auto__param-text">diacgnosis - I - ageatevent</div>
+                                        </div>
+                                        <div class="drop-auto__param">
+                                            <div class="drop-auto__param-text">diagnosis - I - startdate</div>
+                                            <svg class="icon ic-default-date">
+                                                <use xlink:href="/assets/sprites/sprite.svg#ic-default-date"></use>
+                                            </svg>
+                                        </div>
+                                        <div class="drop-auto__param">
+                                            <div class="drop-auto__param-text">diagnosis - II - ageatevent</div>
+                                        </div>
+                                        <div class="drop-auto__param">
+                                            <div class="drop-auto__param-text">diagnosis - I - insert_date</div>
+                                        </div>
+                                        <div class="drop-auto__param">
+                                            <div class="drop-auto__param-text">diagnosis - II - insert_date</div>
+                                        </div>
+                                        <div class="drop-auto__param">
+                                            <div class="drop-auto__param-text">diagnosis - I - conditioncode</div>
+                                        </div>
+                                        <div class="drop-auto__param">
+                                            <div class="drop-auto__param-text">diagnosis - I - conditioncodedesc</div>
+                                        </div>
+                                        <div class="drop-auto__param">
+                                            <div class="drop-auto__param-text">diagnosis - I - internalpatientid</div>
+                                        </div>
+                                        <div class="drop-auto__param">
+                                            <div class="drop-auto__param-text">diagnosis - I - sequencenumber</div>
+                                        </div>
+                                        <div class="drop-auto__param">
+                                            <div class="drop-auto__param-text">diagnosis - II - conditioncode</div>
+                                        </div>
+                                        <div class="drop-auto__param">
+                                            <div class="drop-auto__param-text">diagnosis - II - conditioncodedesc</div>
+                                            <svg class="icon ic-failure">
+                                                <use xlink:href="/assets/sprites/sprite.svg#ic-failure"></use>
+                                            </svg>
+                                        </div>
+                                        <div class="drop-auto__param">
+                                            <div class="drop-auto__param-text">diagnosis - II - conditioncodedesc</div>
+                                        </div>
+                                    </div>
+                                    <div class="drop-auto-info">
+                                        <div class="drop-auto-info__desc">
+                                            <div class="drop-auto-info__title">Description:</div>
+                                            <div class="drop-auto-info__text">The service line associated with the admission if available, if the service line is not available the attending provider</div>
+                                            <div class="drop-auto-info__link"> <a href="#">More details
+                                                    <svg class="icon ic-external-link">
+                                                        <use xlink:href="/assets/sprites/sprite.svg#ic-external-link"></use>
+                                                    </svg></a></div>
+                                        </div>
+                                        <div class="drop-auto-info__detail">
+                                            <div class="drop-auto-info__prop">
+                                                <div class="drop-auto-prop">
+                                                    <div class="drop-auto-prop__title">The available data is since:</div>
+                                                    <div class="drop-auto-prop__val">1999</div>
+                                                </div>
+                                                <div class="drop-auto-prop">
+                                                    <div class="drop-auto-prop__title">Populated:</div>
+                                                    <div class="drop-auto-prop__val">
+                                                        <div class="progress progress_green">
+                                                            <div class="progress__bg" style="width: 86%"></div>
+                                                            <div class="progress__text">86%</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="drop-auto-prop">
+                                                    <div class="drop-auto-prop__title">Data Type:</div>
+                                                    <div class="drop-auto-prop__val"><span>Date</span>
+                                                        <svg class="icon ic-calendar">
+                                                            <use xlink:href="/assets/sprites/sprite.svg#ic-calendar"></use>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="drop-auto-info__bottom">
+                                                <div class="drop-auto-info__title">Data Sample:</div>
+                                                <div class="drop-auto-info__text">28 Mar, 2011</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="rule-build-item__input">
+                            <input type="text" placeholder="Type a text value">
+                        </div>
+                    </div>
+                    <div class="rule-build-item__icon">
+                        <svg class="icon ic-close-circle">
+                            <use xlink:href="/assets/sprites/sprite.svg#ic-close-circle"></use>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <div class="rule-build__more"><a href="#"><span class="rule-build__more-plus">
+                        <svg class="icon ic-plus">
+                            <use xlink:href="/assets/sprites/sprite.svg#ic-plus"></use>
+                        </svg></span>Filter</a></div>
+        </div>
+    </div>
+</div>

@@ -90,7 +90,8 @@ export class ResearchListComponent extends BaseSibscriber implements OnInit {
     }
   }
 
-  openFileUpload(): void {
+  createNew(): void {
+   // this.router.navigateByUrl("/users/edit-permissions")
   }
 
   get me(): ResearchListComponent { return this; }

@@ -1,0 +1,23 @@
+<div class="add-perm-set__top">
+    <div class="steps-white">
+        <div (click)="select(0)" class="steps-white__item" [ngClass]="{'active':0===selectedTabb}">
+            <div class="steps-white__num">1</div>
+            <div class="steps-white__val">General Details
+            </div>
+            <div class="steps-white__arr"></div>
+        </div>
+        <div (click)="select(1)" class="steps-white__item" [ngClass]="{'active':1===selectedTabb}">
+            <div class="steps-white__num">2</div>
+            <div class="steps-white__val">Allowed Events
+            </div>
+            <div class="steps-white__arr"></div>
+        </div>
+        <div (click)="select(2)" class="steps-white__item" [ngClass]="{'active':2===selectedTabb}">
+            <div class="steps-white__num">3</div>
+            <div class="steps-white__val">Allowed Cohort<span
+                    class="steps-white__opt">optional</span>
+            </div>
+            <div class="steps-white__arr"></div>
+        </div>
+    </div>
+</div>
