@@ -118,7 +118,7 @@ export class HistoryReportService {
     history.forEach((fl, i) => {
       data.rows.push({
         cells: {
-          name: fl.sessionName,
+          name: `${fl.sessionName} ${fl.fileNameAlias}`,
           insertDate: fl.insertDate,
           fullName: fl.fullName,
           data: fl.data,

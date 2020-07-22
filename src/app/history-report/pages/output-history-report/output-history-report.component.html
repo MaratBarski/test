@@ -64,7 +64,7 @@
 
 <ng-template let-item #nameTemplate let-src="source">
     <div class="table-file-info" *ngIf="src.sessionId">
-        <span class="table-file-info__name">
+        <span [mdcColorText]="searchText" [text]="src.sessionName" class="table-file-info__name">
             {{src.sessionName}}
         </span>&nbsp;|&nbsp;
         <a class="file-count" target="_blank" href="/datalake/#/projects/{{src.projectId}}/sessions/{{src.sessionId}}">
@@ -73,7 +73,7 @@
                 mdcSvg="ic-external-link" color="#0596ff"></svg>
         </a>
     </div>
-    <div class="table-file-info" *ngIf="!src.sessionId">
+    <div [mdcColorText]="searchText" [text]="src.fileNameAlias" class="table-file-info" *ngIf="!src.sessionId">
         {{src.fileNameAlias}}
     </div>
 </ng-template>
