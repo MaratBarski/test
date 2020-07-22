@@ -54,4 +54,5 @@ export class CategoryMessageComponent {
     this.onUpdateMessage.emit(this.message);
   }
 
+  isShowMore = false;
 }

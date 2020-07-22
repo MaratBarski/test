@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { PermissionSetService } from '@app/users/services/permission-set.service';
 
 @Component({
   selector: 'md-tabs',
@@ -9,12 +10,16 @@ export class TabsComponent implements OnInit {
 
   @Output() onSelect = new EventEmitter<number>();
 
-  constructor() { }
+  constructor(
+    public permissionSetService: PermissionSetService
+  ) { }
 
-  @Input() selectedTabb = 0;
-  
+
   select(i: number): void {
-    this.selectedTabb = i;
+    if (!this.permissionSetService.validate(true)) {
+      return;
+    }
+    this.permissionSetService.setTab(i);
     this.onSelect.emit(i);
   }
 

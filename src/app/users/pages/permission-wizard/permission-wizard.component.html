@@ -6,10 +6,10 @@
                 <div class="row">
                     <div class="col-12">
                         <div *ngIf="permissionSetService.dataLoaded" class="add-perm-set">
-                            <md-tabs (onSelect)="setTab($event)"></md-tabs>
-                            <md-step1 *ngIf="selectedTab===0"></md-step1>
-                            <md-step2 *ngIf="selectedTab===1"></md-step2>
-                            <md-step3 *ngIf="selectedTab===2"></md-step3>
+                            <md-tabs></md-tabs>
+                            <md-step1 *ngIf="permissionSetService.selectedTab===0"></md-step1>
+                            <md-step2 *ngIf="permissionSetService.selectedTab===1"></md-step2>
+                            <md-step3 *ngIf="permissionSetService.selectedTab===2"></md-step3>
                         </div>
                     </div>
                 </div>

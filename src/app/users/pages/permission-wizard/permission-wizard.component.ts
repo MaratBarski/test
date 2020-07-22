@@ -12,12 +12,6 @@ export class PermissionWizardComponent implements OnInit {
     public permissionSetService: PermissionSetService
   ) { }
 
-  selectedTab = 0;
-
-  setTab(i: number): void {
-    this.selectedTab = i;
-  }
-
   ngOnInit() {
   }
 

@@ -1072,14 +1072,12 @@
   }
 
   .info-popup{
-    display: none;
     position: absolute;
     bottom: calc(100% + 7px);
     right: 2px;
   }
 
-  &__more:hover .info-popup,
-  .info-popup.active{
+  &.info-popup.active{
     display: inline-block;
   }
 

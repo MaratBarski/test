@@ -12,7 +12,6 @@ export class Step1Component implements OnInit {
     public permissionSetService: PermissionSetService
   ) { }
 
-  project = '';
   searchResearchText = '';
   searchUserText = '';
   isValidSize = true;
@@ -29,7 +28,7 @@ export class Step1Component implements OnInit {
   }
 
   changeIsNew(): void {
-    //alert(this.permissionSetService.permissionSet.isNew);
+    this.permissionSetService.validate(false);
   }
 
   completeResearcher(text: string): void {
@@ -37,19 +36,25 @@ export class Step1Component implements OnInit {
     this.searchResearchText = text;
   }
 
-  selectResearcher($event) {
+  selectResearcher(setObj: any): void {
+    this.permissionSetService.permissionSet.fromSetId = setObj.researchId;
+    this.permissionSetService.validate(false);
+  }
+
+  selectUser(user: any): void {
+    this.permissionSetService.permissionSet.userId = user.id;
+    this.permissionSetService.validate(false);
   }
 
   completeUsers(text: string): void {
     this.users = this._users.filter(x => x.name.toLowerCase().indexOf(text.toLowerCase()) > -1);
     this.searchUserText = text;
-  }
-
-  selectUser($event) {
+    this.permissionSetService.validate(false);
   }
 
   changedProject(id: string): void {
-    this.project = id;
+    this.permissionSetService.permissionSet.project = id;
+    this.permissionSetService.validate(false);
   }
 
   onSizeChanged(size: number): void {
@@ -58,13 +63,18 @@ export class Step1Component implements OnInit {
     } else {
       this.isValidSize = true;
     }
+    this.permissionSetService.validate(false);
   }
 
   changeFromUnlimited(checked: boolean): void {
-    alert(checked);
+    this.permissionSetService.validate(false);
   }
 
   changeToUnlimited(checked: boolean): void {
-    alert(checked);
+    this.permissionSetService.validate(false);
+  }
+
+  validate(): void {
+    this.permissionSetService.validate(false);
   }
 }

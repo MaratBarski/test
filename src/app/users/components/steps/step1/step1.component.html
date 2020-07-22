@@ -7,9 +7,11 @@
                         <input (change)="changeIsNew()" [value]="true"
                             [(ngModel)]="permissionSetService.permissionSet.isNew" id="param1" type="radio"
                             name="addset">
-                        <label class="input-radio__label" for="param1"><span class="input-radio__mark"></span><span
-                                class="input-radio__text">New Permission
-                                Set</span></label>
+                        <label class="input-radio__label" for="param1">
+                            <span class="input-radio__mark"></span>
+                            <span class="input-radio__text">New Permission
+                                Set</span>
+                        </label>
                     </div>
                 </div>
                 <div class="add-perm-set-main__item">
@@ -51,7 +53,8 @@
                         </div>
                         <div class="add-perm-sect__select">
                             <div class="add-perm-sect__label">Environment:</div>
-                            <md-project-combo [isSmall]="true" [project]="project" (onChange)="changedProject($event)">
+                            <md-project-combo [isSmall]="true" [project]="permissionSetService.permissionSet.project"
+                                (onChange)="changedProject($event)">
                             </md-project-combo>
                         </div>
                     </div>
@@ -94,14 +97,18 @@
                         <svg class="icon ic-info" mdcSvg="ic-info"></svg>
                     </div>
                     <div class="add-perm-sect__fields">
-                        <mdc-date-picker></mdc-date-picker>
+                        <mdc-date-picker (onSelect)="validate()"
+                            [disabled]="permissionSetService.permissionSet.fromDateUnlimited"
+                            [(ngModel)]="permissionSetService.permissionSet.fromDate"></mdc-date-picker>
                         <div style="margin-top: 6px;margin-left:10px;margin-right:10px">
                             <mdc-check-box (change)="changeFromUnlimited($event)"
                                 [(ngModel)]="permissionSetService.permissionSet.fromDateUnlimited" text="Unlimited">
                             </mdc-check-box>
                         </div>
                         <div class="add-perm-sect__label">to:</div>
-                        <mdc-date-picker></mdc-date-picker>
+                        <mdc-date-picker (onSelect)="validate()"
+                            [disabled]="permissionSetService.permissionSet.toDateUnlimited"
+                            [(ngModel)]="permissionSetService.permissionSet.toDate"></mdc-date-picker>
                         <div style="margin-top: 6px;margin-left:10px;margin-right:10px">
                             <mdc-check-box (change)="changeToUnlimited($event)"
                                 [(ngModel)]="permissionSetService.permissionSet.toDateUnlimited" text="Unlimited">
@@ -118,14 +125,13 @@
                     <div class="add-perm-sect__title"><span class="add-perm-sect__title-text">Key Name:</span></div>
                     <div class="add-perm-sect__fields">
                         <div class="add-perm-sect__input">
-                            <input type="text" value="D56790-66">
+                            <input (blur)="validate()" type="text"
+                                [(ngModel)]="permissionSetService.permissionSet.keyName">
                         </div>
                         <div class="add-perm-sect__label">Expiration Date:</div>
-                        <div class="input-date">
-                            <input type="text" placeholder="dd/mm/yyyy">
-                            <svg class="icon ic-calendar" mdcSvg="ic-calendar">
-                            </svg>
-                        </div>
+                        <mdc-date-picker (onSelect)="validate()"
+                            [(ngModel)]="permissionSetService.permissionSet.keyExpirationDate">
+                        </mdc-date-picker>
                     </div>
                 </div>
             </div>

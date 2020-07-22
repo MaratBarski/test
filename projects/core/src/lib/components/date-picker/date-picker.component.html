@@ -1,14 +1,15 @@
 <div class="select-date__item">
     <div class="select-date__main calendar">
         <div class="select-date__field">
-            <p-calendar #datePicker placeholder="dd/mm/yyyy" [inputStyle]="{'width':'100%'}" [style]="{'width':'100%'}"
-                [locale]="locale" [(ngModel)]="date" hideTransitionOptions="0ms" showTransitionOptions="0ms"
-                [showIcon]="false" [dateFormat]="dateFormat" [monthNavigator]="true" [yearNavigator]="true"
-                yearRange="2000:2030"></p-calendar>
+            <p-calendar (onSelect)="changeDate($event)" [disabled]="disabled" #datePicker placeholder="dd/mm/yyyy" [inputStyle]="{'width':'100%'}"
+                [style]="{'width':'100%'}" [locale]="locale" [(ngModel)]="value" hideTransitionOptions="0ms"
+                showTransitionOptions="0ms" [showIcon]="false" [dateFormat]="dateFormat" [monthNavigator]="true"
+                [yearNavigator]="true" yearRange="2000:2030"></p-calendar>
             <div *ngIf="isShowDateFormat" class="select-date__label">{{dateFormat}}</div>
         </div>
         <div class="select-date__icon">
-            <svg (click)="datePicker.toggle()" class="icon ic-calendar" mdcSvg="ic-calendar"></svg>
+            <svg *ngIf="!disabled" (click)="datePicker.toggle()" class="icon ic-calendar" mdcSvg="ic-calendar"></svg>
+            <svg *ngIf="disabled" class="icon ic-calendar" mdcSvg="ic-calendar"></svg>
         </div>
     </div>
 </div>

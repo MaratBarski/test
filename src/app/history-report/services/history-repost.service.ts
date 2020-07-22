@@ -118,7 +118,7 @@ export class HistoryReportService {
     history.forEach((fl, i) => {
       data.rows.push({
         cells: {
-          name: i,
+          name: fl.sessionName,
           insertDate: fl.insertDate,
           fullName: fl.fullName,
           data: fl.data,
@@ -134,7 +134,7 @@ export class HistoryReportService {
           insertDate: this.dateService.toExcel(fl.insertDate),
           status: !!fl.transStatus ? 'passed' : 'failed',
           source: !!fl.sessionId ? 'Query' : 'Imported file',
-          name: fl.fileNameAlias ? fl.fileNameAlias : `${fl.sessionName}/${fl.sessionId}`
+          name: !!fl.sessionId ? `${fl.sessionName}/${fl.sessionId}` : fl.fileNameAlias
         },
         source: fl,
         isActive: false
@@ -142,6 +142,7 @@ export class HistoryReportService {
     })
     return data;
   }
+
   getTransToolTip(transMsg: string): string {
     switch (transMsg) {
       case "Synthetic":

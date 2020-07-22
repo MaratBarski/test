@@ -35,14 +35,14 @@
         <svg class="icon ic-failure" mdcSvg="ic-failure">
         </svg>The following old categories will not be available for the user anymore: <span
             class="add-info-table__error-accent">{{oldNotMapedTitle}}</span><span class="add-info-table__more">
-                <span *ngIf="notInUse?.length-2>0" class="pointer">{{notInUse.length-2}} More</span>
-            <div class="info-popup info-popup_right info-popup_bottom" style="width: 276px;">
+                <span (click)="isShowMore=true" *ngIf="notInUse?.length-2>0" class="pointer">{{notInUse.length-2}} More</span>
+            <div [hidden]="!isShowMore" class="info-popup info-popup_right info-popup_bottom" style="width: 276px;">
                 <form class="form-site">
                     <div class="info-popup__top">
                         <div class="info-popup__head-wrap"><span class="info-popup__head">Missing old categories</span>
                         </div>
                         <div class="info-popup__close">
-                            <svg class="icon ic-close-circle" mdcSvg="ic-close-circle"></svg>
+                            <svg (click)="isShowMore=false" class="icon ic-close-circle" mdcSvg="ic-close-circle"></svg>
                         </div>
                     </div>
                     <div *ngIf="notInUse?.length" class="info-popup__content">
