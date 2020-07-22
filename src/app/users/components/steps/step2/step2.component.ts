@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PermissionSetService } from '@app/users/services/permission-set.service';
+import { PermissionSetService, AllowedEvents } from '@app/users/services/permission-set.service';
 
 @Component({
   selector: 'md-step2',
@@ -11,6 +11,25 @@ export class Step2Component implements OnInit {
   constructor(
     public permissionSetService: PermissionSetService
   ) { }
+
+  templateItems = [];
+
+  get allowedEvents(): Array<any> {
+    return AllowedEvents;
+  }
+
+  updateTemplates(t: any): void {
+    this.permissionSetService.updateTemplates();
+  }
+
+  selectTemplateItem(t: any): void {
+    if (this.permissionSetService.permissionSet.allowedEvent !== 3) { return; }
+    this.templateItems = t.templateItems;
+  }
+
+  unselectTemplateItem(): void {
+    this.templateItems = [];
+  }
 
   ngOnInit() {
   }

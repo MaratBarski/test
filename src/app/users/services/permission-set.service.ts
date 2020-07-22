@@ -2,9 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Offline } from '@app/shared/decorators/offline.decorator';
 import { environment } from '@env/environment';
-import { forkJoin, Subject, Subscription, Observable } from 'rxjs';
+import { forkJoin, Subject, Observable } from 'rxjs';
 import { UserListService } from './user-list.service';
 import { DateService } from '@app/core-api';
+
+export const AllowedEvents = [
+  { id: 1, text: 'No allowed events (Default)' },
+  { id: 2, text: 'All events' },
+  { id: 3, text: 'Events based on permission templates:' }
+]
 
 export class PermissionSet {
   isNew: boolean;
@@ -21,6 +27,9 @@ export class PermissionSet {
   project: any;
   fromSetId?: any;
   userId?: any;
+  allowedEvent: number;
+  researchTemplates: Array<any>;
+  researchRestrictionEvents: Array<any>;
   data: {
     researchStatus?: string;
   }
@@ -38,6 +47,44 @@ export class PermissionSetService {
   ) {
     this._permissionSet = this.getDefault();
     this.loadData();
+  }
+
+  templates = [
+    {
+      name: 'template1', id: 1, isChecked: false, templateItems: [
+        { name: 'Medications in Admissions', type: 'Medications' },
+        { name: 'Medications in Admissions', type: 'Medications' },
+        { name: 'Medications in Admissions', type: 'Medications' },
+        { name: 'Medications in Admissions', type: 'Medications' }
+      ]
+    },
+    {
+      name: 'template2', id: 2, isChecked: false, templateItems: [
+        { name: 'Medications in Admissions', type: 'Medications' }
+      ]
+    },
+    {
+      name: 'template3', id: 3, isChecked: false, templateItems: [
+        { name: 'Medications in Admissions', type: 'Medications' },
+        { name: 'Medications in Admissions', type: 'Medications' }
+      ]
+    },
+    {
+      name: 'template4', id: 4, isChecked: false, templateItems: [
+        { name: 'Medications in Admissions', type: 'Medications' },
+        { name: 'Medications in Admissions', type: 'Medications' },
+        { name: 'Medications in Admissions', type: 'Medications' }
+      ]
+    }
+  ];
+
+  updateTemplates(): void {
+    this._permissionSet.researchTemplates =
+      this.templates.filter(x => x.isChecked).map(x => {
+        return {
+          templateId: x.id
+        }
+      })
   }
 
   get onTabChanged(): Observable<number> {
@@ -138,6 +185,9 @@ export class PermissionSetService {
       setDescription: '',
       keyName: '',
       project: '',
+      allowedEvent: 1,
+      researchTemplates: [],
+      researchRestrictionEvents: [],
       data: {
       }
     }
