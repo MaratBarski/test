@@ -1,4 +1,4 @@
-<div class="add-perm-set__content-wrap">
+<div *ngIf="permissionSetService.templatesLoaded" class="add-perm-set__content-wrap">
     <div class="add-perm-set__content">
         <div class="add-perm-set__head">Allowed Events</div>
         <div class="add-perm-set__text">Define the events that the user will be allowed to query:</div>

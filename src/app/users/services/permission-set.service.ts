@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Offline } from '@app/shared/decorators/offline.decorator';
 import { environment } from '@env/environment';
-import { forkJoin, Subject, Observable } from 'rxjs';
+import { forkJoin, Subject, Observable, timer } from 'rxjs';
 import { UserListService } from './user-list.service';
 import { DateService } from '@app/core-api';
 
@@ -49,34 +49,47 @@ export class PermissionSetService {
     this.loadData();
   }
 
-  templates = [
-    {
-      name: 'template1', id: 1, isChecked: false, templateItems: [
-        { name: 'Medications in Admissions', type: 'Medications' },
-        { name: 'Medications in Admissions', type: 'Medications' },
-        { name: 'Medications in Admissions', type: 'Medications' },
-        { name: 'Medications in Admissions', type: 'Medications' }
-      ]
-    },
-    {
-      name: 'template2', id: 2, isChecked: false, templateItems: [
-        { name: 'Medications in Admissions', type: 'Medications' }
-      ]
-    },
-    {
-      name: 'template3', id: 3, isChecked: false, templateItems: [
-        { name: 'Medications in Admissions', type: 'Medications' },
-        { name: 'Medications in Admissions', type: 'Medications' }
-      ]
-    },
-    {
-      name: 'template4', id: 4, isChecked: false, templateItems: [
-        { name: 'Medications in Admissions', type: 'Medications' },
-        { name: 'Medications in Admissions', type: 'Medications' },
-        { name: 'Medications in Admissions', type: 'Medications' }
-      ]
-    }
-  ];
+  private _templatesLoaded = false;
+  get templatesLoaded(): boolean {
+    return this._templatesLoaded;
+  }
+
+  loadTemplates(): void {
+    this._templatesLoaded = false;
+    timer(1000).subscribe(() => {
+      this._templatesLoaded = true;
+      this.templates = [
+        {
+          name: 'template1', id: 1, isChecked: false, templateItems: [
+            { name: 'Medications in Admissions', type: 'Medications' },
+            { name: 'Medications in Admissions', type: 'Medications' },
+            { name: 'Medications in Admissions', type: 'Medications' },
+            { name: 'Medications in Admissions', type: 'Medications' }
+          ]
+        },
+        {
+          name: 'template2', id: 2, isChecked: false, templateItems: [
+            { name: 'Medications in Admissions', type: 'Medications' }
+          ]
+        },
+        {
+          name: 'template3', id: 3, isChecked: false, templateItems: [
+            { name: 'Medications in Admissions', type: 'Medications' },
+            { name: 'Medications in Admissions', type: 'Medications' }
+          ]
+        },
+        {
+          name: 'template4', id: 4, isChecked: false, templateItems: [
+            { name: 'Medications in Admissions', type: 'Medications' },
+            { name: 'Medications in Admissions', type: 'Medications' },
+            { name: 'Medications in Admissions', type: 'Medications' }
+          ]
+        }
+      ];
+    });
+  }
+
+  templates = [];
 
   updateTemplates(): void {
     this._permissionSet.researchTemplates =

@@ -54,6 +54,7 @@ export class Step1Component implements OnInit {
 
   changedProject(id: string): void {
     this.permissionSetService.permissionSet.project = id;
+    this.permissionSetService.loadTemplates();
     this.permissionSetService.validate(false);
   }
 
