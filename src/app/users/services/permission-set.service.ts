@@ -30,6 +30,7 @@ export class PermissionSet {
   allowedEvent: number;
   researchTemplates: Array<any>;
   researchRestrictionEvents: Array<any>;
+  roleItems: Array<any>;
   data: {
     researchStatus?: string;
   }
@@ -201,6 +202,9 @@ export class PermissionSetService {
       allowedEvent: 1,
       researchTemplates: [],
       researchRestrictionEvents: [],
+      roleItems: [{
+        name: 'test'
+      }],
       data: {
       }
     }
@@ -242,4 +246,11 @@ export class PermissionSetService {
     })
   }
 
+  addRoleItem(): void {
+    this._permissionSet.roleItems = [{ name: '1' }].concat(this._permissionSet.roleItems )
+  }
+
+  removeRoleItem(item: any): void {
+    this._permissionSet.roleItems = this._permissionSet.roleItems.filter(x => x !== item);
+  }
 }

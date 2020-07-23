@@ -15,4 +15,11 @@ export class Step3Component implements OnInit {
   ngOnInit() {
   }
 
+  add(): void {
+    this.permissionSetService.addRoleItem();
+  }
+
+  remove(item: any): void {
+    this.permissionSetService.removeRoleItem(item);
+  }
 }

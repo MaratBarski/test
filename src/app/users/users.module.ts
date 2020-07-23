@@ -14,6 +14,7 @@ import { TabsComponent } from './components/tabs/tabs.component';
 import { Step1Component } from './components/steps/step1/step1.component';
 import { Step2Component } from './components/steps/step2/step2.component';
 import { Step3Component } from './components/steps/step3/step3.component';
+import { RuleItemComponent } from './components/rule-item/rule-item.component';
 
 const routes: Array<Route> = [
   { path: '', component: UserListComponent },
@@ -22,7 +23,7 @@ const routes: Array<Route> = [
 ]
 
 @NgModule({
-  declarations: [UserListComponent, UserDetailsComponent, ResearchListComponent, PermissionWizardComponent, FooterComponent, HeaderComponent, TabsComponent, Step1Component, Step2Component, Step3Component],
+  declarations: [UserListComponent, UserDetailsComponent, ResearchListComponent, PermissionWizardComponent, FooterComponent, HeaderComponent, TabsComponent, Step1Component, Step2Component, Step3Component, RuleItemComponent],
   imports: [
     CommonModule,
     CoreModule,
