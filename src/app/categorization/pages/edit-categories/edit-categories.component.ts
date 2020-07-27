@@ -101,15 +101,17 @@ export class EditCategoriesComponent extends BaseSibscriber implements OnInit {
     //document.write(JSON.stringify(objToSend));
 
     this.isLoading = true;
+    this.isSaving = true;
     super.add(
       this.editCategoryService.save(objToSend, category.data.hierarchyRootId).subscribe((res: any) => {
         this.isLoading = false;
+        this.isSaving = false;
         this.router.navigateByUrl('/categorization')
       }));
-
   }
 
   private _uploadUrl = `${environment.serverUrl}${environment.endPoints.replaceHierarchy}`
+  isSaving = false;
 
   private replaceCategory(): void {
     if (!this.mapCategoryTable.validate()) { return; }
