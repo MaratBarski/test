@@ -2,8 +2,8 @@
     "name": "@mdclone/core",
     "version": "0.0.70",
     "peerDependencies": {
-        "@angular/common": ">=8.2.14 <10.0.0",
-        "@angular/core": ">=8.2.14 <10.0.0"
+        "@angular/common": ">=8.2.14 <11.0.0",
+        "@angular/core": ">=8.2.14 <11.0.0"
     },
     "dependencies": {
         "bootstrap": "^4.4.1",
