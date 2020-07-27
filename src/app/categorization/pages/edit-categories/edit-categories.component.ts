@@ -6,7 +6,7 @@ import { EditCategoryTableComponent } from '@app/categorization/components/edit-
 import { Router, ActivatedRoute } from '@angular/router';
 import { MapCategoryHeaderComponent } from '@app/categorization/components/map-category-header/map-category-header.component';
 import { MapCategoryTableComponent } from '@app/categorization/components/map-category-table/map-category-table.component';
-import { UploadService } from '@app/shared/services/upload.service';
+import { UploadService, UploadInfo } from '@app/shared/services/upload.service';
 import { environment } from '@env/environment';
 
 @Component({
@@ -174,11 +174,15 @@ export class EditCategoriesComponent extends BaseSibscriber implements OnInit {
     this.uploadService.add({
       notification: {
         name: 'Categorization',
-        comment: 'Uploading',
+        comment: 'Uploading Categorization',
+        failName: 'Replace Categorization Failed',
+        succName: 'Categorization SUCCESSFULLY UPLOADED',
+        abortName: 'Categorization UPLOAD ABORTED BY USER',
         progress: 0,
         status: NotificationStatus.uploading,
         showProgress: true,
         showInContainer: true,
+        succComment: 'The categorization uploaded successfully.',
         startDate: new Date(),
         progressTitle: this.categoryInfo.fileData.formData.get('fileName'),
         showInToaster: true,
@@ -186,7 +190,9 @@ export class EditCategoriesComponent extends BaseSibscriber implements OnInit {
       },
       form: formData,
       url: `${this._uploadUrl}/${categorization.hierarchyRootId}`,
-      method: 'put'
+      method: 'put',
+      afterUpload: ((response:any, notifiuploadInfo: UploadInfo) => {
+      })
       //targetComponent: this.targetComponent
     });
     this.router.navigateByUrl('/categorization')

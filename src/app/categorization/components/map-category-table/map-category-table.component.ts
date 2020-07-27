@@ -9,9 +9,10 @@ import { ComponentService } from '@appcore';
 export class MapCategoryTableComponent {
 
   @Input() set oldCategories(oldCategories: any) {
-    this._oldCategories = [].concat(oldCategories.map(x => {
-      return { ...x, oldCategory: this.newCategoryDefault };
-    }));
+    this._oldCategories = [].concat(oldCategories
+      .map(x => {
+        return { ...x, oldCategory: this.newCategoryDefault };
+      }));
     this.initMap();
   }
   get oldCategories(): any {
@@ -31,7 +32,9 @@ export class MapCategoryTableComponent {
     if (!this._data || !this._data.data || !this._data.data.hierarchyLevels) { return; }
     this.categoryMap = [this.noMatchCategory, this.newCategoryDefault];
     this._data.data.hierarchyLevels.forEach((item: any) => {
-      this.categoryMap.push(item);
+      if (item.sortValue !== -1) {
+        this.categoryMap.push(item);
+      }
     });
     this.initMap();
   }
