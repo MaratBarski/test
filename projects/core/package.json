@@ -1,6 +1,6 @@
 {
     "name": "@mdclone/core",
-    "version": "0.0.70",
+    "version": "0.0.71",
     "peerDependencies": {
         "@angular/common": ">=8.2.14 <11.0.0",
         "@angular/core": ">=8.2.14 <11.0.0"

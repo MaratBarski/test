@@ -21,10 +21,10 @@ export class CategoryMessageComponent {
     this.oldNotMapedTitle = '';
     this._notInUse.forEach((item, i) => {
       if (i > 1) { return; }
-      this.oldNotMapedTitle += item;
-      if (i === 0) {
+      if (this.oldNotMapedTitle !== '') {
         this.oldNotMapedTitle += ',';
       }
+      this.oldNotMapedTitle += item;
     })
   }
 
