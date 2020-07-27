@@ -15,6 +15,7 @@ export enum NotificationStatus {
 export interface INotification {
   name: string;
   failName?: string;
+  failComment?: string;
   succName?: string;
   abortName?: string;
   comment?: string;
@@ -69,7 +70,7 @@ export class NotificationsService {
     window.addEventListener('beforeunload', (event) => {
       if (this.uploadingCount ||
         (this.navigationService.beforeNavigate && this.navigationService.beforeNavigate())
-        ) {
+      ) {
         event.preventDefault();
         event.returnValue = 'Your notifications will be lost!';
         return event;

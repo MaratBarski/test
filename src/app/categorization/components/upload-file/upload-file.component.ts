@@ -54,10 +54,12 @@ export class UploadFileComponent {
     this.uploadService.add({
       notification: {
         name: 'Uploading Categorization',
-        failName: 'Categorization UPLOAD Failed',
+        failName: `Failed to upload ${this.fileName}.`,
+        failComment:'Upload error',
         succName: 'Categorization SUCCESSFULLY UPLOADED',
         abortName: 'Categorization UPLOAD ABORTED BY USER',
-        comment: 'Uploading',
+        comment: 'You will be notified when its ready for review.',
+        succComment: `Upload of ${this.fileName} was successful and it is ready for review.`,
         progress: 0,
         status: NotificationStatus.uploading,
         showProgress: true,

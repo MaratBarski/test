@@ -173,16 +173,17 @@ export class EditCategoriesComponent extends BaseSibscriber implements OnInit {
 
     this.uploadService.add({
       notification: {
-        name: 'Categorization',
-        comment: 'Uploading Categorization',
+        name: 'Uploading Categorization',
+        comment: 'You will be notified when its ready for review.',
         failName: 'Replace Categorization Failed',
-        succName: 'Categorization SUCCESSFULLY UPLOADED',
+        failComment: 'Upload error',
+        succName: 'Categorization file uploaded successfully.',
         abortName: 'Categorization UPLOAD ABORTED BY USER',
         progress: 0,
         status: NotificationStatus.uploading,
         showProgress: true,
         showInContainer: true,
-        succComment: 'The categorization uploaded successfully.',
+        succComment: `Upload of ${categorization.hierarchyName} was successful and it is ready for review.`,
         startDate: new Date(),
         progressTitle: this.categoryInfo.fileData.formData.get('fileName'),
         showInToaster: true,
@@ -191,7 +192,7 @@ export class EditCategoriesComponent extends BaseSibscriber implements OnInit {
       form: formData,
       url: `${this._uploadUrl}/${categorization.hierarchyRootId}`,
       method: 'put',
-      afterUpload: ((response:any, notifiuploadInfo: UploadInfo) => {
+      afterUpload: ((response: any, notifiuploadInfo: UploadInfo) => {
       })
       //targetComponent: this.targetComponent
     });
