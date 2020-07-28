@@ -24,7 +24,8 @@
                         <tr class="admin-table__row" *ngFor="let item of oldCategories;let index=index">
                             <td class="admin-table__item">
                                 <div class="admin-table__name-edit">
-                                    <input type="text" [(ngModel)]="item.hierarchyLevelName">
+                                    <!-- <input type="text" [(ngModel)]="item.hierarchyLevelName"/> -->
+                                    {{item.hierarchyLevelName}}
                                 </div>
                             </td>
                             <td class="admin-table__item d-none d-md-table-cell">

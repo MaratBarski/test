@@ -19,8 +19,9 @@
                         <tr class="admin-table__row" *ngFor="let item of data.data.hierarchyLevels|categoryVisible;let index=index">
                             <td class="admin-table__item">
                                 <div class="admin-table__name-edit">
-                                    <input (change)="validateItem(item)" type="text"
-                                        [(ngModel)]="item.newHierarchyLevelName">
+                                    <!-- <input (change)="validateItem(item)" type="text"
+                                        [(ngModel)]="item.newHierarchyLevelName"> -->
+                                        {{item.newHierarchyLevelName}}
                                 </div>
                             </td>
                             <td class="admin-table__item d-none d-md-table-cell">
