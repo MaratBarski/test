@@ -48,6 +48,9 @@ export class EditCategoriesComponent extends BaseSibscriber implements OnInit {
         const id = u.get('id');
         super.add(
           this.editCategoryService.load(id).subscribe((res: any) => {
+            if (!res || !res.data || res.data.status === 'unmapped') {
+              this.router.navigateByUrl('/categorization');
+            }
             this.selectedCategory = res;
             if (!res || !res.data || !res.data.hierarchyLevels) { return; }
             this.selectedCategory.data.hierarchyLevels = this.editCategoryService.sortHierarchyLevels(this.selectedCategory.data.hierarchyLevels);

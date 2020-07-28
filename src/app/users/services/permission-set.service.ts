@@ -131,7 +131,7 @@ export class PermissionSetService {
 
   }
 
-  private _isNeedValidate = false;
+  private _isNeedValidate = true;
 
   validate(setError: boolean): boolean {
     if (!this._isNeedValidate) { return true; }
@@ -212,7 +212,6 @@ export class PermissionSetService {
 
   @Offline('assets/offline/research.json')
   private getResearchUrl = `${environment.serverUrl}${environment.endPoints.research}`;
-
 
   loadData(): void {
     this._dataLoaded = false;
