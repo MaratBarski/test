@@ -15,6 +15,7 @@ import { environment } from '@env/environment';
 // import { ButtonModule } from 'primeng/button';
 // import { CalendarModule } from 'primeng/calendar';
 import {TooltipModule} from 'primeng/tooltip';
+import {WebsocketService} from '@app/websocket.service';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import {TooltipModule} from 'primeng/tooltip';
     }),
   ],
   providers: [
-    HttpClientModule
+    HttpClientModule,
+    WebsocketService
   ],
   bootstrap: [AppComponent]
 })

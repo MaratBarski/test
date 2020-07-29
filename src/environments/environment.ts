@@ -7,6 +7,7 @@ export const environment = {
   socketUrl: 'http://localhost:4444',
   isOfflineMode: !false,
   uiRoute: 'kostya-the-king',
+  wsRoute: 'ws-mdclone',
   endPoints: {
     userData: 'user-data',
     fileSource: 'mdclone/api/v1/file-source',
