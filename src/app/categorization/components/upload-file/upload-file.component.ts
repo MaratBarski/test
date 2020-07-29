@@ -124,10 +124,12 @@ export class UploadFileComponent {
   readFile(file: any): void {
     this.csvManagerService.readHeaders(file).then((arr: Array<string>) => {
       this.isFileError = false;
-      this.categoryHeaders = arr.map((str, i) => {
+      this.categoryHeaders = 
+      ['Select default category...'].concat(
+      arr.map((str, i) => {
         return str;
         //return { text: str, value: i, id: i }
-      });
+      }));
     }).catch(error => {
       this.categoryHeaders = [];
       this.file = '';

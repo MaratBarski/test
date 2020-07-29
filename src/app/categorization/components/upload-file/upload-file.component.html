@@ -48,7 +48,7 @@
                 <label class="form-site__label" for="project">Environment</label>
                 <md-project-combo [project]="project" (onChange)="changedProject($event)"></md-project-combo>
             </div>
-            <div class="form-site__item">
+            <div [hidden]="!categoryHeaders?.length" class="form-site__item">
                 <label class="form-site__label">
                     Default Category
                     <span [stickyToElement]="true" mdcTooltip="Please select the Categorization level that will be the default level for output properties extraction." class="form-site__icon">
