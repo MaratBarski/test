@@ -1,13 +1,22 @@
-import { Component, OnInit, ViewChild, ChangeDetectorRef, AfterViewChecked } from '@angular/core';
-import { ComponentService, PopupComponent, SelectOption, TableComponent, NavigationService, BaseNavigation, NotificationsService, ToasterType } from '@appcore';
-import { FileClm, FileSource } from '../../models/file-source';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Template } from '@app/models/template';
-import { Hierarchy } from '@app/models/hierarchy';
-import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { ImportedFilesMappingService } from '@app/imported-files/services/imported-files-mapping.service';
-import { map } from 'rxjs/operators';
-import { PropertyType } from '@app/imported-files/models/enum/PropertyType';
+import {Component, OnInit, ViewChild, ChangeDetectorRef, AfterViewChecked} from '@angular/core';
+import {
+  ComponentService,
+  PopupComponent,
+  SelectOption,
+  TableComponent,
+  NavigationService,
+  BaseNavigation,
+  NotificationsService,
+  ToasterType
+} from '@appcore';
+import {FileClm, FileSource} from '../../models/file-source';
+import {ActivatedRoute, Router} from '@angular/router';
+import {Template} from '@app/models/template';
+import {Hierarchy} from '@app/models/hierarchy';
+import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {ImportedFilesMappingService} from '@app/imported-files/services/imported-files-mapping.service';
+import {map} from 'rxjs/operators';
+import {PropertyType} from '@app/imported-files/models/enum/PropertyType';
 
 @Component({
   selector: 'md-imported-files-mapping',
@@ -27,8 +36,8 @@ export class ImportedFileMappingComponent extends BaseNavigation implements OnIn
   showErrors: boolean = false;
   isSaving = false;
   showCancelConfirm = false;
-  @ViewChild('popupMenu', { static: true }) popupMenu: PopupComponent;
-  @ViewChild('table', { static: true }) table: TableComponent;
+  @ViewChild('popupMenu', {static: true}) popupMenu: PopupComponent;
+  @ViewChild('table', {static: true}) table: TableComponent;
   private redirectUrl = '';
 
   constructor(
@@ -45,8 +54,16 @@ export class ImportedFileMappingComponent extends BaseNavigation implements OnIn
     super.add(
       this.route.params.subscribe(p => {
         this.fileSource = this.route.snapshot.data.data[0];
-        this.templates = this.route.snapshot.data.data[1];
-        this.hierarchies = this.route.snapshot.data.data[2];
+        this.fileSource.fileClms.sort((fileClm1, fileClm2) => {
+          const [val1, val2] = [fileClm1.physicalColName.split('_'), fileClm2.physicalColName.split('_')];
+          return val1 > val2 ? 1 : -1;
+        })
+        this.templates = this.route.snapshot.data.data[1].sort((item1, item2) => {
+          return item1.templateName > item2.templateName ? 1 : -1;
+        });
+        this.hierarchies = this.route.snapshot.data.data[2].sort((item1, item2) => {
+          return item1.hierarchyName > item2.hierarchyName ? 1 : -1;
+        });
         this.selectAll = new FormControl(true);
         super.add(
           this.selectAll.valueChanges
@@ -99,7 +116,7 @@ export class ImportedFileMappingComponent extends BaseNavigation implements OnIn
           if (url) {
             this.router.navigateByUrl(url);
           }
-        })
+        });
       }));
   }
 
@@ -174,7 +191,7 @@ export class ImportedFileMappingComponent extends BaseNavigation implements OnIn
   }
 
   getRelationalIntegrity(hieId, columnIndex) {
-    this.fileSourceForm.get('fileClms')['controls'][columnIndex].get('percent').setValue(-1)
+    this.fileSourceForm.get('fileClms')['controls'][columnIndex].get('percent').setValue(-1);
     const hierarchyId = hieId.id;
     const colIndex = columnIndex + 1;
     const fileName = this.fileSource.fileNameAlias;
@@ -222,7 +239,7 @@ export class ImportedFileMappingComponent extends BaseNavigation implements OnIn
             name: 'Failed to save file mapping',
             comment: 'Try again or contact MDClone support.',
             showInToaster: true
-          })
+          });
         });
     }
   }
