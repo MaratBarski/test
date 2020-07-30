@@ -1,7 +1,7 @@
 import { Component, Output, EventEmitter, ViewChild, ElementRef, Input, OnInit } from '@angular/core';
 import { UploadService, UploadInfo } from '@app/shared/services/upload.service';
 import { Offline } from '@app/shared/decorators/offline.decorator';
-import { SelectOption, SelectComponent, CsvManagerService, NotificationStatus, ValidationFileMessage, ToasterType, LoginService, BaseSibscriber } from '@appcore';
+import { SelectOption, SelectComponent, CsvManagerService, NotificationStatus, ValidationFileMessage, ToasterType, LoginService, BaseSibscriber, ExcelExtentions } from '@appcore';
 import { environment } from '@env/environment';
 import { ConfigService } from '@app/shared/services/config.service';
 import { FileSource } from '@app/imported-files/models/file-source';
@@ -173,7 +173,7 @@ export class UploadFileComponent extends BaseSibscriber implements OnInit {
       return;
     }
     this.isFileError = false;
-    if (!this.csvManagerService.validateFileExtention(this.fileInput.nativeElement, ['csv', 'xls', 'xlsx', 'xlsm'])) {
+    if (!this.csvManagerService.validateFileExtention(this.fileInput.nativeElement, ExcelExtentions)) {
       this.fileError(ValidationFileMessage.CsvExtensionError);
       return;
     }

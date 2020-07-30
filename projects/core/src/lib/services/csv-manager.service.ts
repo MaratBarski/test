@@ -4,10 +4,13 @@ import { TableModel } from '../components/table/table.component';
 declare const require: any;
 export const Encoding = require('encoding-japanese');
 
+export const ExcelExtentions = ['csv', 'xls', 'xlsx', 'xlsm', 'xlsb'];
+
 export interface CsvData {
   headers: Array<string>;
   data?: Array<Array<any>>;
 }
+
 export enum ValidationFileMessage {
   Success = 'success',
   UniquenessOfHeadersError = 'uniquenessOfHeadersError',
@@ -89,8 +92,17 @@ export class CsvManagerService {
     });
   }
 
+  isCsv(fileName: string): boolean {
+    if (!fileName) { return false; }
+    return fileName.toLowerCase().endsWith('.csv');
+  }
+
   validate(file: any): Promise<ValidationFileMessage> {
     return new Promise<ValidationFileMessage>((resolve, reject) => {
+      if (!this.isCsv(file.name)) {
+        resolve(ValidationFileMessage.Success);
+        return;
+      }
       this.readHeaders(file).then(headers => {
         if (!headers || !headers.length) {
           resolve(ValidationFileMessage.HeaderEmptyError);
