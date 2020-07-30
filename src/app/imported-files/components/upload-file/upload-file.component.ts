@@ -4,6 +4,7 @@ import { Offline } from '@app/shared/decorators/offline.decorator';
 import { SelectOption, SelectComponent, CsvManagerService, NotificationStatus, ValidationFileMessage, ToasterType, LoginService, BaseSibscriber } from '@appcore';
 import { environment } from '@env/environment';
 import { ConfigService } from '@app/shared/services/config.service';
+import { FileSource } from '@app/imported-files/models/file-source';
 
 
 @Component({
@@ -41,6 +42,7 @@ export class UploadFileComponent extends BaseSibscriber implements OnInit {
   fileName = '';
   file = '';
   template = '';
+
   get isValid(): boolean {
     return !!this.fileName && !!this.project && !!this.file;
   }
@@ -66,9 +68,19 @@ export class UploadFileComponent extends BaseSibscriber implements OnInit {
 
   uploadFile(event: any): void {
     event.preventDefault();
+
     if (!this.isValid) {
       return;
     }
+    const files: Array<FileSource> = this.targetComponent.fileSource;
+    const found = files.find(x => {
+      return x.fileName && this.fileName && x.fileName.toLowerCase() === this.fileName.toLowerCase();
+    });
+    if (found) {
+      alert('Error');
+      return;
+    }
+
     const formData: FormData = new FormData();
     formData.append('file', this.fileInput.nativeElement.files[0]);
     formData.append('fileName', this.fileName);
@@ -95,7 +107,7 @@ export class UploadFileComponent extends BaseSibscriber implements OnInit {
       form: formData,
       url: this._uploadUrl,
       targetComponent: this.targetComponent,
-      afterUpload: ((response:any, notifiuploadInfo: UploadInfo) => {
+      afterUpload: ((response: any, notifiuploadInfo: UploadInfo) => {
         notifiuploadInfo.notification.succLinkText = 'Map File';
         notifiuploadInfo.notification.succUrl = `imported-files/${response.data.fileSrc.fileId}`;
       })
