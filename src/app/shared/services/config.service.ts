@@ -40,7 +40,7 @@ export class ConfigService extends BaseSibscriber {
     this.loadConfig();
   }
 
-  getFormKey(): Promise<string> {
+  getFormKey(): Promise<any> {
     return this.dataService.get(`${environment.serverUrl}${environment.endPoints.formKey}`).toPromise();
   }
 

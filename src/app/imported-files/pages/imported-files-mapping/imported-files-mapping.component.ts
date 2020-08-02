@@ -231,7 +231,7 @@ export class ImportedFileMappingComponent extends BaseNavigation implements OnIn
         }
       }
       this.configService.getFormKey().then(key => {
-        alert(key);
+        alert(key.data.guid);
         this.importedFilesMappingService.saveMappedData(this.fileSourceForm.getRawValue())
         .subscribe(responce => {
           this.isSaving = false;
