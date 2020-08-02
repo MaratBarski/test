@@ -4,7 +4,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { CoreModule, LoginService } from '@appcore';
+import { CoreModule, LoginService, SocketService } from '@appcore';
 import { StoreModule } from '@ngrx/store';
 import { LoginComponent } from './login/login.component';
 import { EffectsModule } from '@ngrx/effects';
@@ -14,9 +14,7 @@ import { environment } from '@env/environment';
 // import { DialogModule } from 'primeng/dialog';
 // import { ButtonModule } from 'primeng/button';
 // import { CalendarModule } from 'primeng/calendar';
-import {TooltipModule} from 'primeng/tooltip';
-import {WebsocketService} from '@app/websocket.service';
-
+import { TooltipModule } from 'primeng/tooltip';
 
 @NgModule({
   declarations: [
@@ -36,8 +34,7 @@ import {WebsocketService} from '@app/websocket.service';
     }),
   ],
   providers: [
-    HttpClientModule,
-    WebsocketService
+    HttpClientModule
   ],
   bootstrap: [AppComponent]
 })
@@ -46,8 +43,9 @@ export class AppModule {
   @Offline('assets/offline/userData.json')
   private getUserDataUrl = `${environment.serverUrl}${environment.endPoints.userData}`;
 
-  constructor(private loginService: LoginService) {
+  constructor(private loginService: LoginService, private socket: SocketService) {
     this.loginService.setUserData(this.getUserDataUrl);
     console.log(`Environment: ${environment.name}`);
+    this.socket.start(`${environment.serverUrl}${environment.wsRoute}/socket.io`)
   }
 }

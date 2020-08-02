@@ -25,8 +25,7 @@ export * from './lib/services/date.service';
 export * from './lib/services/csv-manager.service';
 export * from './lib/services/animation.service';
 export * from './lib/services/notifications.service';
-
-//export * from './lib/services/socket.service';
+export * from './lib/services/socket.service';
 
 export * from './lib/common/BaseSibscriber';
 export * from './lib/common/side-menu';
