@@ -36,6 +36,7 @@ export const environment = {
     usageRetantionTable: 'mdclone/api/v1/reporting/usage-retention-list',
     usageCsvDownload: 'mdclone/api/v1/reporting/detailed-usage-report',
     userList: 'mdclone/api/v1/user',
-    research: 'mdclone/api/v1/research'
+    research: 'mdclone/api/v1/research',
+    formKey: 'mdclone/api/v1/config/form-key'
   }
 };

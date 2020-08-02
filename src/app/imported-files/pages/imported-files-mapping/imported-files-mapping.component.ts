@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild, ChangeDetectorRef, AfterViewChecked} from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectorRef, AfterViewChecked } from '@angular/core';
 import {
   ComponentService,
   PopupComponent,
@@ -9,14 +9,15 @@ import {
   NotificationsService,
   ToasterType
 } from '@appcore';
-import {FileClm, FileSource} from '../../models/file-source';
-import {ActivatedRoute, Router} from '@angular/router';
-import {Template} from '@app/models/template';
-import {Hierarchy} from '@app/models/hierarchy';
-import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {ImportedFilesMappingService} from '@app/imported-files/services/imported-files-mapping.service';
-import {map} from 'rxjs/operators';
-import {PropertyType} from '@app/imported-files/models/enum/PropertyType';
+import { FileClm, FileSource } from '../../models/file-source';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Template } from '@app/models/template';
+import { Hierarchy } from '@app/models/hierarchy';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ImportedFilesMappingService } from '@app/imported-files/services/imported-files-mapping.service';
+import { map } from 'rxjs/operators';
+import { PropertyType } from '@app/imported-files/models/enum/PropertyType';
+import { ConfigService } from '@app/shared/services/config.service';
 
 @Component({
   selector: 'md-imported-files-mapping',
@@ -36,8 +37,8 @@ export class ImportedFileMappingComponent extends BaseNavigation implements OnIn
   showErrors: boolean = false;
   isSaving = false;
   showCancelConfirm = false;
-  @ViewChild('popupMenu', {static: true}) popupMenu: PopupComponent;
-  @ViewChild('table', {static: true}) table: TableComponent;
+  @ViewChild('popupMenu', { static: true }) popupMenu: PopupComponent;
+  @ViewChild('table', { static: true }) table: TableComponent;
   private redirectUrl = '';
 
   constructor(
@@ -48,7 +49,8 @@ export class ImportedFileMappingComponent extends BaseNavigation implements OnIn
     private router: Router,
     protected navigationService: NavigationService,
     private cdRef: ChangeDetectorRef,
-    private notificationService: NotificationsService
+    private notificationService: NotificationsService,
+    private configService: ConfigService
   ) {
     super(navigationService);
     super.add(
@@ -228,7 +230,9 @@ export class ImportedFileMappingComponent extends BaseNavigation implements OnIn
           tmp.fileClms[i].hierarchyRootId = '';
         }
       }
-      this.importedFilesMappingService.saveMappedData(this.fileSourceForm.getRawValue())
+      this.configService.getFormKey().then(key => {
+        alert(key);
+        this.importedFilesMappingService.saveMappedData(this.fileSourceForm.getRawValue())
         .subscribe(responce => {
           this.isSaving = false;
           this.router.navigateByUrl('/imported-files');
@@ -241,6 +245,8 @@ export class ImportedFileMappingComponent extends BaseNavigation implements OnIn
             showInToaster: true
           });
         });
+      }).catch(er => {
+      })
     }
   }
 
