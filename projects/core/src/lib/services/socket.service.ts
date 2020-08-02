@@ -1,7 +1,7 @@
-import {  Injectable, OnDestroy } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { Socket } from 'ngx-socket-io';
 import * as io from 'socket.io-client';
-import {BehaviorSubject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { Observable } from 'rxjs';
 
 
@@ -16,7 +16,10 @@ export class SocketService implements OnDestroy {
 
   public get url(): string { return this._socketUrl; }
   private _socketUrl: string;
-  
+
+  public get path(): string { return this._socketPath; }
+  private _socketPath: string;
+
   private connection: Socket;
 
   get onMessage(): Observable<any> {
@@ -24,22 +27,23 @@ export class SocketService implements OnDestroy {
   }
   private _onMessage = new BehaviorSubject<any>({});
 
-  constructor() {}
+  constructor() { }
 
   ngOnDestroy(): void {
   }
 
-  start(url: string): void {
+  start(url: string, path: string): void {
     if (this._isStarted) { return; }
     this._isStarted = true;
     this._socketUrl = url;
+    this._socketPath = path;
     this.connect();
   }
 
   private connect(): void {
     if (this.isConnected) { return; }
     console.log(`Connecting on ${this.url}`);
-    this.connection = io.connect(this.url) as any;
+    this.connection = io.connect(this.url, { path: `/${this.path}` }) as any;
     this.addEvents();
     this._isConnected = true;
   }

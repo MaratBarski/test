@@ -46,6 +46,6 @@ export class AppModule {
   constructor(private loginService: LoginService, private socket: SocketService) {
     this.loginService.setUserData(this.getUserDataUrl);
     console.log(`Environment: ${environment.name}`);
-    this.socket.start(`${environment.serverUrl}${environment.wsRoute}/socket.io`)
+    this.socket.start(`${environment.serverUrl}`, `${environment.wsRoute}/socket.io`);
   }
 }
