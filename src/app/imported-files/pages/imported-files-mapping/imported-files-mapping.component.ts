@@ -231,23 +231,27 @@ export class ImportedFileMappingComponent extends BaseNavigation implements OnIn
         }
       }
       this.configService.getFormKey().then(key => {
-        alert(key.data.guid);
         this.importedFilesMappingService.saveMappedData(this.fileSourceForm.getRawValue())
-        .subscribe(responce => {
-          this.isSaving = false;
-          this.router.navigateByUrl('/imported-files');
-        }, error => {
-          this.isSaving = false;
-          this.notificationService.addNotification({
-            type: ToasterType.error,
-            name: 'Failed to save file mapping',
-            comment: 'Try again or contact MDClone support.',
-            showInToaster: true
+          .subscribe(responce => {
+            this.isSaving = false;
+            this.router.navigateByUrl('/imported-files');
+          }, error => {
+            this.saveError();
           });
-        });
       }).catch(er => {
+        this.saveError();
       })
     }
+  }
+
+  private saveError(): void {
+    this.isSaving = false;
+    this.notificationService.addNotification({
+      type: ToasterType.error,
+      name: 'Failed to save file mapping',
+      comment: 'Try again or contact MDClone support.',
+      showInToaster: true
+    });
   }
 
   cancel(event: any) {
