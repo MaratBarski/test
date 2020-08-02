@@ -8,6 +8,7 @@ export const environment = {
   isOfflineMode: !true,
   serverRoute: 'mdclone',
   uiRoute: '',
+  wsRoute: 'ws-mdclone',
   endPoints: {
     userData: 'user-data',
     fileSource: 'mdclone/api/v1/file-source',
