@@ -13,6 +13,10 @@ export class PermissionWizardComponent implements OnInit {
     public permissionSetService: PermissionSetService
   ) { }
 
+  get isSaveEnable(): boolean {
+    return this.permissionSetService.selectedTab > 0;
+  }
+
   tabs: Array<TabWizardItem> = [
     {
       text: 'General Details'
@@ -27,6 +31,18 @@ export class PermissionWizardComponent implements OnInit {
   ]
 
   ngOnInit() {
+  }
+
+  cancel(): void {
+    this.permissionSetService.cancel();
+  }
+
+  next(i: number): void {
+    this.permissionSetService.nextTab(i);
+  }
+
+  save(): void {
+    this.permissionSetService.save();
   }
 
   selectNextTab(index: number): void {

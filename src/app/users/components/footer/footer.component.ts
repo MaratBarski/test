@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { PermissionSetService } from '@app/users/services/permission-set.service';
+import { Component, Output, Input, EventEmitter } from '@angular/core';
+
+export class SplitBtnOption {
+  text: string;
+}
 
 @Component({
   selector: 'md-footer',
@@ -8,19 +11,27 @@ import { PermissionSetService } from '@app/users/services/permission-set.service
 })
 export class FooterComponent {
 
-  constructor(
-    public permissionSetService: PermissionSetService
-  ) { }
+  @Output() onNext = new EventEmitter<number>();
+  @Output() onSave = new EventEmitter();
+  @Output() onCancel = new EventEmitter();
+  @Output() onOptionClick = new EventEmitter<number>();
+
+  @Input() isSaveEnable = false;
+  @Input() btnOptions: Array<SplitBtnOption>;
 
   cancel(): void {
-    this.permissionSetService.cansel();
+    this.onCancel.emit();
   }
 
-  next(i:number): void {
-    this.permissionSetService.nextTab(i);
+  next(i: number): void {
+    this.onNext.emit(i);
   }
 
-  save():void{
-    this.permissionSetService.save();
+  save(): void {
+    this.onSave.emit();
+  }
+
+  optionClick(i: number): void {
+    this.onOptionClick.emit(i);
   }
 }

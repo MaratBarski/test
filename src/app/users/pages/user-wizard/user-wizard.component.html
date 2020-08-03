@@ -17,4 +17,4 @@
         </section>
     </div>
 </div>
-<md-footer></md-footer>
+<md-footer [isSaveEnable]="isSaveEnable" (onCancel)="cancel()" (onNext)="next($event)" (onSave)="save()" (onOptionClick)="optionClick($event)" [btnOptions]="btnOptions"></md-footer>

@@ -1,20 +1,25 @@
-<footer *ngIf="permissionSetService.selectedTab===0" class="footer-wrap">
+<footer *ngIf="!isSaveEnable" class="footer-wrap">
     <div class="footer">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
                     <div class="footer__btn">
                         <span class="btn btn_border" (click)="cancel()">Cancel</span>
-                        <div (click)="next(1)" class="split-btn split-btn_up disable">
+                        <div (click)="next(1)" class="split-btn split-btn_up">
                             <div class="split-btn__title">Next</div>
                             <div class="split-btn__arr">
-                                <svg class="icon ic-select-arr-down" mdcSvg="ic-select-arr-down">
-                                </svg>
+                                <svg class="icon ic-select-arr-down" mdcSvg="ic-select-arr-down"></svg>
                             </div>
-                            <div class="split-btn__popup">
-                                <div class="split-btn__item">Update</div>
+                            <div *ngIf="btnOptions?.length" class="split-btn__popup">
+                                <ng-container *ngFor="let opt of btnOptions;let i=index">
+                                    <div (click)="optionClick(i)"
+                                        class="split-btn__item">
+                                        {{opt.text}}
+                                    </div>
+                                </ng-container>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -22,7 +27,7 @@
     </div>
 </footer>
 
-<footer *ngIf="permissionSetService.selectedTab>0" class="footer-wrap">
+<footer *ngIf="isSaveEnable" class="footer-wrap">
     <div class="footer">
         <div class="container-fluid">
             <div class="row">
@@ -30,9 +35,11 @@
                     <div class="footer__btn">
                         <span class="footer__link" (click)="cancel()">Cancel</span>
                         <span class="footer__btn-big">
-                            <span style="margin-left: 20px; margin-right: 20px;" class="footer__link" (click)="next(-1)">Previous</span>
+                            <span style="margin-left: 20px; margin-right: 20px;" class="footer__link"
+                                (click)="next(-1)">Previous</span>
                             <span class="btn btn_border" (click)="save()">Save</span>
-                            <span  *ngIf="permissionSetService.selectedTab<2" class="btn" (click)="next(1)">Next</span></span>
+                            <span *ngIf="permissionSetService.selectedTab<2" class="btn"
+                                (click)="next(1)">Next</span></span>
                     </div>
                 </div>
             </div>
