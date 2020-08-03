@@ -42,6 +42,16 @@
   &_orange{box-shadow: 0 2px 4px 0 #dbe4f9, -5px 0px 0px 0px $color-light-red;}
   &_purple{box-shadow: 0 2px 4px 0 #dbe4f9, -5px 0px 0px 0px $color-purple;}
 
+  &_yellow,
+  &_blue,
+  &_green,
+  &_red,
+  &_orange,
+  &_purple{
+    margin-left: 5px;
+    width: calc(100% - 5px);
+  }
+
   // &__head,
   // &__row{
   //  display: table-row;
@@ -238,7 +248,7 @@
   }
 
   &__row:nth-child(odd){
-    background: rgba(242, 243, 245, 0.9);
+    background: $color-sort-grey;
   }
 
   &__row{
@@ -1138,6 +1148,15 @@
   &_orange{box-shadow: 0 2px 4px 0 #dbe4f9, -5px 0px 0px 0px $color-light-red;}
   &_purple{box-shadow: 0 2px 4px 0 #dbe4f9, -5px 0px 0px 0px $color-purple;}
 
+  &_yellow,
+  &_blue,
+  &_green,
+  &_red,
+  &_orange,
+  &_purple{
+    margin-left: 5px;
+  }
+
   &__table{
     width: calc(100% - 406px);
     height: 100%;
@@ -1167,7 +1186,7 @@
     &__item:last-child{padding-right: 30px;}
 
     &__row:nth-child(odd){background: #fff;}
-    &__row:nth-child(even){background: rgba(242,243,245,.7);}
+    &__row:nth-child(even){background: $color-sort-grey;}
 
     &__row.active{
       background: #e1e3e7;
