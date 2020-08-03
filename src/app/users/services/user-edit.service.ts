@@ -8,6 +8,20 @@ export class UserEditService {
 
   constructor() { }
 
+  user = {
+    isSuperAdmin: false,
+    enabled: true
+  }
+
+  environments = [
+    { name: 'environment1', id: 1, isChecked: true },
+    { name: 'environment2', id: 2, isChecked: false },
+    { name: 'environment3', id: 3, isChecked: true },
+    { name: 'environment4', id: 4, isChecked: true },
+    { name: 'environment5', id: 5, isChecked: true },
+    { name: 'environment6', id: 6, isChecked: true }
+  ];
+
   private _selectedTab = 0;
   get selectedTab(): number { return this._selectedTab; }
 

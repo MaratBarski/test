@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserEditService } from '@app/users/services/user-edit.service';
 
 @Component({
   selector: 'md-edit-user-general',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditUserGeneralComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public userEditService: UserEditService
+  ) { }
 
   ngOnInit() {
   }
