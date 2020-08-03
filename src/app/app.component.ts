@@ -2,8 +2,6 @@ import {Component, ViewChild, ElementRef, AfterViewInit, HostListener} from '@an
 import {ComponentService, TranslateService, BaseSibscriber, animation, NavigationService} from '@appcore';
 import {ConfigService} from './shared/services/config.service';
 import {environment} from '../environments/environment';
-import {WebsocketService} from './websocket.service';
-import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -19,9 +17,7 @@ export class AppComponent {
   constructor(
     public componentService: ComponentService,
     public configService: ConfigService,
-    public ws: WebsocketService
   ) {
-    this.ws.connect();
   }
 
   send(msg){

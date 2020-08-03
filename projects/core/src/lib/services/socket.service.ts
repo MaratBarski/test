@@ -1,11 +1,8 @@
-import { EventEmitter, Injectable, OnDestroy } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { Socket } from 'ngx-socket-io';
 import * as io from 'socket.io-client';
-import { ENV } from '../config/env';
-import { LoginService } from './login.service';
-import { Store } from '@ngrx/store';
-import { Subscription } from 'rxjs';
-import { tokenSelector } from '../store/selectors/user.selectors';
+import { BehaviorSubject } from 'rxjs';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -13,54 +10,50 @@ import { tokenSelector } from '../store/selectors/user.selectors';
 })
 export class SocketService implements OnDestroy {
 
-  public onGetID = new EventEmitter<string>();
-
   get isConnected(): boolean { return this._isConnected; }
   private _isConnected = false;
-  private  _isStarted = false;
+  private _isStarted = false;
 
-  private get url(): string { return ENV.socketUrl; }
+  public get url(): string { return this._socketUrl; }
+  private _socketUrl: string;
+
+  public get path(): string { return this._socketPath; }
+  private _socketPath: string;
+
   private connection: Socket;
-  private _subscriber: Subscription;
-  private _id: string;
 
-  constructor(private store: Store<any>) {
-    this.start();
+  get onMessage(): Observable<any> {
+    return this._onMessage.asObservable();
   }
+  private _onMessage = new BehaviorSubject<any>({});
+
+  constructor() { }
 
   ngOnDestroy(): void {
-    this._subscriber.unsubscribe();
   }
 
-  private start(): void {
+  start(url: string, path: string): void {
     if (this._isStarted) { return; }
     this._isStarted = true;
+    this._socketUrl = url;
+    this._socketPath = path;
     this.connect();
-    this._subscriber = this.store.select(tokenSelector).subscribe(user => {
-      if (LoginService.IS_LOGEDIN()) {
-        this.connect();
-      } else {
-        this.diconnect()
-      }
-    }) as any;
   }
 
   private connect(): void {
-
     if (this.isConnected) { return; }
-    if (!LoginService.IS_LOGEDIN()) { return; }
-
-    this.connection = io.connect(this.url) as any;
+    console.log(`Connecting on ${this.url}`);
+    this.connection = io.connect(this.url, { path: `/${this.path}` }) as any;
     this.addEvents();
     this._isConnected = true;
   }
 
   private addEvents(): void {
     this.connection.removeAllListeners();
-    this.connection.on('get-id', (id => {
-      this._id = id;
-      this.onGetID.emit(id);
-    }))
+    this.connection.on('message', (data) => {
+      console.log('Received data from the server', data);
+      this._onMessage.next(data);
+    });
   }
 
   private diconnect() {

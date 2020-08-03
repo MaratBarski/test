@@ -1,0 +1,20 @@
+<div class="main-content">
+    <div class="content-page">
+        <md-header pageTitle="create new user"></md-header>
+        <section class="user-details-wrap">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="user-details">
+                            <md-tabs (onSelect)="selectNextTab($event)" [selectedTab]="userEditService.selectedTab"
+                                [tabs]="tabs"></md-tabs>
+                            <md-edit-user-general [hidden]="userEditService.selectedTab!==0"></md-edit-user-general>
+                            <md-edit-permission-set [hidden]="userEditService.selectedTab!==1"></md-edit-permission-set>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+<md-footer></md-footer>

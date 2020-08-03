@@ -48,6 +48,7 @@ export class UserListComponent extends BaseSibscriber implements OnInit {
   }
 
   addUserOpen(): void {
+    this.router.navigateByUrl("/users/edit-user");
   }
 
   onAction(action: TableActionCommand): void {
