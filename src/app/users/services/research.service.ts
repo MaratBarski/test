@@ -205,5 +205,137 @@ export class ResearchService {
     return src.researchStatus && src.researchStatus.trim().toLowerCase() === 'open' ? trueValue : falseValue;
   }
 
+  createView(files: Array<any>): TableModel {
+    const data: TableModel = {
+      actions: {
+        links: [
+          {
+            text: 'Edit',
+            icon: 'ic-edit',
+            command: 'edit'
+            , checkDisabled: (source: any) => {
+              return false;
+            }
+          }
+        ],
+        subLinks: [
+          {
+            text: 'Delete',
+            icon: 'ic-delete',
+            command: 'delete'
+            , checkDisabled: (source: any) => {
+              return false;
+            }
+          }
+        ]
+      },
+      headers: [
+        {
+          columnId: 'PermissionSetName',
+          text: 'Permission Set Name',
+          isSortEnabled: true,
+          csvTitle: 'Permission Set Name',
+          showDetails: false,
+          css: 'admin-table__item admin-table__perm-40 w-xxl-20 w-xxxl-25',
+          cellCss: 'admin-table__item',
+          cellContainerCss: 'admin-table__name'
+        },
+        {
+          columnId: 'Environment',
+          text: 'Environment',
+          isSortEnabled: true,
+          filter: true,
+          csvTitle: 'Environment',
+          css: 'admin-table__item d-none d-lg-table-cell admin-table__perm-20',
+          cellCss: 'admin-table__item d-none d-lg-table-cell',
+          cellContainerCss: 'admin-table__text-cut'
+        },
+        {
+          columnId: 'ApprovalKey',
+          text: 'Approval Key',
+          isSortEnabled: true,
+          csvTitle: 'Approval Key',
+          css: 'admin-table__item d-none d-xxl-table-cell'
+        },
+        {
+          columnId: 'approvalKeyExpirationDate',
+          text: 'Key Expiration date',
+          hidden: true,
+          csvTitle: 'Key Expiration date'
+        },
+        {
+          columnId: 'KeyStatus',
+          text: 'Key Status',
+          csvTitle: 'Key Status',
+          css: 'admin-table__item d-none d-xxl-table-cell admin-table__item_center admin-table__status'
+        },
+        {
+          columnId: 'Active',
+          text: 'Active',
+          csvTitle: 'Active',
+          css: 'admin-table__item d-none d-md-table-cell admin-table__item_center admin-table__status'
+        },
+        {
+          columnId: 'maxPatients',
+          text: 'Allowed cohort size',
+          csvTitle: 'Allowed cohort size',
+          hidden: true
+        },
+        {
+          columnId: 'startDate',
+          text: 'Allowed date range',
+          csvTitle: 'From',
+          hidden: true
+        },
+        {
+          columnId: 'endDate',
+          text: 'Allowed date range',
+          csvTitle: 'To',
+          hidden: true
+        },
+        {
+          columnId: 'PermissionTemplate',
+          text: 'Permission template',
+          csvTitle: 'Permission template',
+          hidden: true
+        },
+        {
+          columnId: 'Allowedcontent',
+          text: 'Allowed content',
+          csvTitle: 'Allowed content',
+          hidden: true
+        },
+      ],
+      rows: []
+    }
+    files.forEach((fl, i) => {
+      data.rows.push({
+        cells: {
+          PermissionSetName: fl.researchName,
+          Environment: fl.project ? fl.project.projectName : '',
+          ApprovalKey: fl.approvalKey,
+          KeyStatus: fl.researchStatus,
+          Active: fl.endDate,
+          maxPatients: fl.maxPatients,
+          startDate: fl.startDate,
+          endDate: fl.endDate,
+          PermissionTemplate: fl.researchTemplates ? fl.researchTemplates.map((t: any) => {
+            return t.template ? t.template.templateName : ''
+          }).join(';') : '',
+          Allowedcontent: fl.researchRestrictionEvents ? fl.researchRestrictionEvents.map((e: any) => {
+            return e.siteEventPropertyInfo ? `[(${e.siteEventInfo ? e.siteEventInfo.eventTableAlias : 'null'}) (${e.eventPropertyId}) (${e.value})]` : ''
+          }).join(';') : ';',
+          approvalKeyExpirationDate: fl.approvalKeyExpirationDate || ''
+        },
+        source: fl,
+        isActive: true,
+        csv: {
+          Active: this.isActive(fl, 'yes', 'no')
+        }
+      })
+    })
+    return data;
+  }
+
 }
 

@@ -1,1 +1,27 @@
+<div [hidden]="!isDataExists || !isLoaded">
+    <mdc-table #table (onAction)="onAction($event)" [auto]="true" [emptyState]="emptyState"
+        [cellsTemplate]="{ Modified:Modified,KeyStatus:KeyStatus,Active:Active}"
+        [paginator]="paginator" [dataSource]="dataSource">
+    </mdc-table>
+</div>
+<mdc-empty-state *ngIf="!isDataExists && isLoaded" [emptyState]="emptyState"></mdc-empty-state>
+<div class="pager-wrap" [hidden]="!isLoaded">
+    <mdc-paginator #paginator paginationTitle="{{'paginationTitle'|translate}}" noPagingTitle="Showing {0} files"
+        [blockSize]="3" [pageSize]="12" [currentPage]="0">
+    </mdc-paginator>
+</div>
 
+<ng-template #Modified let-item>
+    <div>{{item.Modified|date}}&nbsp;{{item.Modified|date:'HH:mm'}}</div>
+</ng-template>
+
+<ng-template #KeyStatus let-item let-src="source">
+    <svg class="icon ic-failure ic-grey" *ngIf="src.researchStatus && src.researchStatus.toLowerCase().trim()!=='open'"
+        mdcSvg="ic-failure"></svg>
+</ng-template>
+
+<ng-template #Active let-item let-src="source">
+    <div *ngIf="isActive(src)">
+        <span class="admin-table__circle admin-table__circle_green"></span>
+    </div>
+</ng-template>

@@ -17,6 +17,7 @@ export class FooterComponent {
   @Output() onOptionClick = new EventEmitter<number>();
 
   @Input() isSaveEnable = false;
+  @Input() isNextEnable = false;  
   @Input() btnOptions: Array<SplitBtnOption>;
 
   cancel(): void {

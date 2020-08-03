@@ -18,6 +18,10 @@ export class UserWizardComponent implements OnInit {
     return this.userEditService.selectedTab > 0;
   }
 
+  get isNextEnable(): boolean {
+    return this.userEditService.selectedTab < 1;
+  }
+  
   tabs: Array<TabWizardItem> = [
     {
       text: 'Account Details'

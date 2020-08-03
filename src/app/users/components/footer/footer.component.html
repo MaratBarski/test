@@ -38,7 +38,7 @@
                             <span style="margin-left: 20px; margin-right: 20px;" class="footer__link"
                                 (click)="next(-1)">Previous</span>
                             <span class="btn btn_border" (click)="save()">Save</span>
-                            <span *ngIf="permissionSetService.selectedTab<2" class="btn"
+                            <span *ngIf="isNextEnable" class="btn"
                                 (click)="next(1)">Next</span></span>
                     </div>
                 </div>
