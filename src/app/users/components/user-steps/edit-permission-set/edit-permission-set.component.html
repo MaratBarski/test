@@ -1,27 +1,47 @@
-<div [hidden]="!isDataExists || !isLoaded">
-    <mdc-table #table (onAction)="onAction($event)" [auto]="true" [emptyState]="emptyState"
-        [cellsTemplate]="{ Modified:Modified,KeyStatus:KeyStatus,Active:Active}"
-        [paginator]="paginator" [dataSource]="dataSource">
-    </mdc-table>
-</div>
-<mdc-empty-state *ngIf="!isDataExists && isLoaded" [emptyState]="emptyState"></mdc-empty-state>
-<div class="pager-wrap" [hidden]="!isLoaded">
-    <mdc-paginator #paginator paginationTitle="{{'paginationTitle'|translate}}" noPagingTitle="Showing {0} files"
-        [blockSize]="3" [pageSize]="12" [currentPage]="0">
-    </mdc-paginator>
+<div class="user-details-subtitle">
+    <div class="h5">User’s Permissions</div>
+    <span (click)="createSet()" class="btn btn_icon">+ New Set</span>
 </div>
 
-<ng-template #Modified let-item>
-    <div>{{item.Modified|date}}&nbsp;{{item.Modified|date:'HH:mm'}}</div>
-</ng-template>
-
-<ng-template #KeyStatus let-item let-src="source">
-    <svg class="icon ic-failure ic-grey" *ngIf="src.researchStatus && src.researchStatus.toLowerCase().trim()!=='open'"
-        mdcSvg="ic-failure"></svg>
-</ng-template>
-
-<ng-template #Active let-item let-src="source">
-    <div *ngIf="isActive(src)">
-        <span class="admin-table__circle admin-table__circle_green"></span>
+<div [hidden]="!isCreateNewSet">
+    <div class="shadow-site is-visible"></div>
+    <div class="modal-step">
+        <div class="modal-step__head">Add Permission set of Ella Ma’ayan</div>
+        <div class="modal-step__close ic-hover">
+            <svg class="icon ic-close" mdcSvg="ic-close" (click)="closeCreateSet()"></svg>
+        </div>
+        <div class="modal-step__content">
+            <md-permission-wizard></md-permission-wizard>
+        </div>
     </div>
-</ng-template>
+</div>
+
+<div [hidden]="isCreateNewSet">
+    <div [hidden]="!isDataExists || !isLoaded">
+        <mdc-table #table (onAction)="onAction($event)" [auto]="true" [emptyState]="emptyState"
+            [cellsTemplate]="{ Modified:Modified,KeyStatus:KeyStatus,Active:Active}" [paginator]="paginator"
+            [dataSource]="dataSource">
+        </mdc-table>
+    </div>
+    <mdc-empty-state *ngIf="!isDataExists && isLoaded" [emptyState]="emptyState"></mdc-empty-state>
+    <div class="pager-wrap" [hidden]="!isLoaded">
+        <mdc-paginator #paginator paginationTitle="{{'paginationTitle'|translate}}" noPagingTitle="Showing {0} files"
+            [blockSize]="3" [pageSize]="12" [currentPage]="0">
+        </mdc-paginator>
+    </div>
+
+    <ng-template #Modified let-item>
+        <div>{{item.Modified|date}}&nbsp;{{item.Modified|date:'HH:mm'}}</div>
+    </ng-template>
+
+    <ng-template #KeyStatus let-item let-src="source">
+        <svg class="icon ic-failure ic-grey"
+            *ngIf="src.researchStatus && src.researchStatus.toLowerCase().trim()!=='open'" mdcSvg="ic-failure"></svg>
+    </ng-template>
+
+    <ng-template #Active let-item let-src="source">
+        <div *ngIf="isActive(src)">
+            <span class="admin-table__circle admin-table__circle_green"></span>
+        </div>
+    </ng-template>
+</div>

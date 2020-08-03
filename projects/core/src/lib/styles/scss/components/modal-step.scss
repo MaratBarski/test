@@ -1,0 +1,87 @@
+/*-------------- modal-step -----------------*/
+.modal-step{
+	display: block;
+	width: calc(100% - 90px);
+	height: calc(100% - 90px);
+	max-width: 95%;
+	background: #fff;
+	border-top: 7px solid $color-purple;
+	border-radius: 4px;
+	padding: 20px 25px 15px;
+	position: fixed;
+	@include top-center;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+	z-index: 110;
+
+	&__head{
+		@include font(normal, 600, rem(20px), 1.25, $color-dark-grey);
+		text-transform: uppercase;
+		padding-right: 40px;
+		margin-bottom: 15px;
+	}
+
+	&__close{
+		display: inline-block;
+		width: 19px;
+		height: 19px;
+		position: absolute;
+		top: 24px;
+		right: 24px;
+		cursor: pointer;
+	}
+
+	&__close .icon{
+		position: absolute;
+		@include top-center;
+		left: 0;
+		right: 0;
+		margin: 0 auto;
+	}
+
+	&__content{
+		height: calc(100vh - 200px);
+		// overflow-y: auto;
+
+		.add-perm-set{
+			box-shadow: none;
+		}
+	}
+
+	.add-perm-set{
+		&__content{
+			padding-left: 0;
+			padding-right: 0;
+		}
+
+		&__content-wrap{
+			height: auto;
+			max-height: calc(100vh - 238px);
+			margin-left: -10px;
+			padding-left: 10px;
+		}
+	}
+
+	.steps-white{
+		border-top: 1px solid #acb2c3;
+
+		&__item{height: 30px;}
+	}
+}
+
+.modal-step-footer{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	&__link{
+		@include font(normal, 600, rem(14px), 1.57, $color-dark-purple);
+		text-decoration: none;
+		cursor: pointer;
+	}
+
+	&__link:hover{text-decoration: underline;}
+
+	.btn{min-width: 125px;}
+}

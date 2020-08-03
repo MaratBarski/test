@@ -67,7 +67,7 @@ export class EditPermissionSetComponent extends BaseSibscriber implements OnInit
       //   })
     }
   };
-  
+
   ngOnInit() {
     this.isLoaded = false;
     super.add(
@@ -89,4 +89,13 @@ export class EditPermissionSetComponent extends BaseSibscriber implements OnInit
     return this.researchService.isActive(src, true, false);
   }
 
+  isCreateNewSet = false;
+
+  createSet(): void {
+    this.isCreateNewSet = true;
+  }
+
+  closeCreateSet():void{
+    this.isCreateNewSet = false;
+  }
 }
