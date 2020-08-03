@@ -15,15 +15,19 @@ import { Step1Component } from './components/steps/step1/step1.component';
 import { Step2Component } from './components/steps/step2/step2.component';
 import { Step3Component } from './components/steps/step3/step3.component';
 import { RuleItemComponent } from './components/rule-item/rule-item.component';
+import { UserWizardComponent } from './pages/user-wizard/user-wizard.component';
+import { EditUserGeneralComponent } from './components/user-steps/edit-user-general/edit-user-general.component';
+import { EditPermissionSetComponent } from './components/user-steps/edit-permission-set/edit-permission-set.component';
 
 const routes: Array<Route> = [
   { path: '', component: UserListComponent },
   { path: 'research', component: ResearchListComponent },
-  { path: 'edit-permissions', component: PermissionWizardComponent }
+  { path: 'edit-permissions', component: PermissionWizardComponent },
+  { path: 'edit-user', component: UserWizardComponent },
 ]
 
 @NgModule({
-  declarations: [UserListComponent, UserDetailsComponent, ResearchListComponent, PermissionWizardComponent, FooterComponent, HeaderComponent, TabsComponent, Step1Component, Step2Component, Step3Component, RuleItemComponent],
+  declarations: [UserListComponent, UserDetailsComponent, ResearchListComponent, PermissionWizardComponent, FooterComponent, HeaderComponent, TabsComponent, Step1Component, Step2Component, Step3Component, RuleItemComponent, UserWizardComponent, EditUserGeneralComponent, EditPermissionSetComponent],
   imports: [
     CommonModule,
     CoreModule,

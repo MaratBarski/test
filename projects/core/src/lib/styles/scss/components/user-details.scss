@@ -1,0 +1,352 @@
+/*-------------- user-details -----------------*/
+.user-details-wrap{
+	.user-details-subtitle{
+		margin-top: 20px;
+		margin-bottom: 20px;
+
+		.h5{
+			text-transform: uppercase;
+			margin-bottom: 13px;
+		}
+	}
+
+	.empty-block{
+		&__head{
+			font-size: rem(20px);
+			margin-top: 50px;
+		}
+
+		&__text{
+			font-size: rem(16px);
+			margin-top: 18px;
+		}
+
+		&__img{margin-top: 90px;}
+	}
+}
+
+.user-details{
+	background: #fff;
+	border-radius: 2px;
+	box-shadow: 0 2px 4px 0 #dbe4f9;
+
+	&__content-wrap{
+		height: calc(100vh - 238px);
+		overflow-y: auto;
+	}
+
+	&__content{
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-start;
+		padding: 20px 25px 18px 45px;
+	}
+
+	&__switch{
+		max-width: 150px;
+		padding-left: 10px;
+	}
+
+	&__info{width: calc(100% - 150px);}
+
+	&__switch{
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+	}
+
+	&__label{
+		@include font(normal, normal, rem(14px), 1.57, #5d6177);
+		margin-right: 12px;
+	}
+}
+
+.user-details-main{
+	display: flex;
+	flex-wrap: wrap;
+	border-radius: 4px;
+	border: 1px solid rgba(172, 178, 195,0.5);
+	padding: 7.5px 5px;
+	margin-bottom: 20px;
+
+	&__item{
+		display: flex;
+		width: calc(50% - 20px);
+		margin: 7.5px 10px;
+	}
+
+	&__label{
+		width: 112px;
+		padding-right: 10px;
+		@include font(normal, 600, rem(14px), rem(28px), $color-dark-grey);
+	}
+
+	&__label-text{margin-right: 7px;}
+
+	&__opt{
+		font-weight: normal;
+		font-style: italic;
+		color: $color-grey;
+	}
+
+	&__field{
+		width: calc(100% - 112px);
+		position: relative;
+	}
+
+	input[type="text"],
+	input[type="email"],
+	input[type="password"]{
+		height: rem(29px);
+		width: 100%;
+		outline: none;
+		border: 1px solid $color-light-grey;
+		border-radius: 2px;
+		@include font(normal, normal, rem(14px), rem(27px), $color-dark-grey);
+		padding: 0 15px;
+		margin: 0;
+		transition: all 0.3s ease;
+	}
+
+	input[type="text"]::placeholder,
+	input[type="email"]::placeholder,
+	input[type="password"]::placeholder{
+		color: $color-grey;
+		opacity: 1;
+	}
+
+	input[type="text"]:focus,
+	input[type="email"]:focus,
+	input[type="password"]:focus{
+		border-color: $color-purple;
+	}
+
+	input[disabled],
+	textarea[disabled]{
+		background: #fff;
+		color: $color-light-grey;
+	}
+
+	.select,
+	.select_small{
+		width: 100%;
+	}
+
+	&__field input:focus + .user-details-tooltip{display: inline-block;}
+
+	input[type="password"] + .user-details-tooltip{margin-top: 8px;}
+
+	input[type="password"] + .user-details-tooltip::after{margin-top: -8px;}
+
+	&__field.error{
+		input[type="text"],
+		input[type="email"],
+		input[type="password"]{
+			border-color: $color-red;
+		}
+
+		.user-details-tooltip{
+			background: $color-red;
+			color: #fff;
+		}
+
+		.user-details-tooltip::after{border-color: transparent $color-red transparent transparent;}
+		.user-details-tooltip ul li::before{background: #fff;}
+	}
+
+	&__error{
+		@include font(normal, normal, rem(12px), 1.57, $color-red);
+		margin-bottom: -6px;
+	}
+}
+
+.user-details-param{
+	&__title{
+		@include font(normal, normal, rem(14px), 1.57, $color-dark-grey);
+		margin-bottom: 5px;
+	}
+
+	&__content{
+		border-radius: 4px;
+		border: 1px solid rgba(172, 178, 195,0.5);
+		padding: 20px 15px;
+	}
+
+	&__item{
+		display: flex;
+		flex-wrap: wrap;
+
+		border-radius: 6px;
+		border: 1px solid $color-light-grey;
+		background-color: rgba(242, 243, 245, 0.35);
+		padding: 4px 12px;
+
+		.input-check{
+			&__label{
+				color: $color-dark-grey;
+				margin: 8px 0;
+			}
+
+			&__mark{
+				border-color: $color-light-grey;
+				margin-top: 3px;
+			}
+
+			&.active .input-check__label{font-weight: 600;} 
+		}
+	}
+
+	&__item:not(:last-child){margin-bottom: 12px;}
+
+	.ic-help,
+	.ic-info{
+		display: inline-block;
+		vertical-align: middle;
+		width: 16px;
+		height: 16px;
+	}
+
+	&__check{
+		min-width: 248px;
+		margin-right: 20px;
+	}
+
+	&__link{
+		@include font(normal, normal, rem(14px), rem(27px), $color-blue);
+		text-decoration: none;
+		margin-top: 5px;
+		margin-bottom: 5px;
+		cursor: pointer;
+	}
+
+	&__link:hover{text-decoration: underline;}
+}
+
+.user-details-tooltip{
+	display: none;
+	width: 154px;
+	background: #fff;
+	margin-left: 11px;
+	position: relative;
+	padding: 8px 7px;
+	border-radius: 4px;
+	box-shadow: 0 -9px 21px 0 rgba(128, 152, 213, 0.15), -10px 9px 21px 0 rgba(128, 152, 213, 0.15);
+	@include font(normal, normal, rem(12px), rem(17px), $color-dark-grey);
+	position: absolute;
+	@include top-center;
+	left: 100%;
+	z-index: 2;
+
+	ul, ol, p{
+		font-size: rem(12px);
+		line-height: rem(17px);
+	}
+
+	ul,
+	ol{
+		padding-left: 20px;
+		list-style: none;
+	}
+
+	ul:last-child,
+	ol:last-child{
+		margin-bottom: 0;
+	}
+
+	li{
+		position: relative;
+	}
+
+	ul li::before{
+		content: '';
+		display: inline-block;
+		width: 3px;
+		height: 3px;
+		border-radius: 50%;
+		background: $color-dark-grey;
+		position: absolute;
+		top: 7px;
+		left: -9px;
+	}
+
+	&::after{
+		content: '';
+		display: inline-block;
+		width: 0;
+		height: 0;
+		border-style: solid;
+		border-width: 6px 8px 6px 0;
+		border-color: transparent #fff transparent transparent;
+		position: absolute;
+		@include top-center;
+		right: 100%;
+	}
+
+	&__title{
+		font-weight: 600;
+		margin-bottom: 8px;
+	}
+
+	&.active{display: inline-block;}
+	&_big{width: 184px;}
+}
+
+.user-details-select{
+	display: flex;
+	align-items: center;
+	margin-top: 5px;
+	margin-bottom: 5px;
+
+	&__label{
+		@include font(normal, normal, rem(14px), rem(27px), $color-dark-grey);
+		margin-right: 5px;
+	}
+
+	.drop-cond{
+		&__head{width: 100px;}
+	}
+
+	&:not(:last-child){margin-right: 15px;}
+
+	.drop-cond:not(:last-child){margin-right: 7px;}
+
+	&__icon{position: relative;}
+
+	.tooltip{
+		display: none;
+		width: 250px;
+		margin-right: 8px;
+		line-height: 1.4;
+		position: absolute;
+		top: 2px;
+		right: 100%;
+		z-index: 2;
+
+		&_right::after{top: 4px;}
+	}
+
+	&__icon:hover .tooltip{display: inline-block;}
+}
+
+@media (max-width: 991px) {
+	.user-details-main{
+		&__item{width: calc(100% - 20px);}
+	}
+}
+
+@media (max-width: 767px) {
+	.user-details{
+		&__content{
+			flex-wrap: wrap;
+			flex-direction: column-reverse;
+			padding: 18px;
+		}
+
+		&__info,
+		&__switch{
+			width: 100%;
+		}
+
+		&__switch{margin-bottom: 10px;}
+	}
+}
