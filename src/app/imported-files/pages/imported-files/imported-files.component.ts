@@ -130,7 +130,7 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, Af
           showInToaster: true,
           comment: 'File delete error.'
         });
-      })
+      });
   }
 
   private initData(): void {

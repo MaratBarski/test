@@ -78,6 +78,7 @@ export const environment = {
     usageRetantionTable: 'kostya/api/v1/reporting/usage-retention-list',
     usageCsvDownload: 'kostya/api/v1/reporting/detailed-usage-report',
     userList: 'kostya/api/v1/user',
-    research: 'kostya/api/v1/research'
+    research: 'kostya/api/v1/research',
+    formKey: 'mdclone/api/v1/config/form-key'
   }
 };

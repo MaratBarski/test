@@ -57,11 +57,11 @@ export class ImportedFileMappingComponent extends BaseNavigation implements OnIn
       this.route.params.subscribe(p => {
         this.fileSource = this.route.snapshot.data.data[0];
         this.fileSource.fileClms.sort((fileClm1, fileClm2) => {
-          const [val1, val2] = [fileClm1.physicalColName.split('_'), fileClm2.physicalColName.split('_')];
+          const [val1, val2] = [Number(fileClm1.physicalColName.split('_')[1]), Number(fileClm2.physicalColName.split('_')[1])];
           return val1 > val2 ? 1 : -1;
-        })
+        });
         this.templates = this.route.snapshot.data.data[1].sort((item1, item2) => {
-          return item1.templateName > item2.templateName ? 1 : -1;
+          return item1.templateName.toLowerCase() > item2.templateName.toLowerCase() ? 1 : -1;
         });
         this.hierarchies = this.route.snapshot.data.data[2].sort((item1, item2) => {
           return item1.hierarchyName > item2.hierarchyName ? 1 : -1;

@@ -80,7 +80,6 @@ export class UploadFileComponent extends BaseSibscriber implements OnInit {
       alert('Error');
       return;
     }
-
     const formData: FormData = new FormData();
     formData.append('file', this.fileInput.nativeElement.files[0]);
     formData.append('fileName', this.fileName);
