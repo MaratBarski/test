@@ -19,6 +19,7 @@ import { UserWizardComponent } from './pages/user-wizard/user-wizard.component';
 import { EditUserGeneralComponent } from './components/user-steps/edit-user-general/edit-user-general.component';
 import { EditPermissionSetComponent } from './components/user-steps/edit-permission-set/edit-permission-set.component';
 import { UserNameSelectorComponent } from './components/forms/user-name-selector/user-name-selector.component';
+import { InputItemComponent } from './components/forms/input-item/input-item.component';
 
 const routes: Array<Route> = [
   { path: '', component: UserListComponent },
@@ -28,7 +29,7 @@ const routes: Array<Route> = [
 ]
 
 @NgModule({
-  declarations: [UserListComponent, UserDetailsComponent, ResearchListComponent, PermissionWizardComponent, FooterComponent, HeaderComponent, TabsComponent, Step1Component, Step2Component, Step3Component, RuleItemComponent, UserWizardComponent, EditUserGeneralComponent, EditPermissionSetComponent, UserNameSelectorComponent],
+  declarations: [UserListComponent, UserDetailsComponent, ResearchListComponent, PermissionWizardComponent, FooterComponent, HeaderComponent, TabsComponent, Step1Component, Step2Component, Step3Component, RuleItemComponent, UserWizardComponent, EditUserGeneralComponent, EditPermissionSetComponent, UserNameSelectorComponent, InputItemComponent],
   imports: [
     CommonModule,
     CoreModule,

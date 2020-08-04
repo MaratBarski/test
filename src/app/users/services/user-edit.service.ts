@@ -6,11 +6,30 @@ import { Observable, Subject } from 'rxjs';
 })
 export class UserEditService {
 
+  missingItem = {
+    firstName: {
+      isMissing: false,
+      isError: false
+    },
+    lastName: {
+      isMissing: false,
+      isError: false
+    },
+    email: {
+      isMissing: false,
+      isError: false
+    }
+  }
+
   constructor() { }
 
   user = {
     isSuperAdmin: false,
-    enabled: true
+    enabled: true,
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: ''
   }
 
   environments = [
@@ -36,8 +55,6 @@ export class UserEditService {
     this._onTabChanged.next(this._selectedTab);
   }
 
-  private _isNeedValidate = !true;
-
   nextTab(i: number): void {
     if (!this.validate(true)) { return; }
     this._selectedTab += i;
@@ -46,9 +63,33 @@ export class UserEditService {
     this._onTabChanged.next(this._selectedTab);
   }
 
+  private _isNeedValidate = true;
+
   validate(setError: boolean): boolean {
     if (!this._isNeedValidate) { return true; }
-    return false;
+
+    this.resetValidation();
+    let res = true;
+    Object.keys(this.missingItem).forEach(k => {
+      if (this.isEmpty(this.user[k])) {
+        this.missingItem[k].isMissing = true;
+        this.missingItem[k].isError = true;
+        res = false;
+      }
+    });
+    return res;
+  }
+
+  private isEmpty(value: any): boolean {
+    if (!value) { return true; }
+    return value.toString().trim() === '';
+  }
+
+  resetValidation(): void {
+    Object.keys(this.missingItem).forEach(k => {
+      this.missingItem[k].isMissing = false;
+      this.missingItem[k].isError = false;
+    });
   }
 
   cancel(): void {

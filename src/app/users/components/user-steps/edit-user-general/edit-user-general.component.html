@@ -9,40 +9,22 @@
                     </div>
                 </div>
                 <div class="user-details-main__item"></div>
+                <md-input-item [(ngModel)]="userEditService.user.firstName" [isError]="userEditService.missingItem.firstName.isError"
+                    [isMissing]="userEditService.missingItem.firstName.isMissing" placeHolder="Type user’s first name"
+                    missingText="Missing first name" label="First Name:">
+                </md-input-item>
+                <md-input-item [(ngModel)]="userEditService.user.lastName" [isError]="userEditService.missingItem.lastName.isError"
+                    [isMissing]="userEditService.missingItem.lastName.isError" placeHolder="Type user’s last name"
+                    missingText="Missing last name" label="Last Name:">
+                </md-input-item>
+                <md-input-item type="email"  [(ngModel)]="userEditService.user.email" [isError]="userEditService.missingItem.email.isError"
+                    [isMissing]="userEditService.missingItem.email.isError" placeHolder="user@domain.com"
+                    missingText="Missing email" label="Email:"></md-input-item>
+                <md-input-item type="text"  [(ngModel)]="userEditService.user.phone" [isOptional]="true" [isError]="false" placeHolder="+120-234-56789"
+                    label="Phone:"></md-input-item>
                 <div class="user-details-main__item">
                     <div class="user-details-main__label">
-                        <span class="user-details-main__label-text">First Name:</span>
-                    </div>
-                    <div class="user-details-main__field">
-                        <input type="text" placeholder="Type user’s first name">
-                    </div>
-                </div>
-                <div class="user-details-main__item">
-                    <div class="user-details-main__label">
-                        <span class="user-details-main__label-text">Last Name:</span>
-                    </div>
-                    <div class="user-details-main__field">
-                        <input type="text" placeholder="Type user’s last name">
-                    </div>
-                </div>
-                <div class="user-details-main__item">
-                    <div class="user-details-main__label">
-                        <span class="user-details-main__label-text">Email:</span>
-                    </div>
-                    <div class="user-details-main__field">
-                        <input type="email" placeholder="user@domain.com">
-                    </div>
-                </div>
-                <div class="user-details-main__item">
-                    <div class="user-details-main__label"><span class="user-details-main__label-text">Phone:</span><span
-                            class="user-details-main__opt">optional</span></div>
-                    <div class="user-details-main__field">
-                        <input type="text" placeholder="+120-234-56789">
-                    </div>
-                </div>
-                <div class="user-details-main__item">
-                    <div class="user-details-main__label"><span class="user-details-main__label-text">Super
-                            Admin:</span></div>
+                        <span class="user-details-main__label-text">Super Admin:</span></div>
                     <div class="user-details-main__field">
                         <mdc-toggle-button [(ngModel)]="userEditService.user.isSuperAdmin"></mdc-toggle-button>
                     </div>

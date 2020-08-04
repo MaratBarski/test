@@ -12,6 +12,7 @@ export class EditUserGeneralComponent implements OnInit {
     public userEditService: UserEditService
   ) { }
 
+
   ngOnInit() {
   }
 
