@@ -9,19 +9,21 @@
                     </div>
                 </div>
                 <div class="user-details-main__item"></div>
+
                 <md-input-item [(ngModel)]="userEditService.user.firstName" [isError]="userEditService.missingItem.firstName.isError"
                     [isMissing]="userEditService.missingItem.firstName.isMissing" placeHolder="Type user’s first name"
-                    missingText="Missing first name" label="First Name:">
+                    missingText="Missing first name" label="First Name:" class="user-details-main__item">
                 </md-input-item>
+
                 <md-input-item [(ngModel)]="userEditService.user.lastName" [isError]="userEditService.missingItem.lastName.isError"
                     [isMissing]="userEditService.missingItem.lastName.isError" placeHolder="Type user’s last name"
-                    missingText="Missing last name" label="Last Name:">
+                    missingText="Missing last name" label="Last Name:" class="user-details-main__item">
                 </md-input-item>
                 <md-input-item type="email"  [(ngModel)]="userEditService.user.email" [isError]="userEditService.missingItem.email.isError"
                     [isMissing]="userEditService.missingItem.email.isError" placeHolder="user@domain.com"
-                    missingText="Missing email" label="Email:"></md-input-item>
+                    missingText="Missing email" label="Email:" class="user-details-main__item"></md-input-item>
                 <md-input-item type="text"  [(ngModel)]="userEditService.user.phone" [isOptional]="true" [isError]="false" placeHolder="+120-234-56789"
-                    label="Phone:"></md-input-item>
+                    label="Phone:" class="user-details-main__item"></md-input-item>
                 <div class="user-details-main__item">
                     <div class="user-details-main__label">
                         <span class="user-details-main__label-text">Super Admin:</span></div>
