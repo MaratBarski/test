@@ -55,7 +55,7 @@ export class UploadFileComponent {
       notification: {
         name: 'Uploading Categorization',
         failName: `Failed to upload ${this.fileName}.`,
-        failComment:'Upload error',
+        failComment: 'Upload error',
         succName: 'Categorization SUCCESSFULLY UPLOADED',
         abortName: 'Categorization UPLOAD ABORTED BY USER',
         comment: 'You will be notified when its ready for review.',
@@ -103,7 +103,7 @@ export class UploadFileComponent {
     } else {
       formData.append('hierarchyRootId', this.source.hierarchyRootId);
     }
-    formData.append('defaultLevelId', this.defaultCategory);
+    formData.append('defaultLevelId', '' + (parseInt(this.defaultCategory) - 1));
     //formData.append('type', 'manual');
     return formData;
   }
@@ -124,12 +124,12 @@ export class UploadFileComponent {
   readFile(file: any): void {
     this.csvManagerService.readHeaders(file).then((arr: Array<string>) => {
       this.isFileError = false;
-      this.categoryHeaders = 
-      ['Select default category...'].concat(
-      arr.map((str, i) => {
-        return str;
-        //return { text: str, value: i, id: i }
-      }));
+      this.categoryHeaders =
+        ['Select default category...'].concat(
+          arr.map((str, i) => {
+            return str;
+            //return { text: str, value: i, id: i }
+          }));
     }).catch(error => {
       this.categoryHeaders = [];
       this.file = '';

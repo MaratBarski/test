@@ -15,6 +15,7 @@ export class TextBlockComponent extends BaseSibscriber {
   @Input() whiteSpace = 'nowrap'
   @Input() position: TooltipPosition = 'right';
   @Input() colorText = '';
+  @Input() stickyToElement = true;
 
   @Input() set maxWidth(maxWidth: number) {
     if (maxWidth >= 0) {

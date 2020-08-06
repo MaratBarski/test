@@ -1,46 +1,123 @@
 {
     "data": {
-        "hierarchyRootId": "563",
-        "description": "kosta",
+        "hierarchyRootId": "695",
+        "description": "",
         "domain": null,
-        "hierarchyFile": "20200705_162359_hie_sariel.csv",
-        "hierarchyName": "Diagnosis123411211213",
+        "hierarchyFile": "20200804_190423_New_column.csv",
+        "hierarchyName": "hie7 04.08.2020",
         "projectId": "1",
         "hierarchyFilePath": "/mdclone_v6/files/Hierarchies",
-        "insertDate": "2020-07-05T13:21:25.000Z",
-        "defaultLevelId": "1",
+        "insertDate": "2020-08-04T15:33:23.000Z",
+        "defaultLevelId": "5064",
         "hierarchyChange": false,
-        "hierarchyLoadingType": "manual",
+        "hierarchyLoadingType": "etl",
         "status": "mapped",
         "project_id": "1",
         "hierarchyLevels": [
             {
-                "hierarchyLevelId": "2929",
-                "hierarchyLevelName": "pid",
+                "hierarchyLevelId": "5058",
+                "hierarchyLevelName": "Parent 3",
+                "sortValue": 7,
+                "dataSample": "Infectious And Parasitic Diseases%sep%Diseases Of The Skin And Subcutaneous Tissue%sep%Supplementary Classification Of Factors Influencing Health Status And Contact With Health Services%sep%Congenital Anomalies",
+                "hierarchyRootId": "695"
+            },
+            {
+                "hierarchyLevelId": "5056",
+                "hierarchyLevelName": "Parent 3",
+                "sortValue": 7,
+                "dataSample": "Infectious And Parasitic Diseases%sep%Diseases Of The Skin And Subcutaneous Tissue%sep%Supplementary Classification Of Factors Influencing Health Status And Contact With Health Services%sep%Congenital Anomalies",
+                "hierarchyRootId": "695"
+            },
+            {
+                "hierarchyLevelId": "5059",
+                "hierarchyLevelName": "Code",
+                "sortValue": -1,
+                "dataSample": "66200%sep%37762%sep%E8694%sep%V5974",
+                "hierarchyRootId": "695"
+            },
+            {
+                "hierarchyLevelId": "5051",
+                "hierarchyLevelName": "Designation",
+                "sortValue": -1,
+                "dataSample": "Late effects of self-inflicted injury%sep%Encounter for planned post-operative wound closure%sep%Abnormality in fetal heart rate or rhythm%sep%Other specified idiopathic peripheral neuropathy",
+                "hierarchyRootId": "695"
+            },
+            {
+                "hierarchyLevelId": "5052",
+                "hierarchyLevelName": "Elixhauser group",
+                "sortValue": -1,
+                "dataSample": "Renal Failure%sep%Hypertension, complicated%sep%None%sep%Cardiac arrhythmias",
+                "hierarchyRootId": "695"
+            },
+            {
+                "hierarchyLevelId": "5057",
+                "hierarchyLevelName": "Parent 3",
+                "sortValue": -1,
+                "dataSample": "Infectious And Parasitic Diseases%sep%Diseases Of The Skin And Subcutaneous Tissue%sep%Supplementary Classification Of Factors Influencing Health Status And Contact With Health Services%sep%Congenital Anomalies",
+                "hierarchyRootId": "695"
+            },
+            {
+                "hierarchyLevelId": "5064",
+                "hierarchyLevelName": "Code",
                 "sortValue": 0,
-                "dataSample": "250",
-                "hierarchyRootId": "563"
+                "dataSample": "66200%sep%37762%sep%E8694%sep%V5974",
+                "hierarchyRootId": "695"
             },
             {
-                "hierarchyLevelId": "2935",
-                "hierarchyLevelName": " d desc",
+                "hierarchyLevelId": "5060",
+                "hierarchyLevelName": "Designation",
                 "sortValue": 1,
-                "dataSample": " balbla",
-                "hierarchyRootId": "563"
+                "dataSample": "Late effects of self-inflicted injury%sep%Encounter for planned post-operative wound closure%sep%Abnormality in fetal heart rate or rhythm%sep%Other specified idiopathic peripheral neuropathy",
+                "hierarchyRootId": "695"
             },
             {
-                "hierarchyLevelId": "3813",
-                "hierarchyLevelName": "omry 233",
-                "sortValue": -1,
-                "dataSample": null,
-                "hierarchyRootId": "563"
+                "hierarchyLevelId": "5061",
+                "hierarchyLevelName": "Elixhauser group",
+                "sortValue": 2,
+                "dataSample": "Renal Failure%sep%Hypertension, complicated%sep%None%sep%Cardiac arrhythmias",
+                "hierarchyRootId": "695"
             },
             {
-                "hierarchyLevelId": "3814",
-                "hierarchyLevelName": "omry 2",
-                "sortValue": -1,
-                "dataSample": null,
-                "hierarchyRootId": "563"
+                "hierarchyLevelId": "5062",
+                "hierarchyLevelName": "Elixhauser group - New column",
+                "sortValue": 3,
+                "dataSample": "Renal Failure%sep%Hypertension, complicated%sep%None%sep%Cardiac arrhythmias",
+                "hierarchyRootId": "695"
+            },
+            {
+                "hierarchyLevelId": "5065",
+                "hierarchyLevelName": "Parent 1 code",
+                "sortValue": 4,
+                "dataSample": "079.9%sep%131%sep%787.6%sep%996.0",
+                "hierarchyRootId": "695"
+            },
+            {
+                "hierarchyLevelId": "5063",
+                "hierarchyLevelName": "Parent 1 Designation",
+                "sortValue": 5,
+                "dataSample": "Other and unspecified intracranial hemorrhage following injury, without mention of open intracranial wound%sep%Other conditions influencing health status%sep%Spastic hemiplegia%sep%Congenital anomalies of eye",
+                "hierarchyRootId": "695"
+            },
+            {
+                "hierarchyLevelId": "5053",
+                "hierarchyLevelName": "Parent 2 code",
+                "sortValue": 6,
+                "dataSample": "E901%sep%131%sep%488%sep%756",
+                "hierarchyRootId": "695"
+            },
+            {
+                "hierarchyLevelId": "5054",
+                "hierarchyLevelName": "Parent 2 Designation",
+                "sortValue": 7,
+                "dataSample": "Injury due to war operations by bullets and fragments%sep%Other conditions influencing health status%sep%Disorders of the globe%sep%Congenital anomalies of eye",
+                "hierarchyRootId": "695"
+            },
+            {
+                "hierarchyLevelId": "5055",
+                "hierarchyLevelName": "Parent 3",
+                "sortValue": 8,
+                "dataSample": "Infectious And Parasitic Diseases%sep%Diseases Of The Skin And Subcutaneous Tissue%sep%Supplementary Classification Of Factors Influencing Health Status And Contact With Health Services%sep%Congenital Anomalies",
+                "hierarchyRootId": "695"
             }
         ],
         "project": {
