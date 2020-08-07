@@ -55,44 +55,33 @@ export class PermissionSetService {
     return this._templatesLoaded;
   }
 
+  @Offline('assets/offline/templateByProject.json?')
+  private templateByProjectUrl = `${environment.serverUrl}${environment.endPoints.templateByProject}`;
+
+
   loadTemplates(): void {
     this._templatesLoaded = false;
-    timer(1000).subscribe(() => {
+    this.http.get(`${this.templateByProjectUrl}/${this.permissionSet.project}`).subscribe((res: any) => {
       this._templatesLoaded = true;
-      this.templates = [
-        {
-          name: 'template1', id: 1, isChecked: false, templateItems: [
-            { name: 'Medications in Admissions', type: 'Medications' },
-            { name: 'Medications in Admissions', type: 'Medications' },
-            { name: 'Medications in Admissions', type: 'Medications' },
-            { name: 'Medications in Admissions', type: 'Medications' }
-          ]
-        },
-        {
-          name: 'template2', id: 2, isChecked: false, templateItems: [
-            { name: 'Medications in Admissions', type: 'Medications' }
-          ]
-        },
-        {
-          name: 'template3', id: 3, isChecked: false, templateItems: [
-            { name: 'Medications in Admissions', type: 'Medications' },
-            { name: 'Medications in Admissions', type: 'Medications' }
-          ]
-        },
-        {
-          name: 'template4', id: 4, isChecked: false, templateItems: [
-            { name: 'Medications in Admissions', type: 'Medications' },
-            { name: 'Medications in Admissions', type: 'Medications' },
-            { name: 'Medications in Admissions', type: 'Medications' }
-          ]
+      this.templates = res.data.map((t: any) => {
+        return {
+          name: t.templateName,
+          id: t.templateId,
+          isChecked: false,
+          templateItems:
+            t.siteEventInfos.map((ti: any) => {
+              return { name: ti.eventTableName, type: ti.eventType };
+            })
         }
-      ];
+      })
     });
   }
 
   templates = [];
+  user: any;
 
   updateTemplates(): void {
+    this.templates = [].concat(this.templates);
     this._permissionSet.researchTemplates =
       this.templates.filter(x => x.isChecked).map(x => {
         return {
@@ -131,7 +120,7 @@ export class PermissionSetService {
 
   }
 
-  private _isNeedValidate = true;
+  private _isNeedValidate = !true;
 
   validate(setError: boolean): boolean {
     if (!this._isNeedValidate) { return true; }
@@ -149,9 +138,9 @@ export class PermissionSetService {
     if (!this._permissionSet.fromDateUnlimited && !this.dateService.isDateValid(this._permissionSet.fromDate)) { return false; }
     if (!this._permissionSet.toDateUnlimited && !this.dateService.isDateValid(this._permissionSet.toDate)) { return false; }
 
-    if (!this.dateService.isDateValid(this._permissionSet.keyExpirationDate)) { return false; }
+    //if (!this.dateService.isDateValid(this._permissionSet.keyExpirationDate)) { return false; }
 
-    if (this.isEmpty(this._permissionSet.keyName)) { return false; }
+    //if (this.isEmpty(this._permissionSet.keyName)) { return false; }
 
     this._isShowError = false;
     return true;
@@ -240,13 +229,14 @@ export class PermissionSetService {
     return this._users.map((x: any) => {
       return {
         id: x.id,
-        name: `${x.firstName} ${x.lastName}`
+        name: `${x.firstName} ${x.lastName}`,
+        projects: x.projects
       };
     })
   }
 
   addRoleItem(): void {
-    this._permissionSet.roleItems = [{ name: '1' }].concat(this._permissionSet.roleItems )
+    this._permissionSet.roleItems = [{ name: '1' }].concat(this._permissionSet.roleItems)
   }
 
   removeRoleItem(item: any): void {

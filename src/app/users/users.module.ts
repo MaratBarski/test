@@ -20,6 +20,7 @@ import { EditUserGeneralComponent } from './components/user-steps/edit-user-gene
 import { EditPermissionSetComponent } from './components/user-steps/edit-permission-set/edit-permission-set.component';
 import { UserNameSelectorComponent } from './components/forms/user-name-selector/user-name-selector.component';
 import { InputItemComponent } from './components/forms/input-item/input-item.component';
+import { DistinctTemplatePipe } from './pipes/distinct-template.pipe';
 
 const routes: Array<Route> = [
   { path: '', component: UserListComponent },
@@ -29,7 +30,7 @@ const routes: Array<Route> = [
 ]
 
 @NgModule({
-  declarations: [UserListComponent, UserDetailsComponent, ResearchListComponent, PermissionWizardComponent, FooterComponent, HeaderComponent, TabsComponent, Step1Component, Step2Component, Step3Component, RuleItemComponent, UserWizardComponent, EditUserGeneralComponent, EditPermissionSetComponent, UserNameSelectorComponent, InputItemComponent],
+  declarations: [UserListComponent, UserDetailsComponent, ResearchListComponent, PermissionWizardComponent, FooterComponent, HeaderComponent, TabsComponent, Step1Component, Step2Component, Step3Component, RuleItemComponent, UserWizardComponent, EditUserGeneralComponent, EditPermissionSetComponent, UserNameSelectorComponent, InputItemComponent, DistinctTemplatePipe],
   imports: [
     CommonModule,
     CoreModule,

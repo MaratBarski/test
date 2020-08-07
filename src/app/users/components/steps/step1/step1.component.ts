@@ -42,6 +42,8 @@ export class Step1Component implements OnInit {
   }
 
   selectUser(user: any): void {
+    this.permissionSetService.permissionSet.project = undefined;
+    this.permissionSetService.user = user;
     this.permissionSetService.permissionSet.userId = user.id;
     this.permissionSetService.validate(false);
   }

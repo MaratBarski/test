@@ -1,5 +1,157 @@
 {
-    "data": [],
+    "data": [
+        {
+            "templateId": "1",
+            "templateName": "Demo Template",
+            "templateType": "PERMISSION",
+            "templateGroup": null,
+            "projectId": "1",
+            "siteEventInfos": [
+                {
+                    "eventId": "187",
+                    "eventDes": "first line: blah blah blah, blah blah blah, blah blah blah\nnew line: blah khkhkadhsakjhkkkkkkkjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjksjkjdkljsdkljadlkjad;lkad lajdljaljdslkjasdasd kostya popkov",
+                    "eventTableAlias": " diagnosis test kostya 1 diagnosis test kostya 1 diagnosis test kostya 1 diagnosis test kostya 1 diagnosis test kostya 1 diagnosis test kostya 1 diagnosis test kostya 1 diagnosis test kostya 1 diagnosis test kostya 1 diagnosis test kostya 1",
+                    "eventTableName": "diagnosis",
+                    "eventType": "REGULAR",
+                    "siteId": "1",
+                    "TemplateEvent": {
+                        "templateId": "1",
+                        "eventId": "187"
+                    }
+                }
+            ]
+        },
+        {
+            "templateId": "29",
+            "templateName": "Hanna",
+            "templateType": "DISPLAY",
+            "templateGroup": null,
+            "projectId": "1",
+            "siteEventInfos": []
+        },
+        {
+            "templateId": "31",
+            "templateName": "Medications",
+            "templateType": "DISPLAY",
+            "templateGroup": null,
+            "projectId": "1",
+            "siteEventInfos": [
+                {
+                    "eventId": "4",
+                    "eventDes": null,
+                    "eventTableAlias": "medications",
+                    "eventTableName": "medications",
+                    "eventType": "REGULAR",
+                    "siteId": "1",
+                    "TemplateEvent": {
+                        "templateId": "31",
+                        "eventId": "4"
+                    }
+                },
+                {
+                    "eventId": "285",
+                    "eventDes": null,
+                    "eventTableAlias": "medications with diagnoses",
+                    "eventTableName": "medications",
+                    "eventType": "REGULAR",
+                    "siteId": "1",
+                    "TemplateEvent": {
+                        "templateId": "31",
+                        "eventId": "285"
+                    }
+                }
+            ]
+        },
+        {
+            "templateId": "38",
+            "templateName": "Test Template",
+            "templateType": "PERMISSION",
+            "templateGroup": null,
+            "projectId": "1",
+            "siteEventInfos": []
+        },
+        {
+            "templateId": "2",
+            "templateName": "Diagnosis Diagnosis Diagnosis Diagnosis Diagnosis",
+            "templateType": "DISPLAY",
+            "templateGroup": null,
+            "projectId": "1",
+            "siteEventInfos": [
+                {
+                    "eventId": "2",
+                    "eventDes": "this is the patient diagnosis 1",
+                    "eventTableAlias": "diagnosis",
+                    "eventTableName": "diagnosis",
+                    "eventType": "REGULAR",
+                    "siteId": "1",
+                    "TemplateEvent": {
+                        "templateId": "2",
+                        "eventId": "2"
+                    }
+                },
+                {
+                    "eventId": "87",
+                    "eventDes": null,
+                    "eventTableAlias": "test",
+                    "eventTableName": "admissions",
+                    "eventType": "REGULAR",
+                    "siteId": "1",
+                    "TemplateEvent": {
+                        "templateId": "2",
+                        "eventId": "87"
+                    }
+                },
+                {
+                    "eventId": "149",
+                    "eventDes": null,
+                    "eventTableAlias": "csv-2 hive_1",
+                    "eventTableName": "lab_results_microbiology",
+                    "eventType": "REGULAR",
+                    "siteId": "1",
+                    "TemplateEvent": {
+                        "templateId": "2",
+                        "eventId": "149"
+                    }
+                },
+                {
+                    "eventId": "187",
+                    "eventDes": "first line: blah blah blah, blah blah blah, blah blah blah\nnew line: blah khkhkadhsakjhkkkkkkkjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjksjkjdkljsdkljadlkjad;lkad lajdljaljdslkjasdasd kostya popkov",
+                    "eventTableAlias": " diagnosis test kostya 1 diagnosis test kostya 1 diagnosis test kostya 1 diagnosis test kostya 1 diagnosis test kostya 1 diagnosis test kostya 1 diagnosis test kostya 1 diagnosis test kostya 1 diagnosis test kostya 1 diagnosis test kostya 1",
+                    "eventTableName": "diagnosis",
+                    "eventType": "REGULAR",
+                    "siteId": "1",
+                    "TemplateEvent": {
+                        "templateId": "2",
+                        "eventId": "187"
+                    }
+                },
+                {
+                    "eventId": "285",
+                    "eventDes": null,
+                    "eventTableAlias": "medications with diagnoses",
+                    "eventTableName": "medications",
+                    "eventType": "REGULAR",
+                    "siteId": "1",
+                    "TemplateEvent": {
+                        "templateId": "2",
+                        "eventId": "285"
+                    }
+                },
+                {
+                    "eventId": "299",
+                    "eventDes": null,
+                    "eventTableAlias": "test3",
+                    "eventTableName": "diagnosis",
+                    "eventType": "REGULAR",
+                    "siteId": "1",
+                    "TemplateEvent": {
+                        "templateId": "2",
+                        "eventId": "299"
+                    }
+                }
+            ]
+        }
+    ],
     "massage": "Get Template Object",
     "status": "success"
 }

@@ -53,7 +53,9 @@
                         </div>
                         <div class="add-perm-sect__select">
                             <div class="add-perm-sect__label">Environment:</div>
-                            <md-project-combo [isSmall]="true" [project]="permissionSetService.permissionSet.project"
+                            <md-project-combo [isSmall]="true" [selectUp]="false"
+                            [user]="permissionSetService.user"
+                                [project]="permissionSetService.permissionSet.project"
                                 (onChange)="changedProject($event)">
                             </md-project-combo>
                         </div>
@@ -119,7 +121,9 @@
             </div>
         </div>
         <div class="add-perm-sect">
-            <div class="add-perm-sect__head">Approval Key Details</div>
+            <div class="add-perm-sect__head">Approval Key Details
+                <span class="user-details-main__opt">optional</span>
+            </div>
             <div class="add-perm-sect__content">
                 <div class="add-perm-sect__item">
                     <div class="add-perm-sect__title"><span class="add-perm-sect__title-text">Key Name:</span></div>

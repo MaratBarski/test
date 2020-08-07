@@ -14,7 +14,8 @@
             </div>
             <div class="add-perm-templ" [ngClass]="{'disable':permissionSetService.permissionSet.allowedEvent!==3}">
                 <div class="add-perm-templ__list">
-                    <div (mouseleave)="unselectTemplateItem()" (mouseover)="selectTemplateItem(t)" *ngFor="let t of permissionSetService.templates" class="add-perm-templ__item">
+                    <div (mouseleave)="unselectTemplateItem()" (mouseover)="selectTemplateItem(t)"
+                        *ngFor="let t of permissionSetService.templates" class="add-perm-templ__item">
                         <div class="input-check">
                             <input (change)="updateTemplates(t)" [(ngModel)]="t.isChecked" type="checkbox"
                                 id="tmpl_{{t.id}}" [disabled]="permissionSetService.permissionSet.allowedEvent!==3">
@@ -52,7 +53,9 @@
                 <div class="add-perm-evets__title">Events the user may query:</div>
                 <div class="add-perm-evets__content">
                     <div class="add-perm-evets__list">
-                        <div class="add-perm-evets__item">Admissions</div>
+                        <div *ngFor="let t of  permissionSetService.templates|distinctTemplate" class="add-perm-evets__item">
+                            {{t.name}}
+                        </div>
                     </div>
                 </div>
             </div>

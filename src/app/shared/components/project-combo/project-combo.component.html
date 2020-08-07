@@ -1,3 +1,5 @@
-<mdc-select [isSmall]="isSmall" placeholder="Select Environment…" [(ngModel)]="projectModel" [applyWidth]="applyWidth" [hidden]="!selectOptions?.length" maxHeight="150px" [selectUp]="selectUp" [selected]="selectedOption" (changed)="changedProject($event)" [options]="selectOptions">
+<mdc-select [isSmall]="isSmall" placeholder="Select Environment…" [(ngModel)]="projectModel" [applyWidth]="applyWidth"
+    [hidden]="!selectOptions?.length" maxHeight="150px" [selectUp]="selectUp"
+    [selected]="selectedOption" (changed)="changedProject($event)" [options]="selectOptions|userProject:user">
 </mdc-select>
 <div [hidden]="selectOptions?.length">No projects</div>
