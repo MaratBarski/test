@@ -197,7 +197,7 @@ export class PermissionSetService {
 
   private isEmpty(value: any): boolean {
     if (!value) { return true; }
-    if (value.trim() === '') { return true; }
+    if (value.toString().trim() === '') { return true; }
     return false;
   }
 
