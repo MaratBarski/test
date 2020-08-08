@@ -18,7 +18,7 @@ export class InputNumberComponent implements ControlValueAccessor {
   @Output() onValueChanged = new EventEmitter<number>();
 
   @Input() min = 0;
-  @Input() max = 10;
+  @Input() max = 100000;
   @Input() emptyEnable = false;
   @Input() isValid = true;
   @Input() errorMessage = 'missing number';

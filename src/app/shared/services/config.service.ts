@@ -44,6 +44,11 @@ export class ConfigService extends BaseSibscriber {
     return this.dataService.get(`${environment.serverUrl}${environment.endPoints.formKey}`).toPromise();
   }
 
+  getValue(key: string): any {
+    const c = this.serverConfig.config.find(x => x.parameterName === key);
+    return c ? c.parameterValue : undefined;
+  }
+
   loadConfig(): void {
     super.add(
       forkJoin(

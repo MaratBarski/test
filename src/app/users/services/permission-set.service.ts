@@ -5,6 +5,7 @@ import { environment } from '@env/environment';
 import { forkJoin, Subject, Observable, timer } from 'rxjs';
 import { UserListService } from './user-list.service';
 import { DateService } from '@app/core-api';
+import { ConfigService } from '@app/shared/services/config.service';
 
 export const AllowedEvents = [
   { id: 1, text: 'No allowed events (Default)' },
@@ -44,7 +45,8 @@ export class PermissionSetService {
   constructor(
     private http: HttpClient,
     private userListService: UserListService,
-    private dateService: DateService
+    private dateService: DateService,
+    private configService: ConfigService
   ) {
     this._permissionSet = this.getDefault();
     this.loadData();
@@ -57,7 +59,6 @@ export class PermissionSetService {
 
   @Offline('assets/offline/templateByProject.json?')
   private templateByProjectUrl = `${environment.serverUrl}${environment.endPoints.templateByProject}`;
-
 
   loadTemplates(): void {
     this._templatesLoaded = false;
@@ -117,10 +118,58 @@ export class PermissionSetService {
   }
 
   save(): void {
-
+    const obj = this.createSaveObject();
+    alert(JSON.stringify(obj));
   }
 
-  private _isNeedValidate = !true;
+  private createSaveObject(): any {
+    const obj = {
+      researchName: this.permissionSet.setName,
+      userId: this.permissionSet.userId,
+      information: this.permissionSet.setDescription,
+      approvalKey: this.permissionSet.keyName,
+      projectId: this.permissionSet.project,
+      researchStatus: "Open",
+      maxPatients: this.permissionSet.size,
+      researchRestrictionEvents: []
+    }
+    if (this.permissionSet.keyExpirationDate) {
+      obj['approvalKeyExpirationDate'] = this.dateService.formatDate(this.permissionSet.keyExpirationDate);
+    }
+    if (!this.permissionSet.fromDateUnlimited) {
+      obj['startDate'] = this.dateService.formatDate(this.permissionSet.fromDate);
+    }
+    if (!this.permissionSet.toDateUnlimited) {
+      obj['endDate'] = this.dateService.formatDate(this.permissionSet.toDate);
+    }
+    if (this.permissionSet.allowedEvent === 1) {
+      obj.researchStatus = 'initial';
+    } else {
+      obj['researchTemplates'] =
+        this.permissionSet.allowedEvent === 3 ?
+          this.permissionSet.researchTemplates :
+          this.templates.map(x => {
+            return {
+              templateId: x.id
+            }
+          })
+    }
+
+    // const checkedTemplates = this.templates.filter(x => x.isChecked);
+
+    // checkedTemplates.forEach(x => {
+    //   x.siteEventInfos.forEach(y => {
+    //     obj.researchRestrictionEvents.push({
+    //       eventId: y.eventId,
+    //       eventPropertyName: y.eventTableName,
+    //       value: 1
+    //     })
+    //   })
+    // })
+    return obj;
+  }
+
+  private _isNeedValidate = true;
 
   validate(setError: boolean): boolean {
     if (!this._isNeedValidate) { return true; }
@@ -184,7 +233,7 @@ export class PermissionSetService {
       isNew: true,
       isActive: true,
       setName: '',
-      size: undefined,
+      size: parseInt(this.configService.getValue('research_max_patients')),
       setDescription: '',
       keyName: '',
       project: '',
