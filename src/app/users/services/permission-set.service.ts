@@ -48,8 +48,14 @@ export class PermissionSetService {
     private dateService: DateService,
     private configService: ConfigService
   ) {
+  }
+
+  resetService(): void {
     this._permissionSet = this.getDefault();
     this.loadData();
+    this.user = undefined;
+    this._isShowError = false;
+    this._selectedTab = 0;
   }
 
   private _templatesLoaded = false;

@@ -34,7 +34,8 @@ export class PermissionWizardComponent implements OnInit {
     }
   ]
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.permissionSetService.resetService();
   }
 
   cancel(): void {
