@@ -164,6 +164,7 @@ export class TableComponent implements OnDestroy, AfterViewInit, AfterViewChecke
     this._serachText = '';
     if (this._search) {
       this._search.text = '';
+      this._search.prevText = '';
     }
   }
 
