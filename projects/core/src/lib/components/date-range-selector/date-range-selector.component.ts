@@ -33,6 +33,11 @@ export class DateRangeSelectorComponent {
   locale = this.dateService.getCalendarLocale();
 
   apply(): void {
+    if (this.to < this.from) {
+      const t = this.to;
+      this.to = this.from;
+      this.from = t;
+    }
     this.onApply.emit({
       from: this.from,
       to: this.to

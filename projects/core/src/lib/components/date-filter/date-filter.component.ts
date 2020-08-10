@@ -93,10 +93,11 @@ export class DateFilterComponent {
     this.showCustom = false;
     this.customFrom = range.from;
     this.customTo = range.to;
-    this.customTo.setDate(this.customTo.getDate() + 1);
+    const to = new Date(this.customTo);
+    to.setDate(this.customTo.getDate() + 1);
     this.items[this.tabActive].range = {
       fromDate: this.customFrom,
-      toDate: this.customTo
+      toDate: to
     };
     this.filterData();
   }

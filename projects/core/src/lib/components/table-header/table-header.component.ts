@@ -11,7 +11,7 @@ export enum ColumnType {
 }
 
 export class TableHeaderModel {
-  text: string;
+  text?: string;
   isSortEnabled?: boolean;
   isSortedColumn?: boolean;
   sortDir?: 'asc' | 'desc';

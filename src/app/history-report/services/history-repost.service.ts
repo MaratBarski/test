@@ -110,7 +110,10 @@ export class HistoryReportService {
           isSortEnabled: false,
           css: 'admin-table__item admin-table__load'
         },
-
+        {
+          columnId: 'sessionId',
+          hidden: true
+        },
       ],
       rows: []
     }
@@ -126,6 +129,7 @@ export class HistoryReportService {
           research: fl.researchName,
           environment: fl.projectName,
           source: !!fl.sessionId ? 'Query' : 'Imported file',
+          sessionId: fl.sessionId,
           status: !!fl.transStatus ? 'True' : 'False',
           download: fl.sessionHistoryId,
           failureToolTip: this.getTransToolTip(fl.transMsg)

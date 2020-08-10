@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, AfterContentInit } from '@angular/core';
-import { ImportedFilesService } from '../../services/imported-files.service';
+import { ImportedFilesService, EMPTY_TEMPLATE } from '../../services/imported-files.service';
 import { FileSource, FileSourceResponse } from '../../models/file-source';
 import { DateRangeButton, TableComponent, TranslateService, DateFilterComponent, TableModel, CheckBoxListOption, NavigationService, PageInfo, BaseSibscriber, CheckBoxListComponent, SelectOption, EmptyState, DatePeriod, TableActionCommand, NotificationsService, ToasterType } from '@appcore';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -19,6 +19,10 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, Af
   permissions: Array<CheckBoxListOption> = [];
   searchOptions = ['fileName', 'environment', 'permission', 'user'];
 
+  get EmptyTemplate():string{
+    return EMPTY_TEMPLATE;
+  }
+  
   emptyState: EmptyState = {
     title: 'You can synthesize or manipulate your own data. Start by clicking the button above.',
     subTitle: 'Your files will be listed here.',

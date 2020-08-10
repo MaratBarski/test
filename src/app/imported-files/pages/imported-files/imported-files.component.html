@@ -23,7 +23,7 @@
     </div>
     <div [hidden]="!isDataExists || !isLoaded">
         <mdc-table #table (onAction)="onAction($event)" [emptyState]="emptyState" [editCellTemplate]="editCellTemplate"
-            [cellsTemplate]="{ insertDate:dateColumn,shared:sharedColumn,columns:columnsTemplate,rows:rowsTemplate}"
+            [cellsTemplate]="{ insertDate:dateColumn,shared:sharedColumn,columns:columnsTemplate,rows:rowsTemplate,permission:permissionGroup}"
             [searchOptions]="searchOptions" [paginator]="paginator" [search]="search" [dataSource]="dataSource">
         </mdc-table>
     </div>
@@ -39,6 +39,12 @@
     <div [stickyToElement]="true" position="right"
         [mdcTooltip]="(item.insertDate|date) + ' ' + (item.insertDate|date:'HH:mm')">{{item.insertDate|date}}
     </div>
+</ng-template>
+
+<ng-template #permissionGroup let-item>
+    <span *ngIf="item.permission!==EmptyTemplate" class="admin-table__icon">
+        {{item.permission}}
+    </span>
 </ng-template>
 
 <ng-template #sharedColumn let-item>
