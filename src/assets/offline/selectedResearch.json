@@ -1,0 +1,70 @@
+{
+    "data": {
+        "researchId": 35,
+        "researchName": "train",
+        "userId": "5",
+        "projectId": "1",
+        "startDate": "1900-10-31",
+        "researchStatus": "Open",
+        "maxPatients": 159,
+        "insertDate": "2019-01-15T09:17:17.000Z",
+        "information": "this is the description",
+        "endDate": "2300-11-30",
+        "approvalKey": "1234",
+        "approvalKeyExpirationDate": null,
+        "user_id": "5",
+        "researchRestrictionEvents": [
+            {
+                "researchId": "35",
+                "eventPropertyId": "ageatevent",
+                "eventId": "9",
+                "value": "1",
+                "siteEventPropertyInfo": {
+                    "eventPropertyNa": "ageatevent",
+                    "eventId": "3",
+                    "dataSample": "[0 .. 311.78]",
+                    "eventPropertyTy": "NUMERIC",
+                    "hierarchyRootId": null,
+                    "patientFk": false,
+                    "eventTimeStamp": false,
+                    "ageAtEvent": true,
+                    "fieldDescriptio": "ageatevent",
+                    "fieldDes": "Property-Availability:99% populated",
+                    "priority": 0,
+                    "isDependentSear": false
+                },
+                "siteEventInfo": {
+                    "eventTableAlias": "gdfsgdfgdfg"
+                }
+            }
+        ],
+        "researchTemplates": [],
+        "user": {
+            "id": "5",
+            "login": "mdclone.admin",
+            "passwordHash": "$2a$10$G3OF8pfomKGuB8dpxNlj2eL8wZwY5L.3M19fJ5DfVS1sR0ojd/Ic.",
+            "firstName": "Admin gggg",
+            "lastName": "Admin",
+            "email": "mdclone.admin@localhost",
+            "activated": true,
+            "langKey": "en",
+            "activationKey": null,
+            "resetKey": null,
+            "createdBy": "system",
+            "createdDate": "2016-06-01T21:00:00.000Z",
+            "resetDate": null,
+            "lastModifiedBy": "mdclone.admin",
+            "lastModifiedDate": "2018-12-11T08:10:09.089Z",
+            "cellPhone": null,
+            "domain": null,
+            "photo": null
+        },
+        "project": {
+            "projectId": "1",
+            "projectName": "Demo Project",
+            "defaultSiteId": "1"
+        }
+    },
+    "massage": "Get Research Object",
+    "status": "success"
+}

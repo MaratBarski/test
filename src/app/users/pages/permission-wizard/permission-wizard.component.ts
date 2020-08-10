@@ -1,17 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { PermissionSetService } from '@app/users/services/permission-set.service';
 import { TabWizardItem } from '@app/users/components/tabs/tabs.component';
+import { BaseSibscriber } from '@app/core-api';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'md-permission-wizard',
   templateUrl: './permission-wizard.component.html',
   styleUrls: ['./permission-wizard.component.scss']
 })
-export class PermissionWizardComponent implements OnInit {
+export class PermissionWizardComponent extends BaseSibscriber implements OnInit {
 
   constructor(
-    public permissionSetService: PermissionSetService
-  ) { }
+    public permissionSetService: PermissionSetService,
+    private activatedRoute: ActivatedRoute
+  ) {
+    super();
+  }
 
   get isSaveEnable(): boolean {
     return this.permissionSetService.selectedTab > 0;
@@ -35,7 +40,11 @@ export class PermissionWizardComponent implements OnInit {
   ]
 
   ngOnInit(): void {
-    this.permissionSetService.resetService();
+    super.add(
+      this.activatedRoute.paramMap.subscribe(u => {
+        const id = u.get('id') || 0;
+        this.permissionSetService.resetService(id);
+      }));
   }
 
   cancel(): void {

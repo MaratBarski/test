@@ -50,8 +50,7 @@ export class ResearchListComponent extends BaseSibscriber implements OnInit {
 
   execCommand = {
     edit: (action: TableActionCommand) => {
-      //this.router.navigateByUrl(`/imported-files/${action.item.source.fileId}`);
-      console.log('edit command');
+      this.router.navigate(['/users/edit-permissions', { id: action.item.source.researchId }]);
     },
     delete: (action: TableActionCommand) => {
       // this.researchSource = this.researchSource.filter(x => x != action.item.source);

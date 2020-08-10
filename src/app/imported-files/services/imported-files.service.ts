@@ -6,7 +6,7 @@ import { Offline } from 'src/app/shared/decorators/offline.decorator';
 import { environment } from '@env/environment';
 import { FileSourceStatus } from '../models/enum/FileSourceStatus';
 
-export const EMPTY_TEMPLATE = 'Empty';
+export const EMPTY_TEMPLATE = 'Empty - No template';
 
 @Injectable({
   providedIn: 'root'
