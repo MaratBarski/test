@@ -2,9 +2,9 @@
     "data": {
         "researchId": 35,
         "researchName": "train",
-        "userId": "5",
+        "userId": "1004",
         "projectId": "1",
-        "startDate": "1900-10-31",
+    
         "researchStatus": "Open",
         "maxPatients": 159,
         "insertDate": "2019-01-15T09:17:17.000Z",
@@ -12,7 +12,7 @@
         "endDate": "2300-11-30",
         "approvalKey": "1234",
         "approvalKeyExpirationDate": null,
-        "user_id": "5",
+        "user_id": "1004",
         "researchRestrictionEvents": [
             {
                 "researchId": "35",
@@ -38,7 +38,14 @@
                 }
             }
         ],
-        "researchTemplates": [],
+        "researchTemplates": [
+            {
+                "templateId": 1
+            },
+            {
+                "templateId": 2
+            }
+        ],
         "user": {
             "id": "5",
             "login": "mdclone.admin",

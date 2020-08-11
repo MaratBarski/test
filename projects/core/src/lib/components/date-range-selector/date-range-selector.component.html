@@ -12,7 +12,7 @@
                             <p-calendar #fromPicker [locale]="locale" [(ngModel)]="from" hideTransitionOptions="0ms"
                                 showTransitionOptions="0ms" [showIcon]="false" [dateFormat]="dateFormat"
                                 [monthNavigator]="true" [yearNavigator]="true" yearRange="2000:2030"></p-calendar>
-                            <div class="select-date__label">{{dateFormat}}</div>
+                            <div class="select-date__label">{{fullDateFormat}}</div>
                         </div>
                         <div class="select-date__icon">
                             <mdc-icon (click)="fromPicker.toggle()" path="ic-calendar"></mdc-icon>
@@ -26,7 +26,7 @@
                             <p-calendar #toPicker [locale]="locale" [(ngModel)]="to" hideTransitionOptions="0ms"
                                 showTransitionOptions="0ms" [showIcon]="false" [dateFormat]="dateFormat"
                                 [monthNavigator]="true" [yearNavigator]="true" yearRange="2000:2030"></p-calendar>
-                            <div class="select-date__label">{{dateFormat}}</div>
+                            <div class="select-date__label">{{fullDateFormat}}</div>
                         </div>
                         <div class="select-date__icon">
                             <mdc-icon (click)="toPicker.toggle()" path="ic-calendar"></mdc-icon>

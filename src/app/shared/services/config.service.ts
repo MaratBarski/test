@@ -60,9 +60,9 @@ export class ConfigService extends BaseSibscriber {
           this.serverConfig = server.data;
           const dateParam = server.data.config.find(x => x.parameterName === 'date_format');
           if (dateParam && dateParam.parameterValue === 'US') {
-            this._dateFormat = 'mm/dd/yy';
+            this._dateFormat = 'mm/dd/yyyy';
           } else {
-            this._dateFormat = 'dd/mm/yy';
+            this._dateFormat = 'dd/mm/yyyy';
           }
           this.updateClientMessages();
         }, error => {

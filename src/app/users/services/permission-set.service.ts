@@ -53,6 +53,11 @@ export class PermissionSetService extends BaseSibscriber {
     super();
   }
 
+  get onTemplatesLoaded(): Observable<void> {
+    return this._onTemplatesLoaded.asObservable();
+  }
+  private _onTemplatesLoaded = new Subject<void>();
+
   private _setId: any;
 
   @Offline('assets/offline/selectedResearch.json?')
@@ -95,7 +100,8 @@ export class PermissionSetService extends BaseSibscriber {
               return { name: ti.eventTableName, type: ti.eventType };
             })
         }
-      })
+      });
+      this._onTemplatesLoaded.next();
     });
   }
 
@@ -285,6 +291,16 @@ export class PermissionSetService extends BaseSibscriber {
       this._users = users.data;
       if (this._setId) {
         this._permissionSet = this.convertToClient(permSet);
+        super.add(this.onTemplatesLoaded.subscribe(() => {
+          if (!permSet.data.researchTemplates || !permSet.data.researchTemplates.length) {
+            return;
+          }
+          this.templates.forEach(t => {
+            t.isChecked = permSet.data.researchTemplates.find((x: any) => x.templateId.toString() === t.id.toString());
+          });
+          this.permissionSet.allowedEvent = this.templates.find(x => !x.isChecked) ? 3 : 2;
+        }))
+        this.loadTemplates();
       } else {
         this._permissionSet = permSet;
       }
@@ -296,8 +312,12 @@ export class PermissionSetService extends BaseSibscriber {
     const res = this.getDefault();
     res.userId = permSet.data.userId;
     res.project = permSet.data.projectId;
-    res.fromDate = new Date(permSet.data.startDate);
-    res.toDate = new Date(permSet.data.endDate);
+
+    res.fromDate = permSet.data.startDate ? new Date(permSet.data.startDate) : undefined;
+    res.fromDateUnlimited = !permSet.data.startDate;
+    res.toDate = permSet.data.endDate ? new Date(permSet.data.endDate) : undefined;
+    res.toDateUnlimited = !permSet.data.endDate;
+
     res.keyName = permSet.data.approvalKey;
     res.keyExpirationDate = new Date(permSet.data.approvalKeyExpirationDate);
     res.size = permSet.data.maxPatients;
