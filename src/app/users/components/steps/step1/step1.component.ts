@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { PermissionSetService } from '@app/users/services/permission-set.service';
+import { AutoCompleteComponent } from '@appcore';
+import { ProjectComboComponent } from '@app/shared/components/project-combo/project-combo.component';
 
 @Component({
   selector: 'md-step1',
@@ -11,6 +13,9 @@ export class Step1Component implements OnInit {
   constructor(
     public permissionSetService: PermissionSetService
   ) { }
+
+  @ViewChild('userNameCmp', { static: true }) userNameCmp: AutoCompleteComponent;
+  @ViewChild('projectCmp', { static: true }) projectCmp: ProjectComboComponent;
 
   searchResearchText = '';
   searchUserText = '';
@@ -25,6 +30,12 @@ export class Step1Component implements OnInit {
   ngOnInit() {
     this._researchers = this.permissionSetService.getResearchers();
     this._users = this.permissionSetService.getUsers();
+    if (this.permissionSetService.user) {
+      this.userNameCmp.inputText = `${this.permissionSetService.user.firstName} ${this.permissionSetService.user.lastName}`;
+    }
+    if (this.permissionSetService.permissionSet.project) {
+      this.projectCmp.projectModel = this.permissionSetService.permissionSet.project;
+    }
   }
 
   changeIsNew(): void {

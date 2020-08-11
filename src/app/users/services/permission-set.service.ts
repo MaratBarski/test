@@ -2,10 +2,11 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Offline } from '@app/shared/decorators/offline.decorator';
 import { environment } from '@env/environment';
-import { forkJoin, Subject, Observable, timer } from 'rxjs';
+import { forkJoin, Subject, Observable, timer, of } from 'rxjs';
 import { UserListService } from './user-list.service';
-import { DateService } from '@app/core-api';
+import { DateService, BaseSibscriber } from '@appcore';
 import { ConfigService } from '@app/shared/services/config.service';
+import { Router } from '@angular/router';
 
 export const AllowedEvents = [
   { id: 1, text: 'No allowed events (Default)' },
@@ -40,18 +41,37 @@ export class PermissionSet {
 @Injectable({
   providedIn: 'root'
 })
-export class PermissionSetService {
+export class PermissionSetService extends BaseSibscriber {
 
   constructor(
     private http: HttpClient,
     private userListService: UserListService,
     private dateService: DateService,
-    private configService: ConfigService
+    private configService: ConfigService,
+    private router: Router
   ) {
+    super();
   }
 
-  resetService(): void {
-    this._permissionSet = this.getDefault();
+  get onTemplatesLoaded(): Observable<void> {
+    return this._onTemplatesLoaded.asObservable();
+  }
+  private _onTemplatesLoaded = new Subject<void>();
+
+  private _setId: any;
+
+  @Offline('assets/offline/selectedResearch.json?')
+  private _setUrl = `${environment.serverUrl}${environment.endPoints.research}`;
+
+  loadSet(): Observable<any> {
+    if (!this._setId) {
+      return of(this.getDefault());
+    }
+    return this.http.get(`${this._setUrl}/${this._setId}`);
+  }
+
+  resetService(id: any): void {
+    this._setId = id;
     this.loadData();
     this.user = undefined;
     this._isShowError = false;
@@ -80,7 +100,8 @@ export class PermissionSetService {
               return { name: ti.eventTableName, type: ti.eventType };
             })
         }
-      })
+      });
+      this._onTemplatesLoaded.next();
     });
   }
 
@@ -120,12 +141,14 @@ export class PermissionSetService {
   }
 
   cancel(): void {
-
+    this.router.navigateByUrl('/users/research');
   }
 
   save(): void {
     const obj = this.createSaveObject();
-    alert(JSON.stringify(obj));
+    this.http.post(`${environment.serverUrl}${environment.endPoints.research}`, obj).subscribe(res => {
+      alert('ok');
+    });
   }
 
   private createSaveObject(): any {
@@ -261,12 +284,50 @@ export class PermissionSetService {
     this._dataLoaded = false;
     forkJoin(
       this.http.get(this.getResearchUrl),
-      this.userListService.load()
-    ).subscribe(([researchers, users]: any) => {
+      this.userListService.load(),
+      this.loadSet()
+    ).subscribe(([researchers, users, permSet]: any) => {
       this._researchers = researchers.data;
       this._users = users.data;
+      if (this._setId) {
+        this._permissionSet = this.convertToClient(permSet);
+        super.add(this.onTemplatesLoaded.subscribe(() => {
+          if (!permSet.data.researchTemplates || !permSet.data.researchTemplates.length) {
+            return;
+          }
+          this.templates.forEach(t => {
+            t.isChecked = permSet.data.researchTemplates.find((x: any) => x.templateId.toString() === t.id.toString());
+          });
+          this.permissionSet.allowedEvent = this.templates.find(x => !x.isChecked) ? 3 : 2;
+        }))
+        this.loadTemplates();
+      } else {
+        this._permissionSet = permSet;
+      }
       this._dataLoaded = true;
     });
+  }
+
+  private convertToClient(permSet: any): PermissionSet {
+    const res = this.getDefault();
+    res.userId = permSet.data.userId;
+    res.project = permSet.data.projectId;
+
+    res.fromDate = permSet.data.startDate ? new Date(permSet.data.startDate) : undefined;
+    res.fromDateUnlimited = !permSet.data.startDate;
+    res.toDate = permSet.data.endDate ? new Date(permSet.data.endDate) : undefined;
+    res.toDateUnlimited = !permSet.data.endDate;
+
+    res.keyName = permSet.data.approvalKey;
+    res.keyExpirationDate = new Date(permSet.data.approvalKeyExpirationDate);
+    res.size = permSet.data.maxPatients;
+    res.setName = permSet.data.researchName;
+    res.setDescription = permSet.data.information;
+    this.user = this._users.find(x => x.id === permSet.data.userId);
+    if (this.user) {
+      res.userId = this.user.id;
+    }
+    return res;
   }
 
   getResearchers(): Array<any> {

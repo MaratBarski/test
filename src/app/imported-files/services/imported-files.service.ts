@@ -6,6 +6,8 @@ import { Offline } from 'src/app/shared/decorators/offline.decorator';
 import { environment } from '@env/environment';
 import { FileSourceStatus } from '../models/enum/FileSourceStatus';
 
+export const EMPTY_TEMPLATE = 'Empty - No template';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -147,7 +149,7 @@ export class ImportedFilesService {
           fileName: fl.fileName,
           insertDate: fl.insertDate,
           environment: fl.projectObj ? fl.projectObj.projectName : '',
-          permission: fl.template ? fl.template.templateName : '',
+          permission: fl.template ? fl.template.templateName : EMPTY_TEMPLATE,
           user: fl.user && fl.user.firstName && fl.user.lastName ? `${fl.user.firstName} ${fl.user.lastName}` : fl.user && fl.user.login ? fl.user.login : '',
           shared: fl.fileType,
           columns: isNaN(fl.columnsNum) || !fl.columnsNum ? 0 : parseInt(fl.columnsNum + ''),

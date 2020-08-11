@@ -26,7 +26,7 @@ export class OutputHistoryReportComponent extends BaseSibscriber implements OnIn
 
   searchText = '';
   downloadFileName = 'history.csv';
-  searchOptions = ['source', 'fullName', 'environment', 'approvalKey', 'name', 'research', 'data'];
+  searchOptions = ['source', 'fullName', 'environment', 'approvalKey', 'name', 'research', 'data', 'sessionId'];
 
   dataOrigin: TableModel;
   dataSource: TableModel;

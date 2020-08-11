@@ -4,6 +4,7 @@ export class CheckBoxListOption {
   isChecked?: boolean;
   text: string;
   id: any;
+  isCustom?: boolean;
 }
 @Component({
   selector: 'mdc-check-box-list',
