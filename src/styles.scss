@@ -66,6 +66,19 @@ mdc-text-block {
   color: #fff !important;
 }
 
-.tooltip {
-  width: 100em !important;
+.mdc-tooltip span {
+  display: block;
+  white-space: nowrap;
+
+}
+.mdc-tooltip{
+  display: table;
+  width: auto!important;
+}
+
+.mdc-tooltip .ui-tooltip-text {
+  display: table;
+  //transform: translateX(-50%);
+  //left: 50%;
+  right: auto;
 }

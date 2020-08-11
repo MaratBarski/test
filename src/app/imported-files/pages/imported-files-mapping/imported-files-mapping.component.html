@@ -221,20 +221,20 @@
                   <td class="admin-table__item d-none d-xl-table-cell" #div>
                     <div class="admin-table__data-sample" tooltipPosition="top"
                          [tooltipDisabled]="!needTooltip(div)"
-                         [pTooltip]="fileSourceForm.get('fileClms')['controls'][i].get('dataSample').value | DataSample"
-
+                         [escape]="false"
+                         [pTooltip]="fileSourceForm.get('fileClms')['controls'][i].get('dataSample').value | DataSample:{html: false}"
                     > <!--*ngIf="!needTooltip(div) else needToolTip"-->
-<!--                      tooltipStyleClass]="tooltip"-->
-                      {{fileSourceForm.get('fileClms')['controls'][i].get('dataSample').value | DataSample}}
+<!--                      -->
+                      {{fileSourceForm.get('fileClms')['controls'][i].get('dataSample').value | DataSample:{html: false} }}
                     </div>
-                    <ng-template #needToolTip>
-                      <div class="admin-table__data-sample"
-                           [stickyToElement]="true"
-                           position="left"
-                           [mdcTooltip]="fileSourceForm.get('fileClms')['controls'][i].get('dataSample').value | DataSample">
-                        {{ fileSourceForm.get('fileClms')['controls'][i].get('dataSample').value | DataSample}}
-                      </div>
-                    </ng-template>
+<!--                    <ng-template #needToolTip>-->
+<!--                      <div class="admin-table__data-sample"-->
+<!--                           [stickyToElement]="true"-->
+<!--                           position="left"-->
+<!--                           [mdcTooltip]="fileSourceForm.get('fileClms')['controls'][i].get('dataSample').value | DataSample">-->
+<!--                        {{ fileSourceForm.get('fileClms')['controls'][i].get('dataSample').value | DataSample}}-->
+<!--                      </div>-->
+<!--                    </ng-template>-->
                   </td>
                 </tr>
               </ng-container>

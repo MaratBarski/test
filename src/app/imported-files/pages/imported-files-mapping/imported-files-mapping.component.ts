@@ -227,11 +227,12 @@ export class ImportedFileMappingComponent extends BaseNavigation implements OnIn
 
       for (let i = 0; i < tmp.fileClms.length; i++) {
         if (tmp.fileClms[i].hierarchyRootId === 0) {
-          tmp.fileClms[i].hierarchyRootId = '';
+          tmp.fileClms[i].hierarchyRootId = -1;
         }
       }
       this.configService.getFormKey().then(key => {
-        this.importedFilesMappingService.saveMappedData(this.fileSourceForm.getRawValue())
+        tmp.key = key.data.guid;
+        this.importedFilesMappingService.saveMappedData(tmp)
           .subscribe(responce => {
             this.isSaving = false;
             this.router.navigateByUrl('/imported-files');
@@ -240,7 +241,7 @@ export class ImportedFileMappingComponent extends BaseNavigation implements OnIn
           });
       }).catch(er => {
         this.saveError();
-      })
+      });
     }
   }
 
