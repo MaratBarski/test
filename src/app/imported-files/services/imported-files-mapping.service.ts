@@ -81,6 +81,14 @@ export class ImportedFilesMappingService implements Resolve<FileSourceMappingRes
 
   saveMappedData(opt: any): Observable<any> {
     this.getUrl = `${environment.serverUrl}${environment.endPoints.fileSource}`;
+    this.notificationService.addNotification({
+      type: ToasterType.infoProgressBar,
+      name: 'File source',
+      comment: 'Updating....',
+      progress: 0,
+      key: opt.key,
+      showInToaster: true
+    });
     return this.dataService.put(this.getUrl, opt);
   }
 }

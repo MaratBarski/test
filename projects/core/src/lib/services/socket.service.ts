@@ -3,6 +3,7 @@ import { Socket } from 'ngx-socket-io';
 import * as io from 'socket.io-client';
 import { BehaviorSubject } from 'rxjs';
 import { Observable } from 'rxjs';
+import { NotificationsService } from './notifications.service';
 
 
 @Injectable({
@@ -27,7 +28,9 @@ export class SocketService implements OnDestroy {
   }
   private _onMessage = new BehaviorSubject<any>({});
 
-  constructor() { }
+  constructor(
+    private notificationService: NotificationsService
+  ) { }
 
   ngOnDestroy(): void {
   }
@@ -52,6 +55,7 @@ export class SocketService implements OnDestroy {
     this.connection.removeAllListeners();
     this.connection.on('message', (data) => {
       console.log('Received data from the server', data);
+      this.notificationService.serverUpdate(data);
       this._onMessage.next(data);
     });
   }

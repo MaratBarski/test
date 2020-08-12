@@ -13,6 +13,7 @@ export enum NotificationStatus {
 }
 
 export interface INotification {
+  key?: string;
   name: string;
   failName?: string;
   failComment?: string;
@@ -98,5 +99,10 @@ export class NotificationsService {
   addNotification(notice: INotification): void {
     this.notifications.push(notice);
     this.update();
+  }
+
+  serverUpdate(data: any): void {
+    const notice = this.notifications.find(x=>x.key === data.key);
+    notice.progress = data.progress;
   }
 }
