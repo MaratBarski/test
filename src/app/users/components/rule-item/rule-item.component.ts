@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { SelectOption } from '@appcore';
 
 @Component({
   selector: 'md-rule-item',
@@ -15,7 +16,10 @@ export class RuleItemComponent implements OnInit {
   remove(): void {
     this.onRemove.emit(this.roleItem);
   }
-  
+
+  properties: Array<SelectOption>;
+  events: Array<SelectOption>;
+
   ngOnInit() {
   }
 

@@ -46,3 +46,8 @@
         <span class="admin-table__circle admin-table__circle_green"></span>
     </div>
 </ng-template>
+
+<md-confirm-dialog *ngIf="showDeleteConfirm" name="Delete research" [subName]="deleteSubTitle"
+    subText="Do you wish to continue?" text="It cannot be undone." (onCancel)="cancelDelete()"
+    (onConfirm)="confirmDelete()">
+</md-confirm-dialog>

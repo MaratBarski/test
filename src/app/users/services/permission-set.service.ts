@@ -4,7 +4,7 @@ import { Offline } from '@app/shared/decorators/offline.decorator';
 import { environment } from '@env/environment';
 import { forkJoin, Subject, Observable, timer, of } from 'rxjs';
 import { UserListService } from './user-list.service';
-import { DateService, BaseSibscriber } from '@appcore';
+import { DateService, BaseSibscriber, NotificationsService, ToasterType } from '@appcore';
 import { ConfigService } from '@app/shared/services/config.service';
 import { Router } from '@angular/router';
 
@@ -48,7 +48,8 @@ export class PermissionSetService extends BaseSibscriber {
     private userListService: UserListService,
     private dateService: DateService,
     private configService: ConfigService,
-    private router: Router
+    private router: Router,
+    private notificationService: NotificationsService,
   ) {
     super();
   }
@@ -146,9 +147,29 @@ export class PermissionSetService extends BaseSibscriber {
 
   save(): void {
     const obj = this.createSaveObject();
-    this.http.post(`${environment.serverUrl}${environment.endPoints.research}`, obj).subscribe(res => {
-      alert('ok');
-    });
+    if (this._setId) {
+      this.http.put(`${environment.serverUrl}${environment.endPoints.research}/${this._setId}`, obj).subscribe(res => {
+        this.router.navigateByUrl('/users/research');
+      }, error => {
+        this.notificationService.addNotification({
+          type: ToasterType.error,
+          name: 'Failed to save research',
+          comment: 'Try again or contact MDClone support.',
+          showInToaster: true
+        });
+      });
+    } else {
+      this.http.post(`${environment.serverUrl}${environment.endPoints.research}`, obj).subscribe(res => {
+        this.router.navigateByUrl('/users/research');
+      }, error => {
+        this.notificationService.addNotification({
+          type: ToasterType.error,
+          name: 'Failed to add research',
+          comment: 'Try again or contact MDClone support.',
+          showInToaster: true
+        });
+      });
+    }
   }
 
   private createSaveObject(): any {

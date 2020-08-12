@@ -21,8 +21,8 @@ export class ResearchService {
     return this.dataService.get(this.getUrl);
   }
 
-  deleteFile(fl: any): Observable<any> {
-    return this.dataService.delete(`${environment.serverUrl}${environment.endPoints.deleteFileSource}/${fl.fileId}`);
+  deleteFile(researcher: any): Observable<any> {
+    return this.dataService.delete(`${environment.serverUrl}${environment.endPoints.research}/${researcher.researchId}`);
   }
 
   getFilter(filterArray: Array<CheckBoxListOption>): Array<CheckBoxListOption> {

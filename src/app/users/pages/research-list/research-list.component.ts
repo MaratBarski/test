@@ -33,6 +33,7 @@ export class ResearchListComponent extends BaseSibscriber implements OnInit {
   researchSource: Array<any>;
   onComplete: any;
   downloadFileName = 'research.csv';
+  showDeleteConfirm = false;
 
   constructor(
     private researchService: ResearchService,
@@ -44,6 +45,20 @@ export class ResearchListComponent extends BaseSibscriber implements OnInit {
     this.navigationService.currentPageID = PageInfo.Researchers.id;
   }
 
+  sourceForDelete: any;
+  deleteSubTitle = '';
+
+  confirmDelete(): void {
+    this.showDeleteConfirm = false;
+    this.deleteFile(this.sourceForDelete);
+    this.sourceForDelete = undefined;
+  }
+
+  cancelDelete(): void {
+    this.showDeleteConfirm = false;
+    this.sourceForDelete = undefined;
+  }
+
   onAction(action: TableActionCommand): void {
     this.execCommand[action.command](action);
   }
@@ -53,18 +68,24 @@ export class ResearchListComponent extends BaseSibscriber implements OnInit {
       this.router.navigate(['/users/edit-permissions', { id: action.item.source.researchId }]);
     },
     delete: (action: TableActionCommand) => {
-      // this.researchSource = this.researchSource.filter(x => x != action.item.source);
-      // this.initData();
-      // this.table.stayOnCurrentPage = true;
-      // this.researchService.deleteFile(action.item.source)
-      //   .toPromise()
-      //   .then(res => {
-      //     console.log('File deleted');
-      //   }).catch(e => {
-      //     console.error('Error delete file');
-      //   })
+      this.showDeleteConfirm = true;
+      this.sourceForDelete = action.item.source;
+      this.deleteSubTitle = `This action will delete the research '${this.sourceForDelete.researchName}'.`
     }
   };
+
+  deleteFile(source:any):void{
+    this.researchSource = this.researchSource.filter(x => x != source);
+    this.initData();
+    this.table.stayOnCurrentPage = true;
+    this.researchService.deleteFile(source)
+      .toPromise()
+      .then(res => {
+        console.log('File deleted');
+      }).catch(e => {
+        console.error('Error delete file');
+      })
+  }
 
   private initData(): void {
     this.isDataExists = !!(this.researchSource && this.researchSource.length);
