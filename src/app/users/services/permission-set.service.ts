@@ -314,6 +314,7 @@ export class PermissionSetService extends BaseSibscriber {
         this._permissionSet = this.convertToClient(permSet);
         super.add(this.onTemplatesLoaded.subscribe(() => {
           if (!permSet.data.researchTemplates || !permSet.data.researchTemplates.length) {
+            this.permissionSet.allowedEvent = 1;
             return;
           }
           this.templates.forEach(t => {
