@@ -8,7 +8,7 @@
             <span (click)="clear()" class="admin-table-filter__clear pointer">{{'clear'|translate}}</span>
         </div>
     </div>
-    <div [hidden]="options?.length" class="admin-table-filter__top">No itams</div>
+    <div [hidden]="options?.length" class="admin-table-filter__top">No items</div>
     <div *ngIf="options" class="admin-table-filter__params">
         <mdc-check-box (change)="onChange($event)" [id]="'chbl_'+index" *ngFor="let option of options;let index = index"
             [(ngModel)]="option.isChecked" [text]="option.text"></mdc-check-box>
