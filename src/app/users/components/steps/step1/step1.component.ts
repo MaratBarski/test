@@ -47,7 +47,8 @@ export class Step1Component implements OnInit {
     this.searchResearchText = text;
   }
 
-  selectResearcher(setObj: any): void {
+  selectResearcher(setObj: any): void {+
+    this.permissionSetService.cloneSet(setObj);
     this.permissionSetService.permissionSet.fromSetId = setObj.researchId;
     this.permissionSetService.validate(false);
   }

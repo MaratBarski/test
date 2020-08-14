@@ -71,6 +71,15 @@ export class PermissionSetService extends BaseSibscriber {
     return this.http.get(`${this._setUrl}/${this._setId}`);
   }
 
+  cloneSet(setObj: any): void {
+    const permSet = this.researchers.find(x => x.researchId === setObj.researchId);
+    if (permSet) {
+      this._permissionSet = this.convertToClient(permSet);
+      this._permissionSet.isNew = false;
+      this.initTemplates(permSet);
+    }
+  }
+
   resetService(id: any): void {
     this._setId = id;
     this.loadData();
@@ -311,18 +320,8 @@ export class PermissionSetService extends BaseSibscriber {
       this._researchers = researchers.data;
       this._users = users.data;
       if (this._setId) {
-        this._permissionSet = this.convertToClient(permSet);
-        super.add(this.onTemplatesLoaded.subscribe(() => {
-          if (!permSet.data.researchTemplates || !permSet.data.researchTemplates.length) {
-            this.permissionSet.allowedEvent = 1;
-            return;
-          }
-          this.templates.forEach(t => {
-            t.isChecked = permSet.data.researchTemplates.find((x: any) => x.templateId.toString() === t.id.toString());
-          });
-          this.permissionSet.allowedEvent = this.templates.find(x => !x.isChecked) ? 3 : 2;
-        }))
-        this.loadTemplates();
+        this._permissionSet = this.convertToClient(permSet.data);
+        this.initTemplates(permSet.data);
       } else {
         this._permissionSet = permSet;
       }
@@ -330,22 +329,36 @@ export class PermissionSetService extends BaseSibscriber {
     });
   }
 
+  private initTemplates(permSet: any): void {
+    super.add(this.onTemplatesLoaded.subscribe(() => {
+      if (!permSet.researchTemplates || !permSet.researchTemplates.length) {
+        this.permissionSet.allowedEvent = 1;
+        return;
+      }
+      this.templates.forEach(t => {
+        t.isChecked = permSet.researchTemplates.find((x: any) => x.templateId.toString() === t.id.toString());
+      });
+      this.permissionSet.allowedEvent = this.templates.find(x => !x.isChecked) ? 3 : 2;
+    }))
+    this.loadTemplates();
+  }
+
   private convertToClient(permSet: any): PermissionSet {
     const res = this.getDefault();
-    res.userId = permSet.data.userId;
-    res.project = permSet.data.projectId;
+    res.userId = permSet.userId;
+    res.project = permSet.projectId;
 
-    res.fromDate = permSet.data.startDate ? new Date(permSet.data.startDate) : undefined;
-    res.fromDateUnlimited = !permSet.data.startDate;
-    res.toDate = permSet.data.endDate ? new Date(permSet.data.endDate) : undefined;
-    res.toDateUnlimited = !permSet.data.endDate;
+    res.fromDate = permSet.startDate ? new Date(permSet.startDate) : undefined;
+    res.fromDateUnlimited = !permSet.startDate;
+    res.toDate = permSet.endDate ? new Date(permSet.endDate) : undefined;
+    res.toDateUnlimited = !permSet.endDate;
 
-    res.keyName = permSet.data.approvalKey;
-    res.keyExpirationDate = new Date(permSet.data.approvalKeyExpirationDate);
-    res.size = permSet.data.maxPatients;
-    res.setName = permSet.data.researchName;
-    res.setDescription = permSet.data.information;
-    this.user = this._users.find(x => x.id === permSet.data.userId);
+    res.keyName = permSet.approvalKey;
+    res.keyExpirationDate = new Date(permSet.approvalKeyExpirationDate);
+    res.size = permSet.maxPatients;
+    res.setName = permSet.researchName;
+    res.setDescription = permSet.information;
+    this.user = this._users.find(x => x.id === permSet.userId);
     if (this.user) {
       res.userId = this.user.id;
     }

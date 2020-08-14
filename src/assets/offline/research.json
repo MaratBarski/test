@@ -2,6 +2,144 @@
     "data": [
         {
             "researchId": 35,
+            "researchName": "aaaaaaaaaa",
+            "userId": "1004",
+            "projectId": "1",
+            "researchStatus": "Open",
+            "maxPatients": 159,
+            "insertDate": "2019-01-15T09:17:17.000Z",
+            "information": "this is the description",
+            "endDate": "2300-11-30",
+            "approvalKey": "1234",
+            "approvalKeyExpirationDate": null,
+            "user_id": "1004",
+            "researchRestrictionEvents": [
+                {
+                    "researchId": "35",
+                    "eventPropertyId": "ageatevent",
+                    "eventId": "9",
+                    "value": "1",
+                    "siteEventPropertyInfo": {
+                        "eventPropertyNa": "ageatevent",
+                        "eventId": "3",
+                        "dataSample": "[0 .. 311.78]",
+                        "eventPropertyTy": "NUMERIC",
+                        "hierarchyRootId": null,
+                        "patientFk": false,
+                        "eventTimeStamp": false,
+                        "ageAtEvent": true,
+                        "fieldDescriptio": "ageatevent",
+                        "fieldDes": "Property-Availability:99% populated",
+                        "priority": 0,
+                        "isDependentSear": false
+                    },
+                    "siteEventInfo": {
+                        "eventTableAlias": "gdfsgdfgdfg"
+                    }
+                }
+            ],
+            "researchTemplates": [
+                {
+                    "templateId": 1
+                },
+                {
+                    "templateId": 2
+                }
+            ],
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin",
+                "passwordHash": "$2a$10$G3OF8pfomKGuB8dpxNlj2eL8wZwY5L.3M19fJ5DfVS1sR0ojd/Ic.",
+                "firstName": "Admin gggg",
+                "lastName": "Admin",
+                "email": "mdclone.admin@localhost",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": null,
+                "createdBy": "system",
+                "createdDate": "2016-06-01T21:00:00.000Z",
+                "resetDate": null,
+                "lastModifiedBy": "mdclone.admin",
+                "lastModifiedDate": "2018-12-11T08:10:09.089Z",
+                "cellPhone": null,
+                "domain": null,
+                "photo": null
+            },
+            "project": {
+                "projectId": "1",
+                "projectName": "Demo Project",
+                "defaultSiteId": "1"
+            }
+        },
+        {
+            "researchId": 69,
+            "researchName": "research 123$5566@@@@@@@@@~~~~~~~~~~~~~#################! ~*&^nbhfjhjfhjghjghjgjhghjkjkghkjh%^#@!~+=_-(){}[](99/|\\<>w\":; 123$5566@@@@@@@@@~~~~~~~~~~~~~#################!~*&^nbhfjhjfhjghjghjgjhghjkjkghkjh%^#@!~+=_-(){}[](99/|\\<>w\":;",
+            "userId": "1993",
+            "projectId": "1",
+            "startDate": "1900-10-30",
+            "researchStatus": "Open",
+            "maxPatients": 100000,
+            "insertDate": "2019-01-27T14:35:10.000Z",
+            "information": "research 123$5566@@@@@@@@@~~~~~~~~~~~~~#################! ~*&^nbhfjhjfhjghjghjgjhghjkjkghkjh%^#@!~+=_-(){}[](99/|\\<>w\":; 123$5566@@@@@@@@@~~~~~~~~~~~~~#################!~*&^nbhfjhjfhjghjghjgjhghjkjkghkjh%^#@!~+=_-(){}[](99/|\\<>w\":;",
+            "endDate": "2019-01-27",
+            "approvalKey": "research 123$5566@@@@@@@@@~~~~~~~~~~~~~#################! ~*&^nbhfjhjfhjghjghjgjhghjkjkghkjh%^#@!~+=_-(){}[](99/|\\<>w\":; 123$5566@@@@@@@@@~~~~~~~~~~~~~#################!~*&^nbhfjhjfhjghjghjgjhghjkjkghkjh%^#@!~+=_-(){}[](99/|\\<>w\":;",
+            "approvalKeyExpirationDate": "2021-07-27",
+            "user_id": "1993",
+            "researchRestrictionEvents": [
+                {
+                    "researchId": "69",
+                    "eventPropertyId": "ageatevent",
+                    "eventId": "6",
+                    "value": "50",
+                    "siteEventPropertyInfo": {
+                        "eventPropertyNa": "ageatevent",
+                        "eventId": "3",
+                        "dataSample": "[0 .. 311.78]",
+                        "eventPropertyTy": "NUMERIC",
+                        "hierarchyRootId": null,
+                        "patientFk": false,
+                        "eventTimeStamp": false,
+                        "ageAtEvent": true,
+                        "fieldDescriptio": "ageatevent",
+                        "fieldDes": "Property-Availability:99% populated",
+                        "priority": 0,
+                        "isDependentSear": false
+                    },
+                    "siteEventInfo": {
+                        "eventTableAlias": "gdfgdfglkj dfklgjdklfjgdklfj 4"
+                    }
+                }
+            ],
+            "researchTemplates": [],
+            "user": {
+                "id": "1993",
+                "login": "Janeta.Kozak",
+                "passwordHash": "$2a$10$G3OF8pfomKGuB8dpxNlj2eL8wZwY5L.3M19fJ5DfVS1sR0ojd/Ic.",
+                "firstName": "jjj",
+                "lastName": "kkkk",
+                "email": "jjj@kkk.com",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": "18145194061882415841",
+                "createdBy": "mdclone.admin",
+                "createdDate": "2018-10-17T14:15:19.702Z",
+                "resetDate": "2018-10-17T14:15:19.671Z",
+                "lastModifiedBy": "mdclone.admin",
+                "lastModifiedDate": "2018-10-17T14:15:19.702Z",
+                "cellPhone": null,
+                "domain": "",
+                "photo": null
+            },
+            "project": {
+                "projectId": "1",
+                "projectName": "Demo Project",
+                "defaultSiteId": "1"
+            }
+        },
+        {
+            "researchId": 35,
             "researchName": "train",
             "userId": "5",
             "projectId": "1",
@@ -9,7 +147,7 @@
             "researchStatus": "Open",
             "maxPatients": 1000000,
             "insertDate": "2019-01-15T09:17:17.000Z",
-            "information": "the description of the research",
+            "information": "this is the description",
             "endDate": "2300-11-30",
             "approvalKey": "1234",
             "approvalKeyExpirationDate": null,
@@ -58,6 +196,543 @@
                 "lastModifiedDate": "2018-12-11T08:10:09.089Z",
                 "cellPhone": null,
                 "domain": null,
+                "photo": null
+            },
+            "project": {
+                "projectId": "1",
+                "projectName": "Demo Project",
+                "defaultSiteId": "1"
+            }
+        },
+        {
+            "researchId": 75,
+            "researchName": "research 123$5566@@@@@@@@@~~~~~~~~~~~~~#################! ~*&^nbhfjhjfhjghjghjgjhghjkjkghkjh%^#@!~+=_-(){}[](99/|\\<>w\":; 123$5566@@@@@@@@@~~~~~~~~~~~~~#################!~*&^nbhfjhjfhjghjghjgjhghjkjkghkjh%^#@!~+=_-(){}[](99/|\\<>w\":;",
+            "userId": "1993",
+            "projectId": "1",
+            "startDate": "1900-10-30",
+            "researchStatus": "Open",
+            "maxPatients": 100000,
+            "insertDate": "2019-01-27T14:35:10.000Z",
+            "information": "research 123$5566@@@@@@@@@~~~~~~~~~~~~~#################! ~*&^nbhfjhjfhjghjghjgjhghjkjkghkjh%^#@!~+=_-(){}[](99/|\\<>w\":; 123$5566@@@@@@@@@~~~~~~~~~~~~~#################!~*&^nbhfjhjfhjghjghjgjhghjkjkghkjh%^#@!~+=_-(){}[](99/|\\<>w\":;",
+            "endDate": "2019-01-27",
+            "approvalKey": "research 123$5566@@@@@@@@@~~~~~~~~~~~~~#################! ~*&^nbhfjhjfhjghjghjgjhghjkjkghkjh%^#@!~+=_-(){}[](99/|\\<>w\":; 123$5566@@@@@@@@@~~~~~~~~~~~~~#################!~*&^nbhfjhjfhjghjghjgjhghjkjkghkjh%^#@!~+=_-(){}[](99/|\\<>w\":;",
+            "approvalKeyExpirationDate": "2020-07-27",
+            "user_id": "1993",
+            "researchRestrictionEvents": [
+                {
+                    "researchId": "75",
+                    "eventPropertyId": "lengthofstayvalue",
+                    "eventId": "6",
+                    "value": "9",
+                    "siteEventPropertyInfo": {
+                        "eventPropertyNa": "lengthofstayvalue",
+                        "eventId": "293",
+                        "dataSample": "[-0.92 .. 294.62]",
+                        "eventPropertyTy": "NUMERIC",
+                        "hierarchyRootId": null,
+                        "patientFk": false,
+                        "eventTimeStamp": false,
+                        "ageAtEvent": false,
+                        "fieldDescriptio": "lengthofstayvalue",
+                        "fieldDes": null,
+                        "priority": 1,
+                        "isDependentSear": false
+                    },
+                    "siteEventInfo": {
+                        "eventTableAlias": "dfsgdfgdfsg444"
+                    }
+                }
+            ],
+            "researchTemplates": [],
+            "user": {
+                "id": "1993",
+                "login": "Janeta.Kozak",
+                "passwordHash": "$2a$10$G3OF8pfomKGuB8dpxNlj2eL8wZwY5L.3M19fJ5DfVS1sR0ojd/Ic.",
+                "firstName": "jjj",
+                "lastName": "kkkk",
+                "email": "jjj@kkk.com",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": "18145194061882415841",
+                "createdBy": "mdclone.admin",
+                "createdDate": "2018-10-17T14:15:19.702Z",
+                "resetDate": "2018-10-17T14:15:19.671Z",
+                "lastModifiedBy": "mdclone.admin",
+                "lastModifiedDate": "2018-10-17T14:15:19.702Z",
+                "cellPhone": null,
+                "domain": "",
+                "photo": null
+            },
+            "project": {
+                "projectId": "1",
+                "projectName": "Demo Project",
+                "defaultSiteId": "1"
+            }
+        },
+        {
+            "researchId": 74,
+            "researchName": "research 123$5566@@@@@@@@@~~~~~~~~~~~~~#################! ~*&^nbhfjhjfhjghjghjgjhghjkjkghkjh%^#@!~+=_-(){}[](99/|\\<>w\":; 123$5566@@@@@@@@@~~~~~~~~~~~~~#################!~*&^nbhfjhjfhjghjghjgjhghjkjkghkjh%^#@!~+=_-(){}[](99/|\\<>w\":;",
+            "userId": "1993",
+            "projectId": "1",
+            "startDate": "1900-10-30",
+            "researchStatus": "Open",
+            "maxPatients": 100000,
+            "insertDate": "2019-01-27T14:35:10.000Z",
+            "information": "research 123$5566@@@@@@@@@~~~~~~~~~~~~~#################! ~*&^nbhfjhjfhjghjghjgjhghjkjkghkjh%^#@!~+=_-(){}[](99/|\\<>w\":; 123$5566@@@@@@@@@~~~~~~~~~~~~~#################!~*&^nbhfjhjfhjghjghjgjhghjkjkghkjh%^#@!~+=_-(){}[](99/|\\<>w\":;",
+            "endDate": "2019-01-27",
+            "approvalKey": "research 123$5566@@@@@@@@@~~~~~~~~~~~~~#################! ~*&^nbhfjhjfhjghjghjgjhghjkjkghkjh%^#@!~+=_-(){}[](99/|\\<>w\":; 123$5566@@@@@@@@@~~~~~~~~~~~~~#################!~*&^nbhfjhjfhjghjghjgjhghjkjkghkjh%^#@!~+=_-(){}[](99/|\\<>w\":;",
+            "approvalKeyExpirationDate": "2020-07-27",
+            "user_id": "1993",
+            "researchRestrictionEvents": [
+                {
+                    "researchId": "74",
+                    "eventPropertyId": "lengthofstayvalue",
+                    "eventId": "6",
+                    "value": "9",
+                    "siteEventPropertyInfo": {
+                        "eventPropertyNa": "lengthofstayvalue",
+                        "eventId": "293",
+                        "dataSample": "[-0.92 .. 294.62]",
+                        "eventPropertyTy": "NUMERIC",
+                        "hierarchyRootId": null,
+                        "patientFk": false,
+                        "eventTimeStamp": false,
+                        "ageAtEvent": false,
+                        "fieldDescriptio": "lengthofstayvalue",
+                        "fieldDes": null,
+                        "priority": 1,
+                        "isDependentSear": false
+                    },
+                    "siteEventInfo": {
+                        "eventTableAlias": "2111dasd"
+                    }
+                }
+            ],
+            "researchTemplates": [],
+            "user": {
+                "id": "1993",
+                "login": "Janeta.Kozak",
+                "passwordHash": "$2a$10$G3OF8pfomKGuB8dpxNlj2eL8wZwY5L.3M19fJ5DfVS1sR0ojd/Ic.",
+                "firstName": "jjj",
+                "lastName": "kkkk",
+                "email": "jjj@kkk.com",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": "18145194061882415841",
+                "createdBy": "mdclone.admin",
+                "createdDate": "2018-10-17T14:15:19.702Z",
+                "resetDate": "2018-10-17T14:15:19.671Z",
+                "lastModifiedBy": "mdclone.admin",
+                "lastModifiedDate": "2018-10-17T14:15:19.702Z",
+                "cellPhone": null,
+                "domain": "",
+                "photo": null
+            },
+            "project": {
+                "projectId": "1",
+                "projectName": "Demo Project",
+                "defaultSiteId": "1"
+            }
+        },
+        {
+            "researchId": 73,
+            "researchName": "research 123$5566@@@@@@@@@~~~~~~~~~~~~~#################! ~*&^nbhfjhjfhjghjghjgjhghjkjkghkjh%^#@!~+=_-(){}[](99/|\\<>w\":; 123$5566@@@@@@@@@~~~~~~~~~~~~~#################!~*&^nbhfjhjfhjghjghjgjhghjkjkghkjh%^#@!~+=_-(){}[](99/|\\<>w\":;",
+            "userId": "1993",
+            "projectId": "1",
+            "startDate": "1900-10-30",
+            "researchStatus": "Open",
+            "maxPatients": 100000,
+            "insertDate": "2019-01-27T14:35:10.000Z",
+            "information": "research 123$5566@@@@@@@@@~~~~~~~~~~~~~#################! ~*&^nbhfjhjfhjghjghjgjhghjkjkghkjh%^#@!~+=_-(){}[](99/|\\<>w\":; 123$5566@@@@@@@@@~~~~~~~~~~~~~#################!~*&^nbhfjhjfhjghjghjgjhghjkjkghkjh%^#@!~+=_-(){}[](99/|\\<>w\":;",
+            "endDate": "2019-01-27",
+            "approvalKey": "research 123$5566@@@@@@@@@~~~~~~~~~~~~~#################! ~*&^nbhfjhjfhjghjghjgjhghjkjkghkjh%^#@!~+=_-(){}[](99/|\\<>w\":; 123$5566@@@@@@@@@~~~~~~~~~~~~~#################!~*&^nbhfjhjfhjghjghjgjhghjkjkghkjh%^#@!~+=_-(){}[](99/|\\<>w\":;",
+            "approvalKeyExpirationDate": "2020-07-27",
+            "user_id": "1993",
+            "researchRestrictionEvents": [
+                {
+                    "researchId": "73",
+                    "eventPropertyId": "lengthofstayvalue",
+                    "eventId": "6",
+                    "value": "8",
+                    "siteEventPropertyInfo": {
+                        "eventPropertyNa": "lengthofstayvalue",
+                        "eventId": "293",
+                        "dataSample": "[-0.92 .. 294.62]",
+                        "eventPropertyTy": "NUMERIC",
+                        "hierarchyRootId": null,
+                        "patientFk": false,
+                        "eventTimeStamp": false,
+                        "ageAtEvent": false,
+                        "fieldDescriptio": "lengthofstayvalue",
+                        "fieldDes": null,
+                        "priority": 1,
+                        "isDependentSear": false
+                    },
+                    "siteEventInfo": {
+                        "eventTableAlias": "asfasfasf221312"
+                    }
+                }
+            ],
+            "researchTemplates": [],
+            "user": {
+                "id": "1993",
+                "login": "Janeta.Kozak",
+                "passwordHash": "$2a$10$G3OF8pfomKGuB8dpxNlj2eL8wZwY5L.3M19fJ5DfVS1sR0ojd/Ic.",
+                "firstName": "jjj",
+                "lastName": "kkkk",
+                "email": "jjj@kkk.com",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": "18145194061882415841",
+                "createdBy": "mdclone.admin",
+                "createdDate": "2018-10-17T14:15:19.702Z",
+                "resetDate": "2018-10-17T14:15:19.671Z",
+                "lastModifiedBy": "mdclone.admin",
+                "lastModifiedDate": "2018-10-17T14:15:19.702Z",
+                "cellPhone": null,
+                "domain": "",
+                "photo": null
+            },
+            "project": {
+                "projectId": "1",
+                "projectName": "Demo Project",
+                "defaultSiteId": "1"
+            }
+        },
+        {
+            "researchId": 72,
+            "researchName": "Omry Test",
+            "userId": "1993",
+            "projectId": "1",
+            "startDate": "2030-05-24",
+            "researchStatus": "Open",
+            "maxPatients": 123,
+            "insertDate": "2019-01-27T14:35:10.000Z",
+            "information": "Omry Test",
+            "endDate": "2030-05-24",
+            "approvalKey": "Omry Test",
+            "approvalKeyExpirationDate": "2030-02-24",
+            "user_id": "1993",
+            "researchRestrictionEvents": [
+                {
+                    "researchId": "72",
+                    "eventPropertyId": "lengthofstayvalue",
+                    "eventId": "6",
+                    "value": "fedya fedya fedyafedya fedya fedyafedya fedya fedyafedya fedya fedyafedya fedya fedyafedya fedya fedyafedya fedya fedyafedya fedya fedyafedya fedya fedyafedya fedya fedyafedya fedya fedyafedya fedya fedya",
+                    "siteEventPropertyInfo": {
+                        "eventPropertyNa": "lengthofstayvalue",
+                        "eventId": "293",
+                        "dataSample": "[-0.92 .. 294.62]",
+                        "eventPropertyTy": "NUMERIC",
+                        "hierarchyRootId": null,
+                        "patientFk": false,
+                        "eventTimeStamp": false,
+                        "ageAtEvent": false,
+                        "fieldDescriptio": "lengthofstayvalue",
+                        "fieldDes": null,
+                        "priority": 1,
+                        "isDependentSear": false
+                    },
+                    "siteEventInfo": {
+                        "eventTableAlias": "cxvxcvxcvxc"
+                    }
+                }
+            ],
+            "researchTemplates": [],
+            "user": {
+                "id": "1993",
+                "login": "Janeta.Kozak",
+                "passwordHash": "$2a$10$G3OF8pfomKGuB8dpxNlj2eL8wZwY5L.3M19fJ5DfVS1sR0ojd/Ic.",
+                "firstName": "jjj",
+                "lastName": "kkkk",
+                "email": "jjj@kkk.com",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": "18145194061882415841",
+                "createdBy": "mdclone.admin",
+                "createdDate": "2018-10-17T14:15:19.702Z",
+                "resetDate": "2018-10-17T14:15:19.671Z",
+                "lastModifiedBy": "mdclone.admin",
+                "lastModifiedDate": "2018-10-17T14:15:19.702Z",
+                "cellPhone": null,
+                "domain": "",
+                "photo": null
+            },
+            "project": {
+                "projectId": "1",
+                "projectName": "Demo Project",
+                "defaultSiteId": "1"
+            }
+        },
+        {
+            "researchId": 71,
+            "researchName": "research 123$5566@@@@@@@@@~~~~~~~~~~~~~#################! ~*&^nbhfjhjfhjghjghjgjhghjkjkghkjh%^#@!~+=_-(){}[](99/|\\<>w\":; 123$5566@@@@@@@@@~~~~~~~~~~~~~#################!~*&^nbhfjhjfhjghjghjgjhghjkjkghkjh%^#@!~+=_-(){}[](99/|\\<>w\":;",
+            "userId": "1993",
+            "projectId": "1",
+            "startDate": "1899-10-30",
+            "researchStatus": "Open",
+            "maxPatients": 100000,
+            "insertDate": "2019-01-27T14:35:10.000Z",
+            "information": "research 123$5566@@@@@@@@@~~~~~~~~~~~~~#################! ~*&^nbhfjhjfhjghjghjgjhghjkjkghkjh%^#@!~+=_-(){}[](99/|\\<>w\":; 123$5566@@@@@@@@@~~~~~~~~~~~~~#################!~*&^nbhfjhjfhjghjghjgjhghjkjkghkjh%^#@!~+=_-(){}[](99/|\\<>w\":;",
+            "endDate": "2019-01-27",
+            "approvalKey": "research 123$5566@@@@@@@@@~~~~~~~~~~~~~#################! ~*&^nbhfjhjfhjghjghjgjhghjkjkghkjh%^#@!~+=_-(){}[](99/|\\<>w\":; 123$5566@@@@@@@@@~~~~~~~~~~~~~#################!~*&^nbhfjhjfhjghjghjgjhghjkjkghkjh%^#@!~+=_-(){}[](99/|\\<>w\":;",
+            "approvalKeyExpirationDate": "2020-07-27",
+            "user_id": "1993",
+            "researchRestrictionEvents": [
+                {
+                    "researchId": "71",
+                    "eventPropertyId": "lengthofstayvalue",
+                    "eventId": "87",
+                    "value": "6",
+                    "siteEventPropertyInfo": {
+                        "eventPropertyNa": "lengthofstayvalue",
+                        "eventId": "293",
+                        "dataSample": "[-0.92 .. 294.62]",
+                        "eventPropertyTy": "NUMERIC",
+                        "hierarchyRootId": null,
+                        "patientFk": false,
+                        "eventTimeStamp": false,
+                        "ageAtEvent": false,
+                        "fieldDescriptio": "lengthofstayvalue",
+                        "fieldDes": null,
+                        "priority": 1,
+                        "isDependentSear": false
+                    },
+                    "siteEventInfo": {
+                        "eventTableAlias": "ghfgfhgfh444"
+                    }
+                }
+            ],
+            "researchTemplates": [],
+            "user": {
+                "id": "1993",
+                "login": "Janeta.Kozak",
+                "passwordHash": "$2a$10$G3OF8pfomKGuB8dpxNlj2eL8wZwY5L.3M19fJ5DfVS1sR0ojd/Ic.",
+                "firstName": "jjj",
+                "lastName": "kkkk",
+                "email": "jjj@kkk.com",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": "18145194061882415841",
+                "createdBy": "mdclone.admin",
+                "createdDate": "2018-10-17T14:15:19.702Z",
+                "resetDate": "2018-10-17T14:15:19.671Z",
+                "lastModifiedBy": "mdclone.admin",
+                "lastModifiedDate": "2018-10-17T14:15:19.702Z",
+                "cellPhone": null,
+                "domain": "",
+                "photo": null
+            },
+            "project": {
+                "projectId": "1",
+                "projectName": "Demo Project",
+                "defaultSiteId": "1"
+            }
+        },
+        {
+            "researchId": 70,
+            "researchName": "research 123$5566@@@@@@@@@~~~~~~~~~~~~~#################! ~*&^nbhfjhjfhjghjghjgjhghjkjkghkjh%^#@!~+=_-(){}[](99/|\\<>w\":; 123$5566@@@@@@@@@~~~~~~~~~~~~~#################!~*&^nbhfjhjfhjghjghjgjhghjkjkghkjh%^#@!~+=_-(){}[](99/|\\<>w\":;",
+            "userId": "1993",
+            "projectId": "1",
+            "startDate": "1900-10-30",
+            "researchStatus": "Open",
+            "maxPatients": 100000,
+            "insertDate": "2019-01-27T14:35:10.000Z",
+            "information": "research 123$5566@@@@@@@@@~~~~~~~~~~~~~#################! ~*&^nbhfjhjfhjghjghjgjhghjkjkghkjh%^#@!~+=_-(){}[](99/|\\<>w\":; 123$5566@@@@@@@@@~~~~~~~~~~~~~#################!~*&^nbhfjhjfhjghjghjgjhghjkjkghkjh%^#@!~+=_-(){}[](99/|\\<>w\":;",
+            "endDate": "2019-01-27",
+            "approvalKey": "research 123$5566@@@@@@@@@~~~~~~~~~~~~~#################! ~*&^nbhfjhjfhjghjghjgjhghjkjkghkjh%^#@!~+=_-(){}[](99/|\\<>w\":; 123$5566@@@@@@@@@~~~~~~~~~~~~~#################!~*&^nbhfjhjfhjghjghjgjhghjkjkghkjh%^#@!~+=_-(){}[](99/|\\<>w\":;",
+            "approvalKeyExpirationDate": "2020-07-27",
+            "user_id": "1993",
+            "researchRestrictionEvents": [
+                {
+                    "researchId": "70",
+                    "eventPropertyId": "lengthofstayvalue",
+                    "eventId": "6",
+                    "value": "12",
+                    "siteEventPropertyInfo": {
+                        "eventPropertyNa": "lengthofstayvalue",
+                        "eventId": "293",
+                        "dataSample": "[-0.92 .. 294.62]",
+                        "eventPropertyTy": "NUMERIC",
+                        "hierarchyRootId": null,
+                        "patientFk": false,
+                        "eventTimeStamp": false,
+                        "ageAtEvent": false,
+                        "fieldDescriptio": "lengthofstayvalue",
+                        "fieldDes": null,
+                        "priority": 1,
+                        "isDependentSear": false
+                    },
+                    "siteEventInfo": {
+                        "eventTableAlias": "sdfsdf333"
+                    }
+                }
+            ],
+            "researchTemplates": [],
+            "user": {
+                "id": "1993",
+                "login": "Janeta.Kozak",
+                "passwordHash": "$2a$10$G3OF8pfomKGuB8dpxNlj2eL8wZwY5L.3M19fJ5DfVS1sR0ojd/Ic.",
+                "firstName": "jjj",
+                "lastName": "kkkk",
+                "email": "jjj@kkk.com",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": "18145194061882415841",
+                "createdBy": "mdclone.admin",
+                "createdDate": "2018-10-17T14:15:19.702Z",
+                "resetDate": "2018-10-17T14:15:19.671Z",
+                "lastModifiedBy": "mdclone.admin",
+                "lastModifiedDate": "2018-10-17T14:15:19.702Z",
+                "cellPhone": null,
+                "domain": "",
+                "photo": null
+            },
+            "project": {
+                "projectId": "1",
+                "projectName": "Demo Project",
+                "defaultSiteId": "1"
+            }
+        },
+        {
+            "researchId": 68,
+            "researchName": "123research 123$5566@@@@@@@@@~~~~~~~~~~~~~#################! ~*&^nbhfjhjfhjghjghjgjhghjkjkghkjh%^#@!~+=_-(){}[](99/|\\<>w\":; 123$5566@@@@@@@@@~~~~~~~~~~~~~#################!~*&^nbhfjhjfhjghjghjgjhghjkjkghkjh%^#@!~+=_-(){}[](99/|\\<>w\":;",
+            "userId": "1993",
+            "projectId": "1",
+            "startDate": "1900-10-31",
+            "researchStatus": "Open",
+            "maxPatients": 10000000,
+            "insertDate": "2019-01-27T14:35:10.000Z",
+            "information": "research 123$5566@@@@@@@@@~~~~~~~~~~~~~#################! ~*&^nbhfjhjfhjghjghjgjhghjkjkghkjh%^#@!~+=_-(){}[](99/|\\<>w\":; 123$5566@@@@@@@@@~~~~~~~~~~~~~#################!~*&^nbhfjhjfhjghjghjgjhghjkjkghkjh%^#@!~+=_-(){}[](99/|\\<>w\":;",
+            "endDate": null,
+            "approvalKey": "research 123$5566@@@@@@@@@~~~~~~~~~~~~~#################! ~*&^nbhfjhjfhjghjghjgjhghjkjkghkjh%^#@!~+=_-(){}[](99/|\\<>w\":; 123$5566@@@@@@@@@~~~~~~~~~~~~~#################!~*&^nbhfjhjfhjghjghjgjhghjkjkghkjh%^#@!~+=_-(){}[](99/|\\<>w\":;",
+            "approvalKeyExpirationDate": "2020-09-27",
+            "user_id": "1993",
+            "researchRestrictionEvents": [
+                {
+                    "researchId": "68",
+                    "eventPropertyId": "lengthofstayvalue",
+                    "eventId": "6",
+                    "value": "2011-01-20 11:55:00 PM",
+                    "siteEventPropertyInfo": {
+                        "eventPropertyNa": "lengthofstayvalue",
+                        "eventId": "293",
+                        "dataSample": "[-0.92 .. 294.62]",
+                        "eventPropertyTy": "NUMERIC",
+                        "hierarchyRootId": null,
+                        "patientFk": false,
+                        "eventTimeStamp": false,
+                        "ageAtEvent": false,
+                        "fieldDescriptio": "lengthofstayvalue",
+                        "fieldDes": null,
+                        "priority": 1,
+                        "isDependentSear": false
+                    },
+                    "siteEventInfo": {
+                        "eventTableAlias": "omry test3"
+                    }
+                }
+            ],
+            "researchTemplates": [],
+            "user": {
+                "id": "1993",
+                "login": "Janeta.Kozak",
+                "passwordHash": "$2a$10$G3OF8pfomKGuB8dpxNlj2eL8wZwY5L.3M19fJ5DfVS1sR0ojd/Ic.",
+                "firstName": "jjj",
+                "lastName": "kkkk",
+                "email": "jjj@kkk.com",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": "18145194061882415841",
+                "createdBy": "mdclone.admin",
+                "createdDate": "2018-10-17T14:15:19.702Z",
+                "resetDate": "2018-10-17T14:15:19.671Z",
+                "lastModifiedBy": "mdclone.admin",
+                "lastModifiedDate": "2018-10-17T14:15:19.702Z",
+                "cellPhone": null,
+                "domain": "",
+                "photo": null
+            },
+            "project": {
+                "projectId": "1",
+                "projectName": "Demo Project",
+                "defaultSiteId": "1"
+            }
+        },
+        {
+            "researchId": 38,
+            "researchName": "research 123$5566@@@@@@@@@~~~~~~~~~~~~~#################! ~*&^nbhfjhjfhjghjghjgjhghjkjkghkjh%^#@!~+=_-(){}[](99/|\\<>w\":; 123$5566@@@@@@@@@~~~~~~~~~~~~~#################!~*&^nbhfjhjfhjghjghjgjhghjkjkghkjh%^#@!~+=_-(){}[](99/|\\<>w\":;",
+            "userId": "1993",
+            "projectId": "1",
+            "startDate": "1900-10-30",
+            "researchStatus": "Closed",
+            "maxPatients": 100000,
+            "insertDate": "2019-01-27T14:35:10.000Z",
+            "information": "research 123$5566@@@@@@@@@~~~~~~~~~~~~~#################! ~*&^nbhfjhjfhjghjghjgjhghjkjkghkjh%^#@!~+=_-(){}[](99/|\\<>w\":; 123$5566@@@@@@@@@~~~~~~~~~~~~~#################!~*&^nbhfjhjfhjghjghjgjhghjkjkghkjh%^#@!~+=_-(){}[](99/|\\<>w\":;",
+            "endDate": "2019-01-27",
+            "approvalKey": "research 123$5566@@@@@@@@@~~~~~~~~~~~~~#################! ~*&^nbhfjhjfhjghjghjgjhghjkjkghkjh%^#@!~+=_-(){}[](99/|\\<>w\":; 123$5566@@@@@@@@@~~~~~~~~~~~~~#################!~*&^nbhfjhjfhjghjghjgjhghjkjkghkjh%^#@!~+=_-(){}[](99/|\\<>w\":;",
+            "approvalKeyExpirationDate": "2020-07-27",
+            "user_id": "1993",
+            "researchRestrictionEvents": [
+                {
+                    "researchId": "38",
+                    "eventPropertyId": "lengthofstayvalue",
+                    "eventId": "6",
+                    "value": "9",
+                    "siteEventPropertyInfo": {
+                        "eventPropertyNa": "lengthofstayvalue",
+                        "eventId": "293",
+                        "dataSample": "[-0.92 .. 294.62]",
+                        "eventPropertyTy": "NUMERIC",
+                        "hierarchyRootId": null,
+                        "patientFk": false,
+                        "eventTimeStamp": false,
+                        "ageAtEvent": false,
+                        "fieldDescriptio": "lengthofstayvalue",
+                        "fieldDes": null,
+                        "priority": 1,
+                        "isDependentSear": false
+                    },
+                    "siteEventInfo": {
+                        "eventTableAlias": "dvgtretewrtwret"
+                    }
+                }
+            ],
+            "researchTemplates": [
+                {
+                    "researchId": "38",
+                    "templateId": "1",
+                    "InsertDate": "2020-07-27T15:56:34.891Z",
+                    "template": {
+                        "templateName": "Demo Template"
+                    }
+                }
+            ],
+            "user": {
+                "id": "1993",
+                "login": "Janeta.Kozak",
+                "passwordHash": "$2a$10$G3OF8pfomKGuB8dpxNlj2eL8wZwY5L.3M19fJ5DfVS1sR0ojd/Ic.",
+                "firstName": "jjj",
+                "lastName": "kkkk",
+                "email": "jjj@kkk.com",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": "18145194061882415841",
+                "createdBy": "mdclone.admin",
+                "createdDate": "2018-10-17T14:15:19.702Z",
+                "resetDate": "2018-10-17T14:15:19.671Z",
+                "lastModifiedBy": "mdclone.admin",
+                "lastModifiedDate": "2018-10-17T14:15:19.702Z",
+                "cellPhone": null,
+                "domain": "",
                 "photo": null
             },
             "project": {
@@ -331,6 +1006,89 @@
                 "lastModifiedDate": "2018-08-02T06:59:44.613Z",
                 "cellPhone": null,
                 "domain": "",
+                "photo": null
+            },
+            "project": {
+                "projectId": "1",
+                "projectName": "Demo Project",
+                "defaultSiteId": "1"
+            }
+        },
+        {
+            "researchId": 87,
+            "researchName": "Omry Test 1",
+            "userId": "5",
+            "projectId": "1",
+            "startDate": "2030-05-24",
+            "researchStatus": "Open",
+            "maxPatients": 123,
+            "insertDate": "2020-08-05T07:52:40.000Z",
+            "information": "Omry Test 2",
+            "endDate": "2030-05-24",
+            "approvalKey": "Omry Test 3",
+            "approvalKeyExpirationDate": "2030-02-24",
+            "user_id": "5",
+            "researchRestrictionEvents": [
+                {
+                    "researchId": "87",
+                    "eventPropertyId": "sequencenumber",
+                    "eventId": "187",
+                    "value": "1",
+                    "siteEventPropertyInfo": {
+                        "eventPropertyNa": "sequencenumber",
+                        "eventId": "317",
+                        "dataSample": "NULL",
+                        "eventPropertyTy": "STRING",
+                        "hierarchyRootId": null,
+                        "patientFk": false,
+                        "eventTimeStamp": false,
+                        "ageAtEvent": false,
+                        "fieldDescriptio": "sequencenumber",
+                        "fieldDes": null,
+                        "priority": 0,
+                        "isDependentSear": false
+                    },
+                    "siteEventInfo": {
+                        "eventTableAlias": "test"
+                    }
+                }
+            ],
+            "researchTemplates": [
+                {
+                    "researchId": "87",
+                    "templateId": "1",
+                    "InsertDate": "2020-08-05T09:04:36.002Z",
+                    "template": {
+                        "templateName": "Demo Template"
+                    }
+                },
+                {
+                    "researchId": "87",
+                    "templateId": "29",
+                    "InsertDate": "2020-08-05T09:04:36.002Z",
+                    "template": {
+                        "templateName": "Hanna"
+                    }
+                }
+            ],
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin",
+                "passwordHash": "$2a$10$G3OF8pfomKGuB8dpxNlj2eL8wZwY5L.3M19fJ5DfVS1sR0ojd/Ic.",
+                "firstName": "Admin gggg",
+                "lastName": "Admin",
+                "email": "mdclone.admin@localhost",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": null,
+                "createdBy": "system",
+                "createdDate": "2016-06-01T21:00:00.000Z",
+                "resetDate": null,
+                "lastModifiedBy": "mdclone.admin",
+                "lastModifiedDate": "2018-12-11T08:10:09.089Z",
+                "cellPhone": null,
+                "domain": null,
                 "photo": null
             },
             "project": {
@@ -1183,6 +1941,48 @@
             }
         },
         {
+            "researchId": 77,
+            "researchName": "Omry Test",
+            "userId": "5",
+            "projectId": "1",
+            "startDate": null,
+            "researchStatus": "Initial",
+            "maxPatients": 123,
+            "insertDate": "2020-07-30T10:35:58.000Z",
+            "information": "Omry Test",
+            "endDate": null,
+            "approvalKey": "Omry Test",
+            "approvalKeyExpirationDate": "2030-02-24",
+            "user_id": "5",
+            "researchRestrictionEvents": [],
+            "researchTemplates": [],
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin",
+                "passwordHash": "$2a$10$G3OF8pfomKGuB8dpxNlj2eL8wZwY5L.3M19fJ5DfVS1sR0ojd/Ic.",
+                "firstName": "Admin gggg",
+                "lastName": "Admin",
+                "email": "mdclone.admin@localhost",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": null,
+                "createdBy": "system",
+                "createdDate": "2016-06-01T21:00:00.000Z",
+                "resetDate": null,
+                "lastModifiedBy": "mdclone.admin",
+                "lastModifiedDate": "2018-12-11T08:10:09.089Z",
+                "cellPhone": null,
+                "domain": null,
+                "photo": null
+            },
+            "project": {
+                "projectId": "1",
+                "projectName": "Demo Project",
+                "defaultSiteId": "1"
+            }
+        },
+        {
             "researchId": 21,
             "researchName": "JJJJJJJJJJ",
             "userId": "1735",
@@ -1402,6 +2202,48 @@
             }
         },
         {
+            "researchId": 78,
+            "researchName": "Omry Test 1",
+            "userId": "5",
+            "projectId": "1",
+            "startDate": "2030-05-24",
+            "researchStatus": "Open",
+            "maxPatients": 123,
+            "insertDate": "2020-07-30T11:34:33.000Z",
+            "information": "Omry Test 2",
+            "endDate": "2030-05-24",
+            "approvalKey": "Omry Test 3",
+            "approvalKeyExpirationDate": "2030-02-24",
+            "user_id": "5",
+            "researchRestrictionEvents": [],
+            "researchTemplates": [],
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin",
+                "passwordHash": "$2a$10$G3OF8pfomKGuB8dpxNlj2eL8wZwY5L.3M19fJ5DfVS1sR0ojd/Ic.",
+                "firstName": "Admin gggg",
+                "lastName": "Admin",
+                "email": "mdclone.admin@localhost",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": null,
+                "createdBy": "system",
+                "createdDate": "2016-06-01T21:00:00.000Z",
+                "resetDate": null,
+                "lastModifiedBy": "mdclone.admin",
+                "lastModifiedDate": "2018-12-11T08:10:09.089Z",
+                "cellPhone": null,
+                "domain": null,
+                "photo": null
+            },
+            "project": {
+                "projectId": "1",
+                "projectName": "Demo Project",
+                "defaultSiteId": "1"
+            }
+        },
+        {
             "researchId": 55,
             "researchName": "lslslsslsls",
             "userId": "5",
@@ -1441,48 +2283,6 @@
                 "projectId": "21",
                 "projectName": "static numeric",
                 "defaultSiteId": "20"
-            }
-        },
-        {
-            "researchId": 38,
-            "researchName": "123",
-            "userId": "1993",
-            "projectId": "1",
-            "startDate": "1900-10-31",
-            "researchStatus": "Open",
-            "maxPatients": 100000,
-            "insertDate": "2019-01-27T14:35:10.000Z",
-            "information": "123",
-            "endDate": "2300-11-30",
-            "approvalKey": "",
-            "approvalKeyExpirationDate": null,
-            "user_id": "1993",
-            "researchRestrictionEvents": [],
-            "researchTemplates": [],
-            "user": {
-                "id": "1993",
-                "login": "Janeta.Kozak",
-                "passwordHash": "$2a$10$KG6GHOP9DBq8mYmeKVZ2M.kUjJwFDrRxK6d9uZEpjlSXXqTd36Uiu",
-                "firstName": "jjj",
-                "lastName": "kkkk",
-                "email": "jjj@kkk.com",
-                "activated": true,
-                "langKey": "en",
-                "activationKey": null,
-                "resetKey": "18145194061882415841",
-                "createdBy": "mdclone.admin",
-                "createdDate": "2018-10-17T14:15:19.702Z",
-                "resetDate": "2018-10-17T14:15:19.671Z",
-                "lastModifiedBy": "mdclone.admin",
-                "lastModifiedDate": "2018-10-17T14:15:19.702Z",
-                "cellPhone": null,
-                "domain": "",
-                "photo": null
-            },
-            "project": {
-                "projectId": "1",
-                "projectName": "Demo Project",
-                "defaultSiteId": "1"
             }
         },
         {
@@ -1738,6 +2538,107 @@
             }
         },
         {
+            "researchId": 76,
+            "researchName": "Omry Test",
+            "userId": "5",
+            "projectId": "1",
+            "startDate": null,
+            "researchStatus": "Initial",
+            "maxPatients": 123,
+            "insertDate": "2020-07-30T10:18:39.000Z",
+            "information": "Omry Test",
+            "endDate": null,
+            "approvalKey": "Omry Test",
+            "approvalKeyExpirationDate": "2030-02-24",
+            "user_id": "5",
+            "researchRestrictionEvents": [],
+            "researchTemplates": [],
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin",
+                "passwordHash": "$2a$10$G3OF8pfomKGuB8dpxNlj2eL8wZwY5L.3M19fJ5DfVS1sR0ojd/Ic.",
+                "firstName": "Admin gggg",
+                "lastName": "Admin",
+                "email": "mdclone.admin@localhost",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": null,
+                "createdBy": "system",
+                "createdDate": "2016-06-01T21:00:00.000Z",
+                "resetDate": null,
+                "lastModifiedBy": "mdclone.admin",
+                "lastModifiedDate": "2018-12-11T08:10:09.089Z",
+                "cellPhone": null,
+                "domain": null,
+                "photo": null
+            },
+            "project": {
+                "projectId": "1",
+                "projectName": "Demo Project",
+                "defaultSiteId": "1"
+            }
+        },
+        {
+            "researchId": 79,
+            "researchName": "Omry Test",
+            "userId": "5",
+            "projectId": "1",
+            "startDate": "2030-05-24",
+            "researchStatus": "Initial",
+            "maxPatients": 123,
+            "insertDate": "2020-07-30T11:36:42.000Z",
+            "information": "Omry Test",
+            "endDate": "2030-05-24",
+            "approvalKey": "Omry Test",
+            "approvalKeyExpirationDate": "2030-02-24",
+            "user_id": "5",
+            "researchRestrictionEvents": [],
+            "researchTemplates": [
+                {
+                    "researchId": "79",
+                    "templateId": "1",
+                    "InsertDate": "2020-07-30T11:36:41.594Z",
+                    "template": {
+                        "templateName": "Demo Template"
+                    }
+                },
+                {
+                    "researchId": "79",
+                    "templateId": "13",
+                    "InsertDate": "2020-07-30T11:36:41.594Z",
+                    "template": {
+                        "templateName": "all_r_files"
+                    }
+                }
+            ],
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin",
+                "passwordHash": "$2a$10$G3OF8pfomKGuB8dpxNlj2eL8wZwY5L.3M19fJ5DfVS1sR0ojd/Ic.",
+                "firstName": "Admin gggg",
+                "lastName": "Admin",
+                "email": "mdclone.admin@localhost",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": null,
+                "createdBy": "system",
+                "createdDate": "2016-06-01T21:00:00.000Z",
+                "resetDate": null,
+                "lastModifiedBy": "mdclone.admin",
+                "lastModifiedDate": "2018-12-11T08:10:09.089Z",
+                "cellPhone": null,
+                "domain": null,
+                "photo": null
+            },
+            "project": {
+                "projectId": "1",
+                "projectName": "Demo Project",
+                "defaultSiteId": "1"
+            }
+        },
+        {
             "researchId": 42,
             "researchName": "sdfsdfs dsfsdfs",
             "userId": "1008",
@@ -1878,7 +2779,16 @@
             "approvalKeyExpirationDate": "2019-04-16",
             "user_id": "1000",
             "researchRestrictionEvents": [],
-            "researchTemplates": [],
+            "researchTemplates": [
+                {
+                    "researchId": "16",
+                    "templateId": "1",
+                    "InsertDate": "2019-12-19T10:28:31.920Z",
+                    "template": {
+                        "templateName": "Demo Template"
+                    }
+                }
+            ],
             "user": {
                 "id": "1000",
                 "login": "researcher1",
@@ -2179,14 +3089,6 @@
                     "InsertDate": "2019-12-19T10:28:31.923Z",
                     "template": {
                         "templateName": "Test Template"
-                    }
-                },
-                {
-                    "researchId": "61",
-                    "templateId": "1",
-                    "InsertDate": "2019-12-19T10:28:31.920Z",
-                    "template": {
-                        "templateName": "Demo Template"
                     }
                 }
             ],
