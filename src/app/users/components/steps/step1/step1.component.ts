@@ -30,6 +30,10 @@ export class Step1Component implements OnInit {
   ngOnInit() {
     this._researchers = this.permissionSetService.getResearchers();
     this._users = this.permissionSetService.getUsers();
+    this.applySetUser();
+  }
+
+  private applySetUser(): void {
     if (this.permissionSetService.user) {
       this.userNameCmp.inputText = `${this.permissionSetService.user.firstName} ${this.permissionSetService.user.lastName}`;
     }
@@ -47,10 +51,11 @@ export class Step1Component implements OnInit {
     this.searchResearchText = text;
   }
 
-  selectResearcher(setObj: any): void {+
+  selectResearcher(setObj: any): void {
     this.permissionSetService.cloneSet(setObj);
     this.permissionSetService.permissionSet.fromSetId = setObj.researchId;
     this.permissionSetService.validate(false);
+    this.applySetUser();
   }
 
   selectUser(user: any): void {
