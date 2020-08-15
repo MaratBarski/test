@@ -17,9 +17,6 @@ export class RuleItemComponent implements OnInit {
     this.onRemove.emit(this.roleItem);
   }
 
-  properties: Array<SelectOption>;
-  events: Array<SelectOption>;
-
   ngOnInit() {
   }
 

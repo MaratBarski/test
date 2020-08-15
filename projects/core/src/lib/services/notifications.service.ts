@@ -102,7 +102,19 @@ export class NotificationsService {
   }
 
   serverUpdate(data: any): void {
-    const notice = this.notifications.find(x=>x.key === data.key);
-    notice.progress = data.progress;
+    if (!data) { return; }
+    if (!data.length) { data = [data]; }
+    data.forEach(serverNotice => {
+      const clientNotice = this.notifications.find(x => x.key === serverNotice.key);
+      if (!clientNotice) {
+        return;
+      }
+      this.copyNotification(serverNotice, clientNotice);
+    });
+  }
+
+  copyNotification(from: any, to: INotification): void {
+    to.progress = from.progress;
+    to.type = to.type;
   }
 }

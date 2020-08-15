@@ -111,8 +111,46 @@ export class PermissionSetService extends BaseSibscriber {
             })
         }
       });
+      this.initRoleItems(res.data);
       this._onTemplatesLoaded.next();
     });
+  }
+
+  tableNames = [];
+  propertyNames = [];
+
+  private initRoleItems(templates: Array<any>): void {
+    this._permissionSet.roleItems = [];
+    this.tableNames = [];
+    this.propertyNames = [];
+    const nameDict = {};
+    const propertyDict = {};
+    templates.forEach(t => {
+      if (!t.siteEventInfos || !t.siteEventInfos.length) {
+        return;
+      }
+      t.siteEventInfos.forEach(info => {
+        if (!nameDict[info.eventTableName]) {
+          nameDict[info.eventTableName] = info;
+          this.tableNames.push({
+            name: info.eventTableName,
+            id: info.eventId,
+            type: info.eventType
+          });
+        }
+        info.siteEventPropertyInfos.forEach(prop => {
+          if (!propertyDict[prop.eventPropertyName]) {
+            propertyDict[prop.eventPropertyName] = prop;
+            this.propertyNames.push({
+              name: prop.eventPropertyName,
+              type: prop.eventPropertyType
+            });
+          }
+        });
+      });
+      this.tableNames.sort((a, b) => a.name > b.name ? 1 : -1);
+      this.propertyNames.sort((a, b) => a.name > b.name ? 1 : -1);
+    })
   }
 
   templates = [];
@@ -156,6 +194,7 @@ export class PermissionSetService extends BaseSibscriber {
 
   save(): void {
     const obj = this.createSaveObject();
+    console.log(obj);
     if (this._setId) {
       this.http.put(`${environment.serverUrl}${environment.endPoints.research}/${this._setId}`, obj).subscribe(res => {
         this.router.navigateByUrl('/users/research');
@@ -190,7 +229,17 @@ export class PermissionSetService extends BaseSibscriber {
       projectId: this.permissionSet.project,
       researchStatus: "Open",
       maxPatients: this.permissionSet.size,
-      researchRestrictionEvents: []
+      researchRestrictionEvents: this._permissionSet.roleItems
+        .filter(roleItem => {
+          return roleItem.selectedTableName >= 0 && roleItem.selectedPropertyName >= 0;
+        })
+        .map(roleItem => {
+          return {
+            eventId: roleItem.selectedTableName >= 0 ? this.tableNames[roleItem.selectedTableName].id : -1,
+            eventPropertyName: roleItem.selectedPropertyName >= 0 ? this.propertyNames[roleItem.selectedPropertyName].name : -1,
+            value: roleItem.text
+          }
+        })
     }
     if (this.permissionSet.keyExpirationDate) {
       obj['approvalKeyExpirationDate'] = this.dateService.formatDate(this.permissionSet.keyExpirationDate);
@@ -299,9 +348,7 @@ export class PermissionSetService extends BaseSibscriber {
       allowedEvent: 1,
       researchTemplates: [],
       researchRestrictionEvents: [],
-      roleItems: [{
-        name: 'test'
-      }],
+      roleItems: [],
       data: {
       }
     }
@@ -331,6 +378,7 @@ export class PermissionSetService extends BaseSibscriber {
 
   private initTemplates(permSet: any): void {
     super.add(this.onTemplatesLoaded.subscribe(() => {
+      this.initEvents(permSet);
       if (!permSet.researchTemplates || !permSet.researchTemplates.length) {
         this.permissionSet.allowedEvent = 1;
         return;
@@ -339,8 +387,22 @@ export class PermissionSetService extends BaseSibscriber {
         t.isChecked = permSet.researchTemplates.find((x: any) => x.templateId.toString() === t.id.toString());
       });
       this.permissionSet.allowedEvent = this.templates.find(x => !x.isChecked) ? 3 : 2;
-    }))
+    }));
     this.loadTemplates();
+  }
+
+  private initEvents(permSet: any): void {
+    this._permissionSet.roleItems = [];
+    if (!permSet.researchRestrictionEvents || !permSet.researchRestrictionEvents.length) { return; }
+    permSet.researchRestrictionEvents.forEach(ev => {
+      const tableIndex = this.tableNames.findIndex(x => x.id === ev.eventId);
+      const propertyIndex = this.propertyNames.findIndex(x => x.name === ev.siteEventPropertyInfo.eventPropertyNa);
+      if (tableIndex !== -1 && propertyIndex !== -1) {
+        this._permissionSet.roleItems.push(
+          this.createRoleItem(tableIndex, propertyIndex, ev.value)
+        )
+      }
+    });
   }
 
   private convertToClient(permSet: any): PermissionSet {
@@ -387,7 +449,32 @@ export class PermissionSetService extends BaseSibscriber {
   }
 
   addRoleItem(): void {
-    this._permissionSet.roleItems = [{ name: '1' }].concat(this._permissionSet.roleItems)
+    this._permissionSet.roleItems = [
+      this.createRoleItem(-1, -1, '')
+    ].concat(this._permissionSet.roleItems)
+  }
+
+  private createRoleItem(tableIndex: number, propertyIndex: number, text: string): any {
+    return {
+      name: '',
+      text: text,
+      selectedTableName: tableIndex,
+      selectedPropertyName: propertyIndex,
+      tableNames: this.tableNames.map((x, i) => {
+        return {
+          id: i,
+          text: x.name,
+          value: i
+        }
+      }),
+      propertyNames: this.propertyNames.map((x, i) => {
+        return {
+          id: i,
+          text: x.name,
+          value: i
+        }
+      })
+    }
   }
 
   removeRoleItem(item: any): void {

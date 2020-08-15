@@ -2,15 +2,15 @@
     <div class="rule-build-item__head">that</div>
     <div class="rule-build-item__content">
         <div class="rule-build-item__select">
-            <mdc-select [options]="events" placeholder="Select Property..." [isSmall]="true"></mdc-select>
+            <mdc-select [(ngModel)]="roleItem.selectedTableName" [options]="roleItem.tableNames" placeholder="Select Property..." [isSmall]="true"></mdc-select>
         </div>
         <div class="rule-build-item__select">
             <div class="drop-auto">
-                <mdc-select [options]="properties" placeholder="Select Event..." [isSmall]="true"></mdc-select>
+                <mdc-select [(ngModel)]="roleItem.selectedPropertyName" [options]="roleItem.propertyNames" placeholder="Select Event..." [isSmall]="true"></mdc-select>
             </div>
         </div>
         <div class="rule-build-item__input">
-            <input type="text" placeholder="Type a text value">
+            <input type="text" [(ngModel)]="roleItem.text" placeholder="Type a text value">
         </div>
     </div>
     <div (click)="remove()" class="rule-build-item__icon">
