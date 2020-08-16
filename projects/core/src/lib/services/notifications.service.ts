@@ -117,9 +117,13 @@ export class NotificationsService {
     to.progress = from.progress;
     to.type = from.type;
     to.status = from.status;
-    to.succComment =
-      to.comment = from.succComment;
-    to.succName =
-      to.name = from.succName;
+    if (from.succComment) {
+      to.succComment =
+        to.comment = from.succComment;
+    }
+    if (from.succName) {
+      to.succName =
+        to.name = from.succName;
+    }
   }
 }
