@@ -71,7 +71,6 @@ export class Step1Component implements OnInit {
     this.permissionSetService.user = user;
     this.permissionSetService.permissionSet.userId = user.id;
     this.permissionSetService.validate(false);
-    this.hideUserName();
   }
 
   completeUsers(text: string): void {

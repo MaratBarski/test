@@ -115,6 +115,6 @@ export class NotificationsService {
 
   copyNotification(from: any, to: INotification): void {
     to.progress = from.progress;
-    to.type = to.type;
+    to.type = from.type;
   }
 }

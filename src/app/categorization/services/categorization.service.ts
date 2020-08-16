@@ -111,6 +111,7 @@ export class CategorizationService {
         },
         actionsDisabled: fl.status === 'unmapped',
         isActive: false,
+        isInactive:fl.status === 'deleting',
         source: fl
       })
     })

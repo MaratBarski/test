@@ -11,7 +11,7 @@ export interface FromTo {
   templateUrl: './date-range-selector.component.html',
   styleUrls: ['./date-range-selector.component.css']
 })
-export class DateRangeSelectorComponent {
+export class DateRangeSelectorComponent  {
 
   @Input() from = new Date();
   @Input() to = new Date();
@@ -32,13 +32,19 @@ export class DateRangeSelectorComponent {
   @ViewChild('fromPicker', { static: true }) fromPicker: Calendar;
   @ViewChild('toPicker', { static: true }) toPicker: Calendar;
 
-  constructor(private dateService: DateService) { }
-
+  constructor(private dateService: DateService) {}
+  
   cancel(): void {
     this.onCancel.emit();
   }
 
   locale = this.dateService.getCalendarLocale();
+
+  checkToDate():void{
+    if(this.from > this.to){
+      this.to = new Date(this.from);
+    }
+  }
 
   apply(): void {
     if (this.to < this.from) {
