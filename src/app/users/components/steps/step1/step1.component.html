@@ -1,7 +1,7 @@
 <div class="add-perm-set__content-wrap">
     <div class="add-perm-set__content">
         <div class="add-perm-set-main">
-            <div class="add-perm-set-main__content">
+            <div *ngIf="!permissionSetService.isEditMode" class="add-perm-set-main__content">
                 <div class="add-perm-set-main__item">
                     <div class="input-radio">
                         <input (change)="changeIsNew()" [value]="true"
@@ -31,6 +31,9 @@
                         </ng-template>
                     </mdc-auto-complete>
                 </div>
+            </div>
+            <div *ngIf="permissionSetService.isEditMode" class="add-perm-set-main__content">
+                {{permissionSetService.permissionSet.setName}}
             </div>
             <div class="add-perm-set-main__switch">
                 <div class="add-perm-set-main__label">Active</div>
@@ -129,7 +132,7 @@
         </div>
         <div class="add-perm-sect">
             <div class="add-perm-sect__head">Approval Key Details
-                <span class="user-details-main__opt">optional</span>
+                <span style="text-transform: none !important;" class="add-perm-sect__opt">Optional</span>
             </div>
             <div class="add-perm-sect__content">
                 <div class="add-perm-sect__item">
@@ -143,6 +146,11 @@
                         <mdc-date-picker (onSelect)="validate()"
                             [(ngModel)]="permissionSetService.permissionSet.keyExpirationDate">
                         </mdc-date-picker>
+                        <div class="add-perm-sect__label ps-warning">
+                            <svg width="20" height="20" color="#b00" *ngIf="permissionSetService.showWarning"
+                                mdcSvg="ic-failure">
+                            </svg>
+                        </div>
                     </div>
                 </div>
             </div>

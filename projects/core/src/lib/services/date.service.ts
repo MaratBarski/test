@@ -153,6 +153,10 @@ export class DateService {
     return `${this.formatNumber(res.getDate())}-${this.formatNumber(res.getMonth() + 1)}-${res.getFullYear()}`;
   }
 
+  formatDateToSend(date: string | Date): string {
+    const res = new Date(date);
+    return `${res.getFullYear()}-${this.formatNumber(res.getMonth() + 1)}-${this.formatNumber(res.getDate())}`;
+  }
 
   toExcel(date: string | Date): string {
     const res = new Date(date);

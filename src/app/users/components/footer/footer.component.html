@@ -7,10 +7,10 @@
                         <span class="btn btn_border" (click)="cancel()">Cancel</span>
                         <div class="split-btn split-btn_up">
                             <div (click)="next(1)" class="split-btn__title">Next</div>
-                            <div class="split-btn__arr">
+                            <div (click)="showOptions($event)" class="split-btn__arr">
                                 <svg class="icon ic-select-arr-down" mdcSvg="ic-select-arr-down"></svg>
                             </div>
-                            <div *ngIf="btnOptions?.length" class="split-btn__popup">
+                            <div [hidden]="!isShowOptions" *ngIf="btnOptions?.length" class="split-btn__popup">
                                 <ng-container *ngFor="let opt of btnOptions;let i=index">
                                     <div (click)="optionClick(i)" class="split-btn__item">
                                         {{opt.text}}

@@ -101,6 +101,10 @@ export class PermissionSetService extends BaseSibscriber {
     this.user = undefined;
   }
 
+  get isEditMode(): boolean {
+    return !!this._setId;
+  }
+
   resetService(id: any): void {
     this._setId = id;
     this.loadData();
@@ -264,13 +268,13 @@ export class PermissionSetService extends BaseSibscriber {
         })
     }
     if (this.permissionSet.keyExpirationDate) {
-      obj['approvalKeyExpirationDate'] = this.dateService.formatDate(this.permissionSet.keyExpirationDate);
+      obj['approvalKeyExpirationDate'] = this.dateService.formatDateToSend(this.permissionSet.keyExpirationDate);
     }
     if (!this.permissionSet.fromDateUnlimited) {
-      obj['startDate'] = this.dateService.formatDate(this.permissionSet.fromDate);
+      obj['startDate'] = this.dateService.formatDateToSend(this.permissionSet.fromDate);
     }
     if (!this.permissionSet.toDateUnlimited) {
-      obj['endDate'] = this.dateService.formatDate(this.permissionSet.toDate);
+      obj['endDate'] = this.dateService.formatDateToSend(this.permissionSet.toDate);
     }
     if (this.permissionSet.allowedEvent === 1) {
       obj.researchStatus = 'initial';
@@ -337,6 +341,8 @@ export class PermissionSetService extends BaseSibscriber {
   private _users: Array<any>;
   private _isShowError = false;
 
+  showWarning = false;
+
   get isShowError(): boolean {
     return this._isShowError;
   }
@@ -390,6 +396,7 @@ export class PermissionSetService extends BaseSibscriber {
       this._users = users.data;
       if (this._setId) {
         this._permissionSet = this.convertToClient(permSet.data);
+        this.showWarning = permSet.data.researchStatus && permSet.data.researchStatus.trim().toLowerCase() === 'open';
         this.initTemplates(permSet.data);
       } else {
         this._permissionSet = permSet;

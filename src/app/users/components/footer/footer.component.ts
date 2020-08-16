@@ -1,4 +1,6 @@
-import { Component, Output, Input, EventEmitter } from '@angular/core';
+import { Component, Output, Input, EventEmitter, HostListener } from '@angular/core';
+import { ComponentService } from '@appcore';
+
 
 export class SplitBtnOption {
   text: string;
@@ -23,19 +25,35 @@ export class FooterComponent {
     text: 'Save'
   }];
 
+  isShowOptions = false;
+
   cancel(): void {
+    this.isShowOptions = false;
     this.onCancel.emit();
   }
 
   next(i: number): void {
+    this.isShowOptions = false;
     this.onNext.emit(i);
   }
 
   save(): void {
+    this.isShowOptions = false;
     this.onSave.emit();
   }
 
   optionClick(i: number): void {
     this.onOptionClick.emit(i);
+    this.isShowOptions = false;
+  }
+
+  showOptions(event: any): void {
+    ComponentService.documentClick(event);
+    this.isShowOptions = true;
+  }
+
+
+  @HostListener('document:click', ['$event']) onMouseClick(event: any) {
+    this.isShowOptions = false;
   }
 }
