@@ -117,6 +117,17 @@ export class NotificationsService {
     to.progress = from.progress;
     to.type = from.type;
     to.status = from.status;
+    if (from.comment) {
+      to.comment = from.comment;
+    }
+    if (from.message) {
+      to.comment = from.message;
+    }
+    if (from.title) {
+      to.name = from.title;
+    }
+
+    //delete this code
     if (from.succComment) {
       to.succComment =
         to.comment = from.succComment;

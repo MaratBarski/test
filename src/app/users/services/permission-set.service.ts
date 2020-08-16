@@ -447,7 +447,7 @@ export class PermissionSetService extends BaseSibscriber {
     res.keyName = permSet.approvalKey;
     res.keyExpirationDate = new Date(permSet.approvalKeyExpirationDate);
     res.size = permSet.maxPatients;
-    res.setName = permSet.researchName;
+    res.setName = `${permSet.researchName} - ${permSet.user.firstName} ${permSet.user.lastName}`;
     res.setDescription = permSet.information;
     this.user = this._users.find(x => x.id === permSet.userId);
     if (this.user) {
@@ -462,7 +462,7 @@ export class PermissionSetService extends BaseSibscriber {
         researchId: x.researchId,
         researchName: x.researchName,
         user: `${x.user.firstName} ${x.user.lastName}`,
-        name: `${x.researchName} ${x.user.firstName} ${x.user.lastName}`
+        name: `${x.researchName} - ${x.user.firstName} ${x.user.lastName}`
       };
     })
   }
