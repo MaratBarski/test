@@ -19,6 +19,9 @@ export class ProjectComboComponent extends BaseSibscriber implements OnInit {
       this.selectedOption = { ...this.emptyProject };
     }
     this._project = project;
+    if (this.selectOptions) {
+      this.selectedOption = this.selectOptions.find(x => x.id === this._project) || { ...this.emptyProject };
+    }
   }
   get project(): string { return this._project; }
   private _project = '';

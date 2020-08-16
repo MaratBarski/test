@@ -35,8 +35,11 @@
     {{item.insertDate|date:'HH:mm'}}
 </ng-template>
 
-<ng-template let-item let-src="source" #stateColumn>
-    <span *ngIf="src.hierarchyChange && src.hierarchyLoadingType==='etl' && src.status!=='unmapped'"
+<ng-template let-item let-row="row" let-src="source" #stateColumn>
+    <span *ngIf="row.isInactive">
+        Deleting...
+    </span>
+    <span *ngIf="!row.isInactive && src.hierarchyChange && src.hierarchyLoadingType==='etl' && src.status!=='unmapped'"
         class="admin-table__icon" (mouseleave)="item.showWarning=false" (mouseenter)="showInfo($event,item,src)">
         <mdc-icon path="ic-warning"></mdc-icon>
         <div [hidden]="!item.showWarning" class="info-popup info-popup_right warning-info">
@@ -72,10 +75,10 @@
             </div>
         </div>
     </span>
-    <span *ngIf="!src.hierarchyChange && src.hierarchyLoadingType==='etl'  && src.status!=='unmapped'">
+    <span *ngIf="!row.isInactive && !src.hierarchyChange && src.hierarchyLoadingType==='etl'  && src.status!=='unmapped'">
         <mdc-icon path="ic-robot"></mdc-icon>
     </span>
-    <span *ngIf="src.status==='unmapped'" class="admin-table__icon">
+    <span *ngIf="!row.isInactive && src.status==='unmapped'" class="admin-table__icon">
         <svg class="icon ic-running ic-grey" mdcSvg="ic-running"></svg>
     </span>
 </ng-template>

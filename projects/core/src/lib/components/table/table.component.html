@@ -33,10 +33,11 @@
             </tr>
             <tr (click)="rowClick(row,rowIndex+1,$event)" (mouseover)="rowMouseOver($event,row,rowIndex)"
                 (mouseleave)="rowMouseLeave($event,row,rowIndex)"
-                [ngClass]="{'active':row.isActive,'row-even':rowIndex%2===0,'row-odd':rowIndex%2}" mdcTableRow>
+                [ngClass]="{'active':row.isActive,'row-even':rowIndex%2===0,'row-odd':rowIndex%2,'inactive':row.isInactive}"
+                mdcTableRow>
                 <ng-container *ngFor="let header of dataSource.headers|visibleHeaders;let index = index">
                     <td [ngStyle]="header.columnStyle||header.style"
-                    (click)="cellClick(row,rowIndex+1,index,header.showDetails,$event)"
+                        (click)="cellClick(row,rowIndex+1,index,header.showDetails,$event)"
                         class="admin-table__item {{header.cellCss||header.css}}" [mdcTableItem]="index">
                         <div [ngClass]="{'row-details-container':header.showDetails}"
                             class="{{header.cellContainerCss}}">
@@ -46,7 +47,7 @@
                             </mdc-text-block>
                             <ng-container *ngIf="cellsTemplate && cellsTemplate[header.columnId]"
                                 [ngTemplateOutlet]="cellsTemplate[header.columnId]"
-                                [ngTemplateOutletContext]="{$implicit: row.cells,source:row.source}">
+                                [ngTemplateOutletContext]="{$implicit: row.cells,source:row.source,row:row}">
                             </ng-container>
                             <div *ngIf="header.showDetails" [hidden]="currentOver!==row||currentRowInfo"
                                 class="more-link pointer">

@@ -5,11 +5,12 @@
         <div class="allowed-events">
             <div class="allowed-events__choose">
                 <div *ngFor="let ev of allowedEvents" class="input-radio">
-                    <input type="radio" [value]="ev.id" id="event_{{ev.id}}"
+                    <input (change)="updateEvents($event)" type="radio" [value]="ev.id" id="event_{{ev.id}}"
                         [(ngModel)]="permissionSetService.permissionSet.allowedEvent">
                     <label class="input-radio__label" for="event_{{ev.id}}">
                         <span class="input-radio__mark"></span>
-                        <span class="input-radio__text">{{ev.text}}</span></label>
+                        <span class="input-radio__text">{{ev.text}}</span>
+                    </label>
                 </div>
             </div>
             <div class="add-perm-templ" [ngClass]="{'disable':permissionSetService.permissionSet.allowedEvent!==3}">
@@ -53,7 +54,8 @@
                 <div class="add-perm-evets__title">Events the user may query:</div>
                 <div class="add-perm-evets__content">
                     <div class="add-perm-evets__list">
-                        <div *ngFor="let t of  permissionSetService.templates|distinctTemplate" class="add-perm-evets__item">
+                        <div *ngFor="let t of  permissionSetService.templates|distinctTemplate"
+                            class="add-perm-evets__item">
                             {{t.name}}
                         </div>
                     </div>

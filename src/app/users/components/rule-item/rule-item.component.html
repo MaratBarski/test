@@ -2,11 +2,20 @@
     <div class="rule-build-item__head">that</div>
     <div class="rule-build-item__content">
         <div class="rule-build-item__select">
-            <mdc-select [(ngModel)]="roleItem.selectedTableName" [options]="roleItem.tableNames" placeholder="Select Property..." [isSmall]="true"></mdc-select>
+            <!-- <mdc-auto-complete placeHolder="Select Property..." textField="name"
+                (onSelect)="selectTable($event)" (completeMethod)="completeTable($event)"
+                [suggestions]="tables">
+                <ng-template let-item>
+                    <div class="select__param" [text]="item.name" [mdcColorText]="searchTableText"></div>
+                </ng-template>
+            </mdc-auto-complete> -->
+            <mdc-select [(ngModel)]="roleItem.selectedTableName" [options]="roleItem.tableNames"
+                placeholder="Select Property..." [isSmall]="true"></mdc-select>
         </div>
         <div class="rule-build-item__select">
             <div class="drop-auto">
-                <mdc-select [(ngModel)]="roleItem.selectedPropertyName" [options]="roleItem.propertyNames" placeholder="Select Event..." [isSmall]="true"></mdc-select>
+                <mdc-select [(ngModel)]="roleItem.selectedPropertyName" [options]="roleItem.propertyNames"
+                    placeholder="Select Event..." [isSmall]="true"></mdc-select>
             </div>
         </div>
         <div class="rule-build-item__input">

@@ -22,7 +22,7 @@ export class MapCategoryTableComponent {
 
   oldNewDifCount = 0;
   notInUse = [];
-  newCategoryDefault = { hierarchyLevelName: 'New Hierarchy name', sortValue: -3, inUse: true };
+  newCategoryDefault = { hierarchyLevelName: 'New Category name', sortValue: -3, inUse: true };
   noMatchCategory = { hierarchyLevelName: 'No Match. Please Select...', sortValue: -2, inUse: true };
   categoryMap = [];
   saveClicked = false;

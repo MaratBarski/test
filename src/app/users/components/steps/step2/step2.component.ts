@@ -31,6 +31,10 @@ export class Step2Component implements OnInit {
     this.templateItems = [];
   }
 
+  updateEvents(event: any): void {
+    this.permissionSetService.updateAllowedEvents();
+  }
+
   ngOnInit() {
   }
 

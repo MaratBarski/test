@@ -16,6 +16,7 @@ export class Step1Component implements OnInit {
 
   @ViewChild('userNameCmp', { static: true }) userNameCmp: AutoCompleteComponent;
   @ViewChild('projectCmp', { static: true }) projectCmp: ProjectComboComponent;
+  @ViewChild('setselectorCmp', { static: true }) setselectorCmp: AutoCompleteComponent;
 
   searchResearchText = '';
   searchUserText = '';
@@ -36,13 +37,21 @@ export class Step1Component implements OnInit {
   private applySetUser(): void {
     if (this.permissionSetService.user) {
       this.userNameCmp.inputText = `${this.permissionSetService.user.firstName} ${this.permissionSetService.user.lastName}`;
+      this.hideUserName();
     }
     if (this.permissionSetService.permissionSet.project) {
       this.projectCmp.projectModel = this.permissionSetService.permissionSet.project;
     }
   }
 
+  private hideUserName(): void {
+    this.userNameCmp.inputText = '';
+  }
+
   changeIsNew(): void {
+    this.permissionSetService.changeSource();
+    this.userNameCmp.inputText = '';
+    this.setselectorCmp.inputText = '';
     this.permissionSetService.validate(false);
   }
 
@@ -53,7 +62,6 @@ export class Step1Component implements OnInit {
 
   selectResearcher(setObj: any): void {
     this.permissionSetService.cloneSet(setObj);
-    this.permissionSetService.permissionSet.fromSetId = setObj.researchId;
     this.permissionSetService.validate(false);
     this.applySetUser();
   }
@@ -63,6 +71,7 @@ export class Step1Component implements OnInit {
     this.permissionSetService.user = user;
     this.permissionSetService.permissionSet.userId = user.id;
     this.permissionSetService.validate(false);
+    this.hideUserName();
   }
 
   completeUsers(text: string): void {

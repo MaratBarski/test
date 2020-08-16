@@ -72,13 +72,14 @@ export class CategorizationComponent extends BaseSibscriber implements OnInit {
       this.downloadService.download(`${environment.serverUrl}${environment.endPoints.downloadCategory}/${action.item.source.hierarchyRootId}`);
     },
     delete: (action: TableActionCommand) => {
-      this.categorySource = this.categorySource.filter(x => x != action.item.source);
-      this.initData();
-      this.table.stayOnCurrentPage = true;
+      action.item.isInactive = true;
       this.categorizationService.deleteCategory(action.item.source)
         .toPromise()
         .then(res => {
           console.log('Category deleted');
+          this.categorySource = this.categorySource.filter(x => x != action.item.source);
+          this.initData();
+          this.table.stayOnCurrentPage = true;
         }).catch(e => {
           console.error('Error delete category');
         })

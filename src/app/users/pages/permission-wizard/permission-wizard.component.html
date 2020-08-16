@@ -18,5 +18,7 @@
         </section>
     </div>
 </div>
-<md-footer [isNextEnable]="isNextEnable" [isSaveEnable]="isSaveEnable" (onCancel)="cancel()" (onNext)="next($event)"
+<md-footer (onOptionClick)="save()" 
+[step]="permissionSetService.selectedTab" 
+(onCancel)="cancel()" (onNext)="next($event)"
     (onSave)="save()"></md-footer>

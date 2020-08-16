@@ -18,14 +18,6 @@ export class PermissionWizardComponent extends BaseSibscriber implements OnInit 
     super();
   }
 
-  get isSaveEnable(): boolean {
-    return this.permissionSetService.selectedTab > 0;
-  }
-
-  get isNextEnable(): boolean {
-    return this.permissionSetService.selectedTab < 1;
-  }
-
   tabs: Array<TabWizardItem> = [
     {
       text: 'General Details'

@@ -1,19 +1,18 @@
-<footer *ngIf="!isSaveEnable" class="footer-wrap">
+<footer *ngIf="step===0" class="footer-wrap">
     <div class="footer">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
                     <div class="footer__btn">
                         <span class="btn btn_border" (click)="cancel()">Cancel</span>
-                        <div (click)="next(1)" class="split-btn split-btn_up">
-                            <div class="split-btn__title">Next</div>
+                        <div class="split-btn split-btn_up">
+                            <div (click)="next(1)" class="split-btn__title">Next</div>
                             <div class="split-btn__arr">
                                 <svg class="icon ic-select-arr-down" mdcSvg="ic-select-arr-down"></svg>
                             </div>
                             <div *ngIf="btnOptions?.length" class="split-btn__popup">
                                 <ng-container *ngFor="let opt of btnOptions;let i=index">
-                                    <div (click)="optionClick(i)"
-                                        class="split-btn__item">
+                                    <div (click)="optionClick(i)" class="split-btn__item">
                                         {{opt.text}}
                                     </div>
                                 </ng-container>
@@ -27,7 +26,7 @@
     </div>
 </footer>
 
-<footer *ngIf="isSaveEnable" class="footer-wrap">
+ <footer *ngIf="step!==0" class="footer-wrap">
     <div class="footer">
         <div class="container-fluid">
             <div class="row">
@@ -45,4 +44,4 @@
             </div>
         </div>
     </div>
-</footer>
+</footer> 

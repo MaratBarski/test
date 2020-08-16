@@ -72,12 +72,33 @@ export class PermissionSetService extends BaseSibscriber {
   }
 
   cloneSet(setObj: any): void {
+    this._permissionSet.fromSetId = setObj.researchId;
     const permSet = this.researchers.find(x => x.researchId === setObj.researchId);
     if (permSet) {
       this._permissionSet = this.convertToClient(permSet);
       this._permissionSet.isNew = false;
       this.initTemplates(permSet);
     }
+  }
+
+  changeSource(): void {
+    this._permissionSet.keyName = '';
+    this._permissionSet.project = '';
+    this._permissionSet.researchRestrictionEvents = [];
+    this._permissionSet.size = parseInt(this.configService.getValue('research_max_patients'));
+    this._permissionSet.allowedEvent = 1;
+    this._permissionSet.setName = '';
+    this._permissionSet.roleItems = [];
+    this._permissionSet.researchTemplates = [];
+    this._permissionSet.isActive = true;
+    this._permissionSet.setDescription = '';
+    this._permissionSet.keyName = '';
+    this._permissionSet.keyExpirationDate = undefined;
+    this._permissionSet.fromDateUnlimited = false;
+    this._permissionSet.toDateUnlimited = false;
+    this._permissionSet.fromDate = undefined;
+    this._permissionSet.toDate = undefined;
+    this.user = undefined;
   }
 
   resetService(id: any): void {
@@ -193,6 +214,7 @@ export class PermissionSetService extends BaseSibscriber {
   }
 
   save(): void {
+    if (!this.validate(true)) { return; }
     const obj = this.createSaveObject();
     console.log(obj);
     if (this._setId) {
@@ -285,7 +307,7 @@ export class PermissionSetService extends BaseSibscriber {
     if (setError) {
       this._isShowError = true;
     }
-    if (!this._permissionSet.isNew && this.isEmpty(this._permissionSet.fromSetId)) { return false; }
+    //if (!this._permissionSet.isNew && this.isEmpty(this._permissionSet.fromSetId)) { return false; }
     if (this.isEmpty(this._permissionSet.userId)) { return false; }
     if (this.isEmpty(this._permissionSet.project)) { return false; }
     if (this.isEmpty(this._permissionSet.setName)) { return false; }
@@ -479,5 +501,14 @@ export class PermissionSetService extends BaseSibscriber {
 
   removeRoleItem(item: any): void {
     this._permissionSet.roleItems = this._permissionSet.roleItems.filter(x => x !== item);
+  }
+
+  updateAllowedEvents(): void {
+    if (this.permissionSet.allowedEvent === 2) {
+      this.templates.forEach(x => x.isChecked = true);
+    } else if (this.permissionSet.allowedEvent === 1) {
+      this.templates.forEach(x => x.isChecked = false);
+    }
+    this.updateTemplates();
   }
 }

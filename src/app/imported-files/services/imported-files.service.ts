@@ -159,7 +159,8 @@ export class ImportedFilesService {
           fileName: fl.fileName
         },
         source: fl,
-        isActive: false
+        isActive: false,
+        isInactive: false
       })
     })
     return data;

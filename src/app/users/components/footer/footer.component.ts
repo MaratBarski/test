@@ -16,9 +16,12 @@ export class FooterComponent {
   @Output() onCancel = new EventEmitter();
   @Output() onOptionClick = new EventEmitter<number>();
 
+  @Input() step = 0;
   @Input() isSaveEnable = false;
-  @Input() isNextEnable = false;  
-  @Input() btnOptions: Array<SplitBtnOption>;
+  @Input() isNextEnable = false;
+  @Input() btnOptions: Array<SplitBtnOption> = [{
+    text: 'Save'
+  }];
 
   cancel(): void {
     this.onCancel.emit();

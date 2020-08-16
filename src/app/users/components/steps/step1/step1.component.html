@@ -22,9 +22,10 @@
                                 class="input-radio__text">New from exsiting
                                 set:</span></label>
                     </div>
-                    <mdc-auto-complete placeHolder="Search or Select a Permission Set..." textField="name"
-                        (onSelect)="selectResearcher($event)" (completeMethod)="completeResearcher($event)"
-                        [suggestions]="researchers" [disabled]="this.permissionSetService.permissionSet.isNew">
+                    <mdc-auto-complete #setselectorCmp placeHolder="Search or Select a Permission Set..."
+                        textField="name" (onSelect)="selectResearcher($event)"
+                        (completeMethod)="completeResearcher($event)" [suggestions]="researchers"
+                        [disabled]="this.permissionSetService.permissionSet.isNew">
                         <ng-template let-item>
                             <div class="select__param" [text]="item.name" [mdcColorText]="searchResearchText"></div>
                         </ng-template>
@@ -43,9 +44,9 @@
                     <div class="add-perm-sect__title"><span class="add-perm-sect__title-text">Username:</span></div>
                     <div class="add-perm-sect__fields">
                         <div class="add-perm-sect__select">
-                            <mdc-auto-complete #userNameCmp placeHolder="Search or Select a User Name..." textField="name"
-                                (onSelect)="selectUser($event)" (completeMethod)="completeUsers($event)"
-                                [suggestions]="users">
+                            <mdc-auto-complete #userNameCmp placeHolder="Search or Select a User Name..."
+                                textField="name" (onSelect)="selectUser($event)"
+                                (completeMethod)="completeUsers($event)" [suggestions]="users">
                                 <ng-template let-item>
                                     <div class="select__param" [text]="item.name" [mdcColorText]="searchUserText"></div>
                                 </ng-template>
@@ -54,7 +55,7 @@
                         <div class="add-perm-sect__select">
                             <div class="add-perm-sect__label">Environment:</div>
                             <md-project-combo #projectCmp [isSmall]="true" [selectUp]="false"
-                            [user]="permissionSetService.user"
+                                [user]="permissionSetService.user"
                                 [project]="permissionSetService.permissionSet.project"
                                 (onChange)="changedProject($event)">
                             </md-project-combo>
@@ -84,19 +85,25 @@
             <div class="add-perm-sect__head">Cohort limitations</div>
             <div class="add-perm-sect__content">
                 <div class="add-perm-sect__item">
-                    <div class="add-perm-sect__title"><span class="add-perm-sect__title-text">Size:</span>
-                        <svg class="icon ic-info" mdcSvg="ic-info">
-                        </svg>
+                    <div class="add-perm-sect__title">
+                        <span class="add-perm-sect__title-text">Size:</span>
+                        <span [pTooltip]="'The maximum number of patients allowed in a cohort.'">
+                            <svg class="icon ic-info" mdcSvg="ic-info">
+                            </svg>
+                        </span>
                     </div>
                     <div class="add-perm-sect__fields">
-                        <mdc-input-number [max]="permissionSetService.permissionSet.size" [isValid]="isValidSize" (onValueChanged)="onSizeChanged($event)"
+                        <mdc-input-number [max]="permissionSetService.permissionSet.size" [isValid]="isValidSize"
+                            (onValueChanged)="onSizeChanged($event)"
                             [(ngModel)]="permissionSetService.permissionSet.size"></mdc-input-number>
                         <div style="margin-left: 10px;" class="add-perm-sect__text">Patients</div>
                     </div>
                 </div>
                 <div class="add-perm-sect__item">
                     <div class="add-perm-sect__title"><span class="add-perm-sect__title-text">Date Range:</span>
-                        <svg class="icon ic-info" mdcSvg="ic-info"></svg>
+                        <span [pTooltip]="'Only events that occurred during this time-frame can be queried.'">
+                            <svg class="icon ic-info" mdcSvg="ic-info"></svg>
+                        </span>
                     </div>
                     <div class="add-perm-sect__fields">
                         <mdc-date-picker (onSelect)="validate()"

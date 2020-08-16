@@ -28,6 +28,7 @@ export class TableRowModel {
   csv?: { [key: string]: any };
   source?: any;
   isActive?: boolean;
+  isInactive?: boolean;
   actionsDisabled?: boolean;
 }
 export class TableModel {
