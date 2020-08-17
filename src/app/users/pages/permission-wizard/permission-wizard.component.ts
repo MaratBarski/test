@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PermissionSetService } from '@app/users/services/permission-set.service';
+import { PermissionSetService, NO_ALLOWED_EVENTS } from '@app/users/services/permission-set.service';
 import { TabWizardItem } from '@app/users/components/tabs/tabs.component';
 import { BaseSibscriber } from '@app/core-api';
 import { ActivatedRoute } from '@angular/router';
@@ -10,6 +10,8 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./permission-wizard.component.scss']
 })
 export class PermissionWizardComponent extends BaseSibscriber implements OnInit {
+
+  showCancelConfirm = false;
 
   constructor(
     public permissionSetService: PermissionSetService,
@@ -29,7 +31,16 @@ export class PermissionWizardComponent extends BaseSibscriber implements OnInit 
       text: 'Allowed Cohort',
       isOptional: true
     }
-  ]
+  ];
+
+  cancelSave(): void {
+    this.showCancelConfirm = false;
+  }
+
+  confirmSave(): void {
+    this.showCancelConfirm = false;
+    this.permissionSetService.save();
+  }
 
   ngOnInit(): void {
     super.add(
@@ -48,6 +59,10 @@ export class PermissionWizardComponent extends BaseSibscriber implements OnInit 
   }
 
   save(): void {
+    if (this.permissionSetService.permissionSet.allowedEvent === NO_ALLOWED_EVENTS) {
+      this.showCancelConfirm = true;
+      return;
+    }
     this.permissionSetService.save();
   }
 
