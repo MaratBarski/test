@@ -15,8 +15,8 @@ export class Step1Component implements OnInit {
   ) { }
 
   @ViewChild('userNameCmp', { static: true }) userNameCmp: AutoCompleteComponent;
-  @ViewChild('projectCmp', { static: true }) projectCmp: ProjectComboComponent;
-  @ViewChild('setselectorCmp', { static: true }) setselectorCmp: AutoCompleteComponent;
+  @ViewChild('projectCmp', { static: false }) projectCmp: ProjectComboComponent;
+  @ViewChild('setselectorCmp', { static: false }) setselectorCmp: AutoCompleteComponent;
 
   searchResearchText = '';
   searchUserText = '';
@@ -50,8 +50,12 @@ export class Step1Component implements OnInit {
 
   changeIsNew(): void {
     this.permissionSetService.changeSource();
-    this.userNameCmp.inputText = '';
-    this.setselectorCmp.inputText = '';
+    if (this.userNameCmp) {
+      this.userNameCmp.inputText = '';
+    }
+    if (this.setselectorCmp) {
+      this.setselectorCmp.inputText = '';
+    }
     this.permissionSetService.validate(false);
   }
 

@@ -226,6 +226,7 @@ export class PermissionSetService extends BaseSibscriber {
   save(): void {
     if (!this.validate(true)) { return; }
     const obj = this.createSaveObject();
+    console.log(JSON.stringify(obj));
     console.log(obj);
     if (this.isEditMode) {
       this.updateSet(obj);
