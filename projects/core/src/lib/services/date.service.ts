@@ -116,6 +116,11 @@ export class DateService {
     return date.toString().toLowerCase() !== 'invalid date';
   }
 
+  formatDateToSend(date: string | Date): string {
+    const res = new Date(date);
+    return `${res.getFullYear()}-${this.formatNumber(res.getMonth() + 1)}-${this.formatNumber(res.getDate())}`;
+  }
+
   getFilteredData(fromDate: Date, toDate: Date, data: Array<any>, propertyName: string): Array<any> {
     return [...data.filter(item => {
       return new Date(item[propertyName]) >= new Date(fromDate) && new Date(item[propertyName]) <= new Date(toDate);
