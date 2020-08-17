@@ -8,10 +8,14 @@ import { DateService, BaseSibscriber, NotificationsService, ToasterType } from '
 import { ConfigService } from '@app/shared/services/config.service';
 import { Router } from '@angular/router';
 
+export const NO_ALLOWED_EVENTS = 1;
+export const ALL_EVENTS = 2;
+export const BASED_EVENTS = 3;
+
 export const AllowedEvents = [
-  { id: 1, text: 'No allowed events (Default)' },
-  { id: 2, text: 'All events' },
-  { id: 3, text: 'Events based on permission templates:' }
+  { id: NO_ALLOWED_EVENTS, text: 'No allowed events (Default)' },
+  { id: ALL_EVENTS, text: 'All events' },
+  { id: BASED_EVENTS, text: 'Events based on permission templates:' }
 ]
 
 export class PermissionSet {
@@ -86,7 +90,7 @@ export class PermissionSetService extends BaseSibscriber {
     this._permissionSet.project = '';
     this._permissionSet.researchRestrictionEvents = [];
     this._permissionSet.size = parseInt(this.configService.getValue('research_max_patients'));
-    this._permissionSet.allowedEvent = 1;
+    this._permissionSet.allowedEvent = NO_ALLOWED_EVENTS;
     this._permissionSet.setName = '';
     this._permissionSet.roleItems = [];
     this._permissionSet.researchTemplates = [];
@@ -221,37 +225,43 @@ export class PermissionSetService extends BaseSibscriber {
     if (!this.validate(true)) { return; }
     const obj = this.createSaveObject();
     console.log(obj);
-    if (this._setId) {
-      this.http.put(`${environment.serverUrl}${environment.endPoints.research}/${this._setId}`, obj).subscribe(res => {
-        this.router.navigateByUrl('/users/research');
-      }, error => {
-        this.notificationService.addNotification({
-          type: ToasterType.error,
-          name: 'Failed to save research',
-          comment: 'Try again or contact MDClone support.',
-          showInToaster: true
-        });
-      });
+    if (this.isEditMode) {
+      this.updateSet(obj);
     } else {
-      this.http.post(`${environment.serverUrl}${environment.endPoints.research}`, obj).subscribe(res => {
-        this.router.navigateByUrl('/users/research');
-      }, error => {
-        this.notificationService.addNotification({
-          type: ToasterType.error,
-          name: 'Failed to add research',
-          comment: 'Try again or contact MDClone support.',
-          showInToaster: true
-        });
-      });
+      this.addSet(obj);
     }
+  }
+
+  private updateSet(obj: any): void {
+    this.http.put(`${environment.serverUrl}${environment.endPoints.research}/${this._setId}`, obj).subscribe(res => {
+      this.router.navigateByUrl('/users/research');
+    }, error => {
+      this.notificationService.addNotification({
+        type: ToasterType.error,
+        name: 'Failed to save research',
+        comment: 'Try again or contact MDClone support.',
+        showInToaster: true
+      });
+    });
+  }
+
+  private addSet(obj: any): void {
+    this.http.post(`${environment.serverUrl}${environment.endPoints.research}`, obj).subscribe(res => {
+      this.router.navigateByUrl('/users/research');
+    }, error => {
+      this.notificationService.addNotification({
+        type: ToasterType.error,
+        name: 'Failed to add research',
+        comment: 'Try again or contact MDClone support.',
+        showInToaster: true
+      });
+    });
   }
 
   private createSaveObject(): any {
     const obj = {
       researchName: this.permissionSet.setName,
       userId: this.permissionSet.userId,
-      information: this.permissionSet.setDescription,
-      approvalKey: this.permissionSet.keyName,
       projectId: this.permissionSet.project,
       researchStatus: "Open",
       maxPatients: this.permissionSet.size,
@@ -267,6 +277,9 @@ export class PermissionSetService extends BaseSibscriber {
           }
         })
     }
+    this.addField(obj, 'information', this.permissionSet.setDescription);
+    this.addField(obj, 'approvalKey', this.permissionSet.keyName);
+
     if (this.permissionSet.keyExpirationDate) {
       obj['approvalKeyExpirationDate'] = this.dateService.formatDateToSend(this.permissionSet.keyExpirationDate);
     }
@@ -276,11 +289,11 @@ export class PermissionSetService extends BaseSibscriber {
     if (!this.permissionSet.toDateUnlimited) {
       obj['endDate'] = this.dateService.formatDateToSend(this.permissionSet.toDate);
     }
-    if (this.permissionSet.allowedEvent === 1) {
+    if (this.permissionSet.allowedEvent === NO_ALLOWED_EVENTS) {
       obj.researchStatus = 'initial';
     } else {
       obj['researchTemplates'] =
-        this.permissionSet.allowedEvent === 3 ?
+        this.permissionSet.allowedEvent === BASED_EVENTS ?
           this.permissionSet.researchTemplates :
           this.templates.map(x => {
             return {
@@ -288,19 +301,12 @@ export class PermissionSetService extends BaseSibscriber {
             }
           })
     }
-
-    // const checkedTemplates = this.templates.filter(x => x.isChecked);
-
-    // checkedTemplates.forEach(x => {
-    //   x.siteEventInfos.forEach(y => {
-    //     obj.researchRestrictionEvents.push({
-    //       eventId: y.eventId,
-    //       eventPropertyName: y.eventTableName,
-    //       value: 1
-    //     })
-    //   })
-    // })
     return obj;
+  }
+
+  private addField(obj: any, name: string, value: any): void {
+    if (!value) { return; }
+    obj[name] = value;
   }
 
   private _isNeedValidate = true;
@@ -365,7 +371,7 @@ export class PermissionSetService extends BaseSibscriber {
 
 
   getDefault(): PermissionSet {
-    return {
+    const res = {
       isNew: true,
       isActive: true,
       setName: '',
@@ -373,12 +379,32 @@ export class PermissionSetService extends BaseSibscriber {
       setDescription: '',
       keyName: '',
       project: '',
-      allowedEvent: 1,
+      allowedEvent: NO_ALLOWED_EVENTS,
       researchTemplates: [],
       researchRestrictionEvents: [],
       roleItems: [],
       data: {
       }
+    };
+
+    this.addDateValue(res, 'research_start_date', 'fromDate', 'fromDateUnlimited');
+    this.addDateValue(res, 'research_end_date', 'toDate', 'toDateUnlimited');
+
+    return res;
+  }
+
+  private addDateValue(obj: any, configName: string, propertyName: string, checkPropertyName: string): void {
+    const dateStr = this.configService.getValue(configName);
+    if (!dateStr) {
+      obj[checkPropertyName] = true;
+      return;
+    }
+    const date = new Date(dateStr);
+    if (this.dateService.isDateValid(date)) {
+      obj[propertyName] = date;
+      obj[checkPropertyName] = false;
+    } else {
+      obj[checkPropertyName] = true;
     }
   }
 
@@ -409,13 +435,13 @@ export class PermissionSetService extends BaseSibscriber {
     super.add(this.onTemplatesLoaded.subscribe(() => {
       this.initEvents(permSet);
       if (!permSet.researchTemplates || !permSet.researchTemplates.length) {
-        this.permissionSet.allowedEvent = 1;
+        this.permissionSet.allowedEvent = NO_ALLOWED_EVENTS;
         return;
       }
       this.templates.forEach(t => {
         t.isChecked = permSet.researchTemplates.find((x: any) => x.templateId.toString() === t.id.toString());
       });
-      this.permissionSet.allowedEvent = this.templates.find(x => !x.isChecked) ? 3 : 2;
+      this.permissionSet.allowedEvent = this.templates.find(x => !x.isChecked) ? BASED_EVENTS : ALL_EVENTS;
     }));
     this.loadTemplates();
   }
@@ -511,9 +537,9 @@ export class PermissionSetService extends BaseSibscriber {
   }
 
   updateAllowedEvents(): void {
-    if (this.permissionSet.allowedEvent === 2) {
+    if (this.permissionSet.allowedEvent === ALL_EVENTS) {
       this.templates.forEach(x => x.isChecked = true);
-    } else if (this.permissionSet.allowedEvent === 1) {
+    } else if (this.permissionSet.allowedEvent === NO_ALLOWED_EVENTS) {
       this.templates.forEach(x => x.isChecked = false);
     }
     this.updateTemplates();
