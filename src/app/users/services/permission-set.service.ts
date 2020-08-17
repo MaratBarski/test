@@ -22,6 +22,7 @@ export class PermissionSet {
   isNew: boolean;
   isActive: boolean;
   setName: string;
+  setFullName: string;
   setDescription: string;
   size?: number;
   fromDateUnlimited?: boolean;
@@ -92,6 +93,7 @@ export class PermissionSetService extends BaseSibscriber {
     this._permissionSet.size = parseInt(this.configService.getValue('research_max_patients'));
     this._permissionSet.allowedEvent = NO_ALLOWED_EVENTS;
     this._permissionSet.setName = '';
+    this._permissionSet.setFullName = '';
     this._permissionSet.roleItems = [];
     this._permissionSet.researchTemplates = [];
     this._permissionSet.isActive = true;
@@ -375,6 +377,7 @@ export class PermissionSetService extends BaseSibscriber {
       isNew: true,
       isActive: true,
       setName: '',
+      setFullName: '',
       size: parseInt(this.configService.getValue('research_max_patients')),
       setDescription: '',
       keyName: '',
@@ -473,7 +476,8 @@ export class PermissionSetService extends BaseSibscriber {
     res.keyName = permSet.approvalKey;
     res.keyExpirationDate = new Date(permSet.approvalKeyExpirationDate);
     res.size = permSet.maxPatients;
-    res.setName = `${permSet.researchName} - ${permSet.user.firstName} ${permSet.user.lastName}`;
+    res.setName = permSet.researchName;
+    res.setFullName = `${permSet.researchName} - ${permSet.user.firstName} ${permSet.user.lastName}`;
     res.setDescription = permSet.information;
     this.user = this._users.find(x => x.id === permSet.userId);
     if (this.user) {
