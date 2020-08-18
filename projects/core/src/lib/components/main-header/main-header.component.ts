@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ComponentService } from '../../services/component.service';
 // import {environment} from '@env/environment';
 
@@ -27,6 +27,12 @@ export class MainHeaderComponent {
   icon = Icon;
 
   constructor(private componentService: ComponentService) {
+  }
+
+  isShowNotifications = false;
+  
+  showNotifications(): void {
+    this.isShowNotifications = !this.isShowNotifications;
   }
 
   toggleSideBar(): void {

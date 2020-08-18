@@ -9,3 +9,15 @@
         </ng-container>
     </div>
 </div>
+
+<div *ngIf="!(notificationsService?.notifications|showNotice:'container').length" class="header-notice__popup active">
+    <div class="header-notice__top">
+        <div class="header-notice__head">Notifications</div>
+    </div>
+    <div class="header-notice-empty">
+        <div class="header-notice-empty__title">No new notifications.</div>
+        <div class="header-notice-empty__text">Notifications of your activity will show up here.</div>
+        <div class="header-notice-empty__img"><img src="/assets/images/notice-empty.png" alt="" style="height: 170px;">
+        </div>
+    </div>
+</div>

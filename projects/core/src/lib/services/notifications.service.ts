@@ -97,6 +97,8 @@ export class NotificationsService {
   }
 
   addNotification(notice: INotification): void {
+    notice.showInContainer = true;
+    notice.showInToaster = true;
     this.notifications.push(notice);
     this.update();
   }
