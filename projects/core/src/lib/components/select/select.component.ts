@@ -28,8 +28,7 @@ export const SELECT_VALUE_ACCESSOR: any = {
 export class SelectComponent implements ControlValueAccessor, AfterViewInit {
   rotatedState: RotatedState = RotatedState.default;
 
-  constructor(private renderer2: Renderer2) {
-  }
+  constructor(private renderer2: Renderer2,) { }
 
   @ViewChild('combo', { static: true }) combo: ElementRef;
   @ViewChild('optionsContainer', { static: true }) optionsContainer: ElementRef;

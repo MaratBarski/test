@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, Input, ChangeDetectorRef, AfterViewChecked } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input, ChangeDetectorRef } from '@angular/core';
 import { SelectOption, LoginService, BaseSibscriber, SortService } from '@appcore';
 
 @Component({
@@ -6,7 +6,7 @@ import { SelectOption, LoginService, BaseSibscriber, SortService } from '@appcor
   templateUrl: './project-combo.component.html',
   styleUrls: ['./project-combo.component.scss']
 })
-export class ProjectComboComponent extends BaseSibscriber implements OnInit, AfterViewChecked {
+export class ProjectComboComponent extends BaseSibscriber implements OnInit {
   @Input() user: any;
   @Input() isSmall = false;
   @Input() applyWidth = false;
@@ -14,7 +14,15 @@ export class ProjectComboComponent extends BaseSibscriber implements OnInit, Aft
   @Input() emptyProject: SelectOption = { text: 'Select environment...', id: '' };
   @Output() onChange = new EventEmitter<string>();
   selectOptions: Array<SelectOption>;
-  @Input() disabled = false;
+  @Input() set disabled(disabled: boolean) {
+    setTimeout(() => {
+      this._disabled = disabled;
+    }, 0);
+  }
+  get disabled(): boolean {
+    return this._disabled;
+  }
+  private _disabled = false;
   @Input() isInvalid = false;
   @Input() set project(project: string) {
     if (!project) {
@@ -29,20 +37,24 @@ export class ProjectComboComponent extends BaseSibscriber implements OnInit, Aft
   private _project = '';
   selectedOption: SelectOption = undefined;
 
-  projectModel: any;
+  set projectModel(projectModel: any) {
+    setTimeout(() => {
+      this._projectModel = projectModel;
+    }, 1);
+  }
+
+  get projectModel(): any {
+    return this._projectModel;
+  }
+  private _projectModel: any;
 
   constructor(
     private loginService: LoginService,
-    private cdRef: ChangeDetectorRef,
     private sortService: SortService
   ) {
     super();
   }
 
-  ngAfterViewChecked(): void {
-    this.cdRef.detectChanges();
-  }
-  
   ngOnInit() {
     super.add(
       this.loginService.onUserInfoUpdated.subscribe(ui => {
