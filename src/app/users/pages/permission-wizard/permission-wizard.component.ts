@@ -1,23 +1,29 @@
 import { Component, OnInit } from '@angular/core';
 import { PermissionSetService, NO_ALLOWED_EVENTS } from '@app/users/services/permission-set.service';
 import { TabWizardItem } from '@app/users/components/tabs/tabs.component';
-import { BaseSibscriber } from '@app/core-api';
-import { ActivatedRoute } from '@angular/router';
+import { NavigationService, BaseNavigation } from '@appcore';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'md-permission-wizard',
   templateUrl: './permission-wizard.component.html',
   styleUrls: ['./permission-wizard.component.scss']
 })
-export class PermissionWizardComponent extends BaseSibscriber implements OnInit {
+export class PermissionWizardComponent extends BaseNavigation implements OnInit {
 
   showCancelConfirm = false;
 
+  get showChangesConfirm(): boolean {
+    return this.permissionSetService.showCancelConfirm;
+  }
+
   constructor(
     public permissionSetService: PermissionSetService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    protected navigationService: NavigationService,
+    private router: Router
   ) {
-    super();
+    super(navigationService);
   }
 
   tabs: Array<TabWizardItem> = [
@@ -43,6 +49,19 @@ export class PermissionWizardComponent extends BaseSibscriber implements OnInit 
   }
 
   ngOnInit(): void {
+    this.navigationService.beforeNavigate = ((url: string) => {
+      if (url) {
+        this.permissionSetService.redirectUrl = url;
+      }
+      if (this.permissionSetService.isHasChanges()) {
+        this.permissionSetService.showCancelConfirm = !!url;
+        return true;
+      }
+      if (url) {
+        this.router.navigateByUrl(url);
+      }
+    });
+
     super.add(
       this.activatedRoute.paramMap.subscribe(u => {
         const id = u.get('id') || 0;
@@ -74,5 +93,12 @@ export class PermissionWizardComponent extends BaseSibscriber implements OnInit 
     this.permissionSetService.setTab(index);
   }
 
+  cancelChanges(): void {
+    this.permissionSetService.showCancelConfirm = false;
+  }
+
+  confirmChanges(): void {
+    this.permissionSetService.cancelConfirm();
+  }
 }
 

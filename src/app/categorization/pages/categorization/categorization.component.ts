@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { BaseSibscriber, TableModel, TableComponent, PageInfo, NavigationService, TableActionCommand, EmptyState } from '@appcore';
+import { NotificationsService, BaseSibscriber, TableModel, TableComponent, PageInfo, NavigationService, TableActionCommand, EmptyState, ToasterType } from '@appcore';
 import { CategorizationService } from '@app/categorization/services/categorization.service';
 import { CategoryInfoComponent } from '@app/categorization/components/category-info/category-info.component';
 import { Router } from '@angular/router';
@@ -33,7 +33,8 @@ export class CategorizationComponent extends BaseSibscriber implements OnInit {
     private categorizationService: CategorizationService,
     private navigationService: NavigationService,
     private router: Router,
-    private downloadService: DownloadService
+    private downloadService: DownloadService,
+    private notificationService: NotificationsService
   ) {
     super();
     this.navigationService.currentPageID = PageInfo.ManageHierarchies.id;
@@ -61,6 +62,10 @@ export class CategorizationComponent extends BaseSibscriber implements OnInit {
     this.execCommand[action.command](action);
   }
 
+  showDeleteConfirm = false;
+  currentItemForDelete: any;
+  deleteSubTitle = '';
+
   execCommand = {
     edit: (action: TableActionCommand) => {
       this.router.navigate(['/categorization/edit-categories', { id: action.item.source.hierarchyRootId }]);
@@ -72,19 +77,46 @@ export class CategorizationComponent extends BaseSibscriber implements OnInit {
       this.downloadService.download(`${environment.serverUrl}${environment.endPoints.downloadCategory}/${action.item.source.hierarchyRootId}`);
     },
     delete: (action: TableActionCommand) => {
-      action.item.isInactive = true;
-      this.categorizationService.deleteCategory(action.item.source)
+      this.showDeleteConfirm = true;
+      this.currentItemForDelete = action.item;
+      this.deleteSubTitle = `This action will delete the categorization '${this.currentItemForDelete.source.hierarchyName}'.`;
+    }
+  };
+
+  confirmDelete(): void {
+    if (!this.currentItemForDelete) { return; }
+    this.showDeleteConfirm = false;
+    this.currentItemForDelete.isInactive = true;
+    const tempItem = this.currentItemForDelete;
+    setTimeout(() => {
+      this.categorizationService.deleteCategory(this.currentItemForDelete.source)
         .toPromise()
         .then(res => {
-          console.log('Category deleted');
-          this.categorySource = this.categorySource.filter(x => x != action.item.source);
+          this.notificationService.addNotification({
+            showInToaster: true,
+            name: 'Categorization deleted successfully.',
+            comment: 'The categorization is deleted.',
+            type: ToasterType.success
+          });
+          this.categorySource = this.categorySource.filter(x => x != this.currentItemForDelete.item.source);
           this.initData();
           this.table.stayOnCurrentPage = true;
         }).catch(e => {
-          console.error('Error delete category');
-        })
-    }
-  };
+          tempItem.isInactive = false;
+          this.notificationService.addNotification({
+            showInToaster: true,
+            name: 'Failed to delete Categorization.',
+            comment: '',
+            type: ToasterType.error
+          });
+        });
+    }, 1);
+
+  }
+
+  cancelDelete(): void {
+    this.showDeleteConfirm = false;
+  }
 
   private initData(): void {
     this.isDataExists = !!(this.categorySource && this.categorySource.length);
@@ -99,14 +131,14 @@ export class CategorizationComponent extends BaseSibscriber implements OnInit {
         this.categorySource = res.data;
         this.initData();
       }));
-      this.onComplete = (): void => {
-        super.add(
-          this.categorizationService.load().subscribe((res: any) => {
-            this.categorySource = res.data || [];
-            this.initData();
-            this.table.stayOnCurrentPage = true;
-          }));
-      }
+    this.onComplete = (): void => {
+      super.add(
+        this.categorizationService.load().subscribe((res: any) => {
+          this.categorySource = res.data || [];
+          this.initData();
+          this.table.stayOnCurrentPage = true;
+        }));
+    }
   }
 
   closeCategoryInfo(): void {

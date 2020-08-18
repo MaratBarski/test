@@ -89,7 +89,7 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, Af
       console.log('view command');
     },
     delete: (action: TableActionCommand) => {
-      if (action.item.source.fileType) {
+      if (action.item.source.fileType || true) {
         this.showDeleteConfirm = true;
         this.sourceForDelete = action.item.source;
         this.deleteSubTitle = `This action will delete the file '${this.sourceForDelete.fileName}'.`

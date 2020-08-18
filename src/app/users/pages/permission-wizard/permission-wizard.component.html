@@ -25,3 +25,8 @@
     subName="Saving the permission set without defining the allowed events, will prevent user from creating a query.."
     subText="Do you wish to save and continue later?" text="" (onCancel)="cancelSave()" (onConfirm)="confirmSave()">
 </md-confirm-dialog>
+
+<md-confirm-dialog *ngIf="showChangesConfirm" confirmText="Yes" cancelText="No, stay on page" name="Leaving Permission Set Page" subName="Changes you made will be lost."
+    subText="Do you wish to leave the page?" text="" (onCancel)="cancelChanges()"
+    (onConfirm)="confirmChanges()">
+</md-confirm-dialog>

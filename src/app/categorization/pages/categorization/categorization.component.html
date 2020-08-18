@@ -120,3 +120,8 @@
         </md-category-info>
     </div>
 </ng-template>
+
+<md-confirm-dialog *ngIf="showDeleteConfirm" name="Delete Categorization" [subName]="deleteSubTitle"
+    subText="Do you wish to continue?" text="It cannot be undone." (onCancel)="cancelDelete()"
+    (onConfirm)="confirmDelete()">
+</md-confirm-dialog>

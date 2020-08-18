@@ -1,5 +1,5 @@
 import { Component, Input, EventEmitter, Output, HostListener } from '@angular/core';
-import { ComponentService, SelectOption } from '@appcore';
+import { ComponentService, SelectOption, NotificationsService, ToasterType } from '@appcore';
 import { CategorizationService } from '@app/categorization/services/categorization.service';
 import { Router } from '@angular/router';
 import { environment } from '@env/environment';
@@ -13,10 +13,12 @@ export class MapCategoryInfoComponent {
 
   constructor(
     private categorizationService: CategorizationService,
-    private router: Router
+    private router: Router,
+    private notificationService: NotificationsService
   ) { }
 
   @Output() onHeadersChanged = new EventEmitter<any>();
+  @Output() onChanges = new EventEmitter();
 
   @Input() set data(data: any) {
     if (!data || !data.data) { return; }
@@ -49,6 +51,7 @@ export class MapCategoryInfoComponent {
   changeCategory(event: any): void {
     this.selectedCategory = event;
     this.data.data.defaultLevelId = event.id;
+    this.onChanges.emit();
   }
 
   @HostListener('document:click', ['$event']) onMouseClick(event: any) {
@@ -93,13 +96,38 @@ export class MapCategoryInfoComponent {
     window.open(`${environment.serverUrl}${environment.endPoints.downloadCategory}/${this.data.data.hierarchyRootId}`)
   }
 
+  showDeleteConfirm = false;
+
   delete(): void {
-    this.categorizationService.deleteCategory(this.data.data)
-      .toPromise()
-      .then(() => {
-        this.router.navigateByUrl('/categorization');
-      }).catch((e: any) => {
-        alert(e.message);
-      });
+    this.showDeleteConfirm = true;
+  }
+
+  confirmDelete(): void {
+    this.showDeleteConfirm = false;
+    setTimeout(() => {
+
+      this.categorizationService.deleteCategory(this.data.data)
+        .toPromise()
+        .then(() => {
+          this.notificationService.addNotification({
+            showInToaster: true,
+            name: 'Categorization deleted successfully.',
+            comment: 'The categorization is deleted.',
+            type: ToasterType.success
+          });
+          this.router.navigateByUrl('/categorization');
+        }).catch((e: any) => {
+          this.notificationService.addNotification({
+            showInToaster: true,
+            name: 'Failed to delete Categorization.',
+            comment: '',
+            type: ToasterType.error
+          });
+        });
+    }, 1);
+  }
+
+  cancelDelete(): void {
+    this.showDeleteConfirm = false;
   }
 }

@@ -67,7 +67,7 @@
                     </ng-container>
                     <div class="admin-table-action">
                         <span (click)="openLinkMenu(row,$event,rowIndex)"
-                            *ngIf="!row.actionsDisabled && (((dataSource.actions.subLinks|actionLink:row).length||(dataSource.actions.links|actionLink:row).length))"
+                            *ngIf="!row.isInactive && !row.actionsDisabled && (((dataSource.actions.subLinks|actionLink:row).length||(dataSource.actions.links|actionLink:row).length))"
                             class="admin-table-action__menu ic-hover">
                             <svg mdcSvg="ic-dot-menu" class="icon ic-dot-menu"></svg>
                             <div *ngIf="(commandRow===row && (dataSource?.actions?.links?.length || dataSource?.actions?.subLinks?.length) && ((dataSource.actions.subLinks|actionLink:commandRow).length||(dataSource.actions.links|actionLink:commandRow).length))"
@@ -82,7 +82,7 @@
                                 </div>
                             </div>
                         </span>
-                        <span *ngIf="row.actionsDisabled"
+                        <span *ngIf="row.actionsDisabled || row.isInactive"
                             class="admin-table-action__menu admin-table-action__menu_inactive">
                             <svg mdcSvg="ic-dot-menu" class="icon ic-dot-menu"></svg>
                         </span>

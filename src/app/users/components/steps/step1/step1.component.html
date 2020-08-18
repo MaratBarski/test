@@ -47,7 +47,7 @@
                 <div class="add-perm-sect__item">
                     <div class="add-perm-sect__title"><span class="add-perm-sect__title-text">Username:</span></div>
                     <div class="add-perm-sect__fields">
-                        <div class="add-perm-sect__select">
+                        <div [ngClass]="{'ps-empty':permissionSetService.isUserEmpty}" class="add-perm-sect__select ps-empty">
                             <mdc-auto-complete #userNameCmp placeHolder="Search or Select a User Name..."
                                 textField="name" (onSelect)="selectUser($event)" (onClear)="clearUser()"
                                 (completeMethod)="completeUsers($event)" [suggestions]="users">

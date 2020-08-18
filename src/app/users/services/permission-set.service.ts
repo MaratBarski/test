@@ -4,10 +4,9 @@ import { Offline } from '@app/shared/decorators/offline.decorator';
 import { environment } from '@env/environment';
 import { forkJoin, Subject, Observable, timer, of } from 'rxjs';
 import { UserListService } from './user-list.service';
-import { DateService, BaseSibscriber, NotificationsService, ToasterType } from '@appcore';
+import { DateService, BaseSibscriber, NotificationsService, ToasterType, INotification, NavigationService } from '@appcore';
 import { ConfigService } from '@app/shared/services/config.service';
 import { Router } from '@angular/router';
-import { INotification } from 'core/public-api';
 
 export const NO_ALLOWED_EVENTS = 1;
 export const ALL_EVENTS = 2;
@@ -49,6 +48,9 @@ export class PermissionSet {
 })
 export class PermissionSetService extends BaseSibscriber {
 
+  redirectUrl = '';
+  showCancelConfirm = false;
+
   constructor(
     private http: HttpClient,
     private userListService: UserListService,
@@ -56,12 +58,38 @@ export class PermissionSetService extends BaseSibscriber {
     private configService: ConfigService,
     private router: Router,
     private notificationService: NotificationsService,
+    private navigationService: NavigationService
   ) {
     super();
   }
 
+  cancelConfirm(): void {
+    this.showCancelConfirm = false;
+    this.router.navigateByUrl(this.redirectUrl || '/users/research');
+  }
+
+  private _initialSet = {};
+
+  private setInitialSet(): void {
+    if (!this._permissionSet) { return; }
+    //setTimeout(() => {
+      this._initialSet = JSON.parse(JSON.stringify(this.createSaveObject()));
+    //}, 1000);
+  }
+
+  isHasChanges(): boolean {
+    return JSON.stringify(this._initialSet) !== JSON.stringify(this.createSaveObject());
+  }
+
   get isSetNameEmpty(): boolean {
     if (this._permissionSet.setName.trim() === '' && this.isAfterValidate) {
+      return true;
+    }
+    return false;
+  }
+
+  get isUserEmpty(): boolean {
+    if (!this._permissionSet.userId && this.isAfterValidate) {
       return true;
     }
     return false;
@@ -133,6 +161,7 @@ export class PermissionSetService extends BaseSibscriber {
     this.user = undefined;
     this._isShowError = false;
     this._selectedTab = 0;
+    this.setInitialSet();
   }
 
   private _templatesLoaded = false;
@@ -236,7 +265,7 @@ export class PermissionSetService extends BaseSibscriber {
   }
 
   cancel(): void {
-    this.router.navigateByUrl('/users/research');
+    this.navigationService.navigate('/users/research');
   }
 
   isSaving = false;
@@ -357,7 +386,7 @@ export class PermissionSetService extends BaseSibscriber {
       this._isShowError = true;
     }
     //if (!this._permissionSet.isNew && this.isEmpty(this._permissionSet.fromSetId)) { return false; }
-    //if (this.isEmpty(this._permissionSet.userId)) { return false; }
+    if (this.isEmpty(this._permissionSet.userId)) { return false; }
     if (this.isEmpty(this._permissionSet.project)) { return false; }
     if (this.isEmpty(this._permissionSet.setName)) { return false; }
 
@@ -468,6 +497,7 @@ export class PermissionSetService extends BaseSibscriber {
         this._permissionSet = permSet;
       }
       this._dataLoaded = true;
+      this.setInitialSet();
     });
   }
 
@@ -476,12 +506,14 @@ export class PermissionSetService extends BaseSibscriber {
       this.initEvents(permSet);
       if (!permSet.researchTemplates || !permSet.researchTemplates.length) {
         this.permissionSet.allowedEvent = NO_ALLOWED_EVENTS;
+        this.setInitialSet();
         return;
       }
       this.templates.forEach(t => {
         t.isChecked = permSet.researchTemplates.find((x: any) => x.templateId.toString() === t.id.toString());
       });
       this.permissionSet.allowedEvent = this.templates.find(x => !x.isChecked) ? BASED_EVENTS : ALL_EVENTS;
+      this.setInitialSet();
     }));
     this.loadTemplates();
   }

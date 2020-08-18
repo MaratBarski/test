@@ -31,6 +31,10 @@ export class EditCategoriesComponent extends BaseSibscriber implements OnInit {
   @ViewChild('categoryTable', { static: false }) categoryTable: EditCategoryTableComponent;
   @ViewChild('mapCategoryTable', { static: false }) mapCategoryTable: MapCategoryTableComponent;
 
+  showChangesConfirm = false;
+  isHasChanges = false;
+  redirectUrl = '';
+
   constructor(
     private editCategoryService: EditCategoryService,
     private navigationService: NavigationService,
@@ -43,6 +47,19 @@ export class EditCategoriesComponent extends BaseSibscriber implements OnInit {
   }
 
   ngOnInit(): void {
+    this.navigationService.beforeNavigate = ((url: string) => {
+      if (url) {
+        this.redirectUrl = url;
+      }
+      if (this.isHasChanges) {
+        this.showChangesConfirm = !!url;
+        return true;
+      }
+      if (url) {
+        this.router.navigateByUrl(url);
+      }
+    });
+
     super.add(
       this.activatedRoute.paramMap.subscribe(u => {
         const id = u.get('id');
@@ -117,6 +134,7 @@ export class EditCategoriesComponent extends BaseSibscriber implements OnInit {
   isSaving = false;
 
   private replaceCategory(): void {
+    this.isHasChanges = true;
     if (!this.mapCategoryTable.validate()) { return; }
     //const formData = this.categoryInfo.fileData.formData as FormData;
 
@@ -213,10 +231,11 @@ export class EditCategoriesComponent extends BaseSibscriber implements OnInit {
   }
 
   cancel(): void {
-    this.router.navigateByUrl('/categorization');
+    this.navigationService.navigate('/categorization');
   }
 
   onNameChange(name: string): void {
+    this.isHasChanges = true;
     this.selectedCategory.data.hierarchyName = name;
   }
 
@@ -224,6 +243,7 @@ export class EditCategoriesComponent extends BaseSibscriber implements OnInit {
   formData: FormData;
 
   onHeadersChanged(event: any): void {
+    this.isHasChanges = true;
     this.mode = 'replace';
     this.formData = event.formData;
     this.oldCategories = event.categoryHeaders.map((str: any, i: number) => {
@@ -232,5 +252,18 @@ export class EditCategoriesComponent extends BaseSibscriber implements OnInit {
         sortValue: i
       };
     });
+  }
+
+  onChanges(): void {
+    this.isHasChanges = true;
+  }
+
+  cancelChanges(): void {
+    this.showChangesConfirm = false;
+  }
+
+  confirmChanges(): void {
+    this.showChangesConfirm = false;
+    this.router.navigateByUrl(this.redirectUrl || '/categorization');
   }
 }
