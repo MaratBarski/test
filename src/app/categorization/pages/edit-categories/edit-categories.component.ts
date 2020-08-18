@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { EditCategoryService } from '@app/categorization/services/edit-category.service';
-import { BaseSibscriber, NavigationService, PageInfo, NotificationStatus, ToasterType } from '@appcore';
+import { BaseSibscriber, NavigationService, PageInfo, NotificationStatus, ToasterType, BaseNavigation } from '@appcore';
 import { MapCategoryInfoComponent } from '@app/categorization/components/map-category-info/map-category-info.component';
 import { EditCategoryTableComponent } from '@app/categorization/components/edit-category-table/edit-category-table.component';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -14,7 +14,7 @@ import { environment } from '@env/environment';
   templateUrl: './edit-categories.component.html',
   styleUrls: ['./edit-categories.component.scss']
 })
-export class EditCategoriesComponent extends BaseSibscriber implements OnInit {
+export class EditCategoriesComponent extends BaseNavigation implements OnInit {
 
   get isValid(): boolean {
     return true;
@@ -37,12 +37,12 @@ export class EditCategoriesComponent extends BaseSibscriber implements OnInit {
 
   constructor(
     private editCategoryService: EditCategoryService,
-    private navigationService: NavigationService,
+    protected navigationService: NavigationService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private uploadService: UploadService
   ) {
-    super();
+    super(navigationService);
     this.navigationService.currentPageID = undefined;//PageInfo.ManageHierarchies.id;
   }
 
