@@ -74,7 +74,7 @@ export class Step1Component extends BaseSibscriber implements OnInit, AfterViewI
         this.userNameCmp.disabled = true;
       }
     }
-    if (this.permissionSetService.permissionSet.project) {
+    if (this.permissionSetService.permissionSet.project && this.projectCmp) {
       this.projectCmp.projectModel = this.permissionSetService.permissionSet.project;
     }
   }
