@@ -21,6 +21,7 @@ export class TooltipDirective implements OnInit, OnDestroy {
     return this._text;
   }
 
+  @Input() pause = 0;
   @Input('stickyToElement') stickyToElement = false;
   @Input() position: TooltipPosition = 'left';
   @Input('isShowTooltip') set show(show: boolean) {
@@ -31,6 +32,8 @@ export class TooltipDirective implements OnInit, OnDestroy {
   private dx = 12;
   private dy = 14;
   private prevPosition: TooltipPosition = undefined;
+
+  private timeoutID: any;
 
   constructor(
     private element: ElementRef,
@@ -141,10 +144,16 @@ export class TooltipDirective implements OnInit, OnDestroy {
   }
 
   @HostListener('mouseenter', ['$event']) onMouseEnter(event: any) {
-    if (!this._show) { this.hideTooltip(); return; }
-    this.showTooltip();
-    this.setTooltipPosition(event);
-    this.checkTooltipPosition(event);
+    if (!this._show) {
+      this.hideTooltip()
+    } else {
+      this.stopTimeout();
+      this.timeoutID = setTimeout(() => {
+        this.showTooltip();
+        this.setTooltipPosition(event);
+        this.checkTooltipPosition(event);
+      }, this.pause);
+    }
   }
 
   @HostListener('mouseleave', ['$event']) onMouseLeave(event: any) {
@@ -152,11 +161,18 @@ export class TooltipDirective implements OnInit, OnDestroy {
   }
 
   private hideTooltip(): void {
+    this.stopTimeout();
     this.renderer.setStyle(this.tooltipElement, 'display', 'none');
     if (this.prevPosition) {
       this.renderer.removeClass(this.tooltipElement, `${CLASS_NAME}_${this.position}`);
       this.position = this.prevPosition;
       this.prevPosition = undefined;
+    }
+  }
+
+  private stopTimeout(): void {
+    if (this.timeoutID) {
+      clearTimeout(this.timeoutID);
     }
   }
 
