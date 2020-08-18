@@ -251,12 +251,14 @@ export class PermissionSetService extends BaseSibscriber {
   get selectedTab(): number { return this._selectedTab; }
 
   setTab(i: number): void {
+    this.isAfterValidate = true;
     if (!this.validate(false)) { return; }
     this._selectedTab = i;
     this._onTabChanged.next(this._selectedTab);
   }
 
   nextTab(i: number): void {
+    this.isAfterValidate = true;
     if (!this.validate(true)) { return; }
     this._selectedTab += i;
     if (this._selectedTab < 0) { this._selectedTab = 0; }
@@ -271,6 +273,7 @@ export class PermissionSetService extends BaseSibscriber {
   isSaving = false;
 
   save(): void {
+    this.isAfterValidate = true;
     if (!this.validate(true)) { return; }
     const obj = this.createSaveObject();
     console.log(JSON.stringify(obj));
@@ -379,8 +382,6 @@ export class PermissionSetService extends BaseSibscriber {
 
   validate(setError: boolean): boolean {
     if (!this._isNeedValidate) { return true; }
-
-    this.isAfterValidate = true;
 
     if (setError) {
       this._isShowError = true;
