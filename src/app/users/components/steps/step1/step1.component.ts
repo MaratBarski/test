@@ -84,6 +84,7 @@ export class Step1Component extends BaseSibscriber implements OnInit, AfterViewI
   }
 
   changeIsNew(): void {
+    this.permissionSetService.isAfterValidate = false;
     this.permissionSetService.changeSource();
     if (this.userNameCmp) {
       this.userNameCmp.inputText = '';
@@ -102,6 +103,8 @@ export class Step1Component extends BaseSibscriber implements OnInit, AfterViewI
   selectResearcher(setObj: any): void {
     this.permissionSetService.cloneSet(setObj);
     this.permissionSetService.validate(false);
+    this.permissionSetService.permissionSet.userId = undefined;
+    this.permissionSetService.user = undefined;
     this.applySetUser();
   }
 

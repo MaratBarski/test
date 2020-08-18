@@ -5,8 +5,7 @@
                 <div class="add-perm-set-main__item">
                     <div class="input-radio">
                         <input (change)="changeIsNew()" [value]="true"
-                            [(ngModel)]="permissionSetService.permissionSet.isNew" id="param1" type="radio"
-                            name="addset">
+                            [(ngModel)]="permissionSetService.permissionSet.isNew" id="param1" type="radio">
                         <label class="input-radio__label" for="param1">
                             <span class="input-radio__mark"></span>
                             <span class="input-radio__text">New Permission
@@ -16,7 +15,7 @@
                 </div>
                 <div class="add-perm-set-main__item">
                     <div class="input-radio">
-                        <input (change)="changeIsNew()" id="param2" type="radio" name="addset" [value]="false"
+                        <input (change)="changeIsNew()" id="param2" type="radio" [value]="false"
                             [(ngModel)]="permissionSetService.permissionSet.isNew">
                         <label class="input-radio__label" for="param2"><span class="input-radio__mark"></span><span
                                 class="input-radio__text">New from exsiting

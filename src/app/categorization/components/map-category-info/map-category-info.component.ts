@@ -100,7 +100,10 @@ export class MapCategoryInfoComponent {
 
   delete(): void {
     this.showDeleteConfirm = true;
+    this.deleteSubTitle = `This action will delete the categorization '${this.data.data.hierarchyName}'.`;
   }
+
+  deleteSubTitle = '';
 
   confirmDelete(): void {
     this.showDeleteConfirm = false;

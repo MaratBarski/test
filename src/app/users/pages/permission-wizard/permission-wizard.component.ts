@@ -78,6 +78,7 @@ export class PermissionWizardComponent extends BaseNavigation implements OnInit 
   }
 
   save(): void {
+    this.permissionSetService.isAfterValidate = true;
     if (this.permissionSetService.permissionSet.allowedEvent === NO_ALLOWED_EVENTS) {
       if (!this.permissionSetService.validate(true)) { return; }
       this.showCancelConfirm = true;
