@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input, ChangeDetectorRef, AfterViewChecked } from '@angular/core';
 import { SelectOption, LoginService, BaseSibscriber, SortService } from '@appcore';
 
 @Component({
@@ -6,7 +6,7 @@ import { SelectOption, LoginService, BaseSibscriber, SortService } from '@appcor
   templateUrl: './project-combo.component.html',
   styleUrls: ['./project-combo.component.scss']
 })
-export class ProjectComboComponent extends BaseSibscriber implements OnInit {
+export class ProjectComboComponent extends BaseSibscriber implements OnInit, AfterViewChecked {
   @Input() user: any;
   @Input() isSmall = false;
   @Input() applyWidth = false;
@@ -31,10 +31,18 @@ export class ProjectComboComponent extends BaseSibscriber implements OnInit {
 
   projectModel: any;
 
-  constructor(private loginService: LoginService, private sortService: SortService) {
+  constructor(
+    private loginService: LoginService,
+    private cdRef: ChangeDetectorRef,
+    private sortService: SortService
+  ) {
     super();
   }
 
+  ngAfterViewChecked(): void {
+    this.cdRef.detectChanges();
+  }
+  
   ngOnInit() {
     super.add(
       this.loginService.onUserInfoUpdated.subscribe(ui => {
