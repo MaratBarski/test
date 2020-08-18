@@ -14,6 +14,7 @@ export class AutoCompleteComponent {
   inputText: string = '';
   @ContentChild(TemplateRef, { read: TemplateRef, static: true }) template: TemplateRef<any>;
   @Output() completeMethod = new EventEmitter<string>();
+  @Output() onClear = new EventEmitter();
   @Input() set suggestions(suggestions: Array<any>) {
     this.currentIndex = -1;
     this._suggestions = suggestions;
@@ -40,6 +41,7 @@ export class AutoCompleteComponent {
   }
 
   search(event: any): void {
+    if (this.disabled) { return; }
     if (event.keyCode === 13) { return; }
     if (event.keyCode === 38) { return; }
     if (event.keyCode === 40) { return; }
@@ -50,10 +52,12 @@ export class AutoCompleteComponent {
   }
 
   clearText(): void {
+    if (this.disabled) { return; }
     this.inputText = '';
     this.selectOpen = false;
     this.currentIndex = -1;
     this.isSelected = false;
+    this.onClear.emit();
   }
 
   openSelect(): void {

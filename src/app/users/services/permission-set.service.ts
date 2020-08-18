@@ -7,6 +7,7 @@ import { UserListService } from './user-list.service';
 import { DateService, BaseSibscriber, NotificationsService, ToasterType } from '@appcore';
 import { ConfigService } from '@app/shared/services/config.service';
 import { Router } from '@angular/router';
+import { INotification } from 'core/public-api';
 
 export const NO_ALLOWED_EVENTS = 1;
 export const ALL_EVENTS = 2;
@@ -57,6 +58,20 @@ export class PermissionSetService extends BaseSibscriber {
     private notificationService: NotificationsService,
   ) {
     super();
+  }
+
+  get isSetNameEmpty(): boolean {
+    if (this._permissionSet.setName.trim() === '' && this.isAfterValidate) {
+      return true;
+    }
+    return false;
+  }
+
+  get isProjectEmpty(): boolean {
+    if (!this._permissionSet.project && this.isAfterValidate) {
+      return true;
+    }
+    return false;
   }
 
   get onTemplatesLoaded(): Observable<void> {
@@ -112,6 +127,7 @@ export class PermissionSetService extends BaseSibscriber {
   }
 
   resetService(id: any): void {
+    this.isAfterValidate = false;
     this._setId = id;
     this.loadData();
     this.user = undefined;
@@ -223,11 +239,14 @@ export class PermissionSetService extends BaseSibscriber {
     this.router.navigateByUrl('/users/research');
   }
 
+  isSaving = false;
+
   save(): void {
     if (!this.validate(true)) { return; }
     const obj = this.createSaveObject();
     console.log(JSON.stringify(obj));
     console.log(obj);
+    this.isSaving = true;
     if (this.isEditMode) {
       this.updateSet(obj);
     } else {
@@ -235,13 +254,25 @@ export class PermissionSetService extends BaseSibscriber {
     }
   }
 
+  private addSuccNotification(): void {
+    this.isSaving = false;
+    this.notificationService.addNotification({
+      type: ToasterType.success,
+      name: 'Permission set created  successfully.',
+      comment: 'The user can now query the allowed data.',
+      showInToaster: true
+    });
+  }
+
   private updateSet(obj: any): void {
     this.http.put(`${environment.serverUrl}${environment.endPoints.research}/${this._setId}`, obj).subscribe(res => {
       this.router.navigateByUrl('/users/research');
+      this.addSuccNotification();
     }, error => {
+      this.isSaving = false;
       this.notificationService.addNotification({
         type: ToasterType.error,
-        name: 'Failed to save research',
+        name: 'Failed to update the permission set.',
         comment: 'Try again or contact MDClone support.',
         showInToaster: true
       });
@@ -251,10 +282,12 @@ export class PermissionSetService extends BaseSibscriber {
   private addSet(obj: any): void {
     this.http.post(`${environment.serverUrl}${environment.endPoints.research}`, obj).subscribe(res => {
       this.router.navigateByUrl('/users/research');
+      this.addSuccNotification();
     }, error => {
+      this.isSaving = false;
       this.notificationService.addNotification({
         type: ToasterType.error,
-        name: 'Failed to add research',
+        name: 'Failed to create the permission set.',
         comment: 'Try again or contact MDClone support.',
         showInToaster: true
       });
@@ -313,15 +346,18 @@ export class PermissionSetService extends BaseSibscriber {
   }
 
   private _isNeedValidate = true;
+  isAfterValidate = false;
 
   validate(setError: boolean): boolean {
     if (!this._isNeedValidate) { return true; }
+
+    this.isAfterValidate = true;
 
     if (setError) {
       this._isShowError = true;
     }
     //if (!this._permissionSet.isNew && this.isEmpty(this._permissionSet.fromSetId)) { return false; }
-    if (this.isEmpty(this._permissionSet.userId)) { return false; }
+    //if (this.isEmpty(this._permissionSet.userId)) { return false; }
     if (this.isEmpty(this._permissionSet.project)) { return false; }
     if (this.isEmpty(this._permissionSet.setName)) { return false; }
 

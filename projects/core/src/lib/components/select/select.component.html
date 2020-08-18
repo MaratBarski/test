@@ -1,6 +1,6 @@
 <div #combo [ngClass]="{'select_up':selectUp,'select_small':isSmall,'disable':disabled}" class="select" (blur)="blur()"
-     tabindex="10" style="cursor: pointer">
-  <div (click)="mouseClick($event);" class="select__head">
+  tabindex="10" style="cursor: pointer">
+  <div [style.borderColor]="isInvalid?'#b00':''" (click)="mouseClick($event);" class="select__head">
     <div #comboTextContainer class="select__icon-wrap overflow-x-hidden">
       <svg *ngIf="selected?.icon" [mdcSvg]="selected?.icon" class="icon"></svg>
       {{selected && selected?.id > -1 ? selected?.text : placeholder}}
@@ -10,10 +10,10 @@
     </div>
   </div>
   <div #optionsContainer [mdcVisibility]="isExpanded" [style.maxHeight]="maxHeight"
-       class="select__option overflow-x-hidden">
+    class="select__option overflow-x-hidden">
     <ng-template [ngIf]="options">
       <div [ngClass]="{'active':option==selected}" (click)="select(option)" *ngFor="let option of options"
-           class="select__param">
+        class="select__param">
         <div class="select__icon-wrap">
           <svg *ngIf="option.icon" [mdcSvg]="option.icon" class="icon"></svg>
           {{option.text}}

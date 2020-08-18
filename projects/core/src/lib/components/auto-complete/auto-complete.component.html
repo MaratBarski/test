@@ -2,7 +2,7 @@
     <div class="auto-complete-input-container">
         <input [disabled]="disabled" class="auto-complete-input" placeholder="{{placeHolder}}" [(ngModel)]="inputText"
             (keydown)="onKeyDown($event)" (keyup)="search($event)" type="text" />
-        <div (click)="clearText()" [hidden]="!inputText" class="auto-complete-dropdown">
+        <div (click)="clearText()" [hidden]="!inputText || disabled" class="auto-complete-dropdown">
             <svg class="ic-close" width="10" height="10" mdcSvg="ic-close"></svg>
         </div>
         <div *ngIf="dropdown" class="auto-complete-dropdown" (click)="openSelect()">

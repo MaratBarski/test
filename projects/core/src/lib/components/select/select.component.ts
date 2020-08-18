@@ -45,6 +45,7 @@ export class SelectComponent implements ControlValueAccessor, AfterViewInit {
   @Input() closeOnselect = true;
   @Input() expandHandler: 'click' | 'hover' = 'click';
   @Input() applyWidth = true;
+  @Input() isInvalid = false;
   @Output() changed = new EventEmitter<SelectOption>();
 
   isExpanded = false;

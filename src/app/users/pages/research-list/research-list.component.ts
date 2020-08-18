@@ -1,9 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { TableComponent, TableModel, CheckBoxListOption, NavigationService, PageInfo, BaseSibscriber, CheckBoxListComponent, SelectOption, EmptyState, DatePeriod, TableActionCommand, DownloadComponent } from '@appcore';
+import { TableComponent, TableModel, CheckBoxListOption, NavigationService, PageInfo, BaseSibscriber, CheckBoxListComponent, SelectOption, EmptyState, DatePeriod, TableActionCommand, DownloadComponent, NotificationsService, ToasterType } from '@appcore';
 import { Router } from '@angular/router';
 import { ConfigService } from '@app/shared/services/config.service';
 import { ResearchService } from '@app/users/services/research.service';
 import { formatDate } from '@angular/common';
+import { INotification } from 'core/public-api';
 
 @Component({
   selector: 'md-research-list',
@@ -39,7 +40,8 @@ export class ResearchListComponent extends BaseSibscriber implements OnInit {
     private researchService: ResearchService,
     private navigationService: NavigationService,
     private router: Router,
-    public configService: ConfigService
+    public configService: ConfigService,
+    private notificationService: NotificationsService
   ) {
     super();
     this.navigationService.currentPageID = PageInfo.Researchers.id;
@@ -70,20 +72,32 @@ export class ResearchListComponent extends BaseSibscriber implements OnInit {
     delete: (action: TableActionCommand) => {
       this.showDeleteConfirm = true;
       this.sourceForDelete = action.item.source;
-      this.deleteSubTitle = `This action will delete the research '${this.sourceForDelete.researchName}'.`
+      //this.deleteSubTitle = `This action will delete the research '${this.sourceForDelete.researchName}'.`
+      this.deleteSubTitle = 'This action will delete the permission set. It will deny the user from querying the allowed events. It cannot be undone.'
     }
   };
 
-  deleteFile(source:any):void{
+  deleteFile(source: any): void {
     this.researchSource = this.researchSource.filter(x => x != source);
     this.initData();
     this.table.stayOnCurrentPage = true;
+    const notice: INotification = {
+      showInToaster: true,
+      name: 'Deliting permission set',
+      type: ToasterType.info
+    }
+    this.notificationService.addNotification(notice);
     this.researchService.deleteFile(source)
       .toPromise()
       .then(res => {
-        console.log('File deleted');
+        notice.name = 'Permission set deleted successfully';
+        notice.type = ToasterType.success;
+        notice.comment = 'The user\'s permission set is deleted from the system.';
       }).catch(e => {
-        console.error('Error delete file');
+        console.log(e);
+        notice.name = 'Failed to delete permission set';
+        notice.type = ToasterType.error;
+        notice.comment = e.message;
       })
   }
 

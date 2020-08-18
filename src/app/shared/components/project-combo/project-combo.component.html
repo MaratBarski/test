@@ -1,4 +1,4 @@
-<mdc-select [isSmall]="isSmall" placeholder="Select Environment…" [(ngModel)]="projectModel" [applyWidth]="applyWidth"
+<mdc-select [isInvalid]="isInvalid" [isSmall]="isSmall" [disabled]="disabled" placeholder="Select Environment…" [(ngModel)]="projectModel" [applyWidth]="applyWidth"
     [hidden]="!selectOptions?.length" maxHeight="150px" [selectUp]="selectUp"
     [selected]="selectedOption" (changed)="changedProject($event)" [options]="selectOptions|userProject:user">
 </mdc-select>

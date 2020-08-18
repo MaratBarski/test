@@ -1,6 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterContentInit, AfterViewInit } from '@angular/core';
 import { PermissionSetService } from '@app/users/services/permission-set.service';
-import { AutoCompleteComponent } from '@appcore';
+import { BaseSibscriber, AutoCompleteComponent, NotificationsService, ToasterType, LoginService, UserResponse } from '@appcore';
 import { ProjectComboComponent } from '@app/shared/components/project-combo/project-combo.component';
 
 @Component({
@@ -8,11 +8,30 @@ import { ProjectComboComponent } from '@app/shared/components/project-combo/proj
   templateUrl: './step1.component.html',
   styleUrls: ['./step1.component.scss']
 })
-export class Step1Component implements OnInit {
+export class Step1Component extends BaseSibscriber implements OnInit, AfterViewInit {
 
   constructor(
-    public permissionSetService: PermissionSetService
-  ) { }
+    public permissionSetService: PermissionSetService,
+    private notificationService: NotificationsService,
+    private loginService: LoginService
+  ) {
+    super();
+  }
+
+  ngAfterViewInit(): void {
+    if (this.permissionSetService.isEditMode) {
+      this.projectCmp.disabled = true;
+      super.add(this.loginService.onUserInfoUpdated.subscribe((response: UserResponse) => {
+        if (this.permissionSetService.permissionSet.project && this.projectCmp) {
+          this.projectCmp.projectModel = this.permissionSetService.permissionSet.project;
+        }
+      }));
+    }
+  }
+
+  clearUser(): void {
+    this.permissionSetService.user = undefined;
+  }
 
   @ViewChild('userNameCmp', { static: true }) userNameCmp: AutoCompleteComponent;
   @ViewChild('projectCmp', { static: false }) projectCmp: ProjectComboComponent;
@@ -34,10 +53,26 @@ export class Step1Component implements OnInit {
     this.applySetUser();
   }
 
+  activateSet(isActive: boolean): void {
+    const status = isActive ? 'activated' : 'deactivated';
+    const comment = isActive ? 'User can now query data according to the permission set.' : 'User can no longer query data according to the permission set.';
+    this.notificationService.addNotification({
+      type: ToasterType.success,
+      name: `The permission set has been ${status}.`,
+      showInToaster: true,
+      comment: comment
+    })
+  }
+
   private applySetUser(): void {
     if (this.permissionSetService.user) {
       this.userNameCmp.inputText = `${this.permissionSetService.user.firstName} ${this.permissionSetService.user.lastName}`;
-      this.hideUserName();
+      if (!this.permissionSetService.isEditMode) {
+        this.hideUserName();
+        this.userNameCmp.disabled = false;
+      } else {
+        this.userNameCmp.disabled = true;
+      }
     }
     if (this.permissionSetService.permissionSet.project) {
       this.projectCmp.projectModel = this.permissionSetService.permissionSet.project;

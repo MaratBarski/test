@@ -60,6 +60,7 @@ export class PermissionWizardComponent extends BaseSibscriber implements OnInit 
 
   save(): void {
     if (this.permissionSetService.permissionSet.allowedEvent === NO_ALLOWED_EVENTS) {
+      if (!this.permissionSetService.validate(true)) { return; }
       this.showCancelConfirm = true;
       return;
     }
