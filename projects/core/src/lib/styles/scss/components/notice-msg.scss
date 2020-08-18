@@ -1,9 +1,9 @@
 /*-------------- notice-msg -----------------*/
 .notice-msg{
 	display: inline-block;
-	width: 322px;
+	width: 320px;
 	background: #fff;
-	padding: 20px 15px 15px;
+	padding: 20px 15px 19px;
 	border-radius: 4px;
 	box-shadow: 0 -9px 21px 0 rgba(128, 152, 213, 0.15), -10px 9px 21px 0 rgba(128, 152, 213, 0.15);
 	@include font(normal, normal, rem(12px), 1.4, $color-dark-grey);
@@ -33,7 +33,7 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		padding-bottom: 9px;
+		padding-bottom: 12px;
 		border-bottom: 1px solid rgba(172,178,195,0.5);
 	}
 
@@ -47,7 +47,7 @@
 	}
 
 	&__content{
-		padding-top: 12px;
+		padding-top: 8px;
 	}
 
 	&__title{
@@ -56,14 +56,19 @@
 	}
 
 	&__text,
-	&__text ul{
+	&__text ul,
+	&__text p{
 		@include font(normal, normal, rem(12px), 1.4, $color-dark-grey);
 	}
+
+	&__text p{margin-bottom: 6px;}
 
 	&__text ul{
 		padding-left: 10px;
 		margin-bottom: 6px;
 	}
+
+	&__text b{font-weight: 600;}
 
 	&__btn{
 		display: flex;
@@ -83,11 +88,25 @@
 		}
 	}
 
+	&__link-info{
+		color: $color-blue;
+		cursor: pointer;
+	}
+
+	&__link-info:hover{text-decoration: underline;}
+
 	.load-doc{
 		margin: -6px 0 13px;
 		&__content{
 			font-size: rem(12px);
 		}
+	}
+
+	&__text &__accent{color: $color-dark-blue;}
+
+	&__accent{
+		font-weight: 600;
+		margin-top: 12px;
 	}
 }
 
