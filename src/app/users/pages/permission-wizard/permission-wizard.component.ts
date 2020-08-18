@@ -88,6 +88,7 @@ export class PermissionWizardComponent extends BaseNavigation implements OnInit 
 
   selectNextTab(index: number): void {
     if (!this.permissionSetService.validate(true)) {
+      this.permissionSetService.isAfterValidate = true;
       return;
     }
     this.permissionSetService.setTab(index);
