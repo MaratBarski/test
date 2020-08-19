@@ -404,7 +404,7 @@ export class PermissionSetService extends BaseSibscriber {
 
     let invalidRoles = false;
     this._permissionSet.roleItems.forEach(ri => {
-      if (ri.text.trim() === '' || ri.selectedtableName === -1 || ri.selectedPropertyName === -1) {
+      if (ri.text.trim() === '' || ri.selectedTableName === -1 || ri.selectedPropertyName === -1) {
         invalidRoles = true;
         return;
       }
