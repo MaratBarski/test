@@ -14,7 +14,7 @@ export enum NotificationStatus {
 
 export interface INotification {
   key?: string;
-  name: string;
+  name?: string;
   failName?: string;
   failComment?: string;
   succName?: string;
@@ -27,13 +27,26 @@ export interface INotification {
   showProgress?: boolean;
   showInContainer?: boolean;
   showInToaster?: boolean;
-  type: ToasterType;
+  type?: ToasterType;
   fileName?: string;
   errorMessage?: string;
   progressTitle?: string;
   succUrl?: string;
   succLinkText?: string;
+  link?: string;
 }
+
+const NOTIFICATION_MAP: Array<{ client: string, server: string }> = [
+  { client: 'name', server: 'subject' },
+  { client: 'progress', server: 'progress' },
+  { client: 'comment', server: 'message' },
+  { client: 'status', server: 'status' },
+  { client: 'showInToaster', server: 'showInToaster' },
+  { client: 'showInContainer', server: 'showInContainer' },
+  { client: 'link', server: 'link' },
+  { client: 'key', server: 'key' },
+  { client: 'startDate', server: 'startDate' }
+];
 
 @Injectable({
   providedIn: 'root'
@@ -106,37 +119,23 @@ export class NotificationsService {
   serverUpdate(data: any): void {
     if (!data) { return; }
     if (!data.length) { data = [data]; }
-    data.forEach(serverNotice => {
-      const clientNotice = this.notifications.find(x => x.key === serverNotice.key);
+    const missingNotice = [];
+    data.forEach((serverNotice: any) => {
+      let clientNotice = this.notifications.find(x => x.key === serverNotice.key);
       if (!clientNotice) {
+        clientNotice = {};
+        this.copyNotification(serverNotice, clientNotice);
+        missingNotice.push(clientNotice);
         return;
       }
       this.copyNotification(serverNotice, clientNotice);
     });
+    this._notifications = this.notifications.concat(missingNotice);
   }
 
   copyNotification(from: any, to: INotification): void {
-    to.progress = from.progress;
-    to.type = from.type;
-    to.status = from.status;
-    if (from.comment) {
-      to.comment = from.comment;
-    }
-    if (from.message) {
-      to.comment = from.message;
-    }
-    if (from.title) {
-      to.name = from.title;
-    }
-
-    //delete this code
-    if (from.succComment) {
-      to.succComment =
-        to.comment = from.succComment;
-    }
-    if (from.succName) {
-      to.succName =
-        to.name = from.succName;
-    }
+    NOTIFICATION_MAP.forEach(k => {
+      to[k.client] = from[k.server];
+    })
   }
 }

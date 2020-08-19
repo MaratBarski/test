@@ -1,4 +1,4 @@
-<div *ngIf="(notificationsService.notifications|showNotice:'container').length" class="header-notice__popup active">
+<div style="z-index: 99999;" *ngIf="(notificationsService.notifications|showNotice:'container').length" class="header-notice__popup active">
     <div class="header-notice__top">
         <div class="header-notice__head">Notifications</div>
         <span class="header-notice__link pointer" (click)="dismissAll()">Dismiss All</span>
@@ -10,7 +10,7 @@
     </div>
 </div>
 
-<div *ngIf="!(notificationsService?.notifications|showNotice:'container').length" class="header-notice__popup active">
+<div style="z-index: 99999;" *ngIf="!(notificationsService?.notifications|showNotice:'container').length" class="header-notice__popup active">
     <div class="header-notice__top">
         <div class="header-notice__head">Notifications</div>
     </div>

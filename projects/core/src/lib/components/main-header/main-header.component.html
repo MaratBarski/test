@@ -22,11 +22,12 @@
               </div>
             </div>
             <div class="header-notice">
-              <mdc-icon (click)="showNotifications()" [path]="icon.notice" [css]="icon.notice">
+              <mdc-icon (click)="showNotifications($event)" [path]="icon.notice" [css]="icon.notice">
               </mdc-icon>
-              <div [hidden]="!isShowNotifications">
+              <div (mouseover)="isNoticeOver=true" (mouseleave)="isNoticeOver=false" (click)="noticeClick($event)" [hidden]="!isShowNotifications">
                 <mdc-notifications></mdc-notifications>
               </div>
+              <mdc-notification></mdc-notification>
             </div>
             <!-- <div class="header__profile">
               <div class="header__profile-icon"

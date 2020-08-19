@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, HostListener } from '@angular/core';
 import { ComponentService } from '../../services/component.service';
 // import {environment} from '@env/environment';
 
@@ -26,13 +26,25 @@ export class MainHeaderComponent {
   }
   icon = Icon;
 
-  constructor(private componentService: ComponentService) {
+  constructor(private componentService: ComponentService) { }
+
+  @HostListener('document:click', ['$event']) onMouseClick(event: any) {
+    if (this.isNoticeOver) { return; }
+    this.isShowNotifications = false;
+  }
+
+  isNoticeOver = false;
+
+  noticeClick(event: any): void {
+
   }
 
   isShowNotifications = false;
-  
-  showNotifications(): void {
-    this.isShowNotifications = !this.isShowNotifications;
+
+  showNotifications(event): void {
+    const isSshow = this.isShowNotifications;
+    ComponentService.documentClick(event);
+    this.isShowNotifications = !isSshow;
   }
 
   toggleSideBar(): void {
