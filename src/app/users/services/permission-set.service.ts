@@ -73,7 +73,7 @@ export class PermissionSetService extends BaseSibscriber {
   private setInitialSet(): void {
     if (!this._permissionSet) { return; }
     //setTimeout(() => {
-      this._initialSet = JSON.parse(JSON.stringify(this.createSaveObject()));
+    this._initialSet = JSON.parse(JSON.stringify(this.createSaveObject()));
     //}, 1000);
   }
 
@@ -253,6 +253,7 @@ export class PermissionSetService extends BaseSibscriber {
   setTab(i: number): void {
     this.isAfterValidate = true;
     if (!this.validate(false)) { return; }
+    this.isAfterValidate = false;
     this._selectedTab = i;
     this._onTabChanged.next(this._selectedTab);
   }
@@ -260,6 +261,7 @@ export class PermissionSetService extends BaseSibscriber {
   nextTab(i: number): void {
     this.isAfterValidate = true;
     if (!this.validate(true)) { return; }
+    this.isAfterValidate = false;
     this._selectedTab += i;
     if (this._selectedTab < 0) { this._selectedTab = 0; }
     if (this._selectedTab > 2) { this._selectedTab = 2; }
@@ -399,6 +401,16 @@ export class PermissionSetService extends BaseSibscriber {
     //if (!this.dateService.isDateValid(this._permissionSet.keyExpirationDate)) { return false; }
 
     //if (this.isEmpty(this._permissionSet.keyName)) { return false; }
+
+    let invalidRoles = false;
+    this._permissionSet.roleItems.forEach(ri => {
+      if (ri.text.trim() === '' || ri.selectedtableName === -1 || ri.selectedPropertyName === -1) {
+        invalidRoles = true;
+        return;
+      }
+    });
+
+    if (invalidRoles) { return false; }
 
     this._isShowError = false;
     return true;
@@ -580,7 +592,8 @@ export class PermissionSetService extends BaseSibscriber {
   addRoleItem(): void {
     this._permissionSet.roleItems = [
       this.createRoleItem(-1, -1, '')
-    ].concat(this._permissionSet.roleItems)
+    ].concat(this._permissionSet.roleItems);
+    this.isAfterValidate = false;
   }
 
   private createRoleItem(tableIndex: number, propertyIndex: number, text: string): any {

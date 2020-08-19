@@ -9,17 +9,19 @@
                     <div class="select__param" [text]="item.name" [mdcColorText]="searchTableText"></div>
                 </ng-template>
             </mdc-auto-complete> -->
-            <mdc-select [(ngModel)]="roleItem.selectedTableName" [options]="roleItem.tableNames"
+            <mdc-select (changed)="changed()"  [isInvalid]="isShowerror && roleItem.selectedTableName===-1" [(ngModel)]="roleItem.selectedTableName" [options]="roleItem.tableNames"
                 placeholder="Select Property..." [isSmall]="true"></mdc-select>
         </div>
         <div class="rule-build-item__select">
             <div class="drop-auto">
-                <mdc-select [(ngModel)]="roleItem.selectedPropertyName" [options]="roleItem.propertyNames"
-                    placeholder="Select Event..." [isSmall]="true"></mdc-select>
+                <mdc-select  (changed)="changed()" [isInvalid]="isShowerror && roleItem.selectedPropertyName===-1" [(ngModel)]="roleItem.selectedPropertyName"
+                    [options]="roleItem.propertyNames" placeholder="Select Event..." [isSmall]="true"></mdc-select>
             </div>
         </div>
         <div class="rule-build-item__input">
-            <input type="text" [(ngModel)]="roleItem.text" placeholder="Type a text value">
+            <div class="role-border" [ngClass]="{'invalid':!roleItem.text && isShowerror}">
+                <input type="text" (change)="changed()" [(ngModel)]="roleItem.text" placeholder="Type a text value">
+            </div>
         </div>
     </div>
     <div (click)="remove()" class="rule-build-item__icon">

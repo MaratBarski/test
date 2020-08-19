@@ -6,7 +6,7 @@
         <div class="rule-build">
             <div class="rule-build__list">
                 <ng-container *ngFor="let item of permissionSetService.permissionSet.roleItems">
-                    <md-rule-item [roleItem]="item" (onRemove)="remove($event)"></md-rule-item>
+                    <md-rule-item (onChange)="changeRoleItem()" [isShowerror]="permissionSetService.isAfterValidate" [roleItem]="item" (onRemove)="remove($event)"></md-rule-item>
                 </ng-container>
             </div>
             <div class="rule-build__more">

@@ -1,23 +1,23 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { SelectOption } from '@appcore';
+import { Component, Input, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'md-rule-item',
   templateUrl: './rule-item.component.html',
   styleUrls: ['./rule-item.component.scss']
 })
-export class RuleItemComponent implements OnInit {
+export class RuleItemComponent {
 
+  @Input() isShowerror = false;
   @Input() roleItem: any;
   @Output() onRemove = new EventEmitter<any>();
-
-  constructor() { }
+  @Output() onChange = new EventEmitter<any>();
 
   remove(): void {
     this.onRemove.emit(this.roleItem);
   }
 
-  ngOnInit() {
+  changed(): void {
+    this.onChange.emit();
   }
 
 }
