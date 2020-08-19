@@ -73,7 +73,10 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, Af
       name: "File mapping saved successfully↵",
       succLinkText: "link to page",
       type: ToasterType.infoProgressBar,
-      progress: 50
+      progress: 50,
+      onComplete: () => {
+        alert(this.fileSource.length)
+      }
     });
 
     // this.notificationsService.addServerNotification({
@@ -91,12 +94,24 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, Af
         key: "ee0e3204-0a84-4042-b3e9-4affb5566a78",
         message: "updating",
         showInToaster: true,
-        status: "Warning",
+        status: "Completed",
         subject: "File mapping saved successfully↵",
         succLinkText: "link to page",
         type: ToasterType.success
       })
-    }, 2000);
+    },10000);
+
+    setTimeout(() => {
+      this.notificationsService.serverUpdate({
+        key: "ee0e3204-0a84-4042-b3e9-4affb5566a78",
+        message: "1111111111111111",
+        showInToaster: true,
+        status: "Completed",
+        subject: "File mapping saved successfully↵",
+        succLinkText: "link to page",
+        type: ToasterType.success
+      })
+    },10000);
   }
 
   ngAfterContentInit(): void {
