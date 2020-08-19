@@ -45,7 +45,8 @@ const NOTIFICATION_MAP: Array<{ client: string, server: string }> = [
   { client: 'showInContainer', server: 'showInContainer' },
   { client: 'link', server: 'link' },
   { client: 'key', server: 'key' },
-  { client: 'startDate', server: 'startDate' }
+  { client: 'startDate', server: 'startDate' },
+  { client: 'type', server: 'type' }
 ];
 
 @Injectable({
@@ -137,5 +138,11 @@ export class NotificationsService {
     NOTIFICATION_MAP.forEach(k => {
       to[k.client] = from[k.server];
     })
+  }
+
+  addServerNotification(notice: any): void {
+    const n = {}
+    this.copyNotification(notice, n);
+    this._notifications = this._notifications.concat([n]);
   }
 }

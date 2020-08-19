@@ -19,10 +19,10 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, Af
   permissions: Array<CheckBoxListOption> = [];
   searchOptions = ['fileName', 'environment', 'permission', 'user'];
 
-  get EmptyTemplate():string{
+  get EmptyTemplate(): string {
     return EMPTY_TEMPLATE;
   }
-  
+
   emptyState: EmptyState = {
     title: 'You can synthesize or manipulate your own data. Start by clicking the button above.',
     subTitle: 'Your files will be listed here.',
@@ -60,6 +60,43 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, Af
   ) {
     super();
     this.navigationService.currentPageID = PageInfo.ImportedFiles.id;
+
+    //this.notificationsTests();
+  }
+
+
+  private notificationsTests(): void {
+    this.notificationsService.addNotification({
+      key: "ee0e3204-0a84-4042-b3e9-4affb5566a78",
+      comment: "Comments",
+      showInToaster: true,
+      name: "File mapping saved successfully↵",
+      succLinkText: "link to page",
+      type: ToasterType.infoProgressBar,
+      progress: 50
+    });
+
+    // this.notificationsService.addServerNotification({
+    //   key: "ee0e3204-0a84-4042-b3e9-4affb5566a78",
+    //   message: "Comments",
+    //   showInToaster: true,
+    //   status: "Failed",
+    //   subject: "File mapping saved successfully↵",
+    //   succLinkText: "link to page",
+    //   type: 3
+    // });
+
+    setTimeout(() => {
+      this.notificationsService.serverUpdate({
+        key: "ee0e3204-0a84-4042-b3e9-4affb5566a78",
+        message: "updating",
+        showInToaster: true,
+        status: "Warning",
+        subject: "File mapping saved successfully↵",
+        succLinkText: "link to page",
+        type: ToasterType.success
+      })
+    }, 2000);
   }
 
   ngAfterContentInit(): void {
