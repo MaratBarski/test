@@ -34,6 +34,9 @@ export interface INotification {
   succUrl?: string;
   succLinkText?: string;
   link?: string;
+  onComplete?: any;
+  onError?: any;
+  onProgress?: any;
 }
 
 const NOTIFICATION_MAP: Array<{ client: string, server: string }> = [
@@ -130,6 +133,10 @@ export class NotificationsService {
         return;
       }
       this.copyNotification(serverNotice, clientNotice);
+      if (clientNotice.status === NotificationStatus.completed && clientNotice.onComplete) {
+        clientNotice.onComplete();
+        clientNotice.onComplete = undefined;
+      }
     });
     this._notifications = this.notifications.concat(missingNotice);
   }

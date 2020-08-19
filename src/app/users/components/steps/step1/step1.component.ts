@@ -31,6 +31,8 @@ export class Step1Component extends BaseSibscriber implements OnInit, AfterViewI
 
   clearUser(): void {
     this.permissionSetService.user = undefined;
+    this.permissionSetService.permissionSet.userId = undefined;
+    this.permissionSetService.isAfterValidate = false;
   }
 
   @ViewChild('userNameCmp', { static: true }) userNameCmp: AutoCompleteComponent;
@@ -113,6 +115,11 @@ export class Step1Component extends BaseSibscriber implements OnInit, AfterViewI
     this.permissionSetService.user = user;
     this.permissionSetService.permissionSet.userId = user.id;
     this.permissionSetService.validate(false);
+
+    if (this.permissionSetService.user.projects && this.permissionSetService.user.projects.length === 1) {
+      this.projectCmp.projectModel = this.permissionSetService.user.projects[0].projectId;
+      this.permissionSetService.permissionSet.project = this.permissionSetService.user.projects[0].projectId;  
+    }
   }
 
   completeUsers(text: string): void {
