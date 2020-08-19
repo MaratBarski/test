@@ -89,27 +89,28 @@ export class CategorizationComponent extends BaseSibscriber implements OnInit {
     this.currentItemForDelete.isInactive = true;
     const tempItem = this.currentItemForDelete;
     setTimeout(() => {
-      this.categorizationService.deleteCategory(this.currentItemForDelete.source)
-        .toPromise()
-        .then(res => {
-          this.notificationService.addNotification({
-            showInToaster: true,
-            name: 'Categorization deleted successfully.',
-            comment: 'The categorization is deleted.',
-            type: ToasterType.success
-          });
-          this.categorySource = this.categorySource.filter(x => x != this.currentItemForDelete.item.source);
-          this.initData();
-          this.table.stayOnCurrentPage = true;
-        }).catch(e => {
-          tempItem.isInactive = false;
-          this.notificationService.addNotification({
-            showInToaster: true,
-            name: 'Failed to delete Categorization.',
-            comment: '',
-            type: ToasterType.error
-          });
-        });
+      super.add(
+        this.categorizationService.deleteCategory(this.currentItemForDelete.source)
+          .subscribe(() => {
+            this.notificationService.addNotification({
+              showInToaster: true,
+              name: 'Categorization deleted successfully.',
+              comment: 'The categorization is deleted.',
+              type: ToasterType.success
+            });
+            this.categorySource = this.categorySource.filter(x => x != tempItem.source);
+            this.initData();
+            this.table.stayOnCurrentPage = true;
+          }, error => {
+            tempItem.isInactive = false;
+            this.notificationService.addNotification({
+              showInToaster: true,
+              name: 'Failed to delete Categorization.',
+              comment: '',
+              type: ToasterType.error
+            });
+          })
+      )
     }, 1);
 
   }
