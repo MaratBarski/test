@@ -57,7 +57,7 @@
                         </div>
                         <div class="add-perm-sect__select">
                             <div class="add-perm-sect__label">Environment:</div>
-                            <md-project-combo #projectCmp [selectSingle]="true" [isInvalid]="permissionSetService.isProjectEmpty"
+                            <md-project-combo #projectCmp [isInvalid]="permissionSetService.isProjectEmpty"
                                 [isSmall]="true" [selectUp]="false" [user]="permissionSetService.user"
                                 [project]="permissionSetService.permissionSet.project"
                                 (onChange)="changedProject($event)">
