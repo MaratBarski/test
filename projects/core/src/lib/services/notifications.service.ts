@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import { Subject, Observable, BehaviorSubject } from 'rxjs';
 import { ToasterType } from '../components/toaster/toaster.component';
 import { NavigationService } from './navigation.service';
+import { HttpClient } from '@angular/common/http';
+import { BaseSibscriber } from '../common/BaseSibscriber';
+import { ENV } from '../config/env';
 
 export enum NotificationStatus {
   uploading = 'Uploading',
@@ -37,6 +40,7 @@ export interface INotification {
   onComplete?: any;
   onError?: any;
   onProgress?: any;
+  isAborted?: boolean;
 }
 
 const NOTIFICATION_MAP: Array<{ client: string, server: string }> = [
@@ -55,7 +59,7 @@ const NOTIFICATION_MAP: Array<{ client: string, server: string }> = [
 @Injectable({
   providedIn: 'root'
 })
-export class NotificationsService {
+export class NotificationsService extends BaseSibscriber {
 
   closeMessage(notice: INotification) {
     notice.showInToaster = false;
@@ -84,7 +88,11 @@ export class NotificationsService {
     return this.notifications.filter(x => x.status === NotificationStatus.uploading).length;
   }
 
-  constructor(private navigationService: NavigationService) {
+  constructor(
+    private navigationService: NavigationService,
+    private http: HttpClient
+  ) {
+    super();
     window.addEventListener('beforeunload', (event) => {
       if (this.uploadingCount ||
         (this.navigationService.beforeNavigate && this.navigationService.beforeNavigate())
@@ -106,11 +114,28 @@ export class NotificationsService {
     this._notifications = [...this.notifications];
   }
 
+  get sendNotificationUrl(): string {
+    return `${ENV.serverUrl}${ENV.endPoints.notificationUpdate}`;
+  }
+
+  sendNotification(notice: INotification): void {
+    const serverNotice = this.createServerNotification(notice);
+    //console.log(JSON.stringify(serverNotice))
+    super.add(
+      this.http.post(this.sendNotificationUrl, serverNotice).subscribe(() => {
+
+      }, error => {
+
+      }));
+  }
+
   abort(notice: INotification): void {
     notice.type = ToasterType.error;
     notice.name = notice.abortName;
+    notice.isAborted = true;
     this._onAbort.next(notice);
     this.update();
+    this.sendNotification(notice);
   }
 
   addNotification(notice: INotification): void {
@@ -144,7 +169,16 @@ export class NotificationsService {
   copyNotification(from: any, to: INotification): void {
     NOTIFICATION_MAP.forEach(k => {
       to[k.client] = from[k.server];
-    })
+    });
+  }
+
+  createServerNotification(notice: INotification): any {
+    const res: any = {};
+    NOTIFICATION_MAP.forEach(k => {
+      res[k.server] = notice[k.client];
+    });
+    res.isAborted = notice.isAborted;
+    return res;
   }
 
   addServerNotification(notice: any): void {

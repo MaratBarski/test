@@ -9,7 +9,8 @@ export const ENV = {
         fileSource: 'mdclone/api/v1/file-source',
         uploadFileSource: 'mdclone/api/v1/upload/file-source',
         deleteFileSource: 'mdclone/api/v1/file-source',
-        hierarchy: 'mdclone/api/v1/hierarchy'
+        hierarchy: 'mdclone/api/v1/hierarchy',
+        notificationUpdate:'mdclone/api/v1/config/notification'
     }
 }
 

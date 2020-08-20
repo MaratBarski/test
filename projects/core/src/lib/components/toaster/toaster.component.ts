@@ -1,6 +1,6 @@
 import { Component, Input, EventEmitter, Output } from '@angular/core';
 import { animation } from '../../animations/animations';
-import { INotification } from '../../services/notifications.service';
+import { INotification, NotificationStatus, NotificationsService } from '../../services/notifications.service';
 import { NavigationService } from '../../services/navigation.service';
 
 export enum ToasterType {
@@ -21,7 +21,10 @@ export enum ToasterType {
 })
 export class ToasterComponent {
 
-  constructor(private navigationService: NavigationService) { }
+  constructor(
+    private navigationService: NavigationService,
+    private notificationsService: NotificationsService
+  ) { }
 
   @Input() notice: INotification;
 
@@ -32,7 +35,9 @@ export class ToasterComponent {
   toasterType = ToasterType;
 
   onCloseClicked(): void {
+    this.notice.showInToaster = false;
     this.onToasterClose.emit(this.notice);
+    this.notificationsService.sendNotification(this.notice);
   }
 
   onAbortClicked(): void {
