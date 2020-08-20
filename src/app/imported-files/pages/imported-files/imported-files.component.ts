@@ -4,6 +4,7 @@ import { FileSource, FileSourceResponse } from '../../models/file-source';
 import { DateRangeButton, TableComponent, TranslateService, DateFilterComponent, TableModel, CheckBoxListOption, NavigationService, PageInfo, BaseSibscriber, CheckBoxListComponent, SelectOption, EmptyState, DatePeriod, TableActionCommand, NotificationsService, ToasterType } from '@appcore';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ConfigService } from '@app/shared/services/config.service';
+import { ImportedFilesMappingService } from '@app/imported-files/services/imported-files-mapping.service';
 
 @Component({
   selector: 'md-imported-files',
@@ -56,11 +57,17 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, Af
     private router: Router,
     private activatedRoute: ActivatedRoute,
     public configService: ConfigService,
-    private notificationsService: NotificationsService
+    private notificationsService: NotificationsService,
+    private importedFilesMappingService: ImportedFilesMappingService
   ) {
     super();
     this.navigationService.currentPageID = PageInfo.ImportedFiles.id;
-
+    super.add(this.importedFilesMappingService.onMapFinish.subscribe((state: any) => {
+      if (!this.fileSource) { return; }
+      const fl = this.fileSource.find(x => x.fileId === state.fileID);
+      if (!fl) { return; }
+      fl.fileStatus = 'loaded_to_table';
+    }));
     //this.notificationsTests();
   }
 
@@ -99,7 +106,7 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, Af
         succLinkText: "link to page",
         type: ToasterType.success
       })
-    },10000);
+    }, 10000);
 
     setTimeout(() => {
       this.notificationsService.serverUpdate({
@@ -111,7 +118,7 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, Af
         succLinkText: "link to page",
         type: ToasterType.success
       })
-    },10000);
+    }, 10000);
   }
 
   ngAfterContentInit(): void {
@@ -147,7 +154,7 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, Af
         this.deleteSubTitle = `This action will delete the file '${this.sourceForDelete.fileName}'.`
         return;
       }
-      this.deleteFile(action.item.source);
+      //this.deleteFile(action.item.source);
     }
   };
 

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { DataService, NotificationsService, ToasterType } from '@appcore';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { FileSource, FileSourceMappingResponse } from '../models/file-source';
 import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { environment } from '@env/environment';
@@ -18,6 +18,16 @@ export class ImportedFilesMappingService implements Resolve<FileSourceMappingRes
     private notificationService: NotificationsService
   ) {
 
+  }
+
+  get onMapFinish(): Observable<any> {
+    return this._onMapFinish.asObservable();
+  }
+
+  private _onMapFinish = new Subject<any>();
+
+  mapFinish(state: { fileID: any, status: string }): void {
+    this._onMapFinish.next(state);
   }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> {
@@ -87,7 +97,10 @@ export class ImportedFilesMappingService implements Resolve<FileSourceMappingRes
       comment: 'Updating....',
       progress: 0,
       key: opt.key,
-      showInToaster: true
+      showInToaster: true,
+      onComplete: () => {
+        this.mapFinish({ fileID: opt.fileId, status: 'Completed' });
+      }
     });
     return this.dataService.put(this.getUrl, opt);
   }
