@@ -127,16 +127,26 @@ export class NotificationsService extends BaseSibscriber {
     return `${ENV.serverUrl}${ENV.endPoints.notificationUpdate}`;
   }
 
-  sendNotification(notice: INotification): void {
+  private submitNotification(notice: INotification): void {
     const serverNotice = this.createServerNotification(notice);
-    //console.log(JSON.stringify(serverNotice))
     //alert(notice.key)
     super.add(
       this.http.post(this.sendNotificationUrl, serverNotice).subscribe(() => {
-
       }, error => {
-
       }));
+  }
+
+  sendNotification(notice: INotification): void {
+    //console.log(JSON.stringify(serverNotice))
+    if (!notice.key) {
+      this.getFormKey().then(key => {
+        notice.key = key.data.guid;
+        this.submitNotification(notice);
+      }).catch(error => {
+      });
+      return;
+    }
+    this.submitNotification(notice);
   }
 
   abort(notice: INotification): void {
@@ -153,13 +163,7 @@ export class NotificationsService extends BaseSibscriber {
     notice.showInToaster = true;
     this.notifications.push(notice);
     this.update();
-    if (!notice.key) {
-      this.getFormKey().then(key => {
-        notice.key = key.data.guid;
-        this.sendNotification(notice);
-      }).catch(error => {
-      });
-    }
+    this.sendNotification(notice);
   }
 
   serverUpdate(data: any): void {
