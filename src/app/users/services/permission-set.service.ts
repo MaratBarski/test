@@ -72,9 +72,7 @@ export class PermissionSetService extends BaseSibscriber {
 
   private setInitialSet(): void {
     if (!this._permissionSet) { return; }
-    //setTimeout(() => {
     this._initialSet = JSON.parse(JSON.stringify(this.createSaveObject()));
-    //}, 1000);
   }
 
   isHasChanges(): boolean {
@@ -519,14 +517,18 @@ export class PermissionSetService extends BaseSibscriber {
       this.initEvents(permSet);
       if (!permSet.researchTemplates || !permSet.researchTemplates.length) {
         this.permissionSet.allowedEvent = NO_ALLOWED_EVENTS;
-        this.setInitialSet();
+        if (this.isEditMode) {
+          this.setInitialSet();
+        }
         return;
       }
       this.templates.forEach(t => {
         t.isChecked = permSet.researchTemplates.find((x: any) => x.templateId.toString() === t.id.toString());
       });
       this.permissionSet.allowedEvent = this.templates.find(x => !x.isChecked) ? BASED_EVENTS : ALL_EVENTS;
-      this.setInitialSet();
+      if (this.isEditMode) {
+        this.setInitialSet();
+      }
     }));
     this.loadTemplates();
   }
