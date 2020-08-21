@@ -40,7 +40,7 @@ export class UploadService implements OnDestroy {
     uploadInfo.notification.showInContainer = true;
     uploadInfo.notification.showInToaster = true;
     this._uploads.push(uploadInfo);
-    this.notificationsService.notifications.push(uploadInfo.notification);
+    this.notificationsService.addNotification(uploadInfo.notification);
     this.notificationsService.update();
     this.uploadProc(uploadInfo);
   }

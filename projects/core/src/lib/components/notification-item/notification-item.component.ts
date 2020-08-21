@@ -29,10 +29,11 @@ export class NotificationItemComponent {
 
   closeNotice(): void {
     this.notice.showInContainer = false;
+    this.notificationsService.sendNotification(this.notice);
     this.notificationsService.update();
   }
 
-  abort():void{
+  abort(): void {
     this.notificationsService.abort(this.notice)
   }
 }

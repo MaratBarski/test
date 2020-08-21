@@ -104,9 +104,18 @@ export class NotificationsService extends BaseSibscriber {
     });
   }
 
+  getFormKey(): Promise<any> {
+    return this.http.get(`${ENV.serverUrl}${ENV.endPoints.formKey}`).toPromise();
+  }
+
   dismissAll(): void {
     //this._onDismissAll.next();
-    this.notifications.forEach(x => x.showInContainer = false);
+    this.notifications.forEach(x => {
+      x.showInContainer = false;
+      setTimeout(() => {
+        this.sendNotification(x);
+      }, 0);
+    });
     this.update();
   }
 
@@ -121,6 +130,7 @@ export class NotificationsService extends BaseSibscriber {
   sendNotification(notice: INotification): void {
     const serverNotice = this.createServerNotification(notice);
     //console.log(JSON.stringify(serverNotice))
+    //alert(notice.key)
     super.add(
       this.http.post(this.sendNotificationUrl, serverNotice).subscribe(() => {
 
@@ -143,6 +153,13 @@ export class NotificationsService extends BaseSibscriber {
     notice.showInToaster = true;
     this.notifications.push(notice);
     this.update();
+    if (!notice.key) {
+      this.getFormKey().then(key => {
+        notice.key = key.data.guid;
+        this.sendNotification(notice);
+      }).catch(error => {
+      });
+    }
   }
 
   serverUpdate(data: any): void {
