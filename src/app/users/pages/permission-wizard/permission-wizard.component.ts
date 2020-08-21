@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { PermissionSetService, NO_ALLOWED_EVENTS } from '@app/users/services/permission-set.service';
 import { TabWizardItem } from '@app/users/components/tabs/tabs.component';
 import { NavigationService, BaseNavigation } from '@appcore';
@@ -12,6 +12,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class PermissionWizardComponent extends BaseNavigation implements OnInit {
 
   showCancelConfirm = false;
+  @Input() confirmOnChanges = true;
 
   get showChangesConfirm(): boolean {
     return this.permissionSetService.showCancelConfirm;
@@ -49,19 +50,20 @@ export class PermissionWizardComponent extends BaseNavigation implements OnInit 
   }
 
   ngOnInit(): void {
-    this.navigationService.beforeNavigate = ((url: string) => {
-      if (url) {
-        this.permissionSetService.redirectUrl = url;
-      }
-      if (this.permissionSetService.isHasChanges()) {
-        this.permissionSetService.showCancelConfirm = !!url;
-        return true;
-      }
-      if (url) {
-        this.router.navigateByUrl(url);
-      }
-    });
-
+    if (this.confirmOnChanges) {
+      this.navigationService.beforeNavigate = ((url: string) => {
+        if (url) {
+          this.permissionSetService.redirectUrl = url;
+        }
+        if (this.permissionSetService.isHasChanges()) {
+          this.permissionSetService.showCancelConfirm = !!url;
+          return true;
+        }
+        if (url) {
+          this.router.navigateByUrl(url);
+        }
+      });
+    }
     super.add(
       this.activatedRoute.paramMap.subscribe(u => {
         const id = u.get('id') || 0;

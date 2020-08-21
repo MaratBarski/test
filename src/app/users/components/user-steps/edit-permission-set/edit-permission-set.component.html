@@ -3,7 +3,7 @@
     <span (click)="createSet()" class="btn btn_icon">+ New Set</span>
 </div>
 
-<div [hidden]="!isCreateNewSet">
+<div *ngIf="isCreateNewSet">
     <div class="shadow-site is-visible"></div>
     <div class="modal-step">
         <div class="modal-step__head">Add Permission set of Ella Ma’ayan</div>
@@ -11,7 +11,7 @@
             <svg class="icon ic-close" mdcSvg="ic-close" (click)="closeCreateSet()"></svg>
         </div>
         <div class="modal-step__content">
-            <md-permission-wizard></md-permission-wizard>
+            <md-permission-wizard [confirmOnChanges]="false"></md-permission-wizard>
         </div>
     </div>
 </div>

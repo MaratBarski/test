@@ -1,10 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
+import { Router } from '@angular/router';
+import { NavigationService } from '@appcore';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserEditService {
+
+  showCancelConfirm = false;
+  redirectUrl = '';
 
   missingItem = {
     firstName: {
@@ -21,15 +26,39 @@ export class UserEditService {
     }
   }
 
-  constructor() { }
+  constructor(
+    private router: Router,
+    private navigationService:NavigationService
+  ) {
+    this.resetService();
+  }
 
-  user = {
-    isSuperAdmin: false,
-    enabled: true,
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: ''
+  user: any;
+
+  resetService(): void {
+    this._selectedTab = 0;
+    this.resetValidation();
+    this.setDefault();
+  }
+
+  isHasChanges(): boolean {
+    return true;
+  }
+
+  setDefault(): void {
+    this.user = {
+      isSuperAdmin: false,
+      enabled: true,
+      firstName: '',
+      lastName: '',
+      email: '',
+      phone: ''
+    }
+  }
+
+  cancelConfirm(): void {
+    this.showCancelConfirm = false;
+    this.router.navigateByUrl(this.redirectUrl || '/users');
   }
 
   environments = [
@@ -93,7 +122,7 @@ export class UserEditService {
   }
 
   cancel(): void {
-
+    this.navigationService.navigate('/users');
   }
 
   save(): void {
