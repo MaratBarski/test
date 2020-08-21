@@ -14,6 +14,7 @@ export enum ToasterType {
 @Component({
   selector: 'mdc-toaster',
   templateUrl: './toaster.component.html',
+  styleUrls: ['./toaster.component.css'],
   animations: [
     animation.rotateRight90,
     animation.slideUpDown

@@ -56,7 +56,7 @@
     <div class="notice-msg__text" *ngIf="toasterType.infoProgressBar === notice?.type">{{notice?.comment}}
     </div>
 
-    <div class="notice-msg__text" *ngIf="notice?.succUrl"><span class="pointer" (click)="navigate()">{{notice?.succLinkText}}</span>
+    <div class="notice-msg__text" *ngIf="notice?.succUrl"><span class="pointer link" (click)="navigate()">{{notice?.succLinkText}}</span>
     </div>
 
   </div>
