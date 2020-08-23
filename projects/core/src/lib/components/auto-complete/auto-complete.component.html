@@ -5,7 +5,7 @@
         <div (click)="clearText()" [hidden]="!inputText || disabled" class="auto-complete-dropdown">
             <svg class="ic-close" width="10" height="10" mdcSvg="ic-close"></svg>
         </div>
-        <div *ngIf="dropdown" class="auto-complete-dropdown" (click)="toggleSelect()">
+        <div *ngIf="dropdown" class="auto-complete-dropdown" (click)="openSelect()">
             <div class="auto-complete-dropdown-icon">
                 <svg class="icon" mdcSvg="ic-select-arr-down"></svg>
             </div>

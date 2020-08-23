@@ -41,6 +41,7 @@ export interface INotification {
   onError?: any;
   onProgress?: any;
   isAborted?: boolean;
+  containerEnable?: boolean;
 }
 
 const NOTIFICATION_MAP: Array<{ client: string, server: string }> = [
@@ -63,6 +64,7 @@ export class NotificationsService extends BaseSibscriber {
 
   closeMessage(notice: INotification) {
     notice.showInToaster = false;
+    notice.showInContainer = !!notice.containerEnable;
     this.update();
   }
 
@@ -159,7 +161,7 @@ export class NotificationsService extends BaseSibscriber {
   }
 
   addNotification(notice: INotification): void {
-    notice.showInContainer = true;
+    notice.showInContainer = false;
     notice.showInToaster = true;
     this.notifications.push(notice);
     this.update();

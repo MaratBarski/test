@@ -98,6 +98,7 @@ export class ImportedFilesMappingService implements Resolve<FileSourceMappingRes
       progress: 0,
       key: opt.key,
       showInToaster: true,
+      containerEnable: true,
       onComplete: () => {
         this.mapFinish({ fileID: opt.fileId, status: 'Completed' });
       }

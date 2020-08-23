@@ -46,10 +46,8 @@ export class AutoCompleteComponent {
     if (event.keyCode === 38) { return; }
     if (event.keyCode === 40) { return; }
 
-    this.isSelected = false;
-    if (this.inputText.length >= this.minLength || this.inputText.length === 0) {
+    if (this.inputText.length >= this.minLength) {
       this.completeMethod.emit(this.inputText);
-      if (this.inputText.length === 0) this.selectOpen = false;
     }
   }
 
@@ -62,15 +60,10 @@ export class AutoCompleteComponent {
     this.onClear.emit();
   }
 
-  toggleSelect(): void {
+  openSelect(): void {
     if (this.disabled) { return; }
-    if (this.isHiddeSuggestions) {
-      this.selectOpen = true;
-      this.isSelected = false;
-    } else {
-      this.selectOpen = false;
-      this.isSelected = true;
-    }
+    this.completeMethod.emit('');
+    this.selectOpen = true;
   }
 
   selectItem(index: number): void {
