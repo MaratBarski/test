@@ -44,7 +44,7 @@ export class MapCategoriesComponent extends BaseSibscriber implements OnInit {
     this.formData.set('categoryMap', JSON.stringify(this.mapCategoryTable.categoryMap));
     this.uploadService.add({
       notification: {
-        name: 'Categorization',
+        name: 'Replacing Categorization',
         comment: 'Uploading',
         progress: 0,
         status: NotificationStatus.uploading,

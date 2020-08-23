@@ -196,20 +196,22 @@ export class EditCategoriesComponent extends BaseNavigation implements OnInit {
 
     this.uploadService.add({
       notification: {
-        name: 'Uploading Categorization',
+        name: 'Replacing Categorization.',
         comment: 'You will be notified when its ready for review.',
-        failName: 'Replace Categorization Failed',
-        failComment: 'Upload error',
+        failName: `Failed to replace with categorization ${categorization.hierarchyName}.`,
+        failComment: 'Try again or contact MDClone support.',
         succName: 'Categorization file uploaded successfully.',
-        abortName: 'Categorization UPLOAD ABORTED BY USER',
+        abortName: 'Aborted successfully.',
+        abortComment:`Upload of ${categorization.hierarchyName}  was successfully aborted.`,
         progress: 0,
         status: NotificationStatus.uploading,
         showProgress: true,
         showInContainer: true,
         succComment: `Upload of ${categorization.hierarchyName} was successful and it is ready for review.`,
         startDate: new Date(),
-        progressTitle: this.categoryInfo.fileData.formData.get('fileName'),
+        progressTitle: `Categories for ${this.categoryInfo.fileData.formData.get('fileName')}.`,
         showInToaster: true,
+        containerEnable: true,
         type: ToasterType.infoProgressBar
       },
       form: formData,

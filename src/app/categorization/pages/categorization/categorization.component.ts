@@ -105,8 +105,8 @@ export class CategorizationComponent extends BaseSibscriber implements OnInit {
             tempItem.isInactive = false;
             this.notificationService.addNotification({
               showInToaster: true,
-              name: 'Failed to delete Categorization.',
-              comment: '',
+              name: 'Categorization cannot be deleted.',
+              comment: 'The categorization is in use. Delete its references from queries and imported files, or upload a new categorization with a different name.',
               type: ToasterType.error
             });
           })
