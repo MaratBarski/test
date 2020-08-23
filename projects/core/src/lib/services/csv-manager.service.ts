@@ -23,6 +23,7 @@ export enum ValidationFileMessage {
   FileEmpty = 'fileEmpty',
   NoUtf8 = 'noUtf8',
   NoRows = 'noRows',
+  FileExists = 'fileExists',
   OtherError = 'otherError'
 
 }

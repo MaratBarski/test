@@ -29,7 +29,8 @@
             </div>
             <div class="form-site__item">
                 <label class="form-site__label" for="name">Name</label>
-                <input [(ngModel)]="fileName" type="text" placeholder="Type file name">
+                <input (change)="validateFileName()" [(ngModel)]="fileName" type="text" placeholder="Type file name">
+                <span *ngIf="fileNameErrorMessage" class="form-site-alert__text">{{fileNameErrorMessage}}</span>
             </div>
             <div class="form-site__item">
                 <label class="form-site__label" for="project">Environment</label>

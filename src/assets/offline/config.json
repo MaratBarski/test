@@ -11,6 +11,7 @@
             "noName": "File name is missing",
             "noUtf8": "File format is not  UTF8",
             "noRows": "File has no rows",
+            "fileExists": "File with this name already exists",
             "otherError": "otherError"
         }
     }

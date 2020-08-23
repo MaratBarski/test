@@ -100,7 +100,7 @@ export class ImportedFilesMappingService implements Resolve<FileSourceMappingRes
       showInToaster: true,
       containerEnable: true,
       abortName: 'Aborted Successfully',
-      abortComment: `Mapping ${opt.fileName} was successfully aborted.`,
+      abortComment: `Mapping of ${opt.fileName} was successfully aborted.`,
       onComplete: () => {
         this.mapFinish({ fileID: opt.fileId, status: 'Completed' });
       }

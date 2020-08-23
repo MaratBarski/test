@@ -44,7 +44,7 @@ export class UploadFileComponent extends BaseSibscriber implements OnInit {
   template = '';
 
   get isValid(): boolean {
-    return !!this.fileName && !!this.project && !!this.file;
+    return !!this.fileName && !!this.project && !!this.file && !this.fileNameErrorMessage;
   }
 
   @Offline('http://localhost:44381/WeatherForecast/')
@@ -66,20 +66,28 @@ export class UploadFileComponent extends BaseSibscriber implements OnInit {
       }));
   }
 
+  fileNameErrorMessage: string = undefined;
+
+  validateFileName(): void {
+    const files: Array<FileSource> = this.targetComponent.fileSource;
+    const found = files.find(x => {
+      return x.fileName && this.fileName && x.fileName.toLowerCase() === this.fileName.toLowerCase();
+    });
+    if (found) {
+      this.fileNameErrorMessage = this.configService.config.fileValidationErrors[ValidationFileMessage.FileExists];
+      this.fileName = '';
+    } else {
+      this.fileNameErrorMessage = undefined;
+    }
+  }
+
   uploadFile(event: any): void {
     event.preventDefault();
 
     if (!this.isValid) {
       return;
     }
-    const files: Array<FileSource> = this.targetComponent.fileSource;
-    const found = files.find(x => {
-      return x.fileName && this.fileName && x.fileName.toLowerCase() === this.fileName.toLowerCase();
-    });
-    if (found) {
-      alert('Error');
-      return;
-    }
+
     const formData: FormData = new FormData();
     formData.append('file', this.fileInput.nativeElement.files[0]);
     formData.append('fileName', this.fileName);
@@ -94,7 +102,7 @@ export class UploadFileComponent extends BaseSibscriber implements OnInit {
         abortName: 'Aborted Successfully',
         abortComment: `Upload of ${this.fileName} was successfully aborted.`,
         progressTitle: `List of patients diagnosed with ${this.fileName}`,
-        comment:'You will be notified when it is ready for mapping.',
+        comment: 'You will be notified when it is ready for mapping.',
         succComment: 'The file uploaded successfully and is ready for mapping.',
         progress: 0,
         status: NotificationStatus.uploading,
