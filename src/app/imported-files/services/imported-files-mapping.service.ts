@@ -93,12 +93,14 @@ export class ImportedFilesMappingService implements Resolve<FileSourceMappingRes
     this.getUrl = `${environment.serverUrl}${environment.endPoints.fileSource}`;
     this.notificationService.addNotification({
       type: ToasterType.infoProgressBar,
-      name: 'File source',
-      comment: 'Updating....',
+      name: 'File source mapping',
+      comment: `Mapping of ${opt.fileName}.`,
       progress: 0,
       key: opt.key,
       showInToaster: true,
       containerEnable: true,
+      abortName: 'Aborted Successfully',
+      abortComment: `Mapping ${opt.fileName} was successfully aborted.`,
       onComplete: () => {
         this.mapFinish({ fileID: opt.fileId, status: 'Completed' });
       }
