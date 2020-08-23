@@ -188,10 +188,10 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, Af
         });
       }).catch(e => {
         this.notificationsService.addNotification({
-          name: 'Error delete file',
+          name: 'File cannot be deleted',
           type: ToasterType.error,
           showInToaster: true,
-          comment: 'File delete error.'
+          comment: 'A shared file cannot be deleted. Contact your admin to delete it for you.'
         });
       });
   }

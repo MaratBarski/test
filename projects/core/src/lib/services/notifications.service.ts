@@ -22,6 +22,7 @@ export interface INotification {
   failComment?: string;
   succName?: string;
   abortName?: string;
+  abortComment?: string;
   comment?: string;
   succComment?: string;
   startDate?: Date;
@@ -152,8 +153,10 @@ export class NotificationsService extends BaseSibscriber {
   }
 
   abort(notice: INotification): void {
-    notice.type = ToasterType.error;
+    notice.type = ToasterType.success;
     notice.name = notice.abortName;
+    notice.comment = notice.abortComment;
+    notice.status = NotificationStatus.aborted;
     notice.isAborted = true;
     this._onAbort.next(notice);
     this.update();

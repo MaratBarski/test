@@ -8,7 +8,10 @@
         </div>
         <div class="header-notice-status">
             <div style="white-space: nowrap;" class="header-notice-status__content">
-                <svg class="icon ic-running" mdcSvg="ic-running"></svg>
+                <svg *ngIf="notice.status==='Uploading'" class="icon ic-running" mdcSvg="ic-running"></svg>
+                <div *ngIf="notice.status==='Failed'||notice.status==='Aborted'"
+                    class="header-notice-status__circle header-notice-status__circle_red"></div>
+                <div *ngIf="notice.status==='Completed'" class="header-notice-status__circle"></div>
                 <span class="header-notice-item__status-text">{{notice.status}}</span>
             </div>
             <div (click)="closeNotice()" class="header-notice-status__close">
@@ -40,7 +43,7 @@
                     </div>
                     <div class="load-doc__text">{{notice.progressTitle}}</div>
                 </div>
-                <div class="load-doc__link pointer"><span (click)="abort()">Abort</span></div>
+                <div class="load-doc__link pointer"><span class="link-site pointer" (click)="abort()">Abort</span></div>
             </div>
             <div class="load-doc__progress">
                 <div class="load-doc__progress-line" [style.width.%]="notice.progress"></div>

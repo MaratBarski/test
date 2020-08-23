@@ -89,17 +89,18 @@ export class UploadFileComponent extends BaseSibscriber implements OnInit {
     this.uploadService.add({
       notification: {
         name: 'Uploading Imported File',
-        failName: 'Imported File UPLOAD Failed',
-        succName: 'Imported File SUCCESSFULLY UPLOADED',
-        abortName: 'Imported File UPLOAD ABORTED BY USER',
-        comment: 'Uploading',
+        failName: 'Imported File Upload Failed',
+        succName: 'Imported File Successfully Uploaded',
+        abortName: 'Aborted Successfully',
+        abortComment: `Upload of ${this.fileName} was successfully aborted.`,
+        progressTitle: `List of patients diagnosed with ${this.fileName}`,
+        comment:'You will be notified when it is ready for mapping.',
         succComment: 'The file uploaded successfully and is ready for mapping.',
         progress: 0,
         status: NotificationStatus.uploading,
         showProgress: true,
         showInContainer: true,
         startDate: new Date(),
-        progressTitle: this.fileName,
         showInToaster: true,
         type: ToasterType.infoProgressBar
       },

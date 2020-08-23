@@ -76,12 +76,14 @@ export class UploadService implements OnDestroy {
           }
           this.uploadEnd(uploadInfo, NotificationStatus.failed);
           console.log(error);
-          uploadInfo.notification.name = uploadInfo.notification.failName;
-          if (uploadInfo.notification.failComment) {
-            uploadInfo.notification.comment = uploadInfo.notification.failComment;
+          if (uploadInfo.notification.status !== NotificationStatus.aborted) {
+            uploadInfo.notification.name = uploadInfo.notification.failName;
+            if (uploadInfo.notification.failComment) {
+              uploadInfo.notification.comment = uploadInfo.notification.failComment;
+            }
+            uploadInfo.notification.type = ToasterType.error;
+            uploadInfo.notification.errorMessage = error.error ? (error.error.massage || error.error.message || '') : '';
           }
-          uploadInfo.notification.type = ToasterType.error;
-          uploadInfo.notification.errorMessage = error.error ? (error.error.massage || error.error.message || '') : '';
           if (!uploadSubscription.closed) {
             uploadSubscription.unsubscribe();
           }
@@ -100,7 +102,9 @@ export class UploadService implements OnDestroy {
   }
 
   private uploadEnd(uploadInfo: UploadInfo, status: NotificationStatus): void {
-    uploadInfo.notification.status = status;
+    if (uploadInfo.notification.status !== NotificationStatus.aborted) {
+      uploadInfo.notification.status = status;
+    }
     if (status === NotificationStatus.completed) {
       uploadInfo.notification.type = ToasterType.success;
       uploadInfo.notification.name = uploadInfo.notification.succName;
