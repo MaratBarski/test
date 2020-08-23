@@ -31,7 +31,9 @@
                 <div *ngIf="isFileError" class="form-site-alert">
                     <div class="form-site-alert__icon">
                         <svg class="icon ic-failure" mdcSvg="ic-failure"></svg>
-                    </div><span class="form-site-alert__text">File format needs to be CSV (comma separate values)</span>
+                    </div><span class="form-site-alert__text">
+                        {{fileErrorMessage}}
+                    </span>
                 </div>
             </div>
             <div *ngIf="!isEditMode" class="form-site__item">
@@ -51,7 +53,9 @@
             <div [hidden]="!categoryHeaders?.length" class="form-site__item">
                 <label class="form-site__label">
                     Default Category
-                    <span [stickyToElement]="true" mdcTooltip="Please select the Categorization level that will be the default level for output properties extraction." class="form-site__icon">
+                    <span [stickyToElement]="true"
+                        mdcTooltip="Please select the Categorization level that will be the default level for output properties extraction."
+                        class="form-site__icon">
                         <svg class="icon ic-help" mdcSvg="ic-help"></svg>
                     </span>
                 </label>
