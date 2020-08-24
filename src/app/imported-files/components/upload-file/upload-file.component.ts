@@ -111,7 +111,8 @@ export class UploadFileComponent extends BaseSibscriber implements OnInit {
         containerEnable: true,
         startDate: new Date(),
         showInToaster: true,
-        type: ToasterType.infoProgressBar
+        type: ToasterType.infoProgressBar,
+        progressKf: 2
       },
       form: formData,
       url: this._uploadUrl,
