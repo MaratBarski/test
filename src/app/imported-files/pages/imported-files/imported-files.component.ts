@@ -68,7 +68,7 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, Af
       if (!fl) { return; }
       fl.fileStatus = 'loaded_to_table';
     }));
-    this.notificationsTests();
+   // this.notificationsTests();
   }
 
 
