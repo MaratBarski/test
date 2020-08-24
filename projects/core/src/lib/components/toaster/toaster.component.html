@@ -55,9 +55,11 @@
     </div>
     <div class="notice-msg__text" *ngIf="toasterType.infoProgressBar === notice?.type">{{notice?.comment}}
     </div>
-
-    <div class="notice-msg__text" *ngIf="notice?.succUrl"><span class="pointer link" (click)="navigate()">{{notice?.succLinkText}}</span>
+    <div class="notice-msg__link" *ngIf="notice?.succUrl">
+      <span class="pointer link notice-msg__link-info" (click)="navigate()">{{notice?.succLinkText}}
+        <svg style="vertical-align: middle;" color="#0596FF" width="20" height="20" mdcSvg="ic-add-help">
+        </svg>
+      </span>
     </div>
-
   </div>
 </div>

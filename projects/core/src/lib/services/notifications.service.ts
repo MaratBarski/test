@@ -176,7 +176,7 @@ export class NotificationsService extends BaseSibscriber {
     if (!data.length) { data = [data]; }
     const missingNotice = [];
     data.forEach((serverNotice: any) => {
-      let clientNotice = this.notifications.find(x => x.key === serverNotice.key);
+      let clientNotice = this.notifications.find(x => x.key && x.key === serverNotice.key);
       if (!clientNotice) {
         clientNotice = {};
         this.copyNotification(serverNotice, clientNotice);

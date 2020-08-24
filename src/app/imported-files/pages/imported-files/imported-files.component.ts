@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, AfterContentInit } from '@angular/core';
 import { ImportedFilesService, EMPTY_TEMPLATE } from '../../services/imported-files.service';
 import { FileSource, FileSourceResponse } from '../../models/file-source';
-import { DateRangeButton, TableComponent, TranslateService, DateFilterComponent, TableModel, CheckBoxListOption, NavigationService, PageInfo, BaseSibscriber, CheckBoxListComponent, SelectOption, EmptyState, DatePeriod, TableActionCommand, NotificationsService, ToasterType } from '@appcore';
+import { DateRangeButton, TableComponent, TranslateService, DateFilterComponent, TableModel, CheckBoxListOption, NavigationService, PageInfo, BaseSibscriber, CheckBoxListComponent, SelectOption, EmptyState, DatePeriod, TableActionCommand, NotificationsService, ToasterType, NotificationStatus } from '@appcore';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ConfigService } from '@app/shared/services/config.service';
 import { ImportedFilesMappingService } from '@app/imported-files/services/imported-files-mapping.service';
@@ -68,7 +68,7 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, Af
       if (!fl) { return; }
       fl.fileStatus = 'loaded_to_table';
     }));
-    //this.notificationsTests();
+    this.notificationsTests();
   }
 
 
@@ -79,10 +79,12 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, Af
       showInToaster: true,
       name: "File mapping saved successfully↵",
       succLinkText: "link to page",
-      type: ToasterType.infoProgressBar,
+      type: ToasterType.success,
+      status: NotificationStatus.completed,
       progress: 50,
+      containerEnable: true,
       onComplete: () => {
-        alert(this.fileSource.length)
+        //alert(this.fileSource.length)
       }
     });
 
@@ -96,29 +98,29 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, Af
     //   type: 3
     // });
 
-    setTimeout(() => {
-      this.notificationsService.serverUpdate({
-        key: "ee0e3204-0a84-4042-b3e9-4affb5566a78",
-        message: "updating",
-        showInToaster: true,
-        status: "Completed",
-        subject: "File mapping saved successfully↵",
-        succLinkText: "link to page",
-        type: ToasterType.success
-      })
-    }, 10000);
+    // setTimeout(() => {
+    //   this.notificationsService.serverUpdate({
+    //     key: "ee0e3204-0a84-4042-b3e9-4affb5566a78",
+    //     message: "updating",
+    //     showInToaster: true,
+    //     status: "Completed",
+    //     subject: "File mapping saved successfully↵",
+    //     succLinkText: "link to page",
+    //     type: ToasterType.success
+    //   })
+    // }, 10000);
 
-    setTimeout(() => {
-      this.notificationsService.serverUpdate({
-        key: "ee0e3204-0a84-4042-b3e9-4affb5566a78",
-        message: "1111111111111111",
-        showInToaster: true,
-        status: "Completed",
-        subject: "File mapping saved successfully↵",
-        succLinkText: "link to page",
-        type: ToasterType.success
-      })
-    }, 10000);
+    // setTimeout(() => {
+    //   this.notificationsService.serverUpdate({
+    //     key: "ee0e3204-0a84-4042-b3e9-4affb5566a78",
+    //     message: "1111111111111111",
+    //     showInToaster: true,
+    //     status: "Completed",
+    //     subject: "File mapping saved successfully↵",
+    //     succLinkText: "link to page",
+    //     type: ToasterType.success
+    //   })
+    // }, 10000);
   }
 
   ngAfterContentInit(): void {

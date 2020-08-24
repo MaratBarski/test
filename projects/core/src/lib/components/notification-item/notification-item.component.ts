@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { INotification, NotificationStatus, NotificationsService } from '../../services/notifications.service';
+import { NavigationService } from '../../services/navigation.service';
 
 enum Icon {
   hamburgerOpen = 'ic-hamburger',
@@ -20,7 +21,8 @@ export class NotificationItemComponent {
   @Input() notice: INotification;
 
   constructor(
-    private notificationsService: NotificationsService
+    private notificationsService: NotificationsService,
+    private navigationService: NavigationService
   ) { }
 
   showProgress(): void {
@@ -35,5 +37,9 @@ export class NotificationItemComponent {
 
   abort(): void {
     this.notificationsService.abort(this.notice)
+  }
+
+  navigate(): void {
+    this.navigationService.navigate(this.notice.succUrl);
   }
 }

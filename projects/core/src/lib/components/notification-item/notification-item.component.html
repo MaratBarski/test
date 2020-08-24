@@ -28,8 +28,11 @@
             </div>
         </ng-template>
         <ng-template [ngIf]="notice.status===status.completed">
-            <div class="header-notice-item__link">
-                Completed
+            <div class="header-notice-item__link" *ngIf="notice?.succUrl || true">
+                <span class="pointer link notice-msg__link-info" (click)="navigate()">{{notice?.succLinkText}}
+                    <svg style="vertical-align: middle;" color="#0596FF" width="20" height="20" mdcSvg="ic-add-help">
+                    </svg>
+                </span>
             </div>
         </ng-template>
         <div class="header-notice-item__date">{{notice.startDate|date:'medium'}}</div>
