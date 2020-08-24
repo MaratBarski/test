@@ -41,6 +41,7 @@ export class UploadService implements OnDestroy {
   addWithKey(uploadInfo: UploadInfo): void {
     this.configService.getFormKey().then(key => {
       uploadInfo.form.append('key', key.data.guid);
+      uploadInfo.notification.key = key.data.guid;
       this.add(uploadInfo);
     }).catch(er => {
     });
