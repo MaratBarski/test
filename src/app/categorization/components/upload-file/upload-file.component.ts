@@ -56,7 +56,7 @@ export class UploadFileComponent {
       return;
     }
     const formData: FormData = this.createFormData();
-    this.uploadService.add({
+    this.uploadService.addWithKey({
       notification: {
         name: 'Uploading Categorization',
         failName: `Failed to upload ${this.fileName}.`,

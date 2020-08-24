@@ -44,6 +44,7 @@ export interface INotification {
   onProgress?: any;
   isAborted?: boolean;
   containerEnable?: boolean;
+  isClientOnly?: boolean;
 }
 
 const NOTIFICATION_MAP: Array<{ client: string, server: string }> = [
@@ -142,6 +143,7 @@ export class NotificationsService extends BaseSibscriber {
 
   sendNotification(notice: INotification): void {
     //console.log(JSON.stringify(serverNotice))
+    if (notice.isClientOnly) { return; }
     if (!notice.key) {
       this.getFormKey().then(key => {
         notice.key = key.data.guid;

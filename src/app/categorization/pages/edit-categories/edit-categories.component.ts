@@ -194,7 +194,7 @@ export class EditCategoriesComponent extends BaseNavigation implements OnInit {
     // test['hierarchyLevels'] = JSON.stringify(categorization.levels);
     // document.write(JSON.stringify(test));
 
-    this.uploadService.add({
+    this.uploadService.addWithKey({
       notification: {
         name: 'Replacing Categorization.',
         comment: 'You will be notified when its ready for review.',

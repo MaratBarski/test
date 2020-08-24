@@ -96,7 +96,8 @@ export class CategorizationComponent extends BaseSibscriber implements OnInit {
               showInToaster: true,
               name: 'Categorization deleted successfully.',
               comment: 'The categorization is deleted.',
-              type: ToasterType.success
+              type: ToasterType.success,
+              isClientOnly: true
             });
             this.categorySource = this.categorySource.filter(x => x != tempItem.source);
             this.initData();
@@ -107,7 +108,8 @@ export class CategorizationComponent extends BaseSibscriber implements OnInit {
               showInToaster: true,
               name: 'Categorization cannot be deleted.',
               comment: 'The categorization is in use. Delete its references from queries and imported files, or upload a new categorization with a different name.',
-              type: ToasterType.error
+              type: ToasterType.error,
+              isClientOnly: true
             });
           })
       )

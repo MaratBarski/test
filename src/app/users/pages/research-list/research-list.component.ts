@@ -84,7 +84,8 @@ export class ResearchListComponent extends BaseSibscriber implements OnInit {
     const notice: INotification = {
       showInToaster: true,
       name: 'Deliting permission set',
-      type: ToasterType.info
+      type: ToasterType.info,
+      isClientOnly: true
     }
     this.notificationService.addNotification(notice);
     this.researchService.deleteFile(source)

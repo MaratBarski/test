@@ -186,14 +186,16 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, Af
           name: 'File deleted successfully',
           type: ToasterType.info,
           showInToaster: true,
-          comment: 'File deleted from the system.'
+          comment: 'File deleted from the system.',
+          isClientOnly: true
         });
       }).catch(e => {
         this.notificationsService.addNotification({
           name: 'File cannot be deleted',
           type: ToasterType.error,
           showInToaster: true,
-          comment: 'A shared file cannot be deleted. Contact your admin to delete it for you.'
+          comment: 'A shared file cannot be deleted. Contact your admin to delete it for you.',
+          isClientOnly: true
         });
       });
   }

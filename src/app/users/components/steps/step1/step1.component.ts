@@ -62,8 +62,9 @@ export class Step1Component extends BaseSibscriber implements OnInit, AfterViewI
       type: ToasterType.success,
       name: `The permission set has been ${status}.`,
       showInToaster: true,
-      comment: comment
-    })
+      comment: comment,
+      isClientOnly: true
+    });
   }
 
   private applySetUser(): void {
@@ -118,7 +119,7 @@ export class Step1Component extends BaseSibscriber implements OnInit, AfterViewI
 
     if (this.permissionSetService.user.projects && this.permissionSetService.user.projects.length === 1) {
       this.projectCmp.projectModel = this.permissionSetService.user.projects[0].projectId;
-      this.permissionSetService.permissionSet.project = this.permissionSetService.user.projects[0].projectId;  
+      this.permissionSetService.permissionSet.project = this.permissionSetService.user.projects[0].projectId;
     }
   }
 
