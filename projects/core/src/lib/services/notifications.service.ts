@@ -27,6 +27,7 @@ export interface INotification {
   succComment?: string;
   startDate?: Date;
   progress?: number;
+  progressKf?: number;
   status?: NotificationStatus;
   showProgress?: boolean;
   showInContainer?: boolean;

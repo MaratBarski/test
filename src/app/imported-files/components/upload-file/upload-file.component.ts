@@ -94,7 +94,8 @@ export class UploadFileComponent extends BaseSibscriber implements OnInit {
     formData.append('project', this.project);
     formData.append('fileType', this.fileType ? '1' : '0');
     formData.append('template', this.template);
-    this.uploadService.add({
+
+    this.uploadService.addWithKey({
       notification: {
         name: 'Uploading Imported File',
         failName: 'Imported File Upload Failed',

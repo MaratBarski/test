@@ -1,6 +1,7 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { HttpClient, HttpEventType } from '@angular/common/http';
 import { NotificationsService, INotification, NotificationStatus, ToasterType } from '@appcore';
+import { ConfigService } from './config.service';
 
 export class UploadInfo {
   url: string;
@@ -20,7 +21,8 @@ export class UploadService implements OnDestroy {
   private _onAbortSubscribtion: any;
   constructor(
     private http: HttpClient,
-    private notificationsService: NotificationsService
+    private notificationsService: NotificationsService,
+    private configService: ConfigService
   ) {
     this._onAbortSubscribtion = this.notificationsService.onAbort.subscribe((notice: INotification) => {
       this._uploads.forEach((item, index) => {
@@ -34,6 +36,14 @@ export class UploadService implements OnDestroy {
 
   ngOnDestroy(): void {
     this._onAbortSubscribtion.unsubscribe();
+  }
+
+  addWithKey(uploadInfo: UploadInfo): void {
+    this.configService.getFormKey().then(key => {
+      uploadInfo.form.append('key', key.data.guid);
+      this.add(uploadInfo);
+    }).catch(er => {
+    });
   }
 
   add(uploadInfo: UploadInfo): void {
@@ -55,7 +65,9 @@ export class UploadService implements OnDestroy {
     })
       .subscribe(events => {
         if (events.type == HttpEventType.UploadProgress) {
-          uploadInfo.notification.progress = Math.round(events.loaded / events.total * 100);
+          let progressKf = uploadInfo.notification.progressKf || 1;
+          if (progressKf <= 0) { progressKf = 1; }
+          uploadInfo.notification.progress = Math.round(events.loaded / events.total * 100) / progressKf;
           if (!this.isUploadEnable(uploadInfo)) {
             if (!uploadSubscription.closed) {
               uploadSubscription.unsubscribe();
