@@ -1,10 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { TableComponent, TableModel, CheckBoxListOption, NavigationService, PageInfo, BaseSibscriber, CheckBoxListComponent, SelectOption, EmptyState, DatePeriod, TableActionCommand, DownloadComponent, NotificationsService, ToasterType } from '@appcore';
+import { TableComponent, TableModel, CheckBoxListOption, NavigationService, PageInfo, BaseSibscriber, CheckBoxListComponent, SelectOption, EmptyState, DatePeriod, TableActionCommand, DownloadComponent, NotificationsService, ToasterType, INotification } from '@appcore';
 import { Router } from '@angular/router';
 import { ConfigService } from '@app/shared/services/config.service';
 import { ResearchService } from '@app/users/services/research.service';
 import { formatDate } from '@angular/common';
-import { INotification } from 'core/public-api';
 
 @Component({
   selector: 'md-research-list',
