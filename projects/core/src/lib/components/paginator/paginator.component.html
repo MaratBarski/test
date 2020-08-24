@@ -17,7 +17,7 @@
             <div class="page-btn" [hidden]="isFirstBlock" [ngClass]="{'disabled':isFirstPage}" (click)="firstPage()">1
             </div>
             <div class="separator" [hidden]="isFirstBlock"></div>
-            <div class="page-btn" [hidden]="isFirstBlock" [ngClass]="{'disabled':isFirstBlock}" (click)="nextBlock(-1)">
+            <div class="page-btn" [hidden]="isFirstBlock || pageCount-blockSize <= 1" [ngClass]="{'disabled':isFirstBlock}" (click)="nextBlock(-1)">
                 ...
             </div>
             <div class="separator" [hidden]="isFirstBlock"></div>
@@ -31,7 +31,8 @@
                 </div>
             </div>
             <div class="separator" [hidden]="isLastBlock"></div>
-            <div class="page-btn" [hidden]="isLastBlock" [ngClass]="{'disabled':isLastBlock}" (click)="nextBlock(1)">...
+            <div class="page-btn" [hidden]="isLastBlock || pageCount-blockSize <= 1" [ngClass]="{'disabled':isLastBlock}" (click)="nextBlock(1)">
+                ...
             </div>
             <div class="separator" [hidden]="isLastBlock"></div>
             <div class="page-btn" [hidden]="isLastBlock" [ngClass]="{'disabled':isLastPage}" (click)="lastPage()">
