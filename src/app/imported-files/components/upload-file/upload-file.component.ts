@@ -107,7 +107,7 @@ export class UploadFileComponent extends BaseSibscriber implements OnInit {
         progress: 0,
         status: NotificationStatus.uploading,
         showProgress: true,
-        showInContainer: true,
+        containerEnable: true,
         startDate: new Date(),
         showInToaster: true,
         type: ToasterType.infoProgressBar
