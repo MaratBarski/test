@@ -597,7 +597,11 @@ export class PermissionSetService extends BaseSibscriber {
     res.toDateUnlimited = !permSet.endDate;
 
     res.keyName = permSet.approvalKey;
-    res.keyExpirationDate = new Date(permSet.approvalKeyExpirationDate);
+    if (permSet.approvalKeyExpirationDate) {
+      res.keyExpirationDate = new Date(permSet.approvalKeyExpirationDate);
+    } else {
+      permSet.approvalKeyExpirationDate = undefined;
+    }
     res.size = permSet.maxPatients;
     res.setName = permSet.researchName;
     res.setFullName = `${permSet.researchName} - ${permSet.user.firstName} ${permSet.user.lastName}`;
