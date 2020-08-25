@@ -68,7 +68,13 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, Af
       if (!fl) { return; }
       fl.fileStatus = 'loaded_to_table';
     }));
-   // this.notificationsTests();
+    super.add(
+      this.importedFilesMappingService.onLoadFailed.subscribe(() => {
+        this.isLoaded = true;
+      })
+    );
+    
+    // this.notificationsTests();
   }
 
 
@@ -143,8 +149,8 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, Af
 
   execCommand = {
     edit: (action: TableActionCommand) => {
+      this.isLoaded = false;
       this.router.navigateByUrl(`/imported-files/${action.item.source.fileId}`);
-      console.log('edit command');
     },
     view: (action: TableActionCommand) => {
       console.log('view command');

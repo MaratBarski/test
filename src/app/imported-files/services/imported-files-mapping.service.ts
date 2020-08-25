@@ -20,6 +20,12 @@ export class ImportedFilesMappingService implements Resolve<FileSourceMappingRes
 
   }
 
+  get onLoadFailed(): Observable<any> {
+    return this._onLoadFailed.asObservable();
+  }
+
+  _onLoadFailed = new Subject();
+
   get onMapFinish(): Observable<any> {
     return this._onMapFinish.asObservable();
   }
@@ -55,6 +61,7 @@ export class ImportedFilesMappingService implements Resolve<FileSourceMappingRes
     }), map((data: any) => {
       return [fileSource, templates, data.data];
     }), catchError(e => {
+      this._onLoadFailed.next();
       this.notificationService.addNotification({
         type: ToasterType.error,
         name: 'Failed to open file',
