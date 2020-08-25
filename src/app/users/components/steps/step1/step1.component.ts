@@ -104,11 +104,13 @@ export class Step1Component extends BaseSibscriber implements OnInit, AfterViewI
   }
 
   selectResearcher(setObj: any): void {
+    if (this.permissionSetService.fromSetId === setObj.researchId) { return; }
     this.permissionSetService.cloneSet(setObj);
     this.permissionSetService.validate(false);
     this.permissionSetService.permissionSet.userId = undefined;
     this.permissionSetService.user = undefined;
     this.applySetUser();
+    this.hideUserName();
   }
 
   selectUser(user: any): void {
@@ -131,7 +133,7 @@ export class Step1Component extends BaseSibscriber implements OnInit, AfterViewI
 
   changedProject(id: string): void {
     this.permissionSetService.permissionSet.project = id;
-    this.permissionSetService.loadTemplates();
+    this.permissionSetService.loadTemplates(false);
     this.permissionSetService.validate(false);
   }
 

@@ -100,10 +100,10 @@ export class PermissionSetService extends BaseSibscriber {
     return false;
   }
 
-  get onTemplatesLoaded(): Observable<void> {
+  get onTemplatesLoaded(): Observable<boolean> {
     return this._onTemplatesLoaded.asObservable();
   }
-  private _onTemplatesLoaded = new Subject<void>();
+  private _onTemplatesLoaded = new Subject<boolean>();
 
   private _setId: any;
 
@@ -117,7 +117,13 @@ export class PermissionSetService extends BaseSibscriber {
     return this.http.get(`${this._setUrl}/${this._setId}`);
   }
 
+  get fromSetId(): number {
+    return this._fromSetId;
+  }
+  private _fromSetId = 0;
+
   cloneSet(setObj: any): void {
+    this._fromSetId = setObj.researchId;
     this._permissionSet.fromSetId = setObj.researchId;
     const permSet = this.researchers.find(x => x.researchId === setObj.researchId);
     if (permSet) {
@@ -153,7 +159,9 @@ export class PermissionSetService extends BaseSibscriber {
   }
 
   resetService(id: any): void {
+    this._fromSetId = 0;
     this.isAfterValidate = false;
+    this._permissionSet = this.getDefault();
     this._setId = id;
     this.loadData();
     this.user = undefined;
@@ -170,7 +178,7 @@ export class PermissionSetService extends BaseSibscriber {
   @Offline('assets/offline/templateByProject.json?')
   private templateByProjectUrl = `${environment.serverUrl}${environment.endPoints.templateByProject}`;
 
-  loadTemplates(): void {
+  loadTemplates(isInitTemplates: boolean): void {
     this._templatesLoaded = false;
     this.http.get(`${this.templateByProjectUrl}/${this.permissionSet.project}`).subscribe((res: any) => {
       this._templatesLoaded = true;
@@ -188,7 +196,7 @@ export class PermissionSetService extends BaseSibscriber {
           }
         });
       this.initRoleItems(res.data);
-      this._onTemplatesLoaded.next();
+      this._onTemplatesLoaded.next(isInitTemplates);
     });
   }
 
@@ -501,6 +509,7 @@ export class PermissionSetService extends BaseSibscriber {
         this.initTemplates(permSet.data);
       } else {
         this._permissionSet = permSet;
+        this.templates = [];
       }
       this._dataLoaded = true;
       this.setInitialSet();
@@ -508,24 +517,35 @@ export class PermissionSetService extends BaseSibscriber {
   }
 
   private initTemplates(permSet: any): void {
-    super.add(this.onTemplatesLoaded.subscribe(() => {
-      this.initEvents(permSet);
+    super.add(this.onTemplatesLoaded.subscribe((flag: boolean) => {
+
+      if (this.isEditMode) {
+        this.initEvents(permSet);
+      }
+
       if (!permSet.researchTemplates || !permSet.researchTemplates.length) {
         this.permissionSet.allowedEvent = NO_ALLOWED_EVENTS;
+        if (this.templates) {
+          this.templates.forEach(t => {
+            t.isChecked = false;
+          });
+        }
         if (this.isEditMode) {
           this.setInitialSet();
         }
         return;
       }
-      this.templates.forEach(t => {
-        t.isChecked = permSet.researchTemplates.find((x: any) => x.templateId.toString() === t.id.toString());
-      });
-      this.permissionSet.allowedEvent = this.templates.find(x => !x.isChecked) ? BASED_EVENTS : ALL_EVENTS;
+
+
       if (this.isEditMode) {
+        this.templates.forEach(t => {
+          t.isChecked = permSet.researchTemplates.find((x: any) => x.templateId.toString() === t.id.toString());
+        });
+        this.permissionSet.allowedEvent = this.templates.find(x => !x.isChecked) ? BASED_EVENTS : ALL_EVENTS;
         this.setInitialSet();
       }
     }));
-    this.loadTemplates();
+    this.loadTemplates(true);
   }
 
   private initEvents(permSet: any): void {

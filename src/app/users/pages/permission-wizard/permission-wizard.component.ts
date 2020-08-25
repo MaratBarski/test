@@ -54,6 +54,7 @@ export class PermissionWizardComponent extends BaseNavigation implements OnInit 
   }
 
   ngOnInit(): void {
+    //this.permissionSetService.resetService(0);
     if (this.confirmOnChanges) {
       this.navigationService.beforeNavigate = ((url: string) => {
         if (url) {
