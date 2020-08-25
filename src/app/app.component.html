@@ -2,7 +2,8 @@
 <div *ngIf="configService.isLoaded" class="wrapper" [ngClass]="{'open-sidebar': componentService.showSideMenu}">
   <mdc-main-header [uiRoute]="uiRoute"></mdc-main-header>
   <main class="main">
-    <div class="content-page">
+    <div class="app-loading" [hidden]="!isNavigating">Loading</div>
+    <div [hidden]="isNavigating" class="content-page">
       <router-outlet></router-outlet>
     </div>
   </main>
