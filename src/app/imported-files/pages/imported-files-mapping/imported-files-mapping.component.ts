@@ -230,18 +230,21 @@ export class ImportedFileMappingComponent extends BaseNavigation implements OnIn
           tmp.fileClms[i].hierarchyRootId = -1;
         }
       }
-      this.configService.getFormKey().then(key => {
-        tmp.key = key.data.guid;
-        this.importedFilesMappingService.saveMappedData(tmp)
-          .subscribe(responce => {
-            this.isSaving = false;
-            this.router.navigateByUrl('/imported-files');
-          }, error => {
-            this.saveError();
-          });
-      }).catch(er => {
-        this.saveError();
-      });
+      setTimeout(() => {
+        this.configService.getFormKey().then(key => {
+          tmp.key = key.data.guid;
+          this.importedFilesMappingService.saveMappedData(tmp)
+            .subscribe(responce => {
+              this.isSaving = false;
+              //this.router.navigateByUrl('/imported-files');
+            }, error => {
+              this.saveError();
+            });
+        }).catch(er => {
+          this.saveError();
+        });
+      }, 1);
+      this.router.navigateByUrl('/imported-files');
     }
   }
 
