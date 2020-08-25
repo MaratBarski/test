@@ -446,7 +446,10 @@ export class PermissionSetService extends BaseSibscriber {
   private _users: Array<any>;
   private _isShowError = false;
 
-  showWarning = false;
+  get showWarning(): boolean {
+    if (!this._permissionSet.keyExpirationDate) { return false; }
+    return new Date() > this._permissionSet.keyExpirationDate;
+  }
 
   get isShowError(): boolean {
     return this._isShowError;
@@ -523,13 +526,13 @@ export class PermissionSetService extends BaseSibscriber {
       if (this._setId) {
         this._permissionSet = this.convertToClient(permSet.data);
         //this.showWarning = permSet.data.researchStatus && permSet.data.researchStatus.trim().toLowerCase() !== 'open';
-        if (!permSet.data.approvalKeyExpirationDate) {
-          this.showWarning = false
-        } else {
-          if (new Date() > new Date(permSet.data.approvalKeyExpirationDate)) {
-            this.showWarning = true;
-          }
-        }
+        // if (!permSet.data.approvalKeyExpirationDate) {
+        //   this.showWarning = false
+        // } else {
+        //   if (new Date() > new Date(permSet.data.approvalKeyExpirationDate)) {
+        //     this.showWarning = true;
+        //   }
+        // }
         this.initTemplates(permSet.data);
       } else {
         this._permissionSet = permSet;
