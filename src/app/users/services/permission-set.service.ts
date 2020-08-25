@@ -522,7 +522,14 @@ export class PermissionSetService extends BaseSibscriber {
       this._users = users.data;
       if (this._setId) {
         this._permissionSet = this.convertToClient(permSet.data);
-        this.showWarning = permSet.data.researchStatus && permSet.data.researchStatus.trim().toLowerCase() !== 'open';
+        //this.showWarning = permSet.data.researchStatus && permSet.data.researchStatus.trim().toLowerCase() !== 'open';
+        if (!permSet.data.approvalKeyExpirationDate) {
+          this.showWarning = false
+        } else {
+          if (new Date() > new Date(permSet.data.approvalKeyExpirationDate)) {
+            this.showWarning = true;
+          }
+        }
         this.initTemplates(permSet.data);
       } else {
         this._permissionSet = permSet;
