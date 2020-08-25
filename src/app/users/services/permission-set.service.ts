@@ -178,6 +178,20 @@ export class PermissionSetService extends BaseSibscriber {
   @Offline('assets/offline/templateByProject.json?')
   private templateByProjectUrl = `${environment.serverUrl}${environment.endPoints.templateByProject}`;
 
+  private findEventType(templateInfo: any, dataTemplates: Array<any>): string {
+    if (!dataTemplates || !dataTemplates.length) { return ''; }
+    const templates = dataTemplates.filter(t => t.templateType === 'DISPLAY');
+    for (let i = 0; i < templates.length; i++) {
+      if (!templates[i].siteEventInfos) { continue; }
+      for (let j = 0; j < templates[i].siteEventInfos.length; j++) {
+        if (templates[i].siteEventInfos[j].eventId === templateInfo.eventId) {
+          return templates[i].siteEventInfos[j].eventTableAlias;
+        }
+      }
+    }
+    return '';
+  }
+
   loadTemplates(isInitTemplates: boolean): void {
     this._templatesLoaded = false;
     this.http.get(`${this.templateByProjectUrl}/${this.permissionSet.project}`).subscribe((res: any) => {
@@ -191,7 +205,10 @@ export class PermissionSetService extends BaseSibscriber {
             isChecked: false,
             templateItems:
               t.siteEventInfos.map((ti: any) => {
-                return { name: ti.eventTableName, type: ti.eventType };
+                return {
+                  name: ti.eventTableAlias,
+                  type: this.findEventType(ti, res.data)
+                };
               })
           }
         });

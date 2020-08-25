@@ -41,7 +41,7 @@
                             <div class="add-perm-templ-res__title">
                                 {{ti.name}}
                             </div>
-                            <div class="add-perm-templ-res__type">
+                            <div *ngIf="ti.type" class="add-perm-templ-res__type">
                                 <svg class="icon ic-medications" mdcSvg="ic-medications"></svg>
                                 {{ti.type}}
                             </div>
