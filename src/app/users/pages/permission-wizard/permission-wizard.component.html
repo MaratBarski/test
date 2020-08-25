@@ -19,7 +19,7 @@
     </div>
 </div>
 <md-footer (onOptionClick)="save()" [step]="permissionSetService.selectedTab" (onCancel)="cancel()"
-    (onNext)="next($event)" (onSave)="save()"></md-footer>
+    (onNext)="next($event)" (onSave)="save()" [isNextEnable]="isNextEnable"></md-footer>
 
 <md-confirm-dialog *ngIf="showCancelConfirm" confirmText="Yes" cancelText="No, cancel" name="Save Permission Set"
     subName="Saving the permission set without defining the allowed events, will prevent user from creating a query.."

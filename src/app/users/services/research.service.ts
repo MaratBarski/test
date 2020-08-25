@@ -166,6 +166,10 @@ export class ResearchService {
           csvTitle: 'Allowed content',
           hidden: true
         },
+        {
+          columnId: 'isExpired',
+          hidden: true,
+        }
       ],
       rows: []
     }
@@ -183,6 +187,7 @@ export class ResearchService {
           maxPatients: fl.maxPatients,
           startDate: fl.startDate,
           endDate: fl.endDate,
+          isExpired: fl.approvalKeyExpirationDate ? (new Date() > new Date(fl.approvalKeyExpirationDate) ? true : false) : false,
           PermissionTemplate: fl.researchTemplates ? fl.researchTemplates.map((t: any) => {
             return t.template ? t.template.templateName : ''
           }).join(';') : '',

@@ -174,17 +174,19 @@ export class PermissionSetService extends BaseSibscriber {
     this._templatesLoaded = false;
     this.http.get(`${this.templateByProjectUrl}/${this.permissionSet.project}`).subscribe((res: any) => {
       this._templatesLoaded = true;
-      this.templates = res.data.map((t: any) => {
-        return {
-          name: t.templateName,
-          id: t.templateId,
-          isChecked: false,
-          templateItems:
-            t.siteEventInfos.map((ti: any) => {
-              return { name: ti.eventTableName, type: ti.eventType };
-            })
-        }
-      });
+      this.templates = res.data
+        .filter((t: any) => t.templateType === 'PERMISSION')
+        .map((t: any) => {
+          return {
+            name: t.templateName,
+            id: t.templateId,
+            isChecked: false,
+            templateItems:
+              t.siteEventInfos.map((ti: any) => {
+                return { name: ti.eventTableName, type: ti.eventType };
+              })
+          }
+        });
       this.initRoleItems(res.data);
       this._onTemplatesLoaded.next();
     });
@@ -204,10 +206,10 @@ export class PermissionSetService extends BaseSibscriber {
         return;
       }
       t.siteEventInfos.forEach(info => {
-        if (!nameDict[info.eventTableName]) {
-          nameDict[info.eventTableName] = info;
+        if (!nameDict[info.eventTableAlias]) {
+          nameDict[info.eventTableAlias] = info;
           this.tableNames.push({
-            name: info.eventTableName,
+            name: info.eventTableAlias,
             id: info.eventId,
             type: info.eventType
           });
@@ -359,15 +361,8 @@ export class PermissionSetService extends BaseSibscriber {
     }
     if (this.permissionSet.allowedEvent === NO_ALLOWED_EVENTS) {
       obj.researchStatus = 'initial';
-    } else {
-      obj['researchTemplates'] =
-        this.permissionSet.allowedEvent === BASED_EVENTS ?
-          this.permissionSet.researchTemplates :
-          this.templates.map(x => {
-            return {
-              templateId: x.id
-            }
-          })
+    } else if (this.permissionSet.allowedEvent === BASED_EVENTS) {
+      obj['researchTemplates'] = this.permissionSet.researchTemplates;
     }
     return obj;
   }

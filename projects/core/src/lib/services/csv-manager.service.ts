@@ -42,11 +42,16 @@ export class CsvManagerService {
     table.rows.forEach(row => {
       const ar = [];
       columns.forEach(col => {
-        ar.push((row.csv && row.csv[col]) ? row.csv[col] : (row.cells && row.cells[col]) ? row.cells[col].toString() : '');
+        ar.push((row.csv && row.csv[col]) ? row.csv[col] : (row.cells && row.cells[col]) ? this.toValidCsvString(row.cells[col].toString()) : '');
       });
       csvData.data.push(ar);
     })
     return this.createDownloadLink(csvData);
+  }
+
+  toValidCsvString(value: string): string {
+    if (!value) { return value; }    
+    return value.replace(/,/g, ' ').replace(/#/g,' ');
   }
 
   createDownloadLink(csv: CsvData): string {

@@ -37,7 +37,7 @@
 </ng-template>
 
 <ng-template #KeyStatus let-item let-src="source">
-    <svg width="20" height="20" color="#b00" *ngIf="src.researchStatus && src.researchStatus.toLowerCase().trim()!=='open'"
+    <svg width="20" height="20" color="#b00" *ngIf="item.isExpired"
         mdcSvg="ic-failure"></svg>
 </ng-template>
 

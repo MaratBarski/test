@@ -27,6 +27,10 @@ export class PermissionWizardComponent extends BaseNavigation implements OnInit 
     super(navigationService);
   }
 
+  get isNextEnable(): boolean {
+    return this.permissionSetService && this.permissionSetService.selectedTab === 1;
+  }
+
   tabs: Array<TabWizardItem> = [
     {
       text: 'General Details'
