@@ -18,8 +18,14 @@
                         <div class="graph__head">Newly created user accounts
                         </div>
                     </div>
-                    <div class="graph__content">
-                        <div class="chart-wraper">
+                    <div [hidden]="(dataSource|createdChart).length || chartService.isLoading" class="graph-empty">
+                        <div class="graph-empty__img"><img src="./assets/images/chart-empty-state.svg" alt=""
+                                style="height: 160px;"></div>
+                        <div class="graph-empty__text">No data, yet</div>
+                    </div>
+                    <div [hidden]="!(dataSource|createdChart).length && chartService.isLoading" class="graph__content">
+                        <div [hidden]="!chartService.isLoading">Loading...</div>
+                        <div [mdcVisibility]="chartService.isLoaded" class="chart-wraper">
                             <ng-container [ngTemplateOutlet]="chart"></ng-container>
                         </div>
                     </div>

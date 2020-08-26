@@ -125,6 +125,23 @@
 	}
 }
 
+.graph-empty{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-content: center;
+	height: 335px;
+	max-height: 100%;
+	text-align: center;
+
+	&__img{margin-bottom: 30px;}
+
+	img{max-height: 100%;}
+
+	&__text{
+		@include font(normal, normal, rem(20px), 1.2, $color-grey);
+	}
+}
 @media (max-width: 767px) {
 	.graph{
 		&__head .tooltip{

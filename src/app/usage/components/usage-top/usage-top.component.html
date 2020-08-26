@@ -2,25 +2,25 @@
     [buttons]="activityButtons"></md-user-time-activity>
 
 <md-chart-wraper firstTitle="New Queries" secondTitle="File Downloads" [firstChart]="firstChart"
-    [secondChart]="secondChart">
+    [firstChartHasData]="(dataSource|userTop10Chart).query.length"
+    [secondChartHasData]="(dataSource|userTop10Chart).download.length" [secondChart]="secondChart">
 </md-chart-wraper>
 
 <md-chart-pdf #chartPdfQueries [chart]="firstChart" [width]="pdfChartWidth" [height]="pdfChartHeight"></md-chart-pdf>
 <md-chart-pdf #chartPdfDownloads [chart]="secondChart" [width]="pdfChartWidth" [height]="pdfChartHeight"></md-chart-pdf>
 
 <ng-template #firstChart>
-    <ngx-charts-bar-horizontal [barPadding]="20" [animations]="false" [roundEdges]="false" [view]="view" [scheme]="colorScheme" [results]="(dataSource|userTop10Chart).query"
-        [xAxis]="false" [yAxis]="true" [showXAxisLabel]="true"
-        [showYAxisLabel]="true"  [legend]="false"
-        [showDataLabel]="true">
+    <ngx-charts-bar-horizontal [barPadding]="20" [animations]="false" [roundEdges]="false" [view]="view"
+        [scheme]="colorScheme" [results]="(dataSource|userTop10Chart).query" [xAxis]="false" [yAxis]="true"
+        [showXAxisLabel]="true" [showYAxisLabel]="true" [legend]="false" [showDataLabel]="true">
     </ngx-charts-bar-horizontal>
 </ng-template>
 
 <ng-template #secondChart>
-    <ngx-charts-bar-horizontal-stacked [textPadding]="4" [barPadding]="20" [showValue]="true" [animations]="false" [view]="view" [scheme]="colorSchemeDownload"
-        [results]="(dataSource|userTop10Chart).download" [gradient]="gradient" [xAxis]="false"
-        [yAxis]="true" [showXAxisLabel]="false" [showYAxisLabel]="true" [xAxisLabel]="xAxisLabel"
-        [yAxisLabel]="yAxisLabel" [legend]="false" [showDataLabel]="false">
+    <ngx-charts-bar-horizontal-stacked [textPadding]="4" [barPadding]="20" [showValue]="true" [animations]="false"
+        [view]="view" [scheme]="colorSchemeDownload" [results]="(dataSource|userTop10Chart).download"
+        [gradient]="gradient" [xAxis]="false" [yAxis]="true" [showXAxisLabel]="false" [showYAxisLabel]="true"
+        [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" [legend]="false" [showDataLabel]="false">
     </ngx-charts-bar-horizontal-stacked>
     <div class="legend">
         <div class="legend-cnt">

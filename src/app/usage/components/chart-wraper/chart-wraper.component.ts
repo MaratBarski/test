@@ -17,9 +17,28 @@ export class ChartWraperComponent {
   @Input() secondLegendTemplate: any;
   @Input() isLegend = false;
 
+  @Input() set firstChartHasData(flag: boolean) {
+    setTimeout(() => {
+      this._firstChartHasData = flag;
+    }, 0);
+  }
+  @Input() set secondChartHasData(flag: boolean) {
+    setTimeout(() => {
+      this._secondChartHasData = flag;
+    }, 0);
+  }
+  
   @ViewChild('firstLegend', { static: false }) firstLegend: ChartLegendComponent;
   @ViewChild('secondLegend', { static: false }) secondLegend: ChartLegendComponent;
 
+  get firstChartHasData(): boolean {
+    return this._firstChartHasData;
+  }
+  get secondChartHasData(): boolean {
+    return this._secondChartHasData;
+  }
+  private _firstChartHasData = true;
+  private _secondChartHasData = true;
 
   constructor(public chartService: ChartService) { }
 

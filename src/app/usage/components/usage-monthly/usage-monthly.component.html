@@ -1,4 +1,5 @@
 <md-chart-wraper *ngIf="responseData" firstTitle="Activity: new queries count"
+[firstChartHasData]="(dataSource|monthlyChart).query.length" [secondChartHasData]="(dataSource|monthlyChart).download.length"
     secondTitle="Activity: file downloads count" [firstChart]="firstChart" [secondChart]="secondChart">
 </md-chart-wraper>
 

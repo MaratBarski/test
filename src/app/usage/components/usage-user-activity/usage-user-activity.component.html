@@ -1,5 +1,7 @@
 <md-chart-wraper #wraper [secondLegendTemplate]="secondLegendTemplate" [firstLegendTemplate]="firstLegendTemplate"
     [isLegend]="true" firstTitle="New Queries per user" secondTitle="Downloads per user" [firstChart]="firstChart"
+    [firstChartHasData]="(data|userActivityChart).query.length"
+    [secondChartHasData]="(data|userActivityChart).download.length"
     [secondChart]="secondChart">
 </md-chart-wraper>
 
