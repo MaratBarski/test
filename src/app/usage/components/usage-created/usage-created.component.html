@@ -25,7 +25,7 @@
                     </div>
                     <div [hidden]="!hasData && chartService.isLoading" class="graph__content">
                         <div [hidden]="!chartService.isLoading">Loading...</div>
-                        <div [mdcVisibility]="chartService.isLoaded" class="chart-wraper">
+                        <div class="chart-wraper">
                             <ng-container [ngTemplateOutlet]="chart"></ng-container>
                         </div>
                     </div>
