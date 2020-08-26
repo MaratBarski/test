@@ -44,7 +44,20 @@ export class UsageCreatedComponent extends UsageBase {
 
     this.usageDownloadService.toCSV = () => this.toCSV();
     this.usageDownloadService.toPDF = () => this.toPDF();
+
+    super.dataSourceReady = () => {
+      this.hasData = false;
+      if (!this.dataSource) { return; }
+      this.dataSource.forEach(item => {
+        if (item.count) {
+          this.hasData = true;
+          return;
+        }
+      });
+    }
   }
+
+  hasData = true;
 
   downloadData: DownloadData = {
     pageName: 'Created',

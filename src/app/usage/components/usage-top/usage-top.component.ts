@@ -53,7 +53,33 @@ export class UsageTopComponent extends UsageBase {
 
     this.usageDownloadService.toCSV = () => this.toCSV();
     this.usageDownloadService.toPDF = () => this.toPDF();
+
+    super.dataSourceReady = () => {
+      this.hasData1 = false;
+      this.hasData2 = false;
+      if (!this.dataSource) { return; }
+      // document.write(JSON.stringify(this.dataSource))
+      if (this.dataSource.newQuery) {
+        this.dataSource.newQuery.forEach(item => {
+          if (item.count) {
+            this.hasData1 = true;
+            return;
+          }
+        });
+      }
+      if (this.dataSource.downloads) {
+        this.dataSource.downloads.forEach(item => {
+          if (item.syntetic || item.origin) {
+            this.hasData2 = true;
+            return;
+          }
+        });
+      }
+    }
   }
+
+  hasData1 = true;
+  hasData2 = true;
 
   downloadData: DownloadData = {
     pageName: 'Top 10 Users',

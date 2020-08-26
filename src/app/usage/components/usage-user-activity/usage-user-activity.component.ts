@@ -41,7 +41,32 @@ export class UsageUserActivityComponent extends UsageBase {
 
     this.usageDownloadService.toCSV = () => this.toCSV();
     this.usageDownloadService.toPDF = () => this.toPDF();
+
+    super.dataSourceReady = () => {
+      this.hasData1 = false;
+      this.hasData2 = false;
+      if (!this.dataSource) { return; }
+      if (this.dataSource.newQuery) {
+        this.dataSource.newQuery.forEach(item => {
+          if (item.count) {
+            this.hasData1 = true;
+            return;
+          }
+        });
+      }
+      if (this.dataSource.downloads) {
+        this.dataSource.downloads.forEach(item => {
+          if (item.count) {
+            this.hasData2 = true;
+            return;
+          }
+        });
+      }
+    }
   }
+
+  hasData1 = true;
+  hasData2 = true;
 
   private currentColor = 0;
   private getColor(): string {
@@ -63,9 +88,6 @@ export class UsageUserActivityComponent extends UsageBase {
   }
 
   users: Array<{ name: string, value: string }> = [];
-
-  dataSourceReady = () => {
-  }
 
   downloadData: DownloadData = {
     pageName: 'Activity per user',
