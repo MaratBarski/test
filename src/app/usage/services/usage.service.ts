@@ -95,6 +95,7 @@ export class UsageService {
   }
 
   createRetentionDataSource(files: Array<any>): TableModel {
+    if (!files) { files = []; }
     const dict = {};
     files = this.usageRequestService.createData(files);
     files.forEach(fl => {
