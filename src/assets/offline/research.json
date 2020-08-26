@@ -1,24 +1,25 @@
 {
     "data": [
         {
-            "researchId": 35,
-            "researchName": "aaaaaaaaaa",
-            "userId": "1004",
+            "researchId": 139,
+            "researchName": "test1",
+            "userId": "1000",
             "projectId": "1",
+            "startDate": "2013-12-31",
             "researchStatus": "Open",
-            "maxPatients": 159,
-            "insertDate": "2019-01-15T09:17:17.000Z",
-            "information": "this is the description",
-            "endDate": "2300-11-30",
-            "approvalKey": "1234",
+            "maxPatients": 1000000,
+            "insertDate": "2020-08-26T08:18:03.000Z",
+            "information": null,
+            "endDate": "2022-12-03",
+            "approvalKey": "112233",
             "approvalKeyExpirationDate": null,
-            "user_id": "1004",
+            "user_id": "1000",
             "researchRestrictionEvents": [
                 {
-                    "researchId": "35",
-                    "eventPropertyId": "ageatevent",
-                    "eventId": "187",
-                    "value": "1",
+                    "researchId": "139",
+                    "eventPropertyName": "ageatevent",
+                    "eventId": "2",
+                    "value": "110",
                     "siteEventPropertyInfo": {
                         "eventPropertyNa": "ageatevent",
                         "eventId": "3",
@@ -33,37 +34,49 @@
                         "priority": 0,
                         "isDependentSear": false
                     },
-                    "siteEventInfo": {
-                        "eventTableAlias": "gdfsgdfgdfg"
-                    }
-                }
-            ],
-            "researchTemplates": [
-                {
-                    "templateId": 1
+                    "siteEventInfo": null
                 },
                 {
-                    "templateId": 2
+                    "researchId": "139",
+                    "eventPropertyName": "ageatevent",
+                    "eventId": "2",
+                    "value": "80",
+                    "siteEventPropertyInfo": {
+                        "eventPropertyNa": "ageatevent",
+                        "eventId": "3",
+                        "dataSample": "[0 .. 311.78]",
+                        "eventPropertyTy": "NUMERIC",
+                        "hierarchyRootId": null,
+                        "patientFk": false,
+                        "eventTimeStamp": false,
+                        "ageAtEvent": true,
+                        "fieldDescriptio": "ageatevent",
+                        "fieldDes": "Property-Availability:99% populated",
+                        "priority": 0,
+                        "isDependentSear": false
+                    },
+                    "siteEventInfo": null
                 }
             ],
+            "researchTemplates": [],
             "user": {
-                "id": "5",
-                "login": "mdclone.admin",
+                "id": "1000",
+                "login": "researcher1",
                 "passwordHash": "$2a$10$G3OF8pfomKGuB8dpxNlj2eL8wZwY5L.3M19fJ5DfVS1sR0ojd/Ic.",
-                "firstName": "Admin gggg",
-                "lastName": "Admin",
-                "email": "mdclone.admin@localhost",
+                "firstName": "Researcher",
+                "lastName": "One",
+                "email": "res@mdc.com",
                 "activated": true,
                 "langKey": "en",
                 "activationKey": null,
-                "resetKey": null,
-                "createdBy": "system",
-                "createdDate": "2016-06-01T21:00:00.000Z",
-                "resetDate": null,
+                "resetKey": "07144939589023538069",
+                "createdBy": "mdclone.admin",
+                "createdDate": "2018-03-06T08:05:20.921Z",
+                "resetDate": "2018-03-06T08:05:20.874Z",
                 "lastModifiedBy": "mdclone.admin",
-                "lastModifiedDate": "2018-12-11T08:10:09.089Z",
+                "lastModifiedDate": "2019-09-18T11:36:45.204Z",
                 "cellPhone": null,
-                "domain": null,
+                "domain": "",
                 "photo": null
             },
             "project": {
@@ -80,16 +93,16 @@
             "startDate": "1900-10-30",
             "researchStatus": "Open",
             "maxPatients": 100000,
-            "insertDate": "2021-01-27T14:35:10.000Z",
+            "insertDate": "2019-01-27T14:35:10.000Z",
             "information": "research 123$5566@@@@@@@@@~~~~~~~~~~~~~#################! ~*&^nbhfjhjfhjghjghjgjhghjkjkghkjh%^#@!~+=_-(){}[](99/|\\<>w\":; 123$5566@@@@@@@@@~~~~~~~~~~~~~#################!~*&^nbhfjhjfhjghjghjgjhghjkjkghkjh%^#@!~+=_-(){}[](99/|\\<>w\":;",
             "endDate": "2019-01-27",
             "approvalKey": "research 123$5566@@@@@@@@@~~~~~~~~~~~~~#################! ~*&^nbhfjhjfhjghjghjgjhghjkjkghkjh%^#@!~+=_-(){}[](99/|\\<>w\":; 123$5566@@@@@@@@@~~~~~~~~~~~~~#################!~*&^nbhfjhjfhjghjghjgjhghjkjkghkjh%^#@!~+=_-(){}[](99/|\\<>w\":;",
-            "approvalKeyExpirationDate": "2001-07-27",
+            "approvalKeyExpirationDate": "2021-07-27",
             "user_id": "1993",
             "researchRestrictionEvents": [
                 {
                     "researchId": "69",
-                    "eventPropertyId": "ageatevent",
+                    "eventPropertyName": "ageatevent",
                     "eventId": "6",
                     "value": "50",
                     "siteEventPropertyInfo": {
@@ -149,13 +162,13 @@
             "insertDate": "2019-01-15T09:17:17.000Z",
             "information": "this is the description",
             "endDate": "2300-11-30",
-            "approvalKey": "1234",
+            "approvalKey": null,
             "approvalKeyExpirationDate": null,
             "user_id": "5",
             "researchRestrictionEvents": [
                 {
                     "researchId": "35",
-                    "eventPropertyId": "ageatevent",
+                    "eventPropertyName": "ageatevent",
                     "eventId": "9",
                     "value": "1",
                     "siteEventPropertyInfo": {
@@ -182,7 +195,7 @@
                 "id": "5",
                 "login": "mdclone.admin",
                 "passwordHash": "$2a$10$G3OF8pfomKGuB8dpxNlj2eL8wZwY5L.3M19fJ5DfVS1sR0ojd/Ic.",
-                "firstName": "Admin gggg",
+                "firstName": "Admin gggg1",
                 "lastName": "Admin",
                 "email": "mdclone.admin@localhost",
                 "activated": true,
@@ -221,7 +234,7 @@
             "researchRestrictionEvents": [
                 {
                     "researchId": "75",
-                    "eventPropertyId": "lengthofstayvalue",
+                    "eventPropertyName": "lengthofstayvalue",
                     "eventId": "6",
                     "value": "9",
                     "siteEventPropertyInfo": {
@@ -287,7 +300,7 @@
             "researchRestrictionEvents": [
                 {
                     "researchId": "74",
-                    "eventPropertyId": "lengthofstayvalue",
+                    "eventPropertyName": "lengthofstayvalue",
                     "eventId": "6",
                     "value": "9",
                     "siteEventPropertyInfo": {
@@ -353,7 +366,7 @@
             "researchRestrictionEvents": [
                 {
                     "researchId": "73",
-                    "eventPropertyId": "lengthofstayvalue",
+                    "eventPropertyName": "lengthofstayvalue",
                     "eventId": "6",
                     "value": "8",
                     "siteEventPropertyInfo": {
@@ -419,7 +432,7 @@
             "researchRestrictionEvents": [
                 {
                     "researchId": "72",
-                    "eventPropertyId": "lengthofstayvalue",
+                    "eventPropertyName": "lengthofstayvalue",
                     "eventId": "6",
                     "value": "fedya fedya fedyafedya fedya fedyafedya fedya fedyafedya fedya fedyafedya fedya fedyafedya fedya fedyafedya fedya fedyafedya fedya fedyafedya fedya fedyafedya fedya fedyafedya fedya fedyafedya fedya fedya",
                     "siteEventPropertyInfo": {
@@ -485,7 +498,7 @@
             "researchRestrictionEvents": [
                 {
                     "researchId": "71",
-                    "eventPropertyId": "lengthofstayvalue",
+                    "eventPropertyName": "lengthofstayvalue",
                     "eventId": "87",
                     "value": "6",
                     "siteEventPropertyInfo": {
@@ -551,7 +564,7 @@
             "researchRestrictionEvents": [
                 {
                     "researchId": "70",
-                    "eventPropertyId": "lengthofstayvalue",
+                    "eventPropertyName": "lengthofstayvalue",
                     "eventId": "6",
                     "value": "12",
                     "siteEventPropertyInfo": {
@@ -617,7 +630,7 @@
             "researchRestrictionEvents": [
                 {
                     "researchId": "68",
-                    "eventPropertyId": "lengthofstayvalue",
+                    "eventPropertyName": "lengthofstayvalue",
                     "eventId": "6",
                     "value": "2011-01-20 11:55:00 PM",
                     "siteEventPropertyInfo": {
@@ -683,7 +696,7 @@
             "researchRestrictionEvents": [
                 {
                     "researchId": "38",
-                    "eventPropertyId": "lengthofstayvalue",
+                    "eventPropertyName": "lengthofstayvalue",
                     "eventId": "6",
                     "value": "9",
                     "siteEventPropertyInfo": {
@@ -742,6 +755,278 @@
             }
         },
         {
+            "researchId": 118,
+            "researchName": "qwerty",
+            "userId": "1993",
+            "projectId": "1",
+            "startDate": null,
+            "researchStatus": "Open",
+            "maxPatients": 100000,
+            "insertDate": "2020-08-18T13:00:34.000Z",
+            "information": "1qa2ws",
+            "endDate": null,
+            "approvalKey": "research 123$5566@@@@@@@@@~~~~~~~~~~~~~#################! ~*&^nbhfjhjfhjghjghjgjhghjkjkghkjh%^#@!~+=_-(){}[](99/|\\<>w\":; 123$5566@@@@@@@@@~~~~~~~~~~~~~#################!~*&^nbhfjhjfhjghjghjgjhghjkjkghkjh%^#@!~+=_-(){}[](99/|\\<>w\":;",
+            "approvalKeyExpirationDate": "2020-07-27",
+            "user_id": "1993",
+            "researchRestrictionEvents": [
+                {
+                    "researchId": "118",
+                    "eventPropertyName": "admissiontype",
+                    "eventId": "87",
+                    "value": "aaaaaaaaaaaa",
+                    "siteEventPropertyInfo": {
+                        "eventPropertyNa": "admissiontype",
+                        "eventId": "293",
+                        "dataSample": "URGENT, NEWBORN, EMERGENCY, ELECTIVE",
+                        "eventPropertyTy": "STRING",
+                        "hierarchyRootId": null,
+                        "patientFk": false,
+                        "eventTimeStamp": false,
+                        "ageAtEvent": false,
+                        "fieldDescriptio": "admissiontype",
+                        "fieldDes": null,
+                        "priority": 1,
+                        "isDependentSear": false
+                    },
+                    "siteEventInfo": {
+                        "eventTableAlias": "dsfewrwerqew"
+                    }
+                }
+            ],
+            "researchTemplates": [
+                {
+                    "researchId": "118",
+                    "templateId": "2",
+                    "InsertDate": "2020-08-18T13:00:33.654Z",
+                    "template": {
+                        "templateName": "Diagnosis Diagnosis Diagnosis Diagnosis Diagnosis"
+                    }
+                },
+                {
+                    "researchId": "118",
+                    "templateId": "38",
+                    "InsertDate": "2020-08-18T13:00:33.654Z",
+                    "template": {
+                        "templateName": "Test Template"
+                    }
+                },
+                {
+                    "researchId": "118",
+                    "templateId": "31",
+                    "InsertDate": "2020-08-18T13:00:33.654Z",
+                    "template": {
+                        "templateName": "Medications"
+                    }
+                },
+                {
+                    "researchId": "118",
+                    "templateId": "1",
+                    "InsertDate": "2020-08-18T13:00:33.654Z",
+                    "template": {
+                        "templateName": "Demo Template"
+                    }
+                }
+            ],
+            "user": {
+                "id": "1993",
+                "login": "Janeta.Kozak",
+                "passwordHash": "$2a$10$G3OF8pfomKGuB8dpxNlj2eL8wZwY5L.3M19fJ5DfVS1sR0ojd/Ic.",
+                "firstName": "jjj",
+                "lastName": "kkkk",
+                "email": "jjj@kkk.com",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": "18145194061882415841",
+                "createdBy": "mdclone.admin",
+                "createdDate": "2018-10-17T14:15:19.702Z",
+                "resetDate": "2018-10-17T14:15:19.671Z",
+                "lastModifiedBy": "mdclone.admin",
+                "lastModifiedDate": "2018-10-17T14:15:19.702Z",
+                "cellPhone": null,
+                "domain": "",
+                "photo": null
+            },
+            "project": {
+                "projectId": "1",
+                "projectName": "Demo Project",
+                "defaultSiteId": "1"
+            }
+        },
+        {
+            "researchId": 116,
+            "researchName": "Noa research",
+            "userId": "2260",
+            "projectId": "14",
+            "startDate": "1900-10-31",
+            "researchStatus": "Open",
+            "maxPatients": 100000,
+            "insertDate": "2020-08-18T06:55:43.000Z",
+            "information": "Noa research",
+            "endDate": "2300-11-30",
+            "approvalKey": "123456",
+            "approvalKeyExpirationDate": "1970-01-01",
+            "user_id": "2260",
+            "researchRestrictionEvents": [
+                {
+                    "researchId": "116",
+                    "eventPropertyName": "admissiontype",
+                    "eventId": "87",
+                    "value": "ffffff2222",
+                    "siteEventPropertyInfo": {
+                        "eventPropertyNa": "admissiontype",
+                        "eventId": "293",
+                        "dataSample": "URGENT, NEWBORN, EMERGENCY, ELECTIVE",
+                        "eventPropertyTy": "STRING",
+                        "hierarchyRootId": null,
+                        "patientFk": false,
+                        "eventTimeStamp": false,
+                        "ageAtEvent": false,
+                        "fieldDescriptio": "admissiontype",
+                        "fieldDes": null,
+                        "priority": 1,
+                        "isDependentSear": false
+                    },
+                    "siteEventInfo": {
+                        "eventTableAlias": "dvhjdskljhfklsdjf34234234"
+                    }
+                },
+                {
+                    "researchId": "116",
+                    "eventPropertyName": "admissiontype",
+                    "eventId": "87",
+                    "value": "fffff1111",
+                    "siteEventPropertyInfo": {
+                        "eventPropertyNa": "admissiontype",
+                        "eventId": "293",
+                        "dataSample": "URGENT, NEWBORN, EMERGENCY, ELECTIVE",
+                        "eventPropertyTy": "STRING",
+                        "hierarchyRootId": null,
+                        "patientFk": false,
+                        "eventTimeStamp": false,
+                        "ageAtEvent": false,
+                        "fieldDescriptio": "admissiontype",
+                        "fieldDes": null,
+                        "priority": 1,
+                        "isDependentSear": false
+                    },
+                    "siteEventInfo": {
+                        "eventTableAlias": "dvhjdskljhfklsdjf34234234"
+                    }
+                }
+            ],
+            "researchTemplates": [
+                {
+                    "researchId": "116",
+                    "templateId": "2",
+                    "InsertDate": "2020-08-18T06:55:43.051Z",
+                    "template": {
+                        "templateName": "Diagnosis Diagnosis Diagnosis Diagnosis Diagnosis"
+                    }
+                }
+            ],
+            "user": {
+                "id": "2260",
+                "login": "Efrat",
+                "passwordHash": "$2a$10$XfSwDKjH4K.uFZwHWYkRhO8eBMpLU3Obc4u7zuTt2oWKAI1flOA/e",
+                "firstName": "Efrat",
+                "lastName": "Kliper",
+                "email": "E@MD.COM",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": "38132441534766326989",
+                "createdBy": "admin",
+                "createdDate": "2018-11-12T10:04:07.856Z",
+                "resetDate": "2018-11-12T10:04:07.834Z",
+                "lastModifiedBy": "mdclone.admin",
+                "lastModifiedDate": "2018-12-08T21:00:10.244Z",
+                "cellPhone": null,
+                "domain": "",
+                "photo": null
+            },
+            "project": {
+                "projectId": "14",
+                "projectName": "Training Mimic Data",
+                "defaultSiteId": "12"
+            }
+        },
+        {
+            "researchId": 109,
+            "researchName": "MdcloneAdminResearchTest2",
+            "userId": "1078",
+            "projectId": "15",
+            "startDate": "2013-01-31",
+            "researchStatus": "Open",
+            "maxPatients": 100000,
+            "insertDate": "2020-08-17T14:54:14.000Z",
+            "information": "MdcloneAdminResearchTest2",
+            "endDate": "2022-11-30",
+            "approvalKey": "MdcloneAdminResearchTest2",
+            "approvalKeyExpirationDate": "2019-11-23",
+            "user_id": "1078",
+            "researchRestrictionEvents": [
+                {
+                    "researchId": "109",
+                    "eventPropertyName": "admissiontype",
+                    "eventId": "87",
+                    "value": "ssssssss",
+                    "siteEventPropertyInfo": {
+                        "eventPropertyNa": "admissiontype",
+                        "eventId": "293",
+                        "dataSample": "URGENT, NEWBORN, EMERGENCY, ELECTIVE",
+                        "eventPropertyTy": "STRING",
+                        "hierarchyRootId": null,
+                        "patientFk": false,
+                        "eventTimeStamp": false,
+                        "ageAtEvent": false,
+                        "fieldDescriptio": "admissiontype",
+                        "fieldDes": null,
+                        "priority": 1,
+                        "isDependentSear": false
+                    },
+                    "siteEventInfo": {
+                        "eventTableAlias": "Troponine > 45 or MI"
+                    }
+                }
+            ],
+            "researchTemplates": [
+                {
+                    "researchId": "109",
+                    "templateId": "2",
+                    "InsertDate": "2020-08-17T14:54:14.245Z",
+                    "template": {
+                        "templateName": "Diagnosis Diagnosis Diagnosis Diagnosis Diagnosis"
+                    }
+                }
+            ],
+            "user": {
+                "id": "1078",
+                "login": "lior.halachmi",
+                "passwordHash": "$2a$10$1ye/OvWnwqwoZWT5SzPqJO4pC0Sq3NiXk19H5hUQ49IiW09ZnEIyW",
+                "firstName": "Lior",
+                "lastName": "Halachmi",
+                "email": "lior.halachmi@mdclone.com",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": "82750124596936792409",
+                "createdBy": "admin",
+                "createdDate": "2018-07-12T11:47:25.919Z",
+                "resetDate": "2018-07-12T11:47:25.888Z",
+                "lastModifiedBy": "lior.halachmi",
+                "lastModifiedDate": "2019-12-03T11:18:04.467Z",
+                "cellPhone": "0524547575",
+                "domain": "",
+                "photo": null
+            },
+            "project": {
+                "projectId": "15",
+                "projectName": "BIG Project",
+                "defaultSiteId": "13"
+            }
+        },
+        {
             "researchId": 18,
             "researchName": "dddddddd",
             "userId": "1381",
@@ -758,7 +1043,7 @@
             "researchRestrictionEvents": [
                 {
                     "researchId": "18",
-                    "eventPropertyId": "admissiontype",
+                    "eventPropertyName": "admissiontype",
                     "eventId": "6",
                     "value": "434234",
                     "siteEventPropertyInfo": {
@@ -781,122 +1066,7 @@
                 },
                 {
                     "researchId": "18",
-                    "eventPropertyId": "eventdate",
-                    "eventId": "10",
-                    "value": "234234",
-                    "siteEventPropertyInfo": {
-                        "eventPropertyNa": "eventdate",
-                        "eventId": "257",
-                        "dataSample": null,
-                        "eventPropertyTy": "DATE",
-                        "hierarchyRootId": null,
-                        "patientFk": false,
-                        "eventTimeStamp": true,
-                        "ageAtEvent": false,
-                        "fieldDescriptio": "event date",
-                        "fieldDes": null,
-                        "priority": 0,
-                        "isDependentSear": false
-                    },
-                    "siteEventInfo": {
-                        "eventTableAlias": "procedures_icd"
-                    }
-                },
-                {
-                    "researchId": "18",
-                    "eventPropertyId": "eventdate",
-                    "eventId": "10",
-                    "value": "1",
-                    "siteEventPropertyInfo": {
-                        "eventPropertyNa": "eventdate",
-                        "eventId": "257",
-                        "dataSample": null,
-                        "eventPropertyTy": "DATE",
-                        "hierarchyRootId": null,
-                        "patientFk": false,
-                        "eventTimeStamp": true,
-                        "ageAtEvent": false,
-                        "fieldDescriptio": "event date",
-                        "fieldDes": null,
-                        "priority": 0,
-                        "isDependentSear": false
-                    },
-                    "siteEventInfo": {
-                        "eventTableAlias": "procedures_icd"
-                    }
-                },
-                {
-                    "researchId": "18",
-                    "eventPropertyId": "eventdate",
-                    "eventId": "10",
-                    "value": "2",
-                    "siteEventPropertyInfo": {
-                        "eventPropertyNa": "eventdate",
-                        "eventId": "257",
-                        "dataSample": null,
-                        "eventPropertyTy": "DATE",
-                        "hierarchyRootId": null,
-                        "patientFk": false,
-                        "eventTimeStamp": true,
-                        "ageAtEvent": false,
-                        "fieldDescriptio": "event date",
-                        "fieldDes": null,
-                        "priority": 0,
-                        "isDependentSear": false
-                    },
-                    "siteEventInfo": {
-                        "eventTableAlias": "procedures_icd"
-                    }
-                },
-                {
-                    "researchId": "18",
-                    "eventPropertyId": "eventdate",
-                    "eventId": "10",
-                    "value": "3",
-                    "siteEventPropertyInfo": {
-                        "eventPropertyNa": "eventdate",
-                        "eventId": "257",
-                        "dataSample": null,
-                        "eventPropertyTy": "DATE",
-                        "hierarchyRootId": null,
-                        "patientFk": false,
-                        "eventTimeStamp": true,
-                        "ageAtEvent": false,
-                        "fieldDescriptio": "event date",
-                        "fieldDes": null,
-                        "priority": 0,
-                        "isDependentSear": false
-                    },
-                    "siteEventInfo": {
-                        "eventTableAlias": "procedures_icd"
-                    }
-                },
-                {
-                    "researchId": "18",
-                    "eventPropertyId": "eventdate",
-                    "eventId": "10",
-                    "value": "4",
-                    "siteEventPropertyInfo": {
-                        "eventPropertyNa": "eventdate",
-                        "eventId": "257",
-                        "dataSample": null,
-                        "eventPropertyTy": "DATE",
-                        "hierarchyRootId": null,
-                        "patientFk": false,
-                        "eventTimeStamp": true,
-                        "ageAtEvent": false,
-                        "fieldDescriptio": "event date",
-                        "fieldDes": null,
-                        "priority": 0,
-                        "isDependentSear": false
-                    },
-                    "siteEventInfo": {
-                        "eventTableAlias": "procedures_icd"
-                    }
-                },
-                {
-                    "researchId": "18",
-                    "eventPropertyId": "eventdate",
+                    "eventPropertyName": "eventdate",
                     "eventId": "10",
                     "value": "5",
                     "siteEventPropertyInfo": {
@@ -919,9 +1089,9 @@
                 },
                 {
                     "researchId": "18",
-                    "eventPropertyId": "eventdate",
+                    "eventPropertyName": "eventdate",
                     "eventId": "10",
-                    "value": "6",
+                    "value": "4",
                     "siteEventPropertyInfo": {
                         "eventPropertyNa": "eventdate",
                         "eventId": "257",
@@ -942,7 +1112,99 @@
                 },
                 {
                     "researchId": "18",
-                    "eventPropertyId": "eventdate",
+                    "eventPropertyName": "eventdate",
+                    "eventId": "10",
+                    "value": "3",
+                    "siteEventPropertyInfo": {
+                        "eventPropertyNa": "eventdate",
+                        "eventId": "257",
+                        "dataSample": null,
+                        "eventPropertyTy": "DATE",
+                        "hierarchyRootId": null,
+                        "patientFk": false,
+                        "eventTimeStamp": true,
+                        "ageAtEvent": false,
+                        "fieldDescriptio": "event date",
+                        "fieldDes": null,
+                        "priority": 0,
+                        "isDependentSear": false
+                    },
+                    "siteEventInfo": {
+                        "eventTableAlias": "procedures_icd"
+                    }
+                },
+                {
+                    "researchId": "18",
+                    "eventPropertyName": "eventdate",
+                    "eventId": "10",
+                    "value": "2",
+                    "siteEventPropertyInfo": {
+                        "eventPropertyNa": "eventdate",
+                        "eventId": "257",
+                        "dataSample": null,
+                        "eventPropertyTy": "DATE",
+                        "hierarchyRootId": null,
+                        "patientFk": false,
+                        "eventTimeStamp": true,
+                        "ageAtEvent": false,
+                        "fieldDescriptio": "event date",
+                        "fieldDes": null,
+                        "priority": 0,
+                        "isDependentSear": false
+                    },
+                    "siteEventInfo": {
+                        "eventTableAlias": "procedures_icd"
+                    }
+                },
+                {
+                    "researchId": "18",
+                    "eventPropertyName": "eventdate",
+                    "eventId": "10",
+                    "value": "1",
+                    "siteEventPropertyInfo": {
+                        "eventPropertyNa": "eventdate",
+                        "eventId": "257",
+                        "dataSample": null,
+                        "eventPropertyTy": "DATE",
+                        "hierarchyRootId": null,
+                        "patientFk": false,
+                        "eventTimeStamp": true,
+                        "ageAtEvent": false,
+                        "fieldDescriptio": "event date",
+                        "fieldDes": null,
+                        "priority": 0,
+                        "isDependentSear": false
+                    },
+                    "siteEventInfo": {
+                        "eventTableAlias": "procedures_icd"
+                    }
+                },
+                {
+                    "researchId": "18",
+                    "eventPropertyName": "eventdate",
+                    "eventId": "10",
+                    "value": "8",
+                    "siteEventPropertyInfo": {
+                        "eventPropertyNa": "eventdate",
+                        "eventId": "257",
+                        "dataSample": null,
+                        "eventPropertyTy": "DATE",
+                        "hierarchyRootId": null,
+                        "patientFk": false,
+                        "eventTimeStamp": true,
+                        "ageAtEvent": false,
+                        "fieldDescriptio": "event date",
+                        "fieldDes": null,
+                        "priority": 0,
+                        "isDependentSear": false
+                    },
+                    "siteEventInfo": {
+                        "eventTableAlias": "procedures_icd"
+                    }
+                },
+                {
+                    "researchId": "18",
+                    "eventPropertyName": "eventdate",
                     "eventId": "10",
                     "value": "7",
                     "siteEventPropertyInfo": {
@@ -965,9 +1227,32 @@
                 },
                 {
                     "researchId": "18",
-                    "eventPropertyId": "eventdate",
+                    "eventPropertyName": "eventdate",
                     "eventId": "10",
-                    "value": "8",
+                    "value": "6",
+                    "siteEventPropertyInfo": {
+                        "eventPropertyNa": "eventdate",
+                        "eventId": "257",
+                        "dataSample": null,
+                        "eventPropertyTy": "DATE",
+                        "hierarchyRootId": null,
+                        "patientFk": false,
+                        "eventTimeStamp": true,
+                        "ageAtEvent": false,
+                        "fieldDescriptio": "event date",
+                        "fieldDes": null,
+                        "priority": 0,
+                        "isDependentSear": false
+                    },
+                    "siteEventInfo": {
+                        "eventTableAlias": "procedures_icd"
+                    }
+                },
+                {
+                    "researchId": "18",
+                    "eventPropertyName": "eventdate",
+                    "eventId": "10",
+                    "value": "234234",
                     "siteEventPropertyInfo": {
                         "eventPropertyNa": "eventdate",
                         "eventId": "257",
@@ -1015,14 +1300,286 @@
             }
         },
         {
-            "researchId": 87,
-            "researchName": "111111111111",
+            "researchId": 110,
+            "researchName": "Omry u",
+            "userId": "2253",
+            "projectId": "14",
+            "startDate": "2030-05-24",
+            "researchStatus": "Open",
+            "maxPatients": 123,
+            "insertDate": "2020-08-18T06:42:05.000Z",
+            "information": "Omry Test",
+            "endDate": "2030-05-25",
+            "approvalKey": "Omry Test",
+            "approvalKeyExpirationDate": "2030-05-25",
+            "user_id": "2253",
+            "researchRestrictionEvents": [
+                {
+                    "researchId": "110",
+                    "eventPropertyName": "sequencenumber",
+                    "eventId": "187",
+                    "value": "eeeee",
+                    "siteEventPropertyInfo": {
+                        "eventPropertyNa": "sequencenumber",
+                        "eventId": "317",
+                        "dataSample": "NULL",
+                        "eventPropertyTy": "STRING",
+                        "hierarchyRootId": null,
+                        "patientFk": false,
+                        "eventTimeStamp": false,
+                        "ageAtEvent": false,
+                        "fieldDescriptio": "sequencenumber",
+                        "fieldDes": null,
+                        "priority": 0,
+                        "isDependentSear": false
+                    },
+                    "siteEventInfo": null
+                }
+            ],
+            "researchTemplates": [],
+            "user": {
+                "id": "2253",
+                "login": "Naava",
+                "passwordHash": "$2a$10$w/jZZdxtzOpLmzjUMbqmVeJhLyOBN6gbnRdQsrlv/OaSPm8GtZjK.",
+                "firstName": "Naava",
+                "lastName": "Sadi",
+                "email": "Naava@mdclone.com",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": "78715757253993509396",
+                "createdBy": "admin",
+                "createdDate": "2018-11-12T08:56:49.746Z",
+                "resetDate": "2018-11-12T08:56:49.698Z",
+                "lastModifiedBy": "admin",
+                "lastModifiedDate": "2018-11-12T08:56:49.746Z",
+                "cellPhone": "",
+                "domain": "",
+                "photo": null
+            },
+            "project": {
+                "projectId": "14",
+                "projectName": "Training Mimic Data",
+                "defaultSiteId": "12"
+            }
+        },
+        {
+            "researchId": 100,
+            "researchName": "Omry Test",
             "userId": "5",
             "projectId": "1",
             "startDate": "2030-05-24",
             "researchStatus": "Open",
             "maxPatients": 123,
-            "insertDate": "2020-09-05T07:52:40.000Z",
+            "insertDate": "2020-08-16T12:42:31.000Z",
+            "information": "Omry Test",
+            "endDate": "2030-05-25",
+            "approvalKey": "Omry Test",
+            "approvalKeyExpirationDate": "2030-05-25",
+            "user_id": "5",
+            "researchRestrictionEvents": [
+                {
+                    "researchId": "100",
+                    "eventPropertyName": "sequencenumber",
+                    "eventId": "187",
+                    "value": "1",
+                    "siteEventPropertyInfo": {
+                        "eventPropertyNa": "sequencenumber",
+                        "eventId": "317",
+                        "dataSample": "NULL",
+                        "eventPropertyTy": "STRING",
+                        "hierarchyRootId": null,
+                        "patientFk": false,
+                        "eventTimeStamp": false,
+                        "ageAtEvent": false,
+                        "fieldDescriptio": "sequencenumber",
+                        "fieldDes": null,
+                        "priority": 0,
+                        "isDependentSear": false
+                    },
+                    "siteEventInfo": null
+                },
+                {
+                    "researchId": "100",
+                    "eventPropertyName": "conditioncode",
+                    "eventId": "121",
+                    "value": "1",
+                    "siteEventPropertyInfo": {
+                        "eventPropertyNa": "conditioncode",
+                        "eventId": "333",
+                        "dataSample": "3659, 4019, 41401, 53081, 2449",
+                        "eventPropertyTy": "STRING",
+                        "hierarchyRootId": null,
+                        "patientFk": false,
+                        "eventTimeStamp": false,
+                        "ageAtEvent": false,
+                        "fieldDescriptio": "conditioncode",
+                        "fieldDes": null,
+                        "priority": 0,
+                        "isDependentSear": false
+                    },
+                    "siteEventInfo": null
+                }
+            ],
+            "researchTemplates": [
+                {
+                    "researchId": "100",
+                    "templateId": "2",
+                    "InsertDate": "2020-08-16T12:42:30.950Z",
+                    "template": {
+                        "templateName": "Diagnosis Diagnosis Diagnosis Diagnosis Diagnosis"
+                    }
+                },
+                {
+                    "researchId": "100",
+                    "templateId": "1",
+                    "InsertDate": "2020-08-16T12:42:30.950Z",
+                    "template": {
+                        "templateName": "Demo Template"
+                    }
+                }
+            ],
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin",
+                "passwordHash": "$2a$10$G3OF8pfomKGuB8dpxNlj2eL8wZwY5L.3M19fJ5DfVS1sR0ojd/Ic.",
+                "firstName": "Admin gggg1",
+                "lastName": "Admin",
+                "email": "mdclone.admin@localhost",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": null,
+                "createdBy": "system",
+                "createdDate": "2016-06-01T21:00:00.000Z",
+                "resetDate": null,
+                "lastModifiedBy": "mdclone.admin",
+                "lastModifiedDate": "2018-12-11T08:10:09.089Z",
+                "cellPhone": null,
+                "domain": null,
+                "photo": null
+            },
+            "project": {
+                "projectId": "1",
+                "projectName": "Demo Project",
+                "defaultSiteId": "1"
+            }
+        },
+        {
+            "researchId": 99,
+            "researchName": "Omry Test",
+            "userId": "5",
+            "projectId": "1",
+            "startDate": null,
+            "researchStatus": "Open",
+            "maxPatients": 123,
+            "insertDate": "2020-08-16T12:38:37.000Z",
+            "information": "Omry Test",
+            "endDate": null,
+            "approvalKey": null,
+            "approvalKeyExpirationDate": null,
+            "user_id": "5",
+            "researchRestrictionEvents": [
+                {
+                    "researchId": "99",
+                    "eventPropertyName": "sequencenumber",
+                    "eventId": "187",
+                    "value": "1",
+                    "siteEventPropertyInfo": {
+                        "eventPropertyNa": "sequencenumber",
+                        "eventId": "317",
+                        "dataSample": "NULL",
+                        "eventPropertyTy": "STRING",
+                        "hierarchyRootId": null,
+                        "patientFk": false,
+                        "eventTimeStamp": false,
+                        "ageAtEvent": false,
+                        "fieldDescriptio": "sequencenumber",
+                        "fieldDes": null,
+                        "priority": 0,
+                        "isDependentSear": false
+                    },
+                    "siteEventInfo": {
+                        "eventTableAlias": "omry last test"
+                    }
+                },
+                {
+                    "researchId": "99",
+                    "eventPropertyName": "conditioncode",
+                    "eventId": "2",
+                    "value": "1",
+                    "siteEventPropertyInfo": {
+                        "eventPropertyNa": "conditioncode",
+                        "eventId": "333",
+                        "dataSample": "3659, 4019, 41401, 53081, 2449",
+                        "eventPropertyTy": "STRING",
+                        "hierarchyRootId": null,
+                        "patientFk": false,
+                        "eventTimeStamp": false,
+                        "ageAtEvent": false,
+                        "fieldDescriptio": "conditioncode",
+                        "fieldDes": null,
+                        "priority": 0,
+                        "isDependentSear": false
+                    },
+                    "siteEventInfo": {
+                        "eventTableAlias": "omry last test"
+                    }
+                }
+            ],
+            "researchTemplates": [
+                {
+                    "researchId": "99",
+                    "templateId": "2",
+                    "InsertDate": "2020-08-16T12:38:36.730Z",
+                    "template": {
+                        "templateName": "Diagnosis Diagnosis Diagnosis Diagnosis Diagnosis"
+                    }
+                },
+                {
+                    "researchId": "99",
+                    "templateId": "1",
+                    "InsertDate": "2020-08-16T12:38:36.730Z",
+                    "template": {
+                        "templateName": "Demo Template"
+                    }
+                }
+            ],
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin",
+                "passwordHash": "$2a$10$G3OF8pfomKGuB8dpxNlj2eL8wZwY5L.3M19fJ5DfVS1sR0ojd/Ic.",
+                "firstName": "Admin gggg1",
+                "lastName": "Admin",
+                "email": "mdclone.admin@localhost",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": null,
+                "createdBy": "system",
+                "createdDate": "2016-06-01T21:00:00.000Z",
+                "resetDate": null,
+                "lastModifiedBy": "mdclone.admin",
+                "lastModifiedDate": "2018-12-11T08:10:09.089Z",
+                "cellPhone": null,
+                "domain": null,
+                "photo": null
+            },
+            "project": {
+                "projectId": "1",
+                "projectName": "Demo Project",
+                "defaultSiteId": "1"
+            }
+        },
+        {
+            "researchId": 87,
+            "researchName": "Omry Test 1",
+            "userId": "5",
+            "projectId": "1",
+            "startDate": "2030-05-24",
+            "researchStatus": "Open",
+            "maxPatients": 123,
+            "insertDate": "2020-08-05T07:52:40.000Z",
             "information": "Omry Test 2",
             "endDate": "2030-05-24",
             "approvalKey": "Omry Test 3",
@@ -1031,7 +1588,7 @@
             "researchRestrictionEvents": [
                 {
                     "researchId": "87",
-                    "eventPropertyId": "sequencenumber",
+                    "eventPropertyName": "sequencenumber",
                     "eventId": "187",
                     "value": "1",
                     "siteEventPropertyInfo": {
@@ -1056,18 +1613,18 @@
             "researchTemplates": [
                 {
                     "researchId": "87",
-                    "templateId": "1",
-                    "InsertDate": "2020-08-05T09:04:36.002Z",
-                    "template": {
-                        "templateName": "Demo Template"
-                    }
-                },
-                {
-                    "researchId": "87",
                     "templateId": "29",
                     "InsertDate": "2020-08-05T09:04:36.002Z",
                     "template": {
                         "templateName": "Hanna"
+                    }
+                },
+                {
+                    "researchId": "87",
+                    "templateId": "1",
+                    "InsertDate": "2020-08-05T09:04:36.002Z",
+                    "template": {
+                        "templateName": "Demo Template"
                     }
                 }
             ],
@@ -1075,7 +1632,7 @@
                 "id": "5",
                 "login": "mdclone.admin",
                 "passwordHash": "$2a$10$G3OF8pfomKGuB8dpxNlj2eL8wZwY5L.3M19fJ5DfVS1sR0ojd/Ic.",
-                "firstName": "Admin gggg",
+                "firstName": "Admin gggg1",
                 "lastName": "Admin",
                 "email": "mdclone.admin@localhost",
                 "activated": true,
@@ -1114,7 +1671,7 @@
             "researchRestrictionEvents": [
                 {
                     "researchId": "14",
-                    "eventPropertyId": "sequencenumber",
+                    "eventPropertyName": "sequencenumber",
                     "eventId": "187",
                     "value": "1",
                     "siteEventPropertyInfo": {
@@ -1137,7 +1694,7 @@
                 },
                 {
                     "researchId": "14",
-                    "eventPropertyId": "conditioncode",
+                    "eventPropertyName": "conditioncode",
                     "eventId": "121",
                     "value": "1",
                     "siteEventPropertyInfo": {
@@ -1203,7 +1760,7 @@
             "researchRestrictionEvents": [
                 {
                     "researchId": "63",
-                    "eventPropertyId": "conditioncode",
+                    "eventPropertyName": "conditioncode",
                     "eventId": "202",
                     "value": "1000",
                     "siteEventPropertyInfo": {
@@ -1248,6 +1805,569 @@
                 "projectId": "15",
                 "projectName": "BIG Project",
                 "defaultSiteId": "13"
+            }
+        },
+        {
+            "researchId": 137,
+            "researchName": "Omry Test 1",
+            "userId": "1004",
+            "projectId": "1",
+            "startDate": "2030-05-24",
+            "researchStatus": "Open",
+            "maxPatients": 123,
+            "insertDate": "2020-08-25T09:03:58.000Z",
+            "information": "Omry Test 2",
+            "endDate": "2030-05-24",
+            "approvalKey": "Omry Test 3",
+            "approvalKeyExpirationDate": "2030-02-24",
+            "user_id": "1004",
+            "researchRestrictionEvents": [
+                {
+                    "researchId": "137",
+                    "eventPropertyName": "admissionreferralsourcecode",
+                    "eventId": "87",
+                    "value": "aegrewgerwgrew",
+                    "siteEventPropertyInfo": {
+                        "eventPropertyNa": "admissionreferralsourcecode",
+                        "eventId": "6",
+                        "dataSample": "HMO REFERRAL/SICK, CLINIC REFERRAL/PREMATURE, TRANSFER FROM HOSP/EXTRAM, PHYS REFERRAL/NORMAL DELI, EMERGENCY ROOM ADMIT",
+                        "eventPropertyTy": "STRING",
+                        "hierarchyRootId": "1",
+                        "patientFk": false,
+                        "eventTimeStamp": false,
+                        "ageAtEvent": false,
+                        "fieldDescriptio": "admissionreferralsourcecode",
+                        "fieldDes": null,
+                        "priority": 1,
+                        "isDependentSear": false
+                    },
+                    "siteEventInfo": null
+                }
+            ],
+            "researchTemplates": [
+                {
+                    "researchId": "137",
+                    "templateId": "2",
+                    "InsertDate": "2020-08-25T09:03:58.209Z",
+                    "template": {
+                        "templateName": "Diagnosis Diagnosis Diagnosis Diagnosis Diagnosis"
+                    }
+                },
+                {
+                    "researchId": "137",
+                    "templateId": "38",
+                    "InsertDate": "2020-08-25T09:03:58.209Z",
+                    "template": {
+                        "templateName": "Test Template"
+                    }
+                },
+                {
+                    "researchId": "137",
+                    "templateId": "31",
+                    "InsertDate": "2020-08-25T09:03:58.209Z",
+                    "template": {
+                        "templateName": "Medications"
+                    }
+                },
+                {
+                    "researchId": "137",
+                    "templateId": "29",
+                    "InsertDate": "2020-08-25T09:03:58.209Z",
+                    "template": {
+                        "templateName": "Hanna"
+                    }
+                },
+                {
+                    "researchId": "137",
+                    "templateId": "1",
+                    "InsertDate": "2020-08-25T09:03:58.209Z",
+                    "template": {
+                        "templateName": "Demo Template"
+                    }
+                }
+            ],
+            "user": {
+                "id": "1004",
+                "login": "omry.atia",
+                "passwordHash": "$2a$10$6xh7vGDECMEnlz89DZgYguH0ZGq29MqhZ5nBqy1aNFVmkySRXwd/C",
+                "firstName": "omry",
+                "lastName": "atia",
+                "email": "omry.atia@mdclone.com",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": "14318726331839694974",
+                "createdBy": "mdclone.admin",
+                "createdDate": "2018-06-14T08:58:33.029Z",
+                "resetDate": "2018-06-14T08:58:33.028Z",
+                "lastModifiedBy": "mdclone.admin",
+                "lastModifiedDate": "2018-06-14T08:58:33.029Z",
+                "cellPhone": "0501234567",
+                "domain": "",
+                "photo": null
+            },
+            "project": {
+                "projectId": "1",
+                "projectName": "Demo Project",
+                "defaultSiteId": "1"
+            }
+        },
+        {
+            "researchId": 129,
+            "researchName": "Galina and Zoya",
+            "userId": "1007",
+            "projectId": "1",
+            "startDate": null,
+            "researchStatus": "Open",
+            "maxPatients": 1000000,
+            "insertDate": "2020-08-25T07:58:17.000Z",
+            "information": "Galina and Zoya",
+            "endDate": null,
+            "approvalKey": null,
+            "approvalKeyExpirationDate": "1970-01-01",
+            "user_id": "1007",
+            "researchRestrictionEvents": [
+                {
+                    "researchId": "129",
+                    "eventPropertyName": "admissionreferralsourcecode",
+                    "eventId": "87",
+                    "value": "defeds",
+                    "siteEventPropertyInfo": {
+                        "eventPropertyNa": "admissionreferralsourcecode",
+                        "eventId": "6",
+                        "dataSample": "HMO REFERRAL/SICK, CLINIC REFERRAL/PREMATURE, TRANSFER FROM HOSP/EXTRAM, PHYS REFERRAL/NORMAL DELI, EMERGENCY ROOM ADMIT",
+                        "eventPropertyTy": "STRING",
+                        "hierarchyRootId": "1",
+                        "patientFk": false,
+                        "eventTimeStamp": false,
+                        "ageAtEvent": false,
+                        "fieldDescriptio": "admissionreferralsourcecode",
+                        "fieldDes": null,
+                        "priority": 1,
+                        "isDependentSear": false
+                    },
+                    "siteEventInfo": null
+                }
+            ],
+            "researchTemplates": [
+                {
+                    "researchId": "129",
+                    "templateId": "2",
+                    "InsertDate": "2020-08-25T07:58:16.935Z",
+                    "template": {
+                        "templateName": "Diagnosis Diagnosis Diagnosis Diagnosis Diagnosis"
+                    }
+                },
+                {
+                    "researchId": "129",
+                    "templateId": "38",
+                    "InsertDate": "2020-08-25T07:58:16.935Z",
+                    "template": {
+                        "templateName": "Test Template"
+                    }
+                },
+                {
+                    "researchId": "129",
+                    "templateId": "31",
+                    "InsertDate": "2020-08-25T07:58:16.935Z",
+                    "template": {
+                        "templateName": "Medications"
+                    }
+                },
+                {
+                    "researchId": "129",
+                    "templateId": "29",
+                    "InsertDate": "2020-08-25T07:58:16.935Z",
+                    "template": {
+                        "templateName": "Hanna"
+                    }
+                },
+                {
+                    "researchId": "129",
+                    "templateId": "1",
+                    "InsertDate": "2020-08-25T07:58:16.935Z",
+                    "template": {
+                        "templateName": "Demo Template"
+                    }
+                }
+            ],
+            "user": {
+                "id": "1007",
+                "login": "miriam.caduri",
+                "passwordHash": "$2a$10$MenMegNLNWQ8KpNFPzGvMOfpTdhqSnqY0dDu7K9aMlusBQm.RSkSy",
+                "firstName": "Miriam",
+                "lastName": "Caduri",
+                "email": "miriam.caduri@mdclone.com",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": "45124304844400204640",
+                "createdBy": "mdclone.admin",
+                "createdDate": "2018-07-02T06:45:57.624Z",
+                "resetDate": "2018-07-02T06:45:57.623Z",
+                "lastModifiedBy": "mdclone.admin",
+                "lastModifiedDate": "2018-07-02T06:45:57.624Z",
+                "cellPhone": null,
+                "domain": "",
+                "photo": null
+            },
+            "project": {
+                "projectId": "1",
+                "projectName": "Demo Project",
+                "defaultSiteId": "1"
+            }
+        },
+        {
+            "researchId": 128,
+            "researchName": "Research to Alon",
+            "userId": "2260",
+            "projectId": "14",
+            "startDate": "2013-12-31",
+            "researchStatus": "Open",
+            "maxPatients": 1000000,
+            "insertDate": "2020-08-25T07:47:29.000Z",
+            "information": "Research to Alon",
+            "endDate": "2022-12-03",
+            "approvalKey": "1234",
+            "approvalKeyExpirationDate": "2020-08-27",
+            "user_id": "2260",
+            "researchRestrictionEvents": [
+                {
+                    "researchId": "128",
+                    "eventPropertyName": "admissionreferralsourcecode",
+                    "eventId": "87",
+                    "value": "defeds",
+                    "siteEventPropertyInfo": {
+                        "eventPropertyNa": "admissionreferralsourcecode",
+                        "eventId": "6",
+                        "dataSample": "HMO REFERRAL/SICK, CLINIC REFERRAL/PREMATURE, TRANSFER FROM HOSP/EXTRAM, PHYS REFERRAL/NORMAL DELI, EMERGENCY ROOM ADMIT",
+                        "eventPropertyTy": "STRING",
+                        "hierarchyRootId": "1",
+                        "patientFk": false,
+                        "eventTimeStamp": false,
+                        "ageAtEvent": false,
+                        "fieldDescriptio": "admissionreferralsourcecode",
+                        "fieldDes": null,
+                        "priority": 1,
+                        "isDependentSear": false
+                    },
+                    "siteEventInfo": null
+                }
+            ],
+            "researchTemplates": [
+                {
+                    "researchId": "128",
+                    "templateId": "2",
+                    "InsertDate": "2020-08-25T07:47:29.354Z",
+                    "template": {
+                        "templateName": "Diagnosis Diagnosis Diagnosis Diagnosis Diagnosis"
+                    }
+                },
+                {
+                    "researchId": "128",
+                    "templateId": "38",
+                    "InsertDate": "2020-08-25T07:47:29.354Z",
+                    "template": {
+                        "templateName": "Test Template"
+                    }
+                },
+                {
+                    "researchId": "128",
+                    "templateId": "31",
+                    "InsertDate": "2020-08-25T07:47:29.354Z",
+                    "template": {
+                        "templateName": "Medications"
+                    }
+                },
+                {
+                    "researchId": "128",
+                    "templateId": "29",
+                    "InsertDate": "2020-08-25T07:47:29.354Z",
+                    "template": {
+                        "templateName": "Hanna"
+                    }
+                },
+                {
+                    "researchId": "128",
+                    "templateId": "1",
+                    "InsertDate": "2020-08-25T07:47:29.354Z",
+                    "template": {
+                        "templateName": "Demo Template"
+                    }
+                }
+            ],
+            "user": {
+                "id": "2260",
+                "login": "Efrat",
+                "passwordHash": "$2a$10$XfSwDKjH4K.uFZwHWYkRhO8eBMpLU3Obc4u7zuTt2oWKAI1flOA/e",
+                "firstName": "Efrat",
+                "lastName": "Kliper",
+                "email": "E@MD.COM",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": "38132441534766326989",
+                "createdBy": "admin",
+                "createdDate": "2018-11-12T10:04:07.856Z",
+                "resetDate": "2018-11-12T10:04:07.834Z",
+                "lastModifiedBy": "mdclone.admin",
+                "lastModifiedDate": "2018-12-08T21:00:10.244Z",
+                "cellPhone": null,
+                "domain": "",
+                "photo": null
+            },
+            "project": {
+                "projectId": "14",
+                "projectName": "Training Mimic Data",
+                "defaultSiteId": "12"
+            }
+        },
+        {
+            "researchId": 127,
+            "researchName": "Research to Alon",
+            "userId": "1008",
+            "projectId": "15",
+            "startDate": "2013-12-31",
+            "researchStatus": "Open",
+            "maxPatients": 1000000,
+            "insertDate": "2020-08-25T07:29:46.000Z",
+            "information": "Research to Alon",
+            "endDate": "2022-12-03",
+            "approvalKey": "1234",
+            "approvalKeyExpirationDate": "2020-08-27",
+            "user_id": "1008",
+            "researchRestrictionEvents": [
+                {
+                    "researchId": "127",
+                    "eventPropertyName": "admissionreferralsourcecode",
+                    "eventId": "87",
+                    "value": "defeds",
+                    "siteEventPropertyInfo": {
+                        "eventPropertyNa": "admissionreferralsourcecode",
+                        "eventId": "6",
+                        "dataSample": "HMO REFERRAL/SICK, CLINIC REFERRAL/PREMATURE, TRANSFER FROM HOSP/EXTRAM, PHYS REFERRAL/NORMAL DELI, EMERGENCY ROOM ADMIT",
+                        "eventPropertyTy": "STRING",
+                        "hierarchyRootId": "1",
+                        "patientFk": false,
+                        "eventTimeStamp": false,
+                        "ageAtEvent": false,
+                        "fieldDescriptio": "admissionreferralsourcecode",
+                        "fieldDes": null,
+                        "priority": 1,
+                        "isDependentSear": false
+                    },
+                    "siteEventInfo": null
+                }
+            ],
+            "researchTemplates": [
+                {
+                    "researchId": "127",
+                    "templateId": "2",
+                    "InsertDate": "2020-08-25T07:29:45.522Z",
+                    "template": {
+                        "templateName": "Diagnosis Diagnosis Diagnosis Diagnosis Diagnosis"
+                    }
+                },
+                {
+                    "researchId": "127",
+                    "templateId": "31",
+                    "InsertDate": "2020-08-25T07:29:45.522Z",
+                    "template": {
+                        "templateName": "Medications"
+                    }
+                }
+            ],
+            "user": {
+                "id": "1008",
+                "login": "alon.pesok",
+                "passwordHash": "$2a$10$Wpt0U1xAu6AnKcwAcLQxJeV5QxT6vcUAgg0pOv4k3iwXp6bGjNOKW",
+                "firstName": "Alon",
+                "lastName": "Pesok",
+                "email": "alon.pesok@mdclone.com",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": "03554076557966015657",
+                "createdBy": "mdclone.admin",
+                "createdDate": "2018-07-02T06:46:33.368Z",
+                "resetDate": "2018-07-02T06:46:33.367Z",
+                "lastModifiedBy": "mdclone.admin",
+                "lastModifiedDate": "2018-07-02T06:46:33.368Z",
+                "cellPhone": null,
+                "domain": "",
+                "photo": null
+            },
+            "project": {
+                "projectId": "15",
+                "projectName": "BIG Project",
+                "defaultSiteId": "13"
+            }
+        },
+        {
+            "researchId": 106,
+            "researchName": "research 123$5566@@@@@@@@@~~~~~~~~~~~~~#################! ~*&^nbhfjhjfhjghjghjgjhghjkjkghkjh%^#@!~+=_-(){}[](99/|\\<>w\":; 123$5566@@@@@@@@@~~~~~~~~~~~~~#################!~*&^nbhfjhjfhjghjghjgjhghjkjkghkjh%^#@!~+=_-(){}[](99/|\\<>w\":;",
+            "userId": "1993",
+            "projectId": "1",
+            "startDate": "1900-10-30",
+            "researchStatus": "Open",
+            "maxPatients": 100000,
+            "insertDate": "2020-08-17T09:06:29.000Z",
+            "information": "research 123$5566@@@@@@@@@~~~~~~~~~~~~~#################! ~*&^nbhfjhjfhjghjghjgjhghjkjkghkjh%^#@!~+=_-(){}[](99/|\\<>w\":; 123$5566@@@@@@@@@~~~~~~~~~~~~~#################!~*&^nbhfjhjfhjghjghjgjhghjkjkghkjh%^#@!~+=_-(){}[](99/|\\<>w\":;",
+            "endDate": "2019-01-27",
+            "approvalKey": "research 123$5566@@@@@@@@@~~~~~~~~~~~~~#################! ~*&^nbhfjhjfhjghjghjgjhghjkjkghkjh%^#@!~+=_-(){}[](99/|\\<>w\":; 123$5566@@@@@@@@@~~~~~~~~~~~~~#################!~*&^nbhfjhjfhjghjghjgjhghjkjkghkjh%^#@!~+=_-(){}[](99/|\\<>w\":;",
+            "approvalKeyExpirationDate": "2021-07-27",
+            "user_id": "1993",
+            "researchRestrictionEvents": [],
+            "researchTemplates": [
+                {
+                    "researchId": "106",
+                    "templateId": "2",
+                    "InsertDate": "2020-08-17T09:06:28.937Z",
+                    "template": {
+                        "templateName": "Diagnosis Diagnosis Diagnosis Diagnosis Diagnosis"
+                    }
+                },
+                {
+                    "researchId": "106",
+                    "templateId": "38",
+                    "InsertDate": "2020-08-17T09:06:28.937Z",
+                    "template": {
+                        "templateName": "Test Template"
+                    }
+                },
+                {
+                    "researchId": "106",
+                    "templateId": "31",
+                    "InsertDate": "2020-08-17T09:06:28.937Z",
+                    "template": {
+                        "templateName": "Medications"
+                    }
+                },
+                {
+                    "researchId": "106",
+                    "templateId": "29",
+                    "InsertDate": "2020-08-17T09:06:28.937Z",
+                    "template": {
+                        "templateName": "Hanna"
+                    }
+                },
+                {
+                    "researchId": "106",
+                    "templateId": "1",
+                    "InsertDate": "2020-08-17T09:06:28.937Z",
+                    "template": {
+                        "templateName": "Demo Template"
+                    }
+                }
+            ],
+            "user": {
+                "id": "1993",
+                "login": "Janeta.Kozak",
+                "passwordHash": "$2a$10$G3OF8pfomKGuB8dpxNlj2eL8wZwY5L.3M19fJ5DfVS1sR0ojd/Ic.",
+                "firstName": "jjj",
+                "lastName": "kkkk",
+                "email": "jjj@kkk.com",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": "18145194061882415841",
+                "createdBy": "mdclone.admin",
+                "createdDate": "2018-10-17T14:15:19.702Z",
+                "resetDate": "2018-10-17T14:15:19.671Z",
+                "lastModifiedBy": "mdclone.admin",
+                "lastModifiedDate": "2018-10-17T14:15:19.702Z",
+                "cellPhone": null,
+                "domain": "",
+                "photo": null
+            },
+            "project": {
+                "projectId": "1",
+                "projectName": "Demo Project",
+                "defaultSiteId": "1"
+            }
+        },
+        {
+            "researchId": 119,
+            "researchName": "research 123$5566@@@@@@@@@~~~~~~~~~~~~~#################! ~*&^nbhfjhjfhjghjghjgjhghjkjkghkjh%^#@!~+=_-(){}[](99/|\\<>w\":; 123$5566@@@@@@@@@~~~~~~~~~~~~~#################!~*&^nbhfjhjfhjghjghjgjhghjkjkghkjh%^#@!~+=_-(){}[](99/|\\<>w\":;",
+            "userId": "1993",
+            "projectId": "1",
+            "startDate": "1900-10-30",
+            "researchStatus": "initial",
+            "maxPatients": 100000,
+            "insertDate": "2020-08-18T13:42:12.000Z",
+            "information": "research 123$5566@@@@@@@@@~~~~~~~~~~~~~#################! ~*&^nbhfjhjfhjghjghjgjhghjkjkghkjh%^#@!~+=_-(){}[](99/|\\<>w\":; 123$5566@@@@@@@@@~~~~~~~~~~~~~#################!~*&^nbhfjhjfhjghjghjgjhghjkjkghkjh%^#@!~+=_-(){}[](99/|\\<>w\":;",
+            "endDate": "2019-01-27",
+            "approvalKey": "research 123$5566@@@@@@@@@~~~~~~~~~~~~~#################! ~*&^nbhfjhjfhjghjghjgjhghjkjkghkjh%^#@!~+=_-(){}[](99/|\\<>w\":; 123$5566@@@@@@@@@~~~~~~~~~~~~~#################!~*&^nbhfjhjfhjghjghjgjhghjkjkghkjh%^#@!~+=_-(){}[](99/|\\<>w\":;",
+            "approvalKeyExpirationDate": "2021-07-27",
+            "user_id": "1993",
+            "researchRestrictionEvents": [],
+            "researchTemplates": [],
+            "user": {
+                "id": "1993",
+                "login": "Janeta.Kozak",
+                "passwordHash": "$2a$10$G3OF8pfomKGuB8dpxNlj2eL8wZwY5L.3M19fJ5DfVS1sR0ojd/Ic.",
+                "firstName": "jjj",
+                "lastName": "kkkk",
+                "email": "jjj@kkk.com",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": "18145194061882415841",
+                "createdBy": "mdclone.admin",
+                "createdDate": "2018-10-17T14:15:19.702Z",
+                "resetDate": "2018-10-17T14:15:19.671Z",
+                "lastModifiedBy": "mdclone.admin",
+                "lastModifiedDate": "2018-10-17T14:15:19.702Z",
+                "cellPhone": null,
+                "domain": "",
+                "photo": null
+            },
+            "project": {
+                "projectId": "1",
+                "projectName": "Demo Project",
+                "defaultSiteId": "1"
+            }
+        },
+        {
+            "researchId": 101,
+            "researchName": "research 123$5566@@@@@@@@@~~~~~~~~~~~~~#################! ~*&^nbhfjhjfhjghjghjgjhghjkjkghkjh%^#@!~+=_-(){}[](99/|\\<>w\":; 123$5566@@@@@@@@@~~~~~~~~~~~~~#################!~*&^nbhfjhjfhjghjghjgjhghjkjkghkjh%^#@!~+=_-(){}[](99/|\\<>w\":; - jjj kkkk",
+            "userId": "1993",
+            "projectId": "1",
+            "startDate": "1900-10-30",
+            "researchStatus": "initial",
+            "maxPatients": 100000,
+            "insertDate": "2020-08-17T08:08:07.000Z",
+            "information": "research 123$5566@@@@@@@@@~~~~~~~~~~~~~#################! ~*&^nbhfjhjfhjghjghjgjhghjkjkghkjh%^#@!~+=_-(){}[](99/|\\<>w\":; 123$5566@@@@@@@@@~~~~~~~~~~~~~#################!~*&^nbhfjhjfhjghjghjgjhghjkjkghkjh%^#@!~+=_-(){}[](99/|\\<>w\":;",
+            "endDate": "2019-01-27",
+            "approvalKey": "research 123$5566@@@@@@@@@~~~~~~~~~~~~~#################! ~*&^nbhfjhjfhjghjghjgjhghjkjkghkjh%^#@!~+=_-(){}[](99/|\\<>w\":; 123$5566@@@@@@@@@~~~~~~~~~~~~~#################!~*&^nbhfjhjfhjghjghjgjhghjkjkghkjh%^#@!~+=_-(){}[](99/|\\<>w\":;",
+            "approvalKeyExpirationDate": "2021-07-27",
+            "user_id": "1993",
+            "researchRestrictionEvents": [],
+            "researchTemplates": [],
+            "user": {
+                "id": "1993",
+                "login": "Janeta.Kozak",
+                "passwordHash": "$2a$10$G3OF8pfomKGuB8dpxNlj2eL8wZwY5L.3M19fJ5DfVS1sR0ojd/Ic.",
+                "firstName": "jjj",
+                "lastName": "kkkk",
+                "email": "jjj@kkk.com",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": "18145194061882415841",
+                "createdBy": "mdclone.admin",
+                "createdDate": "2018-10-17T14:15:19.702Z",
+                "resetDate": "2018-10-17T14:15:19.671Z",
+                "lastModifiedBy": "mdclone.admin",
+                "lastModifiedDate": "2018-10-17T14:15:19.702Z",
+                "cellPhone": null,
+                "domain": "",
+                "photo": null
+            },
+            "project": {
+                "projectId": "1",
+                "projectName": "Demo Project",
+                "defaultSiteId": "1"
             }
         },
         {
@@ -1335,6 +2455,89 @@
             }
         },
         {
+            "researchId": 136,
+            "researchName": "scfsvfdsgdesssdvdsvds",
+            "userId": "1004",
+            "projectId": "1",
+            "startDate": "2013-12-31",
+            "researchStatus": "initial",
+            "maxPatients": 1000000,
+            "insertDate": "2020-08-25T09:00:41.000Z",
+            "information": null,
+            "endDate": "2022-12-03",
+            "approvalKey": null,
+            "approvalKeyExpirationDate": "1970-01-01",
+            "user_id": "1004",
+            "researchRestrictionEvents": [],
+            "researchTemplates": [
+                {
+                    "researchId": "136",
+                    "templateId": "2",
+                    "InsertDate": "2020-08-25T09:00:41.023Z",
+                    "template": {
+                        "templateName": "Diagnosis Diagnosis Diagnosis Diagnosis Diagnosis"
+                    }
+                },
+                {
+                    "researchId": "136",
+                    "templateId": "38",
+                    "InsertDate": "2020-08-25T09:00:41.023Z",
+                    "template": {
+                        "templateName": "Test Template"
+                    }
+                },
+                {
+                    "researchId": "136",
+                    "templateId": "31",
+                    "InsertDate": "2020-08-25T09:00:41.023Z",
+                    "template": {
+                        "templateName": "Medications"
+                    }
+                },
+                {
+                    "researchId": "136",
+                    "templateId": "29",
+                    "InsertDate": "2020-08-25T09:00:41.023Z",
+                    "template": {
+                        "templateName": "Hanna"
+                    }
+                },
+                {
+                    "researchId": "136",
+                    "templateId": "1",
+                    "InsertDate": "2020-08-25T09:00:41.023Z",
+                    "template": {
+                        "templateName": "Demo Template"
+                    }
+                }
+            ],
+            "user": {
+                "id": "1004",
+                "login": "omry.atia",
+                "passwordHash": "$2a$10$6xh7vGDECMEnlz89DZgYguH0ZGq29MqhZ5nBqy1aNFVmkySRXwd/C",
+                "firstName": "omry",
+                "lastName": "atia",
+                "email": "omry.atia@mdclone.com",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": "14318726331839694974",
+                "createdBy": "mdclone.admin",
+                "createdDate": "2018-06-14T08:58:33.029Z",
+                "resetDate": "2018-06-14T08:58:33.028Z",
+                "lastModifiedBy": "mdclone.admin",
+                "lastModifiedDate": "2018-06-14T08:58:33.029Z",
+                "cellPhone": "0501234567",
+                "domain": "",
+                "photo": null
+            },
+            "project": {
+                "projectId": "1",
+                "projectName": "Demo Project",
+                "defaultSiteId": "1"
+            }
+        },
+        {
             "researchId": 27,
             "researchName": "Training mimic project",
             "userId": "2260",
@@ -1396,7 +2599,7 @@
                 "id": "5",
                 "login": "mdclone.admin",
                 "passwordHash": "$2a$10$G3OF8pfomKGuB8dpxNlj2eL8wZwY5L.3M19fJ5DfVS1sR0ojd/Ic.",
-                "firstName": "Admin gggg",
+                "firstName": "Admin gggg1",
                 "lastName": "Admin",
                 "email": "mdclone.admin@localhost",
                 "activated": true,
@@ -1416,6 +2619,57 @@
                 "projectId": "6",
                 "projectName": "ETL project",
                 "defaultSiteId": "3"
+            }
+        },
+        {
+            "researchId": 135,
+            "researchName": "new omry",
+            "userId": "1004",
+            "projectId": "1",
+            "startDate": "2013-12-31",
+            "researchStatus": "Open",
+            "maxPatients": 1000000,
+            "insertDate": "2020-08-25T08:58:11.000Z",
+            "information": null,
+            "endDate": "2022-12-03",
+            "approvalKey": null,
+            "approvalKeyExpirationDate": "1970-01-01",
+            "user_id": "1004",
+            "researchRestrictionEvents": [],
+            "researchTemplates": [
+                {
+                    "researchId": "135",
+                    "templateId": "1",
+                    "InsertDate": "2020-08-25T08:58:10.632Z",
+                    "template": {
+                        "templateName": "Demo Template"
+                    }
+                }
+            ],
+            "user": {
+                "id": "1004",
+                "login": "omry.atia",
+                "passwordHash": "$2a$10$6xh7vGDECMEnlz89DZgYguH0ZGq29MqhZ5nBqy1aNFVmkySRXwd/C",
+                "firstName": "omry",
+                "lastName": "atia",
+                "email": "omry.atia@mdclone.com",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": "14318726331839694974",
+                "createdBy": "mdclone.admin",
+                "createdDate": "2018-06-14T08:58:33.029Z",
+                "resetDate": "2018-06-14T08:58:33.028Z",
+                "lastModifiedBy": "mdclone.admin",
+                "lastModifiedDate": "2018-06-14T08:58:33.029Z",
+                "cellPhone": "0501234567",
+                "domain": "",
+                "photo": null
+            },
+            "project": {
+                "projectId": "1",
+                "projectName": "Demo Project",
+                "defaultSiteId": "1"
             }
         },
         {
@@ -1489,7 +2743,7 @@
                 "id": "5",
                 "login": "mdclone.admin",
                 "passwordHash": "$2a$10$G3OF8pfomKGuB8dpxNlj2eL8wZwY5L.3M19fJ5DfVS1sR0ojd/Ic.",
-                "firstName": "Admin gggg",
+                "firstName": "Admin gggg1",
                 "lastName": "Admin",
                 "email": "mdclone.admin@localhost",
                 "activated": true,
@@ -1555,11 +2809,11 @@
         },
         {
             "researchId": 31,
-            "researchName": "Training",
+            "researchName": "159159",
             "userId": "2507",
             "projectId": "14",
             "startDate": "1800-10-31",
-            "researchStatus": "Open",
+            "researchStatus": "initial",
             "maxPatients": 100000,
             "insertDate": "2018-11-27T08:13:56.000Z",
             "information": "Training",
@@ -1741,7 +2995,7 @@
                 "id": "5",
                 "login": "mdclone.admin",
                 "passwordHash": "$2a$10$G3OF8pfomKGuB8dpxNlj2eL8wZwY5L.3M19fJ5DfVS1sR0ojd/Ic.",
-                "firstName": "Admin gggg",
+                "firstName": "Admin gggg1",
                 "lastName": "Admin",
                 "email": "mdclone.admin@localhost",
                 "activated": true,
@@ -1755,6 +3009,48 @@
                 "lastModifiedDate": "2018-12-11T08:10:09.089Z",
                 "cellPhone": null,
                 "domain": null,
+                "photo": null
+            },
+            "project": {
+                "projectId": "1",
+                "projectName": "Demo Project",
+                "defaultSiteId": "1"
+            }
+        },
+        {
+            "researchId": 102,
+            "researchName": "opa opa opa pa 159",
+            "userId": "1993",
+            "projectId": "1",
+            "startDate": "1900-10-30",
+            "researchStatus": "initial",
+            "maxPatients": 100000,
+            "insertDate": "2020-08-17T08:08:39.000Z",
+            "information": "research 123$5566@@@@@@@@@~~~~~~~~~~~~~#################! ~*&^nbhfjhjfhjghjghjgjhghjkjkghkjh%^#@!~+=_-(){}[](99/|\\<>w\":; 123$5566@@@@@@@@@~~~~~~~~~~~~~#################!~*&^nbhfjhjfhjghjghjgjhghjkjkghkjh%^#@!~+=_-(){}[](99/|\\<>w\":;",
+            "endDate": "2019-01-27",
+            "approvalKey": "123",
+            "approvalKeyExpirationDate": "2020-07-27",
+            "user_id": "1993",
+            "researchRestrictionEvents": [],
+            "researchTemplates": [],
+            "user": {
+                "id": "1993",
+                "login": "Janeta.Kozak",
+                "passwordHash": "$2a$10$G3OF8pfomKGuB8dpxNlj2eL8wZwY5L.3M19fJ5DfVS1sR0ojd/Ic.",
+                "firstName": "jjj",
+                "lastName": "kkkk",
+                "email": "jjj@kkk.com",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": "18145194061882415841",
+                "createdBy": "mdclone.admin",
+                "createdDate": "2018-10-17T14:15:19.702Z",
+                "resetDate": "2018-10-17T14:15:19.671Z",
+                "lastModifiedBy": "mdclone.admin",
+                "lastModifiedDate": "2018-10-17T14:15:19.702Z",
+                "cellPhone": null,
+                "domain": "",
                 "photo": null
             },
             "project": {
@@ -1848,63 +3144,12 @@
             }
         },
         {
-            "researchId": 46,
-            "researchName": "test",
-            "userId": "4115",
-            "projectId": "12",
-            "startDate": "2013-10-31",
-            "researchStatus": "Open",
-            "maxPatients": 100000,
-            "insertDate": "2019-05-21T08:10:58.000Z",
-            "information": "Laboratory assistant",
-            "endDate": "2022-11-30",
-            "approvalKey": "",
-            "approvalKeyExpirationDate": null,
-            "user_id": "4115",
-            "researchRestrictionEvents": [],
-            "researchTemplates": [
-                {
-                    "researchId": "46",
-                    "templateId": "33",
-                    "InsertDate": "2019-05-21T08:10:58.224Z",
-                    "template": {
-                        "templateName": "hit_Template"
-                    }
-                }
-            ],
-            "user": {
-                "id": "4115",
-                "login": "user_test",
-                "passwordHash": "$2a$10$.yWeQshh9E3LQxlMFZcePuqwBgT19IK.QrfmVzdyMZrhNAsfBKe/i",
-                "firstName": "test",
-                "lastName": "test",
-                "email": "jas@mail.ru",
-                "activated": true,
-                "langKey": "en",
-                "activationKey": null,
-                "resetKey": "94621826953575921578",
-                "createdBy": "admin",
-                "createdDate": "2019-05-21T08:03:30.313Z",
-                "resetDate": "2019-05-21T08:03:30.284Z",
-                "lastModifiedBy": "admin",
-                "lastModifiedDate": "2019-05-21T08:03:30.313Z",
-                "cellPhone": null,
-                "domain": "",
-                "photo": null
-            },
-            "project": {
-                "projectId": "12",
-                "projectName": "Kat_Test",
-                "defaultSiteId": "11"
-            }
-        },
-        {
             "researchId": 15,
             "researchName": "ccc",
             "userId": "1004",
             "projectId": "1",
             "startDate": "1800-10-31",
-            "researchStatus": "Open",
+            "researchStatus": "initial",
             "maxPatients": 100000,
             "insertDate": "2018-07-09T13:42:21.000Z",
             "information": "ccc",
@@ -1960,7 +3205,7 @@
                 "id": "5",
                 "login": "mdclone.admin",
                 "passwordHash": "$2a$10$G3OF8pfomKGuB8dpxNlj2eL8wZwY5L.3M19fJ5DfVS1sR0ojd/Ic.",
-                "firstName": "Admin gggg",
+                "firstName": "Admin gggg1",
                 "lastName": "Admin",
                 "email": "mdclone.admin@localhost",
                 "activated": true,
@@ -1980,6 +3225,131 @@
                 "projectId": "1",
                 "projectName": "Demo Project",
                 "defaultSiteId": "1"
+            }
+        },
+        {
+            "researchId": 125,
+            "researchName": "nadia demo",
+            "userId": "1005",
+            "projectId": "1",
+            "startDate": "2013-12-31",
+            "researchStatus": "Open",
+            "maxPatients": 1000000,
+            "insertDate": "2020-08-20T09:45:20.000Z",
+            "information": null,
+            "endDate": "2022-12-03",
+            "approvalKey": "123456",
+            "approvalKeyExpirationDate": null,
+            "user_id": "1005",
+            "researchRestrictionEvents": [],
+            "researchTemplates": [
+                {
+                    "researchId": "125",
+                    "templateId": "2",
+                    "InsertDate": "2020-08-20T09:45:20.223Z",
+                    "template": {
+                        "templateName": "Diagnosis Diagnosis Diagnosis Diagnosis Diagnosis"
+                    }
+                },
+                {
+                    "researchId": "125",
+                    "templateId": "38",
+                    "InsertDate": "2020-08-20T09:45:20.223Z",
+                    "template": {
+                        "templateName": "Test Template"
+                    }
+                },
+                {
+                    "researchId": "125",
+                    "templateId": "31",
+                    "InsertDate": "2020-08-20T09:45:20.223Z",
+                    "template": {
+                        "templateName": "Medications"
+                    }
+                },
+                {
+                    "researchId": "125",
+                    "templateId": "29",
+                    "InsertDate": "2020-08-20T09:45:20.223Z",
+                    "template": {
+                        "templateName": "Hanna"
+                    }
+                },
+                {
+                    "researchId": "125",
+                    "templateId": "1",
+                    "InsertDate": "2020-08-20T09:45:20.223Z",
+                    "template": {
+                        "templateName": "Demo Template"
+                    }
+                }
+            ],
+            "user": {
+                "id": "1005",
+                "login": "nadia.vigdar",
+                "passwordHash": "$2a$10$V20zRslDeplT.raxRMp08uQbB7DLBdspEvy3sSQLYJD2h92KjYhR2",
+                "firstName": "Nadia",
+                "lastName": "Vigdar",
+                "email": "nadia.vigdar@mdclone.com",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": "00211095249221243956",
+                "createdBy": "mdclone.admin",
+                "createdDate": "2018-07-02T06:35:02.857Z",
+                "resetDate": "2018-07-02T06:35:02.827Z",
+                "lastModifiedBy": "mdclone.admin",
+                "lastModifiedDate": "2019-01-15T12:25:32.318Z",
+                "cellPhone": null,
+                "domain": "",
+                "photo": null
+            },
+            "project": {
+                "projectId": "1",
+                "projectName": "Demo Project",
+                "defaultSiteId": "1"
+            }
+        },
+        {
+            "researchId": 140,
+            "researchName": "test1",
+            "userId": "1005",
+            "projectId": "6",
+            "startDate": "2013-12-31",
+            "researchStatus": "Open",
+            "maxPatients": 1000000,
+            "insertDate": "2020-08-26T11:07:36.000Z",
+            "information": null,
+            "endDate": "2022-12-03",
+            "approvalKey": "112233",
+            "approvalKeyExpirationDate": null,
+            "user_id": "1005",
+            "researchRestrictionEvents": [],
+            "researchTemplates": [],
+            "user": {
+                "id": "1005",
+                "login": "nadia.vigdar",
+                "passwordHash": "$2a$10$V20zRslDeplT.raxRMp08uQbB7DLBdspEvy3sSQLYJD2h92KjYhR2",
+                "firstName": "Nadia",
+                "lastName": "Vigdar",
+                "email": "nadia.vigdar@mdclone.com",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": "00211095249221243956",
+                "createdBy": "mdclone.admin",
+                "createdDate": "2018-07-02T06:35:02.857Z",
+                "resetDate": "2018-07-02T06:35:02.827Z",
+                "lastModifiedBy": "mdclone.admin",
+                "lastModifiedDate": "2019-01-15T12:25:32.318Z",
+                "cellPhone": null,
+                "domain": "",
+                "photo": null
+            },
+            "project": {
+                "projectId": "6",
+                "projectName": "ETL project",
+                "defaultSiteId": "3"
             }
         },
         {
@@ -2016,6 +3386,116 @@
                 "lastModifiedDate": "2018-09-04T10:41:29.132Z",
                 "cellPhone": null,
                 "domain": "",
+                "photo": null
+            },
+            "project": {
+                "projectId": "1",
+                "projectName": "Demo Project",
+                "defaultSiteId": "1"
+            }
+        },
+        {
+            "researchId": 96,
+            "researchName": "Omry Test",
+            "userId": "5",
+            "projectId": "1",
+            "startDate": null,
+            "researchStatus": "Open",
+            "maxPatients": 123,
+            "insertDate": "2020-08-16T12:24:00.000Z",
+            "information": "Omry Test",
+            "endDate": null,
+            "approvalKey": null,
+            "approvalKeyExpirationDate": null,
+            "user_id": "5",
+            "researchRestrictionEvents": [],
+            "researchTemplates": [
+                {
+                    "researchId": "96",
+                    "templateId": "2",
+                    "InsertDate": "2020-08-16T12:24:00.337Z",
+                    "template": {
+                        "templateName": "Diagnosis Diagnosis Diagnosis Diagnosis Diagnosis"
+                    }
+                },
+                {
+                    "researchId": "96",
+                    "templateId": "1",
+                    "InsertDate": "2020-08-16T12:24:00.337Z",
+                    "template": {
+                        "templateName": "Demo Template"
+                    }
+                }
+            ],
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin",
+                "passwordHash": "$2a$10$G3OF8pfomKGuB8dpxNlj2eL8wZwY5L.3M19fJ5DfVS1sR0ojd/Ic.",
+                "firstName": "Admin gggg1",
+                "lastName": "Admin",
+                "email": "mdclone.admin@localhost",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": null,
+                "createdBy": "system",
+                "createdDate": "2016-06-01T21:00:00.000Z",
+                "resetDate": null,
+                "lastModifiedBy": "mdclone.admin",
+                "lastModifiedDate": "2018-12-11T08:10:09.089Z",
+                "cellPhone": null,
+                "domain": null,
+                "photo": null
+            },
+            "project": {
+                "projectId": "1",
+                "projectName": "Demo Project",
+                "defaultSiteId": "1"
+            }
+        },
+        {
+            "researchId": 107,
+            "researchName": "Noa research",
+            "userId": "5",
+            "projectId": "1",
+            "startDate": "1900-10-31",
+            "researchStatus": "Open",
+            "maxPatients": 100000,
+            "insertDate": "2020-08-17T09:38:42.000Z",
+            "information": "Noa research",
+            "endDate": "2300-11-30",
+            "approvalKey": "123456",
+            "approvalKeyExpirationDate": "1970-01-01",
+            "user_id": "5",
+            "researchRestrictionEvents": [],
+            "researchTemplates": [
+                {
+                    "researchId": "107",
+                    "templateId": "2",
+                    "InsertDate": "2020-08-17T09:38:42.408Z",
+                    "template": {
+                        "templateName": "Diagnosis Diagnosis Diagnosis Diagnosis Diagnosis"
+                    }
+                }
+            ],
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin",
+                "passwordHash": "$2a$10$G3OF8pfomKGuB8dpxNlj2eL8wZwY5L.3M19fJ5DfVS1sR0ojd/Ic.",
+                "firstName": "Admin gggg1",
+                "lastName": "Admin",
+                "email": "mdclone.admin@localhost",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": null,
+                "createdBy": "system",
+                "createdDate": "2016-06-01T21:00:00.000Z",
+                "resetDate": null,
+                "lastModifiedBy": "mdclone.admin",
+                "lastModifiedDate": "2018-12-11T08:10:09.089Z",
+                "cellPhone": null,
+                "domain": null,
                 "photo": null
             },
             "project": {
@@ -2086,7 +3566,7 @@
                 "id": "5",
                 "login": "mdclone.admin",
                 "passwordHash": "$2a$10$G3OF8pfomKGuB8dpxNlj2eL8wZwY5L.3M19fJ5DfVS1sR0ojd/Ic.",
-                "firstName": "Admin gggg",
+                "firstName": "Admin gggg1",
                 "lastName": "Admin",
                 "email": "mdclone.admin@localhost",
                 "activated": true,
@@ -2128,7 +3608,7 @@
                 "id": "5",
                 "login": "mdclone.admin",
                 "passwordHash": "$2a$10$G3OF8pfomKGuB8dpxNlj2eL8wZwY5L.3M19fJ5DfVS1sR0ojd/Ic.",
-                "firstName": "Admin gggg",
+                "firstName": "Admin gggg1",
                 "lastName": "Admin",
                 "email": "mdclone.admin@localhost",
                 "activated": true,
@@ -2221,7 +3701,7 @@
                 "id": "5",
                 "login": "mdclone.admin",
                 "passwordHash": "$2a$10$G3OF8pfomKGuB8dpxNlj2eL8wZwY5L.3M19fJ5DfVS1sR0ojd/Ic.",
-                "firstName": "Admin gggg",
+                "firstName": "Admin gggg1",
                 "lastName": "Admin",
                 "email": "mdclone.admin@localhost",
                 "activated": true,
@@ -2235,6 +3715,89 @@
                 "lastModifiedDate": "2018-12-11T08:10:09.089Z",
                 "cellPhone": null,
                 "domain": null,
+                "photo": null
+            },
+            "project": {
+                "projectId": "1",
+                "projectName": "Demo Project",
+                "defaultSiteId": "1"
+            }
+        },
+        {
+            "researchId": 133,
+            "researchName": "test 2",
+            "userId": "1004",
+            "projectId": "1",
+            "startDate": null,
+            "researchStatus": "Open",
+            "maxPatients": 1000000,
+            "insertDate": "2020-08-25T08:12:02.000Z",
+            "information": null,
+            "endDate": null,
+            "approvalKey": null,
+            "approvalKeyExpirationDate": null,
+            "user_id": "1004",
+            "researchRestrictionEvents": [],
+            "researchTemplates": [
+                {
+                    "researchId": "133",
+                    "templateId": "2",
+                    "InsertDate": "2020-08-25T08:12:01.568Z",
+                    "template": {
+                        "templateName": "Diagnosis Diagnosis Diagnosis Diagnosis Diagnosis"
+                    }
+                },
+                {
+                    "researchId": "133",
+                    "templateId": "38",
+                    "InsertDate": "2020-08-25T08:12:01.568Z",
+                    "template": {
+                        "templateName": "Test Template"
+                    }
+                },
+                {
+                    "researchId": "133",
+                    "templateId": "31",
+                    "InsertDate": "2020-08-25T08:12:01.568Z",
+                    "template": {
+                        "templateName": "Medications"
+                    }
+                },
+                {
+                    "researchId": "133",
+                    "templateId": "29",
+                    "InsertDate": "2020-08-25T08:12:01.568Z",
+                    "template": {
+                        "templateName": "Hanna"
+                    }
+                },
+                {
+                    "researchId": "133",
+                    "templateId": "1",
+                    "InsertDate": "2020-08-25T08:12:01.568Z",
+                    "template": {
+                        "templateName": "Demo Template"
+                    }
+                }
+            ],
+            "user": {
+                "id": "1004",
+                "login": "omry.atia",
+                "passwordHash": "$2a$10$6xh7vGDECMEnlz89DZgYguH0ZGq29MqhZ5nBqy1aNFVmkySRXwd/C",
+                "firstName": "omry",
+                "lastName": "atia",
+                "email": "omry.atia@mdclone.com",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": "14318726331839694974",
+                "createdBy": "mdclone.admin",
+                "createdDate": "2018-06-14T08:58:33.029Z",
+                "resetDate": "2018-06-14T08:58:33.028Z",
+                "lastModifiedBy": "mdclone.admin",
+                "lastModifiedDate": "2018-06-14T08:58:33.029Z",
+                "cellPhone": "0501234567",
+                "domain": "",
                 "photo": null
             },
             "project": {
@@ -2263,7 +3826,7 @@
                 "id": "5",
                 "login": "mdclone.admin",
                 "passwordHash": "$2a$10$G3OF8pfomKGuB8dpxNlj2eL8wZwY5L.3M19fJ5DfVS1sR0ojd/Ic.",
-                "firstName": "Admin gggg",
+                "firstName": "Admin gggg1",
                 "lastName": "Admin",
                 "email": "mdclone.admin@localhost",
                 "activated": true,
@@ -2305,7 +3868,7 @@
                 "id": "5",
                 "login": "mdclone.admin",
                 "passwordHash": "$2a$10$G3OF8pfomKGuB8dpxNlj2eL8wZwY5L.3M19fJ5DfVS1sR0ojd/Ic.",
-                "firstName": "Admin gggg",
+                "firstName": "Admin gggg1",
                 "lastName": "Admin",
                 "email": "mdclone.admin@localhost",
                 "activated": true,
@@ -2347,7 +3910,7 @@
                 "id": "5",
                 "login": "mdclone.admin",
                 "passwordHash": "$2a$10$G3OF8pfomKGuB8dpxNlj2eL8wZwY5L.3M19fJ5DfVS1sR0ojd/Ic.",
-                "firstName": "Admin gggg",
+                "firstName": "Admin gggg1",
                 "lastName": "Admin",
                 "email": "mdclone.admin@localhost",
                 "activated": true,
@@ -2402,6 +3965,173 @@
                 "lastModifiedBy": "dotan.perl",
                 "lastModifiedDate": "2020-01-20T10:24:30.828Z",
                 "cellPhone": null,
+                "domain": "",
+                "photo": null
+            },
+            "project": {
+                "projectId": "1",
+                "projectName": "Demo Project",
+                "defaultSiteId": "1"
+            }
+        },
+        {
+            "researchId": 97,
+            "researchName": "Omry Test",
+            "userId": "5",
+            "projectId": "1",
+            "startDate": null,
+            "researchStatus": "Open",
+            "maxPatients": 123,
+            "insertDate": "2020-08-16T12:24:30.000Z",
+            "information": "Omry Test",
+            "endDate": null,
+            "approvalKey": null,
+            "approvalKeyExpirationDate": null,
+            "user_id": "5",
+            "researchRestrictionEvents": [],
+            "researchTemplates": [],
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin",
+                "passwordHash": "$2a$10$G3OF8pfomKGuB8dpxNlj2eL8wZwY5L.3M19fJ5DfVS1sR0ojd/Ic.",
+                "firstName": "Admin gggg1",
+                "lastName": "Admin",
+                "email": "mdclone.admin@localhost",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": null,
+                "createdBy": "system",
+                "createdDate": "2016-06-01T21:00:00.000Z",
+                "resetDate": null,
+                "lastModifiedBy": "mdclone.admin",
+                "lastModifiedDate": "2018-12-11T08:10:09.089Z",
+                "cellPhone": null,
+                "domain": null,
+                "photo": null
+            },
+            "project": {
+                "projectId": "1",
+                "projectName": "Demo Project",
+                "defaultSiteId": "1"
+            }
+        },
+        {
+            "researchId": 126,
+            "researchName": "demo_set",
+            "userId": "1007",
+            "projectId": "1",
+            "startDate": "2013-12-31",
+            "researchStatus": "Open",
+            "maxPatients": 1000000,
+            "insertDate": "2020-08-20T11:36:38.000Z",
+            "information": null,
+            "endDate": "2022-12-03",
+            "approvalKey": "123456789",
+            "approvalKeyExpirationDate": "2021-08-01",
+            "user_id": "1007",
+            "researchRestrictionEvents": [],
+            "researchTemplates": [
+                {
+                    "researchId": "126",
+                    "templateId": "2",
+                    "InsertDate": "2020-08-20T11:36:37.990Z",
+                    "template": {
+                        "templateName": "Diagnosis Diagnosis Diagnosis Diagnosis Diagnosis"
+                    }
+                },
+                {
+                    "researchId": "126",
+                    "templateId": "38",
+                    "InsertDate": "2020-08-20T11:36:37.990Z",
+                    "template": {
+                        "templateName": "Test Template"
+                    }
+                },
+                {
+                    "researchId": "126",
+                    "templateId": "31",
+                    "InsertDate": "2020-08-20T11:36:37.990Z",
+                    "template": {
+                        "templateName": "Medications"
+                    }
+                },
+                {
+                    "researchId": "126",
+                    "templateId": "29",
+                    "InsertDate": "2020-08-20T11:36:37.990Z",
+                    "template": {
+                        "templateName": "Hanna"
+                    }
+                },
+                {
+                    "researchId": "126",
+                    "templateId": "1",
+                    "InsertDate": "2020-08-20T11:36:37.990Z",
+                    "template": {
+                        "templateName": "Demo Template"
+                    }
+                }
+            ],
+            "user": {
+                "id": "1007",
+                "login": "miriam.caduri",
+                "passwordHash": "$2a$10$MenMegNLNWQ8KpNFPzGvMOfpTdhqSnqY0dDu7K9aMlusBQm.RSkSy",
+                "firstName": "Miriam",
+                "lastName": "Caduri",
+                "email": "miriam.caduri@mdclone.com",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": "45124304844400204640",
+                "createdBy": "mdclone.admin",
+                "createdDate": "2018-07-02T06:45:57.624Z",
+                "resetDate": "2018-07-02T06:45:57.623Z",
+                "lastModifiedBy": "mdclone.admin",
+                "lastModifiedDate": "2018-07-02T06:45:57.624Z",
+                "cellPhone": null,
+                "domain": "",
+                "photo": null
+            },
+            "project": {
+                "projectId": "1",
+                "projectName": "Demo Project",
+                "defaultSiteId": "1"
+            }
+        },
+        {
+            "researchId": 132,
+            "researchName": "test",
+            "userId": "1004",
+            "projectId": "1",
+            "startDate": null,
+            "researchStatus": "initial",
+            "maxPatients": 1000000,
+            "insertDate": "2020-08-25T08:09:47.000Z",
+            "information": null,
+            "endDate": null,
+            "approvalKey": null,
+            "approvalKeyExpirationDate": null,
+            "user_id": "1004",
+            "researchRestrictionEvents": [],
+            "researchTemplates": [],
+            "user": {
+                "id": "1004",
+                "login": "omry.atia",
+                "passwordHash": "$2a$10$6xh7vGDECMEnlz89DZgYguH0ZGq29MqhZ5nBqy1aNFVmkySRXwd/C",
+                "firstName": "omry",
+                "lastName": "atia",
+                "email": "omry.atia@mdclone.com",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": "14318726331839694974",
+                "createdBy": "mdclone.admin",
+                "createdDate": "2018-06-14T08:58:33.029Z",
+                "resetDate": "2018-06-14T08:58:33.028Z",
+                "lastModifiedBy": "mdclone.admin",
+                "lastModifiedDate": "2018-06-14T08:58:33.029Z",
+                "cellPhone": "0501234567",
                 "domain": "",
                 "photo": null
             },
@@ -2473,7 +4203,7 @@
                 "id": "5",
                 "login": "mdclone.admin",
                 "passwordHash": "$2a$10$G3OF8pfomKGuB8dpxNlj2eL8wZwY5L.3M19fJ5DfVS1sR0ojd/Ic.",
-                "firstName": "Admin gggg",
+                "firstName": "Admin gggg1",
                 "lastName": "Admin",
                 "email": "mdclone.admin@localhost",
                 "activated": true,
@@ -2515,7 +4245,7 @@
                 "id": "5",
                 "login": "mdclone.admin",
                 "passwordHash": "$2a$10$G3OF8pfomKGuB8dpxNlj2eL8wZwY5L.3M19fJ5DfVS1sR0ojd/Ic.",
-                "firstName": "Admin gggg",
+                "firstName": "Admin gggg1",
                 "lastName": "Admin",
                 "email": "mdclone.admin@localhost",
                 "activated": true,
@@ -2557,7 +4287,7 @@
                 "id": "5",
                 "login": "mdclone.admin",
                 "passwordHash": "$2a$10$G3OF8pfomKGuB8dpxNlj2eL8wZwY5L.3M19fJ5DfVS1sR0ojd/Ic.",
-                "firstName": "Admin gggg",
+                "firstName": "Admin gggg1",
                 "lastName": "Admin",
                 "email": "mdclone.admin@localhost",
                 "activated": true,
@@ -2597,18 +4327,18 @@
             "researchTemplates": [
                 {
                     "researchId": "79",
-                    "templateId": "1",
-                    "InsertDate": "2020-07-30T11:36:41.594Z",
-                    "template": {
-                        "templateName": "Demo Template"
-                    }
-                },
-                {
-                    "researchId": "79",
                     "templateId": "13",
                     "InsertDate": "2020-07-30T11:36:41.594Z",
                     "template": {
                         "templateName": "all_r_files"
+                    }
+                },
+                {
+                    "researchId": "79",
+                    "templateId": "1",
+                    "InsertDate": "2020-07-30T11:36:41.594Z",
+                    "template": {
+                        "templateName": "Demo Template"
                     }
                 }
             ],
@@ -2616,7 +4346,7 @@
                 "id": "5",
                 "login": "mdclone.admin",
                 "passwordHash": "$2a$10$G3OF8pfomKGuB8dpxNlj2eL8wZwY5L.3M19fJ5DfVS1sR0ojd/Ic.",
-                "firstName": "Admin gggg",
+                "firstName": "Admin gggg1",
                 "lastName": "Admin",
                 "email": "mdclone.admin@localhost",
                 "activated": true,
@@ -2681,6 +4411,48 @@
             }
         },
         {
+            "researchId": 134,
+            "researchName": "Omry",
+            "userId": "5",
+            "projectId": "1",
+            "startDate": "2013-12-31",
+            "researchStatus": "Open",
+            "maxPatients": 1000000,
+            "insertDate": "2020-08-25T08:28:55.000Z",
+            "information": "Omry description",
+            "endDate": "2022-12-03",
+            "approvalKey": "12345",
+            "approvalKeyExpirationDate": "2020-08-27",
+            "user_id": "5",
+            "researchRestrictionEvents": [],
+            "researchTemplates": [],
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin",
+                "passwordHash": "$2a$10$G3OF8pfomKGuB8dpxNlj2eL8wZwY5L.3M19fJ5DfVS1sR0ojd/Ic.",
+                "firstName": "Admin gggg1",
+                "lastName": "Admin",
+                "email": "mdclone.admin@localhost",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": null,
+                "createdBy": "system",
+                "createdDate": "2016-06-01T21:00:00.000Z",
+                "resetDate": null,
+                "lastModifiedBy": "mdclone.admin",
+                "lastModifiedDate": "2018-12-11T08:10:09.089Z",
+                "cellPhone": null,
+                "domain": null,
+                "photo": null
+            },
+            "project": {
+                "projectId": "1",
+                "projectName": "Demo Project",
+                "defaultSiteId": "1"
+            }
+        },
+        {
             "researchId": 59,
             "researchName": "Moshe",
             "userId": "5",
@@ -2700,7 +4472,7 @@
                 "id": "5",
                 "login": "mdclone.admin",
                 "passwordHash": "$2a$10$G3OF8pfomKGuB8dpxNlj2eL8wZwY5L.3M19fJ5DfVS1sR0ojd/Ic.",
-                "firstName": "Admin gggg",
+                "firstName": "Admin gggg1",
                 "lastName": "Admin",
                 "email": "mdclone.admin@localhost",
                 "activated": true,
@@ -2765,13 +4537,55 @@
             }
         },
         {
+            "researchId": 141,
+            "researchName": "Omry Test 34",
+            "userId": "1019",
+            "projectId": "1",
+            "startDate": "2013-12-31",
+            "researchStatus": "Open",
+            "maxPatients": 1000000,
+            "insertDate": "2020-08-26T11:08:37.000Z",
+            "information": null,
+            "endDate": "2022-12-03",
+            "approvalKey": null,
+            "approvalKeyExpirationDate": null,
+            "user_id": "1019",
+            "researchRestrictionEvents": [],
+            "researchTemplates": [],
+            "user": {
+                "id": "1019",
+                "login": "hit_user",
+                "passwordHash": "$2a$10$qNy0aBRynPQ8OzT/FcSzpuheIYNzoednvUcAdT3ozeIDx5zYvFR.C",
+                "firstName": "Elena",
+                "lastName": "Khitrova",
+                "email": "hit_user@localhost",
+                "activated": true,
+                "langKey": "en",
+                "activationKey": null,
+                "resetKey": "23417676153591350778",
+                "createdBy": "admin",
+                "createdDate": "2018-07-03T10:51:25.240Z",
+                "resetDate": "2018-07-03T10:51:25.219Z",
+                "lastModifiedBy": "mdclone.admin",
+                "lastModifiedDate": "2019-01-15T12:25:14.850Z",
+                "cellPhone": null,
+                "domain": "",
+                "photo": null
+            },
+            "project": {
+                "projectId": "1",
+                "projectName": "Demo Project",
+                "defaultSiteId": "1"
+            }
+        },
+        {
             "researchId": 16,
-            "researchName": "<script>alert(\"gbfg\");</script>",
+            "researchName": "11111111111111111",
             "userId": "1000",
             "projectId": "1",
             "startDate": "2000-04-22",
             "researchStatus": "Open",
-            "maxPatients": 100000,
+            "maxPatients": 1000000,
             "insertDate": "2018-07-10T12:57:22.000Z",
             "information": "<script>alert(\"gbfg\");</script>",
             "endDate": "2019-05-03",
@@ -2835,7 +4649,7 @@
                 "id": "5",
                 "login": "mdclone.admin",
                 "passwordHash": "$2a$10$G3OF8pfomKGuB8dpxNlj2eL8wZwY5L.3M19fJ5DfVS1sR0ojd/Ic.",
-                "firstName": "Admin gggg",
+                "firstName": "Admin gggg1",
                 "lastName": "Admin",
                 "email": "mdclone.admin@localhost",
                 "activated": true,
@@ -2919,7 +4733,7 @@
                 "id": "5",
                 "login": "mdclone.admin",
                 "passwordHash": "$2a$10$G3OF8pfomKGuB8dpxNlj2eL8wZwY5L.3M19fJ5DfVS1sR0ojd/Ic.",
-                "firstName": "Admin gggg",
+                "firstName": "Admin gggg1",
                 "lastName": "Admin",
                 "email": "mdclone.admin@localhost",
                 "activated": true,
@@ -3003,7 +4817,7 @@
                 "id": "5",
                 "login": "mdclone.admin",
                 "passwordHash": "$2a$10$G3OF8pfomKGuB8dpxNlj2eL8wZwY5L.3M19fJ5DfVS1sR0ojd/Ic.",
-                "firstName": "Admin gggg",
+                "firstName": "Admin gggg1",
                 "lastName": "Admin",
                 "email": "mdclone.admin@localhost",
                 "activated": true,
@@ -3078,8 +4892,8 @@
             "insertDate": "2019-12-18T10:07:08.000Z",
             "information": "Research for Researcher",
             "endDate": "2023-10-05",
-            "approvalKey": "",
-            "approvalKeyExpirationDate": null,
+            "approvalKey": "12341234",
+            "approvalKeyExpirationDate": "1970-01-01",
             "user_id": "1000",
             "researchRestrictionEvents": [],
             "researchTemplates": [

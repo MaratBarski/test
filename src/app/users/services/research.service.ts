@@ -197,7 +197,7 @@ export class ResearchService {
           approvalKeyExpirationDate: fl.approvalKeyExpirationDate || ''
         },
         source: fl,
-        isActive: true,
+        //isActive: true,
         csv: {
           Active: this.isActive(fl, 'yes', 'no')
         }

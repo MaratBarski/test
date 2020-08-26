@@ -545,31 +545,19 @@ export class PermissionSetService extends BaseSibscriber {
 
   private initTemplates(permSet: any): void {
     super.add(this.onTemplatesLoaded.subscribe((flag: boolean) => {
-
       if (this.isEditMode) {
         this.initEvents(permSet);
-      }
-
-      if (!permSet.researchTemplates || !permSet.researchTemplates.length) {
-        this.permissionSet.allowedEvent = NO_ALLOWED_EVENTS;
-        if (this.templates) {
+        if (permSet.researchTemplates) {
           this.templates.forEach(t => {
-            t.isChecked = false;
+            t.isChecked = permSet.researchTemplates.find((x: any) => x.templateId.toString() === t.id.toString());
           });
+          this.permissionSet.allowedEvent = this.templates.find(x => !x.isChecked) ? BASED_EVENTS : ALL_EVENTS;
+        } else {
+          this.permissionSet.allowedEvent = ALL_EVENTS;
         }
-        if (this.isEditMode) {
-          this.setInitialSet();
-        }
-        return;
-      }
-
-
-      if (this.isEditMode) {
-        this.templates.forEach(t => {
-          t.isChecked = permSet.researchTemplates.find((x: any) => x.templateId.toString() === t.id.toString());
-        });
-        this.permissionSet.allowedEvent = this.templates.find(x => !x.isChecked) ? BASED_EVENTS : ALL_EVENTS;
         this.setInitialSet();
+      } else {
+        // TO-DO update templates by set
       }
     }));
     this.loadTemplates(true);
