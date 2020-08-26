@@ -43,7 +43,19 @@ export class UsageReportComponent extends UsageBase {
     super();
     this.usageDownloadService.toCSV = () => this.toCSV();
     this.usageDownloadService.toPDF = () => this.toPDF();
+
+    super.dataSourceReady = () => {
+      this.hasData = false;
+      this.dataSource.forEach(item => {
+        if (item.count) {
+          this.hasData = true;
+          return;
+        }
+      });
+    }
   }
+
+  hasData = true;
 
   downloadData: DownloadData = {
     pageName: 'General Usage',
@@ -72,7 +84,7 @@ export class UsageReportComponent extends UsageBase {
 
   private toCSV(): void {
   }
-  
+
   createReport(): void {
     super.responseData = this.chartService.getGeneralUsage();
   }
