@@ -95,8 +95,25 @@ export class UsageService {
   }
 
   createRetentionDataSource(files: Array<any>): TableModel {
-    const now = new Date();
+    const dict = {};
     files = this.usageRequestService.createData(files);
+    files.forEach(fl => {
+      if (!dict[fl.userName]) {
+        dict[fl.userName] = fl;
+        dict[fl.userName].environmentCount = 1;
+      } else {
+        dict[fl.userName].environmentCount++;
+      }
+    })
+    files = [];
+    Object.keys(dict).forEach(k => {
+      const obj = dict[k];
+      if (obj.environmentCount > 1) {
+        obj.environmentName = `${obj.environmentCount} environments`;
+      }
+      files.push(obj);
+    })
+    const now = new Date();
     const data: TableModel = {
       headers: [
         {
@@ -121,7 +138,7 @@ export class UsageService {
           isSortedColumn: true,
           csvTitle: 'Days Since Last Activity',
           css: 'admin-table__item d-none d-md-table-cell admin-table__item_right',
-          cellCss:'admin-table__item d-none d-md-table-cell admin-table__item_right'
+          cellCss: 'admin-table__item d-none d-md-table-cell admin-table__item_right'
         },
         {
           columnId: 'environment',
