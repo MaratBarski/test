@@ -190,7 +190,7 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, Af
       .then(res => {
         this.notificationsService.addNotification({
           name: 'File deleted successfully',
-          type: ToasterType.info,
+          type: ToasterType.success,
           showInToaster: true,
           comment: 'File deleted from the system.',
           isClientOnly: true
