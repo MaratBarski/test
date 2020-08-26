@@ -23,7 +23,7 @@ export class UsageRetentionComponent extends UsageBase {
     private dateService: DateService,
     protected componentService: ComponentService,
     protected usageService: UsageService,
-    protected chartService: ChartService,
+    public chartService: ChartService,
     public usageRequestService: UsageRequestService
   ) {
     super();

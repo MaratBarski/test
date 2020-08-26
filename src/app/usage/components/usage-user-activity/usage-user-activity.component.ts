@@ -26,7 +26,7 @@ export class UsageUserActivityComponent extends UsageBase {
     private usageDownloadService: UsageDownloadService,
     protected componentService: ComponentService,
     protected usageService: UsageService,
-    protected chartService: ChartService,
+    public chartService: ChartService,
     public usageRequestService: UsageRequestService
   ) {
     super();
