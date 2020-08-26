@@ -23,9 +23,9 @@
                                 style="height: 160px;"></div>
                         <div class="graph-empty__text">No data, yet</div>
                     </div>
-                    <div [hidden]="!hasData && chartService.isLoading" class="graph__content">
+                    <div [hidden]="!hasData && !chartService.isLoading" class="graph__content">
                         <div [hidden]="!chartService.isLoading">Loading...</div>
-                        <div class="chart-wraper">
+                        <div [mdcVisibility]="chartService.isLoaded" class="chart-wraper">
                             <ng-container [ngTemplateOutlet]="chart"></ng-container>
                         </div>
                     </div>
