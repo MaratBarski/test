@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
-import { DateService, DatePeriod, BaseSibscriber, DataService, LoginService, SortService } from '@appcore';
+import { DateService, BaseSibscriber, DataService, LoginService, SortService } from '@appcore';
 import { UsageReportParams } from '../models/usage-request';
 import { Subject, Observable, BehaviorSubject } from 'rxjs';
-import { Offline } from '@app/shared/decorators/offline.decorator';
-import { environment } from '@env/environment';
 import { ActivatedRoute } from '@angular/router';
 
 export class UsageQueryParams {
@@ -174,6 +172,10 @@ export class UsageRequestService extends BaseSibscriber {
     this._onUsersLoaded.next();
   }
 
+  getUserById(id: any): any {
+    return this._users.find(x => x.id === id);
+  }
+
   loadEnvironments(): void {
     super.add(
       this.loginService.onUserInfoUpdated.subscribe(ui => {
@@ -187,7 +189,8 @@ export class UsageRequestService extends BaseSibscriber {
   }
 
   getEnironment(): any {
-    return { id: '0', name: 'All Environments', ...this._environments.find(x => x.id === this.usageRequest.environment) };
+    const env = this._environments.find(x => x.id === this.usageRequest.environment);
+    return env ? { id: env.id, name: env.text } : { id: '0', name: 'All Environments' };
   }
 
   private loadData(): void {

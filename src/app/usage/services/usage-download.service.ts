@@ -43,7 +43,6 @@ export class UsageDownloadService {
   }
 
   downloadPDF(downloadData: DownloadData): void {
-
     const documentDefinition: any = {
       header: this.createTop(downloadData),
       content: [
@@ -141,7 +140,10 @@ export class UsageDownloadService {
     const table: any = { headerRows: 1, width: ['auto'], body: [] }
     table.body.push([{ text: 'Login', bold: true, color: 'black' }]);
     this.usageRequestService.usageRequest.users.forEach((user: any) => {
-      table.body.push([{ text: user, bold: true, color: 'black' }]);
+      const u = this.usageRequestService.getUserById(user);
+      if (u) {
+        table.body.push([{ text: u.login, bold: true, color: 'black' }]);
+      }
     })
     documentDefinition.content.push({
       table: table
