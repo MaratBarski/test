@@ -15,6 +15,7 @@ export class UsageDashboardInfoPanelComponent extends BaseSibscriber implements 
   @Output() onInitUsers = new EventEmitter();
   @Input() showYears = true;
   @Input() showUsers = true;
+  @Input() hideUsers = false;
 
   currentDateRange = this.dateService.getFromMonth2Current(13);
   currentDateIndex = 0;

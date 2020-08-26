@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="category-list__content">
-                    <div class="category-list__label">List of users without activity in the last:</div>
+                    <div class="category-list__label">Top 10 users in the last:</div>
                     <div *ngIf="buttons" class="category-list__list">
                         <ng-container *ngFor="let button of buttons;let index = index;">
                             <div class="category-list__item" [ngClass]="{'active':current===index}" (click)="selectButton(index)">

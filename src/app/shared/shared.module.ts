@@ -26,6 +26,7 @@ import { LegendComponent } from './components/legend/legend.component';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 import {TooltipModule} from 'primeng/tooltip';
 import { UserProjectPipe } from './pipes/user-project.pipe';
+import { ToolTipManagerDirective } from './directives/tool-tip-manager.directive';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { UserProjectPipe } from './pipes/user-project.pipe';
     FormatNumberPipe,
     LegendComponent,
     ConfirmDialogComponent,
-    UserProjectPipe
+    UserProjectPipe,
+    ToolTipManagerDirective
   ],
   imports: [
     FormsModule,
@@ -69,7 +71,8 @@ import { UserProjectPipe } from './pipes/user-project.pipe';
     DataSamplePipe,
     FormatNumberPipe,
     ConfirmDialogComponent,
-    TooltipModule
+    TooltipModule,
+    ToolTipManagerDirective
   ],
   entryComponents: [
   ]

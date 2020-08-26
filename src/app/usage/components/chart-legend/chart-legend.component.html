@@ -1,5 +1,6 @@
-<span class="graph__legend">Legend
-    <div class="info-popup">
+<span class="graph__legend">
+    <span (click)="showLegend($event)">Legend</span>
+    <div [hidden]="!isShowLegend" class="info-popup">
         <ng-container *ngTemplateOutlet="legendTemplate"></ng-container>
     </div>
 </span>

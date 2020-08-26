@@ -1,4 +1,4 @@
-<md-chart-wraper [secondLegendTemplate]="secondLegendTemplate" [firstLegendTemplate]="firstLegendTemplate"
+<md-chart-wraper #wraper [secondLegendTemplate]="secondLegendTemplate" [firstLegendTemplate]="firstLegendTemplate"
     [isLegend]="true" firstTitle="New Queries per user" secondTitle="Downloads per user" [firstChart]="firstChart"
     [secondChart]="secondChart">
 </md-chart-wraper>
@@ -20,9 +20,9 @@
 </ng-template>
 
 <ng-template #firstLegendTemplate>
-    <md-chart-user-list [users]="users"></md-chart-user-list>
+    <md-chart-user-list (onClose)="closeFirstLegend($event)" [users]="users"></md-chart-user-list>
 </ng-template>
 
 <ng-template #secondLegendTemplate>
-    <md-chart-user-list [users]="users"></md-chart-user-list>
+    <md-chart-user-list (onClose)="closeSecondLegend($event)" [users]="users"></md-chart-user-list>
 </ng-template>

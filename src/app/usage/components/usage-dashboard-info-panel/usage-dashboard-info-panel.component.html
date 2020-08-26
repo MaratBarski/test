@@ -19,7 +19,7 @@
                                         [applyWidth]="false" [isSmall]="true" [options]="yearsOptions"></mdc-select>
                                 </div>
                             </div>
-                            <div *ngIf="showUsers" class="info-panel-choose__item">
+                            <div [hidden]="hideUsers" *ngIf="showUsers" class="info-panel-choose__item">
                                 <div class="info-panel-choose__title">Users:</div>
                                 <div class="info-panel-choose__val">
                                     <md-user-filter (onInitUsers)="initUsers($event)" (onApply)="applyUsers($event)"></md-user-filter>

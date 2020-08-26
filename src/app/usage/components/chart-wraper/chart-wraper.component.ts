@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ViewChild } from '@angular/core';
 import { ChartService } from '@app/usage/services/chart.service';
+import { ChartLegendComponent } from '../chart-legend/chart-legend.component';
 
 @Component({
   selector: 'md-chart-wraper',
@@ -15,6 +16,10 @@ export class ChartWraperComponent {
   @Input() firstLegendTemplate: any;
   @Input() secondLegendTemplate: any;
   @Input() isLegend = false;
+
+  @ViewChild('firstLegend', { static: false }) firstLegend: ChartLegendComponent;
+  @ViewChild('secondLegend', { static: false }) secondLegend: ChartLegendComponent;
+
 
   constructor(public chartService: ChartService) { }
 

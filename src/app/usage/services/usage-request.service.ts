@@ -162,7 +162,7 @@ export class UsageRequestService extends BaseSibscriber {
     const data = this.createData(response.data);
     this._users = data.map((x: any) => {
       return {
-        isChecked: false,
+        isChecked: true,
         id: x.userId,
         login: x.userName,
         total: x.origin + x.syntetic
@@ -213,6 +213,9 @@ export class UsageRequestService extends BaseSibscriber {
     Object.keys(dict).forEach(k => {
       res.push(dict[k]);
     });
+    res.sort((a, b) => {
+      return (a.value > b.value) ? -1 : 1;
+    });
     return res;
   }
 
@@ -233,6 +236,9 @@ export class UsageRequestService extends BaseSibscriber {
     const res = [];
     Object.keys(dict).forEach(k => {
       res.push(dict[k]);
+    });
+    res.sort((a, b) => {
+      return (a.value > b.value) ? -1 : 1;
     });
     return res;
   }

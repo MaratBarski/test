@@ -23,6 +23,8 @@ export class UserFilterComponent extends BaseSibscriber implements OnDestroy {
   @Input() minSelected = 1;
   @Input() maxSelected = 10;
 
+  private _prevState: { selected: Array<any>, top: boolean };
+
   selectedCount = 0;
 
   // get selectedCount(): number {
@@ -39,6 +41,7 @@ export class UserFilterComponent extends BaseSibscriber implements OnDestroy {
         this.originUsers = JSON.parse(JSON.stringify(this.usageRequestService.users));
         this.users = this.usageRequestService.users;
         this.changeTop(true);
+        this.initState();
         this.updateSelectedCount();
         this.usageRequestService.usageRequest.users = this.users.filter(x => x.isChecked).map(x => x.id);
         this.onInitUsers.emit();
@@ -50,20 +53,35 @@ export class UserFilterComponent extends BaseSibscriber implements OnDestroy {
     this.selectedCount = this.users.filter(x => x.isChecked).length
   }
 
+  private initState(): void {
+    this._prevState = {
+      selected: this.users.filter(x => x.isChecked).map(x => x.id),
+      top: this.topChecked
+    }
+  }
+
+  private resetState(): void {
+    this.topChecked = this._prevState.top;
+    this.users.forEach(u => {
+      u.isChecked = this._prevState.selected.find(id => u.id === id);
+    });
+    this.updateSelectedCount();
+  }
+
   ngOnDestroy(): void {
     this.usageRequestService.usageRequest.users = undefined;
   }
 
   changeTop(flag: boolean): void {
     this.users.forEach((user: any, index: number) => {
-      if (index >= 5) { return; }
-      user.isChecked = flag
+      user.isChecked = index < 5 && flag;
     });
     this.updateSelectedCount();
   }
 
   changeSelect(isChecked: boolean): void {
     this.updateSelectedCount();
+    this.topChecked = false;
   }
 
   clear(): void {
@@ -82,13 +100,15 @@ export class UserFilterComponent extends BaseSibscriber implements OnDestroy {
   apply(): void {
     this.topCheckApply = this.topChecked;
     this.isExpanded = false;
-    this.onApply.emit(this.users.filter(x => x.isChecked).map(x => x.id));
+    this.initState();
+    this.onApply.emit(this._prevState.selected);
   }
 
   cancel(): void {
     this.topChecked = this.topCheckApply;
     this.clearSearch();
     this.isExpanded = false;
+    this.resetState();
   }
 
   searchKey(event: any): void {

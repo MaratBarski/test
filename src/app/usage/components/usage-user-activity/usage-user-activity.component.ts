@@ -7,6 +7,7 @@ import { UsageRequestService } from '@app/usage/services/usage-request.service';
 import { UsageDownloadService, DownloadData } from '@app/usage/services/usage-download.service';
 import { ChartPdfComponent } from '../chart-pdf/chart-pdf.component';
 import { CHART_COLORS } from '@app/usage/models/chart-colors';
+import { ChartWraperComponent } from '../chart-wraper/chart-wraper.component';
 
 @Component({
   selector: 'md-usage-user-activity',
@@ -19,6 +20,7 @@ export class UsageUserActivityComponent extends UsageBase {
   pdfChartHeight = '300px'
   @ViewChild('chartPdf1', { static: true }) chartPdf1: ChartPdfComponent;
   @ViewChild('chartPdf2', { static: true }) chartPdf2: ChartPdfComponent;
+  @ViewChild('wraper', { static: true }) wraper: ChartWraperComponent;
 
   constructor(
     private usageDownloadService: UsageDownloadService,
@@ -114,6 +116,14 @@ export class UsageUserActivityComponent extends UsageBase {
       super.responseData.subscribe(res => {
         this.data = this.usageRequestService.createData(res.data);
       }));
+  }
+
+  closeFirstLegend(event: any): void {
+    this.wraper.firstLegend.closeLegend();
+  }
+
+  closeSecondLegend(event: any): void {
+    this.wraper.secondLegend.closeLegend();
   }
 
 }

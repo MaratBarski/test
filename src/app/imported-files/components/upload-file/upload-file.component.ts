@@ -102,7 +102,7 @@ export class UploadFileComponent extends BaseSibscriber implements OnInit {
         succName: 'Imported File Successfully Uploaded',
         abortName: 'Aborted Successfully',
         abortComment: `Upload of ${this.fileName} was successfully aborted.`,
-        progressTitle: `List of patients diagnosed with ${this.fileName}`,
+        progressTitle: `${this.fileName}`,
         comment: 'You will be notified when it is ready for mapping.',
         succComment: 'The file uploaded successfully and is ready for mapping.',
         progress: 0,

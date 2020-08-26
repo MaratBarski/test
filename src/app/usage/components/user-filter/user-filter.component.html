@@ -11,25 +11,27 @@
             <div class="select-filter__top">
                 <mdc-check-box (change)="changeTop($event)" [(ngModel)]="topChecked" text="Top 5 users"
                     [id]="'usrUsage'"></mdc-check-box>
-                <span (click)="clear()" class="select-filter__clear">Clear</span>
+                <span (click)="clear()" class="select-filter__clear pointer link">Clear</span>
             </div>
             <div class="form-search">
                 <input [(ngModel)]="searchText" (keyup)="searchKey($event)" type="text" placeholder="Search a user">
                 <button type="submit">
                     <svg (click)="searchKey(undefined)" class="icon ic-search" mdcSvg="ic-search"></svg>
                 </button>
-                <span (click)="clearSearch()" class="form-search__close" style="margin-top: -6px;">
+                <span (click)="clearSearch()" [hidden]="!searchText" class="form-search__close pointer" style="margin-top: -6px;">
                     <svg class="icon ic-close-small" mdcSvg="ic-close-small"></svg>
                 </span>
             </div>
+            <div [hidden]="selectedCount < maxSelected" class="select-filter__label">You can select up to {{maxSelected}} users</div>
             <div class="select-filter__params">
                 <ng-container *ngFor="let user of users|usageUser:{text:searchWord};let index=$index">
                     <mdc-check-box [isDisabled]="!user.isChecked && selectedCount >= maxSelected"
                         (change)="changeSelect($event)" [(ngModel)]="user.isChecked" [id]="'usr' + index">
                         <ng-container>
                             <span class="input-check__text">
-                              <span class="input-check__el" [mdcColorText]="searchWord" [text]="user.login"></span>
-                              <span class="input-check__num">({{user.total}})</span>
+                                <span [pTooltip]="user.login" mdToolTipManager [maxWidth]="70" class="input-check__el" [mdcColorText]="searchWord"
+                                    [text]="user.login"></span>
+                                <span class="input-check__num">({{user.total}})</span>
                             </span>
                         </ng-container>
                     </mdc-check-box>

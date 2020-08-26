@@ -5,7 +5,7 @@
                 <div class="graph">
                     <div class="graph__top">
                         <div class="graph__head">{{firstTitle}}
-                            <md-chart-legend [legendTemplate]="firstLegendTemplate" *ngIf="isLegend"></md-chart-legend>
+                            <md-chart-legend #firstLegend [legendTemplate]="firstLegendTemplate" *ngIf="isLegend"></md-chart-legend>
                         </div>
                     </div>
                     <div class="graph__content">
@@ -20,7 +20,7 @@
                 <div class="graph">
                     <div class="graph__top">
                         <div class="graph__head">{{secondTitle}}
-                            <md-chart-legend [legendTemplate]="secondLegendTemplate" *ngIf="isLegend"></md-chart-legend>
+                            <md-chart-legend #secondLegend [legendTemplate]="secondLegendTemplate" *ngIf="isLegend"></md-chart-legend>
                         </div>
                     </div>
                     <div class="graph__content">
