@@ -192,6 +192,10 @@ export class CsvManagerService {
 
   detectEncoding(file: any): Promise<string> {
     return new Promise<string>((resolve, reject) => {
+      if(!this.isCsv(file.name)){
+        resolve('UTF8');
+        return;
+      }
       const reader = new FileReader();
       reader.onload = (e: any) => {
         if (!!e.target.error) {
