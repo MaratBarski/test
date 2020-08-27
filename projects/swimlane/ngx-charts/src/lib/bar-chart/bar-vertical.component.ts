@@ -34,6 +34,7 @@ import { DataItem } from '../models/chart-data.model';
           *ngIf="xAxis"
           [xScale]="xScale"
           [dims]="dims"
+          [forceAngle]="forceAngle"
           [showLabel]="showXAxisLabel"
           [labelText]="xAxisLabel"
           [trimTicks]="trimXAxisTicks"
@@ -91,6 +92,7 @@ import { DataItem } from '../models/chart-data.model';
   encapsulation: ViewEncapsulation.None
 })
 export class BarVerticalComponent extends BaseChartComponent {
+  @Input() forceAngle = -1;
   @Input() showValue = false;
   @Input() showZero = true;
   @Input() isRotate = false;
