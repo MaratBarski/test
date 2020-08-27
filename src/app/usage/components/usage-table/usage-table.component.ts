@@ -47,11 +47,25 @@ export class UsageTableComponent extends UsageBase {
   private toPDF(): void {
     this.downloadData.charts = [];
     const body = [];
-    this.dataSource.data.forEach((item: any) => {
-      body.push([item.login, this.dateService.getDaysDiff(item.lastlogin, new Date()), item.lastlogin, 'environment']);
+    this.dataSource.forEach((item: any) => {
+      body.push([
+        item.userName,
+        this.dateService.toExcel(item.lastLogin),
+        item.permission,
+        item.loginDays,
+        item.origin,
+        item.syntetic
+      ]);
     });
     this.downloadData.charts.push({
-      headers: ['User Name', 'Days Since Last Login', 'Last Login', 'Environment'],
+      headers: [
+        'User Name',
+        'Last Login',
+        'Permission',
+        'Login Days',
+        'Original',
+        'Synthetic'
+      ],
       body: body
     });
 

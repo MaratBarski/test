@@ -85,7 +85,6 @@ export class UsageDownloadService {
     }
 
     //document.write(JSON.stringify(documentDefinition))
-
     pdfMake.createPdf(documentDefinition).open();
     //pdfMake.createPdf(documentDefinition).download(`${downloadData.fileName}.pdf`);
   }

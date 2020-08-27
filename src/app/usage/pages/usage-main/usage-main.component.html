@@ -1,5 +1,4 @@
 <div class="usage-dashboard" *ngIf="usageRequestService.isLoading">
-    <!-- {{usageRequestService.usageRequest|json}} -->
     <md-usage-header></md-usage-header>
     <md-usage-dashboard-top [selectedUrl]="currentPage"></md-usage-dashboard-top>
     <md-usage-dashboard-info-panel (onInitUsers)="initUsers()"

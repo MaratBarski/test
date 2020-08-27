@@ -9,7 +9,7 @@ export abstract class UsageBase extends BaseSibscriber implements OnInit, OnDest
         super.add(
             this._responseData.subscribe(res => {
                 this.dataSource = res.data;
-                //this.reinitData();
+                this.reinitData();
                 if (this.dataSourceReady) {
                     this.dataSourceReady();
                 }

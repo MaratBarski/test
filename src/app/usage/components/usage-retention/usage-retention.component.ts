@@ -43,11 +43,21 @@ export class UsageRetentionComponent extends UsageBase {
   private toPDF(): void {
     this.downloadData.charts = [];
     const body = [];
-    this.dataSource.data.forEach((item: any) => {
-      body.push([item.login, this.dateService.getDaysDiff(item.lastlogin, new Date()), item.lastlogin, 'environment']);
+    this.dataSource.forEach((item: any) => {
+      body.push([
+        item.userName,
+        this.dateService.toExcel(item.lastActivity),
+        item.days,
+        item.environmentName
+      ]);
     });
     this.downloadData.charts.push({
-      headers: ['User Name', 'Days Since Last Login', 'Last Login', 'Environment'],
+      headers: [
+        'User Name',
+        'Last Activity',
+        'Days Since Last Activity',
+        'Environment'
+      ],
       body: body
     });
 
