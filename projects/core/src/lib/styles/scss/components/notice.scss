@@ -2,10 +2,6 @@
 .notice{
 	position: relative;
 
-	&:hover .notice-popup,
-	&.active .notice-popup{
-		display: inline-block;
-	}
 
 	&__icon{
 		cursor: pointer;
@@ -14,7 +10,6 @@
 }
 
 .notice-popup{
-	display: none;
 	width: 468px;
 	border-top: 5px solid $color-yellow;
 	border-radius: 4px;

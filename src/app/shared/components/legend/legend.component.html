@@ -3,7 +3,7 @@
         <svg class="icon ic-bulb" mdcSvg="ic-bulb">
         </svg>
     </div>
-    <div class="notice-popup">
+    <div [hidden]="!isOpen" class="notice-popup">
         <div class="notice-popup__text">Add, maintain and update categorization used in events,
             imported files and patient stories.</div>
         <div class="notice-popup__content">

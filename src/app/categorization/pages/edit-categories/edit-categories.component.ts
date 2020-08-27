@@ -202,7 +202,7 @@ export class EditCategoriesComponent extends BaseNavigation implements OnInit {
         failComment: 'Try again or contact MDClone support.',
         succName: 'Categorization file uploaded successfully.',
         abortName: 'Aborted successfully.',
-        abortComment:`Upload of ${categorization.hierarchyName}  was successfully aborted.`,
+        abortComment: `Upload of ${categorization.hierarchyName}  was successfully aborted.`,
         progress: 0,
         status: NotificationStatus.uploading,
         showProgress: true,
@@ -248,12 +248,14 @@ export class EditCategoriesComponent extends BaseNavigation implements OnInit {
     this.isHasChanges = true;
     this.mode = 'replace';
     this.formData = event.formData;
-    this.oldCategories = event.categoryHeaders.map((str: any, i: number) => {
-      return {
-        hierarchyLevelName: str,
-        sortValue: i
-      };
-    });
+    this.oldCategories = event.categoryHeaders
+      .filter((x, i) => i > 0)
+      .map((str: any, i: number) => {
+        return {
+          hierarchyLevelName: str,
+          sortValue: i
+        };
+      });
   }
 
   onChanges(): void {

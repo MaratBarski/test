@@ -13,17 +13,17 @@ export class DownloadService {
   ) { }
 
   download(url: string): void {
-    const notice: INotification = {
-      name: 'Download',
-      type: ToasterType.info,
-      comment: url,
-      showInToaster: true
-    }
-    this.notificationsService.addNotification(notice);
+    // const notice: INotification = {
+    //   name: 'Download',
+    //   type: ToasterType.info,
+    //   comment: url,
+    //   showInToaster: true
+    // }
+    // this.notificationsService.addNotification(notice);
     this.http.get(url, { responseType: 'blob' })
       .subscribe((res: any) => {
-        notice.type = ToasterType.success;
-        notice.comment = 'Download success';
+        // notice.type = ToasterType.success;
+        // notice.comment = 'Download success';
         let a = document.createElement('a');
         document.body.appendChild(a);
         a.setAttribute('style', 'display: none');
@@ -34,8 +34,8 @@ export class DownloadService {
         a.remove();
       }, (error: any) => {
         //alert(JSON.stringify(error));
-        notice.type = ToasterType.error;
-        notice.comment = `Download failed on ${url}`;
+        // notice.type = ToasterType.error;
+        // notice.comment = `Download failed on ${url}`;
       });
   }
 }

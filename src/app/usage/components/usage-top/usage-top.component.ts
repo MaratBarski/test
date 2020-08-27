@@ -30,7 +30,7 @@ export class UsageTopComponent extends UsageBase {
   };
 
   colorSchemeDownload = {
-    domain: ['#03CFA3', '#5303A8']
+    domain: ['#5303A8','#03CFA3']
   };
 
   pdfChartWidth = '500px';
@@ -91,14 +91,14 @@ export class UsageTopComponent extends UsageBase {
     const body1 = [];
     const body2 = [];
     this.dataSource.newQuery.forEach((item: any) => {
-      body1.push([item.date, item.count])
+      body1.push([item.userName, item.count])
     });
     this.dataSource.downloads.forEach((item: any) => {
-      body2.push([item.date, item.origin, item.syntetic])
+      body2.push([item.userName, item.origin, item.syntetic])
     });
     this.downloadData.charts.push(
       {
-        headers: ['Date', 'Count'],
+        headers: ['User Name', 'Count'],
         body: body1,
         svg: {
           image: this.chartPdfQueries.getSvg(),
@@ -106,7 +106,7 @@ export class UsageTopComponent extends UsageBase {
         }
       },
       {
-        headers: ['Date', 'Original Files', 'Synthetic Files'],
+        headers: ['User Name', 'Original Files', 'Synthetic Files'],
         body: body2,
         svg: {
           image: this.chartPdfDownloads.getSvg(),
