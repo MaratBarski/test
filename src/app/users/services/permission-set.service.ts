@@ -185,7 +185,8 @@ export class PermissionSetService extends BaseSibscriber {
       if (!templates[i].siteEventInfos) { continue; }
       for (let j = 0; j < templates[i].siteEventInfos.length; j++) {
         if (templates[i].siteEventInfos[j].eventId === templateInfo.eventId) {
-          return templates[i].siteEventInfos[j].eventTableAlias;
+          //return templates[i].siteEventInfos[j].eventTableAlias;
+          return templates[i].templateName;
         }
       }
     }
