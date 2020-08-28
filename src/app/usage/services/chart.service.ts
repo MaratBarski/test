@@ -27,7 +27,7 @@ export class ChartService {
 
   get dateRangeString(): string {
     //return `${this.usageRequestService.usageRequest.fromDate}/${this.usageRequestService.usageRequest.toDate}`;
-    return `${this.usageRequestService.usageRequest.fromDate}/${this.dateService.addDay(this.usageRequestService.usageRequest.toDate,-1)}`;
+    return `${this.usageRequestService.usageRequest.fromDate}/${this.dateService.addDay(this.usageRequestService.usageRequest.toDate, -1)}`;
   }
 
   get includeAdminString(): string {
@@ -81,11 +81,12 @@ export class ChartService {
 
   @Offline('assets/offline/usageUserActivity.json?')
   private getUserActivityUsageUrl = `${environment.serverUrl}${environment.endPoints.usagePerUser}`;
-  getActivityUserUsage(info: any = undefined): Observable<any> {
+  getActivityUserUsage(callBack: any): Observable<any> {
     //alert((`${this.getUserActivityUsageUrl}/${this.requestString}`));
     return this.getChart(`${this.getUserActivityUsageUrl}/${this.requestString}`).pipe(
       tap(res => {
         this.usageRequestService.initUsers(res);
+        callBack(res);
       })
     );
   }

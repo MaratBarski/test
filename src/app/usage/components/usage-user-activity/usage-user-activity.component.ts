@@ -133,11 +133,11 @@ export class UsageUserActivityComponent extends UsageBase {
 
   data: any;
   createReport(): void {
-    super.responseData = this.chartService.getActivityUserUsage();
-    super.add(
-      super.responseData.subscribe(res => {
+    super.responseData = this.chartService.getActivityUserUsage(
+      (res: any) => {
         this.data = this.usageRequestService.createData(res.data);
-      }));
+      }
+    );
   }
 
   closeFirstLegend(event: any): void {
