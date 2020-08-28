@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { UsageService } from '@app/usage/services/usage.service';
-import { DownloadComponent, TableModel, ComponentService, DateService } from '@app/core-api';
+import { DownloadComponent, TableModel, ComponentService, DateService, EmptyState } from '@appcore';
 import { UsageRequestService } from '@app/usage/services/usage-request.service';
 import { UsageBase } from '../UsageBase';
 import { ChartService } from '@app/usage/services/chart.service';
@@ -38,6 +38,13 @@ export class UsageTableComponent extends UsageBase {
     this.usageDownloadService.toCSV = () => this.toCSV();
     this.usageDownloadService.toPDF = () => this.toPDF();
   }
+
+  emptyState: EmptyState = {
+    title: 'Nothing matches your search.',
+    subTitle: 'Try using the filters or search different keywords',
+    image: 'nodata.png'
+  }
+
 
   downloadData: DownloadData = {
     pageName: 'Table',

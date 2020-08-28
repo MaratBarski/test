@@ -12,7 +12,7 @@
                         </div>
                     </div>
                 </div>
-                <mdc-table #table [search]="search" [searchOptions]="searchOptions" [paginator]="paginator"
+                <mdc-table #table [emptyState]="emptyState" [search]="search" [searchOptions]="searchOptions" [paginator]="paginator"
                     [dataSource]="data" [cellsTemplate]="{ lastlogin:lastlogin}">
                 </mdc-table>
                 <div class="pager-wrap">
