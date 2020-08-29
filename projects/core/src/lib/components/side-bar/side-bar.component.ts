@@ -46,6 +46,7 @@ export class SideBarComponent extends BaseSibscriber implements OnInit {
       return;
     }
     if (!item.url) { return; }
+    if (item.active) { return; }
     this.navigationService.navigate(item.url);
     //this.router.navigateByUrl(item.url);
   }
