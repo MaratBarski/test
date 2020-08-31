@@ -8,7 +8,7 @@ import { MapCategoryHeaderComponent } from '@app/categorization/components/map-c
 import { MapCategoryTableComponent } from '@app/categorization/components/map-category-table/map-category-table.component';
 import { UploadService, UploadInfo } from '@app/shared/services/upload.service';
 import { environment } from '@env/environment';
-import {ConfigService} from '@app/shared/services/config.service';
+import { ConfigService } from '@app/shared/services/config.service';
 
 @Component({
   selector: 'md-edit-categories',
@@ -180,7 +180,6 @@ export class EditCategoriesComponent extends BaseNavigation implements OnInit {
       })
     };
     this.updateForSave(categorization);
-
     formData.append('hierarchyName', categorization.hierarchyName);
     formData.append('projectId', categorization.projectId);
     formData.append('description', categorization.description);
@@ -216,7 +215,8 @@ export class EditCategoriesComponent extends BaseNavigation implements OnInit {
         progressTitle: `${this.categoryInfo.fileData.formData.get('fileName')}.`,
         showInToaster: true,
         containerEnable: true,
-        type: ToasterType.infoProgressBar
+        type: ToasterType.infoProgressBar,
+        removeOnComplete: true
       },
       form: formData,
       url: `${this._uploadUrl}/${categorization.hierarchyRootId}`,

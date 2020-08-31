@@ -13,10 +13,10 @@ import { ConfigService } from '@app/shared/services/config.service';
 export class UploadFileComponent {
 
   constructor(
-    private uploadService: UploadService, 
+    private uploadService: UploadService,
     private csvManagerService: CsvManagerService,
     private configService: ConfigService
-    ) { }
+  ) { }
 
   @ViewChild('fileInput', { static: true }) fileInput: ElementRef;
   @Output() onCancel = new EventEmitter<void>();
@@ -74,7 +74,8 @@ export class UploadFileComponent {
         progressTitle: `${this.fileName}`,
         type: ToasterType.infoProgressBar,
         showInToaster: true,
-        containerEnable: true
+        containerEnable: true,
+        removeOnComplete: true
       },
       form: formData,
       url: this._uploadUrl,
@@ -110,7 +111,7 @@ export class UploadFileComponent {
     } else {
       formData.append('hierarchyRootId', this.source.hierarchyRootId);
     }
-    formData.append('defaultLevelId', '' + (parseInt(this.defaultCategory) - 1));
+    formData.append('defaultLevelId', '' + (parseInt(this.defaultCategory)));
     //formData.append('type', 'manual');
     return formData;
   }
