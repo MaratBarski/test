@@ -71,7 +71,7 @@ export class UploadFileComponent {
         showProgress: true,
         showInContainer: true,
         startDate: new Date(),
-        progressTitle: `categories for diagnosis ${this.fileName}`,
+        progressTitle: `${this.fileName}`,
         type: ToasterType.infoProgressBar,
         showInToaster: true,
         containerEnable: true
@@ -132,7 +132,8 @@ export class UploadFileComponent {
     this.csvManagerService.readHeaders(file).then((arr: Array<string>) => {
       this.isFileError = false;
       this.categoryHeaders =
-        ['Select default category...'].concat(
+        //['Select default category...']
+        [].concat(
           arr.map((str, i) => {
             return str;
             //return { text: str, value: i, id: i }

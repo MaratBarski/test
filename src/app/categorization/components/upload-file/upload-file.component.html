@@ -59,7 +59,7 @@
                         <svg class="icon ic-help" mdcSvg="ic-help"></svg>
                     </span>
                 </label>
-                <md-csv-combo (onChange)="changeDefaultCategory($event)" *ngIf="categoryHeaders" [selectUp]="true"
+                <md-csv-combo [selectFirst]="true" (onChange)="changeDefaultCategory($event)" *ngIf="categoryHeaders" [selectUp]="true"
                     [headers]="categoryHeaders"></md-csv-combo>
                 <div *ngIf="!categoryHeaders?.length" class="select select_up">
                     <div class="select__head">Select default category...

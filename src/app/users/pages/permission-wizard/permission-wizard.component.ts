@@ -13,6 +13,8 @@ export class PermissionWizardComponent extends BaseNavigation implements OnInit 
 
   showCancelConfirm = false;
   @Input() confirmOnChanges = true;
+  @Input() showLegend = true;
+  @Input() isPopup = false;
 
   get showChangesConfirm(): boolean {
     return this.permissionSetService.showCancelConfirm;

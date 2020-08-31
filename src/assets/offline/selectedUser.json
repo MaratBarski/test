@@ -1,0 +1,24 @@
+{
+    "data": {
+        "id": "9136",
+        "login": "NaavaMDC",
+        "passwordHash": "$2a$10$0KrLDB8zl8u9M3iI/r3I8uA4CdO8X9oTDRNe2ac.RNQA10GSDz/MC",
+        "firstName": "Naava",
+        "lastName": "Szyper",
+        "email": "111@gmail.com",
+        "activated": true,
+        "langKey": "en",
+        "activationKey": null,
+        "resetKey": "56399474672955055664",
+        "createdBy": "admin",
+        "createdDate": "2020-02-23T10:44:43.848Z",
+        "resetDate": "2020-02-23T10:44:43.817Z",
+        "lastModifiedBy": "admin",
+        "lastModifiedDate": "2020-02-23T10:44:43.848Z",
+        "cellPhone": "0508856970",
+        "domain": "",
+        "photo": null
+    },
+    "massage": "Get User Object",
+    "status": "success"
+}

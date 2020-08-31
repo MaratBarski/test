@@ -73,6 +73,9 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, Af
         this.isLoaded = true;
       })
     );
+    super.add(this.navigationService.onReload.subscribe(() => {
+      this.load();
+    }));
     
     // this.notificationsTests();
   }
@@ -214,6 +217,10 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, Af
   }
 
   ngOnInit() {
+    this.load();
+  }
+
+  private load(): void {
     this.isLoaded = false;
     super.add(
       this.importedFilesService.load().subscribe((res: FileSourceResponse) => {
