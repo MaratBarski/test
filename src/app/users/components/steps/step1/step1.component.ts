@@ -133,6 +133,7 @@ export class Step1Component extends BaseSibscriber implements OnInit, AfterViewI
 
   changedProject(id: string): void {
     this.permissionSetService.permissionSet.project = id;
+    this.permissionSetService.permissionSet.projectName = this.projectCmp.selectedOption.text;
     this.permissionSetService.loadTemplates(false);
     this.permissionSetService.validate(false);
   }

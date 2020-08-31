@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { PermissionSetService, NO_ALLOWED_EVENTS } from '@app/users/services/permission-set.service';
 import { TabWizardItem } from '@app/users/components/tabs/tabs.component';
 import { NavigationService, BaseNavigation } from '@appcore';
@@ -15,6 +15,8 @@ export class PermissionWizardComponent extends BaseNavigation implements OnInit 
   @Input() confirmOnChanges = true;
   @Input() showLegend = true;
   @Input() isPopup = false;
+  @Input() isoffline = false;
+  @Output() onSave = new EventEmitter<any>();
 
   get showChangesConfirm(): boolean {
     return this.permissionSetService.showCancelConfirm;
@@ -52,6 +54,10 @@ export class PermissionWizardComponent extends BaseNavigation implements OnInit 
 
   confirmSave(): void {
     this.showCancelConfirm = false;
+    if (this.isoffline) {
+      this.onSave.emit(this.permissionSetService.getSet());
+      return;
+    }
     this.permissionSetService.save();
   }
 
@@ -91,6 +97,10 @@ export class PermissionWizardComponent extends BaseNavigation implements OnInit 
     if (this.permissionSetService.permissionSet.allowedEvent === NO_ALLOWED_EVENTS) {
       if (!this.permissionSetService.validate(true)) { return; }
       this.showCancelConfirm = true;
+      return;
+    }
+    if (this.isoffline) {
+      this.onSave.emit(this.permissionSetService.getSet());
       return;
     }
     this.permissionSetService.save();

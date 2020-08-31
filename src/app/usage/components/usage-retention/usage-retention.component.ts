@@ -67,7 +67,7 @@ export class UsageRetentionComponent extends UsageBase {
       body: body
     });
 
-    this.usageDownloadService.downloadPDF(this.downloadData);
+    this.usageDownloadService.downloadPDF(this.downloadData, 1);
   }
 
   private toCSV(): void {

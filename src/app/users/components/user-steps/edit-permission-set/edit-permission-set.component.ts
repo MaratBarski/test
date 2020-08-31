@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { TableComponent, CheckBoxListComponent, DownloadComponent, CheckBoxListOption, EmptyState, TableModel, BaseSibscriber, TableActionCommand } from '@appcore';
 import { ResearchService } from '@app/users/services/research.service';
 import { ConfigService } from '@app/shared/services/config.service';
+import { UserEditService } from '@app/users/services/user-edit.service';
 
 @Component({
   selector: 'md-edit-permission-set',
@@ -28,20 +29,20 @@ export class EditPermissionSetComponent extends BaseSibscriber implements OnInit
 
   dataOrigin: TableModel;
   dataSource: TableModel;
-  researchSource: Array<any>;
   onComplete: any;
   downloadFileName = 'research.csv';
 
   constructor(
     private researchService: ResearchService,
-    public configService: ConfigService
+    public configService: ConfigService,
+    public userEditService: UserEditService
   ) {
     super();
   }
 
   private initData(): void {
-    this.isDataExists = !!(this.researchSource && this.researchSource.length);
-    this.dataOrigin = this.dataSource = this.researchService.createView(this.researchSource);
+    this.isDataExists = !!(this.userEditService.user.permissionSets && this.userEditService.user.permissionSets.length);
+    this.dataOrigin = this.dataSource = this.userEditService.getSetTable();
     this.isLoaded = true;
   }
 
@@ -55,34 +56,16 @@ export class EditPermissionSetComponent extends BaseSibscriber implements OnInit
       console.log('edit command');
     },
     delete: (action: TableActionCommand) => {
-      // this.researchSource = this.researchSource.filter(x => x != action.item.source);
-      // this.initData();
-      // this.table.stayOnCurrentPage = true;
-      // this.researchService.deleteFile(action.item.source)
-      //   .toPromise()
-      //   .then(res => {
-      //     console.log('File deleted');
-      //   }).catch(e => {
-      //     console.error('Error delete file');
-      //   })
+      this.userEditService.removeSet(action.item.source);
+      this.initData();
+
     }
   };
 
   ngOnInit() {
     this.isLoaded = false;
-    super.add(
-      this.researchService.load().subscribe((res: any) => {
-        this.researchSource = res.data || [];
-        this.initData();
-      }));
-    this.onComplete = (): void => {
-      super.add(
-        this.researchService.load().subscribe((res: any) => {
-          this.researchSource = res.data || [];
-          this.initData();
-          this.table.stayOnCurrentPage = true;
-        }));
-    }
+    this.initData();
+    //this.table.stayOnCurrentPage = true;
   }
 
   isActive(src: any): boolean {
@@ -95,7 +78,14 @@ export class EditPermissionSetComponent extends BaseSibscriber implements OnInit
     this.isCreateNewSet = true;
   }
 
-  closeCreateSet():void{
+  closeCreateSet(): void {
     this.isCreateNewSet = false;
+  }
+
+  addPermissinSet(ps: any): void {
+    if (!ps) { return; }
+    this.userEditService.addSet(ps);
+    this.isCreateNewSet = false;
+    this.initData();
   }
 }

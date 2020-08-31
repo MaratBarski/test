@@ -1,4 +1,4 @@
-<div class="user-details-subtitle">
+<div style="padding: 10px;" class="user-details-subtitle">
     <div class="h5">User’s Permissions</div>
     <span (click)="createSet()" class="btn btn_icon">+ New Set</span>
 </div>
@@ -11,7 +11,7 @@
             <svg class="icon ic-close" mdcSvg="ic-close" (click)="closeCreateSet()"></svg>
         </div>
         <div class="modal-step__content">
-            <md-permission-wizard [showLegend]="false" [isPopup]="true" [confirmOnChanges]="false"></md-permission-wizard>
+            <md-permission-wizard (onSave)="addPermissinSet($event)" [isoffline]="true" [showLegend]="false" [isPopup]="true" [confirmOnChanges]="false"></md-permission-wizard>
         </div>
     </div>
 </div>
@@ -31,17 +31,17 @@
     </div>
 
     <ng-template #Modified let-item>
-        <div>{{item.Modified|date}}&nbsp;{{item.Modified|date:'HH:mm'}}</div>
+        <!-- <div>{{item.Modified|date}}&nbsp;{{item.Modified|date:'HH:mm'}}</div> -->
     </ng-template>
 
     <ng-template #KeyStatus let-item let-src="source">
-        <svg class="icon ic-failure ic-grey"
-            *ngIf="src.researchStatus && src.researchStatus.toLowerCase().trim()!=='open'" mdcSvg="ic-failure"></svg>
+        <!-- <svg class="icon ic-failure ic-grey"
+            *ngIf="src.researchStatus && src.researchStatus.toLowerCase().trim()!=='open'" mdcSvg="ic-failure"></svg> -->
     </ng-template>
 
     <ng-template #Active let-item let-src="source">
-        <div *ngIf="isActive(src)">
+        <!-- <div *ngIf="isActive(src)">
             <span class="admin-table__circle admin-table__circle_green"></span>
-        </div>
+        </div> -->
     </ng-template>
 </div>

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject, forkJoin, of } from 'rxjs';
 import { Router } from '@angular/router';
-import { NavigationService, DateService, NotificationsService } from '@appcore';
+import { NavigationService, DateService, NotificationsService, TableModel } from '@appcore';
 import { HttpClient } from '@angular/common/http';
 import { ConfigService } from '@app/shared/services/config.service';
 import { Offline } from '@app/shared/decorators/offline.decorator';
@@ -43,6 +43,14 @@ export class UserEditService {
     private notificationService: NotificationsService
   ) {
     this.initSecurity();
+  }
+
+  addSet(ps: any): void {
+    this.user.permissionSets = [ps].concat(this.user.permissionSets);
+  }
+
+  removeSet(ps: any): void {
+    this.user.permissionSets = this.user.permissionSets.filter(x => x !== ps);
   }
 
   get securityType(): number {
@@ -91,9 +99,9 @@ export class UserEditService {
       this._environments = projects.data;
       this._environments.forEach(x => {
         x.isChecked = false,
-        x.role = 1,
-        x.data = 1,
-        x.kf = 4
+          x.role = 1,
+          x.data = 1,
+          x.kf = 4
         x.isShowAdvanced = false
       });
       this._isLoading = false;
@@ -137,7 +145,8 @@ export class UserEditService {
         lastModifiedDate: undefined,
         cellPhone: '',
         domain: "",
-        photo: undefined
+        photo: undefined,
+        permissionSets: []
       }
     };
   }
@@ -206,5 +215,136 @@ export class UserEditService {
   save(): void {
 
   }
+
+
+  getSetTable(): TableModel {
+    const data: TableModel = {
+      actions: {
+        links: [
+          {
+            text: 'Edit',
+            icon: 'ic-edit',
+            command: 'edit'
+            , checkDisabled: (source: any) => {
+              return false;
+            }
+          }
+        ],
+        subLinks: [
+          {
+            text: 'Delete',
+            icon: 'ic-delete',
+            command: 'delete'
+            , checkDisabled: (source: any) => {
+              return false;
+            }
+          }
+        ]
+      },
+      headers: [
+        {
+          columnId: 'PermissionSetName',
+          text: 'Permission Set Name',
+          isSortEnabled: true,
+          csvTitle: 'Permission Set Name',
+          showDetails: false,
+          css: 'admin-table__item admin-table__perm-40 w-xxl-20 w-xxxl-25',
+          cellCss: 'admin-table__item',
+          cellContainerCss: 'admin-table__name'
+        },
+        {
+          columnId: 'Environment',
+          text: 'Environment',
+          isSortEnabled: true,
+          filter: true,
+          csvTitle: 'Environment',
+          css: 'admin-table__item d-none d-lg-table-cell admin-table__perm-20',
+          cellCss: 'admin-table__item d-none d-lg-table-cell',
+          cellContainerCss: 'admin-table__text-cut'
+        },
+        {
+          columnId: 'ApprovalKey',
+          text: 'Approval Key',
+          isSortEnabled: true,
+          csvTitle: 'Approval Key',
+          css: 'admin-table__item d-none d-xxl-table-cell'
+        },
+        {
+          columnId: 'approvalKeyExpirationDate',
+          text: 'Key Expiration date',
+          hidden: true,
+          csvTitle: 'Key Expiration date'
+        },
+        {
+          columnId: 'KeyStatus',
+          text: 'Key Status',
+          csvTitle: 'Key Status',
+          css: 'admin-table__item d-none d-xxl-table-cell admin-table__item_center admin-table__status'
+        },
+        {
+          columnId: 'Active',
+          text: 'Active',
+          csvTitle: 'Active',
+          css: 'admin-table__item d-none d-md-table-cell admin-table__item_center admin-table__status'
+        },
+        {
+          columnId: 'maxPatients',
+          text: 'Allowed cohort size',
+          csvTitle: 'Allowed cohort size',
+          hidden: true
+        },
+        {
+          columnId: 'startDate',
+          text: 'Allowed date range',
+          csvTitle: 'From',
+          hidden: true
+        },
+        {
+          columnId: 'endDate',
+          text: 'Allowed date range',
+          csvTitle: 'To',
+          hidden: true
+        },
+        {
+          columnId: 'PermissionTemplate',
+          text: 'Permission template',
+          csvTitle: 'Permission template',
+          hidden: true
+        },
+        {
+          columnId: 'Allowedcontent',
+          text: 'Allowed content',
+          csvTitle: 'Allowed content',
+          hidden: true
+        },
+      ],
+      rows: []
+    }
+    this._user.permissionSets.forEach((fl, i) => {
+      data.rows.push({
+        cells: {
+          PermissionSetName: fl.setName,
+          Environment: fl.projectName,
+          ApprovalKey: fl.keyName,
+          KeyStatus: 'New',
+          Active: fl.isActive,
+          maxPatients: fl.size,
+          startDate: fl.fromDate,
+          endDate: fl.toDate
+          // PermissionTemplate: fl.researchTemplates ? fl.researchTemplates.map((t: any) => {
+          //   return t.template ? t.template.templateName : ''
+          // }).join(';') : '',
+          // Allowedcontent: fl.researchRestrictionEvents ? fl.researchRestrictionEvents.map((e: any) => {
+          //   return e.siteEventPropertyInfo ? `[(${e.siteEventInfo ? e.siteEventInfo.eventTableAlias : 'null'}) (${e.eventPropertyId}) (${e.value})]` : ''
+          // }).join(';') : ';',
+          // approvalKeyExpirationDate: fl.approvalKeyExpirationDate || ''
+        },
+        source: fl,
+        isActive: true
+      })
+    })
+    return data;
+  }
+
 
 }

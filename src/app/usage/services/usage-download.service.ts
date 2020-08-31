@@ -26,7 +26,7 @@ export class UsageDownloadService {
   ) { }
 
   get pdfParams(): any {
-    return [
+    return [[
       {
         text: `From Date: ${this.usageRequestService.usageRequest.fromDate}`
       },
@@ -39,16 +39,23 @@ export class UsageDownloadService {
       {
         text: `Environmet: ${this.usageRequestService.getEnironment().name}`
       }
+    ], [
+      {
+        text: `Include Admin Users: ${this.usageRequestService.usageRequest.includeAdmin ? 'Yes' : 'No'}`
+      },
+      {
+        text: `Environmet: ${this.usageRequestService.getEnironment().name}`
+      }]
     ];
   }
 
-  downloadPDF(downloadData: DownloadData): void {
+  downloadPDF(downloadData: DownloadData, paramIndex: number = 0): void {
     const documentDefinition: any = {
       header: this.createTop(downloadData),
       content: [
         {
           columns: [
-            this.pdfParams
+            this.pdfParams[paramIndex]
           ]
         }
       ],

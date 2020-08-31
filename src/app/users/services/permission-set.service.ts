@@ -32,6 +32,7 @@ export class PermissionSet {
   keyExpirationDate?: Date;
   keyName: string;
   project: any;
+  projectName?: string;
   fromSetId?: any;
   userId?: any;
   allowedEvent: number;
@@ -299,6 +300,15 @@ export class PermissionSetService extends BaseSibscriber {
   }
 
   isSaving = false;
+  selectedProject: any;
+
+  getSet(): any {
+    this.isAfterValidate = true;
+    if (!this.validate(true)) { return undefined; }
+    //return this.createSaveObject();
+
+    return this.permissionSet;
+  }
 
   save(): void {
     this.isAfterValidate = true;
@@ -559,12 +569,12 @@ export class PermissionSetService extends BaseSibscriber {
         if (permSet.researchStatus && permSet.researchStatus.toLowerCase() === 'initial ') {
           this.permissionSet.allowedEvent = NO_ALLOWED_EVENTS;
         }
-      
+
         if (permSet.researchTemplates) {
           this.templates.forEach(t => {
             t.isChecked = permSet.researchTemplates.find((x: any) => x.templateId.toString() === t.id.toString());
           });
-        } 
+        }
         this.setInitialSet();
       } else {
         // TO-DO update templates by set
