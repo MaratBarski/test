@@ -38,6 +38,6 @@ export const environment = {
     userList: 'mdclone/api/v1/user',
     research: 'mdclone/api/v1/research',
     formKey: 'mdclone/api/v1/config/form-key',
-    notificationUpdate:'mdclone/api/v1/config/notification'
+    notificationUpdate: 'mdclone/api/v1/config/notification'
   }
 };

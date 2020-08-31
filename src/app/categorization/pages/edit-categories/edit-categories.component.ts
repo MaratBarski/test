@@ -8,6 +8,7 @@ import { MapCategoryHeaderComponent } from '@app/categorization/components/map-c
 import { MapCategoryTableComponent } from '@app/categorization/components/map-category-table/map-category-table.component';
 import { UploadService, UploadInfo } from '@app/shared/services/upload.service';
 import { environment } from '@env/environment';
+import {ConfigService} from '@app/shared/services/config.service';
 
 @Component({
   selector: 'md-edit-categories',
@@ -40,7 +41,8 @@ export class EditCategoriesComponent extends BaseNavigation implements OnInit {
     protected navigationService: NavigationService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private uploadService: UploadService
+    private uploadService: UploadService,
+    private configService: ConfigService
   ) {
     super(navigationService);
     this.navigationService.currentPageID = undefined;//PageInfo.ManageHierarchies.id;
@@ -86,26 +88,26 @@ export class EditCategoriesComponent extends BaseNavigation implements OnInit {
     this.replaceCategory();
   }
 
-  private updateCategory(): void {
+  private async updateCategory(): Promise<void> {
     const category = JSON.parse(JSON.stringify(this.selectedCategory));
-    //alert(this.selectedCategory.data.notificationMessage);
-    //alert(this.selectedCategory.data.description);
-    //alert(this.selectedCategory.data.defaultLevelId);
-    //alert(this.selectedCategory.data.hierarchyName);
-    //alert(this.selectedCategory.data.hierarchyLevels[0].newHierarchyLevelName);
+    // alert(this.selectedCategory.data.notificationMessage);
+    // alert(this.selectedCategory.data.description);
+    // alert(this.selectedCategory.data.defaultLevelId);
+    // alert(this.selectedCategory.data.hierarchyName);
+    // alert(this.selectedCategory.data.hierarchyLevels[0].newHierarchyLevelName);
     category.data.hierarchyLevels.forEach((item: any) => {
       item.hierarchyLevelName = item.newHierarchyLevelName
       delete item.newHierarchyLevelName;
     });
 
-    const objToSend = {
+    const objToSend: any = {
       hierarchyName: category.data.hierarchyName,
       projectId: category.data.projectId,
       description: category.data.description,
       defaultLevelId: category.data.defaultLevelId,
       message: category.data.notificationMessage,
       hierarchyLevels: []
-      //hierarchyLevels: {}
+      // hierarchyLevels: {}
     };
 
     category.data.hierarchyLevels
@@ -115,13 +117,15 @@ export class EditCategoriesComponent extends BaseNavigation implements OnInit {
           hierarchyLevelId: l.hierarchyLevelId,
           hierarchyLevelName: l.hierarchyLevelName
         });
-        //objToSend.hierarchyLevels[l.hierarchyLevelId] = l.hierarchyLevelName;
+        // objToSend.hierarchyLevels[l.hierarchyLevelId] = l.hierarchyLevelName;
       });
 
-    //document.write(JSON.stringify(objToSend));
+    // document.write(JSON.stringify(objToSend));
 
     this.isLoading = true;
     this.isSaving = true;
+    const key = await this.configService.getFormKey();
+    objToSend.key = key.data.guid;
     super.add(
       this.editCategoryService.save(objToSend, category.data.hierarchyRootId).subscribe((res: any) => {
         this.isLoading = false;
@@ -136,7 +140,7 @@ export class EditCategoriesComponent extends BaseNavigation implements OnInit {
   private replaceCategory(): void {
     this.isHasChanges = true;
     if (!this.mapCategoryTable.validate()) { return; }
-    //const formData = this.categoryInfo.fileData.formData as FormData;
+    // const formData = this.categoryInfo.fileData.formData as FormData;
 
     const formData = new FormData();
     formData.append('file', (this.categoryInfo.fileData.formData as FormData).get('file'));
@@ -150,7 +154,7 @@ export class EditCategoriesComponent extends BaseNavigation implements OnInit {
       projectId: this.selectedCategory.data.projectId,
       hierarchyFilePath: this.selectedCategory.data.hierarchyFilePath,
       insertDate: this.selectedCategory.data.insertDate,
-      defaultLevelId: this.selectedCategory.data.defaultLevelId,//this.categoryInfo.selectedCategory.id
+      defaultLevelId: this.selectedCategory.data.defaultLevelId, // this.categoryInfo.selectedCategory.id
       hierarchyLoadingType: this.selectedCategory.data.hierarchyLoadingType,
       message: this.selectedCategory.data.notificationMessage,
       defaultCategory: {
