@@ -213,7 +213,7 @@ export class EditCategoriesComponent extends BaseNavigation implements OnInit {
         showInContainer: true,
         succComment: `Upload of ${categorization.hierarchyName} was successful and it is ready for review.`,
         startDate: new Date(),
-        progressTitle: `Categories for ${this.categoryInfo.fileData.formData.get('fileName')}.`,
+        progressTitle: `${this.categoryInfo.fileData.formData.get('fileName')}.`,
         showInToaster: true,
         containerEnable: true,
         type: ToasterType.infoProgressBar

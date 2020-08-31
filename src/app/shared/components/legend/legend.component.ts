@@ -12,8 +12,9 @@ export class LegendComponent {
   constructor() { }
 
   toogle(e: any): void {
+    const isOpen = this.isOpen;
     ComponentService.documentClick(e);
-    this.isOpen = true;
+    this.isOpen = !isOpen;
   }
 
   @HostListener('document:click', ['$event']) onMouseClick(event: any) {

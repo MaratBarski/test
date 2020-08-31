@@ -10,12 +10,12 @@
                 </ng-template>
             </mdc-auto-complete> -->
             <mdc-select (changed)="changed()"  [isInvalid]="isShowerror && roleItem.selectedTableName===-1" [(ngModel)]="roleItem.selectedTableName" [options]="roleItem.tableNames"
-                placeholder="Select Property..." [isSmall]="true"></mdc-select>
+                placeholder="Select Event..." [isSmall]="true"></mdc-select>
         </div>
         <div class="rule-build-item__select">
             <div class="drop-auto">
                 <mdc-select  (changed)="changed()" [isInvalid]="isShowerror && roleItem.selectedPropertyName===-1" [(ngModel)]="roleItem.selectedPropertyName"
-                    [options]="roleItem.propertyNames" placeholder="Select Event..." [isSmall]="true"></mdc-select>
+                    [options]="roleItem.propertyNames" placeholder="Select Property..." [isSmall]="true"></mdc-select>
             </div>
         </div>
         <div class="rule-build-item__input">

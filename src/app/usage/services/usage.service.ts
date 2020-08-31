@@ -71,9 +71,9 @@ export class UsageService {
     if (!files) { return data }
 
     files.forEach((fl, i) => {
-      if (!this.usageRequestService.isUserInList(fl.userId)) {
-        return;
-      }
+      // if (!this.usageRequestService.isUserInList(fl.userId)) {
+      //   return;
+      // }
       data.rows.push({
         cells: {
           login: fl.userName,

@@ -31,9 +31,12 @@ export class NavigationService {
   get onNavigationEnd(): Observable<any> {
     return this._onNavigationEnd.asObservable();
   }
-
+  get onReload(): Observable<any> {
+    return this._onReload.asObservable();
+  }
   private _onNavigationStart = new Subject<string>();
   private _onNavigationEnd = new Subject();
+  private _onReload = new Subject();
 
   set currentPageID(currentPageID: string) {
     SideMenu.filter(x => x.active).forEach(x => x.active = false);
@@ -53,6 +56,10 @@ export class NavigationService {
 
   afterNavigate(): void {
     this._onNavigationEnd.next();
+  }
+
+  reload(): void {
+    this._onReload.next();
   }
 
 }

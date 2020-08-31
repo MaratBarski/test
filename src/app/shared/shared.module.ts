@@ -72,7 +72,8 @@ import { ToolTipManagerDirective } from './directives/tool-tip-manager.directive
     FormatNumberPipe,
     ConfirmDialogComponent,
     TooltipModule,
-    ToolTipManagerDirective
+    ToolTipManagerDirective,
+    LegendComponent
   ],
   entryComponents: [
   ]

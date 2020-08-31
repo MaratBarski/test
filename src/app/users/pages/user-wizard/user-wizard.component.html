@@ -1,4 +1,4 @@
-<div class="main-content">
+<div *ngIf="!userEditService.isLoading" class="main-content">
     <div class="content-page">
         <md-header pageTitle="create new user"></md-header>
         <!-- {{userEditService.user|json}} -->
@@ -18,7 +18,7 @@
         </section>
     </div>
 </div>
-<md-footer [isNextEnable]="isNextEnable" [isSaveEnable]="isSaveEnable" (onCancel)="cancel()" (onNext)="next($event)" (onSave)="save()" (onOptionClick)="optionClick($event)" [btnOptions]="btnOptions"></md-footer>
+<md-footer *ngIf="!userEditService.isLoading" [isNextEnable]="isNextEnable" [isSaveEnable]="isSaveEnable" (onCancel)="cancel()" (onNext)="next($event)" (onSave)="save()" (onOptionClick)="optionClick($event)" [btnOptions]="btnOptions"></md-footer>
 
 <md-confirm-dialog *ngIf="showChangesConfirm" confirmText="Yes" cancelText="No, stay on page" name="Leaving User Page" subName="Changes you made will be lost."
     subText="Do you wish to leave the page?" text="" (onCancel)="cancelChanges()"

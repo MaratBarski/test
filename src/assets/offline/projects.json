@@ -1,0 +1,66 @@
+{
+    "data": [
+        {
+            "projectId": "6",
+            "projectName": "ETL project",
+            "defaultSiteId": "3",
+            "UserType": {
+                "userId": "5",
+                "projectId": "6",
+                "userType": "ADMIN",
+                "anonymityLevel": 1,
+                "numericScatterLimit": 1
+            }
+        },
+        {
+            "projectId": "1",
+            "projectName": "Demo Project",
+            "defaultSiteId": "1",
+            "UserType": {
+                "userId": "5",
+                "projectId": "1",
+                "userType": "ADMIN",
+                "anonymityLevel": 1,
+                "numericScatterLimit": 0
+            }
+        },
+        {
+            "projectId": "8",
+            "projectName": "TestProject",
+            "defaultSiteId": null,
+            "UserType": {
+                "userId": "5",
+                "projectId": "8",
+                "userType": "ADMIN",
+                "anonymityLevel": 1,
+                "numericScatterLimit": 1
+            }
+        },
+        {
+            "projectId": "15",
+            "projectName": "BIG Project",
+            "defaultSiteId": "13",
+            "UserType": {
+                "userId": "5",
+                "projectId": "15",
+                "userType": "ADMIN",
+                "anonymityLevel": 1,
+                "numericScatterLimit": 1
+            }
+        },
+        {
+            "projectId": "14",
+            "projectName": "Training Mimic Data",
+            "defaultSiteId": "12",
+            "UserType": {
+                "userId": "5",
+                "projectId": "14",
+                "userType": "RESEARCHER",
+                "anonymityLevel": 4,
+                "numericScatterLimit": 0
+            }
+        }
+    ],
+    "massage": "Get all Project's Objects",
+    "status": "success"
+}
