@@ -46,7 +46,7 @@
                     </div>
                 </div>
             </div>
-            <div class="user-details-param">
+            <div class="user-details-param" [hidden]="userEditService.user.isSuperAdmin">
                 <div class="user-details-param__title">Select the environments that are accessible to the user:</div>
                 <div class="user-details-param__content">
                     <div class="user-details-param__item"

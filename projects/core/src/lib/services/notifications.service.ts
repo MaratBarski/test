@@ -57,7 +57,8 @@ const NOTIFICATION_MAP: Array<{ client: string, server: string }> = [
   { client: 'link', server: 'link' },
   { client: 'key', server: 'key' },
   { client: 'startDate', server: 'startDate' },
-  { client: 'type', server: 'type' }
+  { client: 'type', server: 'type' },
+  { client: 'progressTitle', server: 'progressTitle' }
 ];
 
 @Injectable({
