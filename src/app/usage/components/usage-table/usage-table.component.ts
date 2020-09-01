@@ -80,7 +80,6 @@ export class UsageTableComponent extends UsageBase {
   }
 
   private toCSV(): void {
-    alert('TableModel csv');
   }
 
   createReport(): void {

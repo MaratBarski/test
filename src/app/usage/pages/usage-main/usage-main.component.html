@@ -1,6 +1,6 @@
 <div class="usage-dashboard" *ngIf="usageRequestService.isLoading">
     <md-usage-header></md-usage-header>
-    <md-usage-dashboard-top [selectedUrl]="currentPage"></md-usage-dashboard-top>
+    <md-usage-dashboard-top [pdfDisabled]="currentPage==='activity-per-user'" [selectedUrl]="currentPage"></md-usage-dashboard-top>
     <md-usage-dashboard-info-panel (onInitUsers)="initUsers()"
         [showUsers]="currentPage==='activity-per-user'||currentPage==='table'"
         [hideUsers]="currentPage==='table'"

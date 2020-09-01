@@ -1,10 +1,12 @@
 <div class="split-btn">
     <div (click)="downloadDefault()" class="split-btn__title">Download as CSV</div>
     <div (click)="expand($event)" class="split-btn__arr">
-        <svg class="icon ic-select-arr-down" mdcSvg="ic-select-arr-down">
-        </svg>
+        <span [hidden]="pdfDisabled">
+            <svg class="icon ic-select-arr-down" mdcSvg="ic-select-arr-down">
+            </svg>
+        </span>
     </div>
-    <div [hidden]="!isExpanded" class="split-btn__popup">
+    <div [hidden]="!isExpanded || pdfDisabled" class="split-btn__popup">
         <div (click)="download(pdf)" class="split-btn__item">Download Current View as PDF</div>
     </div>
 </div>

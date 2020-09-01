@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output, HostListener } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, HostListener, Input } from '@angular/core';
 import { ComponentService } from '@app/core-api';
 
 
@@ -19,6 +19,7 @@ export class DownloadSelectorComponent {
   downloadOption: DownloadOption = DownloadOption.none;
   @Output() onSelect = new EventEmitter<DownloadOption>();
   @Output() onDownloadDefault = new EventEmitter<void>();
+  @Input() pdfDisabled = false;
 
   readonly csv = DownloadOption.csv;
   readonly pdf = DownloadOption.pdf;
@@ -33,6 +34,10 @@ export class DownloadSelectorComponent {
     }, 100);
   }
   expand(event: any): void {
+    if (this.pdfDisabled) {
+      this.downloadDefault();
+      return;
+    }
     if (this.isExpanded) {
       this.isExpanded = false;
       return;
@@ -45,7 +50,7 @@ export class DownloadSelectorComponent {
   @HostListener('document:click', ['$event']) onMouseClick(event: any) {
     this.isExpanded = false;
   }
-  
+
   downloadDefault(): void {
     this.onDownloadDefault.emit();
   }

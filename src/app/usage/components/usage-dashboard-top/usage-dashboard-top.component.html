@@ -4,7 +4,7 @@
             <div class="col-12">
                 <div class="usage-dashboard-top__content">
                     <div class="link-load">
-                        <md-download-selector (onDownloadDefault)="downloadCsv()" (onSelect)="download($event)"></md-download-selector>
+                        <md-download-selector [pdfDisabled]="pdfDisabled" (onDownloadDefault)="downloadCsv()" (onSelect)="download($event)"></md-download-selector>
                     </div>
                     <div class="usage-dashboard-top__tab">
                         <div class="tabs-page">

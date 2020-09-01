@@ -50,6 +50,8 @@ export class UsageDashboardTopComponent extends BaseSibscriber {
   includeAdmin = 'false';
   years = 0;
 
+  @Input() pdfDisabled = false;
+
   @Input() set selectedUrl(selectedUrl: string) {
     const link = this.links.find(l => l.url === selectedUrl && l.hidden);
     this._selectedUrl = selectedUrl;

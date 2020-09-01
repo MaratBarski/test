@@ -68,7 +68,7 @@ export class UsageService {
       rows: []
     }
 
-    if (!files) { return data }
+    if (!files || !files.length) { return data }
 
     files.forEach((fl, i) => {
       // if (!this.usageRequestService.isUserInList(fl.userId)) {

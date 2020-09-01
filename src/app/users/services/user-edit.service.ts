@@ -152,6 +152,7 @@ export class UserEditService {
         cellPhone: '',
         domain: "",
         photo: undefined,
+        enabled: true,
         permissionSets: []
       }
     };
