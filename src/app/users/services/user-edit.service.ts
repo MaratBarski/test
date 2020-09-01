@@ -31,7 +31,11 @@ export class UserEditService {
     userName: {
       isMissing: false,
       isError: false
-    }
+    },
+    password: {
+      isMissing: false,
+      isError: false
+    },
   }
 
   constructor(
@@ -131,6 +135,8 @@ export class UserEditService {
       data: {
         id: "0",
         login: '',
+        userName: '',
+        password: '',
         firstName: '',
         lastName: '',
         email: '',

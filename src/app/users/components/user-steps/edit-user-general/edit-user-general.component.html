@@ -14,9 +14,9 @@
                     missingText="Missing user name" label="User Name:" class="user-details-main__item">
                 </md-input-item>
 
-                <md-input-item *ngIf="userEditService.securityType===0" [(ngModel)]="userEditService.user.userName"
-                    [isError]="userEditService.missingItem.userName.isError"
-                    [isMissing]="userEditService.missingItem.userName.isError" placeHolder="Type user name"
+                <md-input-item *ngIf="userEditService.securityType===0" [(ngModel)]="userEditService.user.password"
+                    [isError]="userEditService.missingItem.password.isError" type="password"
+                    [isMissing]="userEditService.missingItem.password.isError" placeHolder="Type password"
                     missingText="Missing user name" label="Password:" class="user-details-main__item">
                 </md-input-item>
 

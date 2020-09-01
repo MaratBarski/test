@@ -11,9 +11,9 @@ export class UsageUserPipe implements PipeTransform {
     searchOption.text = searchOption.text.trim().toLowerCase();
     return users.filter((user: any) => {
       const res = user.login && user.login.trim().toLowerCase().indexOf(searchOption.text) !== -1;
-      if (!res) {
-        user.isChecked = false;
-      }
+      // if (!res) {
+      //   user.isChecked = false;
+      // }
       return res;
     });
   }
