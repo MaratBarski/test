@@ -2,187 +2,6246 @@
     "data": {
         "newQuery": [
             {
-                "date": "AUG-18",
-                "userName": "a long dsfasdf dasf dsf dsfds 123456789",
-                "userId": 159,
-                "count": 2
+                "date": "AUG-19",
+                "userName": "Eli Copter",
+                "userId": 2563,
+                "count": 0
             },
             {
-                "date": "SEP-18",
+                "date": "AUG-19",
+                "userName": "Eyal Naftalovich",
+                "userId": 1061,
+                "count": 0
+            },
+            {
+                "date": "AUG-19",
+                "userName": "Project Admin",
+                "userId": 1750,
+                "count": 0
+            },
+            {
+                "date": "AUG-19",
+                "userName": "User User",
+                "userId": 4,
+                "count": 0
+            },
+            {
+                "date": "AUG-19",
+                "userName": "Researcher One",
+                "userId": 1000,
+                "count": 0
+            },
+            {
+                "date": "AUG-19",
+                "userName": "Sariel Admin",
+                "userId": 10,
+                "count": 0
+            },
+            {
+                "date": "AUG-19",
+                "userName": "Andrey Romanov",
+                "userId": 9459,
+                "count": 0
+            },
+            {
+                "date": "AUG-19",
+                "userName": "Elena Khitrova",
+                "userId": 1019,
+                "count": 0
+            },
+            {
+                "date": "AUG-19",
+                "userName": "Nadia Vigdar",
+                "userId": 1005,
+                "count": 0
+            },
+            {
+                "date": "AUG-19",
+                "userName": "Sariel Sharfi",
+                "userId": 9,
+                "count": 0
+            },
+            {
+                "date": "AUG-19",
+                "userName": "user user",
+                "userId": 4114,
+                "count": 0
+            },
+            {
+                "date": "AUG-19",
                 "userName": "Lior Halachmi",
-                "userId": 1,
-                "count": 2
+                "userId": 1078,
+                "count": 0
             },
             {
-                "date": "NOV-18",
+                "date": "AUG-19",
+                "userName": "Admin gggg1 Admin",
+                "userId": 5,
+                "count": 0
+            },
+            {
+                "date": "AUG-19",
+                "userName": "test2222 teste22222",
+                "userId": 3802,
+                "count": 0
+            },
+            {
+                "date": "AUG-19",
+                "userName": "VeryverylongnameVeryverylongnameVeryvery 1111111111-2222222222",
+                "userId": 8765,
+                "count": 0
+            },
+            {
+                "date": "AUG-19",
+                "userName": "r_test !@#$%^&*() r_test _+-={}[]:\";'|\\~`??><",
+                "userId": 2026,
+                "count": 0
+            },
+            {
+                "date": "AUG-19",
+                "userName": "Anonymous User",
+                "userId": 2,
+                "count": 0
+            },
+            {
+                "date": "AUG-19",
+                "userName": "Miriam Caduri",
+                "userId": 1007,
+                "count": 0
+            },
+            {
+                "date": "AUG-19",
+                "userName": "Efrat Kliper",
+                "userId": 2260,
+                "count": 0
+            },
+            {
+                "date": "AUG-19",
+                "userName": "Training User",
+                "userId": 2507,
+                "count": 0
+            },
+            {
+                "date": "AUG-19",
+                "userName": "keren rose",
+                "userId": 1381,
+                "count": 0
+            },
+            {
+                "date": "AUG-19",
+                "userName": "Dotan Perlstein",
+                "userId": 8803,
+                "count": 0
+            },
+            {
+                "date": "AUG-19",
+                "userName": "jjj kkkk",
+                "userId": 1993,
+                "count": 0
+            },
+            {
+                "date": "AUG-19",
+                "userName": "John Doe",
+                "userId": 2569,
+                "count": 0
+            },
+            {
+                "date": "AUG-19",
+                "userName": "Omry Test Omry Test",
+                "userId": 16,
+                "count": 0
+            },
+            {
+                "date": "AUG-19",
+                "userName": "Naava Szyper",
+                "userId": 9136,
+                "count": 0
+            },
+            {
+                "date": "AUG-19",
+                "userName": "Ruth H",
+                "userId": 2783,
+                "count": 0
+            },
+            {
+                "date": "AUG-19",
+                "userName": "Naava Sadi",
+                "userId": 2253,
+                "count": 0
+            },
+            {
+                "date": "AUG-19",
+                "userName": "Sariel New",
+                "userId": 11,
+                "count": 0
+            },
+            {
+                "date": "AUG-19",
+                "userName": "omry atia",
+                "userId": 1004,
+                "count": 0
+            },
+            {
+                "date": "AUG-19",
+                "userName": "moshe kamer",
+                "userId": 1735,
+                "count": 0
+            },
+            {
+                "date": "AUG-19",
+                "userName": "john brunck",
+                "userId": 2011,
+                "count": 0
+            },
+            {
+                "date": "AUG-19",
+                "userName": "Admin Admin",
+                "userId": 3,
+                "count": 0
+            },
+            {
+                "date": "AUG-19",
+                "userName": "Iris Green",
+                "userId": 8952,
+                "count": 0
+            },
+            {
+                "date": "AUG-19",
+                "userName": "Hagai Benkuzari",
+                "userId": 2254,
+                "count": 0
+            },
+            {
+                "date": "AUG-19",
+                "userName": "Ekaterina Ivnitckaya",
+                "userId": 4109,
+                "count": 0
+            },
+            {
+                "date": "AUG-19",
+                "userName": "test test",
+                "userId": 4115,
+                "count": 0
+            },
+            {
+                "date": "AUG-19",
+                "userName": "Noa Zam",
+                "userId": 4066,
+                "count": 0
+            },
+            {
+                "date": "AUG-19",
+                "userName": "Alon Pesok",
+                "userId": 1008,
+                "count": 0
+            },
+            {
+                "date": "AUG-19",
+                "userName": "System System",
+                "userId": 1,
+                "count": 0
+            },
+            {
+                "date": "SEP-19",
+                "userName": "Noa Zam",
+                "userId": 4066,
+                "count": 0
+            },
+            {
+                "date": "SEP-19",
+                "userName": "Eli Copter",
+                "userId": 2563,
+                "count": 0
+            },
+            {
+                "date": "SEP-19",
+                "userName": "keren rose",
+                "userId": 1381,
+                "count": 0
+            },
+            {
+                "date": "SEP-19",
+                "userName": "Efrat Kliper",
+                "userId": 2260,
+                "count": 0
+            },
+            {
+                "date": "SEP-19",
+                "userName": "Ruth H",
+                "userId": 2783,
+                "count": 0
+            },
+            {
+                "date": "SEP-19",
+                "userName": "Hagai Benkuzari",
+                "userId": 2254,
+                "count": 0
+            },
+            {
+                "date": "SEP-19",
+                "userName": "Anonymous User",
+                "userId": 2,
+                "count": 0
+            },
+            {
+                "date": "SEP-19",
+                "userName": "Omry Test Omry Test",
+                "userId": 16,
+                "count": 0
+            },
+            {
+                "date": "SEP-19",
+                "userName": "Sariel New",
+                "userId": 11,
+                "count": 0
+            },
+            {
+                "date": "SEP-19",
+                "userName": "System System",
+                "userId": 1,
+                "count": 0
+            },
+            {
+                "date": "SEP-19",
+                "userName": "Alon Pesok",
+                "userId": 1008,
+                "count": 0
+            },
+            {
+                "date": "SEP-19",
+                "userName": "Iris Green",
+                "userId": 8952,
+                "count": 0
+            },
+            {
+                "date": "SEP-19",
+                "userName": "Elena Khitrova",
+                "userId": 1019,
+                "count": 0
+            },
+            {
+                "date": "SEP-19",
+                "userName": "Researcher One",
+                "userId": 1000,
+                "count": 0
+            },
+            {
+                "date": "SEP-19",
+                "userName": "Andrey Romanov",
+                "userId": 9459,
+                "count": 0
+            },
+            {
+                "date": "SEP-19",
+                "userName": "Nadia Vigdar",
+                "userId": 1005,
+                "count": 0
+            },
+            {
+                "date": "SEP-19",
+                "userName": "user user",
+                "userId": 4114,
+                "count": 0
+            },
+            {
+                "date": "SEP-19",
+                "userName": "Sariel Admin",
+                "userId": 10,
+                "count": 0
+            },
+            {
+                "date": "SEP-19",
                 "userName": "Lior Halachmi",
+                "userId": 1078,
+                "count": 0
+            },
+            {
+                "date": "SEP-19",
+                "userName": "omry atia",
+                "userId": 1004,
+                "count": 0
+            },
+            {
+                "date": "SEP-19",
+                "userName": "Sariel Sharfi",
+                "userId": 9,
+                "count": 0
+            },
+            {
+                "date": "SEP-19",
+                "userName": "moshe kamer",
+                "userId": 1735,
+                "count": 0
+            },
+            {
+                "date": "SEP-19",
+                "userName": "test test",
+                "userId": 4115,
+                "count": 0
+            },
+            {
+                "date": "SEP-19",
+                "userName": "r_test !@#$%^&*() r_test _+-={}[]:\";'|\\~`??><",
+                "userId": 2026,
+                "count": 0
+            },
+            {
+                "date": "SEP-19",
+                "userName": "John Doe",
+                "userId": 2569,
+                "count": 0
+            },
+            {
+                "date": "SEP-19",
+                "userName": "jjj kkkk",
+                "userId": 1993,
+                "count": 0
+            },
+            {
+                "date": "SEP-19",
+                "userName": "Naava Sadi",
+                "userId": 2253,
+                "count": 0
+            },
+            {
+                "date": "SEP-19",
+                "userName": "Miriam Caduri",
+                "userId": 1007,
+                "count": 0
+            },
+            {
+                "date": "SEP-19",
+                "userName": "john brunck",
+                "userId": 2011,
+                "count": 0
+            },
+            {
+                "date": "SEP-19",
+                "userName": "Admin Admin",
+                "userId": 3,
+                "count": 0
+            },
+            {
+                "date": "SEP-19",
+                "userName": "Eyal Naftalovich",
+                "userId": 1061,
+                "count": 0
+            },
+            {
+                "date": "SEP-19",
+                "userName": "Naava Szyper",
+                "userId": 9136,
+                "count": 0
+            },
+            {
+                "date": "SEP-19",
+                "userName": "test2222 teste22222",
+                "userId": 3802,
+                "count": 0
+            },
+            {
+                "date": "SEP-19",
+                "userName": "User User",
+                "userId": 4,
+                "count": 0
+            },
+            {
+                "date": "SEP-19",
+                "userName": "VeryverylongnameVeryverylongnameVeryvery 1111111111-2222222222",
+                "userId": 8765,
+                "count": 0
+            },
+            {
+                "date": "SEP-19",
+                "userName": "Admin gggg1 Admin",
+                "userId": 5,
+                "count": 0
+            },
+            {
+                "date": "SEP-19",
+                "userName": "Project Admin",
+                "userId": 1750,
+                "count": 0
+            },
+            {
+                "date": "SEP-19",
+                "userName": "Ekaterina Ivnitckaya",
+                "userId": 4109,
+                "count": 0
+            },
+            {
+                "date": "SEP-19",
+                "userName": "Training User",
+                "userId": 2507,
+                "count": 0
+            },
+            {
+                "date": "SEP-19",
+                "userName": "Dotan Perlstein",
+                "userId": 8803,
+                "count": 0
+            },
+            {
+                "date": "OCT-19",
+                "userName": "Admin Admin",
+                "userId": 3,
+                "count": 0
+            },
+            {
+                "date": "OCT-19",
+                "userName": "Nadia Vigdar",
+                "userId": 1005,
+                "count": 0
+            },
+            {
+                "date": "OCT-19",
+                "userName": "Sariel Sharfi",
+                "userId": 9,
+                "count": 0
+            },
+            {
+                "date": "OCT-19",
+                "userName": "Naava Sadi",
+                "userId": 2253,
+                "count": 0
+            },
+            {
+                "date": "OCT-19",
+                "userName": "Andrey Romanov",
+                "userId": 9459,
+                "count": 0
+            },
+            {
+                "date": "OCT-19",
+                "userName": "Dotan Perlstein",
+                "userId": 8803,
+                "count": 0
+            },
+            {
+                "date": "OCT-19",
+                "userName": "Eli Copter",
+                "userId": 2563,
+                "count": 0
+            },
+            {
+                "date": "OCT-19",
+                "userName": "Sariel Admin",
+                "userId": 10,
+                "count": 0
+            },
+            {
+                "date": "OCT-19",
+                "userName": "Miriam Caduri",
+                "userId": 1007,
+                "count": 0
+            },
+            {
+                "date": "OCT-19",
+                "userName": "Researcher One",
+                "userId": 1000,
+                "count": 0
+            },
+            {
+                "date": "OCT-19",
+                "userName": "Lior Halachmi",
+                "userId": 1078,
+                "count": 0
+            },
+            {
+                "date": "OCT-19",
+                "userName": "Noa Zam",
+                "userId": 4066,
+                "count": 0
+            },
+            {
+                "date": "OCT-19",
+                "userName": "Admin gggg1 Admin",
+                "userId": 5,
+                "count": 0
+            },
+            {
+                "date": "OCT-19",
+                "userName": "Elena Khitrova",
+                "userId": 1019,
+                "count": 0
+            },
+            {
+                "date": "OCT-19",
+                "userName": "Efrat Kliper",
+                "userId": 2260,
+                "count": 0
+            },
+            {
+                "date": "OCT-19",
+                "userName": "User User",
+                "userId": 4,
+                "count": 0
+            },
+            {
+                "date": "OCT-19",
+                "userName": "r_test !@#$%^&*() r_test _+-={}[]:\";'|\\~`??><",
+                "userId": 2026,
+                "count": 0
+            },
+            {
+                "date": "OCT-19",
+                "userName": "jjj kkkk",
+                "userId": 1993,
+                "count": 0
+            },
+            {
+                "date": "OCT-19",
+                "userName": "john brunck",
+                "userId": 2011,
+                "count": 0
+            },
+            {
+                "date": "OCT-19",
+                "userName": "Naava Szyper",
+                "userId": 9136,
+                "count": 0
+            },
+            {
+                "date": "OCT-19",
+                "userName": "Omry Test Omry Test",
+                "userId": 16,
+                "count": 0
+            },
+            {
+                "date": "OCT-19",
+                "userName": "user user",
+                "userId": 4114,
+                "count": 0
+            },
+            {
+                "date": "OCT-19",
+                "userName": "test test",
+                "userId": 4115,
+                "count": 0
+            },
+            {
+                "date": "OCT-19",
+                "userName": "test2222 teste22222",
+                "userId": 3802,
+                "count": 0
+            },
+            {
+                "date": "OCT-19",
+                "userName": "Anonymous User",
+                "userId": 2,
+                "count": 0
+            },
+            {
+                "date": "OCT-19",
+                "userName": "Eyal Naftalovich",
+                "userId": 1061,
+                "count": 0
+            },
+            {
+                "date": "OCT-19",
+                "userName": "Alon Pesok",
+                "userId": 1008,
+                "count": 0
+            },
+            {
+                "date": "OCT-19",
+                "userName": "Iris Green",
+                "userId": 8952,
+                "count": 0
+            },
+            {
+                "date": "OCT-19",
+                "userName": "omry atia",
+                "userId": 1004,
+                "count": 0
+            },
+            {
+                "date": "OCT-19",
+                "userName": "Sariel New",
+                "userId": 11,
+                "count": 0
+            },
+            {
+                "date": "OCT-19",
+                "userName": "Ruth H",
+                "userId": 2783,
+                "count": 0
+            },
+            {
+                "date": "OCT-19",
+                "userName": "keren rose",
+                "userId": 1381,
+                "count": 0
+            },
+            {
+                "date": "OCT-19",
+                "userName": "Hagai Benkuzari",
+                "userId": 2254,
+                "count": 0
+            },
+            {
+                "date": "OCT-19",
+                "userName": "VeryverylongnameVeryverylongnameVeryvery 1111111111-2222222222",
+                "userId": 8765,
+                "count": 0
+            },
+            {
+                "date": "OCT-19",
+                "userName": "System System",
                 "userId": 1,
-                "count": 2
+                "count": 0
             },
             {
-                "date": "AUG-18",
-                "userName": "1 Halachmi",
+                "date": "OCT-19",
+                "userName": "John Doe",
+                "userId": 2569,
+                "count": 0
+            },
+            {
+                "date": "OCT-19",
+                "userName": "Project Admin",
+                "userId": 1750,
+                "count": 0
+            },
+            {
+                "date": "OCT-19",
+                "userName": "moshe kamer",
+                "userId": 1735,
+                "count": 0
+            },
+            {
+                "date": "OCT-19",
+                "userName": "Ekaterina Ivnitckaya",
+                "userId": 4109,
+                "count": 0
+            },
+            {
+                "date": "OCT-19",
+                "userName": "Training User",
+                "userId": 2507,
+                "count": 0
+            },
+            {
+                "date": "NOV-19",
+                "userName": "Eyal Naftalovich",
+                "userId": 1061,
+                "count": 0
+            },
+            {
+                "date": "NOV-19",
+                "userName": "Sariel Sharfi",
+                "userId": 9,
+                "count": 0
+            },
+            {
+                "date": "NOV-19",
+                "userName": "John Doe",
+                "userId": 2569,
+                "count": 0
+            },
+            {
+                "date": "NOV-19",
+                "userName": "Sariel New",
+                "userId": 11,
+                "count": 0
+            },
+            {
+                "date": "NOV-19",
+                "userName": "Iris Green",
+                "userId": 8952,
+                "count": 0
+            },
+            {
+                "date": "NOV-19",
+                "userName": "Alon Pesok",
+                "userId": 1008,
+                "count": 0
+            },
+            {
+                "date": "NOV-19",
+                "userName": "r_test !@#$%^&*() r_test _+-={}[]:\";'|\\~`??><",
+                "userId": 2026,
+                "count": 0
+            },
+            {
+                "date": "NOV-19",
+                "userName": "Anonymous User",
                 "userId": 2,
-                "count": 2
+                "count": 0
             },
             {
-                "date": "SEP-18",
-                "userName": "1 Halachmi",
-                "userId": 2,
-                "count": 6
+                "date": "NOV-19",
+                "userName": "Admin gggg1 Admin",
+                "userId": 5,
+                "count": 0
             },
             {
-                "date": "NOV-18",
-                "userName": "1 Halachmi",
-                "userId": 2,
-                "count": 5
-            },
-
-            {
-                "date": "AUG-18",
-                "userName": "2 Halachmi",
-                "userId": 3,
-                "count": 4
+                "date": "NOV-19",
+                "userName": "User User",
+                "userId": 4,
+                "count": 0
             },
             {
-                "date": "SEP-18",
-                "userName": "2 Halachmi",
-                "userId": 3,
+                "date": "NOV-19",
+                "userName": "VeryverylongnameVeryverylongnameVeryvery 1111111111-2222222222",
+                "userId": 8765,
+                "count": 0
+            },
+            {
+                "date": "NOV-19",
+                "userName": "Ekaterina Ivnitckaya",
+                "userId": 4109,
+                "count": 0
+            },
+            {
+                "date": "NOV-19",
+                "userName": "Project Admin",
+                "userId": 1750,
+                "count": 0
+            },
+            {
+                "date": "NOV-19",
+                "userName": "Eli Copter",
+                "userId": 2563,
+                "count": 0
+            },
+            {
+                "date": "NOV-19",
+                "userName": "Dotan Perlstein",
+                "userId": 8803,
+                "count": 0
+            },
+            {
+                "date": "NOV-19",
+                "userName": "Training User",
+                "userId": 2507,
+                "count": 0
+            },
+            {
+                "date": "NOV-19",
+                "userName": "keren rose",
+                "userId": 1381,
+                "count": 0
+            },
+            {
+                "date": "NOV-19",
+                "userName": "Lior Halachmi",
+                "userId": 1078,
                 "count": 1
             },
             {
-                "date": "NOV-18",
-                "userName": "2 Halachmi",
+                "date": "NOV-19",
+                "userName": "Sariel Admin",
+                "userId": 10,
+                "count": 0
+            },
+            {
+                "date": "NOV-19",
+                "userName": "user user",
+                "userId": 4114,
+                "count": 0
+            },
+            {
+                "date": "NOV-19",
+                "userName": "Nadia Vigdar",
+                "userId": 1005,
+                "count": 0
+            },
+            {
+                "date": "NOV-19",
+                "userName": "Elena Khitrova",
+                "userId": 1019,
+                "count": 0
+            },
+            {
+                "date": "NOV-19",
+                "userName": "Andrey Romanov",
+                "userId": 9459,
+                "count": 0
+            },
+            {
+                "date": "NOV-19",
+                "userName": "Researcher One",
+                "userId": 1000,
+                "count": 1
+            },
+            {
+                "date": "NOV-19",
+                "userName": "test test",
+                "userId": 4115,
+                "count": 0
+            },
+            {
+                "date": "NOV-19",
+                "userName": "moshe kamer",
+                "userId": 1735,
+                "count": 0
+            },
+            {
+                "date": "NOV-19",
+                "userName": "omry atia",
+                "userId": 1004,
+                "count": 0
+            },
+            {
+                "date": "NOV-19",
+                "userName": "Naava Sadi",
+                "userId": 2253,
+                "count": 0
+            },
+            {
+                "date": "NOV-19",
+                "userName": "jjj kkkk",
+                "userId": 1993,
+                "count": 0
+            },
+            {
+                "date": "NOV-19",
+                "userName": "test2222 teste22222",
+                "userId": 3802,
+                "count": 0
+            },
+            {
+                "date": "NOV-19",
+                "userName": "Miriam Caduri",
+                "userId": 1007,
+                "count": 0
+            },
+            {
+                "date": "NOV-19",
+                "userName": "Naava Szyper",
+                "userId": 9136,
+                "count": 0
+            },
+            {
+                "date": "NOV-19",
+                "userName": "Admin Admin",
                 "userId": 3,
-                "count": 3
-            },
-
-            {
-                "date": "AUG-18",
-                "userName": "3 Halachmi",
-                "userId":4,
-                "count": 3
+                "count": 0
             },
             {
-                "date": "SEP-18",
-                "userName": "3 Halachmi",
+                "date": "NOV-19",
+                "userName": "john brunck",
+                "userId": 2011,
+                "count": 0
+            },
+            {
+                "date": "NOV-19",
+                "userName": "Efrat Kliper",
+                "userId": 2260,
+                "count": 0
+            },
+            {
+                "date": "NOV-19",
+                "userName": "Omry Test Omry Test",
+                "userId": 16,
+                "count": 0
+            },
+            {
+                "date": "NOV-19",
+                "userName": "Hagai Benkuzari",
+                "userId": 2254,
+                "count": 0
+            },
+            {
+                "date": "NOV-19",
+                "userName": "Ruth H",
+                "userId": 2783,
+                "count": 0
+            },
+            {
+                "date": "NOV-19",
+                "userName": "Noa Zam",
+                "userId": 4066,
+                "count": 0
+            },
+            {
+                "date": "NOV-19",
+                "userName": "System System",
+                "userId": 1,
+                "count": 0
+            },
+            {
+                "date": "DEC-19",
+                "userName": "Researcher One",
+                "userId": 1000,
+                "count": 1
+            },
+            {
+                "date": "DEC-19",
+                "userName": "test test",
+                "userId": 4115,
+                "count": 0
+            },
+            {
+                "date": "DEC-19",
+                "userName": "Ekaterina Ivnitckaya",
+                "userId": 4109,
+                "count": 0
+            },
+            {
+                "date": "DEC-19",
+                "userName": "Eli Copter",
+                "userId": 2563,
+                "count": 0
+            },
+            {
+                "date": "DEC-19",
+                "userName": "John Doe",
+                "userId": 2569,
+                "count": 0
+            },
+            {
+                "date": "DEC-19",
+                "userName": "omry atia",
+                "userId": 1004,
+                "count": 0
+            },
+            {
+                "date": "DEC-19",
+                "userName": "moshe kamer",
+                "userId": 1735,
+                "count": 0
+            },
+            {
+                "date": "DEC-19",
+                "userName": "Admin gggg1 Admin",
+                "userId": 5,
+                "count": 0
+            },
+            {
+                "date": "DEC-19",
+                "userName": "Iris Green",
+                "userId": 8952,
+                "count": 0
+            },
+            {
+                "date": "DEC-19",
+                "userName": "Omry Test Omry Test",
+                "userId": 16,
+                "count": 0
+            },
+            {
+                "date": "DEC-19",
+                "userName": "jjj kkkk",
+                "userId": 1993,
+                "count": 0
+            },
+            {
+                "date": "DEC-19",
+                "userName": "Miriam Caduri",
+                "userId": 1007,
+                "count": 0
+            },
+            {
+                "date": "DEC-19",
+                "userName": "Admin Admin",
+                "userId": 3,
+                "count": 0
+            },
+            {
+                "date": "DEC-19",
+                "userName": "Eyal Naftalovich",
+                "userId": 1061,
+                "count": 0
+            },
+            {
+                "date": "DEC-19",
+                "userName": "Ruth H",
+                "userId": 2783,
+                "count": 0
+            },
+            {
+                "date": "DEC-19",
+                "userName": "VeryverylongnameVeryverylongnameVeryvery 1111111111-2222222222",
+                "userId": 8765,
+                "count": 0
+            },
+            {
+                "date": "DEC-19",
+                "userName": "User User",
                 "userId": 4,
+                "count": 0
+            },
+            {
+                "date": "DEC-19",
+                "userName": "Naava Szyper",
+                "userId": 9136,
+                "count": 0
+            },
+            {
+                "date": "DEC-19",
+                "userName": "john brunck",
+                "userId": 2011,
+                "count": 0
+            },
+            {
+                "date": "DEC-19",
+                "userName": "Hagai Benkuzari",
+                "userId": 2254,
+                "count": 0
+            },
+            {
+                "date": "DEC-19",
+                "userName": "Project Admin",
+                "userId": 1750,
+                "count": 0
+            },
+            {
+                "date": "DEC-19",
+                "userName": "keren rose",
+                "userId": 1381,
+                "count": 0
+            },
+            {
+                "date": "DEC-19",
+                "userName": "Anonymous User",
+                "userId": 2,
+                "count": 0
+            },
+            {
+                "date": "DEC-19",
+                "userName": "Nadia Vigdar",
+                "userId": 1005,
+                "count": 0
+            },
+            {
+                "date": "DEC-19",
+                "userName": "Sariel Admin",
+                "userId": 10,
+                "count": 0
+            },
+            {
+                "date": "DEC-19",
+                "userName": "Lior Halachmi",
+                "userId": 1078,
                 "count": 2
             },
             {
-                "date": "NOV-18",
-                "userName": "3 Halachmi",
+                "date": "DEC-19",
+                "userName": "user user",
+                "userId": 4114,
+                "count": 0
+            },
+            {
+                "date": "DEC-19",
+                "userName": "System System",
+                "userId": 1,
+                "count": 0
+            },
+            {
+                "date": "DEC-19",
+                "userName": "r_test !@#$%^&*() r_test _+-={}[]:\";'|\\~`??><",
+                "userId": 2026,
+                "count": 0
+            },
+            {
+                "date": "DEC-19",
+                "userName": "Alon Pesok",
+                "userId": 1008,
+                "count": 0
+            },
+            {
+                "date": "DEC-19",
+                "userName": "Sariel New",
+                "userId": 11,
+                "count": 0
+            },
+            {
+                "date": "DEC-19",
+                "userName": "Noa Zam",
+                "userId": 4066,
+                "count": 0
+            },
+            {
+                "date": "DEC-19",
+                "userName": "Naava Sadi",
+                "userId": 2253,
+                "count": 0
+            },
+            {
+                "date": "DEC-19",
+                "userName": "test2222 teste22222",
+                "userId": 3802,
+                "count": 0
+            },
+            {
+                "date": "DEC-19",
+                "userName": "Training User",
+                "userId": 2507,
+                "count": 0
+            },
+            {
+                "date": "DEC-19",
+                "userName": "Sariel Sharfi",
+                "userId": 9,
+                "count": 0
+            },
+            {
+                "date": "DEC-19",
+                "userName": "Dotan Perlstein",
+                "userId": 8803,
+                "count": 0
+            },
+            {
+                "date": "DEC-19",
+                "userName": "Efrat Kliper",
+                "userId": 2260,
+                "count": 0
+            },
+            {
+                "date": "DEC-19",
+                "userName": "Elena Khitrova",
+                "userId": 1019,
+                "count": 0
+            },
+            {
+                "date": "DEC-19",
+                "userName": "Andrey Romanov",
+                "userId": 9459,
+                "count": 0
+            },
+            {
+                "date": "JAN-20",
+                "userName": "Ekaterina Ivnitckaya",
+                "userId": 4109,
+                "count": 0
+            },
+            {
+                "date": "JAN-20",
+                "userName": "Nadia Vigdar",
+                "userId": 1005,
+                "count": 0
+            },
+            {
+                "date": "JAN-20",
+                "userName": "user user",
+                "userId": 4114,
+                "count": 0
+            },
+            {
+                "date": "JAN-20",
+                "userName": "Eli Copter",
+                "userId": 2563,
+                "count": 0
+            },
+            {
+                "date": "JAN-20",
+                "userName": "Anonymous User",
+                "userId": 2,
+                "count": 0
+            },
+            {
+                "date": "JAN-20",
+                "userName": "Iris Green",
+                "userId": 8952,
+                "count": 0
+            },
+            {
+                "date": "JAN-20",
+                "userName": "moshe kamer",
+                "userId": 1735,
+                "count": 0
+            },
+            {
+                "date": "JAN-20",
+                "userName": "Sariel New",
+                "userId": 11,
+                "count": 0
+            },
+            {
+                "date": "JAN-20",
+                "userName": "test2222 teste22222",
+                "userId": 3802,
+                "count": 0
+            },
+            {
+                "date": "JAN-20",
+                "userName": "omry atia",
+                "userId": 1004,
+                "count": 0
+            },
+            {
+                "date": "JAN-20",
+                "userName": "Efrat Kliper",
+                "userId": 2260,
+                "count": 0
+            },
+            {
+                "date": "JAN-20",
+                "userName": "John Doe",
+                "userId": 2569,
+                "count": 0
+            },
+            {
+                "date": "JAN-20",
+                "userName": "Dotan Perlstein",
+                "userId": 8803,
+                "count": 0
+            },
+            {
+                "date": "JAN-20",
+                "userName": "Lior Halachmi",
+                "userId": 1078,
+                "count": 0
+            },
+            {
+                "date": "JAN-20",
+                "userName": "Training User",
+                "userId": 2507,
+                "count": 0
+            },
+            {
+                "date": "JAN-20",
+                "userName": "john brunck",
+                "userId": 2011,
+                "count": 0
+            },
+            {
+                "date": "JAN-20",
+                "userName": "r_test !@#$%^&*() r_test _+-={}[]:\";'|\\~`??><",
+                "userId": 2026,
+                "count": 0
+            },
+            {
+                "date": "JAN-20",
+                "userName": "System System",
+                "userId": 1,
+                "count": 0
+            },
+            {
+                "date": "JAN-20",
+                "userName": "test test",
+                "userId": 4115,
+                "count": 0
+            },
+            {
+                "date": "JAN-20",
+                "userName": "Sariel Admin",
+                "userId": 10,
+                "count": 0
+            },
+            {
+                "date": "JAN-20",
+                "userName": "Researcher One",
+                "userId": 1000,
+                "count": 0
+            },
+            {
+                "date": "JAN-20",
+                "userName": "Naava Szyper",
+                "userId": 9136,
+                "count": 0
+            },
+            {
+                "date": "JAN-20",
+                "userName": "Hagai Benkuzari",
+                "userId": 2254,
+                "count": 0
+            },
+            {
+                "date": "JAN-20",
+                "userName": "Admin gggg1 Admin",
+                "userId": 5,
+                "count": 0
+            },
+            {
+                "date": "JAN-20",
+                "userName": "Eyal Naftalovich",
+                "userId": 1061,
+                "count": 0
+            },
+            {
+                "date": "JAN-20",
+                "userName": "Admin Admin",
+                "userId": 3,
+                "count": 0
+            },
+            {
+                "date": "JAN-20",
+                "userName": "Miriam Caduri",
+                "userId": 1007,
+                "count": 0
+            },
+            {
+                "date": "JAN-20",
+                "userName": "Project Admin",
+                "userId": 1750,
+                "count": 0
+            },
+            {
+                "date": "JAN-20",
+                "userName": "Sariel Sharfi",
+                "userId": 9,
+                "count": 0
+            },
+            {
+                "date": "JAN-20",
+                "userName": "Noa Zam",
+                "userId": 4066,
+                "count": 0
+            },
+            {
+                "date": "JAN-20",
+                "userName": "Andrey Romanov",
+                "userId": 9459,
+                "count": 0
+            },
+            {
+                "date": "JAN-20",
+                "userName": "jjj kkkk",
+                "userId": 1993,
+                "count": 0
+            },
+            {
+                "date": "JAN-20",
+                "userName": "VeryverylongnameVeryverylongnameVeryvery 1111111111-2222222222",
+                "userId": 8765,
+                "count": 0
+            },
+            {
+                "date": "JAN-20",
+                "userName": "keren rose",
+                "userId": 1381,
+                "count": 0
+            },
+            {
+                "date": "JAN-20",
+                "userName": "Naava Sadi",
+                "userId": 2253,
+                "count": 0
+            },
+            {
+                "date": "JAN-20",
+                "userName": "Elena Khitrova",
+                "userId": 1019,
+                "count": 1
+            },
+            {
+                "date": "JAN-20",
+                "userName": "Alon Pesok",
+                "userId": 1008,
+                "count": 0
+            },
+            {
+                "date": "JAN-20",
+                "userName": "Ruth H",
+                "userId": 2783,
+                "count": 0
+            },
+            {
+                "date": "JAN-20",
+                "userName": "Omry Test Omry Test",
+                "userId": 16,
+                "count": 0
+            },
+            {
+                "date": "JAN-20",
+                "userName": "User User",
                 "userId": 4,
-                "count": 9
+                "count": 0
             },
-
             {
-                "date": "AUG-18",
-                "userName": "4 Halachmi",
+                "date": "FEB-20",
+                "userName": "john brunck",
+                "userId": 2011,
+                "count": 0
+            },
+            {
+                "date": "FEB-20",
+                "userName": "Sariel New",
+                "userId": 11,
+                "count": 0
+            },
+            {
+                "date": "FEB-20",
+                "userName": "Ekaterina Ivnitckaya",
+                "userId": 4109,
+                "count": 0
+            },
+            {
+                "date": "FEB-20",
+                "userName": "Alon Pesok",
+                "userId": 1008,
+                "count": 0
+            },
+            {
+                "date": "FEB-20",
+                "userName": "Iris Green",
+                "userId": 8952,
+                "count": 0
+            },
+            {
+                "date": "FEB-20",
+                "userName": "Andrey Romanov",
+                "userId": 9459,
+                "count": 0
+            },
+            {
+                "date": "FEB-20",
+                "userName": "Researcher One",
+                "userId": 1000,
+                "count": 0
+            },
+            {
+                "date": "FEB-20",
+                "userName": "Elena Khitrova",
+                "userId": 1019,
+                "count": 0
+            },
+            {
+                "date": "FEB-20",
+                "userName": "Hagai Benkuzari",
+                "userId": 2254,
+                "count": 0
+            },
+            {
+                "date": "FEB-20",
+                "userName": "Eli Copter",
+                "userId": 2563,
+                "count": 0
+            },
+            {
+                "date": "FEB-20",
+                "userName": "Ruth H",
+                "userId": 2783,
+                "count": 0
+            },
+            {
+                "date": "FEB-20",
+                "userName": "Efrat Kliper",
+                "userId": 2260,
+                "count": 0
+            },
+            {
+                "date": "FEB-20",
+                "userName": "jjj kkkk",
+                "userId": 1993,
+                "count": 0
+            },
+            {
+                "date": "FEB-20",
+                "userName": "Omry Test Omry Test",
+                "userId": 16,
+                "count": 0
+            },
+            {
+                "date": "FEB-20",
+                "userName": "Noa Zam",
+                "userId": 4066,
+                "count": 0
+            },
+            {
+                "date": "FEB-20",
+                "userName": "keren rose",
+                "userId": 1381,
+                "count": 0
+            },
+            {
+                "date": "FEB-20",
+                "userName": "test test",
+                "userId": 4115,
+                "count": 0
+            },
+            {
+                "date": "FEB-20",
+                "userName": "System System",
+                "userId": 1,
+                "count": 0
+            },
+            {
+                "date": "FEB-20",
+                "userName": "moshe kamer",
+                "userId": 1735,
+                "count": 0
+            },
+            {
+                "date": "FEB-20",
+                "userName": "Naava Sadi",
+                "userId": 2253,
+                "count": 0
+            },
+            {
+                "date": "FEB-20",
+                "userName": "omry atia",
+                "userId": 1004,
+                "count": 0
+            },
+            {
+                "date": "FEB-20",
+                "userName": "Sariel Sharfi",
+                "userId": 9,
+                "count": 0
+            },
+            {
+                "date": "FEB-20",
+                "userName": "Miriam Caduri",
+                "userId": 1007,
+                "count": 0
+            },
+            {
+                "date": "FEB-20",
+                "userName": "John Doe",
+                "userId": 2569,
+                "count": 0
+            },
+            {
+                "date": "FEB-20",
+                "userName": "Dotan Perlstein",
+                "userId": 8803,
+                "count": 1
+            },
+            {
+                "date": "FEB-20",
+                "userName": "Admin Admin",
+                "userId": 3,
+                "count": 0
+            },
+            {
+                "date": "FEB-20",
+                "userName": "User User",
+                "userId": 4,
+                "count": 0
+            },
+            {
+                "date": "FEB-20",
+                "userName": "Eyal Naftalovich",
+                "userId": 1061,
+                "count": 0
+            },
+            {
+                "date": "FEB-20",
+                "userName": "Naava Szyper",
+                "userId": 9136,
+                "count": 0
+            },
+            {
+                "date": "FEB-20",
+                "userName": "VeryverylongnameVeryverylongnameVeryvery 1111111111-2222222222",
+                "userId": 8765,
+                "count": 0
+            },
+            {
+                "date": "FEB-20",
+                "userName": "Training User",
+                "userId": 2507,
+                "count": 0
+            },
+            {
+                "date": "FEB-20",
+                "userName": "Sariel Admin",
+                "userId": 10,
+                "count": 0
+            },
+            {
+                "date": "FEB-20",
+                "userName": "test2222 teste22222",
+                "userId": 3802,
+                "count": 0
+            },
+            {
+                "date": "FEB-20",
+                "userName": "Lior Halachmi",
+                "userId": 1078,
+                "count": 0
+            },
+            {
+                "date": "FEB-20",
+                "userName": "r_test !@#$%^&*() r_test _+-={}[]:\";'|\\~`??><",
+                "userId": 2026,
+                "count": 0
+            },
+            {
+                "date": "FEB-20",
+                "userName": "Admin gggg1 Admin",
                 "userId": 5,
-                "count": 5
+                "count": 0
             },
             {
-                "date": "SEP-18",
-                "userName": "4 Halachmi",
+                "date": "FEB-20",
+                "userName": "user user",
+                "userId": 4114,
+                "count": 0
+            },
+            {
+                "date": "FEB-20",
+                "userName": "Anonymous User",
+                "userId": 2,
+                "count": 0
+            },
+            {
+                "date": "FEB-20",
+                "userName": "Nadia Vigdar",
+                "userId": 1005,
+                "count": 0
+            },
+            {
+                "date": "FEB-20",
+                "userName": "Project Admin",
+                "userId": 1750,
+                "count": 0
+            },
+            {
+                "date": "MAR-20",
+                "userName": "keren rose",
+                "userId": 1381,
+                "count": 0
+            },
+            {
+                "date": "MAR-20",
+                "userName": "Nadia Vigdar",
+                "userId": 1005,
+                "count": 0
+            },
+            {
+                "date": "MAR-20",
+                "userName": "Sariel Sharfi",
+                "userId": 9,
+                "count": 0
+            },
+            {
+                "date": "MAR-20",
+                "userName": "Anonymous User",
+                "userId": 2,
+                "count": 0
+            },
+            {
+                "date": "MAR-20",
+                "userName": "Andrey Romanov",
+                "userId": 9459,
+                "count": 0
+            },
+            {
+                "date": "MAR-20",
+                "userName": "John Doe",
+                "userId": 2569,
+                "count": 0
+            },
+            {
+                "date": "MAR-20",
+                "userName": "moshe kamer",
+                "userId": 1735,
+                "count": 0
+            },
+            {
+                "date": "MAR-20",
+                "userName": "Researcher One",
+                "userId": 1000,
+                "count": 0
+            },
+            {
+                "date": "MAR-20",
+                "userName": "omry atia",
+                "userId": 1004,
+                "count": 0
+            },
+            {
+                "date": "MAR-20",
+                "userName": "Elena Khitrova",
+                "userId": 1019,
+                "count": 0
+            },
+            {
+                "date": "MAR-20",
+                "userName": "Project Admin",
+                "userId": 1750,
+                "count": 0
+            },
+            {
+                "date": "MAR-20",
+                "userName": "Naava Szyper",
+                "userId": 9136,
+                "count": 0
+            },
+            {
+                "date": "MAR-20",
+                "userName": "Iris Green",
+                "userId": 8952,
+                "count": 0
+            },
+            {
+                "date": "MAR-20",
+                "userName": "Eyal Naftalovich",
+                "userId": 1061,
+                "count": 0
+            },
+            {
+                "date": "MAR-20",
+                "userName": "john brunck",
+                "userId": 2011,
+                "count": 0
+            },
+            {
+                "date": "MAR-20",
+                "userName": "Omry Test Omry Test",
+                "userId": 16,
+                "count": 0
+            },
+            {
+                "date": "MAR-20",
+                "userName": "test2222 teste22222",
+                "userId": 3802,
+                "count": 0
+            },
+            {
+                "date": "MAR-20",
+                "userName": "Miriam Caduri",
+                "userId": 1007,
+                "count": 0
+            },
+            {
+                "date": "MAR-20",
+                "userName": "Sariel New",
+                "userId": 11,
+                "count": 0
+            },
+            {
+                "date": "MAR-20",
+                "userName": "Ruth H",
+                "userId": 2783,
+                "count": 0
+            },
+            {
+                "date": "MAR-20",
+                "userName": "jjj kkkk",
+                "userId": 1993,
+                "count": 0
+            },
+            {
+                "date": "MAR-20",
+                "userName": "User User",
+                "userId": 4,
+                "count": 0
+            },
+            {
+                "date": "MAR-20",
+                "userName": "Admin gggg1 Admin",
                 "userId": 5,
-                "count": 2
+                "count": 0
             },
             {
-                "date": "NOV-18",
-                "userName": "4 Halachmi",
+                "date": "MAR-20",
+                "userName": "Noa Zam",
+                "userId": 4066,
+                "count": 0
+            },
+            {
+                "date": "MAR-20",
+                "userName": "Admin Admin",
+                "userId": 3,
+                "count": 0
+            },
+            {
+                "date": "MAR-20",
+                "userName": "r_test !@#$%^&*() r_test _+-={}[]:\";'|\\~`??><",
+                "userId": 2026,
+                "count": 0
+            },
+            {
+                "date": "MAR-20",
+                "userName": "Ekaterina Ivnitckaya",
+                "userId": 4109,
+                "count": 0
+            },
+            {
+                "date": "MAR-20",
+                "userName": "Lior Halachmi",
+                "userId": 1078,
+                "count": 0
+            },
+            {
+                "date": "MAR-20",
+                "userName": "Sariel Admin",
+                "userId": 10,
+                "count": 0
+            },
+            {
+                "date": "MAR-20",
+                "userName": "test test",
+                "userId": 4115,
+                "count": 0
+            },
+            {
+                "date": "MAR-20",
+                "userName": "Training User",
+                "userId": 2507,
+                "count": 0
+            },
+            {
+                "date": "MAR-20",
+                "userName": "Dotan Perlstein",
+                "userId": 8803,
+                "count": 0
+            },
+            {
+                "date": "MAR-20",
+                "userName": "System System",
+                "userId": 1,
+                "count": 0
+            },
+            {
+                "date": "MAR-20",
+                "userName": "Alon Pesok",
+                "userId": 1008,
+                "count": 0
+            },
+            {
+                "date": "MAR-20",
+                "userName": "Naava Sadi",
+                "userId": 2253,
+                "count": 0
+            },
+            {
+                "date": "MAR-20",
+                "userName": "user user",
+                "userId": 4114,
+                "count": 0
+            },
+            {
+                "date": "MAR-20",
+                "userName": "Eli Copter",
+                "userId": 2563,
+                "count": 0
+            },
+            {
+                "date": "MAR-20",
+                "userName": "Hagai Benkuzari",
+                "userId": 2254,
+                "count": 0
+            },
+            {
+                "date": "MAR-20",
+                "userName": "VeryverylongnameVeryverylongnameVeryvery 1111111111-2222222222",
+                "userId": 8765,
+                "count": 0
+            },
+            {
+                "date": "MAR-20",
+                "userName": "Efrat Kliper",
+                "userId": 2260,
+                "count": 0
+            },
+            {
+                "date": "APR-20",
+                "userName": "moshe kamer",
+                "userId": 1735,
+                "count": 0
+            },
+            {
+                "date": "APR-20",
+                "userName": "Sariel Admin",
+                "userId": 10,
+                "count": 0
+            },
+            {
+                "date": "APR-20",
+                "userName": "Lior Halachmi",
+                "userId": 1078,
+                "count": 0
+            },
+            {
+                "date": "APR-20",
+                "userName": "System System",
+                "userId": 1,
+                "count": 0
+            },
+            {
+                "date": "APR-20",
+                "userName": "User User",
+                "userId": 4,
+                "count": 0
+            },
+            {
+                "date": "APR-20",
+                "userName": "Dotan Perlstein",
+                "userId": 8803,
+                "count": 0
+            },
+            {
+                "date": "APR-20",
+                "userName": "Admin Admin",
+                "userId": 3,
+                "count": 0
+            },
+            {
+                "date": "APR-20",
+                "userName": "Eyal Naftalovich",
+                "userId": 1061,
+                "count": 0
+            },
+            {
+                "date": "APR-20",
+                "userName": "Naava Szyper",
+                "userId": 9136,
+                "count": 0
+            },
+            {
+                "date": "APR-20",
+                "userName": "test test",
+                "userId": 4115,
+                "count": 0
+            },
+            {
+                "date": "APR-20",
+                "userName": "john brunck",
+                "userId": 2011,
+                "count": 0
+            },
+            {
+                "date": "APR-20",
+                "userName": "Sariel Sharfi",
+                "userId": 9,
+                "count": 0
+            },
+            {
+                "date": "APR-20",
+                "userName": "John Doe",
+                "userId": 2569,
+                "count": 0
+            },
+            {
+                "date": "APR-20",
+                "userName": "Efrat Kliper",
+                "userId": 2260,
+                "count": 0
+            },
+            {
+                "date": "APR-20",
+                "userName": "Ekaterina Ivnitckaya",
+                "userId": 4109,
+                "count": 0
+            },
+            {
+                "date": "APR-20",
+                "userName": "keren rose",
+                "userId": 1381,
+                "count": 0
+            },
+            {
+                "date": "APR-20",
+                "userName": "r_test !@#$%^&*() r_test _+-={}[]:\";'|\\~`??><",
+                "userId": 2026,
+                "count": 0
+            },
+            {
+                "date": "APR-20",
+                "userName": "Naava Sadi",
+                "userId": 2253,
+                "count": 0
+            },
+            {
+                "date": "APR-20",
+                "userName": "test2222 teste22222",
+                "userId": 3802,
+                "count": 0
+            },
+            {
+                "date": "APR-20",
+                "userName": "Training User",
+                "userId": 2507,
+                "count": 0
+            },
+            {
+                "date": "APR-20",
+                "userName": "omry atia",
+                "userId": 1004,
+                "count": 0
+            },
+            {
+                "date": "APR-20",
+                "userName": "Researcher One",
+                "userId": 1000,
+                "count": 0
+            },
+            {
+                "date": "APR-20",
+                "userName": "Anonymous User",
+                "userId": 2,
+                "count": 0
+            },
+            {
+                "date": "APR-20",
+                "userName": "Andrey Romanov",
+                "userId": 9459,
+                "count": 0
+            },
+            {
+                "date": "APR-20",
+                "userName": "Elena Khitrova",
+                "userId": 1019,
+                "count": 0
+            },
+            {
+                "date": "APR-20",
+                "userName": "VeryverylongnameVeryverylongnameVeryvery 1111111111-2222222222",
+                "userId": 8765,
+                "count": 0
+            },
+            {
+                "date": "APR-20",
+                "userName": "jjj kkkk",
+                "userId": 1993,
+                "count": 0
+            },
+            {
+                "date": "APR-20",
+                "userName": "Hagai Benkuzari",
+                "userId": 2254,
+                "count": 0
+            },
+            {
+                "date": "APR-20",
+                "userName": "Ruth H",
+                "userId": 2783,
+                "count": 0
+            },
+            {
+                "date": "APR-20",
+                "userName": "Eli Copter",
+                "userId": 2563,
+                "count": 0
+            },
+            {
+                "date": "APR-20",
+                "userName": "Noa Zam",
+                "userId": 4066,
+                "count": 0
+            },
+            {
+                "date": "APR-20",
+                "userName": "Alon Pesok",
+                "userId": 1008,
+                "count": 0
+            },
+            {
+                "date": "APR-20",
+                "userName": "Admin gggg1 Admin",
                 "userId": 5,
-                "count": 4
-            },
-
-            {
-                "date": "AUG-18",
-                "userName": "5 Halachmi",
-                "userId": 6,
-                "count": 2
+                "count": 0
             },
             {
-                "date": "SEP-18",
-                "userName": "5 Halachmi",
-                "userId": 6,
+                "date": "APR-20",
+                "userName": "Nadia Vigdar",
+                "userId": 1005,
+                "count": 0
+            },
+            {
+                "date": "APR-20",
+                "userName": "Iris Green",
+                "userId": 8952,
+                "count": 0
+            },
+            {
+                "date": "APR-20",
+                "userName": "Sariel New",
+                "userId": 11,
+                "count": 0
+            },
+            {
+                "date": "APR-20",
+                "userName": "Project Admin",
+                "userId": 1750,
+                "count": 0
+            },
+            {
+                "date": "APR-20",
+                "userName": "Miriam Caduri",
+                "userId": 1007,
+                "count": 0
+            },
+            {
+                "date": "APR-20",
+                "userName": "user user",
+                "userId": 4114,
+                "count": 0
+            },
+            {
+                "date": "APR-20",
+                "userName": "Omry Test Omry Test",
+                "userId": 16,
+                "count": 0
+            },
+            {
+                "date": "MAY-20",
+                "userName": "user user",
+                "userId": 4114,
+                "count": 0
+            },
+            {
+                "date": "MAY-20",
+                "userName": "Lior Halachmi",
+                "userId": 1078,
+                "count": 1
+            },
+            {
+                "date": "MAY-20",
+                "userName": "Sariel Admin",
+                "userId": 10,
+                "count": 0
+            },
+            {
+                "date": "MAY-20",
+                "userName": "Nadia Vigdar",
+                "userId": 1005,
+                "count": 0
+            },
+            {
+                "date": "MAY-20",
+                "userName": "Elena Khitrova",
+                "userId": 1019,
                 "count": 3
             },
             {
-                "date": "NOV-18",
-                "userName": "5 Halachmi",
-                "userId": 6,
+                "date": "MAY-20",
+                "userName": "Researcher One",
+                "userId": 1000,
+                "count": 1
+            },
+            {
+                "date": "MAY-20",
+                "userName": "Sariel New",
+                "userId": 11,
+                "count": 0
+            },
+            {
+                "date": "MAY-20",
+                "userName": "Andrey Romanov",
+                "userId": 9459,
+                "count": 0
+            },
+            {
+                "date": "MAY-20",
+                "userName": "Iris Green",
+                "userId": 8952,
+                "count": 0
+            },
+            {
+                "date": "MAY-20",
+                "userName": "test2222 teste22222",
+                "userId": 3802,
+                "count": 0
+            },
+            {
+                "date": "MAY-20",
+                "userName": "System System",
+                "userId": 1,
+                "count": 0
+            },
+            {
+                "date": "MAY-20",
+                "userName": "Miriam Caduri",
+                "userId": 1007,
+                "count": 0
+            },
+            {
+                "date": "MAY-20",
+                "userName": "john brunck",
+                "userId": 2011,
+                "count": 0
+            },
+            {
+                "date": "MAY-20",
+                "userName": "Eyal Naftalovich",
+                "userId": 1061,
+                "count": 0
+            },
+            {
+                "date": "MAY-20",
+                "userName": "Admin Admin",
+                "userId": 3,
+                "count": 0
+            },
+            {
+                "date": "MAY-20",
+                "userName": "Naava Szyper",
+                "userId": 9136,
+                "count": 0
+            },
+            {
+                "date": "MAY-20",
+                "userName": "Naava Sadi",
+                "userId": 2253,
+                "count": 0
+            },
+            {
+                "date": "MAY-20",
+                "userName": "jjj kkkk",
+                "userId": 1993,
+                "count": 0
+            },
+            {
+                "date": "MAY-20",
+                "userName": "Ekaterina Ivnitckaya",
+                "userId": 4109,
+                "count": 0
+            },
+            {
+                "date": "MAY-20",
+                "userName": "Alon Pesok",
+                "userId": 1008,
+                "count": 0
+            },
+            {
+                "date": "MAY-20",
+                "userName": "Project Admin",
+                "userId": 1750,
+                "count": 0
+            },
+            {
+                "date": "MAY-20",
+                "userName": "Admin gggg1 Admin",
+                "userId": 5,
+                "count": 0
+            },
+            {
+                "date": "MAY-20",
+                "userName": "User User",
+                "userId": 4,
+                "count": 0
+            },
+            {
+                "date": "MAY-20",
+                "userName": "VeryverylongnameVeryverylongnameVeryvery 1111111111-2222222222",
+                "userId": 8765,
+                "count": 0
+            },
+            {
+                "date": "MAY-20",
+                "userName": "keren rose",
+                "userId": 1381,
+                "count": 0
+            },
+            {
+                "date": "MAY-20",
+                "userName": "Efrat Kliper",
+                "userId": 2260,
+                "count": 0
+            },
+            {
+                "date": "MAY-20",
+                "userName": "Eli Copter",
+                "userId": 2563,
+                "count": 0
+            },
+            {
+                "date": "MAY-20",
+                "userName": "Training User",
+                "userId": 2507,
+                "count": 0
+            },
+            {
+                "date": "MAY-20",
+                "userName": "Dotan Perlstein",
+                "userId": 8803,
+                "count": 0
+            },
+            {
+                "date": "MAY-20",
+                "userName": "Omry Test Omry Test",
+                "userId": 16,
+                "count": 0
+            },
+            {
+                "date": "MAY-20",
+                "userName": "Sariel Sharfi",
+                "userId": 9,
+                "count": 0
+            },
+            {
+                "date": "MAY-20",
+                "userName": "John Doe",
+                "userId": 2569,
+                "count": 0
+            },
+            {
+                "date": "MAY-20",
+                "userName": "Noa Zam",
+                "userId": 4066,
+                "count": 0
+            },
+            {
+                "date": "MAY-20",
+                "userName": "r_test !@#$%^&*() r_test _+-={}[]:\";'|\\~`??><",
+                "userId": 2026,
+                "count": 0
+            },
+            {
+                "date": "MAY-20",
+                "userName": "Ruth H",
+                "userId": 2783,
+                "count": 0
+            },
+            {
+                "date": "MAY-20",
+                "userName": "Hagai Benkuzari",
+                "userId": 2254,
+                "count": 0
+            },
+            {
+                "date": "MAY-20",
+                "userName": "Anonymous User",
+                "userId": 2,
+                "count": 0
+            },
+            {
+                "date": "MAY-20",
+                "userName": "test test",
+                "userId": 4115,
+                "count": 0
+            },
+            {
+                "date": "MAY-20",
+                "userName": "moshe kamer",
+                "userId": 1735,
+                "count": 0
+            },
+            {
+                "date": "MAY-20",
+                "userName": "omry atia",
+                "userId": 1004,
+                "count": 0
+            },
+            {
+                "date": "JUN-20",
+                "userName": "Lior Halachmi",
+                "userId": 1078,
+                "count": 0
+            },
+            {
+                "date": "JUN-20",
+                "userName": "System System",
+                "userId": 1,
+                "count": 0
+            },
+            {
+                "date": "JUN-20",
+                "userName": "jjj kkkk",
+                "userId": 1993,
+                "count": 0
+            },
+            {
+                "date": "JUN-20",
+                "userName": "Project Admin",
+                "userId": 1750,
+                "count": 0
+            },
+            {
+                "date": "JUN-20",
+                "userName": "John Doe",
+                "userId": 2569,
+                "count": 0
+            },
+            {
+                "date": "JUN-20",
+                "userName": "r_test !@#$%^&*() r_test _+-={}[]:\";'|\\~`??><",
+                "userId": 2026,
+                "count": 0
+            },
+            {
+                "date": "JUN-20",
+                "userName": "Miriam Caduri",
+                "userId": 1007,
+                "count": 0
+            },
+            {
+                "date": "JUN-20",
+                "userName": "user user",
+                "userId": 4114,
+                "count": 0
+            },
+            {
+                "date": "JUN-20",
+                "userName": "Eli Copter",
+                "userId": 2563,
+                "count": 0
+            },
+            {
+                "date": "JUN-20",
+                "userName": "keren rose",
+                "userId": 1381,
                 "count": 5
             },
-
             {
-                "date": "AUG-18",
-                "userName": "6 Halachmi",
-                "userId":7,
-                "count": 6
+                "date": "JUN-20",
+                "userName": "VeryverylongnameVeryverylongnameVeryvery 1111111111-2222222222",
+                "userId": 8765,
+                "count": 0
             },
             {
-                "date": "SEP-18",
-                "userName": "6 Halachmi",
-                "userId": 7,
-                "count": 9
+                "date": "JUN-20",
+                "userName": "Elena Khitrova",
+                "userId": 1019,
+                "count": 27
             },
             {
-                "date": "NOV-18",
-                "userName": "6 Halachmi",
-                "userId": 7,
-                "count": 8
+                "date": "JUN-20",
+                "userName": "Hagai Benkuzari",
+                "userId": 2254,
+                "count": 0
             },
-
             {
-                "date": "AUG-18",
-                "userName": "7 Halachmi",
-                "userId": 8,
+                "date": "JUN-20",
+                "userName": "Anonymous User",
+                "userId": 2,
+                "count": 0
+            },
+            {
+                "date": "JUN-20",
+                "userName": "Sariel Admin",
+                "userId": 10,
+                "count": 0
+            },
+            {
+                "date": "JUN-20",
+                "userName": "Alon Pesok",
+                "userId": 1008,
+                "count": 0
+            },
+            {
+                "date": "JUN-20",
+                "userName": "Researcher One",
+                "userId": 1000,
+                "count": 2
+            },
+            {
+                "date": "JUN-20",
+                "userName": "omry atia",
+                "userId": 1004,
+                "count": 0
+            },
+            {
+                "date": "JUN-20",
+                "userName": "Ruth H",
+                "userId": 2783,
+                "count": 0
+            },
+            {
+                "date": "JUN-20",
+                "userName": "Ekaterina Ivnitckaya",
+                "userId": 4109,
+                "count": 0
+            },
+            {
+                "date": "JUN-20",
+                "userName": "john brunck",
+                "userId": 2011,
+                "count": 0
+            },
+            {
+                "date": "JUN-20",
+                "userName": "Training User",
+                "userId": 2507,
+                "count": 0
+            },
+            {
+                "date": "JUN-20",
+                "userName": "Noa Zam",
+                "userId": 4066,
+                "count": 0
+            },
+            {
+                "date": "JUN-20",
+                "userName": "Omry Test Omry Test",
+                "userId": 16,
+                "count": 0
+            },
+            {
+                "date": "JUN-20",
+                "userName": "Sariel New",
+                "userId": 11,
+                "count": 0
+            },
+            {
+                "date": "JUN-20",
+                "userName": "test2222 teste22222",
+                "userId": 3802,
+                "count": 0
+            },
+            {
+                "date": "JUN-20",
+                "userName": "Naava Szyper",
+                "userId": 9136,
+                "count": 0
+            },
+            {
+                "date": "JUN-20",
+                "userName": "Admin Admin",
+                "userId": 3,
+                "count": 0
+            },
+            {
+                "date": "JUN-20",
+                "userName": "Sariel Sharfi",
+                "userId": 9,
+                "count": 0
+            },
+            {
+                "date": "JUN-20",
+                "userName": "Efrat Kliper",
+                "userId": 2260,
+                "count": 0
+            },
+            {
+                "date": "JUN-20",
+                "userName": "test test",
+                "userId": 4115,
+                "count": 0
+            },
+            {
+                "date": "JUN-20",
+                "userName": "moshe kamer",
+                "userId": 1735,
+                "count": 0
+            },
+            {
+                "date": "JUN-20",
+                "userName": "Admin gggg1 Admin",
+                "userId": 5,
+                "count": 0
+            },
+            {
+                "date": "JUN-20",
+                "userName": "Nadia Vigdar",
+                "userId": 1005,
+                "count": 1
+            },
+            {
+                "date": "JUN-20",
+                "userName": "Naava Sadi",
+                "userId": 2253,
+                "count": 0
+            },
+            {
+                "date": "JUN-20",
+                "userName": "Dotan Perlstein",
+                "userId": 8803,
+                "count": 0
+            },
+            {
+                "date": "JUN-20",
+                "userName": "Andrey Romanov",
+                "userId": 9459,
+                "count": 0
+            },
+            {
+                "date": "JUN-20",
+                "userName": "User User",
+                "userId": 4,
+                "count": 0
+            },
+            {
+                "date": "JUN-20",
+                "userName": "Eyal Naftalovich",
+                "userId": 1061,
+                "count": 0
+            },
+            {
+                "date": "JUN-20",
+                "userName": "Iris Green",
+                "userId": 8952,
+                "count": 0
+            },
+            {
+                "date": "JUL-20",
+                "userName": "Naava Sadi",
+                "userId": 2253,
+                "count": 0
+            },
+            {
+                "date": "JUL-20",
+                "userName": "Iris Green",
+                "userId": 8952,
+                "count": 0
+            },
+            {
+                "date": "JUL-20",
+                "userName": "jjj kkkk",
+                "userId": 1993,
+                "count": 0
+            },
+            {
+                "date": "JUL-20",
+                "userName": "Sariel New",
+                "userId": 11,
+                "count": 0
+            },
+            {
+                "date": "JUL-20",
+                "userName": "Noa Zam",
+                "userId": 4066,
+                "count": 0
+            },
+            {
+                "date": "JUL-20",
+                "userName": "Researcher One",
+                "userId": 1000,
+                "count": 1
+            },
+            {
+                "date": "JUL-20",
+                "userName": "Andrey Romanov",
+                "userId": 9459,
+                "count": 0
+            },
+            {
+                "date": "JUL-20",
+                "userName": "Lior Halachmi",
+                "userId": 1078,
+                "count": 0
+            },
+            {
+                "date": "JUL-20",
+                "userName": "Sariel Admin",
+                "userId": 10,
+                "count": 0
+            },
+            {
+                "date": "JUL-20",
+                "userName": "Elena Khitrova",
+                "userId": 1019,
+                "count": 1
+            },
+            {
+                "date": "JUL-20",
+                "userName": "Dotan Perlstein",
+                "userId": 8803,
+                "count": 0
+            },
+            {
+                "date": "JUL-20",
+                "userName": "test test",
+                "userId": 4115,
+                "count": 0
+            },
+            {
+                "date": "JUL-20",
+                "userName": "moshe kamer",
+                "userId": 1735,
+                "count": 0
+            },
+            {
+                "date": "JUL-20",
+                "userName": "Training User",
+                "userId": 2507,
+                "count": 0
+            },
+            {
+                "date": "JUL-20",
+                "userName": "Nadia Vigdar",
+                "userId": 1005,
+                "count": 2
+            },
+            {
+                "date": "JUL-20",
+                "userName": "r_test !@#$%^&*() r_test _+-={}[]:\";'|\\~`??><",
+                "userId": 2026,
+                "count": 0
+            },
+            {
+                "date": "JUL-20",
+                "userName": "Ekaterina Ivnitckaya",
+                "userId": 4109,
+                "count": 0
+            },
+            {
+                "date": "JUL-20",
+                "userName": "keren rose",
+                "userId": 1381,
+                "count": 0
+            },
+            {
+                "date": "JUL-20",
+                "userName": "Project Admin",
+                "userId": 1750,
+                "count": 0
+            },
+            {
+                "date": "JUL-20",
+                "userName": "Ruth H",
+                "userId": 2783,
+                "count": 0
+            },
+            {
+                "date": "JUL-20",
+                "userName": "Admin gggg1 Admin",
+                "userId": 5,
+                "count": 0
+            },
+            {
+                "date": "JUL-20",
+                "userName": "Hagai Benkuzari",
+                "userId": 2254,
+                "count": 0
+            },
+            {
+                "date": "JUL-20",
+                "userName": "System System",
+                "userId": 1,
+                "count": 0
+            },
+            {
+                "date": "JUL-20",
+                "userName": "User User",
+                "userId": 4,
+                "count": 0
+            },
+            {
+                "date": "JUL-20",
+                "userName": "Efrat Kliper",
+                "userId": 2260,
+                "count": 0
+            },
+            {
+                "date": "JUL-20",
+                "userName": "Omry Test Omry Test",
+                "userId": 16,
+                "count": 0
+            },
+            {
+                "date": "JUL-20",
+                "userName": "John Doe",
+                "userId": 2569,
+                "count": 0
+            },
+            {
+                "date": "JUL-20",
+                "userName": "Eli Copter",
+                "userId": 2563,
+                "count": 0
+            },
+            {
+                "date": "JUL-20",
+                "userName": "VeryverylongnameVeryverylongnameVeryvery 1111111111-2222222222",
+                "userId": 8765,
+                "count": 0
+            },
+            {
+                "date": "JUL-20",
+                "userName": "Sariel Sharfi",
+                "userId": 9,
+                "count": 0
+            },
+            {
+                "date": "JUL-20",
+                "userName": "Anonymous User",
+                "userId": 2,
+                "count": 0
+            },
+            {
+                "date": "JUL-20",
+                "userName": "omry atia",
+                "userId": 1004,
+                "count": 0
+            },
+            {
+                "date": "JUL-20",
+                "userName": "user user",
+                "userId": 4114,
+                "count": 0
+            },
+            {
+                "date": "JUL-20",
+                "userName": "test2222 teste22222",
+                "userId": 3802,
+                "count": 0
+            },
+            {
+                "date": "JUL-20",
+                "userName": "Miriam Caduri",
+                "userId": 1007,
+                "count": 0
+            },
+            {
+                "date": "JUL-20",
+                "userName": "Naava Szyper",
+                "userId": 9136,
+                "count": 0
+            },
+            {
+                "date": "JUL-20",
+                "userName": "Admin Admin",
+                "userId": 3,
+                "count": 0
+            },
+            {
+                "date": "JUL-20",
+                "userName": "Eyal Naftalovich",
+                "userId": 1061,
+                "count": 0
+            },
+            {
+                "date": "JUL-20",
+                "userName": "john brunck",
+                "userId": 2011,
+                "count": 0
+            },
+            {
+                "date": "JUL-20",
+                "userName": "Alon Pesok",
+                "userId": 1008,
+                "count": 0
+            },
+            {
+                "date": "AUG-20",
+                "userName": "Training User",
+                "userId": 2507,
+                "count": 0
+            },
+            {
+                "date": "AUG-20",
+                "userName": "Researcher One",
+                "userId": 1000,
+                "count": 20
+            },
+            {
+                "date": "AUG-20",
+                "userName": "Lior Halachmi",
+                "userId": 1078,
+                "count": 0
+            },
+            {
+                "date": "AUG-20",
+                "userName": "Project Admin",
+                "userId": 1750,
+                "count": 0
+            },
+            {
+                "date": "AUG-20",
+                "userName": "user user",
+                "userId": 4114,
+                "count": 0
+            },
+            {
+                "date": "AUG-20",
+                "userName": "r_test !@#$%^&*() r_test _+-={}[]:\";'|\\~`??><",
+                "userId": 2026,
+                "count": 0
+            },
+            {
+                "date": "AUG-20",
+                "userName": "Andrey Romanov",
+                "userId": 9459,
+                "count": 0
+            },
+            {
+                "date": "AUG-20",
+                "userName": "Miriam Caduri",
+                "userId": 1007,
+                "count": 0
+            },
+            {
+                "date": "AUG-20",
+                "userName": "Naava Szyper",
+                "userId": 9136,
+                "count": 0
+            },
+            {
+                "date": "AUG-20",
+                "userName": "Elena Khitrova",
+                "userId": 1019,
                 "count": 5
             },
             {
-                "date": "SEP-18",
-                "userName": "7 Halachmi",
-                "userId": 8,
-                "count": 7
+                "date": "AUG-20",
+                "userName": "Ekaterina Ivnitckaya",
+                "userId": 4109,
+                "count": 0
             },
             {
-                "date": "NOV-18",
-                "userName": "7 Halachmi",
-                "userId": 8,
+                "date": "AUG-20",
+                "userName": "Eli Copter",
+                "userId": 2563,
+                "count": 0
+            },
+            {
+                "date": "AUG-20",
+                "userName": "Admin Admin",
+                "userId": 3,
+                "count": 0
+            },
+            {
+                "date": "AUG-20",
+                "userName": "Eyal Naftalovich",
+                "userId": 1061,
+                "count": 0
+            },
+            {
+                "date": "AUG-20",
+                "userName": "Anonymous User",
+                "userId": 2,
+                "count": 0
+            },
+            {
+                "date": "AUG-20",
+                "userName": "john brunck",
+                "userId": 2011,
+                "count": 0
+            },
+            {
+                "date": "AUG-20",
+                "userName": "test2222 teste22222",
+                "userId": 3802,
+                "count": 0
+            },
+            {
+                "date": "AUG-20",
+                "userName": "Sariel Sharfi",
+                "userId": 9,
+                "count": 0
+            },
+            {
+                "date": "AUG-20",
+                "userName": "User User",
+                "userId": 4,
+                "count": 0
+            },
+            {
+                "date": "AUG-20",
+                "userName": "moshe kamer",
+                "userId": 1735,
+                "count": 0
+            },
+            {
+                "date": "AUG-20",
+                "userName": "VeryverylongnameVeryverylongnameVeryvery 1111111111-2222222222",
+                "userId": 8765,
+                "count": 0
+            },
+            {
+                "date": "AUG-20",
+                "userName": "omry atia",
+                "userId": 1004,
+                "count": 0
+            },
+            {
+                "date": "AUG-20",
+                "userName": "John Doe",
+                "userId": 2569,
+                "count": 0
+            },
+            {
+                "date": "AUG-20",
+                "userName": "Admin gggg1 Admin",
+                "userId": 5,
+                "count": 0
+            },
+            {
+                "date": "AUG-20",
+                "userName": "Nadia Vigdar",
+                "userId": 1005,
+                "count": 2
+            },
+            {
+                "date": "AUG-20",
+                "userName": "Dotan Perlstein",
+                "userId": 8803,
+                "count": 0
+            },
+            {
+                "date": "AUG-20",
+                "userName": "System System",
+                "userId": 1,
+                "count": 0
+            },
+            {
+                "date": "AUG-20",
+                "userName": "Naava Sadi",
+                "userId": 2253,
+                "count": 0
+            },
+            {
+                "date": "AUG-20",
+                "userName": "keren rose",
+                "userId": 1381,
+                "count": 0
+            },
+            {
+                "date": "AUG-20",
+                "userName": "Efrat Kliper",
+                "userId": 2260,
+                "count": 0
+            },
+            {
+                "date": "AUG-20",
+                "userName": "test test",
+                "userId": 4115,
+                "count": 0
+            },
+            {
+                "date": "AUG-20",
+                "userName": "Ruth H",
+                "userId": 2783,
+                "count": 0
+            },
+            {
+                "date": "AUG-20",
+                "userName": "Hagai Benkuzari",
+                "userId": 2254,
+                "count": 0
+            },
+            {
+                "date": "AUG-20",
+                "userName": "Noa Zam",
+                "userId": 4066,
+                "count": 0
+            },
+            {
+                "date": "AUG-20",
+                "userName": "Omry Test Omry Test",
+                "userId": 16,
+                "count": 0
+            },
+            {
+                "date": "AUG-20",
+                "userName": "jjj kkkk",
+                "userId": 1993,
+                "count": 0
+            },
+            {
+                "date": "AUG-20",
+                "userName": "Sariel New",
+                "userId": 11,
+                "count": 0
+            },
+            {
+                "date": "AUG-20",
+                "userName": "Alon Pesok",
+                "userId": 1008,
                 "count": 3
             },
-
             {
-                "date": "AUG-18",
-                "userName": "8 Halachmi",
-                "userId": 9,
-                "count": 4
+                "date": "AUG-20",
+                "userName": "Iris Green",
+                "userId": 8952,
+                "count": 0
             },
             {
-                "date": "SEP-18",
-                "userName": "8 Halachmi",
-                "userId": 9,
-                "count": 5
-            },
-            {
-                "date": "NOV-18",
-                "userName": "8 Halachmi",
-                "userId": 9,
-                "count": 4
+                "date": "AUG-20",
+                "userName": "Sariel Admin",
+                "userId": 10,
+                "count": 0
             }
         ],
         "downloads": [
             {
-                "date": "AUG-18",
+                "date": "AUG-19",
+                "userName": "Eli Copter",
+                "userId": 2563,
+                "count": 0
+            },
+            {
+                "date": "AUG-19",
+                "userName": "Eyal Naftalovich",
+                "userId": 1061,
+                "count": 0
+            },
+            {
+                "date": "AUG-19",
+                "userName": "Project Admin",
+                "userId": 1750,
+                "count": 0
+            },
+            {
+                "date": "AUG-19",
+                "userName": "User User",
+                "userId": 4,
+                "count": 0
+            },
+            {
+                "date": "AUG-19",
+                "userName": "Researcher One",
+                "userId": 1000,
+                "count": 0
+            },
+            {
+                "date": "AUG-19",
+                "userName": "Sariel Admin",
+                "userId": 10,
+                "count": 0
+            },
+            {
+                "date": "AUG-19",
+                "userName": "Andrey Romanov",
+                "userId": 9459,
+                "count": 0
+            },
+            {
+                "date": "AUG-19",
                 "userName": "Elena Khitrova",
+                "userId": 1019,
+                "count": 0
+            },
+            {
+                "date": "AUG-19",
+                "userName": "Nadia Vigdar",
+                "userId": 1005,
+                "count": 0
+            },
+            {
+                "date": "AUG-19",
+                "userName": "Sariel Sharfi",
+                "userId": 9,
+                "count": 0
+            },
+            {
+                "date": "AUG-19",
+                "userName": "user user",
+                "userId": 4114,
+                "count": 0
+            },
+            {
+                "date": "AUG-19",
+                "userName": "Lior Halachmi",
+                "userId": 1078,
+                "count": 0
+            },
+            {
+                "date": "AUG-19",
+                "userName": "Admin gggg1 Admin",
+                "userId": 5,
+                "count": 0
+            },
+            {
+                "date": "AUG-19",
+                "userName": "test2222 teste22222",
+                "userId": 3802,
+                "count": 0
+            },
+            {
+                "date": "AUG-19",
+                "userName": "VeryverylongnameVeryverylongnameVeryvery 1111111111-2222222222",
+                "userId": 8765,
+                "count": 0
+            },
+            {
+                "date": "AUG-19",
+                "userName": "r_test !@#$%^&*() r_test _+-={}[]:\";'|\\~`??><",
+                "userId": 2026,
+                "count": 0
+            },
+            {
+                "date": "AUG-19",
+                "userName": "Anonymous User",
                 "userId": 2,
+                "count": 0
+            },
+            {
+                "date": "AUG-19",
+                "userName": "Miriam Caduri",
+                "userId": 1007,
+                "count": 0
+            },
+            {
+                "date": "AUG-19",
+                "userName": "Efrat Kliper",
+                "userId": 2260,
+                "count": 0
+            },
+            {
+                "date": "AUG-19",
+                "userName": "Training User",
+                "userId": 2507,
+                "count": 0
+            },
+            {
+                "date": "AUG-19",
+                "userName": "keren rose",
+                "userId": 1381,
+                "count": 0
+            },
+            {
+                "date": "AUG-19",
+                "userName": "Dotan Perlstein",
+                "userId": 8803,
+                "count": 0
+            },
+            {
+                "date": "AUG-19",
+                "userName": "jjj kkkk",
+                "userId": 1993,
+                "count": 0
+            },
+            {
+                "date": "AUG-19",
+                "userName": "John Doe",
+                "userId": 2569,
+                "count": 0
+            },
+            {
+                "date": "AUG-19",
+                "userName": "Omry Test Omry Test",
+                "userId": 16,
+                "count": 0
+            },
+            {
+                "date": "AUG-19",
+                "userName": "Naava Szyper",
+                "userId": 9136,
+                "count": 0
+            },
+            {
+                "date": "AUG-19",
+                "userName": "Ruth H",
+                "userId": 2783,
+                "count": 0
+            },
+            {
+                "date": "AUG-19",
+                "userName": "Naava Sadi",
+                "userId": 2253,
+                "count": 0
+            },
+            {
+                "date": "AUG-19",
+                "userName": "Sariel New",
+                "userId": 11,
+                "count": 0
+            },
+            {
+                "date": "AUG-19",
+                "userName": "omry atia",
+                "userId": 1004,
+                "count": 0
+            },
+            {
+                "date": "AUG-19",
+                "userName": "moshe kamer",
+                "userId": 1735,
+                "count": 0
+            },
+            {
+                "date": "AUG-19",
+                "userName": "john brunck",
+                "userId": 2011,
+                "count": 0
+            },
+            {
+                "date": "AUG-19",
+                "userName": "Admin Admin",
+                "userId": 3,
+                "count": 0
+            },
+            {
+                "date": "AUG-19",
+                "userName": "Iris Green",
+                "userId": 8952,
+                "count": 0
+            },
+            {
+                "date": "AUG-19",
+                "userName": "Hagai Benkuzari",
+                "userId": 2254,
+                "count": 0
+            },
+            {
+                "date": "AUG-19",
+                "userName": "Ekaterina Ivnitckaya",
+                "userId": 4109,
+                "count": 0
+            },
+            {
+                "date": "AUG-19",
+                "userName": "test test",
+                "userId": 4115,
+                "count": 0
+            },
+            {
+                "date": "AUG-19",
+                "userName": "Noa Zam",
+                "userId": 4066,
+                "count": 0
+            },
+            {
+                "date": "AUG-19",
+                "userName": "Alon Pesok",
+                "userId": 1008,
+                "count": 0
+            },
+            {
+                "date": "AUG-19",
+                "userName": "System System",
+                "userId": 1,
+                "count": 0
+            },
+            {
+                "date": "SEP-19",
+                "userName": "Noa Zam",
+                "userId": 4066,
+                "count": 0
+            },
+            {
+                "date": "SEP-19",
+                "userName": "Eli Copter",
+                "userId": 2563,
+                "count": 0
+            },
+            {
+                "date": "SEP-19",
+                "userName": "keren rose",
+                "userId": 1381,
+                "count": 0
+            },
+            {
+                "date": "SEP-19",
+                "userName": "Efrat Kliper",
+                "userId": 2260,
+                "count": 0
+            },
+            {
+                "date": "SEP-19",
+                "userName": "Ruth H",
+                "userId": 2783,
                 "count": 2
             },
             {
-                "date": "OCT-18",
-                "userName": "omry atia",
+                "date": "SEP-19",
+                "userName": "Hagai Benkuzari",
+                "userId": 2254,
+                "count": 0
+            },
+            {
+                "date": "SEP-19",
+                "userName": "Anonymous User",
                 "userId": 2,
+                "count": 0
+            },
+            {
+                "date": "SEP-19",
+                "userName": "Omry Test Omry Test",
+                "userId": 16,
+                "count": 0
+            },
+            {
+                "date": "SEP-19",
+                "userName": "Sariel New",
+                "userId": 11,
+                "count": 0
+            },
+            {
+                "date": "SEP-19",
+                "userName": "System System",
+                "userId": 1,
+                "count": 0
+            },
+            {
+                "date": "SEP-19",
+                "userName": "Alon Pesok",
+                "userId": 1008,
+                "count": 0
+            },
+            {
+                "date": "SEP-19",
+                "userName": "Iris Green",
+                "userId": 8952,
+                "count": 0
+            },
+            {
+                "date": "SEP-19",
+                "userName": "Elena Khitrova",
+                "userId": 1019,
+                "count": 0
+            },
+            {
+                "date": "SEP-19",
+                "userName": "Researcher One",
+                "userId": 1000,
+                "count": 0
+            },
+            {
+                "date": "SEP-19",
+                "userName": "Andrey Romanov",
+                "userId": 9459,
+                "count": 0
+            },
+            {
+                "date": "SEP-19",
+                "userName": "Nadia Vigdar",
+                "userId": 1005,
+                "count": 0
+            },
+            {
+                "date": "SEP-19",
+                "userName": "user user",
+                "userId": 4114,
+                "count": 0
+            },
+            {
+                "date": "SEP-19",
+                "userName": "Sariel Admin",
+                "userId": 10,
+                "count": 0
+            },
+            {
+                "date": "SEP-19",
+                "userName": "Lior Halachmi",
+                "userId": 1078,
+                "count": 0
+            },
+            {
+                "date": "SEP-19",
+                "userName": "omry atia",
+                "userId": 1004,
+                "count": 0
+            },
+            {
+                "date": "SEP-19",
+                "userName": "Sariel Sharfi",
+                "userId": 9,
+                "count": 0
+            },
+            {
+                "date": "SEP-19",
+                "userName": "moshe kamer",
+                "userId": 1735,
+                "count": 0
+            },
+            {
+                "date": "SEP-19",
+                "userName": "test test",
+                "userId": 4115,
+                "count": 0
+            },
+            {
+                "date": "SEP-19",
+                "userName": "r_test !@#$%^&*() r_test _+-={}[]:\";'|\\~`??><",
+                "userId": 2026,
+                "count": 0
+            },
+            {
+                "date": "SEP-19",
+                "userName": "John Doe",
+                "userId": 2569,
+                "count": 0
+            },
+            {
+                "date": "SEP-19",
+                "userName": "jjj kkkk",
+                "userId": 1993,
+                "count": 0
+            },
+            {
+                "date": "SEP-19",
+                "userName": "Naava Sadi",
+                "userId": 2253,
+                "count": 0
+            },
+            {
+                "date": "SEP-19",
+                "userName": "Miriam Caduri",
+                "userId": 1007,
+                "count": 0
+            },
+            {
+                "date": "SEP-19",
+                "userName": "john brunck",
+                "userId": 2011,
+                "count": 0
+            },
+            {
+                "date": "SEP-19",
+                "userName": "Admin Admin",
+                "userId": 3,
+                "count": 0
+            },
+            {
+                "date": "SEP-19",
+                "userName": "Eyal Naftalovich",
+                "userId": 1061,
+                "count": 0
+            },
+            {
+                "date": "SEP-19",
+                "userName": "Naava Szyper",
+                "userId": 9136,
+                "count": 0
+            },
+            {
+                "date": "SEP-19",
+                "userName": "test2222 teste22222",
+                "userId": 3802,
+                "count": 0
+            },
+            {
+                "date": "SEP-19",
+                "userName": "User User",
+                "userId": 4,
+                "count": 0
+            },
+            {
+                "date": "SEP-19",
+                "userName": "VeryverylongnameVeryverylongnameVeryvery 1111111111-2222222222",
+                "userId": 8765,
+                "count": 0
+            },
+            {
+                "date": "SEP-19",
+                "userName": "Admin gggg1 Admin",
+                "userId": 5,
+                "count": 0
+            },
+            {
+                "date": "SEP-19",
+                "userName": "Project Admin",
+                "userId": 1750,
+                "count": 0
+            },
+            {
+                "date": "SEP-19",
+                "userName": "Ekaterina Ivnitckaya",
+                "userId": 4109,
+                "count": 0
+            },
+            {
+                "date": "SEP-19",
+                "userName": "Training User",
+                "userId": 2507,
+                "count": 0
+            },
+            {
+                "date": "SEP-19",
+                "userName": "Dotan Perlstein",
+                "userId": 8803,
+                "count": 0
+            },
+            {
+                "date": "OCT-19",
+                "userName": "Admin Admin",
+                "userId": 3,
+                "count": 0
+            },
+            {
+                "date": "OCT-19",
+                "userName": "Nadia Vigdar",
+                "userId": 1005,
+                "count": 0
+            },
+            {
+                "date": "OCT-19",
+                "userName": "Sariel Sharfi",
+                "userId": 9,
+                "count": 0
+            },
+            {
+                "date": "OCT-19",
+                "userName": "Naava Sadi",
+                "userId": 2253,
+                "count": 0
+            },
+            {
+                "date": "OCT-19",
+                "userName": "Andrey Romanov",
+                "userId": 9459,
+                "count": 0
+            },
+            {
+                "date": "OCT-19",
+                "userName": "Dotan Perlstein",
+                "userId": 8803,
+                "count": 0
+            },
+            {
+                "date": "OCT-19",
+                "userName": "Eli Copter",
+                "userId": 2563,
+                "count": 0
+            },
+            {
+                "date": "OCT-19",
+                "userName": "Sariel Admin",
+                "userId": 10,
+                "count": 0
+            },
+            {
+                "date": "OCT-19",
+                "userName": "Miriam Caduri",
+                "userId": 1007,
+                "count": 0
+            },
+            {
+                "date": "OCT-19",
+                "userName": "Researcher One",
+                "userId": 1000,
+                "count": 0
+            },
+            {
+                "date": "OCT-19",
+                "userName": "Lior Halachmi",
+                "userId": 1078,
+                "count": 0
+            },
+            {
+                "date": "OCT-19",
+                "userName": "Noa Zam",
+                "userId": 4066,
+                "count": 0
+            },
+            {
+                "date": "OCT-19",
+                "userName": "Admin gggg1 Admin",
+                "userId": 5,
+                "count": 0
+            },
+            {
+                "date": "OCT-19",
+                "userName": "Elena Khitrova",
+                "userId": 1019,
+                "count": 0
+            },
+            {
+                "date": "OCT-19",
+                "userName": "Efrat Kliper",
+                "userId": 2260,
+                "count": 0
+            },
+            {
+                "date": "OCT-19",
+                "userName": "User User",
+                "userId": 4,
+                "count": 0
+            },
+            {
+                "date": "OCT-19",
+                "userName": "r_test !@#$%^&*() r_test _+-={}[]:\";'|\\~`??><",
+                "userId": 2026,
+                "count": 0
+            },
+            {
+                "date": "OCT-19",
+                "userName": "jjj kkkk",
+                "userId": 1993,
+                "count": 0
+            },
+            {
+                "date": "OCT-19",
+                "userName": "john brunck",
+                "userId": 2011,
+                "count": 0
+            },
+            {
+                "date": "OCT-19",
+                "userName": "Naava Szyper",
+                "userId": 9136,
+                "count": 0
+            },
+            {
+                "date": "OCT-19",
+                "userName": "Omry Test Omry Test",
+                "userId": 16,
+                "count": 0
+            },
+            {
+                "date": "OCT-19",
+                "userName": "user user",
+                "userId": 4114,
+                "count": 0
+            },
+            {
+                "date": "OCT-19",
+                "userName": "test test",
+                "userId": 4115,
+                "count": 0
+            },
+            {
+                "date": "OCT-19",
+                "userName": "test2222 teste22222",
+                "userId": 3802,
+                "count": 0
+            },
+            {
+                "date": "OCT-19",
+                "userName": "Anonymous User",
+                "userId": 2,
+                "count": 0
+            },
+            {
+                "date": "OCT-19",
+                "userName": "Eyal Naftalovich",
+                "userId": 1061,
+                "count": 0
+            },
+            {
+                "date": "OCT-19",
+                "userName": "Alon Pesok",
+                "userId": 1008,
+                "count": 0
+            },
+            {
+                "date": "OCT-19",
+                "userName": "Iris Green",
+                "userId": 8952,
+                "count": 0
+            },
+            {
+                "date": "OCT-19",
+                "userName": "omry atia",
+                "userId": 1004,
+                "count": 0
+            },
+            {
+                "date": "OCT-19",
+                "userName": "Sariel New",
+                "userId": 11,
+                "count": 0
+            },
+            {
+                "date": "OCT-19",
+                "userName": "Ruth H",
+                "userId": 2783,
+                "count": 0
+            },
+            {
+                "date": "OCT-19",
+                "userName": "keren rose",
+                "userId": 1381,
+                "count": 0
+            },
+            {
+                "date": "OCT-19",
+                "userName": "Hagai Benkuzari",
+                "userId": 2254,
+                "count": 0
+            },
+            {
+                "date": "OCT-19",
+                "userName": "VeryverylongnameVeryverylongnameVeryvery 1111111111-2222222222",
+                "userId": 8765,
+                "count": 0
+            },
+            {
+                "date": "OCT-19",
+                "userName": "System System",
+                "userId": 1,
+                "count": 0
+            },
+            {
+                "date": "OCT-19",
+                "userName": "John Doe",
+                "userId": 2569,
+                "count": 0
+            },
+            {
+                "date": "OCT-19",
+                "userName": "Project Admin",
+                "userId": 1750,
+                "count": 0
+            },
+            {
+                "date": "OCT-19",
+                "userName": "moshe kamer",
+                "userId": 1735,
+                "count": 0
+            },
+            {
+                "date": "OCT-19",
+                "userName": "Ekaterina Ivnitckaya",
+                "userId": 4109,
+                "count": 0
+            },
+            {
+                "date": "OCT-19",
+                "userName": "Training User",
+                "userId": 2507,
+                "count": 0
+            },
+            {
+                "date": "NOV-19",
+                "userName": "Eyal Naftalovich",
+                "userId": 1061,
+                "count": 0
+            },
+            {
+                "date": "NOV-19",
+                "userName": "Sariel Sharfi",
+                "userId": 9,
+                "count": 0
+            },
+            {
+                "date": "NOV-19",
+                "userName": "John Doe",
+                "userId": 2569,
+                "count": 0
+            },
+            {
+                "date": "NOV-19",
+                "userName": "Sariel New",
+                "userId": 11,
+                "count": 0
+            },
+            {
+                "date": "NOV-19",
+                "userName": "Iris Green",
+                "userId": 8952,
+                "count": 0
+            },
+            {
+                "date": "NOV-19",
+                "userName": "Alon Pesok",
+                "userId": 1008,
+                "count": 0
+            },
+            {
+                "date": "NOV-19",
+                "userName": "r_test !@#$%^&*() r_test _+-={}[]:\";'|\\~`??><",
+                "userId": 2026,
+                "count": 0
+            },
+            {
+                "date": "NOV-19",
+                "userName": "Anonymous User",
+                "userId": 2,
+                "count": 0
+            },
+            {
+                "date": "NOV-19",
+                "userName": "Admin gggg1 Admin",
+                "userId": 5,
+                "count": 0
+            },
+            {
+                "date": "NOV-19",
+                "userName": "User User",
+                "userId": 4,
+                "count": 0
+            },
+            {
+                "date": "NOV-19",
+                "userName": "VeryverylongnameVeryverylongnameVeryvery 1111111111-2222222222",
+                "userId": 8765,
+                "count": 0
+            },
+            {
+                "date": "NOV-19",
+                "userName": "Ekaterina Ivnitckaya",
+                "userId": 4109,
+                "count": 0
+            },
+            {
+                "date": "NOV-19",
+                "userName": "Project Admin",
+                "userId": 1750,
+                "count": 0
+            },
+            {
+                "date": "NOV-19",
+                "userName": "Eli Copter",
+                "userId": 2563,
+                "count": 0
+            },
+            {
+                "date": "NOV-19",
+                "userName": "Dotan Perlstein",
+                "userId": 8803,
+                "count": 0
+            },
+            {
+                "date": "NOV-19",
+                "userName": "Training User",
+                "userId": 2507,
+                "count": 0
+            },
+            {
+                "date": "NOV-19",
+                "userName": "keren rose",
+                "userId": 1381,
+                "count": 0
+            },
+            {
+                "date": "NOV-19",
+                "userName": "Lior Halachmi",
+                "userId": 1078,
+                "count": 0
+            },
+            {
+                "date": "NOV-19",
+                "userName": "Sariel Admin",
+                "userId": 10,
+                "count": 0
+            },
+            {
+                "date": "NOV-19",
+                "userName": "user user",
+                "userId": 4114,
+                "count": 0
+            },
+            {
+                "date": "NOV-19",
+                "userName": "Nadia Vigdar",
+                "userId": 1005,
+                "count": 0
+            },
+            {
+                "date": "NOV-19",
+                "userName": "Elena Khitrova",
+                "userId": 1019,
+                "count": 0
+            },
+            {
+                "date": "NOV-19",
+                "userName": "Andrey Romanov",
+                "userId": 9459,
+                "count": 0
+            },
+            {
+                "date": "NOV-19",
+                "userName": "Researcher One",
+                "userId": 1000,
+                "count": 0
+            },
+            {
+                "date": "NOV-19",
+                "userName": "test test",
+                "userId": 4115,
+                "count": 0
+            },
+            {
+                "date": "NOV-19",
+                "userName": "moshe kamer",
+                "userId": 1735,
+                "count": 0
+            },
+            {
+                "date": "NOV-19",
+                "userName": "omry atia",
+                "userId": 1004,
+                "count": 0
+            },
+            {
+                "date": "NOV-19",
+                "userName": "Naava Sadi",
+                "userId": 2253,
+                "count": 0
+            },
+            {
+                "date": "NOV-19",
+                "userName": "jjj kkkk",
+                "userId": 1993,
+                "count": 0
+            },
+            {
+                "date": "NOV-19",
+                "userName": "test2222 teste22222",
+                "userId": 3802,
+                "count": 0
+            },
+            {
+                "date": "NOV-19",
+                "userName": "Miriam Caduri",
+                "userId": 1007,
+                "count": 0
+            },
+            {
+                "date": "NOV-19",
+                "userName": "Naava Szyper",
+                "userId": 9136,
+                "count": 0
+            },
+            {
+                "date": "NOV-19",
+                "userName": "Admin Admin",
+                "userId": 3,
+                "count": 0
+            },
+            {
+                "date": "NOV-19",
+                "userName": "john brunck",
+                "userId": 2011,
+                "count": 0
+            },
+            {
+                "date": "NOV-19",
+                "userName": "Efrat Kliper",
+                "userId": 2260,
+                "count": 0
+            },
+            {
+                "date": "NOV-19",
+                "userName": "Omry Test Omry Test",
+                "userId": 16,
+                "count": 0
+            },
+            {
+                "date": "NOV-19",
+                "userName": "Hagai Benkuzari",
+                "userId": 2254,
+                "count": 0
+            },
+            {
+                "date": "NOV-19",
+                "userName": "Ruth H",
+                "userId": 2783,
+                "count": 0
+            },
+            {
+                "date": "NOV-19",
+                "userName": "Noa Zam",
+                "userId": 4066,
+                "count": 0
+            },
+            {
+                "date": "NOV-19",
+                "userName": "System System",
+                "userId": 1,
+                "count": 0
+            },
+            {
+                "date": "DEC-19",
+                "userName": "Researcher One",
+                "userId": 1000,
+                "count": 0
+            },
+            {
+                "date": "DEC-19",
+                "userName": "test test",
+                "userId": 4115,
+                "count": 0
+            },
+            {
+                "date": "DEC-19",
+                "userName": "Ekaterina Ivnitckaya",
+                "userId": 4109,
+                "count": 0
+            },
+            {
+                "date": "DEC-19",
+                "userName": "Eli Copter",
+                "userId": 2563,
+                "count": 0
+            },
+            {
+                "date": "DEC-19",
+                "userName": "John Doe",
+                "userId": 2569,
+                "count": 0
+            },
+            {
+                "date": "DEC-19",
+                "userName": "omry atia",
+                "userId": 1004,
+                "count": 0
+            },
+            {
+                "date": "DEC-19",
+                "userName": "moshe kamer",
+                "userId": 1735,
+                "count": 0
+            },
+            {
+                "date": "DEC-19",
+                "userName": "Admin gggg1 Admin",
+                "userId": 5,
+                "count": 0
+            },
+            {
+                "date": "DEC-19",
+                "userName": "Iris Green",
+                "userId": 8952,
+                "count": 0
+            },
+            {
+                "date": "DEC-19",
+                "userName": "Omry Test Omry Test",
+                "userId": 16,
+                "count": 0
+            },
+            {
+                "date": "DEC-19",
+                "userName": "jjj kkkk",
+                "userId": 1993,
+                "count": 0
+            },
+            {
+                "date": "DEC-19",
+                "userName": "Miriam Caduri",
+                "userId": 1007,
+                "count": 0
+            },
+            {
+                "date": "DEC-19",
+                "userName": "Admin Admin",
+                "userId": 3,
+                "count": 0
+            },
+            {
+                "date": "DEC-19",
+                "userName": "Eyal Naftalovich",
+                "userId": 1061,
+                "count": 0
+            },
+            {
+                "date": "DEC-19",
+                "userName": "Ruth H",
+                "userId": 2783,
+                "count": 0
+            },
+            {
+                "date": "DEC-19",
+                "userName": "VeryverylongnameVeryverylongnameVeryvery 1111111111-2222222222",
+                "userId": 8765,
+                "count": 0
+            },
+            {
+                "date": "DEC-19",
+                "userName": "User User",
+                "userId": 4,
+                "count": 0
+            },
+            {
+                "date": "DEC-19",
+                "userName": "Naava Szyper",
+                "userId": 9136,
+                "count": 0
+            },
+            {
+                "date": "DEC-19",
+                "userName": "john brunck",
+                "userId": 2011,
+                "count": 0
+            },
+            {
+                "date": "DEC-19",
+                "userName": "Hagai Benkuzari",
+                "userId": 2254,
+                "count": 0
+            },
+            {
+                "date": "DEC-19",
+                "userName": "Project Admin",
+                "userId": 1750,
+                "count": 0
+            },
+            {
+                "date": "DEC-19",
+                "userName": "keren rose",
+                "userId": 1381,
+                "count": 0
+            },
+            {
+                "date": "DEC-19",
+                "userName": "Anonymous User",
+                "userId": 2,
+                "count": 0
+            },
+            {
+                "date": "DEC-19",
+                "userName": "Nadia Vigdar",
+                "userId": 1005,
+                "count": 0
+            },
+            {
+                "date": "DEC-19",
+                "userName": "Sariel Admin",
+                "userId": 10,
+                "count": 0
+            },
+            {
+                "date": "DEC-19",
+                "userName": "Lior Halachmi",
+                "userId": 1078,
+                "count": 0
+            },
+            {
+                "date": "DEC-19",
+                "userName": "user user",
+                "userId": 4114,
+                "count": 0
+            },
+            {
+                "date": "DEC-19",
+                "userName": "System System",
+                "userId": 1,
+                "count": 0
+            },
+            {
+                "date": "DEC-19",
+                "userName": "r_test !@#$%^&*() r_test _+-={}[]:\";'|\\~`??><",
+                "userId": 2026,
+                "count": 0
+            },
+            {
+                "date": "DEC-19",
+                "userName": "Alon Pesok",
+                "userId": 1008,
+                "count": 0
+            },
+            {
+                "date": "DEC-19",
+                "userName": "Sariel New",
+                "userId": 11,
+                "count": 0
+            },
+            {
+                "date": "DEC-19",
+                "userName": "Noa Zam",
+                "userId": 4066,
+                "count": 0
+            },
+            {
+                "date": "DEC-19",
+                "userName": "Naava Sadi",
+                "userId": 2253,
+                "count": 0
+            },
+            {
+                "date": "DEC-19",
+                "userName": "test2222 teste22222",
+                "userId": 3802,
+                "count": 0
+            },
+            {
+                "date": "DEC-19",
+                "userName": "Training User",
+                "userId": 2507,
+                "count": 0
+            },
+            {
+                "date": "DEC-19",
+                "userName": "Sariel Sharfi",
+                "userId": 9,
+                "count": 0
+            },
+            {
+                "date": "DEC-19",
+                "userName": "Dotan Perlstein",
+                "userId": 8803,
+                "count": 0
+            },
+            {
+                "date": "DEC-19",
+                "userName": "Efrat Kliper",
+                "userId": 2260,
+                "count": 0
+            },
+            {
+                "date": "DEC-19",
+                "userName": "Elena Khitrova",
+                "userId": 1019,
+                "count": 0
+            },
+            {
+                "date": "DEC-19",
+                "userName": "Andrey Romanov",
+                "userId": 9459,
+                "count": 0
+            },
+            {
+                "date": "JAN-20",
+                "userName": "Ekaterina Ivnitckaya",
+                "userId": 4109,
+                "count": 0
+            },
+            {
+                "date": "JAN-20",
+                "userName": "Nadia Vigdar",
+                "userId": 1005,
+                "count": 0
+            },
+            {
+                "date": "JAN-20",
+                "userName": "user user",
+                "userId": 4114,
+                "count": 0
+            },
+            {
+                "date": "JAN-20",
+                "userName": "Eli Copter",
+                "userId": 2563,
+                "count": 0
+            },
+            {
+                "date": "JAN-20",
+                "userName": "Anonymous User",
+                "userId": 2,
+                "count": 0
+            },
+            {
+                "date": "JAN-20",
+                "userName": "Iris Green",
+                "userId": 8952,
+                "count": 0
+            },
+            {
+                "date": "JAN-20",
+                "userName": "moshe kamer",
+                "userId": 1735,
+                "count": 0
+            },
+            {
+                "date": "JAN-20",
+                "userName": "Sariel New",
+                "userId": 11,
+                "count": 0
+            },
+            {
+                "date": "JAN-20",
+                "userName": "test2222 teste22222",
+                "userId": 3802,
+                "count": 0
+            },
+            {
+                "date": "JAN-20",
+                "userName": "omry atia",
+                "userId": 1004,
+                "count": 0
+            },
+            {
+                "date": "JAN-20",
+                "userName": "Efrat Kliper",
+                "userId": 2260,
+                "count": 0
+            },
+            {
+                "date": "JAN-20",
+                "userName": "John Doe",
+                "userId": 2569,
+                "count": 0
+            },
+            {
+                "date": "JAN-20",
+                "userName": "Dotan Perlstein",
+                "userId": 8803,
+                "count": 0
+            },
+            {
+                "date": "JAN-20",
+                "userName": "Lior Halachmi",
+                "userId": 1078,
+                "count": 0
+            },
+            {
+                "date": "JAN-20",
+                "userName": "Training User",
+                "userId": 2507,
+                "count": 0
+            },
+            {
+                "date": "JAN-20",
+                "userName": "john brunck",
+                "userId": 2011,
+                "count": 0
+            },
+            {
+                "date": "JAN-20",
+                "userName": "r_test !@#$%^&*() r_test _+-={}[]:\";'|\\~`??><",
+                "userId": 2026,
+                "count": 0
+            },
+            {
+                "date": "JAN-20",
+                "userName": "System System",
+                "userId": 1,
+                "count": 0
+            },
+            {
+                "date": "JAN-20",
+                "userName": "test test",
+                "userId": 4115,
+                "count": 0
+            },
+            {
+                "date": "JAN-20",
+                "userName": "Sariel Admin",
+                "userId": 10,
+                "count": 0
+            },
+            {
+                "date": "JAN-20",
+                "userName": "Researcher One",
+                "userId": 1000,
+                "count": 0
+            },
+            {
+                "date": "JAN-20",
+                "userName": "Naava Szyper",
+                "userId": 9136,
+                "count": 0
+            },
+            {
+                "date": "JAN-20",
+                "userName": "Hagai Benkuzari",
+                "userId": 2254,
+                "count": 0
+            },
+            {
+                "date": "JAN-20",
+                "userName": "Admin gggg1 Admin",
+                "userId": 5,
+                "count": 0
+            },
+            {
+                "date": "JAN-20",
+                "userName": "Eyal Naftalovich",
+                "userId": 1061,
+                "count": 0
+            },
+            {
+                "date": "JAN-20",
+                "userName": "Admin Admin",
+                "userId": 3,
+                "count": 0
+            },
+            {
+                "date": "JAN-20",
+                "userName": "Miriam Caduri",
+                "userId": 1007,
+                "count": 0
+            },
+            {
+                "date": "JAN-20",
+                "userName": "Project Admin",
+                "userId": 1750,
+                "count": 0
+            },
+            {
+                "date": "JAN-20",
+                "userName": "Sariel Sharfi",
+                "userId": 9,
+                "count": 0
+            },
+            {
+                "date": "JAN-20",
+                "userName": "Noa Zam",
+                "userId": 4066,
+                "count": 0
+            },
+            {
+                "date": "JAN-20",
+                "userName": "Andrey Romanov",
+                "userId": 9459,
+                "count": 0
+            },
+            {
+                "date": "JAN-20",
+                "userName": "jjj kkkk",
+                "userId": 1993,
+                "count": 0
+            },
+            {
+                "date": "JAN-20",
+                "userName": "VeryverylongnameVeryverylongnameVeryvery 1111111111-2222222222",
+                "userId": 8765,
+                "count": 0
+            },
+            {
+                "date": "JAN-20",
+                "userName": "keren rose",
+                "userId": 1381,
+                "count": 0
+            },
+            {
+                "date": "JAN-20",
+                "userName": "Naava Sadi",
+                "userId": 2253,
+                "count": 0
+            },
+            {
+                "date": "JAN-20",
+                "userName": "Elena Khitrova",
+                "userId": 1019,
+                "count": 0
+            },
+            {
+                "date": "JAN-20",
+                "userName": "Alon Pesok",
+                "userId": 1008,
+                "count": 0
+            },
+            {
+                "date": "JAN-20",
+                "userName": "Ruth H",
+                "userId": 2783,
+                "count": 0
+            },
+            {
+                "date": "JAN-20",
+                "userName": "Omry Test Omry Test",
+                "userId": 16,
+                "count": 0
+            },
+            {
+                "date": "JAN-20",
+                "userName": "User User",
+                "userId": 4,
+                "count": 0
+            },
+            {
+                "date": "FEB-20",
+                "userName": "john brunck",
+                "userId": 2011,
+                "count": 0
+            },
+            {
+                "date": "FEB-20",
+                "userName": "Sariel New",
+                "userId": 11,
+                "count": 0
+            },
+            {
+                "date": "FEB-20",
+                "userName": "Ekaterina Ivnitckaya",
+                "userId": 4109,
+                "count": 0
+            },
+            {
+                "date": "FEB-20",
+                "userName": "Alon Pesok",
+                "userId": 1008,
+                "count": 0
+            },
+            {
+                "date": "FEB-20",
+                "userName": "Iris Green",
+                "userId": 8952,
+                "count": 0
+            },
+            {
+                "date": "FEB-20",
+                "userName": "Andrey Romanov",
+                "userId": 9459,
+                "count": 0
+            },
+            {
+                "date": "FEB-20",
+                "userName": "Researcher One",
+                "userId": 1000,
+                "count": 1
+            },
+            {
+                "date": "FEB-20",
+                "userName": "Elena Khitrova",
+                "userId": 1019,
+                "count": 0
+            },
+            {
+                "date": "FEB-20",
+                "userName": "Hagai Benkuzari",
+                "userId": 2254,
+                "count": 0
+            },
+            {
+                "date": "FEB-20",
+                "userName": "Eli Copter",
+                "userId": 2563,
+                "count": 0
+            },
+            {
+                "date": "FEB-20",
+                "userName": "Ruth H",
+                "userId": 2783,
+                "count": 0
+            },
+            {
+                "date": "FEB-20",
+                "userName": "Efrat Kliper",
+                "userId": 2260,
+                "count": 0
+            },
+            {
+                "date": "FEB-20",
+                "userName": "jjj kkkk",
+                "userId": 1993,
+                "count": 0
+            },
+            {
+                "date": "FEB-20",
+                "userName": "Omry Test Omry Test",
+                "userId": 16,
+                "count": 0
+            },
+            {
+                "date": "FEB-20",
+                "userName": "Noa Zam",
+                "userId": 4066,
+                "count": 0
+            },
+            {
+                "date": "FEB-20",
+                "userName": "keren rose",
+                "userId": 1381,
+                "count": 0
+            },
+            {
+                "date": "FEB-20",
+                "userName": "test test",
+                "userId": 4115,
+                "count": 0
+            },
+            {
+                "date": "FEB-20",
+                "userName": "System System",
+                "userId": 1,
+                "count": 0
+            },
+            {
+                "date": "FEB-20",
+                "userName": "moshe kamer",
+                "userId": 1735,
+                "count": 0
+            },
+            {
+                "date": "FEB-20",
+                "userName": "Naava Sadi",
+                "userId": 2253,
+                "count": 0
+            },
+            {
+                "date": "FEB-20",
+                "userName": "omry atia",
+                "userId": 1004,
+                "count": 0
+            },
+            {
+                "date": "FEB-20",
+                "userName": "Sariel Sharfi",
+                "userId": 9,
+                "count": 0
+            },
+            {
+                "date": "FEB-20",
+                "userName": "Miriam Caduri",
+                "userId": 1007,
+                "count": 0
+            },
+            {
+                "date": "FEB-20",
+                "userName": "John Doe",
+                "userId": 2569,
+                "count": 0
+            },
+            {
+                "date": "FEB-20",
+                "userName": "Dotan Perlstein",
+                "userId": 8803,
                 "count": 2
+            },
+            {
+                "date": "FEB-20",
+                "userName": "Admin Admin",
+                "userId": 3,
+                "count": 0
+            },
+            {
+                "date": "FEB-20",
+                "userName": "User User",
+                "userId": 4,
+                "count": 0
+            },
+            {
+                "date": "FEB-20",
+                "userName": "Eyal Naftalovich",
+                "userId": 1061,
+                "count": 0
+            },
+            {
+                "date": "FEB-20",
+                "userName": "Naava Szyper",
+                "userId": 9136,
+                "count": 0
+            },
+            {
+                "date": "FEB-20",
+                "userName": "VeryverylongnameVeryverylongnameVeryvery 1111111111-2222222222",
+                "userId": 8765,
+                "count": 0
+            },
+            {
+                "date": "FEB-20",
+                "userName": "Training User",
+                "userId": 2507,
+                "count": 0
+            },
+            {
+                "date": "FEB-20",
+                "userName": "Sariel Admin",
+                "userId": 10,
+                "count": 0
+            },
+            {
+                "date": "FEB-20",
+                "userName": "test2222 teste22222",
+                "userId": 3802,
+                "count": 0
+            },
+            {
+                "date": "FEB-20",
+                "userName": "Lior Halachmi",
+                "userId": 1078,
+                "count": 0
+            },
+            {
+                "date": "FEB-20",
+                "userName": "r_test !@#$%^&*() r_test _+-={}[]:\";'|\\~`??><",
+                "userId": 2026,
+                "count": 0
+            },
+            {
+                "date": "FEB-20",
+                "userName": "Admin gggg1 Admin",
+                "userId": 5,
+                "count": 0
+            },
+            {
+                "date": "FEB-20",
+                "userName": "user user",
+                "userId": 4114,
+                "count": 0
+            },
+            {
+                "date": "FEB-20",
+                "userName": "Anonymous User",
+                "userId": 2,
+                "count": 0
+            },
+            {
+                "date": "FEB-20",
+                "userName": "Nadia Vigdar",
+                "userId": 1005,
+                "count": 0
+            },
+            {
+                "date": "FEB-20",
+                "userName": "Project Admin",
+                "userId": 1750,
+                "count": 0
+            },
+            {
+                "date": "MAR-20",
+                "userName": "keren rose",
+                "userId": 1381,
+                "count": 0
+            },
+            {
+                "date": "MAR-20",
+                "userName": "Nadia Vigdar",
+                "userId": 1005,
+                "count": 0
+            },
+            {
+                "date": "MAR-20",
+                "userName": "Sariel Sharfi",
+                "userId": 9,
+                "count": 0
+            },
+            {
+                "date": "MAR-20",
+                "userName": "Anonymous User",
+                "userId": 2,
+                "count": 0
+            },
+            {
+                "date": "MAR-20",
+                "userName": "Andrey Romanov",
+                "userId": 9459,
+                "count": 0
+            },
+            {
+                "date": "MAR-20",
+                "userName": "John Doe",
+                "userId": 2569,
+                "count": 0
+            },
+            {
+                "date": "MAR-20",
+                "userName": "moshe kamer",
+                "userId": 1735,
+                "count": 0
+            },
+            {
+                "date": "MAR-20",
+                "userName": "Researcher One",
+                "userId": 1000,
+                "count": 0
+            },
+            {
+                "date": "MAR-20",
+                "userName": "omry atia",
+                "userId": 1004,
+                "count": 0
+            },
+            {
+                "date": "MAR-20",
+                "userName": "Elena Khitrova",
+                "userId": 1019,
+                "count": 0
+            },
+            {
+                "date": "MAR-20",
+                "userName": "Project Admin",
+                "userId": 1750,
+                "count": 0
+            },
+            {
+                "date": "MAR-20",
+                "userName": "Naava Szyper",
+                "userId": 9136,
+                "count": 0
+            },
+            {
+                "date": "MAR-20",
+                "userName": "Iris Green",
+                "userId": 8952,
+                "count": 0
+            },
+            {
+                "date": "MAR-20",
+                "userName": "Eyal Naftalovich",
+                "userId": 1061,
+                "count": 0
+            },
+            {
+                "date": "MAR-20",
+                "userName": "john brunck",
+                "userId": 2011,
+                "count": 0
+            },
+            {
+                "date": "MAR-20",
+                "userName": "Omry Test Omry Test",
+                "userId": 16,
+                "count": 0
+            },
+            {
+                "date": "MAR-20",
+                "userName": "test2222 teste22222",
+                "userId": 3802,
+                "count": 0
+            },
+            {
+                "date": "MAR-20",
+                "userName": "Miriam Caduri",
+                "userId": 1007,
+                "count": 0
+            },
+            {
+                "date": "MAR-20",
+                "userName": "Sariel New",
+                "userId": 11,
+                "count": 0
+            },
+            {
+                "date": "MAR-20",
+                "userName": "Ruth H",
+                "userId": 2783,
+                "count": 0
+            },
+            {
+                "date": "MAR-20",
+                "userName": "jjj kkkk",
+                "userId": 1993,
+                "count": 0
+            },
+            {
+                "date": "MAR-20",
+                "userName": "User User",
+                "userId": 4,
+                "count": 0
+            },
+            {
+                "date": "MAR-20",
+                "userName": "Admin gggg1 Admin",
+                "userId": 5,
+                "count": 0
+            },
+            {
+                "date": "MAR-20",
+                "userName": "Noa Zam",
+                "userId": 4066,
+                "count": 0
+            },
+            {
+                "date": "MAR-20",
+                "userName": "Admin Admin",
+                "userId": 3,
+                "count": 0
+            },
+            {
+                "date": "MAR-20",
+                "userName": "r_test !@#$%^&*() r_test _+-={}[]:\";'|\\~`??><",
+                "userId": 2026,
+                "count": 0
+            },
+            {
+                "date": "MAR-20",
+                "userName": "Ekaterina Ivnitckaya",
+                "userId": 4109,
+                "count": 0
+            },
+            {
+                "date": "MAR-20",
+                "userName": "Lior Halachmi",
+                "userId": 1078,
+                "count": 0
+            },
+            {
+                "date": "MAR-20",
+                "userName": "Sariel Admin",
+                "userId": 10,
+                "count": 0
+            },
+            {
+                "date": "MAR-20",
+                "userName": "test test",
+                "userId": 4115,
+                "count": 0
+            },
+            {
+                "date": "MAR-20",
+                "userName": "Training User",
+                "userId": 2507,
+                "count": 0
+            },
+            {
+                "date": "MAR-20",
+                "userName": "Dotan Perlstein",
+                "userId": 8803,
+                "count": 0
+            },
+            {
+                "date": "MAR-20",
+                "userName": "System System",
+                "userId": 1,
+                "count": 0
+            },
+            {
+                "date": "MAR-20",
+                "userName": "Alon Pesok",
+                "userId": 1008,
+                "count": 0
+            },
+            {
+                "date": "MAR-20",
+                "userName": "Naava Sadi",
+                "userId": 2253,
+                "count": 0
+            },
+            {
+                "date": "MAR-20",
+                "userName": "user user",
+                "userId": 4114,
+                "count": 0
+            },
+            {
+                "date": "MAR-20",
+                "userName": "Eli Copter",
+                "userId": 2563,
+                "count": 0
+            },
+            {
+                "date": "MAR-20",
+                "userName": "Hagai Benkuzari",
+                "userId": 2254,
+                "count": 0
+            },
+            {
+                "date": "MAR-20",
+                "userName": "VeryverylongnameVeryverylongnameVeryvery 1111111111-2222222222",
+                "userId": 8765,
+                "count": 0
+            },
+            {
+                "date": "MAR-20",
+                "userName": "Efrat Kliper",
+                "userId": 2260,
+                "count": 0
+            },
+            {
+                "date": "APR-20",
+                "userName": "moshe kamer",
+                "userId": 1735,
+                "count": 0
+            },
+            {
+                "date": "APR-20",
+                "userName": "Sariel Admin",
+                "userId": 10,
+                "count": 0
+            },
+            {
+                "date": "APR-20",
+                "userName": "Lior Halachmi",
+                "userId": 1078,
+                "count": 0
+            },
+            {
+                "date": "APR-20",
+                "userName": "System System",
+                "userId": 1,
+                "count": 0
+            },
+            {
+                "date": "APR-20",
+                "userName": "User User",
+                "userId": 4,
+                "count": 0
+            },
+            {
+                "date": "APR-20",
+                "userName": "Dotan Perlstein",
+                "userId": 8803,
+                "count": 0
+            },
+            {
+                "date": "APR-20",
+                "userName": "Admin Admin",
+                "userId": 3,
+                "count": 0
+            },
+            {
+                "date": "APR-20",
+                "userName": "Eyal Naftalovich",
+                "userId": 1061,
+                "count": 0
+            },
+            {
+                "date": "APR-20",
+                "userName": "Naava Szyper",
+                "userId": 9136,
+                "count": 0
+            },
+            {
+                "date": "APR-20",
+                "userName": "test test",
+                "userId": 4115,
+                "count": 0
+            },
+            {
+                "date": "APR-20",
+                "userName": "john brunck",
+                "userId": 2011,
+                "count": 0
+            },
+            {
+                "date": "APR-20",
+                "userName": "Sariel Sharfi",
+                "userId": 9,
+                "count": 0
+            },
+            {
+                "date": "APR-20",
+                "userName": "John Doe",
+                "userId": 2569,
+                "count": 0
+            },
+            {
+                "date": "APR-20",
+                "userName": "Efrat Kliper",
+                "userId": 2260,
+                "count": 0
+            },
+            {
+                "date": "APR-20",
+                "userName": "Ekaterina Ivnitckaya",
+                "userId": 4109,
+                "count": 0
+            },
+            {
+                "date": "APR-20",
+                "userName": "keren rose",
+                "userId": 1381,
+                "count": 0
+            },
+            {
+                "date": "APR-20",
+                "userName": "r_test !@#$%^&*() r_test _+-={}[]:\";'|\\~`??><",
+                "userId": 2026,
+                "count": 0
+            },
+            {
+                "date": "APR-20",
+                "userName": "Naava Sadi",
+                "userId": 2253,
+                "count": 0
+            },
+            {
+                "date": "APR-20",
+                "userName": "test2222 teste22222",
+                "userId": 3802,
+                "count": 0
+            },
+            {
+                "date": "APR-20",
+                "userName": "Training User",
+                "userId": 2507,
+                "count": 0
+            },
+            {
+                "date": "APR-20",
+                "userName": "omry atia",
+                "userId": 1004,
+                "count": 0
+            },
+            {
+                "date": "APR-20",
+                "userName": "Researcher One",
+                "userId": 1000,
+                "count": 0
+            },
+            {
+                "date": "APR-20",
+                "userName": "Anonymous User",
+                "userId": 2,
+                "count": 0
+            },
+            {
+                "date": "APR-20",
+                "userName": "Andrey Romanov",
+                "userId": 9459,
+                "count": 0
+            },
+            {
+                "date": "APR-20",
+                "userName": "Elena Khitrova",
+                "userId": 1019,
+                "count": 0
+            },
+            {
+                "date": "APR-20",
+                "userName": "VeryverylongnameVeryverylongnameVeryvery 1111111111-2222222222",
+                "userId": 8765,
+                "count": 0
+            },
+            {
+                "date": "APR-20",
+                "userName": "jjj kkkk",
+                "userId": 1993,
+                "count": 0
+            },
+            {
+                "date": "APR-20",
+                "userName": "Hagai Benkuzari",
+                "userId": 2254,
+                "count": 0
+            },
+            {
+                "date": "APR-20",
+                "userName": "Ruth H",
+                "userId": 2783,
+                "count": 0
+            },
+            {
+                "date": "APR-20",
+                "userName": "Eli Copter",
+                "userId": 2563,
+                "count": 0
+            },
+            {
+                "date": "APR-20",
+                "userName": "Noa Zam",
+                "userId": 4066,
+                "count": 0
+            },
+            {
+                "date": "APR-20",
+                "userName": "Alon Pesok",
+                "userId": 1008,
+                "count": 0
+            },
+            {
+                "date": "APR-20",
+                "userName": "Admin gggg1 Admin",
+                "userId": 5,
+                "count": 0
+            },
+            {
+                "date": "APR-20",
+                "userName": "Nadia Vigdar",
+                "userId": 1005,
+                "count": 0
+            },
+            {
+                "date": "APR-20",
+                "userName": "Iris Green",
+                "userId": 8952,
+                "count": 0
+            },
+            {
+                "date": "APR-20",
+                "userName": "Sariel New",
+                "userId": 11,
+                "count": 0
+            },
+            {
+                "date": "APR-20",
+                "userName": "Project Admin",
+                "userId": 1750,
+                "count": 0
+            },
+            {
+                "date": "APR-20",
+                "userName": "Miriam Caduri",
+                "userId": 1007,
+                "count": 0
+            },
+            {
+                "date": "APR-20",
+                "userName": "user user",
+                "userId": 4114,
+                "count": 0
+            },
+            {
+                "date": "APR-20",
+                "userName": "Omry Test Omry Test",
+                "userId": 16,
+                "count": 0
+            },
+            {
+                "date": "MAY-20",
+                "userName": "user user",
+                "userId": 4114,
+                "count": 0
+            },
+            {
+                "date": "MAY-20",
+                "userName": "Lior Halachmi",
+                "userId": 1078,
+                "count": 0
+            },
+            {
+                "date": "MAY-20",
+                "userName": "Sariel Admin",
+                "userId": 10,
+                "count": 0
+            },
+            {
+                "date": "MAY-20",
+                "userName": "Nadia Vigdar",
+                "userId": 1005,
+                "count": 0
+            },
+            {
+                "date": "MAY-20",
+                "userName": "Elena Khitrova",
+                "userId": 1019,
+                "count": 0
+            },
+            {
+                "date": "MAY-20",
+                "userName": "Researcher One",
+                "userId": 1000,
+                "count": 0
+            },
+            {
+                "date": "MAY-20",
+                "userName": "Sariel New",
+                "userId": 11,
+                "count": 0
+            },
+            {
+                "date": "MAY-20",
+                "userName": "Andrey Romanov",
+                "userId": 9459,
+                "count": 0
+            },
+            {
+                "date": "MAY-20",
+                "userName": "Iris Green",
+                "userId": 8952,
+                "count": 0
+            },
+            {
+                "date": "MAY-20",
+                "userName": "test2222 teste22222",
+                "userId": 3802,
+                "count": 0
+            },
+            {
+                "date": "MAY-20",
+                "userName": "System System",
+                "userId": 1,
+                "count": 0
+            },
+            {
+                "date": "MAY-20",
+                "userName": "Miriam Caduri",
+                "userId": 1007,
+                "count": 0
+            },
+            {
+                "date": "MAY-20",
+                "userName": "john brunck",
+                "userId": 2011,
+                "count": 0
+            },
+            {
+                "date": "MAY-20",
+                "userName": "Eyal Naftalovich",
+                "userId": 1061,
+                "count": 0
+            },
+            {
+                "date": "MAY-20",
+                "userName": "Admin Admin",
+                "userId": 3,
+                "count": 0
+            },
+            {
+                "date": "MAY-20",
+                "userName": "Naava Szyper",
+                "userId": 9136,
+                "count": 0
+            },
+            {
+                "date": "MAY-20",
+                "userName": "Naava Sadi",
+                "userId": 2253,
+                "count": 0
+            },
+            {
+                "date": "MAY-20",
+                "userName": "jjj kkkk",
+                "userId": 1993,
+                "count": 0
+            },
+            {
+                "date": "MAY-20",
+                "userName": "Ekaterina Ivnitckaya",
+                "userId": 4109,
+                "count": 0
+            },
+            {
+                "date": "MAY-20",
+                "userName": "Alon Pesok",
+                "userId": 1008,
+                "count": 0
+            },
+            {
+                "date": "MAY-20",
+                "userName": "Project Admin",
+                "userId": 1750,
+                "count": 0
+            },
+            {
+                "date": "MAY-20",
+                "userName": "Admin gggg1 Admin",
+                "userId": 5,
+                "count": 0
+            },
+            {
+                "date": "MAY-20",
+                "userName": "User User",
+                "userId": 4,
+                "count": 0
+            },
+            {
+                "date": "MAY-20",
+                "userName": "VeryverylongnameVeryverylongnameVeryvery 1111111111-2222222222",
+                "userId": 8765,
+                "count": 0
+            },
+            {
+                "date": "MAY-20",
+                "userName": "keren rose",
+                "userId": 1381,
+                "count": 0
+            },
+            {
+                "date": "MAY-20",
+                "userName": "Efrat Kliper",
+                "userId": 2260,
+                "count": 0
+            },
+            {
+                "date": "MAY-20",
+                "userName": "Eli Copter",
+                "userId": 2563,
+                "count": 0
+            },
+            {
+                "date": "MAY-20",
+                "userName": "Training User",
+                "userId": 2507,
+                "count": 0
+            },
+            {
+                "date": "MAY-20",
+                "userName": "Dotan Perlstein",
+                "userId": 8803,
+                "count": 0
+            },
+            {
+                "date": "MAY-20",
+                "userName": "Omry Test Omry Test",
+                "userId": 16,
+                "count": 0
+            },
+            {
+                "date": "MAY-20",
+                "userName": "Sariel Sharfi",
+                "userId": 9,
+                "count": 0
+            },
+            {
+                "date": "MAY-20",
+                "userName": "John Doe",
+                "userId": 2569,
+                "count": 0
+            },
+            {
+                "date": "MAY-20",
+                "userName": "Noa Zam",
+                "userId": 4066,
+                "count": 0
+            },
+            {
+                "date": "MAY-20",
+                "userName": "r_test !@#$%^&*() r_test _+-={}[]:\";'|\\~`??><",
+                "userId": 2026,
+                "count": 0
+            },
+            {
+                "date": "MAY-20",
+                "userName": "Ruth H",
+                "userId": 2783,
+                "count": 0
+            },
+            {
+                "date": "MAY-20",
+                "userName": "Hagai Benkuzari",
+                "userId": 2254,
+                "count": 0
+            },
+            {
+                "date": "MAY-20",
+                "userName": "Anonymous User",
+                "userId": 2,
+                "count": 0
+            },
+            {
+                "date": "MAY-20",
+                "userName": "test test",
+                "userId": 4115,
+                "count": 0
+            },
+            {
+                "date": "MAY-20",
+                "userName": "moshe kamer",
+                "userId": 1735,
+                "count": 0
+            },
+            {
+                "date": "MAY-20",
+                "userName": "omry atia",
+                "userId": 1004,
+                "count": 0
+            },
+            {
+                "date": "JUN-20",
+                "userName": "Lior Halachmi",
+                "userId": 1078,
+                "count": 0
+            },
+            {
+                "date": "JUN-20",
+                "userName": "System System",
+                "userId": 1,
+                "count": 0
+            },
+            {
+                "date": "JUN-20",
+                "userName": "jjj kkkk",
+                "userId": 1993,
+                "count": 0
+            },
+            {
+                "date": "JUN-20",
+                "userName": "Project Admin",
+                "userId": 1750,
+                "count": 0
+            },
+            {
+                "date": "JUN-20",
+                "userName": "John Doe",
+                "userId": 2569,
+                "count": 0
+            },
+            {
+                "date": "JUN-20",
+                "userName": "r_test !@#$%^&*() r_test _+-={}[]:\";'|\\~`??><",
+                "userId": 2026,
+                "count": 0
+            },
+            {
+                "date": "JUN-20",
+                "userName": "Miriam Caduri",
+                "userId": 1007,
+                "count": 0
+            },
+            {
+                "date": "JUN-20",
+                "userName": "user user",
+                "userId": 4114,
+                "count": 0
+            },
+            {
+                "date": "JUN-20",
+                "userName": "Eli Copter",
+                "userId": 2563,
+                "count": 0
+            },
+            {
+                "date": "JUN-20",
+                "userName": "keren rose",
+                "userId": 1381,
+                "count": 0
+            },
+            {
+                "date": "JUN-20",
+                "userName": "VeryverylongnameVeryverylongnameVeryvery 1111111111-2222222222",
+                "userId": 8765,
+                "count": 0
+            },
+            {
+                "date": "JUN-20",
+                "userName": "Elena Khitrova",
+                "userId": 1019,
+                "count": 0
+            },
+            {
+                "date": "JUN-20",
+                "userName": "Hagai Benkuzari",
+                "userId": 2254,
+                "count": 0
+            },
+            {
+                "date": "JUN-20",
+                "userName": "Anonymous User",
+                "userId": 2,
+                "count": 0
+            },
+            {
+                "date": "JUN-20",
+                "userName": "Sariel Admin",
+                "userId": 10,
+                "count": 0
+            },
+            {
+                "date": "JUN-20",
+                "userName": "Alon Pesok",
+                "userId": 1008,
+                "count": 0
+            },
+            {
+                "date": "JUN-20",
+                "userName": "Researcher One",
+                "userId": 1000,
+                "count": 1
+            },
+            {
+                "date": "JUN-20",
+                "userName": "omry atia",
+                "userId": 1004,
+                "count": 0
+            },
+            {
+                "date": "JUN-20",
+                "userName": "Ruth H",
+                "userId": 2783,
+                "count": 0
+            },
+            {
+                "date": "JUN-20",
+                "userName": "Ekaterina Ivnitckaya",
+                "userId": 4109,
+                "count": 0
+            },
+            {
+                "date": "JUN-20",
+                "userName": "john brunck",
+                "userId": 2011,
+                "count": 0
+            },
+            {
+                "date": "JUN-20",
+                "userName": "Training User",
+                "userId": 2507,
+                "count": 0
+            },
+            {
+                "date": "JUN-20",
+                "userName": "Noa Zam",
+                "userId": 4066,
+                "count": 0
+            },
+            {
+                "date": "JUN-20",
+                "userName": "Omry Test Omry Test",
+                "userId": 16,
+                "count": 0
+            },
+            {
+                "date": "JUN-20",
+                "userName": "Sariel New",
+                "userId": 11,
+                "count": 0
+            },
+            {
+                "date": "JUN-20",
+                "userName": "test2222 teste22222",
+                "userId": 3802,
+                "count": 0
+            },
+            {
+                "date": "JUN-20",
+                "userName": "Naava Szyper",
+                "userId": 9136,
+                "count": 0
+            },
+            {
+                "date": "JUN-20",
+                "userName": "Admin Admin",
+                "userId": 3,
+                "count": 0
+            },
+            {
+                "date": "JUN-20",
+                "userName": "Sariel Sharfi",
+                "userId": 9,
+                "count": 0
+            },
+            {
+                "date": "JUN-20",
+                "userName": "Efrat Kliper",
+                "userId": 2260,
+                "count": 0
+            },
+            {
+                "date": "JUN-20",
+                "userName": "test test",
+                "userId": 4115,
+                "count": 0
+            },
+            {
+                "date": "JUN-20",
+                "userName": "moshe kamer",
+                "userId": 1735,
+                "count": 0
+            },
+            {
+                "date": "JUN-20",
+                "userName": "Admin gggg1 Admin",
+                "userId": 5,
+                "count": 0
+            },
+            {
+                "date": "JUN-20",
+                "userName": "Nadia Vigdar",
+                "userId": 1005,
+                "count": 0
+            },
+            {
+                "date": "JUN-20",
+                "userName": "Naava Sadi",
+                "userId": 2253,
+                "count": 0
+            },
+            {
+                "date": "JUN-20",
+                "userName": "Dotan Perlstein",
+                "userId": 8803,
+                "count": 0
+            },
+            {
+                "date": "JUN-20",
+                "userName": "Andrey Romanov",
+                "userId": 9459,
+                "count": 0
+            },
+            {
+                "date": "JUN-20",
+                "userName": "User User",
+                "userId": 4,
+                "count": 0
+            },
+            {
+                "date": "JUN-20",
+                "userName": "Eyal Naftalovich",
+                "userId": 1061,
+                "count": 0
+            },
+            {
+                "date": "JUN-20",
+                "userName": "Iris Green",
+                "userId": 8952,
+                "count": 0
+            },
+            {
+                "date": "JUL-20",
+                "userName": "Naava Sadi",
+                "userId": 2253,
+                "count": 0
+            },
+            {
+                "date": "JUL-20",
+                "userName": "Iris Green",
+                "userId": 8952,
+                "count": 0
+            },
+            {
+                "date": "JUL-20",
+                "userName": "jjj kkkk",
+                "userId": 1993,
+                "count": 0
+            },
+            {
+                "date": "JUL-20",
+                "userName": "Sariel New",
+                "userId": 11,
+                "count": 0
+            },
+            {
+                "date": "JUL-20",
+                "userName": "Noa Zam",
+                "userId": 4066,
+                "count": 0
+            },
+            {
+                "date": "JUL-20",
+                "userName": "Researcher One",
+                "userId": 1000,
+                "count": 0
+            },
+            {
+                "date": "JUL-20",
+                "userName": "Andrey Romanov",
+                "userId": 9459,
+                "count": 0
+            },
+            {
+                "date": "JUL-20",
+                "userName": "Lior Halachmi",
+                "userId": 1078,
+                "count": 0
+            },
+            {
+                "date": "JUL-20",
+                "userName": "Sariel Admin",
+                "userId": 10,
+                "count": 0
+            },
+            {
+                "date": "JUL-20",
+                "userName": "Elena Khitrova",
+                "userId": 1019,
+                "count": 0
+            },
+            {
+                "date": "JUL-20",
+                "userName": "Dotan Perlstein",
+                "userId": 8803,
+                "count": 1
+            },
+            {
+                "date": "JUL-20",
+                "userName": "test test",
+                "userId": 4115,
+                "count": 0
+            },
+            {
+                "date": "JUL-20",
+                "userName": "moshe kamer",
+                "userId": 1735,
+                "count": 0
+            },
+            {
+                "date": "JUL-20",
+                "userName": "Training User",
+                "userId": 2507,
+                "count": 0
+            },
+            {
+                "date": "JUL-20",
+                "userName": "Nadia Vigdar",
+                "userId": 1005,
+                "count": 0
+            },
+            {
+                "date": "JUL-20",
+                "userName": "r_test !@#$%^&*() r_test _+-={}[]:\";'|\\~`??><",
+                "userId": 2026,
+                "count": 0
+            },
+            {
+                "date": "JUL-20",
+                "userName": "Ekaterina Ivnitckaya",
+                "userId": 4109,
+                "count": 0
+            },
+            {
+                "date": "JUL-20",
+                "userName": "keren rose",
+                "userId": 1381,
+                "count": 0
+            },
+            {
+                "date": "JUL-20",
+                "userName": "Project Admin",
+                "userId": 1750,
+                "count": 0
+            },
+            {
+                "date": "JUL-20",
+                "userName": "Ruth H",
+                "userId": 2783,
+                "count": 0
+            },
+            {
+                "date": "JUL-20",
+                "userName": "Admin gggg1 Admin",
+                "userId": 5,
+                "count": 0
+            },
+            {
+                "date": "JUL-20",
+                "userName": "Hagai Benkuzari",
+                "userId": 2254,
+                "count": 0
+            },
+            {
+                "date": "JUL-20",
+                "userName": "System System",
+                "userId": 1,
+                "count": 0
+            },
+            {
+                "date": "JUL-20",
+                "userName": "User User",
+                "userId": 4,
+                "count": 0
+            },
+            {
+                "date": "JUL-20",
+                "userName": "Efrat Kliper",
+                "userId": 2260,
+                "count": 0
+            },
+            {
+                "date": "JUL-20",
+                "userName": "Omry Test Omry Test",
+                "userId": 16,
+                "count": 0
+            },
+            {
+                "date": "JUL-20",
+                "userName": "John Doe",
+                "userId": 2569,
+                "count": 0
+            },
+            {
+                "date": "JUL-20",
+                "userName": "Eli Copter",
+                "userId": 2563,
+                "count": 0
+            },
+            {
+                "date": "JUL-20",
+                "userName": "VeryverylongnameVeryverylongnameVeryvery 1111111111-2222222222",
+                "userId": 8765,
+                "count": 0
+            },
+            {
+                "date": "JUL-20",
+                "userName": "Sariel Sharfi",
+                "userId": 9,
+                "count": 0
+            },
+            {
+                "date": "JUL-20",
+                "userName": "Anonymous User",
+                "userId": 2,
+                "count": 0
+            },
+            {
+                "date": "JUL-20",
+                "userName": "omry atia",
+                "userId": 1004,
+                "count": 0
+            },
+            {
+                "date": "JUL-20",
+                "userName": "user user",
+                "userId": 4114,
+                "count": 0
+            },
+            {
+                "date": "JUL-20",
+                "userName": "test2222 teste22222",
+                "userId": 3802,
+                "count": 0
+            },
+            {
+                "date": "JUL-20",
+                "userName": "Miriam Caduri",
+                "userId": 1007,
+                "count": 0
+            },
+            {
+                "date": "JUL-20",
+                "userName": "Naava Szyper",
+                "userId": 9136,
+                "count": 0
+            },
+            {
+                "date": "JUL-20",
+                "userName": "Admin Admin",
+                "userId": 3,
+                "count": 0
+            },
+            {
+                "date": "JUL-20",
+                "userName": "Eyal Naftalovich",
+                "userId": 1061,
+                "count": 0
+            },
+            {
+                "date": "JUL-20",
+                "userName": "john brunck",
+                "userId": 2011,
+                "count": 0
+            },
+            {
+                "date": "JUL-20",
+                "userName": "Alon Pesok",
+                "userId": 1008,
+                "count": 0
+            },
+            {
+                "date": "AUG-20",
+                "userName": "Training User",
+                "userId": 2507,
+                "count": 0
+            },
+            {
+                "date": "AUG-20",
+                "userName": "Researcher One",
+                "userId": 1000,
+                "count": 0
+            },
+            {
+                "date": "AUG-20",
+                "userName": "Lior Halachmi",
+                "userId": 1078,
+                "count": 0
+            },
+            {
+                "date": "AUG-20",
+                "userName": "Project Admin",
+                "userId": 1750,
+                "count": 0
+            },
+            {
+                "date": "AUG-20",
+                "userName": "user user",
+                "userId": 4114,
+                "count": 0
+            },
+            {
+                "date": "AUG-20",
+                "userName": "r_test !@#$%^&*() r_test _+-={}[]:\";'|\\~`??><",
+                "userId": 2026,
+                "count": 0
+            },
+            {
+                "date": "AUG-20",
+                "userName": "Andrey Romanov",
+                "userId": 9459,
+                "count": 0
+            },
+            {
+                "date": "AUG-20",
+                "userName": "Miriam Caduri",
+                "userId": 1007,
+                "count": 0
+            },
+            {
+                "date": "AUG-20",
+                "userName": "Naava Szyper",
+                "userId": 9136,
+                "count": 0
+            },
+            {
+                "date": "AUG-20",
+                "userName": "Elena Khitrova",
+                "userId": 1019,
+                "count": 0
+            },
+            {
+                "date": "AUG-20",
+                "userName": "Ekaterina Ivnitckaya",
+                "userId": 4109,
+                "count": 0
+            },
+            {
+                "date": "AUG-20",
+                "userName": "Eli Copter",
+                "userId": 2563,
+                "count": 0
+            },
+            {
+                "date": "AUG-20",
+                "userName": "Admin Admin",
+                "userId": 3,
+                "count": 0
+            },
+            {
+                "date": "AUG-20",
+                "userName": "Eyal Naftalovich",
+                "userId": 1061,
+                "count": 0
+            },
+            {
+                "date": "AUG-20",
+                "userName": "Anonymous User",
+                "userId": 2,
+                "count": 0
+            },
+            {
+                "date": "AUG-20",
+                "userName": "john brunck",
+                "userId": 2011,
+                "count": 0
+            },
+            {
+                "date": "AUG-20",
+                "userName": "test2222 teste22222",
+                "userId": 3802,
+                "count": 0
+            },
+            {
+                "date": "AUG-20",
+                "userName": "Sariel Sharfi",
+                "userId": 9,
+                "count": 0
+            },
+            {
+                "date": "AUG-20",
+                "userName": "User User",
+                "userId": 4,
+                "count": 0
+            },
+            {
+                "date": "AUG-20",
+                "userName": "moshe kamer",
+                "userId": 1735,
+                "count": 0
+            },
+            {
+                "date": "AUG-20",
+                "userName": "VeryverylongnameVeryverylongnameVeryvery 1111111111-2222222222",
+                "userId": 8765,
+                "count": 0
+            },
+            {
+                "date": "AUG-20",
+                "userName": "omry atia",
+                "userId": 1004,
+                "count": 0
+            },
+            {
+                "date": "AUG-20",
+                "userName": "John Doe",
+                "userId": 2569,
+                "count": 0
+            },
+            {
+                "date": "AUG-20",
+                "userName": "Admin gggg1 Admin",
+                "userId": 5,
+                "count": 0
+            },
+            {
+                "date": "AUG-20",
+                "userName": "Nadia Vigdar",
+                "userId": 1005,
+                "count": 0
+            },
+            {
+                "date": "AUG-20",
+                "userName": "Dotan Perlstein",
+                "userId": 8803,
+                "count": 0
+            },
+            {
+                "date": "AUG-20",
+                "userName": "System System",
+                "userId": 1,
+                "count": 0
+            },
+            {
+                "date": "AUG-20",
+                "userName": "Naava Sadi",
+                "userId": 2253,
+                "count": 0
+            },
+            {
+                "date": "AUG-20",
+                "userName": "keren rose",
+                "userId": 1381,
+                "count": 0
+            },
+            {
+                "date": "AUG-20",
+                "userName": "Efrat Kliper",
+                "userId": 2260,
+                "count": 0
+            },
+            {
+                "date": "AUG-20",
+                "userName": "test test",
+                "userId": 4115,
+                "count": 0
+            },
+            {
+                "date": "AUG-20",
+                "userName": "Ruth H",
+                "userId": 2783,
+                "count": 0
+            },
+            {
+                "date": "AUG-20",
+                "userName": "Hagai Benkuzari",
+                "userId": 2254,
+                "count": 0
+            },
+            {
+                "date": "AUG-20",
+                "userName": "Noa Zam",
+                "userId": 4066,
+                "count": 0
+            },
+            {
+                "date": "AUG-20",
+                "userName": "Omry Test Omry Test",
+                "userId": 16,
+                "count": 0
+            },
+            {
+                "date": "AUG-20",
+                "userName": "jjj kkkk",
+                "userId": 1993,
+                "count": 0
+            },
+            {
+                "date": "AUG-20",
+                "userName": "Sariel New",
+                "userId": 11,
+                "count": 0
+            },
+            {
+                "date": "AUG-20",
+                "userName": "Alon Pesok",
+                "userId": 1008,
+                "count": 0
+            },
+            {
+                "date": "AUG-20",
+                "userName": "Iris Green",
+                "userId": 8952,
+                "count": 0
+            },
+            {
+                "date": "AUG-20",
+                "userName": "Sariel Admin",
+                "userId": 10,
+                "count": 0
             }
         ]
     },

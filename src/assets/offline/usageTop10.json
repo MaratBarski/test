@@ -14,10 +14,22 @@
         ],
         "downloads": [
             {
+                "userName": "4243",
+                "userId": 883303,
+                "syntetic": 1,
+                "origin": 1000
+            },
+            {
                 "userName": "Dotan Perlstein",
                 "userId": 8803,
-                "syntetic": 2,
-                "origin": 1
+                "syntetic": 20,
+                "origin": 145
+            },
+            {
+                "userName": "123",
+                "userId": 8803,
+                "syntetic": 21,
+                "origin": 10
             }
         ]
     },

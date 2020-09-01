@@ -147,7 +147,11 @@ export class UsageRequestService extends BaseSibscriber {
       this._users.push({ ...users[k], isChecked: false });
     });
     this._users = this._users.sort((a, b) => {
-      return a.total > b.total ? -1 : 1;
+      if (a.total > b.total) { return -1; }
+      if (a.total < b.total) { return 1; }
+      if (a.login.toLowerCase() > b.login.toLowerCase()) { return 1; }
+      if (a.login.toLowerCase() < b.login.toLowerCase()) { return -1; }
+      return 0;
     });
     this._onUsersLoaded.next();
   }
