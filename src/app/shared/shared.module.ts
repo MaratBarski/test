@@ -27,6 +27,7 @@ import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dial
 import {TooltipModule} from 'primeng/tooltip';
 import { UserProjectPipe } from './pipes/user-project.pipe';
 import { ToolTipManagerDirective } from './directives/tool-tip-manager.directive';
+import { DateTimePipe } from './pipes/date-time.pipe';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { ToolTipManagerDirective } from './directives/tool-tip-manager.directive
     LegendComponent,
     ConfirmDialogComponent,
     UserProjectPipe,
-    ToolTipManagerDirective
+    ToolTipManagerDirective,
+    DateTimePipe
   ],
   imports: [
     FormsModule,
@@ -73,7 +75,8 @@ import { ToolTipManagerDirective } from './directives/tool-tip-manager.directive
     ConfirmDialogComponent,
     TooltipModule,
     ToolTipManagerDirective,
-    LegendComponent
+    LegendComponent,
+    DateTimePipe
   ],
   entryComponents: [
   ]

@@ -1,7 +1,7 @@
 <md-user-time-activity (onSelect)="changeCurrentAcitity($event)" [current]="currentActivity"
     [buttons]="activityButtons"></md-user-time-activity>
 
-<md-chart-wraper firstTitle="New Queries" secondTitle="File Downloads" [firstChart]="firstChart"
+<md-chart-wraper [firstTitle]="firstTitle" [secondTitle]="secondTitle" [firstChart]="firstChart"
     [firstChartHasData]="(dataSource|userTop10Chart).query.length"
     [secondChartHasData]="(dataSource|userTop10Chart).download.length" [secondChart]="secondChart">
 </md-chart-wraper>

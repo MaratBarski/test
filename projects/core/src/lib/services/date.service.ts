@@ -153,9 +153,9 @@ export class DateService {
 
   private formatNumber(i: number): string { return i > 9 ? `${i}` : `0${i}`; }
 
-  formatDate(date: string | Date): string {
+  formatDate(date: string | Date, separator: string = '-'): string {
     const res = new Date(date);
-    return `${this.formatNumber(res.getDate())}-${this.formatNumber(res.getMonth() + 1)}-${res.getFullYear()}`;
+    return `${this.formatNumber(res.getDate())}${separator}${this.formatNumber(res.getMonth() + 1)}${separator}${res.getFullYear()}`;
   }
 
 

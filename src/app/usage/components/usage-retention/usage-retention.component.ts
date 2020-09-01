@@ -71,7 +71,6 @@ export class UsageRetentionComponent extends UsageBase {
   }
 
   private toCSV(): void {
-    alert('restriction csv');
   }
 
 

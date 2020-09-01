@@ -1,5 +1,126 @@
 {
-    "data": "[{\"lastActivity\":\"2020-02-12T10:43:44.967857+00:00\",\"userName\":\"Dotan Perlstein (dotan.perl)\",\"userId\":8803,\"environmentName\":\"Demo Project\",\"environmentId\":1,\"days\":90}, \n {\"lastActivity\":\"2020-01-20T11:06:29.085+00:00\",\"userName\":\"Elena Khitrova (hit_user)\",\"userId\":1019,\"environmentName\":\"Demo Project\",\"environmentId\":1,\"days\":113}, \n {\"lastActivity\":\"2019-09-17T08:36:24.643435+00:00\",\"userName\":\"jjj kkkk (Janeta.Kozak)\",\"userId\":1993,\"environmentName\":\"Demo Project\",\"environmentId\":1,\"days\":238}, \n {\"lastActivity\":\"2019-12-02T11:31:15.192+00:00\",\"userName\":\"Lior Halachmi (lior.halachmi)\",\"userId\":1078,\"environmentName\":\"Demo Project\",\"environmentId\":1,\"days\":162}, \n {\"lastActivity\":\"2020-02-16T12:10:35.757857+00:00\",\"userName\":\"Researcher One (researcher1)\",\"userId\":1000,\"environmentName\":\"Demo Project\",\"environmentId\":1,\"days\":86}, \n {\"lastActivity\":\"2018-10-19T03:40:06.422+00:00\",\"userName\":\"john brunck (john.brunck)\",\"userId\":2011,\"environmentName\":\"JB_TEST\",\"environmentId\":10,\"days\":572}, \n {\"lastActivity\":\"2018-12-10T14:31:46.306607+00:00\",\"userName\":\"omry atia (omry.atia)\",\"userId\":1004,\"environmentName\":\"R Test Project\",\"environmentId\":2,\"days\":519}, \n {\"lastActivity\":\"2020-02-16T12:10:35.757857+00:00\",\"userName\":\"Researcher One (researcher1)\",\"userId\":1000,\"environmentName\":\"R Test Project\",\"environmentId\":2,\"days\":86}, \n {\"lastActivity\":\"2018-10-25T09:17:40.172992+00:00\",\"userName\":\"r_test r_test (r_test)\",\"userId\":2026,\"environmentName\":\"R Test Project\",\"environmentId\":2,\"days\":565}, \n {\"lastActivity\":\"2019-09-16T11:59:00.550384+00:00\",\"userName\":\"Ruth H (Ruth)\",\"userId\":2783,\"environmentName\":\"R Test Project\",\"environmentId\":2,\"days\":239}, \n {\"lastActivity\":\"2018-12-26T19:44:04.683+00:00\",\"userName\":\"Eli Copter (Eli)\",\"userId\":2563,\"environmentName\":\"Training Mimic Data\",\"environmentId\":14,\"days\":503}, \n {\"lastActivity\":\"2019-09-16T11:59:00.550384+00:00\",\"userName\":\"Ruth H (Ruth)\",\"userId\":2783,\"environmentName\":\"Training Mimic Data\",\"environmentId\":14,\"days\":239}, \n {\"lastActivity\":\"2019-01-17T16:39:16.53+00:00\",\"userName\":\"Training User (Training_User)\",\"userId\":2507,\"environmentName\":\"Training Mimic Data\",\"environmentId\":14,\"days\":481}]",
+    "data": [
+        {
+            "lastActivity": "2020-08-06T16:08:20.421+00:00",
+            "userName": "Alon Pesok (alon.pesok)",
+            "userId": 1008,
+            "environmentName": "Demo Project",
+            "environmentId": 1,
+            "days": 25
+        },
+        {
+            "lastActivity": "2020-07-10T09:48:36.632479+00:00",
+            "userName": "Dotan Perlstein (dotan.perl)",
+            "userId": 8803,
+            "environmentName": "Demo Project",
+            "environmentId": 1,
+            "days": 52
+        },
+        {
+            "lastActivity": "2020-08-20T15:25:17.277+00:00",
+            "userName": "Elena Khitrova (hit_user)",
+            "userId": 1019,
+            "environmentName": "Demo Project",
+            "environmentId": 1,
+            "days": 11
+        },
+        {
+            "lastActivity": "2020-06-03T13:18:19.777+00:00",
+            "userName": "keren rose (keren)",
+            "userId": 1381,
+            "environmentName": "Demo Project",
+            "environmentId": 1,
+            "days": 89
+        },
+        {
+            "lastActivity": "2020-05-29T11:54:20.078+00:00",
+            "userName": "Lior Halachmi (lior.halachmi)",
+            "userId": 1078,
+            "environmentName": "Demo Project",
+            "environmentId": 1,
+            "days": 94
+        },
+        {
+            "lastActivity": "2020-08-20T12:51:21.826+00:00",
+            "userName": "Nadia Vigdar (nadia.vigdar)",
+            "userId": 1005,
+            "environmentName": "Demo Project",
+            "environmentId": 1,
+            "days": 11
+        },
+        {
+            "lastActivity": "2020-08-19T14:02:43.547+00:00",
+            "userName": "Researcher One (researcher1)",
+            "userId": 1000,
+            "environmentName": "Demo Project",
+            "environmentId": 1,
+            "days": 12
+        },
+        {
+            "lastActivity": "2018-10-19T03:40:06.422+00:00",
+            "userName": "john brunck (john.brunck)",
+            "userId": 2011,
+            "environmentName": "JB_TEST",
+            "environmentId": 10,
+            "days": 683
+        },
+        {
+            "lastActivity": "2018-12-10T14:31:46.306607+00:00",
+            "userName": "omry atia (omry.atia)",
+            "userId": 1004,
+            "environmentName": "R Test Project",
+            "environmentId": 2,
+            "days": 630
+        },
+        {
+            "lastActivity": "2020-06-19T09:26:52.80762+00:00",
+            "userName": "Researcher One (researcher1)",
+            "userId": 1000,
+            "environmentName": "R Test Project",
+            "environmentId": 2,
+            "days": 73
+        },
+        {
+            "lastActivity": "2018-10-25T09:17:40.172992+00:00",
+            "userName": "r_test !@#$%^&*() r_test _+-={}[]:\";'|\\~`??>< (r_test)",
+            "userId": 2026,
+            "environmentName": "R Test Project",
+            "environmentId": 2,
+            "days": 676
+        },
+        {
+            "lastActivity": "2019-09-16T11:59:00.550384+00:00",
+            "userName": "Ruth H (Ruth)",
+            "userId": 2783,
+            "environmentName": "R Test Project",
+            "environmentId": 2,
+            "days": 350
+        },
+        {
+            "lastActivity": "2018-12-26T19:44:04.683+00:00",
+            "userName": "Eli Copter (Eli)",
+            "userId": 2563,
+            "environmentName": "Training Mimic Data",
+            "environmentId": 14,
+            "days": 614
+        },
+        {
+            "lastActivity": "2019-09-16T11:59:00.550384+00:00",
+            "userName": "Ruth H (Ruth)",
+            "userId": 2783,
+            "environmentName": "Training Mimic Data",
+            "environmentId": 14,
+            "days": 350
+        },
+        {
+            "lastActivity": "2019-01-17T16:39:16.53+00:00",
+            "userName": "Training User (Training_User)",
+            "userId": 2507,
+            "environmentName": "Training Mimic Data",
+            "environmentId": 14,
+            "days": 592
+        }
+    ],
     "massage": "Get all Usage Report's Objects",
     "status": "success"
 }

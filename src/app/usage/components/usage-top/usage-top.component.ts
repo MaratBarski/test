@@ -30,7 +30,7 @@ export class UsageTopComponent extends UsageBase {
   };
 
   colorSchemeDownload = {
-    domain: ['#5303A8','#03CFA3']
+    domain: ['#5303A8', '#03CFA3']
   };
 
   pdfChartWidth = '500px';
@@ -80,6 +80,18 @@ export class UsageTopComponent extends UsageBase {
 
   hasData1 = true;
   hasData2 = true;
+
+  get dateRange(): string {
+    return `${this.dateService.formatDate(this.usageRequestService.usageRequest.fromDate, '/')} - ${this.dateService.formatDate(this.usageRequestService.usageRequest.toDate, '/')}`;
+  }
+
+  get firstTitle(): string {
+    return `New Queries ${this.dateRange}`;
+  }
+
+  get secondTitle(): string {
+    return `File Downloads ${this.dateRange}`;
+  }
 
   downloadData: DownloadData = {
     pageName: 'Top 10 Users',
