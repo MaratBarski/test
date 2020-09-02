@@ -39,11 +39,11 @@ export class ChartService {
       this.usageRequestService.usageRequest.environment === '' ||
       this.usageRequestService.usageRequest.environment === '0'
     ) { return ''; }
-    return `/${this.usageRequestService.usageRequest.environment}`;
+    return `${this.usageRequestService.usageRequest.environment}`;
   }
 
   get requestString(): string {
-    return `${this.dateRangeString}${this.environmentString}/?${this.includeAdminString}`;
+    return `${this.dateRangeString}/${this.environmentString}/?${this.includeAdminString}`;
   }
 
   getChart(url: string): Observable<any> {
@@ -62,7 +62,7 @@ export class ChartService {
 
   getCsv(): void {
     //alert(`${environment.serverUrl}${environment.endPoints.usageCsvDownload}/${this.dateRangeString}`);
-    window.open(`${environment.serverUrl}${environment.endPoints.usageCsvDownload}/${this.dateRangeString}`);
+    window.open(`${environment.serverUrl}${environment.endPoints.usageCsvDownload}/${this.dateRangeString}?adminUsers=${this.usageRequestService.usageRequest.includeAdmin}&env=${this.environmentString}`);
   }
 
   @Offline('assets/offline/usageGeneral.json?')
@@ -109,7 +109,7 @@ export class ChartService {
   private getUsageRetentionUrl = `${environment.serverUrl}${environment.endPoints.usageRetantionTable}`;
   getUsageRetention(info: any = undefined): Observable<any> {
     //alert(`${this.getUsageRetentionUrl}${this.environmentString}/?${this.includeAdminString}`);
-    return this.getChart(`${this.getUsageRetentionUrl}${this.environmentString}/?${this.includeAdminString}`);
+    return this.getChart(`${this.getUsageRetentionUrl}/${this.environmentString}/?${this.includeAdminString}`);
   }
 
   @Offline('assets/offline/usageSummaryTable.json?')
