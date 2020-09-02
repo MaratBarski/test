@@ -19,6 +19,7 @@ export class InputNumberComponent implements ControlValueAccessor {
 
   @Input() min = 0;
   @Input() max = 100000;
+  @Input() defaultValue = 100000;
   @Input() emptyEnable = false;
   @Input() isValid = true;
   @Input() errorMessage = 'missing number';
@@ -56,10 +57,14 @@ export class InputNumberComponent implements ControlValueAccessor {
   }
 
   chengeNumber(): void {
-    if (isNaN(this._value)) {
-      this._value = undefined;
+    if (this._value === undefined || this._value.toString().trim() === '' || isNaN(this._value)) {
+      this._value = this.defaultValue;
       this.onChange(this._value);
-    } else if (this._value > this.max) {
+      this.onValueChanged.emit(this.value);
+      return
+    }
+    this._value = parseInt('' + this._value);
+    if (this._value > this.max) {
       this._value = this.max;
       this.onChange(this._value);
     } else if (this._value < this.min) {
@@ -71,8 +76,9 @@ export class InputNumberComponent implements ControlValueAccessor {
 
   add(i: number): void {
     if (isNaN(this._value)) {
-      this._value = 0;
+      this._value = this.defaultValue;
     }
+    this._value = parseInt('' + this._value);
     if (this._value + i > this.max) { return; }
     if (this._value + i < this.min) { return; }
     this._value += i;
@@ -80,3 +86,4 @@ export class InputNumberComponent implements ControlValueAccessor {
     this.onValueChanged.emit(this.value);
   }
 }
+

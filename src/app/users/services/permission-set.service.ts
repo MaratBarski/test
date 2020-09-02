@@ -52,6 +52,11 @@ export class PermissionSetService extends BaseSibscriber {
   redirectUrl = '';
   showCancelConfirm = false;
 
+  get maxSize(): number {
+    return this._maxSize;
+  }
+  private _maxSize = 1;
+
   constructor(
     private http: HttpClient,
     private userListService: UserListService,
@@ -62,6 +67,7 @@ export class PermissionSetService extends BaseSibscriber {
     private navigationService: NavigationService
   ) {
     super();
+    this._maxSize = parseInt(this.configService.getValue('research_max_patients'));
   }
 
   cancelConfirm(): void {
