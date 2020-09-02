@@ -11,7 +11,7 @@ export class DateTimePipe implements PipeTransform {
     if (!time || time.length < 2) { return ''; }
     time = time[1].split(':');
     if (!time || time.length < 2) { return ''; }
-    return `${time[0]} ${time[1]}`;
+    return `${time[0]}:${time[1]}`;
   }
 
 }
