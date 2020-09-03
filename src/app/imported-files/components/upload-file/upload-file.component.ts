@@ -168,11 +168,16 @@ export class UploadFileComponent extends BaseSibscriber implements OnInit {
     //this.fileUploader.reset();
   }
 
-  private fileError(error: ValidationFileMessage): void {
+  private fileError(error: ValidationFileMessage, replacements: Array<any> = undefined): void {
     this.file = '';
     this.fileInput.nativeElement.value = '';
     this.isFileError = true;
     this.fileErrorMessage = this.configService.config.fileValidationErrors[error];
+    if (replacements) {
+      replacements.forEach(x => {
+        this.fileErrorMessage = this.fileErrorMessage.replace(x[0], x[1]);
+      })
+    }
   }
 
   fileErrorMessage = '';
@@ -189,6 +194,10 @@ export class UploadFileComponent extends BaseSibscriber implements OnInit {
     }
     if (!this.csvManagerService.validateFileName(this.fileInput.nativeElement)) {
       this.fileError(ValidationFileMessage.NoName);
+      return;
+    }
+    if (!this.csvManagerService.validateMaxSize(this.fileInput.nativeElement.files[0], parseInt(this.configService.getValue('file_upload_limit')))) {
+      this.fileError(ValidationFileMessage.FileSizeLimitError, [['{maxSize}', this.configService.getValue('file_upload_limit')]]);
       return;
     }
     if (!this.csvManagerService.validateFileEmpty(this.fileInput.nativeElement.files[0])) {

@@ -44,7 +44,7 @@ export class UploadFileComponent {
   isFileError = false;
 
   get isValid(): boolean {
-    return (!!this.fileName || this.isEditMode) && !!this.file && (!!this.project || this.isEditMode);
+    return (!!this.fileName || this.isEditMode) && !!this.file && (!!this.project || this.isEditMode) && !this.fileNameErrorMessage;
   }
 
   @Offline('http://localhost:57858/api/Config/')
@@ -64,7 +64,7 @@ export class UploadFileComponent {
         succName: 'Categorization file uploaded successfully.',
         abortName: 'Aborted successfully.',
         abortComment: `Upload of ${this.fileName} was successfully aborted.`,
-        comment: 'You will be notified when its ready for review.',
+        comment: this.configService.getValue('MI00003'),
         succComment: `Upload of ${this.fileName} was successful and it is ready for review.`,
         progress: 0,
         status: NotificationStatus.uploading,
@@ -129,9 +129,33 @@ export class UploadFileComponent {
     this.defaultCategory = '0';
   }
 
+  fileNameErrorMessage: string = undefined;
+
+  validateFileName(): void {
+    if (!this.targetComponent || !this.targetComponent.categorySource) { return; }
+    const files: Array<any> = this.targetComponent.categorySource;
+    const found = files.find(x => {
+      return x.hierarchyName && this.fileName && x.hierarchyName.toLowerCase() === this.fileName.toLowerCase();
+    });
+    if (found) {
+      this.fileNameErrorMessage = this.configService.getMessage('E00027');
+      this.fileName = '';
+    } else {
+      this.fileNameErrorMessage = undefined;
+    }
+  }
+
   readFile(file: any): void {
     this.csvManagerService.readHeaders(file).then((arr: Array<string>) => {
       this.isFileError = false;
+      for (let i = 0; i < arr.length; i++) {
+        if (!this.csvManagerService.validateSymbol(arr[0])) {
+          this.fileError(ValidationFileMessage.NoEnglish);
+          this.categoryHeaders = [];
+          this.file = '';
+          this.isFileError = true;
+        }
+      }
       this.categoryHeaders =
         //['Select default category...']
         [].concat(
@@ -150,11 +174,16 @@ export class UploadFileComponent {
 
   fileErrorMessage = 'File format needs to be CSV (comma separate values)';
 
-  private fileError(error: ValidationFileMessage): void {
+  private fileError(error: ValidationFileMessage, replacements: Array<any> = undefined): void {
     this.file = '';
     this.fileInput.nativeElement.value = '';
     this.isFileError = true;
     this.fileErrorMessage = this.configService.config.fileValidationErrors[error];
+    if (replacements) {
+      replacements.forEach(x => {
+        this.fileErrorMessage = this.fileErrorMessage.replace(x[0], x[1]);
+      })
+    }
   }
 
   updateFileName(event: any): void {
@@ -169,6 +198,10 @@ export class UploadFileComponent {
     }
     if (!this.csvManagerService.validateFileName(this.fileInput.nativeElement)) {
       this.fileError(ValidationFileMessage.NoName);
+      return;
+    }
+    if (!this.csvManagerService.validateMaxSize(this.fileInput.nativeElement.files[0], parseInt(this.configService.getValue('file_upload_limit')))) {
+      this.fileError(ValidationFileMessage.FileSizeLimitError, [['{maxSize}', this.configService.getValue('file_upload_limit')]]);
       return;
     }
     if (!this.csvManagerService.validateFileEmpty(this.fileInput.nativeElement.files[0])) {
