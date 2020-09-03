@@ -46,7 +46,7 @@ export interface INotification {
   containerEnable?: boolean;
   isClientOnly?: boolean;
   removeOnComplete?: boolean;
-
+  isAbortDisabled?: boolean;
 }
 
 const NOTIFICATION_MAP: Array<{ client: string, server: string }> = [

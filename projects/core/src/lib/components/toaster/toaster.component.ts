@@ -42,7 +42,7 @@ export class ToasterComponent {
   }
 
   onAbortClicked(): void {
-    console.log('abort');
+    if (this.notice.isAbortDisabled) { return; }
     this.onAbort.emit(this.notice);
   }
 

@@ -75,6 +75,7 @@ export class UploadService implements OnDestroy {
             }
           }
         } else if (events.type === HttpEventType.Response) {
+          uploadInfo.notification.isAbortDisabled = true;
           if (uploadInfo.notification.removeOnComplete) { return; }
           this.uploadEnd(uploadInfo, NotificationStatus.completed);
           uploadInfo.notification.comment = uploadInfo.notification.succComment;
