@@ -69,16 +69,12 @@ export class UploadService implements OnDestroy {
           let progressKf = uploadInfo.notification.progressKf || 1;
           if (progressKf <= 0) { progressKf = 1; }
           uploadInfo.notification.progress = Math.round(events.loaded / events.total * 100) / progressKf;
-          if (uploadInfo.notification.progress > 50) {
-            uploadInfo.notification.isAbortDisabled = true;
-          }
           if (!this.isUploadEnable(uploadInfo)) {
             if (!uploadSubscription.closed) {
               uploadSubscription.unsubscribe();
             }
           }
         } else if (events.type === HttpEventType.Response) {
-          uploadInfo.notification.isAbortDisabled = true;
           if (uploadInfo.notification.removeOnComplete) { return; }
           this.uploadEnd(uploadInfo, NotificationStatus.completed);
           uploadInfo.notification.comment = uploadInfo.notification.succComment;
