@@ -98,6 +98,7 @@ export class UsageService {
     if (!files) { files = []; }
     const dict = {};
     files = this.usageRequestService.createData(files);
+    if (!files || !files.length) { files = []; }
     files.forEach(fl => {
       if (!dict[fl.userName]) {
         dict[fl.userName] = fl;
@@ -151,7 +152,7 @@ export class UsageService {
       ],
       rows: []
     }
-    if (files) {
+    if (files && files.length) {
       files.forEach((fl, i) => {
         data.rows.push({
           cells: {
