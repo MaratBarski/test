@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'md-user-name-selector',
@@ -7,7 +7,7 @@ import { Component, Input } from '@angular/core';
 })
 export class UserNameSelectorComponent {
 
-  constructor() { }
+  @Output() onSelect = new EventEmitter<any>();
 
   @Input() users = [
     { name: 'test1', id: 0 },
@@ -26,6 +26,6 @@ export class UserNameSelectorComponent {
   }
 
   selectUser(user: any): void {
-    alert(user.id);
+    this.onSelect.emit(user);
   }
 }

@@ -45,6 +45,22 @@ export class EditUserGeneralComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.initUsers();
   }
 
+  users: Array<any>;
+
+  private initUsers(): void {
+    if (this.userEditService.users) {
+      this.users = this.userEditService.users.map(u => {
+        return { name: u.login, id: u.id };
+      }).sort((a, b) => {
+        return a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1;
+      })
+    }
+  }
+
+  selectUser(user: any): void {
+    this.userEditService.securityUser = user;
+  }
 }

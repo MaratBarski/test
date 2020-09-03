@@ -5,7 +5,7 @@
                 <div *ngIf="userEditService.securityType===1" class="user-details-main__item">
                     <div class="user-details-main__label">Username:</div>
                     <div class="user-details-main__field">
-                        <md-user-name-selector></md-user-name-selector>
+                        <md-user-name-selector (onSelect)="selectUser($event)" [users]="users"></md-user-name-selector>
                     </div>
                 </div>
                 <md-input-item *ngIf="userEditService.securityType===0" [(ngModel)]="userEditService.user.userName"

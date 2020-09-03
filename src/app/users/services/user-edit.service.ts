@@ -60,10 +60,41 @@ export class UserEditService {
   get securityType(): number {
     return this._securityType;
   }
+
   private _securityType: number;
+
+  set securityUser(user: any) {
+    this._securityUser = user;
+  }
+  get securityUser(): any {
+    return this._securityUser;
+  }
+  private _securityUser: any;
+
+  get users(): Array<any> {
+    return this._users;
+  }
+
+  private _users: Array<any>;
+
   initSecurity(): void {
     this._securityType = parseInt(this.configService.getValue('security').toString());
+    if (this._securityType) {
+      this._users = undefined;
+      this.loadUsers();
+    }
   }
+
+  private loadUsers(): void {
+    this.http.get(this._usersUrl).subscribe((res: any) => {
+      this._users = res.data;
+    }, error => {
+
+    });
+  }
+
+  @Offline('assets/offline/userList.json?')
+  private _usersUrl = `${environment.serverUrl}${environment.endPoints.userList}`;
 
   @Offline('assets/offline/selectedUser.json?')
   private _userUrl = `${environment.serverUrl}${environment.endPoints.userList}`;
@@ -80,8 +111,9 @@ export class UserEditService {
   private _user: any;
 
   get isLoading(): boolean {
-    return this._isLoading;
+    return this._isLoading || (this.securityType && (!this.users || !this.users.length));
   }
+
   private _isLoading = false;
 
   get environments(): Array<any> {
