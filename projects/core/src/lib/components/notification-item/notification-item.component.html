@@ -46,7 +46,7 @@
                     </div>
                     <div class="load-doc__text">{{notice.progressTitle}}</div>
                 </div>
-                <div class="load-doc__link pointer"><span class="link-site pointer" (click)="abort()">Abort</span></div>
+                <div [hidden]="isAbortDisabled" class="load-doc__link pointer"><span class="link-site pointer" (click)="abort()">Abort</span></div>
             </div>
             <div class="load-doc__progress">
                 <div class="load-doc__progress-line" [style.width.%]="notice.progress"></div>

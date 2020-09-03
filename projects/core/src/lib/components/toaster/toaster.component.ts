@@ -42,8 +42,7 @@ export class ToasterComponent {
   }
 
   get isAbortDisabled(): boolean {
-    if (this.notice && this.notice.progress >= 50) { return true; }
-    return false;
+    return this.notificationsService.isAbortDisabled(this.notice);
   }
 
   onAbortClicked(): void {

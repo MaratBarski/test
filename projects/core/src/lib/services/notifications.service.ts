@@ -217,4 +217,8 @@ export class NotificationsService extends BaseSibscriber {
     this.copyNotification(notice, n);
     this._notifications = this._notifications.concat([n]);
   }
+
+  isAbortDisabled(notice: INotification): boolean {
+    return (notice && notice.progress >= 50);
+  }
 }
