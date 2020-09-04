@@ -47,12 +47,17 @@ export class DatePickerComponent implements ControlValueAccessor {
     this.onTouched = fn;
   }
 
+  setDisabledState(isDisabled: boolean): void {
+    this.disabled = isDisabled;
+  }
+
   @Input() isShowDateFormat = false;
-  @Input() disabled = false;
   @Input() dateFormat = 'dd/mm/yy';
   @ViewChild('datePicker', { static: true }) fromPdatePickericker: Calendar;
 
   @Output() onSelect = new EventEmitter<void>();
+
+  disabled = false;
 
   constructor(private dateService: DateService) { }
 
