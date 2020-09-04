@@ -15,6 +15,8 @@ import { ComponentService } from '../../services/component.service';
 
 export class InputNumberComponent implements ControlValueAccessor {
 
+  isDisabled = false;
+
   @Output() onValueChanged = new EventEmitter<number>();
 
   @Input() min = 0;
@@ -54,6 +56,10 @@ export class InputNumberComponent implements ControlValueAccessor {
 
   registerOnTouched(fn: any): void {
     this.onTouched = fn;
+  }
+
+  setDisabledState(isDisabled: boolean): void {
+    this.isDisabled = isDisabled;
   }
 
   chengeNumber(): void {
