@@ -311,9 +311,9 @@ export class PermissionSetService extends BaseSibscriber {
   getSet(): any {
     this.isAfterValidate = true;
     if (!this.validate(true)) { return undefined; }
+    return { ps: this.permissionSet, researcher: this.createSaveObject() };
     //return this.createSaveObject();
-
-    return this.permissionSet;
+    //return this.permissionSet;
   }
 
   save(): void {
@@ -377,7 +377,7 @@ export class PermissionSetService extends BaseSibscriber {
       projectId: this.permissionSet.project,
       researchStatus: "Open",
       maxPatients: this.permissionSet.size,
-      researchRestrictionEvents: this._permissionSet.roleItems
+      researchRestrictionEvents: this.permissionSet.roleItems
         .filter(roleItem => {
           return roleItem.selectedTableName >= 0 && roleItem.selectedPropertyName >= 0;
         })
