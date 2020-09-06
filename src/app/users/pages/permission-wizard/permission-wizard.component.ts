@@ -29,6 +29,20 @@ export class PermissionWizardComponent extends BaseNavigation implements OnInit 
     private router: Router
   ) {
     super(navigationService);
+    super.add(this.permissionSetService.onAllowedEventsChange.subscribe(() => {
+      this.update3Tab();
+    }))
+  }
+
+  private update3Tab(): void {
+    this.tabs[2].isDisabled = false;
+    if (this.permissionSetService.permissionSet.allowedEvent === NO_ALLOWED_EVENTS) {
+      this.tabs[2].isDisabled = true;
+      return;
+    }
+    if (!this.permissionSetService.templates || !this.permissionSetService.templates.length) {
+      this.tabs[2].isDisabled = true;
+    }
   }
 
   get isNextEnable(): boolean {
@@ -44,7 +58,8 @@ export class PermissionWizardComponent extends BaseNavigation implements OnInit 
     },
     {
       text: 'Allowed Cohort',
-      isOptional: true
+      isOptional: true,
+      isDisabled: this.permissionSetService.permissionSet && this.permissionSetService.permissionSet.allowedEvent === NO_ALLOWED_EVENTS
     }
   ];
 

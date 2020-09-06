@@ -52,6 +52,11 @@ export class PermissionSetService extends BaseSibscriber {
   redirectUrl = '';
   showCancelConfirm = false;
 
+  get onAllowedEventsChange(): Observable<any> {
+    return this._onAllowedEventsChange;
+  }
+  private _onAllowedEventsChange = new Subject();
+
   get maxSize(): number {
     return this._maxSize;
   }
@@ -175,6 +180,7 @@ export class PermissionSetService extends BaseSibscriber {
     this._isShowError = false;
     this._selectedTab = 0;
     this.setInitialSet();
+    this._onAllowedEventsChange.next();
   }
 
   private _templatesLoaded = false;
@@ -582,6 +588,7 @@ export class PermissionSetService extends BaseSibscriber {
           });
         }
         this.setInitialSet();
+        this._onAllowedEventsChange.next();
       } else {
         // TO-DO update templates by set
       }
@@ -627,6 +634,7 @@ export class PermissionSetService extends BaseSibscriber {
     if (this.user) {
       res.userId = this.user.id;
     }
+    this._onAllowedEventsChange.next();
     return res;
   }
 
@@ -692,5 +700,6 @@ export class PermissionSetService extends BaseSibscriber {
       this.templates.forEach(x => x.isChecked = false);
     }
     this.updateTemplates();
+    this._onAllowedEventsChange.next();
   }
 }
