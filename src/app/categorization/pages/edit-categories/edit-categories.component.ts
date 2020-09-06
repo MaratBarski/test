@@ -253,7 +253,7 @@ export class EditCategoriesComponent extends BaseNavigation implements OnInit {
     this.mode = 'replace';
     this.formData = event.formData;
     this.oldCategories = event.categoryHeaders
-      .filter((x, i) => i > 0)
+      //.filter((x, i) => i > 0)
       .map((str: any, i: number) => {
         return {
           hierarchyLevelName: str,
