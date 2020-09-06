@@ -1,67 +1,36 @@
 {
     "data": {
-        "researchId": 35,
-        "researchName": "train",
-        "userId": "1004",
+        "researchId": 162,
+        "researchName": "marat - sariel",
+        "userId": "10",
         "projectId": "1",
-    
-        "researchStatus": "Initial",
-        "maxPatients": 159,
-        "insertDate": "2019-01-15T09:17:17.000Z",
-        "information": "this is the description",
-        "endDate": "2300-11-30",
-        "approvalKey": "1234",
+        "startDate": "2013-12-31",
+        "researchStatus": "initial",
+        "maxPatients": 1000000,
+        "insertDate": "2020-09-06T07:57:33.000Z",
+        "information": null,
+        "endDate": "2022-12-03",
+        "approvalKey": null,
         "approvalKeyExpirationDate": null,
-        "user_id": "1004",
-        "researchRestrictionEvents": [
-            {
-                "researchId": "35",
-                "eventPropertyId": "ageatevent",
-                "eventId": "9",
-                "value": "1",
-                "siteEventPropertyInfo": {
-                    "eventPropertyNa": "ageatevent",
-                    "eventId": "3",
-                    "dataSample": "[0 .. 311.78]",
-                    "eventPropertyTy": "NUMERIC",
-                    "hierarchyRootId": null,
-                    "patientFk": false,
-                    "eventTimeStamp": false,
-                    "ageAtEvent": true,
-                    "fieldDescriptio": "ageatevent",
-                    "fieldDes": "Property-Availability:99% populated",
-                    "priority": 0,
-                    "isDependentSear": false
-                },
-                "siteEventInfo": {
-                    "eventTableAlias": "gdfsgdfgdfg"
-                }
-            }
-        ],
-        "researchTemplates": [
-            {
-                "templateId": 1
-            },
-            {
-                "templateId": 2
-            }
-        ],
+        "user_id": "10",
+        "researchRestrictionEvents": [],
+        "researchTemplates": [],
         "user": {
-            "id": "5",
-            "login": "mdclone.admin",
+            "id": "10",
+            "login": "sariel.admin",
             "passwordHash": "$2a$10$G3OF8pfomKGuB8dpxNlj2eL8wZwY5L.3M19fJ5DfVS1sR0ojd/Ic.",
-            "firstName": "Admin gggg",
+            "firstName": "Sariel",
             "lastName": "Admin",
-            "email": "mdclone.admin@localhost",
+            "email": "sariel.admin@mdclone.com",
             "activated": true,
-            "langKey": "en",
+            "langKey": null,
             "activationKey": null,
             "resetKey": null,
-            "createdBy": "system",
-            "createdDate": "2016-06-01T21:00:00.000Z",
+            "createdBy": "N/A",
+            "createdDate": "2020-06-30T09:54:34.000Z",
             "resetDate": null,
-            "lastModifiedBy": "mdclone.admin",
-            "lastModifiedDate": "2018-12-11T08:10:09.089Z",
+            "lastModifiedBy": null,
+            "lastModifiedDate": null,
             "cellPhone": null,
             "domain": null,
             "photo": null

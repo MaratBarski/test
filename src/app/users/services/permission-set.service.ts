@@ -567,9 +567,11 @@ export class PermissionSetService extends BaseSibscriber {
   }
 
   private initTemplates(permSet: any): void {
-    super.add(this.onTemplatesLoaded.subscribe((flag: boolean) => {
+    const subsciption = this.onTemplatesLoaded.subscribe((flag: boolean) => {
+      subsciption.unsubscribe();
       if (this.isEditMode) {
         this.initEvents(permSet);
+        alert(permSet.researchStatus.toLowerCase())
         if (permSet.researchStatus && permSet.researchStatus.toLowerCase() === 'open') {
           if (!permSet.researchTemplates || !permSet.researchTemplates.length) {
             this.permissionSet.allowedEvent = ALL_EVENTS;
@@ -590,7 +592,7 @@ export class PermissionSetService extends BaseSibscriber {
       } else {
         // TO-DO update templates by set
       }
-    }));
+    });
     this.loadTemplates(true);
   }
 
