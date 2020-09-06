@@ -571,7 +571,6 @@ export class PermissionSetService extends BaseSibscriber {
       subsciption.unsubscribe();
       if (this.isEditMode) {
         this.initEvents(permSet);
-        alert(permSet.researchStatus.toLowerCase())
         if (permSet.researchStatus && permSet.researchStatus.toLowerCase() === 'open') {
           if (!permSet.researchTemplates || !permSet.researchTemplates.length) {
             this.permissionSet.allowedEvent = ALL_EVENTS;
