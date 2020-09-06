@@ -208,8 +208,9 @@ export class PermissionSetService extends BaseSibscriber {
 
   loadTemplates(isInitTemplates: boolean): void {
     this._templatesLoaded = false;
-    this.http.get(`${this.templateByProjectUrl}/${this.permissionSet.project}`).subscribe((res: any) => {
+    const subscribbtion = this.http.get(`${this.templateByProjectUrl}/${this.permissionSet.project}`).subscribe((res: any) => {
       this._templatesLoaded = true;
+      subscribbtion.unsubscribe();
       this.templates = res.data
         .filter((t: any) => t.templateType === 'PERMISSION')
         .map((t: any) => {
@@ -347,7 +348,8 @@ export class PermissionSetService extends BaseSibscriber {
   }
 
   private updateSet(obj: any): void {
-    this.http.put(`${environment.serverUrl}${environment.endPoints.research}/${this._setId}`, obj).subscribe(res => {
+    const subscribtion = this.http.put(`${environment.serverUrl}${environment.endPoints.research}/${this._setId}`, obj).subscribe(res => {
+      subscribtion.unsubscribe();
       this.router.navigateByUrl('/users/research');
       this.addSuccNotification();
     }, error => {
@@ -362,7 +364,8 @@ export class PermissionSetService extends BaseSibscriber {
   }
 
   private addSet(obj: any): void {
-    this.http.post(`${environment.serverUrl}${environment.endPoints.research}`, obj).subscribe(res => {
+    const subscribtion = this.http.post(`${environment.serverUrl}${environment.endPoints.research}`, obj).subscribe(res => {
+      subscribtion.unsubscribe();
       this.router.navigateByUrl('/users/research');
       this.addSuccNotification();
     }, error => {
@@ -539,23 +542,16 @@ export class PermissionSetService extends BaseSibscriber {
 
   loadData(): void {
     this._dataLoaded = false;
-    forkJoin(
+    const subsciption = forkJoin(
       this.http.get(this.getResearchUrl),
       this.userListService.load(),
       this.loadSet()
     ).subscribe(([researchers, users, permSet]: any) => {
+      subsciption.unsubscribe();
       this._researchers = researchers.data;
       this._users = users.data;
       if (this._setId) {
         this._permissionSet = this.convertToClient(permSet.data);
-        //this.showWarning = permSet.data.researchStatus && permSet.data.researchStatus.trim().toLowerCase() !== 'open';
-        // if (!permSet.data.approvalKeyExpirationDate) {
-        //   this.showWarning = false
-        // } else {
-        //   if (new Date() > new Date(permSet.data.approvalKeyExpirationDate)) {
-        //     this.showWarning = true;
-        //   }
-        // }
         this.initTemplates(permSet.data);
       } else {
         this._permissionSet = permSet;
