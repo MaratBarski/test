@@ -580,9 +580,7 @@ export class PermissionSetService extends BaseSibscriber {
         }
         if (permSet.researchStatus && permSet.researchStatus.toLowerCase() === 'initial ') {
           this.permissionSet.allowedEvent = NO_ALLOWED_EVENTS;
-        }
-
-        if (permSet.researchTemplates) {
+        } else if (permSet.researchTemplates) {
           this.templates.forEach(t => {
             t.isChecked = permSet.researchTemplates.find((x: any) => x.templateId.toString() === t.id.toString());
           });
