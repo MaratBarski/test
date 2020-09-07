@@ -92,7 +92,7 @@
 	}
 
 	.admin-table-detail-wrap .admin-table__title{top: 7px;}
-	
+
 	.admin-table-detail{
 		&__head{
 			height: rem(31px);
@@ -188,6 +188,8 @@
 	&:last-child{margin-bottom: 0;}
 }
 
+.search-det-param-link{font-size: rem(14px);}
+
 .search-det-desc{
 	&__title{
 		@include font(normal, 600, rem(14px), 1.43, $color-dark-grey);
@@ -260,6 +262,11 @@
 		width: 20px;
 		height: 20px;
 	}
+
+  .ic-calendar{
+    width: 23px;
+    height: 23px;
+  }
 
 	.ic-info{
 		width: 16px;

@@ -9,8 +9,14 @@
 	}
 
 	&__head-content{
-		display: flex;
-		width: 50%;
+    display: flex;
+    align-items: center;
+    width: 50%;
+
+    .btn,
+    .btn-more{
+      margin-left: 16px;
+    }
 	}
 
 	&__head .form-search{display: none; margin-top: -3px;}
@@ -25,7 +31,7 @@
 		display: inline-block;
 		width: 30px;
 		height: 30px;
-		margin: -5px -2px 0 -9px;
+    margin: 0 -2px 0 -9px;
 		transform: rotate(-90deg);
 	}
 
@@ -63,6 +69,8 @@
   .admin-table-detail-wrap{
     height: 340px;
     margin-bottom: 24px;
+
+    &_small{height: 150px;}
   }
 }
 

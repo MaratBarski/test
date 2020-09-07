@@ -105,7 +105,9 @@
 	&__title-text{margin-right: 6px;}
 
 	&__opt{
-		@include font(italic, normal, rem(14px), rem(27px), $color-grey);
+    vertical-align: middle;
+    @include font(italic, normal, rem(14px), rem(27px), $color-grey);
+    text-transform: none;
 	}
 
 	&__select{
@@ -213,7 +215,7 @@
 		margin-top: 5px;
 		margin-bottom: 5px;
 		display: inline-flex;
-		vertical-align: middle; 
+		vertical-align: middle;
 		align-items: center;
 		margin-top: 3px;
 
