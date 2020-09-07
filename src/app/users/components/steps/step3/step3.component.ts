@@ -16,7 +16,8 @@ export class Step3Component implements OnInit {
   }
 
   add(): void {
-    this.permissionSetService.addRoleItem();
+    //this.permissionSetService.addRoleItem();
+    this.permissionSetService.addEvent();
   }
 
   remove(item: any): void {
@@ -24,7 +25,7 @@ export class Step3Component implements OnInit {
     this.permissionSetService.validate(false);
   }
 
-  changeRoleItem(): void {
+  changeRoleItem(event:any): void {
     this.permissionSetService.validate(false);
   }
 }

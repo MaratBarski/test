@@ -191,6 +191,9 @@ export class PermissionSetService extends BaseSibscriber {
   @Offline('assets/offline/templateByProject.json?')
   private templateByProjectUrl = `${environment.serverUrl}${environment.endPoints.templateByProject}`;
 
+  @Offline('assets/offline/siteEventPropertyInfos.json?')
+  private siteEventInfoUrl = `${environment.serverUrl}${environment.endPoints.siteEventInfo}`;
+
   private findEventType(templateInfo: any, dataTemplates: Array<any>): string {
     if (!dataTemplates || !dataTemplates.length) { return ''; }
     const templates = dataTemplates.filter(t => t.templateType === 'DISPLAY');
@@ -208,65 +211,100 @@ export class PermissionSetService extends BaseSibscriber {
 
   loadTemplates(isInitTemplates: boolean): void {
     this._templatesLoaded = false;
-    const subscribbtion = this.http.get(`${this.templateByProjectUrl}/${this.permissionSet.project}`).subscribe((res: any) => {
-      this._templatesLoaded = true;
-      subscribbtion.unsubscribe();
-      this.templates = res.data
-        .filter((t: any) => t.templateType === 'PERMISSION')
-        .map((t: any) => {
-          return {
-            name: t.templateName,
-            id: t.templateId,
-            isChecked: false,
-            templateItems:
-              t.siteEventInfos.map((ti: any) => {
-                return {
-                  name: ti.eventTableAlias,
-                  type: this.findEventType(ti, res.data)
-                };
-              })
-          }
-        });
-      this.initRoleItems(res.data);
-      this._onTemplatesLoaded.next(isInitTemplates);
-    });
+    const subscribbtion =
+      forkJoin(
+        this.http.get(`${this.templateByProjectUrl}/${this.permissionSet.project}`),
+        this.http.get(`${this.siteEventInfoUrl}/${this.permissionSet.project}`),
+      ).subscribe(([res, events]: any) => {
+        this._templatesLoaded = true;
+        subscribbtion.unsubscribe();
+        this.templates = res.data
+          .filter((t: any) => t.templateType === 'PERMISSION')
+          .map((t: any) => {
+            return {
+              name: t.templateName,
+              id: t.templateId,
+              isChecked: false,
+              templateItems:
+                t.siteEventInfos.map((ti: any) => {
+                  return {
+                    name: ti.eventTableAlias,
+                    type: this.findEventType(ti, res.data)
+                  };
+                })
+            }
+          });
+        //this.initRoleItems(res.data);
+        this.initRoleEventItems(events.data);
+        this._onTemplatesLoaded.next(isInitTemplates);
+      });
   }
 
   tableNames = [];
   propertyNames = [];
 
-  private initRoleItems(templates: Array<any>): void {
+  // private initRoleItems(templates: Array<any>): void {
+  //   this._permissionSet.roleItems = [];
+  //   this.tableNames = [];
+  //   this.propertyNames = [];
+  //   const nameDict = {};
+  //   const propertyDict = {};
+  //   templates.forEach(t => {
+  //     if (!t.siteEventInfos || !t.siteEventInfos.length) {
+  //       return;
+  //     }
+  //     t.siteEventInfos.forEach(info => {
+  //       if (!nameDict[info.eventTableAlias]) {
+  //         nameDict[info.eventTableAlias] = info;
+  //         this.tableNames.push({
+  //           name: info.eventTableAlias,
+  //           id: info.eventId,
+  //           type: info.eventType
+  //         });
+  //       }
+  //       info.siteEventPropertyInfos.forEach(prop => {
+  //         if (!propertyDict[prop.eventPropertyName]) {
+  //           propertyDict[prop.eventPropertyName] = prop;
+  //           this.propertyNames.push({
+  //             name: prop.eventPropertyName,
+  //             type: prop.eventPropertyType
+  //           });
+  //         }
+  //       });
+  //     });
+  //     this.tableNames.sort((a, b) => a.name > b.name ? 1 : -1);
+  //     this.propertyNames.sort((a, b) => a.name > b.name ? 1 : -1);
+  //   })
+  // }
+
+  events = [];
+  addedEvents = [];
+
+  private initRoleEventItems(events: Array<any>): void {
     this._permissionSet.roleItems = [];
-    this.tableNames = [];
-    this.propertyNames = [];
-    const nameDict = {};
-    const propertyDict = {};
-    templates.forEach(t => {
-      if (!t.siteEventInfos || !t.siteEventInfos.length) {
-        return;
-      }
-      t.siteEventInfos.forEach(info => {
-        if (!nameDict[info.eventTableAlias]) {
-          nameDict[info.eventTableAlias] = info;
-          this.tableNames.push({
-            name: info.eventTableAlias,
-            id: info.eventId,
-            type: info.eventType
-          });
-        }
-        info.siteEventPropertyInfos.forEach(prop => {
-          if (!propertyDict[prop.eventPropertyName]) {
-            propertyDict[prop.eventPropertyName] = prop;
-            this.propertyNames.push({
-              name: prop.eventPropertyName,
-              type: prop.eventPropertyType
-            });
-          }
-        });
-      });
-      this.tableNames.sort((a, b) => a.name > b.name ? 1 : -1);
-      this.propertyNames.sort((a, b) => a.name > b.name ? 1 : -1);
-    })
+    this.events = events;
+  }
+
+  addRoleItem(): void {
+    this._permissionSet.roleItems = [
+      this.createRoleItem(-1, -1, '')
+    ].concat(this._permissionSet.roleItems);
+    this.isAfterValidate = false;
+  }
+
+  addEvent(): void {
+    this.addedEvents = this.addedEvents.concat({
+      target: {
+        eventId: -1,
+        eventPropertyId: '',
+        value: ''
+      },
+      list: [].concat(this.events)
+    });
+  }
+
+  removeRoleItem(item: any): void {
+    this.addedEvents = this.addedEvents.filter(x => x !== item);
   }
 
   templates = [];
@@ -447,8 +485,8 @@ export class PermissionSetService extends BaseSibscriber {
     //if (this.isEmpty(this._permissionSet.keyName)) { return false; }
 
     let invalidRoles = false;
-    this._permissionSet.roleItems.forEach(ri => {
-      if (ri.text.trim() === '' || ri.selectedTableName === -1 || ri.selectedPropertyName === -1) {
+    this.addedEvents.forEach(ev => {
+      if (ev.target.eventId === -1 || ev.target.eventPropertyId.trim() === '' || ev.target.value.trim() === '') {
         invalidRoles = true;
         return;
       }
@@ -654,12 +692,6 @@ export class PermissionSetService extends BaseSibscriber {
     })
   }
 
-  addRoleItem(): void {
-    this._permissionSet.roleItems = [
-      this.createRoleItem(-1, -1, '')
-    ].concat(this._permissionSet.roleItems);
-    this.isAfterValidate = false;
-  }
 
   private createRoleItem(tableIndex: number, propertyIndex: number, text: string): any {
     return {
@@ -682,10 +714,6 @@ export class PermissionSetService extends BaseSibscriber {
         }
       })
     }
-  }
-
-  removeRoleItem(item: any): void {
-    this._permissionSet.roleItems = this._permissionSet.roleItems.filter(x => x !== item);
   }
 
   updateAllowedEvents(): void {
