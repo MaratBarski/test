@@ -79,6 +79,9 @@ export const environment = {
     usageCsvDownload: 'kostya/api/v1/reporting/detailed-usage-report',
     userList: 'kostya/api/v1/user',
     research: 'kostya/api/v1/research',
-    formKey: 'kostya/api/v1/config/form-key'
+    formKey: 'kostya/api/v1/config/form-key',
+    notificationUpdate: 'kostya/api/v1/config/notification',
+    project: 'kostyan/api/v1/project',
+    activate: 'kostyan/api/v1/activate'
   }
 };

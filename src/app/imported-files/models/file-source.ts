@@ -2,6 +2,7 @@ import { Template } from './template';
 import { Project } from './project';
 import { User } from 'core/lib/models/UserInfo';
 import { Hierarchy } from '@app/models/hierarchy';
+import {FieldDataType} from '@app/activate/model/enum/FieldDataType';
 
 export class FileSourceResponse {
      data?: Array<FileSource>;
@@ -39,7 +40,7 @@ export class FileSource {
 export class FileClm {
      public fileId: number;
      public fieldName: string;
-     public propertyType: number;
+     public propertyType: FieldDataType;
      public description: string;
      public dataSample: string;
      public hierarchyRootId: number;

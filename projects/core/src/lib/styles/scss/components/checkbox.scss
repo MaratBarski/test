@@ -97,4 +97,21 @@
 
   &_all input[type=checkbox]:checked + &__label &__mark .icon{display: none;}
   &_all input[type=checkbox]:checked + &__label &__mark::after{display: inline-block;}
+
+  &__notice{
+    color: #52576a;
+    font-weight: 400;
+    margin-left: 8px;
+    position: relative;
+  }
+
+  &__notice::before {
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    width: 1px;
+    height: 15px;
+    background: #acb2c3;
+    margin-right: 8px;
+  }
 }

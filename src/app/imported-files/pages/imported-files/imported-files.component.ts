@@ -76,7 +76,7 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, Af
     super.add(this.navigationService.onReload.subscribe(() => {
       this.load();
     }));
-    
+
     // this.notificationsTests();
   }
 
@@ -156,7 +156,8 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, Af
       this.router.navigateByUrl(`/imported-files/${action.item.source.fileId}`);
     },
     view: (action: TableActionCommand) => {
-      console.log('view command');
+      this.isLoaded = false;
+      this.router.navigateByUrl(`/activate/${action.item.source.fileId}`);
     },
     delete: (action: TableActionCommand) => {
       if (action.item.source.fileType || true) {
