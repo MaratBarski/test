@@ -96,6 +96,7 @@ export class PermissionWizardComponent extends BaseNavigation implements OnInit 
       this.activatedRoute.paramMap.subscribe(u => {
         const id = u.get('id') || 0;
         this.permissionSetService.resetService(id);
+        this.permissionSetService.isPopup = this.isPopup;
       }));
   }
 

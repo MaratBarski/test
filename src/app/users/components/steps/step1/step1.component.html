@@ -44,9 +44,12 @@
         <div class="add-perm-sect">
             <div class="add-perm-sect__content">
                 <div class="add-perm-sect__item">
-                    <div class="add-perm-sect__title"><span class="add-perm-sect__title-text">Username:</span></div>
+                    <div class="add-perm-sect__title">
+                        <span [hidden]="isPopup" class="add-perm-sect__title-text">Username:</span>
+                        <span [hidden]="!isPopup" class="add-perm-sect__title-text">Environment:</span>
+                    </div>
                     <div class="add-perm-sect__fields">
-                        <div [ngClass]="{'ps-empty':permissionSetService.isUserEmpty}"
+                        <div [hidden]="isPopup" [ngClass]="{'ps-empty':permissionSetService.isUserEmpty}"
                             class="add-perm-sect__select ps-empty">
                             <mdc-auto-complete #userNameCmp placeHolder="Search or Select a User Name..."
                                 textField="name" (onSelect)="selectUser($event)" (onClear)="clearUser()"
@@ -57,7 +60,7 @@
                             </mdc-auto-complete>
                         </div>
                         <div class="add-perm-sect__select">
-                            <div class="add-perm-sect__label">Environment:</div>
+                            <div [hidden]="isPopup" class="add-perm-sect__label">Environment:</div>
                             <md-project-combo #projectCmp [isInvalid]="permissionSetService.isProjectEmpty"
                                 [isSmall]="true" [selectUp]="false" [user]="permissionSetService.user"
                                 [project]="permissionSetService.permissionSet.project"

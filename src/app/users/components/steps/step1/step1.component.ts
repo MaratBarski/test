@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, AfterContentInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterContentInit, AfterViewInit, Input } from '@angular/core';
 import { PermissionSetService } from '@app/users/services/permission-set.service';
 import { BaseSibscriber, AutoCompleteComponent, NotificationsService, ToasterType, LoginService, UserResponse } from '@appcore';
 import { ProjectComboComponent } from '@app/shared/components/project-combo/project-combo.component';
@@ -38,6 +38,8 @@ export class Step1Component extends BaseSibscriber implements OnInit, AfterViewI
   @ViewChild('userNameCmp', { static: true }) userNameCmp: AutoCompleteComponent;
   @ViewChild('projectCmp', { static: false }) projectCmp: ProjectComboComponent;
   @ViewChild('setselectorCmp', { static: false }) setselectorCmp: AutoCompleteComponent;
+
+  @Input() isPopup = false;
 
   searchResearchText = '';
   searchUserText = '';
@@ -120,6 +122,7 @@ export class Step1Component extends BaseSibscriber implements OnInit, AfterViewI
     if (this.permissionSetService.user.projects && this.permissionSetService.user.projects.length === 1) {
       this.projectCmp.projectModel = this.permissionSetService.user.projects[0].projectId;
       this.permissionSetService.permissionSet.project = this.permissionSetService.user.projects[0].projectId;
+      this.permissionSetService.permissionSet.projectName = this.projectCmp.selectedOption.text;
       this.permissionSetService.loadTemplates(false);
       return;
     }
@@ -127,6 +130,7 @@ export class Step1Component extends BaseSibscriber implements OnInit, AfterViewI
     if (proj) {
       this.projectCmp.projectModel = proj.projectId;
       this.permissionSetService.permissionSet.project = proj.projectId;
+      this.permissionSetService.permissionSet.projectName = this.projectCmp.selectedOption.text;
       this.permissionSetService.loadTemplates(false);
       return;
     }

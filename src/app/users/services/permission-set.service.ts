@@ -171,7 +171,10 @@ export class PermissionSetService extends BaseSibscriber {
     return !!this._setId;
   }
 
+  isPopup = false;
+
   resetService(id: any): void {
+    this.isPopup = false;
     this._fromSetId = 0;
     this.isAfterValidate = false;
     this._permissionSet = this.getDefault();
@@ -429,7 +432,7 @@ export class PermissionSetService extends BaseSibscriber {
       this._isShowError = true;
     }
     //if (!this._permissionSet.isNew && this.isEmpty(this._permissionSet.fromSetId)) { return false; }
-    if (this.isEmpty(this._permissionSet.userId)) { return false; }
+    if (this.isEmpty(this._permissionSet.userId) && !this.isPopup) { return false; }
     if (this.isEmpty(this._permissionSet.project)) { return false; }
     if (this.isEmpty(this._permissionSet.setName)) { return false; }
 
@@ -501,6 +504,7 @@ export class PermissionSetService extends BaseSibscriber {
 
   getDefault(): PermissionSet {
     const res = {
+      userId: 0,
       isNew: true,
       isActive: true,
       setName: '',

@@ -9,7 +9,7 @@
                         <div *ngIf="permissionSetService.dataLoaded" class="add-perm-set">
                             <md-tabs (onSelect)="selectNextTab($event)" [selectedTab]="permissionSetService.selectedTab"
                                 [tabs]="tabs"></md-tabs>
-                            <md-step1 [hidden]="permissionSetService.selectedTab!==0"></md-step1>
+                            <md-step1 [isPopup]="isPopup" [hidden]="permissionSetService.selectedTab!==0"></md-step1>
                             <md-step2 [hidden]="permissionSetService.selectedTab!==1"></md-step2>
                             <md-step3 [hidden]="permissionSetService.selectedTab!==2"></md-step3>
                         </div>
