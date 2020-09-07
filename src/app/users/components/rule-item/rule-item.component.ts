@@ -30,6 +30,25 @@ export class RuleItemComponent {
       }
     });
     this._events = events;
+    if (events.target.eventId === -1) { return; }
+    
+    this.selectedEvent = events.target.eventId;
+    this.text = events.target.value;
+    this.fieldDescription = events.target.eventPropertyId;
+    const currentEvent = this._events.list.find(x => x.eventId === this.selectedEvent);
+    this.propertyOptions = currentEvent.siteEventPropertyInfos.map((info, i) => {
+      return {
+        id: i,
+        text: info.fieldDescription,
+        value: info.fieldDescription
+      }
+    });
+    for (let i = 0; i < currentEvent.siteEventPropertyInfos.length; i++) {
+      if (currentEvent.siteEventPropertyInfos[i].fieldDescription === this.fieldDescription) {
+        this.selectedProperty = i;
+        break;
+      }
+    }
   }
 
   private _events: any;

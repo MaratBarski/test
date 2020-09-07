@@ -5,7 +5,7 @@
         "userId": "10",
         "projectId": "1",
         "startDate": "2013-12-31",
-        "researchStatus": "initial",
+        "researchStatus": "opeN",
         "maxPatients": 1000000,
         "insertDate": "2020-09-06T07:57:33.000Z",
         "information": null,
@@ -13,7 +13,18 @@
         "approvalKey": null,
         "approvalKeyExpirationDate": null,
         "user_id": "10",
-        "researchRestrictionEvents": [],
+        "researchRestrictionEvents": [
+            {
+                "eventId": "26",
+                "eventPropertyName": "startdate",
+                "value": "value1"
+            },
+            {
+                "eventId": "64",
+                "eventPropertyName": "birthdate",
+                "value": "value2"
+            }
+        ],
         "researchTemplates": [],
         "user": {
             "id": "10",

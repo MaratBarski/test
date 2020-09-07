@@ -159,6 +159,7 @@ export class PermissionSetService extends BaseSibscriber {
     this._permissionSet.setDescription = '';
     this._permissionSet.keyName = '';
     this._permissionSet.keyExpirationDate = undefined;
+    this._fromSetId = 0;
     // this._permissionSet.fromDateUnlimited = false;
     // this._permissionSet.toDateUnlimited = false;
     // this._permissionSet.fromDate = undefined;
@@ -378,7 +379,11 @@ export class PermissionSetService extends BaseSibscriber {
       maxPatients: this.permissionSet.size,
       researchRestrictionEvents: this.addedEvents
         .filter(ev => {
-          return ev.target.eventId >= 0 && ev.target.eventPropertyId.trim() !== '' && ev.target.value.trim() !== '';
+          return ev.target.eventId >= 0 &&
+            ev.target.eventPropertyId &&
+            ev.target.eventPropertyId.trim() !== '' &&
+            ev.target.value &&
+            ev.target.value.trim() !== '';
         })
         .map(ev => {
           return {
@@ -432,13 +437,18 @@ export class PermissionSetService extends BaseSibscriber {
     if (!this._permissionSet.fromDateUnlimited && !this.dateService.isDateValid(this._permissionSet.fromDate)) { return false; }
     if (!this._permissionSet.toDateUnlimited && !this.dateService.isDateValid(this._permissionSet.toDate)) { return false; }
 
+    if (!this.permissionSet.isNew && !this._fromSetId) { return false; }
     //if (!this.dateService.isDateValid(this._permissionSet.keyExpirationDate)) { return false; }
 
     //if (this.isEmpty(this._permissionSet.keyName)) { return false; }
 
     let invalidRoles = false;
     this.addedEvents.forEach(ev => {
-      if (ev.target.eventId === -1 || ev.target.eventPropertyId.trim() === '' || ev.target.value.trim() === '') {
+      if (ev.target.eventId === -1 ||
+        !ev.target.eventPropertyId ||
+        ev.target.eventPropertyId.trim() === '' ||
+        !ev.target.value ||
+        ev.target.value.trim() === '') {
         invalidRoles = true;
         return;
       }
@@ -552,11 +562,29 @@ export class PermissionSetService extends BaseSibscriber {
     });
   }
 
+  private initEvents(ps: any): void {
+    this.addedEvents = [];
+    if (!ps.researchRestrictionEvents || !ps.researchRestrictionEvents.length) { return; }
+    //alert(this.events.length)
+    ps.researchRestrictionEvents.forEach(ev => {
+      const event = this.events.find(x => x.eventId === ev.eventId);
+      if (!event) { return; }
+      this.addedEvents.push({
+        target: {
+          eventId: ev.eventId,
+          eventPropertyId: ev.eventPropertyName,
+          value: ev.value
+        },
+        list: [].concat(this.events)
+      })
+    });
+  }
+
   private initTemplates(permSet: any): void {
     const subsciption = this.onTemplatesLoaded.subscribe((flag: boolean) => {
       subsciption.unsubscribe();
       if (this.isEditMode) {
-        //this.initEvents(permSet);
+        this.initEvents(permSet);
         if (permSet.researchStatus && permSet.researchStatus.toLowerCase() === 'open') {
           if (!permSet.researchTemplates || !permSet.researchTemplates.length) {
             this.permissionSet.allowedEvent = ALL_EVENTS;
