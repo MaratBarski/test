@@ -287,6 +287,32 @@ button.btn_blue:hover{
   height: 12px;
 }
 
+.btn-more{
+  color: $color-blue;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: rem(14px);
+
+  .ic-plus{
+    display: inline-block;
+    vertical-align: middle;
+    width: 9px;
+    height: 9px;
+    fill: $color-blue;
+    margin-right: 7px;
+  }
+
+  &__text{
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
+.btn-more:hover{
+  color: $color-blue;
+  text-decoration: underline;
+}
+
 .link-load{
 	@include font(normal, normal, rem(14px), 1.2, $color-dark-blue);
 	position: relative;

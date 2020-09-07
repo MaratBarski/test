@@ -1,4 +1,4 @@
-import { Component, Input, ViewChild } from '@angular/core';
+import { Component, Input, ViewChild, TemplateRef } from '@angular/core';
 import { ChartService } from '@app/usage/services/chart.service';
 import { ChartLegendComponent } from '../chart-legend/chart-legend.component';
 
@@ -16,6 +16,8 @@ export class ChartWraperComponent {
   @Input() firstLegendTemplate: any;
   @Input() secondLegendTemplate: any;
   @Input() isLegend = false;
+  @Input() firstDate: TemplateRef<any>;
+  @Input() secondDate: TemplateRef<any>;
 
   @Input() set firstChartHasData(flag: boolean) {
     setTimeout(() => {
@@ -27,7 +29,7 @@ export class ChartWraperComponent {
       this._secondChartHasData = flag;
     }, 0);
   }
-  
+
   @ViewChild('firstLegend', { static: false }) firstLegend: ChartLegendComponent;
   @ViewChild('secondLegend', { static: false }) secondLegend: ChartLegendComponent;
 

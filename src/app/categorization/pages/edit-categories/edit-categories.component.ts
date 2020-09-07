@@ -90,6 +90,7 @@ export class EditCategoriesComponent extends BaseNavigation implements OnInit {
 
   private async updateCategory(): Promise<void> {
     const category = JSON.parse(JSON.stringify(this.selectedCategory));
+    //this.selectedCategory.status === 'unmapped';
     // alert(this.selectedCategory.data.notificationMessage);
     // alert(this.selectedCategory.data.description);
     // alert(this.selectedCategory.data.defaultLevelId);
@@ -253,7 +254,6 @@ export class EditCategoriesComponent extends BaseNavigation implements OnInit {
     this.mode = 'replace';
     this.formData = event.formData;
     this.oldCategories = event.categoryHeaders
-      .filter((x, i) => i > 0)
       .map((str: any, i: number) => {
         return {
           hierarchyLevelName: str,

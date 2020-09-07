@@ -85,14 +85,6 @@ export class UsageTopComponent extends UsageBase {
     return `${this.dateService.formatDate(this.usageRequestService.usageRequest.fromDate, '/')} - ${this.dateService.formatDate(this.usageRequestService.usageRequest.toDate, '/')}`;
   }
 
-  get firstTitle(): string {
-    return `New Queries ${this.dateRange}`;
-  }
-
-  get secondTitle(): string {
-    return `File Downloads ${this.dateRange}`;
-  }
-
   downloadData: DownloadData = {
     pageName: 'Top 10 Users',
     fileName: 'Top-10-Users'

@@ -18,93 +18,9 @@
                 </div>
                 <h1>File Mapping</h1>
                 <div class="page-header__text" contenteditable="true" formControlName="fileName">
-
                 </div>
               </div>
-
-              <div class="notice" [ngClass]="{'active': legendActive}">
-                <div class="notice__icon" (click)="legendActive = !legendActive">
-                  <mdc-icon [path]="'ic-bulb'" [css]="'ic-bulb'"></mdc-icon>
-                </div>
-                <div class="notice-popup">
-                  <div class="notice-popup__text">Define which fields to import, their data type, and relevant available hierarchies.<span class="notice-popup__more">Show more</span></div>
-                  <div class="notice-popup__content">
-                    <div class="notice-popup__head">Legend</div>
-                    <div class="notice-popup-info">
-                      <div class="notice-popup-info__col">
-                        <div class="notice-popup-info__item">
-                          <div class="notice-popup-info__val notice-popup-info__val_big">
-                            <div class="progress">
-                              <div class="progress__bg"></div>
-                              <div class="progress__text">0%</div>
-                            </div>
-                          </div>
-                          <div class="notice-popup-info__text">0% Match</div>
-                        </div>
-                        <div class="notice-popup-info__item">
-                          <div class="notice-popup-info__val notice-popup-info__val_big">
-                            <div class="progress progress_red">
-                              <div class="progress__bg" style="width: 25%"></div>
-                              <div class="progress__text">25%</div>
-                            </div>
-                          </div>
-                          <div class="notice-popup-info__text">1%-49% Match</div>
-                        </div>
-                        <div class="notice-popup-info__item">
-                          <div class="notice-popup-info__val notice-popup-info__val_big">
-                            <div class="progress progress_yellow">
-                              <div class="progress__bg" style="width: 50%"></div>
-                              <div class="progress__text">50%</div>
-                            </div>
-                          </div>
-                          <div class="notice-popup-info__text">50-74% Match</div>
-                        </div>
-                        <div class="notice-popup-info__item">
-                          <div class="notice-popup-info__val notice-popup-info__val_big">
-                            <div class="progress progress_green">
-                              <div class="progress__bg" style="width: 75%"></div>
-                              <div class="progress__text">75%</div>
-                            </div>
-                          </div>
-                          <div class="notice-popup-info__text">75-100% Match</div>
-                        </div>
-                      </div>
-                      <div class="notice-popup-info__col">
-                        <div class="notice-popup-info__item">
-                          <div class="notice-popup-info__val">
-                            <mdc-icon path="ic-numeric" css="ic-numeric"></mdc-icon>
-                          </div>
-                          <div class="notice-popup-info__text">Numeric</div>
-                        </div>
-                        <div class="notice-popup-info__item">
-                          <div class="notice-popup-info__val">
-                            <mdc-icon path="ic-textual" css="ic-textual"></mdc-icon>
-
-                          </div>
-                          <div class="notice-popup-info__text">String</div>
-                        </div>
-                        <div class="notice-popup-info__item">
-                          <div class="notice-popup-info__val">
-                            <mdc-icon path="ic-calendar" css="ic-calendar"></mdc-icon>
-                          </div>
-                          <div class="notice-popup-info__text">Date</div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="notice-popup__footer">
-                    <div class="notice-popup-link"><a class="notice-popup-link__item" href="#"><span class="notice-popup-link__text">View tutorials</span>
-                      <mdc-icon css="ic-view-tutorials" path="ic-view-tutorials"></mdc-icon>
-                      </a><a class="notice-popup-link__item" href="#"><span class="notice-popup-link__text">Additional help</span>
-                      <mdc-icon css="ic-add-help" path="ic-add-help"></mdc-icon>
-                      </a><a class="notice-popup-link__item" href="#"><span class="notice-popup-link__text">Live help</span>
-                      <mdc-icon css="ic-live-help" path="ic-live-help"></mdc-icon>
-                      </a></div>
-                  </div>
-                </div>
-              </div>
-
-
+              <md-legend></md-legend>
             </div>
           </div>
         </div>

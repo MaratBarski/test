@@ -20,7 +20,10 @@ export class ConfigService extends BaseSibscriber {
     E00022: 'nullOnHeadersError',
     E00011: 'fileEmpty',
     E00023: 'noName',
-    E00019: 'noRows'
+    E00019: 'noRows',
+    E00032: 'fileSizeLimitError',
+    E00026: 'uniquenessOfHeadersError',
+    E00028: 'noEnglish'
   }
 
   get isLoaded(): boolean { return this._isLoaded; }
@@ -47,6 +50,11 @@ export class ConfigService extends BaseSibscriber {
   getValue(key: string): any {
     const c = this.serverConfig.config.find(x => x.parameterName === key);
     return c ? c.parameterValue : undefined;
+  }
+
+  getMessage(key: string): any {
+    const c = this.serverConfig.msg.find(x => x.msgCode === key);
+    return c ? c.msgOut : undefined;
   }
 
   loadConfig(): void {

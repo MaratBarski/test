@@ -24,8 +24,9 @@ export enum ValidationFileMessage {
   NoUtf8 = 'noUtf8',
   NoRows = 'noRows',
   FileExists = 'fileExists',
-  OtherError = 'otherError'
-
+  OtherError = 'otherError',
+  FileSizeLimitError = 'fileSizeLimitError',
+  NoEnglish = 'noEnglish'
 }
 @Injectable({
   providedIn: 'root'
@@ -50,8 +51,8 @@ export class CsvManagerService {
   }
 
   toValidCsvString(value: string): string {
-    if (!value) { return value; }    
-    return value.replace(/,/g, ' ').replace(/#/g,' ');
+    if (!value) { return value; }
+    return value.replace(/,/g, ' ').replace(/#/g, ' ');
   }
 
   createDownloadLink(csv: CsvData): string {
@@ -192,7 +193,7 @@ export class CsvManagerService {
 
   detectEncoding(file: any): Promise<string> {
     return new Promise<string>((resolve, reject) => {
-      if(!this.isCsv(file.name)){
+      if (!this.isCsv(file.name)) {
         resolve('UTF8');
         return;
       }
@@ -223,7 +224,6 @@ export class CsvManagerService {
     }).catch((error: any) => {
       errorCallback(error);
     })
-
   }
 
   readBlock(offset: number, length: number, file: any): Promise<string> {
@@ -240,6 +240,11 @@ export class CsvManagerService {
       reader.readAsText(blob);
     });
   }
+
+  validateMaxSize(file: any, maxSize: number): boolean {
+    return (file.size / 1000000 <= maxSize);
+  }
+
 
   validateSymbol(str: string): boolean {
     for (let i = 0; i < str.length; i++) {

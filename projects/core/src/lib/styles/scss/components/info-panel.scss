@@ -64,6 +64,8 @@
     align-items: center;
   }
 
+  &__val_grey{color: $color-grey;}
+
   &__bold{font-weight: 600;}
 
   &__icon{
@@ -170,6 +172,10 @@
   &__shared.active .info-popup{
     display: inline-block;
   }
+
+  &__btn{
+    margin-right: 20px;
+  }
 }
 
 .info-panel-choose{
@@ -194,7 +200,7 @@
 
 .info-panel-menu{
   position: absolute;
-  top: 16px;
+  top: 20px;
   right: 6px;
 
   &__btn .icon{

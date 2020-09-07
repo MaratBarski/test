@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject, forkJoin, of } from 'rxjs';
 import { Router } from '@angular/router';
-import { NavigationService, DateService, NotificationsService, TableModel } from '@appcore';
+import { NavigationService, DateService, NotificationsService, TableModel, ToasterType } from '@appcore';
 import { HttpClient } from '@angular/common/http';
 import { ConfigService } from '@app/shared/services/config.service';
 import { Offline } from '@app/shared/decorators/offline.decorator';
 import { environment } from '@env/environment';
+import { PermissionSetService } from './permission-set.service';
 
 @Injectable({
   providedIn: 'root'
@@ -60,10 +61,43 @@ export class UserEditService {
   get securityType(): number {
     return this._securityType;
   }
+
   private _securityType: number;
+
+  set securityUser(user: any) {
+    this._securityUser = user;
+    this._systmeUser = this.users.find(x => x.id === user.id);
+  }
+  get securityUser(): any {
+    return this._securityUser;
+  }
+  private _securityUser: any;
+  private _systmeUser: any;
+
+  get users(): Array<any> {
+    return this._users;
+  }
+
+  private _users: Array<any>;
+
   initSecurity(): void {
     this._securityType = parseInt(this.configService.getValue('security').toString());
+    if (this._securityType) {
+      this._users = undefined;
+      this.loadUsers();
+    }
   }
+
+  private loadUsers(): void {
+    this.http.get(this._usersUrl).subscribe((res: any) => {
+      this._users = res.data;
+    }, error => {
+
+    });
+  }
+
+  @Offline('assets/offline/userList.json?')
+  private _usersUrl = `${environment.serverUrl}${environment.endPoints.userList}`;
 
   @Offline('assets/offline/selectedUser.json?')
   private _userUrl = `${environment.serverUrl}${environment.endPoints.userList}`;
@@ -80,8 +114,9 @@ export class UserEditService {
   private _user: any;
 
   get isLoading(): boolean {
-    return this._isLoading;
+    return this._isLoading || (this.securityType && (!this.users || !this.users.length));
   }
+
   private _isLoading = false;
 
   get environments(): Array<any> {
@@ -153,6 +188,7 @@ export class UserEditService {
         domain: "",
         photo: undefined,
         enabled: true,
+        isSuperAdmin: false,
         permissionSets: []
       }
     };
@@ -162,7 +198,6 @@ export class UserEditService {
     this.showCancelConfirm = false;
     this.router.navigateByUrl(this.redirectUrl || '/users');
   }
-
 
   private _selectedTab = 0;
   get selectedTab(): number { return this._selectedTab; }
@@ -208,6 +243,35 @@ export class UserEditService {
     return value.toString().trim() === '';
   }
 
+  createServerRequest(): any {
+    const res = {
+      login: this.securityType ? (this._systmeUser ? this._systmeUser.login : '') : this.user.userName,
+      password: this.user.password,
+      firstName: this.user.firstName,
+      lastName: this.user.lastName,
+      email: this.user.email,
+      cellPhone: this.user.cellPhone,
+      activated: this.user.activated,
+      userTypes: [],
+      authorities: [{ authorityName: this.user.isSuperAdmin ? 'ROLE_SUPERADMIN' : 'ROLE_ADMIN' }],
+      researches: []
+    };
+    this.environments
+      .filter(env => env.isChecked)
+      .forEach(env => {
+        res.userTypes.push({
+          projectId: env.id,
+          userType: env.role === 1 ? 'End user' : 'Admin',
+          anonymityLevel: env.kf,
+          allowedData: env.data === 1 ? 'Syntatic' : 'Original'
+        });
+      });
+    this.user.permissionSets.forEach(s => {
+      res.researches.push(s.researcher);
+    });
+    return res;
+  }
+
   resetValidation(): void {
     Object.keys(this.missingItem).forEach(k => {
       this.missingItem[k].isMissing = false;
@@ -220,7 +284,28 @@ export class UserEditService {
   }
 
   save(): void {
-
+    const req = this.createServerRequest();
+    this._isLoading = true;
+    //alert(JSON.stringify(req));
+    this.http.post(this._userUrl, req).subscribe(res => {
+      this._isLoading = false;
+      this.notificationService.addNotification({
+        showInToaster: true,
+        isClientOnly: true,
+        name: 'User added successfully',
+        comment: 'User added successfully',
+        type: ToasterType.success
+      });
+    }, error => {
+      this._isLoading = false;
+      this.notificationService.addNotification({
+        showInToaster: true,
+        isClientOnly: true,
+        name: 'Error add user',
+        comment: 'Error',
+        type: ToasterType.error
+      });
+    })
   }
 
 
@@ -330,21 +415,14 @@ export class UserEditService {
     this._user.permissionSets.forEach((fl, i) => {
       data.rows.push({
         cells: {
-          PermissionSetName: fl.setName,
-          Environment: fl.projectName,
-          ApprovalKey: fl.keyName,
+          PermissionSetName: fl.ps.setName,
+          Environment: fl.ps.projectName,
+          ApprovalKey: fl.ps.keyName,
           KeyStatus: 'New',
-          Active: fl.isActive,
-          maxPatients: fl.size,
-          startDate: fl.fromDate,
-          endDate: fl.toDate
-          // PermissionTemplate: fl.researchTemplates ? fl.researchTemplates.map((t: any) => {
-          //   return t.template ? t.template.templateName : ''
-          // }).join(';') : '',
-          // Allowedcontent: fl.researchRestrictionEvents ? fl.researchRestrictionEvents.map((e: any) => {
-          //   return e.siteEventPropertyInfo ? `[(${e.siteEventInfo ? e.siteEventInfo.eventTableAlias : 'null'}) (${e.eventPropertyId}) (${e.value})]` : ''
-          // }).join(';') : ';',
-          // approvalKeyExpirationDate: fl.approvalKeyExpirationDate || ''
+          Active: fl.ps.isActive,
+          maxPatients: fl.ps.size,
+          startDate: fl.ps.fromDate,
+          endDate: fl.ps.toDate
         },
         source: fl,
         isActive: true

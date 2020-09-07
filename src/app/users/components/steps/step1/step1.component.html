@@ -44,9 +44,13 @@
         <div class="add-perm-sect">
             <div class="add-perm-sect__content">
                 <div class="add-perm-sect__item">
-                    <div class="add-perm-sect__title"><span class="add-perm-sect__title-text">Username:</span></div>
+                    <div class="add-perm-sect__title">
+                        <span [hidden]="isPopup" class="add-perm-sect__title-text">Username:</span>
+                        <span [hidden]="!isPopup" class="add-perm-sect__title-text">Environment:</span>
+                    </div>
                     <div class="add-perm-sect__fields">
-                        <div [ngClass]="{'ps-empty':permissionSetService.isUserEmpty}" class="add-perm-sect__select ps-empty">
+                        <div [hidden]="isPopup" [ngClass]="{'ps-empty':permissionSetService.isUserEmpty}"
+                            class="add-perm-sect__select ps-empty">
                             <mdc-auto-complete #userNameCmp placeHolder="Search or Select a User Name..."
                                 textField="name" (onSelect)="selectUser($event)" (onClear)="clearUser()"
                                 (completeMethod)="completeUsers($event)" [suggestions]="users">
@@ -56,7 +60,7 @@
                             </mdc-auto-complete>
                         </div>
                         <div class="add-perm-sect__select">
-                            <div class="add-perm-sect__label">Environment:</div>
+                            <div [hidden]="isPopup" class="add-perm-sect__label">Environment:</div>
                             <md-project-combo #projectCmp [isInvalid]="permissionSetService.isProjectEmpty"
                                 [isSmall]="true" [selectUp]="false" [user]="permissionSetService.user"
                                 [project]="permissionSetService.permissionSet.project"
@@ -97,7 +101,7 @@
                         </span>
                     </div>
                     <div class="add-perm-sect__fields">
-                        <mdc-input-number [max]="permissionSetService.permissionSet.size" [isValid]="isValidSize"
+                        <mdc-input-number [max]="permissionSetService.maxSize" [isValid]="isValidSize"
                             (onValueChanged)="onSizeChanged($event)"
                             [(ngModel)]="permissionSetService.permissionSet.size"></mdc-input-number>
                         <div style="margin-left: 10px;" class="add-perm-sect__text">Patients</div>

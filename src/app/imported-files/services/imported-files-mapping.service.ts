@@ -104,6 +104,7 @@ export class ImportedFilesMappingService implements Resolve<FileSourceMappingRes
       comment: `Mapping of ${opt.fileName}.`,
       progress: 0,
       key: opt.key,
+      abortDisabled: true,
       showInToaster: true,
       containerEnable: true,
       abortName: 'Aborted Successfully',

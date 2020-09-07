@@ -15,6 +15,7 @@ export const environment = {
     getRelationalIntegrity: 'kostya/api/v1/file-source/get-relational-integrity',
     getSampleData: 'mdclone/api/v1/file-source/get-sample-data',
     templateByProject: 'mdclone/api/v1/template/get-by-project',
+    siteEventInfo: 'mdclone/api/v1/siteeventinfo/get-by-project',    
     uploadFileSource: 'mdclone/api/v1/upload/file-source',
     uploadHierarchy: 'mdclone/api/v1/upload/hierarchy',
     deleteFileSource: 'mdclone/api/v1/file-source',

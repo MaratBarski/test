@@ -42,4 +42,8 @@ export class NotificationItemComponent {
   navigate(): void {
     this.navigationService.navigate(this.notice.succUrl);
   }
+
+  get isAbortDisabled(): boolean {
+    return this.notificationsService.isAbortDisabled(this.notice);
+  }
 }

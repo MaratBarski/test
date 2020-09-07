@@ -18,7 +18,7 @@
         </section>
     </div>
 </div>
-<md-footer *ngIf="!userEditService.isLoading" [isNextEnable]="isNextEnable" [isSaveEnable]="isSaveEnable" (onCancel)="cancel()" (onNext)="next($event)" (onSave)="save()" (onOptionClick)="optionClick($event)" [btnOptions]="btnOptions"></md-footer>
+<md-footer *ngIf="!userEditService.isLoading" (onOptionClick)="save()" [isNextEnable]="isNextEnable" [isSaveEnable]="isSaveEnable" (onCancel)="cancel()" (onNext)="next($event)" (onSave)="save()" (onOptionClick)="optionClick($event)" [btnOptions]="btnOptions"></md-footer>
 
 <md-confirm-dialog *ngIf="showChangesConfirm" confirmText="Yes" cancelText="No, stay on page" name="Leaving User Page" subName="Changes you made will be lost."
     subText="Do you wish to leave the page?" text="" (onCancel)="cancelChanges()"

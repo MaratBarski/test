@@ -46,7 +46,7 @@ export interface INotification {
   containerEnable?: boolean;
   isClientOnly?: boolean;
   removeOnComplete?: boolean;
-
+  abortDisabled?: boolean;
 }
 
 const NOTIFICATION_MAP: Array<{ client: string, server: string }> = [
@@ -217,5 +217,9 @@ export class NotificationsService extends BaseSibscriber {
     const n = {}
     this.copyNotification(notice, n);
     this._notifications = this._notifications.concat([n]);
+  }
+
+  isAbortDisabled(notice: INotification): boolean {
+    return (notice && notice.progress >= 50);
   }
 }

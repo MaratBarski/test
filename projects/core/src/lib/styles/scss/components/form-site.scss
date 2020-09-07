@@ -53,6 +53,7 @@
 	input[type="email"]::placeholder,
 	textarea::placeholder{
 		color: $color-light-grey;
+    opacity: 1;
 	}
 
 	input[type="text"]:focus,
@@ -69,6 +70,9 @@
 
 	.select{
 		width: 100%;
+
+    &__head{color: $color-light-grey;}
+    &__head.active{color: $color-dark-grey;}
 	}
 
 	// input[type="text"]:focus,
@@ -113,8 +117,20 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		margin-top: 40px;
+		margin-top: 45px;
 	}
+
+  &__btn-link{
+    @include font(normal, 600, rem(14px), 1.25, $color-dark-purple);
+    cursor: pointer;
+  }
+
+  &__btn-link:hover{
+    color: $color-dark-purple;
+    text-decoration: underline;
+  }
+
+  &_btn-group{display: flex;}
 
 	&__info,
 	&__help{
@@ -186,6 +202,18 @@
 	&__notice-text{
 		vertical-align: middle;
 	}
+
+  &__note{
+    @include font(normal, normal, rem(14px), 1.2, $color-dark-grey);
+    margin-bottom: 6px;
+  }
+
+  &__event-res{
+    @include font(normal, normal, rem(14px), 1.2, $color-dark-grey);
+    margin-top: 10px;
+  }
+
+  &__event-res.disable{color: $color-grey;}
 }
 
 .form-site-alert{
@@ -253,6 +281,100 @@
 		overflow: hidden;
 		text-overflow: ellipsis;
 	}
+}
+
+.img-upload{
+  position: relative;
+
+  input[type="file"]{display: none;}
+
+  &__content{
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+
+  &__img{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 40px;
+    border-radius: 2px;
+    border: solid 1px $color-light-grey;
+    padding: 7px;
+    cursor: pointer;
+
+    .icon{
+      max-width: 100%;
+      max-height: 100%;
+    }
+  }
+
+  &__img:hover{border-color: $color-dark-purple;}
+
+  &__name{
+    @include font(normal, normal, 14px, 21px, $color-dark-grey);
+    white-space: nowrap;
+    width: calc(100% - 46px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__name.disable{color: $color-light-grey;}
+
+  &__list{
+    display: flex;
+    flex-wrap: wrap;
+    max-height: 167px;
+    overflow-y: auto;
+    background: #fff;
+    border: 1px solid $color-light-grey;
+    border-radius: 2px;
+    padding: 6px 8px;
+    position: absolute;
+    top: 100%;
+    margin-top: 6px;
+    z-index: 2;
+  }
+
+  &__item{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 40px;
+    border-radius: 2px;
+    border: solid 1px $color-light-grey;
+    padding: 7px;
+    margin: 6px;
+    cursor: pointer;
+    position: relative;
+
+    .icon{
+      max-width: 100%;
+      max-height: 100%;
+    }
+  }
+
+  &__item.active{border: 1.2px solid $color-dark-purple;}
+
+  .tooltip{
+    display: none;
+    position: absolute;
+    left: 100%;
+    @include top-center;
+    white-space: nowrap;
+    z-index: 2;
+
+    &_right{
+      left: auto;
+      right: 100%;
+    }
+  }
+
+  &__item:hover{background: $color-sort-grey;}
+  &__item:hover .tooltip{display: inline-block;}
 }
 
 .select-date{
@@ -416,6 +538,21 @@
 		background: $color-sort-grey;
 	}
 
+  &__param-icon{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .icon{
+      max-width: 21px;
+      height: 21px;
+    }
+  }
+
+  &__param-text{
+    max-width: calc(100% - 35px);
+  }
+
 	&.disable &__head{color: $color-light-grey;}
 	&.disable:hover{cursor: auto;}
 	&.disable:hover &__option{display: none;}
@@ -439,6 +576,8 @@
 	&_small &__option{max-height: 270px;}
 
 	&_full{width: auto;}
+
+  &_long{width: 320px;}
 
 	&__accent{color: $color-green;}
 
@@ -539,6 +678,26 @@
   &_no-border &__head-arr{width: 30px;}
   &_no-border &__option{min-width: 150px;}
 
+  &.disable{opacity: 0.5;}
+
+  &_edit &__param{
+    padding-right: 40px;
+    position: relative;
+  }
+
+  &_edit &__param::after{
+    content: '';
+    display: none;
+    width: 21px;
+    height: 21px;
+    background: url(/assets/img/ic-edit.svg) no-repeat center;
+    background-size: contain;
+    position: absolute;
+    @include top-center;
+    right: 15px;
+  }
+
+  &_edit &__param:hover::after{display: inline-block;}
 
 	// .form-search{
 	// 	width: 100%;

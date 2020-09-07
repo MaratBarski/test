@@ -1,8 +1,8 @@
 <md-user-time-activity (onSelect)="changeCurrentAcitity($event)" [current]="currentActivity"
     [buttons]="activityButtons"></md-user-time-activity>
 
-<md-chart-wraper [firstTitle]="firstTitle" [secondTitle]="secondTitle" [firstChart]="firstChart"
-    [firstChartHasData]="(dataSource|userTop10Chart).query.length"
+<md-chart-wraper [firstDate]="dateRange" [secondDate]="dateRange" firstTitle="New Queries" secondTitle="File Downloads"
+    [firstChart]="firstChart" [firstChartHasData]="(dataSource|userTop10Chart).query.length"
     [secondChartHasData]="(dataSource|userTop10Chart).download.length" [secondChart]="secondChart">
 </md-chart-wraper>
 
@@ -32,4 +32,8 @@
             <div>Synthetic Files</div>
         </div>
     </div>
+</ng-template>
+
+<ng-template #dateRange>
+    &nbsp;[{{usageRequestService.usageRequest.fromDate|date}} - {{usageRequestService.usageRequest.toDate|date}}]
 </ng-template>

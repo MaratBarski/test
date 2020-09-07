@@ -2,25 +2,21 @@
     <div class="rule-build-item__head">that</div>
     <div class="rule-build-item__content">
         <div class="rule-build-item__select">
-            <!-- <mdc-auto-complete placeHolder="Select Property..." textField="name"
-                (onSelect)="selectTable($event)" (completeMethod)="completeTable($event)"
-                [suggestions]="tables">
-                <ng-template let-item>
-                    <div class="select__param" [text]="item.name" [mdcColorText]="searchTableText"></div>
-                </ng-template>
-            </mdc-auto-complete> -->
-            <mdc-select (changed)="changed()"  [isInvalid]="isShowerror && roleItem.selectedTableName===-1" [(ngModel)]="roleItem.selectedTableName" [options]="roleItem.tableNames"
-                placeholder="Select Event..." [isSmall]="true"></mdc-select>
+            <mdc-select (changed)="changedEvent($event)" [isInvalid]="isShowerror && selectedEvent===-1"
+                [(ngModel)]="selectedEvent" [options]="eventsOptions" placeholder="Select Event..." [isSmall]="true">
+            </mdc-select>
         </div>
         <div class="rule-build-item__select">
             <div class="drop-auto">
-                <mdc-select  (changed)="changed()" [isInvalid]="isShowerror && roleItem.selectedPropertyName===-1" [(ngModel)]="roleItem.selectedPropertyName"
-                    [options]="roleItem.propertyNames" placeholder="Select Property..." [isSmall]="true"></mdc-select>
+                <mdc-select (changed)="changedProperty($event)" [isInvalid]="isShowerror && selectedProperty===-1"
+                    [(ngModel)]="selectedProperty" [options]="propertyOptions" placeholder="Select Property..."
+                    [isSmall]="true">
+                </mdc-select>
             </div>
         </div>
         <div class="rule-build-item__input">
-            <div class="role-border" [ngClass]="{'invalid':!roleItem.text && isShowerror}">
-                <input type="text" (change)="changed()" [(ngModel)]="roleItem.text" placeholder="Type a text value">
+            <div class="role-border" [ngClass]="{'invalid':!text && isShowerror}">
+                <input type="text" (change)="changed()" [(ngModel)]="text" placeholder="Type a text value">
             </div>
         </div>
     </div>

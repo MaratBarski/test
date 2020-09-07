@@ -52,6 +52,16 @@ export class PermissionSetService extends BaseSibscriber {
   redirectUrl = '';
   showCancelConfirm = false;
 
+  get onAllowedEventsChange(): Observable<any> {
+    return this._onAllowedEventsChange;
+  }
+  private _onAllowedEventsChange = new Subject();
+
+  get maxSize(): number {
+    return this._maxSize;
+  }
+  private _maxSize = 1;
+
   constructor(
     private http: HttpClient,
     private userListService: UserListService,
@@ -62,6 +72,7 @@ export class PermissionSetService extends BaseSibscriber {
     private navigationService: NavigationService
   ) {
     super();
+    this._maxSize = parseInt(this.configService.getValue('research_max_patients'));
   }
 
   cancelConfirm(): void {
@@ -148,10 +159,11 @@ export class PermissionSetService extends BaseSibscriber {
     this._permissionSet.setDescription = '';
     this._permissionSet.keyName = '';
     this._permissionSet.keyExpirationDate = undefined;
-    this._permissionSet.fromDateUnlimited = false;
-    this._permissionSet.toDateUnlimited = false;
-    this._permissionSet.fromDate = undefined;
-    this._permissionSet.toDate = undefined;
+    this._fromSetId = 0;
+    // this._permissionSet.fromDateUnlimited = false;
+    // this._permissionSet.toDateUnlimited = false;
+    // this._permissionSet.fromDate = undefined;
+    // this._permissionSet.toDate = undefined;
     this.user = undefined;
   }
 
@@ -159,16 +171,21 @@ export class PermissionSetService extends BaseSibscriber {
     return !!this._setId;
   }
 
+  isPopup = false;
+
   resetService(id: any): void {
+    this.isPopup = false;
     this._fromSetId = 0;
     this.isAfterValidate = false;
     this._permissionSet = this.getDefault();
+    this.addedEvents = [];
     this._setId = id;
     this.loadData();
     this.user = undefined;
     this._isShowError = false;
     this._selectedTab = 0;
     this.setInitialSet();
+    this._onAllowedEventsChange.next();
   }
 
   private _templatesLoaded = false;
@@ -178,6 +195,9 @@ export class PermissionSetService extends BaseSibscriber {
 
   @Offline('assets/offline/templateByProject.json?')
   private templateByProjectUrl = `${environment.serverUrl}${environment.endPoints.templateByProject}`;
+
+  @Offline('assets/offline/siteEventPropertyInfos.json?')
+  private siteEventInfoUrl = `${environment.serverUrl}${environment.endPoints.siteEventInfo}`;
 
   private findEventType(templateInfo: any, dataTemplates: Array<any>): string {
     if (!dataTemplates || !dataTemplates.length) { return ''; }
@@ -196,64 +216,55 @@ export class PermissionSetService extends BaseSibscriber {
 
   loadTemplates(isInitTemplates: boolean): void {
     this._templatesLoaded = false;
-    this.http.get(`${this.templateByProjectUrl}/${this.permissionSet.project}`).subscribe((res: any) => {
-      this._templatesLoaded = true;
-      this.templates = res.data
-        .filter((t: any) => t.templateType === 'PERMISSION')
-        .map((t: any) => {
-          return {
-            name: t.templateName,
-            id: t.templateId,
-            isChecked: false,
-            templateItems:
-              t.siteEventInfos.map((ti: any) => {
-                return {
-                  name: ti.eventTableAlias,
-                  type: this.findEventType(ti, res.data)
-                };
-              })
-          }
-        });
-      this.initRoleItems(res.data);
-      this._onTemplatesLoaded.next(isInitTemplates);
+    const subscribbtion =
+      forkJoin(
+        this.http.get(`${this.templateByProjectUrl}/${this.permissionSet.project}`),
+        this.http.get(`${this.siteEventInfoUrl}/${this.permissionSet.project}`),
+      ).subscribe(([res, events]: any) => {
+        this._templatesLoaded = true;
+        subscribbtion.unsubscribe();
+        this.templates = res.data
+          .filter((t: any) => t.templateType === 'PERMISSION')
+          .map((t: any) => {
+            return {
+              name: t.templateName,
+              id: t.templateId,
+              isChecked: false,
+              templateItems:
+                t.siteEventInfos.map((ti: any) => {
+                  return {
+                    name: ti.eventTableAlias,
+                    type: this.findEventType(ti, res.data)
+                  };
+                })
+            }
+          });
+        this.initRoleEventItems(events.data);
+        this._onTemplatesLoaded.next(isInitTemplates);
+      });
+  }
+
+  events = [];
+  addedEvents = [];
+
+  private initRoleEventItems(events: Array<any>): void {
+    this._permissionSet.roleItems = [];
+    this.events = events;
+  }
+
+  addEvent(): void {
+    this.addedEvents = this.addedEvents.concat({
+      target: {
+        eventId: -1,
+        eventPropertyId: '',
+        value: ''
+      },
+      list: [].concat(this.events)
     });
   }
 
-  tableNames = [];
-  propertyNames = [];
-
-  private initRoleItems(templates: Array<any>): void {
-    this._permissionSet.roleItems = [];
-    this.tableNames = [];
-    this.propertyNames = [];
-    const nameDict = {};
-    const propertyDict = {};
-    templates.forEach(t => {
-      if (!t.siteEventInfos || !t.siteEventInfos.length) {
-        return;
-      }
-      t.siteEventInfos.forEach(info => {
-        if (!nameDict[info.eventTableAlias]) {
-          nameDict[info.eventTableAlias] = info;
-          this.tableNames.push({
-            name: info.eventTableAlias,
-            id: info.eventId,
-            type: info.eventType
-          });
-        }
-        info.siteEventPropertyInfos.forEach(prop => {
-          if (!propertyDict[prop.eventPropertyName]) {
-            propertyDict[prop.eventPropertyName] = prop;
-            this.propertyNames.push({
-              name: prop.eventPropertyName,
-              type: prop.eventPropertyType
-            });
-          }
-        });
-      });
-      this.tableNames.sort((a, b) => a.name > b.name ? 1 : -1);
-      this.propertyNames.sort((a, b) => a.name > b.name ? 1 : -1);
-    })
+  removeRoleItem(item: any): void {
+    this.addedEvents = this.addedEvents.filter(x => x !== item);
   }
 
   templates = [];
@@ -305,17 +316,14 @@ export class PermissionSetService extends BaseSibscriber {
   getSet(): any {
     this.isAfterValidate = true;
     if (!this.validate(true)) { return undefined; }
-    //return this.createSaveObject();
-
-    return this.permissionSet;
+    return { ps: this.permissionSet, researcher: this.createSaveObject() };
   }
 
   save(): void {
     this.isAfterValidate = true;
     if (!this.validate(true)) { return; }
     const obj = this.createSaveObject();
-    console.log(JSON.stringify(obj));
-    console.log(obj);
+    //document.write(JSON.stringify(obj));
     this.isSaving = true;
     if (this.isEditMode) {
       this.updateSet(obj);
@@ -335,7 +343,8 @@ export class PermissionSetService extends BaseSibscriber {
   }
 
   private updateSet(obj: any): void {
-    this.http.put(`${environment.serverUrl}${environment.endPoints.research}/${this._setId}`, obj).subscribe(res => {
+    const subscribtion = this.http.put(`${environment.serverUrl}${environment.endPoints.research}/${this._setId}`, obj).subscribe(res => {
+      subscribtion.unsubscribe();
       this.router.navigateByUrl('/users/research');
       this.addSuccNotification();
     }, error => {
@@ -350,7 +359,8 @@ export class PermissionSetService extends BaseSibscriber {
   }
 
   private addSet(obj: any): void {
-    this.http.post(`${environment.serverUrl}${environment.endPoints.research}`, obj).subscribe(res => {
+    const subscribtion = this.http.post(`${environment.serverUrl}${environment.endPoints.research}`, obj).subscribe(res => {
+      subscribtion.unsubscribe();
       this.router.navigateByUrl('/users/research');
       this.addSuccNotification();
     }, error => {
@@ -371,15 +381,19 @@ export class PermissionSetService extends BaseSibscriber {
       projectId: this.permissionSet.project,
       researchStatus: "Open",
       maxPatients: this.permissionSet.size,
-      researchRestrictionEvents: this._permissionSet.roleItems
-        .filter(roleItem => {
-          return roleItem.selectedTableName >= 0 && roleItem.selectedPropertyName >= 0;
+      researchRestrictionEvents: this.addedEvents
+        .filter(ev => {
+          return ev.target.eventId >= 0 &&
+            ev.target.eventPropertyId &&
+            ev.target.eventPropertyId.trim() !== '' &&
+            ev.target.value &&
+            ev.target.value.trim() !== '';
         })
-        .map(roleItem => {
+        .map(ev => {
           return {
-            eventId: roleItem.selectedTableName >= 0 ? this.tableNames[roleItem.selectedTableName].id : -1,
-            eventPropertyName: roleItem.selectedPropertyName >= 0 ? this.propertyNames[roleItem.selectedPropertyName].name : -1,
-            value: roleItem.text
+            eventId: ev.target.eventId,
+            eventPropertyName: ev.target.eventPropertyId,
+            value: ev.target.value
           }
         })
     }
@@ -418,7 +432,7 @@ export class PermissionSetService extends BaseSibscriber {
       this._isShowError = true;
     }
     //if (!this._permissionSet.isNew && this.isEmpty(this._permissionSet.fromSetId)) { return false; }
-    if (this.isEmpty(this._permissionSet.userId)) { return false; }
+    if (this.isEmpty(this._permissionSet.userId) && !this.isPopup) { return false; }
     if (this.isEmpty(this._permissionSet.project)) { return false; }
     if (this.isEmpty(this._permissionSet.setName)) { return false; }
 
@@ -427,13 +441,18 @@ export class PermissionSetService extends BaseSibscriber {
     if (!this._permissionSet.fromDateUnlimited && !this.dateService.isDateValid(this._permissionSet.fromDate)) { return false; }
     if (!this._permissionSet.toDateUnlimited && !this.dateService.isDateValid(this._permissionSet.toDate)) { return false; }
 
+    if (!this.permissionSet.isNew && !this._fromSetId) { return false; }
     //if (!this.dateService.isDateValid(this._permissionSet.keyExpirationDate)) { return false; }
 
     //if (this.isEmpty(this._permissionSet.keyName)) { return false; }
 
     let invalidRoles = false;
-    this._permissionSet.roleItems.forEach(ri => {
-      if (ri.text.trim() === '' || ri.selectedTableName === -1 || ri.selectedPropertyName === -1) {
+    this.addedEvents.forEach(ev => {
+      if (ev.target.eventId === -1 ||
+        !ev.target.eventPropertyId ||
+        ev.target.eventPropertyId.trim() === '' ||
+        !ev.target.value ||
+        ev.target.value.trim() === '') {
         invalidRoles = true;
         return;
       }
@@ -485,6 +504,7 @@ export class PermissionSetService extends BaseSibscriber {
 
   getDefault(): PermissionSet {
     const res = {
+      userId: 0,
       isNew: true,
       isActive: true,
       setName: '',
@@ -527,23 +547,16 @@ export class PermissionSetService extends BaseSibscriber {
 
   loadData(): void {
     this._dataLoaded = false;
-    forkJoin(
+    const subsciption = forkJoin(
       this.http.get(this.getResearchUrl),
       this.userListService.load(),
       this.loadSet()
     ).subscribe(([researchers, users, permSet]: any) => {
+      subsciption.unsubscribe();
       this._researchers = researchers.data;
       this._users = users.data;
       if (this._setId) {
         this._permissionSet = this.convertToClient(permSet.data);
-        //this.showWarning = permSet.data.researchStatus && permSet.data.researchStatus.trim().toLowerCase() !== 'open';
-        // if (!permSet.data.approvalKeyExpirationDate) {
-        //   this.showWarning = false
-        // } else {
-        //   if (new Date() > new Date(permSet.data.approvalKeyExpirationDate)) {
-        //     this.showWarning = true;
-        //   }
-        // }
         this.initTemplates(permSet.data);
       } else {
         this._permissionSet = permSet;
@@ -554,8 +567,27 @@ export class PermissionSetService extends BaseSibscriber {
     });
   }
 
+  private initEvents(ps: any): void {
+    this.addedEvents = [];
+    if (!ps.researchRestrictionEvents || !ps.researchRestrictionEvents.length) { return; }
+    //alert(this.events.length)
+    ps.researchRestrictionEvents.forEach(ev => {
+      const event = this.events.find(x => x.eventId === ev.eventId);
+      if (!event) { return; }
+      this.addedEvents.push({
+        target: {
+          eventId: ev.eventId,
+          eventPropertyId: ev.eventPropertyName,
+          value: ev.value
+        },
+        list: [].concat(this.events)
+      })
+    });
+  }
+
   private initTemplates(permSet: any): void {
-    super.add(this.onTemplatesLoaded.subscribe((flag: boolean) => {
+    const subsciption = this.onTemplatesLoaded.subscribe((flag: boolean) => {
+      subsciption.unsubscribe();
       if (this.isEditMode) {
         this.initEvents(permSet);
         if (permSet.researchStatus && permSet.researchStatus.toLowerCase() === 'open') {
@@ -568,34 +600,21 @@ export class PermissionSetService extends BaseSibscriber {
         }
         if (permSet.researchStatus && permSet.researchStatus.toLowerCase() === 'initial ') {
           this.permissionSet.allowedEvent = NO_ALLOWED_EVENTS;
-        }
-
-        if (permSet.researchTemplates) {
+        } else if (permSet.researchTemplates) {
           this.templates.forEach(t => {
             t.isChecked = permSet.researchTemplates.find((x: any) => x.templateId.toString() === t.id.toString());
           });
         }
         this.setInitialSet();
+        this._onAllowedEventsChange.next();
       } else {
         // TO-DO update templates by set
       }
-    }));
+    });
     this.loadTemplates(true);
   }
 
-  private initEvents(permSet: any): void {
-    this._permissionSet.roleItems = [];
-    if (!permSet.researchRestrictionEvents || !permSet.researchRestrictionEvents.length) { return; }
-    permSet.researchRestrictionEvents.forEach(ev => {
-      const tableIndex = this.tableNames.findIndex(x => x.id === ev.eventId);
-      const propertyIndex = this.propertyNames.findIndex(x => x.name === ev.siteEventPropertyInfo.eventPropertyNa);
-      if (tableIndex !== -1 && propertyIndex !== -1) {
-        this._permissionSet.roleItems.push(
-          this.createRoleItem(tableIndex, propertyIndex, ev.value)
-        )
-      }
-    });
-  }
+
 
   private convertToClient(permSet: any): PermissionSet {
     const res = this.getDefault();
@@ -621,6 +640,7 @@ export class PermissionSetService extends BaseSibscriber {
     if (this.user) {
       res.userId = this.user.id;
     }
+    this._onAllowedEventsChange.next();
     return res;
   }
 
@@ -645,39 +665,6 @@ export class PermissionSetService extends BaseSibscriber {
     })
   }
 
-  addRoleItem(): void {
-    this._permissionSet.roleItems = [
-      this.createRoleItem(-1, -1, '')
-    ].concat(this._permissionSet.roleItems);
-    this.isAfterValidate = false;
-  }
-
-  private createRoleItem(tableIndex: number, propertyIndex: number, text: string): any {
-    return {
-      name: '',
-      text: text,
-      selectedTableName: tableIndex,
-      selectedPropertyName: propertyIndex,
-      tableNames: this.tableNames.map((x, i) => {
-        return {
-          id: i,
-          text: x.name,
-          value: i
-        }
-      }),
-      propertyNames: this.propertyNames.map((x, i) => {
-        return {
-          id: i,
-          text: x.name,
-          value: i
-        }
-      })
-    }
-  }
-
-  removeRoleItem(item: any): void {
-    this._permissionSet.roleItems = this._permissionSet.roleItems.filter(x => x !== item);
-  }
 
   updateAllowedEvents(): void {
     if (this.permissionSet.allowedEvent === ALL_EVENTS) {
@@ -686,5 +673,6 @@ export class PermissionSetService extends BaseSibscriber {
       this.templates.forEach(x => x.isChecked = false);
     }
     this.updateTemplates();
+    this._onAllowedEventsChange.next();
   }
 }

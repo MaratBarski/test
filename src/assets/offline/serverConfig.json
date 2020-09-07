@@ -163,13 +163,6 @@
                 "prmType": 0
             },
             {
-                "configId": "59",
-                "program": "csvFileEmptySpace",
-                "parameterName": "json",
-                "parameterValue": "{\"0\":\"none\",\"1\":\"na\",\"2\":\"empty\",\"3\":\"NA\",\"4\":\"null\",\"5\":\"n/a\",\"6\":\"\\\"\\\"\"}",
-                "prmType": 0
-            },
-            {
                 "configId": "22",
                 "program": "mpp",
                 "parameterName": "host",
@@ -182,13 +175,6 @@
                 "parameterName": "app_plink_pass",
                 "parameterValue": "fd54a13b3cf37c73becee1802af86070",
                 "prmType": 1
-            },
-            {
-                "configId": "5",
-                "program": "general",
-                "parameterName": "site_url",
-                "parameterValue": "stage.mdclone-dev.com",
-                "prmType": 0
             },
             {
                 "configId": "72",
@@ -572,7 +558,7 @@
                 "configId": "140",
                 "program": "general",
                 "parameterName": "security",
-                "parameterValue": "0",
+                "parameterValue": "1",
                 "prmType": 0
             },
             {
@@ -681,6 +667,20 @@
                 "prmType": 0
             },
             {
+                "configId": "59",
+                "program": "csvFileEmptySpace",
+                "parameterName": "json",
+                "parameterValue": "{\"0\":\"none\",\"1\":\"na\",\"2\":\"empty\",\"3\":\"NA\",\"4\":\"NULL\",\"5\":\"n/a\",\"6\":\"\\\"\\\"\"}",
+                "prmType": 0
+            },
+            {
+                "configId": "5",
+                "program": "general",
+                "parameterName": "site_url",
+                "parameterValue": "10.0.2.18:4000/dev-mainapp/",
+                "prmType": 0
+            },
+            {
                 "configId": "57",
                 "program": "bpm",
                 "parameterName": "admin_email",
@@ -713,20 +713,6 @@
                 "program": "general",
                 "parameterName": "hidden_objects",
                 "parameterValue": ".navbar {display: none;} .breadcrumb {display: none;}",
-                "prmType": 0
-            },
-            {
-                "configId": "101",
-                "program": "site",
-                "parameterName": "research_start_date",
-                "parameterValue": "2013-01-31",
-                "prmType": 0
-            },
-            {
-                "configId": "100",
-                "program": "site",
-                "parameterName": "research_end_date",
-                "parameterValue": "dfsdfsd",
                 "prmType": 0
             },
             {
@@ -793,13 +779,6 @@
                 "prmType": 0
             },
             {
-                "configId": "191",
-                "program": "general",
-                "parameterName": "allow_session_share",
-                "parameterValue": "TRUE",
-                "prmType": 0
-            },
-            {
                 "configId": "42",
                 "program": "site",
                 "parameterName": "audit_default_days",
@@ -811,13 +790,6 @@
                 "program": "site",
                 "parameterName": "act_rows_limit",
                 "parameterValue": "200",
-                "prmType": 0
-            },
-            {
-                "configId": "143",
-                "program": "site",
-                "parameterName": "mpp",
-                "parameterValue": "TRUE",
                 "prmType": 0
             },
             {
@@ -903,61 +875,218 @@
                 "parameterName": "censored_scripts_path",
                 "parameterValue": "/scripts/censored",
                 "prmType": 0
+            },
+            {
+                "configId": "247",
+                "program": "maintenance",
+                "parameterName": "years_run_hist_interval",
+                "parameterValue": "3",
+                "prmType": 0
+            },
+            {
+                "configId": "248",
+                "program": "maintenance",
+                "parameterName": "years_session_hist_interval",
+                "parameterValue": "3",
+                "prmType": 0
+            },
+            {
+                "configId": "143",
+                "program": "synthetic",
+                "parameterName": "mpp",
+                "parameterValue": "TRUE",
+                "prmType": 0
+            },
+            {
+                "configId": "250",
+                "program": "synthetic",
+                "parameterName": "date_act",
+                "parameterValue": "drop",
+                "prmType": 0
+            },
+            {
+                "configId": "253",
+                "program": "synthetic",
+                "parameterName": "run_mode_test",
+                "parameterValue": "P",
+                "prmType": 0
+            },
+            {
+                "configId": "252",
+                "program": "synthetic",
+                "parameterName": "run_mode",
+                "parameterValue": "R",
+                "prmType": 0
+            },
+            {
+                "configId": "254",
+                "program": "synthetic",
+                "parameterName": "volume",
+                "parameterValue": "../mdclone/",
+                "prmType": 0
+            },
+            {
+                "configId": "255",
+                "program": "synthetic",
+                "parameterName": "r_selector",
+                "parameterValue": "r",
+                "prmType": 0
+            },
+            {
+                "configId": "101",
+                "program": "site",
+                "parameterName": "research_start_date",
+                "parameterValue": "2013-12-31",
+                "prmType": 0
+            },
+            {
+                "configId": "100",
+                "program": "site",
+                "parameterName": "research_end_date",
+                "parameterValue": "2022-12-03",
+                "prmType": 0
+            },
+            {
+                "configId": "257",
+                "program": "general",
+                "parameterName": "impala_jdbc_odbc_port",
+                "parameterValue": "21050",
+                "prmType": 0
+            },
+            {
+                "configId": "256",
+                "program": "general",
+                "parameterName": "impala_jdbc_odbc_daemon",
+                "parameterValue": "10.0.2.4",
+                "prmType": 0
+            },
+            {
+                "configId": "191",
+                "program": "general",
+                "parameterName": "allow_session_share",
+                "parameterValue": "TRUE",
+                "prmType": 0
             }
         ],
         "msg": [
             {
-                "msgId": "70",
-                "msgCode": "S30012",
-                "msgOut": "{name} has been removed successfully",
-                "msgClient": true
-            },
-            {
-                "msgId": "62",
-                "msgCode": "E00014",
-                "msgOut": "File format is not  UTF8",
-                "msgClient": true
-            },
-            {
-                "msgId": "72",
-                "msgCode": "E00021",
-                "msgOut": "Column name contains illegal characters. The legal characters are: a-z, A-Z, 0-9, space, _, -.",
-                "msgClient": true
-            },
-            {
-                "msgId": "57",
-                "msgCode": "E00009",
-                "msgOut": "Only CSV and .XLS files are can be uploaded.",
-                "msgClient": true
-            },
-            {
-                "msgId": "60",
-                "msgCode": "E00012",
-                "msgOut": "File has one or more empty column.",
-                "msgClient": true
-            },
-            {
-                "msgId": "73",
+                "msgId": "119",
                 "msgCode": "E00022",
                 "msgOut": "Column name cannot be null.",
                 "msgClient": true
             },
             {
-                "msgId": "59",
-                "msgCode": "E00011",
-                "msgOut": "File size should be greater than zero.",
-                "msgClient": true
-            },
-            {
-                "msgId": "74",
+                "msgId": "120",
                 "msgCode": "E00023",
-                "msgOut": "File name is missing.",
+                "msgOut": "File name is missing",
                 "msgClient": true
             },
             {
-                "msgId": "67",
+                "msgId": "123",
+                "msgCode": "E00025",
+                "msgOut": "File name must be unique.",
+                "msgClient": true
+            },
+            {
+                "msgId": "136",
+                "msgCode": "ME00002",
+                "msgOut": "Try again or contact MDClone support",
+                "msgClient": true
+            },
+            {
+                "msgId": "138",
+                "msgCode": "MI00003",
+                "msgOut": "You will be notified when its ready for review",
+                "msgClient": true
+            },
+            {
+                "msgId": "133",
+                "msgCode": "MI00002",
+                "msgOut": "You will be notified when it is ready for mapping",
+                "msgClient": true
+            },
+            {
+                "msgId": "106",
+                "msgCode": "E00011",
+                "msgOut": "File size must be greater than zero",
+                "msgClient": true
+            },
+            {
+                "msgId": "104",
+                "msgCode": "E00009",
+                "msgOut": "File format is not allowed (only CSV and Excel files)",
+                "msgClient": true
+            },
+            {
+                "msgId": "151",
+                "msgCode": "E00027",
+                "msgOut": "The categorization name is taken. Try another.",
+                "msgClient": true
+            },
+            {
+                "msgId": "114",
                 "msgCode": "E00019",
-                "msgOut": "File has no rows.",
+                "msgOut": "File cannot have only headers",
+                "msgClient": true
+            },
+            {
+                "msgId": "118",
+                "msgCode": "E00021",
+                "msgOut": "Headers contains illegal characters. Supported characters are: a-z, A-Z, 0-9, space, _, -",
+                "msgClient": true
+            },
+            {
+                "msgId": "107",
+                "msgCode": "E00012",
+                "msgOut": "File cannot have empty or null headers.",
+                "msgClient": true
+            },
+            {
+                "msgId": "149",
+                "msgCode": "E00026",
+                "msgOut": "Headers must be different",
+                "msgClient": true
+            },
+            {
+                "msgId": "109",
+                "msgCode": "E00014",
+                "msgOut": "File must be UTF8 encoded",
+                "msgClient": true
+            },
+            {
+                "msgId": "150",
+                "msgCode": "E00028",
+                "msgOut": "Headers must be in English",
+                "msgClient": true
+            },
+            {
+                "msgId": "152",
+                "msgCode": "E00029",
+                "msgOut": "File not found. Try again or contact MDClone support..",
+                "msgClient": true
+            },
+            {
+                "msgId": "153",
+                "msgCode": "E00030",
+                "msgOut": "The imported file is deleted.",
+                "msgClient": true
+            },
+            {
+                "msgId": "154",
+                "msgCode": "E00031",
+                "msgOut": "Missing category name",
+                "msgClient": true
+            },
+            {
+                "msgId": "155",
+                "msgCode": "E00032",
+                "msgOut": "File is too big (max size is {maxSize} MB)",
+                "msgClient": true
+            },
+            {
+                "msgId": "157",
+                "msgCode": "E00034",
+                "msgOut": "The file {name} is uploading.",
                 "msgClient": true
             }
         ]

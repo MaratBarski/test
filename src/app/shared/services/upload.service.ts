@@ -92,9 +92,7 @@ export class UploadService implements OnDestroy {
           console.log(error);
           if (uploadInfo.notification.status !== NotificationStatus.aborted) {
             uploadInfo.notification.name = uploadInfo.notification.failName;
-            if (uploadInfo.notification.failComment) {
-              uploadInfo.notification.comment = uploadInfo.notification.failComment;
-            }
+            uploadInfo.notification.comment = uploadInfo.notification.failComment || '';
             uploadInfo.notification.type = ToasterType.error;
             uploadInfo.notification.errorMessage = error.error ? (error.error.massage || error.error.message || '') : '';
           }
