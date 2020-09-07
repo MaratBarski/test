@@ -159,10 +159,10 @@ export class PermissionSetService extends BaseSibscriber {
     this._permissionSet.setDescription = '';
     this._permissionSet.keyName = '';
     this._permissionSet.keyExpirationDate = undefined;
-    this._permissionSet.fromDateUnlimited = false;
-    this._permissionSet.toDateUnlimited = false;
-    this._permissionSet.fromDate = undefined;
-    this._permissionSet.toDate = undefined;
+    // this._permissionSet.fromDateUnlimited = false;
+    // this._permissionSet.toDateUnlimited = false;
+    // this._permissionSet.fromDate = undefined;
+    // this._permissionSet.toDate = undefined;
     this.user = undefined;
   }
 
@@ -234,48 +234,10 @@ export class PermissionSetService extends BaseSibscriber {
                 })
             }
           });
-        //this.initRoleItems(res.data);
         this.initRoleEventItems(events.data);
         this._onTemplatesLoaded.next(isInitTemplates);
       });
   }
-
-  tableNames = [];
-  propertyNames = [];
-
-  // private initRoleItems(templates: Array<any>): void {
-  //   this._permissionSet.roleItems = [];
-  //   this.tableNames = [];
-  //   this.propertyNames = [];
-  //   const nameDict = {};
-  //   const propertyDict = {};
-  //   templates.forEach(t => {
-  //     if (!t.siteEventInfos || !t.siteEventInfos.length) {
-  //       return;
-  //     }
-  //     t.siteEventInfos.forEach(info => {
-  //       if (!nameDict[info.eventTableAlias]) {
-  //         nameDict[info.eventTableAlias] = info;
-  //         this.tableNames.push({
-  //           name: info.eventTableAlias,
-  //           id: info.eventId,
-  //           type: info.eventType
-  //         });
-  //       }
-  //       info.siteEventPropertyInfos.forEach(prop => {
-  //         if (!propertyDict[prop.eventPropertyName]) {
-  //           propertyDict[prop.eventPropertyName] = prop;
-  //           this.propertyNames.push({
-  //             name: prop.eventPropertyName,
-  //             type: prop.eventPropertyType
-  //           });
-  //         }
-  //       });
-  //     });
-  //     this.tableNames.sort((a, b) => a.name > b.name ? 1 : -1);
-  //     this.propertyNames.sort((a, b) => a.name > b.name ? 1 : -1);
-  //   })
-  // }
 
   events = [];
   addedEvents = [];
@@ -283,13 +245,6 @@ export class PermissionSetService extends BaseSibscriber {
   private initRoleEventItems(events: Array<any>): void {
     this._permissionSet.roleItems = [];
     this.events = events;
-  }
-
-  addRoleItem(): void {
-    this._permissionSet.roleItems = [
-      this.createRoleItem(-1, -1, '')
-    ].concat(this._permissionSet.roleItems);
-    this.isAfterValidate = false;
   }
 
   addEvent(): void {
@@ -357,16 +312,13 @@ export class PermissionSetService extends BaseSibscriber {
     this.isAfterValidate = true;
     if (!this.validate(true)) { return undefined; }
     return { ps: this.permissionSet, researcher: this.createSaveObject() };
-    //return this.createSaveObject();
-    //return this.permissionSet;
   }
 
   save(): void {
     this.isAfterValidate = true;
     if (!this.validate(true)) { return; }
     const obj = this.createSaveObject();
-    console.log(JSON.stringify(obj));
-    console.log(obj);
+    //document.write(JSON.stringify(obj));
     this.isSaving = true;
     if (this.isEditMode) {
       this.updateSet(obj);
@@ -424,15 +376,15 @@ export class PermissionSetService extends BaseSibscriber {
       projectId: this.permissionSet.project,
       researchStatus: "Open",
       maxPatients: this.permissionSet.size,
-      researchRestrictionEvents: this.permissionSet.roleItems
-        .filter(roleItem => {
-          return roleItem.selectedTableName >= 0 && roleItem.selectedPropertyName >= 0;
+      researchRestrictionEvents: this.addedEvents
+        .filter(ev => {
+          return ev.target.eventId >= 0 && ev.target.eventPropertyId.trim() !== '' && ev.target.value.trim() !== '';
         })
-        .map(roleItem => {
+        .map(ev => {
           return {
-            eventId: roleItem.selectedTableName >= 0 ? this.tableNames[roleItem.selectedTableName].id : -1,
-            eventPropertyName: roleItem.selectedPropertyName >= 0 ? this.propertyNames[roleItem.selectedPropertyName].name : -1,
-            value: roleItem.text
+            eventId: ev.target.eventId,
+            eventPropertyName: ev.target.eventPropertyId,
+            value: ev.target.value
           }
         })
     }
@@ -604,7 +556,7 @@ export class PermissionSetService extends BaseSibscriber {
     const subsciption = this.onTemplatesLoaded.subscribe((flag: boolean) => {
       subsciption.unsubscribe();
       if (this.isEditMode) {
-        this.initEvents(permSet);
+        //this.initEvents(permSet);
         if (permSet.researchStatus && permSet.researchStatus.toLowerCase() === 'open') {
           if (!permSet.researchTemplates || !permSet.researchTemplates.length) {
             this.permissionSet.allowedEvent = ALL_EVENTS;
@@ -629,19 +581,7 @@ export class PermissionSetService extends BaseSibscriber {
     this.loadTemplates(true);
   }
 
-  private initEvents(permSet: any): void {
-    this._permissionSet.roleItems = [];
-    if (!permSet.researchRestrictionEvents || !permSet.researchRestrictionEvents.length) { return; }
-    permSet.researchRestrictionEvents.forEach(ev => {
-      const tableIndex = this.tableNames.findIndex(x => x.id === ev.eventId);
-      const propertyIndex = this.propertyNames.findIndex(x => x.name === ev.siteEventPropertyInfo.eventPropertyNa);
-      if (tableIndex !== -1 && propertyIndex !== -1) {
-        this._permissionSet.roleItems.push(
-          this.createRoleItem(tableIndex, propertyIndex, ev.value)
-        )
-      }
-    });
-  }
+
 
   private convertToClient(permSet: any): PermissionSet {
     const res = this.getDefault();
@@ -692,29 +632,6 @@ export class PermissionSetService extends BaseSibscriber {
     })
   }
 
-
-  private createRoleItem(tableIndex: number, propertyIndex: number, text: string): any {
-    return {
-      name: '',
-      text: text,
-      selectedTableName: tableIndex,
-      selectedPropertyName: propertyIndex,
-      tableNames: this.tableNames.map((x, i) => {
-        return {
-          id: i,
-          text: x.name,
-          value: i
-        }
-      }),
-      propertyNames: this.propertyNames.map((x, i) => {
-        return {
-          id: i,
-          text: x.name,
-          value: i
-        }
-      })
-    }
-  }
 
   updateAllowedEvents(): void {
     if (this.permissionSet.allowedEvent === ALL_EVENTS) {

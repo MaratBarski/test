@@ -16,7 +16,6 @@ export class Step3Component implements OnInit {
   }
 
   add(): void {
-    //this.permissionSetService.addRoleItem();
     this.permissionSetService.addEvent();
   }
 

@@ -15,7 +15,7 @@
             </div>
         </div>
         <div class="rule-build-item__input">
-            <div class="role-border" [ngClass]="{'invalid':text && isShowerror}">
+            <div class="role-border" [ngClass]="{'invalid':!text && isShowerror}">
                 <input type="text" (change)="changed()" [(ngModel)]="text" placeholder="Type a text value">
             </div>
         </div>
