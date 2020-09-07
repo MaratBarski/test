@@ -175,6 +175,7 @@ export class PermissionSetService extends BaseSibscriber {
     this._fromSetId = 0;
     this.isAfterValidate = false;
     this._permissionSet = this.getDefault();
+    this.addedEvents = [];
     this._setId = id;
     this.loadData();
     this.user = undefined;
