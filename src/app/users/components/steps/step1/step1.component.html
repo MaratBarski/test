@@ -4,22 +4,25 @@
             <div *ngIf="!permissionSetService.isEditMode" class="add-perm-set-main__content">
                 <div class="add-perm-set-main__item">
                     <div class="input-radio">
-                        <input (change)="changeIsNew()" [value]="true"
-                            [(ngModel)]="permissionSetService.permissionSet.isNew" id="param1" type="radio">
-                        <label class="input-radio__label" for="param1">
+                        <input (change)="changeIsNew(true)" [checked]="permissionSetService.permissionSet.isNew"
+                            id="isnew1" type="radio">
+                        <label class="input-radio__label" for="isnew1">
                             <span class="input-radio__mark"></span>
-                            <span class="input-radio__text">New Permission
-                                Set</span>
+                            <span class="input-radio__text">
+                                New Permission Set
+                            </span>
                         </label>
                     </div>
                 </div>
                 <div class="add-perm-set-main__item">
                     <div class="input-radio">
-                        <input (change)="changeIsNew()" id="param2" type="radio" [value]="false"
-                            [(ngModel)]="permissionSetService.permissionSet.isNew">
-                        <label class="input-radio__label" for="param2"><span class="input-radio__mark"></span><span
-                                class="input-radio__text">New from exsiting
-                                set:</span></label>
+                        <input (change)="changeIsNew(false)" id="isnew2" type="radio"
+                            [checked]="!permissionSetService.permissionSet.isNew">
+                        <label class="input-radio__label" for="isnew2"><span class="input-radio__mark"></span>
+                            <span class="input-radio__text">
+                                New from exsiting set:
+                            </span>
+                        </label>
                     </div>
                     <mdc-auto-complete #setselectorCmp placeHolder="Search or Select a Permission Set..."
                         textField="name" (onSelect)="selectResearcher($event)"
@@ -162,3 +165,8 @@
         </div>
     </div>
 </div>
+
+<md-confirm-dialog *ngIf="isShowChangeEnvironmentConfirm" confirmText="Yes" cancelText="No" name="Change Environment"
+    subName="Changing environment will remove all allowed events that are already defined in this set."
+    subText="Do you wish to continue?" text="" (onCancel)="cancelChangeProject()" (onConfirm)="confirmChangeProject()">
+</md-confirm-dialog>

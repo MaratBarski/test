@@ -47,6 +47,8 @@ export class Step1Component extends BaseSibscriber implements OnInit, AfterViewI
 
   researchers: Array<any> = [];
   private _researchers: Array<any>;
+  isShowChangeEnvironmentConfirm = false;
+  isResearcherChanged = false;
 
   users: Array<any> = [];
   private _users: Array<any>;
@@ -88,7 +90,9 @@ export class Step1Component extends BaseSibscriber implements OnInit, AfterViewI
     this.userNameCmp.inputText = '';
   }
 
-  changeIsNew(): void {
+  changeIsNew(isNew: boolean): void {
+    this.permissionSetService.permissionSet.isNew = isNew;
+    this.isResearcherChanged = false;
     this.permissionSetService.isAfterValidate = false;
     this.permissionSetService.changeSource();
     if (this.userNameCmp) {
@@ -107,6 +111,7 @@ export class Step1Component extends BaseSibscriber implements OnInit, AfterViewI
 
   selectResearcher(setObj: any): void {
     if (this.permissionSetService.fromSetId === setObj.researchId) { return; }
+    this.isResearcherChanged = true;
     this.permissionSetService.cloneSet(setObj);
     this.permissionSetService.validate(false);
     this.permissionSetService.permissionSet.userId = undefined;
@@ -143,11 +148,30 @@ export class Step1Component extends BaseSibscriber implements OnInit, AfterViewI
     this.permissionSetService.validate(false);
   }
 
+  tempProjectId = '';
   changedProject(id: string): void {
+    if (this.isResearcherChanged) {
+      this.tempProjectId = id;
+      this.isResearcherChanged = false;
+      this.isShowChangeEnvironmentConfirm = true;
+      return;
+    }
+    this.confirmChangeProject(id);
+  }
+
+  confirmChangeProject(id: string = undefined): void {
+    if (!id) { id = this.tempProjectId; }
     this.permissionSetService.permissionSet.project = id;
     this.permissionSetService.permissionSet.projectName = this.projectCmp.selectedOption.text;
     this.permissionSetService.loadTemplates(false);
     this.permissionSetService.validate(false);
+    this.isShowChangeEnvironmentConfirm = false;
+  }
+
+  cancelChangeProject(): void {
+    this.isShowChangeEnvironmentConfirm = false;
+    this.isResearcherChanged = true;
+    this.projectCmp.projectModel = this.permissionSetService.permissionSet.project;
   }
 
   onSizeChanged(size: number): void {

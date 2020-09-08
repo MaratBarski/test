@@ -1,15 +1,7 @@
 import { Component, Input, EventEmitter, Output } from '@angular/core';
 import { animation } from '../../animations/animations';
-import { INotification, NotificationStatus, NotificationsService } from '../../services/notifications.service';
+import { INotification, NotificationsService, ToasterType } from '../../services/notifications.service';
 import { NavigationService } from '../../services/navigation.service';
-
-export enum ToasterType {
-  info,
-  error,
-  warning,
-  success,
-  infoProgressBar
-}
 
 @Component({
   selector: 'mdc-toaster',
