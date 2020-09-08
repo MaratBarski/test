@@ -6,6 +6,8 @@
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
+
+    .btn{padding: 0 30px;}
 	}
 
 	&__head-content{
@@ -43,7 +45,7 @@
 
 	&__content{
 		display: none;
-		padding-top: 14px;
+		padding-top: 8px;
 	}
 
 	&.active &__arr{

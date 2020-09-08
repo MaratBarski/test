@@ -51,7 +51,7 @@
   &:first-child &__img{margin-top: 90px;}
 
   &_white{
-    padding: 30px 30px 40px;
+    padding: 30px 30px 42px;
     background: #fff;
     border-radius: 2px;
     box-shadow: 0 2px 4px 0 #dbe4f9;
@@ -135,7 +135,12 @@
 .env-config-empty{
   .empty-block{
     &__head{font-size: rem(24px);}
+    &:first-child .empty-block__img{margin-top: 52px;}
   }
+}
+
+.env-config{
+  .page-header{margin-bottom: 15px;}
 }
 
 @media (max-height: 720px) {

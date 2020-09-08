@@ -52,6 +52,11 @@
 	border-bottom: 1px solid $color-light-grey;
 	margin-bottom: 19px;
 
+  &__head{
+    @include font(normal, 600, rem(16px), 1.57, $color-dark-grey);
+    text-transform: uppercase;
+  }
+
 	&__item{
 		display: flex;
 		flex-wrap: wrap;

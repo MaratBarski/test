@@ -569,6 +569,26 @@
         margin-left: 4px;
       }
     }
+
+    &__edit{
+      display: none;
+      position: absolute;
+      @include top-center;
+      right: 15px;
+
+      .icon{
+        width: 21px;
+        height: 21px;
+        fill: $color-dark-blue;
+      }
+    }
+
+    &__row:hover &__edit{
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      vertical-align: middle;
+    }
   }
 
   // @media screen and (-webkit-min-device-pixel-ratio:0) {
@@ -1167,12 +1187,32 @@
 	background: #fff;
 	box-shadow: 0 2px 4px 0 #dbe4f9;
 
-	&_yellow{box-shadow: 0 2px 4px 0 #dbe4f9, -5px 0px 0px 0px $color-yellow;}
-	&_blue{box-shadow: 0 2px 4px 0 #dbe4f9, -5px 0px 0px 0px $color-blue;}
-	&_green{box-shadow: 0 2px 4px 0 #dbe4f9, -5px 0px 0px 0px $color-green;}
-	&_red{box-shadow: 0 2px 4px 0 #dbe4f9, -5px 0px 0px 0px $color-red;}
-	&_orange{box-shadow: 0 2px 4px 0 #dbe4f9, -5px 0px 0px 0px $color-light-red;}
-	&_purple{box-shadow: 0 2px 4px 0 #dbe4f9, -5px 0px 0px 0px $color-purple;}
+    &::before{
+      content: '';
+      display: block;
+      width: 4px;
+      height: 100%;
+      background: #dbe4f9;
+      border-radius: 2px 0 0 2px;
+      position: absolute;
+      top: 0;
+      left: -4px;
+    }
+
+    &_yellow::before{background: $color-yellow;}
+    &_blue::before{background: $color-blue;}
+    &_green::before{background: $color-green;}
+    &_red::before{background: $color-red;}
+    &_orange::before{background: $color-light-red;}
+    &_purple::before{background: $color-purple;}
+    &_dark-purple::before{background: $color-dark-purple;}
+
+	//&_yellow{box-shadow: 0 2px 4px 0 #dbe4f9, -5px 0px 0px 0px $color-yellow;}
+	//&_blue{box-shadow: 0 2px 4px 0 #dbe4f9, -5px 0px 0px 0px $color-blue;}
+	//&_green{box-shadow: 0 2px 4px 0 #dbe4f9, -5px 0px 0px 0px $color-green;}
+	//&_red{box-shadow: 0 2px 4px 0 #dbe4f9, -5px 0px 0px 0px $color-red;}
+	//&_orange{box-shadow: 0 2px 4px 0 #dbe4f9, -5px 0px 0px 0px $color-light-red;}
+	//&_purple{box-shadow: 0 2px 4px 0 #dbe4f9, -5px 0px 0px 0px $color-purple;}
 
 	&_yellow,
 	&_blue,
@@ -1263,6 +1303,10 @@
 	  border-top: 1px solid rgba(161,173,205,0.5);
 	  border-left: 1px solid rgba(161,173,205,0.5);
 	  overflow-y: auto;
+
+    .modal-search-detail{
+      padding-right: 18px;
+    }
 	}
   }
 

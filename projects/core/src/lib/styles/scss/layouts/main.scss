@@ -298,10 +298,11 @@ button.btn_blue:hover{
 	.ic-plus{
 		display: inline-block;
 		vertical-align: middle;
-		width: 9px;
-		height: 9px;
+		width: 12px;
+		height: 12px;
 		fill: $color-blue;
 		margin-right: 7px;
+    margin-top: 2px;
 	}
 
 	&__text{
@@ -319,7 +320,7 @@ button.btn_blue:hover{
 	@include font(normal, normal, rem(14px), 1.2, $color-dark-blue);
 	position: relative;
 	cursor: pointer;
-	
+
 	.icon{
 		vertical-align: middle;
 	}
@@ -457,10 +458,10 @@ button.btn_blue:hover{
 	.w-md-900{width: 900%!important;}
 	.w-md-950{width: 950%!important;}
 	.w-md-1000{width: 1000%!important;}
-  
+
 	.open-sidebar .w-md-6{width: 5% !important;}
   }
-  
+
   @media (min-width: 992px) {
 	.w-lg-1{width: 1%!important;}
 	.w-lg-2{width: 2%!important;}
@@ -510,7 +511,7 @@ button.btn_blue:hover{
 	.w-lg-950{width: 950%!important;}
 	.w-lg-1000{width: 1000%!important;}
   }
-  
+
   @media (min-width: 1200px) {
 	.w-xl-1{width: 1%!important;}
 	.w-xl-2{width: 2%!important;}
@@ -560,7 +561,7 @@ button.btn_blue:hover{
 	.w-xl-950{width: 950%!important;}
 	.w-xl-1000{width: 1000%!important;}
   }
-  
+
   @media (min-width: 1367px) {
 	.w-xxl-1{width: 1%!important;}
 	.w-xxl-2{width: 2%!important;}
@@ -610,7 +611,7 @@ button.btn_blue:hover{
 	.w-xxl-950{width: 950%!important;}
 	.w-xxl-1000{width: 1000%!important;}
   }
-  
+
   @media (min-width: 1890px) {
 	.w-xxxl-1{width: 1%!important;}
 	.w-xxxl-2{width: 2%!important;}
