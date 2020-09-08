@@ -146,7 +146,10 @@ export class UploadFileComponent {
   }
 
   readFile(file: any): void {
-    if (!this.csvManagerService.isCsv(file.name)) { return; }
+    if (!this.csvManagerService.isCsv(file.name)) {
+      this.categoryHeaders = [];
+      return;
+    }
     this.csvManagerService.readHeaders(file).then((arr: Array<string>) => {
       this.isFileError = false;
       for (let i = 0; i < arr.length; i++) {
