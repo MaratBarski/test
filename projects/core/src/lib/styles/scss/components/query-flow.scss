@@ -1117,8 +1117,6 @@
     width: 30px;
     height: 30px;
     margin-right: 10px;
-
-    .icon{vertical-align: middle;}
   }
 
   &__text{
@@ -1130,6 +1128,54 @@
   // &.disable:hover{cursor: auto;}
   // &.disable:hover &__option{display: none;}
 
+}
+
+.add-filter-wrap{
+  .modal-window{
+    width: 800px;
+    max-width: 90%;
+
+    &__head{font-size: rem(16px);}
+  }
+}
+
+.add-filter{
+  padding-top: 15px;
+  border-top: 1px solid #a1adcd;
+
+  &__btn{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+  }
+
+  &__btn-link{
+    @include font(normal, 600, rem(14px), 1.25, $color-dark-purple);
+    cursor: pointer;
+  }
+
+  &__btn-link:hover{
+    color: $color-dark-purple;
+    text-decoration: underline;
+  }
+
+  .rule-build{
+    background: transparent;
+    border: 0;
+    padding: 0;
+    box-shadow: none;
+
+    &__more{
+      padding: 0;
+      margin-bottom: 0;
+      margin-top: -8px;
+    }
+  }
+
+  .rule-build-item{
+    &__content{width: 100%;}
+  }
 }
 
 @media (max-width: 1199px) {

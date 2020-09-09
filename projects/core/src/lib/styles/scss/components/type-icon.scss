@@ -1,15 +1,23 @@
 /*-------------- type-icon -----------------*/
 .type-icon{
-	display: flex;
-	flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
 
-	&__item{
-		width: 100px;
-		margin: 15px;
-		text-align: center;
-	}
+  &__item{
+    width: 100px;
+    margin: 15px;
+    text-align: center;
+  }
 
-	&_white{
-		color: #fff;
-	}
+  &_white{
+    color: #fff;
+
+    .icon{fill: #fff;}
+    .ic-stroke{stroke: #fff;}
+  }
+
+  .ic-hamburger,
+  .ic-hamburger-arrow{
+    vertical-align: top;
+  }
 }

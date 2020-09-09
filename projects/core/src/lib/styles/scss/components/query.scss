@@ -67,7 +67,9 @@
   &_white:first-child &__head{margin-top: 0;}
   &_white:first-child &__img{margin-top: 17px;}
   &_white:last-child &__img{margin-bottom: 0;}
-}.empty-table{
+}
+
+.empty-table{
    display: flex;
    justify-content: center;
    align-items: center;

@@ -54,6 +54,8 @@
     max-width: calc(100% - 22px);
     margin-left: 8px;
     white-space: normal;
+
+    b{font-weight: 600;}
   }
 
   &__el,
@@ -98,20 +100,22 @@
   &_all input[type=checkbox]:checked + &__label &__mark .icon{display: none;}
   &_all input[type=checkbox]:checked + &__label &__mark::after{display: inline-block;}
 
+  &.active &__label{font-weight: 600;}
+
   &__notice{
-    color: #52576a;
-    font-weight: 400;
+    color: $color-dark-grey;
+    font-weight: normal;
     margin-left: 8px;
     position: relative;
   }
 
   &__notice::before {
-    content: "";
+    content: '';
     display: inline-block;
     vertical-align: middle;
     width: 1px;
     height: 15px;
-    background: #acb2c3;
+    background: $color-light-grey;
     margin-right: 8px;
   }
 }

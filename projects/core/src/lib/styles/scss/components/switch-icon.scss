@@ -1,15 +1,18 @@
 /*-------------- switch-icon -----------------*/
 .switch-icon{
 	display: inline-flex;
+  vertical-align: middle;
+  // border-radius: rem(12.5px);
+  // overflow: hidden;
 
 	&__item{
 		display: inline-block;
 		height: rem(25px);
 		min-width: 28px;
-		border: 1px solid $color-dark-purple;
 		@include font(normal, 600, rem(14px), rem(23px), $color-dark-purple);
 		text-align: center;
 		cursor: pointer;
+    border: 1px solid $color-dark-purple;
 	}
 
 	.icon{fill: $color-dark-blue;}
@@ -45,16 +48,16 @@
 	}
 
 	&__item:first-child{
-		border-top-left-radius: rem(12.5px);
-		border-bottom-left-radius: rem(12.5px);
+		border-top-left-radius: rem(13px);
+		border-bottom-left-radius: rem(13px);
 	}
 	&__item:last-child{
-		border-top-right-radius: rem(12.5px);
-		border-bottom-right-radius: rem(12.5px);
+		border-top-right-radius: rem(13px);
+		border-bottom-right-radius: rem(13px);
 	}
 
 	&__item:not(:last-child){
 		border-right: 0;
-		border: 1px solid $color-dark-purple;
+		//border: 1px solid $color-dark-purple;
 	}
 }

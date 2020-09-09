@@ -22,7 +22,7 @@
   input[type="text"]:-moz-placeholder {font-weight: 300; color: $color-grey; opacity: 1;}
 
   input[type="text"]:focus{
-    border-color: $color-dark-purple;
+    border-color: $color-purple;
   }
 
   input[type="submit"],
@@ -110,7 +110,7 @@
     background: #fff;
   }
 
-  &_field input[type="text"]:focus{border-color: $color-light-grey;}
+  //&_field input[type="text"]:focus{border-color: $color-light-grey;}
 
   &_field input[type="submit"],
   &_field button{

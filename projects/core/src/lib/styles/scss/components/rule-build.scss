@@ -16,15 +16,22 @@
 
 	&__more:first-child{padding-top: 0;}
 
-	&__more-plus{
-		display: inline-block;
-		vertical-align: middle;
-		font-size: rem(21px);
-		line-height: rem(14px);
-		// line-height: 1;
-		margin-right: 6px;
-		// margin-top: -5px;
-	}
+  &__more-plus{
+    display: inline-block;
+    vertical-align: middle;
+    width: 12px;
+    height: 12px;
+    margin-top: -3px;
+    margin-right: 6px;
+
+    .ic-plus{
+      display: inline-block;
+      vertical-align: top;
+      width: 100%;
+      height: 100%;
+      fill: $color-blue;
+    }
+  }
 
 	&:not(:last-child){margin-bottom: 20px;}
 
@@ -56,7 +63,7 @@
 		left: 0;
 	}
 
-	
+
 }
 
 .rule-build-main{
@@ -168,21 +175,28 @@
 		margin: 6px 15px 6px 0;
 	}
 
-	&__input{
-		margin: 6px 0;
+  &__input{
+    margin: 6px 0;
 
-		input[type="text"]{
-			width: 250px;
-			height: rem(30px);
-			font-size: rem(14px);
-			line-height:  rem(28px);
-			background: transparent;
-			box-shadow: none;
-			border: 1px solid $color-light-grey;
-			border-radius: 2px;
-			padding: 0 4px;
-		}
-	}
+    input[type="text"]{
+      width: 250px;
+      height: rem(30px);
+      font-size: rem(14px);
+      line-height:  rem(28px);
+      color: $color-grey;
+      // background: rgba(172,178,195,0.7);
+      background: transparent;
+      box-shadow: none;
+      border: 1px solid rgba(172,178,195,0.7);
+      border-radius: 2px;
+      padding: 0 4px;
+      transition: all .3s ease;
+    }
+
+    input[type="text"]:focus{
+      border-color: $color-purple;
+    }
+  }
 }
 
 .rule-build-fields{
@@ -283,7 +297,7 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-	
+
 		.btn{
 			min-width: 0;
 			padding-left: 15px;
@@ -310,12 +324,15 @@
 	&__title{
 		@include font(normal, normal, rem(14px), 1.43, $color-dark-blue);
 	}
-	
+
 	&__title-bold{font-weight: 600;}
 
 	&__clear{
 		@include font(normal, normal, rem(14px), 1.43, $color-blue);
+    cursor: pointer;
 	}
+
+  &__clear:hover{text-decoration: underline;}
 
 	&__more{
 		display: inline-block;
@@ -323,6 +340,7 @@
 		@include font(normal, normal, rem(14px), 1.43, $color-blue);
 		margin-top: 2px;
 		margin-bottom: -7px;
+    cursor: pointer;
 
 		.icon{
 			vertical-align: middle;
@@ -330,6 +348,8 @@
 			margin-left: -8px;
 		}
 	}
+
+  &__more:hover{text-decoration: underline;}
 
 	.form-search_no-loop{width: 442px;}
 
@@ -421,7 +441,7 @@
 			&_big .drop-cond__head,
 			&__head{max-width: 100%;}
 		}
-		
+
 	}
 
 	.rule-build-search{

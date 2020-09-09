@@ -96,7 +96,7 @@
 
   &__val .icon{margin-left: 8px;}
   &__val .icon:first-child{
-    margin-left: 4px;
+    margin-left: -4px;
     margin-right: 8px;
   }
 
@@ -230,7 +230,7 @@
   }
 
   &__popup.active,
-  &__popup{
+  &:hover &__popup{
     display: block;
   }
 
@@ -241,6 +241,7 @@
     align-items: center;
     padding: 5px 20px;
     @include font(normal, normal, rem(14px), 1.57, $color-dark-blue);
+    cursor: pointer;
   }
 
   &__item.disable .icon{

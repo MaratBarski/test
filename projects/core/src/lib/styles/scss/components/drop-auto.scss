@@ -283,7 +283,8 @@
 	&__link{
 		font-size: rem(13px);
 
-		a{
+    a,
+    .link-site{
 			display: inline-flex;
 			align-items: center;
 		}

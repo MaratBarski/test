@@ -14,6 +14,7 @@
 .pager{
 	display: flex;
 	align-items: center;
+  margin-right: 20px;
 
 	&__item{
 		min-width: 30px;
@@ -26,7 +27,12 @@
 		color: $color-light-grey;
 	}
 
-	&__item a{color: $color-blue;}
+  &__link{
+    color: $color-blue;
+    cursor: pointer;
+  }
+
+  &__link:hover{text-decoration: underline;}
 
 	&__item.active{
 		color: $color-light-grey;
@@ -44,6 +50,7 @@
 		display: inline-block;
 		width: 30px;
 		height: 30px;
+    cursor: pointer;
 	}
 
 	&__arr .icon{fill: $color-light-grey;}
@@ -55,18 +62,19 @@
 	}
 }
 
-.pager-count{
+.pager-count {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
 
-  &__label{
+  &__label {
     @include font(normal, normal, rem(14px), 1.25, $color-grey);
     margin-right: 6px;
   }
+}
 
 @media (max-width: 767px) {
-  .pager{margin-right: 0;}}
+  .pager{margin-right: 0;}
   .pager-count{margin-top: 10px;}
 
 	.pager-wrap{
