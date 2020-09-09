@@ -9,11 +9,10 @@
                 <div class="query-flow-top__icon" [routerLink]="'/imported-files'"><span class="ic-hover">
                   <mdc-icon path="ic-back-to-page"></mdc-icon>
                 </span></div>
-                <div class="query-flow-top__title">CKD for diabetes people</div>
+                <div class="query-flow-top__title">{{fileSource.fileName}}</div>
               </div>
               <div class="query-flow-top__info">
-                <div class="query-flow-top__desc">CKD for diabetes people - query 3 - checking cohort for ages 65 and
-                  checking cohort for ages 65
+                <div class="query-flow-top__desc">{{ fileSource.fileNameAlias }}
                 </div>
                 <div class="query-flow-top__param"><span class="query-flow-top__label">Last Saved:</span> <span
                   class="query-flow-top__text">Jul 9, 2019 17:39</span></div>
@@ -253,8 +252,8 @@
               <th class="admin-table__item admin-table__item_menu"></th>
             </tr>
             </thead>
-            <tbody>
-            <tr class="admin-table__row" *ngFor="let column of columnCollection | filterColumns">
+            <tbody cdkDropList (cdkDropListDropped)="drop($event)">
+            <tr class="admin-table__row" *ngFor="let column of columnCollection | filterColumns" cdkDrag>
               <td class="admin-table__item">
                 <div class="admin-table__check">
                   <div class="input-check">
@@ -283,8 +282,7 @@
 
               <!--              // col of hierarchy start-->
               <td class="admin-table__item d-none d-md-table-cell">
-                <mdc-select [options]="column.hierarchy | async"
-                            *ngIf="column.hierarchyRootId && column.hierarchyRootId > -1"></mdc-select>
+                <mdc-select [isSmall]="true" [applyWidth]="false" [options]="column.hierarchy | async" *ngIf="column.hierarchyRootId && column.hierarchyRootId > -1"></mdc-select>
               </td>
               <!--              // col of hierarchy end-->
 
@@ -329,7 +327,7 @@
                 </div>
               </td>
             </tr>
-
+            <div class="custom-placeholder" *cdkDragPlaceholder></div>
             </tbody>
           </table>
         </div>
@@ -342,7 +340,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-12">
-          <div class="footer__btn"><span class="footer__link">Cancel</span>
+          <div class="footer__btn"><span class="footer__link" [routerLink]="'/file-source'">Cancel</span>
             <div class="footer-cohort d-none d-lg-inline-flex">
               <div class="footer-cohort__icon">
                 <mdc-icon css="ic-cohort" path="ic-cohort"></mdc-icon>

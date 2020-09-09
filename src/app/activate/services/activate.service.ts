@@ -56,8 +56,10 @@ export class ActivateService implements Resolve<any> {
     }));
   }
 
-  getHierarchy(id: number): Observable<Hierarchy> {
+  getHierarchy(id: number): Observable<any> {
     this.getUrl = `${environment.serverUrl}${environment.endPoints.hierarchy}/${id}`;
-    return this.dataService.get(this.getUrl);
+    return this.dataService.get(this.getUrl).pipe(map((item: any) => {
+      return item.data;
+    }));
   }
 }

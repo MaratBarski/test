@@ -6,6 +6,7 @@ import {FieldType} from '../enum/FieldType';
 import {FileClm} from '@app/imported-files/models/file-source';
 import {Observable} from 'rxjs';
 import {Hierarchy} from '@app/models/hierarchy';
+import {CheckBoxListOption} from '@appcore';
 
 export abstract class AbstractColumn {
   public physicalName: string;
@@ -16,7 +17,7 @@ export abstract class AbstractColumn {
   public rootType: FieldDataType;
   public outputType: FieldDataType;
   // public filter: FieldFilterAbstract;
-  public hierarchy: Observable<Hierarchy>;
+  public hierarchy: Observable<Array<CheckBoxListOption>>;
   public fieldType: FieldType;
   public hierarchyRootId: number;
   public defaultLevelId: number;

@@ -7,6 +7,7 @@ import {CoreModule} from '@appcore';
 import {ColumnComponent} from './components/column/column.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {FilterColumnsPipe} from './pipes/filter-columns.pipe';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
 const routes: Array<Route> = [
   {path: '', component: ActivateComponent},
@@ -21,7 +22,8 @@ const routes: Array<Route> = [
     RouterModule.forChild(routes),
     CoreModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DragDropModule
   ]
 })
 export class ActivateModule {

@@ -4,6 +4,7 @@ import {FieldType} from '../enum/FieldType';
 import {ExpressionToken} from '../Column/ExpressionToken';
 import {Observable} from 'rxjs';
 import {Hierarchy} from '@app/models/hierarchy';
+import {CheckBoxListOption} from '@appcore';
 // import {FieldFilterAbstract} from '../ColumnFilter/FieldFilterAbstract';
 
 export interface IColumn {
@@ -14,7 +15,7 @@ export interface IColumn {
   sample: string;
   rootType: FieldDataType;
   outputType: FieldDataType;
-  hierarchy: Observable<Hierarchy>;
+  hierarchy: Observable<Array<CheckBoxListOption>>;
   fieldType: FieldType;
   hierarchyRootId: number;
   defaultLevelId: number;

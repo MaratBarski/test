@@ -12,6 +12,7 @@ import {PhysicalColumn} from '@app/activate/model/Column/PhisicalColumn';
 import {ActivateService} from '@app/activate/services/activate.service';
 import {debounceTime, distinctUntilChanged, map, takeUntil} from 'rxjs/operators';
 import {FieldDataType} from '@app/activate/model/enum/FieldDataType';
+import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'md-activate',
@@ -73,9 +74,14 @@ export class ActivateComponent extends BaseNavigation implements OnInit {
         this.fileSource.fileClms.forEach(clm => {
           const column: IColumn = new PhysicalColumn(clm);
           if (column.hierarchyRootId && column.hierarchyRootId > -1) {
-            column.hierarchy = this.activateService.getHierarchy(column.hierarchyRootId).pipe(map(data => {
-              console.log(data);
-              return data;
+            column.hierarchy = this.activateService.getHierarchy(column.hierarchyRootId).pipe(map((data: Hierarchy) => {
+              return data.hierarchyLevels.map(item => {
+                return {
+                  isChecked: data.defaultLevelId === item.hierarchyLevelId,
+                  text: item.hierarchyLevelName,
+                  id: item.hierarchyLevelId,
+                };
+              });
             }));
           }
           this.columnCollection.push(column);
@@ -89,12 +95,6 @@ export class ActivateComponent extends BaseNavigation implements OnInit {
         //   return val1 > val2 ? 1 : -1;
         // });
 
-        this.templates = this.route.snapshot.data.data[1].sort((item1, item2) => {
-          return item1.templateName.toLowerCase() > item2.templateName.toLowerCase() ? 1 : -1;
-        });
-        this.hierarchies = this.route.snapshot.data.data[2].sort((item1, item2) => {
-          return item1.hierarchyName > item2.hierarchyName ? 1 : -1;
-        });
         this.selectAll = new FormControl(true);
         super.add(
           this.selectAll.valueChanges
@@ -115,22 +115,10 @@ export class ActivateComponent extends BaseNavigation implements OnInit {
           id: 0,
           text: 'no template defined'
         });
-        this.templates.forEach(item => {
-          const tmp: SelectOption = new SelectOption();
-          tmp.id = item.templateId;
-          tmp.text = item.templateName;
-          this.templateSelectOptions.push(tmp);
-        });
 
         this.hierarchySelectOptions.push({
           id: 0,
           text: 'Select categorization...'
-        });
-        this.hierarchies.forEach(item => {
-          const tmp: SelectOption = new SelectOption();
-          tmp.id = item.hierarchyRootId;
-          tmp.text = item.hierarchyName;
-          this.hierarchySelectOptions.push(tmp);
         });
 
         this.fileSourceForm = this.createFileSourceForm();
@@ -152,6 +140,11 @@ export class ActivateComponent extends BaseNavigation implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  public drop($event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.columnCollection, $event.previousIndex, $event.currentIndex);
+    this.columnCollection = [...this.columnCollection];
   }
 
   private createFileSourceForm(): FormGroup {
