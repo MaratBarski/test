@@ -1,0 +1,88 @@
+/*-------------- multi-select -----------------*/
+.multi-select{
+	display: inline-block;
+	vertical-align: middle;
+	position: relative;
+
+	&__head{
+		width: 200px;
+		@include font(normal, normal, rem(14px), rem(28px), $color-grey);
+		padding: 0 20px 0px 6px;
+		border-bottom: 1px solid $color-light-grey;
+		position: relative;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		white-space: nowrap;
+	}
+
+	&_small &__head{width: 140px;}
+
+	&__head.active{color: $color-dark-grey;}
+
+	&__head-arr{
+		display: inline-block;
+		width: 30px;
+		height: 30px;
+		position: absolute;
+		top: 0px;
+		right: -5px;
+	}
+
+	&__popup{
+		display: none;
+		padding-top: 4px;
+		position: absolute;
+		top: 100%;
+		left: 0;
+	}
+
+	&__content{
+		width: 100%;
+		min-width: 255px;
+		padding-top: 3px;
+		padding: 8px 15px 15px;
+		border-radius: 4px;
+		background: #fff;
+		box-shadow: -10px 9px 21px 0 rgba(128, 152, 213, 0.08);
+		border: solid 1px rgba(172, 178, 195, 0.5);
+	}
+	
+	&:hover &__popup,
+	&__popup.active{
+		display: block;
+		z-index: 2;
+	}
+
+	&:hover &__head{border-color: $color-purple;}
+
+	&__param:hover &__sub{display: block;}
+
+	&.error &__head{border-color: $color-red;}
+
+	&__btn{
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin: 0 -15px -15px;
+		padding: 10px 15px 15px;
+	}
+
+	&__btn_shadow{
+		box-shadow: -10px 9px 21px 13px rgba(128, 152, 213, 0.15)
+	}
+
+	&__params{
+		max-height: 215px;
+		overflow-y: auto;
+		margin-left: -8px;
+		padding: 8px 0 0 8px;
+	}
+
+	.input-check__label{
+		width: 100%;
+		vertical-align: top;
+		margin-bottom: 12px;
+	}
+
+	.input-check__text{width: 100%;}
+}
