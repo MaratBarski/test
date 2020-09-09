@@ -6,12 +6,12 @@
 <div *ngIf="isCreateNewSet">
     <div class="shadow-site is-visible"></div>
     <div class="modal-step">
-        <div class="modal-step__head">Add Permission set of Ella Ma’ayan</div>
+        <div class="modal-step__head">Add Permission set of {{userEditService?.user?.login}}</div>
         <div class="modal-step__close ic-hover">
             <svg class="icon ic-close" mdcSvg="ic-close" (click)="closeCreateSet()"></svg>
         </div>
         <div class="modal-step__content">
-            <md-permission-wizard (onSave)="addPermissinSet($event)" [isoffline]="true" [showLegend]="false" [isPopup]="true" [confirmOnChanges]="false"></md-permission-wizard>
+            <md-permission-wizard #permissionWizard (onCancel)="closeCreateSet()" (onLoad)="updateSetOffline($event)" (onSave)="addPermissinSet($event)" [isFromClient]="true" [showLegend]="false" [isPopup]="true" [confirmOnChanges]="false"></md-permission-wizard>
         </div>
     </div>
 </div>

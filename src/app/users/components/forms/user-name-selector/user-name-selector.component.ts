@@ -1,4 +1,6 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ViewChild } from '@angular/core';
+import { AutoCompleteComponent } from '@appcore';
+
 
 @Component({
   selector: 'md-user-name-selector',
@@ -7,7 +9,9 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 })
 export class UserNameSelectorComponent {
 
+  @ViewChild('autoCompleteCmp', { static: true }) autoCompleteCmp: AutoCompleteComponent;
   @Output() onSelect = new EventEmitter<any>();
+  @Output() onClear = new EventEmitter();
 
   @Input() users = [
     { name: 'test1', id: 0 },
@@ -27,5 +31,13 @@ export class UserNameSelectorComponent {
 
   selectUser(user: any): void {
     this.onSelect.emit(user);
+  }
+
+  setUser(userName: string): void {
+    setTimeout(() => { this.autoCompleteCmp.inputText = userName; }, 1);
+  }
+
+  clear(): void {
+    this.onClear.emit();
   }
 }

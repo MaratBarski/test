@@ -21,6 +21,7 @@ export class FooterComponent {
   @Input() step = 0;
   @Input() isSaveEnable = false;
   @Input() isNextEnable = false;
+  @Input() isSingleMode = false;
   @Input() btnOptions: Array<SplitBtnOption> = [{
     text: 'Save'
   }];

@@ -39,8 +39,9 @@ export class MapCategoryInfoComponent {
           text: x.hierarchyLevelName
         }
       });
-    this.categories = [{ id: 0, text: 'Please select...' }].concat(this.categories as any);
+    //this.categories = [{ id: 0, text: 'Please select...' }].concat(this.categories as any);
   }
+  
   get data(): any { return this._data; }
   private _data: any;
 

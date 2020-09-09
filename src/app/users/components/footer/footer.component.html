@@ -1,4 +1,4 @@
-<footer *ngIf="step===0" class="footer-wrap">
+<footer *ngIf="step===0 && !isSingleMode" class="footer-wrap">
     <div class="footer">
         <div class="container-fluid">
             <div class="row">
@@ -26,7 +26,7 @@
     </div>
 </footer>
 
- <footer *ngIf="step!==0" class="footer-wrap">
+<footer *ngIf="step!==0 && !isSingleMode" class="footer-wrap">
     <div class="footer">
         <div class="container-fluid">
             <div class="row">
@@ -37,11 +37,27 @@
                             <span style="margin-left: 20px; margin-right: 20px;" class="footer__link"
                                 (click)="next(-1)">Previous</span>
                             <span class="btn btn_border" (click)="save()">Save</span>
-                            <span *ngIf="isNextEnable" class="btn"
-                                (click)="next(1)">Next</span></span>
+                            <span *ngIf="isNextEnable" class="btn" (click)="next(1)">Next</span></span>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</footer> 
+</footer>
+
+<footer *ngIf="isSingleMode" class="footer-wrap">
+    <div class="footer">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="footer__btn">
+                        <span class="footer__link" (click)="cancel()">Cancel</span>
+                        <span class="footer__btn-big">
+                            <span class="btn btn_border" (click)="save()">Save</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>

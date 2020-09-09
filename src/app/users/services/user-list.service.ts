@@ -66,6 +66,17 @@ export class UserListService {
             },
           },
           {
+            text: 'Edit Permission Set',
+            icon: 'ic-edit',
+            command: 'editSet'
+            , checkHidden: (source) => {
+              return false;
+            }
+            , checkDisabled: (source) => {
+              return false;
+            },
+          },
+          {
             text: 'View User',
             icon: 'ic-view',
             command: 'view'

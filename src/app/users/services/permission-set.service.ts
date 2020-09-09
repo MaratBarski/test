@@ -34,6 +34,7 @@ export class PermissionSet {
   project: any;
   projectName?: string;
   fromSetId?: any;
+  fromSetName?: string;
   userId?: any;
   allowedEvent: number;
   researchTemplates: Array<any>;
@@ -61,6 +62,16 @@ export class PermissionSetService extends BaseSibscriber {
     return this._maxSize;
   }
   private _maxSize = 1;
+
+  get isOfflineMode(): boolean {
+    return this._isOfflineMode;
+  }
+  private _isOfflineMode = false;
+
+  setOffline(ps: any): void {
+    this._isOfflineMode = true;
+    this._permissionSet = ps;
+  }
 
   constructor(
     private http: HttpClient,
@@ -129,6 +140,9 @@ export class PermissionSetService extends BaseSibscriber {
     return this.http.get(`${this._setUrl}/${this._setId}`);
   }
 
+  set fromSetId(id: number) {
+    this._fromSetId = id;
+  }
   get fromSetId(): number {
     return this._fromSetId;
   }
@@ -215,13 +229,13 @@ export class PermissionSetService extends BaseSibscriber {
   }
 
   loadTemplates(isInitTemplates: boolean): void {
-    this._templatesLoaded = false;
+    setTimeout(() => { this._templatesLoaded = false; }, 1);
     const subscribbtion =
       forkJoin(
         this.http.get(`${this.templateByProjectUrl}/${this.permissionSet.project}`),
         this.http.get(`${this.siteEventInfoUrl}/${this.permissionSet.project}`),
       ).subscribe(([res, events]: any) => {
-        this._templatesLoaded = true;
+        setTimeout(() => { this._templatesLoaded = true; }, 2);
         subscribbtion.unsubscribe();
         this.templates = res.data
           .filter((t: any) => t.templateType === 'PERMISSION')
@@ -270,6 +284,14 @@ export class PermissionSetService extends BaseSibscriber {
   templates = [];
   user: any;
 
+  selectTemplates(): void {
+    if (!this.permissionSet.researchTemplates || !this.permissionSet.researchTemplates.length) { return; }
+    this.templates.forEach(t => {
+      t.isChecked = !!this.permissionSet.researchTemplates.find((x: any) => x.templateId.toString() === t.id.toString());
+    });
+    this.templates = [].concat(this.templates);
+  }
+
   updateTemplates(): void {
     this.templates = [].concat(this.templates);
     this._permissionSet.researchTemplates =
@@ -316,6 +338,7 @@ export class PermissionSetService extends BaseSibscriber {
   getSet(): any {
     this.isAfterValidate = true;
     if (!this.validate(true)) { return undefined; }
+    this.permissionSet.researchRestrictionEvents = this.createRestrictionEvents();
     return { ps: this.permissionSet, researcher: this.createSaveObject() };
   }
 
@@ -374,6 +397,24 @@ export class PermissionSetService extends BaseSibscriber {
     });
   }
 
+  private createRestrictionEvents(): Array<any> {
+    return this.addedEvents
+      .filter(ev => {
+        return ev.target.eventId >= 0 &&
+          ev.target.eventPropertyId &&
+          ev.target.eventPropertyId.trim() !== '' &&
+          ev.target.value &&
+          ev.target.value.trim() !== '';
+      })
+      .map(ev => {
+        return {
+          eventId: ev.target.eventId,
+          eventPropertyName: ev.target.eventPropertyId,
+          value: ev.target.value
+        }
+      })
+  }
+
   private createSaveObject(): any {
     const obj = {
       researchName: this.permissionSet.setName,
@@ -381,21 +422,7 @@ export class PermissionSetService extends BaseSibscriber {
       projectId: this.permissionSet.project,
       researchStatus: "Open",
       maxPatients: this.permissionSet.size,
-      researchRestrictionEvents: this.addedEvents
-        .filter(ev => {
-          return ev.target.eventId >= 0 &&
-            ev.target.eventPropertyId &&
-            ev.target.eventPropertyId.trim() !== '' &&
-            ev.target.value &&
-            ev.target.value.trim() !== '';
-        })
-        .map(ev => {
-          return {
-            eventId: ev.target.eventId,
-            eventPropertyName: ev.target.eventPropertyId,
-            value: ev.target.value
-          }
-        })
+      researchRestrictionEvents: this.createRestrictionEvents()
     }
     this.addField(obj, 'information', this.permissionSet.setDescription);
     this.addField(obj, 'approvalKey', this.permissionSet.keyName);
@@ -501,6 +528,11 @@ export class PermissionSetService extends BaseSibscriber {
     return this._users;
   }
 
+  addEvents(): void {
+    this.addedEvents = [];
+    if (!this.permissionSet.researchRestrictionEvents || !this.permissionSet.researchRestrictionEvents.length) { return; }
+    this.initEvents(this.permissionSet);
+  }
 
   getDefault(): PermissionSet {
     const res = {
@@ -558,19 +590,19 @@ export class PermissionSetService extends BaseSibscriber {
       if (this._setId) {
         this._permissionSet = this.convertToClient(permSet.data);
         this.initTemplates(permSet.data);
-      } else {
+      } else if (!this._isOfflineMode) {
         this._permissionSet = permSet;
         this.templates = [];
       }
       this._dataLoaded = true;
       this.setInitialSet();
+      this._isOfflineMode = false;
     });
   }
 
   private initEvents(ps: any): void {
     this.addedEvents = [];
     if (!ps.researchRestrictionEvents || !ps.researchRestrictionEvents.length) { return; }
-    //alert(this.events.length)
     ps.researchRestrictionEvents.forEach(ev => {
       const event = this.events.find(x => x.eventId === ev.eventId);
       if (!event) { return; }
@@ -598,11 +630,11 @@ export class PermissionSetService extends BaseSibscriber {
             this.permissionSet.allowedEvent = BASED_EVENTS;
           }
         }
-        if (permSet.researchStatus && permSet.researchStatus.toLowerCase() === 'initial ') {
+        if (permSet.researchStatus && permSet.researchStatus.toLowerCase() === 'initial') {
           this.permissionSet.allowedEvent = NO_ALLOWED_EVENTS;
         } else if (permSet.researchTemplates) {
           this.templates.forEach(t => {
-            t.isChecked = permSet.researchTemplates.find((x: any) => x.templateId.toString() === t.id.toString());
+            t.isChecked = !!permSet.researchTemplates.find((x: any) => x.templateId.toString() === t.id.toString());
           });
         }
         this.setInitialSet();
@@ -613,8 +645,6 @@ export class PermissionSetService extends BaseSibscriber {
     });
     this.loadTemplates(true);
   }
-
-
 
   private convertToClient(permSet: any): PermissionSet {
     const res = this.getDefault();

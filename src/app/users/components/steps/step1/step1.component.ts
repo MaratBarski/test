@@ -1,7 +1,8 @@
-import { Component, OnInit, ViewChild, AfterContentInit, AfterViewInit, Input } from '@angular/core';
+import { Component, OnInit, ViewChild, EventEmitter, AfterViewInit, Input, Output } from '@angular/core';
 import { PermissionSetService } from '@app/users/services/permission-set.service';
 import { BaseSibscriber, AutoCompleteComponent, NotificationsService, ToasterType, LoginService, UserResponse } from '@appcore';
 import { ProjectComboComponent } from '@app/shared/components/project-combo/project-combo.component';
+
 
 @Component({
   selector: 'md-step1',
@@ -18,14 +19,30 @@ export class Step1Component extends BaseSibscriber implements OnInit, AfterViewI
     super();
   }
 
+  @Input() isOfflineMode = false;
+  @Output() onAfterinit = new EventEmitter();
+
   ngAfterViewInit(): void {
-    if (this.permissionSetService.isEditMode) {
-      this.projectCmp.disabled = true;
+    if (this.permissionSetService.isEditMode || this.isOfflineMode) {
+      this.projectCmp.disabled = this.permissionSetService.isEditMode;
       super.add(this.loginService.onUserInfoUpdated.subscribe((response: UserResponse) => {
         if (this.permissionSetService.permissionSet.project && this.projectCmp) {
           this.projectCmp.projectModel = this.permissionSetService.permissionSet.project;
         }
       }));
+    }
+    if (this.isOfflineMode) {
+      super.add(
+        this.permissionSetService.onTemplatesLoaded.subscribe(() => {
+          this.onAfterinit.emit();
+        }));
+      this.permissionSetService.loadTemplates(false);
+      this.permissionSetService.fromSetId = this.permissionSetService.permissionSet.fromSetId || 0;
+      if (this.permissionSetService.permissionSet.fromSetName && this.setselectorCmp) {
+        setTimeout(() => {
+          this.setselectorCmp.inputText = this.permissionSetService.permissionSet.fromSetName;
+        }, 1);
+      }
     }
   }
 
@@ -73,7 +90,8 @@ export class Step1Component extends BaseSibscriber implements OnInit, AfterViewI
 
   private applySetUser(): void {
     if (this.permissionSetService.user) {
-      this.userNameCmp.inputText = `${this.permissionSetService.user.firstName} ${this.permissionSetService.user.lastName}`;
+      setTimeout(() => { this.userNameCmp.inputText = `${this.permissionSetService.user.firstName} ${this.permissionSetService.user.lastName}`; }, 1);
+
       if (!this.permissionSetService.isEditMode) {
         this.hideUserName();
         this.userNameCmp.disabled = false;
@@ -87,19 +105,24 @@ export class Step1Component extends BaseSibscriber implements OnInit, AfterViewI
   }
 
   private hideUserName(): void {
-    this.userNameCmp.inputText = '';
+    setTimeout(() => { this.userNameCmp.inputText = ''; }, 1);
   }
 
   changeIsNew(isNew: boolean): void {
     this.permissionSetService.permissionSet.isNew = isNew;
+    if (isNew) {
+      this.permissionSetService.permissionSet.fromSetId = 0;
+      this.permissionSetService.permissionSet.fromSetName = undefined;
+    }
     this.isResearcherChanged = false;
     this.permissionSetService.isAfterValidate = false;
     this.permissionSetService.changeSource();
     if (this.userNameCmp) {
-      this.userNameCmp.inputText = '';
+      setTimeout(() => { this.userNameCmp.inputText = ''; }, 1);
+
     }
     if (this.setselectorCmp) {
-      this.setselectorCmp.inputText = '';
+      setTimeout(() => { this.setselectorCmp.inputText = ''; }, 1);
     }
     this.permissionSetService.validate(false);
   }
@@ -116,8 +139,11 @@ export class Step1Component extends BaseSibscriber implements OnInit, AfterViewI
     this.permissionSetService.validate(false);
     this.permissionSetService.permissionSet.userId = undefined;
     this.permissionSetService.user = undefined;
+    this.permissionSetService.permissionSet.projectName = this.projectCmp.getProjectById(this.permissionSetService.permissionSet.project).text;
     this.applySetUser();
     this.hideUserName();
+    this.permissionSetService.permissionSet.fromSetId = this.permissionSetService.fromSetId;
+    setTimeout(() => { this.permissionSetService.permissionSet.fromSetName = this.setselectorCmp.inputText; }, 1);
   }
 
   selectUser(user: any): void {

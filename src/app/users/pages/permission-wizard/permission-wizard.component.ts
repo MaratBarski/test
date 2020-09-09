@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output, ViewChild, AfterViewInit } from '@angular/core';
 import { PermissionSetService, NO_ALLOWED_EVENTS } from '@app/users/services/permission-set.service';
 import { TabWizardItem } from '@app/users/components/tabs/tabs.component';
 import { NavigationService, BaseNavigation } from '@appcore';
@@ -9,17 +9,33 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './permission-wizard.component.html',
   styleUrls: ['./permission-wizard.component.scss']
 })
-export class PermissionWizardComponent extends BaseNavigation implements OnInit {
+export class PermissionWizardComponent extends BaseNavigation implements OnInit, AfterViewInit {
 
   showCancelConfirm = false;
   @Input() confirmOnChanges = true;
   @Input() showLegend = true;
   @Input() isPopup = false;
-  @Input() isoffline = false;
+  @Input() isFromClient = false;
   @Output() onSave = new EventEmitter<any>();
+  @Output() onLoad = new EventEmitter<PermissionWizardComponent>();
+  @Output() onCancel = new EventEmitter();
+  pageTitle = 'Add permission set';
 
   get showChangesConfirm(): boolean {
     return this.permissionSetService.showCancelConfirm;
+  }
+
+  ngAfterViewInit(): void {
+    this.onLoad.emit(this);
+  }
+
+  isOfflineMode = false;
+
+  setOffline(ps: any): void {
+    this.isOfflineMode = true;
+    setTimeout(() => {
+      this.permissionSetService.setOffline(ps);
+    }, 1);
   }
 
   constructor(
@@ -45,7 +61,14 @@ export class PermissionWizardComponent extends BaseNavigation implements OnInit 
     }
   }
 
+  afterStep1init(): void {
+    this.update3Tab();
+  }
+
   get isNextEnable(): boolean {
+    if (this.tabs[2].isDisabled && this.permissionSetService.selectedTab === 1) {
+      return false;
+    }
     return this.permissionSetService && this.permissionSetService.selectedTab === 1;
   }
 
@@ -69,11 +92,15 @@ export class PermissionWizardComponent extends BaseNavigation implements OnInit 
 
   confirmSave(): void {
     this.showCancelConfirm = false;
-    if (this.isoffline) {
+    if (this.isFromClient) {
       this.onSave.emit(this.permissionSetService.getSet());
       return;
     }
     this.permissionSetService.save();
+  }
+
+  clear(): void {
+    this.permissionSetService.resetService(0);
   }
 
   ngOnInit(): void {
@@ -94,13 +121,18 @@ export class PermissionWizardComponent extends BaseNavigation implements OnInit 
     }
     super.add(
       this.activatedRoute.paramMap.subscribe(u => {
-        const id = u.get('id') || 0;
+        const id = parseInt(u.get('id') || '0');
+        this.pageTitle = id ? 'Edit permission set' : 'Add permission set';
         this.permissionSetService.resetService(id);
         this.permissionSetService.isPopup = this.isPopup;
       }));
   }
 
   cancel(): void {
+    if (this.isOfflineMode) {
+      this.onCancel.emit();
+      return;
+    }
     this.permissionSetService.cancel();
   }
 
@@ -115,7 +147,7 @@ export class PermissionWizardComponent extends BaseNavigation implements OnInit 
       this.showCancelConfirm = true;
       return;
     }
-    if (this.isoffline) {
+    if (this.isFromClient) {
       this.onSave.emit(this.permissionSetService.getSet());
       return;
     }
