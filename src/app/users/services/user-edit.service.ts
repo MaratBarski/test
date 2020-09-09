@@ -78,7 +78,7 @@ export class UserEditService {
     this._securityUser = user;
     this._systmeUser = this.users.find(x => x.id === user.id);
     this.user.userName =
-    this.user.login = this._systmeUser.login;
+      this.user.login = this._systmeUser.login;
   }
   get securityUser(): any {
     return this._securityUser;
@@ -196,7 +196,7 @@ export class UserEditService {
                 eventPropertyName: x.eventPropertyName,
                 value: x.value
               };
-            }) : 
+            }) :
             []
         }
       }
@@ -416,6 +416,7 @@ export class UserEditService {
   }
 
   private createNew(req: any): void {
+    console.log(req);
     const subscription = this.http.post(this._userUrl, req).subscribe(res => {
       this._isLoading = false;
       subscription.unsubscribe();
@@ -433,7 +434,7 @@ export class UserEditService {
         showInToaster: true,
         isClientOnly: true,
         name: 'Error add user',
-        comment: 'Error',
+        comment: error.error && error.error.massage ? error.error.massage : 'Failed to create new User',
         type: ToasterType.error
       });
     })
