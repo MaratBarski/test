@@ -180,6 +180,7 @@ button.btn:hover{
 input[type="submit"].btn_border,
 button.btn_border{
 	background: transparent;
+	font-weight: 600;
 	color: $color-dark-purple;
 }
 
@@ -280,37 +281,39 @@ button.btn_blue:hover{
 
 .btn .icon.ic-stroke{stroke: #fff;}
 
-.btn + .btn{margin-left: 20px;}
-.btn + .split-btn{margin-left: 15px;}
 .btn .ic-filter{
-  width: 12px;
-  height: 12px;
+	width: 12px;
+	height: 12px;
 }
 
+.btn + .btn{margin-left: 20px;}
+.btn + .split-btn{margin-left: 15px;}
+
 .btn-more{
-  color: $color-blue;
-  text-decoration: none;
-  cursor: pointer;
-  font-size: rem(14px);
+	color: $color-blue;
+	text-decoration: none;
+	cursor: pointer;
+	font-size: rem(14px);
 
-  .ic-plus{
-    display: inline-block;
-    vertical-align: middle;
-    width: 9px;
-    height: 9px;
-    fill: $color-blue;
-    margin-right: 7px;
-  }
+	.ic-plus{
+		display: inline-block;
+		vertical-align: middle;
+		width: 12px;
+		height: 12px;
+		fill: $color-blue;
+		margin-right: 7px;
+    margin-top: 2px;
+	}
 
-  &__text{
-    display: inline-block;
-    vertical-align: middle;
-  }
+	&__text{
+		display: inline-block;
+		vertical-align: middle;
+	}
 }
 
 .btn-more:hover{
-  color: $color-blue;
-  text-decoration: underline;
+	color: $color-blue;
+	text-decoration: underline;
 }
 
 .link-load{

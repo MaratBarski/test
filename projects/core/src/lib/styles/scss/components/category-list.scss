@@ -51,11 +51,13 @@
 	&__item:hover a, &__item.active a{text-decoration: none;}
 	&__item.active,	&__item.active a{font-weight: 600;}
 
+  &__link{cursor: pointer;}
+
 	& + .graph-wrap{margin-top: 15px;}
 
 	&__field{
 		@include font(normal, 600, rem(14px), 1.4, $color-dark-grey);
-		
+
 		.input-number{margin-right: 6px;}
 	}
 }
@@ -80,7 +82,7 @@
 
 	&__field{
 		@include font(normal, 600, rem(14px), 1.4, $color-dark-grey);
-		
+
 		.input-number{margin-right: 6px;}
 	}
 }

@@ -98,7 +98,7 @@ export class ResearchService {
           filter: false,
           //csvTitle: 'Modified',
           css: 'admin-table__item d-none d-md-table-cell admin-table__modif',
-          cellCss: 'admin-table__item d-none d-md-table-cell',
+          cellCss: 'd-none d-lg-table-cell',
           cellContainerCss: 'admin-table__name'
         },
         {
@@ -107,8 +107,8 @@ export class ResearchService {
           isSortEnabled: true,
           filter: true,
           csvTitle: 'Environment',
-          css: 'admin-table__item d-none d-lg-table-cell admin-table__perm-20',
-          cellCss: 'admin-table__item d-none d-lg-table-cell',
+          css: 'admin-table__item d-none d-xl-table-cell admin-table__perm-20',
+          cellCss: 'd-none d-lg-table-cell',
           cellContainerCss: 'admin-table__text-cut'
         },
         {

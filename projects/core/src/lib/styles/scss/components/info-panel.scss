@@ -96,8 +96,13 @@
 
   &__val .icon{margin-left: 8px;}
   &__val .icon:first-child{
-    margin-left: 4px;
+    margin-left: -4px;
     margin-right: 8px;
+  }
+
+  &__val .select .icon,
+  &__val .select .icon:first-child{
+    margin: 0;
   }
 
   .ic-shared{
@@ -216,7 +221,7 @@
     box-shadow: -10px 9px 21px 0 rgba(128, 152, 213, 0.08);
     border: solid 1px rgba(172, 178, 195, 0.5);
     padding: 7px 0;
-    margin: -6px -19px 0 0;
+    margin: -3px -19px 0 0;
     text-align: left;
     position: absolute;
     right: 100%;
@@ -225,7 +230,7 @@
   }
 
   &__popup.active,
-  &__popup{
+  &:hover &__popup{
     display: block;
   }
 
@@ -236,6 +241,7 @@
     align-items: center;
     padding: 5px 20px;
     @include font(normal, normal, rem(14px), 1.57, $color-dark-blue);
+    cursor: pointer;
   }
 
   &__item.disable .icon{

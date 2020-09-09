@@ -1,18 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { PermissionSetService, AllowedEvents } from '@app/users/services/permission-set.service';
+import { BaseSibscriber } from '@appcore';
 
 @Component({
   selector: 'md-step2',
   templateUrl: './step2.component.html',
   styleUrls: ['./step2.component.scss']
 })
-export class Step2Component implements OnInit {
+export class Step2Component extends BaseSibscriber implements OnInit {
 
   constructor(
     public permissionSetService: PermissionSetService
-  ) { }
+  ) {
+    super();
+  }
 
   templateItems = [];
+
+  @Input() isOfflineMode = false;
 
   get allowedEvents(): Array<any> {
     return AllowedEvents;
@@ -35,7 +40,12 @@ export class Step2Component implements OnInit {
     this.permissionSetService.updateAllowedEvents();
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
+    if (this.isOfflineMode && this.permissionSetService.permissionSet && this.permissionSetService.permissionSet.researchTemplates) {
+      super.add(this.permissionSetService.onTemplatesLoaded.subscribe(() => {
+        this.permissionSetService.selectTemplates();
+      }));
+    }
   }
 
 }

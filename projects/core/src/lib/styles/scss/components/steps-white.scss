@@ -51,12 +51,14 @@
 	}
 
 	&__num{
-		display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 		width: 20px;
 		height: 20px;
 		border-radius: 50%;
 		border: 1px solid $color-dark-blue;
-		@include font(normal, normal, rem(14px), rem(17px), $color-dark-blue);
+		@include font(normal, normal, rem(14px), 1, $color-dark-blue);
 		text-align: center;
 		margin-right: 8px;
 		transition: all 0.3s ease 0s;
@@ -75,9 +77,9 @@
 		margin-left: 8px;
 	}
 
-	&__item:hover{background: #f6f2fb;}
-	&__item:hover &__arr::after{border-color: transparent transparent transparent #f6f2fb;}
-	
+  &__item:hover{background: #f5f2f9;}
+  &__item:hover &__arr::after{border-color: transparent transparent transparent #f5f2f9;}
+
 	&__item.disable{
 		opacity: 0.5;
 		cursor: auto;
@@ -99,18 +101,21 @@
 		font-weight: 600;
 	}
 
+  &__item.active &__opt{font-weight: normal;}
+
 	&__item.active &__arr::after{border-color: transparent transparent transparent $color-dark-purple;}
 	&__item.active &__arr::before{display: none;}
 
-	&__item.active:hover{background: rgba(83,3,168,0.6);}
-	&__item.active:hover &__arr::after{border-color: transparent transparent transparent rgba(83,3,168,0.6);}
-	&__item.active:hover &__num{
-		border-color: #fff;
-		color: #fff;
-	}
-
-	&__item.active:hover &__val{
-		color: #fff;
-		font-weight: 600;
-	}
+  &__item.active:hover{background: #3f0280;}
+  &__item.active:hover &__arr::after{border-color: transparent transparent transparent #3f0280;}
+	//&__item.active:hover &__num{
+	//	border-color: #fff;
+	//	color: #fff;
+	//}
+  //
+	//&__item.active:hover &__val{
+	//	color: #fff;
+	//	font-weight: 600;
+	//}
+  &_no-border{border-bottom: 0;}
 }

@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { ConfigService } from '@app/shared/services/config.service';
 import { Offline } from '@app/shared/decorators/offline.decorator';
 import { environment } from '@env/environment';
-import { PermissionSetService } from './permission-set.service';
+import { NO_ALLOWED_EVENTS, BASED_EVENTS, ALL_EVENTS } from './permission-set.service';
 
 @Injectable({
   providedIn: 'root'
@@ -31,11 +31,21 @@ export class UserEditService {
     },
     userName: {
       isMissing: false,
-      isError: false
+      isError: false,
+      validate: (): boolean => {
+        if (this.securityType) {
+          return this.securityUser;
+        }
+        return !this.isEmpty(this.user.userName);
+      }
     },
     password: {
       isMissing: false,
-      isError: false
+      isError: false,
+      validate: (): boolean => {
+        if (this.securityType) { return true; }
+        return !this.isEmpty(this.user.password);
+      }
     },
   }
 
@@ -67,6 +77,8 @@ export class UserEditService {
   set securityUser(user: any) {
     this._securityUser = user;
     this._systmeUser = this.users.find(x => x.id === user.id);
+    this.user.userName =
+      this.user.login = this._systmeUser.login;
   }
   get securityUser(): any {
     return this._securityUser;
@@ -108,6 +120,9 @@ export class UserEditService {
   @Offline('assets/offline/projects.json?')
   private _projectUrltUrl = `${environment.serverUrl}${environment.endPoints.project}`;
 
+  @Offline('assets/offline/research.json?')
+  private getPermissionSetsUrl = `${environment.serverUrl}${environment.endPoints.research}`;
+
   get user(): any {
     return this._user;
   }
@@ -117,7 +132,12 @@ export class UserEditService {
     return this._isLoading || (this.securityType && (!this.users || !this.users.length));
   }
 
+  get isHidden(): boolean {
+    return this._isHidden;
+  }
+
   private _isLoading = false;
+  private _isHidden = false;
 
   get environments(): Array<any> {
     return this._environments;
@@ -128,29 +148,110 @@ export class UserEditService {
     return id ? this.http.get(`${this._userUrl}/${id}`) : of(this.getDefault());
   }
 
-  loadUser(id: number): void {
-    this._isLoading = true;
-    forkJoin(
-      this.getUserById(id),
-      this.http.get(this._projectUrltUrl)
-    ).subscribe(([user, projects]: any) => {
-      this._user = user.data;
-      this._environments = projects.data;
-      this._environments.forEach(x => {
-        x.isChecked = false,
-          x.role = 1,
-          x.data = 1,
-          x.kf = 4
-        x.isShowAdvanced = false
-      });
-      this._isLoading = false;
+  getPermissionSets(userId: number): Observable<any> {
+    return userId ? this.http.get(`${this.getPermissionSetsUrl}`) : of(undefined);
+  }
+
+  getAllowedEvent(permSet: any): number {
+    if (permSet.researchStatus && permSet.researchStatus.toLowerCase() === 'open') {
+      if (!permSet.researchTemplates || !permSet.researchTemplates.length) {
+        return ALL_EVENTS;
+      }
+      if (permSet.researchTemplates && permSet.researchTemplates.length) {
+        return BASED_EVENTS;
+      }
+    }
+    if (permSet.researchStatus && permSet.researchStatus.toLowerCase() === 'initial') {
+      return NO_ALLOWED_EVENTS;
+    }
+    return BASED_EVENTS;
+  }
+
+  initSets(sets: any): void {
+    this._user.permissionSets = [];
+    if (!sets) { return; }
+    if (sets.data) {
+      sets = sets.data;
+    }
+    sets = sets.filter(s => s.userId === this._user.id);
+    this._user.permissionSets = sets.map(s => {
+      return {
+        ps: {
+          setName: s.researchName,
+          projectName: s.project ? s.project.projectName : '',
+          project: s.project ? s.project.projectId : 0,
+          keyName: s.approvalKey,
+          isNew: true,
+          KeyStatus: s.researchStatus.toLowerCase() === 'open',
+          isActive: true,
+          size: s.maxPatients,
+          fromDate: new Date(s.startDate),
+          toDate: new Date(s.endDate),
+          allowedEvent: this.getAllowedEvent(s),
+          researchTemplates: s.researchTemplates,
+          researchRestrictionEvents: s.researchRestrictionEvents ?
+            s.researchRestrictionEvents.map(x => {
+              return {
+                eventId: x.eventId,
+                eventPropertyName: x.eventPropertyName,
+                value: x.value
+              };
+            }) :
+            []
+        }
+      }
     });
   }
 
-  resetService(id: any): void {
+  loadUser(id: number): void {
+    this._isLoading = true;
+    this._isHidden = true;
+    const subscription = forkJoin(
+      this.getUserById(id),
+      this.http.get(this._projectUrltUrl),
+      this.getPermissionSets(id)
+    ).subscribe(([user, projects, sets]: any) => {
+      subscription.unsubscribe();
+      this._user = user.data;
+
+      this._user.isSuperAdmin = this._user.authorities
+        && this._user.authorities.length
+        && this._user.authorities.find(x => x.UserAuthority
+          && x.UserAuthority.authorityName &&
+          x.UserAuthority.authorityName.toUpperCase() === 'ROLE_SUPERADMIN'
+        );
+      this._user.enabled = this._user.activated;
+
+      this._environments = projects.data;
+      this._environments.forEach(x => {
+        const env = this._user.projects ? this._user.projects.find(p => p.projectId === x.projectId) : undefined;
+        x.isChecked = !!env;
+        x.role = 1;
+        x.data = 1;
+        x.kf = 4;
+        x.isShowAdvanced = false;
+        if (env && env.UserType) {
+          x.role = env.UserType.userType.toUpperCase() === 'ADMIN' ? 2 : 1;
+          x.data = env.UserType.anonymityLevel === 1 ? 2 : 1;
+          x.kf = Math.min(Math.max(env.UserType.anonymityLevel, 4), 10);
+        }
+      });
+      this.initSets(sets)
+      this._isLoading = false;
+      setTimeout(() => {
+        this._isHidden = false;
+      }, 1000);
+    });
+  }
+
+  get mode() { return this._mode; }
+  private _mode = 0;
+
+  resetService(info: any): void {
     this._selectedTab = 0;
+    this._mode = info.mode;
     this.resetValidation();
-    this.loadUser(id);
+    this.loadUser(info.id);
   }
 
   isHasChanges(): boolean {
@@ -158,17 +259,10 @@ export class UserEditService {
   }
 
   getDefault(): any {
-    // return {
-    //   isSuperAdmin: false,
-    //   enabled: true,
-    //   firstName: '',
-    //   lastName: '',
-    //   email: '',
-    //   phone: ''
-    // }
     return {
       data: {
-        id: "0",
+        isNew: true,
+        id: '0',
         login: '',
         userName: '',
         password: '',
@@ -185,11 +279,13 @@ export class UserEditService {
         lastModifiedBy: '',
         lastModifiedDate: undefined,
         cellPhone: '',
+        phone: '',
         domain: "",
         photo: undefined,
         enabled: true,
         isSuperAdmin: false,
-        permissionSets: []
+        permissionSets: [],
+        projects: []
       }
     };
   }
@@ -201,6 +297,8 @@ export class UserEditService {
 
   private _selectedTab = 0;
   get selectedTab(): number { return this._selectedTab; }
+
+  initTab(i: number): void { this._selectedTab = i; }
 
   get onTabChanged(): Observable<number> {
     return this._onTabChanged.asObservable();
@@ -221,7 +319,7 @@ export class UserEditService {
     this._onTabChanged.next(this._selectedTab);
   }
 
-  private _isNeedValidate = !true;
+  private _isNeedValidate = true;
 
   validate(setError: boolean): boolean {
     if (!this._isNeedValidate) { return true; }
@@ -229,12 +327,21 @@ export class UserEditService {
     this.resetValidation();
     let res = true;
     Object.keys(this.missingItem).forEach(k => {
+      if (this.missingItem[k].validate) {
+        if (!this.missingItem[k].validate()) {
+          this.missingItem[k].isMissing = true;
+          this.missingItem[k].isError = true;
+          res = false;
+        }
+        return;
+      }
       if (this.isEmpty(this.user[k])) {
         this.missingItem[k].isMissing = true;
         this.missingItem[k].isError = true;
         res = false;
       }
     });
+
     return res;
   }
 
@@ -243,32 +350,57 @@ export class UserEditService {
     return value.toString().trim() === '';
   }
 
+  private setSuperAdmin(res: any): void {
+    res.authorities = (this.user.authorities || []).filter(x => x.UserAuthority
+      && x.UserAuthority.authorityName
+      && x.UserAuthority.authorityName.toUpperCase() !== 'ROLE_SUPERADMIN');
+    if (this.user.isSuperAdmin) {
+      res.authorities.push({
+        authorityName: 'ROLE_SUPERADMIN',
+        name: 'ROLE_SUPERADMIN',
+        UserAuthority: {
+          userId: this.user.id,
+          authorityName: 'ROLE_SUPERADMIN'
+        }
+      })
+    }
+  }
+
+  private setProjects(res: any): void {
+    res.userTypes = this.environments
+      .filter(env => env.isChecked)
+      .map(env => {
+        return {
+          projectId: env.projectId,
+          userType: env.role === 1 ? 'researcher' : 'admin',
+          anonymityLevel: env.data === 1 ? env.kf : 1
+        };
+      });
+  }
+
+  private setResearches(res: any): void {
+    res.researches = [];
+    this.user.permissionSets.forEach(s => {
+      res.researches.push(s.researcher);
+    });
+  }
+
   createServerRequest(): any {
     const res = {
       login: this.securityType ? (this._systmeUser ? this._systmeUser.login : '') : this.user.userName,
-      password: this.user.password,
       firstName: this.user.firstName,
       lastName: this.user.lastName,
       email: this.user.email,
       cellPhone: this.user.cellPhone,
-      activated: this.user.activated,
-      userTypes: [],
-      authorities: [{ authorityName: this.user.isSuperAdmin ? 'ROLE_SUPERADMIN' : 'ROLE_ADMIN' }],
-      researches: []
-    };
-    this.environments
-      .filter(env => env.isChecked)
-      .forEach(env => {
-        res.userTypes.push({
-          projectId: env.id,
-          userType: env.role === 1 ? 'End user' : 'Admin',
-          anonymityLevel: env.kf,
-          allowedData: env.data === 1 ? 'Syntatic' : 'Original'
-        });
-      });
-    this.user.permissionSets.forEach(s => {
-      res.researches.push(s.researcher);
-    });
+      activated: this.user.activated || this.user.enabled
+    } as any;
+    if (this.user.password) {
+      res.password = this.user.password;
+    }
+    this.setSuperAdmin(res);
+    this.setProjects(res);
+    this.setResearches(res);
+
     return res;
   }
 
@@ -283,12 +415,11 @@ export class UserEditService {
     this.navigationService.navigate('/users');
   }
 
-  save(): void {
-    const req = this.createServerRequest();
-    this._isLoading = true;
-    //alert(JSON.stringify(req));
-    this.http.post(this._userUrl, req).subscribe(res => {
+  private createNew(req: any): void {
+    console.log(req);
+    const subscription = this.http.post(this._userUrl, req).subscribe(res => {
       this._isLoading = false;
+      subscription.unsubscribe();
       this.notificationService.addNotification({
         showInToaster: true,
         isClientOnly: true,
@@ -297,17 +428,85 @@ export class UserEditService {
         type: ToasterType.success
       });
     }, error => {
+      subscription.unsubscribe();
       this._isLoading = false;
       this.notificationService.addNotification({
         showInToaster: true,
         isClientOnly: true,
         name: 'Error add user',
+        comment: error.error && error.error.massage ? error.error.massage : 'Failed to create new User',
+        type: ToasterType.error
+      });
+    })
+  }
+
+  private updateUser(req: any): void {
+    delete req.researches;
+    const subscription = this.http.put(`${this._userUrl}/${this.user.id}`, req).subscribe(res => {
+      this._isLoading = false;
+      subscription.unsubscribe();
+      this.notificationService.addNotification({
+        showInToaster: true,
+        isClientOnly: true,
+        name: 'User updated successfully',
+        comment: 'User updated successfully',
+        type: ToasterType.success
+      });
+    }, error => {
+      subscription.unsubscribe();
+      this._isLoading = false;
+      this.notificationService.addNotification({
+        showInToaster: true,
+        isClientOnly: true,
+        name: 'Error update user',
         comment: 'Error',
         type: ToasterType.error
       });
     })
   }
 
+  private updateResearchers(req: any): void {
+    const subscription = this.http.put(`${this._userUrl}/${this.user.id}`, req).subscribe(res => {
+      this._isLoading = false;
+      subscription.unsubscribe();
+      this.notificationService.addNotification({
+        showInToaster: true,
+        isClientOnly: true,
+        name: 'Permission set updated successfully',
+        comment: 'Permission set updated successfully',
+        type: ToasterType.success
+      });
+    }, error => {
+      subscription.unsubscribe();
+      this._isLoading = false;
+      this.notificationService.addNotification({
+        showInToaster: true,
+        isClientOnly: true,
+        name: 'Error update permission set',
+        comment: 'Error',
+        type: ToasterType.error
+      });
+    })
+  }
+
+  save(): void {
+    const req = this.createServerRequest();
+    this._isLoading = true;
+    //document.write(JSON.stringify(req));
+    if (!this.mode) {
+      this.createNew(req);
+    } else if (this.mode === 1) {
+      this.updateUser(req);
+    } else if (this.mode === 2) {
+      this.updateResearchers(req);
+    }
+  }
+
+  replaceResearcher(src: any, dist: any): void {
+    const index = this._user.permissionSets.findIndex(x => x = src);
+    if (index < 0) { return; }
+    this._user.permissionSets[index] = dist;
+  }
 
   getSetTable(): TableModel {
     const data: TableModel = {
@@ -425,7 +624,7 @@ export class UserEditService {
           endDate: fl.ps.toDate
         },
         source: fl,
-        isActive: true
+        isActive: false
       })
     })
     return data;

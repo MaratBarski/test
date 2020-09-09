@@ -3,6 +3,7 @@ import { TableComponent, CheckBoxListComponent, DownloadComponent, CheckBoxListO
 import { ResearchService } from '@app/users/services/research.service';
 import { ConfigService } from '@app/shared/services/config.service';
 import { UserEditService } from '@app/users/services/user-edit.service';
+import { PermissionWizardComponent } from '@app/users/pages/permission-wizard/permission-wizard.component';
 
 @Component({
   selector: 'md-edit-permission-set',
@@ -14,6 +15,7 @@ export class EditPermissionSetComponent extends BaseSibscriber implements OnInit
   @ViewChild('table', { static: true }) table: TableComponent;
   @ViewChild('checkFilter', { static: true }) checkFilter: CheckBoxListComponent;
   @ViewChild('downloader', { static: true }) downloader: DownloadComponent;
+  @ViewChild('permissionWizard', { static: false }) permissionWizard: PermissionWizardComponent;
 
   permissions: Array<CheckBoxListOption> = [];
   searchOptions = ['PermissionSetName', 'User', 'Modified', 'Environment', 'ApprovalKey'];
@@ -50,10 +52,17 @@ export class EditPermissionSetComponent extends BaseSibscriber implements OnInit
     this.execCommand[action.command](action);
   }
 
+  currentSet: any;
+  updateSetOffline(pw: PermissionWizardComponent): void {
+    if (this.currentSet) {
+      pw.setOffline({ ...this.currentSet.ps });
+    }
+  }
+
   execCommand = {
     edit: (action: TableActionCommand) => {
-      //this.router.navigateByUrl(`/imported-files/${action.item.source.fileId}`);
-      console.log('edit command');
+      this.currentSet = action.item.source;
+      this.isCreateNewSet = true;
     },
     delete: (action: TableActionCommand) => {
       this.userEditService.removeSet(action.item.source);
@@ -79,13 +88,20 @@ export class EditPermissionSetComponent extends BaseSibscriber implements OnInit
   }
 
   closeCreateSet(): void {
+    this.permissionWizard.clear();
     this.isCreateNewSet = false;
+    this.currentSet = undefined;
   }
 
   addPermissinSet(ps: any): void {
     if (!ps) { return; }
-    this.userEditService.addSet(ps);
+    if (this.currentSet) {
+      this.userEditService.replaceResearcher(this.currentSet,ps);
+    } else {
+      this.userEditService.addSet(ps);
+    }
     this.isCreateNewSet = false;
     this.initData();
+    this.currentSet = undefined;
   }
 }

@@ -1,6 +1,6 @@
 <div class="main-content">
     <div class="content-page">
-        <md-header [showTitle]="!isPopup" [showLegend]="showLegend"></md-header>
+        <md-header [pageTitle]="pageTitle" [showTitle]="!isPopup" [showLegend]="showLegend"></md-header>
         <section class="add-perm-set-wrap">
             <div class="container-fluid">
                 <div class="row">
@@ -9,9 +9,12 @@
                         <div *ngIf="permissionSetService.dataLoaded" class="add-perm-set">
                             <md-tabs (onSelect)="selectNextTab($event)" [selectedTab]="permissionSetService.selectedTab"
                                 [tabs]="tabs"></md-tabs>
-                            <md-step1 [isPopup]="isPopup" [hidden]="permissionSetService.selectedTab!==0"></md-step1>
-                            <md-step2 [hidden]="permissionSetService.selectedTab!==1"></md-step2>
-                            <md-step3 [hidden]="permissionSetService.selectedTab!==2"></md-step3>
+                            <md-step1 (onAfterinit)="afterStep1init()" [isOfflineMode]="isOfflineMode"
+                                [isPopup]="isPopup" [hidden]="permissionSetService.selectedTab!==0"></md-step1>
+                            <md-step2 [isOfflineMode]="isOfflineMode" [hidden]="permissionSetService.selectedTab!==1">
+                            </md-step2>
+                            <md-step3 [isOfflineMode]="isOfflineMode" [hidden]="permissionSetService.selectedTab!==2">
+                            </md-step3>
                         </div>
                     </div>
                 </div>

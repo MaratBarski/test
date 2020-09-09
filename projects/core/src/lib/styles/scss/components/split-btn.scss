@@ -9,6 +9,7 @@
 		width: calc(100% - 42px);
 		height: rem(30px);
 		@include font(normal, normal, rem(14px), rem(30px), #fff);
+    letter-spacing: 0.3px;
 		padding: 0 12px 0 20px;
 		border-top-left-radius: rem(15px);
 		border-bottom-left-radius: rem(15px);

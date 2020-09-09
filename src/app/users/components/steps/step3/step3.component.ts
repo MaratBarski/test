@@ -1,19 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { PermissionSetService } from '@app/users/services/permission-set.service';
+import { BaseSibscriber } from '@appcore';
 
 @Component({
   selector: 'md-step3',
   templateUrl: './step3.component.html',
   styleUrls: ['./step3.component.scss']
 })
-export class Step3Component implements OnInit {
+export class Step3Component extends BaseSibscriber implements OnInit {
 
   constructor(
     public permissionSetService: PermissionSetService
-  ) { }
-
-  ngOnInit() {
+  ) {
+    super();
   }
+
+  ngOnInit(): void {
+    if (this.isOfflineMode && this.permissionSetService.permissionSet && this.permissionSetService.permissionSet.researchRestrictionEvents) {
+      super.add(this.permissionSetService.onTemplatesLoaded.subscribe(() => {
+        this.permissionSetService.addEvents();
+      }));
+    }
+  }
+
+  @Input() isOfflineMode = false;
 
   add(): void {
     this.permissionSetService.addEvent();
@@ -24,7 +34,7 @@ export class Step3Component implements OnInit {
     this.permissionSetService.validate(false);
   }
 
-  changeRoleItem(event:any): void {
+  changeRoleItem(event: any): void {
     this.permissionSetService.validate(false);
   }
 }

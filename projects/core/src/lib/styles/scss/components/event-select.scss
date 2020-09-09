@@ -186,7 +186,7 @@
 
 	&__ex-title, b{font-weight: 600;}
 	&__ex-title{margin-bottom: 2px;}
-	
+
 
 	&__note{margin-top: 6px;}
 	&__note-title{text-decoration: underline;}
@@ -204,14 +204,18 @@
 			margin-left: 5px;
 		}
 
-		a{
+    a,
+    .link-site{
 			display: inline-flex;
 			align-items: center;
 			text-decoration: none;
 		}
 	}
 
-	&__link:hover a{text-decoration: underline;}
+  &__link:hover a,
+  .link-site:hover{
+    text-decoration: underline;
+  }
 
 	.ic-reference{
 		display: inline-block;

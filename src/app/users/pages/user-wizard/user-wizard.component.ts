@@ -29,6 +29,10 @@ export class UserWizardComponent extends BaseNavigation implements OnInit {
     return this.userEditService.selectedTab < 1;
   }
 
+  get pageTitle(): string {
+    return this.userEditService.user.isNew ? 'CREATE NEW USER' : `EDIT USER OF ${this.userEditService.user.login}`
+  }
+
   tabs: Array<TabWizardItem> = [
     {
       text: 'Account Details'
@@ -57,8 +61,17 @@ export class UserWizardComponent extends BaseNavigation implements OnInit {
     // });
     super.add(
       this.activatedRoute.paramMap.subscribe(u => {
-        const id = u.get('id') || 0;
-        this.userEditService.resetService(id);
+        const id = parseInt(u.get('uid') || '0');
+        const mode = parseInt(u.get('mode') || '0');
+        this.userEditService.resetService({ id: id, mode: mode });
+        if (mode === 1) {
+          this.tabs[1].isDisabled = true;
+          this.userEditService.initTab(0);
+        }
+        if (mode === 2) {
+          this.tabs[0].isDisabled = true;
+          this.userEditService.initTab(1);
+        }
       }));
   }
 

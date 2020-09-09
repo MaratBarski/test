@@ -12,9 +12,8 @@
     fill: $color-light-grey;
   }
 
-  &.ic-grey{
-    fill: $color-grey;
-  }
+  &.ic-grey{fill: $color-grey;}
+  &.ic-dark-grey{fill: $color-dark-grey;}
 
   &.ic-stroke{
     stroke: $color-dark-blue;
@@ -28,6 +27,12 @@
 
   &.ic-hamburger{width: 27px; height: 18px;}
   &.ic-hamburger-arrow{width: 42px; height: 18px;}
+
+  &.ic-nancy{fill: #0596ff;}
+  &.ic-lillie{fill: #ff9789;}
+  &.ic-christian{fill: #acb2c3;}
+  &.ic-gabriel{fill: #ffbd42;}
+  &.ic-craig{fill: #03cfa3;}
 
   &.ic-reference{fill: $color-red;}
 }

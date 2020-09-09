@@ -5,6 +5,8 @@
 		position: relative;
 	}
 
+  &__item:last-child{margin-bottom: 0;}
+
 	&__label{
 		display: block;
 		@include font(normal, 600, 14px, 1, $color-dark-grey);
@@ -177,6 +179,7 @@
 	}
 
 	&__item_error .form-site-alert{color: $color-red;}
+  &__item_error .form-site-alert_long{margin-bottom: 25px;}
 
 	.select-date{
 		input[type="text"]{
@@ -218,13 +221,11 @@
 
 .form-site-alert{
 	display: flex;
-	align-items: center;
+	//align-items: center;
 	justify-content: space-between;
 	@include font(normal, normal, 12px, 1.25, $color-dark-blue);
-	margin-top: 2px;
-	position: absolute;
-	top: 100%;
-	left: 0;
+  margin-top: 2px;
+  margin-bottom: -19px;
 
 	&__icon{
 		width: 17px;
@@ -237,6 +238,42 @@
 	}
 }
 
+.input-date{
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+
+  input[type="text"]{
+    height: rem(40px);
+    width: 100%;
+    outline: none;
+    border: 1px solid $color-light-grey;
+    border-radius: 2px;
+    @include font(normal, normal, rem(14px), rem(38px), $color-dark-grey);
+    padding: 0 40px 0 15px;
+    margin: 0;
+    transition: all 0.3s ease;
+  }
+
+  &__small input[type="text"]{height: rem(30px);}
+
+  input[type="text"]::placeholder{color: $color-light-grey; opacity: 1;}
+  input[type="text"]:focus{border-color: $color-purple; opacity: 1;}
+
+  input[disabled]{
+    background: #fff;
+    color: $color-light-grey;
+  }
+
+  .icon{
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    @include top-center;
+    right: 3px;
+  }
+}
+
 .file-upload{
 	height: 40px;
 	border-radius: 2px;
@@ -247,6 +284,7 @@
 	&__content{
 		padding: 0 10px 0 17px;
 		display: inline-flex;
+    vertical-align: top;
 		align-items: center;
 		width: 100%;
 		height: 100%;
@@ -281,6 +319,13 @@
 		overflow: hidden;
 		text-overflow: ellipsis;
 	}
+
+  &.disable &__btn{
+    color: $color-light-grey;
+    cursor: auto;
+  }
+
+  &.disable &__btn:hover{border-color: $color-light-grey;}
 }
 
 .img-upload{
@@ -302,10 +347,12 @@
     width: 40px;
     border-radius: 2px;
     border: solid 1px $color-light-grey;
-    padding: 7px;
+    padding: 2px;
     cursor: pointer;
 
     .icon{
+      width: 24px;
+      height: 24px;
       max-width: 100%;
       max-height: 100%;
     }
@@ -331,7 +378,7 @@
     background: #fff;
     border: 1px solid $color-light-grey;
     border-radius: 2px;
-    padding: 6px 8px;
+    padding: 4px 9px;
     position: absolute;
     top: 100%;
     margin-top: 6px;
@@ -361,6 +408,8 @@
 
   .tooltip{
     display: none;
+    margin-top: 0;
+    margin-bottom: 0;
     position: absolute;
     left: 100%;
     @include top-center;
@@ -375,6 +424,11 @@
 
   &__item:hover{background: $color-sort-grey;}
   &__item:hover .tooltip{display: inline-block;}
+
+  &.selected &__img .icon{
+    width: 32px;
+    height: 32px;
+  }
 }
 
 .select-date{
@@ -486,23 +540,31 @@
 		padding: 0 50px 0 15px;
 		position: relative;
 		white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 	}
 
 	&__head.active{
 		color: $color-dark-grey;
 	}
 
-  &:focus &__head{border-color: $color-dark-purple;}
+  &:focus &__head,
+  &__head:hover{
+    border-color: $color-purple;
+  }
 
-	&__head-arr{
-		display: inline-block;
-		width: 50px;
-		height: 30px;
-		text-align: center;
-		position: absolute;
-		@include top-center;
-		right: 0;
-	}
+  &__head-arr{
+    display: inline-block;
+    width: 38px;
+    height: 30px;
+    text-align: center;
+    margin: 0;
+    position: absolute;
+    @include top-center;
+    right: 0;
+
+    .icon{margin: 0;}
+  }
 
 	&__head-arr .icon{
 		vertical-align: top;
@@ -523,10 +585,10 @@
 		z-index: 10;
 	}
 
-	&:hover &__option,
-	&__option.active{
-
-	}
+	//&:hover &__option,
+	//&__option.active{
+  //
+	//}
 
 	&__param{
 		@include font(normal, normal, rem(14px), rem(30px), $color-dark-grey);
@@ -565,11 +627,13 @@
 		box-shadow: -10px -9px 21px 0 rgba(128, 152, 213, 0.08);
 	}
 
-	&_small &__head{
+  &_small &__head,
+  &_small &__search input[type="text"]{
 		height: rem(28px);
 		line-height: rem(26px);
-		padding-right: 42px;
 	}
+
+  &_small &__head{padding-right: 42px;}
 
 	&_small{width: 195px;}
 	&_small &__param{line-height: rem(25px);}
@@ -590,6 +654,7 @@
 
 	input[type="text"]::placeholder{
 		color: $color-grey;
+    opacity: 1;
 	}
 
 	&__icon-wrap{
@@ -605,16 +670,16 @@
 
 	&__icon-wrap &__head-text {
 		display: inline-block;
-		max-width: 100%;
+    max-width: calc(100% - 36px);
 	}
 
-	&__icon-wrap &__param-text {
-		max-width: 100%;
-	}
-
-	&__icon-wrap .icon + &__head-text, &__icon-wrap .icon + &__param-text {
-		max-width: calc(100% - 36px);
-	}
+	//&__icon-wrap &__param-text {
+	//	max-width: 100%;
+	//}
+  //
+	//&__icon-wrap .icon + &__head-text, &__icon-wrap .icon + &__param-text {
+	//	max-width: calc(100% - 36px);
+	//}
 
 	&__search{
 		position: relative;
@@ -625,7 +690,7 @@
 		width: 7px;
 		height: 7px;
 		position: absolute;
-		right: 0;
+    right: 50px;
 		@include top-center;
 		text-align: center;
 		vertical-align: middle;
@@ -638,14 +703,14 @@
 		vertical-align: top;
 	}
 
-	&__search input[type="text"]{
-		@include font(normal, normal, rem(14px), rem(38px), $color-dark-blue);
-		padding: 0;
-		margin: 0;
-		border: 0;
-		outline: 0;
-		background: transparent;
-	}
+  &__search input[type="text"]{
+    @include font(normal, normal, rem(14px), rem(38px), $color-dark-grey);
+    padding: 0 50px 0 15px;
+    margin: 0;
+    border: 1px solid $color-light-grey;
+    outline: 0;
+    background: transparent;
+  }
 
 	&__search input[type="text"]:focus + button + &__search-close,
 	&__search input[type="text"]:focus + &__search-close{
@@ -657,7 +722,7 @@
 	&__search input[type="text"]:-moz-placeholder {font-weight: 300; color: $color-grey; opacity: 1;}
 
 	&__search input[type="text"]:focus{
-		border-color: $color-dark-purple;
+    border-color: $color-purple;
 	}
 
   //&:hover .{
@@ -681,6 +746,7 @@
   &.disable{opacity: 0.5;}
 
   &_edit &__param{
+    line-height: rem(30px);
     padding-right: 40px;
     position: relative;
   }
@@ -737,6 +803,10 @@
 	overflow: hidden;
 
 	&__content{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 374px;
 		padding: 20px 15px 20px;
 		border-radius: 4px;
 		background: #fff;
@@ -748,14 +818,14 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		padding-bottom: 6px;
+    margin-bottom: 1px;
 	}
 
 	.form-search{
 		width: 100%;
     height: 33px;
 
-    &__close{margin-top: 3px!important;}
+    //&__close{margin-top: 3px!important;}
 
     &__close .icon{
       vertical-align: top;
@@ -773,12 +843,16 @@
 		left: 0;
 	}
 
-	&__top .input-check__label{margin-bottom: 0;}
+	//&__top .input-check__label{margin-bottom: 0;}
 
 	&__clear{
 		font-size: rem(14px);
 		font-weight: normal;
+    color: $color-blue;
+    cursor: pointer;
 	}
+
+  &__clear:hover{text-decoration: underline;}
 
   &__btn{
     display: flex;
@@ -851,6 +925,7 @@
 		position: relative;
 		cursor: pointer;
 		transition: all 0.3s ease;
+    margin: 0;
 	}
 
 	&__marker{
@@ -892,7 +967,7 @@
 	&:hover &__content{background-color: rgba(172, 178, 195, 0.1);}
 
 	input[type="checkbox"]:checked + &__content{border-color: $color-dark-purple;}
-	input[type="checkbox"]:checked + &__content &__on{display: block;}
+  input[type="checkbox"]:checked + &__content &__on{display: block; color: $color-dark-purple;}
 	input[type="checkbox"]:checked + &__content &__off{display: none;}
 	input[type="checkbox"]:checked + &__content &__marker{background: $color-dark-purple; left: auto; right: 4px;}
 	input[type="checkbox"]:checked + &__content &__marker::before{background: $color-dark-purple;}
@@ -1013,20 +1088,23 @@
 	width: 47px;
 
 	input[type="text"]{
-		height: rem(28px);
+		height: rem(30px);
 		width: 100%;
 		outline: none;
 		border: 1px solid $color-light-grey;
 		border-radius: 2px;
-		@include font(normal, normal, rem(14px), rem(26px), $color-dark-grey);
+		@include font(normal, normal, rem(14px), rem(28px), $color-dark-grey);
 		text-align: center;
 		padding: 0 15px 0 5px;
 		margin: 0;
 		transition: all 0.3s ease;
 	}
 
-	input[type="text"]::placeholder{color: $color-light-grey;}
-	input[type="text"]:focus{border-color: $color-purple;}
+  input[type="text"]::placeholder{color: $color-light-grey; opacity: 1;}
+  input[type="text"]::-webkit-input-placeholder {color: $color-light-grey; opacity: 1;}
+  input[type="text"]:-moz-placeholder {color: $color-light-grey; opacity: 1;}
+
+  input[type="text"]:focus{border-color: $color-purple;}
 
 	input[disabled]{
 		background: #fff;
@@ -1067,6 +1145,27 @@
 		bottom: 0;
 		left: 0;
 	}
+
+  input[type="text"]:focus + &__arr,
+  input[type="text"]:hover + &__arr{
+    display: inline-block;
+  }
+
+  input[disabled]:focus + &__arr,
+  input[disabled]:hover + &__arr{
+    display: none;
+  }
+}
+
+.input-number-wrap{
+  display: inline-block;
+  vertical-align: middle;
+
+  &.error input[type="text"]{border-color: $color-red;}
+
+  &__error{
+    @include font(normal, normal, rem(12px), 1.57, $color-red);
+  }
 }
 
 @media (max-width: 767px) {

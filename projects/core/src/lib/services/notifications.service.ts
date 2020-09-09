@@ -1,10 +1,17 @@
 import { Injectable } from '@angular/core';
 import { Subject, Observable, BehaviorSubject } from 'rxjs';
-import { ToasterType } from '../components/toaster/toaster.component';
 import { NavigationService } from './navigation.service';
 import { HttpClient } from '@angular/common/http';
 import { BaseSibscriber } from '../common/BaseSibscriber';
 import { ENV } from '../config/env';
+
+export enum ToasterType {
+  info,
+  error,
+  warning,
+  success,
+  infoProgressBar
+}
 
 export enum NotificationStatus {
   uploading = 'Uploading',

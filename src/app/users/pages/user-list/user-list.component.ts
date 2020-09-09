@@ -57,7 +57,10 @@ export class UserListComponent extends BaseSibscriber implements OnInit {
 
   execCommand = {
     edit: (action: TableActionCommand) => {
-      this.router.navigate(['/users/edit-user', { id: action.item.source.id }]);
+      this.router.navigate(['/users/edit-user', { uid: action.item.source.id, mode: 1 }]);
+    },
+    editSet: (action: TableActionCommand) => {
+      this.router.navigate(['/users/edit-user', { uid: action.item.source.id, mode: 2 }]);
     },
     view: (action: TableActionCommand) => {
       console.log('view command');

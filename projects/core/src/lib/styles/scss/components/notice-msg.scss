@@ -108,6 +108,9 @@
 		font-weight: 600;
 		margin-top: 12px;
 	}
+
+  .select{width: 100%;}
+  &__text + .select{margin-top: 20px;}
 }
 
 .notice-msg-head{

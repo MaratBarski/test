@@ -1,13 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChildren, ViewChild, AfterViewInit } from '@angular/core';
 import { UserEditService } from '@app/users/services/user-edit.service';
 import { SelectOption } from '@appcore';
+import { UserNameSelectorComponent } from '../../forms/user-name-selector/user-name-selector.component';
 
 @Component({
   selector: 'md-edit-user-general',
   templateUrl: './edit-user-general.component.html',
   styleUrls: ['./edit-user-general.component.scss']
 })
-export class EditUserGeneralComponent implements OnInit {
+export class EditUserGeneralComponent implements OnInit, AfterViewInit {
+
+  @ViewChild('userNameCmp', { static: false }) userNameSelectorCmp: UserNameSelectorComponent;
 
   constructor(
     public userEditService: UserEditService
@@ -60,7 +63,17 @@ export class EditUserGeneralComponent implements OnInit {
     }
   }
 
+  ngAfterViewInit(): void {
+    if (this.userNameSelectorCmp && this.userEditService.user.login) {
+      this.userNameSelectorCmp.setUser(this.userEditService.user.login);
+    }
+  }
+
   selectUser(user: any): void {
     this.userEditService.securityUser = user;
+  }
+
+  clearUser(): void {
+    this.userEditService.securityUser = undefined;
   }
 }

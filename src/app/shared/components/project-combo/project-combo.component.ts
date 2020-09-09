@@ -73,4 +73,8 @@ export class ProjectComboComponent extends BaseSibscriber implements OnInit {
     this.onChange.emit(this.project);
     this.selectOptions = this.selectOptions.filter(x => x.id !== this.emptyProject.id);
   }
+
+  getProjectById(id: any): any {
+    return this.selectOptions.find(x => x.id === id);
+  }
 }

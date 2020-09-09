@@ -2,6 +2,10 @@
 .notice{
 	position: relative;
 
+  &:hover .notice-popup,
+  &.active .notice-popup{
+    display: inline-block;
+  }
 
 	&__icon{
 		cursor: pointer;
@@ -134,7 +138,7 @@
 	box-shadow: 0 -9px 21px 0 rgba(128, 152, 213, 0.15), -10px 9px 21px 0 rgba(128, 152, 213, 0.15);
 	padding: 20px 15px 25px 20px;
 	position: relative;
-	
+
 
 	&__top{
 		display: flex;
