@@ -491,7 +491,7 @@ export class UserEditService {
   save(): void {
     const req = this.createServerRequest();
     this._isLoading = true;
-    document.write(JSON.stringify(req));
+    //document.write(JSON.stringify(req));
     if (!this.mode) {
       this.createNew(req);
     } else if (this.mode === 1) {
