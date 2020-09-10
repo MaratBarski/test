@@ -59,7 +59,6 @@
   &_big &__search{width: 250px;}
 
   &__search-close{
-    display: none;
     width: 7px;
     height: 7px;
     position: absolute;
@@ -81,13 +80,13 @@
 	&__content{position: relative;}
 
 	&__popup{
-		display: none;
 		width: 100%;
 		min-width: 200px;
 		padding-top: 3px;
 		position: absolute;
 		top: 100%;
 		left: 0;
+		z-index: 100;
 	}
 
 	&__option{

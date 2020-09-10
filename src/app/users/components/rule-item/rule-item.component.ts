@@ -1,4 +1,4 @@
-import { Component, Input, EventEmitter, Output } from '@angular/core';
+import { Component, Input, EventEmitter, Output, HostListener } from '@angular/core';
 import { SelectOption } from '@appcore';
 
 @Component({
@@ -15,6 +15,7 @@ export class RuleItemComponent {
 
   eventsOptions: Array<SelectOption>;
   selectedEvent = -1;
+  selectedEventName = '';
 
   fieldDescription = '';
   selectedProperty = -1;
@@ -31,8 +32,10 @@ export class RuleItemComponent {
     });
     this._events = events;
     if (events.target.eventId === -1) { return; }
-    
+
     this.selectedEvent = events.target.eventId;
+    const foundEvent = this.eventsOptions.find(op => op.id === events.target.eventId);
+    this.selectedEventName = foundEvent ? foundEvent.text : '';
     this.text = events.target.value;
     this.fieldDescription = events.target.eventPropertyId;
     const currentEvent = this._events.list.find(x => x.eventId === this.selectedEvent);
@@ -80,6 +83,97 @@ export class RuleItemComponent {
   changedProperty(event: any): void {
     this.fieldDescription = event.text;
     this.changed();
+  }
+
+  searchEventText = '';
+  isShowAllEvents = false;
+
+  searchEvents(text: string): void {
+    this.isShowAllEvents = false;
+    this.searchEventText = text;
+    this.selectedEventName = '';
+    this.resetEvent();
+  }
+
+  searchPropertyText = '';
+  isShowAllProperties = false;
+
+  searchProperties(text: string): void {
+    this.isShowAllProperties = false;
+    this.searchPropertyText = text;
+    this.selectedProperty = -1;
+    this.fieldDescription = '';
+    this.changed();
+  }
+
+  selectEvent(event: any): void {
+    const ev = this._events.list.find(x => x.eventId === event.id);
+    this.selectedEvent = event.id;
+    this.selectedEventName = event.text;
+    this.propertyOptions = ev
+      .siteEventPropertyInfos.map((info, i) => {
+        return {
+          id: i,
+          text: info.fieldDescription,
+          value: info.fieldDescription
+        }
+      });
+    this.resetProperty();
+    this.reinitPropertyOptions();
+    this.changed();
+  }
+
+  resetEvent(): void {
+    this.selectedEvent = -1;
+    this.resetProperty();
+  }
+
+  showAllEvents(): void {
+    this.isShowAllEvents = true;
+  }
+
+  showAllProperties(): void {
+    this.isShowAllProperties = true;
+  }
+
+  resetProperty(): void {
+    this.selectedProperty = -1;
+    this.fieldDescription = '';
+    this.searchPropertyText = '';
+    this.propertyOptions = undefined;
+    this.changed();
+  }
+
+  reinitPropertyOptions(): void {
+    const props = this._events.list.find(x => x.eventId.toString() === this.selectedEvent.toString());
+    if (!props) { return; }
+    this.propertyOptions = props.siteEventPropertyInfos.map((info, i) => {
+      return {
+        id: i,
+        text: info.fieldDescription,
+        value: info.fieldDescription
+      }
+    });
+  }
+
+  selectProperty(p: any): void {
+    this.fieldDescription = p.text;
+    this.selectedProperty = p.id;
+    this.changed();
+  }
+
+  isEventExpanded = false;
+
+  @HostListener('document:click', ['$event']) onMouseClick(event: any) {
+    this.isEventExpanded = false;
+  }
+  
+  onExpanDisabled(): void {
+    setTimeout(() => {
+      this.selectedEventName = '';
+      this.searchEventText = '';
+      this.isEventExpanded = true;
+    }, 10);
   }
 
 }

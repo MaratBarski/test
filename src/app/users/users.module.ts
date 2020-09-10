@@ -21,6 +21,8 @@ import { EditPermissionSetComponent } from './components/user-steps/edit-permiss
 import { UserNameSelectorComponent } from './components/forms/user-name-selector/user-name-selector.component';
 import { InputItemComponent } from './components/forms/input-item/input-item.component';
 import { DistinctTemplatePipe } from './pipes/distinct-template.pipe';
+import { EventSearcherComponent } from './components/forms/event-searcher/event-searcher.component';
+import { SearchByTextPipe } from './pipes/search-by-text.pipe';
 
 const routes: Array<Route> = [
   { path: '', component: UserListComponent },
@@ -30,7 +32,7 @@ const routes: Array<Route> = [
 ]
 
 @NgModule({
-  declarations: [UserListComponent, UserDetailsComponent, ResearchListComponent, PermissionWizardComponent, FooterComponent, HeaderComponent, TabsComponent, Step1Component, Step2Component, Step3Component, RuleItemComponent, UserWizardComponent, EditUserGeneralComponent, EditPermissionSetComponent, UserNameSelectorComponent, InputItemComponent, DistinctTemplatePipe],
+  declarations: [UserListComponent, UserDetailsComponent, ResearchListComponent, PermissionWizardComponent, FooterComponent, HeaderComponent, TabsComponent, Step1Component, Step2Component, Step3Component, RuleItemComponent, UserWizardComponent, EditUserGeneralComponent, EditPermissionSetComponent, UserNameSelectorComponent, InputItemComponent, DistinctTemplatePipe, EventSearcherComponent, SearchByTextPipe],
   imports: [
     CommonModule,
     CoreModule,

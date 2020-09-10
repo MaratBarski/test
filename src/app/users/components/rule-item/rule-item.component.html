@@ -25,3 +25,36 @@
         </svg>
     </div>
 </div>
+<!-- 
+<div class="rule-build-item rule-build-item_light-red">
+    <div class="rule-build-item__head">that</div>
+    <div class="rule-build-item__content">
+        <md-event-searcher [isExpanded]="isEventExpanded" (onShowAll)="showAllEvents()" [searchText]="selectedEventName||searchEventText" (onTextChanged)="searchEvents($event)" placeholder="Search or Select Event...">
+            <div [hidden]="!((eventsOptions || [])|searchByText:'text':searchEventText:isShowAllEvents).length" class="drop-cond__sect">
+                <div [ngClass]="{'selected':ev.id == selectedEvent}" (click)="selectEvent(ev)" *ngFor="let ev of (eventsOptions || [])|searchByText:'text':searchEventText:isShowAllEvents" class="drop-cond__param">
+                    <div [text]="ev.text" [mdcColorText]="searchEventText" class="drop-cond__param-text"></div>
+                </div>
+            </div>
+            <div [hidden]="((eventsOptions || [])|searchByText:'text':searchEventText:isShowAllEvents).length" class="drop-cond__sect">
+                No Events found
+            </div>
+        </md-event-searcher>
+        <md-event-searcher (onExpanDisabled)="onExpanDisabled()"  (onShowAll)="showAllProperties()"  [searchText]="fieldDescription||searchPropertyText" [isDisabled]="selectedEvent===-1"  (onTextChanged)="searchProperties($event)" placeholder="Search or Select Property...">
+            <div [hidden]="!((propertyOptions || [])|searchByText:'text':searchPropertyText:isShowAllProperties).length" class="drop-cond__sect">
+                <div [ngClass]="{'selected':p.id == selectedProperty}" (click)="selectProperty(p)" *ngFor="let p of (propertyOptions || [])|searchByText:'text':searchPropertyText:isShowAllProperties" class="drop-cond__param">
+                    <div [text]="p.text" [mdcColorText]="searchPropertyText" class="drop-cond__param-text"></div>
+                </div>
+            </div>
+            <div [hidden]="((propertyOptions || [])|searchByText:'text':searchPropertyText:isShowAllProperties).length" class="drop-cond__sect">
+                No Properties found
+            </div>
+        </md-event-searcher>
+        <div class="rule-build-item__input">
+            <input (change)="changed()" [(ngModel)]="text" type="text" placeholder="Type a text value">
+        </div>
+    </div>
+    <div (click)="remove()" class="rule-build-item__icon">
+        <svg class="icon ic-close-circle" mdcSvg="ic-close-circle">
+        </svg>
+    </div>
+</div> -->

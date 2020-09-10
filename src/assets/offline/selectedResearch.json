@@ -16,11 +16,11 @@
         "researchRestrictionEvents": [
             {
                 "researchId": "174",
-                "eventPropertyName": "drgmortality",
+                "eventPropertyName": "insert_date",
                 "eventId": "25",
                 "value": "qqqqqqqqqq",
                 "siteEventPropertyInfo": {
-                    "eventPropertyNa": "drgmortality",
+                    "eventPropertyNa": "insert_date",
                     "eventId": "320",
                     "dataSample": "2, drgmortality, 4, 1",
                     "eventPropertyTy": "STRING",
@@ -28,7 +28,7 @@
                     "patientFk": false,
                     "eventTimeStamp": false,
                     "ageAtEvent": false,
-                    "fieldDescriptio": "drgmortality",
+                    "fieldDescriptio": "insert_date",
                     "fieldDes": null,
                     "priority": 0,
                     "isDependentSear": false
