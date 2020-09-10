@@ -224,7 +224,10 @@ export class EditCategoriesComponent extends BaseNavigation implements OnInit {
       method: 'put',
       afterUpload: ((response: any, notifiuploadInfo: UploadInfo) => {
         this.router.navigateByUrl('/categorization')
-      })
+      }),
+      onError: (info: any) => {
+        this.isSaving = false;
+      }
       //targetComponent: this.targetComponent
     });
     this.isSaving = true;

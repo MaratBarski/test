@@ -10,6 +10,7 @@ export class UploadInfo {
   targetComponent?: any;
   method?: 'post' | 'put';
   afterUpload?: any;
+  onError?: any;
 }
 
 @Injectable({
@@ -89,7 +90,9 @@ export class UploadService implements OnDestroy {
             uploadInfo.targetComponent.onComplete();
           }
           this.uploadEnd(uploadInfo, NotificationStatus.failed);
-          console.log(error);
+          if (uploadInfo.onError) {
+            uploadInfo.onError(error);
+          }
           if (uploadInfo.notification.status !== NotificationStatus.aborted) {
             uploadInfo.notification.name = uploadInfo.notification.failName;
             uploadInfo.notification.comment = uploadInfo.notification.failComment || '';
