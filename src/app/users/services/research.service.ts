@@ -178,7 +178,7 @@ export class ResearchService {
         cells: {
           PermissionSetName: fl.researchName,
           PermissionsetDescription: fl.researchDescription || 'Description',
-          User: fl.user ? fl.user.firstName + ' ' + fl.user.firstName : '',
+          User: fl.user ? fl.user.firstName + ' ' + fl.user.lastName : '',
           Modified: fl.insertDate,
           Environment: fl.project ? fl.project.projectName : '',
           ApprovalKey: fl.approvalKey,

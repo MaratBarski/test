@@ -177,18 +177,21 @@ export class UserEditService {
     this._user.permissionSets = sets.map(s => {
       return {
         ps: {
+          isFromServer: true,
+          researchId: s.researchId,
           setName: s.researchName,
           projectName: s.project ? s.project.projectName : '',
           project: s.project ? s.project.projectId : 0,
           keyName: s.approvalKey,
           isNew: true,
           KeyStatus: s.researchStatus.toLowerCase() === 'open',
-          isActive: true,
+          isActive: (s.researchStatus && (s.researchStatus.toLowerCase() === 'open' || s.researchStatus.toLowerCase() === 'initial')),
           size: s.maxPatients,
           fromDate: new Date(s.startDate),
           toDate: new Date(s.endDate),
           allowedEvent: this.getAllowedEvent(s),
           researchTemplates: s.researchTemplates,
+          isExpired: s.approvalKeyExpirationDate ? (new Date() > new Date(s.approvalKeyExpirationDate) ? true : false) : false,
           researchRestrictionEvents: s.researchRestrictionEvents ?
             s.researchRestrictionEvents.map(x => {
               return {
@@ -609,6 +612,10 @@ export class UserEditService {
           csvTitle: 'Allowed content',
           hidden: true
         },
+        {
+          columnId: 'isExpired',
+          hidden: true,
+        }
       ],
       rows: []
     }
@@ -622,7 +629,9 @@ export class UserEditService {
           Active: fl.ps.isActive,
           maxPatients: fl.ps.size,
           startDate: fl.ps.fromDate,
-          endDate: fl.ps.toDate
+          endDate: fl.ps.toDate,
+          isExpired: fl.ps.isFromServer ? fl.ps.isExpired :
+            fl.ps.keyExpirationDate ? (new Date() > new Date(fl.ps.keyExpirationDate) ? true : false) : false,
         },
         source: fl,
         isActive: false
