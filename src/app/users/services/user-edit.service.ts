@@ -213,6 +213,7 @@ export class UserEditService {
     ).subscribe(([user, projects, sets]: any) => {
       subscription.unsubscribe();
       this._user = user.data;
+      this._user.userName = this._user.login;
 
       this._user.isSuperAdmin = this._user.authorities
         && this._user.authorities.length
