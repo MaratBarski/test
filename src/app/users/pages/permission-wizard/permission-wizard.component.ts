@@ -50,6 +50,10 @@ export class PermissionWizardComponent extends BaseNavigation implements OnInit,
     }))
   }
 
+  get isLastTab():boolean{
+    return this.permissionSetService.selectedTab === 1;
+  }
+
   private update3Tab(): void {
     this.tabs[2].isDisabled = false;
     if (this.permissionSetService.permissionSet.allowedEvent === NO_ALLOWED_EVENTS) {

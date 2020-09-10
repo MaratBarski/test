@@ -1,4 +1,4 @@
-<footer *ngIf="step===0 && !isSingleMode" class="footer-wrap">
+<footer *ngIf="step===0 && !isSingleMode && !isLastTab" class="footer-wrap">
     <div class="footer">
         <div class="container-fluid">
             <div class="row">
@@ -26,7 +26,7 @@
     </div>
 </footer>
 
-<footer *ngIf="step!==0 && !isSingleMode" class="footer-wrap">
+<footer *ngIf="(step!==0 || isLastTab) && !isSingleMode" class="footer-wrap">
     <div class="footer">
         <div class="container-fluid">
             <div class="row">

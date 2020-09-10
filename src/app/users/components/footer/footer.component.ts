@@ -18,6 +18,7 @@ export class FooterComponent {
   @Output() onCancel = new EventEmitter();
   @Output() onOptionClick = new EventEmitter<number>();
 
+  @Input() isLastTab = false;
   @Input() step = 0;
   @Input() isSaveEnable = false;
   @Input() isNextEnable = false;

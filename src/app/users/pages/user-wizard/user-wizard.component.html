@@ -19,7 +19,7 @@
         </section>
     </div>
 </div>
-<md-footer [isSingleMode]="userEditService.mode" *ngIf="!userEditService.isLoading" [hidden]="userEditService.isHidden" (onOptionClick)="save()"
+<md-footer [isLastTab]="isLastTab" [isSingleMode]="userEditService.mode" *ngIf="!userEditService.isLoading" [hidden]="userEditService.isHidden" (onOptionClick)="save()"
     [isNextEnable]="isNextEnable" [isSaveEnable]="isSaveEnable" (onCancel)="cancel()" (onNext)="next($event)"
     (onSave)="save()" (onOptionClick)="optionClick($event)" [btnOptions]="btnOptions"></md-footer>
 

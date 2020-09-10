@@ -22,7 +22,7 @@
         </section>
     </div>
 </div>
-<md-footer (onOptionClick)="save()" [step]="permissionSetService.selectedTab" (onCancel)="cancel()"
+<md-footer [isLastTab]="isLastTab" (onOptionClick)="save()" [step]="permissionSetService.selectedTab" (onCancel)="cancel()"
     (onNext)="next($event)" (onSave)="save()" [isNextEnable]="isNextEnable"></md-footer>
 
 <md-confirm-dialog *ngIf="showCancelConfirm" confirmText="Yes" cancelText="No, cancel" name="Save Permission Set"
