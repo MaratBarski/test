@@ -223,10 +223,14 @@ export class EditCategoriesComponent extends BaseNavigation implements OnInit {
       url: `${this._uploadUrl}/${categorization.hierarchyRootId}`,
       method: 'put',
       afterUpload: ((response: any, notifiuploadInfo: UploadInfo) => {
+        this.router.navigateByUrl('/categorization')
       })
       //targetComponent: this.targetComponent
     });
-    this.router.navigateByUrl('/categorization')
+    this.isSaving = true;
+    // setTimeout(() => {
+    //   this.router.navigateByUrl('/categorization')
+    // }, 1000);
   }
 
   private updateForSave(category: any): void {

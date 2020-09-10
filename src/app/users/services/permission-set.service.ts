@@ -137,7 +137,11 @@ export class PermissionSetService extends BaseSibscriber {
     if (!this._setId) {
       return of(this.getDefault());
     }
-    return this.http.get(`${this._setUrl}/${this._setId}`);
+    return this.getSetById(this._setId);
+  }
+
+  getSetById(id: any): Observable<any> {
+    return this.http.get(`${this._setUrl}/${id}`);
   }
 
   set fromSetId(id: number) {
@@ -646,7 +650,7 @@ export class PermissionSetService extends BaseSibscriber {
     this.loadTemplates(true);
   }
 
-  private convertToClient(permSet: any): PermissionSet {
+  convertToClient(permSet: any): PermissionSet {
     const res = this.getDefault();
     res.userId = permSet.userId;
     res.project = permSet.projectId;
@@ -655,6 +659,8 @@ export class PermissionSetService extends BaseSibscriber {
     res.fromDateUnlimited = !permSet.startDate;
     res.toDate = permSet.endDate ? new Date(permSet.endDate) : undefined;
     res.toDateUnlimited = !permSet.endDate;
+    res.isActive = permSet.researchStatus &&
+      (permSet.researchStatus.toLowerCase() === 'open' || permSet.researchStatus.toLowerCase() === 'initial');
 
     res.keyName = permSet.approvalKey;
     if (permSet.approvalKeyExpirationDate) {
@@ -666,11 +672,13 @@ export class PermissionSetService extends BaseSibscriber {
     res.setName = permSet.researchName;
     res.setFullName = `${permSet.researchName} - ${permSet.user.firstName} ${permSet.user.lastName}`;
     res.setDescription = permSet.information;
-    this.user = this._users.find(x => x.id === permSet.userId);
-    if (this.user) {
-      res.userId = this.user.id;
+    if (this._users && this._users.length) {
+      this.user = this._users.find(x => x.id === permSet.userId);
+      if (this.user) {
+        res.userId = this.user.id;
+      }
+      this._onAllowedEventsChange.next();
     }
-    this._onAllowedEventsChange.next();
     return res;
   }
 

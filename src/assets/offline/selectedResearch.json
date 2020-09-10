@@ -1,49 +1,71 @@
 {
     "data": {
-        "researchId": 162,
-        "researchName": "marat - sariel",
-        "userId": "1000",
+        "researchId": 174,
+        "researchName": "ANDREY-test-new",
+        "userId": "9459",
         "projectId": "1",
-        "startDate": "2013-12-31",
-        "researchStatus": "opeN",
+        "startDate": null,
+        "researchStatus": "close",
         "maxPatients": 1000000,
-        "insertDate": "2020-09-06T07:57:33.000Z",
+        "insertDate": "2020-09-10T06:55:54.000Z",
         "information": null,
-        "endDate": "2022-12-03",
-        "approvalKey": null,
-        "approvalKeyExpirationDate": null,
-        "user_id": "10",
+        "endDate": "2020-09-30",
+        "approvalKey": "1qa2ws",
+        "approvalKeyExpirationDate": "2020-09-30",
+        "user_id": "9459",
         "researchRestrictionEvents": [
             {
-                "eventId": "26",
-                "eventPropertyName": "startdate",
-                "value": "value1"
-            },
-            {
-                "eventId": "64",
-                "eventPropertyName": "birthdate",
-                "value": "value2"
+                "researchId": "174",
+                "eventPropertyName": "drgmortality",
+                "eventId": "25",
+                "value": "qqqqqqqqqq",
+                "siteEventPropertyInfo": {
+                    "eventPropertyNa": "drgmortality",
+                    "eventId": "320",
+                    "dataSample": "2, drgmortality, 4, 1",
+                    "eventPropertyTy": "STRING",
+                    "hierarchyRootId": null,
+                    "patientFk": false,
+                    "eventTimeStamp": false,
+                    "ageAtEvent": false,
+                    "fieldDescriptio": "drgmortality",
+                    "fieldDes": null,
+                    "priority": 0,
+                    "isDependentSear": false
+                },
+                "siteEventInfo": {
+                    "eventTableAlias": "dummy event"
+                }
             }
         ],
-        "researchTemplates": [],
+        "researchTemplates": [
+            {
+                "researchId": "174",
+                "templateId": "38",
+                "InsertDate": "2020-09-10T06:59:19.754Z",
+                "template": {
+                    "templateName": "Test Template"
+                }
+            }
+        ],
         "user": {
-            "id": "10",
-            "login": "sariel.admin",
-            "passwordHash": "$2a$10$G3OF8pfomKGuB8dpxNlj2eL8wZwY5L.3M19fJ5DfVS1sR0ojd/Ic.",
-            "firstName": "Sariel",
-            "lastName": "Admin",
-            "email": "sariel.admin@mdclone.com",
-            "activated": true,
-            "langKey": null,
+            "id": "9459",
+            "login": "andrey",
+            "passwordHash": "$2a$10$9VlYOF.GAE8Ofr4MY8ZFYeFtsKZvGF7biQy8/RBERHBPnCbc99Nxq",
+            "firstName": "Andrey",
+            "lastName": "Romanov",
+            "email": "Andrey.Romanov@lanit-tercom.com",
+            "activated": false,
+            "langKey": "en",
             "activationKey": null,
-            "resetKey": null,
-            "createdBy": "N/A",
-            "createdDate": "2020-06-30T09:54:34.000Z",
-            "resetDate": null,
-            "lastModifiedBy": null,
-            "lastModifiedDate": null,
+            "resetKey": "87015692195080207360",
+            "createdBy": "mdclone.admin",
+            "createdDate": "2020-06-09T10:12:58.425Z",
+            "resetDate": "2020-06-09T10:12:58.373Z",
+            "lastModifiedBy": "mdclone.admin",
+            "lastModifiedDate": "2020-06-09T10:12:58.425Z",
             "cellPhone": null,
-            "domain": null,
+            "domain": "",
             "photo": null
         },
         "project": {

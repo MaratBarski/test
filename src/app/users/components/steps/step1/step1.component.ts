@@ -77,15 +77,15 @@ export class Step1Component extends BaseSibscriber implements OnInit, AfterViewI
   }
 
   activateSet(isActive: boolean): void {
-    const status = isActive ? 'activated' : 'deactivated';
-    const comment = isActive ? 'User can now query data according to the permission set.' : 'User can no longer query data according to the permission set.';
-    this.notificationService.addNotification({
-      type: ToasterType.success,
-      name: `The permission set has been ${status}.`,
-      showInToaster: true,
-      comment: comment,
-      isClientOnly: true
-    });
+    // const status = isActive ? 'activated' : 'deactivated';
+    // const comment = isActive ? 'User can now query data according to the permission set.' : 'User can no longer query data according to the permission set.';
+    // this.notificationService.addNotification({
+    //   type: ToasterType.success,
+    //   name: `The permission set has been ${status}.`,
+    //   showInToaster: true,
+    //   comment: comment,
+    //   isClientOnly: true
+    // });
   }
 
   private applySetUser(): void {
