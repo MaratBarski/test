@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { ConfigService } from '@app/shared/services/config.service';
 import { Offline } from '@app/shared/decorators/offline.decorator';
 import { environment } from '@env/environment';
-import { NO_ALLOWED_EVENTS, BASED_EVENTS, ALL_EVENTS } from './permission-set.service';
+import { NO_ALLOWED_EVENTS, BASED_EVENTS, ALL_EVENTS } from '../models/models';
 
 @Injectable({
   providedIn: 'root'

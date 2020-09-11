@@ -1,8 +1,9 @@
 import { Component, OnInit, Input, EventEmitter, Output, ViewChild, AfterViewInit } from '@angular/core';
-import { PermissionSetService, NO_ALLOWED_EVENTS } from '@app/users/services/permission-set.service';
+import { PermissionSetService } from '@app/users/services/permission-set.service';
 import { TabWizardItem } from '@app/users/components/tabs/tabs.component';
 import { NavigationService, BaseNavigation } from '@appcore';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NO_ALLOWED_EVENTS } from '@app/users/models/models';
 
 @Component({
   selector: 'md-permission-wizard',

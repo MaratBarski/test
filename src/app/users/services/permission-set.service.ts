@@ -2,48 +2,12 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Offline } from '@app/shared/decorators/offline.decorator';
 import { environment } from '@env/environment';
-import { forkJoin, Subject, Observable, timer, of } from 'rxjs';
+import { forkJoin, Subject, Observable, of } from 'rxjs';
 import { UserListService } from './user-list.service';
 import { DateService, BaseSibscriber, NotificationsService, ToasterType, INotification, NavigationService } from '@appcore';
 import { ConfigService } from '@app/shared/services/config.service';
 import { Router } from '@angular/router';
-
-export const NO_ALLOWED_EVENTS = 1;
-export const ALL_EVENTS = 2;
-export const BASED_EVENTS = 3;
-
-export const AllowedEvents = [
-  { id: NO_ALLOWED_EVENTS, text: 'No allowed events (Default)' },
-  { id: ALL_EVENTS, text: 'All events' },
-  { id: BASED_EVENTS, text: 'Events based on permission templates:' }
-]
-
-export class PermissionSet {
-  isNew: boolean;
-  isActive: boolean;
-  setName: string;
-  setFullName: string;
-  setDescription: string;
-  size?: number;
-  fromDateUnlimited?: boolean;
-  toDateUnlimited?: boolean;
-  fromDate?: Date;
-  toDate?: Date;
-  keyExpirationDate?: Date;
-  keyName: string;
-  project: any;
-  projectName?: string;
-  fromSetId?: any;
-  fromSetName?: string;
-  userId?: any;
-  allowedEvent: number;
-  researchTemplates: Array<any>;
-  researchRestrictionEvents: Array<any>;
-  roleItems: Array<any>;
-  data: {
-    researchStatus?: string;
-  }
-}
+import { NO_ALLOWED_EVENTS, ALL_EVENTS, BASED_EVENTS, AllowedEvents, PermissionSet, ResearchStatus } from '../models/models';
 
 @Injectable({
   providedIn: 'root'
@@ -424,10 +388,17 @@ export class PermissionSetService extends BaseSibscriber {
       researchName: this.permissionSet.setName,
       userId: this.permissionSet.userId,
       projectId: this.permissionSet.project,
-      researchStatus: "Open",
+      researchStatus: ResearchStatus.Open,
       maxPatients: this.permissionSet.size,
       researchRestrictionEvents: this.createRestrictionEvents()
     }
+
+    if (this.permissionSet.allowedEvent === NO_ALLOWED_EVENTS) {
+      obj.researchStatus = this.permissionSet.isActive ? ResearchStatus.Initial : ResearchStatus.Close;
+    } else {
+      obj.researchStatus = ResearchStatus.Open;
+    }
+    
     this.addField(obj, 'information', this.permissionSet.setDescription);
     this.addField(obj, 'approvalKey', this.permissionSet.keyName);
 
@@ -441,7 +412,7 @@ export class PermissionSetService extends BaseSibscriber {
       obj['endDate'] = this.dateService.formatDateToSend(this.permissionSet.toDate);
     }
     if (this.permissionSet.allowedEvent === NO_ALLOWED_EVENTS) {
-      obj.researchStatus = 'initial';
+      obj.researchStatus = ResearchStatus.Initial;
     } else if (this.permissionSet.allowedEvent === BASED_EVENTS) {
       obj['researchTemplates'] = this.permissionSet.researchTemplates;
     }
@@ -473,6 +444,13 @@ export class PermissionSetService extends BaseSibscriber {
     if (!this._permissionSet.toDateUnlimited && !this.dateService.isDateValid(this._permissionSet.toDate)) { return false; }
 
     if (!this.permissionSet.isNew && !this._fromSetId) { return false; }
+    if (this.permissionSet.allowedEvent === BASED_EVENTS) {
+      if (!this.templates
+        || !this.templates.length
+        || !this.templates.find(x => x.isChecked)) {
+        return false;
+      }
+    }
     //if (!this.dateService.isDateValid(this._permissionSet.keyExpirationDate)) { return false; }
 
     //if (this.isEmpty(this._permissionSet.keyName)) { return false; }
@@ -626,7 +604,7 @@ export class PermissionSetService extends BaseSibscriber {
       subsciption.unsubscribe();
       if (this.isEditMode) {
         this.initEvents(permSet);
-        if (permSet.researchStatus && permSet.researchStatus.toLowerCase() === 'open') {
+        if (permSet.researchStatus && permSet.researchStatus.toLowerCase() === ResearchStatus.Open) {
           if (!permSet.researchTemplates || !permSet.researchTemplates.length) {
             this.permissionSet.allowedEvent = ALL_EVENTS;
           }
@@ -634,7 +612,7 @@ export class PermissionSetService extends BaseSibscriber {
             this.permissionSet.allowedEvent = BASED_EVENTS;
           }
         }
-        if (permSet.researchStatus && permSet.researchStatus.toLowerCase() === 'initial') {
+        if (permSet.researchStatus && permSet.researchStatus.toLowerCase() === ResearchStatus.Initial) {
           this.permissionSet.allowedEvent = NO_ALLOWED_EVENTS;
         } else if (permSet.researchTemplates) {
           this.templates.forEach(t => {
@@ -660,7 +638,7 @@ export class PermissionSetService extends BaseSibscriber {
     res.toDate = permSet.endDate ? new Date(permSet.endDate) : undefined;
     res.toDateUnlimited = !permSet.endDate;
     res.isActive = permSet.researchStatus &&
-      (permSet.researchStatus.toLowerCase() === 'open' || permSet.researchStatus.toLowerCase() === 'initial');
+      (permSet.researchStatus.toLowerCase() === ResearchStatus.Open || permSet.researchStatus.toLowerCase() === ResearchStatus.Initial);
 
     res.keyName = permSet.approvalKey;
     if (permSet.approvalKeyExpirationDate) {

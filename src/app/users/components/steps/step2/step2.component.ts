@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { PermissionSetService, AllowedEvents } from '@app/users/services/permission-set.service';
+import { PermissionSetService } from '@app/users/services/permission-set.service';
 import { BaseSibscriber } from '@appcore';
+import { AllowedEvents } from '@app/users/models/models';
 
 @Component({
   selector: 'md-step2',
