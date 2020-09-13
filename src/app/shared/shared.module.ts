@@ -29,6 +29,7 @@ import { UserProjectPipe } from './pipes/user-project.pipe';
 import { ToolTipManagerDirective } from './directives/tool-tip-manager.directive';
 import { DateTimePipe } from './pipes/date-time.pipe';
 import { TabWizardComponent } from './components/tab-wizard/tab-wizard.component';
+import { RadioListComponent } from './components/radio-list/radio-list.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { TabWizardComponent } from './components/tab-wizard/tab-wizard.component
     UserProjectPipe,
     ToolTipManagerDirective,
     DateTimePipe,
-    TabWizardComponent
+    TabWizardComponent,
+    RadioListComponent
   ],
   imports: [
     FormsModule,
@@ -79,7 +81,8 @@ import { TabWizardComponent } from './components/tab-wizard/tab-wizard.component
     ToolTipManagerDirective,
     LegendComponent,
     DateTimePipe,
-    TabWizardComponent
+    TabWizardComponent,
+    RadioListComponent
   ],
   entryComponents: [
   ]

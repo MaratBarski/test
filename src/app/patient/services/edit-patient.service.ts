@@ -20,18 +20,24 @@ export class EditPatientService {
   get selectedTab(): number { return this._selectedTab; }
   private _selectedTab = 0;
 
-  get isShowError(): boolean { return this._isShowError;  }
+  get isShowError(): boolean { return this._isShowError; }
   private _isShowError = false;
 
   get settings(): any { return this._settings; }
   private _settings: any;
+
+  get queries(): Array<any> { return this._queries; }
+  private _queries: Array<any>;
+
 
   getDefault(): any {
     return {
       data: {
         settingsName: 'settings name',
         projectId: 0,
-        outputFormat: 0
+        outputFormat: 0,
+        cohortSource: 1,
+        queryId: 0
       }
     };
   }
@@ -40,8 +46,16 @@ export class EditPatientService {
     return of(this.getDefault());
   }
 
+  loadQueries(): Observable<any> {
+    return this.http.get(this.queriesoUrl);
+  }
+
   @Offline('assets/offline/selectedSettings.json?')
   private siteEventInfoUrl = `${environment.serverUrl}${environment.endPoints.siteEventInfo}`;
+
+
+  @Offline('assets/offline/queries.json?')
+  private queriesoUrl = `${environment.serverUrl}${environment.endPoints.siteEventInfo}`;
 
 
   setTab(tab: number): void {
@@ -63,11 +77,13 @@ export class EditPatientService {
   load(): void {
     this._dataLoaded = false;
     forkJoin(
-      this.loadSettings()
+      this.loadSettings(),
+      this.loadQueries()
     )
       .pipe(take(1))
-      .subscribe(([settings]: any) => {
+      .subscribe(([settings, queries]: any) => {
         this._settings = settings.data;
+        this._queries = queries.data;
         this._dataLoaded = true;
       }, error => {
         this._dataLoaded = true;

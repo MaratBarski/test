@@ -1,0 +1,19 @@
+<div class="user-source-radio">
+    <div *ngFor="let opt of options;let index = index" class="user-source-radio__item">
+        <div class="user-source-radio__head">
+            <div class="input-radio">
+                <input (change)="change(opt)" [id]="radioId + index" type="radio" [checked]="selectedOption===opt">
+                <label class="input-radio__label" [for]="radioId + index">
+                    <span class="input-radio__mark"></span>
+                    <span class="input-radio__text">{{opt.text}}
+                        <span class="input-radio__notice">
+                            List is sorted by date
+                        </span>
+                    </span>
+                </label>
+            </div>
+        </div>
+        <ng-container [ngTemplateOutlet]="opt.template" [ngTemplateOutletContext]="{$implicit: opt}">
+        </ng-container>
+    </div>
+</div>

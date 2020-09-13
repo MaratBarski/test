@@ -24,78 +24,16 @@
                         <div class="user-source__item user-source__item_full">
                             <div class="user-source__label">Cohort source:</div>
                             <div class="user-source__field">
-                                <div class="user-source-radio">
-                                    <div class="user-source-radio__item">
-                                        <div class="user-source-radio__head">
-                                            <div class="input-radio">
-                                                <input id="based1" type="radio" name="based" checked="checked">
-                                                <label class="input-radio__label" for="based1"><span
-                                                        class="input-radio__mark"></span><span
-                                                        class="input-radio__text">Based on a query<span
-                                                            class="input-radio__notice">List is sorted by
-                                                            date</span></span></label>
-                                            </div>
-                                        </div>
-                                        <div class="user-source-radio__field">
-                                            <div class="select select_small">
-                                                <div class="select__search">
-                                                    <input type="text" placeholder="Search or Select a Query..."><span
-                                                        class="select__search-close">
-                                                        <svg class="icon ic-close-small">
-                                                            <use xlink:href="/assets/sprites/sprite.svg#ic-close-small">
-                                                            </use>
-                                                        </svg></span>
-                                                    <div class="select__head-arr">
-                                                        <svg class="icon ic-select-arr-down">
-                                                            <use
-                                                                xlink:href="/assets/sprites/sprite.svg#ic-select-arr-down">
-                                                            </use>
-                                                        </svg>
-                                                    </div>
-                                                </div>
-                                                <div class="select__option">
-                                                    <div class="select__param">Parameter 1</div>
-                                                    <div class="select__param">Parameter 2</div>
-                                                    <div class="select__param">Parameter 3</div>
-                                                    <div class="select__param">Parameter 4</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="user-source-radio__item">
-                                        <div class="user-source-radio__head">
-                                            <div class="input-radio">
-                                                <input id="based2" type="radio" name="based">
-                                                <label class="input-radio__label" for="based2"><span
-                                                        class="input-radio__mark"></span><span
-                                                        class="input-radio__text">Based on a file</span></label>
-                                            </div>
-                                        </div>
-                                        <div class="user-source-radio__field">
-                                            <div class="file-upload disable">
-                                                <label class="file-upload__content">
-                                                    <input type="file" name="file" disabled="disabled"><span
-                                                        class="file-upload__btn">Choose File</span><span
-                                                        class="file-upload__name disable">No file chosen</span>
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <md-radio-list (onChange)="changeSource($event)" [selectedOption]="selectedCohortOption"
+                                    [options]="cohortOptions"></md-radio-list>
                             </div>
                         </div>
                         <div class="user-source__item user-source__item_full">
                             <div class="user-source__label">Output format:</div>
                             <div class="user-source__field">
                                 <div class="user-source-format">
-                                    <mdc-tabs [isSmall]="true" (select)="setOutputFormat($event)" [active]="activeFormat"
-                                        [tabs]="tabsFormat"></mdc-tabs>
-                                    <!-- <div class="tabs-page tabs-page_small">
-                                        <span class="tabs-page__item active">
-                                            <span>XML Files</span></span>
-                                        <span class="tabs-page__item"><span>Table</span>
-                                        </span>
-                                    </div> -->
+                                    <mdc-tabs [isSmall]="true" (select)="setOutputFormat($event)"
+                                        [active]="activeFormat" [tabs]="tabsFormat"></mdc-tabs>
                                     <div class="user-source-format__text">The location of the XML files will be
                                         available once the process is complete.</div>
                                 </div>
@@ -107,3 +45,28 @@
         </div>
     </div>
 </div>
+
+<ng-template #radioTemplate1>
+    <div class="user-source-radio__field">
+        <mdc-auto-complete [disabled]="editPatientService.settings.cohortSource!==1" #queryCmp
+            placeHolder="Search or Select a Query..." textField="name" (onSelect)="selectQuery($event)"
+            (onClear)="clearQuery()" (completeMethod)="completeQuery($event)" [suggestions]="queries">
+            <ng-template let-item>
+                <div class="select__param" [text]="item.name" [mdcColorText]="searchQueryText"></div>
+            </ng-template>
+        </mdc-auto-complete>
+    </div>
+</ng-template>
+
+<ng-template #radioTemplate2>
+    <div class="user-source-radio__field">
+        <div [ngClass]="{'disable':editPatientService.settings.cohortSource!==2}" class="file-upload">
+            <label class="file-upload__content">
+                <input type="file" [disabled]="editPatientService.settings.cohortSource!==2">
+                <span class="file-upload__btn">Choose File</span>
+                <span [ngClass]="{'disable':editPatientService.settings.cohortSource!==2}" class="file-upload__name">No
+                    file chosen</span>
+            </label>
+        </div>
+    </div>
+</ng-template>
