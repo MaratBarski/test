@@ -8,6 +8,7 @@ import { DateService, BaseSibscriber, NotificationsService, ToasterType, INotifi
 import { ConfigService } from '@app/shared/services/config.service';
 import { Router } from '@angular/router';
 import { NO_ALLOWED_EVENTS, ALL_EVENTS, BASED_EVENTS, AllowedEvents, PermissionSet, ResearchStatus } from '../models/models';
+import { take } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -198,13 +199,13 @@ export class PermissionSetService extends BaseSibscriber {
 
   loadTemplates(isInitTemplates: boolean): void {
     setTimeout(() => { this._templatesLoaded = false; }, 1);
-    const subscribbtion =
-      forkJoin(
-        this.http.get(`${this.templateByProjectUrl}/${this.permissionSet.project}`),
-        this.http.get(`${this.siteEventInfoUrl}/${this.permissionSet.project}`),
-      ).subscribe(([res, events]: any) => {
+    forkJoin(
+      this.http.get(`${this.templateByProjectUrl}/${this.permissionSet.project}`),
+      this.http.get(`${this.siteEventInfoUrl}/${this.permissionSet.project}`),
+    )
+      .pipe(take(1))
+      .subscribe(([res, events]: any) => {
         setTimeout(() => { this._templatesLoaded = true; }, 2);
-        subscribbtion.unsubscribe();
         this.templates = res.data
           .filter((t: any) => t.templateType === 'PERMISSION')
           .map((t: any) => {
@@ -334,35 +335,37 @@ export class PermissionSetService extends BaseSibscriber {
   }
 
   private updateSet(obj: any): void {
-    const subscribtion = this.http.put(`${environment.serverUrl}${environment.endPoints.research}/${this._setId}`, obj).subscribe(res => {
-      subscribtion.unsubscribe();
-      this.router.navigateByUrl('/users/research');
-      this.addSuccNotification();
-    }, error => {
-      this.isSaving = false;
-      this.notificationService.addNotification({
-        type: ToasterType.error,
-        name: 'Failed to update the permission set.',
-        comment: 'Try again or contact MDClone support.',
-        showInToaster: true
+    this.http.put(`${environment.serverUrl}${environment.endPoints.research}/${this._setId}`, obj)
+      .pipe(take(1))
+      .subscribe(res => {
+        this.router.navigateByUrl('/users/research');
+        this.addSuccNotification();
+      }, error => {
+        this.isSaving = false;
+        this.notificationService.addNotification({
+          type: ToasterType.error,
+          name: 'Failed to update the permission set.',
+          comment: 'Try again or contact MDClone support.',
+          showInToaster: true
+        });
       });
-    });
   }
 
   private addSet(obj: any): void {
-    const subscribtion = this.http.post(`${environment.serverUrl}${environment.endPoints.research}`, obj).subscribe(res => {
-      subscribtion.unsubscribe();
-      this.router.navigateByUrl('/users/research');
-      this.addSuccNotification();
-    }, error => {
-      this.isSaving = false;
-      this.notificationService.addNotification({
-        type: ToasterType.error,
-        name: 'Failed to create the permission set.',
-        comment: 'Try again or contact MDClone support.',
-        showInToaster: true
+    this.http.post(`${environment.serverUrl}${environment.endPoints.research}`, obj)
+      .pipe(take(1))
+      .subscribe(res => {
+        this.router.navigateByUrl('/users/research');
+        this.addSuccNotification();
+      }, error => {
+        this.isSaving = false;
+        this.notificationService.addNotification({
+          type: ToasterType.error,
+          name: 'Failed to create the permission set.',
+          comment: 'Try again or contact MDClone support.',
+          showInToaster: true
+        });
       });
-    });
   }
 
   private createRestrictionEvents(): Array<any> {
@@ -564,25 +567,26 @@ export class PermissionSetService extends BaseSibscriber {
 
   loadData(): void {
     this._dataLoaded = false;
-    const subsciption = forkJoin(
+    forkJoin(
       this.http.get(this.getResearchUrl),
       this.userListService.load(),
       this.loadSet()
-    ).subscribe(([researchers, users, permSet]: any) => {
-      subsciption.unsubscribe();
-      this._researchers = researchers.data;
-      this._users = users.data;
-      if (this._setId) {
-        this._permissionSet = this.convertToClient(permSet.data);
-        this.initTemplates(permSet.data);
-      } else if (!this._isOfflineMode) {
-        this._permissionSet = permSet;
-        this.templates = [];
-      }
-      this._dataLoaded = true;
-      this.setInitialSet();
-      this._isOfflineMode = false;
-    });
+    )
+      .pipe(take(1))
+      .subscribe(([researchers, users, permSet]: any) => {
+        this._researchers = researchers.data;
+        this._users = users.data;
+        if (this._setId) {
+          this._permissionSet = this.convertToClient(permSet.data);
+          this.initTemplates(permSet.data);
+        } else if (!this._isOfflineMode) {
+          this._permissionSet = permSet;
+          this.templates = [];
+        }
+        this._dataLoaded = true;
+        this.setInitialSet();
+        this._isOfflineMode = false;
+      });
   }
 
   private initEvents(ps: any): void {
@@ -603,31 +607,32 @@ export class PermissionSetService extends BaseSibscriber {
   }
 
   private initTemplates(permSet: any): void {
-    const subsciption = this.onTemplatesLoaded.subscribe((flag: boolean) => {
-      subsciption.unsubscribe();
-      if (this.isEditMode) {
-        this.initEvents(permSet);
-        if (permSet.researchStatus && permSet.researchStatus.toLowerCase() === ResearchStatus.Open) {
-          if (!permSet.researchTemplates || !permSet.researchTemplates.length) {
-            this.permissionSet.allowedEvent = ALL_EVENTS;
+    this.onTemplatesLoaded
+      .pipe(take(1))
+      .subscribe((flag: boolean) => {
+        if (this.isEditMode) {
+          this.initEvents(permSet);
+          if (permSet.researchStatus && permSet.researchStatus.toLowerCase() === ResearchStatus.Open) {
+            if (!permSet.researchTemplates || !permSet.researchTemplates.length) {
+              this.permissionSet.allowedEvent = ALL_EVENTS;
+            }
+            if (permSet.researchTemplates && permSet.researchTemplates.length) {
+              this.permissionSet.allowedEvent = BASED_EVENTS;
+            }
           }
-          if (permSet.researchTemplates && permSet.researchTemplates.length) {
-            this.permissionSet.allowedEvent = BASED_EVENTS;
+          if (permSet.researchStatus && permSet.researchStatus.toLowerCase() === ResearchStatus.Initial) {
+            this.permissionSet.allowedEvent = NO_ALLOWED_EVENTS;
+          } else if (permSet.researchTemplates) {
+            this.templates.forEach(t => {
+              t.isChecked = !!permSet.researchTemplates.find((x: any) => x.templateId.toString() === t.id.toString());
+            });
           }
+          this.setInitialSet();
+          this._onAllowedEventsChange.next();
+        } else {
+          // TO-DO update templates by set
         }
-        if (permSet.researchStatus && permSet.researchStatus.toLowerCase() === ResearchStatus.Initial) {
-          this.permissionSet.allowedEvent = NO_ALLOWED_EVENTS;
-        } else if (permSet.researchTemplates) {
-          this.templates.forEach(t => {
-            t.isChecked = !!permSet.researchTemplates.find((x: any) => x.templateId.toString() === t.id.toString());
-          });
-        }
-        this.setInitialSet();
-        this._onAllowedEventsChange.next();
-      } else {
-        // TO-DO update templates by set
-      }
-    });
+      });
     this.loadTemplates(true);
   }
 

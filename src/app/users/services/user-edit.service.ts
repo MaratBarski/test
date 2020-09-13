@@ -7,6 +7,7 @@ import { ConfigService } from '@app/shared/services/config.service';
 import { Offline } from '@app/shared/decorators/offline.decorator';
 import { environment } from '@env/environment';
 import { NO_ALLOWED_EVENTS, BASED_EVENTS, ALL_EVENTS } from '../models/models';
+import { take } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -213,15 +214,15 @@ export class UserEditService {
   loadUser(id: number): void {
     this._isLoading = true;
     this._isHidden = true;
-    const subscription = forkJoin(
+    forkJoin(
       this.getUserById(id),
       this.http.get(this._projectUrltUrl),
       this.getPermissionSets(id)
-    ).subscribe(([user, projects, sets]: any) => {
-      subscription.unsubscribe();
+    )
+    .pipe(take(1))
+    .subscribe(([user, projects, sets]: any) => {
       this._user = user.data;
       this._user.userName = this._user.login;
-
       this._user.isSuperAdmin = this._user.authorities
         && this._user.authorities.length
         && this._user.authorities.find(x => x.UserAuthority
@@ -331,7 +332,6 @@ export class UserEditService {
 
   validate(setError: boolean): boolean {
     if (!this._isNeedValidate) { return true; }
-
     this.resetValidation();
     let res = true;
     const pwdValid = this.validatePassword();
@@ -499,9 +499,10 @@ export class UserEditService {
 
   private createNew(req: any): void {
     console.log(req);
-    const subscription = this.http.post(this._userUrl, req).subscribe(res => {
+    this.http.post(this._userUrl, req)
+    .pipe(take(1))
+    .subscribe(res => {
       this._isLoading = false;
-      subscription.unsubscribe();
       this.notificationService.addNotification({
         showInToaster: true,
         isClientOnly: true,
@@ -510,7 +511,6 @@ export class UserEditService {
         type: ToasterType.success
       });
     }, error => {
-      subscription.unsubscribe();
       this._isLoading = false;
       this.notificationService.addNotification({
         showInToaster: true,
@@ -524,9 +524,10 @@ export class UserEditService {
 
   private updateUser(req: any): void {
     delete req.researches;
-    const subscription = this.http.put(`${this._userUrl}/${this.user.id}`, req).subscribe(res => {
+    this.http.put(`${this._userUrl}/${this.user.id}`, req)
+    .pipe(take(1))
+    .subscribe(res => {
       this._isLoading = false;
-      subscription.unsubscribe();
       this.notificationService.addNotification({
         showInToaster: true,
         isClientOnly: true,
@@ -535,7 +536,6 @@ export class UserEditService {
         type: ToasterType.success
       });
     }, error => {
-      subscription.unsubscribe();
       this._isLoading = false;
       this.notificationService.addNotification({
         showInToaster: true,
@@ -548,9 +548,10 @@ export class UserEditService {
   }
 
   private updateResearchers(req: any): void {
-    const subscription = this.http.put(`${this._userUrl}/${this.user.id}`, req).subscribe(res => {
+    this.http.put(`${this._userUrl}/${this.user.id}`, req)
+    .pipe(take(1))
+    .subscribe(res => {
       this._isLoading = false;
-      subscription.unsubscribe();
       this.notificationService.addNotification({
         showInToaster: true,
         isClientOnly: true,
@@ -559,7 +560,6 @@ export class UserEditService {
         type: ToasterType.success
       });
     }, error => {
-      subscription.unsubscribe();
       this._isLoading = false;
       this.notificationService.addNotification({
         showInToaster: true,

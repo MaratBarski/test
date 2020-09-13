@@ -7,8 +7,8 @@
                     <div class="col-12">
                         <div *ngIf="!permissionSetService.dataLoaded">Loading...</div>
                         <div *ngIf="permissionSetService.dataLoaded" class="add-perm-set">
-                            <md-tabs (onSelect)="selectNextTab($event)" [selectedTab]="permissionSetService.selectedTab"
-                                [tabs]="tabs"></md-tabs>
+                            <md-tab-wizard (onSelect)="selectNextTab($event)" [selectedTab]="permissionSetService.selectedTab"
+                                [tabs]="tabs"></md-tab-wizard>
                             <md-step1 (onAfterinit)="afterStep1init()" [isOfflineMode]="isOfflineMode"
                                 [isPopup]="isPopup" [hidden]="permissionSetService.selectedTab!==0"></md-step1>
                             <md-step2 [isOfflineMode]="isOfflineMode" [hidden]="permissionSetService.selectedTab!==1">

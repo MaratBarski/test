@@ -9,6 +9,9 @@ export interface MenuItem {
 }
 
 export const PageInfo = {
+    Patient: {
+        id: 'Patient'
+    },
     ManageUsers: {
         id: 'ManageUsers'
     },
@@ -87,4 +90,9 @@ export const SideMenu: Array<MenuItem> = [
         url: 'users/research',
         text: 'Permission Sets'
     }
+    // ,{
+    //     id: PageInfo.Patient.id,
+    //     url: 'patient',
+    //     text: 'Patient Story'
+    // }
 ]

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { UserEditService } from '@app/users/services/user-edit.service';
-import { TabWizardItem } from '@app/users/components/tabs/tabs.component';
 import { SplitBtnOption } from '@app/users/components/footer/footer.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NavigationService, BaseNavigation } from '@appcore';
+import { TabWizardItem } from '@app/shared/components/tab-wizard/tab-wizard.component';
 
 @Component({
   selector: 'md-user-wizard',
@@ -21,10 +21,10 @@ export class UserWizardComponent extends BaseNavigation implements OnInit {
     super(navigationService);
   }
 
-  get isLastTab():boolean{
+  get isLastTab(): boolean {
     return this.userEditService.selectedTab === 1;
   }
-  
+
   get isSaveEnable(): boolean {
     return this.userEditService.selectedTab > 0;
   }

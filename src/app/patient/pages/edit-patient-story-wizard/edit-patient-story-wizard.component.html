@@ -1,0 +1,22 @@
+<div class="main-content">
+    <div class="content-page">
+        <md-header [pageTitle]="pageTitle" [showLegend]="showLegend"></md-header>
+        <section class="add-perm-set-wrap">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div *ngIf="!editPatientService.dataLoaded">Loading...</div>
+                        <div *ngIf="editPatientService.dataLoaded" class="add-perm-set">
+                            <md-tab-wizard (onSelect)="selectNextTab($event)" [selectedTab]="editPatientService.selectedTab"
+                                [tabs]="tabs"></md-tab-wizard>
+                            <md-step1 [hidden]="editPatientService.selectedTab!==0"></md-step1>
+                            <md-step2 [hidden]="editPatientService.selectedTab!==1"></md-step2>
+                            <md-step3 [hidden]="editPatientService.selectedTab!==2"></md-step3>
+                            <md-step4 [hidden]="editPatientService.selectedTab!==3"></md-step4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

@@ -1,0 +1,24 @@
+<section class="page-header">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="page-header__wrap">
+                    <div *ngIf="showTitle" class="page-header__content">
+                        <h1>{{pageTitle}}</h1>
+                    </div>
+                    <div *ngIf="editPatientService.isShowError" class="system-notice system-notice_red"><span
+                            class="system-notice__icon">
+                            <svg class="icon ic-failure" mdcSvg="ic-failure">
+                            </svg>
+                        </span>
+                        <span class="system-notice__text">
+                            There is one or more a
+                            missing fields in the permission set
+                        </span>
+                    </div>
+                    <md-legend *ngIf="showLegend"></md-legend>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
