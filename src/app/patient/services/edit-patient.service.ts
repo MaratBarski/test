@@ -20,7 +20,7 @@ export class EditPatientService {
   get selectedTab(): number { return this._selectedTab; }
   private _selectedTab = 0;
 
-  get isShowError(): boolean { return this._isShowError; F }
+  get isShowError(): boolean { return this._isShowError;  }
   private _isShowError = false;
 
   get settings(): any { return this._settings; }
