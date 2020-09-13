@@ -1,0 +1,22 @@
+ <span class="user-details-select__label">{{label}}</span> 
+<div (blur)="blur()" tabindex="1" class="drop-cond">
+    <div class="drop-cond__content">
+        <div (click)="mouseClick($event)" class="drop-cond__head active">
+            {{selected?.text}}
+            <div class="drop-cond__head-arr">
+                <svg class="icon ic-select-arr-down" mdcSvg="ic-select-arr-down">
+                </svg>
+            </div>
+        </div>
+        <div [hidden]="!isExpanded" class="drop-cond__popup">
+            <div class="drop-cond__option">
+                <div class="drop-cond__sect">
+                    <div [ngClass]="{'active':option==selected}" (click)="select(option)" *ngFor="let option of options"
+                        class="drop-cond__param">
+                        <div class="drop-cond__param-text">{{option.text}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

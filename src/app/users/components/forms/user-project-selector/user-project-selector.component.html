@@ -1,0 +1,35 @@
+<div style="margin-top: 4px;margin-bottom: 4px;" class="user-details-param__item">
+    <div class="user-details-param__check">
+        <div [ngClass]="{'active':env.isChecked}" class="input-check">
+            <mdc-check-box whiteSpace="nowrap" [(ngModel)]="env.isChecked" [id]="'env' + index"
+                [text]="env.projectName">
+            </mdc-check-box>
+        </div>
+    </div>
+    <div [mdcVisibility]="env.isChecked" class="user-details-select">
+        <md-user-role-selector (changed)="changedRole($event)" [selectedId]="env.role" [options]="roleOptions"
+            label="Role:"></md-user-role-selector>
+    </div>
+    <div [mdcVisibility]="env.isChecked" class="user-details-select">
+        <md-user-role-selector (changed)="changedData($event)" [selectedId]="env.data" [options]="dataOptions"
+            label="Allowed Data:">
+        </md-user-role-selector>
+    </div>
+    <div [mdcVisibility]="env.isChecked && env.data===1" class="user-details-select">
+        <span [hidden]="env.isShowAdvanced" (click)="showAdvanced()" class="user-details-param__link">
+            Advanced Settings
+        </span>
+        <md-user-role-selector (changed)="changedKf($event)" [selectedId]="env.kf" [hidden]="!env.isShowAdvanced" [selectedId]="env.data"
+            [options]="coefficientOptions" label="Coefficient:">
+        </md-user-role-selector>
+        <div [hidden]="!env.isShowAdvanced" class="user-details-select__icon">
+            <svg class="icon ic-info" mdcSvg="ic-info"></svg>
+            <span class="tooltip tooltip_right">
+                <span class="tooltip__content">This number
+                    prevents extreme results from influencing statistical analysis. The higher the
+                    value you choose, the more extreme values it overlooks.
+                </span>
+            </span>
+        </div>
+    </div>
+</div>

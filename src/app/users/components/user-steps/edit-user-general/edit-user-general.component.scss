@@ -1,0 +1,27 @@
+.error  {
+    background: #e20343;
+    color: #fff;
+    outline: 0px !important
+}
+.error li{
+    color:white !important;
+}
+.user-details-main__field.error .user-details-tooltip:after {
+    border-color: rgba(0,0,0,0) #e20343 rgba(0,0,0,0) rgba(0,0,0,0);
+}
+.user-details-tooltip:after {
+    content: "";
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-color: rgba(0,0,0,0) #e20343 rgba(0,0,0,0) rgba(0,0,0,0);
+    border-style: solid;
+    border-width: 6px 8px 6px 0;
+    position: absolute;
+    top: 9px;
+    right: 100%;
+}
+ul {
+    list-style: initial !important;
+  }
+  

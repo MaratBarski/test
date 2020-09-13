@@ -1,34 +1,6 @@
 <div class="rule-build-item rule-build-item_light-red">
     <div class="rule-build-item__head">that</div>
     <div class="rule-build-item__content">
-        <div class="rule-build-item__select">
-            <mdc-select (changed)="changedEvent($event)" [isInvalid]="isShowerror && selectedEvent===-1"
-                [(ngModel)]="selectedEvent" [options]="eventsOptions" placeholder="Select Event..." [isSmall]="true">
-            </mdc-select>
-        </div>
-        <div class="rule-build-item__select">
-            <div class="drop-auto">
-                <mdc-select (changed)="changedProperty($event)" [isInvalid]="isShowerror && selectedProperty===-1"
-                    [(ngModel)]="selectedProperty" [options]="propertyOptions" placeholder="Select Property..."
-                    [isSmall]="true">
-                </mdc-select>
-            </div>
-        </div>
-        <div class="rule-build-item__input">
-            <div class="role-border" [ngClass]="{'invalid':!text && isShowerror}">
-                <input type="text" (change)="changed()" [(ngModel)]="text" placeholder="Type a text value">
-            </div>
-        </div>
-    </div>
-    <div (click)="remove()" class="rule-build-item__icon">
-        <svg class="icon ic-close-circle" mdcSvg="ic-close-circle">
-        </svg>
-    </div>
-</div>
-<!-- 
-<div class="rule-build-item rule-build-item_light-red">
-    <div class="rule-build-item__head">that</div>
-    <div class="rule-build-item__content">
         <md-event-searcher [isExpanded]="isEventExpanded" (onShowAll)="showAllEvents()" [searchText]="selectedEventName||searchEventText" (onTextChanged)="searchEvents($event)" placeholder="Search or Select Event...">
             <div [hidden]="!((eventsOptions || [])|searchByText:'text':searchEventText:isShowAllEvents).length" class="drop-cond__sect">
                 <div [ngClass]="{'selected':ev.id == selectedEvent}" (click)="selectEvent(ev)" *ngFor="let ev of (eventsOptions || [])|searchByText:'text':searchEventText:isShowAllEvents" class="drop-cond__param">
@@ -57,4 +29,4 @@
         <svg class="icon ic-close-circle" mdcSvg="ic-close-circle">
         </svg>
     </div>
-</div> -->
+</div>

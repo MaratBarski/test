@@ -1,8 +1,7 @@
 <div style="margin: 20px;" *ngIf="userEditService.isLoading || userEditService.isHidden">Loading...</div>
-<div [style.visibility]="userEditService.isHidden ? 'hidden' : 'visible'" class="main-content">
+<div [hidden]="userEditService.isHidden" class="main-content">
     <div *ngIf="!userEditService.isLoading" class="content-page">
         <md-header [pageTitle]="pageTitle"></md-header>
-        <!-- {{userEditService.user|json}} -->
         <section class="user-details-wrap">
             <div class="container-fluid">
                 <div class="row">

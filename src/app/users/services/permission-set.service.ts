@@ -398,7 +398,7 @@ export class PermissionSetService extends BaseSibscriber {
     } else {
       obj.researchStatus = ResearchStatus.Open;
     }
-    
+
     this.addField(obj, 'information', this.permissionSet.setDescription);
     this.addField(obj, 'approvalKey', this.permissionSet.keyName);
 
@@ -415,6 +415,9 @@ export class PermissionSetService extends BaseSibscriber {
       obj.researchStatus = ResearchStatus.Initial;
     } else if (this.permissionSet.allowedEvent === BASED_EVENTS) {
       obj['researchTemplates'] = this.permissionSet.researchTemplates;
+    }
+    if (!this.permissionSet.isActive) {
+      obj.researchStatus = ResearchStatus.Close;
     }
     return obj;
   }

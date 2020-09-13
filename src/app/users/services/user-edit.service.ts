@@ -60,6 +60,10 @@ export class UserEditService {
     this.initSecurity();
   }
 
+  isUserNameValid = true;
+  isPasswordValid = true;
+  isEmaileValid = true;
+
   addSet(ps: any): void {
     this.user.permissionSets = [ps].concat(this.user.permissionSets);
   }
@@ -323,13 +327,17 @@ export class UserEditService {
     this._onTabChanged.next(this._selectedTab);
   }
 
-  private _isNeedValidate = true;
+  private _isNeedValidate = !true;
 
   validate(setError: boolean): boolean {
     if (!this._isNeedValidate) { return true; }
 
     this.resetValidation();
     let res = true;
+    const pwdValid = this.validatePassword();
+    const userNameValid = this.validateUserName();
+    const emailValid = this.validateEmail();
+    res = userNameValid && pwdValid;
     Object.keys(this.missingItem).forEach(k => {
       if (this.missingItem[k].validate) {
         if (!this.missingItem[k].validate()) {
@@ -347,6 +355,73 @@ export class UserEditService {
     });
 
     return res;
+  }
+
+  validateEmail(): boolean {
+    this.isEmaileValid = true;
+    if (!this.user.email || !this.user.email.trim()) {
+      return this.isEmaileValid;
+    }
+    const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    this.isEmaileValid = re.test(this.user.email);
+    return this.isEmaileValid;
+  }
+
+  validateUserName(): boolean {
+    this.isUserNameValid = true;
+    if (this.securityType) {
+      return this.isUserNameValid;
+    }
+    if (!this.user.userName || !this.user.userName.trim()) {
+      this.isUserNameValid = true;
+      return this.isUserNameValid;
+    }
+    const userName = this.user.userName.trim().toLowerCase() as string;
+    if (userName.length > 14) {
+      this.isUserNameValid = false;
+      return this.isUserNameValid;
+    }
+    for (let i = 0; i < userName.length; i++) {
+      const ch = userName.charAt(i);
+      if (ch === '_') { continue; }
+      if (ch >= '0' && ch <= '9') { continue; }
+      if (ch >= 'a' && ch <= 'z') { continue; }
+      this.isUserNameValid = false;
+      return this.isUserNameValid;
+    }
+    return this.isUserNameValid;
+  }
+
+  validatePassword(): boolean {
+    this.isPasswordValid = true;
+    if (this.securityType) {
+      return this.isPasswordValid;
+    }
+    if (!this.user.password || !this.user.password.trim()) {
+      this.isPasswordValid = true;
+      return this.isPasswordValid;
+    }
+    const password = this.user.password.trim() as string;
+    if (password.length < 8) {
+      this.isPasswordValid = false;
+      return this.isPasswordValid;
+    }
+    let minNumber = 1;
+    let minBigSymbol = 1;
+    let minSmallSymbol = 1;
+    for (let i = 0; i < password.length; i++) {
+      const ch = password.charAt(i);
+      if (ch >= '0' && ch <= '9') { minNumber--; continue; }
+      if (ch >= 'A' && ch <= 'Z') { minBigSymbol--; continue; }
+      if (ch >= 'a' && ch <= 'z') { minSmallSymbol--; continue; }
+      this.isPasswordValid = false;
+      return this.isPasswordValid;
+    }
+    if (minNumber > 0 || minBigSymbol > 0 || minSmallSymbol > 0) {
+      this.isPasswordValid = false;
+      return this.isPasswordValid;
+    }
+    return this.isPasswordValid;
   }
 
   private isEmpty(value: any): boolean {
@@ -409,6 +484,9 @@ export class UserEditService {
   }
 
   resetValidation(): void {
+    this.isUserNameValid = true;
+    this.isPasswordValid = true;
+    this.isEmaileValid = true;
     Object.keys(this.missingItem).forEach(k => {
       this.missingItem[k].isMissing = false;
       this.missingItem[k].isError = false;
