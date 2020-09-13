@@ -327,7 +327,7 @@ export class UserEditService {
     this._onTabChanged.next(this._selectedTab);
   }
 
-  private _isNeedValidate = !true;
+  private _isNeedValidate = true;
 
   validate(setError: boolean): boolean {
     if (!this._isNeedValidate) { return true; }

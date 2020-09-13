@@ -207,7 +207,7 @@ export class ResearchService {
   }
 
   isActive(src: any, trueValue: any, falseValue: any): any {
-    return src.researchStatus && src.researchStatus.trim().toLowerCase() === 'open' ? trueValue : falseValue;
+    return src.researchStatus && src.researchStatus.trim().toLowerCase() !== 'close' ? trueValue : falseValue;
   }
 
   createView(files: Array<any>): TableModel {
