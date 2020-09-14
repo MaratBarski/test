@@ -1,9 +1,10 @@
 import { Component, Output, EventEmitter, ViewChild, ElementRef, Input } from '@angular/core';
 import { UploadService } from '@app/shared/services/upload.service';
-import { CsvManagerService, NotificationStatus, ToasterType, ValidationFileMessage, ExcelExtentions } from '@appcore';
+import { CsvManagerService, NotificationStatus, ToasterType, ValidationFileMessage, ExcelExtentions, LoginService } from '@appcore';
 import { environment } from '@env/environment';
 import { Offline } from '@app/shared/decorators/offline.decorator';
 import { ConfigService } from '@app/shared/services/config.service';
+
 
 @Component({
   selector: 'md-upload-file',
@@ -15,7 +16,8 @@ export class UploadFileComponent {
   constructor(
     private uploadService: UploadService,
     private csvManagerService: CsvManagerService,
-    private configService: ConfigService
+    private configService: ConfigService,
+    public loginService: LoginService
   ) { }
 
   @ViewChild('fileInput', { static: true }) fileInput: ElementRef;

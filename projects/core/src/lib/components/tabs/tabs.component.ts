@@ -21,6 +21,7 @@ export class TabsComponent {
   @Input() active = 0;
   @Input() tabs: Array<TabItemModel>;
   @Input() tabid = 'tab';
+  @Input() isSmall = false;
 
   mouseover(index: number, tab: TabItemModel, event: any): void {
     if (!tab.mouseOver) { return; }

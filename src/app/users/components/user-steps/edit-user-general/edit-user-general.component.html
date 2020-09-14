@@ -5,36 +5,62 @@
                 <div *ngIf="userEditService.securityType===1" class="user-details-main__item">
                     <div class="user-details-main__label">Username:</div>
                     <div class="user-details-main__field">
-                        <md-user-name-selector (onClear)="clearUser()" #userNameCmp (onSelect)="selectUser($event)" [users]="users"></md-user-name-selector>
+                        <md-user-name-selector (onClear)="clearUser()" #userNameCmp (onSelect)="selectUser($event)"
+                            [users]="users"></md-user-name-selector>
                     </div>
                 </div>
-                <md-input-item *ngIf="userEditService.securityType===0" [(ngModel)]="userEditService.user.userName"
-                    [isError]="userEditService.missingItem.userName.isError"
+                <md-input-item (onChangeValue)="onChangeValue()" *ngIf="userEditService.securityType===0"
+                    [(ngModel)]="userEditService.user.userName"
+                    [isError]="userEditService.missingItem.userName.isError || !userEditService.isUserNameValid"
                     [isMissing]="userEditService.missingItem.userName.isError" placeHolder="Type user name"
                     missingText="Missing user name" label="User Name:" class="user-details-main__item">
+                    <div [hidden]="userEditService.isUserNameValid"
+                        class="user-details-tooltip user-details-tooltip_big active error">
+                        <div class="user-details-tooltip__title">Username must contain:</div>
+                        <div class="user-details-tooltip__text">
+                            <ul style="color: white;">
+                                <li style="color: white;">Less than 15 characters</li>
+                                <li>Only numbers, letters and underscores are allowed.</li>
+                            </ul>
+                        </div>
+                    </div>
                 </md-input-item>
-
-                <md-input-item *ngIf="userEditService.securityType===0" [(ngModel)]="userEditService.user.password"
-                    [isError]="userEditService.missingItem.password.isError" type="password"
-                    [isMissing]="userEditService.missingItem.password.isError" placeHolder="Type password"
-                    missingText="Missing user name" label="Password:" class="user-details-main__item">
+                <md-input-item (onChangeValue)="onChangeValue()" *ngIf="userEditService.securityType===0"
+                    [(ngModel)]="userEditService.user.password"
+                    [isError]="userEditService.missingItem.password.isError || userEditService.isPasswordValid"
+                    type="password" [isMissing]="userEditService.missingItem.password.isError"
+                    placeHolder="Type password" missingText="Missing password" label="Password:"
+                    class="user-details-main__item">
+                    <div [hidden]="userEditService.isPasswordValid" class="user-details-tooltip active error">
+                        <div class="user-details-tooltip__title">Password must contain:</div>
+                        <div class="user-details-tooltip__text">
+                            <ul>
+                                <li>At least 8 characters</li>
+                                <li>At least one number</li>
+                                <li>Both uppercase and lowercase letters</li>
+                            </ul>
+                        </div>
+                    </div>
                 </md-input-item>
-
-                <md-input-item [(ngModel)]="userEditService.user.firstName"
+                <md-input-item (onChangeValue)="onChangeValue()" [(ngModel)]="userEditService.user.firstName"
                     [isError]="userEditService.missingItem.firstName.isError"
                     [isMissing]="userEditService.missingItem.firstName.isMissing" placeHolder="Type user’s first name"
                     missingText="Missing first name" label="First Name:" class="user-details-main__item">
                 </md-input-item>
-
-                <md-input-item [(ngModel)]="userEditService.user.lastName"
+                <md-input-item (onChangeValue)="onChangeValue()" [(ngModel)]="userEditService.user.lastName"
                     [isError]="userEditService.missingItem.lastName.isError"
                     [isMissing]="userEditService.missingItem.lastName.isError" placeHolder="Type user’s last name"
                     missingText="Missing last name" label="Last Name:" class="user-details-main__item">
                 </md-input-item>
-                <md-input-item type="email" [(ngModel)]="userEditService.user.email"
+                <md-input-item (onChangeValue)="onChangeValue()" type="email" [(ngModel)]="userEditService.user.email"
                     [isError]="userEditService.missingItem.email.isError"
                     [isMissing]="userEditService.missingItem.email.isError" placeHolder="user@domain.com"
-                    missingText="Missing email" label="Email:" class="user-details-main__item"></md-input-item>
+                    missingText="Missing email" label="Email:" class="user-details-main__item">
+                    <div [hidden]="userEditService.isEmaileValid"
+                        class="user-details-tooltip user-details-tooltip_big active error">
+                        <div class="user-details-tooltip__title">Invalid e-mail address</div>
+                    </div>
+                </md-input-item>
                 <md-input-item type="text" [(ngModel)]="userEditService.user.cellPhone" [isOptional]="true"
                     [isError]="false" placeHolder="+120-234-56789" label="Phone:" class="user-details-main__item">
                 </md-input-item>
@@ -49,42 +75,9 @@
             <div class="user-details-param">
                 <div class="user-details-param__title">Select the environments that are accessible to the user:</div>
                 <div class="user-details-param__content">
-                    <div class="user-details-param__item"
+                    <md-user-project-selector [env]="env" [index]="i"
                         *ngFor="let env of userEditService.environments;let i = index">
-                        <div class="user-details-param__check">
-                            <mdc-check-box [(ngModel)]="env.isChecked" [id]="'env' + i" [text]="env.projectName">
-                            </mdc-check-box>
-                        </div>
-
-                        <div [hidden]="!env.isChecked" class="user-details-select">
-                            <div class="user-details-select__label">Role:</div>
-                            <mdc-select [(ngModel)]="env.role" [options]="roleOptions" [isSmall]="true">
-                            </mdc-select>
-                        </div>
-                        <div [hidden]="!env.isChecked" class="user-details-select">
-                            <div class="user-details-select__label">Allowed Data:</div>
-                            <mdc-select (changed)="changedData($event,env)" [(ngModel)]="env.data" [options]="dataOptions"
-                                [isSmall]="true">
-                            </mdc-select>
-                        </div>
-                        <div [hidden]="!env.isChecked || env.data===2" class="user-details-select">
-                            <span [hidden]="env.isShowAdvanced" (click)="showAdvanced($event,env)"
-                                class="user-details-param__link">Advanced Settings</span>
-                            <div [hidden]="!env.isShowAdvanced" class="user-details-select__label"> Coefficient:</div>
-                            <mdc-select [hidden]="!env.isShowAdvanced" [(ngModel)]="env.kf"
-                                [options]="coefficientOptions" [isSmall]="true">
-                            </mdc-select>
-                            <div [hidden]="!env.isShowAdvanced" class="user-details-select__icon">
-                                <svg class="icon ic-info" mdcSvg="ic-info">
-                                </svg><span class="tooltip tooltip_right">
-                                    <span class="tooltip__content">This number
-                                        prevents extreme results from influencing statistical analysis. The higher the
-                                        value you choose, the more extreme values it overlooks.
-                                    </span>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
+                    </md-user-project-selector>
                 </div>
             </div>
         </div>

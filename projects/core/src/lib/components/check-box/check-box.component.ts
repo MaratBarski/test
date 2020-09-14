@@ -22,8 +22,10 @@ export class CheckBoxComponent implements ControlValueAccessor {
 
   @Input() isDisabled = false;
   @Input() text: string;
-  @Output() change = new EventEmitter<boolean>();
+  @Input() whiteSpace = 'normal';
   @Input() id = ComponentService.createID('checkbox');
+
+  @Output() change = new EventEmitter<boolean>();
 
   private _value: boolean;
   private onTouchedCallback: () => void = noop;

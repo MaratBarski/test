@@ -6,7 +6,8 @@ import { HttpClient } from '@angular/common/http';
 import { ConfigService } from '@app/shared/services/config.service';
 import { Offline } from '@app/shared/decorators/offline.decorator';
 import { environment } from '@env/environment';
-import { NO_ALLOWED_EVENTS, BASED_EVENTS, ALL_EVENTS } from './permission-set.service';
+import { NO_ALLOWED_EVENTS, BASED_EVENTS, ALL_EVENTS } from '../models/models';
+import { take } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -59,6 +60,10 @@ export class UserEditService {
   ) {
     this.initSecurity();
   }
+
+  isUserNameValid = true;
+  isPasswordValid = true;
+  isEmaileValid = true;
 
   addSet(ps: any): void {
     this.user.permissionSets = [ps].concat(this.user.permissionSets);
@@ -177,18 +182,21 @@ export class UserEditService {
     this._user.permissionSets = sets.map(s => {
       return {
         ps: {
+          isFromServer: true,
+          researchId: s.researchId,
           setName: s.researchName,
           projectName: s.project ? s.project.projectName : '',
           project: s.project ? s.project.projectId : 0,
           keyName: s.approvalKey,
           isNew: true,
           KeyStatus: s.researchStatus.toLowerCase() === 'open',
-          isActive: true,
+          isActive: (s.researchStatus && (s.researchStatus.toLowerCase() === 'open' || s.researchStatus.toLowerCase() === 'initial')),
           size: s.maxPatients,
           fromDate: new Date(s.startDate),
           toDate: new Date(s.endDate),
           allowedEvent: this.getAllowedEvent(s),
           researchTemplates: s.researchTemplates,
+          isExpired: s.approvalKeyExpirationDate ? (new Date() > new Date(s.approvalKeyExpirationDate) ? true : false) : false,
           researchRestrictionEvents: s.researchRestrictionEvents ?
             s.researchRestrictionEvents.map(x => {
               return {
@@ -206,14 +214,15 @@ export class UserEditService {
   loadUser(id: number): void {
     this._isLoading = true;
     this._isHidden = true;
-    const subscription = forkJoin(
+    forkJoin(
       this.getUserById(id),
       this.http.get(this._projectUrltUrl),
       this.getPermissionSets(id)
-    ).subscribe(([user, projects, sets]: any) => {
-      subscription.unsubscribe();
+    )
+    .pipe(take(1))
+    .subscribe(([user, projects, sets]: any) => {
       this._user = user.data;
-
+      this._user.userName = this._user.login;
       this._user.isSuperAdmin = this._user.authorities
         && this._user.authorities.length
         && this._user.authorities.find(x => x.UserAuthority
@@ -323,9 +332,12 @@ export class UserEditService {
 
   validate(setError: boolean): boolean {
     if (!this._isNeedValidate) { return true; }
-
     this.resetValidation();
     let res = true;
+    const pwdValid = this.validatePassword();
+    const userNameValid = this.validateUserName();
+    const emailValid = this.validateEmail();
+    res = userNameValid && pwdValid;
     Object.keys(this.missingItem).forEach(k => {
       if (this.missingItem[k].validate) {
         if (!this.missingItem[k].validate()) {
@@ -343,6 +355,73 @@ export class UserEditService {
     });
 
     return res;
+  }
+
+  validateEmail(): boolean {
+    this.isEmaileValid = true;
+    if (!this.user.email || !this.user.email.trim()) {
+      return this.isEmaileValid;
+    }
+    const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    this.isEmaileValid = re.test(this.user.email);
+    return this.isEmaileValid;
+  }
+
+  validateUserName(): boolean {
+    this.isUserNameValid = true;
+    if (this.securityType) {
+      return this.isUserNameValid;
+    }
+    if (!this.user.userName || !this.user.userName.trim()) {
+      this.isUserNameValid = true;
+      return this.isUserNameValid;
+    }
+    const userName = this.user.userName.trim().toLowerCase() as string;
+    if (userName.length > 14) {
+      this.isUserNameValid = false;
+      return this.isUserNameValid;
+    }
+    for (let i = 0; i < userName.length; i++) {
+      const ch = userName.charAt(i);
+      if (ch === '_') { continue; }
+      if (ch >= '0' && ch <= '9') { continue; }
+      if (ch >= 'a' && ch <= 'z') { continue; }
+      this.isUserNameValid = false;
+      return this.isUserNameValid;
+    }
+    return this.isUserNameValid;
+  }
+
+  validatePassword(): boolean {
+    this.isPasswordValid = true;
+    if (this.securityType) {
+      return this.isPasswordValid;
+    }
+    if (!this.user.password || !this.user.password.trim()) {
+      this.isPasswordValid = true;
+      return this.isPasswordValid;
+    }
+    const password = this.user.password.trim() as string;
+    if (password.length < 8) {
+      this.isPasswordValid = false;
+      return this.isPasswordValid;
+    }
+    let minNumber = 1;
+    let minBigSymbol = 1;
+    let minSmallSymbol = 1;
+    for (let i = 0; i < password.length; i++) {
+      const ch = password.charAt(i);
+      if (ch >= '0' && ch <= '9') { minNumber--; continue; }
+      if (ch >= 'A' && ch <= 'Z') { minBigSymbol--; continue; }
+      if (ch >= 'a' && ch <= 'z') { minSmallSymbol--; continue; }
+      this.isPasswordValid = false;
+      return this.isPasswordValid;
+    }
+    if (minNumber > 0 || minBigSymbol > 0 || minSmallSymbol > 0) {
+      this.isPasswordValid = false;
+      return this.isPasswordValid;
+    }
+    return this.isPasswordValid;
   }
 
   private isEmpty(value: any): boolean {
@@ -405,6 +484,9 @@ export class UserEditService {
   }
 
   resetValidation(): void {
+    this.isUserNameValid = true;
+    this.isPasswordValid = true;
+    this.isEmaileValid = true;
     Object.keys(this.missingItem).forEach(k => {
       this.missingItem[k].isMissing = false;
       this.missingItem[k].isError = false;
@@ -417,9 +499,10 @@ export class UserEditService {
 
   private createNew(req: any): void {
     console.log(req);
-    const subscription = this.http.post(this._userUrl, req).subscribe(res => {
+    this.http.post(this._userUrl, req)
+    .pipe(take(1))
+    .subscribe(res => {
       this._isLoading = false;
-      subscription.unsubscribe();
       this.notificationService.addNotification({
         showInToaster: true,
         isClientOnly: true,
@@ -428,7 +511,6 @@ export class UserEditService {
         type: ToasterType.success
       });
     }, error => {
-      subscription.unsubscribe();
       this._isLoading = false;
       this.notificationService.addNotification({
         showInToaster: true,
@@ -442,9 +524,10 @@ export class UserEditService {
 
   private updateUser(req: any): void {
     delete req.researches;
-    const subscription = this.http.put(`${this._userUrl}/${this.user.id}`, req).subscribe(res => {
+    this.http.put(`${this._userUrl}/${this.user.id}`, req)
+    .pipe(take(1))
+    .subscribe(res => {
       this._isLoading = false;
-      subscription.unsubscribe();
       this.notificationService.addNotification({
         showInToaster: true,
         isClientOnly: true,
@@ -453,7 +536,6 @@ export class UserEditService {
         type: ToasterType.success
       });
     }, error => {
-      subscription.unsubscribe();
       this._isLoading = false;
       this.notificationService.addNotification({
         showInToaster: true,
@@ -466,9 +548,10 @@ export class UserEditService {
   }
 
   private updateResearchers(req: any): void {
-    const subscription = this.http.put(`${this._userUrl}/${this.user.id}`, req).subscribe(res => {
+    this.http.put(`${this._userUrl}/${this.user.id}`, req)
+    .pipe(take(1))
+    .subscribe(res => {
       this._isLoading = false;
-      subscription.unsubscribe();
       this.notificationService.addNotification({
         showInToaster: true,
         isClientOnly: true,
@@ -477,7 +560,6 @@ export class UserEditService {
         type: ToasterType.success
       });
     }, error => {
-      subscription.unsubscribe();
       this._isLoading = false;
       this.notificationService.addNotification({
         showInToaster: true,
@@ -608,6 +690,10 @@ export class UserEditService {
           csvTitle: 'Allowed content',
           hidden: true
         },
+        {
+          columnId: 'isExpired',
+          hidden: true,
+        }
       ],
       rows: []
     }
@@ -621,7 +707,9 @@ export class UserEditService {
           Active: fl.ps.isActive,
           maxPatients: fl.ps.size,
           startDate: fl.ps.fromDate,
-          endDate: fl.ps.toDate
+          endDate: fl.ps.toDate,
+          isExpired: fl.ps.isFromServer ? fl.ps.isExpired :
+            fl.ps.keyExpirationDate ? (new Date() > new Date(fl.ps.keyExpirationDate) ? true : false) : false,
         },
         source: fl,
         isActive: false

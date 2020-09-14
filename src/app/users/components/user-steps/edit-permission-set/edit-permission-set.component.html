@@ -12,7 +12,10 @@
         <div class="modal-step__close ic-hover">
             <svg class="icon ic-close" mdcSvg="ic-close" (click)="closeCreateSet()"></svg>
         </div>
-        <div class="modal-step__content">
+        <div *ngIf="isSetLoading" class="modal-step__content">
+            Loading...
+        </div>
+        <div *ngIf="!isSetLoading" class="modal-step__content">
             <md-permission-wizard #permissionWizard (onCancel)="closeCreateSet()" (onLoad)="updateSetOffline($event)"
                 (onSave)="addPermissinSet($event)" [isFromClient]="true" [showLegend]="false" [isPopup]="true"
                 [confirmOnChanges]="false"></md-permission-wizard>
@@ -39,13 +42,12 @@
     </ng-template>
 
     <ng-template #KeyStatus let-item let-src="source">
-        <!-- <svg class="icon ic-failure ic-grey"
-            *ngIf="src.researchStatus && src.researchStatus.toLowerCase().trim()!=='open'" mdcSvg="ic-failure"></svg> -->
+        <svg width="20" height="20" color="#b00" *ngIf="item.isExpired" mdcSvg="ic-failure"></svg>
     </ng-template>
 
     <ng-template #Active let-item let-src="source">
-        <!-- <div *ngIf="isActive(src)">
+        <div *ngIf="src.ps?.isActive">
             <span class="admin-table__circle admin-table__circle_green"></span>
-        </div> -->
+        </div>
     </ng-template>
 </div>

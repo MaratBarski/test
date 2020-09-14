@@ -26,7 +26,7 @@
                 "UserType": {
                     "userId": "5",
                     "projectId": "1",
-                    "userType": "ADMIN",
+                    "userType": "admin",
                     "anonymityLevel": 1,
                     "numericScatterLimit": 0
                 },

@@ -1,0 +1,68 @@
+<md-page-title>
+    <div class="page-header__content">
+        <h1>PATIENT STORY SETTINGS</h1>
+    </div>
+</md-page-title>
+<md-page-body>
+    <div [hidden]="isLoaded">Loading...</div>
+    <div [hidden]="!isLoaded" class="admin-table-wrap__action">
+        <div class="admin-table-wrap__col">
+            <mdc-button className="btn_icon" (click)="openFileUpload()" text="+ New Settings">
+            </mdc-button>
+        </div>
+        <div mdAnimationSticky [hidden]="!isDataExists" class="admin-table-wrap__col">
+            <div class="form-search d-none d-md-block">
+                <mdc-auto-search [pause]="500" #search placeholder="{{'search'|translate}}"></mdc-auto-search>
+            </div>
+        </div>
+    </div>
+    <div [hidden]="!isDataExists || !isLoaded">
+        <mdc-table #table (onAction)="onAction($event)" [emptyState]="emptyState"
+            [cellsTemplate]="{ Modified:modified,Status:statusColumn}" [searchOptions]="searchOptions"
+            [paginator]="paginator" [search]="search" [dataSource]="dataSource">
+        </mdc-table>
+    </div>
+    <mdc-empty-state *ngIf="!isDataExists && isLoaded" [emptyState]="emptyState"></mdc-empty-state>
+    <div class="pager-wrap" [hidden]="!isLoaded">
+        <mdc-paginator #paginator paginationTitle="{{'paginationTitle'|translate}}" noPagingTitle="Showing {0} files"
+            [blockSize]="3" [pageSize]="12" [currentPage]="0">
+        </mdc-paginator>
+    </div>
+</md-page-body>
+
+<ng-template #modified let-item>
+    <div [stickyToElement]="true" position="right"
+        [mdcTooltip]="(item.Modified|date) + ' ' + (item.Modified|date:'HH:mm')">
+        {{item.Modified|date}}&nbsp;{{item.Modified|date:'HH:mm'}}
+    </div>
+</ng-template>
+
+<ng-template #statusColumn let-item let-source="source">
+    <div *ngIf="source.status === 'generating'">
+        <span class="admin-table__icon">
+            <svg class="icon ic-running ic-grey" mdcSvg="ic-running"></svg>
+            <span class="tooltip tooltip_left">
+                <span class="tooltip__content">Generating</span></span>
+        </span>
+        <span class="admin-table__icon-label d-none d-xxl-inline-block">Generating</span>
+    </div>
+    <div *ngIf="source.status === 'completed'">
+        <span class="admin-table__icon">
+            <svg class="icon ic-success ic-grey" mdcSvg="ic-success"></svg>
+            <span class="tooltip tooltip_left"><span class="tooltip__content">Completed</span></span>
+        </span>
+        <span class="admin-table__icon-label d-none d-xxl-inline-block">Completed</span>
+    </div>
+    <div *ngIf="source.status === 'failed'">
+        <span class="admin-table__icon">
+            <svg class="icon ic-failure ic-grey" mdcSvg="ic-failure">
+            </svg><span class="tooltip tooltip_left"><span class="tooltip__content">Failed</span></span></span><span
+            class="admin-table__icon-label d-none d-xxl-inline-block">Failed</span>
+    </div>
+    <div *ngIf="source.status === 'aborted'">
+        <span class="admin-table__icon">
+            <svg class="icon ic-failure ic-grey" mdcSvg="ic-failure">
+            </svg><span class="tooltip tooltip_left"><span class="tooltip__content">Aborted</span></span></span><span
+            class="admin-table__icon-label d-none d-xxl-inline-block">Aborted</span>
+    </div>
+</ng-template>

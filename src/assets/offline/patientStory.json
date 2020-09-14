@@ -1,0 +1,110 @@
+{
+    "data": [
+        {
+            "status": "aborted",
+            "settingsName": "xxxxxx",
+            "filePath": "/mdclone_v6/files/Data/20200803_183137_A_Valid_file_1.csv",
+            "fileNameAlias": "20200803_183137_A_Valid_file_1",
+            "tag": null,
+            "insertDate": "2020-08-03T15:28:21.000Z",
+            "templateId": null,
+            "tableName": "tmp_file_2120",
+            "project": "1",
+            "uploadedBy": "5",
+            "fileType": 0,
+            "fileStatus": "uploaded",
+            "columnsNum": "4",
+            "rowsNum": "10001",
+            "uploaded_by": "5",
+            "template": null,
+            "projectObj": {
+                "projectId": "1",
+                "projectName": "Demo Project",
+                "defaultSiteId": "1"
+            },
+            "user": {
+                "login": "mdclone.admin"
+            }
+        },
+        {
+            "status": "completed",
+            "settingsName": "xxxxxx",
+            "filePath": "/mdclone_v6/files/Data/20200803_183137_A_Valid_file_1.csv",
+            "fileNameAlias": "20200803_183137_A_Valid_file_1",
+            "tag": null,
+            "insertDate": "2020-08-03T15:28:21.000Z",
+            "templateId": null,
+            "tableName": "tmp_file_2120",
+            "project": "1",
+            "uploadedBy": "5",
+            "fileType": 0,
+            "fileStatus": "uploaded",
+            "columnsNum": "4",
+            "rowsNum": "10001",
+            "uploaded_by": "5",
+            "template": null,
+            "projectObj": {
+                "projectId": "1",
+                "projectName": "Demo Project",
+                "defaultSiteId": "1"
+            },
+            "user": {
+                "login": "mdclone.admin"
+            }
+        },
+        {
+            "status": "failed",
+            "settingsName": "xxxxxx",
+            "filePath": "/mdclone_v6/files/Data/20200803_183137_A_Valid_file_1.csv",
+            "fileNameAlias": "20200803_183137_A_Valid_file_1",
+            "tag": null,
+            "insertDate": "2020-08-03T15:28:21.000Z",
+            "templateId": null,
+            "tableName": "tmp_file_2120",
+            "project": "1",
+            "uploadedBy": "5",
+            "fileType": 0,
+            "fileStatus": "uploaded",
+            "columnsNum": "4",
+            "rowsNum": "10001",
+            "uploaded_by": "5",
+            "template": null,
+            "projectObj": {
+                "projectId": "1",
+                "projectName": "Demo Project",
+                "defaultSiteId": "1"
+            },
+            "user": {
+                "login": "mdclone.admin"
+            }
+        },
+        {
+            "status": "generating",
+            "settingsName": "xxxxxx",
+            "filePath": "/mdclone_v6/files/Data/20200803_183137_A_Valid_file_1.csv",
+            "fileNameAlias": "20200803_183137_A_Valid_file_1",
+            "tag": null,
+            "insertDate": "2020-08-03T15:28:21.000Z",
+            "templateId": null,
+            "tableName": "tmp_file_2120",
+            "project": "1",
+            "uploadedBy": "5",
+            "fileType": 0,
+            "fileStatus": "uploaded",
+            "columnsNum": "4",
+            "rowsNum": "10001",
+            "uploaded_by": "5",
+            "template": null,
+            "projectObj": {
+                "projectId": "1",
+                "projectName": "Demo Project",
+                "defaultSiteId": "1"
+            },
+            "user": {
+                "login": "mdclone.admin"
+            }
+        }
+    ],
+    "massage": "Get all File Source's Objects",
+    "status": "success"
+}

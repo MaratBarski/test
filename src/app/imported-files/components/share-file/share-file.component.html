@@ -1,6 +1,8 @@
 <div class="info-panel__shared" [ngClass]="{active: opened}">
   <span (click)="toggleShare()">{{startValue ? "Shared" : "No Shared"}}</span>
-  <mdc-icon [path]="'ic-shared'" [css]="'icon ic-shared'" (click)="toggleShare()"></mdc-icon>
+  <span style="margin-left: 8px;">
+    <mdc-icon [path]="'ic-shared'" [css]="'icon ic-shared'" (click)="toggleShare()"></mdc-icon>
+  </span>
 
   <div class="info-popup">
     <form class="form-site">

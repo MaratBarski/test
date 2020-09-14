@@ -6,6 +6,6 @@
             <svg [hidden]="value" class="icon ic-check" mdcSvg="ic-uncheck"></svg>
         </span>
         <ng-content></ng-content>
-        <span *ngIf="text" class="input-check__text">{{text}}</span>
+        <span [ngStyle]="{'white-space':whiteSpace}" *ngIf="text" class="input-check__text">{{text}}</span>
     </div>
 </div>

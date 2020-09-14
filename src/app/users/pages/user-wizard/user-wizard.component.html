@@ -1,15 +1,14 @@
 <div style="margin: 20px;" *ngIf="userEditService.isLoading || userEditService.isHidden">Loading...</div>
-<div [style.visibility]="userEditService.isHidden ? 'hidden' : 'visible'" class="main-content">
+<div [hidden]="userEditService.isHidden" class="main-content">
     <div *ngIf="!userEditService.isLoading" class="content-page">
         <md-header [pageTitle]="pageTitle"></md-header>
-        <!-- {{userEditService.user|json}} -->
         <section class="user-details-wrap">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12">
                         <div class="user-details">
-                            <md-tabs (onSelect)="selectNextTab($event)" [selectedTab]="userEditService.selectedTab"
-                                [tabs]="tabs"></md-tabs>
+                            <md-tab-wizard (onSelect)="selectNextTab($event)" [selectedTab]="userEditService.selectedTab"
+                                [tabs]="tabs"></md-tab-wizard>
                             <md-edit-user-general [hidden]="userEditService.selectedTab!==0"></md-edit-user-general>
                             <md-edit-permission-set [hidden]="userEditService.selectedTab!==1"></md-edit-permission-set>
                         </div>
@@ -19,7 +18,7 @@
         </section>
     </div>
 </div>
-<md-footer [isSingleMode]="userEditService.mode" *ngIf="!userEditService.isLoading" [hidden]="userEditService.isHidden" (onOptionClick)="save()"
+<md-footer [isLastTab]="isLastTab" [isSingleMode]="userEditService.mode" *ngIf="!userEditService.isLoading" [hidden]="userEditService.isHidden" (onOptionClick)="save()"
     [isNextEnable]="isNextEnable" [isSaveEnable]="isSaveEnable" (onCancel)="cancel()" (onNext)="next($event)"
     (onSave)="save()" (onOptionClick)="optionClick($event)" [btnOptions]="btnOptions"></md-footer>
 

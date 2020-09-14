@@ -1,0 +1,81 @@
+<div class="user-details__content-wrap">
+    <div class="user-details__content user-details__content_block">
+        <div class="user-details__info">
+            <div class="user-source">
+                <div class="user-source__text">Please fill the below information. All fields are mandatory.</div>
+                <div class="user-source__content">
+                    <div class="user-source__list">
+                        <div class="user-source__item">
+                            <div class="user-source__label"><span class="user-source__label-text">Name:</span></div>
+                            <div class="user-source__field">
+                                <input type="text" [(ngModel)]="editPatientService.settings.settingsName"
+                                    placeholder="Type name for the settings">
+                            </div>
+                        </div>
+                        <div class="user-source__item">
+                            <div class="user-source__label">Environment:</div>
+                            <div class="user-source__field">
+                                <md-project-combo #projectCmp [isSmall]="true" [selectUp]="false"
+                                    [project]="editPatientService.settings.projectId"
+                                    (onChange)="changedProject($event)">
+                                </md-project-combo>
+                            </div>
+                        </div>
+                        <div class="user-source__item user-source__item_full">
+                            <div class="user-source__label">Cohort source:</div>
+                            <div class="user-source__field">
+                                <md-radio-list (onChange)="changeSource($event)" [selectedOption]="selectedCohortOption"
+                                    [options]="cohortOptions"></md-radio-list>
+                            </div>
+                        </div>
+                        <div class="user-source__item user-source__item_full">
+                            <div class="user-source__label">Output format:</div>
+                            <div class="user-source__field">
+                                <div class="user-source-format">
+                                    <mdc-tabs [isSmall]="true" (select)="setOutputFormat($event)"
+                                        [active]="activeFormat" [tabs]="tabsFormat"></mdc-tabs>
+                                    <div class="user-source-format__text">The location of the XML files will be
+                                        available once the process is complete.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #radioTemplate1>
+    <div class="user-source-radio__field">
+        <mdc-auto-complete [disabled]="editPatientService.settings.cohortSource!==1" #queryCmp
+            placeHolder="Search or Select a Query..." textField="name" (onSelect)="selectQuery($event)"
+            (onClear)="clearQuery()" (completeMethod)="completeQuery($event)" [suggestions]="queries">
+            <ng-template let-item>
+                <div class="select__param" [text]="item.name" [mdcColorText]="searchQueryText"></div>
+            </ng-template>
+        </mdc-auto-complete>
+    </div>
+</ng-template>
+
+<ng-template #radioTitle1>
+    <span class="input-radio__notice">
+        List is sorted by date
+    </span>
+</ng-template>
+
+<ng-template #radioTitle2>
+</ng-template>
+
+<ng-template #radioTemplate2>
+    <div class="user-source-radio__field">
+        <div [ngClass]="{'disable':editPatientService.settings.cohortSource!==2}" class="file-upload">
+            <label class="file-upload__content">
+                <input type="file" [disabled]="editPatientService.settings.cohortSource!==2">
+                <span class="file-upload__btn">Choose File</span>
+                <span [ngClass]="{'disable':editPatientService.settings.cohortSource!==2}" class="file-upload__name">No
+                    file chosen</span>
+            </label>
+        </div>
+    </div>
+</ng-template>

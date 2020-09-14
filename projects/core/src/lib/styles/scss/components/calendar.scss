@@ -246,7 +246,7 @@
 		background: #f2f3f5;
 		border-bottom: 1px solid rgba(172, 178, 195, 0.5);
 	}
-	
+
 
 	.ui-datepicker table th:first-child,
 	.ui-datepicker table td:first-child{
@@ -269,4 +269,11 @@
 	.ui-datepicker table{
 		margin-bottom: 7px;
 	}
+}
+
+/* custom */
+.custom-date .tabs-popup{
+  margin: 0;
+  border: 0;
+  overflow: visible;
 }

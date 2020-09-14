@@ -28,6 +28,8 @@ import {TooltipModule} from 'primeng/tooltip';
 import { UserProjectPipe } from './pipes/user-project.pipe';
 import { ToolTipManagerDirective } from './directives/tool-tip-manager.directive';
 import { DateTimePipe } from './pipes/date-time.pipe';
+import { TabWizardComponent } from './components/tab-wizard/tab-wizard.component';
+import { RadioListComponent } from './components/radio-list/radio-list.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,9 @@ import { DateTimePipe } from './pipes/date-time.pipe';
     ConfirmDialogComponent,
     UserProjectPipe,
     ToolTipManagerDirective,
-    DateTimePipe
+    DateTimePipe,
+    TabWizardComponent,
+    RadioListComponent
   ],
   imports: [
     FormsModule,
@@ -76,7 +80,9 @@ import { DateTimePipe } from './pipes/date-time.pipe';
     TooltipModule,
     ToolTipManagerDirective,
     LegendComponent,
-    DateTimePipe
+    DateTimePipe,
+    TabWizardComponent,
+    RadioListComponent
   ],
   entryComponents: [
   ]

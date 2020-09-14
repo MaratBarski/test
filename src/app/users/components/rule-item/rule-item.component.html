@@ -1,23 +1,28 @@
 <div class="rule-build-item rule-build-item_light-red">
     <div class="rule-build-item__head">that</div>
     <div class="rule-build-item__content">
-        <div class="rule-build-item__select">
-            <mdc-select (changed)="changedEvent($event)" [isInvalid]="isShowerror && selectedEvent===-1"
-                [(ngModel)]="selectedEvent" [options]="eventsOptions" placeholder="Select Event..." [isSmall]="true">
-            </mdc-select>
-        </div>
-        <div class="rule-build-item__select">
-            <div class="drop-auto">
-                <mdc-select (changed)="changedProperty($event)" [isInvalid]="isShowerror && selectedProperty===-1"
-                    [(ngModel)]="selectedProperty" [options]="propertyOptions" placeholder="Select Property..."
-                    [isSmall]="true">
-                </mdc-select>
+        <md-event-searcher [isExpanded]="isEventExpanded" (onShowAll)="showAllEvents()" [searchText]="selectedEventName||searchEventText" (onTextChanged)="searchEvents($event)" placeholder="Search or Select Event...">
+            <div [hidden]="!((eventsOptions || [])|searchByText:'text':searchEventText:isShowAllEvents).length" class="drop-cond__sect">
+                <div [ngClass]="{'selected':ev.id == selectedEvent}" (click)="selectEvent(ev)" *ngFor="let ev of (eventsOptions || [])|searchByText:'text':searchEventText:isShowAllEvents" class="drop-cond__param">
+                    <div [text]="ev.text" [mdcColorText]="searchEventText" class="drop-cond__param-text"></div>
+                </div>
             </div>
-        </div>
+            <div [hidden]="((eventsOptions || [])|searchByText:'text':searchEventText:isShowAllEvents).length" class="drop-cond__sect">
+                No Events found
+            </div>
+        </md-event-searcher>
+        <md-event-searcher (onExpanDisabled)="onExpanDisabled()"  (onShowAll)="showAllProperties()"  [searchText]="fieldDescription||searchPropertyText" [isDisabled]="selectedEvent===-1"  (onTextChanged)="searchProperties($event)" placeholder="Search or Select Property...">
+            <div [hidden]="!((propertyOptions || [])|searchByText:'text':searchPropertyText:isShowAllProperties).length" class="drop-cond__sect">
+                <div [ngClass]="{'selected':p.id == selectedProperty}" (click)="selectProperty(p)" *ngFor="let p of (propertyOptions || [])|searchByText:'text':searchPropertyText:isShowAllProperties" class="drop-cond__param">
+                    <div [text]="p.text" [mdcColorText]="searchPropertyText" class="drop-cond__param-text"></div>
+                </div>
+            </div>
+            <div [hidden]="((propertyOptions || [])|searchByText:'text':searchPropertyText:isShowAllProperties).length" class="drop-cond__sect">
+                No Properties found
+            </div>
+        </md-event-searcher>
         <div class="rule-build-item__input">
-            <div class="role-border" [ngClass]="{'invalid':!text && isShowerror}">
-                <input type="text" (change)="changed()" [(ngModel)]="text" placeholder="Type a text value">
-            </div>
+            <input (change)="changed()" [(ngModel)]="text" type="text" placeholder="Type a text value">
         </div>
     </div>
     <div (click)="remove()" class="rule-build-item__icon">

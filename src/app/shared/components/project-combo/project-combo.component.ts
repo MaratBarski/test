@@ -7,6 +7,7 @@ import { SelectOption, LoginService, BaseSibscriber, SortService } from '@appcor
   styleUrls: ['./project-combo.component.scss']
 })
 export class ProjectComboComponent extends BaseSibscriber implements OnInit {
+  @Input() userType: string;
   @Input() user: any;
   @Input() isSmall = false;
   @Input() applyWidth = false;

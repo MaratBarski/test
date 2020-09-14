@@ -1,13 +1,13 @@
 {
     "data": {
-        "researchId": 162,
-        "researchName": "marat - sariel",
-        "userId": "1000",
+        "researchId": 180,
+        "researchName": "Omry - Sariel",
+        "userId": "10",
         "projectId": "1",
         "startDate": "2013-12-31",
-        "researchStatus": "opeN",
+        "researchStatus": "open",
         "maxPatients": 1000000,
-        "insertDate": "2020-09-06T07:57:33.000Z",
+        "insertDate": "2020-09-14T06:39:14.000Z",
         "information": null,
         "endDate": "2022-12-03",
         "approvalKey": null,
@@ -15,14 +15,27 @@
         "user_id": "10",
         "researchRestrictionEvents": [
             {
-                "eventId": "26",
-                "eventPropertyName": "startdate",
-                "value": "value1"
-            },
-            {
-                "eventId": "64",
-                "eventPropertyName": "birthdate",
-                "value": "value2"
+                "researchId": "180",
+                "eventPropertyName": "drgtype",
+                "eventId": "3",
+                "value": "dehf",
+                "siteEventPropertyInfo": {
+                    "eventPropertyNa": "drgtype",
+                    "eventId": "320",
+                    "dataSample": "drgtype, HCFA, APR , MS",
+                    "eventPropertyTy": "STRING",
+                    "hierarchyRootId": null,
+                    "patientFk": false,
+                    "eventTimeStamp": false,
+                    "ageAtEvent": false,
+                    "fieldDescriptio": "drgtype",
+                    "fieldDes": null,
+                    "priority": 0,
+                    "isDependentSear": false
+                },
+                "siteEventInfo": {
+                    "eventTableAlias": "lab result"
+                }
             }
         ],
         "researchTemplates": [],

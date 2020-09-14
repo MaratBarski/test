@@ -161,12 +161,17 @@
 
 	&:not(:last-child){margin-bottom: 20px;}
 
-	.input-date{
-		input[type="text"]{
-			height: rem(30px);
-			width: 130px;
-		}
-	}
+  .input-date{
+    input[type="text"]{
+      height: rem(30px);
+      width: 92px;
+      padding: 0 10px;
+      margin-right: 28px;
+      font-size: rem(12px);
+    }
+
+    .icon{right: 0;}
+  }
 
 	.form-search{width: 330px;}
 
@@ -197,6 +202,8 @@
       border-color: $color-purple;
     }
   }
+
+  &.active &__content{border: 1px solid $color-dark-purple;}
 }
 
 .rule-build-fields{

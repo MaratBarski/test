@@ -1,0 +1,14 @@
+<div class="add-perm-set__top">
+    <div class="steps-white">
+        <ng-container *ngFor="let tab of tabs;let i = index">
+            <div [ngClass]="{'disable':tab.isDisabled,'active':i===selectedTab}" (click)="select(i)"
+                class="steps-white__item">
+                <div class="steps-white__num">{{i+1}}</div>
+                <div class="steps-white__val">{{tab.text}}
+                </div>
+                <div class="steps-white__arr"></div>
+                <span *ngIf="tab.isOptional" class="steps-white__opt">optional</span>
+            </div>
+        </ng-container>
+    </div>
+</div>
