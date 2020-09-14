@@ -1,0 +1,87 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <div class="query-flow-top">
+        <div class="query-flow-top__main">
+          <div class="query-flow-top__icon" [routerLink]="'/imported-files'">
+            <span class="ic-hover">
+                  <mdc-icon path="ic-back-to-page"></mdc-icon>
+            </span>
+          </div>
+          <div class="query-flow-top__title">{{fileSource.fileName}}</div>
+        </div>
+        <div class="query-flow-top__info">
+          <div class="query-flow-top__desc">{{ fileSource.fileNameAlias }}
+          </div>
+          <div class="query-flow-top__param"><span class="query-flow-top__label">Last Saved:</span> <span
+            class="query-flow-top__text"> {{ fileSource.insertDate | date:"MMM L, yyyy H:mm" }}</span></div>
+          <div class="query-flow-top__save ic-hover">
+            <mdc-icon path="ic-save-def"></mdc-icon>
+            <span class="tooltip tooltip_right"><span class="tooltip__content">Save Query</span></span>
+          </div>
+          <div class="query-flow-menu disable">
+            <div class="query-flow-menu__btn ic-hover">
+              <mdc-icon path="ic-dot-menu"></mdc-icon>
+            </div>
+            <div class="query-flow-menu__popup">
+              <div class="query-flow-menu__top">
+                <div class="query-flow-menu__sect">
+                  <div class="query-flow-menu__item">
+                    <div class="query-flow-menu__icon">
+                      <mdc-icon path="ic-save-def"></mdc-icon>
+                    </div>
+                    <div class="query-flow-menu__text">Save</div>
+                  </div>
+                  <div class="query-flow-menu__item">
+                    <div class="query-flow-menu__icon">
+                      <mdc-icon path="ic-duplicate"></mdc-icon>
+                    </div>
+                    <div class="query-flow-menu__text">Duplicate</div>
+                  </div>
+                </div>
+                <div class="query-flow-menu__sect">
+                  <div class="query-flow-menu__item">
+                    <div class="query-flow-menu__icon">
+                      <mdc-icon path="ic-share"></mdc-icon>
+                    </div>
+                    <div class="query-flow-menu__text">Share</div>
+                  </div>
+                  <div class="query-flow-menu__item">
+                    <div class="query-flow-menu__icon">
+                      <mdc-icon path="ic-send"></mdc-icon>
+                    </div>
+                    <div class="query-flow-menu__text">Send</div>
+                  </div>
+                </div>
+                <div class="query-flow-menu__sect">
+                  <div class="query-flow-menu__item">
+                    <div class="query-flow-menu__icon">
+                      <mdc-icon path="ic-calculate-cohort-thin"></mdc-icon>
+                    </div>
+                    <div class="query-flow-menu__text">Recalculate Cohort</div>
+                  </div>
+                </div>
+                <div class="query-flow-menu__sect">
+                  <div class="query-flow-menu__item disable">
+                    <div class="query-flow-menu__icon">
+                      <mdc-icon path="ic-quality"></mdc-icon>
+                    </div>
+                    <div class="query-flow-menu__text">Quality of Care</div>
+                  </div>
+                </div>
+              </div>
+              <div class="query-flow-menu__bottom">
+                <div class="query-flow-menu__item">
+                  <div class="query-flow-menu__icon">
+                    <mdc-icon path="ic-delete"></mdc-icon>
+                  </div>
+                  <div class="query-flow-menu__text">Delete</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

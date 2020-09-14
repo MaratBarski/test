@@ -4,10 +4,11 @@ import {ActivateComponent} from '../activate/pages/activate/activate.component';
 import {Route, RouterModule} from '@angular/router';
 import {ActivateService} from '@app/activate/services/activate.service';
 import {CoreModule} from '@appcore';
-import {ColumnComponent} from './components/column/column.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {FilterColumnsPipe} from './pipes/filter-columns.pipe';
 import {DragDropModule} from '@angular/cdk/drag-drop';
+import { TopPanelComponent } from './components/top-panel/top-panel.component';
+import { SelectedColumnPipe } from './pipes/selected-column.pipe';
 
 const routes: Array<Route> = [
   {path: '', component: ActivateComponent},
@@ -16,7 +17,7 @@ const routes: Array<Route> = [
 ];
 
 @NgModule({
-  declarations: [ActivateComponent, ColumnComponent, FilterColumnsPipe],
+  declarations: [ActivateComponent, FilterColumnsPipe, TopPanelComponent, SelectedColumnPipe],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),

@@ -1,91 +1,315 @@
-<div class="query-flow">
-  <section>
-    <div class="query-flow-top-wrap">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-12">
-            <div class="query-flow-top">
-              <div class="query-flow-top__main">
-                <div class="query-flow-top__icon" [routerLink]="'/imported-files'"><span class="ic-hover">
-                  <mdc-icon path="ic-back-to-page"></mdc-icon>
-                </span></div>
-                <div class="query-flow-top__title">{{fileSource.fileName}}</div>
-              </div>
-              <div class="query-flow-top__info">
-                <div class="query-flow-top__desc">{{ fileSource.fileNameAlias }}
-                </div>
-                <div class="query-flow-top__param"><span class="query-flow-top__label">Last Saved:</span> <span
-                  class="query-flow-top__text">Jul 9, 2019 17:39</span></div>
-                <div class="query-flow-top__save ic-hover">
-                  <mdc-icon path="ic-save-def"></mdc-icon>
-                  <span class="tooltip tooltip_right"><span class="tooltip__content">Save Query</span></span>
-                </div>
-                <div class="query-flow-menu disable">
-                  <div class="query-flow-menu__btn ic-hover">
-                    <mdc-icon path="ic-dot-menu"></mdc-icon>
-                  </div>
-                  <div class="query-flow-menu__popup">
-                    <div class="query-flow-menu__top">
-                      <div class="query-flow-menu__sect">
-                        <div class="query-flow-menu__item">
-                          <div class="query-flow-menu__icon">
-                            <mdc-icon path="ic-save-def"></mdc-icon>
-                          </div>
-                          <div class="query-flow-menu__text">Save</div>
-                        </div>
-                        <div class="query-flow-menu__item">
-                          <div class="query-flow-menu__icon">
-                            <mdc-icon path="ic-duplicate"></mdc-icon>
-                          </div>
-                          <div class="query-flow-menu__text">Duplicate</div>
-                        </div>
+<div class="shadow-site is-visible"></div>
+<div class="add-filter-wrap">
+  <div class="modal-window">
+    <div class="modal-window__head">Add Filters</div>
+    <div class="modal-window__close ic-hover">
+      <mdc-icon css="ic-close" path="ic-close"></mdc-icon>
+    </div>
+    <div class="add-filter">
+      <div class="add-filter__content">
+        <div class="rule-build">
+          <div class="rule-build-item">
+            <div class="rule-build-item__content">
+              <div class="rule-build-item__select">
+                <div class="drop-cond drop-cond_big">
+                  <div class="drop-cond__content">
+                    <div class="drop-cond__head active">Reference Event-Age at transfer
+                      <div class="drop-cond__head-arr">
+                        <mdc-icon css="ic-select-arr-down" path="ic-select-arr-down"></mdc-icon>
                       </div>
-                      <div class="query-flow-menu__sect">
-                        <div class="query-flow-menu__item">
-                          <div class="query-flow-menu__icon">
-                            <mdc-icon path="ic-share"></mdc-icon>
+                    </div>
+                    <div class="drop-cond__popup">
+                      <div class="drop-cond__option">
+                        <div class="drop-cond__sect">
+                          <div class="drop-cond__param">
+                            <div class="drop-cond__param-text">param1</div>
                           </div>
-                          <div class="query-flow-menu__text">Share</div>
-                        </div>
-                        <div class="query-flow-menu__item">
-                          <div class="query-flow-menu__icon">
-                            <mdc-icon path="ic-send"></mdc-icon>
+                          <div class="drop-cond__param">
+                            <div class="drop-cond__param-text">param2</div>
                           </div>
-                          <div class="query-flow-menu__text">Send</div>
-                        </div>
-                      </div>
-                      <div class="query-flow-menu__sect">
-                        <div class="query-flow-menu__item">
-                          <div class="query-flow-menu__icon">
-                            <mdc-icon path="ic-calculate-cohort-thin"></mdc-icon>
+                          <div class="drop-cond__param">
+                            <div class="drop-cond__param-text">param3</div>
                           </div>
-                          <div class="query-flow-menu__text">Recalculate Cohort</div>
-                        </div>
-                      </div>
-                      <div class="query-flow-menu__sect">
-                        <div class="query-flow-menu__item disable">
-                          <div class="query-flow-menu__icon">
-                            <mdc-icon path="ic-quality"></mdc-icon>
+                          <div class="drop-cond__param">
+                            <div class="drop-cond__param-text">param4</div>
                           </div>
-                          <div class="query-flow-menu__text">Quality of Care</div>
                         </div>
                       </div>
                     </div>
-                    <div class="query-flow-menu__bottom">
-                      <div class="query-flow-menu__item">
-                        <div class="query-flow-menu__icon">
-                          <mdc-icon path="ic-delete"></mdc-icon>
+                  </div>
+                </div>
+              </div>
+              <div class="rule-build-item__select">
+                <div class="drop-cond">
+                  <div class="drop-cond__content">
+                    <div class="drop-cond__head active">is greater than
+                      <div class="drop-cond__head-arr">
+                        <mdc-icon css="ic-select-arr-down" path="ic-select-arr-down"></mdc-icon>
+                      </div>
+                    </div>
+                    <div class="drop-cond__popup">
+                      <div class="drop-cond__option">
+                        <div class="drop-cond__sect">
+                          <div class="drop-cond__param">
+                            <div class="drop-cond__param-text">is less than</div>
+                          </div>
+                          <div class="drop-cond__param">
+                            <div class="drop-cond__param-text">is less than or equal to</div>
+                          </div>
+                          <div class="drop-cond__param">
+                            <div class="drop-cond__param-text">is greater than</div>
+                          </div>
+                          <div class="drop-cond__param">
+                            <div class="drop-cond__param-text">is greater than or equal to</div>
+                          </div>
+                          <div class="drop-cond__param">
+                            <div class="drop-cond__param-icon">
+                              <div class="drop-cond__param-text">is between</div>
+                              <mdc-icon css="ic-help" path="ic-help"></mdc-icon>
+                            </div>
+                          </div>
                         </div>
-                        <div class="query-flow-menu__text">Delete</div>
+                        <div class="drop-cond__sect">
+                          <div class="drop-cond__param">
+                            <div class="drop-cond__param-text">is equal to</div>
+                          </div>
+                          <div class="drop-cond__param">
+                            <div class="drop-cond__param-text">is not equal to</div>
+                          </div>
+                        </div>
+                        <div class="drop-cond__sect">
+                          <div class="drop-cond__param">
+                            <div class="drop-cond__param-text">is empty</div>
+                          </div>
+                          <div class="drop-cond__param">
+                            <div class="drop-cond__param-text">is not empty</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="rule-build-fields">
+                <div class="rule-build-fields__item">
+                  <input type="text" value="18">
+                </div>
+              </div>
+            </div>
+            <div class="rule-build-item__icon">
+              <mdc-icon css="ic-close-circle" path="ic-close-circle"></mdc-icon>
+            </div>
+          </div>
+          <div class="rule-build-item rule-build-item_green">
+            <div class="rule-build-item__content">
+              <div class="rule-build-item__select">
+                <div class="drop-cond drop-cond_big">
+                  <div class="drop-cond__content">
+                    <div class="drop-cond__head active">Diagnosis Date
+                      <div class="drop-cond__head-arr">
+                        <mdc-icon css="ic-select-arr-down" path="ic-select-arr-down"></mdc-icon>
+                      </div>
+                    </div>
+                    <div class="drop-cond__popup">
+                      <div class="drop-cond__option">
+                        <div class="drop-cond__sect">
+                          <div class="drop-cond__param">
+                            <div class="drop-cond__param-text">param1</div>
+                          </div>
+                          <div class="drop-cond__param">
+                            <div class="drop-cond__param-text">param2</div>
+                          </div>
+                          <div class="drop-cond__param">
+                            <div class="drop-cond__param-text">param3</div>
+                          </div>
+                          <div class="drop-cond__param">
+                            <div class="drop-cond__param-text">param4</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="rule-build-item__select">
+                <div class="drop-cond">
+                  <div class="drop-cond__content">
+                    <div class="drop-cond__head active">is before or on
+                      <div class="drop-cond__head-arr">
+                        <mdc-icon css="ic-select-arr-down" path="ic-select-arr-down"></mdc-icon>
+                      </div>
+                    </div>
+                    <div class="drop-cond__popup">
+                      <div class="drop-cond__option">
+                        <div class="drop-cond__sect">
+                          <div class="drop-cond__param">
+                            <div class="drop-cond__param-text">None</div>
+                          </div>
+                        </div>
+                        <div class="drop-cond__sect">
+                          <div class="drop-cond__param">
+                            <div class="drop-cond__param-text">is less than</div>
+                          </div>
+                          <div class="drop-cond__param">
+                            <div class="drop-cond__param-text">is less than or equal to</div>
+                          </div>
+                          <div class="drop-cond__param">
+                            <div class="drop-cond__param-text">is greater than</div>
+                          </div>
+                          <div class="drop-cond__param">
+                            <div class="drop-cond__param-text">is greater than or equal to</div>
+                          </div>
+                          <div class="drop-cond__param">
+                            <div class="drop-cond__param-icon">
+                              <div class="drop-cond__param-text">is between</div>
+                              <mdc-icon css="ic-help" path="ic-help"></mdc-icon>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="drop-cond__sect">
+                          <div class="drop-cond__param">
+                            <div class="drop-cond__param-text">is equal to</div>
+                          </div>
+                          <div class="drop-cond__param">
+                            <div class="drop-cond__param-text">is not equal to</div>
+                          </div>
+                        </div>
+                        <div class="drop-cond__sect">
+                          <div class="drop-cond__param">
+                            <div class="drop-cond__param-text">is empty</div>
+                          </div>
+                          <div class="drop-cond__param">
+                            <div class="drop-cond__param-text">is not empty</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="rule-build-fields__item">
+                <div class="input-date">
+                  <input type="text" placeholder="dd/mm/yyyy">
+                  <mdc-icon css="ic-calendar" path="ic-calendar"></mdc-icon>
+                </div>
+              </div>
+            </div>
+            <div class="rule-build-item__icon">
+              <mdc-icon css="ic-close-circle" path="ic-close-circle"></mdc-icon>
+            </div>
+          </div>
+          <div class="rule-build-item rule-build-item_grey">
+            <div class="rule-build-item__content">
+              <div class="rule-build-item__select">
+                <div class="drop-cond drop-cond_big">
+                  <div class="drop-cond__content">
+                    <div class="drop-cond__head">Select a column...
+                      <div class="drop-cond__head-arr">
+                        <mdc-icon css="ic-select-arr-down" path="ic-select-arr-down"></mdc-icon>
+                      </div>
+                    </div>
+                    <div class="drop-cond__popup">
+                      <div class="drop-cond__option">
+                        <div class="drop-cond__sect">
+                          <div class="drop-cond__param">
+                            <div class="drop-cond__param-text">param1</div>
+                          </div>
+                          <div class="drop-cond__param">
+                            <div class="drop-cond__param-text">param2</div>
+                          </div>
+                          <div class="drop-cond__param">
+                            <div class="drop-cond__param-text">param3</div>
+                          </div>
+                          <div class="drop-cond__param">
+                            <div class="drop-cond__param-text">param4</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="rule-build-item__select">
+                <div class="drop-cond">
+                  <div class="drop-cond__content">
+                    <div class="drop-cond__head">Select Condition...
+                      <div class="drop-cond__head-arr">
+                        <mdc-icon css="ic-select-arr-down" path="ic-select-arr-down"></mdc-icon>
+                      </div>
+                    </div>
+                    <div class="drop-cond__popup">
+                      <div class="drop-cond__option">
+                        <div class="drop-cond__sect">
+                          <div class="drop-cond__param">
+                            <div class="drop-cond__param-text">None</div>
+                          </div>
+                        </div>
+                        <div class="drop-cond__sect">
+                          <div class="drop-cond__param">
+                            <div class="drop-cond__param-text">is less than</div>
+                          </div>
+                          <div class="drop-cond__param">
+                            <div class="drop-cond__param-text">is less than or equal to</div>
+                          </div>
+                          <div class="drop-cond__param">
+                            <div class="drop-cond__param-text">is greater than</div>
+                          </div>
+                          <div class="drop-cond__param">
+                            <div class="drop-cond__param-text">is greater than or equal to</div>
+                          </div>
+                          <div class="drop-cond__param">
+                            <div class="drop-cond__param-icon">
+                              <div class="drop-cond__param-text">is between</div>
+                              <mdc-icon css="ic-help" path="ic-help"></mdc-icon>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="drop-cond__sect">
+                          <div class="drop-cond__param">
+                            <div class="drop-cond__param-text">is equal to</div>
+                          </div>
+                          <div class="drop-cond__param">
+                            <div class="drop-cond__param-text">is not equal to</div>
+                          </div>
+                        </div>
+                        <div class="drop-cond__sect">
+                          <div class="drop-cond__param">
+                            <div class="drop-cond__param-text">is empty</div>
+                          </div>
+                          <div class="drop-cond__param">
+                            <div class="drop-cond__param-text">is not empty</div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+            <div class="rule-build-item__icon">
+              <mdc-icon css="ic-close-circle" path="ic-close-circle"></mdc-icon>
+            </div>
           </div>
+          <div class="rule-build__more"><span class="link-site"><span class="rule-build__more-plus">
+            <mdc-icon css="ic-plus" path="ic-plus"></mdc-icon>
+          </span>Column Filter</span></div>
         </div>
       </div>
+      <div class="add-filter__btn"><span class="add-filter__btn-link">Cancel</span>
+        <div class="add-filter__btn-group">
+          <input class="btn btn_border" type="submit" value="Apply">
+          <input class="btn" type="submit" value="Apply &amp; Close">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="query-flow">
+  <section>
+    <div class="query-flow-top-wrap">
+      <md-top-panel [fileSource]="fileSource"></md-top-panel>
     </div>
   </section>
   <section>
@@ -235,13 +459,16 @@
             <thead>
             <tr class="admin-table__head">
               <th class="admin-table__item admin-table__item_check-full">
-                <div class="input-check">
-                  <input id="paramall" type="checkbox" name="paramall" checked="checked">
-                  <label class="input-check__label" for="paramall"><span class="input-check__mark">
-                    <mdc-icon path="ic-check" css="ic-check"></mdc-icon>
-                  </span><span class="input-check__text">Column Name<span
-                    class="input-check__notice">36 selected of 36</span></span></label>
-                </div>
+
+
+                <mdc-check-box style="display: inline-block" [(ngModel)]="selectAll"
+                               (change)="selectAllChanged($event)"></mdc-check-box>
+
+                <span class="input-check__text">Column Name<span
+                  class="input-check__notice">{{columnCollection | selectedColumn}}
+                  selected of {{columnCollection.length}}</span></span>
+
+
               </th>
               <th class="admin-table__item admin-table__type admin-table__item_center d-none d-md-table-cell">Type</th>
               <th class="admin-table__item d-none d-md-table-cell">Category/Calculated Column</th>
@@ -256,13 +483,8 @@
             <tr class="admin-table__row" *ngFor="let column of columnCollection | filterColumns" cdkDrag>
               <td class="admin-table__item">
                 <div class="admin-table__check">
-                  <div class="input-check">
-                    <input type="checkbox" name="param_{{column.order}}" [(ngModel)]="column.include" id="param01"
-                           checked="checked">
-                    <label class="input-check__label" for="param01"><span class="input-check__mark">
-                      <mdc-icon path="ic-check" css="ic-check"></mdc-icon>
-                    </span></label>
-                  </div>
+                  <mdc-check-box [(ngModel)]="column.include" (change)="changeCollectionObject()"></mdc-check-box>
+
                   <div class="admin-table__name-edit">
                     <input type="text" [(ngModel)]="column.aliasName">
                   </div>
@@ -282,7 +504,8 @@
 
               <!--              // col of hierarchy start-->
               <td class="admin-table__item d-none d-md-table-cell">
-                <mdc-select [isSmall]="true" [applyWidth]="false" [options]="column.hierarchy | async" *ngIf="column.hierarchyRootId && column.hierarchyRootId > -1"></mdc-select>
+                <mdc-select [isSmall]="true" [applyWidth]="false" [options]="column.hierarchy | async"
+                            *ngIf="column.hierarchyRootId && column.hierarchyRootId > -1"></mdc-select>
               </td>
               <!--              // col of hierarchy end-->
 
@@ -326,8 +549,10 @@
 																		</div></span></div>
                 </div>
               </td>
+              <div class="custom-placeholder" *cdkDragPlaceholder></div>
             </tr>
-            <div class="custom-placeholder" *cdkDragPlaceholder></div>
+
+
             </tbody>
           </table>
         </div>
