@@ -90,9 +90,9 @@ export const SideMenu: Array<MenuItem> = [
         url: 'users/research',
         text: 'Permission Sets'
     }
-    // ,{
-    //     id: PageInfo.Patient.id,
-    //     url: 'patient',
-    //     text: 'Patient Story'
-    // }
+    ,{
+        id: PageInfo.Patient.id,
+        url: 'patient',
+        text: 'Patient Story'
+    }
 ]

@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PatientStoryService } from '@app/patient/services/patient-story.service';
 import { ConfigService } from '@app/shared/services/config.service';
-import { BaseSibscriber, EmptyState, NavigationService, NotificationsService, PageInfo, TableComponent, TableModel } from '@appcore';
+import { BaseSibscriber, EmptyState, NavigationService, NotificationsService, PageInfo, TableActionCommand, TableComponent, TableModel } from '@appcore';
 
 
 @Component({
@@ -12,6 +12,7 @@ import { BaseSibscriber, EmptyState, NavigationService, NotificationsService, Pa
 })
 export class PatientStoryComponent extends BaseSibscriber implements OnInit {
 
+  searchOptions = ['SettingsName'];
   emptyState: EmptyState = {
     title: 'No settings defined yet. Start by clicking the button above.',
     subTitle: 'The patient story settings will be listed here.',
@@ -48,6 +49,10 @@ export class PatientStoryComponent extends BaseSibscriber implements OnInit {
     this.isDataExists = !!(this.fileSource && this.fileSource.length);
     this.dataOrigin = this.dataSource = this.patientStoryService.createDataSource(this.fileSource);
     this.isLoaded = true;
+  }
+
+  onAction(action: TableActionCommand): void {
+  //  this.execCommand[action.command](action);
   }
 
   private load(): void {

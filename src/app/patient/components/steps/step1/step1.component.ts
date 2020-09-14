@@ -72,6 +72,10 @@ export class Step1Component implements OnInit, AfterViewInit {
     this.editPatientService.settings.queryId = item.id;
   }
 
+  clearQuery(): void {
+    this.editPatientService.settings.queryId = 0;
+  }
+
   changeSource(opt: SelectOption): void {
     this.selectedCohortOption = opt;
     this.editPatientService.settings.cohortSource = opt.id;

@@ -18,7 +18,7 @@ export class EditPatientService {
   private _dataLoaded = true;
 
   get selectedTab(): number { return this._selectedTab; }
-  private _selectedTab = 0;
+  private _selectedTab = 1;
 
   get isShowError(): boolean { return this._isShowError; }
   private _isShowError = false;

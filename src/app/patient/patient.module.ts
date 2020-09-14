@@ -11,6 +11,7 @@ import { Step2Component } from './components/steps/step2/step2.component';
 import { Step3Component } from './components/steps/step3/step3.component';
 import { Step4Component } from './components/steps/step4/step4.component';
 import { HeaderComponent } from './components/header/header.component';
+import { EventPropertyListComponent } from './components/event-property-list/event-property-list.component';
 
 const routes: Array<Route> = [
   { path: '', component: PatientStoryComponent },
@@ -25,7 +26,8 @@ const routes: Array<Route> = [
     Step2Component,
     Step3Component,
     Step4Component,
-    HeaderComponent
+    HeaderComponent,
+    EventPropertyListComponent
   ],
   imports: [
     CommonModule,

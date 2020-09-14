@@ -9,10 +9,10 @@
                         <div *ngIf="editPatientService.dataLoaded" class="add-perm-set">
                             <md-tab-wizard (onSelect)="selectNextTab($event)" [selectedTab]="editPatientService.selectedTab"
                                 [tabs]="tabs"></md-tab-wizard>
-                            <md-step1 [hidden]="editPatientService.selectedTab!==0"></md-step1>
-                            <md-step2 [hidden]="editPatientService.selectedTab!==1"></md-step2>
-                            <md-step3 [hidden]="editPatientService.selectedTab!==2"></md-step3>
-                            <md-step4 [hidden]="editPatientService.selectedTab!==3"></md-step4>
+                            <md-step1 *ngIf="editPatientService.selectedTab===0"></md-step1>
+                            <md-step2 *ngIf="editPatientService.selectedTab===1"></md-step2>
+                            <md-step3 *ngIf="editPatientService.selectedTab===2"></md-step3>
+                            <md-step4 *ngIf="editPatientService.selectedTab===3"></md-step4>
                         </div>
                     </div>
                 </div>

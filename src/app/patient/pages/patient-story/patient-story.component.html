@@ -17,7 +17,7 @@
         </div>
     </div>
     <div [hidden]="!isDataExists || !isLoaded">
-        <mdc-table #table (onAction)="onAction($event)" [emptyState]="emptyState" [editCellTemplate]="editCellTemplate"
+        <mdc-table #table (onAction)="onAction($event)" [emptyState]="emptyState"
             [cellsTemplate]="{ Modified:modified,Status:statusColumn}" [searchOptions]="searchOptions"
             [paginator]="paginator" [search]="search" [dataSource]="dataSource">
         </mdc-table>
@@ -29,7 +29,6 @@
         </mdc-paginator>
     </div>
 </md-page-body>
-
 
 <ng-template #modified let-item>
     <div [stickyToElement]="true" position="right"
