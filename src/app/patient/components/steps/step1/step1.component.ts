@@ -3,6 +3,7 @@ import { TabItemModel, AutoCompleteComponent, SelectOption } from '@appcore';
 import { EditPatientService } from '@app/patient/services/edit-patient.service';
 import { ProjectComboComponent } from '@app/shared/components/project-combo/project-combo.component';
 import { CohortSources, OutputFormats } from '@app/patient/models/models';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'md-step1',
@@ -12,11 +13,11 @@ import { CohortSources, OutputFormats } from '@app/patient/models/models';
 export class Step1Component implements OnInit, AfterViewInit {
 
   @ViewChild('userNameCmp', { static: true }) userNameCmp: AutoCompleteComponent;
-  @ViewChild('projectCmp', { static: false }) projectCmp: ProjectComboComponent;
-  @ViewChild('radioTemplate1', { static: false }) radioTemplate1: any;
-  @ViewChild('radioTemplate2', { static: false }) radioTemplate2: any;
-  @ViewChild('radioTitle1', { static: false }) radioTitle1: any;
-  @ViewChild('radioTitle2', { static: false }) radioTitle2: any;
+  @ViewChild('projectCmp', { static: true }) projectCmp: ProjectComboComponent;
+  @ViewChild('radioTemplate1', { static: true }) radioTemplate1: any;
+  @ViewChild('radioTemplate2', { static: true }) radioTemplate2: any;
+  @ViewChild('radioTitle1', { static: true }) radioTitle1: any;
+  @ViewChild('radioTitle2', { static: true }) radioTitle2: any;
 
   constructor(
     public editPatientService: EditPatientService
@@ -33,7 +34,16 @@ export class Step1Component implements OnInit, AfterViewInit {
       return { title: x.text }
     });
     this.activeFormat = this.editPatientService.settings.outputFormat;
-    this.queries = this.editPatientService.queries;
+    this.editPatientService.onQueriesLoded
+      .pipe(take(1))
+      .subscribe(() => {
+        this.queries = this.editPatientService.queries.map(s => {
+          return {
+            id: s.session_id,
+            name: s.session_name
+          }
+        });
+      })
   }
 
   ngAfterViewInit(): void {
@@ -56,6 +66,8 @@ export class Step1Component implements OnInit, AfterViewInit {
 
   changedProject(id: string): void {
     this.editPatientService.settings.projectId = id;
+    this.editPatientService.projectName = this.projectCmp.selectedOption.text;
+    this.editPatientService.setQueries();
   }
 
   setOutputFormat(i: number): void {
@@ -72,14 +84,23 @@ export class Step1Component implements OnInit, AfterViewInit {
 
   selectQuery(item: any): void {
     this.editPatientService.settings.queryId = item.id;
+    this.editPatientService.queryName = item.name;
   }
 
   clearQuery(): void {
     this.editPatientService.settings.queryId = 0;
+    this.editPatientService.queryName = '';
   }
 
   changeSource(opt: SelectOption): void {
     this.selectedCohortOption = opt;
     this.editPatientService.settings.cohortSource = opt.id;
+  }
+
+  selectedFile: any;
+  
+  changeFile(event: any): void {
+    this.selectedFile = event.target.files[0];
+    //alert(event.target.files[0].name);
   }
 }

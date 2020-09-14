@@ -30,13 +30,21 @@ export class ProjectComboComponent extends BaseSibscriber implements OnInit {
       this.selectedOption = { ...this.emptyProject };
     }
     this._project = project;
-    if (this.selectOptions) {
-      this.selectedOption = this.selectOptions.find(x => x.id === this._project) || { ...this.emptyProject };
-    }
+    this.initSelectedProject();
   }
+
   get project(): string { return this._project; }
   private _project = '';
   selectedOption: SelectOption = undefined;
+
+  private initSelectedProject(): void {
+    if (this.selectOptions) {
+      this.selectedOption = this.selectOptions.find(x => x.id == this._project) || { ...this.emptyProject };
+      if (this.selectedOption) {
+        this.projectModel = this._project;
+      }
+    }
+  }
 
   set projectModel(projectModel: any) {
     setTimeout(() => {
@@ -66,6 +74,7 @@ export class ProjectComboComponent extends BaseSibscriber implements OnInit {
           return this.sortService.compareString(a.text, b.text, 'asc');
         });;
         this.selectedOption = { ...this.emptyProject };
+        this.initSelectedProject();
       }));
   }
 

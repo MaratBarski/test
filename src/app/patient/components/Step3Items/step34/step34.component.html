@@ -1,0 +1,43 @@
+<div [ngClass]="{'open':isOpen}" class="user-unwrap">
+    <md-step3-header (onStateChange)="stateChange()" headerName="Advanced Filtering"
+        toolTipText="Use regex (i.e. regular expression) to filter values. Notice that no validation is performed."
+        notice="None">
+    </md-step3-header>
+
+    <div class="user-unwrap__content">
+        <div class="user-unwrap__rule">
+            <div class="table-unwrap-cont">
+                <table class="table-unwrap">
+                    <thead>
+                        <tr class="table-unwrap__head">
+                            <th class="table-unwrap__item table-unwrap__item_filter-name">Filter Name</th>
+                            <th class="table-unwrap__item">Filter Template (Regex)</th>
+                            <th class="table-unwrap__item table-unwrap__item_close"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let r of editPatientService.regexes" class="table-unwrap__row">
+                            <td class="table-unwrap__item">
+                                <input type="text" [(ngModel)]="r.name" placeholder="Name your expression">
+                            </td>
+                            <td class="table-unwrap__item">
+                                <input type="text"  [(ngModel)]="r.value" placeholder="Type a regular expression here">
+                            </td>
+                            <td class="table-unwrap__item">
+                                <svg (click)="editPatientService.removeRegex(r)" class="icon ic-close-circle" mdcSvg="ic-close-circle">
+                                </svg>
+                            </td>
+                        </tr>
+                        <tr class="table-unwrap__row">
+                            <td class="table-unwrap__item" colspan="3">
+                                <div (click)="editPatientService.addRegex()" class="table-unwrap__more"><span class="link-site">
+                                        <svg class="icon ic-plus" mdcSvg="ic-plus">
+                                        </svg>Regular expression filter</span></div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

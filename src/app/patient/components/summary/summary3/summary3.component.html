@@ -1,0 +1,27 @@
+<div class="user-summary__sect">
+    <md-summary-header [tab]="2" name="Privacy"></md-summary-header>
+    <div class="user-summary__content">
+        <div class="user-summary__param">
+            <div class="user-summary__label">Chosen HIPAA filters:</div>
+            <div class="user-summary__val">
+                {{editPatientService.getFilterCount(0)}}
+            </div>
+        </div>
+        <div class="user-summary__param">
+            <div class="user-summary__label">Additional data modification:</div>
+            <div class="user-summary__val">
+                {{editPatientService.getFilterCount(1)}}
+            </div>
+        </div>
+        <div class="user-summary__param">
+            <div class="user-summary__label">Number of advanced filters:</div>
+            <div class="user-summary__val">
+                {{editPatientService.getRegexCount()}}
+            </div>
+        </div>
+        <div class="user-summary__param">
+            <div class="user-summary__label">Categorizations' exposure levels are:</div>
+            <div class="user-summary__val">2</div>
+        </div>
+    </div>
+</div>

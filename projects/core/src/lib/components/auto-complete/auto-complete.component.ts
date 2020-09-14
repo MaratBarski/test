@@ -11,7 +11,7 @@ export class AutoCompleteComponent {
   @Input() disabled = false;
 
   @ViewChild('container', { static: true }) container: ElementRef;
-  inputText: string = '';
+  @Input() inputText: string = '';
   @ContentChild(TemplateRef, { read: TemplateRef, static: true }) template: TemplateRef<any>;
   @Output() completeMethod = new EventEmitter<string>();
   @Output() onClear = new EventEmitter();

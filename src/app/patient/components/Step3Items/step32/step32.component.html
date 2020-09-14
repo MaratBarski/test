@@ -1,0 +1,35 @@
+<div [ngClass]="{'open':isOpen}" class="user-unwrap">
+    <md-step3-header (onStateChange)="stateChange()" headerName="Additional Data Modification"
+        notice="(not HIPAA related)">
+    </md-step3-header>
+
+    <div class="user-unwrap__content">
+        <div class="user-unwrap-param-wrap">
+            <div class="user-unwrap-param user-unwrap-param_table">
+                <div class="user-unwrap-param__item">
+                    <mdc-check-box [(ngModel)]="editPatientService.isMaxDateShiftingChecked"
+                        text="Maximum Date shifting:"></mdc-check-box>
+                    <div class="user-unwrap-param__num">
+                        <mdc-select [disabled]="!editPatientService.isMaxDateShiftingChecked" [isSmall]="true"
+                            [options]="dates"></mdc-select>
+                    </div>
+                </div>
+                <div class="user-unwrap-param__item">
+                    <mdc-check-box [(ngModel)]="editPatientService.isMaxNumericStringChecked"
+                        text="Maximum Numeric shifting:"></mdc-check-box>
+                    <div class="user-unwrap-param__num">
+                        <mdc-select [disabled]="!editPatientService.isMaxNumericStringChecked" [isSmall]="true"
+                            [options]="numerics"></mdc-select>
+                    </div>
+                </div>
+                <div class="user-unwrap-param__item user-unwrap-param__item_flex">
+                    <mdc-check-box [(ngModel)]="editPatientService.isFreeTextChecked" text="Free Text censoring">
+                    </mdc-check-box>
+                    <div class="user-unwrap-param__icon">
+                        <svg class="icon ic-info" mdcSvg="ic-info"></svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

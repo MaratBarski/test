@@ -57,7 +57,7 @@ export class LoginService extends BaseSibscriber implements CanActivate {
     if (!this.userInfo) { return undefined; }
     if (!this.userInfo.data) { return undefined; }
     if (!this.userInfo.data.projects) { return undefined; }
-    return this.userInfo.data.projects.find(x => x.projectId === id);
+    return this.userInfo.data.projects.find(x => x.projectId == id);
   }
 
   isProjectOwner(userLogin: string): boolean {

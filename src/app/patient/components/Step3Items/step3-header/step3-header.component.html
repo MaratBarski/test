@@ -1,0 +1,15 @@
+<div style="margin-top: 20px;" class="user-unwrap__head">
+    <span (click)="open($event)" class="user-unwrap__arr ic-hover">
+        <svg class="icon ic-arr-right" mdcSvg="ic-arr-right"></svg>
+    </span>
+    <span class="user-unwrap__title">{{headerName}}</span>
+    <span *ngIf="notice" class="user-unwrap__notice user-unwrap__notice_line">{{notice}}</span>
+    <span *ngIf="toolTipText" class="user-unwrap__icon">
+        <svg class="icon ic-info" mdcSvg="ic-info"></svg>
+        <span class="tooltip tooltip_left">
+            <span class="tooltip__content">
+                {{toolTipText}}
+            </span>
+        </span>
+    </span>
+</div>
