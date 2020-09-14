@@ -124,7 +124,7 @@ export class PermissionSetService extends BaseSibscriber {
     if (permSet) {
       this._permissionSet = this.convertToClient(permSet);
       this._permissionSet.isNew = false;
-      this.initTemplates(permSet);
+      this.initTemplates(permSet, true);
     }
   }
 
@@ -606,11 +606,11 @@ export class PermissionSetService extends BaseSibscriber {
     });
   }
 
-  private initTemplates(permSet: any): void {
+  private initTemplates(permSet: any, applyTemplates = false): void {
     this.onTemplatesLoaded
       .pipe(take(1))
       .subscribe((flag: boolean) => {
-        if (this.isEditMode) {
+        if (this.isEditMode || applyTemplates) {
           this.initEvents(permSet);
           if (permSet.researchStatus && permSet.researchStatus.toLowerCase() === ResearchStatus.Open) {
             if (!permSet.researchTemplates || !permSet.researchTemplates.length) {

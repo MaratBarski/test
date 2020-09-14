@@ -1,12 +1,15 @@
 <div class="user-event-prop">
     <div class="user-event-prop__head">
         <div class="input-check">
-            <input id="all" type="checkbox" name="all" checked="checked">
-            <label class="input-check__label" for="all"><span class="input-check__mark">
-                    <svg class="icon ic-check" mdcSvg="ic-check">
-                    </svg></span><span class="input-check__text">Event Name
-                    <svg class="icon ic-enter-reverse" mdcSvg="ic-enter-reverse">
-                    </svg>Property</span></label>
+            <input [id]="id + 'all'" type="checkbox" (change)="chackAll()" [(ngModel)]="isCheckedAll">
+            <label class="input-check__label" [for]="id + 'all'">
+                <span class=" input-check__mark">
+                <svg class="icon ic-check" mdcSvg="ic-check"></svg>
+                </span>
+                <span class="input-check__text">Event Name
+                    <svg class="icon ic-enter-reverse" mdcSvg="ic-enter-reverse"></svg>
+                    Property</span>
+            </label>
         </div>
         <div class="user-event-filter">
             <div class="user-event-filter__label">Permission template</div>
@@ -73,200 +76,33 @@
         </div>
     </div>
     <div class="user-event-prop__content">
-        <div class="user-event-unwrap open">
+        <div *ngFor="let opt of eventList;let optIndex = index;" [ngClass]="{'open':opt.isExpanded}"
+            class="user-event-unwrap">
             <div class="user-event-unwrap__main">
-                <div class="user-event-unwrap__arr">
-                    <svg class="icon ic-arr-right">
-                        <use xlink:href="/assets/sprites/sprite.svg#ic-arr-right"></use>
-                    </svg>
+                <div (click)="expand(opt)" class="user-event-unwrap__arr">
+                    <svg class="icon ic-arr-right" mdcSvg="ic-arr-right"></svg>
                 </div>
                 <div class="input-check active">
-                    <input type="checkbox" id="event0" checked="checked">
-                    <label class="input-check__label" for="event0"><span class="input-check__mark">
-                            <svg class="icon ic-check">
-                                <use xlink:href="/assets/sprites/sprite.svg#ic-check"></use>
-                            </svg></span><span class="input-check__text">Demographics</span></label>
+                    <input type="checkbox" [id]="'ev' + optIndex" (change)="checkEvent(opt)"
+                        [(ngModel)]="opt.event.isChecked">
+                    <label class="input-check__label" [for]="'ev' + optIndex">
+                        <span class="input-check__mark">
+                            <svg class="icon ic-check" mdcSvg="ic-check"></svg>
+                        </span>
+                        <span class="input-check__text">{{opt.event.name}}</span>
+                    </label>
                 </div>
             </div>
-            <div class="user-event-unwrap__content">
+            <div *ngFor="let subItem of opt.properties;let subIndex = index" class="user-event-unwrap__content">
                 <div class="user-event-unwrap__item">
                     <div class="input-check">
-                        <input type="checkbox" id="subevent00" checked="checked">
-                        <label class="input-check__label" for="subevent00"><span class="input-check__mark">
-                                <svg class="icon ic-check">
-                                    <use xlink:href="/assets/sprites/sprite.svg#ic-check"></use>
-                                </svg></span><span class="input-check__text">Patient ID</span></label>
-                    </div>
-                </div>
-                <div class="user-event-unwrap__item">
-                    <div class="input-check">
-                        <input type="checkbox" id="subevent01" checked="checked">
-                        <label class="input-check__label" for="subevent01"><span class="input-check__mark">
-                                <svg class="icon ic-check">
-                                    <use xlink:href="/assets/sprites/sprite.svg#ic-check"></use>
-                                </svg></span><span class="input-check__text">Birth Date</span></label>
-                    </div>
-                </div>
-                <div class="user-event-unwrap__item">
-                    <div class="input-check">
-                        <input type="checkbox" id="subevent02" checked="checked">
-                        <label class="input-check__label" for="subevent02"><span class="input-check__mark">
-                                <svg class="icon ic-check">
-                                    <use xlink:href="/assets/sprites/sprite.svg#ic-check"></use>
-                                </svg></span><span class="input-check__text">Gender</span></label>
-                    </div>
-                </div>
-                <div class="user-event-unwrap__item">
-                    <div class="input-check">
-                        <input type="checkbox" id="subevent03" checked="checked">
-                        <label class="input-check__label" for="subevent03"><span class="input-check__mark">
-                                <svg class="icon ic-check">
-                                    <use xlink:href="/assets/sprites/sprite.svg#ic-check"></use>
-                                </svg></span><span class="input-check__text">Country of birth</span></label>
-                    </div>
-                </div>
-                <div class="user-event-unwrap__item">
-                    <div class="input-check">
-                        <input type="checkbox" id="subevent04" checked="checked">
-                        <label class="input-check__label" for="subevent04"><span class="input-check__mark">
-                                <svg class="icon ic-check">
-                                    <use xlink:href="/assets/sprites/sprite.svg#ic-check"></use>
-                                </svg></span><span class="input-check__text">City of birth</span></label>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="user-event-unwrap open">
-            <div class="user-event-unwrap__main">
-                <div class="user-event-unwrap__arr">
-                    <svg class="icon ic-arr-right">
-                        <use xlink:href="/assets/sprites/sprite.svg#ic-arr-right"></use>
-                    </svg>
-                </div>
-                <div class="input-check">
-                    <input type="checkbox" id="event1" checked="checked">
-                    <label class="input-check__label" for="event1"><span class="input-check__mark">
-                            <svg class="icon ic-check">
-                                <use xlink:href="/assets/sprites/sprite.svg#ic-check"></use>
-                            </svg></span><span class="input-check__text">Lab results microbiology</span></label>
-                </div>
-            </div>
-            <div class="user-event-unwrap__content">
-                <div class="user-event-unwrap__item">
-                    <div class="input-check">
-                        <input type="checkbox" id="subevent10" checked="checked">
-                        <label class="input-check__label" for="subevent10"><span class="input-check__mark">
-                                <svg class="icon ic-check">
-                                    <use xlink:href="/assets/sprites/sprite.svg#ic-check"></use>
-                                </svg></span><span class="input-check__text">start date</span></label>
-                    </div>
-                </div>
-                <div class="user-event-unwrap__item">
-                    <div class="input-check">
-                        <input type="checkbox" id="subevent11" checked="checked">
-                        <label class="input-check__label" for="subevent11"><span class="input-check__mark">
-                                <svg class="icon ic-check">
-                                    <use xlink:href="/assets/sprites/sprite.svg#ic-check"></use>
-                                </svg></span><span class="input-check__text">end date</span></label>
-                    </div>
-                </div>
-                <div class="user-event-unwrap__item">
-                    <div class="input-check">
-                        <input type="checkbox" id="subevent12" checked="checked">
-                        <label class="input-check__label" for="subevent12"><span class="input-check__mark">
-                                <svg class="icon ic-check">
-                                    <use xlink:href="/assets/sprites/sprite.svg#ic-check"></use>
-                                </svg></span><span class="input-check__text">antibioticcode</span></label>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="user-event-unwrap open">
-            <div class="user-event-unwrap__main">
-                <div class="user-event-unwrap__arr">
-                    <svg class="icon ic-arr-right">
-                        <use xlink:href="/assets/sprites/sprite.svg#ic-arr-right"></use>
-                    </svg>
-                </div>
-                <div class="input-check">
-                    <input type="checkbox" id="event2" checked="checked">
-                    <label class="input-check__label" for="event2"><span class="input-check__mark">
-                            <svg class="icon ic-check">
-                                <use xlink:href="/assets/sprites/sprite.svg#ic-check"></use>
-                            </svg></span><span class="input-check__text">Admissions</span></label>
-                </div>
-            </div>
-            <div class="user-event-unwrap__content">
-                <div class="user-event-unwrap__item">
-                    <div class="input-check">
-                        <input type="checkbox" id="subevent20" checked="checked">
-                        <label class="input-check__label" for="subevent20"><span class="input-check__mark">
-                                <svg class="icon ic-check">
-                                    <use xlink:href="/assets/sprites/sprite.svg#ic-check"></use>
-                                </svg></span><span class="input-check__text">Patient ID</span></label>
-                    </div>
-                </div>
-                <div class="user-event-unwrap__item">
-                    <div class="input-check">
-                        <input type="checkbox" id="subevent21" checked="checked">
-                        <label class="input-check__label" for="subevent21"><span class="input-check__mark">
-                                <svg class="icon ic-check">
-                                    <use xlink:href="/assets/sprites/sprite.svg#ic-check"></use>
-                                </svg></span><span class="input-check__text">age at event</span></label>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="user-event-unwrap open">
-            <div class="user-event-unwrap__main">
-                <div class="user-event-unwrap__arr">
-                    <svg class="icon ic-arr-right">
-                        <use xlink:href="/assets/sprites/sprite.svg#ic-arr-right"></use>
-                    </svg>
-                </div>
-                <div class="input-check">
-                    <input type="checkbox" id="event3" checked="checked">
-                    <label class="input-check__label" for="event3"><span class="input-check__mark">
-                            <svg class="icon ic-check">
-                                <use xlink:href="/assets/sprites/sprite.svg#ic-check"></use>
-                            </svg></span><span class="input-check__text">Medications</span></label>
-                </div>
-            </div>
-            <div class="user-event-unwrap__content">
-                <div class="user-event-unwrap__item">
-                    <div class="input-check">
-                        <input type="checkbox" id="subevent30" checked="checked">
-                        <label class="input-check__label" for="subevent30"><span class="input-check__mark">
-                                <svg class="icon ic-check">
-                                    <use xlink:href="/assets/sprites/sprite.svg#ic-check"></use>
-                                </svg></span><span class="input-check__text">Parameter</span></label>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="user-event-unwrap open">
-            <div class="user-event-unwrap__main">
-                <div class="user-event-unwrap__arr">
-                    <svg class="icon ic-arr-right">
-                        <use xlink:href="/assets/sprites/sprite.svg#ic-arr-right"></use>
-                    </svg>
-                </div>
-                <div class="input-check">
-                    <input type="checkbox" id="event4" checked="checked">
-                    <label class="input-check__label" for="event4"><span class="input-check__mark">
-                            <svg class="icon ic-check">
-                                <use xlink:href="/assets/sprites/sprite.svg#ic-check"></use>
-                            </svg></span><span class="input-check__text">Admissions</span></label>
-                </div>
-            </div>
-            <div class="user-event-unwrap__content">
-                <div class="user-event-unwrap__item">
-                    <div class="input-check">
-                        <input type="checkbox" id="subevent40" checked="checked">
-                        <label class="input-check__label" for="subevent40"><span class="input-check__mark">
-                                <svg class="icon ic-check">
-                                    <use xlink:href="/assets/sprites/sprite.svg#ic-check"></use>
-                                </svg></span><span class="input-check__text">Parameter</span></label>
+                        <input type="checkbox" [id]="'sev' + optIndex + '_' + subIndex"
+                            (change)="checkSubEvent(opt,subItem)" [(ngModel)]="subItem.isChecked">
+                        <label class="input-check__label" [for]="'sev' + optIndex + '_' + subIndex">
+                            <span class="input-check__mark">
+                                <svg class="icon ic-check" mdcSvg="ic-check"></svg>
+                            </span>
+                            <span class="input-check__text">{{subItem.name}}</span></label>
                     </div>
                 </div>
             </div>

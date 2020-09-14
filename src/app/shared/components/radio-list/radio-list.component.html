@@ -6,9 +6,8 @@
                 <label class="input-radio__label" [for]="radioId + index">
                     <span class="input-radio__mark"></span>
                     <span class="input-radio__text">{{opt.text}}
-                        <span class="input-radio__notice">
-                            List is sorted by date
-                        </span>
+                        <ng-container [ngTemplateOutlet]="opt.titleTemplate" [ngTemplateOutletContext]="{$implicit: opt}">
+                        </ng-container>
                     </span>
                 </label>
             </div>

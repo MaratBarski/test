@@ -50,7 +50,7 @@
             </div>
             <div *ngIf="!isEditMode" class="form-site__item">
                 <label class="form-site__label" for="project">Environment</label>
-                <md-project-combo [project]="project" (onChange)="changedProject($event)"></md-project-combo>
+                <md-project-combo [user]="loginService.userInfo?.data" userType="admin" [project]="project" (onChange)="changedProject($event)"></md-project-combo>
             </div>
             <div [hidden]="!categoryHeaders?.length" class="form-site__item">
                 <label class="form-site__label">

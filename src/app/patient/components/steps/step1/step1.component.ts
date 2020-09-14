@@ -1,9 +1,8 @@
-import { AfterViewInit, Component, OnInit, ViewChild, ViewChildren } from '@angular/core';
-import { TabItemModel, AutoCompleteComponent } from '@appcore';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { TabItemModel, AutoCompleteComponent, SelectOption } from '@appcore';
 import { EditPatientService } from '@app/patient/services/edit-patient.service';
 import { ProjectComboComponent } from '@app/shared/components/project-combo/project-combo.component';
 import { CohortSources, OutputFormats } from '@app/patient/models/models';
-import { SelectOption } from 'core/public-api';
 
 @Component({
   selector: 'md-step1',
@@ -16,6 +15,8 @@ export class Step1Component implements OnInit, AfterViewInit {
   @ViewChild('projectCmp', { static: false }) projectCmp: ProjectComboComponent;
   @ViewChild('radioTemplate1', { static: false }) radioTemplate1: any;
   @ViewChild('radioTemplate2', { static: false }) radioTemplate2: any;
+  @ViewChild('radioTitle1', { static: false }) radioTitle1: any;
+  @ViewChild('radioTitle2', { static: false }) radioTitle2: any;
 
   constructor(
     public editPatientService: EditPatientService
@@ -37,15 +38,16 @@ export class Step1Component implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     const dict = {
-      radioTemplate1: this.radioTemplate1,
-      radioTemplate2: this.radioTemplate2,
+      radioTemplate1: { body: this.radioTemplate1, title: this.radioTitle1 },
+      radioTemplate2: { body: this.radioTemplate2, title: this.radioTitle2 }
     };
     setTimeout(() => {
       this.cohortOptions = CohortSources.map(x => {
         return {
           text: x.text,
           id: x.id,
-          template: dict[x.template]
+          template: dict[x.template].body,
+          titleTemplate: dict[x.template].title
         }
       });
       this.selectedCohortOption = this.cohortOptions.find(x => x.id === this.editPatientService.settings.cohortSource);
