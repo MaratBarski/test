@@ -63,7 +63,7 @@ export class UserListService {
             }
             , checkDisabled: (source) => {
               return false;
-            },
+            }
           },
           {
             text: 'Edit Permission Set',
@@ -74,12 +74,7 @@ export class UserListService {
             }
             , checkDisabled: (source) => {
               return false;
-            },
-          },
-          {
-            text: 'View User',
-            icon: 'ic-view',
-            command: 'view'
+            }
           }
         ],
         subLinks: [
@@ -88,6 +83,9 @@ export class UserListService {
             disable: false,
             icon: 'ic-delete',
             command: 'delete'
+            , checkDisabled: (source) => {
+              return true;
+            }
           }
         ]
       },
