@@ -84,6 +84,7 @@ export const environment = {
     notificationUpdate: 'kostya/api/v1/config/notification',
     project: 'kostyan/api/v1/project',
     patientStory: 'kostyan/api/v1/file-source',
+    patientStoryUserSession: 'kostyan/api/v1/patient-story/user-session',
     activate: 'kostyan/api/v1/activate'
   }
 };
