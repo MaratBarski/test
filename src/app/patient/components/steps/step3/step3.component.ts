@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EditPatientService } from '@app/patient/services/edit-patient.service';
 
 @Component({
   selector: 'md-step3',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Step3Component implements OnInit {
 
-  constructor() { }
+  constructor(
+    public editPatientService: EditPatientService
+  ) { }
 
   ngOnInit() {
   }

@@ -52,8 +52,23 @@ export class PatientStoryComponent extends BaseSibscriber implements OnInit {
   }
 
   onAction(action: TableActionCommand): void {
-  //  this.execCommand[action.command](action);
+    this.execCommand[action.command](action);
   }
+
+  execCommand = {
+    edit: (action: TableActionCommand) => {
+      this.isLoaded = false;
+      this.router.navigate(['/patient/edit', { id: action.item.source.lifeFluxTransId }]);
+    },
+    dublicate: (action: TableActionCommand) => {
+    },
+    download: (action: TableActionCommand) => {
+    },
+    abort: (action: TableActionCommand) => {
+    },
+    delete: (action: TableActionCommand) => {
+    },
+  };
 
   private load(): void {
     this.isLoaded = false;

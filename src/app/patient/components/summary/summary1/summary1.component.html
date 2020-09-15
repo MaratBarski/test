@@ -1,0 +1,34 @@
+<div class="user-summary__sect">
+    <md-summary-header [tab]="0" name="SOURCE & OUTPUT"></md-summary-header>
+    <div class="user-summary__content">
+        <div class="user-summary__param">
+            <div class="user-summary__label">Name:</div>
+            <div class="user-summary__val">
+                {{editPatientService.settings.settingsName}}
+            </div>
+        </div>
+        <div class="user-summary__param">
+            <div class="user-summary__label">Environment:</div>
+            <div class="user-summary__val">
+                {{editPatientService.projectName}}
+            </div>
+        </div>
+        <div class="user-summary__param">
+            <div class="user-summary__label">Cohort source:</div>
+            <div class="user-summary__val">
+                <ng-template [ngIf]="editPatientService.settings.cohortSource === 1">
+                    Query:{{editPatientService.queryName}}
+                </ng-template>
+                <ng-template [ngIf]="editPatientService.settings.cohortSource === 2">
+                   File
+                </ng-template>
+            </div>
+        </div>
+        <div class="user-summary__param">
+            <div class="user-summary__label">Output format:</div>
+            <div class="user-summary__val">
+                {{editPatientService.outputFormatName}}
+            </div>
+        </div>
+    </div>
+</div>

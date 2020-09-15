@@ -12,6 +12,15 @@ import { Step3Component } from './components/steps/step3/step3.component';
 import { Step4Component } from './components/steps/step4/step4.component';
 import { HeaderComponent } from './components/header/header.component';
 import { EventPropertyListComponent } from './components/event-property-list/event-property-list.component';
+import { Step31Component } from './components/Step3Items/step31/step31.component';
+import { Step32Component } from './components/Step3Items/step32/step32.component';
+import { Step33Component } from './components/Step3Items/step33/step33.component';
+import { Step34Component } from './components/Step3Items/step34/step34.component';
+import { Step3HeaderComponent } from './components/Step3Items/step3-header/step3-header.component';
+import { Summary1Component } from './components/summary/summary1/summary1.component';
+import { Summary2Component } from './components/summary/summary2/summary2.component';
+import { Summary3Component } from './components/summary/summary3/summary3.component';
+import { SummaryHeaderComponent } from './components/summary/summary-header/summary-header.component';
 
 const routes: Array<Route> = [
   { path: '', component: PatientStoryComponent },
@@ -27,7 +36,16 @@ const routes: Array<Route> = [
     Step3Component,
     Step4Component,
     HeaderComponent,
-    EventPropertyListComponent
+    EventPropertyListComponent,
+    Step31Component,
+    Step32Component,
+    Step33Component,
+    Step34Component,
+    Step3HeaderComponent,
+    Summary1Component,
+    Summary2Component,
+    Summary3Component,
+    SummaryHeaderComponent
   ],
   imports: [
     CommonModule,

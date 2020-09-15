@@ -31,7 +31,7 @@ export class PatientStoryService {
             icon: 'ic-edit',
             command: 'edit'
             , checkDisabled: (source: any) => {
-              return false;
+              return source.transStatus !== 'success' && source.transStatus !== 'completed';
             }
           },
           {
@@ -39,7 +39,7 @@ export class PatientStoryService {
             icon: 'ic-view',
             command: 'dublicate'
             , checkDisabled: (source: any) => {
-              return false;
+              return source.transStatus !== 'success' && source.transStatus !== 'completed';
             }
           },
           {
@@ -47,7 +47,7 @@ export class PatientStoryService {
             icon: 'ic-view',
             command: 'download'
             , checkDisabled: (source: any) => {
-              return true;
+              return source.transStatus !== 'success' && source.transStatus !== 'completed';
             }
           }
         ],
@@ -56,7 +56,7 @@ export class PatientStoryService {
             text: 'Abort',
             disable: false,
             icon: 'ic-delete',
-            command: 'adort'
+            command: 'abort'
             , checkDisabled: (source: any) => {
               if (!source.projectObj) { return true; }
               if (this.loginService.isAdminOfProject(source.projectObj.projectId)) { return false; }
@@ -126,16 +126,14 @@ export class PatientStoryService {
       rows: []
     }
     files.forEach((fl, i) => {
+      fl.transStatus = fl.transStatus ? fl.transStatus.toLowerCase() : '';
       data.rows.push({
         cells: {
-          SettingsName: fl.settingsName,
-          Modified: '2020-10-10 21:02',
-          User: 'User',
-          Status: fl.status,
-          OutputFormat: 'OutputFormat'
-        },
-        csv: {
-          fileName: fl.settingsName
+          SettingsName: fl.name,
+          Modified: fl.updateDate,
+          User: fl.userName ? fl.userName : fl.userId,
+          Status: fl.transStatus,
+          OutputFormat: fl.outputType === 'files' ? 'XML Files' : 'Table'
         },
         source: fl,
         isActive: false,

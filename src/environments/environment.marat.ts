@@ -41,6 +41,7 @@ export const environment = {
     formKey: 'mdclone/api/v1/config/form-key',
     notificationUpdate: 'mdclone/api/v1/config/notification',
     project: 'mdclone/api/v1/project',
-    patientStory: 'mdclone/api/v1/file-source'
+    patientStory: 'mdclone/api/v1/patient-story',
+    patientStoryUserSession: 'mdclone/api/v1/patient-story/user-session',    
   }
 };

@@ -38,7 +38,7 @@
 </ng-template>
 
 <ng-template #statusColumn let-item let-source="source">
-    <div *ngIf="source.status === 'generating'">
+    <div *ngIf="source.transStatus === 'generating'">
         <span class="admin-table__icon">
             <svg class="icon ic-running ic-grey" mdcSvg="ic-running"></svg>
             <span class="tooltip tooltip_left">
@@ -46,20 +46,27 @@
         </span>
         <span class="admin-table__icon-label d-none d-xxl-inline-block">Generating</span>
     </div>
-    <div *ngIf="source.status === 'completed'">
+    <div *ngIf="source.transStatus === 'completed'">
         <span class="admin-table__icon">
             <svg class="icon ic-success ic-grey" mdcSvg="ic-success"></svg>
             <span class="tooltip tooltip_left"><span class="tooltip__content">Completed</span></span>
         </span>
         <span class="admin-table__icon-label d-none d-xxl-inline-block">Completed</span>
     </div>
-    <div *ngIf="source.status === 'failed'">
+    <div *ngIf="source.transStatus === 'success'">
+        <span class="admin-table__icon">
+            <svg class="icon ic-success ic-grey" mdcSvg="ic-success"></svg>
+            <span class="tooltip tooltip_left"><span class="tooltip__content">Success</span></span>
+        </span>
+        <span class="admin-table__icon-label d-none d-xxl-inline-block">Success</span>
+    </div>
+    <div *ngIf="source.transStatus === 'failed'">
         <span class="admin-table__icon">
             <svg class="icon ic-failure ic-grey" mdcSvg="ic-failure">
             </svg><span class="tooltip tooltip_left"><span class="tooltip__content">Failed</span></span></span><span
             class="admin-table__icon-label d-none d-xxl-inline-block">Failed</span>
     </div>
-    <div *ngIf="source.status === 'aborted'">
+    <div *ngIf="source.transStatus === 'aborted'">
         <span class="admin-table__icon">
             <svg class="icon ic-failure ic-grey" mdcSvg="ic-failure">
             </svg><span class="tooltip tooltip_left"><span class="tooltip__content">Aborted</span></span></span><span

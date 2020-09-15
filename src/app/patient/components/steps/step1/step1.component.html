@@ -50,6 +50,7 @@
     <div class="user-source-radio__field">
         <mdc-auto-complete [disabled]="editPatientService.settings.cohortSource!==1" #queryCmp
             placeHolder="Search or Select a Query..." textField="name" (onSelect)="selectQuery($event)"
+            [inputText]="editPatientService.queryName"
             (onClear)="clearQuery()" (completeMethod)="completeQuery($event)" [suggestions]="queries">
             <ng-template let-item>
                 <div class="select__param" [text]="item.name" [mdcColorText]="searchQueryText"></div>
@@ -71,10 +72,12 @@
     <div class="user-source-radio__field">
         <div [ngClass]="{'disable':editPatientService.settings.cohortSource!==2}" class="file-upload">
             <label class="file-upload__content">
-                <input type="file" [disabled]="editPatientService.settings.cohortSource!==2">
+                <input (change)="changeFile($event)" type="file" [disabled]="editPatientService.settings.cohortSource!==2">
                 <span class="file-upload__btn">Choose File</span>
-                <span [ngClass]="{'disable':editPatientService.settings.cohortSource!==2}" class="file-upload__name">No
-                    file chosen</span>
+                <span [ngClass]="{'disable':editPatientService.settings.cohortSource!==2}" class="file-upload__name">
+                    <ng-template [ngIf]="!selectedFile">No file chosen</ng-template>
+                    <ng-template [ngIf]="selectedFile">{{selectedFile?.name}}</ng-template>
+                </span>
             </label>
         </div>
     </div>

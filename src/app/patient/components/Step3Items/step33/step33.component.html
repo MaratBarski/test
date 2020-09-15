@@ -1,0 +1,54 @@
+<div [ngClass]="{'open':isOpen}" class="user-unwrap">
+    <md-step3-header (onStateChange)="stateChange()" headerName="Exposure Level Settings"
+        toolTipText="The original values from the categorizations are exported by default."
+        notice="Default: No categories distortion">
+    </md-step3-header>
+
+    <div class="user-unwrap__content">
+        <div class="table-unwrap-cont">
+            <div class="user-unwrap__text">Choose a different category from which random values will replace the
+                original ones.<br><b>Note:</b> only categorizations with more than two levels are listed below.
+            </div>
+            <table class="table-unwrap">
+                <thead>
+                    <tr class="table-unwrap__head">
+                        <th class="table-unwrap__item table-unwrap__item_name">Categorization Name</th>
+                        <th class="table-unwrap__item">Category Level</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="table-unwrap__row">
+                        <td class="table-unwrap__item">Hospital Departments</td>
+                        <td class="table-unwrap__item">
+                            <mdc-select  [isSmall]="true" [options]="hospitals"></mdc-select>
+                        </td>
+                    </tr>
+                    <tr class="table-unwrap__row">
+                        <td class="table-unwrap__item">ICD9</td>
+                        <td class="table-unwrap__item">
+                            <mdc-select  [isSmall]="true" [options]="hospitals"></mdc-select>
+                        </td>
+                    </tr>
+                    <tr class="table-unwrap__row">
+                        <td class="table-unwrap__item">Drugs</td>
+                        <td class="table-unwrap__item">
+                            <mdc-select  [isSmall]="true" [options]="hospitals"></mdc-select>
+                        </td>
+                    </tr>
+                    <tr class="table-unwrap__row">
+                        <td class="table-unwrap__item">Medications</td>
+                        <td class="table-unwrap__item">
+                            <mdc-select  [isSmall]="true" [options]="hospitals"></mdc-select>
+                        </td>
+                    </tr>
+                    <tr class="table-unwrap__row">
+                        <td class="table-unwrap__item">Medications</td>
+                        <td class="table-unwrap__item">
+                            <mdc-select  [isSmall]="true" [options]="hospitals"></mdc-select>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
