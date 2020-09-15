@@ -25,6 +25,7 @@ export class ActivateComponent extends BaseNavigation implements OnInit {
   fieldDataType = FieldDataType;
   fileSource: FileSource;
   fg: FormGroup;
+  showFilterModal = false;
   // searchControl: FormControl;
 
 
@@ -130,6 +131,14 @@ export class ActivateComponent extends BaseNavigation implements OnInit {
       this.columnCollection.map(item => item.include = false);
     }
     this.changeCollectionObject();
+  }
+
+  closeFilterModal(){
+    this.showFilterModal = false;
+  }
+
+  openFilterModal(){
+    this.showFilterModal = true;
   }
 
 }

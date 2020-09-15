@@ -1,0 +1,20 @@
+<div class="rule-build-item__select" (blur)="blur()" tabindex="10" style="cursor: pointer">
+  <div class="drop-cond drop-cond_big">
+    <div class="drop-cond__content">
+      <div class="drop-cond__head" (click)="mouseClick($event);">Select a column...
+        <div class="drop-cond__head-arr">
+          <mdc-icon css="ic-select-arr-down" path="ic-select-arr-down" [@rotatedState]="rotatedState"></mdc-icon>
+        </div>
+      </div>
+      <div class="drop-cond__popup" [mdcVisibility]="isExpanded" [style.maxHeight]="maxHeight">
+        <div class="drop-cond__option">
+          <div class="drop-cond__sect">
+            <div class="drop-cond__param" [ngClass]="{'active':option==selected}" (click)="select(option)" *ngFor="let option of options">
+              <div class="drop-cond__param-text">{{option.text}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

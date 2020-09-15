@@ -83,6 +83,7 @@ export const environment = {
     formKey: 'kostya/api/v1/config/form-key',
     notificationUpdate: 'kostya/api/v1/config/notification',
     project: 'kostyan/api/v1/project',
+    patientStory: 'kostyan/api/v1/file-source',
     activate: 'kostyan/api/v1/activate'
   }
 };

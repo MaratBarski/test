@@ -1,0 +1,312 @@
+<div class="shadow-site is-visible"></div>
+<div class="add-filter-wrap">
+  <div class="modal-window">
+    <div class="modal-window__head">Add Filters</div>
+    <div class="modal-window__close ic-hover" (click)="closeMe()">
+      <mdc-icon css="ic-close" path="ic-close"></mdc-icon>
+    </div>
+    <div class="add-filter">
+      <div class="add-filter__content">
+        <div class="rule-build">
+<!--          <div class="rule-build-item">-->
+<!--            <div class="rule-build-item__content">-->
+<!--              <div class="rule-build-item__select">-->
+<!--                <div class="drop-cond drop-cond_big">-->
+<!--                  <div class="drop-cond__content">-->
+<!--                    <div class="drop-cond__head active">Reference Event-Age at transfer-->
+<!--                      <div class="drop-cond__head-arr">-->
+<!--                        <mdc-icon css="ic-select-arr-down" path="ic-select-arr-down"></mdc-icon>-->
+<!--                      </div>-->
+<!--                    </div>-->
+<!--                    <div class="drop-cond__popup">-->
+<!--                      <div class="drop-cond__option">-->
+<!--                        <div class="drop-cond__sect">-->
+<!--                          <div class="drop-cond__param">-->
+<!--                            <div class="drop-cond__param-text">param1</div>-->
+<!--                          </div>-->
+<!--                          <div class="drop-cond__param">-->
+<!--                            <div class="drop-cond__param-text">param2</div>-->
+<!--                          </div>-->
+<!--                          <div class="drop-cond__param">-->
+<!--                            <div class="drop-cond__param-text">param3</div>-->
+<!--                          </div>-->
+<!--                          <div class="drop-cond__param">-->
+<!--                            <div class="drop-cond__param-text">param4</div>-->
+<!--                          </div>-->
+<!--                        </div>-->
+<!--                      </div>-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--              <div class="rule-build-item__select">-->
+<!--                <div class="drop-cond">-->
+<!--                  <div class="drop-cond__content">-->
+<!--                    <div class="drop-cond__head active">is greater than-->
+<!--                      <div class="drop-cond__head-arr">-->
+<!--                        <mdc-icon css="ic-select-arr-down" path="ic-select-arr-down"></mdc-icon>-->
+<!--                      </div>-->
+<!--                    </div>-->
+<!--                    <div class="drop-cond__popup">-->
+<!--                      <div class="drop-cond__option">-->
+<!--                        <div class="drop-cond__sect">-->
+<!--                          <div class="drop-cond__param">-->
+<!--                            <div class="drop-cond__param-text">is less than</div>-->
+<!--                          </div>-->
+<!--                          <div class="drop-cond__param">-->
+<!--                            <div class="drop-cond__param-text">is less than or equal to</div>-->
+<!--                          </div>-->
+<!--                          <div class="drop-cond__param">-->
+<!--                            <div class="drop-cond__param-text">is greater than</div>-->
+<!--                          </div>-->
+<!--                          <div class="drop-cond__param">-->
+<!--                            <div class="drop-cond__param-text">is greater than or equal to</div>-->
+<!--                          </div>-->
+<!--                          <div class="drop-cond__param">-->
+<!--                            <div class="drop-cond__param-icon">-->
+<!--                              <div class="drop-cond__param-text">is between</div>-->
+<!--                              <mdc-icon css="ic-help" path="ic-help"></mdc-icon>-->
+<!--                            </div>-->
+<!--                          </div>-->
+<!--                        </div>-->
+<!--                        <div class="drop-cond__sect">-->
+<!--                          <div class="drop-cond__param">-->
+<!--                            <div class="drop-cond__param-text">is equal to</div>-->
+<!--                          </div>-->
+<!--                          <div class="drop-cond__param">-->
+<!--                            <div class="drop-cond__param-text">is not equal to</div>-->
+<!--                          </div>-->
+<!--                        </div>-->
+<!--                        <div class="drop-cond__sect">-->
+<!--                          <div class="drop-cond__param">-->
+<!--                            <div class="drop-cond__param-text">is empty</div>-->
+<!--                          </div>-->
+<!--                          <div class="drop-cond__param">-->
+<!--                            <div class="drop-cond__param-text">is not empty</div>-->
+<!--                          </div>-->
+<!--                        </div>-->
+<!--                      </div>-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--              <div class="rule-build-fields">-->
+<!--                <div class="rule-build-fields__item">-->
+<!--                  <input type="text" value="18">-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--            <div class="rule-build-item__icon">-->
+<!--              <mdc-icon css="ic-close-circle" path="ic-close-circle"></mdc-icon>-->
+<!--            </div>-->
+<!--          </div>-->
+          <md-condition-card></md-condition-card>
+
+
+
+<!--          <div class="rule-build-item rule-build-item_green">-->
+<!--            <div class="rule-build-item__content">-->
+<!--              <div class="rule-build-item__select">-->
+<!--                <div class="drop-cond drop-cond_big">-->
+<!--                  <div class="drop-cond__content">-->
+<!--                    <div class="drop-cond__head active">Diagnosis Date-->
+<!--                      <div class="drop-cond__head-arr">-->
+<!--                        <mdc-icon css="ic-select-arr-down" path="ic-select-arr-down"></mdc-icon>-->
+<!--                      </div>-->
+<!--                    </div>-->
+<!--                    <div class="drop-cond__popup">-->
+<!--                      <div class="drop-cond__option">-->
+<!--                        <div class="drop-cond__sect">-->
+<!--                          <div class="drop-cond__param">-->
+<!--                            <div class="drop-cond__param-text">param1</div>-->
+<!--                          </div>-->
+<!--                          <div class="drop-cond__param">-->
+<!--                            <div class="drop-cond__param-text">param2</div>-->
+<!--                          </div>-->
+<!--                          <div class="drop-cond__param">-->
+<!--                            <div class="drop-cond__param-text">param3</div>-->
+<!--                          </div>-->
+<!--                          <div class="drop-cond__param">-->
+<!--                            <div class="drop-cond__param-text">param4</div>-->
+<!--                          </div>-->
+<!--                        </div>-->
+<!--                      </div>-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--              <div class="rule-build-item__select">-->
+<!--                <div class="drop-cond">-->
+<!--                  <div class="drop-cond__content">-->
+<!--                    <div class="drop-cond__head active">is before or on-->
+<!--                      <div class="drop-cond__head-arr">-->
+<!--                        <mdc-icon css="ic-select-arr-down" path="ic-select-arr-down"></mdc-icon>-->
+<!--                      </div>-->
+<!--                    </div>-->
+<!--                    <div class="drop-cond__popup">-->
+<!--                      <div class="drop-cond__option">-->
+<!--                        <div class="drop-cond__sect">-->
+<!--                          <div class="drop-cond__param">-->
+<!--                            <div class="drop-cond__param-text">None</div>-->
+<!--                          </div>-->
+<!--                        </div>-->
+<!--                        <div class="drop-cond__sect">-->
+<!--                          <div class="drop-cond__param">-->
+<!--                            <div class="drop-cond__param-text">is less than</div>-->
+<!--                          </div>-->
+<!--                          <div class="drop-cond__param">-->
+<!--                            <div class="drop-cond__param-text">is less than or equal to</div>-->
+<!--                          </div>-->
+<!--                          <div class="drop-cond__param">-->
+<!--                            <div class="drop-cond__param-text">is greater than</div>-->
+<!--                          </div>-->
+<!--                          <div class="drop-cond__param">-->
+<!--                            <div class="drop-cond__param-text">is greater than or equal to</div>-->
+<!--                          </div>-->
+<!--                          <div class="drop-cond__param">-->
+<!--                            <div class="drop-cond__param-icon">-->
+<!--                              <div class="drop-cond__param-text">is between</div>-->
+<!--                              <mdc-icon css="ic-help" path="ic-help"></mdc-icon>-->
+<!--                            </div>-->
+<!--                          </div>-->
+<!--                        </div>-->
+<!--                        <div class="drop-cond__sect">-->
+<!--                          <div class="drop-cond__param">-->
+<!--                            <div class="drop-cond__param-text">is equal to</div>-->
+<!--                          </div>-->
+<!--                          <div class="drop-cond__param">-->
+<!--                            <div class="drop-cond__param-text">is not equal to</div>-->
+<!--                          </div>-->
+<!--                        </div>-->
+<!--                        <div class="drop-cond__sect">-->
+<!--                          <div class="drop-cond__param">-->
+<!--                            <div class="drop-cond__param-text">is empty</div>-->
+<!--                          </div>-->
+<!--                          <div class="drop-cond__param">-->
+<!--                            <div class="drop-cond__param-text">is not empty</div>-->
+<!--                          </div>-->
+<!--                        </div>-->
+<!--                      </div>-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--              <div class="rule-build-fields__item">-->
+<!--                <div class="input-date">-->
+<!--                  <input type="text" placeholder="dd/mm/yyyy">-->
+<!--                  <mdc-icon css="ic-calendar" path="ic-calendar"></mdc-icon>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--            <div class="rule-build-item__icon">-->
+<!--              <mdc-icon css="ic-close-circle" path="ic-close-circle"></mdc-icon>-->
+<!--            </div>-->
+<!--          </div>-->
+
+<!--          <div class="rule-build-item rule-build-item_grey">-->
+<!--            <div class="rule-build-item__content">-->
+<!--              <div class="rule-build-item__select">-->
+<!--                <div class="drop-cond drop-cond_big">-->
+<!--                  <div class="drop-cond__content">-->
+<!--                    <div class="drop-cond__head">Select a column...-->
+<!--                      <div class="drop-cond__head-arr">-->
+<!--                        <mdc-icon css="ic-select-arr-down" path="ic-select-arr-down"></mdc-icon>-->
+<!--                      </div>-->
+<!--                    </div>-->
+<!--                    <div class="drop-cond__popup">-->
+<!--                      <div class="drop-cond__option">-->
+<!--                        <div class="drop-cond__sect">-->
+<!--                          <div class="drop-cond__param">-->
+<!--                            <div class="drop-cond__param-text">param1</div>-->
+<!--                          </div>-->
+<!--                          <div class="drop-cond__param">-->
+<!--                            <div class="drop-cond__param-text">param2</div>-->
+<!--                          </div>-->
+<!--                          <div class="drop-cond__param">-->
+<!--                            <div class="drop-cond__param-text">param3</div>-->
+<!--                          </div>-->
+<!--                          <div class="drop-cond__param">-->
+<!--                            <div class="drop-cond__param-text">param4</div>-->
+<!--                          </div>-->
+<!--                        </div>-->
+<!--                      </div>-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--              <div class="rule-build-item__select">-->
+<!--                <div class="drop-cond">-->
+<!--                  <div class="drop-cond__content">-->
+<!--                    <div class="drop-cond__head">Select Condition...-->
+<!--                      <div class="drop-cond__head-arr">-->
+<!--                        <mdc-icon css="ic-select-arr-down" path="ic-select-arr-down"></mdc-icon>-->
+<!--                      </div>-->
+<!--                    </div>-->
+<!--                    <div class="drop-cond__popup">-->
+<!--                      <div class="drop-cond__option">-->
+<!--                        <div class="drop-cond__sect">-->
+<!--                          <div class="drop-cond__param">-->
+<!--                            <div class="drop-cond__param-text">None</div>-->
+<!--                          </div>-->
+<!--                        </div>-->
+<!--                        <div class="drop-cond__sect">-->
+<!--                          <div class="drop-cond__param">-->
+<!--                            <div class="drop-cond__param-text">is less than</div>-->
+<!--                          </div>-->
+<!--                          <div class="drop-cond__param">-->
+<!--                            <div class="drop-cond__param-text">is less than or equal to</div>-->
+<!--                          </div>-->
+<!--                          <div class="drop-cond__param">-->
+<!--                            <div class="drop-cond__param-text">is greater than</div>-->
+<!--                          </div>-->
+<!--                          <div class="drop-cond__param">-->
+<!--                            <div class="drop-cond__param-text">is greater than or equal to</div>-->
+<!--                          </div>-->
+<!--                          <div class="drop-cond__param">-->
+<!--                            <div class="drop-cond__param-icon">-->
+<!--                              <div class="drop-cond__param-text">is between</div>-->
+<!--                              <mdc-icon css="ic-help" path="ic-help"></mdc-icon>-->
+<!--                            </div>-->
+<!--                          </div>-->
+<!--                        </div>-->
+<!--                        <div class="drop-cond__sect">-->
+<!--                          <div class="drop-cond__param">-->
+<!--                            <div class="drop-cond__param-text">is equal to</div>-->
+<!--                          </div>-->
+<!--                          <div class="drop-cond__param">-->
+<!--                            <div class="drop-cond__param-text">is not equal to</div>-->
+<!--                          </div>-->
+<!--                        </div>-->
+<!--                        <div class="drop-cond__sect">-->
+<!--                          <div class="drop-cond__param">-->
+<!--                            <div class="drop-cond__param-text">is empty</div>-->
+<!--                          </div>-->
+<!--                          <div class="drop-cond__param">-->
+<!--                            <div class="drop-cond__param-text">is not empty</div>-->
+<!--                          </div>-->
+<!--                        </div>-->
+<!--                      </div>-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--            <div class="rule-build-item__icon" (click)="closeMe()">-->
+<!--              <mdc-icon css="ic-close-circle" path="ic-close-circle"></mdc-icon>-->
+<!--            </div>-->
+<!--          </div>-->
+
+          <div class="rule-build__more"><span class="link-site"><span class="rule-build__more-plus">
+            <mdc-icon css="ic-plus" path="ic-plus"></mdc-icon>
+          </span>Column Filter</span></div>
+        </div>
+      </div>
+      <div class="add-filter__btn"><span class="add-filter__btn-link" (click)="closeMe()">Cancel</span>
+        <div class="add-filter__btn-group">
+          <input class="btn btn_border" type="submit" value="Apply">
+          <input class="btn" type="submit" value="Apply &amp; Close">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
