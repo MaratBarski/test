@@ -80,10 +80,14 @@
   &__item:hover{background: #f5f2f9;}
   &__item:hover &__arr::after{border-color: transparent transparent transparent #f5f2f9;}
 
-	&__item.disable{
-		opacity: 0.5;
-		cursor: auto;
-	}
+  &__item.disable{
+    cursor: auto;
+  }
+
+  &__item.disable &__num,
+  &__item.disable &__val{
+    opacity: 0.5;
+  }
 
 	&__item.disable:hover{background: transparent;}
 	&__item.disable:hover &__arr::after{border-color: transparent transparent transparent #fff;}

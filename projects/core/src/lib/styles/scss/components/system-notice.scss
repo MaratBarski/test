@@ -27,4 +27,16 @@
 
 	.icon{fill: $color-green;}
 	&_red .icon{fill: $color-red;}
+
+  &__close{
+    margin-left: 20px;
+
+    .icon{
+      display: inline-block;
+      vertical-align: middle;
+      width: 16px;
+      height: 16px;
+      fill: $color-dark-blue;
+    }
+  }
 }

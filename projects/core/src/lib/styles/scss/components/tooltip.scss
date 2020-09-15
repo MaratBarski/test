@@ -101,6 +101,21 @@
   &_red.tooltip_left::after{border-color: transparent $color-red transparent transparent;}
   &_red.tooltip_right::after{border-color: transparent transparent transparent $color-red;}
   &_red.tooltip_top::after{border-color: transparent transparent $color-red transparent;}
+
+  &__more{margin-top: 5px;}
+
+  &__more .link-site{
+    display: inline-flex;
+    align-items: center;
+
+    .icon{
+      width: 17px;
+      height: 17px;
+      fill: #0596ff;
+      margin-left: 5px;
+      margin-top: 2px;
+    }
+  }
 }
 
 @media (max-width: 767px) {
