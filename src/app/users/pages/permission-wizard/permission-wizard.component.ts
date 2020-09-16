@@ -134,7 +134,7 @@ export class PermissionWizardComponent extends BaseNavigation implements OnInit,
   }
 
   cancel(): void {
-    if (this.isOfflineMode) {
+    if (this.isOfflineMode || this.isPopup) {
       this.onCancel.emit();
       return;
     }
