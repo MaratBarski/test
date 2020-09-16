@@ -217,12 +217,17 @@ export class EditCategoriesComponent extends BaseNavigation implements OnInit {
         showInToaster: true,
         containerEnable: true,
         type: ToasterType.infoProgressBar,
-        removeOnComplete: true
+        removeOnComplete: true,
+        onComplete: () => {
+          this.router.navigateByUrl('/categorization');
+          this.isLoading = false;
+        }
       },
       form: formData,
       url: `${this._uploadUrl}/${categorization.hierarchyRootId}`,
       method: 'put',
       afterUpload: ((response: any, notifiuploadInfo: UploadInfo) => {
+        this.isLoading = false;
         this.router.navigateByUrl('/categorization')
       }),
       onError: (info: any) => {
