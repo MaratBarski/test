@@ -68,6 +68,7 @@ export class Step1Component implements OnInit, AfterViewInit {
     this.editPatientService.settings.projectId = id;
     this.editPatientService.projectName = this.projectCmp.selectedOption.text;
     this.editPatientService.setQueries();
+    this.editPatientService.setHierarchyProjects();
   }
 
   setOutputFormat(i: number): void {

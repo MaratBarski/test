@@ -17,34 +17,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="table-unwrap__row">
-                        <td class="table-unwrap__item">Hospital Departments</td>
+                    <tr *ngFor="let h of (editPatientService.hierarchyProjects || [])" class="table-unwrap__row">
                         <td class="table-unwrap__item">
-                            <mdc-select  [isSmall]="true" [options]="hospitals"></mdc-select>
+                            {{h.hierarchyName}}
                         </td>
-                    </tr>
-                    <tr class="table-unwrap__row">
-                        <td class="table-unwrap__item">ICD9</td>
                         <td class="table-unwrap__item">
-                            <mdc-select  [isSmall]="true" [options]="hospitals"></mdc-select>
-                        </td>
-                    </tr>
-                    <tr class="table-unwrap__row">
-                        <td class="table-unwrap__item">Drugs</td>
-                        <td class="table-unwrap__item">
-                            <mdc-select  [isSmall]="true" [options]="hospitals"></mdc-select>
-                        </td>
-                    </tr>
-                    <tr class="table-unwrap__row">
-                        <td class="table-unwrap__item">Medications</td>
-                        <td class="table-unwrap__item">
-                            <mdc-select  [isSmall]="true" [options]="hospitals"></mdc-select>
-                        </td>
-                    </tr>
-                    <tr class="table-unwrap__row">
-                        <td class="table-unwrap__item">Medications</td>
-                        <td class="table-unwrap__item">
-                            <mdc-select  [isSmall]="true" [options]="hospitals"></mdc-select>
+                            <mdc-select [(ngModel)]="h.selectedId" [isSmall]="true" [options]="h|hierarchyOptions"></mdc-select>
                         </td>
                     </tr>
                 </tbody>

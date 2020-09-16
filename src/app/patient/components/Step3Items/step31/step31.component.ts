@@ -11,39 +11,37 @@ import { EditPatientService } from '@app/patient/services/edit-patient.service';
 export class Step31Component implements OnInit {
 
   @Input() isOpen = false;
-  
-  stateChange():void{
+
+  stateChange(): void {
     this.isOpen = !this.isOpen;
   }
 
-  countries:Array<SelectOption> = [
+  countries: Array<SelectOption> = [
     {
-      text:'Israel',
-      id:1
+      text: 'Israel',
+      id: 1
     },
     {
-      text:'Usa',
-      id:2
+      text: 'Usa',
+      id: 2
     }
   ]
 
-  
-  years:Array<SelectOption> = [
-    {
-      text:'1',
-      id:1
-    },
-    {
-      text:'2',
-      id:2
-    }
-  ]
+
+  years: Array<SelectOption> = [];
 
   constructor(
     public editPatientService: EditPatientService
   ) { }
 
   ngOnInit() {
+    this.years = [];
+    for (let i = 1; i < 10; i++) {
+      this.years.push({
+        text: `${i}`,
+        id: i
+      })
+    }
   }
 
 }
