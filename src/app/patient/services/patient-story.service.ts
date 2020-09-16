@@ -31,7 +31,10 @@ export class PatientStoryService {
             icon: 'ic-edit',
             command: 'edit'
             , checkDisabled: (source: any) => {
-              return source.transStatus !== 'success' && source.transStatus !== 'completed';
+              return (!source.transStatus
+                || source.transStatus.toLowerCase() === 'pending'
+                || source.transStatus.toLowerCase() !== 'generating'
+              );
             }
           },
           {
@@ -39,7 +42,10 @@ export class PatientStoryService {
             icon: 'ic-view',
             command: 'dublicate'
             , checkDisabled: (source: any) => {
-              return source.transStatus !== 'success' && source.transStatus !== 'completed';
+              return (!source.transStatus
+                || source.transStatus.toLowerCase() === 'pending'
+                || source.transStatus.toLowerCase() !== 'generating'
+              );
             }
           },
           {
@@ -47,7 +53,7 @@ export class PatientStoryService {
             icon: 'ic-view',
             command: 'download'
             , checkDisabled: (source: any) => {
-              return source.transStatus !== 'success' && source.transStatus !== 'completed';
+              return source.outputType && source.outputType.toLowerCase() === 'files';
             }
           }
         ],
@@ -131,7 +137,7 @@ export class PatientStoryService {
         cells: {
           SettingsName: fl.name,
           Modified: fl.updateDate,
-          User: fl.userName ? fl.userName : fl.userId,
+          User: fl.user ? fl.user.login : '',
           Status: fl.transStatus,
           OutputFormat: fl.outputType === 'files' ? 'XML Files' : 'Table'
         },

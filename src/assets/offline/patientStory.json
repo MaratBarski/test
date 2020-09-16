@@ -5,7 +5,7 @@
             "name": "bnbvnbv",
             "userId": "5",
             "projectId": "6",
-            "outputType": "table",
+            "outputType": "files",
             "outputObject": null,
             "transJson": {
                 "input_mode": "session",
