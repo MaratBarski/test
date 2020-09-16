@@ -33,7 +33,7 @@ export class PatientStoryService {
             , checkDisabled: (source: any) => {
               return (!source.transStatus
                 || source.transStatus.toLowerCase() === 'pending'
-                || source.transStatus.toLowerCase() !== 'generating'
+                || source.transStatus.toLowerCase() === 'generating'
               );
             }
           },
@@ -44,7 +44,7 @@ export class PatientStoryService {
             , checkDisabled: (source: any) => {
               return (!source.transStatus
                 || source.transStatus.toLowerCase() === 'pending'
-                || source.transStatus.toLowerCase() !== 'generating'
+                || source.transStatus.toLowerCase() === 'generating'
               );
             }
           },
@@ -53,7 +53,7 @@ export class PatientStoryService {
             icon: 'ic-view',
             command: 'download'
             , checkDisabled: (source: any) => {
-              return source.outputType && source.outputType.toLowerCase() === 'files';
+              return !source.outputType || source.outputType.toLowerCase() !== 'files';
             }
           }
         ],
