@@ -77,7 +77,12 @@ export class UploadFileComponent {
         type: ToasterType.infoProgressBar,
         showInToaster: true,
         containerEnable: true,
-        removeOnComplete: true
+        removeOnComplete: true,
+        onComplete: () => {
+          if (this.targetComponent) {
+            this.targetComponent.onComplete();
+          }
+        }
       },
       form: formData,
       url: this._uploadUrl,
