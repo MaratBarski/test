@@ -106,7 +106,7 @@ export class UserEditService {
   }
 
   private loadUsers(): void {
-    this.http.get(this._usersUrl).subscribe((res: any) => {
+    this.http.get(this._adUsersUrl).subscribe((res: any) => {
       this._users = res.data;
     }, error => {
 
@@ -115,6 +115,9 @@ export class UserEditService {
 
   @Offline('assets/offline/userList.json?')
   private _usersUrl = `${environment.serverUrl}${environment.endPoints.userList}`;
+
+  @Offline('assets/offline/adUsers.json?')
+  private _adUsersUrl = `${environment.serverUrl}${environment.endPoints.adUsers}`;
 
   @Offline('assets/offline/selectedUser.json?')
   private _userUrl = `${environment.serverUrl}${environment.endPoints.userList}`;
@@ -337,7 +340,7 @@ export class UserEditService {
     const pwdValid = this.validatePassword();
     const userNameValid = this.validateUserName();
     const emailValid = this.validateEmail();
-    res = userNameValid && pwdValid;
+    res = userNameValid && pwdValid && emailValid;
     Object.keys(this.missingItem).forEach(k => {
       if (this.missingItem[k].validate) {
         if (!this.missingItem[k].validate()) {

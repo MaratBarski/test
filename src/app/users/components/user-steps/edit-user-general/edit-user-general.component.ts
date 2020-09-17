@@ -28,7 +28,7 @@ export class EditUserGeneralComponent implements OnInit, AfterViewInit {
   private initUsers(): void {
     if (this.userEditService.users) {
       this.users = this.userEditService.users.map(u => {
-        return { name: u.login, id: u.id };
+        return { name: u, id: u };
       }).sort((a, b) => {
         return a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1;
       })
