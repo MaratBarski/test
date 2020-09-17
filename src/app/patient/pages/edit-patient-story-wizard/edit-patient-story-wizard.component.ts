@@ -63,7 +63,7 @@ export class EditPatientStoryWizardComponent extends BaseSibscriber implements O
 
   }
 
-  onNext(i: 1 | -1): void {
+  onNext(i: number): void {
     this.editPatientService.setNextTab(i);
   }
 }

@@ -190,7 +190,7 @@ export class EditPatientService {
     this._selectedTab = tab;
   }
 
-  setNextTab(i: 1 | -1): void {
+  setNextTab(i: number): void {
     this._selectedTab += i;
   }
 

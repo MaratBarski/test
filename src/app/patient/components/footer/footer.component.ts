@@ -9,7 +9,7 @@ import { ComponentService } from '@appcore';
 })
 export class FooterComponent implements OnInit {
 
-  @Output() onNext = new EventEmitter<1 | -1>();
+  @Output() onNext = new EventEmitter<number>();
   @Output() onSave = new EventEmitter();
   @Output() onCancel = new EventEmitter();
   @Output() onToEnd = new EventEmitter();
@@ -30,7 +30,7 @@ export class FooterComponent implements OnInit {
     this.editPatientService.setTab(3);
   }
 
-  next(i: 1 | -1): void {
+  next(i: number): void {
     this.onNext.emit(i);
   }
 
