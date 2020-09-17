@@ -190,6 +190,10 @@ export class EditPatientService {
     this._selectedTab = tab;
   }
 
+  setNextTab(i: 1 | -1): void {
+    this._selectedTab += i;
+  }
+
   constructor(
     private http: HttpClient,
     private configService: ConfigService,

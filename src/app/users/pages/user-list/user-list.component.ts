@@ -38,7 +38,7 @@ export class UserListComponent extends BaseSibscriber implements OnInit {
   constructor(
     private navigationService: NavigationService,
     private router: Router,
-    private loginService: LoginService,
+    public loginService: LoginService,
     private userListService: UserListService,
     private sortService: SortService,
     private componentService: ComponentService

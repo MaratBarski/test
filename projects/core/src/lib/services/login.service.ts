@@ -32,9 +32,14 @@ export class LoginService extends BaseSibscriber implements CanActivate {
     super();
     super.add(this.store.select(userSelector).subscribe(user => {
       this._userInfo = user;
+      this.setSuperAdmin();
       this._userDataUpdated.next(this._userInfo);
     }));
   }
+  get isSuperAdmin(): boolean {
+    return this._isSuperAdmin;
+  }
+  private _isSuperAdmin = false;
 
   static readonly TOKEN = 'token';
   static readonly USER = 'user';
@@ -45,6 +50,11 @@ export class LoginService extends BaseSibscriber implements CanActivate {
 
   static getToken(): string {
     return '';
+  }
+
+  private setSuperAdmin(): boolean {
+    if (!this._userInfo || !this._userInfo.data || !this._userInfo.data.authorities || !this._userInfo.data.authorities.length) { return false; }
+    this._isSuperAdmin = !!this._userInfo.data.authorities.find((x: any) => x.UserAuthority && x.UserAuthority.authorityName && x.UserAuthority.authorityName.toUpperCase() === 'ROLE_SUPERADMIN');
   }
 
   get isLogedIn(): boolean { return LoginService.IS_LOGEDIN(); }
@@ -72,7 +82,7 @@ export class LoginService extends BaseSibscriber implements CanActivate {
     if (!this.userInfo) { return undefined; }
     if (!this.userInfo.data) { return undefined; }
     if (!this.userInfo.data.projects) { return undefined; }
-    
+
     return this.userInfo.data.projects.find(x => (x.projectId === projectID)
       &&
       ((x.userType && x.userType.userType && x.userType.userType.toUpperCase() === 'ADMIN') ||
