@@ -1,5 +1,6 @@
-import {Component, OnInit, Output} from '@angular/core';
+import {Component, Input, OnInit, Output} from '@angular/core';
 import {Subject} from 'rxjs';
+import {IColumn} from '@app/activate/model/interfaces/IColumn';
 
 @Component({
   selector: 'md-filter-modal',
@@ -8,7 +9,7 @@ import {Subject} from 'rxjs';
 })
 export class FilterModalComponent implements OnInit {
   @Output() closeWindow: Subject<boolean> = new Subject<boolean>();
-
+  @Input() collection: Array<IColumn>;
   constructor() {
   }
 

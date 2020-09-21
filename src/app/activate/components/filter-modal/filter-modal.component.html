@@ -6,8 +6,16 @@
       <mdc-icon css="ic-close" path="ic-close"></mdc-icon>
     </div>
     <div class="add-filter">
-      <div class="add-filter__content">
-        <div class="rule-build">
+<!--      <div class="add-filter__content">-->
+<!--        <div class="rule-build">-->
+          <perfect-scrollbar>
+<!--            <ng-container *ngFor="let column of collection">-->
+              <md-condition-card [item]="collection[0]" [collection]="collection"></md-condition-card>
+<!--            </ng-container>-->
+            <div class="rule-build__more"><span class="link-site"><span class="rule-build__more-plus">
+            <mdc-icon css="ic-plus" path="ic-plus"></mdc-icon>
+          </span>Column Filter</span></div>
+          </perfect-scrollbar>
 <!--          <div class="rule-build-item">-->
 <!--            <div class="rule-build-item__content">-->
 <!--              <div class="rule-build-item__select">-->
@@ -100,7 +108,7 @@
 <!--              <mdc-icon css="ic-close-circle" path="ic-close-circle"></mdc-icon>-->
 <!--            </div>-->
 <!--          </div>-->
-          <md-condition-card></md-condition-card>
+
 
 
 
@@ -296,11 +304,9 @@
 <!--            </div>-->
 <!--          </div>-->
 
-          <div class="rule-build__more"><span class="link-site"><span class="rule-build__more-plus">
-            <mdc-icon css="ic-plus" path="ic-plus"></mdc-icon>
-          </span>Column Filter</span></div>
-        </div>
-      </div>
+
+<!--        </div>-->
+<!--      </div>-->
       <div class="add-filter__btn"><span class="add-filter__btn-link" (click)="closeMe()">Cancel</span>
         <div class="add-filter__btn-group">
           <input class="btn btn_border" type="submit" value="Apply">

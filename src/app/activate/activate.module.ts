@@ -12,6 +12,7 @@ import { SelectedColumnPipe } from './pipes/selected-column.pipe';
 import { FilterModalComponent } from './components/filter-modal/filter-modal.component';
 import { CustomSelectComponent } from './components/custom-select/custom-select.component';
 import { ConditionCardComponent } from './components/condition-card/condition-card.component';
+import {PerfectScrollbarModule} from 'ngx-perfect-scrollbar';
 
 const routes: Array<Route> = [
   {path: '', component: ActivateComponent},
@@ -27,7 +28,8 @@ const routes: Array<Route> = [
     CoreModule,
     FormsModule,
     ReactiveFormsModule,
-    DragDropModule
+    DragDropModule,
+    PerfectScrollbarModule
   ]
 })
 export class ActivateModule {
