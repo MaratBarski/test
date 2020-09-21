@@ -189,19 +189,19 @@
               </td>
 
               <!-- row with type icon starts -->
-              <td class="admin-table__item admin-table__item_center d-none d-md-table-cell">
+              <td class="admin-table__item admin-table__item_center d-none d-md-table-cell" (click)="changeType(column)">
                 <mdc-icon path="ic-textual-border" css="ic-textual-border" class="icon"
-                          *ngIf="column.rootType === fieldDataType.STRING"></mdc-icon>
+                          *ngIf="column.outputType === fieldDataType.STRING"></mdc-icon>
                 <mdc-icon path="ic-numeric-border" css="ic-numeric-border" class="icon"
-                          *ngIf="column.rootType === fieldDataType.NUMERIC"></mdc-icon>
+                          *ngIf="column.outputType === fieldDataType.NUMERIC"></mdc-icon>
                 <mdc-icon path="ic-calendar" css="ic-calendar" class="icon"
-                          *ngIf="column.rootType === fieldDataType.DATE"></mdc-icon>
+                          *ngIf="column.outputType === fieldDataType.DATE"></mdc-icon>
               </td>
               <!--              row with type icon ends-->
 
               <!--              // col of hierarchy start-->
               <td class="admin-table__item d-none d-md-table-cell">
-                <mdc-select [isSmall]="true" [applyWidth]="false" [options]="column.hierarchy | async"
+                <mdc-select [(ngModel)]="column.hierarchy" [isSmall]="true" [applyWidth]="false" [options]="column.hierarchy | async"
                             *ngIf="column.hierarchyRootId && column.hierarchyRootId > -1"></mdc-select>
               </td>
               <!--              // col of hierarchy end-->
@@ -276,7 +276,7 @@
             </div>
             <span class="footer__btn-big"><span class="btn btn_border">Previous</span>
 										<div class="split-btn split-btn_up">
-											<div class="split-btn__title">Download Original</div>
+											<div class="split-btn__title" (click)="downloadOriginal()">Download Original</div>
 											<div class="split-btn__arr">
                         <mdc-icon path="ic-btn-arr-down" css="ic-btn-arr-down"></mdc-icon>
                         <!--												<svg class="icon ic-btn-arr-down">-->

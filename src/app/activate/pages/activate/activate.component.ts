@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {FormArray, FormBuilder, FormControl, FormGroup} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {BaseNavigation, NavigationService, SelectOption} from '@appcore';
 import {ActivatedRoute, Router} from '@angular/router';
-import {FileClm, FileSource} from '@app/imported-files/models/file-source';
+import {FileSource} from '@app/imported-files/models/file-source';
 import {Template} from '@app/models/template';
 import {Hierarchy} from '@app/models/hierarchy';
 import {PropertyType} from '@app/imported-files/models/enum/PropertyType';
@@ -10,7 +10,7 @@ import {PropertyType} from '@app/imported-files/models/enum/PropertyType';
 import {IColumn} from '@app/activate/model/interfaces/IColumn';
 import {PhysicalColumn} from '@app/activate/model/Column/PhisicalColumn';
 import {ActivateService} from '@app/activate/services/activate.service';
-import {debounceTime, distinctUntilChanged, map, takeUntil} from 'rxjs/operators';
+import {debounceTime, distinctUntilChanged, map} from 'rxjs/operators';
 import {FieldDataType} from '@app/activate/model/enum/FieldDataType';
 import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 
@@ -133,12 +133,33 @@ export class ActivateComponent extends BaseNavigation implements OnInit {
     this.changeCollectionObject();
   }
 
-  closeFilterModal(){
+  closeFilterModal() {
     this.showFilterModal = false;
   }
 
-  openFilterModal(){
+  openFilterModal() {
     this.showFilterModal = true;
+  }
+
+  public changeType(column: IColumn) {
+    if (column.rootType === FieldDataType.STRING) {
+      return;
+    }
+    const index = this.columnCollection.findIndex(col => col.physicalName === column.physicalName);
+    if (column.rootType === FieldDataType.DATE && column.outputType === FieldDataType.DATE) {
+      this.columnCollection[index].outputType = FieldDataType.STRING;
+    } else if (column.rootType === FieldDataType.DATE && column.outputType === FieldDataType.DATE) {
+      this.columnCollection[index].outputType = FieldDataType.DATE;
+    }
+    if (column.rootType === FieldDataType.NUMERIC && column.outputType === FieldDataType.NUMERIC) {
+      this.columnCollection[index].outputType = FieldDataType.STRING;
+    } else if (column.rootType === FieldDataType.NUMERIC && column.outputType === FieldDataType.STRING) {
+      this.columnCollection[index].outputType = FieldDataType.NUMERIC;
+    }
+  }
+
+  downloadOriginal() {
+    console.log(this.columnCollection);
   }
 
 }

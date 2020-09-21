@@ -85,6 +85,8 @@ export const environment = {
     project: 'kostyan/api/v1/project',
     patientStory: 'kostyan/api/v1/file-source',
     patientStoryUserSession: 'kostyan/api/v1/patient-story/user-session',
+    hierarchyProject: 'mdclone/api/v1/hierarchy/project',
+    adUsers: 'ad-users',
     activate: 'kostyan/api/v1/activate'
   }
 };
