@@ -33,7 +33,7 @@
                     class="user-details-main__item">
                     <div [hidden]="userEditService.isPasswordValid" class="user-details-tooltip active error">
                         <div class="user-details-tooltip__title">Password must contain:</div>
-                        <div class="user-details-tooltip__text">
+                        <div class="user-details-tooltip-error">
                             <ul>
                                 <li>At least 8 characters</li>
                                 <li>At least one number</li>
@@ -42,6 +42,7 @@
                         </div>
                     </div>
                 </md-input-item>
+                <div *ngIf="userEditService.securityType===1">&nbsp;</div>
                 <md-input-item (onChangeValue)="onChangeValue()" [(ngModel)]="userEditService.user.firstName"
                     [isError]="userEditService.missingItem.firstName.isError"
                     [isMissing]="userEditService.missingItem.firstName.isMissing" placeHolder="Type user’s first name"
@@ -78,6 +79,9 @@
                     <md-user-project-selector [env]="env" [index]="i"
                         *ngFor="let env of userEditService.environments;let i = index">
                     </md-user-project-selector>
+                    <div class="error-text" [hidden]="userEditService.isEnvironmetValid">
+                        Missing environment
+                    </div>
                 </div>
             </div>
         </div>

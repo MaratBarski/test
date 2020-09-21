@@ -22,7 +22,7 @@ export class EditUserGeneralComponent implements OnInit, AfterViewInit {
   users: Array<any>;
 
   onChangeValue(): void {
-    this.userEditService.validate(false);
+    //this.userEditService.validate(false);
   }
 
   private initUsers(): void {
