@@ -3,6 +3,13 @@
     color: #fff;
     outline: 0px !important
 }
+.error-text{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 0.75rem;
+    line-height: 1.57;
+    color: #e20343;
+}
 .error li{
     color:white !important;
 }
@@ -24,4 +31,18 @@
 ul {
     list-style: initial !important;
   }
-  
+
+.user-details-tooltip{
+    ul li::before{
+        content: '';
+        display: inline-block;
+        width: 3px;
+        height: 3px;
+        border-radius: 50%;
+        background: white !important;
+        position: absolute;
+        top: 7px;
+        left: -9px;
+        display:none;
+    }
+}

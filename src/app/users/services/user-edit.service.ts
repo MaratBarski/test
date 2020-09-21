@@ -64,6 +64,7 @@ export class UserEditService {
   isUserNameValid = true;
   isPasswordValid = true;
   isEmaileValid = true;
+  isEnvironmetValid = true;
 
   addSet(ps: any): void {
     this.user.permissionSets = [ps].concat(this.user.permissionSets);
@@ -106,7 +107,7 @@ export class UserEditService {
   }
 
   private loadUsers(): void {
-    this.http.get(this._usersUrl).subscribe((res: any) => {
+    this.http.get(this._adUsersUrl).subscribe((res: any) => {
       this._users = res.data;
     }, error => {
 
@@ -115,6 +116,9 @@ export class UserEditService {
 
   @Offline('assets/offline/userList.json?')
   private _usersUrl = `${environment.serverUrl}${environment.endPoints.userList}`;
+
+  @Offline('assets/offline/adUsers.json?')
+  private _adUsersUrl = `${environment.serverUrl}${environment.endPoints.adUsers}`;
 
   @Offline('assets/offline/selectedUser.json?')
   private _userUrl = `${environment.serverUrl}${environment.endPoints.userList}`;
@@ -219,38 +223,38 @@ export class UserEditService {
       this.http.get(this._projectUrltUrl),
       this.getPermissionSets(id)
     )
-    .pipe(take(1))
-    .subscribe(([user, projects, sets]: any) => {
-      this._user = user.data;
-      this._user.userName = this._user.login;
-      this._user.isSuperAdmin = this._user.authorities
-        && this._user.authorities.length
-        && this._user.authorities.find(x => x.UserAuthority
-          && x.UserAuthority.authorityName &&
-          x.UserAuthority.authorityName.toUpperCase() === 'ROLE_SUPERADMIN'
-        );
-      this._user.enabled = this._user.activated;
+      .pipe(take(1))
+      .subscribe(([user, projects, sets]: any) => {
+        this._user = user.data;
+        this._user.userName = this._user.login;
+        this._user.isSuperAdmin = this._user.authorities
+          && this._user.authorities.length
+          && this._user.authorities.find(x => x.UserAuthority
+            && x.UserAuthority.authorityName &&
+            x.UserAuthority.authorityName.toUpperCase() === 'ROLE_SUPERADMIN'
+          );
+        this._user.enabled = this._user.activated;
 
-      this._environments = projects.data;
-      this._environments.forEach(x => {
-        const env = this._user.projects ? this._user.projects.find(p => p.projectId === x.projectId) : undefined;
-        x.isChecked = !!env;
-        x.role = 1;
-        x.data = 1;
-        x.kf = 4;
-        x.isShowAdvanced = false;
-        if (env && env.UserType) {
-          x.role = env.UserType.userType.toUpperCase() === 'ADMIN' ? 2 : 1;
-          x.data = env.UserType.anonymityLevel === 1 ? 2 : 1;
-          x.kf = Math.min(Math.max(env.UserType.anonymityLevel, 4), 10);
-        }
+        this._environments = projects.data;
+        this._environments.forEach(x => {
+          const env = this._user.projects ? this._user.projects.find(p => p.projectId === x.projectId) : undefined;
+          x.isChecked = !!env;
+          x.role = 1;
+          x.data = 1;
+          x.kf = 4;
+          x.isShowAdvanced = false;
+          if (env && env.UserType) {
+            x.role = env.UserType.userType.toUpperCase() === 'ADMIN' ? 2 : 1;
+            x.data = env.UserType.anonymityLevel === 1 ? 2 : 1;
+            x.kf = Math.min(Math.max(env.UserType.anonymityLevel, 4), 10);
+          }
+        });
+        this.initSets(sets)
+        this._isLoading = false;
+        setTimeout(() => {
+          this._isHidden = false;
+        }, 1000);
       });
-      this.initSets(sets)
-      this._isLoading = false;
-      setTimeout(() => {
-        this._isHidden = false;
-      }, 1000);
-    });
   }
 
   get mode() { return this._mode; }
@@ -337,7 +341,8 @@ export class UserEditService {
     const pwdValid = this.validatePassword();
     const userNameValid = this.validateUserName();
     const emailValid = this.validateEmail();
-    res = userNameValid && pwdValid;
+    const envValid = this.validateEnvironment();
+    res = userNameValid && pwdValid && emailValid && envValid;
     Object.keys(this.missingItem).forEach(k => {
       if (this.missingItem[k].validate) {
         if (!this.missingItem[k].validate()) {
@@ -390,6 +395,11 @@ export class UserEditService {
       return this.isUserNameValid;
     }
     return this.isUserNameValid;
+  }
+
+  validateEnvironment(): boolean {
+    this.isEnvironmetValid = !!this.environments.find(x => x.isChecked);
+    return this.isEnvironmetValid;
   }
 
   validatePassword(): boolean {
@@ -487,6 +497,7 @@ export class UserEditService {
     this.isUserNameValid = true;
     this.isPasswordValid = true;
     this.isEmaileValid = true;
+    this.isEnvironmetValid = true;
     Object.keys(this.missingItem).forEach(k => {
       this.missingItem[k].isMissing = false;
       this.missingItem[k].isError = false;
@@ -500,75 +511,75 @@ export class UserEditService {
   private createNew(req: any): void {
     console.log(req);
     this.http.post(this._userUrl, req)
-    .pipe(take(1))
-    .subscribe(res => {
-      this._isLoading = false;
-      this.notificationService.addNotification({
-        showInToaster: true,
-        isClientOnly: true,
-        name: 'User added successfully',
-        comment: 'User added successfully',
-        type: ToasterType.success
-      });
-    }, error => {
-      this._isLoading = false;
-      this.notificationService.addNotification({
-        showInToaster: true,
-        isClientOnly: true,
-        name: 'Error add user',
-        comment: error.error && error.error.massage ? error.error.massage : 'Failed to create new User',
-        type: ToasterType.error
-      });
-    })
+      .pipe(take(1))
+      .subscribe(res => {
+        this._isLoading = false;
+        this.notificationService.addNotification({
+          showInToaster: true,
+          isClientOnly: true,
+          name: 'User added successfully',
+          comment: 'User added successfully',
+          type: ToasterType.success
+        });
+      }, error => {
+        this._isLoading = false;
+        this.notificationService.addNotification({
+          showInToaster: true,
+          isClientOnly: true,
+          name: 'Error add user',
+          comment: error.error && error.error.massage ? error.error.massage : 'Failed to create new User',
+          type: ToasterType.error
+        });
+      })
   }
 
   private updateUser(req: any): void {
     delete req.researches;
     this.http.put(`${this._userUrl}/${this.user.id}`, req)
-    .pipe(take(1))
-    .subscribe(res => {
-      this._isLoading = false;
-      this.notificationService.addNotification({
-        showInToaster: true,
-        isClientOnly: true,
-        name: 'User updated successfully',
-        comment: 'User updated successfully',
-        type: ToasterType.success
-      });
-    }, error => {
-      this._isLoading = false;
-      this.notificationService.addNotification({
-        showInToaster: true,
-        isClientOnly: true,
-        name: 'Error update user',
-        comment: 'Error',
-        type: ToasterType.error
-      });
-    })
+      .pipe(take(1))
+      .subscribe(res => {
+        this._isLoading = false;
+        this.notificationService.addNotification({
+          showInToaster: true,
+          isClientOnly: true,
+          name: 'User updated successfully',
+          comment: 'User updated successfully',
+          type: ToasterType.success
+        });
+      }, error => {
+        this._isLoading = false;
+        this.notificationService.addNotification({
+          showInToaster: true,
+          isClientOnly: true,
+          name: 'Error update user',
+          comment: 'Error',
+          type: ToasterType.error
+        });
+      })
   }
 
   private updateResearchers(req: any): void {
     this.http.put(`${this._userUrl}/${this.user.id}`, req)
-    .pipe(take(1))
-    .subscribe(res => {
-      this._isLoading = false;
-      this.notificationService.addNotification({
-        showInToaster: true,
-        isClientOnly: true,
-        name: 'Permission set updated successfully',
-        comment: 'Permission set updated successfully',
-        type: ToasterType.success
-      });
-    }, error => {
-      this._isLoading = false;
-      this.notificationService.addNotification({
-        showInToaster: true,
-        isClientOnly: true,
-        name: 'Error update permission set',
-        comment: 'Error',
-        type: ToasterType.error
-      });
-    })
+      .pipe(take(1))
+      .subscribe(res => {
+        this._isLoading = false;
+        this.notificationService.addNotification({
+          showInToaster: true,
+          isClientOnly: true,
+          name: 'Permission set updated successfully',
+          comment: 'Permission set updated successfully',
+          type: ToasterType.success
+        });
+      }, error => {
+        this._isLoading = false;
+        this.notificationService.addNotification({
+          showInToaster: true,
+          isClientOnly: true,
+          name: 'Error update permission set',
+          comment: 'Error',
+          type: ToasterType.error
+        });
+      })
   }
 
   save(): void {

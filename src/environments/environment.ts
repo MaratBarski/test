@@ -41,6 +41,8 @@ export const environment = {
     notificationUpdate: 'mdclone/api/v1/config/notification',
     project: 'mdclone/api/v1/project',
     patientStory: 'mdclone/api/v1/patient-story',
-    patientStoryUserSession: 'mdclone/api/v1/patient-story/user-session',    
+    patientStoryUserSession: 'mdclone/api/v1/patient-story/user-session',
+    hierarchyProject: 'mdclone/api/v1/hierarchy/project',
+    adUsers: 'ad-users'
   }
 };

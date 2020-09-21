@@ -622,9 +622,8 @@
 
     &__edit{
       display: none;
-      position: absolute;
-      @include top-center;
-      right: 15px;
+      margin-left: 15px;
+      cursor: pointer;
 
       .icon{
         width: 21px;

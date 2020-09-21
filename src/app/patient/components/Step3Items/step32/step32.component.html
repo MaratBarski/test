@@ -10,7 +10,7 @@
                     <mdc-check-box [(ngModel)]="editPatientService.isMaxDateShiftingChecked"
                         text="Maximum Date shifting:"></mdc-check-box>
                     <div class="user-unwrap-param__num">
-                        <mdc-select [disabled]="!editPatientService.isMaxDateShiftingChecked" [isSmall]="true"
+                        <mdc-select [(ngModel)]="editPatientService.general_date_shift" [disabled]="!editPatientService.isMaxDateShiftingChecked" [isSmall]="true"
                             [options]="dates"></mdc-select>
                     </div>
                 </div>
@@ -18,7 +18,7 @@
                     <mdc-check-box [(ngModel)]="editPatientService.isMaxNumericStringChecked"
                         text="Maximum Numeric shifting:"></mdc-check-box>
                     <div class="user-unwrap-param__num">
-                        <mdc-select [disabled]="!editPatientService.isMaxNumericStringChecked" [isSmall]="true"
+                        <mdc-select  [(ngModel)]="editPatientService.general_numeric_shift" [disabled]="!editPatientService.isMaxNumericStringChecked" [isSmall]="true"
                             [options]="numerics"></mdc-select>
                     </div>
                 </div>

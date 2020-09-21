@@ -5,9 +5,10 @@
             "name": "bnbvnbv",
             "userId": "5",
             "projectId": "6",
-            "outputType": "table",
+            "outputType": "files",
             "outputObject": null,
             "transJson": {
+                "free_text": true,
                 "input_mode": "session",
                 "input_population": "93",
                 "event_inclusion": null,
@@ -16,11 +17,11 @@
                     "25": 147,
                     "27": 157
                 },
-                "general_date_shift": 0,
+                "general_date_shift": 4,
                 "general_numeric_shift": 0,
                 "target_impala_tbl": "bnbvnbv",
-                "hipaa_inclusion": null,
-                "hipaa_date_shift": "null",
+                "hipaa_inclusion": "phone,date_shift,zip,email,ip,older_than_89",
+                "hipaa_date_shift": "3",
                 "hipaa_phone": null,
                 "custom_regexes": null
             },

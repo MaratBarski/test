@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { DataService, TableModel, CheckBoxListOption } from '@appcore';
+import { DataService, TableModel, LoginService } from '@appcore';
 import { Observable } from 'rxjs';
 import { Offline } from 'src/app/shared/decorators/offline.decorator';
 import { environment } from '@env/environment';
@@ -9,7 +9,9 @@ import { environment } from '@env/environment';
 })
 export class UserListService {
 
-  constructor(private dataService: DataService) { }
+  constructor(
+    private loginService: LoginService,
+    private dataService: DataService) { }
 
   @Offline('assets/offline/userList.json')
   private getUrl = `${environment.serverUrl}${environment.endPoints.userList}`;
@@ -62,8 +64,8 @@ export class UserListService {
               return false;
             }
             , checkDisabled: (source) => {
-              return false;
-            },
+              return !this.loginService.isSuperAdmin;
+            }
           },
           {
             text: 'Edit Permission Set',
@@ -74,12 +76,7 @@ export class UserListService {
             }
             , checkDisabled: (source) => {
               return false;
-            },
-          },
-          {
-            text: 'View User',
-            icon: 'ic-view',
-            command: 'view'
+            }
           }
         ],
         subLinks: [
@@ -88,6 +85,9 @@ export class UserListService {
             disable: false,
             icon: 'ic-delete',
             command: 'delete'
+            , checkDisabled: (source) => {
+              return !this.loginService.isSuperAdmin;
+            }
           }
         ]
       },

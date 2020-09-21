@@ -21,6 +21,8 @@ import { Summary1Component } from './components/summary/summary1/summary1.compon
 import { Summary2Component } from './components/summary/summary2/summary2.component';
 import { Summary3Component } from './components/summary/summary3/summary3.component';
 import { SummaryHeaderComponent } from './components/summary/summary-header/summary-header.component';
+import { HierarchyOptionsPipe } from './pipes/hierarchy-options.pipe';
+import { FooterComponent } from './components/footer/footer.component';
 
 const routes: Array<Route> = [
   { path: '', component: PatientStoryComponent },
@@ -45,7 +47,9 @@ const routes: Array<Route> = [
     Summary1Component,
     Summary2Component,
     Summary3Component,
-    SummaryHeaderComponent
+    SummaryHeaderComponent,
+    HierarchyOptionsPipe,
+    FooterComponent
   ],
   imports: [
     CommonModule,

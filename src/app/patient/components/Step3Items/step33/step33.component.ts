@@ -19,20 +19,6 @@ export class Step33Component implements OnInit {
     public editPatientService: EditPatientService
   ) { }
 
-  
-  hospitals:Array<SelectOption> = [
-    {
-      text:'1',
-      id:1
-    },
-    {
-      text:'2',
-      id:2
-    }
-  ]
-
-  
-
   ngOnInit() {
   }
 

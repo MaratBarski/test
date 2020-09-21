@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserEditService } from '@app/users/services/user-edit.service';
 import { SplitBtnOption } from '@app/users/components/footer/footer.component';
 import { ActivatedRoute, Router } from '@angular/router';
-import { NavigationService, BaseNavigation } from '@appcore';
+import { NavigationService, BaseNavigation, LoginService } from '@appcore';
 import { TabWizardItem } from '@app/shared/components/tab-wizard/tab-wizard.component';
 
 @Component({
@@ -16,9 +16,13 @@ export class UserWizardComponent extends BaseNavigation implements OnInit {
     public userEditService: UserEditService,
     private activatedRoute: ActivatedRoute,
     protected navigationService: NavigationService,
-    private router: Router
+    private router: Router,
+    public loginService: LoginService
   ) {
     super(navigationService);
+    if(!this.loginService.isSuperAdmin){
+      this.router.navigateByUrl('/users');
+    }
   }
 
   get isLastTab(): boolean {

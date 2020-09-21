@@ -55,4 +55,15 @@ export class EditPatientStoryWizardComponent extends BaseSibscriber implements O
     this.editPatientService.setTab(index);
   }
 
+  onCancel(): void {
+
+  }
+
+  onSave(): void {
+
+  }
+
+  onNext(i: number): void {
+    this.editPatientService.setNextTab(i);
+  }
 }

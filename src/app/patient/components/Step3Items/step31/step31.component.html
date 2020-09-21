@@ -33,7 +33,7 @@
                     <mdc-check-box [(ngModel)]="editPatientService.isExtraYearsChecked" text="Extra years shifting:">
                     </mdc-check-box>
                     <div class="user-unwrap-param__num">
-                        <mdc-select [disabled]="!editPatientService.isExtraYearsChecked" [isSmall]="true"
+                        <mdc-select [(ngModel)]="editPatientService.hipaa_date_shift" [disabled]="!editPatientService.isExtraYearsChecked" [isSmall]="true"
                             [options]="years"></mdc-select>
                     </div>
                     <div class="user-unwrap-param__icon">

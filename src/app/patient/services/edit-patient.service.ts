@@ -18,6 +18,9 @@ export class EditPatientService {
   get onQueriesLoded(): Observable<any> { return this._onQueriesLoded; }
   private _onQueriesLoded = new Subject();
 
+  get onHierarchyProjects(): Observable<any> { return this._onHierarchyProjects; }
+  private _onHierarchyProjects = new Subject();
+
   private _filters = [
     [false, false, false, false, false, false, false],
     [false, false, false],
@@ -62,6 +65,10 @@ export class EditPatientService {
   set isFreeTextChecked(f: boolean) { this._filters[1][2] = f; }
   get isFreeTextChecked(): boolean { return this._filters[1][2]; }
 
+  hipaa_date_shift = 0;
+  general_numeric_shift = 0;
+  general_date_shift = 0;
+
   regexes = [];
 
   removeRegex(r: any): void {
@@ -98,6 +105,27 @@ export class EditPatientService {
 
   get queries(): Array<any> { return this._queries; }
   private _queries: Array<any>;
+
+  get hierarchyProjects(): Array<any> { return this._hierarchyProjects; }
+  private _hierarchyProjects: Array<any>;
+  get isHierarchyProjectsaded(): boolean { return this._isHierarchyProjectsaded; }
+  private _isHierarchyProjectsaded = false;
+
+  setHierarchyProjects(): void {
+    this._isHierarchyProjectsaded = false;
+    this.http.get(`${this.getHierarchyProjectUrl}/${this.settings.projectId}`)
+      .pipe(take(1))
+      .subscribe((res: any) => {
+        this._isHierarchyProjectsaded = true;
+        this._hierarchyProjects = res.data;
+        // this._hierarchyProjects.forEach(p=>{
+        //   p.selectedId = 3478;
+        // })
+        this._onHierarchyProjects.next();
+      }, error => {
+        this._isHierarchyProjectsaded = true;
+      })
+  }
 
   getDefault(): any {
     return {
@@ -155,8 +183,15 @@ export class EditPatientService {
   @Offline('assets/offline/patientStory.json')
   private getStoriiesUrl = `${environment.serverUrl}${environment.endPoints.patientStory}`;
 
+  @Offline('assets/offline/hierarchyProject.json?')
+  private getHierarchyProjectUrl = `${environment.serverUrl}${environment.endPoints.hierarchyProject}`;
+
   setTab(tab: number): void {
     this._selectedTab = tab;
+  }
+
+  setNextTab(i: number): void {
+    this._selectedTab += i;
   }
 
   constructor(
@@ -178,6 +213,7 @@ export class EditPatientService {
 
   reset(id: number = undefined): void {
     this._storyId = id;
+    this._selectedTab = 0;
     this.isPhoneItemChecked = false;
     this.isZipCodeChecked = false;
     this.isOldPatientsChecked = false;
@@ -216,6 +252,7 @@ export class EditPatientService {
     this._settings.projectId = parseInt(`${settings.projectId}`);
     if (this._settings.projectId) {
       this.setQueries();
+      this.setHierarchyProjects();
       const proj = this.loginService.findProject(this.settings.projectId);
       if (proj) {
         this.projectName = proj.projectName;
@@ -224,5 +261,33 @@ export class EditPatientService {
     this._settings.outputFormat = settings.outputType === 'files' ? 0 : 1;
     this._settings.cohortSource = settings.transJson.input_mode === 'session' ? 1 : 2;
     this._settings.queryId = 0;
+    this.setIipaaInclusion(settings);
+  }
+
+  private setIipaaInclusion(settings: any): void {
+    if (!settings.transJson || !settings.transJson.hipaa_inclusion) { return; }
+    this.hipaa_date_shift = parseInt(`${settings.transJson.hipaa_date_shift || '0'}`);
+    const dict = {
+      phone: 'isPhoneItemChecked',
+      zip: 'isZipCodeChecked',
+      email: 'isEmailChecked',
+      ip: 'isIpChecked',
+      url: 'isUrlChecked',
+      older_than_89: 'isOldPatientsChecked',
+      date_shift: 'isExtraYearsChecked'
+    };
+    settings.transJson.hipaa_inclusion.split(',').forEach(str => {
+      if (dict[str.toLowerCase().trim()]) {
+        this[dict[str.toLowerCase().trim()]] = true;
+      }
+    });
+
+    this.general_date_shift = parseInt(`${settings.transJson.general_date_shift || '0'}`);
+    this.general_numeric_shift = parseInt(`${settings.transJson.general_numeric_shift || '0'}`);
+    this.isMaxDateShiftingChecked = !!this.general_date_shift;
+    this.isMaxNumericStringChecked = !!this.general_numeric_shift;
+
+    this.isFreeTextChecked = settings.transJson.free_text;
+
   }
 }

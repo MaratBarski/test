@@ -90,12 +90,6 @@ export class EditCategoriesComponent extends BaseNavigation implements OnInit {
 
   private async updateCategory(): Promise<void> {
     const category = JSON.parse(JSON.stringify(this.selectedCategory));
-    //this.selectedCategory.status === 'unmapped';
-    // alert(this.selectedCategory.data.notificationMessage);
-    // alert(this.selectedCategory.data.description);
-    // alert(this.selectedCategory.data.defaultLevelId);
-    // alert(this.selectedCategory.data.hierarchyName);
-    // alert(this.selectedCategory.data.hierarchyLevels[0].newHierarchyLevelName);
     category.data.hierarchyLevels.forEach((item: any) => {
       item.hierarchyLevelName = item.newHierarchyLevelName
       delete item.newHierarchyLevelName;
@@ -108,7 +102,6 @@ export class EditCategoriesComponent extends BaseNavigation implements OnInit {
       defaultLevelId: category.data.defaultLevelId,
       message: category.data.notificationMessage,
       hierarchyLevels: []
-      // hierarchyLevels: {}
     };
 
     category.data.hierarchyLevels
@@ -118,11 +111,7 @@ export class EditCategoriesComponent extends BaseNavigation implements OnInit {
           hierarchyLevelId: l.hierarchyLevelId,
           hierarchyLevelName: l.hierarchyLevelName
         });
-        // objToSend.hierarchyLevels[l.hierarchyLevelId] = l.hierarchyLevelName;
       });
-
-    // document.write(JSON.stringify(objToSend));
-
     this.isLoading = true;
     this.isSaving = true;
     const key = await this.configService.getFormKey();
@@ -141,7 +130,6 @@ export class EditCategoriesComponent extends BaseNavigation implements OnInit {
   private replaceCategory(): void {
     this.isHasChanges = true;
     if (!this.mapCategoryTable.validate()) { return; }
-    // const formData = this.categoryInfo.fileData.formData as FormData;
 
     const formData = new FormData();
     formData.append('file', (this.categoryInfo.fileData.formData as FormData).get('file'));
@@ -188,16 +176,6 @@ export class EditCategoriesComponent extends BaseNavigation implements OnInit {
     formData.append('message', categorization.message);
     formData.append('hierarchyLevels', JSON.stringify(categorization.levels));
 
-
-    // const test = {};
-    // test['hierarchyName'] = categorization.hierarchyName;
-    // test['projectId'] = categorization.projectId;
-    // test['description'] = categorization.description;
-    // test['defaultLevelId'] = categorization.defaultLevelId;
-    // test['message'] = categorization.message;
-    // test['hierarchyLevels'] = JSON.stringify(categorization.levels);
-    // document.write(JSON.stringify(test));
-
     this.uploadService.addWithKey({
       notification: {
         name: 'Replacing Categorization.',
@@ -217,12 +195,17 @@ export class EditCategoriesComponent extends BaseNavigation implements OnInit {
         showInToaster: true,
         containerEnable: true,
         type: ToasterType.infoProgressBar,
-        removeOnComplete: true
+        removeOnComplete: true,
+        onComplete: () => {
+          this.router.navigateByUrl('/categorization');
+          this.isLoading = false;
+        }
       },
       form: formData,
       url: `${this._uploadUrl}/${categorization.hierarchyRootId}`,
       method: 'put',
       afterUpload: ((response: any, notifiuploadInfo: UploadInfo) => {
+        this.isLoading = false;
         this.router.navigateByUrl('/categorization')
       }),
       onError: (info: any) => {
@@ -231,9 +214,10 @@ export class EditCategoriesComponent extends BaseNavigation implements OnInit {
       //targetComponent: this.targetComponent
     });
     this.isSaving = true;
-    // setTimeout(() => {
-    //   this.router.navigateByUrl('/categorization')
-    // }, 1000);
+    setTimeout(() => {
+      this.isLoading = false;
+      this.router.navigateByUrl('/categorization')
+    }, 3000);
   }
 
   private updateForSave(category: any): void {

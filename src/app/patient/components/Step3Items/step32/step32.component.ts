@@ -10,38 +10,24 @@ import { EditPatientService } from '@app/patient/services/edit-patient.service';
 export class Step32Component implements OnInit {
 
   @Input() isOpen = false;
-  
-  stateChange():void{
+
+  stateChange(): void {
     this.isOpen = !this.isOpen;
   }
-  
+
   constructor(
     public editPatientService: EditPatientService
   ) { }
 
-  dates:Array<SelectOption> = [
-    {
-      text:'1',
-      id:1
-    },
-    {
-      text:'2',
-      id:2
-    }
-  ]
+  dates: Array<SelectOption> = [];
+  numerics: Array<SelectOption> = [];
 
-  numerics:Array<SelectOption> = [
-    {
-      text:'1%',
-      id:1
-    },
-    {
-      text:'2%',
-      id:2
+  ngOnInit(): void {
+    for (let i = 1; i < 6; i++) {
+      const opt = { text: `${i}%`, id: i };
+      this.dates.push(opt);
+      this.numerics.push(opt);
     }
-  ]
-  
-  ngOnInit() {
   }
 
 }
