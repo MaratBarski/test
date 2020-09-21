@@ -15,7 +15,7 @@
           </div>
           <div class="query-flow-top__param"><span class="query-flow-top__label">Last Saved:</span> <span
             class="query-flow-top__text"> {{ fileSource.insertDate | date:"MMM L, yyyy H:mm" }}</span></div>
-          <div class="query-flow-top__save ic-hover">
+          <div class="query-flow-top__save ic-hover" (click)="saveState()">
             <mdc-icon path="ic-save-def"></mdc-icon>
             <span class="tooltip tooltip_right"><span class="tooltip__content">Save Query</span></span>
           </div>

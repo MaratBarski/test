@@ -4,7 +4,7 @@
 <div class="query-flow">
   <section>
     <div class="query-flow-top-wrap">
-      <md-top-panel [fileSource]="fileSource"></md-top-panel>
+      <md-top-panel [fileSource]="fileSource" (saveFileStateState)="saveState()"></md-top-panel>
     </div>
   </section>
   <section>

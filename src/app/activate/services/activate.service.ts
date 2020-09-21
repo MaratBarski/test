@@ -26,24 +26,10 @@ export class ActivateService implements Resolve<any> {
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any {
     const id = route.paramMap.get('fileId');
     let fileSource: FileSource;
-    let templates: Template[];
-
     this.getUrl = `${environment.serverUrl}${environment.endPoints.fileSource}/${id}`;
-
     return this.dataService.get(this.getUrl).pipe(map((data: any) => {
       fileSource = data.data as FileSource;
-      return fileSource;
-    }), switchMap((data: FileSource) => {
-      this.getUrl = `${environment.serverUrl}${environment.endPoints.templateByProject}/${data.project}`;
-      return this.dataService.get(this.getUrl);
-    }), map((data: any) => {
-      templates = data.data as Template[];
-      return templates;
-    }), switchMap((data: Template[]) => {
-      this.getUrl = `${environment.serverUrl}${environment.endPoints.hierarchy}/project/${fileSource.project}`;
-      return this.dataService.get(this.getUrl);
-    }), map((data: any) => {
-      return [fileSource, templates, data.data];
+      return [fileSource];
     }), catchError(e => {
       this._onLoadFailed.next();
       this.notificationService.addNotification({
@@ -59,6 +45,13 @@ export class ActivateService implements Resolve<any> {
   getHierarchy(id: number): Observable<any> {
     this.getUrl = `${environment.serverUrl}${environment.endPoints.hierarchy}/${id}`;
     return this.dataService.get(this.getUrl).pipe(map((item: any) => {
+      return item.data;
+    }));
+  }
+
+  updateFileSourceState(fileId, state): Observable<FileSource> {
+    this.getUrl = `${environment.serverUrl}${environment.endPoints.fileSource}/${fileId}`;
+    return this.dataService.put(this.getUrl, state).pipe(map((item: any) => {
       return item.data;
     }));
   }

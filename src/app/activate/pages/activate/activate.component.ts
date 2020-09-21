@@ -55,6 +55,7 @@ export class ActivateComponent extends BaseNavigation implements OnInit {
     this.fg = new FormGroup({
       searchInput: new FormControl('')
     });
+
     super.add(
       this.fg.get('searchInput').valueChanges.pipe(
         debounceTime(300),
@@ -70,30 +71,35 @@ export class ActivateComponent extends BaseNavigation implements OnInit {
         })];
       })
     );
+
     super.add(
       this.route.params.subscribe(p => {
         this.fileSource = this.route.snapshot.data.data[0];
-        this.fileSource.fileClms.forEach(clm => {
-          const column: IColumn = new PhysicalColumn(clm);
-          if (column.hierarchyRootId && column.hierarchyRootId > -1) {
-            column.hierarchy = this.activateService.getHierarchy(column.hierarchyRootId).pipe(map((data: Hierarchy) => {
-              return data.hierarchyLevels.map(item => {
-                return {
-                  isChecked: data.defaultLevelId === item.hierarchyLevelId,
-                  text: item.hierarchyLevelName,
-                  id: item.hierarchyLevelId,
-                };
-              });
-            }));
+        if (this.fileSource.fileState) {
+          this.columnCollection = this.fileSource.fileState;
+        } else {
+          this.fileSource.fileClms.forEach(clm => {
+            const column: IColumn = new PhysicalColumn(clm);
+            if (column.hierarchyRootId && column.hierarchyRootId > -1) {
+              column.hierarchy = this.activateService.getHierarchy(column.hierarchyRootId).pipe(map((data: Hierarchy) => {
+                return data.hierarchyLevels.map(item => {
+                  return {
+                    isChecked: data.defaultLevelId === item.hierarchyLevelId,
+                    text: item.hierarchyLevelName,
+                    id: item.hierarchyLevelId,
+                  };
+                });
+              }));
 
-          }
-          this.columnCollection.push(column);
-        });
-        this.selectAll = this.columnCollection.filter(item => item.include).length === this.columnCollection.length ? true : false;
-        this.columnCollection.sort((c1, c2) => {
-          const [val1, val2] = [Number(c1.order), Number(c2.order)];
-          return val1 > val2 ? 1 : -1;
-        });
+            }
+            this.columnCollection.push(column);
+          });
+          this.selectAll = this.columnCollection.filter(item => item.include).length === this.columnCollection.length ? true : false;
+          this.columnCollection.sort((c1, c2) => {
+            const [val1, val2] = [Number(c1.order), Number(c2.order)];
+            return val1 > val2 ? 1 : -1;
+          });
+        }
       }));
 
     this.navigationService.beforeNavigate = ((url: string) => {
@@ -160,6 +166,12 @@ export class ActivateComponent extends BaseNavigation implements OnInit {
 
   downloadOriginal() {
     console.log(this.columnCollection);
+  }
+
+  saveState() {
+    this.activateService.updateFileSourceState(this.fileSource.fileId, this.columnCollection).subscribe(data => {
+      console.log(data);
+    });
   }
 
 }

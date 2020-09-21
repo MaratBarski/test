@@ -1,5 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, Output} from '@angular/core';
 import {FileSource} from '@app/models/file-source';
+import {Subject} from 'rxjs';
 
 @Component({
   selector: 'md-top-panel',
@@ -8,9 +9,13 @@ import {FileSource} from '@app/models/file-source';
 })
 export class TopPanelComponent implements OnInit {
   @Input() fileSource: FileSource;
+  @Output() saveFileStateState: Subject<boolean> = new Subject<boolean>();
   constructor() { }
 
   ngOnInit() {
   }
 
+  saveState() {
+    this.saveFileStateState.next(true);
+  }
 }
