@@ -19,7 +19,7 @@
 	  display: flex;
 	  align-items: center;
 
-    .btn:not(:last-child){margin-right: 15px;}
+    .btn{margin-right: 15px;}
 	}
 
 	.form-search{
@@ -601,6 +601,7 @@
 	& &__load{width: 65px;}
 	& &__source{width: 130px;}
 	& &__date{width: 130px;}
+  & &__modif{width: 180px;}
   & &__use{width: 120px;}
 	& &__use{width: 120px;}
   & &__progress{width: 150px;}
@@ -1133,13 +1134,13 @@
   }
 
   .table-detail{
-	width: 2%;
+	width: 100%;
 	table-layout: fixed;
 	margin-bottom: 20px;
 
 	th,
 	td{
-	  width: 2%;
+	  width: 100%;
 	}
 
 	&__head{
