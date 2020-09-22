@@ -97,6 +97,10 @@ export class EditPatientService {
   get isShowError(): boolean { return this._isShowError; }
   private _isShowError = false;
 
+  validate(): boolean {
+    return true;
+  }
+
   get settings(): any { return this._settings; }
   private _settings: any;
 
@@ -174,7 +178,7 @@ export class EditPatientService {
       })
   }
 
-  @Offline('assets/offline/selectedSettings.json?')
+  @Offline('assets/offline/siteEventPropertyInfos.json?')
   private siteEventInfoUrl = `${environment.serverUrl}${environment.endPoints.siteEventInfo}`;
 
   @Offline('assets/offline/userSession.json?')
@@ -192,6 +196,26 @@ export class EditPatientService {
 
   setNextTab(i: number): void {
     this._selectedTab += i;
+  }
+
+  get events(): Array<any> { return this._events; }
+  private _events: Array<any>;
+
+  loadEvents(): void {
+    this._events = undefined;
+    this.http.get(`${this.siteEventInfoUrl}/${this.settings.projectId}`)
+      .pipe(take(1))
+      .subscribe((res: any) => {
+        this._events = res.data;
+        this._events.forEach(ev => {
+          ev.isChecked = false;
+          ev.siteEventPropertyInfos.forEach(se => {
+            se.isChecked = ev.isChecked;
+          });
+        })
+      }, error => {
+
+      })
   }
 
   constructor(

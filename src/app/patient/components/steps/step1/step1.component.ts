@@ -69,6 +69,7 @@ export class Step1Component implements OnInit, AfterViewInit {
     this.editPatientService.projectName = this.projectCmp.selectedOption.text;
     this.editPatientService.setQueries();
     this.editPatientService.setHierarchyProjects();
+    this.editPatientService.loadEvents();
   }
 
   setOutputFormat(i: number): void {
@@ -99,7 +100,7 @@ export class Step1Component implements OnInit, AfterViewInit {
   }
 
   selectedFile: any;
-  
+
   changeFile(event: any): void {
     this.selectedFile = event.target.files[0];
     //alert(event.target.files[0].name);
