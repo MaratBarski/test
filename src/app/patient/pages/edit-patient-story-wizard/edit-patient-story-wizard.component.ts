@@ -42,7 +42,7 @@ export class EditPatientStoryWizardComponent extends BaseSibscriber implements O
     super.add(
       this.activatedRoute.paramMap.subscribe(u => {
         const id = parseInt(u.get('id') || '0');
-        this.pageTitle = id ? 'Edit permission set' : 'Add permission set';
+        this.pageTitle = id ? 'EDIT PATIENT STORY SETTINGS' : 'ADD PATIENT STORY SETTINGS';
         this.editPatientService.reset(id);
       }));
   }
