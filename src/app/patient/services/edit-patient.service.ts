@@ -206,6 +206,22 @@ export class EditPatientService {
     //   .subscribe(res => {
     //     alert(JSON.stringify(res.data.projects));
     //   })
+    this.initCountries();
+  }
+
+  countries: Array<any> = [];
+  selectedCountry = -1;
+
+  private initCountries(): void {
+    const c = JSON.parse(this.configService.getValue('hipaa_regex_phone'));
+    this.countries = [];
+    Object.keys(c).forEach((k, i) => {
+      this.countries.push({
+        text: k,
+        value: c[k],
+        id: i
+      })
+    });
   }
 
   get storyId(): number { return this._storyId; }
@@ -265,7 +281,7 @@ export class EditPatientService {
   }
 
   private setIipaaInclusion(settings: any): void {
-    if (!settings.transJson || !settings.transJson.hipaa_inclusion) { return; }
+    if (!settings.transJson) { return; }
     this.hipaa_date_shift = parseInt(`${settings.transJson.hipaa_date_shift || '0'}`);
     const dict = {
       phone: 'isPhoneItemChecked',
@@ -276,16 +292,22 @@ export class EditPatientService {
       older_than_89: 'isOldPatientsChecked',
       date_shift: 'isExtraYearsChecked'
     };
-    settings.transJson.hipaa_inclusion.split(',').forEach(str => {
-      if (dict[str.toLowerCase().trim()]) {
-        this[dict[str.toLowerCase().trim()]] = true;
-      }
-    });
+    if (settings.transJson.hipaa_inclusion) {
+      settings.transJson.hipaa_inclusion.split(',').forEach(str => {
+        if (dict[str.toLowerCase().trim()]) {
+          this[dict[str.toLowerCase().trim()]] = true;
+        }
+      });
+    }
 
     this.general_date_shift = parseInt(`${settings.transJson.general_date_shift || '0'}`);
     this.general_numeric_shift = parseInt(`${settings.transJson.general_numeric_shift || '0'}`);
     this.isMaxDateShiftingChecked = !!this.general_date_shift;
     this.isMaxNumericStringChecked = !!this.general_numeric_shift;
+    const phone = `${settings.transJson.hipaa_phone || ''}`;
+    if (phone) {
+      this.selectedCountry = this.countries.findIndex(x => x.value === phone);
+    }
 
     this.isFreeTextChecked = settings.transJson.free_text;
 

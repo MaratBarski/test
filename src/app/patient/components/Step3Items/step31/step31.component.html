@@ -9,8 +9,8 @@
                 <div class="user-unwrap-param__item">
                     <mdc-check-box [(ngModel)]="editPatientService.isPhoneItemChecked"
                         text="Phone numbers according to the selected location:"></mdc-check-box>
-                    <mdc-select [disabled]="!editPatientService.isPhoneItemChecked" [isSmall]="true"
-                        [options]="countries"></mdc-select>
+                    <mdc-select [(ngModel)]="editPatientService.selectedCountry" [disabled]="!editPatientService.isPhoneItemChecked" [isSmall]="true"
+                        [options]="editPatientService.countries"></mdc-select>
                 </div>
                 <div class="user-unwrap-param__item">
                     <mdc-check-box [(ngModel)]="editPatientService.isZipCodeChecked"
