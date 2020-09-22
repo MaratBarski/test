@@ -1,6 +1,6 @@
 export const environment = {
   name: 'dev',
-  production: false,
+  production: true,
   serverUrl: 'http://10.0.2.18:4000/',
   //loginUrl: 'http://localhost:3000/login/',
   loginUrl: 'http://10.0.2.18:3000/login',
@@ -42,7 +42,6 @@ export const environment = {
     project:'mdclone/api/v1/project',
     patientStory: 'mdclone/api/v1/patient-story',
     patientStoryUserSession: 'mdclone/api/v1/patient-story/user-session',    
-    hierarchyProject: 'mdclone/api/v1/hierarchy/project',
-    adUsers: 'ad-users'
+    hierarchyProject: 'mdclone/api/v1/hierarchy/project'
   }
 };
