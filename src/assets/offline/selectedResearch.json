@@ -1,13 +1,13 @@
 {
     "data": {
-        "researchId": 180,
-        "researchName": "Omry - Sariel",
+        "researchId": 194,
+        "researchName": "adsasdasd",
         "userId": "10",
         "projectId": "1",
         "startDate": "2013-12-31",
         "researchStatus": "open",
         "maxPatients": 1000000,
-        "insertDate": "2020-09-14T06:39:14.000Z",
+        "insertDate": "2020-09-17T07:54:01.000Z",
         "information": null,
         "endDate": "2022-12-03",
         "approvalKey": null,
@@ -15,26 +15,26 @@
         "user_id": "10",
         "researchRestrictionEvents": [
             {
-                "researchId": "180",
-                "eventPropertyName": "drgtype",
+                "researchId": "194",
+                "eventPropertyName": "drgmortality",
                 "eventId": "3",
-                "value": "dehf",
+                "value": "gdfgdfg",
                 "siteEventPropertyInfo": {
-                    "eventPropertyNa": "drgtype",
+                    "eventPropertyNa": "drgmortality",
                     "eventId": "320",
-                    "dataSample": "drgtype, HCFA, APR , MS",
+                    "dataSample": "2, drgmortality, 4, 1",
                     "eventPropertyTy": "STRING",
                     "hierarchyRootId": null,
                     "patientFk": false,
                     "eventTimeStamp": false,
                     "ageAtEvent": false,
-                    "fieldDescriptio": "drgtype",
+                    "fieldDescriptio": "drgmortality_desc",
                     "fieldDes": null,
                     "priority": 0,
                     "isDependentSear": false
                 },
                 "siteEventInfo": {
-                    "eventTableAlias": "lab result"
+                    "eventTableAlias": "event date"
                 }
             }
         ],

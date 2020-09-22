@@ -65,6 +65,72 @@
                 "projectName": "Demo Project",
                 "defaultSiteId": "1"
             }
+        },
+        {
+            "researchId": 180,
+            "researchName": "<script>alert('opa')</script>",
+            "userId": "10",
+            "projectId": "1",
+            "startDate": "2013-12-31",
+            "researchStatus": "close",
+            "maxPatients": 1000000,
+            "insertDate": "2020-09-14T06:39:14.000Z",
+            "information": null,
+            "endDate": "2022-12-03",
+            "approvalKey": null,
+            "approvalKeyExpirationDate": null,
+            "user_id": "10",
+            "researchRestrictionEvents": [
+                {
+                    "researchId": "180",
+                    "eventPropertyName": "drgtype",
+                    "eventId": "3",
+                    "value": "dehf",
+                    "siteEventPropertyInfo": {
+                        "eventPropertyNa": "drgtype",
+                        "eventId": "320",
+                        "dataSample": "drgtype, HCFA, APR , MS",
+                        "eventPropertyTy": "STRING",
+                        "hierarchyRootId": null,
+                        "patientFk": false,
+                        "eventTimeStamp": false,
+                        "ageAtEvent": false,
+                        "fieldDescriptio": "drgtype",
+                        "fieldDes": null,
+                        "priority": 0,
+                        "isDependentSear": false
+                    },
+                    "siteEventInfo": {
+                        "eventTableAlias": "lab result"
+                    }
+                }
+            ],
+            "researchTemplates": [],
+            "user": {
+                "id": "10",
+                "login": "sariel.admin",
+                "passwordHash": "$2a$10$G3OF8pfomKGuB8dpxNlj2eL8wZwY5L.3M19fJ5DfVS1sR0ojd/Ic.",
+                "firstName": "Sariel",
+                "lastName": "Admin",
+                "email": "sariel.admin@mdclone.com",
+                "activated": true,
+                "langKey": null,
+                "activationKey": null,
+                "resetKey": null,
+                "createdBy": "N/A",
+                "createdDate": "2020-06-30T09:54:34.000Z",
+                "resetDate": null,
+                "lastModifiedBy": null,
+                "lastModifiedDate": null,
+                "cellPhone": null,
+                "domain": null,
+                "photo": null
+            },
+            "project": {
+                "projectId": "1",
+                "projectName": "Demo Project",
+                "defaultSiteId": "1"
+            }
         }
     ],
     "massage": "Get all Research's Objects",

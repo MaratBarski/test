@@ -595,10 +595,13 @@ export class PermissionSetService extends BaseSibscriber {
     ps.researchRestrictionEvents.forEach(ev => {
       const event = this.events.find(x => x.eventId === ev.eventId);
       if (!event) { return; }
+      const pi = event.siteEventPropertyInfos.find(x => x.eventPropertyName == ev.eventPropertyName);
+      if (!pi) { return; }
       this.addedEvents.push({
         target: {
           eventId: ev.eventId,
           eventPropertyId: ev.eventPropertyName,
+          eventPropertyText: pi.fieldDescription,
           value: ev.value
         },
         list: [].concat(this.events)

@@ -18,6 +18,7 @@ export class RuleItemComponent {
   selectedEventName = '';
 
   fieldDescription = '';
+  eventPropertyId = '';
   selectedProperty = -1;
   propertyOptions: Array<SelectOption>;
   text: string;
@@ -37,13 +38,15 @@ export class RuleItemComponent {
     const foundEvent = this.eventsOptions.find(op => op.id === events.target.eventId);
     this.selectedEventName = foundEvent ? foundEvent.text : '';
     this.text = events.target.value;
-    this.fieldDescription = events.target.eventPropertyId;
+    //this.fieldDescription = events.target.eventPropertyId;
+    this.fieldDescription = events.target.eventPropertyText;
+    this.eventPropertyId = events.target.eventPropertyId;
     const currentEvent = this._events.list.find(x => x.eventId === this.selectedEvent);
     this.propertyOptions = currentEvent.siteEventPropertyInfos.map((info, i) => {
       return {
         id: i,
         text: info.fieldDescription,
-        value: info.fieldDescription
+        value: info.eventPropertyName
       }
     });
     for (let i = 0; i < currentEvent.siteEventPropertyInfos.length; i++) {
@@ -63,7 +66,9 @@ export class RuleItemComponent {
   changed(): void {
     this._events.target.value = this.text;
     this._events.target.eventId = this.selectedEvent;
-    this._events.target.eventPropertyId = this.fieldDescription;
+    //this._events.target.eventPropertyId = this.fieldDescription;
+    this._events.target.eventPropertyText = this.fieldDescription;
+    this._events.target.eventPropertyId = this.eventPropertyId;
     this.onChange.emit(this._events);
   }
 
@@ -73,7 +78,7 @@ export class RuleItemComponent {
         return {
           id: i,
           text: info.fieldDescription,
-          value: info.fieldDescription
+          value: info.eventPropertyName
         }
       });
     this.selectedProperty = -1;
@@ -82,6 +87,7 @@ export class RuleItemComponent {
 
   changedProperty(event: any): void {
     this.fieldDescription = event.text;
+    this.eventPropertyId = event.value;
     this.changed();
   }
 
@@ -103,6 +109,7 @@ export class RuleItemComponent {
     this.searchPropertyText = text;
     this.selectedProperty = -1;
     this.fieldDescription = '';
+    this.eventPropertyId = '';
     this.changed();
   }
 
@@ -115,7 +122,7 @@ export class RuleItemComponent {
         return {
           id: i,
           text: info.fieldDescription,
-          value: info.fieldDescription
+          value: info.eventPropertyName
         }
       });
     this.resetProperty();
@@ -139,6 +146,7 @@ export class RuleItemComponent {
   resetProperty(): void {
     this.selectedProperty = -1;
     this.fieldDescription = '';
+    this.eventPropertyId = ''
     this.searchPropertyText = '';
     this.propertyOptions = undefined;
     this.changed();
@@ -151,7 +159,7 @@ export class RuleItemComponent {
       return {
         id: i,
         text: info.fieldDescription,
-        value: info.fieldDescription
+        value: info.eventPropertyName
       }
     });
   }
@@ -159,6 +167,7 @@ export class RuleItemComponent {
   selectProperty(p: any): void {
     this.fieldDescription = p.text;
     this.selectedProperty = p.id;
+    this.eventPropertyId = p.value;
     this.changed();
   }
 
@@ -167,7 +176,7 @@ export class RuleItemComponent {
   @HostListener('document:click', ['$event']) onMouseClick(event: any) {
     this.isEventExpanded = false;
   }
-  
+
   onExpanDisabled(): void {
     setTimeout(() => {
       this.selectedEventName = '';

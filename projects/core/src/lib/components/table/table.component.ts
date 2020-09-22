@@ -92,7 +92,14 @@ export class TableComponent implements OnDestroy, AfterViewInit, AfterViewChecke
       });
       this.filters[header.columnId].sort((a: CheckBoxListOption, b: CheckBoxListOption) => {
         return this.sortService.compareString(a.text, b.text, 'asc');
-      })
+      });
+      if (header.emptyFilter) {
+        this.filters[header.columnId] = [{
+          id: header.emptyFilter,
+          isChecked: true,
+          text: header.emptyFilter
+        }].concat(this.filters[header.columnId]);
+      }
     });
   }
 

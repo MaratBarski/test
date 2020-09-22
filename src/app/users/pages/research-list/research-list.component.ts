@@ -137,10 +137,10 @@ export class ResearchListComponent extends BaseSibscriber implements OnInit {
 
   changeFileName(): void {
     const date = new Date();
-    const format = 'yyyyMMdd_hhmmss';
+    const format = 'yyyy-MM-dd-HH-mm-ss';
     const locale = 'en-US';
     const formattedDate = formatDate(date, format, locale);
-    this.downloader.fileName = formattedDate + "_session_history.csv";
+    this.downloader.fileName = formattedDate + "_Permission_Sets.csv";
   }
 
   isActive(src: any): boolean {
