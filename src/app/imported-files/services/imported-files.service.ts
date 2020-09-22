@@ -113,7 +113,8 @@ export class ImportedFilesService {
           text: 'Permission Group',
           isSortEnabled: true,
           filter: true,
-          css: 'd-none d-xl-table-cell w-md-150'
+          css: 'd-none d-xl-table-cell w-md-150',
+          emptyFilter: EMPTY_TEMPLATE
         },
         {
           columnId: 'user',
@@ -149,7 +150,7 @@ export class ImportedFilesService {
           fileName: fl.fileName,
           insertDate: fl.insertDate,
           environment: fl.projectObj ? fl.projectObj.projectName : '',
-          permission: fl.template ? fl.template.templateName : EMPTY_TEMPLATE,
+          permission: fl.template && fl.template.templateId !== -1 ? fl.template.templateName : EMPTY_TEMPLATE,
           user: fl.user && fl.user.firstName && fl.user.lastName ? `${fl.user.firstName} ${fl.user.lastName}` : fl.user && fl.user.login ? fl.user.login : '',
           shared: fl.fileType,
           columns: isNaN(fl.columnsNum) || !fl.columnsNum ? 0 : parseInt(fl.columnsNum + ''),
@@ -165,6 +166,4 @@ export class ImportedFilesService {
     })
     return data;
   }
-
-
 }

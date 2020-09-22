@@ -11,10 +11,32 @@ export interface FromTo {
   templateUrl: './date-range-selector.component.html',
   styleUrls: ['./date-range-selector.component.css']
 })
-export class DateRangeSelectorComponent  {
+export class DateRangeSelectorComponent {
 
-  @Input() from = new Date();
-  @Input() to = new Date();
+  @Input() set from(from: Date) {
+    this._from = from;
+    if (!this._prevFrom) {
+      this._prevFrom = new Date(from);
+    }
+  }
+  get from(): Date { return this._from; }
+
+  @Input() set to(to: Date) {
+    this._to = to;
+    if (!this._prevTo) {
+      this._prevTo = new Date(to);
+    }
+  }
+  get to(): Date { return this._to; }
+
+  private _from = new Date();
+  private _to = new Date();
+
+  get prevFrom(): Date { return this._prevFrom; }
+  get prevTo(): Date { return this._prevTo; }
+  private _prevFrom = undefined;
+  private _prevTo = undefined;
+
   @Input() header = 'Select report data range';
   @Input() set dateFormat(dateFormat: string) {
     this.fullDateFormat = dateFormat;
@@ -32,26 +54,52 @@ export class DateRangeSelectorComponent  {
   @ViewChild('fromPicker', { static: true }) fromPicker: Calendar;
   @ViewChild('toPicker', { static: true }) toPicker: Calendar;
 
-  constructor(private dateService: DateService) {}
-  
+  constructor(private dateService: DateService) { }
+
   cancel(): void {
+    this._from = new Date(this._prevFrom);
+    this._to = new Date(this._prevTo);
+    this.resetvalidation();
     this.onCancel.emit();
   }
 
+  isDateRangeValid = true;
+  isFromValid = true;
+  isToValid = true;
   locale = this.dateService.getCalendarLocale();
 
-  checkToDate():void{
-    if(this.from > this.to){
-      this.to = new Date(this.from);
+  checkToDate(): void {
+    // if (this.from > this.to) {
+    //   this.to = new Date(this.from);
+    // }
+  }
+
+  resetvalidation(): void {
+    this.isDateRangeValid = true;
+    this.isFromValid = true;
+    this.isToValid = true;
+  }
+
+  validate(): boolean {
+    this.resetvalidation();
+    if (!this.to) {
+      this.isToValid = false;
     }
+    if (!this.from) {
+      this.isFromValid = false;
+    }
+    if (!this.isToValid || !this.isFromValid) { return false; }
+    if (this.to < this.from) {
+      this.isDateRangeValid = false;
+      return false;
+    }
+    return true;
   }
 
   apply(): void {
-    if (this.to < this.from) {
-      const t = this.to;
-      this.to = this.from;
-      this.from = t;
-    }
+    if (!this.validate()) { return; }
+    this._prevFrom = new Date(this._from);
+    this._prevTo = new Date(this._to);
     this.onApply.emit({
       from: this.from,
       to: this.to
