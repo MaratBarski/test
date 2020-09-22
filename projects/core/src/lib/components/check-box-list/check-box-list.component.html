@@ -10,8 +10,11 @@
     </div>
     <div [hidden]="options?.length" class="admin-table-filter__top">No items</div>
     <div *ngIf="options" class="admin-table-filter__params">
-        <mdc-check-box (change)="onChange($event)" [id]="'chbl_'+index" *ngFor="let option of options;let index = index"
-            [(ngModel)]="option.isChecked" [text]="option.text"></mdc-check-box>
+        <ng-container *ngFor="let option of options;let index = index">
+            <mdc-check-box [css]="option.css" (change)="onChange($event)" [id]="'chbl_'+index" [(ngModel)]="option.isChecked"
+                [text]="option.text">
+            </mdc-check-box>
+        </ng-container>
     </div>
     <div class="admin-table-filter__btn">
         <mdc-button (click)="cancelClick()" className="btn_border btn_small" [text]="'cancel'|translate"></mdc-button>

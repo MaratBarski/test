@@ -24,6 +24,7 @@ export class CheckBoxComponent implements ControlValueAccessor {
   @Input() text: string;
   @Input() whiteSpace = 'normal';
   @Input() id = ComponentService.createID('checkbox');
+  @Input() css = '';
 
   @Output() change = new EventEmitter<boolean>();
 

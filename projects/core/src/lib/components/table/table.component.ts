@@ -97,8 +97,9 @@ export class TableComponent implements OnDestroy, AfterViewInit, AfterViewChecke
         this.filters[header.columnId] = [{
           id: header.emptyFilter,
           isChecked: true,
-          text: header.emptyFilter
-        }].concat(this.filters[header.columnId]);
+          text: header.emptyFilter,
+          css: 'empty-option'
+        }].concat(this.filters[header.columnId].filter(x => x.text !== header.emptyFilter));
       }
     });
   }
