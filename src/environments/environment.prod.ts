@@ -11,7 +11,7 @@ export const environment = {
   endPoints: {
     userData: 'user-data',
     fileSource: 'mdclone/api/v1/file-source',
-    getRelationalIntegrity: 'kostya/api/v1/file-source/get-relational-integrity',
+    getRelationalIntegrity: 'mdclone/api/v1/file-source/get-relational-integrity',
     getSampleData: 'mdclone/api/v1/file-source/get-sample-data',
     templateByProject: 'mdclone/api/v1/template/get-by-project',
     siteEventInfo: 'mdclone/api/v1/siteeventinfo/get-by-project',    
@@ -43,5 +43,7 @@ export const environment = {
     patientStory: 'mdclone/api/v1/patient-story',
     patientStoryUserSession: 'mdclone/api/v1/patient-story/user-session',    
     hierarchyProject: 'mdclone/api/v1/hierarchy/project'
+	userData: 'user-data',
+	adUsers: 'ad-users'    
   }
 };
