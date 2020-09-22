@@ -97,8 +97,46 @@ export class EditPatientService {
   get isShowError(): boolean { return this._isShowError; }
   private _isShowError = false;
 
+  get isProjectSelected(): boolean { return this._isProjectSelected; }
+  private _isProjectSelected = true;
+
+  get isNameSetted(): boolean { return this._isNameSetted; }
+  private _isNameSetted = true;
+
+  get isQuerySelected(): boolean { return this._isQuerySelected; }
+  private _isQuerySelected = true;
+
+  get isFileSelected(): boolean { return this._isFileSelected; }
+  private _isFileSelected = true;
+
+  file: any;
+
+  resetValidation(): void {
+    this._isProjectSelected = true;
+    this._isNameSetted = true;
+    this._isQuerySelected = true;
+    this._isFileSelected = true;
+    this._isShowError = false;
+  }
+
   validate(): boolean {
-    return true;
+    this.resetValidation();
+    //return true;
+    let error = true;
+    if (!this._settings.projectId) {
+      error = this._isProjectSelected = false;
+    }
+    if (!this._settings.settingsName || !this._settings.settingsName.trim()) {
+      error = this._isNameSetted = false;
+    }
+    if (this._settings.cohortSource === 1 && !this._settings.queryId) {
+      error = this._isQuerySelected = false;
+    }
+    if (this._settings.cohortSource === 2 && !this.file) {
+      error = this._isFileSelected = false;
+    }
+    this._isShowError = !error;
+    return error;
   }
 
   get settings(): any { return this._settings; }
@@ -134,7 +172,7 @@ export class EditPatientService {
   getDefault(): any {
     return {
       data: {
-        settingsName: 'settings name',
+        settingsName: '',
         projectId: 0,
         outputFormat: 0,
         cohortSource: 1,
@@ -191,10 +229,12 @@ export class EditPatientService {
   private getHierarchyProjectUrl = `${environment.serverUrl}${environment.endPoints.hierarchyProject}`;
 
   setTab(tab: number): void {
+    if (!this.validate()) { return; }
     this._selectedTab = tab;
   }
 
   setNextTab(i: number): void {
+    if (!this.validate()) { return; }
     this._selectedTab += i;
   }
 

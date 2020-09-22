@@ -103,6 +103,7 @@ export class Step1Component implements OnInit, AfterViewInit {
 
   changeFile(event: any): void {
     this.selectedFile = event.target.files[0];
+    this.editPatientService.file = event.target.files[0];
     //alert(event.target.files[0].name);
   }
 }
