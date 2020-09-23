@@ -424,7 +424,7 @@ export class EditPatientService {
       older_than_89: 'isOldPatientsChecked',
       date_shift: 'isExtraYearsChecked'
     };
-    if (settings.transJson.hipaa_inclusion) {
+    if (settings.transJson.hipaa_inclusion && settings.transJson.hipaa_inclusion.split) {
       settings.transJson.hipaa_inclusion.split(',').forEach(str => {
         if (dict[str.toLowerCase().trim()]) {
           this[dict[str.toLowerCase().trim()]] = true;
