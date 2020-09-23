@@ -17,7 +17,7 @@ pipeline {
                         nodejs(nodeJSInstallationName: 'node') {
                             bat 'npm install'
                             bat 'ng build core'
-                            bat '3.npm run build --prod'
+                            bat 'node ./node_modules/@angular/cli/bin/ng build --prod'
                         }
                     }
                 }
