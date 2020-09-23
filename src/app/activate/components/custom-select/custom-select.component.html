@@ -1,7 +1,7 @@
 <div class="rule-build-item__select" (blur)="blur()" tabindex="10" style="cursor: pointer">
   <div class="drop-cond drop-cond_big">
     <div class="drop-cond__content">
-      <div class="drop-cond__head" (click)="mouseClick($event);">{{ _value ? _value : "Select a column..." }}
+      <div class="drop-cond__head" (click)="mouseClick($event);">{{ value ? value : "Select a column..." }}
         <div class="drop-cond__head-arr" [@rotatedState]="rotatedState">
           <mdc-icon css="ic-select-arr-down" path="ic-select-arr-down"></mdc-icon>
         </div>
