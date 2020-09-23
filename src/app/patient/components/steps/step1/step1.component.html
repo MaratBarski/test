@@ -50,7 +50,7 @@
     <div class="user-source-radio__field">
         <mdc-auto-complete [disabled]="editPatientService.settings.cohortSource!==1" #queryCmp
             placeHolder="Search or Select a Query..." textField="name" (onSelect)="selectQuery($event)"
-            [inputText]="editPatientService.queryName"
+            [inputText]="editPatientService.queryName" [isCollapsed]="queryCollapsed"
             (onClear)="clearQuery()" (completeMethod)="completeQuery($event)" [suggestions]="queries">
             <ng-template let-item>
                 <div class="select__param" [text]="item.name" [mdcColorText]="searchQueryText"></div>

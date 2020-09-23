@@ -21,7 +21,8 @@ export class EventPropertyListComponent {
       ev.siteEventPropertyInfos.forEach(p => {
         p.isChecked = this.isCheckedAll;
       });
-    })
+    });
+    this.editPatientService.isValueChanged = true;
   }
 
   expand(option: any): void {
@@ -33,11 +34,13 @@ export class EventPropertyListComponent {
       element.isChecked = option.isChecked;
     });
     this.updateCheckAll();
+    this.editPatientService.isValueChanged = true;
   }
 
   checkSubEvent(option: any, subItem: any): void {
-    //alert(subItem.isChecked);
-    this.updateOptionCheck(option);
+    //this.updateOptionCheck(option);
+    if (subItem.isChecked) { option.isChecked = true; }
+    this.editPatientService.isValueChanged = true;
   }
 
   updateOptionCheck(option: any): void {

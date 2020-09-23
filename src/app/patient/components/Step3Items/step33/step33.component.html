@@ -22,7 +22,7 @@
                             {{h.hierarchyName}}
                         </td>
                         <td class="table-unwrap__item">
-                            <mdc-select [(ngModel)]="h.selectedId" [isSmall]="true" [options]="h|hierarchyOptions"></mdc-select>
+                            <mdc-select (changed)="editPatientService.isValueChanged=true;" [(ngModel)]="h.selectedId" [isSmall]="true" [options]="h|hierarchyOptions"></mdc-select>
                         </td>
                     </tr>
                 </tbody>

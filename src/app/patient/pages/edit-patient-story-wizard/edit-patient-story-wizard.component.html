@@ -20,5 +20,9 @@
         </section>
     </div>
 </div>
-
 <md-footer (onNext)="onNext($event)" (onSave)="onSave()" (onCancel)="onCancel()"></md-footer>
+
+<md-confirm-dialog *ngIf="showChangesConfirm" confirmText="Yes" cancelText="No, stay on page" name="Leaving Patient Page"
+    subName="Changes you made will be lost." subText="Do you wish to leave the page?" text=""
+    (onCancel)="cancelChanges()" (onConfirm)="confirmChanges()">
+</md-confirm-dialog>

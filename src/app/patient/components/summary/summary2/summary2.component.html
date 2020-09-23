@@ -1,13 +1,16 @@
 <div class="user-summary__sect">
     <md-summary-header [tab]="1" name="Content"></md-summary-header>
     <div class="user-summary__content">
-        <div class="user-summary__param">
-            <div class="user-summary__label">The patient story will include:</div>
-            <div class="user-summary__val">Per user selection</div>
-        </div>
-        <div class="user-summary__param">
-            <div class="user-summary__label">Categories settings are the default:</div>
-            <div class="user-summary__val">No Distortion</div>
-        </div>
+        <ng-container *ngFor="let c of editPatientService.events|checked">
+            <div class="user-summary__param">
+                <div class="user-summary__label">{{c.eventTableAlias}}:</div>
+                <div class="user-summary__val">
+                    <ng-container *ngFor="let sc of c.siteEventPropertyInfos|checked;let index = index">
+                        {{sc.fieldDescription}}
+                        <ng-container *ngIf="index < (c.siteEventPropertyInfos|checked).length - 1">, </ng-container>
+                    </ng-container>
+                </div>
+            </div>
+        </ng-container>
     </div>
 </div>

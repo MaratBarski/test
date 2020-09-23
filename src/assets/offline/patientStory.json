@@ -10,12 +10,21 @@
             "transJson": {
                 "free_text": true,
                 "input_mode": "session",
-                "input_population": "93",
-                "event_inclusion": null,
+                "input_population": "99",
+                "event_inclusion": {
+                    "3": [
+                        "internalpatientid",
+                        "drgtype"
+                    ],
+                    "5": [
+                        "ageatevent",
+                        "prevward"
+                    ]
+                },
                 "demographic_inclusion": null,
                 "hierarchies": {
-                    "25": 147,
-                    "27": 157
+                    "541": 3680,
+                    "518": 3483
                 },
                 "general_date_shift": 4,
                 "general_numeric_shift": 0,

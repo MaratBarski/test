@@ -55,18 +55,18 @@ export class UserWizardComponent extends BaseNavigation implements OnInit {
   }
 
   ngOnInit() {
-    // this.navigationService.beforeNavigate = ((url: string) => {
-    //   if (url) {
-    //     this.userEditService.redirectUrl = url;
-    //   }
-    //   if (this.userEditService.isHasChanges()) {
-    //     this.userEditService.showCancelConfirm = !!url;
-    //     return true;
-    //   }
-    //   if (url) {
-    //     this.router.navigateByUrl(url);
-    //   }
-    // });
+    this.navigationService.beforeNavigate = ((url: string) => {
+      if (url) {
+        this.userEditService.redirectUrl = url;
+      }
+      if (this.userEditService.isHasChanges()) {
+        this.userEditService.showCancelConfirm = !!url;
+        return true;
+      }
+      if (url) {
+        this.router.navigateByUrl(url);
+      }
+    });
     super.add(
       this.activatedRoute.paramMap.subscribe(u => {
         const id = parseInt(u.get('uid') || '0');

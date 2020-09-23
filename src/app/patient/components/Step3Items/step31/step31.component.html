@@ -7,13 +7,13 @@
             <div class="user-unwrap__label">Select the items you wish to exclude from the patients’ story:</div>
             <div class="user-unwrap-param">
                 <div class="user-unwrap-param__item">
-                    <mdc-check-box [(ngModel)]="editPatientService.isPhoneItemChecked"
+                    <mdc-check-box (change)="editPatientService.isValueChanged=true;" [(ngModel)]="editPatientService.isPhoneItemChecked"
                         text="Phone numbers according to the selected location:"></mdc-check-box>
-                    <mdc-select [(ngModel)]="editPatientService.selectedCountry" [disabled]="!editPatientService.isPhoneItemChecked" [isSmall]="true"
+                    <mdc-select (changed)="editPatientService.isValueChanged=true;" [(ngModel)]="editPatientService.selectedCountry" [disabled]="!editPatientService.isPhoneItemChecked" [isSmall]="true"
                         [options]="editPatientService.countries"></mdc-select>
                 </div>
                 <div class="user-unwrap-param__item">
-                    <mdc-check-box [(ngModel)]="editPatientService.isZipCodeChecked"
+                    <mdc-check-box (change)="editPatientService.isValueChanged=true;" [(ngModel)]="editPatientService.isZipCodeChecked"
                         text="Postal code (ZIP code) | File last modified: Nov 15, 2018"></mdc-check-box>
                     <div class="user-unwrap-param__icon">
                         <svg class="icon ic-info" mdcSvg="ic-info"></svg>
@@ -26,14 +26,14 @@
                     </div>
                 </div>
                 <div class="user-unwrap-param__item">
-                    <mdc-check-box [(ngModel)]="editPatientService.isOldPatientsChecked"
+                    <mdc-check-box (change)="editPatientService.isValueChanged=true;" [(ngModel)]="editPatientService.isOldPatientsChecked"
                         text="Patients older than 89 years old"></mdc-check-box>
                 </div>
                 <div class="user-unwrap-param__item">
-                    <mdc-check-box [(ngModel)]="editPatientService.isExtraYearsChecked" text="Extra years shifting:">
+                    <mdc-check-box (change)="editPatientService.isValueChanged=true;" [(ngModel)]="editPatientService.isExtraYearsChecked" text="Extra years shifting:">
                     </mdc-check-box>
                     <div class="user-unwrap-param__num">
-                        <mdc-select [(ngModel)]="editPatientService.hipaa_date_shift" [disabled]="!editPatientService.isExtraYearsChecked" [isSmall]="true"
+                        <mdc-select (changed)="editPatientService.isValueChanged=true;" [(ngModel)]="editPatientService.hipaa_date_shift" [disabled]="!editPatientService.isExtraYearsChecked" [isSmall]="true"
                             [options]="years"></mdc-select>
                     </div>
                     <div class="user-unwrap-param__icon">
@@ -41,16 +41,16 @@
                     </div>
                 </div>
                 <div class="user-unwrap-param__item">
-                    <mdc-check-box [(ngModel)]="editPatientService.isEmailChecked" text="Email address"></mdc-check-box>
+                    <mdc-check-box  (change)="editPatientService.isValueChanged=true;" [(ngModel)]="editPatientService.isEmailChecked" text="Email address"></mdc-check-box>
                 </div>
                 <div class="user-unwrap-param__item">
-                    <mdc-check-box [(ngModel)]="editPatientService.isIpChecked" text="IP address"></mdc-check-box>
+                    <mdc-check-box (change)="editPatientService.isValueChanged=true;" [(ngModel)]="editPatientService.isIpChecked" text="IP address"></mdc-check-box>
                     <div class="user-unwrap-param__icon">
                         <svg class="icon ic-info" mdcSvg="ic-info"></svg>
                     </div>
                 </div>
                 <div class="user-unwrap-param__item">
-                    <mdc-check-box [(ngModel)]="editPatientService.isUrlChecked" text="URL"></mdc-check-box>
+                    <mdc-check-box (change)="editPatientService.isValueChanged=true;" [(ngModel)]="editPatientService.isUrlChecked" text="URL"></mdc-check-box>
                     <div class="user-unwrap-param__icon">
                         <svg class="icon ic-info" mdcSvg="ic-info"></svg>
                     </div>
