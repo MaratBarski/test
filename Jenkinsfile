@@ -16,7 +16,8 @@ pipeline {
                     steps {
                         nodejs(nodeJSInstallationName: 'node') {
                             bat 'npm install'
-                            bat 'npm run build core'
+                            bat 'ng build core'
+                            bat '3.npm run build --prod'
                         }
                     }
                 }
