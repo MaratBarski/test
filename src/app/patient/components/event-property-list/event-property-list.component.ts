@@ -38,7 +38,7 @@ export class EventPropertyListComponent {
   }
 
   checkSubEvent(option: any, subItem: any): void {
-    //this.updateOptionCheck(option);
+    this.updateOptionCheck(option);
     if (subItem.isChecked) { option.isChecked = true; }
     this.editPatientService.isValueChanged = true;
   }
@@ -55,14 +55,5 @@ export class EventPropertyListComponent {
   }
 
   updateCheckAll(): void {
-    const checkedList = this.editPatientService.events.filter(x => x.event.isChecked);
-    if (checkedList.length === this.editPatientService.events.length) {
-      this.isCheckedAll = true;
-    }
-    if (checkedList.length === 0) {
-      this.isCheckedAll = false;
-    }
   }
-
-
 }

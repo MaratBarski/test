@@ -210,18 +210,6 @@ export class EditPatientService {
       })
   }
 
-  getDefault(): any {
-    return {
-      data: {
-        settingsName: '',
-        projectId: 0,
-        outputFormat: 0,
-        cohortSource: 1,
-        queryId: 0
-      }
-    };
-  }
-
   loadSettings(): Observable<any> {
     if (this.storyId) {
       return this.http.get(this.getStoriiesUrl)
@@ -359,6 +347,9 @@ export class EditPatientService {
     this.isValueChanged = false;
     this.showCancelConfirm = false;
     this.resetValidation();
+    this.selectedEvents = undefined;
+    this.hierarchies = undefined;
+    this.regexes = [];
     this._storyId = id;
     this._selectedTab = 0;
     this.editQueryId = 0;
@@ -424,12 +415,20 @@ export class EditPatientService {
       older_than_89: 'isOldPatientsChecked',
       date_shift: 'isExtraYearsChecked'
     };
-    if (settings.transJson.hipaa_inclusion && settings.transJson.hipaa_inclusion.split) {
-      settings.transJson.hipaa_inclusion.split(',').forEach(str => {
-        if (dict[str.toLowerCase().trim()]) {
-          this[dict[str.toLowerCase().trim()]] = true;
-        }
-      });
+    if (settings.transJson.hipaa_inclusion) {
+      if (settings.transJson.hipaa_inclusion.split) {
+        settings.transJson.hipaa_inclusion.split(',').forEach(str => {
+          if (dict[str.toLowerCase().trim()]) {
+            this[dict[str.toLowerCase().trim()]] = true;
+          }
+        });
+      } else {
+        settings.transJson.hipaa_inclusion.forEach(str => {
+          if (dict[str.toLowerCase().trim()]) {
+            this[dict[str.toLowerCase().trim()]] = true;
+          }
+        });
+      }
     }
 
     this.general_date_shift = parseInt(`${settings.transJson.general_date_shift || '0'}`);
@@ -439,6 +438,11 @@ export class EditPatientService {
     const phone = `${settings.transJson.hipaa_phone || ''}`;
     if (phone) {
       this.selectedCountry = this.countries.findIndex(x => x.value === phone);
+    }
+    if (settings.transJson.custom_regexes) {
+      Object.keys(settings.transJson.custom_regexes).forEach((k, i) => {
+        this.regexes.push({ name: k, value: settings.transJson.custom_regexes[k], id: i })
+      })
     }
 
     this.isFreeTextChecked = settings.transJson.free_text;
@@ -452,7 +456,100 @@ export class EditPatientService {
     //this.selectEvents();
   }
 
+  getDefault(): any {
+    return {
+      data: {
+        settingsName: '',
+        projectId: 0,
+        outputFormat: 0,
+        cohortSource: 1,
+        queryId: 0
+      }
+    };
+  }
+
   save(): void {
     if (!this.validate()) { return; }
+    const obj = this.convertToServer();
+    //document.write(JSON.stringify(obj));
+    console.log(obj);
+    if (this._storyId) {
+      this.update()
+    } else {
+      this.add();
+    }
+  }
+
+  private update(): void {
+
+  }
+
+  private add(): void {
+
+  }
+
+  convertToServer(): any {
+    const res = {
+      lifeFluxTransId: this._storyId,
+      name: this.settings.settingsName,
+      projectId: this.settings.projectId,
+      //userId:0,
+      outputType: this.settings.outputFormat == 0 ? 'files' : 'impala',
+      transJson: {
+        input_mode: this.settings.cohortSource === 1 ? 'session' : 'file',
+        input_population: this.settings.queryId,
+        event_inclusion: this.geteventInclusion(),
+        hierarchies: this.getHierarchies(),
+        general_date_shift: this.general_date_shift,
+        general_numeric_shift: this.general_numeric_shift,
+        hipaa_inclusion: this.gethipaaInclusion(),
+        hipaa_date_shift: this.hipaa_date_shift,
+        hipaa_phone: this.selectedCountry >= 0 ? this.countries[this.selectedCountry].value : '',
+        custom_regexes: this.getCustomRegexes()
+      }
+    };
+    return res;
+  }
+
+  private geteventInclusion(): any {
+    const res = {};
+    this.events.filter(e => e.isChecked)
+      .forEach(e => {
+        res[e.eventId] = [];
+        e.siteEventPropertyInfos.filter((se: any) => se.isChecked)
+          .forEach((se: any) => {
+            res[e.eventId].push(se.eventPropertyName);
+          });
+      })
+    return res;
+  }
+
+  private getHierarchies(): any {
+    const res = {};
+    this._hierarchyProjects.filter(p => p.selectedId)
+      .forEach(p => {
+        res[p.hierarchyRootId] = p.selectedId;
+      });
+    return res;
+  }
+
+  private gethipaaInclusion(): Array<string> {
+    const res = [];
+    if (this.isPhoneItemChecked) { res.push('phone'); }
+    if (this.isZipCodeChecked) { res.push('zip'); }
+    if (this.isOldPatientsChecked) { res.push('older_than_89'); }
+    if (this.isExtraYearsChecked) { res.push('date_shift'); }
+    if (this.isEmailChecked) { res.push('email'); }
+    if (this.isIpChecked) { res.push('ip'); }
+    if (this.isUrlChecked) { res.push('url'); }
+    return res;
+  }
+
+  private getCustomRegexes(): any {
+    const res = {};
+    this.regexes.forEach((r: any) => {
+      res[r.name] = r.value
+    })
+    return res;
   }
 }

@@ -32,7 +32,10 @@
                 "hipaa_inclusion": "phone,date_shift,zip,email,ip,older_than_89",
                 "hipaa_date_shift": "3",
                 "hipaa_phone": "(1\\s?)?((\\([0-9]{3}\\))|[0-9]{3})[\\s\\-]?[\\0-9]{3}[\\s\\-]?[0-9]{4}",
-                "custom_regexes": null
+                "custom_regexes": {
+                    "lala": "lals",
+                    "name": "value"
+                }
             },
             "transMsg": "lifeflux error while trying to do operation: 'getting transaction details'. Go to the Monitoring->Jobs section to get more information",
             "pctProgress": 0,
