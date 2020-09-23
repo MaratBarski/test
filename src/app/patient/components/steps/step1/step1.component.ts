@@ -38,7 +38,7 @@ export class Step1Component implements OnInit, AfterViewInit {
     this.editPatientService.onQueriesLoded
       .pipe(take(1))
       .subscribe(() => {
-        this.queries = this.editPatientService.queries.map(s => {
+        this.sourceQueries = this.queries = this.editPatientService.queries.map(s => {
           return {
             id: s.session_id,
             name: s.session_name
@@ -81,10 +81,11 @@ export class Step1Component implements OnInit, AfterViewInit {
 
   searchQueryText = '';
   queries = [];
+  sourceQueries = [];
 
   completeQuery(text: string): void {
     this.queryCollapsed = false;
-    this.queries = this.queries.filter(x => x.name.toLowerCase().indexOf(text.toLowerCase()) > -1);
+    this.queries = this.sourceQueries.filter(x => !text || !text.trim() || x.name.toLowerCase().indexOf(text.toLowerCase()) > -1);
     this.searchQueryText = text;
   }
 
