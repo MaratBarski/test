@@ -55,7 +55,7 @@ export class HistoryReportService {
         },
         {
           columnId: 'name',
-          text: 'Query/File Name',
+          text: 'Query / File Name',
           isSortEnabled: true,
           csvTitle: 'Query/File name/ID',
           css: 'admin-table__item w-md-200'
