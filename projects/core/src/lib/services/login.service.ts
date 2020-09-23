@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CanActivate } from '@angular/router';
+import { CanActivate, Router } from '@angular/router';
 import { DataService } from './data.service';
 import { LoginRequest } from '../models/LoginRequest';
 import { LoginResponse } from '../models/LoginResponse';
@@ -11,6 +11,7 @@ import { BaseSibscriber } from '../common/BaseSibscriber';
 import { userSelector } from '../store/selectors/user.selectors';
 import { userData } from '../store/actions/user.actions';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { MenuItem, ResearcherEnableMenu } from '../common/side-menu';
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +28,8 @@ export class LoginService extends BaseSibscriber implements CanActivate {
 
   constructor(
     private dataService: DataService,
-    private store: Store<any>
+    private store: Store<any>,
+    private router: Router
   ) {
     super();
     super.add(this.store.select(userSelector).subscribe(user => {
@@ -91,6 +93,13 @@ export class LoginService extends BaseSibscriber implements CanActivate {
     )
   }
 
+  filtermenu(items: Array<MenuItem>): Array<MenuItem> {
+    if (this.isSuperAdmin) { return items; }
+    return items.filter(item => {
+      return !!ResearcherEnableMenu[item.id];
+    });
+  }
+
   async login(loginRequest: LoginRequest): Promise<LoginResponse> {
     return this.dataService.post(ENV.loginUrl, loginRequest)
       .toPromise().then((res: any) => {
@@ -116,6 +125,11 @@ export class LoginService extends BaseSibscriber implements CanActivate {
           }
         });
       });
+  }
+
+  checkPermission(id: any): void {
+    if (this.isSuperAdmin) { return; }
+    if (!ResearcherEnableMenu[id]) { this.router.navigate(['/login']) }
   }
 
   canActivate() {

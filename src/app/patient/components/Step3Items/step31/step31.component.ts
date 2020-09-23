@@ -16,18 +16,6 @@ export class Step31Component implements OnInit {
     this.isOpen = !this.isOpen;
   }
 
-  countries: Array<SelectOption> = [
-    {
-      text: 'Israel',
-      id: 1
-    },
-    {
-      text: 'Usa',
-      id: 2
-    }
-  ]
-
-
   years: Array<SelectOption> = [];
 
   constructor(

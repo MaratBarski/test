@@ -44,6 +44,16 @@ export const PageInfo = {
     }
 }
 
+export const ResearcherEnableMenu = {
+    [PageInfo.ManageUsers.id]: false,
+    [PageInfo.MonitorReports.id]: true,
+    [PageInfo.ManageHierarchies.id]: true,
+    [PageInfo.ImportedFiles.id]: true,
+    [PageInfo.JobsScheduling.id]: true,
+    [PageInfo.Researchers.id]: false,
+    [PageInfo.Patient.id]: true
+}
+
 export const SideMenu: Array<MenuItem> = [
     {
         id: PageInfo.ManageUsers.id,
@@ -90,7 +100,7 @@ export const SideMenu: Array<MenuItem> = [
         url: 'users/research',
         text: 'Permission Sets'
     }
-    ,{
+    , {
         id: PageInfo.Patient.id,
         url: 'patient',
         text: 'Patient Story'

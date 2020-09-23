@@ -7,23 +7,30 @@
         <div class="user-unwrap-param-wrap">
             <div class="user-unwrap-param user-unwrap-param_table">
                 <div class="user-unwrap-param__item">
-                    <mdc-check-box [(ngModel)]="editPatientService.isMaxDateShiftingChecked"
-                        text="Maximum Date shifting:"></mdc-check-box>
+                    <mdc-check-box (change)="editPatientService.isValueChanged=true;"
+                        [(ngModel)]="editPatientService.isMaxDateShiftingChecked" text="Maximum Date shifting:">
+                    </mdc-check-box>
                     <div class="user-unwrap-param__num">
-                        <mdc-select [(ngModel)]="editPatientService.general_date_shift" [disabled]="!editPatientService.isMaxDateShiftingChecked" [isSmall]="true"
+                        <mdc-select (changed)="editPatientService.isValueChanged=true;"
+                            [(ngModel)]="editPatientService.general_date_shift"
+                            [disabled]="!editPatientService.isMaxDateShiftingChecked" [isSmall]="true"
                             [options]="dates"></mdc-select>
                     </div>
                 </div>
                 <div class="user-unwrap-param__item">
-                    <mdc-check-box [(ngModel)]="editPatientService.isMaxNumericStringChecked"
-                        text="Maximum Numeric shifting:"></mdc-check-box>
+                    <mdc-check-box (change)="editPatientService.isValueChanged=true;"
+                        [(ngModel)]="editPatientService.isMaxNumericStringChecked" text="Maximum Numeric shifting:">
+                    </mdc-check-box>
                     <div class="user-unwrap-param__num">
-                        <mdc-select  [(ngModel)]="editPatientService.general_numeric_shift" [disabled]="!editPatientService.isMaxNumericStringChecked" [isSmall]="true"
+                        <mdc-select (changed)="editPatientService.isValueChanged=true;"
+                            [(ngModel)]="editPatientService.general_numeric_shift"
+                            [disabled]="!editPatientService.isMaxNumericStringChecked" [isSmall]="true"
                             [options]="numerics"></mdc-select>
                     </div>
                 </div>
                 <div class="user-unwrap-param__item user-unwrap-param__item_flex">
-                    <mdc-check-box [(ngModel)]="editPatientService.isFreeTextChecked" text="Free Text censoring">
+                    <mdc-check-box (change)="editPatientService.isValueChanged=true;"
+                        [(ngModel)]="editPatientService.isFreeTextChecked" text="Free Text censoring">
                     </mdc-check-box>
                     <div class="user-unwrap-param__icon">
                         <svg class="icon ic-info" mdcSvg="ic-info"></svg>

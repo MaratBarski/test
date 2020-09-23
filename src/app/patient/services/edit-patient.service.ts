@@ -15,6 +15,25 @@ import { LoginService } from '@appcore';
 })
 export class EditPatientService {
 
+  constructor(
+    private http: HttpClient,
+    private configService: ConfigService,
+    private router: Router,
+    private notificationService: NotificationsService,
+    private navigationService: NavigationService,
+    private loginService: LoginService
+  ) {
+    this.initCountries();
+  }
+
+  showCancelConfirm = false;
+  redirectUrl = '';
+
+  cancelConfirm(): void {
+    this.showCancelConfirm = false;
+    this.router.navigateByUrl(this.redirectUrl || '/patient');
+  }
+
   get onQueriesLoded(): Observable<any> { return this._onQueriesLoded; }
   private _onQueriesLoded = new Subject();
 
@@ -24,15 +43,23 @@ export class EditPatientService {
   private _filters = [
     [false, false, false, false, false, false, false],
     [false, false, false],
-  ]
+  ];
 
   getFilterCount(i: number): string {
+    if (!this._filters || !this._filters[i]) { return 'None'; }
     const c = this._filters[i].filter(x => x).length;
     return c ? `${c}` : 'None';
   }
 
   getRegexCount(): string {
+    if (!this.regexes || !this.regexes.length) { return 'None'; }
     return this.regexes.length ? `${this.regexes.length}` : 'None';
+  }
+
+  getCategoriesCount(): string {
+    if (!this.hierarchyProjects || !this.hierarchyProjects.length) { return 'None'; }
+    const c = this.hierarchyProjects.filter(x => x.selectedId).length;
+    return c ? `${c}` : 'None';
   }
 
   set isPhoneItemChecked(f: boolean) { this._filters[0][0] = f; }
@@ -65,6 +92,8 @@ export class EditPatientService {
   set isFreeTextChecked(f: boolean) { this._filters[1][2] = f; }
   get isFreeTextChecked(): boolean { return this._filters[1][2]; }
 
+  isValueChanged = false;
+
   hipaa_date_shift = 0;
   general_numeric_shift = 0;
   general_date_shift = 0;
@@ -73,6 +102,7 @@ export class EditPatientService {
 
   removeRegex(r: any): void {
     this.regexes = this.regexes.filter(x => x !== r);
+    this.isValueChanged = true;
   }
 
   addRegex(): void {
@@ -80,6 +110,7 @@ export class EditPatientService {
       name: '',
       value: ''
     });
+    this.isValueChanged = true;
   }
 
   get outputFormatName(): string {
@@ -97,6 +128,49 @@ export class EditPatientService {
   get isShowError(): boolean { return this._isShowError; }
   private _isShowError = false;
 
+  get isProjectSelected(): boolean { return this._isProjectSelected; }
+  private _isProjectSelected = true;
+
+  get isNameSetted(): boolean { return this._isNameSetted; }
+  private _isNameSetted = true;
+
+  get isQuerySelected(): boolean { return this._isQuerySelected; }
+  private _isQuerySelected = true;
+
+  get isFileSelected(): boolean { return this._isFileSelected; }
+  private _isFileSelected = true;
+
+  file: any;
+
+  resetValidation(): void {
+    this._isProjectSelected = true;
+    this._isNameSetted = true;
+    this._isQuerySelected = true;
+    this._isFileSelected = true;
+    this._isShowError = false;
+  }
+
+  private _isNeedValidate = true;
+  validate(): boolean {
+    this.resetValidation();
+    if (!this._isNeedValidate) { return true; }
+    let error = true;
+    if (!this._settings.projectId) {
+      error = this._isProjectSelected = false;
+    }
+    if (!this._settings.settingsName || !this._settings.settingsName.trim()) {
+      error = this._isNameSetted = false;
+    }
+    if (this._settings.cohortSource === 1 && !this._settings.queryId) {
+      error = this._isQuerySelected = false;
+    }
+    if (this._settings.cohortSource === 2 && !this.file) {
+      error = this._isFileSelected = false;
+    }
+    this._isShowError = !error;
+    return error;
+  }
+
   get settings(): any { return this._settings; }
   private _settings: any;
 
@@ -105,6 +179,17 @@ export class EditPatientService {
 
   get queries(): Array<any> { return this._queries; }
   private _queries: Array<any>;
+  private editQueryId = 0;
+
+  selectQuery(): void {
+    if (!this._queries || !this._queries.length) { return; }
+    if (!this.editQueryId) { return; }
+    const q = this._queries.find(x => x.session_id == this.editQueryId);
+    if (q) {
+      this.settings.queryId = q.session_id;
+      this.queryName = q.session_name;
+    }
+  }
 
   get hierarchyProjects(): Array<any> { return this._hierarchyProjects; }
   private _hierarchyProjects: Array<any>;
@@ -118,25 +203,11 @@ export class EditPatientService {
       .subscribe((res: any) => {
         this._isHierarchyProjectsaded = true;
         this._hierarchyProjects = res.data;
-        // this._hierarchyProjects.forEach(p=>{
-        //   p.selectedId = 3478;
-        // })
+        this.selectHierarchies();
         this._onHierarchyProjects.next();
       }, error => {
         this._isHierarchyProjectsaded = true;
       })
-  }
-
-  getDefault(): any {
-    return {
-      data: {
-        settingsName: 'settings name',
-        projectId: 0,
-        outputFormat: 0,
-        cohortSource: 1,
-        queryId: 0
-      }
-    };
   }
 
   loadSettings(): Observable<any> {
@@ -168,13 +239,14 @@ export class EditPatientService {
         this.settings.queryId = 0;
         this.queryName = '';
         this._queries = res.data;
+        this.selectQuery();
         this._onQueriesLoded.next();
       }, error => {
         this._isQuryLoaded = true;
       })
   }
 
-  @Offline('assets/offline/selectedSettings.json?')
+  @Offline('assets/offline/siteEventPropertyInfos.json?')
   private siteEventInfoUrl = `${environment.serverUrl}${environment.endPoints.siteEventInfo}`;
 
   @Offline('assets/offline/userSession.json?')
@@ -187,33 +259,102 @@ export class EditPatientService {
   private getHierarchyProjectUrl = `${environment.serverUrl}${environment.endPoints.hierarchyProject}`;
 
   setTab(tab: number): void {
+    if (!this.validate()) { return; }
     this._selectedTab = tab;
+    this.refreshEvents();
   }
 
   setNextTab(i: number): void {
+    if (!this.validate()) { return; }
     this._selectedTab += i;
+    this.refreshEvents();
   }
 
-  constructor(
-    private http: HttpClient,
-    private configService: ConfigService,
-    private router: Router,
-    private notificationService: NotificationsService,
-    private navigationService: NavigationService,
-    private loginService: LoginService
-  ) {
-    // this.loginService.onUserInfoUpdated
-    //   .subscribe(res => {
-    //     alert(JSON.stringify(res.data.projects));
-    //   })
+  get events(): Array<any> { return this._events; }
+  private _events: Array<any>;
+
+  refreshEvents(): void {
+    if (this._selectedTab !== 3) { return; }
+    this._events = JSON.parse(JSON.stringify(this.events));
+  }
+
+  loadEvents(): void {
+    this._events = undefined;
+    this.http.get(`${this.siteEventInfoUrl}/${this.settings.projectId}`)
+      .pipe(take(1))
+      .subscribe((res: any) => {
+        this._events = res.data;
+        this._events.forEach(ev => {
+          ev.isChecked = false;
+          ev.siteEventPropertyInfos.forEach(se => {
+            se.isChecked = ev.isChecked;
+          });
+        })
+        this.selectEvents();
+      }, error => {
+
+      })
+  }
+
+  selectedEvents: any;
+  selectEvents(): void {
+    if (!this.selectedEvents) { return; }
+    if (!this.events) { return; }
+    this.events.forEach((event: any) => {
+      if (!this.selectedEvents[event.eventId] || !this.selectedEvents[event.eventId].length) { return; }
+      this.selectedEvents[event.eventId].forEach(id => {
+        const selected = event.siteEventPropertyInfos.find(x => x.eventPropertyName && x.eventPropertyName.toLowerCase() === id.toLowerCase());
+        if (selected) {
+          selected.isChecked = true;
+          event.isChecked = true;
+          event.isExpanded = true;
+        }
+      });
+    })
+  }
+
+  hierarchies: any;
+  selectHierarchies(): void {
+    if (!this.hierarchies) { return; }
+    if (!this._hierarchyProjects) { return; }
+    //alert(JSON.stringify(this.hierarchies))
+    //alert(JSON.stringify(this._hierarchyProjects))
+    this._hierarchyProjects.forEach(p => {
+      if (!this.hierarchies[p.hierarchyRootId]) { return; }
+      p.selectedId = this.hierarchies[p.hierarchyRootId];
+    })
+  }
+
+  countries: Array<any> = [];
+  selectedCountry = -1;
+
+  private initCountries(): void {
+    const c = JSON.parse(this.configService.getValue('hipaa_regex_phone'));
+    this.countries = [];
+    Object.keys(c).forEach((k, i) => {
+      this.countries.push({
+        text: k,
+        value: c[k],
+        id: i
+      })
+    });
   }
 
   get storyId(): number { return this._storyId; }
   _storyId = 0;
 
   reset(id: number = undefined): void {
+    this.isValueChanged = false;
+    this.showCancelConfirm = false;
+    this.resetValidation();
+    this.selectedEvents = undefined;
+    this.hierarchies = undefined;
+    this.regexes = [];
     this._storyId = id;
     this._selectedTab = 0;
+    this.editQueryId = 0;
+    this.queryName = '';
+    this.projectName = '';
     this.isPhoneItemChecked = false;
     this.isZipCodeChecked = false;
     this.isOldPatientsChecked = false;
@@ -251,8 +392,6 @@ export class EditPatientService {
     this._settings.settingsName = settings.name;
     this._settings.projectId = parseInt(`${settings.projectId}`);
     if (this._settings.projectId) {
-      this.setQueries();
-      this.setHierarchyProjects();
       const proj = this.loginService.findProject(this.settings.projectId);
       if (proj) {
         this.projectName = proj.projectName;
@@ -265,7 +404,7 @@ export class EditPatientService {
   }
 
   private setIipaaInclusion(settings: any): void {
-    if (!settings.transJson || !settings.transJson.hipaa_inclusion) { return; }
+    if (!settings.transJson) { return; }
     this.hipaa_date_shift = parseInt(`${settings.transJson.hipaa_date_shift || '0'}`);
     const dict = {
       phone: 'isPhoneItemChecked',
@@ -276,18 +415,141 @@ export class EditPatientService {
       older_than_89: 'isOldPatientsChecked',
       date_shift: 'isExtraYearsChecked'
     };
-    settings.transJson.hipaa_inclusion.split(',').forEach(str => {
-      if (dict[str.toLowerCase().trim()]) {
-        this[dict[str.toLowerCase().trim()]] = true;
+    if (settings.transJson.hipaa_inclusion) {
+      if (settings.transJson.hipaa_inclusion.split) {
+        settings.transJson.hipaa_inclusion.split(',').forEach(str => {
+          if (dict[str.toLowerCase().trim()]) {
+            this[dict[str.toLowerCase().trim()]] = true;
+          }
+        });
+      } else {
+        settings.transJson.hipaa_inclusion.forEach(str => {
+          if (dict[str.toLowerCase().trim()]) {
+            this[dict[str.toLowerCase().trim()]] = true;
+          }
+        });
       }
-    });
+    }
 
     this.general_date_shift = parseInt(`${settings.transJson.general_date_shift || '0'}`);
     this.general_numeric_shift = parseInt(`${settings.transJson.general_numeric_shift || '0'}`);
     this.isMaxDateShiftingChecked = !!this.general_date_shift;
     this.isMaxNumericStringChecked = !!this.general_numeric_shift;
+    const phone = `${settings.transJson.hipaa_phone || ''}`;
+    if (phone) {
+      this.selectedCountry = this.countries.findIndex(x => x.value === phone);
+    }
+    if (settings.transJson.custom_regexes) {
+      Object.keys(settings.transJson.custom_regexes).forEach((k, i) => {
+        this.regexes.push({ name: k, value: settings.transJson.custom_regexes[k], id: i })
+      })
+    }
 
     this.isFreeTextChecked = settings.transJson.free_text;
+    this.selectedEvents = settings.transJson.event_inclusion;
+    this.hierarchies = settings.transJson.hierarchies;
+    this.editQueryId = settings.transJson.input_population || 0;
 
+    this.loadEvents();
+    this.setHierarchyProjects();
+    this.setQueries();
+    //this.selectEvents();
+  }
+
+  getDefault(): any {
+    return {
+      data: {
+        settingsName: '',
+        projectId: 0,
+        outputFormat: 0,
+        cohortSource: 1,
+        queryId: 0
+      }
+    };
+  }
+
+  save(): void {
+    if (!this.validate()) { return; }
+    const obj = this.convertToServer();
+    //document.write(JSON.stringify(obj));
+    console.log(obj);
+    if (this._storyId) {
+      this.update()
+    } else {
+      this.add();
+    }
+  }
+
+  private update(): void {
+
+  }
+
+  private add(): void {
+
+  }
+
+  convertToServer(): any {
+    const res = {
+      lifeFluxTransId: this._storyId,
+      name: this.settings.settingsName,
+      projectId: this.settings.projectId,
+      //userId:0,
+      outputType: this.settings.outputFormat == 0 ? 'files' : 'impala',
+      transJson: {
+        input_mode: this.settings.cohortSource === 1 ? 'session' : 'file',
+        input_population: this.settings.queryId,
+        event_inclusion: this.geteventInclusion(),
+        hierarchies: this.getHierarchies(),
+        general_date_shift: this.general_date_shift,
+        general_numeric_shift: this.general_numeric_shift,
+        hipaa_inclusion: this.gethipaaInclusion(),
+        hipaa_date_shift: this.hipaa_date_shift,
+        hipaa_phone: this.selectedCountry >= 0 ? this.countries[this.selectedCountry].value : '',
+        custom_regexes: this.getCustomRegexes()
+      }
+    };
+    return res;
+  }
+
+  private geteventInclusion(): any {
+    const res = {};
+    this.events.filter(e => e.isChecked)
+      .forEach(e => {
+        res[e.eventId] = [];
+        e.siteEventPropertyInfos.filter((se: any) => se.isChecked)
+          .forEach((se: any) => {
+            res[e.eventId].push(se.eventPropertyName);
+          });
+      })
+    return res;
+  }
+
+  private getHierarchies(): any {
+    const res = {};
+    this._hierarchyProjects.filter(p => p.selectedId)
+      .forEach(p => {
+        res[p.hierarchyRootId] = p.selectedId;
+      });
+    return res;
+  }
+
+  private gethipaaInclusion(): Array<string> {
+    const res = [];
+    if (this.isPhoneItemChecked) { res.push('phone'); }
+    if (this.isZipCodeChecked) { res.push('zip'); }
+    if (this.isOldPatientsChecked) { res.push('older_than_89'); }
+    if (this.isExtraYearsChecked) { res.push('date_shift'); }
+    if (this.isEmailChecked) { res.push('email'); }
+    if (this.isIpChecked) { res.push('ip'); }
+    if (this.isUrlChecked) { res.push('url'); }
+    return res;
+  }
+
+  private getCustomRegexes(): any {
+    const res = {};
+    this.regexes.forEach((r: any) => {
+      res[r.name] = r.value
+    })
+    return res;
   }
 }

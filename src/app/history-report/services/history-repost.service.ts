@@ -47,7 +47,7 @@ export class HistoryReportService {
         },
         {
           columnId: 'fullName',
-          text: 'User',
+          text: 'Full Name',
           isSortEnabled: true,
           filter: true,
           csvTitle: 'User',
@@ -69,9 +69,9 @@ export class HistoryReportService {
         },
         {
           columnId: 'research',
-          text: 'Research',
+          text: 'Permission Set',
           isSortEnabled: true,
-          csvTitle: 'Research name',
+          csvTitle: 'Permission Set',
           css: 'admin-table__item d-none d-xxxl-table-cell'
         },
         {

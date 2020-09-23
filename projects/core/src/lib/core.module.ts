@@ -78,6 +78,7 @@ import { ToasterComponent } from './components/toaster/toaster.component';
 import { NotificationComponent } from './components/notification/notification.component';
 import { InputNumberComponent } from './components/input-number/input-number.component';
 import { DatePickerComponent } from './components/date-picker/date-picker.component';
+import { UserMenuPipe } from './pipes/user-menu.pipe';
 // import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 
 @NgModule({
@@ -145,7 +146,8 @@ import { DatePickerComponent } from './components/date-picker/date-picker.compon
     ToasterComponent,
     NotificationComponent,
     InputNumberComponent,
-    DatePickerComponent
+    DatePickerComponent,
+    UserMenuPipe
   ],
   imports: [
     CommonModule,
@@ -221,7 +223,8 @@ import { DatePickerComponent } from './components/date-picker/date-picker.compon
     ToasterComponent,
     NotificationComponent,
     InputNumberComponent,
-    DatePickerComponent
+    DatePickerComponent,
+    UserMenuPipe
   ],
   entryComponents: [
     TableHeaderComponent,

@@ -7,12 +7,16 @@ import { SelectOption } from '@appcore';
 export class HierarchyOptionsPipe implements PipeTransform {
 
   transform(hierarchy: any, ...args: any[]): Array<SelectOption> {
-    return hierarchy.hierarchyLevels.map(level => {
-      return {
-        text: level.hierarchyLevelName,
-        id: level.hierarchyLevelId
-      }
-    });
+    return [{
+      text: 'Select Category Level...',
+      id: 0
+    }].concat(
+      hierarchy.hierarchyLevels.map(level => {
+        return {
+          text: level.hierarchyLevelName,
+          id: level.hierarchyLevelId
+        }
+      }));
   }
-  
+
 }
