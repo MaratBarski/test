@@ -1,19 +1,36 @@
 pipeline {
-    agent { label 'windows' }
-
+    agent none
     environment {
         HOME = '.'
-        PATH = "C:\\WINDOWS\\SYSTEM32;C:\\Windows\\System32\\WindowsPowerShell\\v1.0;C:\\Program Files\\Docker"
+        MAJ = "2"
+        IMG_TAG = "10.0.2.204:5000/mdclone-mainapp-ui:$MAJ.${env.BUILD_ID}"
     }
     stages {
         stage('Build') {
-            steps {
-                nodejs(nodeJSInstallationName: 'node') {
-                    bat 'npm install'
-                    bat 'npm run build core'
+            agent { label 'windows' }
+            stages {
+                stage("Node"){
+                    environment {
+                        PATH = "C:\\WINDOWS\\SYSTEM32;C:\\Windows\\System32\\WindowsPowerShell\\v1.0;C:\\Program Files\\Docker"
+                    }
+                    steps {
+                        nodejs(nodeJSInstallationName: 'node') {
+                            bat 'npm install'
+                            bat 'npm run build core'
+                        }
+                    }
+                }
+                stage('Docker build and push') {
+                    steps {
+                        script {
+                            def customImage = docker.build("$IMG_TAG")
+                            customImage.push()
+                        }
+                    }
                 }
             }
         }
+
         // stage('Test') {
         //     steps {
         //         nodejs(nodeJSInstallationName: 'node') {
@@ -22,15 +39,11 @@ pipeline {
         //         }
         //     }
         // }
-        // stage('Deploy') {
-        //     steps {
-        //         sh 'rsync -v'
-        //     }
-        // }
+
         stage('SSH transfer') {
             steps{
                 script {
-                    if (env.INSTALL) {
+                    if (env.INSTALL_SSH) {
                         sshPublisher(
                         continueOnError: false, failOnError: true,
                         publishers: [
@@ -50,11 +63,22 @@ pipeline {
                 }
             }
         }
-        stage('Docker build and push') {
-            steps {
-                script {
-                    def customImage = docker.build("10.0.2.204:5000/mainappui:2.${env.BUILD_ID}")
-                    customImage.push()
+        stage("K8s"){
+            agent { label '203' }
+            options {
+                skipDefaultCheckout true
+            }
+            stages {
+                stage("update running docker"){
+                    when {
+                        expression { env.INSTALL.toBoolean() == true }
+                    }
+                    steps {
+                        sh 'echo Updating to version $IMG_TAG'
+                        withCredentials([kubeconfigFile(credentialsId: '06c9a9c0-6244-4a71-b2d0-f078dfc206bf', variable: 'KUBECONFIG')]) {
+                            sh 'kubectl set image deployment.apps/mdclone-mainapp-ui mdclone-mainapp-ui=$IMG_TAG'
+                        }
+                    }
                 }
             }
         }
