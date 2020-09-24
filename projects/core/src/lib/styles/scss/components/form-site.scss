@@ -249,6 +249,7 @@
     outline: none;
     border: 1px solid $color-light-grey;
     border-radius: 2px;
+    font-family: $font-site;
     @include font(normal, normal, rem(14px), rem(38px), $color-dark-grey);
     padding: 0 40px 0 15px;
     margin: 0;
@@ -704,6 +705,7 @@
 	}
 
   &__search input[type="text"]{
+    height: rem(40px);
     @include font(normal, normal, rem(14px), rem(38px), $color-dark-grey);
     padding: 0 50px 0 15px;
     margin: 0;

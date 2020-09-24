@@ -1142,14 +1142,14 @@
 
 .add-filter-wrap{
   .modal-window{
-    width: 800px;
+    width: 830px;
     max-width: 90%;
-    height: 349px;
+    height: 410px;
 
     &__head{
       font-size: rem(16px);
       font-weight: 600;
-      margin-bottom: 15px;
+      margin-bottom: 12px;
     }
   }
 }
@@ -1216,6 +1216,7 @@
 
     &__content{
       width: 100%;
+      max-width: 739px;
       padding: 2px 15px;
     }
   }
@@ -1223,7 +1224,7 @@
   .rule-build-fields{
     input[type="email"],
     input[type="text"]{
-      width: 80px;
+      width: 85px;
     }
   }
 
