@@ -83,8 +83,10 @@ export class UserEditService {
   set securityUser(user: any) {
     this._securityUser = user;
     this._systmeUser = this.users.find(x => x.id === user.id);
-    this.user.userName =
-      this.user.login = this._systmeUser.login;
+    if (this._systmeUser) {
+      this.user.userName =
+        this.user.login = this._systmeUser.login;
+    }
   }
   get securityUser(): any {
     return this._securityUser;

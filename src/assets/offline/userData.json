@@ -115,7 +115,7 @@
                 "name": "ROLE_SUPERADMIN",
                 "UserAuthority": {
                     "userId": "5",
-                    "authorityName": "ROLE_SUPERADMIN1"
+                    "authorityName": "ROLE_SUPERADMIN"
                 }
             }
         ]

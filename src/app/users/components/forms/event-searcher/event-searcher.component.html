@@ -10,7 +10,7 @@
                     <svg class="icon ic-select-arr-down" mdcSvg="ic-select-arr-down"></svg>
                 </div>
             </div>
-            <div [hidden]="!isExpanded" class="drop-cond__popup">
+            <div [mdcVisibility]="isExpanded" class="drop-cond__popup">
                 <div class="drop-cond__option">
                     <ng-content></ng-content>
                 </div>
