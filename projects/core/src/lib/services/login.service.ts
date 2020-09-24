@@ -143,6 +143,7 @@ export class LoginService extends BaseSibscriber implements CanActivate {
   }
 
   checkPermission(id: any): void {
+    if (!id) { return; }
     if (this.isSuperAdmin) { return; }
     if (this.isAdmin) {
       if (!UserEnableMenu[id] || !UserEnableMenu[id].admin) { this.router.navigate(['/access-denied']) }

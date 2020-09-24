@@ -20,9 +20,6 @@ export class UserWizardComponent extends BaseNavigation implements OnInit {
     public loginService: LoginService
   ) {
     super(navigationService);
-    if(!this.loginService.isSuperAdmin){
-      this.router.navigateByUrl('/users');
-    }
   }
 
   get isLastTab(): boolean {
@@ -75,6 +72,9 @@ export class UserWizardComponent extends BaseNavigation implements OnInit {
         if (mode === 1) {
           this.tabs[1].isDisabled = true;
           this.userEditService.initTab(0);
+          if (!this.loginService.isSuperAdmin) {
+            this.router.navigateByUrl('/users');
+          }
         }
         if (mode === 2) {
           this.tabs[0].isDisabled = true;

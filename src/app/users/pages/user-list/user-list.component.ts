@@ -79,11 +79,14 @@ export class UserListComponent extends BaseSibscriber implements OnInit {
     super.add(
       this.loginService.onUserInfoUpdated.subscribe(ui => {
         if (!ui || !ui.data || !ui.data.projects) { return; }
-        this.environmens = [{ id: '0', text: 'All Environment', value: '0' }].concat(ui.data.projects.map(x => {
-          return { text: x.projectName, id: x.projectId, value: x };
-        }) as Array<any>).sort((a, b) => {
-          return this.sortService.compareString(a.text, b.text, 'asc');
-        });
+        this.environmens = [{ id: '0', text: 'All Environment', value: '0' }]
+          .concat(ui.data.projects
+            .filter((x: any) => x.UserType && x.UserType.userType && x.UserType.userType.toLowerCase() === 'admin')
+            .map(x => {
+              return { text: x.projectName, id: x.projectId, value: x };
+            }) as Array<any>).sort((a, b) => {
+              return this.sortService.compareString(a.text, b.text, 'asc');
+            });
         if (!this.selectedEnvironment) {
           this.selectedEnvironment = this.environmens.length ? this.environmens[0] : undefined;
         }

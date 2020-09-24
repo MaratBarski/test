@@ -81,7 +81,7 @@ export class CategorizationService {
         {
           columnId: 'state',
           text: 'State',
-          isSortEnabled: false,
+          isSortEnabled: true,
           css: 'd-none d-xl-table-cell admin-table__item_center admin-table__state'
         },
         {
@@ -108,10 +108,11 @@ export class CategorizationService {
           insertDate: fl.insertDate,
           domain: fl.project && fl.project.projectName ? fl.project.projectName : '',
           defaultLevelId: fl.defaultLevelId,
+          state: `${fl.status || ''}${fl.hierarchyLoadingType || ''}${fl.hierarchyChange || ''}`
         },
         actionsDisabled: fl.status === 'unmapped',
         isActive: false,
-        isInactive:fl.status === 'deleting',
+        isInactive: fl.status === 'deleting',
         source: fl
       })
     })

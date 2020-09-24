@@ -24,8 +24,7 @@
                         <tr class="admin-table__row" *ngFor="let item of oldCategories;let index=index">
                             <td class="admin-table__item">
                                 <div class="admin-table__name-edit">
-                                    <!-- <input type="text" [(ngModel)]="item.hierarchyLevelName"/> -->
-                                    {{item.hierarchyLevelName}}
+                                    <mdc-text-block [text]="item.hierarchyLevelName"></mdc-text-block>
                                 </div>
                             </td>
                             <td class="admin-table__item d-none d-md-table-cell">
@@ -33,7 +32,10 @@
                                     <div class="select select_small select_full"
                                         [ngClass]="{'error':item.oldCategory===noMatchCategory}">
                                         <div (click)="selectItem($event,item,index)" class="select__head">
-                                            {{item.oldCategory.hierarchyLevelName}}
+                                            <div>
+                                                <mdc-text-block [text]="item.oldCategory.hierarchyLevelName">
+                                                </mdc-text-block>
+                                            </div>
                                             <div class="select__head-arr">
                                                 <svg class="icon ic-select-arr-down" mdcSvg="ic-select-arr-down"></svg>
                                             </div>
@@ -46,7 +48,8 @@
                                                  </div> -->
                                                 <div *ngIf="i.sortValue!==-2 && i.sortValue!==-1  && (!i.inUse || (i === newCategoryDefault && newCategoryDefault !== item.oldCategory))"
                                                     (click)="changeOldCategory(i,item)" class="select__param">
-                                                    {{i.hierarchyLevelName}}
+                                                    <mdc-text-block position="top" [text]="i.hierarchyLevelName">
+                                                    </mdc-text-block>
                                                 </div>
                                             </ng-container>
                                         </div>
