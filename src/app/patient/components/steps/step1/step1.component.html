@@ -8,17 +8,25 @@
                         <div class="user-source__item">
                             <div class="user-source__label"><span class="user-source__label-text">Name:</span></div>
                             <div class="user-source__field">
-                                <input type="text" [(ngModel)]="editPatientService.settings.settingsName"
+                                <input [ngClass]="{'error':!editPatientService.isNameSetted}" type="text"
+                                    [(ngModel)]="editPatientService.settings.settingsName"
                                     placeholder="Type name for the settings">
+                                <div [hidden]="editPatientService.isNameSetted" class="user-details-main__error">Missing
+                                    name</div>
                             </div>
                         </div>
                         <div class="user-source__item">
                             <div class="user-source__label">Environment:</div>
                             <div class="user-source__field">
-                                <md-project-combo #projectCmp [isSmall]="true" [selectUp]="false"
-                                    [project]="editPatientService.settings.projectId"
-                                    (onChange)="changedProject($event)">
-                                </md-project-combo>
+                                <div [ngClass]="{'error':!editPatientService.isProjectSelected}">
+                                    <md-project-combo #projectCmp [isSmall]="true" [selectUp]="false"
+                                        [project]="editPatientService.settings.projectId"
+                                        (onChange)="changedProject($event)">
+                                    </md-project-combo>
+                                </div>
+                                <div [hidden]="editPatientService.isProjectSelected" class="user-details-main__error">
+                                    Missing
+                                    environment</div>
                             </div>
                         </div>
                         <div class="user-source__item user-source__item_full">
@@ -48,14 +56,19 @@
 
 <ng-template #radioTemplate1>
     <div class="user-source-radio__field">
-        <mdc-auto-complete [disabled]="editPatientService.settings.cohortSource!==1" #queryCmp
-            placeHolder="Search or Select a Query..." textField="name" (onSelect)="selectQuery($event)"
-            [inputText]="editPatientService.queryName" [isCollapsed]="queryCollapsed"
-            (onClear)="clearQuery()" (completeMethod)="completeQuery($event)" [suggestions]="queries">
-            <ng-template let-item>
-                <div class="select__param" [text]="item.name" [mdcColorText]="searchQueryText"></div>
-            </ng-template>
-        </mdc-auto-complete>
+        <div [ngClass]="{'error':!editPatientService.isQuerySelected}">
+            <mdc-auto-complete [disabled]="editPatientService.settings.cohortSource!==1" #queryCmp
+                placeHolder="Search or Select a Query..." textField="name" (onSelect)="selectQuery($event)"
+                [inputText]="editPatientService.queryName" [isCollapsed]="queryCollapsed" (onClear)="clearQuery()"
+                (completeMethod)="completeQuery($event)" [suggestions]="queries">
+                <ng-template let-item>
+                    <div class="select__param" [text]="item.name" [mdcColorText]="searchQueryText"></div>
+                </ng-template>
+            </mdc-auto-complete>
+        </div>
+        <div [hidden]="editPatientService.isQuerySelected" class="user-details-main__error">
+            Missing
+            Query</div>
     </div>
 </ng-template>
 
@@ -70,9 +83,11 @@
 
 <ng-template #radioTemplate2>
     <div class="user-source-radio__field">
-        <div [ngClass]="{'disable':editPatientService.settings.cohortSource!==2}" class="file-upload">
+        <div [ngClass]="{'disable':editPatientService.settings.cohortSource!==2,'error':!editPatientService.isFileSelected}"
+            class="file-upload">
             <label class="file-upload__content">
-                <input (change)="changeFile($event)" type="file" [disabled]="editPatientService.settings.cohortSource!==2">
+                <input (change)="changeFile($event)" type="file"
+                    [disabled]="editPatientService.settings.cohortSource!==2">
                 <span class="file-upload__btn">Choose File</span>
                 <span [ngClass]="{'disable':editPatientService.settings.cohortSource!==2}" class="file-upload__name">
                     <ng-template [ngIf]="!selectedFile">No file chosen</ng-template>
@@ -80,5 +95,8 @@
                 </span>
             </label>
         </div>
+        <div [hidden]="editPatientService.isFileSelected" class="user-details-main__error">
+            Missing
+            File</div>
     </div>
 </ng-template>
