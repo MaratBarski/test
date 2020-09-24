@@ -44,14 +44,14 @@ export const PageInfo = {
     }
 }
 
-export const ResearcherEnableMenu = {
-    [PageInfo.ManageUsers.id]: false,
-    [PageInfo.MonitorReports.id]: true,
-    [PageInfo.ManageHierarchies.id]: true,
-    [PageInfo.ImportedFiles.id]: true,
-    [PageInfo.JobsScheduling.id]: true,
-    [PageInfo.Researchers.id]: false,
-    [PageInfo.Patient.id]: true
+export const UserEnableMenu = {
+    [PageInfo.ManageUsers.id]: { researcher: false, admin: true },
+    [PageInfo.MonitorReports.id]: { researcher: false, admin: true },
+    [PageInfo.ManageHierarchies.id]: { researcher: false, admin: true },
+    [PageInfo.ImportedFiles.id]: { researcher: true, admin: true },
+    [PageInfo.JobsScheduling.id]: { researcher: false, admin: true },
+    [PageInfo.Researchers.id]: { researcher: false, admin: true },
+    [PageInfo.Patient.id]: { researcher: false, admin: false }
 }
 
 export const SideMenu: Array<MenuItem> = [

@@ -26,7 +26,7 @@
                 "UserType": {
                     "userId": "5",
                     "projectId": "1",
-                    "userType": "admin",
+                    "userType": "admin1",
                     "anonymityLevel": 1,
                     "numericScatterLimit": 0
                 },
@@ -80,7 +80,7 @@
                 "UserType": {
                     "userId": "5",
                     "projectId": "2",
-                    "userType": "ADMIN",
+                    "userType": "ADMIN1",
                     "anonymityLevel": 1,
                     "numericScatterLimit": 0
                 },
@@ -102,7 +102,7 @@
                 "UserType": {
                     "userId": "5",
                     "projectId": "6",
-                    "userType": "ADMIN",
+                    "userType": "ADMIN1",
                     "anonymityLevel": 1,
                     "numericScatterLimit": 1
                 },
@@ -140,7 +140,7 @@
                 "UserType": {
                     "userId": "5",
                     "projectId": "14",
-                    "userType": "ADMIN",
+                    "userType": "ADMIN1",
                     "anonymityLevel": 1,
                     "numericScatterLimit": 0
                 },
@@ -210,7 +210,7 @@
                 "UserType": {
                     "userId": "5",
                     "projectId": "27",
-                    "userType": "ADMIN",
+                    "userType": "ADMIN1",
                     "anonymityLevel": 1,
                     "numericScatterLimit": 1
                 },
@@ -223,7 +223,7 @@
                 "UserType": {
                     "userId": "5",
                     "projectId": "17",
-                    "userType": "ADMIN",
+                    "userType": "ADMIN1",
                     "anonymityLevel": 1,
                     "numericScatterLimit": 1
                 },
@@ -236,7 +236,7 @@
                 "UserType": {
                     "userId": "5",
                     "projectId": "18",
-                    "userType": "ADMIN",
+                    "userType": "ADMIN1",
                     "anonymityLevel": 1,
                     "numericScatterLimit": 1
                 },
@@ -249,7 +249,7 @@
                 "UserType": {
                     "userId": "5",
                     "projectId": "15",
-                    "userType": "ADMIN",
+                    "userType": "ADMIN1",
                     "anonymityLevel": 1,
                     "numericScatterLimit": 1
                 },
@@ -279,7 +279,7 @@
                 "UserType": {
                     "userId": "5",
                     "projectId": "21",
-                    "userType": "ADMIN",
+                    "userType": "ADMIN1",
                     "anonymityLevel": 1,
                     "numericScatterLimit": 1
                 },
@@ -304,7 +304,7 @@
                 "name": "ROLE_ADMIN",
                 "UserAuthority": {
                     "userId": "5",
-                    "authorityName": "ROLE_ADMIN"
+                    "authorityName": "ROLE_ADMIN2"
                 }
             },
             {
