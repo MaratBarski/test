@@ -89,10 +89,12 @@
     color: #ACB2C3;
     cursor: auto !important;
     font-weight: 700;
+    text-decoration: underline;
 }
-/*.disabled{*/
-/*    cursor: default !important;*/
-/*}*/
+.disabled{
+    cursor: default !important;
+    visibility: hidden;
+}
 .page-next{
     width:30px;
     height: 30px;

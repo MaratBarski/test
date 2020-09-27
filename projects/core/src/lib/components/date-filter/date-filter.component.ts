@@ -45,8 +45,9 @@ export class DateFilterComponent {
         return {
           title: item.text, isDropDown: true,
           click: (index: number, tab: TabItemModel, event: any, target: any) => {
+            const f = this.showCustom;
             ComponentService.documentClick(event);
-            this.showCustom = true;
+            this.showCustom = !f;
           }
         }
       }

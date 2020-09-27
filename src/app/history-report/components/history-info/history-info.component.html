@@ -1,9 +1,9 @@
 <div class="" (mouseover)="isOver=true" (mouseleave)="isOver=false">
   <div class="admin-table-info__top">
     <div class="admin-table-info__head">Details</div>
-    <div class="admin-table-info__icons"><span *ngIf="category?.downloadActive" (click)="download()" class="ic-hover">
+    <div class="admin-table-info__icons"><span  [stickyToElement]="true" mdcTooltip="Download output file" *ngIf="category?.downloadActive" (click)="download()" class="ic-hover">
         <svg class="icon ic-download" mdcSvg="ic-download">
-        </svg></span><span (click)="closeInfo()" class="ic-hover">
+        </svg></span><span [stickyToElement]="true" mdcTooltip="Close details" (click)="closeInfo()" class="ic-hover">
         <svg class="icon ic-close-history ic-stroke" mdcSvg="ic-close-history">
         </svg></span></div>
   </div>
@@ -72,7 +72,10 @@
       <div class="admin-table-info__title">Environment:</div>
       <div class="admin-table-info__val">{{category?.projectName}}</div>
     </div>
-    <div class="admin-table-info__sect">
+    <div *ngIf="!category?.researchName" class="admin-table-info__sect">
+      No associated permission set
+    </div>
+    <div *ngIf="category?.researchName" class="admin-table-info__sect">
       <div class="admin-table-info__head">Associated Permission Set</div>
       <div class="admin-table-info__item">
         <div class="admin-table-info__title">Set Name:</div>
