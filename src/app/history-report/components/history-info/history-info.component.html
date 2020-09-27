@@ -27,7 +27,7 @@
         <div class="admin-table-info__item-wrap">
           <div *ngIf="category?.sessionId" class="admin-table-info__item">
             <div class="admin-table-info__title">Query ID:</div>
-            <div class="admin-table-info__val">
+            <div [stickyToElement]="true" mdcTooltip="Open query in a new tab" class="admin-table-info__val">
               <a class="file-count" target="_blank"
                 href="/datalake/#/projects/{{category?.projectId}}/sessions/{{category?.sessionId}}">
                 <span class="file-count__val">{{category?.sessionId}}</span>

@@ -30,7 +30,7 @@ export class HistoryReportService {
     return this.dataService.get(this.getUrl);
 
   }
-
+  
   createDataSource(history: Array<SessionHistory>): TableModel {
     const data: TableModel = {
       headers: [

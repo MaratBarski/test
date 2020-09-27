@@ -141,6 +141,6 @@ export class UserFilterComponent extends BaseSibscriber implements OnDestroy {
   }
 
   @HostListener('document:click', ['$event']) onMouseClick(event: any) {
-    this.isExpanded = false;
+    //this.isExpanded = false;
   }
 }
