@@ -93,7 +93,6 @@
 }
 .disabled{
     cursor: default !important;
-    visibility: hidden;
 }
 .page-next{
     width:30px;
