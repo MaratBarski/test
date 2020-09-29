@@ -1,5 +1,6 @@
 import { Component, Input, HostListener } from '@angular/core';
 import { ComponentService } from '../../services/component.service';
+import { NotificationsService } from '../../services/notifications.service';
 // import {environment} from '@env/environment';
 
 export enum Icon {
@@ -26,7 +27,10 @@ export class MainHeaderComponent {
   }
   icon = Icon;
 
-  constructor(private componentService: ComponentService) { }
+  constructor(
+    private componentService: ComponentService,
+    public notificationsService: NotificationsService
+  ) { }
 
   @HostListener('document:click', ['$event']) onMouseClick(event: any) {
     if (this.isNoticeOver) { return; }
