@@ -122,4 +122,32 @@
 	//	font-weight: 600;
 	//}
   &_no-border{border-bottom: 0;}
+
+  &__icon-error{
+    position: absolute;
+    @include top-center;
+    right: 5px;
+    z-index: 2;
+
+    .icon{
+      max-width: 18px;
+      max-height: 16px;
+    }
+
+    .tooltip{
+      display: none;
+      position: absolute;
+      @include top-center;
+      left: 100%;
+      white-space: nowrap;
+      margin-top: 0;
+      margin-bottom: 0;
+      z-index: 5;
+    }
+  }
+
+  &__icon-error:hover .tooltip,
+  &__icon-error.active .tooltip{
+    display: inline-block;
+  }
 }

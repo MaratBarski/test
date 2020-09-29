@@ -24,34 +24,36 @@
 		margin-top: -7px;
 	}
 
-	&__text{
-		display: inline-block;
-		height: rem(30px);
-		background: transparent;
-		border: 1px dashed transparent;
-		outline: 0;
-		padding: 0 4px;
-		margin-right: 12px;
-		@include font(normal, normal, rem(14px), rem(28px), $color-dark-grey);
-	}
+  &__text{
+    display: inline-block;
+    height: rem(30px);
+    background: transparent;
+    border: 1px dashed transparent;
+    outline: 0;
+    padding: 0 4px;
+    margin-right: 12px;
+    @include font(normal, normal, rem(14px), rem(28px), $color-dark-grey);
+    margin-left: 17px;
+    position: relative;
 
-	&__text:hover{border-color: $color-light-grey;}
-	&__text:focus{border: 1px solid $color-light-grey;}
+    .info-popup{
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: calc(100% - 45px);
+      z-index: 10;
+    }
 
-	&__text{
-		margin-left: 17px;
-		position: relative;
+    .info-popup.active{display: inline-block;}
+  }
 
-		.info-popup{
-			display: none;
-			position: absolute;
-			top: 100%;
-			left: calc(100% - 45px);
-			z-index: 10;
-		}
+  &__text:hover{border-color: $color-light-grey;}
+  &__text:focus{border: 1px solid $color-light-grey;}
 
-		.info-popup.active{display: inline-block;}
-	}
+  &__text_no-edit:hover,
+  &__text_no-edit:focus{
+    border: 1px solid transparent;
+  }
 
 	&__back,
 	&__back .icon{
