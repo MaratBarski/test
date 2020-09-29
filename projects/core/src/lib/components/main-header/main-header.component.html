@@ -26,7 +26,7 @@
               </mdc-icon>
               <mdc-icon [hidden]="!(notificationsService.notifications|showNotice:'container').length" (click)="showNotifications($event)" path="notice-active" [css]="icon.notice">
               </mdc-icon>              
-              <div (mouseover)="isNoticeOver=true" (mouseleave)="isNoticeOver=false" (click)="noticeClick($event)" [hidden]="!isShowNotifications">
+              <div [@toggleHeight]="isShowNotifications" style="position: relative;" (mouseover)="isNoticeOver=true" (mouseleave)="isNoticeOver=false" (click)="noticeClick($event)">
                 <mdc-notifications></mdc-notifications>
               </div>
               <mdc-notification></mdc-notification>
