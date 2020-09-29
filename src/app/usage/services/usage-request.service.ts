@@ -33,6 +33,13 @@ export class UsageRequestService extends BaseSibscriber {
   private _environments: Array<any>;
   private _users: Array<any>;
 
+  get adminEnvironments(): Array<any> {
+    if (this.loginService.isSuperAdmin) {
+      return this.environments;
+    }
+    return (this.environments || []).filter(x => x.UserType && x.UserType.userType && x.UserType.userType.toUpperCase() === 'ADMIN');
+  }
+
   get isLoading(): boolean {
     return !!this._environments;
   }
@@ -184,11 +191,12 @@ export class UsageRequestService extends BaseSibscriber {
     super.add(
       this.loginService.onUserInfoUpdated.subscribe(ui => {
         if (!ui || !ui.data || !ui.data.projects) { return; }
-        this._environments = ui.data.projects.map(x => {
-          return { text: x.projectName, id: x.projectId, value: x };
-        }).sort((a, b) => {
-          return this.sortService.compareString(a.text, b.text, 'asc');
-        });
+        this._environments = ui.data.projects
+          .map((x: any) => {
+            return { text: x.projectName, id: x.projectId, value: x, UserType: x.UserType };
+          }).sort((a, b) => {
+            return this.sortService.compareString(a.text, b.text, 'asc');
+          });
       }));
   }
 
