@@ -1,103 +1,108 @@
 <div class="page-user-list">
-  <md-page-title>
-      <div class="page-header__content">
-          <h1>USER LIST</h1>
-      </div>
-  </md-page-title>
-  <md-page-body>
-      <div [hidden]="isLoaded">Loading...</div>
-      <div [hidden]="!isLoaded" class="admin-table-wrap__action">
-          <div class="admin-table-wrap__col">
-              <mdc-button *ngIf="loginService.isSuperAdmin" (click)="addUserOpen()" text="+ New User">
-              </mdc-button>
-          </div>
-          <div mdAnimationSticky [hidden]="!isDataExists" class="admin-table-wrap__col">
-              <div class="filter-top">
-                  <div class="filter-top__title">Filter Environment</div>
-                  <div class="select select_small">
-                      <mdc-select [selected]="selectedEnvironment" (changed)="changeEnvironment($event)"
-                          [applyWidth]="false" [isSmall]="true" [options]="environmens"></mdc-select>
-                  </div>
-              </div>
-              <div class="form-search d-none d-md-block">
-                  <mdc-auto-search [pause]="500" #search placeholder="{{'search'|translate}}"></mdc-auto-search>
-              </div>
-          </div>
-      </div>
-      <div [hidden]="!isDataExists || !isLoaded">
-          <mdc-table #table (onAction)="onAction($event)" [emptyState]="emptyState" [rowInfoTemplate]="rowInfoTemplate"
-              [cellsTemplate]="{ active:activeUser,modified:modified,specialRoles:specialRoles}"
-              [customFilters]="{specialRoles:specialRolesHeader}" [searchOptions]="searchOptions" [paginator]="paginator"
-              [search]="search" [dataSource]="dataSource" [editHeaderTemplate]="editHeaderTemplate">
-          </mdc-table>
-      </div>
-      <mdc-empty-state *ngIf="!isDataExists && isLoaded" [emptyState]="emptyState"></mdc-empty-state>
-      <div class="pager-wrap" [hidden]="!isLoaded">
-          <mdc-paginator #paginator paginationTitle="Showing {0} of {1} users" noPagingTitle="Showing {0} users"
-              [blockSize]="3" [pageSize]="12" [currentPage]="0">
-          </mdc-paginator>
-      </div>
-  </md-page-body>
+    <md-page-title>
+        <div class="page-header__content">
+            <h1>USER LIST</h1>
+        </div>
+    </md-page-title>
+    <md-page-body>
+        <div [hidden]="isLoaded">Loading...</div>
+        <div [hidden]="!isLoaded" class="admin-table-wrap__action">
+            <div class="admin-table-wrap__col">
+                <mdc-button *ngIf="loginService.isSuperAdmin" (click)="addUserOpen()" text="+ New User">
+                </mdc-button>
+            </div>
+            <div mdAnimationSticky [hidden]="!isDataExists" class="admin-table-wrap__col">
+                <div class="filter-top">
+                    <div class="filter-top__title">Filter Environment</div>
+                    <div class="select select_small">
+                        <mdc-select [selected]="selectedEnvironment" (changed)="changeEnvironment($event)"
+                            [applyWidth]="false" [isSmall]="true" [options]="environmens"></mdc-select>
+                    </div>
+                </div>
+                <div class="form-search d-none d-md-block">
+                    <mdc-auto-search [pause]="500" #search placeholder="{{'search'|translate}}"></mdc-auto-search>
+                </div>
+            </div>
+        </div>
+        <div [hidden]="!isDataExists || !isLoaded">
+            <mdc-table #table (onAction)="onAction($event)" [emptyState]="emptyState"
+                [rowInfoTemplate]="rowInfoTemplate"
+                [cellsTemplate]="{ active:activeUser,modified:modified,specialRoles:specialRoles}"
+                [customFilters]="{specialRoles:specialRolesHeader}" [searchOptions]="searchOptions"
+                [paginator]="paginator" [search]="search" [dataSource]="dataSource"
+                [editHeaderTemplate]="editHeaderTemplate">
+            </mdc-table>
+        </div>
+        <mdc-empty-state *ngIf="!isDataExists && isLoaded" [emptyState]="emptyState"></mdc-empty-state>
+        <div class="pager-wrap" [hidden]="!isLoaded">
+            <mdc-paginator #paginator paginationTitle="Showing {0} of {1} users" noPagingTitle="Showing {0} users"
+                [blockSize]="3" [pageSize]="12" [currentPage]="0">
+            </mdc-paginator>
+        </div>
+    </md-page-body>
 
-  <ng-template #rowInfoTemplate let-item>
-      <div class="category-info-row">
-          <md-user-details #userDetails (onClose)="closeUserDetailes()" [userInfo]="item.source">
-          </md-user-details>
-      </div>
-  </ng-template>
+    <ng-template #rowInfoTemplate let-item>
+        <div class="category-info-row">
+            <md-user-details #userDetails (onClose)="closeUserDetailes()" [userInfo]="item.source">
+            </md-user-details>
+        </div>
+    </ng-template>
 
-  <ng-template #activeUser let-item>
-      <span *ngIf="item.active" class="admin-table__circle admin-table__circle_green"></span>
-      <span *ngIf="!item.active" class="admin-table__circle admin-table__circle_grey"></span>
-  </ng-template>
+    <ng-template #activeUser let-item>
+        <span *ngIf="item.active" class="admin-table__circle admin-table__circle_green"></span>
+        <span *ngIf="!item.active" class="admin-table__circle admin-table__circle_grey"></span>
+    </ng-template>
 
-  <ng-template #modified let-item>
-      <ng-template [ngIf]="item?.modified|checkValidDate">{{item.modified|date}}</ng-template>
-  </ng-template>
+    <ng-template #modified let-item>
+        <ng-template [ngIf]="item?.modified|checkValidDate">
+            {{item.modified|date}}&nbsp;
+            {{item.modified|date:'HH:mm'}}
+        </ng-template>
+    </ng-template>
 
-  <ng-template #specialRoles let-item>
-      <ng-container *ngIf="item.specialRoles">
-          <ng-container *ngFor="let i of item.specialRoles">
-              <div *ngIf="i==='superadmin'" class="tag tag_light-red">Super Admin</div>
-              <div *ngIf="i==='admin'" class="tag tag_blue">Admin</div>
-          </ng-container>
-      </ng-container>
-  </ng-template>
+    <ng-template #specialRoles let-item>
+        <ng-container *ngIf="item.specialRoles">
+            <ng-container *ngFor="let i of item.specialRoles">
+                <div *ngIf="i==='superadmin'" class="tag tag_light-red">Super Admin</div>
+                <div *ngIf="i==='admin'" class="tag tag_blue">Admin</div>
+            </ng-container>
+        </ng-container>
+    </ng-template>
 
-  <ng-template #specialRolesHeader>
-      <div class="admin-table-filter">
-          <div (click)="toogleHeaderFilter($event)" class="admin-table-filter__icon">
-              <span class="ic-hover">
-                  <svg [ngClass]="{'ic-stroke':isNoFiltered}" class="icon ic-filter" mdcSvg="ic-filter"></svg>
-              </span>
-          </div>
-          <div [hidden]="!showHeaderFilter" class="admin-table-filter__popup">
-              <div class="simple-filter">
-                  <div class="simple-filter__sect">
-                      <div class="simple-filter__list">
-                          <span [ngClass]="{'active':adminStatus==='all'}" (click)="filterAdmin('all')"
-                              class="simple-filter__item">All</span>
-                      </div>
-                  </div>
-                  <div class="simple-filter__sect">
-                      <div class="simple-filter__list">
-                          <span [ngClass]="{'active':adminStatus==='super'}" (click)="filterAdmin('super')"
-                              class="simple-filter__item">Super Admin</span>
-                          <span [ngClass]="{'active':adminStatus==='admin'}" (click)="filterAdmin('admin')"
-                              class="simple-filter__item">Admin</span>
-                      </div>
-                  </div>
-                  <div class="simple-filter__sect">
-                      <div class="simple-filter__list">
-                          <span [ngClass]="{'active':adminStatus==='none'}" (click)="filterAdmin('none')"
-                              class="simple-filter__item">None</span>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </ng-template>
+    <ng-template #specialRolesHeader>
+        <div class="admin-table-filter">
+            <div (click)="toogleHeaderFilter($event)" class="admin-table-filter__icon">
+                <span class="ic-hover">
+                    <svg [ngClass]="{'ic-stroke':isNoFiltered}" class="icon ic-filter" mdcSvg="ic-filter"></svg>
+                </span>
+            </div>
+            <div [hidden]="!showHeaderFilter" class="admin-table-filter__popup">
+                <div class="simple-filter">
+                    <div class="simple-filter__sect">
+                        <div class="simple-filter__list">
+                            <span [ngClass]="{'active':adminStatus==='all'}" (click)="filterAdmin('all')"
+                                class="simple-filter__item">All</span>
+                        </div>
+                    </div>
+                    <div class="simple-filter__sect">
+                        <div class="simple-filter__list">
+                            <span [ngClass]="{'active':adminStatus==='super'}" (click)="filterAdmin('super')"
+                                class="simple-filter__item">Super Admin</span>
+                            <span [ngClass]="{'active':adminStatus==='admin'}" (click)="filterAdmin('admin')"
+                                class="simple-filter__item">Admin</span>
+                        </div>
+                    </div>
+                    <div class="simple-filter__sect">
+                        <div class="simple-filter__list">
+                            <span [ngClass]="{'active':adminStatus==='none'}" (click)="filterAdmin('none')"
+                                class="simple-filter__item">None</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-template>
 
-  <ng-template #editHeaderTemplate>
-  </ng-template>
+    <ng-template #editHeaderTemplate>
+    </ng-template>
 </div>
