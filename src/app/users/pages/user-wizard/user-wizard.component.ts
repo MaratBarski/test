@@ -68,6 +68,9 @@ export class UserWizardComponent extends BaseNavigation implements OnInit {
       this.activatedRoute.paramMap.subscribe(u => {
         const id = parseInt(u.get('uid') || '0');
         const mode = parseInt(u.get('mode') || '0');
+        if (isNaN(mode)) {
+          this.router.navigateByUrl('/users');
+        }
         this.userEditService.resetService({ id: id, mode: mode });
         if (mode === 1) {
           this.tabs[1].isDisabled = true;
@@ -75,10 +78,11 @@ export class UserWizardComponent extends BaseNavigation implements OnInit {
           if (!this.loginService.isSuperAdmin) {
             this.router.navigateByUrl('/users');
           }
-        }
-        if (mode === 2) {
+        } else if (mode === 2) {
           this.tabs[0].isDisabled = true;
           this.userEditService.initTab(1);
+        } else if (mode) {
+          this.router.navigateByUrl('/users');
         }
       }));
   }
