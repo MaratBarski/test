@@ -1,7 +1,7 @@
 <div style="margin-top: 4px;margin-bottom: 4px;" class="user-details-param__item">
     <div class="user-details-param__check">
         <div [ngClass]="{'active':env.isChecked}" class="input-check">
-            <mdc-check-box whiteSpace="nowrap" [(ngModel)]="env.isChecked" [id]="'env' + index"
+            <mdc-check-box (change)="changeCheck()" whiteSpace="nowrap" [(ngModel)]="env.isChecked" [id]="'env' + index"
                 [text]="env.projectName">
             </mdc-check-box>
         </div>

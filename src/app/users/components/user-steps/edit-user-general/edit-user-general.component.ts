@@ -22,6 +22,7 @@ export class EditUserGeneralComponent implements OnInit, AfterViewInit {
   users: Array<any>;
 
   onChangeValue(): void {
+    this.userEditService.isChanged = true;
     //this.userEditService.validate(false);
   }
 
@@ -42,10 +43,12 @@ export class EditUserGeneralComponent implements OnInit, AfterViewInit {
   }
 
   selectUser(user: any): void {
+    this.userEditService.isChanged = true;
     this.userEditService.securityUser = user;
   }
 
   clearUser(): void {
+    this.userEditService.isChanged = true;
     this.userEditService.securityUser = undefined;
   }
 }

@@ -263,14 +263,17 @@ export class UserEditService {
   private _mode = 0;
 
   resetService(info: any): void {
+    this.isChanged = false;
     this._selectedTab = 0;
     this._mode = info.mode;
     this.resetValidation();
     this.loadUser(info.id);
   }
 
+  isChanged = false;
+
   isHasChanges(): boolean {
-    return true;
+    return this.isChanged;
   }
 
   getDefault(): any {
