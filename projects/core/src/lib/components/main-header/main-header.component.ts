@@ -1,6 +1,7 @@
 import { Component, Input, HostListener } from '@angular/core';
 import { ComponentService } from '../../services/component.service';
-// import {environment} from '@env/environment';
+import { NotificationsService } from '../../services/notifications.service';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 export enum Icon {
   hamburgerOpen = 'ic-hamburger',
@@ -16,7 +17,23 @@ export enum Icon {
 @Component({
   selector: 'mdc-main-header',
   templateUrl: './main-header.component.html',
-  styleUrls: ['./main-header.component.css']
+  styleUrls: ['./main-header.component.css'],
+  animations: [
+    trigger('toggleHeight', [
+      state('false', style({
+        height: '0px',
+        opacity: '0',
+        overflow: 'hidden'
+        // display: 'none'
+      })),
+      state('true', style({
+        height: '*',
+        opacity: '1'
+      })),
+      transition('true => false', animate('200ms ease-in')),
+      transition('false => true', animate('200ms ease-out'))
+    ])
+  ],
 })
 export class MainHeaderComponent {
   //  = environment.serverRoute;
@@ -26,7 +43,10 @@ export class MainHeaderComponent {
   }
   icon = Icon;
 
-  constructor(private componentService: ComponentService) { }
+  constructor(
+    private componentService: ComponentService,
+    public notificationsService: NotificationsService
+  ) { }
 
   @HostListener('document:click', ['$event']) onMouseClick(event: any) {
     if (this.isNoticeOver) { return; }

@@ -22,9 +22,11 @@
               </div>
             </div>
             <div class="header-notice">
-              <mdc-icon (click)="showNotifications($event)" [path]="icon.notice" [css]="icon.notice">
+              <mdc-icon [hidden]="(notificationsService.notifications|showNotice:'container').length" (click)="showNotifications($event)" [path]="icon.notice" [css]="icon.notice">
               </mdc-icon>
-              <div (mouseover)="isNoticeOver=true" (mouseleave)="isNoticeOver=false" (click)="noticeClick($event)" [hidden]="!isShowNotifications">
+              <mdc-icon [hidden]="!(notificationsService.notifications|showNotice:'container').length" (click)="showNotifications($event)" path="notice-active" [css]="icon.notice">
+              </mdc-icon>              
+              <div [@toggleHeight]="isShowNotifications" style="position: relative;" (mouseover)="isNoticeOver=true" (mouseleave)="isNoticeOver=false" (click)="noticeClick($event)">
                 <mdc-notifications></mdc-notifications>
               </div>
               <mdc-notification></mdc-notification>

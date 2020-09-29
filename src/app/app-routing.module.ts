@@ -40,6 +40,10 @@ const routes: Routes = [
     canActivate: [LoginService]
   },
   {
+    path: 'access-denied',
+    loadChildren: () => import('./access-user/access-user.module').then(m => m.AccessUserModule)
+  },
+  {
     path: 'login',
     component: LoginComponent
   },

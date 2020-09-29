@@ -48,7 +48,7 @@ export class PermissionWizardComponent extends BaseNavigation implements OnInit,
     super(navigationService);
     super.add(this.permissionSetService.onAllowedEventsChange.subscribe(() => {
       this.update3Tab();
-    }))
+    }));
   }
 
   get isLastTab():boolean{

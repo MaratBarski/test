@@ -68,21 +68,29 @@ export class DateService {
     },
     [DatePeriod.Day]: (value: number) => {
       const date = new Date();
+      date.setHours(0);
+      date.setMinutes(0);
       date.setDate(date.getDate() - value);
       return date;
     },
     [DatePeriod.Week]: (value: number) => {
       const date = new Date();
+      date.setHours(0);
+      date.setMinutes(0);
       date.setDate(date.getDate() - value * 7);
       return date;
     },
     [DatePeriod.Month]: (value: number) => {
       const date = new Date();
+      date.setHours(0);
+      date.setMinutes(0);
       date.setMonth(date.getMonth() - value);
       return date;
     },
     [DatePeriod.Year]: (value: number) => {
       const date = new Date();
+      date.setHours(0);
+      date.setMinutes(0);
       date.setFullYear(date.getFullYear() - value);
       return date;
     },

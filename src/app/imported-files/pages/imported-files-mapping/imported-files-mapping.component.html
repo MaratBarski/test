@@ -10,10 +10,10 @@
                 <div class="page-header__back">
                   <!--mdcElementTooltip [stickyToElement]="true" [position]="'bottom'" [mdcTooltip]="'Back to Imported Files'"-->
                   <span class="ic-hover" (click)="cancel($event)">
-                     <mdc-icon [css]="'icon ic-back-to-page'" [path]="'ic-back-to-page'"></mdc-icon>
+                    <mdc-icon [css]="'icon ic-back-to-page'" [path]="'ic-back-to-page'"></mdc-icon>
                   </span>
                   <span class="tooltip tooltip_top">
-                     <span class="tooltip__content">Back to Imported Files</span>
+                    <span class="tooltip__content">Back to Imported Files</span>
                   </span>
                 </div>
                 <h1>File Mapping</h1>
@@ -44,9 +44,10 @@
               <div class="info-panel__item">
                 <div class="info-panel__title">Permission Template:</div>
                 <div class="info-panel__val">
-                  <mdc-select [placeholder]="'Select Template...'" [ngClass]="{'error': (!fileSourceForm.valid && showErrors)}" [isSmall]="true" [applyWidth]="false" [options]="templateSelectOptions"
-                              placeholder="Please Select..."
-                              formControlName="templateId"></mdc-select>
+                  <mdc-select [placeholder]="'Select Template...'"
+                    [ngClass]="{'error': (!fileSourceForm.valid && showErrors)}" [isSmall]="true" [applyWidth]="false"
+                    [options]="templateSelectOptions" placeholder="Please Select..." formControlName="templateId">
+                  </mdc-select>
                 </div>
               </div>
               <div class="info-panel__item">
@@ -78,82 +79,83 @@
             </div>
             <table class="admin-table admin-table_white">
               <thead>
-              <tr class="admin-table__head">
-                <th class="admin-table__item d-none d-md-table-cell admin-table__item_check">
-                  <div class="input-check">
-                    <input id="paramall" [formControl]="selectAll" type="checkbox" name="paramall">
-                    <label class="input-check__label" for="paramall">
-                          <span class="input-check__mark">
-                            <mdc-icon [path]="'ic-check'" [css]="'ic-check'"></mdc-icon>
-                          </span>
-                    </label>
-                  </div>
-                </th>
-                <th class="admin-table__item admin-table__item_name-edit">
-                  Column Name
-                </th>
-                <th class="admin-table__item admin-table__item_center d-none d-md-table-cell">
-                  Data Type
-                </th>
-                <th class="admin-table__item d-none d-md-table-cell admin-table__item_select">
-                  Categorization
-                  <span class="admin-table__option">Optional</span>
-                </th>
-                <th class="admin-table__item admin-table__item_center d-none d-xl-table-cell">% Match</th>
-                <th class="admin-table__item d-none d-xl-table-cell admin-table__item_data-sample">Data Sample</th>
-              </tr>
+                <tr class="admin-table__head">
+                  <th class="admin-table__item d-none d-md-table-cell admin-table__item_check">
+                    <div class="input-check">
+                      <input id="paramall" [formControl]="selectAll" type="checkbox" name="paramall">
+                      <label class="input-check__label" for="paramall">
+                        <span class="input-check__mark">
+                          <mdc-icon [path]="'ic-check'" [css]="'ic-check'"></mdc-icon>
+                        </span>
+                      </label>
+                    </div>
+                  </th>
+                  <th class="admin-table__item admin-table__item_name-edit">
+                    Column Name
+                  </th>
+                  <th class="admin-table__item admin-table__item_center d-none d-md-table-cell">
+                    Data Type
+                  </th>
+                  <th class="admin-table__item d-none d-md-table-cell admin-table__item_select">
+                    Categorization
+                    <span class="admin-table__option">Optional</span>
+                  </th>
+                  <th class="admin-table__item admin-table__item_center d-none d-xl-table-cell">% Match</th>
+                  <th class="admin-table__item d-none d-xl-table-cell admin-table__item_data-sample">Data Sample</th>
+                </tr>
               </thead>
               <tbody>
 
 
-              <ng-container formArrayName="fileClms">
-                <tr class="admin-table__row" [formGroupName]="i"
+                <ng-container formArrayName="fileClms">
+                  <tr class="admin-table__row" [formGroupName]="i"
                     *ngFor="let clm of fileSourceForm.get('fileClms')['controls']; let i = index">
-                  <td class="admin-table__item d-none d-md-table-cell">
-                    <mdc-check-box [text]="''" formControlName="isIncluded"></mdc-check-box>
-                  </td>
-                  <td class="admin-table__item">
-                    <div class="admin-table__name-edit">
-                      <input type="text" formControlName="fieldName">
-                    </div>
-                  </td>
-                  <td class="admin-table__item admin-table__item_center d-none d-md-table-cell">
-                    <md-clm-type-switcher formControlName="propertyType"></md-clm-type-switcher>
-                  </td>
-                  <td class="admin-table__item d-none d-md-table-cell">
-                    <div class="select select_small"
-                         *ngIf="this.fileSourceForm.get('fileClms')['controls'][i].get('propertyType').value === propertyType.String">
-                      <mdc-select formControlName="hierarchyRootId" [placeholder]="'Select Categorization...'"
-                                  (changed)="getRelationalIntegrity($event, i)" [options]="hierarchySelectOptions"
-                                  [isSmall]="true" [applyWidth]="false"></mdc-select>
-                    </div>
-                  </td>
-                  <td class="admin-table__item admin-table__item_center d-none d-xl-table-cell">
-                    <ng-container *ngIf="fileSourceForm.get('fileClms')['controls'][i].get('percent').value>-1 && fileSourceForm.get('fileClms')['controls'][i].get('hierarchyRootId').value !== 0">
-                      <mdc-progress-match
-                        [percentage]="fileSourceForm.get('fileClms')['controls'][i].get('percent').value"></mdc-progress-match>
-                    </ng-container>
-                  </td>
-                  <td class="admin-table__item d-none d-xl-table-cell" #div>
-                    <div class="admin-table__data-sample" tooltipPosition="top"
-                         [tooltipDisabled]="!needTooltip(div)"
-                         [escape]="false"
-                         [pTooltip]="fileSourceForm.get('fileClms')['controls'][i].get('dataSample').value | DataSample:{html: false}"
-                    > <!--*ngIf="!needTooltip(div) else needToolTip"-->
-<!--                      -->
-                      {{fileSourceForm.get('fileClms')['controls'][i].get('dataSample').value | DataSample:{html: false} }}
-                    </div>
-<!--                    <ng-template #needToolTip>-->
-<!--                      <div class="admin-table__data-sample"-->
-<!--                           [stickyToElement]="true"-->
-<!--                           position="left"-->
-<!--                           [mdcTooltip]="fileSourceForm.get('fileClms')['controls'][i].get('dataSample').value | DataSample">-->
-<!--                        {{ fileSourceForm.get('fileClms')['controls'][i].get('dataSample').value | DataSample}}-->
-<!--                      </div>-->
-<!--                    </ng-template>-->
-                  </td>
-                </tr>
-              </ng-container>
+                    <td class="admin-table__item d-none d-md-table-cell">
+                      <mdc-check-box [text]="''" formControlName="isIncluded"></mdc-check-box>
+                    </td>
+                    <td class="admin-table__item">
+                      <div class="admin-table__name-edit">
+                        <input type="text" formControlName="fieldName">
+                      </div>
+                    </td>
+                    <td class="admin-table__item admin-table__item_center d-none d-md-table-cell">
+                      <md-clm-type-switcher formControlName="propertyType"></md-clm-type-switcher>
+                    </td>
+                    <td class="admin-table__item d-none d-md-table-cell">
+                      <div class="select select_small"
+                        *ngIf="this.fileSourceForm.get('fileClms')['controls'][i].get('propertyType').value === propertyType.String">
+                        <mdc-select formControlName="hierarchyRootId" [placeholder]="'Select Categorization...'"
+                          (changed)="getRelationalIntegrity($event, i)" [options]="hierarchySelectOptions"
+                          [isSmall]="true" [applyWidth]="false"></mdc-select>
+                      </div>
+                    </td>
+                    <td class="admin-table__item admin-table__item_center d-none d-xl-table-cell">
+                      <ng-container
+                        *ngIf="fileSourceForm.get('fileClms')['controls'][i].get('percent').value>-1 && fileSourceForm.get('fileClms')['controls'][i].get('hierarchyRootId').value !== 0">
+                        <mdc-progress-match
+                          [percentage]="fileSourceForm.get('fileClms')['controls'][i].get('percent').value">
+                        </mdc-progress-match>
+                      </ng-container>
+                    </td>
+                    <td class="admin-table__item d-none d-xl-table-cell" #div>
+                      <div class="admin-table__data-sample" tooltipPosition="top" [tooltipDisabled]="!needTooltip(div)"
+                        [escape]="false"
+                        [pTooltip]="fileSourceForm.get('fileClms')['controls'][i].get('dataSample').value | DataSample:{html: false,newLine:true}">
+                        <!--*ngIf="!needTooltip(div) else needToolTip"-->
+                        <!--                      -->
+                        {{fileSourceForm.get('fileClms')['controls'][i].get('dataSample').value | DataSample:{html: false} }}
+                      </div>
+                      <!--                    <ng-template #needToolTip>-->
+                      <!--                      <div class="admin-table__data-sample"-->
+                      <!--                           [stickyToElement]="true"-->
+                      <!--                           position="left"-->
+                      <!--                           [mdcTooltip]="fileSourceForm.get('fileClms')['controls'][i].get('dataSample').value | DataSample">-->
+                      <!--                        {{ fileSourceForm.get('fileClms')['controls'][i].get('dataSample').value | DataSample}}-->
+                      <!--                      </div>-->
+                      <!--                    </ng-template>-->
+                    </td>
+                  </tr>
+                </ng-container>
 
 
               </tbody>
@@ -180,7 +182,7 @@
   </footer>
 </form>
 
-<md-confirm-dialog *ngIf="showCancelConfirm" confirmText="Yes" cancelText="No, stay on page" name="Leaving File Mapping Page" subName="Changes you made will be lost."
-    subText="Do you wish to leave the page?" text="" (onCancel)="cancelSave()"
-    (onConfirm)="confirmSave()">
+<md-confirm-dialog *ngIf="showCancelConfirm" confirmText="Yes" cancelText="No, stay on page"
+  name="Leaving File Mapping Page" subName="Changes you made will be lost." subText="Do you wish to leave the page?"
+  text="" (onCancel)="cancelSave()" (onConfirm)="confirmSave()">
 </md-confirm-dialog>

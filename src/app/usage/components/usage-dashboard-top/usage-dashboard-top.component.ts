@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, HostListener, Input, OnInit } from '@angular/core';
 import { UsageLinks } from '@app/usage/models/usage-links';
 import { Router, ActivatedRoute } from '@angular/router';
 import { DownloadOption } from '@app/shared/components/download-selector/download-selector.component';
@@ -12,7 +12,7 @@ import { BaseSibscriber } from '@appcore';
   templateUrl: './usage-dashboard-top.component.html',
   styleUrls: ['./usage-dashboard-top.component.scss']
 })
-export class UsageDashboardTopComponent extends BaseSibscriber {
+export class UsageDashboardTopComponent extends BaseSibscriber implements OnInit {
 
   constructor(
     private usageDownloadService: UsageDownloadService,
@@ -55,7 +55,7 @@ export class UsageDashboardTopComponent extends BaseSibscriber {
   @Input() set selectedUrl(selectedUrl: string) {
     const link = this.links.find(l => l.url === selectedUrl && l.hidden);
     this._selectedUrl = selectedUrl;
-    this.selectedText = link ? link.text : undefined;
+    this.selectedText = link && !link.dynamic ? link.text : undefined;
   }
   get selectedUrl(): string {
     return this._selectedUrl;
@@ -83,5 +83,37 @@ export class UsageDashboardTopComponent extends BaseSibscriber {
     this.usageDownloadService.toPDF();
   }
 
+  ngOnInit(): void {
+    this.updateLinksPosition(window.innerWidth);
+  }
 
+  windowWidth = -1
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any): void {
+    this.windowWidth = event.target.innerWidth;
+    this.updateLinksPosition(event.target.innerWidth);
+  }
+
+  updateLinksPosition(width: number): void {
+    this.links
+      .filter(x => x.minWidth)
+      .forEach((l: any) => {
+        if (l.minWidth > width) {
+          l.hidden = true;
+          l.css = undefined;
+          l.alt = undefined;
+          l.dynamic = true;
+          if (l.url === this.currentUrl) {
+            this.selectedText = l.text;
+          }
+        } else {
+          l.hidden = false;
+          l.css = 'd-none d-lg-inline-block';
+          l.alt = 'd-lg-none';
+          if (l.url === this.currentUrl) {
+            this.selectedText = '';
+          }
+        }
+      })
+  }
 }

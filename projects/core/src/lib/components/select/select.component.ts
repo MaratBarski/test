@@ -46,7 +46,8 @@ export class SelectComponent implements ControlValueAccessor, AfterViewInit {
   @Input() applyWidth = true;
   @Input() isInvalid = false;
   @Output() changed = new EventEmitter<SelectOption>();
-
+  @Input() position = 'top';
+  
   isExpanded = false;
   isOver = false;
 
