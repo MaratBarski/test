@@ -354,7 +354,6 @@ export class EditPatientService {
   reset(id: number = undefined): void {
     this.isValueChanged = false;
     this.showCancelConfirm = false;
-    this._isSaving = false;
     this.resetValidation();
     this.selectedEvents = undefined;
     this.hierarchies = undefined;
@@ -477,29 +476,38 @@ export class EditPatientService {
     };
   }
 
-  get isSaving(): boolean { return this._isSaving; }
-  private _isSaving = false;
-
   save(): void {
     if (!this.validate()) { return; }
     //const obj = this.convertToServer();
     //document.write(JSON.stringify(obj));
     //console.log(obj);
-    this._isSaving = true;
+    this._dataLoaded = false;
     const method = this._storyId ? 'put' : 'post';
     const id = this._storyId ? this._storyId : '';
     if (this.settings.cohortSource === 1) {
       const obj = this.convertToServer();
       console.log(obj);
-      alert(`${environment.serverUrl}${environment.endPoints.patientStory}/${id}`)
       this.http[method](
         `${environment.serverUrl}${environment.endPoints.patientStory}/${id}`, obj
       )
         .pipe(take(1))
         .subscribe(res => {
-          this._isSaving = false;
+          this._dataLoaded = true;
+          this.notificationService.addNotification({
+            type: ToasterType.success,
+            name: 'Patient story saved successfully.',
+            comment: 'The user can now query the allowed data.',
+            showInToaster: true
+          });
+          this.router.navigateByUrl('/patient');
         }, error => {
-          this._isSaving = false;
+          this._dataLoaded = true;
+          this.notificationService.addNotification({
+            type: ToasterType.error,
+            name: 'Failed to save patient story.',
+            comment: 'Try again or contact MDClone support.',
+            showInToaster: true
+          });
         })
     } else {
       const fd = this.createForm();
@@ -524,7 +532,7 @@ export class EditPatientService {
           containerEnable: true,
           removeOnComplete: true,
           onComplete: () => {
-            this._isSaving = false;
+            this._dataLoaded = true;
           }
         },
         form: fd,

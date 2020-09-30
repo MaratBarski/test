@@ -328,7 +328,7 @@ export class PermissionSetService extends BaseSibscriber {
     this.isSaving = false;
     this.notificationService.addNotification({
       type: ToasterType.success,
-      name: 'Permission set created  successfully.',
+      name: 'Permission set created successfully.',
       comment: 'The user can now query the allowed data.',
       showInToaster: true
     });
