@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { NavigationService, NotificationsService } from '@appcore';
+import { NavigationService, NotificationsService, NotificationStatus, ToasterType } from '@appcore';
 import { Offline } from '@app/shared/decorators/offline.decorator';
 import { ConfigService } from '@app/shared/services/config.service';
 import { environment } from '@env/environment';
@@ -9,6 +9,7 @@ import { forkJoin, Observable, of, Subject } from 'rxjs';
 import { map, take } from 'rxjs/operators';
 import { OutputFormats } from '../models/models';
 import { LoginService } from '@appcore';
+import { UploadService } from '@app/shared/services/upload.service';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +22,8 @@ export class EditPatientService {
     private router: Router,
     private notificationService: NotificationsService,
     private navigationService: NavigationService,
-    private loginService: LoginService
+    private loginService: LoginService,
+    private uploadService: UploadService
   ) {
     this.initCountries();
   }
@@ -352,6 +354,7 @@ export class EditPatientService {
   reset(id: number = undefined): void {
     this.isValueChanged = false;
     this.showCancelConfirm = false;
+    this._isSaving = false;
     this.resetValidation();
     this.selectedEvents = undefined;
     this.hierarchies = undefined;
@@ -474,24 +477,68 @@ export class EditPatientService {
     };
   }
 
+  get isSaving(): boolean { return this._isSaving; }
+  private _isSaving = false;
+
   save(): void {
     if (!this.validate()) { return; }
-    const obj = this.convertToServer();
+    //const obj = this.convertToServer();
     //document.write(JSON.stringify(obj));
-    console.log(obj);
-    if (this._storyId) {
-      this.update()
+    //console.log(obj);
+    this._isSaving = true;
+    const method = this._storyId ? 'put' : 'post';
+    const id = this._storyId ? this._storyId : '';
+    if (this.settings.cohortSource === 1) {
+      const obj = this.convertToServer();
+      console.log(obj);
+      alert(`${environment.serverUrl}${environment.endPoints.patientStory}/${id}`)
+      this.http[method](
+        `${environment.serverUrl}${environment.endPoints.patientStory}/${id}`, obj
+      )
+        .pipe(take(1))
+        .subscribe(res => {
+          this._isSaving = false;
+        }, error => {
+          this._isSaving = false;
+        })
     } else {
-      this.add();
+      const fd = this.createForm();
+      this.uploadService.addWithKey({
+        notification: {
+          name: `Uploading ${this.file.name}`,
+          failName: `Failed to upload ${this.file.name}.`,
+          failComment: 'Try again or contact MDClone support.',
+          succName: 'Patient story file uploaded successfully.',
+          abortName: 'Aborted successfully.',
+          abortComment: `Upload of ${this.file.name} was successfully aborted.`,
+          comment: this.configService.getValue('MI00003'),
+          succComment: `Upload of ${this.file.name} was successful.`,
+          progress: 0,
+          status: NotificationStatus.uploading,
+          showProgress: true,
+          showInContainer: true,
+          startDate: new Date(),
+          progressTitle: `${this.file.name}`,
+          type: ToasterType.infoProgressBar,
+          showInToaster: true,
+          containerEnable: true,
+          removeOnComplete: true,
+          onComplete: () => {
+            this._isSaving = false;
+          }
+        },
+        form: fd,
+        url: `${environment.serverUrl}${environment.endPoints.patientStory}/${id}`
+      });
     }
   }
 
-  private update(): void {
-
-  }
-
-  private add(): void {
-
+  createForm(): FormData {
+    const obj = this.convertToServer();
+    const formData: FormData = new FormData();
+    formData.append('file', this.file);
+    formData.append('json', JSON.stringify(obj));
+    return formData;
   }
 
   convertToServer(): any {

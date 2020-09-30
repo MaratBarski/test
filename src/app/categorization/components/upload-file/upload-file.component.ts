@@ -123,7 +123,7 @@ export class UploadFileComponent {
     return formData;
   }
 
-  cancel(): void {
+  cancel(event: any): void {
     this.reset();
     event.preventDefault();
     this.onCancel.emit();
