@@ -8,34 +8,21 @@
             "outputType": "files",
             "outputObject": null,
             "transJson": {
-                "free_text": true,
                 "input_mode": "session",
-                "input_population": "99",
-                "event_inclusion": {
-                    "3": [
-                        "internalpatientid",
-                        "drgtype"
-                    ],
-                    "5": [
-                        "ageatevent",
-                        "prevward"
-                    ]
-                },
+                "input_population": "93",
+                "event_inclusion": null,
                 "demographic_inclusion": null,
                 "hierarchies": {
-                    "541": 3680,
-                    "518": 3483
+                    "25": 147,
+                    "27": 157
                 },
-                "general_date_shift": 4,
+                "general_date_shift": 0,
                 "general_numeric_shift": 0,
                 "target_impala_tbl": "bnbvnbv",
-                "hipaa_inclusion": "phone,date_shift,zip,email,ip,older_than_89",
-                "hipaa_date_shift": "3",
-                "hipaa_phone": "(1\\s?)?((\\([0-9]{3}\\))|[0-9]{3})[\\s\\-]?[\\0-9]{3}[\\s\\-]?[0-9]{4}",
-                "custom_regexes": {
-                    "lala": "lals",
-                    "name": "value"
-                }
+                "hipaa_inclusion": null,
+                "hipaa_date_shift": "null",
+                "hipaa_phone": null,
+                "custom_regexes": null
             },
             "transMsg": "lifeflux error while trying to do operation: 'getting transaction details'. Go to the Monitoring->Jobs section to get more information",
             "pctProgress": 0,
@@ -46,7 +33,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "101",
@@ -105,7 +96,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "46",
@@ -168,7 +163,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "35",
@@ -244,7 +243,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "30",
@@ -279,7 +282,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "63",
@@ -395,7 +402,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "74",
@@ -456,7 +467,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "47",
@@ -519,7 +534,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "75",
@@ -581,7 +600,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "102",
@@ -647,7 +670,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "36",
@@ -699,7 +726,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "48",
@@ -748,7 +779,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "31",
@@ -800,7 +835,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "64",
@@ -835,7 +874,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "76",
@@ -893,7 +936,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "3",
+                "login": "admin"
+            }
         },
         {
             "lifeFluxTransId": "103",
@@ -959,7 +1006,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "37",
@@ -1055,7 +1106,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "49",
@@ -1092,7 +1147,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "99",
@@ -1165,7 +1224,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "98",
@@ -1255,7 +1318,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "104",
@@ -1321,7 +1388,11 @@
             "daPid": 25603,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "3",
@@ -1402,7 +1473,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "32",
@@ -1448,7 +1523,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "65",
@@ -1500,7 +1579,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "77",
@@ -1534,7 +1617,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "50",
@@ -1597,7 +1684,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "66",
@@ -1649,7 +1740,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "78",
@@ -1701,7 +1796,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "4",
@@ -1782,7 +1881,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "5",
@@ -1863,7 +1966,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "33",
@@ -1908,7 +2015,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "51",
@@ -1973,7 +2084,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "67",
@@ -2007,7 +2122,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "100",
@@ -2040,7 +2159,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "6",
@@ -2121,7 +2244,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "93",
@@ -2161,7 +2288,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "7",
@@ -2242,7 +2373,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "52",
@@ -2307,7 +2442,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "34",
@@ -2352,7 +2491,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "68",
@@ -2386,7 +2529,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "39",
@@ -2463,7 +2610,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "69",
@@ -2526,7 +2677,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "53",
@@ -2580,7 +2735,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "105",
@@ -2656,7 +2815,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "40",
@@ -2700,7 +2863,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "41",
@@ -2804,7 +2971,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "54",
@@ -2869,7 +3040,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "106",
@@ -2904,7 +3079,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "275",
@@ -3034,7 +3213,11 @@
             "daPid": 23746,
             "transStatus": "failed",
             "fluxRunHistoryId": 157628,
-            "daRunHistoryId": 157723
+            "daRunHistoryId": 157723,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "42",
@@ -3097,7 +3280,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "107",
@@ -3163,7 +3350,11 @@
             "daPid": 24813,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "55",
@@ -3228,7 +3419,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "43",
@@ -3291,7 +3486,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "108",
@@ -3350,7 +3549,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "71",
@@ -3413,7 +3616,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "56",
@@ -3478,7 +3685,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "57",
@@ -3544,7 +3755,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "44",
@@ -3607,7 +3822,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "45",
@@ -3670,7 +3889,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "58",
@@ -3764,7 +3987,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "109",
@@ -3830,7 +4057,11 @@
             "daPid": null,
             "transStatus": "aborted",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "73",
@@ -3893,7 +4124,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "72",
@@ -3958,7 +4193,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "3",
+                "login": "admin"
+            }
         },
         {
             "lifeFluxTransId": "83",
@@ -4017,7 +4256,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "59",
@@ -4079,7 +4322,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "84",
@@ -4114,7 +4361,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "85",
@@ -4166,7 +4417,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "60",
@@ -4229,7 +4484,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "86",
@@ -4270,7 +4529,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "94",
@@ -4327,7 +4590,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "95",
@@ -4379,7 +4646,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "61",
@@ -4620,7 +4891,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "62",
@@ -4716,7 +4991,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "87",
@@ -4801,7 +5080,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "88",
@@ -4837,7 +5120,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "89",
@@ -4894,7 +5181,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "90",
@@ -4930,7 +5221,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "91",
@@ -4982,7 +5277,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "92",
@@ -5039,7 +5338,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "96",
@@ -5121,7 +5424,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "14",
@@ -5140,7 +5447,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "15",
@@ -5159,7 +5470,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "17",
@@ -5178,7 +5493,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "19",
@@ -5197,7 +5516,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "20",
@@ -5216,7 +5539,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "21",
@@ -5235,7 +5562,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "22",
@@ -5254,7 +5585,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "23",
@@ -5273,7 +5608,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "24",
@@ -5292,7 +5631,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "25",
@@ -5326,7 +5669,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "26",
@@ -5360,7 +5707,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "27",
@@ -5412,7 +5763,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "28",
@@ -5480,7 +5835,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "111",
@@ -5543,7 +5902,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "115",
@@ -5578,7 +5941,11 @@
             "daPid": 31808,
             "transStatus": "aborted",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "112",
@@ -5630,7 +5997,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "114",
@@ -5665,7 +6036,11 @@
             "daPid": 11112,
             "transStatus": "aborted",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "113",
@@ -5700,7 +6075,11 @@
             "daPid": null,
             "transStatus": "aborted",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "18",
@@ -5719,7 +6098,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "116",
@@ -5754,7 +6137,11 @@
             "daPid": null,
             "transStatus": "success",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "2",
@@ -5792,7 +6179,11 @@
             "daPid": null,
             "transStatus": "running",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "117",
@@ -5827,7 +6218,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "118",
@@ -5862,7 +6257,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "119",
@@ -5942,7 +6341,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "110",
@@ -6008,7 +6411,11 @@
             "daPid": 27434,
             "transStatus": "aborted",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "121",
@@ -6078,7 +6485,11 @@
             "daPid": 23347,
             "transStatus": "success",
             "fluxRunHistoryId": 142072,
-            "daRunHistoryId": 142091
+            "daRunHistoryId": 142091,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "120",
@@ -6113,7 +6524,11 @@
             "daPid": 21948,
             "transStatus": "failed",
             "fluxRunHistoryId": 141969,
-            "daRunHistoryId": 142064
+            "daRunHistoryId": 142064,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "122",
@@ -6181,7 +6596,11 @@
             "daPid": 20825,
             "transStatus": "success",
             "fluxRunHistoryId": 142034,
-            "daRunHistoryId": 142054
+            "daRunHistoryId": 142054,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "137",
@@ -6238,7 +6657,11 @@
             "daPid": 2931,
             "transStatus": "success",
             "fluxRunHistoryId": 143144,
-            "daRunHistoryId": 143155
+            "daRunHistoryId": 143155,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "190",
@@ -6274,7 +6697,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": 148102,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "125",
@@ -6340,7 +6767,11 @@
             "daPid": 17562,
             "transStatus": "failed",
             "fluxRunHistoryId": 142313,
-            "daRunHistoryId": 142332
+            "daRunHistoryId": 142332,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "123",
@@ -6401,7 +6832,11 @@
             "daPid": 29913,
             "transStatus": "success",
             "fluxRunHistoryId": 142102,
-            "daRunHistoryId": 142143
+            "daRunHistoryId": 142143,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "133",
@@ -6467,7 +6902,11 @@
             "daPid": 17579,
             "transStatus": "success",
             "fluxRunHistoryId": 142608,
-            "daRunHistoryId": 142627
+            "daRunHistoryId": 142627,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "134",
@@ -6533,7 +6972,11 @@
             "daPid": 18450,
             "transStatus": "failed",
             "fluxRunHistoryId": 142637,
-            "daRunHistoryId": 142656
+            "daRunHistoryId": 142656,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "139",
@@ -6574,7 +7017,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": 144717,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "129",
@@ -6648,7 +7095,11 @@
             "daPid": null,
             "transStatus": "aborted",
             "fluxRunHistoryId": 142532,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "124",
@@ -6716,7 +7167,11 @@
             "daPid": 16128,
             "transStatus": "failed",
             "fluxRunHistoryId": 142283,
-            "daRunHistoryId": 142302
+            "daRunHistoryId": 142302,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "132",
@@ -6830,7 +7285,11 @@
             "daPid": null,
             "transStatus": "aborted",
             "fluxRunHistoryId": 142591,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "128",
@@ -6865,7 +7324,11 @@
             "daPid": 27226,
             "transStatus": "aborted",
             "fluxRunHistoryId": 142388,
-            "daRunHistoryId": 142415
+            "daRunHistoryId": 142415,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "131",
@@ -6944,7 +7407,11 @@
             "daPid": 15906,
             "transStatus": "aborted",
             "fluxRunHistoryId": 142563,
-            "daRunHistoryId": 142583
+            "daRunHistoryId": 142583,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "127",
@@ -6979,7 +7446,11 @@
             "daPid": 4621,
             "transStatus": "aborted",
             "fluxRunHistoryId": 142377,
-            "daRunHistoryId": 142480
+            "daRunHistoryId": 142480,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "126",
@@ -7014,7 +7485,11 @@
             "daPid": 25353,
             "transStatus": "aborted",
             "fluxRunHistoryId": 142352,
-            "daRunHistoryId": 142367
+            "daRunHistoryId": 142367,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "130",
@@ -7081,7 +7556,11 @@
             "daPid": null,
             "transStatus": "aborted",
             "fluxRunHistoryId": 142548,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "135",
@@ -7116,7 +7595,11 @@
             "daPid": 25676,
             "transStatus": "success",
             "fluxRunHistoryId": 142685,
-            "daRunHistoryId": 142701
+            "daRunHistoryId": 142701,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "136",
@@ -7151,7 +7634,11 @@
             "daPid": 17963,
             "transStatus": "failed",
             "fluxRunHistoryId": 143013,
-            "daRunHistoryId": 142996
+            "daRunHistoryId": 142996,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "149",
@@ -7223,7 +7710,11 @@
             "daPid": 23075,
             "transStatus": "success",
             "fluxRunHistoryId": 145203,
-            "daRunHistoryId": 145214
+            "daRunHistoryId": 145214,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "155",
@@ -7299,7 +7790,11 @@
             "daPid": 19609,
             "transStatus": "failed",
             "fluxRunHistoryId": 145331,
-            "daRunHistoryId": 145360
+            "daRunHistoryId": 145360,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "152",
@@ -7375,7 +7870,11 @@
             "daPid": 2633,
             "transStatus": "success",
             "fluxRunHistoryId": 145257,
-            "daRunHistoryId": 145273
+            "daRunHistoryId": 145273,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "153",
@@ -7451,7 +7950,11 @@
             "daPid": 18945,
             "transStatus": "success",
             "fluxRunHistoryId": 145304,
-            "daRunHistoryId": 145315
+            "daRunHistoryId": 145315,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "150",
@@ -7527,7 +8030,11 @@
             "daPid": 32395,
             "transStatus": "failed",
             "fluxRunHistoryId": 146113,
-            "daRunHistoryId": 145235
+            "daRunHistoryId": 145235,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "141",
@@ -7618,7 +8125,11 @@
             "daPid": 17269,
             "transStatus": "failed",
             "fluxRunHistoryId": 144763,
-            "daRunHistoryId": 144784
+            "daRunHistoryId": 144784,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "144",
@@ -7664,7 +8175,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": 145141,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "142",
@@ -7744,7 +8259,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": 145132,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "143",
@@ -7790,7 +8309,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": 145135,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "146",
@@ -7870,7 +8393,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": 145147,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "145",
@@ -7925,7 +8452,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": 145144,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "147",
@@ -7997,7 +8528,11 @@
             "daPid": 7320,
             "transStatus": "failed",
             "fluxRunHistoryId": 145152,
-            "daRunHistoryId": 145163
+            "daRunHistoryId": 145163,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "163",
@@ -8052,7 +8587,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": 145517,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "148",
@@ -8121,7 +8660,11 @@
             "daPid": 17886,
             "transStatus": "success",
             "fluxRunHistoryId": 145182,
-            "daRunHistoryId": 145193
+            "daRunHistoryId": 145193,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "156",
@@ -8197,7 +8740,11 @@
             "daPid": 19788,
             "transStatus": "success",
             "fluxRunHistoryId": 145349,
-            "daRunHistoryId": 145377
+            "daRunHistoryId": 145377,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "154",
@@ -8277,7 +8824,11 @@
             "daPid": 19432,
             "transStatus": "failed",
             "fluxRunHistoryId": 145321,
-            "daRunHistoryId": 145343
+            "daRunHistoryId": 145343,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "157",
@@ -8353,7 +8904,11 @@
             "daPid": 19972,
             "transStatus": "failed",
             "fluxRunHistoryId": 145366,
-            "daRunHistoryId": 145397
+            "daRunHistoryId": 145397,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "161",
@@ -8429,7 +8984,11 @@
             "daPid": 22745,
             "transStatus": "success",
             "fluxRunHistoryId": 145453,
-            "daRunHistoryId": 145487
+            "daRunHistoryId": 145487,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "158",
@@ -8505,7 +9064,11 @@
             "daPid": 22046,
             "transStatus": "success",
             "fluxRunHistoryId": 145412,
-            "daRunHistoryId": 145429
+            "daRunHistoryId": 145429,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "159",
@@ -8585,7 +9148,11 @@
             "daPid": 22266,
             "transStatus": "failed",
             "fluxRunHistoryId": 145419,
-            "daRunHistoryId": 145447
+            "daRunHistoryId": 145447,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "192",
@@ -8618,7 +9185,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": 148112,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "160",
@@ -8694,7 +9265,11 @@
             "daPid": 22560,
             "transStatus": "failed",
             "fluxRunHistoryId": 145436,
-            "daRunHistoryId": 145468
+            "daRunHistoryId": 145468,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "162",
@@ -8770,7 +9345,11 @@
             "daPid": 22897,
             "transStatus": "failed",
             "fluxRunHistoryId": 145474,
-            "daRunHistoryId": 145500
+            "daRunHistoryId": 145500,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "164",
@@ -8825,7 +9404,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": 145525,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "167",
@@ -8903,7 +9486,11 @@
             "daPid": 18488,
             "transStatus": "success",
             "fluxRunHistoryId": 145713,
-            "daRunHistoryId": 145737
+            "daRunHistoryId": 145737,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "165",
@@ -8981,7 +9568,11 @@
             "daPid": 16987,
             "transStatus": "success",
             "fluxRunHistoryId": 145682,
-            "daRunHistoryId": 145693
+            "daRunHistoryId": 145693,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "169",
@@ -9034,7 +9625,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": 145746,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "170",
@@ -9110,7 +9705,11 @@
             "daPid": 19058,
             "transStatus": "success",
             "fluxRunHistoryId": 145751,
-            "daRunHistoryId": 145780
+            "daRunHistoryId": 145780,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "168",
@@ -9186,7 +9785,11 @@
             "daPid": 18780,
             "transStatus": "success",
             "fluxRunHistoryId": 145727,
-            "daRunHistoryId": 145759
+            "daRunHistoryId": 145759,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "171",
@@ -9262,7 +9865,11 @@
             "daPid": 19374,
             "transStatus": "success",
             "fluxRunHistoryId": 145770,
-            "daRunHistoryId": 145794
+            "daRunHistoryId": 145794,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "166",
@@ -9338,7 +9945,11 @@
             "daPid": 18248,
             "transStatus": "success",
             "fluxRunHistoryId": 145703,
-            "daRunHistoryId": 145717
+            "daRunHistoryId": 145717,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "151",
@@ -9414,7 +10025,11 @@
             "daPid": 2393,
             "transStatus": "failed",
             "fluxRunHistoryId": 146110,
-            "daRunHistoryId": 145256
+            "daRunHistoryId": 145256,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "140",
@@ -9495,7 +10110,11 @@
             "daPid": 16524,
             "transStatus": "failed",
             "fluxRunHistoryId": 146116,
-            "daRunHistoryId": 144751
+            "daRunHistoryId": 144751,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "172",
@@ -9562,7 +10181,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": 146476,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "174",
@@ -9611,7 +10234,11 @@
             "daPid": 30032,
             "transStatus": "success",
             "fluxRunHistoryId": 146504,
-            "daRunHistoryId": 146662
+            "daRunHistoryId": 146662,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "173",
@@ -9660,7 +10287,11 @@
             "daPid": 22022,
             "transStatus": "success",
             "fluxRunHistoryId": 146483,
-            "daRunHistoryId": 146494
+            "daRunHistoryId": 146494,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "175",
@@ -9713,7 +10344,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": 147760,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "186",
@@ -9748,7 +10383,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": 148083,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "184",
@@ -9792,7 +10431,11 @@
             "daPid": 12254,
             "transStatus": "failed",
             "fluxRunHistoryId": 148034,
-            "daRunHistoryId": 148045
+            "daRunHistoryId": 148045,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "179",
@@ -9825,7 +10468,11 @@
             "daPid": 20271,
             "transStatus": "failed",
             "fluxRunHistoryId": 147820,
-            "daRunHistoryId": 147831
+            "daRunHistoryId": 147831,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "178",
@@ -9858,7 +10505,11 @@
             "daPid": 19639,
             "transStatus": "failed",
             "fluxRunHistoryId": 147803,
-            "daRunHistoryId": 147814
+            "daRunHistoryId": 147814,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "177",
@@ -9891,7 +10542,11 @@
             "daPid": 28433,
             "transStatus": "failed",
             "fluxRunHistoryId": 147786,
-            "daRunHistoryId": 147797
+            "daRunHistoryId": 147797,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "185",
@@ -9937,7 +10592,11 @@
             "daPid": 13101,
             "transStatus": "failed",
             "fluxRunHistoryId": 148056,
-            "daRunHistoryId": 148067
+            "daRunHistoryId": 148067,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "176",
@@ -9974,7 +10633,11 @@
             "daPid": 27873,
             "transStatus": "success",
             "fluxRunHistoryId": 147765,
-            "daRunHistoryId": 147776
+            "daRunHistoryId": 147776,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "182",
@@ -10007,7 +10670,11 @@
             "daPid": 9169,
             "transStatus": "success",
             "fluxRunHistoryId": 147992,
-            "daRunHistoryId": 148003
+            "daRunHistoryId": 148003,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "181",
@@ -10053,7 +10720,11 @@
             "daPid": 8561,
             "transStatus": "success",
             "fluxRunHistoryId": 147971,
-            "daRunHistoryId": 147982
+            "daRunHistoryId": 147982,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "180",
@@ -10086,7 +10757,11 @@
             "daPid": 20629,
             "transStatus": "success",
             "fluxRunHistoryId": 147837,
-            "daRunHistoryId": 147848
+            "daRunHistoryId": 147848,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "183",
@@ -10119,7 +10794,11 @@
             "daPid": 9664,
             "transStatus": "success",
             "fluxRunHistoryId": 148013,
-            "daRunHistoryId": 148024
+            "daRunHistoryId": 148024,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "187",
@@ -10154,7 +10833,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": 148089,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "188",
@@ -10189,7 +10872,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": 148094,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "189",
@@ -10224,7 +10911,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": 148098,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "195",
@@ -10257,7 +10948,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": 148135,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "191",
@@ -10290,7 +10985,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": 148107,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "194",
@@ -10323,7 +11022,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": 148128,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "193",
@@ -10356,7 +11059,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": 148117,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "196",
@@ -10389,7 +11096,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": 148142,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "199",
@@ -10422,7 +11133,11 @@
             "daPid": 8946,
             "transStatus": "success",
             "fluxRunHistoryId": 148172,
-            "daRunHistoryId": 148183
+            "daRunHistoryId": 148183,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "197",
@@ -10455,7 +11170,11 @@
             "daPid": 17124,
             "transStatus": "success",
             "fluxRunHistoryId": 154317,
-            "daRunHistoryId": 154328
+            "daRunHistoryId": 154328,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "200",
@@ -10501,7 +11220,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": 148194,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "198",
@@ -10534,7 +11257,11 @@
             "daPid": 6836,
             "transStatus": "failed",
             "fluxRunHistoryId": 148156,
-            "daRunHistoryId": 148166
+            "daRunHistoryId": 148166,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "201",
@@ -10580,7 +11307,11 @@
             "daPid": 25571,
             "transStatus": "failed",
             "fluxRunHistoryId": 148200,
-            "daRunHistoryId": 148211
+            "daRunHistoryId": 148211,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "205",
@@ -10625,7 +11356,11 @@
             "daPid": 32498,
             "transStatus": "failed",
             "fluxRunHistoryId": 148270,
-            "daRunHistoryId": 148281
+            "daRunHistoryId": 148281,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "202",
@@ -10670,7 +11405,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": 148222,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "207",
@@ -10715,7 +11454,11 @@
             "daPid": 1513,
             "transStatus": "failed",
             "fluxRunHistoryId": 148303,
-            "daRunHistoryId": 148320
+            "daRunHistoryId": 148320,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "204",
@@ -10760,7 +11503,11 @@
             "daPid": 31268,
             "transStatus": "failed",
             "fluxRunHistoryId": 148248,
-            "daRunHistoryId": 148259
+            "daRunHistoryId": 148259,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "203",
@@ -10804,7 +11551,11 @@
             "daPid": 26688,
             "transStatus": "failed",
             "fluxRunHistoryId": 148226,
-            "daRunHistoryId": 148237
+            "daRunHistoryId": 148237,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "208",
@@ -10849,7 +11600,11 @@
             "daPid": 2944,
             "transStatus": "success",
             "fluxRunHistoryId": 148335,
-            "daRunHistoryId": 148346
+            "daRunHistoryId": 148346,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "209",
@@ -10882,7 +11637,11 @@
             "daPid": 11492,
             "transStatus": "success",
             "fluxRunHistoryId": 148356,
-            "daRunHistoryId": 148367
+            "daRunHistoryId": 148367,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "206",
@@ -10927,7 +11686,11 @@
             "daPid": 1403,
             "transStatus": "success",
             "fluxRunHistoryId": 148292,
-            "daRunHistoryId": 148304
+            "daRunHistoryId": 148304,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "210",
@@ -10972,7 +11735,11 @@
             "daPid": 15272,
             "transStatus": "success",
             "fluxRunHistoryId": 148377,
-            "daRunHistoryId": 148388
+            "daRunHistoryId": 148388,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "215",
@@ -11020,7 +11787,11 @@
             "daPid": 6836,
             "transStatus": "success",
             "fluxRunHistoryId": 148510,
-            "daRunHistoryId": 148523
+            "daRunHistoryId": 148523,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "211",
@@ -11068,7 +11839,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": 148475,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "212",
@@ -11116,7 +11891,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": 148479,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "220",
@@ -11164,7 +11943,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": 148669,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "213",
@@ -11212,7 +11995,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": 148483,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "214",
@@ -11260,7 +12047,11 @@
             "daPid": 4850,
             "transStatus": "success",
             "fluxRunHistoryId": 148487,
-            "daRunHistoryId": 148499
+            "daRunHistoryId": 148499,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "216",
@@ -11310,7 +12101,11 @@
             "daPid": 7427,
             "transStatus": "success",
             "fluxRunHistoryId": 148533,
-            "daRunHistoryId": 148545
+            "daRunHistoryId": 148545,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "217",
@@ -11358,7 +12153,11 @@
             "daPid": 4048,
             "transStatus": "success",
             "fluxRunHistoryId": 148558,
-            "daRunHistoryId": 148570
+            "daRunHistoryId": 148570,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "219",
@@ -11409,7 +12208,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "221",
@@ -11459,7 +12262,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": 148682,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "229",
@@ -11545,7 +12352,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": 148892,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "222",
@@ -11593,7 +12404,11 @@
             "daPid": 13878,
             "transStatus": "success",
             "fluxRunHistoryId": 148696,
-            "daRunHistoryId": 148716
+            "daRunHistoryId": 148716,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "230",
@@ -11638,7 +12453,11 @@
             "daPid": null,
             "transStatus": "aborted",
             "fluxRunHistoryId": 148907,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "223",
@@ -11673,7 +12492,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": 148726,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "225",
@@ -11725,7 +12548,11 @@
             "daPid": 21076,
             "transStatus": "success",
             "fluxRunHistoryId": 149866,
-            "daRunHistoryId": 149878
+            "daRunHistoryId": 149878,
+            "user": {
+                "id": "3",
+                "login": "admin"
+            }
         },
         {
             "lifeFluxTransId": "224",
@@ -11778,7 +12605,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": 148730,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "228",
@@ -11826,7 +12657,11 @@
             "daPid": 6391,
             "transStatus": "success",
             "fluxRunHistoryId": 148834,
-            "daRunHistoryId": 148846
+            "daRunHistoryId": 148846,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "226",
@@ -11871,7 +12706,11 @@
             "daPid": 4467,
             "transStatus": "running",
             "fluxRunHistoryId": 148782,
-            "daRunHistoryId": 148793
+            "daRunHistoryId": 148793,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "231",
@@ -11919,7 +12758,11 @@
             "daPid": 4950,
             "transStatus": "success",
             "fluxRunHistoryId": 148914,
-            "daRunHistoryId": 148926
+            "daRunHistoryId": 148926,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "16",
@@ -11938,7 +12781,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "227",
@@ -11983,7 +12830,11 @@
             "daPid": 5118,
             "transStatus": "running",
             "fluxRunHistoryId": 148811,
-            "daRunHistoryId": 148822
+            "daRunHistoryId": 148822,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "239",
@@ -12037,7 +12888,11 @@
             "daPid": 14531,
             "transStatus": "success",
             "fluxRunHistoryId": 149776,
-            "daRunHistoryId": 149788
+            "daRunHistoryId": 149788,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "234",
@@ -12436,7 +13291,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": 149025,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "232",
@@ -12489,7 +13348,11 @@
             "daPid": 31220,
             "transStatus": "success",
             "fluxRunHistoryId": 149296,
-            "daRunHistoryId": 149308
+            "daRunHistoryId": 149308,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "235",
@@ -12890,7 +13753,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": 149028,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "236",
@@ -12941,7 +13808,11 @@
             "daPid": null,
             "transStatus": "pending",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "237",
@@ -12991,7 +13862,11 @@
             "daPid": null,
             "transStatus": "pending",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "238",
@@ -13041,7 +13916,11 @@
             "daPid": null,
             "transStatus": "pending",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "240",
@@ -13098,7 +13977,11 @@
             "daPid": 27791,
             "transStatus": "success",
             "fluxRunHistoryId": 149226,
-            "daRunHistoryId": 149242
+            "daRunHistoryId": 149242,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "241",
@@ -13152,7 +14035,64 @@
             "daPid": 4352,
             "transStatus": "success",
             "fluxRunHistoryId": 149364,
-            "daRunHistoryId": 149376
+            "daRunHistoryId": 149376,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
+        },
+        {
+            "lifeFluxTransId": "310",
+            "name": "asaf test edited deded",
+            "userId": "5",
+            "projectId": "14",
+            "outputType": "files",
+            "outputObject": null,
+            "transJson": {
+                "input_mode": "session",
+                "input_population": "93",
+                "event_inclusion": {
+                    "4": [
+                        "insert_date"
+                    ]
+                },
+                "demographic_inclusion": null,
+                "hierarchies": {
+                    "25": 147,
+                    "27": 157
+                },
+                "general_date_shift": 5,
+                "general_numeric_shift": 2,
+                "hipaa_inclusion": [
+                    "phone",
+                    "zip",
+                    "email",
+                    "ip",
+                    "url",
+                    "older_than_89",
+                    "date_shift"
+                ],
+                "hipaa_date_shift": null,
+                "hipaa_phone": null,
+                "custom_regexes": {
+                    "asaf12": "binder22"
+                },
+                "target_impala_tbl": "asaf test edited deded"
+            },
+            "transMsg": null,
+            "pctProgress": 0,
+            "duration": null,
+            "insertDate": "2020-09-24T08:12:31.000Z",
+            "updateDate": "2020-09-24T08:12:31.000Z",
+            "fluxPid": null,
+            "daPid": null,
+            "transStatus": "pending",
+            "fluxRunHistoryId": null,
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "243",
@@ -13204,7 +14144,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": 149726,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "246",
@@ -13256,7 +14200,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": 149744,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "242",
@@ -13307,7 +14255,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": 149712,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "244",
@@ -13359,7 +14311,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "245",
@@ -13411,7 +14367,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "276",
@@ -13541,7 +14501,11 @@
             "daPid": 23745,
             "transStatus": "failed",
             "fluxRunHistoryId": 157604,
-            "daRunHistoryId": 157722
+            "daRunHistoryId": 157722,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "247",
@@ -13595,7 +14559,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": 149758,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "255",
@@ -13658,7 +14626,11 @@
             "daPid": 21731,
             "transStatus": "success",
             "fluxRunHistoryId": 150181,
-            "daRunHistoryId": 150193
+            "daRunHistoryId": 150193,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "262",
@@ -13717,7 +14689,11 @@
             "daPid": 7734,
             "transStatus": "success",
             "fluxRunHistoryId": 150634,
-            "daRunHistoryId": 150645
+            "daRunHistoryId": 150645,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "250",
@@ -13806,7 +14782,11 @@
             "daPid": 26838,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": 149940
+            "daRunHistoryId": 149940,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "256",
@@ -13869,7 +14849,11 @@
             "daPid": 22106,
             "transStatus": "success",
             "fluxRunHistoryId": 150205,
-            "daRunHistoryId": 150217
+            "daRunHistoryId": 150217,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "251",
@@ -13950,7 +14934,11 @@
             "daPid": 29250,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": 149996
+            "daRunHistoryId": 149996,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "233",
@@ -14013,7 +15001,11 @@
             "daPid": 18447,
             "transStatus": "success",
             "fluxRunHistoryId": 150085,
-            "daRunHistoryId": 150097
+            "daRunHistoryId": 150097,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "249",
@@ -14410,7 +15402,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": 149863,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "3",
+                "login": "admin"
+            }
         },
         {
             "lifeFluxTransId": "248",
@@ -14656,7 +15652,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": 149964,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "218",
@@ -14700,7 +15700,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": 150067,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "254",
@@ -14763,7 +15767,11 @@
             "daPid": 21185,
             "transStatus": "success",
             "fluxRunHistoryId": 150157,
-            "daRunHistoryId": 150169
+            "daRunHistoryId": 150169,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "252",
@@ -14826,7 +15834,11 @@
             "daPid": 19108,
             "transStatus": "success",
             "fluxRunHistoryId": 150109,
-            "daRunHistoryId": 150121
+            "daRunHistoryId": 150121,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "253",
@@ -14889,7 +15901,11 @@
             "daPid": 20572,
             "transStatus": "success",
             "fluxRunHistoryId": 150133,
-            "daRunHistoryId": 150145
+            "daRunHistoryId": 150145,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "257",
@@ -14952,7 +15968,11 @@
             "daPid": 22557,
             "transStatus": "success",
             "fluxRunHistoryId": 150229,
-            "daRunHistoryId": 150241
+            "daRunHistoryId": 150241,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "258",
@@ -15015,7 +16035,11 @@
             "daPid": 2033,
             "transStatus": "success",
             "fluxRunHistoryId": 150280,
-            "daRunHistoryId": 150292
+            "daRunHistoryId": 150292,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "81",
@@ -15145,7 +16169,11 @@
             "daPid": 23749,
             "transStatus": "failed",
             "fluxRunHistoryId": 157593,
-            "daRunHistoryId": 157721
+            "daRunHistoryId": 157721,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "259",
@@ -15208,7 +16236,11 @@
             "daPid": 3434,
             "transStatus": "success",
             "fluxRunHistoryId": 150308,
-            "daRunHistoryId": 150322
+            "daRunHistoryId": 150322,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "267",
@@ -15260,7 +16292,11 @@
             "daPid": 27602,
             "transStatus": "success",
             "fluxRunHistoryId": 152718,
-            "daRunHistoryId": 152758
+            "daRunHistoryId": 152758,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "261",
@@ -15320,7 +16356,11 @@
             "daPid": 14222,
             "transStatus": "success",
             "fluxRunHistoryId": 150817,
-            "daRunHistoryId": 150828
+            "daRunHistoryId": 150828,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "263",
@@ -15371,7 +16411,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": 150661,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "264",
@@ -15423,7 +16467,11 @@
             "daPid": 12098,
             "transStatus": "success",
             "fluxRunHistoryId": 150697,
-            "daRunHistoryId": 150732
+            "daRunHistoryId": 150732,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "270",
@@ -15485,7 +16533,11 @@
             "daPid": 10442,
             "transStatus": "success",
             "fluxRunHistoryId": 153124,
-            "daRunHistoryId": 153135
+            "daRunHistoryId": 153135,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "265",
@@ -15537,7 +16589,11 @@
             "daPid": 12372,
             "transStatus": "success",
             "fluxRunHistoryId": 150710,
-            "daRunHistoryId": 150751
+            "daRunHistoryId": 150751,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "266",
@@ -15589,7 +16645,11 @@
             "daPid": 12797,
             "transStatus": "success",
             "fluxRunHistoryId": 150739,
-            "daRunHistoryId": 150775
+            "daRunHistoryId": 150775,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "70",
@@ -15637,7 +16697,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": null,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "138",
@@ -15705,7 +16769,11 @@
             "daPid": 24259,
             "transStatus": "success",
             "fluxRunHistoryId": 152164,
-            "daRunHistoryId": 152183
+            "daRunHistoryId": 152183,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "268",
@@ -16134,7 +17202,11 @@
             "daPid": 26936,
             "transStatus": "failed",
             "fluxRunHistoryId": 152661,
-            "daRunHistoryId": 152559
+            "daRunHistoryId": 152559,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "97",
@@ -16216,7 +17288,11 @@
             "daPid": 20264,
             "transStatus": "success",
             "fluxRunHistoryId": 152213,
-            "daRunHistoryId": 152233
+            "daRunHistoryId": 152233,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "272",
@@ -16272,7 +17348,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": 153148,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "260",
@@ -16335,7 +17415,11 @@
             "daPid": 27523,
             "transStatus": "success",
             "fluxRunHistoryId": 152729,
-            "daRunHistoryId": 152746
+            "daRunHistoryId": 152746,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "271",
@@ -16391,7 +17475,11 @@
             "daPid": 12898,
             "transStatus": "success",
             "fluxRunHistoryId": 153068,
-            "daRunHistoryId": 153080
+            "daRunHistoryId": 153080,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "269",
@@ -16451,7 +17539,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": 153105,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "79",
@@ -16486,7 +17578,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": 154420,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "82",
@@ -16549,7 +17645,11 @@
             "daPid": 10396,
             "transStatus": "failed",
             "fluxRunHistoryId": 155390,
-            "daRunHistoryId": 155410
+            "daRunHistoryId": 155410,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "274",
@@ -16612,7 +17712,11 @@
             "daPid": 22053,
             "transStatus": "success",
             "fluxRunHistoryId": 156794,
-            "daRunHistoryId": 156931
+            "daRunHistoryId": 156931,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "273",
@@ -16984,7 +18088,11 @@
             "daPid": null,
             "transStatus": "failed",
             "fluxRunHistoryId": 155516,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "286",
@@ -17047,7 +18155,11 @@
             "daPid": 31394,
             "transStatus": "aborted",
             "fluxRunHistoryId": 157855,
-            "daRunHistoryId": 157972
+            "daRunHistoryId": 157972,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "277",
@@ -17177,7 +18289,11 @@
             "daPid": 23765,
             "transStatus": "failed",
             "fluxRunHistoryId": 157581,
-            "daRunHistoryId": 157725
+            "daRunHistoryId": 157725,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "281",
@@ -17240,7 +18356,11 @@
             "daPid": 21975,
             "transStatus": "success",
             "fluxRunHistoryId": 156816,
-            "daRunHistoryId": 156909
+            "daRunHistoryId": 156909,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "287",
@@ -17303,7 +18423,11 @@
             "daPid": 31390,
             "transStatus": "aborted",
             "fluxRunHistoryId": 157869,
-            "daRunHistoryId": 157975
+            "daRunHistoryId": 157975,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "288",
@@ -17366,7 +18490,11 @@
             "daPid": 31398,
             "transStatus": "success",
             "fluxRunHistoryId": 157886,
-            "daRunHistoryId": 157974
+            "daRunHistoryId": 157974,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "289",
@@ -17429,7 +18557,11 @@
             "daPid": 31399,
             "transStatus": "aborted",
             "fluxRunHistoryId": 157902,
-            "daRunHistoryId": 157973
+            "daRunHistoryId": 157973,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "290",
@@ -17492,7 +18624,11 @@
             "daPid": 32515,
             "transStatus": "aborted",
             "fluxRunHistoryId": 157919,
-            "daRunHistoryId": 158029
+            "daRunHistoryId": 158029,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "291",
@@ -17555,7 +18691,11 @@
             "daPid": 401,
             "transStatus": "aborted",
             "fluxRunHistoryId": 157934,
-            "daRunHistoryId": 158045
+            "daRunHistoryId": 158045,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "285",
@@ -17615,7 +18755,72 @@
             "daPid": null,
             "transStatus": "aborted",
             "fluxRunHistoryId": 158666,
-            "daRunHistoryId": null
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
+        },
+        {
+            "lifeFluxTransId": "301",
+            "name": "bnbvnbv",
+            "userId": "5",
+            "projectId": "6",
+            "outputType": "files",
+            "outputObject": null,
+            "transJson": {
+                "custom_regexes": {
+                    "asaf": "binder"
+                },
+                "demographic_inclusion": null,
+                "event_inclusion": {
+                    "4": [
+                        "insert_date",
+                        "drug_type",
+                        "prescribedmedicationcode",
+                        "routecode",
+                        "drug",
+                        "formunit",
+                        "prescribedmedicationcodedesc",
+                        "enddate",
+                        "gsn"
+                    ]
+                },
+                "general_date_shift": 0,
+                "general_numeric_shift": 0,
+                "hierarchies": {
+                    "25": 147,
+                    "27": 157
+                },
+                "hipaa_date_shift": null,
+                "hipaa_inclusion": [
+                    "phone",
+                    "zip",
+                    "email",
+                    "ip",
+                    "url",
+                    "older_than_89",
+                    "date_shift"
+                ],
+                "hipaa_phone": null,
+                "input_mode": "session",
+                "input_population": "93",
+                "target_impala_tbl": "bnbvnbv"
+            },
+            "transMsg": null,
+            "pctProgress": 0,
+            "duration": null,
+            "insertDate": "2020-09-23T09:19:31.000Z",
+            "updateDate": "2020-09-23T09:19:31.000Z",
+            "fluxPid": null,
+            "daPid": null,
+            "transStatus": "failed",
+            "fluxRunHistoryId": null,
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "284",
@@ -17678,7 +18883,11 @@
             "daPid": 31392,
             "transStatus": "aborted",
             "fluxRunHistoryId": 157845,
-            "daRunHistoryId": 157971
+            "daRunHistoryId": 157971,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "282",
@@ -17741,7 +18950,11 @@
             "daPid": 22052,
             "transStatus": "success",
             "fluxRunHistoryId": 156828,
-            "daRunHistoryId": 156930
+            "daRunHistoryId": 156930,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "283",
@@ -17804,7 +19017,11 @@
             "daPid": 22054,
             "transStatus": "success",
             "fluxRunHistoryId": 156844,
-            "daRunHistoryId": 156932
+            "daRunHistoryId": 156932,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "280",
@@ -17867,7 +19084,11 @@
             "daPid": 22079,
             "transStatus": "success",
             "fluxRunHistoryId": 156803,
-            "daRunHistoryId": 156933
+            "daRunHistoryId": 156933,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "279",
@@ -17997,7 +19218,11 @@
             "daPid": 28193,
             "transStatus": "success",
             "fluxRunHistoryId": 158344,
-            "daRunHistoryId": 158370
+            "daRunHistoryId": 158370,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "278",
@@ -18127,7 +19352,11 @@
             "daPid": 29613,
             "transStatus": "success",
             "fluxRunHistoryId": 158393,
-            "daRunHistoryId": 158419
+            "daRunHistoryId": 158419,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         },
         {
             "lifeFluxTransId": "292",
@@ -18187,7 +19416,874 @@
             "daPid": 17105,
             "transStatus": "success",
             "fluxRunHistoryId": 159093,
-            "daRunHistoryId": 159112
+            "daRunHistoryId": 159112,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
+        },
+        {
+            "lifeFluxTransId": "302",
+            "name": "asaf test postman",
+            "userId": "5",
+            "projectId": "6",
+            "outputType": "files",
+            "outputObject": null,
+            "transJson": {
+                "custom_regexes": {
+                    "asaf": "binder"
+                },
+                "demographic_inclusion": null,
+                "event_inclusion": {
+                    "4": [
+                        "insert_date",
+                        "drug_type",
+                        "prescribedmedicationcode",
+                        "routecode",
+                        "drug",
+                        "formunit",
+                        "prescribedmedicationcodedesc",
+                        "enddate",
+                        "gsn"
+                    ]
+                },
+                "general_date_shift": 0,
+                "general_numeric_shift": 0,
+                "hierarchies": {
+                    "25": 147,
+                    "27": 157
+                },
+                "hipaa_date_shift": null,
+                "hipaa_inclusion": [
+                    "phone",
+                    "zip",
+                    "email",
+                    "ip",
+                    "url",
+                    "older_than_89",
+                    "date_shift"
+                ],
+                "hipaa_phone": null,
+                "input_mode": "session",
+                "input_population": "93",
+                "target_impala_tbl": "bnbvnbv"
+            },
+            "transMsg": null,
+            "pctProgress": 0,
+            "duration": null,
+            "insertDate": "2020-09-23T09:26:19.000Z",
+            "updateDate": "2020-09-23T09:26:19.000Z",
+            "fluxPid": null,
+            "daPid": null,
+            "transStatus": "failed",
+            "fluxRunHistoryId": null,
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
+        },
+        {
+            "lifeFluxTransId": "303",
+            "name": "asaf test postman 2",
+            "userId": "5",
+            "projectId": "6",
+            "outputType": "files",
+            "outputObject": null,
+            "transJson": {
+                "custom_regexes": {
+                    "asaf": "binder"
+                },
+                "demographic_inclusion": null,
+                "event_inclusion": {
+                    "4": [
+                        "insert_date",
+                        "drug_type",
+                        "prescribedmedicationcode",
+                        "routecode",
+                        "drug",
+                        "formunit",
+                        "prescribedmedicationcodedesc",
+                        "enddate",
+                        "gsn"
+                    ]
+                },
+                "general_date_shift": 0,
+                "general_numeric_shift": 0,
+                "hierarchies": {
+                    "25": 147,
+                    "27": 157
+                },
+                "hipaa_date_shift": null,
+                "hipaa_inclusion": [
+                    "phone",
+                    "zip",
+                    "email",
+                    "ip",
+                    "url",
+                    "older_than_89",
+                    "date_shift"
+                ],
+                "hipaa_phone": null,
+                "input_mode": "session",
+                "input_population": "93",
+                "target_impala_tbl": "bnbvnbv"
+            },
+            "transMsg": null,
+            "pctProgress": 0,
+            "duration": null,
+            "insertDate": "2020-09-23T09:33:43.000Z",
+            "updateDate": "2020-09-23T09:33:43.000Z",
+            "fluxPid": null,
+            "daPid": null,
+            "transStatus": "failed",
+            "fluxRunHistoryId": null,
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
+        },
+        {
+            "lifeFluxTransId": "304",
+            "name": "asaf test postman 3",
+            "userId": "5",
+            "projectId": "6",
+            "outputType": "files",
+            "outputObject": null,
+            "transJson": {
+                "custom_regexes": {
+                    "asaf": "binder"
+                },
+                "demographic_inclusion": null,
+                "event_inclusion": {
+                    "4": [
+                        "insert_date",
+                        "drug_type",
+                        "prescribedmedicationcode",
+                        "routecode",
+                        "drug",
+                        "formunit",
+                        "prescribedmedicationcodedesc",
+                        "enddate",
+                        "gsn"
+                    ]
+                },
+                "general_date_shift": 0,
+                "general_numeric_shift": 0,
+                "hierarchies": {
+                    "25": 147,
+                    "27": 157
+                },
+                "hipaa_date_shift": null,
+                "hipaa_inclusion": [
+                    "phone",
+                    "zip",
+                    "email",
+                    "ip",
+                    "url",
+                    "older_than_89",
+                    "date_shift"
+                ],
+                "hipaa_phone": null,
+                "input_mode": "session",
+                "input_population": "93",
+                "target_impala_tbl": "bnbvnbv"
+            },
+            "transMsg": null,
+            "pctProgress": 0,
+            "duration": null,
+            "insertDate": "2020-09-23T09:35:53.000Z",
+            "updateDate": "2020-09-23T09:35:53.000Z",
+            "fluxPid": null,
+            "daPid": null,
+            "transStatus": "pending",
+            "fluxRunHistoryId": null,
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
+        },
+        {
+            "lifeFluxTransId": "305",
+            "name": "asaf test postman 4",
+            "userId": "5",
+            "projectId": "1",
+            "outputType": "files",
+            "outputObject": null,
+            "transJson": {
+                "target_impala_tbl": "asaf test postman 4"
+            },
+            "transMsg": null,
+            "pctProgress": 0,
+            "duration": null,
+            "insertDate": "2020-09-23T09:41:30.000Z",
+            "updateDate": "2020-09-23T09:41:30.000Z",
+            "fluxPid": null,
+            "daPid": null,
+            "transStatus": "pending",
+            "fluxRunHistoryId": null,
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
+        },
+        {
+            "lifeFluxTransId": "306",
+            "name": "asaf test postman 5",
+            "userId": "5",
+            "projectId": "1",
+            "outputType": "files",
+            "outputObject": null,
+            "transJson": {
+                "target_impala_tbl": "asaf test postman 5"
+            },
+            "transMsg": null,
+            "pctProgress": 0,
+            "duration": null,
+            "insertDate": "2020-09-23T09:42:34.000Z",
+            "updateDate": "2020-09-23T09:42:34.000Z",
+            "fluxPid": null,
+            "daPid": null,
+            "transStatus": "pending",
+            "fluxRunHistoryId": null,
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
+        },
+        {
+            "lifeFluxTransId": "307",
+            "name": "asaf test postman 5",
+            "userId": "5",
+            "projectId": "1",
+            "outputType": "files",
+            "outputObject": null,
+            "transJson": {
+                "input_mode": "session",
+                "input_population": "93",
+                "event_inclusion": {
+                    "4": [
+                        "insert_date"
+                    ]
+                },
+                "demographic_inclusion": null,
+                "hierarchies": {
+                    "25": 147,
+                    "27": 157
+                },
+                "general_date_shift": 1,
+                "general_numeric_shift": 2,
+                "hipaa_inclusion": [
+                    "phone",
+                    "zip",
+                    "email",
+                    "ip",
+                    "url",
+                    "older_than_89",
+                    "date_shift"
+                ],
+                "hipaa_date_shift": null,
+                "free_text": false,
+                "hipaa_phone": null,
+                "custom_regexes": {
+                    "asaf1": "binder2"
+                },
+                "target_impala_tbl": "asaf test postman 5"
+            },
+            "transMsg": null,
+            "pctProgress": 0,
+            "duration": null,
+            "insertDate": "2020-09-23T09:44:15.000Z",
+            "updateDate": "2020-09-23T09:44:15.000Z",
+            "fluxPid": null,
+            "daPid": null,
+            "transStatus": "pending",
+            "fluxRunHistoryId": null,
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
+        },
+        {
+            "lifeFluxTransId": "312",
+            "name": "asaf test file upload",
+            "userId": "5",
+            "projectId": "1",
+            "outputType": "files",
+            "outputObject": null,
+            "transJson": {
+                "input_mode": "file",
+                "input_population": "csvtemp_20200924_122203.csv",
+                "event_inclusion": {
+                    "4": [
+                        "insert_date"
+                    ]
+                },
+                "demographic_inclusion": null,
+                "hierarchies": {
+                    "25": 147,
+                    "27": 157
+                },
+                "general_date_shift": 5,
+                "general_numeric_shift": 2,
+                "hipaa_inclusion": [
+                    "phone",
+                    "zip",
+                    "email",
+                    "ip",
+                    "url",
+                    "older_than_89",
+                    "date_shift"
+                ],
+                "hipaa_date_shift": null,
+                "hipaa_phone": null,
+                "custom_regexes": {
+                    "asaf12": "binder22"
+                },
+                "target_impala_tbl": "asaf test file upload"
+            },
+            "transMsg": null,
+            "pctProgress": 0,
+            "duration": null,
+            "insertDate": "2020-09-24T09:21:01.000Z",
+            "updateDate": "2020-09-24T09:21:01.000Z",
+            "fluxPid": null,
+            "daPid": null,
+            "transStatus": "pending",
+            "fluxRunHistoryId": null,
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
+        },
+        {
+            "lifeFluxTransId": "313",
+            "name": "test12",
+            "userId": "5",
+            "projectId": "1",
+            "outputType": "files",
+            "outputObject": null,
+            "transJson": {
+                "input_mode": "session",
+                "input_population": "93",
+                "event_inclusion": {
+                    "4": [
+                        "insert_date"
+                    ]
+                },
+                "demographic_inclusion": null,
+                "hierarchies": {
+                    "25": 147,
+                    "27": 157
+                },
+                "general_date_shift": 5,
+                "general_numeric_shift": 2,
+                "hipaa_inclusion": [
+                    "phone",
+                    "zip",
+                    "email",
+                    "ip",
+                    "url",
+                    "older_than_89",
+                    "date_shift"
+                ],
+                "hipaa_date_shift": null,
+                "hipaa_phone": null,
+                "custom_regexes": {
+                    "asaf12": "binder22"
+                },
+                "target_impala_tbl": "test12"
+            },
+            "transMsg": null,
+            "pctProgress": 0,
+            "duration": null,
+            "insertDate": "2020-09-24T09:56:38.000Z",
+            "updateDate": "2020-09-24T09:56:38.000Z",
+            "fluxPid": null,
+            "daPid": null,
+            "transStatus": "pending",
+            "fluxRunHistoryId": null,
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
+        },
+        {
+            "lifeFluxTransId": "314",
+            "name": "new name uplaod",
+            "userId": "5",
+            "projectId": "1",
+            "outputType": "files",
+            "outputObject": null,
+            "transJson": {
+                "input_mode": "session",
+                "input_population": "93",
+                "event_inclusion": {
+                    "4": [
+                        "insert_date"
+                    ]
+                },
+                "demographic_inclusion": null,
+                "hierarchies": {
+                    "25": 147,
+                    "27": 157
+                },
+                "general_date_shift": 5,
+                "general_numeric_shift": 2,
+                "hipaa_inclusion": [
+                    "phone",
+                    "zip",
+                    "email",
+                    "ip",
+                    "url",
+                    "older_than_89",
+                    "date_shift"
+                ],
+                "hipaa_date_shift": null,
+                "hipaa_phone": null,
+                "custom_regexes": {
+                    "asaf12": "binder22"
+                },
+                "target_impala_tbl": "new name uplaod"
+            },
+            "transMsg": null,
+            "pctProgress": 0,
+            "duration": null,
+            "insertDate": "2020-09-24T10:49:18.000Z",
+            "updateDate": "2020-09-24T10:49:18.000Z",
+            "fluxPid": null,
+            "daPid": null,
+            "transStatus": "pending",
+            "fluxRunHistoryId": null,
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
+        },
+        {
+            "lifeFluxTransId": "315",
+            "name": "asaf test file upload",
+            "userId": "5",
+            "projectId": "1",
+            "outputType": "files",
+            "outputObject": null,
+            "transJson": {
+                "input_mode": "file",
+                "input_population": "csvtemp_20200924_143343.csv",
+                "event_inclusion": {
+                    "4": [
+                        "insert_date"
+                    ]
+                },
+                "demographic_inclusion": null,
+                "hierarchies": {
+                    "25": 147,
+                    "27": 157
+                },
+                "general_date_shift": 5,
+                "general_numeric_shift": 2,
+                "hipaa_inclusion": [
+                    "phone",
+                    "zip",
+                    "email",
+                    "ip",
+                    "url",
+                    "older_than_89",
+                    "date_shift"
+                ],
+                "hipaa_date_shift": null,
+                "hipaa_phone": null,
+                "custom_regexes": {
+                    "asaf12": "binder22"
+                },
+                "target_impala_tbl": "asaf test file upload"
+            },
+            "transMsg": null,
+            "pctProgress": 0,
+            "duration": null,
+            "insertDate": "2020-09-24T11:33:00.000Z",
+            "updateDate": "2020-09-24T11:33:00.000Z",
+            "fluxPid": null,
+            "daPid": null,
+            "transStatus": "pending",
+            "fluxRunHistoryId": null,
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
+        },
+        {
+            "lifeFluxTransId": "308",
+            "name": "asaf test edited 3",
+            "userId": "5",
+            "projectId": "14",
+            "outputType": "files",
+            "outputObject": null,
+            "transJson": {
+                "input_mode": "session",
+                "input_population": "93",
+                "event_inclusion": {
+                    "4": [
+                        "insert_date"
+                    ]
+                },
+                "demographic_inclusion": null,
+                "hierarchies": {
+                    "25": 147,
+                    "27": 157
+                },
+                "general_date_shift": 5,
+                "general_numeric_shift": 2,
+                "hipaa_inclusion": [
+                    "phone",
+                    "zip",
+                    "email",
+                    "ip",
+                    "url",
+                    "older_than_89",
+                    "date_shift"
+                ],
+                "hipaa_date_shift": null,
+                "hipaa_phone": null,
+                "custom_regexes": {
+                    "asaf12": "binder22"
+                },
+                "target_impala_tbl": "asaf test edited 3"
+            },
+            "transMsg": null,
+            "pctProgress": 0,
+            "duration": null,
+            "insertDate": "2020-09-23T10:42:10.000Z",
+            "updateDate": "2020-09-23T10:42:10.000Z",
+            "fluxPid": null,
+            "daPid": null,
+            "transStatus": "pending",
+            "fluxRunHistoryId": null,
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
+        },
+        {
+            "lifeFluxTransId": "316",
+            "name": "asaf test file upload",
+            "userId": "5",
+            "projectId": "1",
+            "outputType": "files",
+            "outputObject": null,
+            "transJson": {
+                "input_mode": "file",
+                "input_population": "csvtemp_20200924_150531.csv",
+                "event_inclusion": {
+                    "4": [
+                        "insert_date"
+                    ]
+                },
+                "demographic_inclusion": null,
+                "hierarchies": {
+                    "25": 147,
+                    "27": 157
+                },
+                "general_date_shift": 5,
+                "general_numeric_shift": 2,
+                "hipaa_inclusion": [
+                    "phone",
+                    "zip",
+                    "email",
+                    "ip",
+                    "url",
+                    "older_than_89",
+                    "date_shift"
+                ],
+                "hipaa_date_shift": null,
+                "hipaa_phone": null,
+                "custom_regexes": {
+                    "asaf12": "binder22"
+                },
+                "target_impala_tbl": "asaf test file upload"
+            },
+            "transMsg": null,
+            "pctProgress": 0,
+            "duration": null,
+            "insertDate": "2020-09-24T12:04:32.000Z",
+            "updateDate": "2020-09-24T12:04:32.000Z",
+            "fluxPid": null,
+            "daPid": null,
+            "transStatus": "pending",
+            "fluxRunHistoryId": null,
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
+        },
+        {
+            "lifeFluxTransId": "309",
+            "name": "asaf test edited34",
+            "userId": "5",
+            "projectId": "14",
+            "outputType": "files",
+            "outputObject": null,
+            "transJson": {
+                "input_mode": "session",
+                "input_population": "93",
+                "event_inclusion": {
+                    "4": [
+                        "insert_date"
+                    ]
+                },
+                "demographic_inclusion": null,
+                "hierarchies": {
+                    "25": 147,
+                    "27": 157
+                },
+                "general_date_shift": 5,
+                "general_numeric_shift": 2,
+                "hipaa_inclusion": [
+                    "phone",
+                    "zip",
+                    "email",
+                    "ip",
+                    "url",
+                    "older_than_89",
+                    "date_shift"
+                ],
+                "hipaa_date_shift": null,
+                "hipaa_phone": null,
+                "custom_regexes": {
+                    "asaf12": "binder22"
+                },
+                "target_impala_tbl": "asaf test edited34"
+            },
+            "transMsg": null,
+            "pctProgress": 0,
+            "duration": null,
+            "insertDate": "2020-09-24T08:12:04.000Z",
+            "updateDate": "2020-09-24T08:12:04.000Z",
+            "fluxPid": null,
+            "daPid": null,
+            "transStatus": "pending",
+            "fluxRunHistoryId": null,
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
+        },
+        {
+            "lifeFluxTransId": "317",
+            "name": "asaf test file upload",
+            "userId": "5",
+            "projectId": "1",
+            "outputType": "files",
+            "outputObject": null,
+            "transJson": {
+                "input_mode": "file",
+                "input_population": "20200924_151305_csvtemp.csv",
+                "event_inclusion": {
+                    "4": [
+                        "insert_date"
+                    ]
+                },
+                "demographic_inclusion": null,
+                "hierarchies": {
+                    "25": 147,
+                    "27": 157
+                },
+                "general_date_shift": 5,
+                "general_numeric_shift": 2,
+                "hipaa_inclusion": [
+                    "phone",
+                    "zip",
+                    "email",
+                    "ip",
+                    "url",
+                    "older_than_89",
+                    "date_shift"
+                ],
+                "hipaa_date_shift": null,
+                "hipaa_phone": null,
+                "custom_regexes": {
+                    "asaf12": "binder22"
+                },
+                "target_impala_tbl": "asaf test file upload"
+            },
+            "transMsg": null,
+            "pctProgress": 0,
+            "duration": null,
+            "insertDate": "2020-09-24T12:11:44.000Z",
+            "updateDate": "2020-09-24T12:11:44.000Z",
+            "fluxPid": null,
+            "daPid": null,
+            "transStatus": "pending",
+            "fluxRunHistoryId": null,
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
+        },
+        {
+            "lifeFluxTransId": "318",
+            "name": "asaf savee",
+            "userId": "5",
+            "projectId": "1",
+            "outputType": "files",
+            "outputObject": null,
+            "transJson": {
+                "input_mode": "file",
+                "input_population": "20200924_164017_csvtemp.csv",
+                "event_inclusion": {
+                    "4": [
+                        "insert_date"
+                    ]
+                },
+                "demographic_inclusion": null,
+                "hierarchies": {
+                    "25": 147,
+                    "27": 157
+                },
+                "general_date_shift": 5,
+                "general_numeric_shift": 2,
+                "hipaa_inclusion": [
+                    "phone",
+                    "zip",
+                    "email",
+                    "ip",
+                    "url",
+                    "older_than_89",
+                    "date_shift"
+                ],
+                "hipaa_date_shift": null,
+                "hipaa_phone": null,
+                "custom_regexes": {
+                    "asaf12": "binder22"
+                },
+                "target_impala_tbl": "asaf savee"
+            },
+            "transMsg": null,
+            "pctProgress": 0,
+            "duration": null,
+            "insertDate": "2020-09-24T12:18:35.000Z",
+            "updateDate": "2020-09-24T12:18:35.000Z",
+            "fluxPid": null,
+            "daPid": null,
+            "transStatus": "pending",
+            "fluxRunHistoryId": null,
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
+        },
+        {
+            "lifeFluxTransId": "319",
+            "name": "asaf good test",
+            "userId": "5",
+            "projectId": "1",
+            "outputType": "files",
+            "outputObject": null,
+            "transJson": {
+                "input_mode": "session",
+                "input_population": "939",
+                "event_inclusion": {
+                    "4": [
+                        "insert_date"
+                    ]
+                },
+                "demographic_inclusion": null,
+                "hierarchies": null,
+                "general_date_shift": 5,
+                "general_numeric_shift": 2,
+                "hipaa_inclusion": [
+                    "phone",
+                    "zip",
+                    "email",
+                    "ip",
+                    "url",
+                    "older_than_89",
+                    "date_shift"
+                ],
+                "hipaa_date_shift": null,
+                "hipaa_phone": null,
+                "custom_regexes": {
+                    "asaf12": "binder22"
+                },
+                "target_impala_tbl": "asaf good test"
+            },
+            "transMsg": null,
+            "pctProgress": 0,
+            "duration": null,
+            "insertDate": "2020-09-24T14:07:16.000Z",
+            "updateDate": "2020-09-24T14:07:16.000Z",
+            "fluxPid": null,
+            "daPid": null,
+            "transStatus": "pending",
+            "fluxRunHistoryId": null,
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
+        },
+        {
+            "lifeFluxTransId": "320",
+            "name": "asaf good test2",
+            "userId": "5",
+            "projectId": "1",
+            "outputType": "files",
+            "outputObject": null,
+            "transJson": {
+                "input_mode": "session",
+                "input_population": "939",
+                "event_inclusion": {
+                    "4": [
+                        "insert_date"
+                    ]
+                },
+                "demographic_inclusion": null,
+                "hierarchies": null,
+                "general_date_shift": 5,
+                "general_numeric_shift": 2,
+                "hipaa_inclusion": [
+                    "phone",
+                    "zip",
+                    "email",
+                    "ip",
+                    "older_than_89",
+                    "date_shift"
+                ],
+                "hipaa_date_shift": 2,
+                "hipaa_phone": "(1\\s?)?((\\([0-9]{3}\\))|[0-9]{3})[\\s\\-]?[\\0-9]{3}[\\s\\-]?[0-9]{4}",
+                "custom_regexes": {
+                    "asaf12": "binder22"
+                },
+                "target_impala_tbl": "asaf good test2"
+            },
+            "transMsg": null,
+            "pctProgress": 0,
+            "duration": null,
+            "insertDate": "2020-09-24T14:09:46.000Z",
+            "updateDate": "2020-09-24T14:09:46.000Z",
+            "fluxPid": null,
+            "daPid": null,
+            "transStatus": "failed",
+            "fluxRunHistoryId": null,
+            "daRunHistoryId": null,
+            "user": {
+                "id": "5",
+                "login": "mdclone.admin"
+            }
         }
     ],
     "massage": "Get all Patient Story's Objects",
