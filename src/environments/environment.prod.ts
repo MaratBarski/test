@@ -44,7 +44,13 @@ export const environment = {
     patientStoryUserSession: 'mdclone/api/v1/patient-story/user-session',
     hierarchyProject: 'mdclone/api/v1/hierarchy/project',
     patientStoryHierarchy: 'mdclone/api/v1/patient-story/hierarchy',
-    adUsers: 'ad-users'
+    adUsers: 'ad-users',
+	activate: {
+      base: 'mdclone/api/v1/activate',
+      file: '/activate-file',
+      calculate: '',
+      originalFile: '/download-original'
+    }
   }
 };
 
