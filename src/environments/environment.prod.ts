@@ -14,7 +14,7 @@ export const environment = {
     getRelationalIntegrity: 'mdclone/api/v1/file-source/get-relational-integrity',
     getSampleData: 'mdclone/api/v1/file-source/get-sample-data',
     templateByProject: 'mdclone/api/v1/template/get-by-project',
-    siteEventInfo: 'mdclone/api/v1/siteeventinfo/get-by-project',    
+    siteEventInfo: 'mdclone/api/v1/siteeventinfo/get-by-project',
     uploadFileSource: 'mdclone/api/v1/upload/file-source',
     uploadHierarchy: 'mdclone/api/v1/upload/hierarchy',
     deleteFileSource: 'mdclone/api/v1/file-source',
@@ -38,12 +38,13 @@ export const environment = {
     userList: 'mdclone/api/v1/user',
     research: 'mdclone/api/v1/research',
     formKey: 'mdclone/api/v1/config/form-key',
-    notificationUpdate:'mdclone/api/v1/config/notification',
-    project:'mdclone/api/v1/project',
+    notificationUpdate: 'mdclone/api/v1/config/notification',
+    project: 'mdclone/api/v1/project',
     patientStory: 'mdclone/api/v1/patient-story',
-    patientStoryUserSession: 'mdclone/api/v1/patient-story/user-session',    
+    patientStoryUserSession: 'mdclone/api/v1/patient-story/user-session',
     hierarchyProject: 'mdclone/api/v1/hierarchy/project',
-	adUsers: 'ad-users'    
+    patientStoryHierarchy: 'mdclone/api/v1/patient-story/hierarchy',
+    adUsers: 'ad-users'
   }
 };
 

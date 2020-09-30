@@ -43,6 +43,7 @@ export const environment = {
     patientStory: 'mdclone/api/v1/patient-story',
     patientStoryUserSession: 'mdclone/api/v1/patient-story/user-session',
     hierarchyProject: 'mdclone/api/v1/hierarchy/project',
+    patientStoryHierarchy: 'stage/api/v1/patient-story/hierarchy',
     adUsers: 'ad-users',
     activate: {
       base: 'mdclone/api/v1/activate',

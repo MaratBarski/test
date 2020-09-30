@@ -256,7 +256,7 @@ export class EditPatientService {
   private getStoriiesUrl = `${environment.serverUrl}${environment.endPoints.patientStory}`;
 
   @Offline('assets/offline/hierarchyProject.json?')
-  private getHierarchyProjectUrl = `${environment.serverUrl}${environment.endPoints.hierarchyProject}`;
+  private getHierarchyProjectUrl = `${environment.serverUrl}${environment.endPoints.patientStoryHierarchy}`;
 
   setTab(tab: number): void {
     if (!this.validate()) { return; }
@@ -315,13 +315,19 @@ export class EditPatientService {
 
   hierarchies: any;
   selectHierarchies(): void {
-    if (!this.hierarchies) { return; }
+    const dict = this.hierarchies || {};
     if (!this._hierarchyProjects) { return; }
-    //alert(JSON.stringify(this.hierarchies))
+    //alert(JSON.stringify(dict))
     //alert(JSON.stringify(this._hierarchyProjects))
     this._hierarchyProjects.forEach(p => {
-      if (!this.hierarchies[p.hierarchyRootId]) { return; }
-      p.selectedId = this.hierarchies[p.hierarchyRootId];
+      if (!dict[p.hierarchyRootId]) {
+        const selected = p.hierarchyLevels.find(x => x.sortValue === 0);
+        if (selected) {
+          p.selectedId = selected.hierarchyLevelId;
+        }
+        return;
+      }
+      p.selectedId = dict[p.hierarchyRootId];
     })
   }
 
