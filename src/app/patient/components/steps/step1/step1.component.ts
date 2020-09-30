@@ -1,16 +1,15 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { TabItemModel, AutoCompleteComponent, SelectOption } from '@appcore';
+import { TabItemModel, AutoCompleteComponent, SelectOption, BaseSibscriber } from '@appcore';
 import { EditPatientService } from '@app/patient/services/edit-patient.service';
 import { ProjectComboComponent } from '@app/shared/components/project-combo/project-combo.component';
 import { CohortSources, OutputFormats } from '@app/patient/models/models';
-import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'md-step1',
   templateUrl: './step1.component.html',
   styleUrls: ['./step1.component.scss']
 })
-export class Step1Component implements OnInit, AfterViewInit {
+export class Step1Component extends BaseSibscriber implements OnInit, AfterViewInit {
 
   @ViewChild('userNameCmp', { static: true }) userNameCmp: AutoCompleteComponent;
   @ViewChild('projectCmp', { static: true }) projectCmp: ProjectComboComponent;
@@ -21,7 +20,9 @@ export class Step1Component implements OnInit, AfterViewInit {
 
   constructor(
     public editPatientService: EditPatientService
-  ) { }
+  ) {
+    super();
+  }
 
   tabsFormat: Array<TabItemModel> = [];
   cohortOptions: Array<SelectOption> = []
@@ -35,8 +36,7 @@ export class Step1Component implements OnInit, AfterViewInit {
       return { title: x.text }
     });
     this.activeFormat = this.editPatientService.settings.outputFormat;
-    this.editPatientService.onQueriesLoded
-      .pipe(take(1))
+    super.add(this.editPatientService.onQueriesLoded
       .subscribe(() => {
         this.sourceQueries = this.queries = this.editPatientService.queries.map(s => {
           return {
@@ -44,7 +44,7 @@ export class Step1Component implements OnInit, AfterViewInit {
             name: s.session_name
           }
         });
-      })
+      }));
   }
 
   ngAfterViewInit(): void {
