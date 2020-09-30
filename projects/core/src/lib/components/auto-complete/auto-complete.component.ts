@@ -9,6 +9,7 @@ export class AutoCompleteComponent {
 
   @Input() maxHeight = '300px';
   @Input() disabled = false;
+  @Input() isCollapsed = false;
 
   @ViewChild('container', { static: true }) container: ElementRef;
   @Input() inputText: string = '';

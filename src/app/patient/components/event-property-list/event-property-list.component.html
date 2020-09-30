@@ -11,72 +11,9 @@
                     Property</span>
             </label>
         </div>
-        <div class="user-event-filter">
-            <div class="user-event-filter__label">Permission template</div>
-            <div class="user-event-filter__icon"><span class="ic-hover">
-                    <svg class="icon ic-filter ic-stroke">
-                        <use xlink:href="/assets/sprites/sprite.svg#ic-filter"></use>
-                    </svg></span>
-                <div class="user-event-filter__popup active">
-                    <form>
-                        <div class="user-event-filter__top">
-                            <div class="input-check">
-                                <input id="filterAll" type="checkbox" name="filterAll" checked="checked">
-                                <label class="input-check__label" for="filterAll"><span class="input-check__mark">
-                                        <svg class="icon ic-check">
-                                            <use xlink:href="/assets/sprites/sprite.svg#ic-check"></use>
-                                        </svg></span><span class="input-check__text">Select All</span></label>
-                            </div><span class="user-event-filter__clear">Clear</span>
-                        </div>
-                        <div class="user-event-filter__filters">
-                            <div class="input-check active">
-                                <input id="filter1" type="checkbox" name="filter1" checked="checked">
-                                <label class="input-check__label" for="filter1"><span class="input-check__mark">
-                                        <svg class="icon ic-check">
-                                            <use xlink:href="/assets/sprites/sprite.svg#ic-check"></use>
-                                        </svg></span><span class="input-check__text">Events without a
-                                        template</span></label>
-                            </div>
-                            <div class="input-check">
-                                <input id="filter2" type="checkbox" name="filter2" checked="checked">
-                                <label class="input-check__label" for="filter2"><span class="input-check__mark">
-                                        <svg class="icon ic-check">
-                                            <use xlink:href="/assets/sprites/sprite.svg#ic-check"></use>
-                                        </svg></span><span class="input-check__text">Obsolete events</span></label>
-                            </div>
-                            <div class="input-check">
-                                <input id="filter3" type="checkbox" name="filter3" checked="checked">
-                                <label class="input-check__label" for="filter3"><span class="input-check__mark">
-                                        <svg class="icon ic-check">
-                                            <use xlink:href="/assets/sprites/sprite.svg#ic-check"></use>
-                                        </svg></span><span class="input-check__text">All Medications &
-                                        Drugs</span></label>
-                            </div>
-                            <div class="input-check">
-                                <input id="filter4" type="checkbox" name="filter4" checked="checked">
-                                <label class="input-check__label" for="filter4"><span class="input-check__mark">
-                                        <svg class="icon ic-check">
-                                            <use xlink:href="/assets/sprites/sprite.svg#ic-check"></use>
-                                        </svg></span><span class="input-check__text">Oncology Events</span></label>
-                            </div>
-                            <div class="input-check">
-                                <input id="filter5" type="checkbox" name="filter5" checked="checked">
-                                <label class="input-check__label" for="filter5"><span class="input-check__mark">
-                                        <svg class="icon ic-check">
-                                            <use xlink:href="/assets/sprites/sprite.svg#ic-check"></use>
-                                        </svg></span><span class="input-check__text">Admission Related</span></label>
-                            </div>
-                        </div>
-                        <div class="user-event-filter__btn"><span class="btn btn_border btn_small">Cancel</span>
-                            <input class="btn btn_small" type="submit" value="Apply">
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
     </div>
     <div class="user-event-prop__content">
-        <div *ngFor="let opt of eventList;let optIndex = index;" [ngClass]="{'open':opt.isExpanded}"
+        <div *ngFor="let opt of editPatientService.events;let optIndex = index;" [ngClass]="{'open':opt.isExpanded}"
             class="user-event-unwrap">
             <div class="user-event-unwrap__main">
                 <div (click)="expand(opt)" class="user-event-unwrap__arr">
@@ -84,16 +21,16 @@
                 </div>
                 <div class="input-check active">
                     <input type="checkbox" [id]="'ev' + optIndex" (change)="checkEvent(opt)"
-                        [(ngModel)]="opt.event.isChecked">
+                        [(ngModel)]="opt.isChecked">
                     <label class="input-check__label" [for]="'ev' + optIndex">
                         <span class="input-check__mark">
                             <svg class="icon ic-check" mdcSvg="ic-check"></svg>
                         </span>
-                        <span class="input-check__text">{{opt.event.name}}</span>
+                        <span class="input-check__text">{{opt.eventTableAlias}}</span>
                     </label>
                 </div>
             </div>
-            <div *ngFor="let subItem of opt.properties;let subIndex = index" class="user-event-unwrap__content">
+            <div *ngFor="let subItem of opt.siteEventPropertyInfos;let subIndex = index" class="user-event-unwrap__content">
                 <div class="user-event-unwrap__item">
                     <div class="input-check">
                         <input type="checkbox" [id]="'sev' + optIndex + '_' + subIndex"
@@ -102,7 +39,7 @@
                             <span class="input-check__mark">
                                 <svg class="icon ic-check" mdcSvg="ic-check"></svg>
                             </span>
-                            <span class="input-check__text">{{subItem.name}}</span></label>
+                            <span class="input-check__text">{{subItem.fieldDescription}}</span></label>
                     </div>
                 </div>
             </div>

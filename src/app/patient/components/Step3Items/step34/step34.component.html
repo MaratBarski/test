@@ -18,10 +18,10 @@
                     <tbody>
                         <tr *ngFor="let r of editPatientService.regexes" class="table-unwrap__row">
                             <td class="table-unwrap__item">
-                                <input type="text" [(ngModel)]="r.name" placeholder="Name your expression">
+                                <input type="text" (change)="editPatientService.isValueChanged=true;" [(ngModel)]="r.name" placeholder="Name your expression">
                             </td>
                             <td class="table-unwrap__item">
-                                <input type="text"  [(ngModel)]="r.value" placeholder="Type a regular expression here">
+                                <input type="text" (change)="editPatientService.isValueChanged=true;" [(ngModel)]="r.value" placeholder="Type a regular expression here">
                             </td>
                             <td class="table-unwrap__item">
                                 <svg (click)="editPatientService.removeRegex(r)" class="icon ic-close-circle" mdcSvg="ic-close-circle">

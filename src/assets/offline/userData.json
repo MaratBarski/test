@@ -1,20 +1,20 @@
 {
     "status": "success",
     "data": {
-        "id": "5",
-        "login": "mdclone.admin",
-        "firstName": "Admin gggg",
+        "id": "10",
+        "login": "sariel.admin",
+        "firstName": "Sariel",
         "lastName": "Admin",
-        "email": "mdclone.admin@localhost",
+        "email": "sariel.admin@mdclone.com",
         "activated": true,
-        "langKey": "en",
+        "langKey": null,
         "activationKey": null,
         "resetKey": null,
-        "createdBy": "system",
-        "createdDate": "2016-06-01T21:00:00.000Z",
+        "createdBy": "N/A",
+        "createdDate": "2020-06-30T09:54:34.000Z",
         "resetDate": null,
-        "lastModifiedBy": "mdclone.admin",
-        "lastModifiedDate": "2018-12-11T08:10:09.089Z",
+        "lastModifiedBy": null,
+        "lastModifiedDate": null,
         "cellPhone": null,
         "domain": null,
         "photo": null,
@@ -24,9 +24,9 @@
                 "projectName": "Demo Project",
                 "defaultSiteId": "1",
                 "UserType": {
-                    "userId": "5",
+                    "userId": "10",
                     "projectId": "1",
-                    "userType": "admin",
+                    "userType": "ADMIN",
                     "anonymityLevel": 1,
                     "numericScatterLimit": 0
                 },
@@ -40,24 +40,8 @@
                         "project_id": "1"
                     },
                     {
-                        "templateId": "2",
-                        "templateName": "Diagnosis",
-                        "templateType": "DISPLAY",
-                        "templateGroup": null,
-                        "projectId": "1",
-                        "project_id": "1"
-                    },
-                    {
                         "templateId": "29",
                         "templateName": "Hanna",
-                        "templateType": "DISPLAY",
-                        "templateGroup": null,
-                        "projectId": "1",
-                        "project_id": "1"
-                    },
-                    {
-                        "templateId": "31",
-                        "templateName": "Medications",
                         "templateType": "DISPLAY",
                         "templateGroup": null,
                         "projectId": "1",
@@ -70,231 +54,51 @@
                         "templateGroup": null,
                         "projectId": "1",
                         "project_id": "1"
-                    }
-                ]
-            },
-            {
-                "projectId": "2",
-                "projectName": "R Test Project",
-                "defaultSiteId": "16",
-                "UserType": {
-                    "userId": "5",
-                    "projectId": "2",
-                    "userType": "ADMIN",
-                    "anonymityLevel": 1,
-                    "numericScatterLimit": 0
-                },
-                "template": [
-                    {
-                        "templateId": "13",
-                        "templateName": "all_r_files",
-                        "templateType": "PERMISSION",
-                        "templateGroup": null,
-                        "projectId": "2",
-                        "project_id": "2"
-                    }
-                ]
-            },
-            {
-                "projectId": "6",
-                "projectName": "ETL project",
-                "defaultSiteId": "3",
-                "UserType": {
-                    "userId": "5",
-                    "projectId": "6",
-                    "userType": "ADMIN",
-                    "anonymityLevel": 1,
-                    "numericScatterLimit": 1
-                },
-                "template": [
-                    {
-                        "templateId": "16",
-                        "templateName": "Template1",
-                        "templateType": "DISPLAY",
-                        "templateGroup": null,
-                        "projectId": "6",
-                        "project_id": "6"
                     },
                     {
-                        "templateId": "17",
-                        "templateName": "Template2",
+                        "templateId": "40",
+                        "templateName": "Test icon",
                         "templateType": "DISPLAY",
                         "templateGroup": null,
-                        "projectId": "6",
-                        "project_id": "6"
+                        "projectId": "1",
+                        "project_id": "1"
                     },
                     {
-                        "templateId": "18",
-                        "templateName": "Template1P",
-                        "templateType": "PERMISSION",
-                        "templateGroup": null,
-                        "projectId": "6",
-                        "project_id": "6"
-                    }
-                ]
-            },
-            {
-                "projectId": "14",
-                "projectName": "Training Mimic Data",
-                "defaultSiteId": "12",
-                "UserType": {
-                    "userId": "5",
-                    "projectId": "14",
-                    "userType": "ADMIN",
-                    "anonymityLevel": 1,
-                    "numericScatterLimit": 0
-                },
-                "template": [
-                    {
-                        "templateId": "23",
-                        "templateName": "Admissions",
+                        "templateId": "41",
+                        "templateName": "Diagnisis",
                         "templateType": "DISPLAY",
                         "templateGroup": null,
-                        "projectId": "14",
-                        "project_id": "14"
+                        "projectId": "1",
+                        "project_id": "1"
                     },
                     {
-                        "templateId": "20",
-                        "templateName": "Labs",
+                        "templateId": "2",
+                        "templateName": "Display Template for marat",
                         "templateType": "DISPLAY",
                         "templateGroup": null,
-                        "projectId": "14",
-                        "project_id": "14"
+                        "projectId": "1",
+                        "project_id": "1"
                     },
                     {
-                        "templateId": "21",
-                        "templateName": "Procedures",
-                        "templateType": "DISPLAY",
-                        "templateGroup": null,
-                        "projectId": "14",
-                        "project_id": "14"
-                    },
-                    {
-                        "templateId": "24",
-                        "templateName": "Diagnosis",
-                        "templateType": "DISPLAY",
-                        "templateGroup": null,
-                        "projectId": "14",
-                        "project_id": "14"
-                    },
-                    {
-                        "templateId": "25",
-                        "templateName": "Physical Transfers",
-                        "templateType": "DISPLAY",
-                        "templateGroup": null,
-                        "projectId": "14",
-                        "project_id": "14"
-                    },
-                    {
-                        "templateId": "26",
+                        "templateId": "31",
                         "templateName": "Medications",
                         "templateType": "DISPLAY",
                         "templateGroup": null,
-                        "projectId": "14",
-                        "project_id": "14"
-                    },
-                    {
-                        "templateId": "30",
-                        "templateName": "FedEx Day",
-                        "templateType": "PERMISSION",
-                        "templateGroup": null,
-                        "projectId": "14",
-                        "project_id": "14"
+                        "projectId": "1",
+                        "project_id": "1"
                     }
                 ]
             },
             {
-                "projectId": "27",
-                "projectName": "Moshe Project",
-                "defaultSiteId": "26",
-                "UserType": {
-                    "userId": "5",
-                    "projectId": "27",
-                    "userType": "ADMIN",
-                    "anonymityLevel": 1,
-                    "numericScatterLimit": 1
-                },
-                "template": []
-            },
-            {
-                "projectId": "17",
-                "projectName": "Mmm Project",
-                "defaultSiteId": "15",
-                "UserType": {
-                    "userId": "5",
-                    "projectId": "17",
-                    "userType": "ADMIN",
-                    "anonymityLevel": 1,
-                    "numericScatterLimit": 1
-                },
-                "template": []
-            },
-            {
-                "projectId": "159",
+                "projectId": "18",
                 "projectName": "ETL Project RS",
                 "defaultSiteId": "17",
                 "UserType": {
-                    "userId": "5",
+                    "userId": "10",
                     "projectId": "18",
-                    "userType": "ADMIN",
-                    "anonymityLevel": 1,
-                    "numericScatterLimit": 1
-                },
-                "template": []
-            },
-            {
-                "projectId": "15",
-                "projectName": "BIG Project",
-                "defaultSiteId": "13",
-                "UserType": {
-                    "userId": "5",
-                    "projectId": "15",
-                    "userType": "ADMIN",
-                    "anonymityLevel": 1,
-                    "numericScatterLimit": 1
-                },
-                "template": [
-                    {
-                        "templateId": "10",
-                        "templateName": "111111111100000000000",
-                        "templateType": "PERMISSION",
-                        "templateGroup": null,
-                        "projectId": "2",
-                        "project_id": "2"
-                    },
-                    {
-                        "templateId": "11",
-                        "templateName": "1111111",
-                        "templateType": "PERMISSION",
-                        "templateGroup": null,
-                        "projectId": "2",
-                        "project_id": "2"
-                    }
-                ]
-            },
-            {
-                "projectId": "21",
-                "projectName": "static numeric",
-                "defaultSiteId": "20",
-                "UserType": {
-                    "userId": "5",
-                    "projectId": "21",
-                    "userType": "ADMIN",
-                    "anonymityLevel": 1,
-                    "numericScatterLimit": 1
-                },
-                "template": []
-            },
-            {
-                "projectId": "8",
-                "projectName": "TestProject",
-                "defaultSiteId": null,
-                "UserType": {
-                    "userId": "5",
-                    "projectId": "8",
-                    "userType": "ADMIN",
-                    "anonymityLevel": 1,
-                    "numericScatterLimit": 1
+                    "userType": "RESEARCHER",
+                    "anonymityLevel": 12,
+                    "numericScatterLimit": 0
                 },
                 "template": []
             }
@@ -304,7 +108,7 @@
                 "name": "ROLE_ADMIN",
                 "UserAuthority": {
                     "userId": "5",
-                    "authorityName": "ROLE_ADMIN"
+                    "authorityName": "ROLE_ADMIN2"
                 }
             },
             {

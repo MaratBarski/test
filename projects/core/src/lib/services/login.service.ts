@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CanActivate } from '@angular/router';
+import { CanActivate, Router } from '@angular/router';
 import { DataService } from './data.service';
 import { LoginRequest } from '../models/LoginRequest';
 import { LoginResponse } from '../models/LoginResponse';
@@ -11,6 +11,7 @@ import { BaseSibscriber } from '../common/BaseSibscriber';
 import { userSelector } from '../store/selectors/user.selectors';
 import { userData } from '../store/actions/user.actions';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { MenuItem, UserEnableMenu } from '../common/side-menu';
 
 @Injectable({
   providedIn: 'root'
@@ -27,19 +28,25 @@ export class LoginService extends BaseSibscriber implements CanActivate {
 
   constructor(
     private dataService: DataService,
-    private store: Store<any>
+    private store: Store<any>,
+    private router: Router
   ) {
     super();
     super.add(this.store.select(userSelector).subscribe(user => {
       this._userInfo = user;
       this.setSuperAdmin();
+      this.setAdmin();
       this._userDataUpdated.next(this._userInfo);
     }));
   }
-  get isSuperAdmin(): boolean {
-    return this._isSuperAdmin;
-  }
+
+  get isSuperAdmin(): boolean { return this._isSuperAdmin; }
   private _isSuperAdmin = false;
+
+  get isAdmin(): boolean { return this._isAdmin; }
+  private _isAdmin = false;
+
+  get isResearcher(): boolean { return !this.isSuperAdmin && !this.isAdmin; }
 
   static readonly TOKEN = 'token';
   static readonly USER = 'user';
@@ -52,9 +59,14 @@ export class LoginService extends BaseSibscriber implements CanActivate {
     return '';
   }
 
-  private setSuperAdmin(): boolean {
-    if (!this._userInfo || !this._userInfo.data || !this._userInfo.data.authorities || !this._userInfo.data.authorities.length) { return false; }
+  private setSuperAdmin(): void {
+    if (!this._userInfo || !this._userInfo.data || !this._userInfo.data.authorities || !this._userInfo.data.authorities.length) { return; }
     this._isSuperAdmin = !!this._userInfo.data.authorities.find((x: any) => x.UserAuthority && x.UserAuthority.authorityName && x.UserAuthority.authorityName.toUpperCase() === 'ROLE_SUPERADMIN');
+  }
+
+  private setAdmin(): void {
+    if (!this._userInfo || !this._userInfo.data || !this._userInfo.data.projects || !this._userInfo.data.projects.length) { return; }
+    this._isAdmin = !!this._userInfo.data.projects.find((x: any) => x.UserType && x.UserType.userType && x.UserType.userType.toUpperCase() === 'ADMIN');
   }
 
   get isLogedIn(): boolean { return LoginService.IS_LOGEDIN(); }
@@ -91,6 +103,18 @@ export class LoginService extends BaseSibscriber implements CanActivate {
     )
   }
 
+  filtermenu(items: Array<MenuItem>): Array<MenuItem> {
+    if (this.isSuperAdmin) { return items; }
+    if (this.isAdmin) {
+      return items.filter(item => {
+        return !!UserEnableMenu[item.id] && UserEnableMenu[item.id].admin;
+      });
+    }
+    return items.filter(item => {
+      return !!UserEnableMenu[item.id] && UserEnableMenu[item.id].researcher;
+    });
+  }
+
   async login(loginRequest: LoginRequest): Promise<LoginResponse> {
     return this.dataService.post(ENV.loginUrl, loginRequest)
       .toPromise().then((res: any) => {
@@ -116,6 +140,16 @@ export class LoginService extends BaseSibscriber implements CanActivate {
           }
         });
       });
+  }
+
+  checkPermission(id: any): void {
+    if (!id) { return; }
+    if (this.isSuperAdmin) { return; }
+    if (this.isAdmin) {
+      if (!UserEnableMenu[id] || !UserEnableMenu[id].admin) { this.router.navigate(['/access-denied']) }
+      return;
+    }
+    if (!UserEnableMenu[id] || !UserEnableMenu[id].researcher) { this.router.navigate(['/access-denied']) }
   }
 
   canActivate() {

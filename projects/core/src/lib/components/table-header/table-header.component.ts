@@ -25,6 +25,7 @@ export class TableHeaderModel {
   css?: string;
   cellCss?: string;
   innerCss?: string;
+  emptyFilter?: string;
   cellContainerCss?: string;
   style?: { [key: string]: any };
   columnStyle?: { [key: string]: any };

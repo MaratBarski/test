@@ -39,9 +39,14 @@ export class ColorTextDirective {
     if (!this.element) { return; }
     if (!this.mdcColorText) {
       setTimeout(() => {
-        this.element.nativeElement.innerHTML = this.text;  
+        this.element.nativeElement.textContent = this.text;
+          // .replace(/&/g, '&amp;')
+          // .replace(/</g, '&lt;')
+          // .replace(/>/g, '&gt;')
+          // .replace(/'/g, '&#39;')
+          // .replace(/"/g, '&#34;');
       }, 1);
-      
+
       return;
     }
     let index = this.text.toLowerCase().indexOf(this.mdcColorText.toLowerCase());

@@ -2,3 +2,31 @@
     margin-top:7px;
     margin-bottom:7px;
 }
+.date-error{
+  font-family: OpenSans;
+  font-size: 12px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #e20343;
+  padding-left: 40px;
+  margin-top: -10px;
+}
+.invaliddate{
+    font-family: OpenSans;
+    font-size: 12px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #e20343;    
+    margin-top: -20px;
+}
+.invaliddate img, .date-error img {
+    width: 17px;
+    height: 15px;
+    object-fit: contain;
+}

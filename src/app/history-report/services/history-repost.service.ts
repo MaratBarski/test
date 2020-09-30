@@ -30,7 +30,7 @@ export class HistoryReportService {
     return this.dataService.get(this.getUrl);
 
   }
-
+  
   createDataSource(history: Array<SessionHistory>): TableModel {
     const data: TableModel = {
       headers: [
@@ -47,7 +47,7 @@ export class HistoryReportService {
         },
         {
           columnId: 'fullName',
-          text: 'User',
+          text: 'Full Name',
           isSortEnabled: true,
           filter: true,
           csvTitle: 'User',
@@ -55,7 +55,7 @@ export class HistoryReportService {
         },
         {
           columnId: 'name',
-          text: 'Query/File Name',
+          text: 'Query / File Name',
           isSortEnabled: true,
           csvTitle: 'Query/File name/ID',
           css: 'admin-table__item w-md-200'
@@ -69,9 +69,9 @@ export class HistoryReportService {
         },
         {
           columnId: 'research',
-          text: 'Research',
+          text: 'Permission Set',
           isSortEnabled: true,
-          csvTitle: 'Research name',
+          csvTitle: 'Permission Set',
           css: 'admin-table__item d-none d-xxxl-table-cell'
         },
         {

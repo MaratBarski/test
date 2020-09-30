@@ -78,7 +78,7 @@
     <span *ngIf="!row.isInactive && !src.hierarchyChange && src.hierarchyLoadingType==='etl'  && src.status!=='unmapped'">
         <mdc-icon path="ic-robot"></mdc-icon>
     </span>
-    <span *ngIf="!row.isInactive && src.status==='unmapped'" class="admin-table__icon">
+    <span mdcTooltip="Running" [stickyToElement]="true" *ngIf="!row.isInactive && src.status==='unmapped'" class="admin-table__icon">
         <svg class="icon ic-running ic-grey" mdcSvg="ic-running"></svg>
     </span>
 </ng-template>

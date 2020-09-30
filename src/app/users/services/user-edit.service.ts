@@ -83,8 +83,10 @@ export class UserEditService {
   set securityUser(user: any) {
     this._securityUser = user;
     this._systmeUser = this.users.find(x => x.id === user.id);
-    this.user.userName =
-      this.user.login = this._systmeUser.login;
+    if (this._systmeUser) {
+      this.user.userName =
+        this.user.login = this._systmeUser.login;
+    }
   }
   get securityUser(): any {
     return this._securityUser;
@@ -261,14 +263,17 @@ export class UserEditService {
   private _mode = 0;
 
   resetService(info: any): void {
+    this.isChanged = false;
     this._selectedTab = 0;
     this._mode = info.mode;
     this.resetValidation();
     this.loadUser(info.id);
   }
 
+  isChanged = false;
+
   isHasChanges(): boolean {
-    return true;
+    return this.isChanged;
   }
 
   getDefault(): any {

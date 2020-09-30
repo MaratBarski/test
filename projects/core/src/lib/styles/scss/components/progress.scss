@@ -4,7 +4,7 @@
   width: 60px;
   height: rem(17px);
   border-radius: rem(8.5px);
-  border: solid 1.5px $color-light-grey;
+  border: solid 1px $color-light-grey;
   @include font(normal, 600, rem(12px), rem(15px), $color-dark-blue);
   text-align: center;
   position: relative;

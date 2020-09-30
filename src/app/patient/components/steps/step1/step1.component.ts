@@ -28,6 +28,7 @@ export class Step1Component implements OnInit, AfterViewInit {
 
   activeFormat = 0;
   selectedCohortOption: SelectOption;
+  queryCollapsed = true;
 
   ngOnInit(): void {
     this.tabsFormat = OutputFormats.map(x => {
@@ -37,7 +38,7 @@ export class Step1Component implements OnInit, AfterViewInit {
     this.editPatientService.onQueriesLoded
       .pipe(take(1))
       .subscribe(() => {
-        this.queries = this.editPatientService.queries.map(s => {
+        this.sourceQueries = this.queries = this.editPatientService.queries.map(s => {
           return {
             id: s.session_id,
             name: s.session_name
@@ -69,39 +70,50 @@ export class Step1Component implements OnInit, AfterViewInit {
     this.editPatientService.projectName = this.projectCmp.selectedOption.text;
     this.editPatientService.setQueries();
     this.editPatientService.setHierarchyProjects();
+    this.editPatientService.loadEvents();
+    this.editPatientService.isValueChanged = true;
   }
 
   setOutputFormat(i: number): void {
     this.editPatientService.settings.outputFormat = i;
+    this.editPatientService.isValueChanged = true;
   }
 
   searchQueryText = '';
   queries = [];
+  sourceQueries = [];
 
   completeQuery(text: string): void {
-    this.queries = this.queries.filter(x => x.name.toLowerCase().indexOf(text.toLowerCase()) > -1);
+    this.queryCollapsed = false;
+    this.queries = this.sourceQueries.filter(x => !text || !text.trim() || x.name.toLowerCase().indexOf(text.toLowerCase()) > -1);
     this.searchQueryText = text;
   }
 
   selectQuery(item: any): void {
     this.editPatientService.settings.queryId = item.id;
     this.editPatientService.queryName = item.name;
+    this.editPatientService.isValueChanged = true;
   }
 
   clearQuery(): void {
+    this.queryCollapsed = false;
     this.editPatientService.settings.queryId = 0;
     this.editPatientService.queryName = '';
+    this.editPatientService.isValueChanged = true;
   }
 
   changeSource(opt: SelectOption): void {
     this.selectedCohortOption = opt;
     this.editPatientService.settings.cohortSource = opt.id;
+    this.editPatientService.isValueChanged = true;
   }
 
   selectedFile: any;
-  
+
   changeFile(event: any): void {
     this.selectedFile = event.target.files[0];
+    this.editPatientService.file = event.target.files[0];
+    this.editPatientService.isValueChanged = true;
     //alert(event.target.files[0].name);
   }
 }

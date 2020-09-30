@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output, HostListener } from '@angular/core';
+import { Component, EventEmitter, Output, HostListener } from '@angular/core';
 import { EditPatientService } from '@app/patient/services/edit-patient.service';
 import { ComponentService } from '@appcore';
 
@@ -7,7 +7,7 @@ import { ComponentService } from '@appcore';
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.scss']
 })
-export class FooterComponent implements OnInit {
+export class FooterComponent {
 
   @Output() onNext = new EventEmitter<number>();
   @Output() onSave = new EventEmitter();
@@ -17,9 +17,6 @@ export class FooterComponent implements OnInit {
   constructor(
     public editPatientService: EditPatientService
   ) { }
-
-  ngOnInit() {
-  }
 
   cancel(): void {
     this.onCancel.emit();
@@ -35,7 +32,7 @@ export class FooterComponent implements OnInit {
   }
 
   save(): void {
-
+    this.onSave.emit();
   }
 
   isShowOptions = false;

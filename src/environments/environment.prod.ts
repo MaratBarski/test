@@ -1,6 +1,6 @@
 export const environment = {
   name: 'dev',
-  production: false,
+  production: true,
   serverUrl: 'http://10.0.2.18:4000/',
   //loginUrl: 'http://localhost:3000/login/',
   loginUrl: 'http://10.0.2.18:3000/login',
@@ -11,7 +11,7 @@ export const environment = {
   endPoints: {
     userData: 'user-data',
     fileSource: 'mdclone/api/v1/file-source',
-    getRelationalIntegrity: 'kostya/api/v1/file-source/get-relational-integrity',
+    getRelationalIntegrity: 'mdclone/api/v1/file-source/get-relational-integrity',
     getSampleData: 'mdclone/api/v1/file-source/get-sample-data',
     templateByProject: 'mdclone/api/v1/template/get-by-project',
     siteEventInfo: 'mdclone/api/v1/siteeventinfo/get-by-project',    
@@ -43,6 +43,7 @@ export const environment = {
     patientStory: 'mdclone/api/v1/patient-story',
     patientStoryUserSession: 'mdclone/api/v1/patient-story/user-session',    
     hierarchyProject: 'mdclone/api/v1/hierarchy/project',
-    adUsers: 'ad-users'
+	adUsers: 'ad-users'    
   }
 };
+

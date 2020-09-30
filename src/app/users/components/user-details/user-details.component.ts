@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'md-user-details',
@@ -11,7 +12,9 @@ export class UserDetailsComponent implements OnInit {
   @Output() onClose = new EventEmitter<void>();
   isOver = false;
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit() {
   }
@@ -21,6 +24,7 @@ export class UserDetailsComponent implements OnInit {
   }
 
   edit(): void {
+    this.router.navigate(['/users/edit-user', { uid: this.userInfo.id, mode: 1 }]);
     this.onClose.emit();
   }
 }

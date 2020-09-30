@@ -11,11 +11,12 @@
         </div>
         <div class="admin-table-wrap__col">
             <div class="tabs-page">
-                <mdc-date-filter #dateFilter [dateFormat]="configService.dateFormat" (onFilter)="dateFilterData($event)" [dataSource]="reports"
-                    [items]="dateRanges"></mdc-date-filter>
+                <mdc-date-filter #dateFilter [dateFormat]="configService.dateFormat" (onFilter)="dateFilterData($event)"
+                    [dataSource]="reports" [items]="dateRanges"></mdc-date-filter>
             </div>
             <form class="form-search d-none d-md-block">
-                <mdc-auto-search (complete)="onSearchComplete($event)" pause="500" #search placeholder="{{'search'|translate}}"></mdc-auto-search>
+                <mdc-auto-search (complete)="onSearchComplete($event)" pause="500" #search
+                    placeholder="{{'search'|translate}}"></mdc-auto-search>
             </form>
         </div>
     </div>
@@ -38,7 +39,10 @@
 </ng-template>
 
 <ng-template #dateColumn let-item let-src="source">
-    <span class="pointer link">{{item.insertDate|date}}</span>
+    <span class="pointer link">
+        {{item.insertDate|date}}&nbsp;
+        {{item.insertDate|date:'HH:mm'}}
+    </span>
 </ng-template>
 
 <ng-template #dataTemplate let-src="source">
@@ -47,7 +51,7 @@
 </ng-template>
 
 <ng-template let-item #statusTemplate let-src="source">
-    <div *ngIf="src.transStatus" [pTooltip]="'File generated successfully'" >
+    <div *ngIf="src.transStatus" [pTooltip]="'File generated successfully'">
         <svg width="20" height="20" mdcSvg="ic-success" color="green"></svg>
     </div>
     <div *ngIf="!src.transStatus" [pTooltip]="item.failureToolTip">
@@ -56,17 +60,20 @@
 </ng-template>
 
 <ng-template let-item #downloadTemplate let-src="source">
-    <svg *ngIf="src.downloadActive" (click)="downloadClick(item,src,$event)" width="30" height="30"
-        mdcSvg="ic-download" color="#354362"></svg>
+    <svg *ngIf="src.downloadActive" (click)="downloadClick(item,src,$event)" width="30" height="30" mdcSvg="ic-download"
+        color="#354362"></svg>
     <svg *ngIf="!src.downloadActive" (click)="stopEvent($event)" color="#ACB2C3" width="30" height="30"
         mdcSvg="ic-download"></svg>
 </ng-template>
 
 <ng-template let-item #nameTemplate let-src="source">
     <div class="table-file-info" *ngIf="src.sessionId">
-        <span [mdcColorText]="searchText" [text]="src.sessionName" class="table-file-info__name">
+        <mdc-text-block [text]="src.sessionName" [colorText]="searchText" [maxWidth]="40" position="top">
+        </mdc-text-block>
+        <!-- <span [mdcColorText]="searchText" [text]="src.sessionName" class="table-file-info__name">
             {{src.sessionName}}
-        </span>&nbsp;|&nbsp;
+        </span> -->
+        &nbsp;|&nbsp;
         <a class="file-count" target="_blank" href="/datalake/#/projects/{{src.projectId}}/sessions/{{src.sessionId}}">
             <span class="file-count__val">{{src.sessionId}}</span>
             <svg style="vertical-align: middle;" width="17" height="17" class="ic-external-link"

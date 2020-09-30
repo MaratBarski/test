@@ -45,6 +45,9 @@
     <div *ngIf="isActive(src)">
         <span class="admin-table__circle admin-table__circle_green"></span>
     </div>
+    <div *ngIf="!isActive(src)">
+        <span class="admin-table__circle admin-table__circle_grey"></span>
+    </div>
 </ng-template>
 
 <md-confirm-dialog *ngIf="showDeleteConfirm" name="Delete permission set" [subName]="deleteSubTitle"

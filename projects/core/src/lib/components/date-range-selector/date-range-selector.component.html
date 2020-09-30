@@ -9,30 +9,45 @@
                     <div class="select-date__main calendar">
                         <div class="select-date__title">From:</div>
                         <div class="select-date__field">
-                            <p-calendar #fromPicker (onSelect)="checkToDate()" (onBlur)="checkToDate()" [locale]="locale" [(ngModel)]="from" hideTransitionOptions="0ms"
-                                showTransitionOptions="0ms" [showIcon]="false" [dateFormat]="dateFormat"
-                                [monthNavigator]="true" [yearNavigator]="true" yearRange="2000:2030"></p-calendar>
-                            <div class="select-date__label">{{fullDateFormat}}</div>
+                            <p-calendar #fromPicker [showOnFocus]="false" (onSelect)="checkToDate()"
+                                (onBlur)="checkToDate()" [locale]="locale" [(ngModel)]="from"
+                                hideTransitionOptions="0ms" showTransitionOptions="0ms" [showIcon]="false"
+                                [dateFormat]="dateFormat" [monthNavigator]="true" [yearNavigator]="true"
+                                yearRange="2000:2030"></p-calendar>
+                            <div [hidden]="!isFromValid" class="select-date__label">{{fullDateFormat}}</div>
                         </div>
                         <div class="select-date__icon">
                             <mdc-icon (click)="fromPicker.toggle()" path="ic-calendar"></mdc-icon>
                         </div>
+                    </div>
+                    <div style="padding-left: 20px;" class="invaliddate" [hidden]="isFromValid">
+                        <img src="./assets/images/error3.png">
+                        Date format must be DD/MM/YYYY
                     </div>
                 </div>
                 <div class="select-date__item">
                     <div class="select-date__main calendar">
                         <div class="select-date__title">To:</div>
                         <div class="select-date__field">
-                            <p-calendar #toPicker [minDate]="from" [locale]="locale" [(ngModel)]="to" hideTransitionOptions="0ms"
-                                showTransitionOptions="0ms" [showIcon]="false" [dateFormat]="dateFormat"
-                                [monthNavigator]="true" [yearNavigator]="true" yearRange="2000:2030"></p-calendar>
-                            <div class="select-date__label">{{fullDateFormat}}</div>
+                            <p-calendar #toPicker [minDate]="from" [showOnFocus]="false" [locale]="locale"
+                                [(ngModel)]="to" hideTransitionOptions="0ms" showTransitionOptions="0ms"
+                                [showIcon]="false" [dateFormat]="dateFormat" [monthNavigator]="true"
+                                [yearNavigator]="true" yearRange="2000:2030"></p-calendar>
+                            <div [hidden]="!isToValid" class="select-date__label">{{fullDateFormat}}</div>
                         </div>
                         <div class="select-date__icon">
                             <mdc-icon (click)="toPicker.toggle()" path="ic-calendar"></mdc-icon>
                         </div>
                     </div>
+                    <div style="padding-left: 6px;" class="invaliddate" [hidden]="isToValid">
+                        <img src="./assets/images/error3.png">
+                        Date format must be DD/MM/YYYY
+                    </div>
                 </div>
+            </div>
+            <div [hidden]="isDateRangeValid" class="date-error">
+                <img src="./assets/images/error3.png">
+                The 'From' date must be earlier than the 'To' date
             </div>
         </div>
     </div>

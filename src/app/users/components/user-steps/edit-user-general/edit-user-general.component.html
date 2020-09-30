@@ -62,21 +62,23 @@
                         <div class="user-details-tooltip__title">Invalid e-mail address</div>
                     </div>
                 </md-input-item>
-                <md-input-item type="text" [(ngModel)]="userEditService.user.cellPhone" [isOptional]="true"
-                    [isError]="false" placeHolder="+120-234-56789" label="Phone:" class="user-details-main__item">
+                <md-input-item type="text" (onChangeValue)="onChangeValue()"
+                    [(ngModel)]="userEditService.user.cellPhone" [isOptional]="true" [isError]="false"
+                    placeHolder="+120-234-56789" label="Phone:" class="user-details-main__item">
                 </md-input-item>
                 <div class="user-details-main__item">
                     <div class="user-details-main__label">
                         <span class="user-details-main__label-text">Super Admin:</span></div>
                     <div class="user-details-main__field">
-                        <mdc-toggle-button [(ngModel)]="userEditService.user.isSuperAdmin"></mdc-toggle-button>
+                        <mdc-toggle-button (onChange)="onChangeValue()" [(ngModel)]="userEditService.user.isSuperAdmin">
+                        </mdc-toggle-button>
                     </div>
                 </div>
             </div>
             <div class="user-details-param">
                 <div class="user-details-param__title">Select the environments that are accessible to the user:</div>
                 <div class="user-details-param__content">
-                    <md-user-project-selector [env]="env" [index]="i"
+                    <md-user-project-selector (onChange)="onChangeValue()" [env]="env" [index]="i"
                         *ngFor="let env of userEditService.environments;let i = index">
                     </md-user-project-selector>
                     <div class="error-text" [hidden]="userEditService.isEnvironmetValid">
