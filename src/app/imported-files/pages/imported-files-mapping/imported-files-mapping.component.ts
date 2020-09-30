@@ -207,8 +207,8 @@ export class ImportedFileMappingComponent extends BaseNavigation implements OnIn
       numOfCols,
       fileId: this.fileSource.fileId
     }).pipe(map(data => {
-      if (data.success === 'success') {
-        return data.percent;
+      if (data.status === 'success') {
+        return data.data.percent;
       } else {
         return 0;
       }

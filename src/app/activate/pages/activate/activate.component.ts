@@ -10,7 +10,7 @@ import {PropertyType} from '@app/imported-files/models/enum/PropertyType';
 import {IColumn} from '@app/activate/model/interfaces/IColumn';
 import {PhysicalColumn} from '@app/activate/model/Column/PhisicalColumn';
 import {ActivateService} from '@app/activate/services/activate.service';
-import {debounceTime, distinctUntilChanged, map} from 'rxjs/operators';
+import {debounceTime, distinctUntilChanged, map, switchMap} from 'rxjs/operators';
 import {FieldDataType} from '@app/activate/model/enum/FieldDataType';
 import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 
@@ -82,6 +82,11 @@ export class ActivateComponent extends BaseNavigation implements OnInit {
             const column: IColumn = new PhysicalColumn(clm);
             if (column.hierarchyRootId && column.hierarchyRootId > -1) {
               column.hierarchy = this.activateService.getHierarchy(column.hierarchyRootId).pipe(map((data: Hierarchy) => {
+                this.columnCollection.forEach((col, index) => {
+                  if (data.hierarchyRootId == col.hierarchyRootId) {
+                    this.columnCollection[index].defaultLevelId = data.defaultLevelId;
+                  }
+                });
                 return data.hierarchyLevels.map(item => {
                   return {
                     isChecked: data.defaultLevelId === item.hierarchyLevelId,
@@ -154,7 +159,7 @@ export class ActivateComponent extends BaseNavigation implements OnInit {
     const index = this.columnCollection.findIndex(col => col.physicalName === column.physicalName);
     if (column.rootType === FieldDataType.DATE && column.outputType === FieldDataType.DATE) {
       this.columnCollection[index].outputType = FieldDataType.STRING;
-    } else if (column.rootType === FieldDataType.DATE && column.outputType === FieldDataType.DATE) {
+    } else if (column.rootType === FieldDataType.DATE && column.outputType !== FieldDataType.DATE) {
       this.columnCollection[index].outputType = FieldDataType.DATE;
     }
     if (column.rootType === FieldDataType.NUMERIC && column.outputType === FieldDataType.NUMERIC) {
@@ -165,7 +170,11 @@ export class ActivateComponent extends BaseNavigation implements OnInit {
   }
 
   downloadOriginal() {
-    console.log(this.columnCollection);
+    this.activateService.updateFileSourceState(this.fileSource.fileId, this.columnCollection).pipe(switchMap(result => {
+      return this.activateService.downloadOriginalFile(this.fileSource.fileId);
+    })).subscribe(data => {
+      console.log(data);
+    });
   }
 
   saveState() {

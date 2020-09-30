@@ -201,7 +201,7 @@
 
               <!--              // col of hierarchy start-->
               <td class="admin-table__item d-none d-md-table-cell">
-                <mdc-select [(ngModel)]="column.hierarchy" [isSmall]="true" [applyWidth]="false" [options]="column.hierarchy | async"
+                <mdc-select [(ngModel)]="column.defaultLevelId" [isSmall]="true" [applyWidth]="false" [options]="column.hierarchy | async"
                             *ngIf="column.hierarchyRootId && column.hierarchyRootId > -1"></mdc-select>
               </td>
               <!--              // col of hierarchy end-->
@@ -271,7 +271,7 @@
                 <!--                </svg>-->
               </div>
               <div class="footer-cohort__text">
-                Cohort: <span class="footer-cohort__num">14,239</span></div>
+                Cohort: <span class="footer-cohort__num">{{ fileSource.rowsNum | number }}</span></div>
               <div class="footer-cohort__time">Calculated: May, 17 2020 14:06</div>
             </div>
             <span class="footer__btn-big"><span class="btn btn_border">Previous</span>

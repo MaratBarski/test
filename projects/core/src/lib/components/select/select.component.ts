@@ -93,6 +93,7 @@ export class SelectComponent implements ControlValueAccessor, AfterViewInit {
   }
 
   writeValue(value: any) {
+    debugger;
     // for id type number only
     if (!isNaN(value)) {
       value = Number(value);

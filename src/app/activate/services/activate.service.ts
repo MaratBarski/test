@@ -2,11 +2,9 @@ import {Injectable} from '@angular/core';
 import {ActivatedRouteSnapshot, Resolve, RouterStateSnapshot} from '@angular/router';
 import {Observable, Subject} from 'rxjs';
 import {FileSource} from '@app/imported-files/models/file-source';
-import {Template} from '@app/models/template';
 import {environment} from '@env/environment';
 import {catchError, map, switchMap} from 'rxjs/operators';
 import {DataService, NotificationsService, ToasterType} from '@appcore';
-import {Hierarchy} from '@app/models/hierarchy';
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +24,7 @@ export class ActivateService implements Resolve<any> {
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any {
     const id = route.paramMap.get('fileId');
     let fileSource: FileSource;
-    this.getUrl = `${environment.serverUrl}${environment.endPoints.fileSource}/${id}`;
+    this.getUrl = `${environment.serverUrl}${environment.endPoints.activate.base}${environment.endPoints.activate.file}/${id}`;
     return this.dataService.get(this.getUrl).pipe(map((data: any) => {
       fileSource = data.data as FileSource;
       return [fileSource];
@@ -52,6 +50,14 @@ export class ActivateService implements Resolve<any> {
   updateFileSourceState(fileId, state): Observable<FileSource> {
     this.getUrl = `${environment.serverUrl}${environment.endPoints.fileSource}/${fileId}`;
     return this.dataService.put(this.getUrl, state).pipe(map((item: any) => {
+      return item.data;
+    }));
+  }
+
+  downloadOriginalFile(fileId): Observable<any> {
+    this.getUrl = `${environment.serverUrl}${environment.endPoints.activate.base}${environment.endPoints.activate.originalFile}/${fileId}`;
+    return this.dataService.get(this.getUrl).pipe(map((item: any) => {
+      debugger;
       return item.data;
     }));
   }

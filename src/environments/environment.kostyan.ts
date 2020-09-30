@@ -82,11 +82,16 @@ export const environment = {
     research: 'kostya/api/v1/research',
     formKey: 'kostya/api/v1/config/form-key',
     notificationUpdate: 'kostya/api/v1/config/notification',
-    project: 'kostyan/api/v1/project',
-    patientStory: 'kostyan/api/v1/file-source',
-    patientStoryUserSession: 'kostyan/api/v1/patient-story/user-session',
-    hierarchyProject: 'mdclone/api/v1/hierarchy/project',
+    project: 'kostya/api/v1/project',
+    patientStory: 'kostya/api/v1/file-source',
+    patientStoryUserSession: 'kostya/api/v1/patient-story/user-session',
+    hierarchyProject: 'kostya/api/v1/hierarchy/project',
     adUsers: 'ad-users',
-    activate: 'kostyan/api/v1/activate'
+    activate: {
+      base: 'kostya/api/v1/activate',
+      file: '/activate-file',
+      calculate: '',
+      originalFile: '/download-original'
+    }
   }
 };
