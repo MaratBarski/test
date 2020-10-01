@@ -81,6 +81,11 @@ export class NotificationsService extends BaseSibscriber {
     this.update();
   }
 
+  get onNotificationAdded(): Observable<any> {
+    return this._onNotificationAdded.asObservable();
+  }
+  private _onNotificationAdded = new Subject()
+
   get notifications(): Array<INotification> {
     return this._notifications;
   }
@@ -206,6 +211,9 @@ export class NotificationsService extends BaseSibscriber {
   }
 
   copyNotification(from: any, to: INotification): void {
+    if (from.showInContainer) {
+      this._onNotificationAdded.next();
+    }
     NOTIFICATION_MAP.forEach(k => {
       to[k.client] = from[k.server];
     });

@@ -21,12 +21,17 @@
                 </div>
               </div>
             </div>
-            <div class="header-notice">
-              <mdc-icon [hidden]="(notificationsService.notifications|showNotice:'container').length" (click)="showNotifications($event)" [path]="icon.notice" [css]="icon.notice">
-              </mdc-icon>
-              <mdc-icon [hidden]="!(notificationsService.notifications|showNotice:'container').length" (click)="showNotifications($event)" path="notice-active" [css]="icon.notice">
-              </mdc-icon>              
-              <div [@toggleHeight]="isShowNotifications" style="position: relative;" (mouseover)="isNoticeOver=true" (mouseleave)="isNoticeOver=false" (click)="noticeClick($event)">
+            <div class="header-notice trans">
+              <div class="{{newCss}}" (click)="showNotifications($event)">
+                <mdc-icon [hidden]="(notificationsService.notifications|showNotice:'container').length"
+                  [path]="icon.notice" [css]="icon.notice">
+                </mdc-icon>
+                <mdc-icon [hidden]="!(notificationsService.notifications|showNotice:'container').length"
+                  path="notice-active" [css]="icon.notice">
+                </mdc-icon>
+              </div>
+              <div style="position: relative;" [hidden]="!isShowNotifications" (mouseover)="isNoticeOver=true"
+                (mouseleave)="isNoticeOver=false" (click)="noticeClick($event)">
                 <mdc-notifications></mdc-notifications>
               </div>
               <mdc-notification></mdc-notification>

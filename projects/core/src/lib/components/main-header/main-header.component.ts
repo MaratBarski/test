@@ -2,6 +2,7 @@ import { Component, Input, HostListener } from '@angular/core';
 import { ComponentService } from '../../services/component.service';
 import { NotificationsService } from '../../services/notifications.service';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { BaseSibscriber } from '../../common/BaseSibscriber';
 
 export enum Icon {
   hamburgerOpen = 'ic-hamburger',
@@ -17,36 +18,46 @@ export enum Icon {
 @Component({
   selector: 'mdc-main-header',
   templateUrl: './main-header.component.html',
-  styleUrls: ['./main-header.component.css'],
-  animations: [
-    trigger('toggleHeight', [
-      state('false', style({
-        height: '0px',
-        opacity: '0',
-        overflow: 'hidden'
-        // display: 'none'
-      })),
-      state('true', style({
-        height: '*',
-        opacity: '1'
-      })),
-      transition('true => false', animate('200ms ease-in')),
-      transition('false => true', animate('200ms ease-out'))
-    ])
-  ],
+  styleUrls: ['./main-header.component.css']
 })
-export class MainHeaderComponent {
-  //  = environment.serverRoute;
+export class MainHeaderComponent extends BaseSibscriber {
   @Input() uiRoute;
   get sideBarOpened(): boolean {
     return this.componentService.showSideMenu;
   }
   icon = Icon;
+  rotateTimeoutID: any;
 
   constructor(
     private componentService: ComponentService,
     public notificationsService: NotificationsService
-  ) { }
+  ) {
+    super();
+    super.add(
+      this.notificationsService.onNotificationAdded.subscribe(() => {
+        this.clearRotateTimeout();
+        this.noticeRotate(10);
+      })
+    );
+  }
+
+  newCss = '';
+
+  clearRotateTimeout(): void {
+    if (this.rotateTimeoutID) {
+      clearTimeout(this.rotateTimeoutID);
+    }
+    this.rotateTimeoutID = undefined;
+  }
+
+  noticeRotate(count: number): void {
+    this.clearRotateTimeout();
+    if (count <= 0) { this.newCss = ''; return; }
+    this.newCss = !this.newCss || this.newCss === 'r0' ? 'r1' : 'r0';
+    this.rotateTimeoutID = setTimeout(() => {
+      this.noticeRotate(count - 1);
+    }, 100);
+  }
 
   @HostListener('document:click', ['$event']) onMouseClick(event: any) {
     if (this.isNoticeOver) { return; }
@@ -65,10 +76,26 @@ export class MainHeaderComponent {
     const isSshow = this.isShowNotifications;
     ComponentService.documentClick(event);
     this.isShowNotifications = !isSshow;
+    //this.testNotice();
   }
 
   toggleSideBar(): void {
     this.componentService.showSideMenu = !this.componentService.showSideMenu;
     this.componentService.onSideBarToggle.next(this.componentService.showSideMenu);
+  }
+
+  testNotice(): void {
+    //setInterval(() => {
+      this.notificationsService.addServerNotification({
+        key: "ee0e3204-0a84-4042-b3e9-4affb5566a78",
+        message: "Comments",
+        showInToaster: false,
+        showInContainer: true,
+        status: "Failed",
+        subject: "File mapping saved successfully↵",
+        succLinkText: "link to page",
+        type: 3
+      });
+    //}, 1000);
   }
 }
