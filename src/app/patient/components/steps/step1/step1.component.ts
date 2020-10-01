@@ -3,6 +3,7 @@ import { TabItemModel, AutoCompleteComponent, SelectOption, BaseSibscriber } fro
 import { EditPatientService } from '@app/patient/services/edit-patient.service';
 import { ProjectComboComponent } from '@app/shared/components/project-combo/project-combo.component';
 import { CohortSources, OutputFormats } from '@app/patient/models/models';
+import { RadioListComponent } from '@app/shared/components/radio-list/radio-list.component';
 
 @Component({
   selector: 'md-step1',
@@ -17,6 +18,7 @@ export class Step1Component extends BaseSibscriber implements OnInit, AfterViewI
   @ViewChild('radioTemplate2', { static: true }) radioTemplate2: any;
   @ViewChild('radioTitle1', { static: true }) radioTitle1: any;
   @ViewChild('radioTitle2', { static: true }) radioTitle2: any;
+  @ViewChild('cohortRadion', { static: true }) cohortRadion: RadioListComponent;
 
   constructor(
     public editPatientService: EditPatientService
@@ -48,21 +50,24 @@ export class Step1Component extends BaseSibscriber implements OnInit, AfterViewI
   }
 
   ngAfterViewInit(): void {
-    const dict = {
-      radioTemplate1: { body: this.radioTemplate1, title: this.radioTitle1 },
-      radioTemplate2: { body: this.radioTemplate2, title: this.radioTitle2 }
-    };
+    // const dict = {
+    //   radioTemplate1: { body: this.radioTemplate1, title: this.radioTitle1 },
+    //   radioTemplate2: { body: this.radioTemplate2, title: this.radioTitle2 }
+    // };
+    // setTimeout(() => {
+    //   this.cohortOptions = CohortSources.map(x => {
+    //     return {
+    //       text: x.text,
+    //       id: x.id,
+    //       template: dict[x.template].body,
+    //       titleTemplate: dict[x.template].title
+    //     }
+    //   });
+    //   this.selectedCohortOption = this.cohortOptions.find(x => x.id === this.editPatientService.settings.cohortSource);
+    // }, 0);
     setTimeout(() => {
-      this.cohortOptions = CohortSources.map(x => {
-        return {
-          text: x.text,
-          id: x.id,
-          template: dict[x.template].body,
-          titleTemplate: dict[x.template].title
-        }
-      });
-      this.selectedCohortOption = this.cohortOptions.find(x => x.id === this.editPatientService.settings.cohortSource);
-    }, 0);
+      this.selectedCohortOption = this.cohortRadion.options.find(x => x.id === this.editPatientService.settings.cohortSource);
+    }, 1);
   }
 
   changedProject(id: string): void {
