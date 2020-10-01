@@ -18,7 +18,7 @@ pipeline {
                             bat 'npm install'
                             bat 'npm install -g @angular/cli'
                             bat 'ng build core'
-                            bat 'npm run build-stage'
+                            bat 'npm run build-prod'
                         }
                     }
                 }
