@@ -574,7 +574,7 @@ export class EditPatientService {
 
   convertToServer(): any {
     const res = {
-      lifeFluxTransId: this._storyId,
+      //lifeFluxTransId: this._storyId,
       name: this.settings.settingsName,
       projectId: this.settings.projectId,
       //userId:0,
