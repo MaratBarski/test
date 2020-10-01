@@ -8,11 +8,13 @@
                         <div class="user-source__item">
                             <div class="user-source__label"><span class="user-source__label-text">Name:</span></div>
                             <div class="user-source__field">
-                                <input [ngClass]="{'error':!editPatientService.isNameSetted}" type="text"
-                                    [(ngModel)]="editPatientService.settings.settingsName"
+                                <input (change)="validateName()" [ngClass]="{'error':!editPatientService.isNameSetted}"
+                                    type="text" [(ngModel)]="editPatientService.settings.settingsName"
                                     placeholder="Type name for the settings">
                                 <div [hidden]="editPatientService.isNameSetted" class="user-details-main__error">Missing
                                     name</div>
+                                <div [hidden]="!editPatientService.isNameExists" class="user-details-main__error">Name
+                                    already exists</div>
                             </div>
                         </div>
                         <div class="user-source__item">
@@ -32,8 +34,8 @@
                         <div class="user-source__item user-source__item_full">
                             <div class="user-source__label">Cohort source:</div>
                             <div class="user-source__field">
-                                <md-radio-list #cohortRadion (onChange)="changeSource($event)" [selectedOption]="selectedCohortOption"
-                                    [options]="[
+                                <md-radio-list #cohortRadion (onChange)="changeSource($event)"
+                                    [selectedOption]="selectedCohortOption" [options]="[
                                     {
                                         text: 'Based on a query',
                                         id: 1,

@@ -136,6 +136,9 @@ export class EditPatientService {
   get isNameSetted(): boolean { return this._isNameSetted; }
   private _isNameSetted = true;
 
+  get isNameExists(): boolean { return this._isNameExists; }
+  private _isNameExists = true;
+
   get isQuerySelected(): boolean { return this._isQuerySelected; }
   private _isQuerySelected = true;
 
@@ -150,6 +153,7 @@ export class EditPatientService {
     this._isQuerySelected = true;
     this._isFileSelected = true;
     this._isShowError = false;
+    this._isNameExists = false;
   }
 
   private _isNeedValidate = true;
@@ -168,6 +172,10 @@ export class EditPatientService {
     }
     if (this._settings.cohortSource === 2 && !this.file) {
       error = this._isFileSelected = false;
+    }
+    if (this.checkNameExists()) {
+      this._isNameExists = true;
+      error = false;
     }
     this._isShowError = !error;
     return error;
@@ -213,17 +221,40 @@ export class EditPatientService {
       })
   }
 
+  private _storyList: Array<any>;
+
+  checkNameExists(): boolean {
+    if (!this._storyList || !this._storyList.length) { return false; }
+    if (!this.settings.settingsName || !this.settings.settingsName.trim()) { return false; }
+    const storyId = this._isCopy ? 0 : this.storyId || 0;
+    return !!this._storyList.find(x => x.name
+      && x.name.trim().toLowerCase() === this.settings.settingsName.trim().toLowerCase()
+      && x.lifeFluxTransId != storyId);
+  }
+
   loadSettings(): Observable<any> {
-    if (this.storyId) {
-      return this.http.get(this.getStoriiesUrl)
-        .pipe(
-          take(1),
-          map((res: any) => {
+    // if (this.storyId) {
+    //   return this.http.get(this.getStoriiesUrl)
+    //     .pipe(
+    //       take(1),
+    //       map((res: any) => {
+    //         return res.data.find(x => x.lifeFluxTransId == this.storyId);
+    //       })
+    //     )
+    // }
+    // return of(this.getDefault());
+
+    return this.http.get(this.getStoriiesUrl)
+      .pipe(
+        take(1),
+        map((res: any) => {
+          this._storyList = res.data;
+          if (this.storyId) {
             return res.data.find(x => x.lifeFluxTransId == this.storyId);
-          })
-        )
-    }
-    return of(this.getDefault());
+          }
+          return this.getDefault();
+        })
+      )
   }
 
   loadQueries(projectId: number): Observable<any> {

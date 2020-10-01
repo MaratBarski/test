@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { NavigationService } from '@appcore';
 import { PermissionSetService } from '@app/users/services/permission-set.service';
 
 @Component({
@@ -6,17 +7,20 @@ import { PermissionSetService } from '@app/users/services/permission-set.service
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
 
   @Input() pageTitle = 'Add permission set';
   @Input() showLegend = true;
   @Input() showTitle = true;
+  @Input() backUrl = 'users';
 
   constructor(
-    public permissionSetService: PermissionSetService
+    public permissionSetService: PermissionSetService,
+    private navigationService: NavigationService
   ) { }
 
-  ngOnInit() {
+  back(): void {
+    this.navigationService.navigate(`/${this.backUrl}`);
   }
 
 }

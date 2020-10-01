@@ -70,11 +70,15 @@ export class Step1Component extends BaseSibscriber implements OnInit, AfterViewI
     }, 1);
   }
 
+  validateName(): void {
+    this.editPatientService.isValueChanged = true;
+  }
+
   changedProject(id: string): void {
     this.editPatientService.settings.projectId = id;
     this.editPatientService.projectName = this.projectCmp.selectedOption.text;
     setTimeout(() => {
-      this.editPatientService.setQueries();  
+      this.editPatientService.setQueries();
     }, 1);
     //this.editPatientService.setHierarchyProjects();
     //this.editPatientService.loadEvents();
