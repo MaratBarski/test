@@ -3,7 +3,7 @@ pipeline {
     environment {
         HOME = '.'
         MAJ = "2"
-        IMG_TAG = "10.0.2.204:5000/mdclone-mainapp-ui:$MAJ.${env.BUILD_ID}"
+        IMG_TAG = "10.0.2.204:5000/mainappui:$MAJ.${env.BUILD_ID}"
     }
     stages {
         stage('Build') {
@@ -16,8 +16,9 @@ pipeline {
                     steps {
                         nodejs(nodeJSInstallationName: 'node') {
                             bat 'npm install'
+                            bat 'npm install -g @angular/cli'
                             bat 'ng build core'
-                            bat 'node ./node_modules/@angular/cli/bin/ng build --prod'
+                            bat 'npm run build-stage'
                         }
                     }
                 }
@@ -77,7 +78,7 @@ pipeline {
                     steps {
                         sh 'echo Updating to version $IMG_TAG'
                         withCredentials([kubeconfigFile(credentialsId: '06c9a9c0-6244-4a71-b2d0-f078dfc206bf', variable: 'KUBECONFIG')]) {
-                            sh 'kubectl set image deployment.apps/mdclone-mainapp-ui mdclone-mainapp-ui=$IMG_TAG'
+                            sh 'kubectl set image deployment.apps/mainappui mainappui=$IMG_TAG'
                         }
                     }
                 }
