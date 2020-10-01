@@ -7,7 +7,7 @@
             New categorization
         </ng-template>
     </div>
-    <div (click)="cancel()" class="modal-window__close ic-hover">
+    <div (click)="cancel($event)" class="modal-window__close ic-hover">
         <mdc-icon path="ic-close"></mdc-icon>
     </div>
     <div *ngIf="isEditMode" class="modal-window__text">Environment: {{source?.domain}}</div>

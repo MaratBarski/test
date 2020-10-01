@@ -200,6 +200,7 @@ export class EditPatientService {
 
   setHierarchyProjects(): void {
     this._isHierarchyProjectsaded = false;
+    this._prevHierarchyProjectID = this.settings.projectId;
     this.http.get(`${this.getHierarchyProjectUrl}/${this.settings.projectId}`)
       .pipe(take(1))
       .subscribe((res: any) => {
@@ -274,14 +275,31 @@ export class EditPatientService {
 
   get events(): Array<any> { return this._events; }
   private _events: Array<any>;
+  private _prevEventProjectID = 0;
+  private _prevHierarchyProjectID = 0;
 
   refreshEvents(): void {
+    if (this._selectedTab === 1) {
+      if (this.settings.projectId !== this._prevEventProjectID) {
+        this.loadEvents();
+      }
+    }
+    if (this._selectedTab === 2) {
+      if (this.settings.projectId !== this._prevHierarchyProjectID) {
+        this.setHierarchyProjects();
+      }
+    }
     if (this._selectedTab !== 3) { return; }
     this._events = JSON.parse(JSON.stringify(this.events));
   }
 
+  get isEventsLoaded(): boolean { return this._isEventsLoaded; }
+  private _isEventsLoaded = true;
+
   loadEvents(): void {
+    this._isEventsLoaded = false;
     this._events = undefined;
+    this._prevEventProjectID = this.settings.projectId;
     this.http.get(`${this.siteEventInfoUrl}/${this.settings.projectId}`)
       .pipe(take(1))
       .subscribe((res: any) => {
@@ -293,8 +311,9 @@ export class EditPatientService {
           });
         })
         this.selectEvents();
+        this._isEventsLoaded = true;
       }, error => {
-
+        this._isEventsLoaded = true;
       })
   }
 
@@ -350,15 +369,17 @@ export class EditPatientService {
 
   get storyId(): number { return this._storyId; }
   _storyId = 0;
+  _isCopy = false;
 
-  reset(id: number = undefined): void {
+  reset(params: any): void {
     this.isValueChanged = false;
     this.showCancelConfirm = false;
     this.resetValidation();
     this.selectedEvents = undefined;
     this.hierarchies = undefined;
     this.regexes = [];
-    this._storyId = id;
+    this._storyId = params.id;
+    this._isCopy = !!params.copy
     this._selectedTab = 0;
     this.editQueryId = 0;
     this.queryName = '';
@@ -397,7 +418,8 @@ export class EditPatientService {
 
   convertToClient(settings): void {
     this._settings = this.getDefault();
-    this._settings.settingsName = settings.name;
+    const copy = this._isCopy ? 'Copy of ' : '';
+    this._settings.settingsName = `${copy}${settings.name}`;
     this._settings.projectId = parseInt(`${settings.projectId}`);
     if (this._settings.projectId) {
       const proj = this.loginService.findProject(this.settings.projectId);
@@ -482,8 +504,9 @@ export class EditPatientService {
     //document.write(JSON.stringify(obj));
     //console.log(obj);
     this._dataLoaded = false;
-    const method = this._storyId ? 'put' : 'post';
-    const id = this._storyId ? this._storyId : '';
+    const method = this._storyId && !this._isCopy ? 'put' : 'post';
+    const id = this._storyId && !this._isCopy ? this._storyId : '';
+
     if (this.settings.cohortSource === 1) {
       const obj = this.convertToServer();
       console.log(obj);

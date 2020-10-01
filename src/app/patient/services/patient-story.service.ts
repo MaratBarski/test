@@ -22,6 +22,10 @@ export class PatientStoryService {
     return this.dataService.get(this.getUrl);
   }
 
+  deletePatientStory(item: any): Observable<any> {
+    return this.dataService.delete(`${environment.serverUrl}${environment.endPoints.patientStory}/${item.lifeFluxTransId}`);
+  }
+
   createDataSource(files: Array<any>): TableModel {
     const data: TableModel = {
       actions: {
@@ -77,11 +81,12 @@ export class PatientStoryService {
             icon: 'ic-delete',
             command: 'delete'
             , checkDisabled: (source: any) => {
-              if (!source.projectObj) { return true; }
-              if (this.loginService.isAdminOfProject(source.projectObj.projectId)) { return false; }
-              if (source.fileType) { return true; }
-              if (source.uploadedBy === this.loginService.userInfo.data.id) { return false; }
-              return true;
+              return false;
+              // if (!source.projectObj) { return true; }
+              // if (this.loginService.isAdminOfProject(source.projectObj.projectId)) { return false; }
+              // if (source.fileType) { return true; }
+              // if (source.uploadedBy === this.loginService.userInfo.data.id) { return false; }
+              // return true;
             }
           }
         ]
