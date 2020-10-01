@@ -79,6 +79,9 @@ export class NotificationsService extends BaseSibscriber {
     notice.showInToaster = false;
     notice.showInContainer = !!notice.containerEnable;
     this.update();
+    if (notice.showInContainer) {
+      this._onNotificationAdded.next();
+    }
   }
 
   get onNotificationAdded(): Observable<any> {
