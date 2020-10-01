@@ -38,7 +38,7 @@
 
 <ng-template #KeyStatus let-item let-src="source">
     <svg width="20" height="20" color="#b00" *ngIf="item.isExpired"
-        mdcSvg="ic-failure"></svg>
+        mdcSvg="ic-failure" [stickyToElement]="true" mdcTooltip="Expired"></svg>
 </ng-template>
 
 <ng-template #Active let-item let-src="source">
