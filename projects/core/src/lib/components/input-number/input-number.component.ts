@@ -81,7 +81,7 @@ export class InputNumberComponent implements ControlValueAccessor {
   }
 
   add(i: number): void {
-    if (isNaN(this._value)) {
+    if (this._value == null || isNaN(this._value)) {
       this._value = this.defaultValue;
     }
     this._value = parseInt('' + this._value);
