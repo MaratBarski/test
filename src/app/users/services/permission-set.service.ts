@@ -4,10 +4,10 @@ import { Offline } from '@app/shared/decorators/offline.decorator';
 import { environment } from '@env/environment';
 import { forkJoin, Subject, Observable, of } from 'rxjs';
 import { UserListService } from './user-list.service';
-import { DateService, BaseSibscriber, NotificationsService, ToasterType, INotification, NavigationService } from '@appcore';
+import { DateService, BaseSibscriber, NotificationsService, ToasterType, NavigationService } from '@appcore';
 import { ConfigService } from '@app/shared/services/config.service';
 import { Router } from '@angular/router';
-import { NO_ALLOWED_EVENTS, ALL_EVENTS, BASED_EVENTS, AllowedEvents, PermissionSet, ResearchStatus } from '../models/models';
+import { NO_ALLOWED_EVENTS, ALL_EVENTS, BASED_EVENTS, PermissionSet, ResearchStatus } from '../models/models';
 import { take } from 'rxjs/operators';
 
 @Injectable({
@@ -348,8 +348,8 @@ export class PermissionSetService extends BaseSibscriber {
         this.isSaving = false;
         this.notificationService.addNotification({
           type: ToasterType.error,
-          name: 'Failed to update the permission set.',
-          comment: 'Try again or contact MDClone support.',
+          name: 'Failed to update the permission set',
+          comment: error.message,
           showInToaster: true
         });
       });
@@ -365,8 +365,8 @@ export class PermissionSetService extends BaseSibscriber {
         this.isSaving = false;
         this.notificationService.addNotification({
           type: ToasterType.error,
-          name: 'Failed to create the permission set.',
-          comment: 'Try again or contact MDClone support.',
+          name: 'Failed to create the permission set',
+          comment: error.message,
           showInToaster: true
         });
       });
@@ -619,7 +619,7 @@ export class PermissionSetService extends BaseSibscriber {
       .subscribe((flag: boolean) => {
         if (this.isEditMode || applyTemplates) {
           this.initEvents(permSet);
-          if (permSet.researchStatus && permSet.researchStatus.toLowerCase() === ResearchStatus.Open) {
+          if (permSet.researchStatus && permSet.researchStatus.toLowerCase() === ResearchStatus.Open.toLowerCase()) {
             if (!permSet.researchTemplates || !permSet.researchTemplates.length) {
               this.permissionSet.allowedEvent = ALL_EVENTS;
             }
@@ -627,7 +627,7 @@ export class PermissionSetService extends BaseSibscriber {
               this.permissionSet.allowedEvent = BASED_EVENTS;
             }
           }
-          if (permSet.researchStatus && permSet.researchStatus.toLowerCase() === ResearchStatus.Initial) {
+          if (permSet.researchStatus && permSet.researchStatus.toLowerCase() === ResearchStatus.Initial.toLowerCase()) {
             this.permissionSet.allowedEvent = NO_ALLOWED_EVENTS;
           } else if (permSet.researchTemplates) {
             this.templates.forEach(t => {
@@ -653,7 +653,7 @@ export class PermissionSetService extends BaseSibscriber {
     res.toDate = permSet.endDate ? new Date(permSet.endDate) : undefined;
     res.toDateUnlimited = !permSet.endDate;
     res.isActive = permSet.researchStatus &&
-      (permSet.researchStatus.toLowerCase() === ResearchStatus.Open || permSet.researchStatus.toLowerCase() === ResearchStatus.Initial);
+      (permSet.researchStatus.toLowerCase() === ResearchStatus.Open.toLowerCase() || permSet.researchStatus.toLowerCase() === ResearchStatus.Initial.toLowerCase());
 
     res.keyName = permSet.approvalKey;
     if (permSet.approvalKeyExpirationDate) {
@@ -699,7 +699,7 @@ export class PermissionSetService extends BaseSibscriber {
 
   updateAllowedEvents(): void {
     if (this.permissionSet.allowedEvent === ALL_EVENTS) {
-      this.templates.forEach(x => x.isChecked = true);
+      this.templates.forEach(x => x.isChecked = false);
     } else if (this.permissionSet.allowedEvent === NO_ALLOWED_EVENTS) {
       this.templates.forEach(x => x.isChecked = false);
     }
