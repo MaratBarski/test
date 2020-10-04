@@ -156,17 +156,21 @@ export class PermissionSetService extends BaseSibscriber {
 
   isPopup = false;
 
-  resetService(id: any): void {
+  clear(): void {
     this.isPopup = false;
     this._fromSetId = 0;
     this.isAfterValidate = false;
+    this._isShowError = false;
+    this._selectedTab = 0;
+  }
+
+  resetService(id: any): void {
+    this.clear();
     this._permissionSet = this.getDefault();
     this.addedEvents = [];
     this._setId = id;
     this.loadData();
     this.user = undefined;
-    this._isShowError = false;
-    this._selectedTab = 0;
     this.setInitialSet();
     this._onAllowedEventsChange.next();
   }
