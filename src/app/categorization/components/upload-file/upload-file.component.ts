@@ -41,7 +41,7 @@ export class UploadFileComponent {
   fileName = '';
   file = '';
   project = '';
-  defaultCategory = '0';
+  defaultCategory = '1';
   categoryHeaders: Array<string>;
   isFileError = false;
 
@@ -62,7 +62,8 @@ export class UploadFileComponent {
       notification: {
         name: 'Uploading Categorization',
         failName: `Failed to upload ${this.fileName}.`,
-        failComment: 'Try again or contact MDClone support.',
+        //failComment: 'Try again or contact MDClone support.',
+        failComment: '',
         succName: 'Categorization file uploaded successfully.',
         abortName: 'Aborted successfully.',
         abortComment: `Upload of ${this.fileName} was successfully aborted.`,
@@ -133,7 +134,7 @@ export class UploadFileComponent {
     this.fileName = '';
     this.file = '';
     this.description = '';
-    this.defaultCategory = '0';
+    this.defaultCategory = '1';
   }
 
   fileNameErrorMessage: string = undefined;
@@ -167,19 +168,38 @@ export class UploadFileComponent {
           this.isFileError = true;
         }
       }
-      this.categoryHeaders =
-        //['Select default category...']
-        [].concat(
-          arr.map((str, i) => {
-            return str;
-            //return { text: str, value: i, id: i }
-          }));
-    }).catch(error => {
-      this.categoryHeaders = [];
-      this.file = '';
-      this.fileErrorMessage = 'File format needs to be CSV (comma separate values)';
-      this.isFileError = true;
-    });
+
+      if (!this.isFileError && this.fileInput.nativeElement.files[0].size < 10000) {
+        this.csvManagerService.readBlock(0, this.fileInput.nativeElement.files[0].size, this.fileInput.nativeElement.files[0])
+          .then(res => {
+            const rows = res ? res.split('\n') : [];
+            if (rows.length < 2 || !rows[1]) {
+              this.fileError(ValidationFileMessage.NoRows);
+              this.categoryHeaders = [];
+              this.isFileError = true;
+            }
+          }).catch(() => {
+            this.fileError(ValidationFileMessage.NoRows);
+            this.categoryHeaders = [];
+            this.isFileError = true;
+          })
+      }
+      if (!this.isFileError) {
+        this.categoryHeaders =
+          //['Select default category...']
+          [].concat(
+            arr.map((str, i) => {
+              return str;
+              //return { text: str, value: i, id: i }
+            }));
+      }
+    })
+      .catch(error => {
+        this.categoryHeaders = [];
+        this.file = '';
+        this.fileErrorMessage = 'File format needs to be CSV (comma separate values)';
+        this.isFileError = true;
+      });
 
   }
 
@@ -232,7 +252,7 @@ export class UploadFileComponent {
           } else {
             this.file = this.fileInput.nativeElement.value;
             this.readFile(this.fileInput.nativeElement.files[0]);
-            this.defaultCategory = '0';
+            this.defaultCategory = '1';
           }
         }).catch(e => {
           this.fileError(ValidationFileMessage.NoUtf8);

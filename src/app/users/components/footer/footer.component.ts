@@ -28,6 +28,7 @@ export class FooterComponent {
   }];
 
   isShowOptions = false;
+  @Input() isPopup = false;
 
   cancel(): void {
     this.isShowOptions = false;

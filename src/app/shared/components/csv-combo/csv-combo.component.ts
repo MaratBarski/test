@@ -11,7 +11,7 @@ export class CsvComboComponent {
   @Input() applyWidth = false;
   @Input() selectUp = false;
   @Input() emptyData: SelectOption = { text: 'Select default category...', id: '' };
-  @Input() selectFirst = false;
+  @Input() selectFirst = 1;
 
   @Input() set header(header: string) {
     if (!header) {
@@ -28,8 +28,9 @@ export class CsvComboComponent {
       this.selectOptions = undefined;
       return;
     }
-    if (headers.length && this.selectFirst) {
-      this.selectedOption = { id: 0, text: headers[0], value: 0 };
+    if (headers.length > this.selectFirst && this.selectFirst >= 0) {
+      this.selectedOption = { id: this.selectFirst, text: headers[this.selectFirst], value: this.selectFirst };
+      this.dataModel = this.selectFirst;
     }
     this.selectOptions = headers.map((header, index) => {
       return { id: index, text: header, value: index };
@@ -40,7 +41,7 @@ export class CsvComboComponent {
 
   selectOptions: Array<SelectOption>;
   selectedOption: SelectOption = undefined;
-  dataModel: any;
+  dataModel = 0;
 
   changedOption(option: SelectOption): void {
     this.header = option.id.toString();
