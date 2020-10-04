@@ -466,7 +466,7 @@ export class UserEditService {
       .map(env => {
         return {
           projectId: env.projectId,
-          userType: env.role === 1 ? 'researcher' : 'admin',
+          userType: env.role === 1 ? 'researcher'.toUpperCase() : 'admin'.toUpperCase(),
           anonymityLevel: env.data === 1 ? env.kf : 1
         };
       });
