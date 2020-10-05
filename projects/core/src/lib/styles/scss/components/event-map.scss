@@ -40,7 +40,7 @@
 		align-items: center;
 		justify-content: center;
 		width: 16px;
-		height: 42px;
+		height: 41px;
 		background: $color-light-grey;
 		border-radius: 5px 0 0 5px;
 		position: absolute;
@@ -101,6 +101,8 @@
 				height: rem(26px);
 				padding-left: 0;
 			}
+
+      &__head.active{color: $color-dark-grey;}
 
 			&__head-arr{
 				top: -2px;
@@ -423,16 +425,8 @@
 	&__content-wrap{
 		height: calc(100vh - 258px);
 		overflow-y: auto;
-		padding: 20px;
-		// padding-bottom: 0;
-		// margin-bottom: 20px;
+    padding: 20px 20px 0;
 	}
-
-	// &__content{
-		
-	// 	// padding-bottom: 0;
-	// 	// margin-bottom: 20px;
-	// }
 
 	&__desc{
 		@include font(normal, normal, rem(14px), 1.2, $color-dark-grey);
@@ -440,14 +434,26 @@
 	}
 
 	&__group{
-		display: flex;
-		justify-content: space-between;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -9px;
+    margin-right: -9px;
 	}
 
-	&__group &__item-wrap{width: calc(50% - 9px);}
-	&__group &__item{width: 100%;}
-	&__item-wrap{margin-bottom: 20px;}
-	&__item{width: calc(50% - 9px);}
+  &__group &__item-wrap{
+    width: calc(50% - 18px);
+    max-width: 372px;
+    margin-left: 9px;
+    margin-right: 9px;
+  }
+
+  &__group &__item{width: 100%;}
+  &__item-wrap{margin-bottom: 20px;}
+
+  &__item{
+    width: calc(50% - 18px);
+    max-width: 372px;
+  }
 
 	&__label{
 		display: flex;
@@ -509,11 +515,21 @@
 
 	&__info .tooltip,
 	&__help .tooltip{
-		display: none;
-		position: absolute;
-		top: 0;
-		left: 100%;
+    display: none;
+    width: 249px;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 8px;
+    position: absolute;
+    top: -2px;
+    left: 100%;
+    z-index: 2;
 	}
+
+  &__info .tooltip_left::after,
+  &__help .tooltip_left::after{
+    top: 5px;
+  }
 
 	&__info:hover .tooltip,
 	&__help:hover .tooltip{
@@ -603,20 +619,62 @@
 
 	.rule-res-search{margin-top: 8px;}
 
+  &__table-wrap{
+    position: relative;
+    padding-top: 55px;
+    margin-left: -20px;
+    margin-right: -20px;
+    overflow-x: auto;
+    width: calc(100% + 40px);
+  }
+
 	&__table{
-		margin-left: -20px;
-		margin-right: -20px;
+    height: calc(100vh - 366px);
+    overflow-x: visible;
+    overflow-y: auto;
+    border-top: 1px solid rgba(161,173,205,.5);
 
-		.admin-table{
-			box-shadow: none;
+    .admin-table{
+      box-shadow: none;
 
-			tr th.admin-table__item_check{width: 130px;}
-		}
+      tr th.admin-table__item_check{width: 130px;}
+      &__item_check .admin-table__title{width: 80px;}
+      &__type .admin-table__title{width: 60px;}
 
-		.admin-table__head .admin-table__item{
-			padding-top: 11px;
-			padding-bottom: 4px;
-		}
+
+      & .admin-table__head .admin-table__item{
+        height: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+        border-bottom: 0;
+        position: static;
+      }
+
+      &__title{
+        display: block;
+        height: 48px;
+        position: absolute;
+        top: 6px;
+      }
+
+      &__title-val{
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+      }
+
+      &__icon .ic-calendar{
+        width: 25px;
+        height: 25px;
+      }
+    }
+
+    .select_small .select__head{padding-right: 32px;}
+
+    .input-check{
+      &__mark{border-color: $color-light-grey;}
+    }
 	}
 }
 
@@ -751,36 +809,128 @@
 @media (max-width: 1899px) {
 	.event-map-main{
 		&__table{
-			margin-left: -20px;
-			margin-right: -20px;
+      .admin-table{
+        box-shadow: none;
 
-			.admin-table{
-				box-shadow: none;
+        .admin-table__item{
+          vertical-align: top;
+          padding-top: 4px;
+          padding-bottom: 4px;
+        }
 
-				.admin-table__item{
-					vertical-align: top;
-					padding-top: 4px;
-					padding-bottom: 4px;
-				}
-
-				.admin-table__item > span,
-				.admin-table__item > div{
-					vertical-align: middle;
-				}
+        .admin-table__item > span,
+        .admin-table__item > div{
+          vertical-align: middle;
+        }
 
 
-				tr th.admin-table__item_check{width: 100px;}
+        tr th.admin-table__item_check{width: 100px;}
+        &__item_check .admin-table__title{width: 100px;}
+        &__type .admin-table__title{width: 50px;}
 
-				textarea{height: 200px;}
-			}
+        textarea{height: 200px;}
+
+        &__item:first-child{padding-left: 20px;}
+        &__item:last-child{padding-right: 20px;}
+      }
 		}
 	}
 }
 
-@media (max-width: 1440px) {
-	.event-map-main{
-		&__table{
-			.admin-table{width: 1530px;}
-		}
-	}
+@media (max-width: 1650px) {
+  .event-map-main{
+    &__table{
+      width: 1610px;
+      // .admin-table{width: 1610px;}
+    }
+  }
+}
+
+
+@media (max-width: 991px) {
+  .event-map-main{
+    &__group &__item-wrap{
+      width: calc(100% - 18px);
+      max-width: 100%;
+    }
+
+    &__item{
+      width: 100%;
+      max-width: 100%;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .event-map{
+    display: block;
+    margin-top: 16px;
+
+    & .event-map-panel,
+    & .event-map-panel__content,
+    & .event-map-panel__info{
+      width: 100%;
+    }
+
+    .event-map-panel__content{height: 0;}
+
+    &.open-panel .event-map-panel__content{
+      height: 350px;
+    }
+
+    &.open-panel .event-map-panel,
+    &.open-panel .event-map-panel__content,
+    &.open-panel .event-map-panel__info,
+    &.open-panel .event-map-main{
+      width: 100%;
+    }
+
+    &.open-panel .event-map-panel{margin-bottom: 15px;}
+    &.open-panel .event-map-panel .event-map-panel__arr .icon{transform: rotate(90deg);}
+  }
+
+  .event-map-panel{
+    &__arr{
+      width: 41px;
+      height: 16px;
+      border-radius: 5px 5px 0 0;
+      top: auto;
+      right: auto;
+      bottom: 100%;
+      left: 0;
+
+      .icon{transform: rotate(270deg);}
+    }
+
+    .tooltip{width: auto;}
+  }
+
+  .event-map-main{
+    &__content-wrap{height: auto;}
+
+    .admin-table{
+      display: table;
+
+      tbody{display: table-row-group;}
+      thead{display: table-header-group;}
+
+      &__head,
+      &__row,
+      tr{
+        display: table-row;
+      }
+
+      &__item,
+      td{
+        display: table-cell;
+      }
+
+      &__head .admin-table__item:last-child,
+      &__item:last-child{
+        display: table-cell;
+        position: static;
+        transform: none;
+      }
+    }
+  }
 }
