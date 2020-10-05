@@ -1,7 +1,7 @@
 <div>
     <mdc-tabs [tabid]="tabid" [active]="tabActive" [tabs]="tabs" (select)="selectTab($event)">
     </mdc-tabs>
-    <div #dateRangeSelector (click)="dateRangeClick($event)" [style.visibility]="showCustom?'visible':'hidden'"
+    <div #dateRangeSelector (click)="dateRangeClick($event)" [hidden]="!showCustom"
         class="custom-date">
         <mdc-date-range-selector [dateFormat]="dateFormat" [from]="customFrom" [to]="customTo" (onApply)="applyCustomDate($event)"
             (onCancel)="cancelCustomDate()"></mdc-date-range-selector>
