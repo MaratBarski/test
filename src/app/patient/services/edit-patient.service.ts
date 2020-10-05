@@ -590,7 +590,8 @@ export class EditPatientService {
           }
         },
         form: fd,
-        url: `${environment.serverUrl}${environment.endPoints.patientStory}/${id}`
+        method: method,
+        url: `${environment.serverUrl}${environment.endPoints.patientStoryUpload}/${id}`
       });
     }
   }

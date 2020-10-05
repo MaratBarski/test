@@ -136,6 +136,10 @@
                         </div>
                     </div>
                 </div>
+                <div [hidden]="permissionSetService.isDateRangeValid" class="date-error">
+                    <img src="./assets/images/error3.png">
+                    The 'From' date must be earlier than the 'To' date
+                </div>
             </div>
         </div>
         <div class="add-perm-sect">

@@ -162,6 +162,7 @@ export class PermissionSetService extends BaseSibscriber {
     this.isAfterValidate = false;
     this._isShowError = false;
     this._selectedTab = 0;
+    this.isDateRangeValid = true;
   }
 
   resetService(id: any): void {
@@ -436,10 +437,12 @@ export class PermissionSetService extends BaseSibscriber {
 
   private _isNeedValidate = true;
   isAfterValidate = false;
+  isDateRangeValid = true;
 
   validate(setError: boolean): boolean {
     if (!this._isNeedValidate) { return true; }
 
+    this.isDateRangeValid = true;
     if (setError) {
       this._isShowError = true;
     }
@@ -453,6 +456,13 @@ export class PermissionSetService extends BaseSibscriber {
     if (!this._permissionSet.fromDateUnlimited && !this.dateService.isDateValid(this._permissionSet.fromDate)) { return false; }
     if (!this._permissionSet.toDateUnlimited && !this.dateService.isDateValid(this._permissionSet.toDate)) { return false; }
 
+    if (!this._permissionSet.fromDateUnlimited && !this._permissionSet.toDateUnlimited) {
+      if (this._permissionSet.toDate < this._permissionSet.fromDate) {
+        this.isDateRangeValid = false;
+        return false;
+      }
+    }
+
     if (!this.permissionSet.isNew && !this._fromSetId) { return false; }
     if (this.permissionSet.allowedEvent === BASED_EVENTS) {
       if (!this.templates
@@ -461,6 +471,7 @@ export class PermissionSetService extends BaseSibscriber {
         return false;
       }
     }
+
     //if (!this.dateService.isDateValid(this._permissionSet.keyExpirationDate)) { return false; }
 
     //if (this.isEmpty(this._permissionSet.keyName)) { return false; }
