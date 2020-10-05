@@ -169,7 +169,14 @@ export class Step1Component extends BaseSibscriber implements OnInit, AfterViewI
   }
 
   completeUsers(text: string): void {
-    this.users = this._users.filter(x => x.name.toLowerCase().indexOf(text.toLowerCase()) > -1);
+    this.users = this._users
+      .filter(x => x.name.toLowerCase().indexOf(text.toLowerCase()) > -1)
+      .sort((a, b) => {
+        if (!a.name && !b.name) { return 0; }
+        if (!a.name && b.name) { return 1; }
+        if (a.name && !b.name) { return -1; }
+        return a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1;
+      });
     this.searchUserText = text;
     this.permissionSetService.validate(false);
   }
