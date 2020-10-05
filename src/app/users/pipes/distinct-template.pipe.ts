@@ -5,7 +5,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class DistinctTemplatePipe implements PipeTransform {
 
-  transform(templates: Array<any>, args:any): Array<any> {
+  transform(templates: Array<any>, args:any = undefined): Array<any> {
     if (!templates) { return []; }
     const selected = templates.filter(x => x.isChecked || (args && args.state === 2));
     const dict = {}
