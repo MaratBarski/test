@@ -201,8 +201,10 @@
 
               <!--              // col of hierarchy start-->
               <td class="admin-table__item d-none d-md-table-cell">
-                <mdc-select [(ngModel)]="column.defaultLevelId" [isSmall]="true" [applyWidth]="false" [options]="column.hierarchy | async"
-                            *ngIf="column.hierarchyRootId && column.hierarchyRootId > -1"></mdc-select>
+                <div *ngIf="column.hierarchy | async as hierarchy">
+                  <mdc-select [(ngModel)]="column.defaultLevelId" [isSmall]="true" [applyWidth]="false" [options]="hierarchy"
+                              *ngIf="column.hierarchyRootId && column.hierarchyRootId > -1"></mdc-select>
+                </div>
               </td>
               <!--              // col of hierarchy end-->
 

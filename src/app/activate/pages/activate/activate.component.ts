@@ -77,6 +77,26 @@ export class ActivateComponent extends BaseNavigation implements OnInit {
         this.fileSource = this.route.snapshot.data.data[0];
         if (this.fileSource.fileState) {
           this.columnCollection = this.fileSource.fileState;
+          this.columnCollection.forEach(clm => {
+            const column: IColumn = clm;
+            if (column.hierarchyRootId && column.hierarchyRootId > -1) {
+              column.hierarchy = this.activateService.getHierarchy(column.hierarchyRootId).pipe(map((data: Hierarchy) => {
+                this.columnCollection.forEach((col, index) => {
+                  if (data.hierarchyRootId == col.hierarchyRootId) {
+                    this.columnCollection[index].defaultLevelId = data.defaultLevelId;
+                  }
+                });
+                return data.hierarchyLevels.map(item => {
+                  return {
+                    isChecked: data.defaultLevelId === item.hierarchyLevelId,
+                    text: item.hierarchyLevelName,
+                    id: item.hierarchyLevelId,
+                  };
+                });
+              }));
+
+            }
+          });
         } else {
           this.fileSource.fileClms.forEach(clm => {
             const column: IColumn = new PhysicalColumn(clm);
