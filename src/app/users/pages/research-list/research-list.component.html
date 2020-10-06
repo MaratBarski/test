@@ -19,9 +19,9 @@
         </div>
     </div>
     <div [hidden]="!isDataExists || !isLoaded">
-        <mdc-table #table (onAction)="onAction($event)" [auto]="true" [emptyState]="emptyState" [downloader]="downloader"
-            [cellsTemplate]="{ Modified:Modified,KeyStatus:KeyStatus,Active:Active}" [searchOptions]="searchOptions"
-            [paginator]="paginator" [search]="search" [dataSource]="dataSource">
+        <mdc-table #table (onAction)="onAction($event)" [auto]="true" [emptyState]="emptyState"
+            [downloader]="downloader" [cellsTemplate]="{ Modified:Modified,KeyStatus:KeyStatus,Active:Active}"
+            [searchOptions]="searchOptions" [paginator]="paginator" [search]="search" [dataSource]="dataSource">
         </mdc-table>
     </div>
     <mdc-empty-state *ngIf="!isDataExists && isLoaded" [emptyState]="emptyState"></mdc-empty-state>
@@ -37,16 +37,16 @@
 </ng-template>
 
 <ng-template #KeyStatus let-item let-src="source">
-    <svg width="20" height="20" color="#b00" *ngIf="item.isExpired"
-        mdcSvg="ic-failure"></svg>
+    <svg width="20" height="20" color="#b00" *ngIf="item.isExpired" mdcSvg="ic-failure" [stickyToElement]="true"
+        [mdcTooltip]="'Approval key expires at ' + (src.approvalKeyExpirationDate|date)"></svg>
 </ng-template>
 
 <ng-template #Active let-item let-src="source">
     <div *ngIf="isActive(src)">
-        <span class="admin-table__circle admin-table__circle_green"></span>
+        <span [stickyToElement]="true" mdcTooltip="Active" class="admin-table__circle admin-table__circle_green"></span>
     </div>
     <div *ngIf="!isActive(src)">
-        <span class="admin-table__circle admin-table__circle_grey"></span>
+        <span [stickyToElement]="true" mdcTooltip="Inactive" class="admin-table__circle admin-table__circle_grey"></span>
     </div>
 </ng-template>
 

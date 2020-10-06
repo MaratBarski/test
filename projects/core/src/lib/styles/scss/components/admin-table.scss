@@ -138,8 +138,9 @@
 	}
 
 	tr th.admin-table__item_check{width: 65px;}
-    th.admin-table__item_menu{width: 60px;}
+  th.admin-table__item_menu{width: 60px;}
 	tr th.admin-table__item_select{width: 245px;}
+  tr th.admin-table__item-select-big{width: 330px;}
   tr th.admin-table__item_order{width: 121px;}
 	tr th.admin-table__item_name-edit,
 	tr th.admin-table__item_data-sample{
@@ -313,7 +314,7 @@
 	  content: '';
 	  display: inline-block;
 	  width: 5px;
-	  height: calc(100% + 1px);
+	  height: calc(100% + 2px);
 	  position: absolute;
 	  top: -1px;
 	  left: 0;
@@ -525,13 +526,9 @@
 	  max-width: 100%;
 	}
 
-	&_white &__row:nth-child(2n+1){
-	  background: transparent;
-	}
-
-	&_white &__row:not(:last-child) &__item{
-	  border-bottom: 1px solid rgba(161,173,205,.5);
-	}
+  &_white &__row:nth-child(2n+1){background: transparent;}
+  &_white &__row:not(:last-child) &__item{border-bottom: 1px solid rgba(161,173,205,.5);}
+  &_white &__row:not(:last-child):hover &__item{border-bottom: 1px solid transparent;}
 
 	.input-check{
 	  margin-top: 2px;
@@ -1508,6 +1505,7 @@
 	.admin-table{
 	  // &__name{width: 340px;}
 	  tr th.admin-table__item_select{width: 215px;}
+    tr th.admin-table__item-select-big{width: 300px;}
     tr th.admin-table__item_order{width: 101px;}
 	  tr th.admin-table__item_name-edit{width: 30%}
 	  tr th.admin-table__item_data-sample{width: 25%;}

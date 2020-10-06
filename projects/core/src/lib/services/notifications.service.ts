@@ -79,7 +79,15 @@ export class NotificationsService extends BaseSibscriber {
     notice.showInToaster = false;
     notice.showInContainer = !!notice.containerEnable;
     this.update();
+    if (notice.showInContainer) {
+      this._onNotificationAdded.next();
+    }
   }
+
+  get onNotificationAdded(): Observable<any> {
+    return this._onNotificationAdded.asObservable();
+  }
+  private _onNotificationAdded = new Subject()
 
   get notifications(): Array<INotification> {
     return this._notifications;
@@ -206,8 +214,15 @@ export class NotificationsService extends BaseSibscriber {
   }
 
   copyNotification(from: any, to: INotification): void {
+    if (from.showInContainer) {
+      this._onNotificationAdded.next();
+    }
     NOTIFICATION_MAP.forEach(k => {
-      to[k.client] = from[k.server];
+      if (k.client === 'progress') {
+        to[k.client] = Math.max(to[k.client] || 0, from[k.server] || 0);
+      } else {
+        to[k.client] = from[k.server];
+      }
     });
   }
 

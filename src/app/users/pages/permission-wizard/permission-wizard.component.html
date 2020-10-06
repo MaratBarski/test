@@ -1,6 +1,6 @@
 <div class="main-content">
     <div class="content-page">
-        <md-header [pageTitle]="pageTitle" [showTitle]="!isPopup" [showLegend]="showLegend"></md-header>
+        <md-header backUrl="users/research" [pageTitle]="pageTitle" [showTitle]="!isPopup" [showLegend]="showLegend"></md-header>
         <section class="add-perm-set-wrap">
             <div class="container-fluid">
                 <div class="row">
@@ -22,7 +22,7 @@
         </section>
     </div>
 </div>
-<md-footer [isLastTab]="isLastTab" (onOptionClick)="save()" [step]="permissionSetService.selectedTab" (onCancel)="cancel()"
+<md-footer [isPopup]="isPopup" [isLastTab]="isLastTab" (onOptionClick)="save()" [step]="permissionSetService.selectedTab" (onCancel)="cancel()"
     (onNext)="next($event)" (onSave)="save()" [isNextEnable]="isNextEnable"></md-footer>
 
 <md-confirm-dialog *ngIf="showCancelConfirm" confirmText="Yes" cancelText="No, cancel" name="Save Permission Set"

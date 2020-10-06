@@ -6,3 +6,24 @@
     border-color: #b00 !important;
     border:1px solid;
 }
+.tabs-popup{
+    margin-top:7px;
+    margin-bottom:7px;
+}
+.date-error{
+  font-family: OpenSans;
+  font-size: 12px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #e20343;
+  margin-top: -20px;
+  margin-left: 250px;
+}
+.date-error img {
+    width: 17px;
+    height: 15px;
+    object-fit: contain;
+}

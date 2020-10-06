@@ -53,12 +53,17 @@
             <div class="add-perm-evets">
                 <div class="add-perm-evets__title">Events the user may query:</div>
                 <div class="add-perm-evets__content">
-                    <div class="add-perm-evets__list">
-                        <div *ngFor="let t of  permissionSetService.templates|distinctTemplate"
+                    <div class="add-perm-evets__list" [hidden]="!(permissionSetService.templates|distinctTemplate:{state:permissionSetService.permissionSet.allowedEvent}).length">
+                        <div *ngFor="let t of  permissionSetService.templates|distinctTemplate:{state:permissionSetService.permissionSet.allowedEvent}"
                             class="add-perm-evets__item">
                             {{t.name}}
                         </div>
                     </div>
+                    <div [hidden]="(permissionSetService.templates|distinctTemplate).length || permissionSetService.permissionSet.allowedEvent!==3">
+                        <div class="add-perm-evets__subtitle">None.</div>
+                        <div class="add-perm-evets__text">The user will not be able to query any event. Select events based
+                            on permission templates.</div>
+                        </div>
                 </div>
             </div>
         </div>

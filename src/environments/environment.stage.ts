@@ -14,7 +14,7 @@ export const environment = {
     getRelationalIntegrity: 'stage/api/v1/file-source/get-relational-integrity',
     getSampleData: 'stage/api/v1/file-source/get-sample-data',
     templateByProject: 'stage/api/v1/template/get-by-project',
-    siteEventInfo: 'stage/api/v1/siteeventinfo/get-by-project',    
+    siteEventInfo: 'stage/api/v1/siteeventinfo/get-by-project',
     uploadFileSource: 'stage/api/v1/upload/file-source',
     uploadHierarchy: 'stage/api/v1/upload/hierarchy',
     deleteFileSource: 'stage/api/v1/file-source',
@@ -38,11 +38,12 @@ export const environment = {
     userList: 'stage/api/v1/user',
     research: 'stage/api/v1/research',
     formKey: 'stage/api/v1/config/form-key',
-    notificationUpdate:'stage/api/v1/config/notification',
-    project:'stage/api/v1/project',
+    notificationUpdate: 'stage/api/v1/config/notification',
+    project: 'stage/api/v1/project',
     patientStory: 'stage/api/v1/patient-story',
-    patientStoryUserSession: 'stage/api/v1/patient-story/user-session',    
+    patientStoryUserSession: 'stage/api/v1/patient-story/user-session',
     hierarchyProject: 'stage/api/v1/hierarchy/project',
-	adUsers: 'ad-users'    
+    patientStoryHierarchy: 'stage/api/v1/patient-story/hierarchy',
+    adUsers: 'ad-users'
   }
 };

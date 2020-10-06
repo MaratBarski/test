@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { NavigationService } from '@appcore';
 import { EditPatientService } from '@app/patient/services/edit-patient.service';
 
 @Component({
@@ -6,17 +7,18 @@ import { EditPatientService } from '@app/patient/services/edit-patient.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
 
   @Input() pageTitle = 'Add permission set';
   @Input() showLegend = true;
   @Input() showTitle = true;
 
   constructor(
-    public editPatientService: EditPatientService
+    public editPatientService: EditPatientService,
+    private navigationService: NavigationService
   ) { }
 
-  ngOnInit() {
+  back(): void {
+    this.navigationService.navigate('/patient');
   }
-
 }

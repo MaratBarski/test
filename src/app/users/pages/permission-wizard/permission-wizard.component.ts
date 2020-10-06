@@ -26,6 +26,11 @@ export class PermissionWizardComponent extends BaseNavigation implements OnInit,
     return this.permissionSetService.showCancelConfirm;
   }
 
+  ngOnDestroy(): void {
+    this.permissionSetService.clear();
+    super.ngOnDestroy();
+  }
+
   ngAfterViewInit(): void {
     this.onLoad.emit(this);
   }
@@ -51,7 +56,7 @@ export class PermissionWizardComponent extends BaseNavigation implements OnInit,
     }));
   }
 
-  get isLastTab():boolean{
+  get isLastTab(): boolean {
     return this.permissionSetService.selectedTab === 1;
   }
 

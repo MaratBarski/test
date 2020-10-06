@@ -4,10 +4,10 @@ import { Offline } from '@app/shared/decorators/offline.decorator';
 import { environment } from '@env/environment';
 import { forkJoin, Subject, Observable, of } from 'rxjs';
 import { UserListService } from './user-list.service';
-import { DateService, BaseSibscriber, NotificationsService, ToasterType, INotification, NavigationService } from '@appcore';
+import { DateService, BaseSibscriber, NotificationsService, ToasterType, NavigationService } from '@appcore';
 import { ConfigService } from '@app/shared/services/config.service';
 import { Router } from '@angular/router';
-import { NO_ALLOWED_EVENTS, ALL_EVENTS, BASED_EVENTS, AllowedEvents, PermissionSet, ResearchStatus } from '../models/models';
+import { NO_ALLOWED_EVENTS, ALL_EVENTS, BASED_EVENTS, PermissionSet, ResearchStatus } from '../models/models';
 import { take } from 'rxjs/operators';
 
 @Injectable({
@@ -156,17 +156,22 @@ export class PermissionSetService extends BaseSibscriber {
 
   isPopup = false;
 
-  resetService(id: any): void {
+  clear(): void {
     this.isPopup = false;
     this._fromSetId = 0;
     this.isAfterValidate = false;
+    this._isShowError = false;
+    this._selectedTab = 0;
+    this.isDateRangeValid = true;
+  }
+
+  resetService(id: any): void {
+    this.clear();
     this._permissionSet = this.getDefault();
     this.addedEvents = [];
     this._setId = id;
     this.loadData();
     this.user = undefined;
-    this._isShowError = false;
-    this._selectedTab = 0;
     this.setInitialSet();
     this._onAllowedEventsChange.next();
   }
@@ -328,7 +333,7 @@ export class PermissionSetService extends BaseSibscriber {
     this.isSaving = false;
     this.notificationService.addNotification({
       type: ToasterType.success,
-      name: 'Permission set created  successfully.',
+      name: 'Permission set created successfully.',
       comment: 'The user can now query the allowed data.',
       showInToaster: true
     });
@@ -344,8 +349,8 @@ export class PermissionSetService extends BaseSibscriber {
         this.isSaving = false;
         this.notificationService.addNotification({
           type: ToasterType.error,
-          name: 'Failed to update the permission set.',
-          comment: 'Try again or contact MDClone support.',
+          name: 'Failed to update the permission set',
+          comment: error.message,
           showInToaster: true
         });
       });
@@ -361,8 +366,8 @@ export class PermissionSetService extends BaseSibscriber {
         this.isSaving = false;
         this.notificationService.addNotification({
           type: ToasterType.error,
-          name: 'Failed to create the permission set.',
-          comment: 'Try again or contact MDClone support.',
+          name: 'Failed to create the permission set',
+          comment: error.message,
           showInToaster: true
         });
       });
@@ -410,9 +415,13 @@ export class PermissionSetService extends BaseSibscriber {
     }
     if (!this.permissionSet.fromDateUnlimited) {
       obj['startDate'] = this.dateService.formatDateToSend(this.permissionSet.fromDate);
+    } else {
+      obj['startDate'] = null;
     }
     if (!this.permissionSet.toDateUnlimited) {
       obj['endDate'] = this.dateService.formatDateToSend(this.permissionSet.toDate);
+    } else {
+      obj['endDate'] = null;
     }
     if (this.permissionSet.allowedEvent === NO_ALLOWED_EVENTS) {
       obj.researchStatus = ResearchStatus.Initial;
@@ -432,10 +441,12 @@ export class PermissionSetService extends BaseSibscriber {
 
   private _isNeedValidate = true;
   isAfterValidate = false;
+  isDateRangeValid = true;
 
   validate(setError: boolean): boolean {
     if (!this._isNeedValidate) { return true; }
 
+    this.isDateRangeValid = true;
     if (setError) {
       this._isShowError = true;
     }
@@ -449,6 +460,13 @@ export class PermissionSetService extends BaseSibscriber {
     if (!this._permissionSet.fromDateUnlimited && !this.dateService.isDateValid(this._permissionSet.fromDate)) { return false; }
     if (!this._permissionSet.toDateUnlimited && !this.dateService.isDateValid(this._permissionSet.toDate)) { return false; }
 
+    if (!this._permissionSet.fromDateUnlimited && !this._permissionSet.toDateUnlimited) {
+      if (this._permissionSet.toDate < this._permissionSet.fromDate) {
+        this.isDateRangeValid = false;
+        return false;
+      }
+    }
+
     if (!this.permissionSet.isNew && !this._fromSetId) { return false; }
     if (this.permissionSet.allowedEvent === BASED_EVENTS) {
       if (!this.templates
@@ -457,6 +475,7 @@ export class PermissionSetService extends BaseSibscriber {
         return false;
       }
     }
+
     //if (!this.dateService.isDateValid(this._permissionSet.keyExpirationDate)) { return false; }
 
     //if (this.isEmpty(this._permissionSet.keyName)) { return false; }
@@ -615,7 +634,7 @@ export class PermissionSetService extends BaseSibscriber {
       .subscribe((flag: boolean) => {
         if (this.isEditMode || applyTemplates) {
           this.initEvents(permSet);
-          if (permSet.researchStatus && permSet.researchStatus.toLowerCase() === ResearchStatus.Open) {
+          if (permSet.researchStatus && permSet.researchStatus.toLowerCase() === ResearchStatus.Open.toLowerCase()) {
             if (!permSet.researchTemplates || !permSet.researchTemplates.length) {
               this.permissionSet.allowedEvent = ALL_EVENTS;
             }
@@ -623,7 +642,7 @@ export class PermissionSetService extends BaseSibscriber {
               this.permissionSet.allowedEvent = BASED_EVENTS;
             }
           }
-          if (permSet.researchStatus && permSet.researchStatus.toLowerCase() === ResearchStatus.Initial) {
+          if (permSet.researchStatus && permSet.researchStatus.toLowerCase() === ResearchStatus.Initial.toLowerCase()) {
             this.permissionSet.allowedEvent = NO_ALLOWED_EVENTS;
           } else if (permSet.researchTemplates) {
             this.templates.forEach(t => {
@@ -649,7 +668,7 @@ export class PermissionSetService extends BaseSibscriber {
     res.toDate = permSet.endDate ? new Date(permSet.endDate) : undefined;
     res.toDateUnlimited = !permSet.endDate;
     res.isActive = permSet.researchStatus &&
-      (permSet.researchStatus.toLowerCase() === ResearchStatus.Open || permSet.researchStatus.toLowerCase() === ResearchStatus.Initial);
+      (permSet.researchStatus.toLowerCase() === ResearchStatus.Open.toLowerCase() || permSet.researchStatus.toLowerCase() === ResearchStatus.Initial.toLowerCase());
 
     res.keyName = permSet.approvalKey;
     if (permSet.approvalKeyExpirationDate) {
@@ -695,7 +714,7 @@ export class PermissionSetService extends BaseSibscriber {
 
   updateAllowedEvents(): void {
     if (this.permissionSet.allowedEvent === ALL_EVENTS) {
-      this.templates.forEach(x => x.isChecked = true);
+      this.templates.forEach(x => x.isChecked = false);
     } else if (this.permissionSet.allowedEvent === NO_ALLOWED_EVENTS) {
       this.templates.forEach(x => x.isChecked = false);
     }

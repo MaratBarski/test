@@ -125,4 +125,10 @@ export class SelectComponent implements ControlValueAccessor, AfterViewInit {
     }
     this.renderer2.setStyle(this.comboTextContainer.nativeElement, 'width', `${this.optionsContainer.nativeElement.offsetWidth}px`);
   }
+
+  isActive(option: SelectOption): boolean {
+    if (!option) { return false; }
+    if (!this.selected) { return false; }
+    return this.selected.id == option.id && this.selected.text == option.text && this.selected.value == option.value;
+  }
 }

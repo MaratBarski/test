@@ -7,7 +7,7 @@
             New categorization
         </ng-template>
     </div>
-    <div (click)="cancel()" class="modal-window__close ic-hover">
+    <div (click)="cancel($event)" class="modal-window__close ic-hover">
         <mdc-icon path="ic-close"></mdc-icon>
     </div>
     <div *ngIf="isEditMode" class="modal-window__text">Environment: {{source?.domain}}</div>
@@ -40,7 +40,13 @@
                 <label class="form-site__label" for="name">Name</label>
                 <input type="text" (change)="validateFileName()" [(ngModel)]="fileName"
                     placeholder="Type categorization name">
-                <span *ngIf="fileNameErrorMessage" class="form-site-alert__text">{{fileNameErrorMessage}}</span>
+                <div *ngIf="fileNameErrorMessage" class="form-site-alert">
+                    <div class="form-site-alert__icon">
+                        <svg class="icon ic-failure" mdcSvg="ic-failure"></svg>
+                    </div><span class="form-site-alert__text">
+                        {{fileNameErrorMessage}}
+                    </span>
+                </div>
             </div>
             <div *ngIf="!isEditMode" class="form-site__item">
                 <label class="form-site__label" for="desc">Description<span
@@ -50,7 +56,8 @@
             </div>
             <div *ngIf="!isEditMode" class="form-site__item">
                 <label class="form-site__label" for="project">Environment</label>
-                <md-project-combo [user]="loginService.userInfo?.data" userType="admin" [project]="project" (onChange)="changedProject($event)"></md-project-combo>
+                <md-project-combo [user]="loginService.userInfo?.data" userType="admin" [project]="project"
+                    (onChange)="changedProject($event)"></md-project-combo>
             </div>
             <div [hidden]="!categoryHeaders?.length" class="form-site__item">
                 <label class="form-site__label">
@@ -61,7 +68,7 @@
                         <svg class="icon ic-help" mdcSvg="ic-help"></svg>
                     </span>
                 </label>
-                <md-csv-combo [selectFirst]="true" (onChange)="changeDefaultCategory($event)" *ngIf="categoryHeaders"
+                <md-csv-combo [selectFirst]="1" (onChange)="changeDefaultCategory($event)" *ngIf="categoryHeaders"
                     [selectUp]="true" [headers]="categoryHeaders"></md-csv-combo>
                 <div *ngIf="!categoryHeaders?.length" class="select select_up">
                     <div class="select__head">Select default category...
@@ -74,7 +81,7 @@
             </div>
         </div>
         <div class="form-site__btn">
-            <button (click)="cancel()" class="btn btn_border">Cancel</button>
+            <button (click)="cancel($event)" class="btn btn_border">Cancel</button>
             <button *ngIf="!source" (click)="uploadFile($event)" [disabled]="!isValid"
                 [ngClass]="{'btn_disable':!isValid}" class="btn">Upload</button>
             <button *ngIf="source" (click)="changeFile($event)" [disabled]="!isValid"

@@ -1,16 +1,16 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { TabItemModel, AutoCompleteComponent, SelectOption } from '@appcore';
+import { TabItemModel, AutoCompleteComponent, SelectOption, BaseSibscriber } from '@appcore';
 import { EditPatientService } from '@app/patient/services/edit-patient.service';
 import { ProjectComboComponent } from '@app/shared/components/project-combo/project-combo.component';
 import { CohortSources, OutputFormats } from '@app/patient/models/models';
-import { take } from 'rxjs/operators';
+import { RadioListComponent } from '@app/shared/components/radio-list/radio-list.component';
 
 @Component({
   selector: 'md-step1',
   templateUrl: './step1.component.html',
   styleUrls: ['./step1.component.scss']
 })
-export class Step1Component implements OnInit, AfterViewInit {
+export class Step1Component extends BaseSibscriber implements OnInit, AfterViewInit {
 
   @ViewChild('userNameCmp', { static: true }) userNameCmp: AutoCompleteComponent;
   @ViewChild('projectCmp', { static: true }) projectCmp: ProjectComboComponent;
@@ -18,10 +18,13 @@ export class Step1Component implements OnInit, AfterViewInit {
   @ViewChild('radioTemplate2', { static: true }) radioTemplate2: any;
   @ViewChild('radioTitle1', { static: true }) radioTitle1: any;
   @ViewChild('radioTitle2', { static: true }) radioTitle2: any;
+  @ViewChild('cohortRadion', { static: true }) cohortRadion: RadioListComponent;
 
   constructor(
     public editPatientService: EditPatientService
-  ) { }
+  ) {
+    super();
+  }
 
   tabsFormat: Array<TabItemModel> = [];
   cohortOptions: Array<SelectOption> = []
@@ -35,8 +38,7 @@ export class Step1Component implements OnInit, AfterViewInit {
       return { title: x.text }
     });
     this.activeFormat = this.editPatientService.settings.outputFormat;
-    this.editPatientService.onQueriesLoded
-      .pipe(take(1))
+    super.add(this.editPatientService.onQueriesLoded
       .subscribe(() => {
         this.sourceQueries = this.queries = this.editPatientService.queries.map(s => {
           return {
@@ -44,33 +46,42 @@ export class Step1Component implements OnInit, AfterViewInit {
             name: s.session_name
           }
         });
-      })
+      }));
   }
 
   ngAfterViewInit(): void {
-    const dict = {
-      radioTemplate1: { body: this.radioTemplate1, title: this.radioTitle1 },
-      radioTemplate2: { body: this.radioTemplate2, title: this.radioTitle2 }
-    };
+    // const dict = {
+    //   radioTemplate1: { body: this.radioTemplate1, title: this.radioTitle1 },
+    //   radioTemplate2: { body: this.radioTemplate2, title: this.radioTitle2 }
+    // };
+    // setTimeout(() => {
+    //   this.cohortOptions = CohortSources.map(x => {
+    //     return {
+    //       text: x.text,
+    //       id: x.id,
+    //       template: dict[x.template].body,
+    //       titleTemplate: dict[x.template].title
+    //     }
+    //   });
+    //   this.selectedCohortOption = this.cohortOptions.find(x => x.id === this.editPatientService.settings.cohortSource);
+    // }, 0);
     setTimeout(() => {
-      this.cohortOptions = CohortSources.map(x => {
-        return {
-          text: x.text,
-          id: x.id,
-          template: dict[x.template].body,
-          titleTemplate: dict[x.template].title
-        }
-      });
-      this.selectedCohortOption = this.cohortOptions.find(x => x.id === this.editPatientService.settings.cohortSource);
-    }, 0);
+      this.selectedCohortOption = this.cohortRadion.options.find(x => x.id === this.editPatientService.settings.cohortSource);
+    }, 1);
+  }
+
+  validateName(): void {
+    this.editPatientService.isValueChanged = true;
   }
 
   changedProject(id: string): void {
     this.editPatientService.settings.projectId = id;
     this.editPatientService.projectName = this.projectCmp.selectedOption.text;
-    this.editPatientService.setQueries();
-    this.editPatientService.setHierarchyProjects();
-    this.editPatientService.loadEvents();
+    setTimeout(() => {
+      this.editPatientService.setQueries();
+    }, 1);
+    //this.editPatientService.setHierarchyProjects();
+    //this.editPatientService.loadEvents();
     this.editPatientService.isValueChanged = true;
   }
 

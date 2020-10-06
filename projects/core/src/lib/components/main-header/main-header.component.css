@@ -1,0 +1,13 @@
+.trans {
+    transition-duration: 0.1s;
+    transition-property: transform;
+    
+}
+.r0{
+    transform: rotate(-70deg);
+    -webkit-transform: rotate(-70deg);
+}
+.r1{
+    transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+}

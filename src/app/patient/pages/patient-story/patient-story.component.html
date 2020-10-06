@@ -38,13 +38,14 @@
 </ng-template>
 
 <ng-template #statusColumn let-item let-source="source">
-    <div *ngIf="source.transStatus === 'generating'">
+    <div *ngIf="source.transStatus === 'generating' || source.transStatus === 'pending'">
         <span class="admin-table__icon">
-            <svg class="icon ic-running ic-grey" mdcSvg="ic-running"></svg>
+            <!-- <svg class="icon ic-running ic-grey" mdcSvg="ic-running"></svg> -->
             <span class="tooltip tooltip_left">
                 <span class="tooltip__content">Generating</span></span>
+            <md-progress [progress]="source.pctProgress"></md-progress>
         </span>
-        <span class="admin-table__icon-label d-none d-xxl-inline-block">Generating</span>
+        <!-- <span class="admin-table__icon-label d-none d-xxl-inline-block">Generating</span> -->
     </div>
     <div *ngIf="source.transStatus === 'completed'">
         <span class="admin-table__icon">
@@ -73,3 +74,8 @@
             class="admin-table__icon-label d-none d-xxl-inline-block">Aborted</span>
     </div>
 </ng-template>
+
+<md-confirm-dialog *ngIf="showDeleteConfirm" name="Delete Patient Story" [subName]="deleteSubTitle"
+    subText="Do you wish to continue?" text="It cannot be undone." (onCancel)="cancelDelete()"
+    (onConfirm)="confirmDelete()">
+</md-confirm-dialog>

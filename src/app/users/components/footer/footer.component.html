@@ -1,5 +1,5 @@
 <footer *ngIf="step===0 && !isSingleMode && !isLastTab" class="footer-wrap">
-    <div class="footer">
+    <div class="footer" [ngClass]="{'full':isPopup}">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
@@ -27,7 +27,7 @@
 </footer>
 
 <footer *ngIf="(step!==0 || isLastTab) && !isSingleMode" class="footer-wrap">
-    <div class="footer">
+    <div class="footer" [ngClass]="{'full':isPopup}">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
@@ -46,7 +46,7 @@
 </footer>
 
 <footer *ngIf="isSingleMode" class="footer-wrap">
-    <div class="footer">
+    <div class="footer" [ngClass]="{'full':isPopup}">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">

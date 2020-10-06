@@ -56,8 +56,9 @@ export class EditPatientStoryWizardComponent extends BaseNavigation implements O
     super.add(
       this.activatedRoute.paramMap.subscribe(u => {
         const id = parseInt(u.get('id') || '0');
+        const copy = parseInt(u.get('copy') || '0');
         this.pageTitle = id ? 'EDIT PATIENT STORY SETTINGS' : 'ADD PATIENT STORY SETTINGS';
-        this.editPatientService.reset(id);
+        this.editPatientService.reset({ id: id, copy: copy });
       }));
   }
 

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { NavigationService, NotificationsService } from '@appcore';
+import { NavigationService, NotificationsService, NotificationStatus, ToasterType } from '@appcore';
 import { Offline } from '@app/shared/decorators/offline.decorator';
 import { ConfigService } from '@app/shared/services/config.service';
 import { environment } from '@env/environment';
@@ -9,6 +9,7 @@ import { forkJoin, Observable, of, Subject } from 'rxjs';
 import { map, take } from 'rxjs/operators';
 import { OutputFormats } from '../models/models';
 import { LoginService } from '@appcore';
+import { UploadService } from '@app/shared/services/upload.service';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +22,8 @@ export class EditPatientService {
     private router: Router,
     private notificationService: NotificationsService,
     private navigationService: NavigationService,
-    private loginService: LoginService
+    private loginService: LoginService,
+    private uploadService: UploadService
   ) {
     this.initCountries();
   }
@@ -134,6 +136,9 @@ export class EditPatientService {
   get isNameSetted(): boolean { return this._isNameSetted; }
   private _isNameSetted = true;
 
+  get isNameExists(): boolean { return this._isNameExists; }
+  private _isNameExists = true;
+
   get isQuerySelected(): boolean { return this._isQuerySelected; }
   private _isQuerySelected = true;
 
@@ -148,6 +153,7 @@ export class EditPatientService {
     this._isQuerySelected = true;
     this._isFileSelected = true;
     this._isShowError = false;
+    this._isNameExists = false;
   }
 
   private _isNeedValidate = true;
@@ -166,6 +172,10 @@ export class EditPatientService {
     }
     if (this._settings.cohortSource === 2 && !this.file) {
       error = this._isFileSelected = false;
+    }
+    if (this.checkNameExists()) {
+      this._isNameExists = true;
+      error = false;
     }
     this._isShowError = !error;
     return error;
@@ -198,6 +208,7 @@ export class EditPatientService {
 
   setHierarchyProjects(): void {
     this._isHierarchyProjectsaded = false;
+    this._prevHierarchyProjectID = this.settings.projectId;
     this.http.get(`${this.getHierarchyProjectUrl}/${this.settings.projectId}`)
       .pipe(take(1))
       .subscribe((res: any) => {
@@ -210,17 +221,40 @@ export class EditPatientService {
       })
   }
 
+  private _storyList: Array<any>;
+
+  checkNameExists(): boolean {
+    if (!this._storyList || !this._storyList.length) { return false; }
+    if (!this.settings.settingsName || !this.settings.settingsName.trim()) { return false; }
+    const storyId = this._isCopy ? 0 : this.storyId || 0;
+    return !!this._storyList.find(x => x.name
+      && x.name.trim().toLowerCase() === this.settings.settingsName.trim().toLowerCase()
+      && x.lifeFluxTransId != storyId);
+  }
+
   loadSettings(): Observable<any> {
-    if (this.storyId) {
-      return this.http.get(this.getStoriiesUrl)
-        .pipe(
-          take(1),
-          map((res: any) => {
+    // if (this.storyId) {
+    //   return this.http.get(this.getStoriiesUrl)
+    //     .pipe(
+    //       take(1),
+    //       map((res: any) => {
+    //         return res.data.find(x => x.lifeFluxTransId == this.storyId);
+    //       })
+    //     )
+    // }
+    // return of(this.getDefault());
+
+    return this.http.get(this.getStoriiesUrl)
+      .pipe(
+        take(1),
+        map((res: any) => {
+          this._storyList = res.data;
+          if (this.storyId) {
             return res.data.find(x => x.lifeFluxTransId == this.storyId);
-          })
-        )
-    }
-    return of(this.getDefault());
+          }
+          return this.getDefault();
+        })
+      )
   }
 
   loadQueries(projectId: number): Observable<any> {
@@ -256,7 +290,7 @@ export class EditPatientService {
   private getStoriiesUrl = `${environment.serverUrl}${environment.endPoints.patientStory}`;
 
   @Offline('assets/offline/hierarchyProject.json?')
-  private getHierarchyProjectUrl = `${environment.serverUrl}${environment.endPoints.hierarchyProject}`;
+  private getHierarchyProjectUrl = `${environment.serverUrl}${environment.endPoints.patientStoryHierarchy}`;
 
   setTab(tab: number): void {
     if (!this.validate()) { return; }
@@ -272,14 +306,31 @@ export class EditPatientService {
 
   get events(): Array<any> { return this._events; }
   private _events: Array<any>;
+  private _prevEventProjectID = 0;
+  private _prevHierarchyProjectID = 0;
 
   refreshEvents(): void {
+    if (this._selectedTab === 1) {
+      if (this.settings.projectId !== this._prevEventProjectID) {
+        this.loadEvents();
+      }
+    }
+    if (this._selectedTab === 2) {
+      if (this.settings.projectId !== this._prevHierarchyProjectID) {
+        this.setHierarchyProjects();
+      }
+    }
     if (this._selectedTab !== 3) { return; }
     this._events = JSON.parse(JSON.stringify(this.events));
   }
 
+  get isEventsLoaded(): boolean { return this._isEventsLoaded; }
+  private _isEventsLoaded = true;
+
   loadEvents(): void {
+    this._isEventsLoaded = false;
     this._events = undefined;
+    this._prevEventProjectID = this.settings.projectId;
     this.http.get(`${this.siteEventInfoUrl}/${this.settings.projectId}`)
       .pipe(take(1))
       .subscribe((res: any) => {
@@ -291,8 +342,9 @@ export class EditPatientService {
           });
         })
         this.selectEvents();
+        this._isEventsLoaded = true;
       }, error => {
-
+        this._isEventsLoaded = true;
       })
   }
 
@@ -315,13 +367,19 @@ export class EditPatientService {
 
   hierarchies: any;
   selectHierarchies(): void {
-    if (!this.hierarchies) { return; }
+    const dict = this.hierarchies || {};
     if (!this._hierarchyProjects) { return; }
-    //alert(JSON.stringify(this.hierarchies))
+    //alert(JSON.stringify(dict))
     //alert(JSON.stringify(this._hierarchyProjects))
     this._hierarchyProjects.forEach(p => {
-      if (!this.hierarchies[p.hierarchyRootId]) { return; }
-      p.selectedId = this.hierarchies[p.hierarchyRootId];
+      if (!dict[p.hierarchyRootId]) {
+        const selected = p.hierarchyLevels.find(x => x.sortValue === 0);
+        if (selected) {
+          p.selectedId = selected.hierarchyLevelId;
+        }
+        return;
+      }
+      p.selectedId = dict[p.hierarchyRootId];
     })
   }
 
@@ -342,15 +400,17 @@ export class EditPatientService {
 
   get storyId(): number { return this._storyId; }
   _storyId = 0;
+  _isCopy = false;
 
-  reset(id: number = undefined): void {
+  reset(params: any): void {
     this.isValueChanged = false;
     this.showCancelConfirm = false;
     this.resetValidation();
     this.selectedEvents = undefined;
     this.hierarchies = undefined;
     this.regexes = [];
-    this._storyId = id;
+    this._storyId = params.id;
+    this._isCopy = !!params.copy
     this._selectedTab = 0;
     this.editQueryId = 0;
     this.queryName = '';
@@ -389,7 +449,8 @@ export class EditPatientService {
 
   convertToClient(settings): void {
     this._settings = this.getDefault();
-    this._settings.settingsName = settings.name;
+    const copy = this._isCopy ? 'Copy of ' : '';
+    this._settings.settingsName = `${copy}${settings.name}`;
     this._settings.projectId = parseInt(`${settings.projectId}`);
     if (this._settings.projectId) {
       const proj = this.loginService.findProject(this.settings.projectId);
@@ -470,27 +531,82 @@ export class EditPatientService {
 
   save(): void {
     if (!this.validate()) { return; }
-    const obj = this.convertToServer();
+    //const obj = this.convertToServer();
     //document.write(JSON.stringify(obj));
-    console.log(obj);
-    if (this._storyId) {
-      this.update()
+    //console.log(obj);
+    this._dataLoaded = false;
+    const method = this._storyId && !this._isCopy ? 'put' : 'post';
+    const id = this._storyId && !this._isCopy ? this._storyId : '';
+
+    if (this.settings.cohortSource === 1) {
+      const obj = this.convertToServer();
+      console.log(obj);
+      this.http[method](
+        `${environment.serverUrl}${environment.endPoints.patientStory}/${id}`, obj
+      )
+        .pipe(take(1))
+        .subscribe(res => {
+          this._dataLoaded = true;
+          this.notificationService.addNotification({
+            type: ToasterType.success,
+            name: 'Patient story saved successfully.',
+            comment: 'The user can now query the allowed data.',
+            showInToaster: true
+          });
+          this.router.navigateByUrl('/patient');
+        }, error => {
+          this._dataLoaded = true;
+          this.notificationService.addNotification({
+            type: ToasterType.error,
+            name: 'Failed to save patient story.',
+            comment: 'Try again or contact MDClone support.',
+            showInToaster: true
+          });
+        })
     } else {
-      this.add();
+      const fd = this.createForm();
+      this.uploadService.addWithKey({
+        notification: {
+          name: `Uploading ${this.file.name}`,
+          failName: `Failed to upload ${this.file.name}.`,
+          failComment: 'Try again or contact MDClone support.',
+          succName: 'Patient story file uploaded successfully.',
+          abortName: 'Aborted successfully.',
+          abortComment: `Upload of ${this.file.name} was successfully aborted.`,
+          comment: this.configService.getValue('MI00003'),
+          succComment: `Upload of ${this.file.name} was successful.`,
+          progress: 0,
+          status: NotificationStatus.uploading,
+          showProgress: true,
+          showInContainer: true,
+          startDate: new Date(),
+          progressTitle: `${this.file.name}`,
+          type: ToasterType.infoProgressBar,
+          showInToaster: true,
+          containerEnable: true,
+          removeOnComplete: true,
+          onComplete: () => {
+            this._dataLoaded = true;
+          }
+        },
+        form: fd,
+        method: method,
+        url: `${environment.serverUrl}${environment.endPoints.patientStoryUpload}/${id}`
+      });
     }
   }
 
-  private update(): void {
-
-  }
-
-  private add(): void {
-
+  createForm(): FormData {
+    const obj = this.convertToServer();
+    const formData: FormData = new FormData();
+    formData.append('file', this.file);
+    formData.append('json', JSON.stringify(obj));
+    return formData;
   }
 
   convertToServer(): any {
     const res = {
-      lifeFluxTransId: this._storyId,
+      //lifeFluxTransId: this._storyId,
       name: this.settings.settingsName,
       projectId: this.settings.projectId,
       //userId:0,

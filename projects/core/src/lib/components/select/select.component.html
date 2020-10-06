@@ -12,7 +12,7 @@
   <div #optionsContainer [mdcVisibility]="isExpanded" [style.maxHeight]="maxHeight"
     class="select__option overflow-x-hidden">
     <ng-template [ngIf]="options">
-      <div [ngClass]="{'active':option==selected}" (click)="select(option)" *ngFor="let option of options"
+      <div [ngClass]="{'active':isActive(option)}" (click)="select(option)" *ngFor="let option of options"
         class="select__param">
         <div class="select__icon-wrap">
           <svg *ngIf="option.icon" [mdcSvg]="option.icon" class="icon"></svg>
