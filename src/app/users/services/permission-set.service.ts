@@ -415,9 +415,13 @@ export class PermissionSetService extends BaseSibscriber {
     }
     if (!this.permissionSet.fromDateUnlimited) {
       obj['startDate'] = this.dateService.formatDateToSend(this.permissionSet.fromDate);
+    } else {
+      obj['startDate'] = null;
     }
     if (!this.permissionSet.toDateUnlimited) {
       obj['endDate'] = this.dateService.formatDateToSend(this.permissionSet.toDate);
+    } else {
+      obj['endDate'] = null;
     }
     if (this.permissionSet.allowedEvent === NO_ALLOWED_EVENTS) {
       obj.researchStatus = ResearchStatus.Initial;
