@@ -314,7 +314,7 @@
 	  content: '';
 	  display: inline-block;
 	  width: 5px;
-	  height: calc(100% + 1px);
+	  height: calc(100% + 2px);
 	  position: absolute;
 	  top: -1px;
 	  left: 0;
@@ -526,13 +526,9 @@
 	  max-width: 100%;
 	}
 
-	&_white &__row:nth-child(2n+1){
-	  background: transparent;
-	}
-
-	&_white &__row:not(:last-child) &__item{
-	  border-bottom: 1px solid rgba(161,173,205,.5);
-	}
+  &_white &__row:nth-child(2n+1){background: transparent;}
+  &_white &__row:not(:last-child) &__item{border-bottom: 1px solid rgba(161,173,205,.5);}
+  &_white &__row:not(:last-child):hover &__item{border-bottom: 1px solid transparent;}
 
 	.input-check{
 	  margin-top: 2px;
