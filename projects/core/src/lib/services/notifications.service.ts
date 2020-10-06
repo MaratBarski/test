@@ -218,7 +218,11 @@ export class NotificationsService extends BaseSibscriber {
       this._onNotificationAdded.next();
     }
     NOTIFICATION_MAP.forEach(k => {
-      to[k.client] = from[k.server];
+      if (k.client === 'progress') {
+        to[k.client] = Math.max(to[k.client] || 0, from[k.server] || 0);
+      } else {
+        to[k.client] = from[k.server];
+      }
     });
   }
 

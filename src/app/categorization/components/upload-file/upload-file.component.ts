@@ -79,6 +79,7 @@ export class UploadFileComponent {
         showInToaster: true,
         containerEnable: true,
         removeOnComplete: true,
+        progressKf: 2,
         onComplete: () => {
           if (this.targetComponent) {
             this.targetComponent.onComplete();
