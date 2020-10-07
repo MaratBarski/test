@@ -584,12 +584,15 @@ export class EditPatientService {
           type: ToasterType.infoProgressBar,
           showInToaster: true,
           containerEnable: true,
-          removeOnComplete: true,
+          removeOnComplete: false,
           onComplete: () => {
             this._dataLoaded = true;
           }
         },
         form: fd,
+        afterUpload: (body, info) => {
+          this._dataLoaded = true;
+        },
         method: method,
         url: `${environment.serverUrl}${environment.endPoints.patientStoryUpload}/${id}`
       });
