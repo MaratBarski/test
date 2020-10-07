@@ -596,6 +596,7 @@ export class EditPatientService {
         method: method,
         url: `${environment.serverUrl}${environment.endPoints.patientStoryUpload}/${id}`
       });
+      this.router.navigateByUrl('/patient');
     }
   }
 
