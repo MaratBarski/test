@@ -4,7 +4,7 @@
             <div class="col-12">
                 <div class="page-header__wrap">
                     <div *ngIf="showTitle" class="page-header__content">
-                        <div mdcTooltip="Back" position="right" [stickyToElement]="true" (click)="back()" style="cursor: pointer;" class="page-header__back">
+                        <div [mdcTooltip]="backText" position="right" [stickyToElement]="true" (click)="back()" style="cursor: pointer;" class="page-header__back">
                             <span class="ic-hover">
                                 <svg class="icon ic-back-to-page" mdcSvg="ic-back-to-page"></svg>
                             </span>

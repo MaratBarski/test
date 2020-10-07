@@ -177,7 +177,7 @@ export class ResearchService {
       data.rows.push({
         cells: {
           PermissionSetName: fl.researchName,
-          PermissionsetDescription: fl.researchDescription || 'Description',
+          PermissionsetDescription: fl.information,
           User: fl.user ? fl.user.firstName + ' ' + fl.user.lastName : '',
           Modified: fl.insertDate,
           Environment: fl.project ? fl.project.projectName : '',

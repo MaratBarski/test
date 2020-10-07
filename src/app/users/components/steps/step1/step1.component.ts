@@ -139,7 +139,8 @@ export class Step1Component extends BaseSibscriber implements OnInit, AfterViewI
     this.permissionSetService.validate(false);
     this.permissionSetService.permissionSet.userId = undefined;
     this.permissionSetService.user = undefined;
-    this.permissionSetService.permissionSet.projectName = this.projectCmp.getProjectById(this.permissionSetService.permissionSet.project).text;
+    const project = this.projectCmp.getProjectById(this.permissionSetService.permissionSet.project);
+    this.permissionSetService.permissionSet.projectName = project ? project.text : '';
     this.applySetUser();
     this.hideUserName();
     this.permissionSetService.permissionSet.fromSetId = this.permissionSetService.fromSetId;
