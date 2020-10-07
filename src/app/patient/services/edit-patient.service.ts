@@ -642,7 +642,7 @@ export class EditPatientService {
 
   private getHierarchies(): any {
     const res = {};
-    this._hierarchyProjects.filter(p => p.selectedId)
+    (this._hierarchyProjects || []).filter(p => p.selectedId)
       .forEach(p => {
         res[p.hierarchyRootId] = p.selectedId;
       });
