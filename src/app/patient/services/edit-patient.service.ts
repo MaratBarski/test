@@ -592,11 +592,11 @@ export class EditPatientService {
         form: fd,
         afterUpload: (body, info) => {
           this._dataLoaded = true;
+          this.router.navigateByUrl('/patient');
         },
         method: method,
         url: `${environment.serverUrl}${environment.endPoints.patientStoryUpload}/${id}`
       });
-      this.router.navigateByUrl('/patient');
     }
   }
 
