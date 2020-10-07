@@ -629,7 +629,7 @@ export class EditPatientService {
 
   private geteventInclusion(): any {
     const res = {};
-    this.events.filter(e => e.isChecked)
+    (this.events || []).filter(e => e.isChecked)
       .forEach(e => {
         res[e.eventId] = [];
         e.siteEventPropertyInfos.filter((se: any) => se.isChecked)
