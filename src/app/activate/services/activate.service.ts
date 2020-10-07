@@ -5,6 +5,7 @@ import {FileSource} from '@app/imported-files/models/file-source';
 import {environment} from '@env/environment';
 import {catchError, map, switchMap} from 'rxjs/operators';
 import {DataService, NotificationsService, ToasterType} from '@appcore';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,7 @@ export class ActivateService implements Resolve<any> {
   private _onLoadFailed = new Subject();
 
   constructor(private dataService: DataService,
+              private http: HttpClient,
               private notificationService: NotificationsService) {
   }
 
@@ -47,7 +49,7 @@ export class ActivateService implements Resolve<any> {
     }));
   }
 
-  updateFileSourceState(fileId, state): Observable<FileSource> {
+  updateFileSourceState(fileId, state): Observable<any> {
     this.getUrl = `${environment.serverUrl}${environment.endPoints.fileSource}/${fileId}`;
     return this.dataService.put(this.getUrl, state).pipe(map((item: any) => {
       return item.data;
@@ -56,9 +58,6 @@ export class ActivateService implements Resolve<any> {
 
   downloadOriginalFile(fileId): Observable<any> {
     this.getUrl = `${environment.serverUrl}${environment.endPoints.activate.base}${environment.endPoints.activate.originalFile}/${fileId}`;
-    return this.dataService.get(this.getUrl).pipe(map((item: any) => {
-      debugger;
-      return item.data;
-    }));
+    return this.http.get(this.getUrl, { responseType: 'blob', observe: 'response' });
   }
 }

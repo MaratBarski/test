@@ -83,7 +83,7 @@ export class ActivateComponent extends BaseNavigation implements OnInit {
               column.hierarchy = this.activateService.getHierarchy(column.hierarchyRootId).pipe(map((data: Hierarchy) => {
                 this.columnCollection.forEach((col, index) => {
                   if (data.hierarchyRootId == col.hierarchyRootId) {
-                    this.columnCollection[index].defaultLevelId = data.defaultLevelId;
+                    this.columnCollection[index].defaultLevelId = data.defaultLevelId ? data.defaultLevelId : data.hierarchyLevels[0].hierarchyLevelId;
                   }
                 });
                 return data.hierarchyLevels.map(item => {
@@ -104,7 +104,7 @@ export class ActivateComponent extends BaseNavigation implements OnInit {
               column.hierarchy = this.activateService.getHierarchy(column.hierarchyRootId).pipe(map((data: Hierarchy) => {
                 this.columnCollection.forEach((col, index) => {
                   if (data.hierarchyRootId == col.hierarchyRootId) {
-                    this.columnCollection[index].defaultLevelId = data.defaultLevelId;
+                    this.columnCollection[index].defaultLevelId = data.defaultLevelId ? data.defaultLevelId : data.hierarchyLevels[0].hierarchyLevelId;
                   }
                 });
                 return data.hierarchyLevels.map(item => {
@@ -193,7 +193,14 @@ export class ActivateComponent extends BaseNavigation implements OnInit {
     this.activateService.updateFileSourceState(this.fileSource.fileId, this.columnCollection).pipe(switchMap(result => {
       return this.activateService.downloadOriginalFile(this.fileSource.fileId);
     })).subscribe(data => {
-      console.log(data);
+      let fileName = data.headers.get('Content-Disposition');
+      fileName = fileName.split(';')[1].trim().split('=')[1].replace(/\"/g, '');
+      const element = document.createElement('a');
+      element.href = URL.createObjectURL(data.body);
+      element.download = fileName;
+      document.body.appendChild(element);
+      element.click();
+      element.remove();
     });
   }
 
