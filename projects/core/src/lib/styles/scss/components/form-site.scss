@@ -546,7 +546,7 @@
 	}
 
 	&__head.active{
-		color: $color-dark-grey;
+		color: $color-dark-blue;
 	}
 
   &:focus &__head,
@@ -571,20 +571,24 @@
 		vertical-align: top;
 	}
 
-	&__option{
-		background: #fff;
-		border: solid 1px $color-light-grey;
+  &__option{
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    z-index: 10;
+    padding-bottom: 20px;
+  }
+
+  &__list{
+    background: #fff;
+    border: solid 1px $color-light-grey;
     border-top: 0;
-		max-height: 250px;
-		overflow-y: auto;
-		box-shadow: -10px 9px 21px 0 rgba(128, 152, 213, 0.08);
-		position: absolute;
-		top: 100%;
-		left: 0;
-		right: 0;
-		margin: 0 auto;
-		z-index: 10;
-	}
+    max-height: 250px;
+    overflow-y: auto;
+    box-shadow: -10px 9px 21px 0 rgba(128, 152, 213, 0.08);
+  }
 
 	//&:hover &__option,
 	//&__option.active{
@@ -624,9 +628,15 @@
 		top: auto;
 		bottom: 100%;
 		margin-top: 0;
-		margin-bottom: -2px;
 		box-shadow: -10px -9px 21px 0 rgba(128, 152, 213, 0.08);
+    padding-bottom: 0;
+    padding-top: 20px;
 	}
+
+  &_up &__list{
+    border-bottom: 0;
+    border-top: 1px solid $color-light-grey;
+  }
 
   &_small &__head,
   &_small &__search input[type="text"]{

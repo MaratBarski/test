@@ -97,6 +97,13 @@
       margin-bottom: 23px;
     }
   }
+
+  &_empty &__arr,
+  &_empty &__content{
+    display: none;
+  }
+
+  &_empty &__title{margin-left: 0;}
 }
 
 @media (max-width: 767px) {

@@ -1,4 +1,26 @@
 /*-------------- modal-window -----------------*/
+.modal-window-wrap{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  overflow-y: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 110;
+
+  .modal-window{
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    transform: none;
+  }
+}
+
 .modal-window{
   display: block;
   width: 540px;
@@ -15,6 +37,8 @@
   right: 0;
   margin: 0 auto;
   z-index: 110;
+
+  &.scroll{overflow-y: auto;}
 
   &__head{
     @include font(normal, normal, rem(20px), 1.25, $color-dark-grey);
