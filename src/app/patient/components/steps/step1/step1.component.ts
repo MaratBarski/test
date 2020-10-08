@@ -1,9 +1,10 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { TabItemModel, AutoCompleteComponent, SelectOption, BaseSibscriber } from '@appcore';
+import { TabItemModel, AutoCompleteComponent, SelectOption, BaseSibscriber, CsvManagerService, ExcelExtentions, ValidationFileMessage } from '@appcore';
 import { EditPatientService } from '@app/patient/services/edit-patient.service';
 import { ProjectComboComponent } from '@app/shared/components/project-combo/project-combo.component';
 import { CohortSources, OutputFormats } from '@app/patient/models/models';
 import { RadioListComponent } from '@app/shared/components/radio-list/radio-list.component';
+import { ConfigService } from '@app/shared/services/config.service';
 
 @Component({
   selector: 'md-step1',
@@ -21,9 +22,14 @@ export class Step1Component extends BaseSibscriber implements OnInit, AfterViewI
   @ViewChild('cohortRadion', { static: true }) cohortRadion: RadioListComponent;
 
   constructor(
-    public editPatientService: EditPatientService
+    public editPatientService: EditPatientService,
+    private csvManagerService: CsvManagerService,
+    private configService: ConfigService
   ) {
     super();
+    super.add(super.onAfterDestroy.subscribe(() => {
+      this.editPatientService.fileErrorMessage = undefined;
+    }));
   }
 
   tabsFormat: Array<TabItemModel> = [];
@@ -114,6 +120,7 @@ export class Step1Component extends BaseSibscriber implements OnInit, AfterViewI
   }
 
   changeSource(opt: SelectOption): void {
+    this.editPatientService.fileErrorMessage = undefined;
     this.selectedCohortOption = opt;
     this.editPatientService.settings.cohortSource = opt.id;
     this.editPatientService.isValueChanged = true;
@@ -121,7 +128,39 @@ export class Step1Component extends BaseSibscriber implements OnInit, AfterViewI
 
   selectedFile: any;
 
+  private fileError(error: ValidationFileMessage, replacements: Array<any> = undefined): void {
+    let fileErrorMessage = this.configService.config.fileValidationErrors[error];
+    if (replacements) {
+      replacements.forEach(x => {
+        fileErrorMessage = fileErrorMessage.replace(x[0], x[1]);
+      })
+    }
+    this.editPatientService.fileErrorMessage = fileErrorMessage;
+  }
+
   changeFile(event: any): void {
+    this.editPatientService.fileErrorMessage = undefined;
+    if (!this.csvManagerService.validateFileExtention(event.target, ExcelExtentions)) {
+      this.fileError(ValidationFileMessage.CsvExtensionError);
+      return;
+    }
+    if (!this.csvManagerService.validateFileName(event.target)) {
+      this.fileError(ValidationFileMessage.NoName);
+      return;
+    }
+    // if (!this.csvManagerService.validateMaxSize(event.target.files[0], parseInt(this.configService.getValue('file_upload_limit')))) {
+    //   this.fileError(ValidationFileMessage.FileSizeLimitError, [['{maxSize}', this.configService.getValue('file_upload_limit')]]);
+    //   return;
+    // }
+    if (!this.csvManagerService.validateFileEmpty(event.target.files[0])) {
+      this.fileError(ValidationFileMessage.FileEmpty);
+      return;
+    }
+    if (!this.csvManagerService.validateFileSize(event.target.files[0], 0, -1)) {
+      this.fileError(ValidationFileMessage.FileSizeError);
+      return;
+    }
+
     this.selectedFile = event.target.files[0];
     this.editPatientService.file = event.target.files[0];
     this.editPatientService.isValueChanged = true;

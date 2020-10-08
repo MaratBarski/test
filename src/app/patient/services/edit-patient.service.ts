@@ -145,6 +145,12 @@ export class EditPatientService {
   get isFileSelected(): boolean { return this._isFileSelected; }
   private _isFileSelected = true;
 
+  get fileErrorMessage(): string { return this._fileErrorMessage; }
+  set fileErrorMessage(error: string) {
+    this._fileErrorMessage = error;
+  }
+  private _fileErrorMessage: string;
+
   file: any;
 
   resetValidation(): void {
@@ -157,6 +163,7 @@ export class EditPatientService {
   }
 
   private _isNeedValidate = true;
+
   validate(): boolean {
     this.resetValidation();
     if (!this._isNeedValidate) { return true; }
@@ -175,6 +182,9 @@ export class EditPatientService {
     }
     if (this.checkNameExists()) {
       this._isNameExists = true;
+      error = false;
+    }
+    if (this._fileErrorMessage) {
       error = false;
     }
     this._isShowError = !error;
