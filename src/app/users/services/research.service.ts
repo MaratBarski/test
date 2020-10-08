@@ -191,8 +191,11 @@ export class ResearchService {
           PermissionTemplate: fl.researchTemplates ? fl.researchTemplates.map((t: any) => {
             return t.template ? t.template.templateName : ''
           }).join(';') : '',
-          Allowedcontent: fl.researchRestrictionEvents ? fl.researchRestrictionEvents.map((e: any) => {
-            return e.siteEventPropertyInfo ? `[(${e.siteEventInfo ? e.siteEventInfo.eventTableAlias : 'null'}) (${e.eventPropertyId}) (${e.value})]` : ''
+          Allowedcontent: fl.researchRestrictionEvents ?
+           fl.researchRestrictionEvents.map((e: any) => {
+            return e.siteEventPropertyInfo ? 
+            `[(${e.siteEventInfo ? e.siteEventInfo.eventTableAlias : 'null'}) (${e.eventPropertyName}) (${e.value})]`
+            : ''
           }).join(';') : ';',
           approvalKeyExpirationDate: fl.approvalKeyExpirationDate || ''
         },
