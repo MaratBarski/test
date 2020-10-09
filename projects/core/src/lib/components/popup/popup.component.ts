@@ -33,7 +33,7 @@ export class PopupComponent extends BaseSibscriber {
   @Input() dx = 10;
   @Input() dy = 10;
   @Input() closeOnClick = false;
-  @Input() scrollContainer?: HTMLElement;
+  @Input() scrollContainer?: Element;
 
   @Input() zIndex = 9999;
 
