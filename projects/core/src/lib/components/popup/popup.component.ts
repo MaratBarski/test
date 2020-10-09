@@ -33,6 +33,7 @@ export class PopupComponent extends BaseSibscriber {
   @Input() dx = 10;
   @Input() dy = 10;
   @Input() closeOnClick = false;
+  @Input() scrollContainer?: HTMLElement;
 
   @Input() zIndex = 9999;
 
@@ -125,7 +126,12 @@ export class PopupComponent extends BaseSibscriber {
     y = Math.min(y, window.innerHeight - this.rect.height);
     x = Math.min(x, window.innerWidth - this.rect.width);
     this.renderer.setStyle(this.container.nativeElement, 'left', `${x}px`);
-    this.renderer.setStyle(this.container.nativeElement, 'top', `${y + ComponentService.scrollTop()}px`);
+    let scrollTop = ComponentService.scrollTop();
+    if (this.scrollContainer) {
+      const containerTop = this.scrollContainer.getBoundingClientRect().top + scrollTop;
+      scrollTop = this.scrollContainer.scrollTop - containerTop;
+    }
+    this.renderer.setStyle(this.container.nativeElement, 'top', `${y + scrollTop}px`);
   }
 
   clickPopup(event: any): void {
