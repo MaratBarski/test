@@ -129,11 +129,11 @@ export class CsvManagerService {
             resolve(ValidationFileMessage.NullOnHeadersError);
             return;
           }
-          // if (!this.validateSymbol(x)) {
-          //   isError = true;
-          //   resolve(ValidationFileMessage.NoHebrewHeaders);
-          //   return;
-          // }
+          if (!this.validateSymbol(x)) {
+            isError = true;
+            resolve(ValidationFileMessage.NoHebrewHeaders);
+            return;
+          }
           if (dict[x]) {
             isError = true;
             resolve(ValidationFileMessage.UniquenessOfHeadersError);
@@ -247,7 +247,7 @@ export class CsvManagerService {
     return (file.size / 1000000 <= maxSize);
   }
 
-  validateSymbol(str: string, expr: string = undefined): boolean {
+  validateSymbol(str: string): boolean {
     return /^[A-z0-9\s-_\' *&$<>%~@+!#\/|,^{}()[\]]+$/g.test(str);
   }
 }
