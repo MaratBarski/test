@@ -555,13 +555,6 @@
                 "prmType": 0
             },
             {
-                "configId": "140",
-                "program": "general",
-                "parameterName": "security",
-                "parameterValue": "1",
-                "prmType": 0
-            },
-            {
                 "configId": "139",
                 "program": "general",
                 "parameterName": "pg_port",
@@ -678,6 +671,13 @@
                 "program": "general",
                 "parameterName": "site_url",
                 "parameterValue": "10.0.2.18:4000/dev-mainapp/",
+                "prmType": 0
+            },
+            {
+                "configId": "140",
+                "program": "general",
+                "parameterName": "security",
+                "parameterValue": "0",
                 "prmType": 0
             },
             {
@@ -800,6 +800,27 @@
                 "prmType": 0
             },
             {
+                "configId": "108",
+                "program": "site",
+                "parameterName": "research_max_patients",
+                "parameterValue": "100000",
+                "prmType": 0
+            },
+            {
+                "configId": "100",
+                "program": "site",
+                "parameterName": "research_end_date",
+                "parameterValue": "11/22/2300",
+                "prmType": 0
+            },
+            {
+                "configId": "101",
+                "program": "site",
+                "parameterName": "research_start_date",
+                "parameterValue": "01/21/2013",
+                "prmType": 0
+            },
+            {
                 "configId": "179",
                 "program": "general",
                 "parameterName": "impala_app_tag",
@@ -821,13 +842,6 @@
                 "prmType": 0
             },
             {
-                "configId": "39",
-                "program": "solr",
-                "parameterName": "core_url",
-                "parameterValue": "http://10.0.2.3:8983/solr/term_search_v6_shard6_replica2/",
-                "prmType": 0
-            },
-            {
                 "configId": "165",
                 "program": "utilities",
                 "parameterName": "rscript",
@@ -839,13 +853,6 @@
                 "program": "utilities",
                 "parameterName": "rlibrary",
                 "parameterValue": "C:/Program Files/R/R-Mdclone/library",
-                "prmType": 0
-            },
-            {
-                "configId": "108",
-                "program": "site",
-                "parameterName": "research_max_patients",
-                "parameterValue": "1000000",
                 "prmType": 0
             },
             {
@@ -933,20 +940,6 @@
                 "prmType": 0
             },
             {
-                "configId": "101",
-                "program": "site",
-                "parameterName": "research_start_date",
-                "parameterValue": "2013-12-31",
-                "prmType": 0
-            },
-            {
-                "configId": "100",
-                "program": "site",
-                "parameterName": "research_end_date",
-                "parameterValue": "2022-12-03",
-                "prmType": 0
-            },
-            {
                 "configId": "257",
                 "program": "general",
                 "parameterName": "impala_jdbc_odbc_port",
@@ -965,6 +958,90 @@
                 "program": "general",
                 "parameterName": "allow_session_share",
                 "parameterValue": "TRUE",
+                "prmType": 0
+            },
+            {
+                "configId": "258",
+                "program": "impala",
+                "parameterName": "csv_delimiter",
+                "parameterValue": "~",
+                "prmType": 0
+            },
+            {
+                "configId": "39",
+                "program": "solr",
+                "parameterName": "core_url",
+                "parameterValue": "http://10.0.2.3:8983/solr/term_search_v6_shard1_replica1/",
+                "prmType": 0
+            },
+            {
+                "configId": "259",
+                "program": "synthetic",
+                "parameterName": "main_url",
+                "parameterValue": "/api/v1/synthetic/",
+                "prmType": 0
+            },
+            {
+                "configId": "260",
+                "program": "synthetic",
+                "parameterName": "port",
+                "parameterValue": "5001",
+                "prmType": 0
+            },
+            {
+                "configId": "261",
+                "program": "synthetic",
+                "parameterName": "default_kube_files",
+                "parameterValue": "/kubdepl/",
+                "prmType": 0
+            },
+            {
+                "configId": "262",
+                "program": "synthetic",
+                "parameterName": "python_config_yaml",
+                "parameterValue": "python.config.yaml",
+                "prmType": 0
+            },
+            {
+                "configId": "266",
+                "program": "synthetic",
+                "parameterName": "host",
+                "parameterValue": "0.0.0.0",
+                "prmType": 0
+            },
+            {
+                "configId": "267",
+                "program": "synthetic",
+                "parameterName": "namespace",
+                "parameterValue": "synthetic-process",
+                "prmType": 0
+            },
+            {
+                "configId": "272",
+                "program": "synthetic",
+                "parameterName": "continue_to_python",
+                "parameterValue": "continue to python",
+                "prmType": 0
+            },
+            {
+                "configId": "273",
+                "program": "impala",
+                "parameterName": "udf_dict_func",
+                "parameterValue": "mdc_dict_array",
+                "prmType": 0
+            },
+            {
+                "configId": "274",
+                "program": "general",
+                "parameterName": "k_default",
+                "parameterValue": "4",
+                "prmType": 0
+            },
+            {
+                "configId": "278",
+                "program": "general",
+                "parameterName": "file_headers_regex",
+                "parameterValue": "[A-z0-9\\s-_\\' *&$<>%~@+!#\\/|,^{}()[\\]]+",
                 "prmType": 0
             }
         ],
@@ -1087,6 +1164,42 @@
                 "msgId": "157",
                 "msgCode": "E00034",
                 "msgOut": "The file {name} is uploading.",
+                "msgClient": true
+            },
+            {
+                "msgId": "1",
+                "msgCode": "E00035",
+                "msgOut": "There is one or more missing fields in this page",
+                "msgClient": true
+            },
+            {
+                "msgId": "2",
+                "msgCode": "E00036",
+                "msgOut": "The user's permission set is deleted from the system.",
+                "msgClient": true
+            },
+            {
+                "msgId": "3",
+                "msgCode": "E00037",
+                "msgOut": "User can now query data according to the permission set.",
+                "msgClient": true
+            },
+            {
+                "msgId": "4",
+                "msgCode": "E00038",
+                "msgOut": "User can no longer query data according to the permission set.",
+                "msgClient": true
+            },
+            {
+                "msgId": "5",
+                "msgCode": "E00039",
+                "msgOut": "The user can now query the allowed data.",
+                "msgClient": true
+            },
+            {
+                "msgId": "6",
+                "msgCode": "E00040",
+                "msgOut": "User has one of the following {prop1}. <br> To Delete the user, you first have to delete all his related activity.",
                 "msgClient": true
             }
         ]

@@ -33,6 +33,7 @@ export enum ValidationFileMessage {
 })
 export class CsvManagerService {
 
+
   createLinkFromTable(table: TableModel): string {
     const csvData: CsvData = { headers: [], data: [] };
     const columns = [];
@@ -128,11 +129,11 @@ export class CsvManagerService {
             resolve(ValidationFileMessage.NullOnHeadersError);
             return;
           }
-          if (!this.validateSymbol(x)) {
-            isError = true;
-            resolve(ValidationFileMessage.NoHebrewHeaders);
-            return;
-          }
+          // if (!this.validateSymbol(x)) {
+          //   isError = true;
+          //   resolve(ValidationFileMessage.NoHebrewHeaders);
+          //   return;
+          // }
           if (dict[x]) {
             isError = true;
             resolve(ValidationFileMessage.UniquenessOfHeadersError);
@@ -147,7 +148,7 @@ export class CsvManagerService {
 
       }).catch(e => {
         if (e === '') {
-          
+
           resolve(ValidationFileMessage.FileEmpty);
         } else {
           resolve(ValidationFileMessage.NoRows);
@@ -247,7 +248,10 @@ export class CsvManagerService {
   }
 
 
-  validateSymbol(str: string): boolean {
+  validateSymbol(str: string, expr: string = undefined): boolean {
+    if (expr) {
+      return new RegExp(expr).test(str);
+    }
     for (let i = 0; i < str.length; i++) {
       const ch = str.charAt(i);
       if (ch >= 'a' && ch <= 'z') { continue }
