@@ -12,13 +12,13 @@ import { ConfigService } from '@app/shared/services/config.service';
   styleUrls: ['./upload-file.component.scss']
 })
 export class UploadFileComponent {
-
   constructor(
     private uploadService: UploadService,
     private csvManagerService: CsvManagerService,
     private configService: ConfigService,
     public loginService: LoginService
-  ) { }
+  ) {
+  }
 
   @ViewChild('fileInput', { static: true }) fileInput: ElementRef;
   @Output() onCancel = new EventEmitter<void>();
@@ -162,7 +162,7 @@ export class UploadFileComponent {
     this.csvManagerService.readHeaders(file).then((arr: Array<string>) => {
       this.isFileError = false;
       for (let i = 0; i < arr.length; i++) {
-        if (!this.csvManagerService.validateSymbol(arr[0])) {
+        if (!this.csvManagerService.validateSymbol(arr[i])) {
           this.fileError(ValidationFileMessage.NoEnglish);
           this.categoryHeaders = [];
           this.file = '';

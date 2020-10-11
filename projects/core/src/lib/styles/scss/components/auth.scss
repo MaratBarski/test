@@ -1,0 +1,145 @@
+/*-------------- auth -----------------*/
+.auth-wrap{
+	width: 100vw;
+	height: 100vh;
+	position: relative;
+	background: url(/assets/img/bg-login.jpg) no-repeat center;
+	background-size: cover;
+}
+
+.auth-form{
+	display: block;
+	width: 427px;
+	max-height: 90%;
+	overflow-y: auto;
+	background: #fff;
+	border-top: 6px solid $color-dark-purple;
+	border-radius: 4px;
+	padding: 35px 30px 40px;
+	box-shadow: 0 46px 100px 0 rgba(0, 0, 0, 0.15);
+	position: fixed;
+	bottom: 90px;
+	left: 66px;
+	z-index: 110;
+
+	&__head{
+		@include font(normal, normal, rem(24px), 1.25, $color-dark-grey);
+		margin-bottom: 10px;
+	}
+
+	&__text{
+		@include font(normal, normal, rem(16px), 1.25, $color-dark-grey);
+	}
+
+	&__fields{
+		margin-top: 49px;
+		position: relative;
+	}
+
+	&__item:not(:last-child){margin-bottom: 24px;}
+
+	&__label{
+		@include font(normal, normal, rem(14px), 1.25, $color-dark-grey);
+		text-transform: uppercase;
+		margin-bottom: 4px;
+	}
+
+	input[type="text"],
+	input[type="email"],
+	input[type="password"],
+	textarea{
+		height: rem(30px);
+		width: 100%;
+		outline: none;
+		border: 0;
+		border-bottom: 1px solid $color-light-grey;
+		@include font(normal, normal, rem(14px), rem(28px), $color-dark-blue);
+		padding: 0;
+		margin: 0;
+		box-shadow: none;
+		transition: all 0.3s ease;
+	}
+
+	textarea{
+		display: block;
+		height: 122px;
+		padding-top: 8px;
+		padding-bottom: 8px;
+		line-height: 1.79;
+	}
+
+	input[type="text"]::placeholder,
+	input[type="email"]::placeholder,
+	input[type="password"]::placeholder,
+	textarea::placeholder{
+		color: $color-light-grey;
+		opacity: 1;
+	}
+
+	input[type="text"]:focus,
+	input[type="email"]:focus,
+	input[type="password"]:focus,
+	textarea:focus{
+		border-color: $color-purple;
+		box-shadow: none;
+	}
+
+	input[disabled],
+	textarea[disabled]{
+		background: #fff;
+		color: $color-light-grey;
+	}
+
+	&__error{
+		@include font(normal, normal, rem(13px), 1.25, $color-red);
+		margin-top: 7px;
+		position: absolute;
+		top: 100%;
+		left: 0;
+	}
+
+	&__btn{
+		text-align: center;
+		margin-top: 48px;
+
+		input[type="submit"],
+		button{
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			height: rem(40px);
+			min-width: 220px;
+			padding: 0 40px;
+			background: $color-dark-purple;
+			border: 1px solid $color-dark-purple;
+			border-radius: rem(20px);
+			outline: 0;
+			@include font(normal, 600, rem(14px), rem(38px), #fff);
+			text-transform: uppercase;
+			text-align: center;
+			cursor: pointer;
+			text-decoration: none;
+			box-shadow: none;
+			white-space: nowrap;
+		}
+
+		input[type="submit"]:hover,
+		button:hover{
+			background: #3f0280;
+			border-color: #3f0280;
+			color: #fff;
+			text-decoration: none;
+		}
+	}
+}
+
+@media (max-width: 767px) {
+	.auth-form{
+		width: calc(100% - 40px);
+		@include top-center;
+		left: 0;
+		right: 0;
+		bottom: auto;
+		margin: 0 auto;
+	}
+}

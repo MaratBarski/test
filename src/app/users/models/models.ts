@@ -40,7 +40,7 @@ export class PermissionSet {
 export const ResearchStatus = {
     Open: 'Open',
     Initial: 'Initial',
-    Close: 'Close'
+    Close: 'Closed'
 }
 
 export const RoleOptions: Array<SelectOption> = [

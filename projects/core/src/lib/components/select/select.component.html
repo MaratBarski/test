@@ -9,16 +9,18 @@
       <svg mdcSvg="ic-select-arr-down" class="icon" [@rotatedState]="rotatedState"></svg>
     </div>
   </div>
-  <div #optionsContainer [mdcVisibility]="isExpanded" [style.maxHeight]="maxHeight"
-    class="select__option overflow-x-hidden">
-    <ng-template [ngIf]="options">
-      <div [ngClass]="{'active':isActive(option)}" (click)="select(option)" *ngFor="let option of options"
-        class="select__param">
-        <div class="select__icon-wrap">
-          <svg *ngIf="option.icon" [mdcSvg]="option.icon" class="icon"></svg>
-         <mdc-text-block [position]="position" [text]="option.text"></mdc-text-block>
-        </div>
+  <div #optionsContainer [mdcVisibility]="isExpanded"
+    class="select__option">
+      <div class="select__list overflow-x-hidden" [style.maxHeight]="maxHeight">
+        <ng-template [ngIf]="options">
+          <div [ngClass]="{'active':isActive(option)}" (click)="select(option)" *ngFor="let option of options"
+            class="select__param">
+            <div class="select__icon-wrap">
+              <svg *ngIf="option.icon" [mdcSvg]="option.icon" class="icon"></svg>
+             <mdc-text-block [position]="position" [text]="option.text"></mdc-text-block>
+            </div>
+          </div>
+        </ng-template>
       </div>
-    </ng-template>
   </div>
 </div>

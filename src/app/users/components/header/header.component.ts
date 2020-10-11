@@ -13,6 +13,8 @@ export class HeaderComponent {
   @Input() showLegend = true;
   @Input() showTitle = true;
   @Input() backUrl = 'users';
+  //@Input() backText = 'Back to patient story settings';
+  @Input() backText = 'Back to user list';
 
   constructor(
     public permissionSetService: PermissionSetService,

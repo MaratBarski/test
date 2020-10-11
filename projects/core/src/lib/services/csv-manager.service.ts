@@ -33,6 +33,7 @@ export enum ValidationFileMessage {
 })
 export class CsvManagerService {
 
+
   createLinkFromTable(table: TableModel): string {
     const csvData: CsvData = { headers: [], data: [] };
     const columns = [];
@@ -147,7 +148,7 @@ export class CsvManagerService {
 
       }).catch(e => {
         if (e === '') {
-          
+
           resolve(ValidationFileMessage.FileEmpty);
         } else {
           resolve(ValidationFileMessage.NoRows);
@@ -246,19 +247,8 @@ export class CsvManagerService {
     return (file.size / 1000000 <= maxSize);
   }
 
-
   validateSymbol(str: string): boolean {
-    for (let i = 0; i < str.length; i++) {
-      const ch = str.charAt(i);
-      if (ch >= 'a' && ch <= 'z') { continue }
-      if (ch >= 'A' && ch <= 'Z') { continue }
-      if (ch >= '0' && ch <= '9') { continue }
-      if (ch === '_') { continue; }
-      if (ch === '-') { continue; }
-      if (ch === ' ') { continue; }
-      return false;
-    }
-    return true;
+    return /^[A-z0-9\s-_\' *&$<>%~@+!#\/|,^{}()[\]]+$/g.test(str);
   }
 }
 

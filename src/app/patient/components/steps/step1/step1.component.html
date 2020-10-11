@@ -98,7 +98,7 @@
 
 <ng-template #radioTemplate2>
     <div class="user-source-radio__field">
-        <div [ngClass]="{'disable':editPatientService.settings.cohortSource!==2,'error':!editPatientService.isFileSelected}"
+        <div [ngClass]="{'disable':editPatientService.settings.cohortSource!==2,'error':!editPatientService.isFileSelected || editPatientService.fileErrorMessage}"
             class="file-upload">
             <label class="file-upload__content">
                 <input (change)="changeFile($event)" type="file"
@@ -111,7 +111,10 @@
             </label>
         </div>
         <div [hidden]="editPatientService.isFileSelected" class="user-details-main__error">
-            Missing
-            File</div>
+            Missing File
+        </div>
+        <div [hidden]="!editPatientService.fileErrorMessage" class="user-details-main__error">
+            {{editPatientService.fileErrorMessage}}
+        </div>
     </div>
 </ng-template>

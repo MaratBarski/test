@@ -85,9 +85,9 @@
     display: inline-block;
   }
 
-  &_white input[type="text"]::placeholder{color: $color-light-grey}
-  &_white input[type="text"]::-webkit-input-placeholder {color: $color-light-grey}
-  &_white input[type="text"]:-moz-placeholder {color: $color-light-grey}
+  //&_white input[type="text"]::placeholder{color: $color-light-grey}
+  //&_white input[type="text"]::-webkit-input-placeholder {color: $color-light-grey}
+  //&_white input[type="text"]:-moz-placeholder {color: $color-light-grey}
 
   &_white input[type="text"]{color: #fff;}
 

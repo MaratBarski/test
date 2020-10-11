@@ -31,6 +31,7 @@ import { DateTimePipe } from './pipes/date-time.pipe';
 import { TabWizardComponent } from './components/tab-wizard/tab-wizard.component';
 import { RadioListComponent } from './components/radio-list/radio-list.component';
 import { ProgressComponent } from './components/progress/progress.component';
+import { SortByPipe } from './pipes/sort-by.pipe';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { ProgressComponent } from './components/progress/progress.component';
     DateTimePipe,
     TabWizardComponent,
     RadioListComponent,
-    ProgressComponent
+    ProgressComponent,
+    SortByPipe
   ],
   imports: [
     FormsModule,
@@ -85,7 +87,8 @@ import { ProgressComponent } from './components/progress/progress.component';
     DateTimePipe,
     TabWizardComponent,
     RadioListComponent,
-    ProgressComponent
+    ProgressComponent,
+    SortByPipe
   ],
   entryComponents: [
   ]

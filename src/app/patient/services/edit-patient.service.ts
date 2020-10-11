@@ -145,6 +145,12 @@ export class EditPatientService {
   get isFileSelected(): boolean { return this._isFileSelected; }
   private _isFileSelected = true;
 
+  get fileErrorMessage(): string { return this._fileErrorMessage; }
+  set fileErrorMessage(error: string) {
+    this._fileErrorMessage = error;
+  }
+  private _fileErrorMessage: string;
+
   file: any;
 
   resetValidation(): void {
@@ -157,6 +163,7 @@ export class EditPatientService {
   }
 
   private _isNeedValidate = true;
+
   validate(): boolean {
     this.resetValidation();
     if (!this._isNeedValidate) { return true; }
@@ -175,6 +182,9 @@ export class EditPatientService {
     }
     if (this.checkNameExists()) {
       this._isNameExists = true;
+      error = false;
+    }
+    if (this._fileErrorMessage) {
       error = false;
     }
     this._isShowError = !error;
@@ -584,12 +594,16 @@ export class EditPatientService {
           type: ToasterType.infoProgressBar,
           showInToaster: true,
           containerEnable: true,
-          removeOnComplete: true,
+          removeOnComplete: false,
           onComplete: () => {
             this._dataLoaded = true;
           }
         },
         form: fd,
+        afterUpload: (body, info) => {
+          this._dataLoaded = true;
+          this.router.navigateByUrl('/patient');
+        },
         method: method,
         url: `${environment.serverUrl}${environment.endPoints.patientStoryUpload}/${id}`
       });
@@ -629,7 +643,7 @@ export class EditPatientService {
 
   private geteventInclusion(): any {
     const res = {};
-    this.events.filter(e => e.isChecked)
+    (this.events || []).filter(e => e.isChecked)
       .forEach(e => {
         res[e.eventId] = [];
         e.siteEventPropertyInfos.filter((se: any) => se.isChecked)
@@ -642,7 +656,7 @@ export class EditPatientService {
 
   private getHierarchies(): any {
     const res = {};
-    this._hierarchyProjects.filter(p => p.selectedId)
+    (this._hierarchyProjects || []).filter(p => p.selectedId)
       .forEach(p => {
         res[p.hierarchyRootId] = p.selectedId;
       });

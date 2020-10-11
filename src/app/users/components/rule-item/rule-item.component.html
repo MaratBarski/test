@@ -7,7 +7,7 @@
             <div [hidden]="!((eventsOptions || [])|searchByText:'text':searchEventText:isShowAllEvents).length"
                 class="drop-cond__sect">
                 <div [ngClass]="{'selected':ev.id == selectedEvent}" (click)="selectEvent(ev)"
-                    *ngFor="let ev of (eventsOptions || [])|searchByText:'text':searchEventText:isShowAllEvents"
+                    *ngFor="let ev of (eventsOptions || [])|searchByText:'text':searchEventText:isShowAllEvents|sortBy:{property:'text',dir:'asc'}"
                     class="drop-cond__param">
                     <div class="drop-cond__param-text">
                         <mdc-text-block position="top" [text]="ev.text" [colorText]="searchEventText"></mdc-text-block>
@@ -25,7 +25,7 @@
             <div [hidden]="!((propertyOptions || [])|searchByText:'text':searchPropertyText:isShowAllProperties).length"
                 class="drop-cond__sect">
                 <div [ngClass]="{'selected':p.id == selectedProperty}" (click)="selectProperty(p)"
-                    *ngFor="let p of (propertyOptions || [])|searchByText:'text':searchPropertyText:isShowAllProperties"
+                    *ngFor="let p of (propertyOptions || [])|searchByText:'text':searchPropertyText:isShowAllProperties|sortBy:{property:'text',dir:'asc'}"
                     class="drop-cond__param">
                     <div class="drop-cond__param-text">
                         <mdc-text-block position="top" [text]="p.text" [colorText]="searchPropertyText">

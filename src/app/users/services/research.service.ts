@@ -177,7 +177,7 @@ export class ResearchService {
       data.rows.push({
         cells: {
           PermissionSetName: fl.researchName,
-          PermissionsetDescription: fl.researchDescription || 'Description',
+          PermissionsetDescription: fl.information,
           User: fl.user ? fl.user.firstName + ' ' + fl.user.lastName : '',
           Modified: fl.insertDate,
           Environment: fl.project ? fl.project.projectName : '',
@@ -191,8 +191,11 @@ export class ResearchService {
           PermissionTemplate: fl.researchTemplates ? fl.researchTemplates.map((t: any) => {
             return t.template ? t.template.templateName : ''
           }).join(';') : '',
-          Allowedcontent: fl.researchRestrictionEvents ? fl.researchRestrictionEvents.map((e: any) => {
-            return e.siteEventPropertyInfo ? `[(${e.siteEventInfo ? e.siteEventInfo.eventTableAlias : 'null'}) (${e.eventPropertyId}) (${e.value})]` : ''
+          Allowedcontent: fl.researchRestrictionEvents ?
+           fl.researchRestrictionEvents.map((e: any) => {
+            return e.siteEventPropertyInfo ? 
+            `[(${e.siteEventInfo ? e.siteEventInfo.eventTableAlias : 'null'}) (${e.eventPropertyName}) (${e.value})]`
+            : ''
           }).join(';') : ';',
           approvalKeyExpirationDate: fl.approvalKeyExpirationDate || ''
         },
