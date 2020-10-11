@@ -4,8 +4,9 @@ import {Observable, Subject} from 'rxjs';
 import {FileSource} from '@app/imported-files/models/file-source';
 import {environment} from '@env/environment';
 import {catchError, map, switchMap} from 'rxjs/operators';
-import {DataService, NotificationsService, ToasterType} from '@appcore';
+import {ColumnType, DataService, NotificationsService, ToasterType} from '@appcore';
 import {HttpClient} from '@angular/common/http';
+import {FieldDataType} from '@app/activate/model/enum/FieldDataType';
 
 @Injectable({
   providedIn: 'root'
@@ -58,6 +59,20 @@ export class ActivateService implements Resolve<any> {
 
   downloadOriginalFile(fileId): Observable<any> {
     this.getUrl = `${environment.serverUrl}${environment.endPoints.activate.base}${environment.endPoints.activate.originalFile}/${fileId}`;
-    return this.http.get(this.getUrl, { responseType: 'blob', observe: 'response' });
+    return this.http.get(this.getUrl, {responseType: 'blob', observe: 'response'});
+  }
+
+  nullsRate(fileId) {
+    this.getUrl = `${environment.serverUrl}${environment.endPoints.activate.base}${environment.endPoints.activate.nullsRate}/${fileId}`;
+    return this.http.get(this.getUrl);
+  }
+
+  getSampleData(fileId: number, colName: string, colType: FieldDataType, anonymityRequest = null) {
+    this.getUrl = anonymityRequest ?
+      `${environment.serverUrl}${environment.endPoints.activate.base}${environment.endPoints.activate.sampleData}/
+          ${fileId}/${colName}/${colType}/${anonymityRequest}` :
+      `${environment.serverUrl}${environment.endPoints.activate.base}${environment.endPoints.activate.sampleData}/
+          ${fileId}/${colName}/${colType}/${anonymityRequest}`;
+    return this.http.get(this.getUrl);
   }
 }

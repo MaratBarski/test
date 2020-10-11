@@ -4,7 +4,7 @@
 <div class="query-flow">
   <section>
     <div class="query-flow-top-wrap">
-      <md-top-panel [fileSource]="fileSource" (saveFileStateState)="saveState()"></md-top-panel>
+      <md-top-panel [fileSource]="fileSource" (saveFileStateState)="createState()"></md-top-panel>
     </div>
   </section>
   <section>
@@ -215,10 +215,10 @@
               </th>
 
               <td class="admin-table__item admin-table__item_center d-none d-xl-table-cell">
-                <div class="progress">
-                  <div class="progress__bg" style="width: 0%"></div>
-                  <div class="progress__text">~0%</div>
-                </div>
+                <ng-container *ngIf="column.nullRate !== undefined && column.nullRate !== null">
+                  <mdc-progress-match [percentage]="column.nullRate">
+                  </mdc-progress-match>
+                </ng-container>
               </td>
               <td class="admin-table__item admin-table__item_menu">
                 <div class="admin-table__content">

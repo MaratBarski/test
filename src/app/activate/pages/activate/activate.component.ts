@@ -97,6 +97,7 @@ export class ActivateComponent extends BaseNavigation implements OnInit {
 
             }
           });
+          this.nullsRate();
         } else {
           this.fileSource.fileClms.forEach(clm => {
             const column: IColumn = new PhysicalColumn(clm);
@@ -123,6 +124,9 @@ export class ActivateComponent extends BaseNavigation implements OnInit {
           this.columnCollection.sort((c1, c2) => {
             const [val1, val2] = [Number(c1.order), Number(c2.order)];
             return val1 > val2 ? 1 : -1;
+          });
+          this.saveState().subscribe(data => {
+            this.nullsRate();
           });
         }
       }));
@@ -204,10 +208,29 @@ export class ActivateComponent extends BaseNavigation implements OnInit {
     });
   }
 
-  saveState() {
-    this.activateService.updateFileSourceState(this.fileSource.fileId, this.columnCollection).subscribe(data => {
+  nullsRate() {
+    this.activateService.nullsRate(this.fileSource.fileId).subscribe((data: any) => {
+      const nulls = data.data.data.nullsRate;
+      this.columnCollection.forEach((col, index) => {
+        this.columnCollection[index].nullRate = nulls[col.physicalName] * 100;
+      });
+    });
+  }
+
+  getSampleData(colName: string, columnType: FieldDataType, anonymityRequest = null) {
+    this.activateService.getSampleData(this.fileSource.fileId, colName, columnType, anonymityRequest).subscribe(data => {
       console.log(data);
     });
+  }
+
+  createState() {
+    this.saveState().subscribe(data => {
+
+    });
+  }
+
+  saveState() {
+    return this.activateService.updateFileSourceState(this.fileSource.fileId, this.columnCollection);
   }
 
 }

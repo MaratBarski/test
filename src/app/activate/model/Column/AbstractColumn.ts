@@ -22,6 +22,7 @@ export abstract class AbstractColumn {
   public hierarchyRootId: number;
   public defaultLevelId: number;
   public isShown: boolean;
+  public nullRate: number;
 
   constructor(item: FileClm) {
     this.physicalName = item.physicalColName;

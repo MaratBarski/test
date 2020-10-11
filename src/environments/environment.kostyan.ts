@@ -93,7 +93,9 @@ export const environment = {
       base: 'kostya/api/v1/activate',
       file: '/activate-file',
       calculate: '',
-      originalFile: '/download-original'
+      originalFile: '/download-original',
+      nullsRate: '/nulls-rate',
+      sampleData: '/get-sample-data',
     }
   }
 };

@@ -21,6 +21,7 @@ export interface IColumn {
   defaultLevelId: number;
   isShown: boolean;
   tokens?: ExpressionToken[];
+  nullRate: number;
 //  filter?: FieldFilterAbstract;
 
   getSampleData();
