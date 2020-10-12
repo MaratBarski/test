@@ -236,7 +236,7 @@ export class ImportedFileMappingComponent extends BaseNavigation implements OnIn
           this.importedFilesMappingService.saveMappedData(tmp)
             .subscribe(responce => {
               this.isSaving = false;
-              //this.router.navigateByUrl('/imported-files');
+              this.router.navigateByUrl('/imported-files');
             }, error => {
               this.saveError();
             });
@@ -244,7 +244,7 @@ export class ImportedFileMappingComponent extends BaseNavigation implements OnIn
           this.saveError();
         });
       }, 1);
-      this.router.navigateByUrl('/imported-files');
+      //this.router.navigateByUrl('/imported-files');
     }
   }
 
