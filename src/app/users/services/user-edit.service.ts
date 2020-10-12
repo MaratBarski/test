@@ -342,6 +342,7 @@ export class UserEditService {
   validate(setError: boolean): boolean {
     if (!this._isNeedValidate) { return true; }
     this.resetValidation();
+    if (this.mode === 2) { return true; }
     let res = true;
     const pwdValid = this.validatePassword();
     const userNameValid = this.validateUserName();
@@ -588,6 +589,7 @@ export class UserEditService {
   }
 
   save(): void {
+    if (!this.validate(true)) { return; }
     const req = this.createServerRequest();
     this._isLoading = true;
     //document.write(JSON.stringify(req));
