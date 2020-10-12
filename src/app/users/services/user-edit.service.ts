@@ -392,13 +392,8 @@ export class UserEditService {
       this.isUserNameValid = false;
       return this.isUserNameValid;
     }
-    for (let i = 0; i < userName.length; i++) {
-      const ch = userName.charAt(i);
-      if (ch === '_') { continue; }
-      if (ch >= '0' && ch <= '9') { continue; }
-      if (ch >= 'a' && ch <= 'z') { continue; }
+    if (!/^[a-z0-9A-Z_]+$/.test(userName)) {
       this.isUserNameValid = false;
-      return this.isUserNameValid;
     }
     return this.isUserNameValid;
   }
@@ -422,21 +417,12 @@ export class UserEditService {
       this.isPasswordValid = false;
       return this.isPasswordValid;
     }
-    let minNumber = 1;
-    let minBigSymbol = 1;
-    let minSmallSymbol = 1;
-    for (let i = 0; i < password.length; i++) {
-      const ch = password.charAt(i);
-      if (ch >= '0' && ch <= '9') { minNumber--; continue; }
-      if (ch >= 'A' && ch <= 'Z') { minBigSymbol--; continue; }
-      if (ch >= 'a' && ch <= 'z') { minSmallSymbol--; continue; }
-      this.isPasswordValid = false;
-      return this.isPasswordValid;
-    }
-    if (minNumber > 0 || minBigSymbol > 0 || minSmallSymbol > 0) {
-      this.isPasswordValid = false;
-      return this.isPasswordValid;
-    }
+    [/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,80}$/, /^[a-z0-9A-Z]+$/].forEach(r => {
+      if (!r.test(password)) {
+        this.isPasswordValid = false;
+        return;
+      }
+    });
     return this.isPasswordValid;
   }
 
