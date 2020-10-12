@@ -179,7 +179,7 @@ export class ResearchService {
           PermissionSetName: fl.researchName,
           PermissionsetDescription: fl.information,
           User: fl.user ? fl.user.firstName + ' ' + fl.user.lastName : '',
-          Modified: fl.insertDate,
+          Modified: fl.modifiedDate,
           Environment: fl.project ? fl.project.projectName : '',
           ApprovalKey: fl.approvalKey,
           KeyStatus: fl.researchStatus,
