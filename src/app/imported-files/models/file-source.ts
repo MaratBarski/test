@@ -2,8 +2,8 @@ import { Template } from './template';
 import { Project } from './project';
 import { User } from 'core/lib/models/UserInfo';
 import { Hierarchy } from '@app/models/hierarchy';
-import {FieldDataType} from '@app/activate/model/enum/FieldDataType';
-import {IColumn} from '@app/activate/model/interfaces/IColumn';
+import { FieldDataType } from '@app/activate/model/enum/FieldDataType';
+import { IColumn } from '@app/activate/model/interfaces/IColumn';
 
 export class FileSourceResponse {
      data?: Array<FileSource>;
@@ -36,7 +36,8 @@ export class FileSource {
      rowsNum?: number;
      columnsNum?: number;
      fileStatus?: string;
-    fileState: Array<IColumn>;
+     fileState: Array<IColumn>;
+     modifiedDate: Date;
 }
 
 export class FileClm {

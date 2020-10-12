@@ -148,7 +148,7 @@ export class ImportedFilesService {
       data.rows.push({
         cells: {
           fileName: fl.fileName,
-          insertDate: fl.insertDate,
+          insertDate: fl.modifiedDate,
           environment: fl.projectObj ? fl.projectObj.projectName : '',
           permission: fl.template && fl.template.templateId !== -1 ? fl.template.templateName : EMPTY_TEMPLATE,
           user: fl.user && fl.user.firstName && fl.user.lastName ? `${fl.user.firstName} ${fl.user.lastName}` : fl.user && fl.user.login ? fl.user.login : '',
