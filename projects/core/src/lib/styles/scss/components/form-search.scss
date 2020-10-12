@@ -104,7 +104,7 @@
   &_white &__close .ic-close-small{fill: #fff;}
 
   &_field  input[type="text"]{
-    padding: 0 25px 0 44px;
+    padding: 0 44px 0 20px;
     border: 1px solid $color-light-grey;
     border-radius: 15px;
     background: #fff;
@@ -114,7 +114,13 @@
 
   &_field input[type="submit"],
   &_field button{
-    left: 21px;
+    left: auto;
+    right: 21px;
+
+    .ic-search{
+      transform: scale(-1, 1);
+      fill: $color-dark-blue;
+    }
   }
 
   &_field &__close{
