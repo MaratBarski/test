@@ -520,6 +520,7 @@ export class UserEditService {
       .pipe(take(1))
       .subscribe(res => {
         this._isLoading = false;
+        this.router.navigateByUrl('/users');
         this.notificationService.addNotification({
           showInToaster: true,
           isClientOnly: true,
@@ -545,6 +546,7 @@ export class UserEditService {
       .pipe(take(1))
       .subscribe(res => {
         this._isLoading = false;
+        this.router.navigateByUrl('/users');
         this.notificationService.addNotification({
           showInToaster: true,
           isClientOnly: true,
@@ -569,6 +571,7 @@ export class UserEditService {
       .pipe(take(1))
       .subscribe(res => {
         this._isLoading = false;
+        this.router.navigateByUrl('/users');
         this.notificationService.addNotification({
           showInToaster: true,
           isClientOnly: true,
