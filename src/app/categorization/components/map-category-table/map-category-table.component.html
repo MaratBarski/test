@@ -42,16 +42,18 @@
                                         </div>
                                         <div id="select_{{index}}" [mdcVisibility]="selectedItem===item"
                                             class="select__option">
-                                            <ng-container *ngFor="let i of categoryMap">
-                                                <!-- <div *ngIf="!i.inUse || (i === newCategoryDefault && newCategoryDefault !== item.oldCategory)" (click)="changeOldCategory(i,item)" class="select__param">
-                                                {{i.hierarchyLevelName}}
-                                                 </div> -->
-                                                <div *ngIf="i.sortValue!==-2 && i.sortValue!==-1  && (!i.inUse || (i === newCategoryDefault && newCategoryDefault !== item.oldCategory))"
-                                                    (click)="changeOldCategory(i,item)" class="select__param">
-                                                    <mdc-text-block position="top" [text]="i.hierarchyLevelName">
-                                                    </mdc-text-block>
-                                                </div>
-                                            </ng-container>
+                                            <div class="select__list">
+                                              <ng-container *ngFor="let i of categoryMap">
+                                                  <!-- <div *ngIf="!i.inUse || (i === newCategoryDefault && newCategoryDefault !== item.oldCategory)" (click)="changeOldCategory(i,item)" class="select__param">
+                                                  {{i.hierarchyLevelName}}
+                                                   </div> -->
+                                                  <div *ngIf="i.sortValue!==-2 && i.sortValue!==-1  && (!i.inUse || (i === newCategoryDefault && newCategoryDefault !== item.oldCategory))"
+                                                      (click)="changeOldCategory(i,item)" class="select__param">
+                                                      <mdc-text-block position="top" [text]="i.hierarchyLevelName">
+                                                      </mdc-text-block>
+                                                  </div>
+                                              </ng-container>
+                                            </div>
                                         </div>
                                         <div [hidden]="!(item.oldCategory===noMatchCategory && saveClicked)"
                                             class="tooltip tooltip_left tooltip_red">
