@@ -10,6 +10,7 @@ export class Hierarchy {
      projectId: number;
      hierarchyFilePath: string;
      insertDate: Date;
+     modifiedDate: Date;
      defaultLevelId: number;
      hierarchyLevels?: Array<HierarchyLevel>
      project?: Project;

@@ -105,7 +105,7 @@ export class CategorizationService {
         cells: {
           hierarchyName: fl.hierarchyName,
           hierarchyFile: fl.hierarchyFile,
-          insertDate: fl.insertDate,
+          insertDate: fl.modifiedDate,
           domain: fl.project && fl.project.projectName ? fl.project.projectName : '',
           defaultLevelId: fl.defaultLevelId,
           state: `${fl.status || ''}${fl.hierarchyLoadingType || ''}${fl.hierarchyChange || ''}`
