@@ -6,23 +6,24 @@
                     <div class="footer__btn">
                         <span (click)="cancel()" class="footer__link btn btn_border">Cancel</span>
                         <span class="footer__btn-big">
-                            <span *ngIf="editPatientService.selectedTab<3" (click)="toEnd()" class="btn btn_border">Skip
-                                to End</span>
+                            <!-- <span *ngIf="editPatientService.selectedTab<3" (click)="toEnd()" class="btn btn_border">Skip
+                                to End</span> -->
                             <div class="split-btn split-btn_up">
                                 <span *ngIf="editPatientService.selectedTab" (click)="next(-1)"
                                     class="btn btn_border">Previous</span>
                                 <span *ngIf="editPatientService.selectedTab===3" (click)="save()"
                                     class="btn">Submit</span>
-                                <div *ngIf="editPatientService.selectedTab<3" (click)="next(1)"
-                                    class="split-btn__title">Next</div>
-                                <div *ngIf="editPatientService.selectedTab<3" (click)="showOptions($event)"
+                                <span *ngIf="editPatientService.selectedTab<3" (click)="next(1)" class="btn">Next</span>
+                                <!-- <div *ngIf="editPatientService.selectedTab<3" (click)="next(1)"
+                                    class="split-btn__title">Next</div> 
+                                 <div *ngIf="editPatientService.selectedTab<3" (click)="showOptions($event)"
                                     class="split-btn__arr">
                                     <svg class="icon ic-btn-arr-down" mdcSvg="ic-btn-arr-down"></svg>
                                 </div>
                                 <div *ngIf="editPatientService.selectedTab<3" [hidden]="!isShowOptions"
                                     class="split-btn__popup">
                                     <div (click)="save()" class="split-btn__item">Save</div>
-                                </div>
+                                </div> -->
                             </div>
                         </span>
                     </div>

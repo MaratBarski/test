@@ -11,6 +11,9 @@
                 non-demographic event should be selected.<br>Default: All events are selected.</div>
         </div>
         <div *ngIf="!editPatientService.events">Loading...</div>
-        <md-event-property-list *ngIf="editPatientService.events"></md-event-property-list>
+        <div [ngClass]="{'error':editPatientService.isEventselectError}">
+            <md-event-property-list *ngIf="editPatientService.events"></md-event-property-list>
+        </div>
+        <div [hidden]="!editPatientService.isEventselectError" class="user-event-error">At least one non-demographic event must be selected</div>
     </div>
 </div>

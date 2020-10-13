@@ -153,6 +153,9 @@ export class EditPatientService {
 
   file: any;
 
+  get isEventselectError(): boolean { return this._isEventselectError; }
+  private _isEventselectError = false;
+
   resetValidation(): void {
     this._isProjectSelected = true;
     this._isNameSetted = true;
@@ -160,9 +163,61 @@ export class EditPatientService {
     this._isFileSelected = true;
     this._isShowError = false;
     this._isNameExists = false;
+    this._isEventselectError = false;
   }
 
   private _isNeedValidate = true;
+
+  validationManager = [
+    {
+      validate: (): boolean => {
+        return this.validate();
+      },
+      reset: (): void => {
+        this.resetValidation();
+      }
+    },
+    {
+      validate: (): boolean => {
+        this._isShowError = false;
+        if (!Object.keys(this.geteventInclusion()).length) {
+          this._isShowError = true;
+          this._isEventselectError = true;
+          return false;
+        }
+        // if (!this.getdemoInclusion().length) {
+        //   this._isShowError = true;
+        //   return false;
+        // }
+        return true;
+      },
+      reset: (): void => {
+        this._isShowError = false;
+        this._isEventselectError = false;
+      }
+    },
+    {
+      validate: (): boolean => {
+        return true;
+      },
+      reset: (): void => {
+        this._isShowError = false;
+      }
+    },
+    {
+      validate: (): boolean => {
+        return true;
+      },
+      reset: (): void => {
+        this._isShowError = false;
+      }
+    }
+  ];
+
+  validateTab(): boolean {
+    this.validationManager[this._selectedTab].reset();
+    return this.validationManager[this._selectedTab].validate();
+  }
 
   validate(): boolean {
     this.resetValidation();
@@ -303,13 +358,15 @@ export class EditPatientService {
   private getHierarchyProjectUrl = `${environment.serverUrl}${environment.endPoints.patientStoryHierarchy}`;
 
   setTab(tab: number): void {
-    if (!this.validate()) { return; }
+    if (!this.validateTab()) { return; }
+    //if (!this.validate()) { return; }
     this._selectedTab = tab;
     this.refreshEvents();
   }
 
   setNextTab(i: number): void {
-    if (!this.validate()) { return; }
+    //if (!this.validate()) { return; }
+    if (!this.validateTab()) { return; }
     this._selectedTab += i;
     this.refreshEvents();
   }
@@ -347,6 +404,10 @@ export class EditPatientService {
         this._events = res.data;
         this._events.forEach(ev => {
           ev.isChecked = false;
+          if (ev.eventType && ev.eventType.trim().toUpperCase() === 'PATIENT_TABLE' && ev.sitePatientPropertyInfo) {
+            ev.siteEventPropertyInfos = [].concat(ev.sitePatientPropertyInfo);
+            ev.siteEventPropertyInfos.forEach(el => { el.isDemo = true; });
+          }
           ev.siteEventPropertyInfos.forEach(se => {
             se.isChecked = ev.isChecked;
           });
@@ -541,8 +602,8 @@ export class EditPatientService {
 
   save(): void {
     if (!this.validate()) { return; }
-    //const obj = this.convertToServer();
-    //document.write(JSON.stringify(obj));
+    const obj = this.convertToServer();
+    document.write(JSON.stringify(obj));
     //console.log(obj);
     this._dataLoaded = false;
     const method = this._storyId && !this._isCopy ? 'put' : 'post';
@@ -629,6 +690,7 @@ export class EditPatientService {
         input_mode: this.settings.cohortSource === 1 ? 'session' : 'file',
         input_population: this.settings.queryId,
         event_inclusion: this.geteventInclusion(),
+        demographic_inclusion: this.getdemoInclusion(),
         hierarchies: this.getHierarchies(),
         general_date_shift: this.general_date_shift,
         general_numeric_shift: this.general_numeric_shift,
@@ -643,14 +705,28 @@ export class EditPatientService {
 
   private geteventInclusion(): any {
     const res = {};
-    (this.events || []).filter(e => e.isChecked)
+    (this.events || [])
+      .filter(e => e.isChecked && (!e.eventType || e.eventType.trim().toUpperCase() !== 'PATIENT_TABLE'))
       .forEach(e => {
         res[e.eventId] = [];
-        e.siteEventPropertyInfos.filter((se: any) => se.isChecked)
+        e.siteEventPropertyInfos.filter((se: any) => se.isChecked && !e.isDemo)
           .forEach((se: any) => {
             res[e.eventId].push(se.eventPropertyName);
           });
       })
+    return res;
+  }
+
+  private getdemoInclusion(): Array<any> {
+    const res = [];
+    (this.events || [])
+      .filter(e => e.isChecked && e.eventType && e.eventType.trim().toUpperCase() === 'PATIENT_TABLE')
+      .forEach(x => {
+        x.siteEventPropertyInfos.filter((se: any) => se.isChecked && se.isDemo)
+          .forEach((se: any) => {
+            res.push(se.patientPropertyName);
+          })
+      });
     return res;
   }
 
