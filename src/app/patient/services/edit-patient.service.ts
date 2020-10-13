@@ -603,7 +603,7 @@ export class EditPatientService {
   save(): void {
     if (!this.validate()) { return; }
     const obj = this.convertToServer();
-    document.write(JSON.stringify(obj));
+    //document.write(JSON.stringify(obj));
     //console.log(obj);
     this._dataLoaded = false;
     const method = this._storyId && !this._isCopy ? 'put' : 'post';
