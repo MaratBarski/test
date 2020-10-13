@@ -78,9 +78,11 @@
             <div class="user-details-param">
                 <div class="user-details-param__title">Select the environments that are accessible to the user:</div>
                 <div class="user-details-param__content">
-                    <md-user-project-selector (onChange)="onChangeValue()" [env]="env" [index]="i"
-                        *ngFor="let env of userEditService.environments;let i = index">
-                    </md-user-project-selector>
+                    <div class="user-project-selector">
+                        <md-user-project-selector (onChange)="onChangeValue()" [env]="env" [index]="i"
+                            *ngFor="let env of userEditService.environments;let i = index">
+                        </md-user-project-selector>
+                    </div>
                     <div class="error-text" [hidden]="userEditService.isEnvironmetValid">
                         Missing environment
                     </div>

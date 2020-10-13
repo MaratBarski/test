@@ -31,7 +31,8 @@ export class EditPatientStoryWizardComponent extends BaseNavigation implements O
       text: 'Content'
     },
     {
-      text: 'Privacy Settings'
+      text: 'Privacy Settings',
+      isOptional: true
     },
     {
       text: 'Summary'

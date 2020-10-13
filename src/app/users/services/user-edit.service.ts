@@ -229,14 +229,14 @@ export class UserEditService {
       .subscribe(([user, projects, sets]: any) => {
         this._user = user.data;
         this._user.userName = this._user.login;
-        this._user.isSuperAdmin = this._user.authorities
+        this._user.isSuperAdmin = !!(this._user.authorities
           && this._user.authorities.length
-          && this._user.authorities.find(x => x.UserAuthority
-            && x.UserAuthority.authorityName &&
-            x.UserAuthority.authorityName.toUpperCase() === 'ROLE_SUPERADMIN'
-          );
+          && this._user.authorities.find(x =>
+            (x.UserAuthority && x.UserAuthority.authorityName && x.UserAuthority.authorityName.toUpperCase() === 'ROLE_SUPERADMIN')
+            ||
+            (x.authorityName && x.authorityName.toUpperCase() === 'ROLE_SUPERADMIN')
+          ));
         this._user.enabled = this._user.activated;
-
         this._environments = projects.data;
         this._environments.forEach(x => {
           const env = this._user.projects ? this._user.projects.find(p => p.projectId === x.projectId) : undefined;

@@ -49,7 +49,7 @@ export class Step1Component extends BaseSibscriber implements OnInit, AfterViewI
         this.sourceQueries = this.queries = this.editPatientService.queries.map(s => {
           return {
             id: s.session_id,
-            name: s.session_name
+            name: `${s.session_name} (${s.session_id})`
           }
         });
       }));
