@@ -650,6 +650,7 @@ export class PermissionSetService extends BaseSibscriber {
             });
           }
           this.setInitialSet();
+          this.updateTemplates();
           this._onAllowedEventsChange.next();
         } else {
           // TO-DO update templates by set

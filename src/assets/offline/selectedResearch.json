@@ -1,24 +1,25 @@
 {
     "data": {
-        "researchId": 194,
-        "researchName": "adsasdasd",
-        "userId": "10",
-        "projectId": "1",
+        "researchId": 244,
+        "researchName": "11111111111111111111111",
+        "userId": "157",
+        "projectId": "6",
         "startDate": "2013-12-31",
-        "researchStatus": "open",
+        "researchStatus": "Open",
         "maxPatients": 1000000,
-        "insertDate": "2020-09-17T07:54:01.000Z",
+        "insertDate": "2020-10-14T14:26:03.000Z",
+        "modifiedDate": "2020-10-14T14:26:03.090Z",
         "information": null,
         "endDate": "2022-12-03",
         "approvalKey": null,
         "approvalKeyExpirationDate": null,
-        "user_id": "10",
+        "user_id": "157",
         "researchRestrictionEvents": [
             {
-                "researchId": "194",
+                "researchId": "244",
                 "eventPropertyName": "drgmortality",
                 "eventId": "3",
-                "value": "gdfgdfg",
+                "value": "dfbdfb",
                 "siteEventPropertyInfo": {
                     "eventPropertyNa": "drgmortality",
                     "eventId": "320",
@@ -28,41 +29,56 @@
                     "patientFk": false,
                     "eventTimeStamp": false,
                     "ageAtEvent": false,
-                    "fieldDescriptio": "drgmortality_desc",
+                    "fieldDescriptio": "drgmortality",
                     "fieldDes": null,
                     "priority": 0,
                     "isDependentSear": false
                 },
-                "siteEventInfo": {
-                    "eventTableAlias": "event date"
+                "siteEventInfo": null
+            }
+        ],
+        "researchTemplates": [
+            {
+                "researchId": "244",
+                "templateId": "18",
+                "InsertDate": "2020-10-14T14:26:03.090Z",
+                "template": {
+                    "templateName": "Template1P"
+                }
+            },
+            {
+                "researchId": "244",
+                "templateId": "75",
+                "InsertDate": "2020-10-14T14:26:03.090Z",
+                "template": {
+                    "templateName": "test1122"
                 }
             }
         ],
-        "researchTemplates": [],
         "user": {
-            "id": "10",
-            "login": "sariel.admin",
-            "passwordHash": "$2a$10$G3OF8pfomKGuB8dpxNlj2eL8wZwY5L.3M19fJ5DfVS1sR0ojd/Ic.",
-            "firstName": "Sariel",
-            "lastName": "Admin",
-            "email": "sariel.admin@mdclone.com",
+            "id": "157",
+            "login": "dfadsfdaf",
+            "passwordHash": null,
+            "firstName": "adfadf",
+            "lastName": "asdfad",
+            "email": "adfad@dsf.daf",
             "activated": true,
             "langKey": null,
             "activationKey": null,
             "resetKey": null,
             "createdBy": "N/A",
-            "createdDate": "2020-06-30T09:54:34.000Z",
+            "createdDate": "2020-10-13T11:54:45.754Z",
             "resetDate": null,
             "lastModifiedBy": null,
-            "lastModifiedDate": null,
-            "cellPhone": null,
+            "lastModifiedDate": "2020-10-13T14:54:45.754Z",
+            "cellPhone": "",
             "domain": null,
             "photo": null
         },
         "project": {
-            "projectId": "1",
-            "projectName": "Demo Project",
-            "defaultSiteId": "1"
+            "projectId": "6",
+            "projectName": "ETL project",
+            "defaultSiteId": "3"
         }
     },
     "massage": "Get Research Object",
