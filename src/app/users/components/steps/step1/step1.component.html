@@ -26,7 +26,8 @@
                     </div>
                     <mdc-auto-complete #setselectorCmp placeHolder="Search or Select a Permission Set..."
                         textField="name" (onSelect)="selectResearcher($event)"
-                        (completeMethod)="completeResearcher($event)" [suggestions]="researchers"
+                        (completeMethod)="completeResearcher($event)"
+                        [suggestions]="researchers|sortBy:{property:'name',dir:'asc'}"
                         [disabled]="this.permissionSetService.permissionSet.isNew">
                         <ng-template let-item>
                             <div class="select__param" [text]="item.name" [mdcColorText]="searchResearchText"></div>

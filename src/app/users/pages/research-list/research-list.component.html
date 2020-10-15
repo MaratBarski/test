@@ -26,7 +26,7 @@
     </div>
     <mdc-empty-state *ngIf="!isDataExists && isLoaded" [emptyState]="emptyState"></mdc-empty-state>
     <div class="pager-wrap" [hidden]="!isLoaded">
-        <mdc-paginator #paginator paginationTitle="{{'paginationTitle'|translate}}" noPagingTitle="Showing {0} files"
+        <mdc-paginator #paginator paginationTitle="Showing {0} sets" noPagingTitle="Showing {0} sets"
             [blockSize]="3" [pageSize]="12" [currentPage]="0">
         </mdc-paginator>
     </div>

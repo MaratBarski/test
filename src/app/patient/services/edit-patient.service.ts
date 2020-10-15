@@ -142,6 +142,7 @@ export class EditPatientService {
   get isQuerySelected(): boolean { return this._isQuerySelected; }
   private _isQuerySelected = true;
 
+  set isFileSelected(f: boolean) { this._isFileSelected = f; }
   get isFileSelected(): boolean { return this._isFileSelected; }
   private _isFileSelected = true;
 

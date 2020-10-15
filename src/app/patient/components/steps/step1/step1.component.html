@@ -110,7 +110,7 @@
                 </span>
             </label>
         </div>
-        <div [hidden]="editPatientService.isFileSelected" class="user-details-main__error">
+        <div [hidden]="editPatientService.isFileSelected || editPatientService.fileErrorMessage" class="user-details-main__error">
             Missing File
         </div>
         <div [hidden]="!editPatientService.fileErrorMessage" class="user-details-main__error">

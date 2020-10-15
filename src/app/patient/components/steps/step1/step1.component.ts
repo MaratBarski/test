@@ -135,11 +135,14 @@ export class Step1Component extends BaseSibscriber implements OnInit, AfterViewI
         fileErrorMessage = fileErrorMessage.replace(x[0], x[1]);
       })
     }
+    this.selectedFile = this.editPatientService.file = undefined;
     this.editPatientService.fileErrorMessage = fileErrorMessage;
   }
 
   changeFile(event: any): void {
+    if (!event.target || !event.target.files || !event.target.files.length) { return; }
     this.editPatientService.fileErrorMessage = undefined;
+    this.editPatientService.isFileSelected = true;
     if (!this.csvManagerService.validateFileExtention(event.target, ExcelExtentions)) {
       this.fileError(ValidationFileMessage.CsvExtensionError);
       return;
@@ -161,9 +164,24 @@ export class Step1Component extends BaseSibscriber implements OnInit, AfterViewI
       return;
     }
 
+    this.csvManagerService.validate(event.target.files[0]).then(res => {
+      if (res === ValidationFileMessage.Success) {
+        this.csvManagerService.detectEncoding(event.target.files[0]).then(encoding => {
+          if (encoding.trim().toUpperCase() !== 'UTF8' && encoding.trim().toUpperCase() !== 'ASCII') {
+            this.fileError(ValidationFileMessage.NoUtf8);
+          }
+        }).catch(e => {
+          this.fileError(ValidationFileMessage.NoUtf8);
+        });
+        return;
+      }
+      this.fileError(res);
+    }).catch(e => {
+      this.fileError(ValidationFileMessage.OtherError);
+    });
+
     this.selectedFile = event.target.files[0];
     this.editPatientService.file = event.target.files[0];
     this.editPatientService.isValueChanged = true;
-    //alert(event.target.files[0].name);
   }
 }

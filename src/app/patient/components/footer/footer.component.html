@@ -6,8 +6,9 @@
                     <div class="footer__btn">
                         <span (click)="cancel()" class="footer__link btn btn_border">Cancel</span>
                         <span class="footer__btn-big">
-                            <!-- <span *ngIf="editPatientService.selectedTab<3" (click)="toEnd()" class="btn btn_border">Skip
-                                to End</span> -->
+                            <span *ngIf="editPatientService.selectedTab==1" (click)="toEnd()"
+                                class="btn btn_border">Skip
+                                to End</span>
                             <div class="split-btn split-btn_up">
                                 <span *ngIf="editPatientService.selectedTab" (click)="next(-1)"
                                     class="btn btn_border">Previous</span>
