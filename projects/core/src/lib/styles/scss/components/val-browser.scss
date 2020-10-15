@@ -1,0 +1,701 @@
+/*-------------- val-browser -----------------*/
+.val-browser{
+	height: 100%;
+
+	&__content{
+		display: flex;
+		justify-content: space-between;
+		height: calc(100% - 50px);
+	}
+
+	&__aside{
+		width: 390px;
+		height: 100%;
+		background: rgba(242, 243, 245, 0.5);
+		border-right: 1px solid $color-light-grey;
+		padding: 28px 20px 28px 30px;
+		overflow-y: auto;
+	}
+
+	&__main{
+		width: calc(100% - 390px);
+		height: 100%;
+		overflow-y: auto;
+	}
+
+	&__table-wrap{
+		padding-top: 35px;
+		position: relative;
+		border-top: 1px solid rgba(172, 178, 195, 0.5);
+	}
+
+	&__table-wrap::before{
+		content: '';
+		display: block;
+		width: 100%;
+		height: 35px;
+		background: rgba(242, 243, 245, 0.7);
+		border-bottom: 1px solid rgba(172, 178, 195, 0.5);
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+
+	&__table{
+		height: calc(100vh - 376px);
+		overflow-y: auto;
+		overflow-x: hidden;
+
+		.admin-table .admin-table__head .admin-table__item{
+			height: 0;
+			padding-top: 0;
+			padding-bottom: 0;
+			border-bottom: 0;
+			position: static;
+		}
+
+		.admin-table{
+			&__title{
+				display: block;
+				height: 35px;
+				position: absolute;
+				top: 4px;
+			}
+
+			&__item{
+				height: rem(30px);
+				vertical-align: top;
+			}
+
+			&__item:first-child{padding-left: 28px;}
+			&__check{display: block;}
+
+			.input-check{
+				width: 100%;
+				position: relative;
+
+				&__label{max-width: 100%;}
+				&__text{line-height: 1.43;}
+
+				&__mark{
+					border-color: $color-light-grey;
+					margin-top: 3px;
+				}
+
+				.tooltip{display: none;}
+			}
+
+			&__head .input-check__mark{margin-top: 4px;}
+		
+			.input-check .tooltip.active,
+			.input-check:hover .tooltip{
+				display: inline-block;
+				width: 250px;
+				max-width: none;
+				margin: 4px 0 0 0;
+				white-space: normal;
+				position: absolute;
+				top: 100%;
+				left: 22px;
+				z-index: 2;
+			}
+
+			&__item_check-col{
+				.admin-table__title{width: calc(100% - 235px);}
+
+				.input-check__text{
+					max-width: calc(100% - 22px);
+					text-overflow: ellipsis;
+					overflow: hidden;
+					white-space: nowrap;
+				}
+			}
+
+			&__item_check-full .admin-table__title{width: calc(100% - 60px);}
+		}
+	}
+}
+
+.val-browser-event{
+	@include font(normal, normal, rem(14px), 1.57, $color-dark-grey);
+	padding-bottom: 14px;
+	border-bottom: 1px solid $color-light-grey;
+	margin-bottom: 14px;
+
+	&__label{
+		font-weight: 600;
+		margin-right: 6px;
+	}
+
+	&__row{
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	&__sub{
+		display: flex;
+		width: 100%;
+		padding-left: 32px;
+		padding-top: 12px;
+	}
+
+	&__icon{
+		margin-right: -3px;
+		margin-top: -13px;
+
+		.icon{
+			fill: $color-light-grey;
+			max-height: 28px;
+		}
+	}
+}
+
+.val-browser-filter{
+	height: calc(100% - 85px);
+
+	&__top{
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		margin-bottom: 6px;
+	}
+
+	&__title{
+		@include font(normal, 600, rem(14px), 1.57, $color-dark-grey);
+		margin-right: 10px;
+	}
+
+	&__clear{
+		@include font(normal, normal, rem(14px), 1.57, $color-blue);
+		cursor: pointer;
+	}
+
+	&__clear:hover{text-decoration: underline;}
+	&__clear.inactive{color: $color-light-grey;}
+}
+
+.val-browser-filter-notice{
+	display: flex;
+	margin-top: 10px;
+	margin-bottom: 20px;
+
+	.icon{
+		max-width: 16px;
+		max-height: 16px;
+		margin-right: 5px;
+	}
+
+	.icon + &__text{max-width: calc(100% - 21px);}
+
+	&__text{
+		@include font(normal, normal, rem(13px), 1.2, $color-dark-grey);
+	}
+}
+
+.browser-unwrap{
+	margin-bottom: 6px;
+	
+	&__top{
+		display: flex;
+	}
+
+	&__arr{
+		width: 25px;
+		height: 25px;
+		margin-left: -8px;
+
+		.icon{
+			width: 100%;
+			height: 100%;
+			transition: all 0.3s ease 0s;
+		}
+	}
+
+	&__head{
+		width: calc(100% - 20px);
+		position: relative;
+
+		.tooltip{display: none;}
+	}
+
+	&__head .tooltip.active,
+	&__head:hover .tooltip{
+		display: inline-block;
+		width: 250px;
+		margin: 4px 0 0 0;
+		position: absolute;
+		top: 100%;
+		left: 0;
+		z-index: 2;
+	}
+
+	&__title{
+		display: inline-block;
+		vertical-align: top;
+		max-width: 100%;
+		@include font(normal, 600, rem(14px), 1.57, $color-dark-blue);
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		overflow: hidden;
+	}
+
+	&__note{
+		display: inline-block;
+		vertical-align: top;
+		@include font(normal, normal, rem(14px), 1.57, $color-dark-blue);
+		margin-left: 6px;
+		position: relative;
+	}
+
+	&__note::before{
+		content: '';
+		display: inline-block;
+		vertical-align: middle;
+		width: 1px;
+		height: 14px;
+		background: #a1adcd;
+		margin-right: 6px;
+	}
+
+	&__content{
+		display: none;
+		padding-left: 17px;
+	}
+
+	.form-search{
+		width: 100%;
+		margin-bottom: 5px;
+	}
+
+	&__sect:not(:last-child){
+		border-bottom: 1px solid rgba(172, 178, 195, 0.5);
+		padding-bottom: 2px;
+		margin-bottom: 7px;
+	}
+
+	.input-check{
+		&__mark{
+			border-color: $color-light-grey;
+			margin-top: 3px;
+		}
+
+		&__label{
+			line-height: 1.43;
+			margin-bottom: 6px;
+		}
+	}
+
+	&.inactive &__title,
+	&.inactive &__note{
+		color: $color-light-grey;
+	}
+
+	&.inactive &__arr .icon{fill: $color-light-grey;}
+
+	&.open &__arr .icon{transform: rotate(90deg);}
+	&.open &__content{display: block;}
+}
+
+.val-browser-note{
+	&__content{
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		height: 122px;
+		padding: 26px 30px 15px 28px;
+	}
+
+	&__top{
+		display: flex;
+		justify-content: space-between;
+	}
+
+	&__select{
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		margin-top: -10px;
+
+		.drop-cond{
+			&__head{
+				width: 246px;
+				padding-left: 0;
+			}
+
+			&__option{overflow-y: visible;}
+
+			&__param-icon .drop-cond__param-text,
+			&__ic{
+				display: inline-block;
+				vertical-align: middle;
+			}
+
+			&__ic{
+				position: relative;
+				right: 0;
+				transform: none;
+				margin-left: 2px;
+			}
+		}
+	}
+
+	&__label{
+		@include font(normal, 600, rem(14px), rem(28px), $color-dark-grey);
+		margin-right: 8px;
+	}
+
+	&__view{
+		position: relative;
+
+		.icon{
+			width: 26px;
+			height: 26px;
+		}
+
+		.tooltip{display: none;}
+	}
+
+	&__view .tooltip.active,
+	&__view:hover .tooltip{
+		display: inline-block;
+		width: 250px;
+		margin: 0 8px 0 0;
+		position: absolute;
+		right: 100%;
+		top: 0;
+		z-index: 2;
+	}
+
+	&__sort{
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		flex-wrap: wrap;
+	}
+
+	&__count{
+		@include font(normal, normal, rem(13px), 1.57, $color-grey);
+
+		b{font-weight: 600;}
+
+		.link-site{margin-left: 6px;}
+	}
+
+	&__tab{
+		display: flex;
+		align-items: center;
+
+		.tabs-page{margin-top: 0;}
+		.tabs-page_small .tabs-page__item{min-width: 82px;}
+	}
+
+	&__tab-label{
+		@include font(normal, normal, rem(13px), 1.57, $color-grey);
+		margin-right: 8px;
+	}
+
+	&__notice{
+		display: flex;
+		align-items: center;
+		margin-top: -10px;
+	}
+
+	&__notice .icon{
+		max-width: 20px;
+		max-height: 20px;
+		margin-right: 5px;
+	}
+
+	&__notice-text{
+		max-width: calc(100% - 25px);
+		@include font(normal, normal, rem(13px), 1.57, $color-dark-grey);
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		overflow: hidden;
+
+		b{font-weight: 600;}
+	}
+}
+
+.val-filter-empty{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	text-align: center;
+
+	&__text{
+		max-width: 190px;
+		@include font(normal, normal, rem(16px), 1.57, $color-dark-grey);
+		margin: 0 auto;
+	}
+
+	&__img{margin-top: 16px;}
+}
+
+.val-browser-footer{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	height: 50px;
+	padding: 10px 45px;
+	background: #fff;
+	border-radius: 0 0 15px 15px;
+	box-shadow: -10px 9px 21px 13px rgba(128, 152, 213, 0.15);
+	position: relative;
+
+	&__link-wrap{
+		position: relative;
+		.tooltip{display: none;}
+	}
+
+	&__link-wrap .tooltip.active,
+	&__link-wrap:hover .tooltip{
+		display: inline-block;
+		white-space: nowrap;
+		margin: 0 0 0 8px;
+		position: absolute;
+		left: 100%;
+		@include top-center;
+		z-index: 2;
+	}
+
+	&__link{
+		@include font(normal, 600, rem(14px), 1.57, $color-dark-purple);
+		cursor: pointer;
+	}
+
+	&__link:hover{
+		color: $color-dark-purple;
+		text-decoration: underline;
+	}
+
+	&__info{
+		display: inline-flex;
+		align-items: center;
+	}
+
+	&__val{
+		@include font(normal, 600, rem(14px), 1.57, $color-dark-grey);
+	}
+
+	&__val_grey{font-weight: normal;}
+
+	&__btn{
+		margin-left: 30px;
+		position: relative;
+
+		.tooltip{display: none;}
+	}
+
+	&__btn .tooltip.active,
+	&__btn:hover .tooltip{
+		display: inline-block;
+		white-space: nowrap;
+		margin: 0 8px 0 0;
+		position: absolute;
+		right: 100%;
+		@include top-center;
+		z-index: 2;
+	}
+
+	.btn{
+		min-width: 164px;
+		padding: 0 30px;
+	}
+
+	&__more{
+		margin-left: 10px;
+		padding-left: 10px;
+		position: relative;
+		@include font(normal, normal, rem(14px), 1.57, $color-blue);
+
+		.info-popup{
+			width: 472px;
+			height: 486px;
+			margin-bottom: 8px;
+			position: absolute;
+			bottom: 100%;
+			left: 50%;
+			transform: translateX(-50%);
+
+			&::after{
+				left: 0;
+				right: 0;
+				margin: 0 auto;
+			}
+
+			&__content{
+				max-height: calc(100% - 30px);
+				overflow-y: auto;
+				overflow-x: hidden;
+			}
+		}
+	}
+
+	&__more::before{
+		content: '';
+		display: inline-block;
+		vertical-align: top;
+		width: 1px;
+		height: 15px;
+		background: #979797;
+		position: absolute;
+		@include top-center;
+		left: 0;
+	}
+}
+
+.typography-val-browser-aside{
+	background: #fff;
+	padding: 30px 0;
+
+	&__list{
+		display: flex;
+		flex-wrap: wrap;
+		margin-left: -15px;
+		margin-right: -15px;
+	}
+
+	&__item{margin: 15px;}
+
+	.val-browser{
+		&__aside{
+			width: 390px;
+			height: 550px;
+			border-right: 0;
+		}
+	}
+
+	.val-browser-event__row{opacity: 0;}
+}
+
+.val-browser-select{
+	&__text{
+		@include font(normal, normal, rem(12px), 1.57, $color-dark-grey);
+		margin-bottom: 12px;
+	}
+
+	&__item{
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		min-height: rem(30px);
+		border-radius: rem(15px);
+		background: rgba(172, 178, 195, 0.25);
+		padding: 0 8px 0 15px;
+		transition: all 0.3s ease 0s;
+	}
+
+	&__item:not(:last-child){margin-bottom: 6px;}
+
+	&__label{
+		max-width: calc(100% - 40px);
+		@include font(normal, normal, rem(13px), 1.4, $color-dark-blue);
+		text-transform: uppercase;
+		padding: 4px 0;
+	}
+
+	&__close{
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 30px;
+		height: 30px;
+		cursor: pointer;
+
+		.icon{
+			width: 7px;
+			height: 7px;
+		}
+	}
+
+	&__check{
+		display: flex;
+		flex-wrap: wrap;
+
+		.input-check:not(:last-child){margin-right: 12px;}
+
+		.input-check__mark{
+			width: 12px;
+			height: 12px;
+		}
+
+		.input-check__text{
+			font-size: 12px;
+			color: $color-dark-grey;
+			white-space: nowrap;
+		}
+
+		.input-check__label{margin-bottom: 10px;}
+	}
+
+	&__item.active{background: $color-dark-blue;}
+	&__item.active &__label{color: #fff;}
+	&__item.active &__close .icon{fill: #fff;}
+}
+
+.val-browser-empty{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 358px;
+	text-align: center;
+
+	&__text{
+		@include font(normal, normal, rem(16px), 1.57, $color-dark-grey);
+		margin-bottom: 16px;
+	}
+}
+
+@media (max-width: 991px) {
+	.val-browser{
+		&__aside{width: 290px;}
+		&__main{width: calc(100% - 290px);}
+	}
+}
+
+@media (max-width: 767px) {
+	.val-browser{
+		&__content{
+			flex-wrap: wrap;
+			overflow-y: auto;
+		}
+
+		&__aside,
+		&__main{
+			width: 100%;
+			height: auto;
+		}
+
+		&__table-wrap{padding-top: 0;}
+
+		&__table{
+			height: auto;
+			overflow: visible;
+		}
+
+		.admin-table{
+			&__item{height: auto;}
+		}
+	}
+
+	.val-browser-filter{height: auto;}
+
+	.val-browser-note{
+		&__content{height: auto;}
+
+		&__notice{
+			margin-top: 5px;
+			margin-bottom: 10px;
+		}
+	}
+
+	.val-browser-footer{
+		padding: 10px 25px;
+
+		&__info{display: none;}
+	}
+}

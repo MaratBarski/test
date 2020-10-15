@@ -65,12 +65,28 @@
 		margin-left: 6px;
 	}
 
-	&__close{
-		width: 16px;
-		height: 17px;
-		cursor: pointer;
-		margin-left: 10px;
-	}
+  &__close{
+    width: 16px;
+    height: 17px;
+    cursor: pointer;
+    margin-left: 10px;
+    position: relative;
+
+    .tooltip{
+      display: none;
+      white-space: nowrap;
+    }
+  }
+
+  &__close .tooltip.active,
+  &__close:hover .tooltip{
+    display: inline-block;
+    margin: 0 8px 0 0;
+    position: absolute;
+    @include top-center;
+    right: 100%;
+    z-index: 2;
+  }
 
 	&__content{
 		padding-top: 12px;

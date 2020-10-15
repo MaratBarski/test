@@ -65,6 +65,12 @@
 		vertical-align: middle;
 	}
 
+  &__item > .ic-next-to-page{
+    width: 19px;
+    fill: $color-dark-purple;
+    margin-right: 5px;
+  }
+
 	&__item.active > .icon{
 		fill: #fff;
 	}

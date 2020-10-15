@@ -118,4 +118,13 @@
     background: $color-light-grey;
     margin-right: 8px;
   }
+
+  &_color &__mark{
+    background: rgba(172, 178, 195, 0.25);
+    border: 1px solid rgba(172, 178, 195, 0.25);
+  }
+
+  &_color input[type=checkbox]:checked + &__label &__mark{background: $color-dark-blue; border: $color-dark-blue;}
+  &_color input[type=checkbox]:checked + &__label &__mark .icon{display: none;}
+  &_color input[disabled] + &__label &__mark{border-color: $color-light-grey; background: $color-sort-grey;}
 }

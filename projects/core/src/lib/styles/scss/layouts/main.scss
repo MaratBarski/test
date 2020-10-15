@@ -59,6 +59,31 @@ ol{
 	font-size: rem(14px);
 }
 
+.list-dot{
+  padding-left: 30px;
+
+  li{
+    list-style: none;
+    position: relative;
+    padding-left: 24px;
+  }
+
+  li:before{
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: $color-dark-blue;
+    position: absolute;
+    top: 10px;
+    left: 0;
+  }
+
+  li:not(:last-child){margin-bottom: 5px;}
+}
+
 h1,.h1,
 h2,.h2,
 h3,.h3,
