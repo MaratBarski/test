@@ -66,7 +66,7 @@
 
 	&__val{
 		max-width: calc(100% - 30px);
-		@include font(normal, normal, rem(14px), 1.2, $color-dark-grey);
+		@include font(normal, normal, rem(14px), 1.2, $color-dark-blue);
 		transition: all 0.3s ease 0s;
 		white-space: nowrap;
 	}

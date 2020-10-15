@@ -84,7 +84,7 @@
       margin: 0;
       padding: 0 12px;
       background: #fff;
-      @include font(normal, normal, rem(14px), rem(28px), $color-dark-grey);
+      @include font(normal, normal, rem(14px), rem(28px), $color-dark-blue);
     }
 
     input[type="text"]::placeholder{color: $color-grey; opacity: 1;}
@@ -884,6 +884,7 @@
   }
 
   .btn{padding: 0 20px;}
+  .btn_border{font-weight: normal;}
 
   &__close{
     display: inline-block;

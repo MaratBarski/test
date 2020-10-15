@@ -40,6 +40,8 @@
 
   &.scroll{overflow-y: auto;}
 
+  &.scroll .form-site{padding-bottom: 20px;}
+
   &__head{
     @include font(normal, normal, rem(20px), 1.25, $color-dark-grey);
     text-transform: uppercase;

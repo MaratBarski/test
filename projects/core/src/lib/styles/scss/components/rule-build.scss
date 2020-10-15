@@ -77,13 +77,13 @@
 
 	&__title{
 		width: 50px;
-		@include font(normal, normal, rem(14px), rem(28px), $color-dark-blue);
+		@include font(normal, normal, rem(14px), rem(28px), $color-dark-grey);
 		text-align: right;
 		margin-right: 11px;
 	}
 
 	&__text{
-		@include font(normal, normal, rem(14px), rem(28px), $color-dark-blue);
+		@include font(normal, normal, rem(14px), rem(28px), $color-dark-grey);
 		margin-right: 12px;
 	}
 
@@ -176,7 +176,7 @@
 	.form-search{width: 330px;}
 
 	&__text{
-		@include font(normal, 600, rem(14px), rem(28px), #686b83);
+    @include font(normal, 600, rem(14px), rem(28px), $color-dark-grey);
 		margin: 6px 15px 6px 0;
 	}
 
@@ -239,7 +239,7 @@
 	}
 
 	&__or{
-		@include font(normal, 600, rem(14px), rem(40px), $color-dark-blue);
+		@include font(normal, 600, rem(14px), rem(40px), $color-dark-grey);
 		margin: 0 10px;
 	}
 
@@ -329,7 +329,7 @@
 	}
 
 	&__title{
-		@include font(normal, normal, rem(14px), 1.43, $color-dark-blue);
+		@include font(normal, normal, rem(14px), 1.43, $color-dark-grey);
 	}
 
 	&__title-bold{font-weight: 600;}

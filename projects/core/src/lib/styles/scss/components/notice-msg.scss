@@ -51,7 +51,7 @@
 	}
 
 	&__title{
-		@include font(normal, 600, rem(12px), 1.4, $color-dark-blue);
+		@include font(normal, 600, rem(12px), 1.4, $color-dark-grey);
 		margin-bottom: 6px;
 	}
 
@@ -107,6 +107,7 @@
 	&__accent{
 		font-weight: 600;
 		margin-top: 12px;
+    color: $color-dark-grey;
 	}
 
   .select{width: 100%;}
