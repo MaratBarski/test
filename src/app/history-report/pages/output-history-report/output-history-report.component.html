@@ -80,7 +80,8 @@
                 mdcSvg="ic-external-link" color="#0596ff"></svg>
         </a>
     </div>
-    <div [mdcColorText]="searchText" [text]="src.fileNameAlias" class="table-file-info" *ngIf="!src.sessionId">
-        {{src.fileNameAlias}}
+    <div class="table-file-info" *ngIf="!src.sessionId">
+        <mdc-text-block [text]="src.fileNameAlias" [colorText]="searchText" [maxWidth]="40" position="top">
+        </mdc-text-block>
     </div>
 </ng-template>

@@ -64,7 +64,7 @@ export class AutoCompleteComponent {
   openSelect(): void {
     if (this.disabled) { return; }
     this.completeMethod.emit('');
-    this.selectOpen = true;
+    this.selectOpen = !this.selectOpen;
   }
 
   selectItem(index: number): void {
