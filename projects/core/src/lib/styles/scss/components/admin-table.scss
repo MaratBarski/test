@@ -55,8 +55,12 @@
 	}
 
     &__head-icon{
+      display: inline-flex;
+      align-items: center;
+      vertical-align: middle;
       position: relative;
       cursor: pointer;
+      margin-left: 5px;
 
       .tooltip{
         display: none;
