@@ -7,21 +7,30 @@ import {CoreModule} from '@appcore';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {FilterColumnsPipe} from './pipes/filter-columns.pipe';
 import {DragDropModule} from '@angular/cdk/drag-drop';
-import { TopPanelComponent } from './components/top-panel/top-panel.component';
-import { SelectedColumnPipe } from './pipes/selected-column.pipe';
-import { FilterModalComponent } from './components/filter-modal/filter-modal.component';
-import { CustomSelectComponent } from './components/custom-select/custom-select.component';
-import { ConditionCardComponent } from './components/condition-card/condition-card.component';
+import {TopPanelComponent} from './components/top-panel/top-panel.component';
+import {SelectedColumnPipe} from './pipes/selected-column.pipe';
+import {FilterModalComponent} from './components/filter-modal/filter-modal.component';
+import {CustomSelectComponent} from './components/custom-select/custom-select.component';
+import {ConditionCardComponent} from './components/condition-card/condition-card.component';
 import {PerfectScrollbarModule} from 'ngx-perfect-scrollbar';
+import {SharedModule} from '../shared/shared.module';
 
 const routes: Array<Route> = [
   {path: '', component: ActivateComponent},
   {path: ':fileId', component: ActivateComponent, resolve: {data: ActivateService}},
-  // { path: 'my-queries', component: MyQueriesComponent }
+  {path: ':fileId/:anonymityRequest', component: ActivateComponent, resolve: {data: ActivateService}}
 ];
 
 @NgModule({
-  declarations: [ActivateComponent, FilterColumnsPipe, TopPanelComponent, SelectedColumnPipe, FilterModalComponent, CustomSelectComponent, ConditionCardComponent],
+  declarations: [
+    ActivateComponent,
+    FilterColumnsPipe,
+    TopPanelComponent,
+    SelectedColumnPipe,
+    FilterModalComponent,
+    CustomSelectComponent,
+    ConditionCardComponent
+  ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
@@ -29,7 +38,8 @@ const routes: Array<Route> = [
     FormsModule,
     ReactiveFormsModule,
     DragDropModule,
-    PerfectScrollbarModule
+    PerfectScrollbarModule,
+    SharedModule
   ]
 })
 export class ActivateModule {

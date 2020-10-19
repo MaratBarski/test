@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
 import {
   MatButtonModule,
@@ -10,28 +10,28 @@ import {
   MatSliderModule,
   MatSlideToggleModule
 } from '@angular/material';
-import { ProjectComboComponent } from './components/project-combo/project-combo.component';
-import { CoreModule } from '@app/core-api';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { PageTitleComponent } from './components/page-title/page-title.component';
-import { PageBodyComponent } from './components/page-body/page-body.component';
-import { AnimationStickyDirective } from './directives/animation-sticky.directive';
-import { CsvComboComponent } from './components/csv-combo/csv-combo.component';
-import { DownloadSelectorComponent } from './components/download-selector/download-selector.component';
-import { PageFotterComponent } from './components/page-fotter/page-fotter.component';
-import { ReplacePipe } from './pipes/replace.pipe';
-import { DataSamplePipe } from './pipes/data-sample.pipe';
-import { FormatNumberPipe } from './pipes/format-number.pipe';
-import { LegendComponent } from './components/legend/legend.component';
-import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
+import {ProjectComboComponent} from './components/project-combo/project-combo.component';
+import {CoreModule} from '@app/core-api';
+import {ReactiveFormsModule, FormsModule} from '@angular/forms';
+import {PageTitleComponent} from './components/page-title/page-title.component';
+import {PageBodyComponent} from './components/page-body/page-body.component';
+import {AnimationStickyDirective} from './directives/animation-sticky.directive';
+import {CsvComboComponent} from './components/csv-combo/csv-combo.component';
+import {DownloadSelectorComponent} from './components/download-selector/download-selector.component';
+import {PageFotterComponent} from './components/page-fotter/page-fotter.component';
+import {ReplacePipe} from './pipes/replace.pipe';
+import {DataSamplePipe} from './pipes/data-sample.pipe';
+import {FormatNumberPipe} from './pipes/format-number.pipe';
+import {LegendComponent} from './components/legend/legend.component';
+import {ConfirmDialogComponent} from './components/confirm-dialog/confirm-dialog.component';
 import {TooltipModule} from 'primeng/tooltip';
-import { UserProjectPipe } from './pipes/user-project.pipe';
-import { ToolTipManagerDirective } from './directives/tool-tip-manager.directive';
-import { DateTimePipe } from './pipes/date-time.pipe';
-import { TabWizardComponent } from './components/tab-wizard/tab-wizard.component';
-import { RadioListComponent } from './components/radio-list/radio-list.component';
-import { ProgressComponent } from './components/progress/progress.component';
-import { SortByPipe } from './pipes/sort-by.pipe';
+import {UserProjectPipe} from './pipes/user-project.pipe';
+import {ToolTipManagerDirective} from './directives/tool-tip-manager.directive';
+import {DateTimePipe} from './pipes/date-time.pipe';
+import {TabWizardComponent} from './components/tab-wizard/tab-wizard.component';
+import {RadioListComponent} from './components/radio-list/radio-list.component';
+import {ProgressComponent} from './components/progress/progress.component';
+import {SortByPipe} from './pipes/sort-by.pipe';
 
 @NgModule({
   declarations: [
@@ -90,7 +90,7 @@ import { SortByPipe } from './pipes/sort-by.pipe';
     ProgressComponent,
     SortByPipe
   ],
-  entryComponents: [
-  ]
+  entryComponents: []
 })
-export class SharedModule { }
+export class SharedModule {
+}

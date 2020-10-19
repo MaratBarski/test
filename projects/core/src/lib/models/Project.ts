@@ -4,5 +4,5 @@ export class Project {
     defaultSiteId: string;
     projectId: string;
     projectName: string;
-    userType: UserType;
+    UserType: UserType;
 }

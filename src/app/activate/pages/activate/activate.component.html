@@ -68,15 +68,38 @@
       <div class="col-12">
         <div class="query-flow-panel">
           <div class="query-flow-panel__title">Finalize Cohort & Output</div>
-          <div class="query-flow-panel-switch">
+          <div class="query-flow-panel-switch" *ngIf="showSwitch">
             <div class="query-flow-panel-switch__label">Synthetic mode</div>
-            <div class="switch">
-              <input type="checkbox" id="switch1">
-              <label class="switch__content" for="switch1">
-                <div class="switch__marker"></div>
-                <div class="switch__on">On</div>
-                <div class="switch__off">Off</div>
-              </label>
+            <mdc-toggle-button [id]="'switch'" [yes]="'On'" [no]="'Off'" [(ngModel)]="switchState" (onChange)="switchSyntheticMode($event)"></mdc-toggle-button>
+<!--            <div class="switch">-->
+<!--              <input type="checkbox" id="switch1">-->
+<!--              <label class="switch__content" for="switch1">-->
+<!--                <div class="switch__marker"></div>-->
+<!--                <div class="switch__on">On</div>-->
+<!--                <div class="switch__off">Off</div>-->
+<!--              </label>-->
+<!--            </div>-->
+          </div>
+          <div class="query-flow-panel__content" *ngIf="censoredRate">
+            <div class="query-flow-panel__desc">
+              Synthetic data set is based on the original one and used to keep patient privacy.
+              <span class="query-flow-panel__info">
+                <mdc-icon path="ic-help" css="ic-help"></mdc-icon>
+              </span>
+            </div>
+            <div class="grad-graf" [ngClass]="{disable: calculation}">
+              <div class="grad-graf__content">
+                <div class="grad-graf__min">0%</div>
+                <div class="grad-graf__max">100%</div>
+                <div class="grad-graf__label" [style.left.%]="censoredPercent">{{censoredPercent}}%</div>
+              </div>
+              <div class="grad-graf__notice">{{calculation?'Calculating…':'% Censored'}}
+                <span class="grad-graf__notice-icon">
+                  <mdc-icon path="ic-help" css="ic-help"></mdc-icon>
+<!--															<svg class="icon ic-help">-->
+<!--																<use xlink:href="/assets/sprites/sprite.svg#ic-help"></use>-->
+<!--															</svg>-->
+                </span></div>
             </div>
           </div>
         </div>
@@ -170,6 +193,9 @@
               <th class="admin-table__item admin-table__type admin-table__item_center d-none d-md-table-cell">Type</th>
               <th class="admin-table__item d-none d-md-table-cell">Category/Calculated Column</th>
               <th class="admin-table__item admin-table__info admin-table__item_center d-none d-xl-table-cell"></th>
+              <th class="admin-table__item admin-table__progress admin-table__item_center d-none d-xl-table-cell" *ngIf="censoredRate">Censored
+                <mdc-icon css="ic-info" path="ic-info"></mdc-icon>
+              </th>
               <th class="admin-table__item admin-table__progress admin-table__item_center d-none d-xl-table-cell">% Full
                 <mdc-icon path="ic-info" css="ic-info"></mdc-icon>
               </th>
@@ -177,7 +203,7 @@
             </tr>
             </thead>
             <tbody cdkDropList (cdkDropListDropped)="drop($event)">
-            <tr class="admin-table__row" *ngFor="let column of columnCollection | filterColumns" cdkDrag>
+            <tr class="admin-table__row" *ngFor="let column of columnCollection | filterColumns" cdkDrag style="overflow: hidden">
               <td class="admin-table__item">
                 <div class="admin-table__check">
                   <mdc-check-box [(ngModel)]="column.include" (change)="changeCollectionObject()"></mdc-check-box>
@@ -209,15 +235,18 @@
               <!--              // col of hierarchy end-->
 
               <th class="admin-table__item admin-table__item_center d-none d-xl-table-cell">
-                <span class="admin-table__icon">
+                <span class="admin-table__icon" tooltipPosition="top" (mouseenter)="getSampleData(column)" [escape]="false" [pTooltip]=" column.sample?(column.sample  | DataSample:{html: false}):'Loading ....'">
                   <mdc-icon path="ic-info" css="ic-info"></mdc-icon>
                 </span>
               </th>
 
+              <td class="admin-table__item admin-table__item_center d-none d-xl-table-cell" *ngIf="censoredRate">
+                <mdc-progress-match *ngIf="censoredRate.censored_rate[column.physicalName] !== undefined" [percentage]="censoredRate.censored_rate[column.physicalName] * 100"></mdc-progress-match>
+              </td>
+
               <td class="admin-table__item admin-table__item_center d-none d-xl-table-cell">
-                <ng-container *ngIf="column.nullRate !== undefined && column.nullRate !== null">
-                  <mdc-progress-match [percentage]="column.nullRate">
-                  </mdc-progress-match>
+                <ng-container *ngIf="column.nullRate !== undefined && column.nullRate !== null && column.include">
+                  <mdc-progress-match [percentage]="column.nullRate"></mdc-progress-match>
                 </ng-container>
               </td>
               <td class="admin-table__item admin-table__item_menu">
@@ -248,7 +277,7 @@
 																		</div></span></div>
                 </div>
               </td>
-              <div class="custom-placeholder" *cdkDragPlaceholder></div>
+              <div class="custom-placeholder" *cdkDragPlaceholder style="width: 271%"></div>
             </tr>
 
 
@@ -268,12 +297,9 @@
             <div class="footer-cohort d-none d-lg-inline-flex">
               <div class="footer-cohort__icon">
                 <mdc-icon css="ic-cohort" path="ic-cohort"></mdc-icon>
-                <!--                <svg class="icon ic-cohort">-->
-                <!--                  <use xlink:href="/assets/sprites/sprite.svg#ic-cohort"></use>-->
-                <!--                </svg>-->
               </div>
               <div class="footer-cohort__text">
-                Cohort: <span class="footer-cohort__num">{{ fileSource.rowsNum | number }}</span></div>
+                Cohort: <span class="footer-cohort__num">{{ censoredRate?censoredRate.total_rows:fileSource.rowsNum | number }}</span></div>
               <div class="footer-cohort__time">Calculated: May, 17 2020 14:06</div>
             </div>
             <span class="footer__btn-big"><span class="btn btn_border">Previous</span>
