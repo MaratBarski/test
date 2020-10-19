@@ -694,6 +694,8 @@
 
 	&__search{
 		position: relative;
+
+    .auto-complete-dropdown{background-color: transparent}
 	}
 
 	&__search-close{

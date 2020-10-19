@@ -1,11 +1,11 @@
 <div [ngClass]="{'disable':disabled}" (mouseleave)="currentIndex=-1;isOver=false" (mouseover)="isOver=true" class="select select_small">
-    <div class="auto-complete-input-container">
+    <div class="auto-complete-input-container select__search">
         <input [ngClass]="{'disabled':disabled}" [disabled]="disabled" class="auto-complete-input" placeholder="{{placeHolder}}" [(ngModel)]="inputText"
             (keydown)="onKeyDown($event)" (keyup)="search($event)" type="text" />
         <div (click)="clearText()" [hidden]="!inputText || disabled" class="auto-complete-dropdown">
             <svg class="ic-close" width="10" height="10" mdcSvg="ic-close"></svg>
         </div>
-        <div *ngIf="dropdown" class="auto-complete-dropdown" (click)="openSelect()">
+        <div *ngIf="dropdown" class="auto-complete-dropdown select__head-arr" (click)="openSelect()">
             <div class="auto-complete-dropdown-icon">
                 <svg class="icon" mdcSvg="ic-select-arr-down"></svg>
             </div>
@@ -13,11 +13,13 @@
     </div>
     <div #container [style.maxHeight]="maxHeight" class="auto-complete-suggestions select__option"
      [hidden]="isHiddeSuggestions || isCollapsed">
+      <div class="select__list">
         <div (mousemove)="currentIndex=index" (click)="selectItem(index)"
             *ngFor="let item of suggestions;let index = index" tabindex="{{index}}"
             [ngClass]="{'auto-complete-current':index===currentIndex}">
             <ng-container [ngTemplateOutlet]="template" [ngTemplateOutletContext]="{$implicit: item}">
             </ng-container>
         </div>
+      </div>
     </div>
 </div>

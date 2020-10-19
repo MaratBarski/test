@@ -79,6 +79,7 @@
 
 				&__mark{
 					border-color: $color-light-grey;
+          background: #fff;
 					margin-top: 3px;
 				}
 
@@ -86,7 +87,7 @@
 			}
 
 			&__head .input-check__mark{margin-top: 4px;}
-		
+
 			.input-check .tooltip.active,
 			.input-check:hover .tooltip{
 				display: inline-block;
@@ -157,7 +158,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		margin-bottom: 6px;
+		margin-bottom: 12px;
 	}
 
 	&__title{
@@ -194,7 +195,7 @@
 
 .browser-unwrap{
 	margin-bottom: 6px;
-	
+
 	&__top{
 		display: flex;
 	}
@@ -390,7 +391,7 @@
 	}
 
 	&__tab-label{
-		@include font(normal, normal, rem(13px), 1.57, $color-grey);
+		@include font(normal, normal, rem(13px), 1.57, $color-dark-grey);
 		margin-right: 8px;
 	}
 

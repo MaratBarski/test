@@ -55,8 +55,12 @@
 	}
 
     &__head-icon{
+      display: inline-flex;
+      align-items: center;
+      vertical-align: middle;
       position: relative;
       cursor: pointer;
+      margin-left: 5px;
 
       .tooltip{
         display: none;
@@ -565,7 +569,7 @@
 
   &_white &__row:nth-child(2n+1){background: transparent;}
   &_white &__row:not(:last-child) &__item{border-bottom: 1px solid rgba(161,173,205,.5);}
-  &_white &__row:not(:last-child):hover &__item{border-bottom: 1px solid transparent;}
+  //&_white &__row:not(:last-child):hover &__item{border-bottom: 1px solid transparent;}
 
 	.input-check{
 	  margin-top: 2px;

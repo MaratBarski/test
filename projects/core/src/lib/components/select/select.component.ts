@@ -95,7 +95,7 @@ export class SelectComponent implements ControlValueAccessor, AfterViewInit {
 
   writeValue(value: any) {
     // for id type number only
-    if (!isNaN(value)) {
+    if (value != null && !isNaN(value)) {
       value = Number(value);
       if (this.options) {
         this.selected = this.options.find((option: SelectOption) => Number(option.id) === value);
