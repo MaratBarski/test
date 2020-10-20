@@ -202,6 +202,10 @@ export class PermissionSetService extends BaseSibscriber {
     return '';
   }
 
+  get displayTemplates():Array<any>{
+    return this.permissionSet.allowedEvent === 3 ? this.templates : this.events;
+  }
+
   loadTemplates(isInitTemplates: boolean): void {
     setTimeout(() => { this._templatesLoaded = false; }, 1);
     forkJoin(
