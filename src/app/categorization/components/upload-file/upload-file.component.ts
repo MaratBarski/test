@@ -156,6 +156,8 @@ export class UploadFileComponent {
 
   readFile(file: any): void {
     if (!this.csvManagerService.isCsv(file.name)) {
+      this.isFileError = true;
+      this.setFileError('File format is not allowed (only CSV files)');
       this.categoryHeaders = [];
       return;
     }
@@ -207,15 +209,19 @@ export class UploadFileComponent {
   fileErrorMessage = 'File format needs to be CSV (comma separate values)';
 
   private fileError(error: ValidationFileMessage, replacements: Array<any> = undefined): void {
-    this.file = '';
-    this.fileInput.nativeElement.value = '';
-    this.isFileError = true;
-    this.fileErrorMessage = this.configService.config.fileValidationErrors[error];
+    this.setFileError(this.configService.config.fileValidationErrors[error])
     if (replacements) {
       replacements.forEach(x => {
         this.fileErrorMessage = this.fileErrorMessage.replace(x[0], x[1]);
       })
     }
+  }
+
+  private setFileError(message: string): void {
+    this.file = '';
+    this.fileInput.nativeElement.value = '';
+    this.isFileError = true;
+    this.fileErrorMessage = message;
   }
 
   updateFileName(event: any): void {

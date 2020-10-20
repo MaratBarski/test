@@ -20,7 +20,7 @@
                         <input #fileInput (change)="updateFileName($event)" type="file" accept=".csv">
                         <span class="file-upload__btn">Choose File</span><span class="file-upload__name disable">
                             <ng-template [ngIf]="!file">
-                                Select a CSV or Excel file
+                                Select a CSV file
                             </ng-template>
                             <ng-template [ngIf]="file">
                                 <div class="file-name">{{file|fileName}}</div>
