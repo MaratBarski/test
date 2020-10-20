@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { DataService, TableModel } from '@app/core-api';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { Offline } from 'src/app/shared/decorators/offline.decorator';
 import { CategoryeResponse } from '../models/category-reponse';
 import { Hierarchy } from '@app/imported-files/models/hierarchy';
@@ -18,6 +18,13 @@ export class CategorizationService {
 
   load(): Observable<CategoryeResponse> {
     return this.dataService.get(this.getUrl);
+  }
+
+  get onUploadComplete(): Observable<void> { return this._onUploadComplete }
+  private _onUploadComplete: Subject<void> = new Subject();
+
+  uploadComplete(): void {
+    this._onUploadComplete.next();
   }
 
   updateHierarchyChange(hierarchy: any, state: boolean): void {

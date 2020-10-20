@@ -4,6 +4,7 @@ import { CsvManagerService, NotificationStatus, ToasterType, ValidationFileMessa
 import { environment } from '@env/environment';
 import { Offline } from '@app/shared/decorators/offline.decorator';
 import { ConfigService } from '@app/shared/services/config.service';
+import { CategorizationService } from '@app/categorization/services/categorization.service';
 
 
 @Component({
@@ -16,7 +17,8 @@ export class UploadFileComponent {
     private uploadService: UploadService,
     private csvManagerService: CsvManagerService,
     private configService: ConfigService,
-    public loginService: LoginService
+    public loginService: LoginService,
+    private categorizationService: CategorizationService
   ) {
   }
 
@@ -81,9 +83,7 @@ export class UploadFileComponent {
         removeOnComplete: true,
         progressKf: 2,
         onComplete: () => {
-          if (this.targetComponent) {
-            this.targetComponent.onComplete();
-          }
+          this.categorizationService.uploadComplete();
         }
       },
       form: formData,

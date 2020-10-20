@@ -134,14 +134,17 @@ export class CategorizationComponent extends BaseSibscriber implements OnInit {
         this.categorySource = res.data;
         this.initData();
       }));
-    this.onComplete = (): void => {
-      super.add(
-        this.categorizationService.load().subscribe((res: any) => {
-          this.categorySource = res.data || [];
-          this.initData();
-          this.table.stayOnCurrentPage = true;
+    super.add(
+      this.categorizationService.onUploadComplete
+        .subscribe(() => {
+          super.add(
+            this.categorizationService.load()
+              .subscribe((res: any) => {
+                this.categorySource = res.data || [];
+                this.initData();
+                this.table.stayOnCurrentPage = true;
+              }));
         }));
-    }
   }
 
   closeCategoryInfo(): void {
