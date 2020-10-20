@@ -53,6 +53,8 @@ export const environment = {
       originalFile: '/download-original',
       nullsRate: '/nulls-rate',
       sampleData: '/get-sample-data',
+      censoredRate: '/censored-rate',
+      censoredFile: '/censored-file',
     }
   }
 };
