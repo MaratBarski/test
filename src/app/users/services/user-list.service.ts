@@ -24,11 +24,13 @@ export class UserListService {
   getUserRoles(user: any): Array<string> {
     const projects = user.projects || [];
     const authorities = user.authorities || [];
-    const roles = projects.filter((p: any) => p.UserType).map((p: any) => p.UserType.userType ? p.UserType.userType.toLowerCase() : '');
+    const roles = projects.filter((p: any) => p.UserType)
+    .map((p: any) => p.UserType.userType ? p.UserType.userType.toLowerCase() : '');
+
     const dict = {};
     if (authorities.find(x => {
-      if (!x.name) { return false; }
-      return (x.name.trim().trim().toUpperCase() === 'ROLE_SUPERADMIN');
+      if (!x.authorityName) { return false; }
+      return (x.authorityName.trim().trim().toUpperCase() === 'ROLE_SUPERADMIN');
     })) {
       dict['superadmin'] = true;
     }

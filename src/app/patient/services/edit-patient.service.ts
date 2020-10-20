@@ -407,11 +407,19 @@ export class EditPatientService {
           ev.isChecked = false;
           if (ev.eventType && ev.eventType.trim().toUpperCase() === 'PATIENT_TABLE' && ev.sitePatientPropertyInfo) {
             ev.siteEventPropertyInfos = [].concat(ev.sitePatientPropertyInfo);
-            ev.siteEventPropertyInfos.forEach(el => { el.isDemo = true; });
+            ev.siteEventPropertyInfos.forEach(el => {
+              el.isDemo = true;
+              el.isChecked = !!this._demographic_inclusion.find(x => x.toLowerCase() === el.fieldDescription.toLowerCase());
+              if (el.isChecked) {
+                ev.isChecked = true;
+                ev.isExpanded = true;
+              }
+            });
+          } else {
+            ev.siteEventPropertyInfos.forEach(se => {
+              se.isChecked = ev.isChecked;
+            });
           }
-          ev.siteEventPropertyInfos.forEach(se => {
-            se.isChecked = ev.isChecked;
-          });
         })
         this.selectEvents();
         this._isEventsLoaded = true;
@@ -501,6 +509,8 @@ export class EditPatientService {
     this.load();
   }
 
+  private _demographic_inclusion: Array<any> = [];
+
   load(): void {
     this._dataLoaded = false;
     forkJoin(
@@ -509,9 +519,11 @@ export class EditPatientService {
       .pipe(take(1))
       .subscribe(([settings]: any) => {
         if (this.storyId) {
-          this.convertToClient(settings)
+          this.convertToClient(settings);
+          this._demographic_inclusion = settings.transJson ? settings.transJson.demographic_inclusion || [] : [];
         } else {
           this._settings = settings.data;
+          this._demographic_inclusion = [];
         }
         this._dataLoaded = true;
       }, error => {
