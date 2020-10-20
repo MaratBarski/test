@@ -1,5 +1,5 @@
 <md-filter-modal *ngIf="showFilterModal" (closeWindow)="closeFilterModal()" [collection]="columnCollection"></md-filter-modal>
-
+<md-irbpopup *ngIf="showIRBPopup" [IRB]="projectIRB" (onPopupClose)="closePopup($event)"></md-irbpopup>
 
 <div class="query-flow">
   <section>
@@ -71,14 +71,6 @@
           <div class="query-flow-panel-switch" *ngIf="showSwitch">
             <div class="query-flow-panel-switch__label">Synthetic mode</div>
             <mdc-toggle-button [id]="'switch'" [yes]="'On'" [no]="'Off'" [(ngModel)]="switchState" (onChange)="switchSyntheticMode($event)"></mdc-toggle-button>
-<!--            <div class="switch">-->
-<!--              <input type="checkbox" id="switch1">-->
-<!--              <label class="switch__content" for="switch1">-->
-<!--                <div class="switch__marker"></div>-->
-<!--                <div class="switch__on">On</div>-->
-<!--                <div class="switch__off">Off</div>-->
-<!--              </label>-->
-<!--            </div>-->
           </div>
           <div class="query-flow-panel__content" *ngIf="censoredRate">
             <div class="query-flow-panel__desc">
@@ -91,15 +83,13 @@
               <div class="grad-graf__content">
                 <div class="grad-graf__min">0%</div>
                 <div class="grad-graf__max">100%</div>
-                <div class="grad-graf__label" [style.left.%]="censoredPercent">{{censoredPercent}}%</div>
+                <div class="grad-graf__label" [style.left.%]="censoredPercent">{{censoredPercent | number}}%</div>
               </div>
               <div class="grad-graf__notice">{{calculation?'Calculating…':'% Censored'}}
                 <span class="grad-graf__notice-icon">
                   <mdc-icon path="ic-help" css="ic-help"></mdc-icon>
-<!--															<svg class="icon ic-help">-->
-<!--																<use xlink:href="/assets/sprites/sprite.svg#ic-help"></use>-->
-<!--															</svg>-->
-                </span></div>
+                </span>
+              </div>
             </div>
           </div>
         </div>
@@ -229,7 +219,7 @@
               <td class="admin-table__item d-none d-md-table-cell">
                 <div *ngIf="column.hierarchy | async as hierarchy">
                   <mdc-select [(ngModel)]="column.defaultLevelId" [isSmall]="true" [applyWidth]="false" [options]="hierarchy"
-                              *ngIf="column.hierarchyRootId && column.hierarchyRootId > -1"></mdc-select>
+                              *ngIf="column.hierarchyRootId && column.hierarchyRootId > -1" (changed)="calculate()"></mdc-select>
                 </div>
               </td>
               <!--              // col of hierarchy end-->

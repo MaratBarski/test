@@ -14,6 +14,7 @@ import {CustomSelectComponent} from './components/custom-select/custom-select.co
 import {ConditionCardComponent} from './components/condition-card/condition-card.component';
 import {PerfectScrollbarModule} from 'ngx-perfect-scrollbar';
 import {SharedModule} from '../shared/shared.module';
+import { IRBPopupComponent } from './components/irbpopup/irbpopup.component';
 
 const routes: Array<Route> = [
   {path: '', component: ActivateComponent},
@@ -29,7 +30,8 @@ const routes: Array<Route> = [
     SelectedColumnPipe,
     FilterModalComponent,
     CustomSelectComponent,
-    ConditionCardComponent
+    ConditionCardComponent,
+    IRBPopupComponent
   ],
   imports: [
     CommonModule,

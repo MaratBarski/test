@@ -1,0 +1,26 @@
+<div class="shadow-site is-visible"></div>
+<div class="notice-location notice-location_center">
+  <div class="notice-msg notice-msg_black notice-msg_big">
+    <div class="notice-msg__top">
+      <div class="notice-msg__head">
+        <div class="notice-msg-head">
+          <div class="notice-msg-head__text">Apply Approval Key</div>
+        </div>
+      </div>
+      <div class="notice-msg__close" (click)="closePopup()">
+        <mdc-icon path="ic-close-circle" css="ic-close-circle"></mdc-icon>
+      </div>
+    </div>
+    <div class="notice-msg__content">
+      <div class="notice-msg__text">
+        <p>A relevant approval key for the query is required, to download an original data file. Otherwise, switch to "Synthetic mode" above.</p>
+      </div>
+      <mdc-select [(ngModel)]="irbResult" [options]="options" [isSmall]="true"></mdc-select>
+
+    </div>
+    <div class="notice-msg__btn">
+      <span class="btn btn_border btn_small" (click)="closePopup()">Cancel</span>
+      <span class="btn btn_small" [ngClass]="{btn_disable: !irbResult}" (click)="submitIRB()">Apply & Download</span>
+    </div>
+  </div>
+</div>

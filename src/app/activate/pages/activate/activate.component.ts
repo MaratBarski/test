@@ -39,12 +39,14 @@ export class ActivateComponent extends BaseNavigation implements OnInit {
   censoredRate: any = null;
   censoredPercent = 0;
   calculation = false;
+  showIRBPopup = true;
 
   anonymityRequest: number = null;
   userAnonymity: number = null;
   defaultAnonymity = 4;
   systemAnonymity: number = null;
   userIRB: UserIRB;
+  projectIRB: Research[] = [];
 
   columnCollection: Array<IColumn> = [];
   fieldDataType = FieldDataType;
@@ -79,9 +81,9 @@ export class ActivateComponent extends BaseNavigation implements OnInit {
     private router: Router,
   ) {
     super(navigationService);
-
     this.fileSource = this.route.snapshot.data.data[0];
     this.userIRB = new UserIRB(this.route.snapshot.data.data[1]);
+    this.projectIRB = this.userIRB.getIrbByProject(this.fileSource.project);
 
     this.userAnonymity = this.getUserAnonymity(this.fileSource.project);
     if (this.userAnonymity === 1 || this.userIRB.getIrbByProject(this.fileSource.project).length > 0) {
@@ -114,8 +116,10 @@ export class ActivateComponent extends BaseNavigation implements OnInit {
       this.route.queryParams.subscribe(params => {
         if (params.anonymity) {
           this.anonymityRequest = +params.anonymity;
+          this.switchState = true;
         } else {
           this.anonymityRequest = null;
+          this.switchState = false;
         }
         this.getCensoredRate();
       })
@@ -125,8 +129,6 @@ export class ActivateComponent extends BaseNavigation implements OnInit {
       this.route.params.subscribe(p => {
         console.log(this.config.config);
         // this.defaultAnonymity = this.config.config
-
-        //if(this.anonymityRequest)
         if (this.fileSource.fileState) {
           this.columnCollection = this.fileSource.fileState;
           this.columnCollection.forEach(clm => {
@@ -191,14 +193,15 @@ export class ActivateComponent extends BaseNavigation implements OnInit {
         this.router.navigateByUrl(url);
       }
     });
-
-    // this.getCensoredFile();
-    // this.saveState().subscribe(data => {
-    //   this.nullsRate();
-    // });
   }
 
   ngOnInit() {
+  }
+
+  calculate() {
+    this.saveState().subscribe(data => {
+      this.getCensoredRate();
+    });
   }
 
   public getUserAnonymity(project): number {
@@ -228,6 +231,7 @@ export class ActivateComponent extends BaseNavigation implements OnInit {
   public changeCollectionObject() {
     this.selectAll = this.columnCollection.filter(item => item.include).length === this.columnCollection.length ? true : false;
     this.columnCollection = [...this.columnCollection];
+    this.calculate();
   }
 
   public selectAllChanged($event) {
@@ -262,6 +266,7 @@ export class ActivateComponent extends BaseNavigation implements OnInit {
     } else if (column.rootType === FieldDataType.NUMERIC && column.outputType === FieldDataType.STRING) {
       this.columnCollection[index].outputType = FieldDataType.NUMERIC;
     }
+    this.calculate();
   }
 
   nullsRate(anonymity) {
@@ -299,7 +304,7 @@ export class ActivateComponent extends BaseNavigation implements OnInit {
       this.nullsRate(this.anonymityRequest);
       return this.activateService.getCensoredRate(this.fileSource.fileId, this.anonymityRequest).subscribe((data: any) => {
         this.censoredRate = data.data;
-        this.censoredPercent = data.data.rows_no_censored * 100;
+        this.censoredPercent = (1 - data.data.rows_no_censored) * 100;
         this.calculation = false;
         // debugger;
         console.log('censoredRate = ', this.censoredRate);
@@ -308,7 +313,7 @@ export class ActivateComponent extends BaseNavigation implements OnInit {
       this.nullsRate(this.userAnonymity);
       return this.activateService.getCensoredRate(this.fileSource.fileId, this.userAnonymity).subscribe((data: any) => {
         this.censoredRate = data.data;
-        this.censoredPercent = data.data.rows_no_censored * 100;
+        this.censoredPercent = (1 - data.data.rows_no_censored) * 100;
         this.calculation = false;
         // debugger;
         console.log('censoredRate = ', this.censoredRate);
@@ -324,7 +329,7 @@ export class ActivateComponent extends BaseNavigation implements OnInit {
       this.nullsRate(this.defaultAnonymity);
       return this.activateService.getCensoredRate(this.fileSource.fileId, this.defaultAnonymity).subscribe((data: any) => {
         this.censoredRate = data.data;
-        this.censoredPercent = data.data.rows_no_censored * 100;
+        this.censoredPercent = (1 - data.data.rows_no_censored) * 100;
         this.calculation = false;
         // debugger;
         console.log('censoredRate = ', this.censoredRate);
@@ -361,6 +366,10 @@ export class ActivateComponent extends BaseNavigation implements OnInit {
       element.click();
       element.remove();
     });
+  }
+
+  closePopup(bool) {
+    this.showIRBPopup = false;
   }
 }
 
