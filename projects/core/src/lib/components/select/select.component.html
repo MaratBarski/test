@@ -1,6 +1,6 @@
 <div #combo [ngClass]="{'select_up':selectUp,'select_small':isSmall,'disable':disabled}" class="select" (blur)="blur()"
   tabindex="10" style="cursor: pointer">
-  <div [style.borderColor]="isInvalid?'#b00':''" (click)="mouseClick($event);" class="select__head">
+  <div [style.borderColor]="isInvalid?'#b00':''" (click)="mouseClick($event);" class="select__head" [ngClass]="{ active: selected }">
     <div #comboTextContainer class="select__icon-wrap overflow-x-hidden">
       <svg *ngIf="selected?.icon" [mdcSvg]="selected?.icon" class="icon"></svg>
       <mdc-text-block [position]="position" [text]="selected && selected?.id > -1 ? selected?.text : placeholder"></mdc-text-block>
