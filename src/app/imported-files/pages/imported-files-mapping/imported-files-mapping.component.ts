@@ -248,6 +248,10 @@ export class ImportedFileMappingComponent extends BaseNavigation implements OnIn
     }
   }
 
+  get isHasChecked(): boolean {
+    return !!(this.fileSourceForm.get('fileClms') as FormArray).controls.find(c => c.get('isIncluded').value);
+  }
+
   private saveError(): void {
     this.isSaving = false;
     this.notificationService.addNotification({

@@ -110,7 +110,7 @@ export class ImportedFilesService {
         },
         {
           columnId: 'permission',
-          text: 'Permission Group',
+          text: 'Permission Template',
           isSortEnabled: true,
           filter: true,
           css: 'd-none d-xl-table-cell w-md-150',
@@ -118,7 +118,7 @@ export class ImportedFilesService {
         },
         {
           columnId: 'user',
-          text: 'User',
+          text: 'Username',
           isSortEnabled: false,
           filter: true,
           css: 'd-none d-xxl-table-cell'

@@ -31,6 +31,18 @@
                         "anonymityLevel": 4,
                         "numericScatterLimit": 0
                     }
+                },
+                {
+                    "projectId": "11",
+                    "projectName": "JB111111111_TEST",
+                    "defaultSiteId": "10",
+                    "UserType": {
+                        "userId": "2011",
+                        "projectId": "10",
+                        "userType": "RESEARCHER",
+                        "anonymityLevel": 4,
+                        "numericScatterLimit": 0
+                    }
                 }
             ],
             "authorities": [],
