@@ -98,7 +98,7 @@ export class ImportedFilesService {
           isSortEnabled: true,
           sortDir: 'desc',
           isSortedColumn: true,
-          css: 'd-none d-lg-table-cell'
+          css: 'd-none d-md-table-cell'
         },
         {
           columnId: 'environment',
@@ -121,13 +121,13 @@ export class ImportedFilesService {
           text: 'User',
           isSortEnabled: false,
           filter: true,
-          css: 'd-none d-xxxl-table-cell'
+          css: 'd-none d-xxl-table-cell'
         },
         {
           columnId: 'shared',
           text: 'Shared',
           isSortEnabled: false,
-          css: 'd-none d-md-table-cell admin-table__item_center'
+          css: 'd-none d-xxxl-table-cell admin-table__item_center'
         },
         {
           columnId: 'columns',
