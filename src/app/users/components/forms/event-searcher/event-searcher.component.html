@@ -3,7 +3,7 @@
         <div class="drop-cond__content">
             <div class="drop-cond__search">
                 <input [disabled]="isDisabled" [(ngModel)]="searchText" (keyup)="keyUp($event)" (keydown)="keyDown($event)" type="text" [placeholder]="placeholder">
-                <span [hidden]="!searchText" (click)="clear($event)">
+                <span [hidden]="!searchText" (click)="clear($event)" class="drop-cond__search-close">
                     <svg class="icon ic-close-small" mdcSvg="ic-close-small"></svg>
                 </span>
                 <div (click)="expandAll($event)" class="drop-cond__head-arr">

@@ -50,7 +50,7 @@
     input[type="text"]::-webkit-input-placeholder {color: $color-grey; opacity: 1;}
     input[type="text"]:-moz-placeholder {color: $color-grey; opacity: 1;}
 
-    input[type="text"]:focus + .event-select__search-close{
+    input[type="text"]:focus + .drop-cond__search-close{
       display: inline-block;
     }
   }
@@ -59,6 +59,7 @@
   &_big &__search{width: 250px;}
 
   &__search-close{
+    display: none;
     width: 7px;
     height: 7px;
     position: absolute;
