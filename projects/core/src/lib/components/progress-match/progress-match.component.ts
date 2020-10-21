@@ -6,5 +6,5 @@ import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
   styleUrls: ['./progress-match.component.css'],
 })
 export class ProgressMatchComponent {
-  @Input() percentage = 0;
+  @Input() percentage;
 }

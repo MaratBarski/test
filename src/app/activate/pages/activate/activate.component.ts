@@ -39,7 +39,7 @@ export class ActivateComponent extends BaseNavigation implements OnInit {
   censoredRate: any = null;
   censoredPercent = 0;
   calculation = false;
-  showIRBPopup = true;
+  showIRBPopup = false;
 
   anonymityRequest: number = null;
   userAnonymity: number = null;
@@ -53,7 +53,6 @@ export class ActivateComponent extends BaseNavigation implements OnInit {
   fileSource: FileSource;
   fg: FormGroup;
   showFilterModal = false;
-  // searchControl: FormControl;
 
 
   fileSourceForm: FormGroup;

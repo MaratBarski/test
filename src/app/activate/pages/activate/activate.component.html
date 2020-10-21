@@ -231,11 +231,11 @@
               </th>
 
               <td class="admin-table__item admin-table__item_center d-none d-xl-table-cell" *ngIf="censoredRate">
-                <mdc-progress-match *ngIf="censoredRate.censored_rate[column.physicalName] !== undefined" [percentage]="censoredRate.censored_rate[column.physicalName] * 100"></mdc-progress-match>
+                <mdc-progress-match *ngIf="column.outputType === fieldDataType.STRING && column.include" [percentage]="censoredRate.censored_rate[column.physicalName] * 100"></mdc-progress-match>
               </td>
 
               <td class="admin-table__item admin-table__item_center d-none d-xl-table-cell">
-                <ng-container *ngIf="column.nullRate !== undefined && column.nullRate !== null && column.include">
+                <ng-container *ngIf="column.include">
                   <mdc-progress-match [percentage]="column.nullRate"></mdc-progress-match>
                 </ng-container>
               </td>
@@ -292,22 +292,7 @@
                 Cohort: <span class="footer-cohort__num">{{ censoredRate?censoredRate.total_rows:fileSource.rowsNum | number }}</span></div>
               <div class="footer-cohort__time">Calculated: May, 17 2020 14:06</div>
             </div>
-            <span class="footer__btn-big"><span class="btn btn_border">Previous</span>
-										<div class="split-btn split-btn_up">
-											<div class="split-btn__title" (click)="downloadOriginal()">Download Original</div>
-											<div class="split-btn__arr">
-                        <mdc-icon path="ic-btn-arr-down" css="ic-btn-arr-down"></mdc-icon>
-                        <!--												<svg class="icon ic-btn-arr-down">-->
-                        <!--													<use xlink:href="/assets/sprites/sprite.svg#ic-btn-arr-down"></use>-->
-                        <!--												</svg>-->
-											</div>
-											<div class="split-btn__popup">
-												<div class="split-btn__item">parameter 1</div>
-												<div class="split-btn__item">parameter 2</div>
-												<div class="split-btn__item">parameter 3</div>
-												<div class="split-btn__item">parameter 4</div>
-											</div>
-										</div></span>
+            <md-popup-menu-button></md-popup-menu-button>
           </div>
         </div>
       </div>
