@@ -52,7 +52,7 @@
               </div>
               <div class="info-panel__item">
                 <div class="info-panel__title">Modified:</div>
-                <div class="info-panel__val">{{ fileSource.insertDate | date }}</div>
+                <div class="info-panel__val">{{ fileSource.modifiedDate | date }}</div>
               </div>
               <div class="info-panel__item info-panel__item_no-indent">
                 <div class="info-panel__title">Columns:</div>
@@ -173,7 +173,8 @@
           <div class="col-12">
             <div class="footer__btn">
               <button class="btn btn_border" (click)="cancel($event)">Cancel</button>
-              <button type="submit" class="btn">Save</button>
+              <button [hidden]="!isHasChecked" type="submit" class="btn">Save</button>
+              <button disabled [hidden]="isHasChecked" class="btn btn_disable">Save</button>
             </div>
           </div>
         </div>

@@ -38,9 +38,15 @@
             </div>
             <div class="form-site__item">
                 <label class="form-site__label">Make this a shared file</label>
-                <div class="form-site__shared"><span class="form-site__shared-notice"><span
-                            class="form-site__shared-text">When file is shared everyone can see and use
-                            it.</span></span>
+                <div class="form-site__shared">
+                    <span class="form-site__shared-notice">
+                        <span [hidden]="fileType" class="form-site__shared-text">
+                            When file is shared everyone can see and use it.
+                        </span>
+                        <span [hidden]="!fileType" class="form-site__shared-text">
+                            File is shared now. It can be viewed and used by everyone.
+                        </span>
+                    </span>
                     <div class="switch">
                         <mdc-toggle-button (change)="resetTemplate()" no="No" yes="Yes" [(ngModel)]="fileType">
                         </mdc-toggle-button>
@@ -55,8 +61,8 @@
                     </span>
                     <span class="form-site__optional">Optional</span>
                 </label>
-                <mdc-select #templateSelector placeholder="Select Permission Template..." [(ngModel)]="template" maxHeight="150px" [selectUp]="true"
-                    (changed)="changedTemplate($event)" [options]="templates">
+                <mdc-select #templateSelector placeholder="Select Permission Template..." [(ngModel)]="template"
+                    maxHeight="150px" [selectUp]="true" (changed)="changedTemplate($event)" [options]="templates">
                 </mdc-select>
             </div>
         </div>
