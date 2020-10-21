@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewChild, HostListener } from '@angular/core';
-import { SortService, LoginService, NavigationService, PageInfo, BaseSibscriber, TableActionCommand, EmptyState, SelectOption, TableModel, TableComponent, ComponentService, TableRowModel } from '@appcore';
+import { SortService, LoginService, NavigationService, PageInfo, BaseSibscriber, TableActionCommand, EmptyState, SelectOption, TableModel, TableComponent, ComponentService, TableRowModel, DownloadComponent } from '@appcore';
 import { Router } from '@angular/router';
 import { UserListService } from '@app/users/services/user-list.service';
 import { UserDetailsComponent } from '@app/users/components/user-details/user-details.component';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'md-user-list',
@@ -148,5 +149,16 @@ export class UserListComponent extends BaseSibscriber implements OnInit {
         return row.source.environments[this.currentEnvitonment];
       })
     };
+  }
+
+  @ViewChild('downloader', { static: true }) downloader: DownloadComponent;
+  downloadFileName = 'history.csv';
+  
+  changeFileName(): void {
+    const date = new Date();
+    const format = 'yyyyMMdd_hhmmss';
+    const locale = 'en-US';
+    const formattedDate = formatDate(date, format, locale);
+    this.downloader.fileName = formattedDate + "_user_list.csv";
   }
 }
