@@ -10,8 +10,10 @@
             <div class="admin-table-wrap__col">
                 <mdc-button *ngIf="loginService.isSuperAdmin" (click)="addUserOpen()" text="+ New User">
                 </mdc-button>
-                <mdc-download #downloader (onBeforeDownload)="changeFileName()" [fileName]="downloadFileName"
-                (click)="changeFileName()" text="Download User List"></mdc-download>
+                <div [stickyToElement]="true" position="right" mdcTooltip="Download User List">
+                    <mdc-download #downloader (onBeforeDownload)="changeFileName()" [fileName]="downloadFileName"
+                        (click)="changeFileName()" text=""></mdc-download>
+                </div>
             </div>
             <div mdAnimationSticky [hidden]="!isDataExists" class="admin-table-wrap__col">
                 <div class="filter-top">
@@ -28,8 +30,7 @@
         </div>
         <div [hidden]="!isDataExists || !isLoaded">
             <mdc-table #table (onAction)="onAction($event)" [emptyState]="emptyState"
-                [rowInfoTemplate]="rowInfoTemplate"
-                [downloader]="downloader"
+                [rowInfoTemplate]="rowInfoTemplate" [downloader]="downloader"
                 [cellsTemplate]="{ active:activeUser,modified:modified,specialRoles:specialRoles}"
                 [customFilters]="{specialRoles:specialRolesHeader}" [searchOptions]="searchOptions"
                 [paginator]="paginator" [search]="search" [dataSource]="dataSource"
