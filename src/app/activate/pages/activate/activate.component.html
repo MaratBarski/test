@@ -231,12 +231,12 @@
               </th>
 
               <td class="admin-table__item admin-table__item_center d-none d-xl-table-cell" *ngIf="censoredRate">
-                <mdc-progress-match *ngIf="column.outputType === fieldDataType.STRING && column.include" [percentage]="censoredRate.censored_rate[column.physicalName] * 100"></mdc-progress-match>
+                <mdc-progress-match *ngIf="column.outputType === fieldDataType.STRING && column.include" [reverseColor]="true" [percentage]="censoredRate.censored_rate[column.physicalName] * 100"></mdc-progress-match>
               </td>
 
               <td class="admin-table__item admin-table__item_center d-none d-xl-table-cell">
                 <ng-container *ngIf="column.include">
-                  <mdc-progress-match [percentage]="column.nullRate"></mdc-progress-match>
+                  <mdc-progress-match [percentage]="100 - column.nullRate" [withoutColorRange]="true"></mdc-progress-match>
                 </ng-container>
               </td>
               <td class="admin-table__item admin-table__item_menu">

@@ -97,7 +97,8 @@ export class ActivateComponent extends BaseNavigation implements OnInit {
 
     super.add(
       this.fg.get('searchInput').valueChanges.pipe(
-        debounceTime(300),
+        map((i: any) => i ),
+        debounceTime(1000),
         distinctUntilChanged()
       ).subscribe((searchText: string) => {
         this.columnCollection = [...this.columnCollection.map(item => {
@@ -126,9 +127,10 @@ export class ActivateComponent extends BaseNavigation implements OnInit {
 
     super.add(
       this.route.params.subscribe(p => {
+        debugger;
         console.log(this.config.config);
         // this.defaultAnonymity = this.config.config
-        if (this.fileSource.fileState) {
+        if ((this.fileSource.fileState && this.fileSource.fileState.length > 0) || (this.fileSource.fileState && this.fileSource.fileState.length === undefined && JSON.stringify(this.fileSource.fileState) !== '{}')) {
           this.columnCollection = this.fileSource.fileState;
           this.columnCollection.forEach(clm => {
             const column: IColumn = clm;
@@ -176,9 +178,12 @@ export class ActivateComponent extends BaseNavigation implements OnInit {
             const [val1, val2] = [Number(c1.order), Number(c2.order)];
             return val1 > val2 ? 1 : -1;
           });
+          debugger;
+          this.saveState().subscribe(data => {
+            this.calculate();
+          });
         }
       }));
-
     this.navigationService.beforeNavigate = ((url: string) => {
       if (url) {
         this.redirectUrl = url;
@@ -199,6 +204,7 @@ export class ActivateComponent extends BaseNavigation implements OnInit {
 
   calculate() {
     this.saveState().subscribe(data => {
+      this.fileSource = data;
       this.getCensoredRate();
     });
   }
@@ -289,7 +295,7 @@ export class ActivateComponent extends BaseNavigation implements OnInit {
 
   createState() {
     this.saveState().subscribe(data => {
-
+      this.fileSource = data;
     });
   }
 

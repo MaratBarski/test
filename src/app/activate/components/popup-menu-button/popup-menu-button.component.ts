@@ -15,6 +15,7 @@ export class PopupMenuButtonComponent implements OnInit {
   isOver = false;
   rotatedState: RotatedState = RotatedState.default;
   @Input() disabled = false;
+  // @Output()
 
   constructor() { }
 
@@ -25,13 +26,16 @@ export class PopupMenuButtonComponent implements OnInit {
 
   }
 
+  downloadSynthetic() {
+
+  }
+
   blur() {
     this.isExpanded = false;
     this.rotatedState = RotatedState.default;
   }
 
   mouseClick(event: any): void {
-
     if (!this.disabled) {
       this.isExpanded = !this.isExpanded;
       this.rotatedState = this.isExpanded ? RotatedState.rotated : RotatedState.default;

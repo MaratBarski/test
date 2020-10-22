@@ -7,4 +7,6 @@ import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 })
 export class ProgressMatchComponent {
   @Input() percentage;
+  @Input() reverseColor = false;
+  @Input() withoutColorRange = false;
 }
