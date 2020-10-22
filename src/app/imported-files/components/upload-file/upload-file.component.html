@@ -10,7 +10,7 @@
                 <div class="file-upload">
                     <label class="file-upload__content">
                         <input #fileInput (change)="updateFileName($event)" type="file" accept=".csv">
-                        <span class="file-upload__btn">Choose File</span><span class="file-upload__name disable">
+                        <span class="file-upload__btn">Choose File</span><span class="file-upload__name" [ngClass]="{disable:!file}">
                             <ng-template [ngIf]="!file">
                                 Select a CSV or Excel file
                             </ng-template>
@@ -44,6 +44,7 @@
                             When file is shared everyone can see and use it.
                         </span>
                         <span [hidden]="!fileType" class="form-site__shared-text">
+                            <svg class="icon ic-shared ic-grey" mdcSvg="ic-shared"></svg>
                             File is shared now. It can be viewed and used by everyone.
                         </span>
                     </span>

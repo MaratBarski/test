@@ -732,7 +732,8 @@
   }
 
 	&__search input[type="text"]:focus + button + &__search-close,
-	&__search input[type="text"]:focus + &__search-close{
+	&__search input[type="text"]:focus + &__search-close,
+  &__search:hover &__search-close{
 		display: inline-block;
 	}
 

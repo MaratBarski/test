@@ -828,7 +828,7 @@
       .admin-table{
         tr th.admin-table__item_check{width: 100px;}
         &__item_check .admin-table__title{width: 100px;}
-        &__type .admin-table__title{width: 50px;}
+        &__type .admin-table__title{width: 90px;}
       }
     }
   }
@@ -840,6 +840,16 @@
       width: 1610px;
       overflow-x: hidden;
       // .admin-table{width: 1610px;}
+    }
+  }
+}
+
+@media (max-width: 1366px) {
+  .event-map-main{
+    &__table{
+      .admin-table{
+        &__type .admin-table__title{width: 60px;}
+      }
     }
   }
 }
