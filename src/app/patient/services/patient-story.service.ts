@@ -35,10 +35,7 @@ export class PatientStoryService {
             icon: 'ic-edit',
             command: 'edit'
             , checkDisabled: (source: any) => {
-              return (!source.transStatus
-                || source.transStatus.toLowerCase() === 'pending'
-                || source.transStatus.toLowerCase() === 'generating'
-              );
+              return !(source.transStatus.toLowerCase() === 'failed' || source.outputType.toLowerCase() === 'success' || source.transStatus.toLowerCase() === 'aborted');
             }
           },
           {
@@ -46,10 +43,7 @@ export class PatientStoryService {
             icon: 'ic-view',
             command: 'dublicate'
             , checkDisabled: (source: any) => {
-              return (!source.transStatus
-                || source.transStatus.toLowerCase() === 'pending'
-                || source.transStatus.toLowerCase() === 'generating'
-              );
+              return !(source.transStatus.toLowerCase() === 'failed' || source.outputType.toLowerCase() === 'success' || source.transStatus.toLowerCase() === 'aborted');
             }
           },
           {
@@ -68,11 +62,7 @@ export class PatientStoryService {
             icon: 'ic-delete',
             command: 'abort'
             , checkDisabled: (source: any) => {
-              if (!source.projectObj) { return true; }
-              if (this.loginService.isAdminOfProject(source.projectObj.projectId)) { return false; }
-              if (source.fileType) { return true; }
-              if (source.uploadedBy === this.loginService.userInfo.data.id) { return false; }
-              return true;
+              return !(source.transStatus.toLowerCase() === 'pending' || source.outputType.toLowerCase() === 'running');
             }
           },
           {
@@ -81,12 +71,7 @@ export class PatientStoryService {
             icon: 'ic-delete',
             command: 'delete'
             , checkDisabled: (source: any) => {
-              return false;
-              // if (!source.projectObj) { return true; }
-              // if (this.loginService.isAdminOfProject(source.projectObj.projectId)) { return false; }
-              // if (source.fileType) { return true; }
-              // if (source.uploadedBy === this.loginService.userInfo.data.id) { return false; }
-              // return true;
+              return !(source.transStatus.toLowerCase() === 'failed' || source.outputType.toLowerCase() === 'success' || source.transStatus.toLowerCase() === 'aborted');
             }
           }
         ]
