@@ -1,6 +1,6 @@
 <div class="info-panel__shared" [ngClass]="{active: opened}">
   <span (click)="toggleShare()">{{startValue ? "Shared" : "Not Shared"}}</span>
-  <span style="margin-left: 8px;">
+  <span [hidden]="!startValue" style="margin-left: 8px;">
     <mdc-icon [path]="'ic-shared'" [css]="'icon ic-shared'" (click)="toggleShare()"></mdc-icon>
   </span>
 
@@ -21,8 +21,12 @@
             <div class="info-popup-switch__text-wrap">
               <div class="info-popup-switch__title" *ngIf="!value">File is not shared.</div>
               <div class="info-popup-switch__title" *ngIf="value">File is shared.</div>
-              <div class="info-popup-switch__text">When a file is shared everyone can see and use
-                it.
+              <div [hidden]="value" class="info-popup-switch__text">
+                When a file is shared everyone can see and use it.
+              </div>
+              <div [hidden]="!value" class="info-popup-switch__text">
+                <svg class="icon ic-shared ic-grey" mdcSvg="ic-shared"></svg>
+                It can be viewed and used by everyone.
               </div>
             </div>
           </div>
