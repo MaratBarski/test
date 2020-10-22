@@ -57,7 +57,7 @@ export class PatientStoryService {
             icon: 'ic-view',
             command: 'download'
             , checkDisabled: (source: any) => {
-              return !source.outputType || source.outputType.toLowerCase() !== 'files';
+              return source.transStatus.toLowerCase() !== 'success' || source.outputType.toLowerCase() === 'impala';
             }
           }
         ],
