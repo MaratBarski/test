@@ -118,7 +118,7 @@ export class ImportedFilesService {
         },
         {
           columnId: 'user',
-          text: 'Username',
+          text: 'User Name',
           isSortEnabled: false,
           filter: true,
           css: 'd-none d-xxl-table-cell'
