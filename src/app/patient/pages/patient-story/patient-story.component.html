@@ -38,7 +38,13 @@
 </ng-template>
 
 <ng-template #statusColumn let-item let-source="source">
-    <div *ngIf="source.transStatus === 'generating' || source.transStatus === 'pending' || source.transStatus === 'running'">
+    <div *ngIf="source.transStatus === 'pending'">
+        <span class="admin-table__icon">
+            Pending
+        </span>
+        <!-- <span class="admin-table__icon-label d-none d-xxl-inline-block">Generating</span> -->
+    </div>
+    <div *ngIf="source.transStatus === 'running'">
         <span class="admin-table__icon">
             <!-- <svg class="icon ic-running ic-grey" mdcSvg="ic-running"></svg> -->
             <span class="tooltip tooltip_left">
