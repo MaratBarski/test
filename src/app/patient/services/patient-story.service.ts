@@ -35,7 +35,7 @@ export class PatientStoryService {
             icon: 'ic-edit',
             command: 'edit'
             , checkDisabled: (source: any) => {
-              return !(source.transStatus.toLowerCase() === 'failed' || source.outputType.toLowerCase() === 'success' || source.transStatus.toLowerCase() === 'aborted');
+              return !(source.transStatus.toLowerCase() === 'failed' || source.transStatus.toLowerCase() === 'success' || source.transStatus.toLowerCase() === 'aborted');
             }
           },
           {
@@ -43,7 +43,7 @@ export class PatientStoryService {
             icon: 'ic-view',
             command: 'dublicate'
             , checkDisabled: (source: any) => {
-              return !(source.transStatus.toLowerCase() === 'failed' || source.outputType.toLowerCase() === 'success' || source.transStatus.toLowerCase() === 'aborted');
+              return !(source.transStatus.toLowerCase() === 'failed' || source.transStatus.toLowerCase() === 'success' || source.transStatus.toLowerCase() === 'aborted');
             }
           },
           {
@@ -62,7 +62,7 @@ export class PatientStoryService {
             icon: 'ic-delete',
             command: 'abort'
             , checkDisabled: (source: any) => {
-              return !(source.transStatus.toLowerCase() === 'pending' || source.outputType.toLowerCase() === 'running');
+              return !(source.transStatus.toLowerCase() === 'pending' || source.transStatus.toLowerCase() === 'running');
             }
           },
           {
@@ -71,7 +71,7 @@ export class PatientStoryService {
             icon: 'ic-delete',
             command: 'delete'
             , checkDisabled: (source: any) => {
-              return !(source.transStatus.toLowerCase() === 'failed' || source.outputType.toLowerCase() === 'success' || source.transStatus.toLowerCase() === 'aborted');
+              return !(source.transStatus.toLowerCase() === 'failed' || source.transStatus.toLowerCase() === 'success' || source.transStatus.toLowerCase() === 'aborted');
             }
           }
         ]
