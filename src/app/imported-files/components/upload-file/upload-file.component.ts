@@ -151,7 +151,7 @@ export class UploadFileComponent extends BaseSibscriber implements OnInit {
     this.template = template.id;
   }
 
-  cancel(): void {
+  cancel(event: any): void {
     this.reset();
     event.preventDefault();
     this.onCancel.emit();

@@ -1,6 +1,6 @@
 <div>
     <div class="modal-window__head">New imported file</div>
-    <div (click)="cancel()" class="modal-window__close ic-hover">
+    <div (click)="cancel($event)" class="modal-window__close ic-hover">
         <mdc-icon path="ic-close"></mdc-icon>
     </div>
     <div class="form-site">
@@ -68,7 +68,7 @@
             </div>
         </div>
         <div class="form-site__btn">
-            <button (click)="cancel()" class="btn btn_border">Cancel</button>
+            <button (click)="cancel($event)" class="btn btn_border">Cancel</button>
             <button (click)="uploadFile($event)" [disabled]="!isValid" [ngClass]="{'btn_disable':!isValid}"
                 class="btn">Upload</button>
         </div>
