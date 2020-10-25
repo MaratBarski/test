@@ -51,7 +51,7 @@
                 <span class="tooltip__content">Generating</span></span>
             <md-progress [progress]="source.pctProgress"></md-progress>
         </span>
-        <!-- <span class="admin-table__icon-label d-none d-xxl-inline-block">Generating</span> -->
+        <span class="admin-table__icon-label d-none d-xxl-inline-block">Generating</span>
     </div>
     <div *ngIf="source.transStatus === 'completed'">
         <span class="admin-table__icon">
@@ -70,8 +70,12 @@
     <div *ngIf="source.transStatus === 'failed'">
         <span class="admin-table__icon">
             <svg class="icon ic-failure ic-grey" mdcSvg="ic-failure">
-            </svg><span class="tooltip tooltip_left"><span class="tooltip__content">Failed</span></span></span><span
-            class="admin-table__icon-label d-none d-xxl-inline-block">Failed</span>
+            </svg>
+            <span class="tooltip tooltip_left">
+                <span class="tooltip__content">{{source.transMsg}}</span>
+            </span>
+        </span>
+        <span class="admin-table__icon-label d-none d-xxl-inline-block">Failed</span>
     </div>
     <div *ngIf="source.transStatus === 'aborted'">
         <span class="admin-table__icon">

@@ -1,7 +1,7 @@
 import { Component, Output, EventEmitter, ViewChild, ElementRef, Input, OnInit } from '@angular/core';
 import { UploadService, UploadInfo } from '@app/shared/services/upload.service';
 import { Offline } from '@app/shared/decorators/offline.decorator';
-import { SelectOption, SelectComponent, CsvManagerService, NotificationStatus, ValidationFileMessage, ToasterType, LoginService, BaseSibscriber, ExcelExtentions } from '@appcore';
+import { SelectOption, SelectComponent, CsvManagerService, NotificationStatus, ValidationFileMessage, ToasterType, LoginService, BaseSibscriber, ExcelExtentions, ComponentService } from '@appcore';
 import { environment } from '@env/environment';
 import { ConfigService } from '@app/shared/services/config.service';
 import { FileSource } from '@app/imported-files/models/file-source';
@@ -18,7 +18,8 @@ export class UploadFileComponent extends BaseSibscriber implements OnInit {
     private csvManagerService: CsvManagerService,
     private uploadService: UploadService,
     private configService: ConfigService,
-    private loginService: LoginService
+    private loginService: LoginService,
+    private componentService: ComponentService
   ) {
     super();
   }
@@ -170,6 +171,7 @@ export class UploadFileComponent extends BaseSibscriber implements OnInit {
 
   private fileError(error: ValidationFileMessage, replacements: Array<any> = undefined): void {
     this.file = '';
+    this.fileName = '';
     this.fileInput.nativeElement.value = '';
     this.isFileError = true;
     this.fileErrorMessage = this.configService.config.fileValidationErrors[error];
@@ -216,6 +218,7 @@ export class UploadFileComponent extends BaseSibscriber implements OnInit {
             this.fileError(ValidationFileMessage.NoUtf8);
           } else {
             this.file = this.fileInput.nativeElement.value;
+            this.fileName = this.componentService.getFileNameNoExt(this.file);
           }
         }).catch(e => {
           this.fileError(ValidationFileMessage.NoUtf8);

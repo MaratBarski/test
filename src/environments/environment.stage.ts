@@ -41,6 +41,7 @@ export const environment = {
     notificationUpdate: 'stage/api/v1/config/notification',
     project: 'stage/api/v1/project',
     patientStory: 'stage/api/v1/patient-story',
+    patientStoryAbort: 'api/v1/patient-story/abort',
     patientStoryUserSession: 'stage/api/v1/patient-story/user-session',
     hierarchyProject: 'stage/api/v1/hierarchy/project',
     patientStoryHierarchy: 'stage/api/v1/patient-story/hierarchy',

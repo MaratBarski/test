@@ -18,6 +18,12 @@ export class PatientStoryService {
   @Offline('assets/offline/patientStory.json')
   private getUrl = `${environment.serverUrl}${environment.endPoints.patientStory}`;
 
+  private abortUrl = `${environment.serverUrl}${environment.endPoints.patientStoryAbort}`;
+
+  abort(item: any): Observable<any> {
+    return this.dataService.get(`${this.abortUrl}/${item.source.lifeFluxTransId}`);
+  }
+
   load(): Observable<any> {
     return this.dataService.get(this.getUrl);
   }
@@ -129,7 +135,7 @@ export class PatientStoryService {
           Modified: fl.updateDate,
           User: fl.user ? fl.user.login : '',
           Status: fl.transStatus,
-          OutputFormat: fl.outputType === 'files' ? 'XML Files' : `Table ${fl.outputObject || ''}`
+          OutputFormat: fl.outputType === 'files' ? 'XML Files' : fl.transStatus === 'success' ? `Table: ${fl.outputObject || ''}` : ''
         },
         source: fl,
         isActive: false,
