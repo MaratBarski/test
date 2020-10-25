@@ -42,6 +42,7 @@ export class UploadFileComponent extends BaseSibscriber implements OnInit {
   project = '';
   fileName = '';
   file = '';
+  fileErrorName = '';
   template = '';
 
   get isValid(): boolean {
@@ -161,6 +162,7 @@ export class UploadFileComponent extends BaseSibscriber implements OnInit {
   reset(): void {
     this.fileName = '';
     this.file = '';
+    this.fileErrorName = '';
     this.project = '';
     this.template = '';
     this.fileType = false;
@@ -189,6 +191,7 @@ export class UploadFileComponent extends BaseSibscriber implements OnInit {
     if (!this.fileInput.nativeElement.files.length) {
       return;
     }
+    this.fileErrorName = this.fileInput.nativeElement.value;
     this.isFileError = false;
     if (!this.csvManagerService.validateFileExtention(this.fileInput.nativeElement, ExcelExtentions)) {
       this.fileError(ValidationFileMessage.CsvExtensionError);
