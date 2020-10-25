@@ -2,8 +2,8 @@
     <div class="admin-table-info__top">
         <div class="admin-table-info__head">User Details</div>
         <div class="admin-table-info__icons">
-            <span (click)="edit()" class="ic-hover"><svg width="22" height="22" mdcSvg="ic-edit"></svg></span>
-            <span (click)="closeInfo()" class="ic-hover"><svg width="12" height="12" mdcSvg="ic-close"></svg></span>
+            <span [stickyToElement]="true" position="left" mdcTooltip="Edit" (click)="edit()" class="ic-hover"><svg width="22" height="22" mdcSvg="ic-edit"></svg></span>
+            <span [stickyToElement]="true" position="left" mdcTooltip="Close"  (click)="closeInfo()" class="ic-hover"><svg width="12" height="12" mdcSvg="ic-close"></svg></span>
             <!-- <span (click)="edit()" class="ic-hover"><svg class="icon ic-edit" mdcSvg="ic-edit"></svg></span>
             <span (click)="closeInfo()" class="ic-hover"><svg class="icon ic-close-history ic-stroke" mdcSvg="ic-close"></svg></span>
             <span class="ic-hover"><svg class="icon ic-close-history ic-stroke" mdcSvg="ic-close-history"></svg></span>  -->
@@ -18,7 +18,14 @@
                 </div>
                 <div class="admin-table-info__item">
                     <div class="admin-table-info__title">Status:</div>
-                    <div *ngIf="userInfo.activated" class="admin-table-info__val"><span class="admin-table-info__circle"></span></div>
+                    <div *ngIf="userInfo.activated" class="admin-table-info__val">
+                        <span [stickyToElement]="true" position="right" mdcTooltip="Active" class="admin-table-info__circle"></span>
+                        <span>Active</span>
+                    </div>
+                    <div *ngIf="!userInfo.activated" class="admin-table-info__val">
+                        <span [stickyToElement]="true" position="right" mdcTooltip="Not Active" class="admin-table__circle admin-table__circle_grey"></span>
+                        <span>Not Active</span>
+                    </div>
                 </div>
             </div>
             <div class="admin-table-info__col">
@@ -38,11 +45,11 @@
             </div>
         </div>
         <div class="table-detail-wrap">
-            <div class="table-detail-wrap__title">Connected to Enviroments:</div>
+            <div class="table-detail-wrap__title">Connected to Environments:</div>
             <table class="table-detail">
                 <thead class="table-detail__head">
                     <tr>
-                        <th class="table-detail__item">Enviorment</th>
+                        <th class="table-detail__item">Environment</th>
                         <th class="table-detail__item">Allowed Data</th>
                         <th class="table-detail__item w-md-50">Role</th>
                     </tr>

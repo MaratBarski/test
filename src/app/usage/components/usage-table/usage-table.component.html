@@ -13,7 +13,7 @@
                     </div>
                 </div>
                 <mdc-table #table [emptyState]="emptyState" [search]="search" [searchOptions]="searchOptions" [paginator]="paginator"
-                    [dataSource]="data" [cellsTemplate]="{ lastlogin:lastlogin}">
+                    [dataSource]="data" [cellsTemplate]="{ lastlogin:lastlogin,permission:permissionTemplate}">
                 </mdc-table>
                 <div class="pager-wrap">
                     <mdc-paginator #paginator noPagingTitle="Showing {0} users"
@@ -27,4 +27,9 @@
 
 <ng-template #lastlogin let-item>
     {{item.lastlogin|date}} {{item.lastlogin|date:'hh:mm'}}
+</ng-template>
+
+<ng-template #permissionTemplate let-item>
+    <span *ngIf="item?.permission?.toLowerCase() === 'synthetic'" class="admin-table__circle"></span>
+    {{item.permission}}
 </ng-template>

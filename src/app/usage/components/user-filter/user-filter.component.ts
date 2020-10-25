@@ -32,12 +32,16 @@ export class UserFilterComponent extends BaseSibscriber implements OnDestroy {
   //   return this.users.filter(x => x.isChecked).length;
   // }
 
+  isusersLoaded = false;
+
   constructor(
     public usageRequestService: UsageRequestService
   ) {
     super();
     super.add(
       this.usageRequestService.onUsersLoaded.subscribe(() => {
+        if (this.isusersLoaded) { return; }
+        this.isusersLoaded = true;
         this.originUsers = JSON.parse(JSON.stringify(this.usageRequestService.users));
         this.users = this.usageRequestService.users;
         this.changeTop(true);

@@ -10,14 +10,14 @@
             <div class="admin-table-wrap__col">
                 <mdc-button *ngIf="loginService.isSuperAdmin" (click)="addUserOpen()" text="+ New User">
                 </mdc-button>
-                <div [stickyToElement]="true" position="right" mdcTooltip="Download User List">
+                <div  [hidden]="!isDataExists || !isLoaded" [stickyToElement]="true" position="right" mdcTooltip="Download User List">
                     <mdc-download #downloader (onBeforeDownload)="changeFileName()" [fileName]="downloadFileName"
                         (click)="changeFileName()" text=""></mdc-download>
                 </div>
             </div>
             <div mdAnimationSticky [hidden]="!isDataExists" class="admin-table-wrap__col">
                 <div class="filter-top">
-                    <div class="filter-top__title">Filter Environment</div>
+                    <div class="filter-top__title">Environment</div>
                     <div class="select select_small">
                         <mdc-select [selected]="selectedEnvironment" (changed)="changeEnvironment($event)"
                             [applyWidth]="false" [isSmall]="true" [options]="environmens"></mdc-select>
@@ -29,7 +29,7 @@
             </div>
         </div>
         <div [hidden]="!isDataExists || !isLoaded">
-            <mdc-table #table (onAction)="onAction($event)" [emptyState]="emptyState"
+            <mdc-table #table (onAction)="onAction($event)" [emptyState]="searchEmptyState"
                 [rowInfoTemplate]="rowInfoTemplate" [downloader]="downloader"
                 [cellsTemplate]="{ active:activeUser,modified:modified,specialRoles:specialRoles}"
                 [customFilters]="{specialRoles:specialRolesHeader}" [searchOptions]="searchOptions"
@@ -53,8 +53,14 @@
     </ng-template>
 
     <ng-template #activeUser let-item>
-        <span *ngIf="item.active" class="admin-table__circle admin-table__circle_green"></span>
-        <span *ngIf="!item.active" class="admin-table__circle admin-table__circle_grey"></span>
+        <ng-template [ngIf]="item.active">
+            <span class="admin-table__circle admin-table__circle_green"></span>
+            <span>Active</span>
+        </ng-template>
+        <ng-template [ngIf]="!item.active">
+            <span class="admin-table__circle admin-table__circle_grey"></span>
+            <span>Not Active</span>
+        </ng-template>
     </ng-template>
 
     <ng-template #modified let-item>
@@ -99,7 +105,7 @@
                     <div class="simple-filter__sect">
                         <div class="simple-filter__list">
                             <span [ngClass]="{'active':adminStatus==='none'}" (click)="filterAdmin('none')"
-                                class="simple-filter__item">None</span>
+                                class="simple-filter__item">No Special Roles</span>
                         </div>
                     </div>
                 </div>
