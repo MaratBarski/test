@@ -38,10 +38,10 @@
               </div>
               <div class="info-panel__item">
                 <div class="info-panel__val" [formGroup]="fileSourceForm">
-                  <md-share-file formControlName="fileType"></md-share-file>
+                  <md-share-file #sharedFile formControlName="fileType"></md-share-file>
                 </div>
               </div>
-              <div class="info-panel__item">
+              <div [hidden]="!sharedFile?.startValue" class="info-panel__item">
                 <div class="info-panel__title">Permission Template:</div>
                 <div class="info-panel__val">
                   <mdc-select [placeholder]="'Select Template...'"
