@@ -925,6 +925,16 @@
 	}
 }
 
+.switch-wrap{
+  display: inline-flex;
+  align-items: center;
+
+  &__label{
+    @include font(normal, normal, rem(14px), 1.2,  #5d6177);
+    margin-right: 12px;
+  }
+}
+
 .switch{
 	display: inline-block;
 	vertical-align: middle;

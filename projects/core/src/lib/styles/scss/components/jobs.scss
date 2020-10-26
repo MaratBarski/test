@@ -1,0 +1,282 @@
+/*-------------- permis-set -----------------*/
+.job-info{
+	height: calc(100vh - 206px);
+	background: #fff;
+	border-radius: 2px;
+	padding: 20px 45px;
+	box-shadow: 0 2px 4px 0 #dbe4f9;
+	position: relative;
+	overflow-y: auto;
+
+	&__switch{
+		display: flex;
+		justify-content: flex-end;
+		margin-right: -20px;
+		margin-bottom: 12px;
+	}
+
+	&__label{
+		min-width: 122px;
+		height: 24px;
+		background: url(/assets/img/blue-badge.svg) no-repeat left center;
+		background-size: contain;
+		padding: 4px 22px 4px 12px;
+		@include font(normal, normal, rem(14px), 1.2, #fff);
+		position: absolute;
+		top: 19px;
+		left: 0;
+	}
+}
+
+.job-info-sect{
+	margin-bottom: 18px;
+
+	&__head{
+		@include font(normal, 600, rem(14px), 1.57, $color-dark-grey);
+		text-transform: uppercase;
+		margin-bottom: 6px;
+	}
+
+	&__content{
+		border-radius: 4px;
+		border: 1px solid $color-light-grey;
+		padding: 10px 15px;
+	}
+
+	&__item{display: flex;}
+	&__item:not(:last-child){margin-bottom: 3px;}
+
+	&__title{
+		width: 150px;
+		padding-right: 5px;
+		@include font(normal, 600, rem(14px), rem(27px), $color-dark-grey);
+		margin-top: 5px;
+		margin-bottom: 5px;
+	}
+
+	&__title-text{
+		display: inline-block;
+		vertical-align: middle;
+		margin-right: 6px;
+	}
+
+	// &__opt{
+	// 	vertical-align: middle;
+	// 	@include font(italic, normal, rem(14px), rem(27px), $color-grey);
+	// 	text-transform: none;
+	// }
+
+
+	&__label{
+		@include font(normal, 600, rem(14px), rem(27px), $color-dark-grey);
+		margin: 5px 10px 5px 0;
+	}
+
+	&__input{
+		input[type="text"],
+		input[type="email"],
+		textarea{
+			height: rem(29px);
+			width: 100%;
+			outline: none;
+			border: 1px solid $color-light-grey;
+			border-radius: 2px;
+			@include font(normal, normal, rem(14px), rem(27px), $color-dark-grey);
+			padding: 0 15px;
+			margin: 0;
+			transition: all 0.3s ease;
+		}
+
+		input[type="text"]::placeholder,
+		input[type="email"]::placeholder,
+		textarea::placeholder{
+			color: $color-grey;
+			opacity: 1;
+		}
+
+		textarea{height: 67px;}
+
+		input[type="text"]:focus,
+		input[type="email"]:focus,
+		textarea:focus{
+			border-color: $color-purple;
+		}
+
+		input[disabled],
+		textarea[disabled]{
+			background: #fff;
+			color: $color-light-grey;
+		}
+	}
+
+	&__input_big textarea{height: 124px;}
+
+	&__field{
+		display: flex;
+		width: calc(100% - 150px);
+	}
+
+	&__field &__input{
+		max-width: calc(100% - 260px);
+	}
+
+	&__field &__note{
+		width: 245px;
+		@include font(normal, normal, rem(13px), 1.35, $color-grey);
+		padding-top: 13px;
+	}
+
+	&__fields{
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+		width: calc(100% - 150px);
+	}
+
+	&__fields > input[type="text"],
+	&__fields > input[type="email"]{
+		margin-top: 5px;
+		margin-bottom: 5px;
+	}
+	
+	.ic-help,
+	.ic-info{
+		display: inline-block;
+		vertical-align: middle;
+		width: 16px;
+		height: 16px;
+		margin-left: -3px;
+	}
+
+	// .input-number{
+	// 	width: 130px;
+	// }
+
+	// .input-number-wrap{
+	// 	margin-top: 5px;
+	// 	margin-bottom: 5px;
+
+	// 	input[type="text"]{text-align: left;}
+	// }
+
+	// .input-number-wrap:not(:last-child){margin-right: 12px;}
+
+	&__text{
+		@include font(normal, normal, rem(14px), rem(27px), $color-dark-grey);
+		margin-top: 5px;
+		margin-bottom: 5px;
+	}
+
+	.input-date{
+		height: 29px;
+		width: 183px;
+		margin-top: 5px;
+		margin-bottom: 5px;
+
+		input[type="text"]{
+			padding: 0 30px 0 4px;
+			height: 29px;
+			line-height: rem(27px);
+		}
+	}
+
+	.input-date:not(:last-child),
+	.select:not(:last-child){
+		margin-right: 12px;
+	}
+
+	.input-check{
+		margin-top: 5px;
+		margin-bottom: 5px;
+		display: inline-flex;
+		vertical-align: middle; 
+		align-items: center;
+		margin-top: 3px;
+
+		&__label{
+			vertical-align: top;
+			margin-bottom: 0;
+		}
+	}
+
+	.input-check:not(:last-child){margin-right: 12px;}
+
+	.select{width: 132px;}
+
+	&__input{
+		width: 580px;
+		margin: 5px 15px 5px 0;
+	}
+
+	&__input_full{
+		width: 100%;
+		margin-right: 0;
+	}
+
+	&__num{
+		position: relative;
+
+		.select{width: 80px;}
+	}
+
+	&__num:not(:last-child){margin-right: 15px;}
+
+
+	&__range{
+		display: flex;
+		align-items: center;
+
+	}
+
+	&__range &__num:not(:last-child){margin-right: 24px;}
+	&__range &__num:not(:last-child)::after{
+		content: ':';
+		display: inline-block;
+		vertical-align: middle;
+		@include font(normal, normal, 1rem, 1.2, $color-dark-grey);
+		position: absolute;
+		@include top-center;
+		left: 100%;
+		margin-left: 10px;
+	}
+}
+
+@media (max-width: 991px) {
+	.job-info-sect{
+		&__item{display: block;}
+
+		&__title,
+		&__field,
+		&__fields{
+			width: 100%;
+		}
+
+		&__title{
+			line-height: 1.2;
+			padding-right: 0;
+			margin: 0;
+		}
+	}
+}
+
+@media (max-width: 767px) {
+	.job-info{
+		padding-left: 20px;
+		padding-right: 20px;
+
+		&__switch{margin-right: 0;}
+	}
+
+	.job-info-sect{
+		&__field{display: block;}
+
+		&__field &__input,
+		&__field &__note{
+			width: 100%;
+			max-width: 100%;
+		}
+
+		&__field &__note{padding-top: 0;}
+	}
+
+}
