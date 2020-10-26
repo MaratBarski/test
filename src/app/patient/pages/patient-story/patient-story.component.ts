@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { PatientStoryService } from '@app/patient/services/patient-story.service';
 import { ConfigService } from '@app/shared/services/config.service';
 import { BaseSibscriber, EmptyState, NavigationService, NotificationsService, PageInfo, TableActionCommand, TableComponent, TableModel, ToasterType } from '@appcore';
+import { take } from 'rxjs/operators';
 
 
 @Component({
@@ -71,6 +72,21 @@ export class PatientStoryComponent extends BaseSibscriber implements OnInit {
     download: (action: TableActionCommand) => {
     },
     abort: (action: TableActionCommand) => {
+      this.patientStoryService.abort(action.item)
+        .pipe(take(1))
+        .subscribe(res => {
+          action.item.source.transStatus = 'aborted';
+        }, error => {
+          this.notificationsService.addNotification(
+            {
+              type: ToasterType.error,
+              name: 'Failed to abort',
+              comment: action.item.source.name,
+              showInToaster: true,
+              containerEnable: false
+            }
+          )
+        });
     },
     delete: (action: TableActionCommand) => {
       this.showDeleteConfirm = true;

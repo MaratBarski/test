@@ -78,7 +78,7 @@ export class CsvManagerService {
 
   readHeaders(file: any): Promise<Array<string>> {
     return new Promise((resolve, reject) => {
-      this.readFile(0, 1024, '', file,
+      this.readFile(0, 4096, '', file,
         (str: string) => {
           const arr = str.split('\n');
           if (arr.length > 1) {

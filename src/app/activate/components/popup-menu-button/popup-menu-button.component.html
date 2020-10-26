@@ -1,0 +1,18 @@
+<span class="footer__btn-big" tabindex="0" (blur)="blur()">
+  <span class="btn btn_border">Previous</span>
+  <div class="split-btn split-btn_up">
+    <div class="split-btn__title" (click)="downloadOriginal()">Download Original</div>
+    <div class="split-btn__title" (click)="downloadSynthetic()" *ngIf="false">Download Synthetic</div>
+    <div class="split-btn__arr">
+      <div [@rotatedState]="rotatedState">
+        <mdc-icon path="ic-btn-arr-down" css="ic-btn-arr-down" (click)="mouseClick($event);"></mdc-icon>
+      </div>
+    </div>
+    <div class="split-btn__popup" [mdcVisibility]="isExpanded">
+      <div class="split-btn__item">parameter 1</div>
+      <div class="split-btn__item">parameter 2</div>
+      <div class="split-btn__item">parameter 3</div>
+      <div class="split-btn__item">parameter 4</div>
+    </div>
+  </div>
+</span>

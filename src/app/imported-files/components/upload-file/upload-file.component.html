@@ -1,6 +1,6 @@
 <div>
     <div class="modal-window__head">New imported file</div>
-    <div (click)="cancel()" class="modal-window__close ic-hover">
+    <div (click)="cancel($event)" class="modal-window__close ic-hover">
         <mdc-icon path="ic-close"></mdc-icon>
     </div>
     <div class="form-site">
@@ -11,11 +11,11 @@
                     <label class="file-upload__content">
                         <input #fileInput (change)="updateFileName($event)" type="file" accept=".csv">
                         <span class="file-upload__btn">Choose File</span><span class="file-upload__name" [ngClass]="{disable:!file}">
-                            <ng-template [ngIf]="!file">
+                            <ng-template [ngIf]="!fileErrorName">
                                 Select a CSV or Excel file
                             </ng-template>
-                            <ng-template [ngIf]="file">
-                                <div class="file-name">{{file|fileName}}</div>
+                            <ng-template [ngIf]="fileErrorName">
+                                <div class="file-name">{{fileErrorName|fileName}}</div>
                             </ng-template>
                         </span>
                     </label>
@@ -68,7 +68,7 @@
             </div>
         </div>
         <div class="form-site__btn">
-            <button (click)="cancel()" class="btn btn_border">Cancel</button>
+            <button (click)="cancel($event)" class="btn btn_border">Cancel</button>
             <button (click)="uploadFile($event)" [disabled]="!isValid" [ngClass]="{'btn_disable':!isValid}"
                 class="btn">Upload</button>
         </div>

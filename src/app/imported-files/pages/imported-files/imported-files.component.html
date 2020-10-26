@@ -22,7 +22,7 @@
         </div>
     </div>
     <div [hidden]="!isDataExists || !isLoaded">
-        <mdc-table #table (onAction)="onAction($event)" [emptyState]="emptyState" [editCellTemplate]="editCellTemplate"
+        <mdc-table #table (onAction)="onAction($event)" [emptyState]="searchEmptyState" [editCellTemplate]="editCellTemplate"
             [cellsTemplate]="{ insertDate:dateColumn,shared:sharedColumn,columns:columnsTemplate,rows:rowsTemplate,permission:permissionGroup}"
             [searchOptions]="searchOptions" [paginator]="paginator" [search]="search" [dataSource]="dataSource">
         </mdc-table>

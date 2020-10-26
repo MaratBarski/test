@@ -1,5 +1,5 @@
-import {Injectable} from '@angular/core';
-import {Observable, BehaviorSubject, Subject} from 'rxjs';
+import { Injectable } from '@angular/core';
+import { Observable, BehaviorSubject, Subject } from 'rxjs';
 
 const SUB_MENU_SHOW = 'showSideMenu';
 
@@ -40,11 +40,17 @@ export class ComponentService {
   }
 
   getFileName(path: string): string {
-    if (!path) {
-      return '';
-    }
+    if (!path) { return ''; }
     const arr = path.replace(/\\/g, '/').split('/');
     return arr[arr.length - 1];
+  }
+
+  getFileNameNoExt(path: string): string {
+    let res = this.getFileName(path);
+    if (!res.trim()) { return res.trim(); }
+    const arr = res.trim().split('.');
+    if (arr.length <= 1) { return res.trim(); }
+    return arr.slice(0, arr.length - 1).join('.');
   }
 
   starttoggle(): void {

@@ -59,7 +59,7 @@ export class UserListService {
       actions: {
         links: [
           {
-            text: 'Edit User',
+            text: 'Edit Details',
             icon: 'ic-edit',
             command: 'edit'
             , checkHidden: (source) => {

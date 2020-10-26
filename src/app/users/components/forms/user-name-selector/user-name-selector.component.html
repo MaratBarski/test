@@ -1,4 +1,4 @@
-<mdc-auto-complete #autoCompleteCmp placeHolder="Type a username" textField="name" (onSelect)="selectUser($event)"
+<mdc-auto-complete #autoCompleteCmp placeHolder="Search or Select a Username" textField="name" (onSelect)="selectUser($event)"
     (completeMethod)="completeUserSelect($event)" (onClear)="clear()" [suggestions]="filteredUsers" [disabled]="false">
     <ng-template let-item>
         <div class="select__param" [text]="item.name" [mdcColorText]="searchText"></div>

@@ -32,6 +32,12 @@ export class UserListComponent extends BaseSibscriber implements OnInit {
     image: 'empty.png'
   }
 
+  searchEmptyState: EmptyState = {
+    title: 'Nothing matches your search.',
+    subTitle: 'Try using the filters or search different keywords.',
+    image: 'nodata.png'
+  }
+  
   currentEnvitonment = '';
   selectedEnvironment: SelectOption;
   environmens: Array<SelectOption>;
@@ -80,14 +86,14 @@ export class UserListComponent extends BaseSibscriber implements OnInit {
     super.add(
       this.loginService.onUserInfoUpdated.subscribe(ui => {
         if (!ui || !ui.data || !ui.data.projects) { return; }
-        this.environmens = [{ id: '0', text: 'All Environment', value: '0' }]
-          .concat(ui.data.projects
+        this.environmens = [{ id: '0', text: 'All', value: '0' }]
+          .concat((ui.data.projects
             .filter((x: any) => x.UserType && x.UserType.userType && x.UserType.userType.toLowerCase() === 'admin')
             .map(x => {
               return { text: x.projectName, id: x.projectId, value: x };
             }) as Array<any>).sort((a, b) => {
               return this.sortService.compareString(a.text, b.text, 'asc');
-            });
+            }));
         if (!this.selectedEnvironment) {
           this.selectedEnvironment = this.environmens.length ? this.environmens[0] : undefined;
         }
@@ -153,7 +159,7 @@ export class UserListComponent extends BaseSibscriber implements OnInit {
 
   @ViewChild('downloader', { static: true }) downloader: DownloadComponent;
   downloadFileName = 'history.csv';
-  
+
   changeFileName(): void {
     const date = new Date();
     const format = 'yyyyMMdd_hhmmss';

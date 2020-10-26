@@ -18,6 +18,12 @@ export class PatientStoryService {
   @Offline('assets/offline/patientStory.json')
   private getUrl = `${environment.serverUrl}${environment.endPoints.patientStory}`;
 
+  private abortUrl = `${environment.serverUrl}${environment.endPoints.patientStoryAbort}`;
+
+  abort(item: any): Observable<any> {
+    return this.dataService.get(`${this.abortUrl}/${item.source.lifeFluxTransId}`);
+  }
+
   load(): Observable<any> {
     return this.dataService.get(this.getUrl);
   }
@@ -35,10 +41,7 @@ export class PatientStoryService {
             icon: 'ic-edit',
             command: 'edit'
             , checkDisabled: (source: any) => {
-              return (!source.transStatus
-                || source.transStatus.toLowerCase() === 'pending'
-                || source.transStatus.toLowerCase() === 'generating'
-              );
+              return !(source.transStatus.toLowerCase() === 'failed' || source.transStatus.toLowerCase() === 'success' || source.transStatus.toLowerCase() === 'aborted');
             }
           },
           {
@@ -46,10 +49,7 @@ export class PatientStoryService {
             icon: 'ic-view',
             command: 'dublicate'
             , checkDisabled: (source: any) => {
-              return (!source.transStatus
-                || source.transStatus.toLowerCase() === 'pending'
-                || source.transStatus.toLowerCase() === 'generating'
-              );
+              return !(source.transStatus.toLowerCase() === 'failed' || source.transStatus.toLowerCase() === 'success' || source.transStatus.toLowerCase() === 'aborted');
             }
           },
           {
@@ -57,7 +57,7 @@ export class PatientStoryService {
             icon: 'ic-view',
             command: 'download'
             , checkDisabled: (source: any) => {
-              return !source.outputType || source.outputType.toLowerCase() !== 'files';
+              return source.transStatus.toLowerCase() !== 'success' || source.outputType.toLowerCase() === 'impala';
             }
           }
         ],
@@ -68,11 +68,7 @@ export class PatientStoryService {
             icon: 'ic-delete',
             command: 'abort'
             , checkDisabled: (source: any) => {
-              if (!source.projectObj) { return true; }
-              if (this.loginService.isAdminOfProject(source.projectObj.projectId)) { return false; }
-              if (source.fileType) { return true; }
-              if (source.uploadedBy === this.loginService.userInfo.data.id) { return false; }
-              return true;
+              return !(source.transStatus.toLowerCase() === 'pending' || source.transStatus.toLowerCase() === 'running');
             }
           },
           {
@@ -81,12 +77,7 @@ export class PatientStoryService {
             icon: 'ic-delete',
             command: 'delete'
             , checkDisabled: (source: any) => {
-              return false;
-              // if (!source.projectObj) { return true; }
-              // if (this.loginService.isAdminOfProject(source.projectObj.projectId)) { return false; }
-              // if (source.fileType) { return true; }
-              // if (source.uploadedBy === this.loginService.userInfo.data.id) { return false; }
-              // return true;
+              return !(source.transStatus.toLowerCase() === 'failed' || source.transStatus.toLowerCase() === 'success' || source.transStatus.toLowerCase() === 'aborted');
             }
           }
         ]
@@ -144,7 +135,7 @@ export class PatientStoryService {
           Modified: fl.updateDate,
           User: fl.user ? fl.user.login : '',
           Status: fl.transStatus,
-          OutputFormat: fl.outputType === 'files' ? 'XML Files' : 'Table'
+          OutputFormat: fl.outputType === 'files' ? 'XML Files' : fl.transStatus === 'success' ? `Table: ${fl.outputObject || ''}` : 'Table'
         },
         source: fl,
         isActive: false,

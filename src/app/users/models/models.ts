@@ -49,7 +49,7 @@ export const RoleOptions: Array<SelectOption> = [
 ];
 
 export const DataOptions: Array<SelectOption> = [
-    { id: 1, text: 'Syntatic', value: '1' },
+    { id: 1, text: 'Synthetic', value: '1' },
     { id: 2, text: 'Original', value: '2' }
 ];
 

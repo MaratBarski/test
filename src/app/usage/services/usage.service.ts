@@ -46,19 +46,19 @@ export class UsageService {
           text: 'Login Days',
           isSortEnabled: true,
           csvTitle: 'Login Days',
-          css: 'admin-table__item d-none d-md-table-cell admin-table__item_right'
+          css: 'admin-table__item d-none d-md-table-cell admin-table__item_center'
         },
         {
           columnId: 'origin',
-          text: 'Original',
+          text: 'Original Downloads',
           isSortEnabled: true,
           csvTitle: 'Original',
           columnType: ColumnType.Number,
-          css: 'admin-table__item d-none d-md-table-cell admin-table__item_right'
+          css: 'admin-table__item d-none d-md-table-cell admin-table__item_center'
         },
         {
           columnId: 'syntetic',
-          text: 'Synthetic',
+          text: 'Synthetic Downloads',
           isSortEnabled: true,
           csvTitle: 'Synthetic',
           columnType: ColumnType.Number,

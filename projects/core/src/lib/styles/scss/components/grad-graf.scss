@@ -35,7 +35,7 @@
 		left: 0;
 		z-index: 2;
 		transform: translateX(-50%);
-    transition: all 0.7s ease 0s;
+    transition: all 3s cubic-bezier(0.25,0.1,0.25,1);
 	}
 
 	&__label::before{

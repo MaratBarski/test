@@ -30,6 +30,12 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, Af
     image: 'filesEmpty.png'
   }
 
+  searchEmptyState: EmptyState = {
+    title: 'Nothing matches your search.',
+    subTitle: 'Try using the filters or search different keywords.',
+    image: 'nodata.png'
+  }
+
   isDataExists = true;
   isLoaded = false;
 
