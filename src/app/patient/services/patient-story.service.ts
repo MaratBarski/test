@@ -135,7 +135,7 @@ export class PatientStoryService {
           Modified: fl.updateDate,
           User: fl.user ? fl.user.login : '',
           Status: fl.transStatus,
-          OutputFormat: fl.outputType === 'files' ? 'XML Files' : fl.transStatus === 'success' ? `Table: ${fl.outputObject || ''}` : ''
+          OutputFormat: fl.outputType === 'files' ? 'XML Files' : fl.transStatus === 'success' ? `Table: ${fl.outputObject || ''}` : 'Table'
         },
         source: fl,
         isActive: false,

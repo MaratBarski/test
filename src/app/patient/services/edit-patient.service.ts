@@ -349,6 +349,9 @@ export class EditPatientService {
   @Offline('assets/offline/siteEventPropertyInfos.json?')
   private siteEventInfoUrl = `${environment.serverUrl}${environment.endPoints.siteEventInfo}`;
 
+  @Offline('assets/offline/siteEventPropertyInfos.json?')
+  private patientStorySiteEventInfoUrl = `${environment.serverUrl}${environment.endPoints.patientStorySiteEventInfo}`;
+
   @Offline('assets/offline/userSession.json?')
   private queriesoUrl = `${environment.serverUrl}${environment.endPoints.patientStoryUserSession}`;
 
@@ -399,7 +402,8 @@ export class EditPatientService {
     this._isEventsLoaded = false;
     this._events = undefined;
     this._prevEventProjectID = this.settings.projectId;
-    this.http.get(`${this.siteEventInfoUrl}/${this.settings.projectId}`)
+    //this.http.get(`${this.siteEventInfoUrl}/${this.settings.projectId}`)
+    this.http.get(`${this.patientStorySiteEventInfoUrl}/${this.settings.projectId}`)
       .pipe(take(1))
       .subscribe((res: any) => {
         this._events = res.data;

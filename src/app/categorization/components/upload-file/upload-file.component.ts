@@ -1,6 +1,6 @@
 import { Component, Output, EventEmitter, ViewChild, ElementRef, Input } from '@angular/core';
 import { UploadService } from '@app/shared/services/upload.service';
-import { CsvManagerService, NotificationStatus, ToasterType, ValidationFileMessage, ExcelExtentions, LoginService } from '@appcore';
+import { CsvManagerService, NotificationStatus, ToasterType, ValidationFileMessage, ExcelExtentions, LoginService, ComponentService } from '@appcore';
 import { environment } from '@env/environment';
 import { Offline } from '@app/shared/decorators/offline.decorator';
 import { ConfigService } from '@app/shared/services/config.service';
@@ -18,7 +18,8 @@ export class UploadFileComponent {
     private csvManagerService: CsvManagerService,
     private configService: ConfigService,
     public loginService: LoginService,
-    private categorizationService: CategorizationService
+    private categorizationService: CategorizationService,
+    private componentService: ComponentService
   ) {
   }
 
@@ -131,9 +132,11 @@ export class UploadFileComponent {
     this.onCancel.emit();
   }
 
+  fileErrorName = '';
   reset(): void {
     this.fileName = '';
     this.file = '';
+    this.fileErrorName = '';
     this.description = '';
     this.defaultCategory = '1';
   }
@@ -229,6 +232,7 @@ export class UploadFileComponent {
     if (!this.fileInput.nativeElement.files.length) {
       return;
     }
+    this.fileErrorName = this.fileInput.nativeElement.value;
     this.isFileError = false;
     if (!this.csvManagerService.validateFileExtention(this.fileInput.nativeElement, ExcelExtentions)) {
       this.fileError(ValidationFileMessage.CsvExtensionError);
@@ -258,6 +262,7 @@ export class UploadFileComponent {
             this.fileError(ValidationFileMessage.NoUtf8);
           } else {
             this.file = this.fileInput.nativeElement.value;
+            this.fileName = this.componentService.getFileNameNoExt(this.file);
             this.readFile(this.fileInput.nativeElement.files[0]);
             this.defaultCategory = '1';
           }

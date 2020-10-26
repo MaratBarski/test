@@ -68,12 +68,9 @@
         <span class="admin-table__icon-label d-none d-xxl-inline-block">Success</span>
     </div>
     <div *ngIf="source.transStatus === 'failed'">
-        <span class="admin-table__icon">
+        <span [stickyToElement]="true" position="left" [mdcTooltip]="source.transMsg"  class="admin-table__icon">
             <svg class="icon ic-failure ic-grey" mdcSvg="ic-failure">
             </svg>
-            <span class="tooltip tooltip_left">
-                <span class="tooltip__content">{{source.transMsg}}</span>
-            </span>
         </span>
         <span class="admin-table__icon-label d-none d-xxl-inline-block">Failed</span>
     </div>

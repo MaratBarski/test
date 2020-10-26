@@ -54,12 +54,10 @@
 
     <ng-template #activeUser let-item>
         <ng-template [ngIf]="item.active">
-            <span class="admin-table__circle admin-table__circle_green"></span>
-            <span>Active</span>
+            <span [stickyToElement]="true" position="right" mdcTooltip="Active" class="admin-table__circle admin-table__circle_green"></span>
         </ng-template>
         <ng-template [ngIf]="!item.active">
-            <span class="admin-table__circle admin-table__circle_grey"></span>
-            <span>Not Active</span>
+            <span [stickyToElement]="true" position="right" mdcTooltip="Active" class="admin-table__circle admin-table__circle_grey"></span>
         </ng-template>
     </ng-template>
 
