@@ -34,9 +34,7 @@ export class UserEditService {
       isMissing: false,
       isError: false,
       validate: (): boolean => {
-        if (this.securityType) {
-          return this.securityUser;
-        }
+        if (this.securityType) { return true; }
         return !this.isEmpty(this.user.userName);
       }
     },
