@@ -38,7 +38,7 @@
             </div>
             <div *ngIf="!isEditMode" class="form-site__item">
                 <label class="form-site__label" for="name">Name</label>
-                <input type="text" (change)="validateFileName()" [(ngModel)]="fileName"
+                <input type="text" (keyup)="validateFileName()" [(ngModel)]="fileName"
                     placeholder="Type categorization name">
                 <div *ngIf="fileNameErrorMessage" class="form-site-alert">
                     <div class="form-site-alert__icon">
