@@ -3,7 +3,7 @@
     <div class="file-upload">
         <label class="file-upload__content">
             <input #fileInput (change)="updateFileName($event)" type="file" accept="{{accept}}">
-            <span class="file-upload__btn">{{buttonText}}</span><span class="file-upload__name disable">
+            <span class="file-upload__btn">{{buttonText}}</span><span class="file-upload__name" [ngClass]="{disable:!selectedFileName}">
                 <ng-template [ngIf]="!selectedFileName">
                     {{selectFileText}}
                 </ng-template>
