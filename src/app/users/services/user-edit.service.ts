@@ -35,6 +35,7 @@ export class UserEditService {
       isError: false,
       validate: (): boolean => {
         if (this.securityType) { return true; }
+        if (this.mode === 1) { return true; }
         return !this.isEmpty(this.user.userName);
       }
     },
@@ -43,7 +44,10 @@ export class UserEditService {
       isError: false,
       validate: (): boolean => {
         if (this.securityType) { return true; }
-        return !this.isEmpty(this.user.password);
+        if (this.isEmpty(this.user.password) && this.mode !== 1) {
+          return false;
+        }
+        return true;
       }
     },
   }
@@ -381,6 +385,9 @@ export class UserEditService {
     if (this.securityType) {
       return this.isUserNameValid;
     }
+    if (this.mode === 1) {
+      return this.isUserNameValid;
+    }
     if (!this.user.userName || !this.user.userName.trim()) {
       this.isUserNameValid = true;
       return this.isUserNameValid;
@@ -404,6 +411,9 @@ export class UserEditService {
   validatePassword(): boolean {
     this.isPasswordValid = true;
     if (this.securityType) {
+      return this.isPasswordValid;
+    }
+    if ((!this.user.password || !this.user.password.trim()) && this.mode === 1) {
       return this.isPasswordValid;
     }
     if (!this.user.password || !this.user.password.trim()) {

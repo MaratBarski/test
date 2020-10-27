@@ -9,7 +9,7 @@
                             [users]="users"></md-user-name-selector>
                     </div>
                 </div>
-                <md-input-item (onChangeValue)="onChangeValue()" *ngIf="userEditService.securityType===0"
+                <md-input-item [isDisabled]="userEditService.mode===1" (onChangeValue)="onChangeValue()" *ngIf="userEditService.securityType===0"
                     [(ngModel)]="userEditService.user.userName"
                     [isError]="userEditService.missingItem.userName.isError || !userEditService.isUserNameValid"
                     [isMissing]="userEditService.missingItem.userName.isError" placeHolder="Type user name"
