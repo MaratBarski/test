@@ -83,6 +83,7 @@ export class UploadFileComponent {
         containerEnable: true,
         removeOnComplete: true,
         progressKf: 2,
+        responseDisplayPeriod: 4,
         onComplete: () => {
           this.categorizationService.uploadComplete();
         }
