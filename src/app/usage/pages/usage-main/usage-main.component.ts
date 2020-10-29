@@ -20,7 +20,7 @@ export class UsageMainComponent extends BaseSibscriber implements OnInit {
     private navigationService: NavigationService
   ) {
     super();
-    this.navigationService.currentPageID = PageInfo.JobsScheduling.id;
+    this.navigationService.currentPageID = PageInfo.Usage.id;
     super.add(
       this.activeRouter.url.subscribe(u => {
         this.currentPage = u.toString();

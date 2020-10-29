@@ -5,6 +5,11 @@ import { LoginService } from '@appcore';
 
 const routes: Routes = [
   {
+    path: 'job',
+    loadChildren: () => import('./jobs/jobs.module').then(m => m.JobsModule),
+    canActivate: [LoginService]
+  },
+  {
     path: 'patient',
     loadChildren: () => import('./patient/patient.module').then(m => m.PatientModule),
     canActivate: [LoginService]

@@ -54,6 +54,7 @@ export const environment = {
       file: '/activate-file',
       calculate: '',
       originalFile: '/download-original'
-    }
+    },
+    job: 'mdclone/api/v1/job-sche'
   }
 };
