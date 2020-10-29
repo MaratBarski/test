@@ -151,7 +151,7 @@ export class UploadFileComponent {
     });
     if (found) {
       this.fileNameErrorMessage = this.configService.getMessage('E00027');
-      this.fileName = '';
+      //this.fileName = '';
     } else {
       this.fileNameErrorMessage = undefined;
     }
@@ -263,6 +263,7 @@ export class UploadFileComponent {
           } else {
             this.file = this.fileInput.nativeElement.value;
             this.fileName = this.componentService.getFileNameNoExt(this.file);
+            this.validateFileName();
             this.readFile(this.fileInput.nativeElement.files[0]);
             this.defaultCategory = '1';
           }

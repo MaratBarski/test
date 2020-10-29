@@ -21,6 +21,7 @@ export class InputItemComponent implements ControlValueAccessor {
   @Input() type = 'text';
   @Input() isOptional = false;
   @Input() placeHolder = '';
+  @Input() isDisabled = false;
 
   @Output() onChangeValue = new EventEmitter<any>();
 

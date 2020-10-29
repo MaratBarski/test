@@ -3,7 +3,7 @@
     <span *ngIf="isOptional" class="user-details-main__opt">optional</span>
 </div>
 <div class="user-details-main__field">
-    <input [ngClass]="{'error':isError}" autocomplete="off" (change)="chengeInput()" [(ngModel)]="value" [type]="type"
+    <input [disabled]="isDisabled" [ngClass]="{'error':isError}" autocomplete="off" (change)="chengeInput()" [(ngModel)]="value" [type]="type"
         [placeholder]="placeHolder">
     <ng-content select=".error"></ng-content>
     <div [hidden]="!isMissing" class="user-details-main__error">{{missingText}}</div>
