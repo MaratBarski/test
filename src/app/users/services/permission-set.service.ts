@@ -202,7 +202,7 @@ export class PermissionSetService extends BaseSibscriber {
     return '';
   }
 
-  get displayTemplates():Array<any>{
+  get displayTemplates(): Array<any> {
     return this.permissionSet.allowedEvent === 3 ? this.templates : this.events;
   }
 
@@ -333,13 +333,14 @@ export class PermissionSetService extends BaseSibscriber {
     }
   }
 
-  private addSuccNotification(): void {
+  private addSuccNotification(msg: string): void {
     this.isSaving = false;
     this.notificationService.addNotification({
       type: ToasterType.success,
-      name: 'Permission set created successfully.',
+      name: msg,
       comment: 'The user can now query the allowed data.',
-      showInToaster: true
+      showInToaster: true,
+      displayPeriod: 4
     });
   }
 
@@ -348,14 +349,15 @@ export class PermissionSetService extends BaseSibscriber {
       .pipe(take(1))
       .subscribe(res => {
         this.router.navigateByUrl('/users/research');
-        this.addSuccNotification();
+        this.addSuccNotification('Permission set updated successfully');
       }, error => {
         this.isSaving = false;
         this.notificationService.addNotification({
           type: ToasterType.error,
           name: 'Failed to update the permission set',
           comment: error.message,
-          showInToaster: true
+          showInToaster: true,
+          displayPeriod: 4
         });
       });
   }
@@ -365,7 +367,7 @@ export class PermissionSetService extends BaseSibscriber {
       .pipe(take(1))
       .subscribe(res => {
         this.router.navigateByUrl('/users/research');
-        this.addSuccNotification();
+        this.addSuccNotification('Permission set created successfully');
       }, error => {
         this.isSaving = false;
         this.notificationService.addNotification({

@@ -1,4 +1,4 @@
-<div class="notice-msg" [ngClass]="{
+<div class="notice-msg" (mouseover)="mouseover()" (mouseleave)="mouseleave()" [ngClass]="{
                                       'notice-msg_red': toasterType.error === notice?.type,
                                       'notice-msg_yellow': toasterType.warning === notice?.type,
                                       'notice-msg_green': toasterType.success === notice?.type,

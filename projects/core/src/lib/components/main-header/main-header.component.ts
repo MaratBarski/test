@@ -51,12 +51,12 @@ export class MainHeaderComponent extends BaseSibscriber {
   }
 
   noticeRotate(count: number): void {
-    this.clearRotateTimeout();
-    if (count <= 0) { this.newCss = ''; return; }
-    this.newCss = !this.newCss || this.newCss === 'r0' ? 'r1' : 'r0';
-    this.rotateTimeoutID = setTimeout(() => {
-      this.noticeRotate(count - 1);
-    }, 100);
+    // this.clearRotateTimeout();
+    // if (count <= 0) { this.newCss = ''; return; }
+    // this.newCss = !this.newCss || this.newCss === 'r0' ? 'r1' : 'r0';
+    // this.rotateTimeoutID = setTimeout(() => {
+    //   this.noticeRotate(count - 1);
+    // }, 100);
   }
 
   @HostListener('document:click', ['$event']) onMouseClick(event: any) {

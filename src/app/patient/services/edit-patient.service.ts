@@ -639,7 +639,8 @@ export class EditPatientService {
             type: ToasterType.success,
             name: 'Patient story saved successfully.',
             comment: 'The user can now query the allowed data.',
-            showInToaster: true
+            showInToaster: true,
+            displayPeriod: 4
           });
           this.router.navigateByUrl('/patient');
         }, error => {
@@ -648,7 +649,8 @@ export class EditPatientService {
             type: ToasterType.error,
             name: 'Failed to save patient story.',
             comment: 'Try again or contact MDClone support.',
-            showInToaster: true
+            showInToaster: true,
+            displayPeriod: 4
           });
         })
     } else {

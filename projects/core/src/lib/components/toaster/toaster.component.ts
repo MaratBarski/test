@@ -1,4 +1,4 @@
-import { Component, Input, EventEmitter, Output } from '@angular/core';
+import { Component, Input, EventEmitter, Output, OnInit } from '@angular/core';
 import { animation } from '../../animations/animations';
 import { INotification, NotificationsService, ToasterType } from '../../services/notifications.service';
 import { NavigationService } from '../../services/navigation.service';
@@ -12,7 +12,7 @@ import { NavigationService } from '../../services/navigation.service';
     animation.slideUpDown
   ],
 })
-export class ToasterComponent {
+export class ToasterComponent implements OnInit {
 
   constructor(
     private navigationService: NavigationService,
@@ -21,16 +21,45 @@ export class ToasterComponent {
 
   @Input() notice: INotification;
 
+  mouseover(): void {
+    if (!this.closeTimeOutID) { return; }
+    clearTimeout(this.closeTimeOutID);
+    this.closeTimeOutID = undefined;
+  }
+
+  mouseleave(): void {
+    this.closeProc();
+  }
+
+  private closeTimeOutID: any;
+
+  ngOnInit(): void {
+    this.closeProc();
+  }
+
+  closeProc(): void {
+    if (!this.notice.displayPeriod || this.notice.displayPeriod <= 0) { return; }
+    this.closeTimeOutID = setTimeout(() => {
+      this.onCloseClicked();
+    }, 4 * 1000);
+  }
+
   // emitting close event with id of toaster for searching in array of toasters;
   @Output() onToasterClose: EventEmitter<INotification> = new EventEmitter<INotification>();
 
   @Output() onAbort: EventEmitter<INotification> = new EventEmitter<INotification>();
   toasterType = ToasterType;
 
-  onCloseClicked(): void {
+  closeNotice(): void {
     this.notice.showInToaster = false;
+    this.notice.showInContainer = true;
     this.onToasterClose.emit(this.notice);
     this.notificationsService.sendNotification(this.notice);
+  }
+
+  onCloseClicked(): void {
+    this.mouseover();
+    this.closeNotice();
   }
 
   get isAbortDisabled(): boolean {

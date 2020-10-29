@@ -546,7 +546,8 @@ export class UserEditService {
           isClientOnly: true,
           name: 'User updated successfully',
           comment: 'User updated successfully',
-          type: ToasterType.success
+          type: ToasterType.success,
+          displayPeriod: 4
         });
       }, error => {
         this._isLoading = false;
@@ -555,7 +556,8 @@ export class UserEditService {
           isClientOnly: true,
           name: 'Error update user',
           comment: 'Error',
-          type: ToasterType.error
+          type: ToasterType.error,
+          displayPeriod: 4
         });
       })
   }
