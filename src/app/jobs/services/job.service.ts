@@ -16,7 +16,7 @@ export class JobService {
 
 
   @Offline('assets/offline/jobs.json')
-  private getUrl = `${environment.serverUrl}${environment.endPoints.jobs}`;
+  private getUrl = `${environment.serverUrl}${environment.endPoints.job}`;
 
   private abortUrl = `${environment.serverUrl}${environment.endPoints.patientStoryAbort}`;
 
