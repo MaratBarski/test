@@ -195,13 +195,15 @@
 
       .tooltip{
         display: none;
+        width: 270px;
         margin-top: 0;
         margin-bottom: 0;
         margin-left: 8px;
         position: absolute;
-        @include top-center;
+        top: -5px;
         left: 100%;
         z-index: 2;
+        white-space: normal;
       }
     }
 
@@ -499,13 +501,15 @@
 	  height: 17px;
 	}
 
-	&__item > .ic-success,
-	&__item > .ic-warning,
-	&__icon .ic-success,
-	&__icon .ic-warning{
-	  width: 20px;
-	  height: 20px;
-	}
+    &__item > .ic-success,
+    &__item > .ic-warning,
+    &__item > .ic-timer,
+    &__icon .ic-success,
+    &__icon .ic-warning,
+    &__icon .ic-timer{
+      width: 18px;
+      height: 18px;
+    }
 
   // &__item > .ic-failure,
   &__icon .ic-failure{
@@ -1230,7 +1234,7 @@
 
 	&__title{
 	  width: 150px;
-	  @include font(normal, 600, rem(14px), 1.43, $color-dark-blue);
+	  @include font(normal, 600, rem(14px), 1.43, $color-dark-grey);
 	  margin-right: 10px;
 	}
 
@@ -1366,6 +1370,10 @@
 
     &__line &__item:not(:last-child){margin-right: 40px;}
   }
+
+.job-list{
+  .admin-table-popup{min-width: 172px;}
+}
 
 .job-details{
   .admin-table-info{
@@ -1924,6 +1932,36 @@
 
     & &__item_menu{width: auto;}
     &__name-info{width: calc(100% - 30px)}
+
+    &__name-ic .tooltip{
+      left: auto;
+      right: 100%;
+      margin-left: 4px;
+      margin-right: 8px;
+    }
+
+    &__name-ic .tooltip_left::after{
+      border-width: 6px 0 6px 5px;
+      border-color: transparent transparent transparent $color-dark-blue;
+      right: auto;
+      left: 100%;
+    }
+
+    &_mob-table{display: table;}
+    &_mob-table thead{display: table-header-group;}
+    &_mob-table tbody{display: table-row-group;}
+
+    &_mob-table &__row,
+    &_mob-table &__head,
+    &_mob-table tr{
+      display: table-row;
+    }
+
+    &_mob-table td,
+    &_mob-table th,
+    &_mob-table &__item{
+      display: table-cell;
+    }
 	}
 
 	.admin-table-popup{

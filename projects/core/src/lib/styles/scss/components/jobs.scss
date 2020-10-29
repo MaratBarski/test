@@ -40,7 +40,7 @@
 	&__content{
 		border-radius: 4px;
 		border: 1px solid $color-light-grey;
-		padding: 10px 15px;
+    padding: 15px;
 	}
 
 	&__item{display: flex;}
@@ -121,7 +121,6 @@
 	}
 
 	&__field &__note{
-		width: 245px;
 		@include font(normal, normal, rem(13px), 1.35, $color-grey);
 		padding-top: 13px;
 	}
@@ -138,7 +137,7 @@
 		margin-top: 5px;
 		margin-bottom: 5px;
 	}
-	
+
 	.ic-help,
 	.ic-info{
 		display: inline-block;
@@ -189,7 +188,7 @@
 		margin-top: 5px;
 		margin-bottom: 5px;
 		display: inline-flex;
-		vertical-align: middle; 
+		vertical-align: middle;
 		align-items: center;
 		margin-top: 3px;
 
