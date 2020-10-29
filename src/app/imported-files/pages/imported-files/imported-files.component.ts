@@ -203,7 +203,8 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, Af
           type: ToasterType.success,
           showInToaster: true,
           comment: 'File deleted from the system.',
-          isClientOnly: true
+          isClientOnly: true,
+          displayPeriod: 4
         });
       }).catch(e => {
         this.notificationsService.addNotification({
@@ -211,7 +212,8 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, Af
           type: ToasterType.error,
           showInToaster: true,
           comment: 'A shared file cannot be deleted. Contact your admin to delete it for you.',
-          isClientOnly: true
+          isClientOnly: true,
+          displayPeriod: 4
         });
       });
   }

@@ -83,7 +83,8 @@ export class PatientStoryComponent extends BaseSibscriber implements OnInit {
               name: 'Failed to abort',
               comment: action.item.source.name,
               showInToaster: true,
-              containerEnable: false
+              containerEnable: false,
+              displayPeriod: 4
             }
           )
         });
@@ -106,10 +107,11 @@ export class PatientStoryComponent extends BaseSibscriber implements OnInit {
           .subscribe(() => {
             this.notificationsService.addNotification({
               showInToaster: true,
-              name: 'Categorization deleted successfully.',
-              comment: 'The categorization is deleted.',
+              name: 'Patient story successfully.',
+              comment: 'Patient story is deleted.',
               type: ToasterType.success,
-              isClientOnly: true
+              isClientOnly: true,
+              displayPeriod: 4
             });
             this.fileSource = this.fileSource.filter(x => x != tempItem.source);
             this.initData();
@@ -121,7 +123,8 @@ export class PatientStoryComponent extends BaseSibscriber implements OnInit {
               name: 'Patient story cannot be deleted.',
               comment: '',
               type: ToasterType.error,
-              isClientOnly: true
+              isClientOnly: true,
+              displayPeriod: 4
             });
           })
       )
