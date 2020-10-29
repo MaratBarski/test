@@ -504,11 +504,19 @@
     &__item > .ic-success,
     &__item > .ic-warning,
     &__item > .ic-timer,
+    &__item > .ic-aborting,
     &__icon .ic-success,
     &__icon .ic-warning,
-    &__icon .ic-timer{
+    &__icon .ic-timer,
+    &__icon .ic-aborting{
       width: 18px;
       height: 18px;
+    }
+
+    &__item > .ic-run,
+    &__icon .ic-run{
+      width: 24px;
+      height: 24px;
     }
 
   // &__item > .ic-failure,
@@ -785,6 +793,7 @@
 	}
 
 	& &__status{width: 110px;}
+  & &__log{width: 140px;}
 	& &__state{width: 110px;}
 	& &__menu{width: 80px;}
 	& &__load{width: 65px;}
@@ -1284,6 +1293,11 @@
 	  height: 18px;
 	}
 
+  .ic-failure{
+    width: 22px;
+    height: 18px;
+  }
+
 	.ic-plug{
 	  width: 25px;
 	  height: 15px;
@@ -1371,6 +1385,11 @@
     &__line &__item:not(:last-child){margin-right: 40px;}
   }
 
+.admin-table-info-empty{
+  text-align: center;
+  &__img{margin-top: 72px;}
+}
+
 .job-list{
   .admin-table-popup{min-width: 172px;}
 }
@@ -1381,6 +1400,8 @@
       width: auto;
       min-width: 52px;
     }
+
+    &__val{width: calc(100% - 62px);}
   }
 }
 
@@ -1759,6 +1780,7 @@
     & &__perm-20{width: 195px;}
     & &__item_menu{width: 60px;}
     & &__status{width: 80px;}
+    & &__log{width: 110px;}
     & &__state{width: 80px;}
     & &__menu{width: 60px;}
     & &__load{width: 65px;}
