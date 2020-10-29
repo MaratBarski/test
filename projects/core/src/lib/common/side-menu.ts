@@ -33,8 +33,11 @@ export const PageInfo = {
     ImportedFiles: {
         id: 'ImportedFiles'
     },
-    JobsScheduling: {
-        id: 'JobsScheduling'
+    Usage: {
+        id: 'Usage'
+    },
+    Job: {
+        id: 'Job'
     },
     PatientStorySettings: {
         id: 'PatientStorySettings'
@@ -49,8 +52,9 @@ export const UserEnableMenu = {
     [PageInfo.MonitorReports.id]: { researcher: false, admin: true },
     [PageInfo.ManageHierarchies.id]: { researcher: false, admin: true },
     [PageInfo.ImportedFiles.id]: { researcher: true, admin: true },
-    [PageInfo.JobsScheduling.id]: { researcher: false, admin: true },
+    [PageInfo.Usage.id]: { researcher: false, admin: true },
     [PageInfo.Researchers.id]: { researcher: false, admin: true },
+    [PageInfo.Job.id]: { researcher: false, admin: true },
     [PageInfo.Patient.id]: { researcher: false, admin: false }
 }
 
@@ -91,10 +95,11 @@ export const SideMenu: Array<MenuItem> = [
         text: 'Imported Files'
     },
     {
-        id: PageInfo.JobsScheduling.id,
+        id: PageInfo.Usage.id,
         url: 'usage-dashboard',
         text: 'Usage Report'
     },
+
     {
         id: PageInfo.Researchers.id,
         url: 'users/research',

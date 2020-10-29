@@ -45,7 +45,8 @@ export const environment = {
     patientStoryUserSession: 'stage/api/v1/patient-story/user-session',
     hierarchyProject: 'stage/api/v1/hierarchy/project',
     patientStoryHierarchy: 'stage/api/v1/patient-story/hierarchy',
-    patientStorySiteEventInfo: 'syage/api/v1/patient-story/events',
-    adUsers: 'ad-users'
+    patientStorySiteEventInfo: 'stage/api/v1/patient-story/events',
+    adUsers: 'ad-users',
+    job: 'stage/api/v1/job-sche'
   }
 };

@@ -57,6 +57,7 @@ export const environment = {
       sampleData: '/get-sample-data',
       censoredRate: '/censored-rate',
       censoredFile: '/censored-file',
-    }
+    },
+    job: 'mdclone/api/v1/job-sche'
   }
 };
