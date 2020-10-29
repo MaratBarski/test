@@ -17,7 +17,14 @@ export class ToasterComponent implements OnInit {
   constructor(
     private navigationService: NavigationService,
     private notificationsService: NotificationsService
-  ) { }
+  ) {
+    notificationsService.onResponse.subscribe((notice: INotification) => {
+      if (this.notice === notice) {
+        this.notice.displayPeriod = this.notice.responseDisplayPeriod;
+        this.closeProc();
+      }
+    });
+  }
 
   @Input() notice: INotification;
 

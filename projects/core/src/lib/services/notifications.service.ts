@@ -55,6 +55,7 @@ export interface INotification {
   removeOnComplete?: boolean;
   abortDisabled?: boolean;
   displayPeriod?: number;
+  responseDisplayPeriod?: number;
 }
 
 const NOTIFICATION_MAP: Array<{ client: string, server: string }> = [
@@ -68,7 +69,8 @@ const NOTIFICATION_MAP: Array<{ client: string, server: string }> = [
   { client: 'key', server: 'key' },
   { client: 'startDate', server: 'startDate' },
   { client: 'type', server: 'type' },
-  { client: 'progressTitle', server: 'progressTitle' }
+  { client: 'progressTitle', server: 'progressTitle' },
+  { client: 'displayPeriod', server: 'displayPeriod' }
 ];
 
 @Injectable({
@@ -88,7 +90,12 @@ export class NotificationsService extends BaseSibscriber {
   get onNotificationAdded(): Observable<any> {
     return this._onNotificationAdded.asObservable();
   }
-  private _onNotificationAdded = new Subject()
+  private _onNotificationAdded = new Subject();
+
+  get onResponse(): Observable<INotification> {
+    return this._onResponse.asObservable();
+  }
+  private _onResponse = new Subject<INotification>()
 
   get notifications(): Array<INotification> {
     return this._notifications;
@@ -210,6 +217,9 @@ export class NotificationsService extends BaseSibscriber {
       if (clientNotice.status === NotificationStatus.completed && clientNotice.onComplete) {
         clientNotice.onComplete();
         clientNotice.onComplete = undefined;
+      }
+      if (clientNotice.status === NotificationStatus.completed || clientNotice.status === NotificationStatus.failed) {
+          this._onResponse.next(clientNotice);
       }
     });
     this._notifications = this.notifications.concat(missingNotice);

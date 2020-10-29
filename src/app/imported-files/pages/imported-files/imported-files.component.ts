@@ -83,7 +83,7 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, Af
       this.load();
     }));
 
-    // this.notificationsTests();
+    //this.notificationsTests();
   }
 
 
@@ -98,6 +98,7 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, Af
       status: NotificationStatus.completed,
       progress: 50,
       containerEnable: true,
+      responseDisplayPeriod: 4,
       onComplete: () => {
         //alert(this.fileSource.length)
       }
@@ -113,17 +114,17 @@ export class ImportedFilesComponent extends BaseSibscriber implements OnInit, Af
     //   type: 3
     // });
 
-    // setTimeout(() => {
-    //   this.notificationsService.serverUpdate({
-    //     key: "ee0e3204-0a84-4042-b3e9-4affb5566a78",
-    //     message: "updating",
-    //     showInToaster: true,
-    //     status: "Completed",
-    //     subject: "File mapping saved successfully↵",
-    //     succLinkText: "link to page",
-    //     type: ToasterType.success
-    //   })
-    // }, 10000);
+    setTimeout(() => {
+      this.notificationsService.serverUpdate({
+        key: "ee0e3204-0a84-4042-b3e9-4affb5566a78",
+        message: "updating",
+        showInToaster: true,
+        status: "Completed",
+        subject: "File mapping saved successfully↵",
+        succLinkText: "link to page",
+        type: ToasterType.success
+      })
+    }, 2000);
 
     // setTimeout(() => {
     //   this.notificationsService.serverUpdate({
